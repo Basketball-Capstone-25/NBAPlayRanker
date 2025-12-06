@@ -1,0 +1,17 @@
+# --- Python / virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+backend/.venv/
+
+# --- Node / frontend dependencies ---
+node_modules/
+*/node_modules/
+.next/
+dist/
+build/
+
+# --- OS / misc ---
+.DS_Store
+*.log
