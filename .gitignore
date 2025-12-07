@@ -15,3 +15,6 @@ build/
 # --- OS / misc ---
 .DS_Store
 *.log
+
+# --- Data / intermediate files ---
+backend/data/synergy_chunks/
