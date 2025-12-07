@@ -58,6 +58,49 @@ export async function baselineRank({ season, our, opp, k = 5 }) {
   }));
 }
 
+export async function contextRank({
+  season,
+  our,
+  opp,
+  margin,
+  period,
+  timeRemaining,
+  k = 3,
+}) {
+  const params = new URLSearchParams({
+    season,
+    our,
+    opp,
+    margin: String(margin),
+    period: String(period),
+    time_remaining: String(timeRemaining),
+    k: String(k),
+  });
+
+  const res = await fetch(`${API_BASE}/rank-plays/context-ml?${params.toString()}`);
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Context ML API error (${res.status}): ${text}`);
+  }
+
+  const data = await res.json();
+
+  // Map backend fields to the shape the ContextSimulator will use
+  return (data.rankings ?? []).map((r) => {
+    const base = Number(r.PPP_PRED_ML);
+    const ctx = Number(r.CONTEXT_SCORE);
+    return {
+      playType: r.PLAY_TYPE,
+      basePPP: base,
+      contextPPP: ctx,
+      deltaPPP: ctx - base,
+      rationale: r.CONTEXT_RATIONALE,
+    };
+  });
+}
+
+
 /**
  * Fetch offline baseline vs ML metrics from the backend.
  *

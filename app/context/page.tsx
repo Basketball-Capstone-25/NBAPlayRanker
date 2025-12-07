@@ -1,14 +1,14 @@
 'use client';
 
 import { useEffect, useMemo, useState } from "react";
-import { API_BASE, SEASONS, TEAMS, baselineRank } from "../utils";
+import { API_BASE, SEASONS, TEAMS, contextRank } from "../utils";
 
 type RankedPlay = {
   playType: string;
-  PPP_pred: number;
-  PPP_off: number;
-  PPP_def: number;
-  PPP_gap: number;
+  basePPP: number;
+  contextPPP: number;
+  deltaPPP: number;
+  rationale: string;
 };
 
 function formatClock(totalSeconds: number): string {
@@ -32,34 +32,44 @@ export default function ContextSimulator() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let cancelled = false;
+  let cancelled = false;
 
-    async function run() {
-      try {
-        setLoading(true);
-        setError(null);
-        // For now this still calls the same baseline endpoint with K=3.
-        const result = await baselineRank({ season, our, opp, k: 3 });
-        if (!cancelled) {
-          setRows(result as RankedPlay[]);
-        }
-      } catch (err: any) {
-        console.error(err);
-        if (!cancelled) {
-          setError(err?.message ?? "Unable to load baseline results.");
-        }
-      } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
+  async function run() {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const result = await contextRank({
+        season,
+        our,
+        opp,
+        margin: scoreMargin,
+        period,
+        timeRemaining,
+        k: 3,
+      });
+
+      if (!cancelled) {
+        setRows(result as RankedPlay[]);
+      }
+    } catch (err: any) {
+      console.error(err);
+      if (!cancelled) {
+        setError(err?.message ?? "Unable to load context ML results.");
+      }
+    } finally {
+      if (!cancelled) {
+        setLoading(false);
       }
     }
+  }
 
-    run();
-    return () => {
-      cancelled = true;
-    };
-  }, [season, our, opp]);
+  run();
+  return () => {
+    cancelled = true;
+  };
+}, [season, our, opp, scoreMargin, period, timeRemaining]);
+
 
   const scenarioText = useMemo(() => {
     const clock = formatClock(timeRemaining);
@@ -199,14 +209,24 @@ export default function ContextSimulator() {
       {!loading && !error && rows.length > 0 && (
         <ol style={{ marginTop: 16, paddingLeft: 20 }}>
           {rows.map((d) => (
-            <li key={d.playType} style={{ marginBottom: 4 }}>
-              <b>{d.playType}</b>:{" "}
-              {(d.PPP_gap >= 0 ? "+" : "") + d.PPP_gap.toFixed(3)} PPP vs this
-              opponent&apos;s average allowed.
+            <li key={d.playType} style={{ marginBottom: 8 }}>
+              <div>
+                <b>{d.playType}</b>{" "}
+                <span className="muted" style={{ fontSize: 12 }}>
+                  base {d.basePPP.toFixed(3)} PPP → context{" "}
+                  {d.contextPPP.toFixed(3)} PPP (
+                  {d.deltaPPP >= 0 ? "+" : ""}
+                  {d.deltaPPP.toFixed(3)})
+                </span>
+              </div>
+              <div className="muted" style={{ fontSize: 11 }}>
+                {d.rationale}
+              </div>
             </li>
           ))}
         </ol>
       )}
+
 
       {!loading && !error && rows.length === 0 && (
         <p className="muted" style={{ marginTop: 16 }}>
@@ -217,9 +237,17 @@ export default function ContextSimulator() {
       <p className="muted" style={{ marginTop: 16, fontSize: 11 }}>
         API call:&nbsp;
         <code>
-          {API_BASE}/rank-plays/baseline?season={season}&amp;our={our}&amp;opp={opp}&amp;k=3
+          {API_BASE}/rank-plays/context-ml
+          ?season={season}
+          &amp;our={our}
+          &amp;opp={opp}
+          &amp;margin={scoreMargin}
+          &amp;period={period}
+          &amp;time_remaining={timeRemaining}
+          &amp;k=3
         </code>
       </p>
+
     </section>
   );
 }
