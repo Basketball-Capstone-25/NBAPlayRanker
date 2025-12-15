@@ -7,9 +7,13 @@ import pandas as pd
 
 from baseline_recommender import BaselineRecommender
 
-# File paths for the Synergy data and offline ML predictions
+# Base folder for all of our data files.
 DATA_DIR = Path(__file__).parent / "data"
+
+# Main Synergy snapshot used by both the baseline model and the ML pipeline.
 SYNERGY_CSV_PATH = DATA_DIR / "synergy_playtypes_2019_2025_players.csv"
+
+# Offline ML predictions (RandomForest PPP) produced in a separate notebook/script.
 ML_PRED_PATH = DATA_DIR / "ml_offense_ppp_predictions.csv"
 
 
@@ -23,33 +27,45 @@ def build_ml_matchup_table(
     """
     Build a matchup table that uses ML PPP predictions instead of baseline PPP.
 
-    Each row is a play type for (season, our_team vs opp_team) with:
-      - PPP_ML: RandomForest PPP prediction for our offense
-      - PPP_DEF_SHRUNK: opponent defense PPP (shrunk toward league)
-      - PPP_PRED_ML: combined offense/defense matchup score
-      - PPP_GAP_ML: difference between our PPP_ML and their PPP_DEF_SHRUNK
+    What it returns:
+      - One row per play type for (season, our_team vs opp_team).
+      - For each row we keep:
+          * PPP_ML: RandomForest PPP prediction for our offense.
+          * PPP_DEF_SHRUNK: opponent defensive PPP shrunk toward league.
+          * PPP_PRED_ML: combined offense/defense matchup score.
+          * PPP_GAP_ML: PPP_ML minus PPP_DEF_SHRUNK.
+
+    How it works:
+      1) Reuse the pre-processing from the BaselineRecommender to get team_df and
+         league_df (team and league tables).
+      2) Merge in the offline ML predictions (PPP_ML).
+      3) Slice out the offensive rows for our team and defensive rows for the opponent.
+      4) Compute PPP_DEF_SHRUNK using league defense as an anchor.
+      5) Build a combined matchup score PPP_PRED_ML.
     """
-    # Reuse the pre-processing from the baseline recommender
+    # Use the same pipeline as the baseline model to build team/league tables.
     rec = BaselineRecommender(str(SYNERGY_CSV_PATH))
     team_df = rec.team_df.copy()
     league_df = rec.league_df.copy()
 
-    # Load precomputed ML PPP predictions (offense)
+    # Load precomputed ML PPP predictions for offense.
     if not ML_PRED_PATH.exists():
         raise FileNotFoundError(f"Missing ML prediction file: {ML_PRED_PATH}")
     ml_df = pd.read_csv(ML_PRED_PATH)
 
-    # Add PPP_ML to the team-level table
+    # Attach PPP_ML to the team-level table using season + team + play type.
     team_df = team_df.merge(
         ml_df,
         on=["SEASON", "TEAM_ABBREVIATION", "PLAY_TYPE"],
         how="left",
     )
 
-    # Slice offense/defense rows for this matchup
+    # Offense rows for our team in this season.
     off = team_df.query(
         "SEASON == @season and TEAM_ABBREVIATION == @our_team and SIDE == 'offense'"
     ).copy()
+
+    # Defense rows for the opponent in this season.
     deff = team_df.query(
         "SEASON == @season and TEAM_ABBREVIATION == @opp_team and SIDE == 'defense'"
     ).copy()
@@ -59,20 +75,21 @@ def build_ml_matchup_table(
     if deff.empty:
         raise ValueError(f"No defensive data for team {opp_team} in season {season}")
 
-    # League PPP by play type for this season (offense and defense)
+    # League offense baselines by play type for this season.
     league_off = league_df.query(
         "SEASON == @season and SIDE == 'offense'"
     )[["PLAY_TYPE", "PPP", "RELIABILITY_WEIGHT"]].rename(
         columns={"PPP": "PPP_LEAGUE_OFF", "RELIABILITY_WEIGHT": "REL_OFF_LEAGUE"}
     )
 
+    # League defense baselines by play type for this season.
     league_def = league_df.query(
         "SEASON == @season and SIDE == 'defense'"
     )[["PLAY_TYPE", "PPP", "RELIABILITY_WEIGHT"]].rename(
         columns={"PPP": "PPP_LEAGUE_DEF", "RELIABILITY_WEIGHT": "REL_DEF_LEAGUE"}
     )
 
-    # Opponent defense columns used in the matchup score
+    # Subset of opponent defense columns we need for the matchup.
     deff_subset = deff[
         [
             "PLAY_TYPE",
@@ -86,45 +103,56 @@ def build_ml_matchup_table(
         ]
     ].copy()
 
-    # Join our offense with their defense for each play type
+    # Join our offense with their defense on play type.
     merged = off.merge(
         deff_subset,
         on="PLAY_TYPE",
         suffixes=("_OFF", "_DEF"),
     )
 
-    # Add league offense/defense baselines
+    # Add league offense/defense baselines into the same table.
     merged = merged.merge(league_off, on="PLAY_TYPE", how="left")
     merged = merged.merge(league_def, on="PLAY_TYPE", how="left")
 
-    # Shrink opponent defense PPP toward league PPP
+    # Shrink opponent defense PPP toward league defense PPP.
+    # Same shrinkage idea as baseline: more possessions => we trust team more.
     rel_def = merged["RELIABILITY_WEIGHT_DEF"]
     merged["PPP_DEF_SHRUNK"] = (
         rel_def * merged["PPP_DEF"] + (1 - rel_def) * merged["PPP_LEAGUE_DEF"]
     )
 
-    # PPP_ML comes from the offline ML pipeline
+    # PPP_ML should be present after the earlier merge; if not, something is off.
     if "PPP_ML" not in merged.columns:
         raise ValueError("PPP_ML column missing after merge. Check ML predictions file.")
 
-    # Drop play types that did not receive an ML prediction
+    # Drop any play types that did not receive an ML prediction.
     merged = merged[merged["PPP_ML"].notna()].copy()
 
-    # Combined ML-based matchup score (offense vs defense)
+    # Combined ML-based matchup score (offense vs defense).
+    #
+    # Same shape as the baseline formula:
+    #   - w_off scales how much we lean on the offensive prediction.
+    #   - w_def adjusts for how friendly/unfriendly the opponent defense is
+    #     compared to league.
     merged["PPP_PRED_ML"] = (
         w_off * merged["PPP_ML"]
         + w_def * (2 * merged["PPP_LEAGUE_OFF"] - merged["PPP_DEF_SHRUNK"])
     )
 
-    # Simple gap metric: our ML PPP minus their shrunk allowed PPP
+    # Simple gap metric: how much better we expect to do vs what they usually allow.
     merged["PPP_GAP_ML"] = merged["PPP_ML"] - merged["PPP_DEF_SHRUNK"]
 
     merged = merged.sort_values("PPP_PRED_ML", ascending=False).reset_index(drop=True)
     return merged
 
 
-# Play-type priority weights for context logic
-# Higher weight = higher priority within that group
+# Play-type priority weights for context logic.
+#
+# These are small hand-crafted weights that say, “If I need a 3, which plays
+# are naturally better at generating threes?” or “If I need something fast,
+# which plays are quick hitters?”.
+#
+# Higher weight = higher priority within that group.
 THREE_PT_WEIGHTS = {
     "Spotup": 1.0,
     "OffScreen": 0.8,
@@ -144,20 +172,23 @@ def add_playtype_flags(df: pd.DataFrame) -> pd.DataFrame:
     """
     Add play-type flags used by the context logic.
 
-    Adds:
-      - THREE_PT_PRIORITY / QUICK_PRIORITY (0 if not in that group)
-      - IS_3PT_ORIENTED / IS_QUICK (binary flags)
-      - IS_SLOW_2 (neither 3PT-oriented nor quick)
+    What it adds:
+      - THREE_PT_PRIORITY / QUICK_PRIORITY: numeric weights (0 if not in group).
+      - IS_3PT_ORIENTED / IS_QUICK: 0/1 flags based on those weights.
+      - IS_SLOW_2: 1 if the play is neither 3PT-oriented nor quick.
     """
     df = df.copy()
 
+    # Map play types into three-point and quick weights; unknown play types default to 0.
     df["THREE_PT_PRIORITY"] = df["PLAY_TYPE"].map(THREE_PT_WEIGHTS).fillna(0.0)
     df["QUICK_PRIORITY"] = df["PLAY_TYPE"].map(QUICK_WEIGHTS).fillna(0.0)
 
+    # Simple binary flags to make it easy to ask “is this a 3pt-type play?” etc.
     df["IS_3PT_ORIENTED"] = (df["THREE_PT_PRIORITY"] > 0).astype(int)
     df["IS_QUICK"] = (df["QUICK_PRIORITY"] > 0).astype(int)
 
-    # "Slow 2" = not 3PT-oriented and not quick
+    # "Slow 2" = not 3PT-oriented and not quick.
+    # These are the plays we might want to penalize when urgency is high.
     df["IS_SLOW_2"] = (
         (df["THREE_PT_PRIORITY"] == 0.0) & (df["QUICK_PRIORITY"] == 0.0)
     ).astype(int)
@@ -171,6 +202,10 @@ def total_time_remaining(period: int, time_remaining_period_sec: float) -> float
 
     period: 1–4
     time_remaining_period_sec: seconds left in the current period (0–720)
+
+    How it works:
+      - Convert (period, time left in that period) into a single “seconds
+        remaining in the whole game” number.
     """
     total_game = 4 * 12 * 60  # 2880 seconds in regulation
     elapsed = (period - 1) * 12 * 60 + (12 * 60 - time_remaining_period_sec)
@@ -181,32 +216,38 @@ def compute_urgencies(margin: float, T_left: float) -> tuple[float, float]:
     """
     Compute urgency levels for 3PT-oriented plays and quick plays.
 
-    margin: our_score - opp_score (positive if we are leading)
-    T_left: total seconds remaining in the game
+    margin: our_score - opp_score (positive if we are leading).
+    T_left: total seconds remaining in the game.
 
-    Returns (three_urgency, quick_urgency), each in [0, 1].
+    Returns:
+      (three_urgency, quick_urgency), each in [0, 1].
+
+    Intuition:
+      - Earlier in the game (big T_left), urgencies should be low.
+      - Late in the game, especially when losing, urgencies should go up.
     """
-    # Time pressure: 0 early, 1 very late
+    # Time pressure: 0 when the game just started, 1 when we are at the end.
     time_pressure = 1.0 - (T_left / 2880.0)
     time_pressure = min(max(time_pressure, 0.0), 1.0)
 
-    # Clip margin to [-20, +20]
+    # Clip margin so extreme blowouts don't explode the math.
     m = max(-20.0, min(20.0, margin))
 
-    # Margin pressure: more pressure when tied or losing, less when up
+    # Margin pressure: more pressure when tied or losing, less when up.
     if m <= 0:
-        # Tied or losing: worse margin => more pressure (up to 1 at -20)
+        # Tied or losing: worse margin => more pressure (up to 1 at -20).
         margin_pressure = -m / 20.0
     else:
-        # Slight lead still has some pressure; by +5 or more it goes to 0
+        # Slight lead still has some pressure; by +5 or more it goes to 0.
         margin_pressure = max(0.0, (5.0 - m) / 5.0)
 
-    # Three-urgency: mostly driven by scoreboard pressure, with a small time effect
+    # Three-urgency: mostly driven by scoreboard pressure,
+    # with a little extra from time pressure.
     three_urgency = 0.8 * margin_pressure + 0.2 * time_pressure
     three_urgency = min(max(three_urgency, 0.0), 1.0)
 
-    # Quick-urgency: mostly driven by time pressure,
-    # reduced if we are up by a lot
+    # Quick-urgency: mostly driven by time pressure.
+    # If we are up by a lot, we don’t need to rush as much.
     quick_urgency = time_pressure * (1.0 - max(0.0, m) / 20.0)
     quick_urgency = min(max(quick_urgency, 0.0), 1.0)
 
@@ -230,11 +271,20 @@ def rank_ml_with_context(
     """
     Rank play types using ML PPP plus game context.
 
-    margin: our_score - opp_score (positive if we are leading)
-    period: 1–4
-    time_remaining_period_sec: seconds left in current period (0–720)
+    Inputs:
+      - season, our_team, opp_team: which matchup.
+      - margin: our_score - opp_score (positive if we are leading).
+      - period: 1–4 (we treat OT as 5 in the API layer).
+      - time_remaining_period_sec: seconds left in current period (0–720).
+
+    What it does:
+      - Starts from the ML matchup table (PPP_PRED_ML).
+      - Adds flags for 3-pt, quick, and “slow 2” plays.
+      - Computes urgency scores from margin + time.
+      - Applies small context bonuses/penalties on top of PPP_PRED_ML.
+      - Returns the top-k play types by CONTEXT_SCORE.
     """
-    # Base matchup scores (no context yet)
+    # Base ML matchup scores with no context applied yet.
     df = build_ml_matchup_table(
         season=season,
         our_team=our_team,
@@ -243,34 +293,39 @@ def rank_ml_with_context(
         w_def=w_def,
     )
 
-    # Add flags for 3PT / quick / slow-2 play types
+    # Add play-type flags (3PT, quick, slow-2).
     df = add_playtype_flags(df)
 
-    # Compute total time left and urgency levels
+    # Compute total time left in the game and urgency levels.
     T_left = total_time_remaining(period, time_remaining_period_sec)
     three_urgency, quick_urgency = compute_urgencies(margin, T_left)
 
-    # Base score from the ML matchup model
+    # Base score from the ML matchup model.
     base = df["PPP_PRED_ML"].to_numpy(dtype=float)
 
     # Context bonus:
-    #  - up to alpha_three PPP for 3PT plays when three_urgency = 1
-    #  - up to alpha_quick PPP for quick plays when quick_urgency = 1
+    #   - alpha_three * three_urgency * THREE_PT_PRIORITY
+    #   - alpha_quick * quick_urgency * QUICK_PRIORITY
+    #
+    # When urgencies are 0, this does nothing; when urgencies are 1 and the
+    # play has high priority, it bumps the score a bit.
     context_boost = (
         alpha_three * three_urgency * df["THREE_PT_PRIORITY"].to_numpy(dtype=float)
         + alpha_quick * quick_urgency * df["QUICK_PRIORITY"].to_numpy(dtype=float)
     )
 
-    # Penalty for "slow 2" plays when urgency is high
+    # Penalty for "slow 2" plays when urgency is high.
     slow_mask = df["IS_SLOW_2"].to_numpy(dtype=float)
 
-    # Combine urgencies for the penalty term (heavier weight on quick_urgency)
+    # Combine both urgencies for the penalty term.
+    # We weight quick_urgency a bit more since late-game clock is critical.
     combined_urgency = 0.7 * three_urgency + 1.0 * quick_urgency
     penalty = alpha_penalty * combined_urgency * slow_mask
 
+    # Final context-aware score.
     df["CONTEXT_SCORE"] = base + context_boost - penalty
 
-    # Explanation string per play type
+    # Human-readable explanation per play type.
     def explain(row: pd.Series) -> str:
         delta = row["CONTEXT_SCORE"] - row["PPP_PRED_ML"]
         return (

@@ -9,7 +9,8 @@ from baseline_recommender import BaselineRecommender
 from ml_models import run_cv_evaluation
 from ml_context_recommender import rank_ml_with_context
 
-
+# Main FastAPI app for the Basketball Game Strategy backend.
+# This is what the frontend talks to.
 app = FastAPI(
     title="Basketball Game Strategy API",
     description=(
@@ -20,7 +21,8 @@ app = FastAPI(
     ),
 )
 
-# Frontend origins allowed to call this API in the browser
+# Frontend origins we allow to call this API from the browser.
+# During development we mainly use localhost ports for Next/Vite.
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
@@ -28,15 +30,18 @@ origins = [
     "http://127.0.0.1:5173",
 ]
 
+# Basic CORS setup so the React frontend can hit this API without issues.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins + ["*"],
+    allow_origins=origins + ["*"],  # keep it open for now while developing
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Seasons and team codes present in the Synergy dataset
+# Seasons and team codes present in the Synergy dataset.
+# We validate against these so bad inputs get a clean 400 instead of
+# cryptic errors deeper in the pipeline.
 VALID_SEASONS = {
     "2019-20",
     "2020-21",
@@ -79,7 +84,9 @@ VALID_TEAMS = {
     "WAS",
 }
 
-# Single baseline recommender instance (reused across requests)
+# Single baseline recommender instance.
+# We build this once at startup and reuse it for every request so we
+# don’t keep re-reading the CSV.
 rec = BaselineRecommender("data/synergy_playtypes_2019_2025_players.csv")
 
 
@@ -147,11 +154,13 @@ class ContextPlayItem(BaseModel):
 
     PLAY_TYPE: str
 
+    # Core ML prediction and matchup info
     PPP_PRED_ML: float
     PPP_ML: float
     PPP_DEF_SHRUNK: float
     PPP_GAP_ML: float
 
+    # Final context-aware score and explanation
     CONTEXT_SCORE: float
     CONTEXT_RATIONALE: str
 
@@ -172,6 +181,7 @@ class ContextMLResponse(BaseModel):
 @app.get("/health")
 def healthcheck() -> Dict[str, str]:
     """Simple healthcheck endpoint."""
+    # Handy for docker / deployment checks: just returns {"status": "ok"}.
     return {"status": "ok"}
 
 
@@ -183,7 +193,7 @@ def rank_plays_baseline(
     k: int = Query(5, ge=1, le=10, description="Number of top play types to return."),
 ) -> BaselineResponse:
     """Baseline ranking for a given season and matchup."""
-    # validate inputs
+    # Basic input validation before we touch the recommender.
     if season not in VALID_SEASONS:
         raise HTTPException(
             status_code=400,
@@ -205,11 +215,15 @@ def rank_plays_baseline(
             detail="Our team and opponent must be different.",
         )
 
+    # Main call into the BaselineRecommender.
     try:
         df = rec.rank(season=season, our_team=our, opp_team=opp, k=k)
     except ValueError as e:
+        # If the recommender raises (e.g. no data for that matchup),
+        # we turn it into a 400 with the message.
         raise HTTPException(status_code=400, detail=str(e))
 
+    # Convert the pandas DataFrame into a list of dicts for Pydantic.
     records: List[Dict[str, Any]] = df.to_dict(orient="records")
 
     return BaselineResponse(
@@ -229,6 +243,7 @@ def rank_plays_baseline_csv(
     k: int = Query(5, ge=1, le=10, description="Number of top play types to return."),
 ):
     """CSV version of the baseline rankings."""
+    # Slightly simpler validation here, but same idea.
     if season not in VALID_SEASONS:
         raise HTTPException(status_code=400, detail="Invalid season")
     if our not in VALID_TEAMS or opp not in VALID_TEAMS or our == opp:
@@ -239,13 +254,16 @@ def rank_plays_baseline_csv(
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
+    # We stream the CSV back using an in-memory buffer.
     import csv
     import io
 
     buffer = io.StringIO()
     writer = csv.writer(buffer)
 
+    # First row: header.
     writer.writerow(df.columns)
+    # Then write each row from the DataFrame.
     for _, row in df.iterrows():
         writer.writerow(list(row.values))
 
@@ -255,7 +273,7 @@ def rank_plays_baseline_csv(
     return StreamingResponse(
         buffer,
         media_type="text/csv",
-        headers={"Content-Disposition": f'attachment; filename=\"{filename}\"'},
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
     )
 
 
@@ -283,6 +301,7 @@ def rank_plays_context_ml(
     k: int = Query(5, ge=1, le=10, description="Number of top play types to return."),
 ) -> ContextMLResponse:
     """Context-aware ML ranking for a given matchup and game state."""
+    # Same input checks as baseline, plus context fields.
     if season not in VALID_SEASONS:
         raise HTTPException(
             status_code=400,
@@ -304,7 +323,8 @@ def rank_plays_context_ml(
             detail="Our team and opponent must be different.",
         )
 
-    # OT is treated as period 5 in the urgency calculation
+    # Make sure period stays in [1, 5] before passing it into the urgency logic.
+    # We still return the original value in the response for transparency.
     clamped_period = max(1, min(period, 5))
 
     try:
@@ -344,9 +364,12 @@ def baseline_vs_ml_metrics(
     ),
 ) -> ModelComparisonResponse:
     """Offline comparison of baseline vs ML models."""
+    # run_cv_evaluation does the heavy lifting:
+    # it runs K-fold CV for each model and returns a summary DataFrame.
     summary_df, _ = run_cv_evaluation(n_splits=n_splits)
 
     metric_items: List[ModelMetric] = []
+    # summary_df is indexed by model name, with metric columns.
     for model_name, row in summary_df.iterrows():
         metric_items.append(
             ModelMetric(
