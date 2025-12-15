@@ -1,96 +1,109 @@
+"""backend/ml_context_recommender.py
+
+Context + ML recommender (this is the "AI use case" the committee asked for).
+
+What this module does:
+1) Starts from the SAME matchup table as the baseline model (our offense vs opponent defense).
+2) Uses an ML-predicted offensive PPP for each play type (PPP_ML) instead of using historical PPP only.
+3) Applies a small, transparent "context adjustment" based on game state:
+   - late game + trailing -> boost high-efficiency options + familiar options
+   - late game + leading  -> penalize turnover-prone options (protect the lead)
+
+Important:
+- We do NOT hide the logic. The endpoint returns the breakdown columns so the UI can
+  show exactly why rankings change.
+- This is not meant to be a perfect NBA coaching brain; it's a defendable, reproducible,
+  context-aware decision support demo (capstone scope).
+
+Inputs:
+- season, our_team, opp_team (same as baseline)
+- margin (our_score - opponent_score; negative means trailing)
+- period (1-4, 5 for OT)
+- time_remaining_period_sec (seconds remaining in the current period)
+- k (top-K results)
+
+Output:
+A DataFrame sorted by PPP_CONTEXT (ML+context) with explainability columns:
+- PPP_BASELINE (baseline predicted PPP)
+- PPP_ML_BLEND (ML-based predicted PPP, before context)
+- CONTEXT_ADJ (total context adjustment)
+- PPP_CONTEXT (final score used for ranking)
+- plus component columns and a human-readable RATIONALE string
+"""
+
 from __future__ import annotations
 
-from pathlib import Path
+from typing import Tuple
 
 import numpy as np
 import pandas as pd
 
-from baseline_recommender import BaselineRecommender
-
-# Base folder for all of our data files.
-DATA_DIR = Path(__file__).parent / "data"
-
-# Main Synergy snapshot used by both the baseline model and the ML pipeline.
-SYNERGY_CSV_PATH = DATA_DIR / "synergy_playtypes_2019_2025_players.csv"
-
-# Offline ML predictions (RandomForest PPP) produced in a separate notebook/script.
-ML_PRED_PATH = DATA_DIR / "ml_offense_ppp_predictions.csv"
+from state import baseline_rec, ml_pred_df
 
 
-def build_ml_matchup_table(
-    season: str,
-    our_team: str,
-    opp_team: str,
-    w_off: float = 0.7,
-    w_def: float = 0.3,
-) -> pd.DataFrame:
+# -----------------------------
+# Context interpretation helpers
+# -----------------------------
+
+def _late_game_factor(period: int, time_remaining: float) -> float:
+    """0..1 late-game factor.
+
+    Simple rule:
+    - Only ramps up in Q4 or OT.
+    - Stronger when <= 3 minutes remaining in the period.
     """
-    Build a matchup table that uses ML PPP predictions instead of baseline PPP.
+    if period < 4:
+        return 0.0
+    # Clamp 0..1 where 180 sec => 1, 720 sec => 0
+    return float(np.clip((180.0 - float(time_remaining)) / 180.0, 0.0, 1.0))
 
-    What it returns:
-      - One row per play type for (season, our_team vs opp_team).
-      - For each row we keep:
-          * PPP_ML: RandomForest PPP prediction for our offense.
-          * PPP_DEF_SHRUNK: opponent defensive PPP shrunk toward league.
-          * PPP_PRED_ML: combined offense/defense matchup score.
-          * PPP_GAP_ML: PPP_ML minus PPP_DEF_SHRUNK.
 
-    How it works:
-      1) Reuse the pre-processing from the BaselineRecommender to get team_df and
-         league_df (team and league tables).
-      2) Merge in the offline ML predictions (PPP_ML).
-      3) Slice out the offensive rows for our team and defensive rows for the opponent.
-      4) Compute PPP_DEF_SHRUNK using league defense as an anchor.
-      5) Build a combined matchup score PPP_PRED_ML.
+def _score_pressure(margin: float) -> Tuple[float, float]:
+    """Return (trailing_factor, leading_factor) in {0,1} based on margin."""
+    # Negative margin means we are trailing.
+    if margin <= -4:
+        return 1.0, 0.0
+    if margin >= 4:
+        return 0.0, 1.0
+    return 0.0, 0.0  # close game
+
+
+def _zscore(series: pd.Series) -> pd.Series:
+    """Compute z-score safely (returns 0 if std=0 or missing)."""
+    s = pd.to_numeric(series, errors="coerce")
+    mu = float(s.mean()) if s.notna().any() else 0.0
+    sd = float(s.std(ddof=0)) if s.notna().any() else 0.0
+    if sd <= 1e-9:
+        return pd.Series(np.zeros(len(s)), index=s.index)
+    return (s - mu) / sd
+
+
+# --------------------------------------------
+# Core: build matchup table + compute rankings
+# --------------------------------------------
+
+def _build_matchup_table(season: str, our_team: str, opp_team: str) -> pd.DataFrame:
+    """Build a matchup table with BOTH baseline fields and ML offensive predictions.
+
+    This table is similar to baseline_recommender.rank() but includes:
+    - PPP_ML for our offensive play types
+    - PPP_DEF_SHRUNK and opponent defensive tendencies
     """
-    # Use the same pipeline as the baseline model to build team/league tables.
-    rec = BaselineRecommender(str(SYNERGY_CSV_PATH))
-    team_df = rec.team_df.copy()
-    league_df = rec.league_df.copy()
 
-    # Load precomputed ML PPP predictions for offense.
-    if not ML_PRED_PATH.exists():
-        raise FileNotFoundError(f"Missing ML prediction file: {ML_PRED_PATH}")
-    ml_df = pd.read_csv(ML_PRED_PATH)
-
-    # Attach PPP_ML to the team-level table using season + team + play type.
-    team_df = team_df.merge(
-        ml_df,
-        on=["SEASON", "TEAM_ABBREVIATION", "PLAY_TYPE"],
-        how="left",
-    )
-
-    # Offense rows for our team in this season.
-    off = team_df.query(
-        "SEASON == @season and TEAM_ABBREVIATION == @our_team and SIDE == 'offense'"
+    # Pull offense and defense rows from cached baseline tables.
+    off = baseline_rec.offense_tbl.query(
+        "SEASON == @season and TEAM_ABBREVIATION == @our_team"
     ).copy()
 
-    # Defense rows for the opponent in this season.
-    deff = team_df.query(
-        "SEASON == @season and TEAM_ABBREVIATION == @opp_team and SIDE == 'defense'"
+    deff = baseline_rec.defense_tbl.query(
+        "SEASON == @season and TEAM_ABBREVIATION == @opp_team"
     ).copy()
 
-    if off.empty:
-        raise ValueError(f"No offensive data for team {our_team} in season {season}")
-    if deff.empty:
-        raise ValueError(f"No defensive data for team {opp_team} in season {season}")
+    if off.empty or deff.empty:
+        raise ValueError("No offense/defense rows available for this matchup.")
 
-    # League offense baselines by play type for this season.
-    league_off = league_df.query(
-        "SEASON == @season and SIDE == 'offense'"
-    )[["PLAY_TYPE", "PPP", "RELIABILITY_WEIGHT"]].rename(
-        columns={"PPP": "PPP_LEAGUE_OFF", "RELIABILITY_WEIGHT": "REL_OFF_LEAGUE"}
-    )
-
-    # League defense baselines by play type for this season.
-    league_def = league_df.query(
-        "SEASON == @season and SIDE == 'defense'"
-    )[["PLAY_TYPE", "PPP", "RELIABILITY_WEIGHT"]].rename(
-        columns={"PPP": "PPP_LEAGUE_DEF", "RELIABILITY_WEIGHT": "REL_DEF_LEAGUE"}
-    )
-
-    # Subset of opponent defense columns we need for the matchup.
-    deff_subset = deff[
+    # Opponent defense subset
+    deff_sub = deff[
         [
             "PLAY_TYPE",
             "PPP",
@@ -98,160 +111,53 @@ def build_ml_matchup_table(
             "POSS_PCT",
             "RELIABILITY_WEIGHT",
             "EFG_PCT",
-            "SCORE_POSS_PCT",
             "TOV_POSS_PCT",
+            "SCORE_POSS_PCT",
+            "FT_POSS_PCT",
         ]
     ].copy()
 
-    # Join our offense with their defense on play type.
-    merged = off.merge(
-        deff_subset,
-        on="PLAY_TYPE",
-        suffixes=("_OFF", "_DEF"),
-    )
+    # Merge on PLAY_TYPE
+    m = off.merge(deff_sub, on="PLAY_TYPE", suffixes=("_OFF", "_DEF"))
 
-    # Add league offense/defense baselines into the same table.
-    merged = merged.merge(league_off, on="PLAY_TYPE", how="left")
-    merged = merged.merge(league_def, on="PLAY_TYPE", how="left")
+    # League baselines (for shrinkage)
+    league_off = baseline_rec.league_df.query("SEASON == @season and SIDE == 'offense'")[
+        ["PLAY_TYPE", "PPP"]
+    ].rename(columns={"PPP": "PPP_LEAGUE_OFF"})
 
-    # Shrink opponent defense PPP toward league defense PPP.
-    # Same shrinkage idea as baseline: more possessions => we trust team more.
-    rel_def = merged["RELIABILITY_WEIGHT_DEF"]
-    merged["PPP_DEF_SHRUNK"] = (
-        rel_def * merged["PPP_DEF"] + (1 - rel_def) * merged["PPP_LEAGUE_DEF"]
-    )
+    league_def = baseline_rec.league_df.query("SEASON == @season and SIDE == 'defense'")[
+        ["PLAY_TYPE", "PPP"]
+    ].rename(columns={"PPP": "PPP_LEAGUE_DEF"})
 
-    # PPP_ML should be present after the earlier merge; if not, something is off.
-    if "PPP_ML" not in merged.columns:
-        raise ValueError("PPP_ML column missing after merge. Check ML predictions file.")
+    m = m.merge(league_off, on="PLAY_TYPE", how="left")
+    m = m.merge(league_def, on="PLAY_TYPE", how="left")
 
-    # Drop any play types that did not receive an ML prediction.
-    merged = merged[merged["PPP_ML"].notna()].copy()
+    # Shrinkage using team-level reliability weights.
+    rel_off = pd.to_numeric(m["RELIABILITY_WEIGHT_OFF"], errors="coerce").fillna(0.0)
+    rel_def = pd.to_numeric(m["RELIABILITY_WEIGHT_DEF"], errors="coerce").fillna(0.0)
 
-    # Combined ML-based matchup score (offense vs defense).
-    #
-    # Same shape as the baseline formula:
-    #   - w_off scales how much we lean on the offensive prediction.
-    #   - w_def adjusts for how friendly/unfriendly the opponent defense is
-    #     compared to league.
-    merged["PPP_PRED_ML"] = (
-        w_off * merged["PPP_ML"]
-        + w_def * (2 * merged["PPP_LEAGUE_OFF"] - merged["PPP_DEF_SHRUNK"])
-    )
+    m["PPP_OFF_SHRUNK"] = rel_off * m["PPP_OFF"] + (1 - rel_off) * m["PPP_LEAGUE_OFF"]
+    m["PPP_DEF_SHRUNK"] = rel_def * m["PPP_DEF"] + (1 - rel_def) * m["PPP_LEAGUE_DEF"]
 
-    # Simple gap metric: how much better we expect to do vs what they usually allow.
-    merged["PPP_GAP_ML"] = merged["PPP_ML"] - merged["PPP_DEF_SHRUNK"]
+    # ---- ML predictions join (our offense) ----
+    if ml_pred_df is None:
+        raise FileNotFoundError(
+            "ML predictions file is missing. Expected backend/data/ml_offense_ppp_predictions.csv. "
+            "Run backend/ml_models.py to generate it."
+        )
 
-    merged = merged.sort_values("PPP_PRED_ML", ascending=False).reset_index(drop=True)
-    return merged
+    pred = ml_pred_df.copy()
+    pred = pred.query("SEASON == @season and TEAM_ABBREVIATION == @our_team")[
+        ["PLAY_TYPE", "PPP_ML"]
+    ].drop_duplicates()
 
+    m = m.merge(pred, on="PLAY_TYPE", how="left")
 
-# Play-type priority weights for context logic.
-#
-# These are small hand-crafted weights that say, “If I need a 3, which plays
-# are naturally better at generating threes?” or “If I need something fast,
-# which plays are quick hitters?”.
-#
-# Higher weight = higher priority within that group.
-THREE_PT_WEIGHTS = {
-    "Spotup": 1.0,
-    "OffScreen": 0.8,
-    "Isolation": 0.6,
-    "PRBallHandler": 0.4,
-}
+    # If a play type is missing an ML prediction, fall back to shrunk historical offense PPP.
+    m["PPP_ML"] = pd.to_numeric(m["PPP_ML"], errors="coerce")
+    m["PPP_ML_FILLED"] = m["PPP_ML"].fillna(m["PPP_OFF_SHRUNK"])
 
-QUICK_WEIGHTS = {
-    "Spotup": 1.0,
-    "OffScreen": 0.8,
-    "Cut": 0.6,
-    "Isolation": 0.4,
-}
-
-
-def add_playtype_flags(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Add play-type flags used by the context logic.
-
-    What it adds:
-      - THREE_PT_PRIORITY / QUICK_PRIORITY: numeric weights (0 if not in group).
-      - IS_3PT_ORIENTED / IS_QUICK: 0/1 flags based on those weights.
-      - IS_SLOW_2: 1 if the play is neither 3PT-oriented nor quick.
-    """
-    df = df.copy()
-
-    # Map play types into three-point and quick weights; unknown play types default to 0.
-    df["THREE_PT_PRIORITY"] = df["PLAY_TYPE"].map(THREE_PT_WEIGHTS).fillna(0.0)
-    df["QUICK_PRIORITY"] = df["PLAY_TYPE"].map(QUICK_WEIGHTS).fillna(0.0)
-
-    # Simple binary flags to make it easy to ask “is this a 3pt-type play?” etc.
-    df["IS_3PT_ORIENTED"] = (df["THREE_PT_PRIORITY"] > 0).astype(int)
-    df["IS_QUICK"] = (df["QUICK_PRIORITY"] > 0).astype(int)
-
-    # "Slow 2" = not 3PT-oriented and not quick.
-    # These are the plays we might want to penalize when urgency is high.
-    df["IS_SLOW_2"] = (
-        (df["THREE_PT_PRIORITY"] == 0.0) & (df["QUICK_PRIORITY"] == 0.0)
-    ).astype(int)
-
-    return df
-
-
-def total_time_remaining(period: int, time_remaining_period_sec: float) -> float:
-    """
-    Return total seconds left in a 4x12 minute game.
-
-    period: 1–4
-    time_remaining_period_sec: seconds left in the current period (0–720)
-
-    How it works:
-      - Convert (period, time left in that period) into a single “seconds
-        remaining in the whole game” number.
-    """
-    total_game = 4 * 12 * 60  # 2880 seconds in regulation
-    elapsed = (period - 1) * 12 * 60 + (12 * 60 - time_remaining_period_sec)
-    return max(0.0, total_game - elapsed)
-
-
-def compute_urgencies(margin: float, T_left: float) -> tuple[float, float]:
-    """
-    Compute urgency levels for 3PT-oriented plays and quick plays.
-
-    margin: our_score - opp_score (positive if we are leading).
-    T_left: total seconds remaining in the game.
-
-    Returns:
-      (three_urgency, quick_urgency), each in [0, 1].
-
-    Intuition:
-      - Earlier in the game (big T_left), urgencies should be low.
-      - Late in the game, especially when losing, urgencies should go up.
-    """
-    # Time pressure: 0 when the game just started, 1 when we are at the end.
-    time_pressure = 1.0 - (T_left / 2880.0)
-    time_pressure = min(max(time_pressure, 0.0), 1.0)
-
-    # Clip margin so extreme blowouts don't explode the math.
-    m = max(-20.0, min(20.0, margin))
-
-    # Margin pressure: more pressure when tied or losing, less when up.
-    if m <= 0:
-        # Tied or losing: worse margin => more pressure (up to 1 at -20).
-        margin_pressure = -m / 20.0
-    else:
-        # Slight lead still has some pressure; by +5 or more it goes to 0.
-        margin_pressure = max(0.0, (5.0 - m) / 5.0)
-
-    # Three-urgency: mostly driven by scoreboard pressure,
-    # with a little extra from time pressure.
-    three_urgency = 0.8 * margin_pressure + 0.2 * time_pressure
-    three_urgency = min(max(three_urgency, 0.0), 1.0)
-
-    # Quick-urgency: mostly driven by time pressure.
-    # If we are up by a lot, we don’t need to rush as much.
-    quick_urgency = time_pressure * (1.0 - max(0.0, m) / 20.0)
-    quick_urgency = min(max(quick_urgency, 0.0), 1.0)
-
-    return three_urgency, quick_urgency
+    return m
 
 
 def rank_ml_with_context(
@@ -262,79 +168,135 @@ def rank_ml_with_context(
     period: int,
     time_remaining_period_sec: float,
     k: int = 5,
-    w_off: float = 0.7,
-    w_def: float = 0.3,
-    alpha_three: float = 0.05,
-    alpha_quick: float = 0.05,
-    alpha_penalty: float = 0.08,
+    w_off_ml: float = 0.75,
+    w_def: float = 0.25,
 ) -> pd.DataFrame:
+    """Rank play types using ML + context.
+
+    Steps:
+    1) Baseline (for comparison): uses PPP_OFF_SHRUNK + PPP_DEF_SHRUNK.
+    2) ML blend: uses PPP_ML (predicted offense PPP) + PPP_DEF_SHRUNK.
+    3) Context adjustment: small boosts/penalties based on late-game + score state.
     """
-    Rank play types using ML PPP plus game context.
 
-    Inputs:
-      - season, our_team, opp_team: which matchup.
-      - margin: our_score - opp_score (positive if we are leading).
-      - period: 1–4 (we treat OT as 5 in the API layer).
-      - time_remaining_period_sec: seconds left in current period (0–720).
+    if not (1 <= k <= 10):
+        raise ValueError("k must be between 1 and 10.")
+    if period < 1 or period > 5:
+        raise ValueError("period must be 1..5 (5=OT).")
+    if time_remaining_period_sec < 0 or time_remaining_period_sec > 720:
+        raise ValueError("time_remaining_period_sec must be between 0 and 720.")
+    if w_off_ml < 0 or w_def < 0 or (w_off_ml + w_def) <= 0:
+        raise ValueError("w_off_ml and w_def must be non-negative and not both zero.")
 
-    What it does:
-      - Starts from the ML matchup table (PPP_PRED_ML).
-      - Adds flags for 3-pt, quick, and “slow 2” plays.
-      - Computes urgency scores from margin + time.
-      - Applies small context bonuses/penalties on top of PPP_PRED_ML.
-      - Returns the top-k play types by CONTEXT_SCORE.
-    """
-    # Base ML matchup scores with no context applied yet.
-    df = build_ml_matchup_table(
-        season=season,
-        our_team=our_team,
-        opp_team=opp_team,
-        w_off=w_off,
-        w_def=w_def,
-    )
+    # Normalize weights
+    s = float(w_off_ml + w_def)
+    w_off_ml = float(w_off_ml / s)
+    w_def = float(w_def / s)
 
-    # Add play-type flags (3PT, quick, slow-2).
-    df = add_playtype_flags(df)
+    m = _build_matchup_table(season=season, our_team=our_team, opp_team=opp_team)
 
-    # Compute total time left in the game and urgency levels.
-    T_left = total_time_remaining(period, time_remaining_period_sec)
-    three_urgency, quick_urgency = compute_urgencies(margin, T_left)
+    # ---------------------------
+    # 1) Baseline for comparison
+    # ---------------------------
+    w_off_baseline = 0.70
+    w_def_baseline = 0.30
+    m["PPP_BASELINE"] = w_off_baseline * m["PPP_OFF_SHRUNK"] + w_def_baseline * m["PPP_DEF_SHRUNK"]
 
-    # Base score from the ML matchup model.
-    base = df["PPP_PRED_ML"].to_numpy(dtype=float)
+    # ---------------------------
+    # 2) ML blend score (pre-context)
+    # ---------------------------
+    m["PPP_ML_BLEND"] = w_off_ml * m["PPP_ML_FILLED"] + w_def * m["PPP_DEF_SHRUNK"]
 
-    # Context bonus:
-    #   - alpha_three * three_urgency * THREE_PT_PRIORITY
-    #   - alpha_quick * quick_urgency * QUICK_PRIORITY
-    #
-    # When urgencies are 0, this does nothing; when urgencies are 1 and the
-    # play has high priority, it bumps the score a bit.
-    context_boost = (
-        alpha_three * three_urgency * df["THREE_PT_PRIORITY"].to_numpy(dtype=float)
-        + alpha_quick * quick_urgency * df["QUICK_PRIORITY"].to_numpy(dtype=float)
-    )
+    # ---------------------------
+    # 3) Context adjustment (transparent + small)
+    # ---------------------------
+    late = _late_game_factor(period=int(period), time_remaining=float(time_remaining_period_sec))
+    trailing_factor, leading_factor = _score_pressure(float(margin))
 
-    # Penalty for "slow 2" plays when urgency is high.
-    slow_mask = df["IS_SLOW_2"].to_numpy(dtype=float)
+    # Features we use for simple context logic (all from offense rows)
+    # - familiarity: POSS_PCT_OFF (more practiced -> easier to run under pressure)
+    # - efficiency proxy: EFG_PCT_OFF (higher -> better scoring efficiency)
+    # - turnover risk: TOV_POSS_PCT_OFF (higher -> risky when protecting a lead)
+    poss_pct_z = _zscore(m.get("POSS_PCT_OFF", pd.Series([0.0] * len(m))))
+    efg_z = _zscore(m.get("EFG_PCT_OFF", pd.Series([0.0] * len(m))))
+    tov_z = _zscore(m.get("TOV_POSS_PCT_OFF", pd.Series([0.0] * len(m))))
 
-    # Combine both urgencies for the penalty term.
-    # We weight quick_urgency a bit more since late-game clock is critical.
-    combined_urgency = 0.7 * three_urgency + 1.0 * quick_urgency
-    penalty = alpha_penalty * combined_urgency * slow_mask
+    # Small weights so adjustments are interpretable and do NOT dominate PPP.
+    # Think of this as +/- a few hundredths of PPP.
+    quick_bonus = late * poss_pct_z * 0.020
+    score_bonus = late * trailing_factor * efg_z * 0.030
+    protect_penalty = late * leading_factor * tov_z * 0.025  # penalize high turnover tendency
 
-    # Final context-aware score.
-    df["CONTEXT_SCORE"] = base + context_boost - penalty
+    m["LATE_GAME_FACTOR"] = late
+    m["TRAILING_FACTOR"] = trailing_factor
+    m["LEADING_FACTOR"] = leading_factor
 
-    # Human-readable explanation per play type.
-    def explain(row: pd.Series) -> str:
-        delta = row["CONTEXT_SCORE"] - row["PPP_PRED_ML"]
+    m["BONUS_QUICK"] = quick_bonus
+    m["BONUS_SCORE"] = score_bonus
+    m["PENALTY_PROTECT"] = protect_penalty
+
+    m["CONTEXT_ADJ"] = m["BONUS_QUICK"] + m["BONUS_SCORE"] - m["PENALTY_PROTECT"]
+    m["PPP_CONTEXT"] = m["PPP_ML_BLEND"] + m["CONTEXT_ADJ"]
+
+    # Delta compared to baseline (what changed)
+    m["DELTA_VS_BASELINE"] = m["PPP_CONTEXT"] - m["PPP_BASELINE"]
+
+    # ---------------------------
+    # Human-friendly label + rationale
+    # ---------------------------
+    if late <= 0.0:
+        context_label = "Normal context (early/mid game)"
+    else:
+        if trailing_factor > 0:
+            context_label = "Late game, trailing (prioritize scoring)"
+        elif leading_factor > 0:
+            context_label = "Late game, leading (protect the lead)"
+        else:
+            context_label = "Late game, close score (balanced choices)"
+
+    def rationale(row: pd.Series) -> str:
+        d = float(row["DELTA_VS_BASELINE"])
+        sign = "+" if d >= 0 else ""
         return (
-            f"{row['PLAY_TYPE']}: base {row['PPP_PRED_ML']:.3f} PPP, "
-            f"{delta:+.3f} from context "
-            f"(3-urg={three_urgency:.2f}, quick-urg={quick_urgency:.2f})"
+            f"{context_label}. "
+            f"Baseline={row['PPP_BASELINE']:.3f}, ML={row['PPP_ML_BLEND']:.3f}, "
+            f"Adj={row['CONTEXT_ADJ']:.3f} => Final={row['PPP_CONTEXT']:.3f} "
+            f"({sign}{d:.3f} vs baseline)."
         )
 
-    df["CONTEXT_RATIONALE"] = df.apply(explain, axis=1)
+    m["CONTEXT_LABEL"] = context_label
+    m["RATIONALE"] = m.apply(rationale, axis=1)
 
-    df = df.sort_values("CONTEXT_SCORE", ascending=False).reset_index(drop=True)
-    return df.head(k)
+    # Sort by final context PPP, then by our possessions (more reliable/common)
+    m = m.sort_values(["PPP_CONTEXT", "POSS_OFF"], ascending=[False, False])
+
+    # Return top-K with clear fields (used by context/page.tsx)
+    cols = [
+        "PLAY_TYPE",
+        "PPP_CONTEXT",
+        "PPP_ML_BLEND",
+        "PPP_BASELINE",
+        "DELTA_VS_BASELINE",
+        "PPP_ML",
+        "PPP_ML_FILLED",
+        "PPP_DEF_SHRUNK",
+        "PPP_OFF_SHRUNK",
+        "POSS_OFF",
+        "POSS_PCT_OFF",
+        "EFG_PCT_OFF",
+        "TOV_POSS_PCT_OFF",
+        "LATE_GAME_FACTOR",
+        "TRAILING_FACTOR",
+        "LEADING_FACTOR",
+        "BONUS_QUICK",
+        "BONUS_SCORE",
+        "PENALTY_PROTECT",
+        "CONTEXT_ADJ",
+        "CONTEXT_LABEL",
+        "RATIONALE",
+    ]
+
+    cols = [c for c in cols if c in m.columns]
+    top = m.head(int(k))[cols].reset_index(drop=True)
+
+    return top

@@ -2,7 +2,7 @@
 
 Baseline (non-ML) recommender used in the PSPI.
 
-What this file demonstrates (for the committee):
+What this file demonstrates:
 1) A real, reproducible data pipeline:
    - load the raw Synergy snapshot (player-level),
    - aggregate to team-level play-type stats (possession-weighted),
