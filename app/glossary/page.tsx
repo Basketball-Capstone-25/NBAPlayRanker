@@ -1,3 +1,7 @@
+//app/glossary/page.tsx
+
+// Glossary page for the Basketball Game Strategy Analysis app
+
 export default function Glossary() {
   const items = [
     {
