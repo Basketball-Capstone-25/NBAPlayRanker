@@ -1,386 +1,352 @@
-from typing import Any, Dict, List
+"""FastAPI backend for the Basketball Game Strategy Analysis PSPI.
+
+Key idea: one backend API that a non-basketball committee can understand.
+- Data Explorer: show the cleaned dataset the models use.
+- Baseline Recommender: transparent, explainable matchup ranking.
+- Context + ML: shows where "AI" is actually used + how game context changes priorities.
+- Model Metrics: cross-validated baseline vs ML evaluation.
+"""
+
+from __future__ import annotations
+
+import csv
+import io
+from functools import lru_cache
+from typing import Any, Dict, List, Optional
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel
 
-from baseline_recommender import BaselineRecommender
-from ml_models import run_cv_evaluation
 from ml_context_recommender import rank_ml_with_context
+from ml_models import paired_t_test_rmse, run_cv_evaluation
+from state import baseline_rec, get_baseline_formula, get_meta_options, get_pipeline_info
 
-# Main FastAPI app for the Basketball Game Strategy backend.
-# This is what the frontend talks to.
 app = FastAPI(
     title="Basketball Game Strategy API",
     description=(
-        "Backend for the Basketball Game Strategy Analysis capstone.\n"
-        "- /rank-plays/baseline: matchup play-type ranking with the baseline model.\n"
-        "- /rank-plays/context-ml: matchup ranking with ML and game context.\n"
-        "- /metrics/baseline-vs-ml: offline comparison of baseline vs ML models."
+        "Backend for the Basketball Game Strategy Analysis capstone."
+        "\n- /data/team-playtypes: dataset preview for Data Explorer"
+        "\n- /rank-plays/baseline: baseline matchup recommendations"
+        "\n- /rank-plays/context-ml: ML + context recommendations"
+        "\n- /metrics/baseline-vs-ml: evaluation metrics"
     ),
 )
 
-# Frontend origins we allow to call this API from the browser.
-# During development we mainly use localhost ports for Next/Vite.
-origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
-
-# Basic CORS setup so the React frontend can hit this API without issues.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins + ["*"],  # keep it open for now while developing
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "*",  # permissive for demos
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Seasons and team codes present in the Synergy dataset.
-# We validate against these so bad inputs get a clean 400 instead of
-# cryptic errors deeper in the pipeline.
-VALID_SEASONS = {
-    "2019-20",
-    "2020-21",
-    "2021-22",
-    "2022-23",
-    "2023-24",
-    "2024-25",
-}
-
-VALID_TEAMS = {
-    "ATL",
-    "BKN",
-    "BOS",
-    "CHA",
-    "CHI",
-    "CLE",
-    "DAL",
-    "DEN",
-    "DET",
-    "GSW",
-    "HOU",
-    "IND",
-    "LAC",
-    "LAL",
-    "MEM",
-    "MIA",
-    "MIL",
-    "MIN",
-    "NOP",
-    "NYK",
-    "OKC",
-    "ORL",
-    "PHI",
-    "PHX",
-    "POR",
-    "SAC",
-    "SAS",
-    "TOR",
-    "UTA",
-    "WAS",
-}
-
-# Single baseline recommender instance.
-# We build this once at startup and reuse it for every request so we
-# don’t keep re-reading the CSV.
-rec = BaselineRecommender("data/synergy_playtypes_2019_2025_players.csv")
+_OPTIONS = get_meta_options()
+_VALID_SEASONS = set(_OPTIONS["seasons"])
+_VALID_TEAMS = set(_OPTIONS["teams"])
+_VALID_SIDES = {"offense", "defense"}
 
 
-class BaselineResponseItem(BaseModel):
-    """One ranked play type from the baseline model."""
-
-    PLAY_TYPE: str
-
-    # Predicted efficiency for this matchup
-    PPP_PRED: float
-    PPP_OFF_SHRUNK: float
-    PPP_DEF_SHRUNK: float
-    PPP_GAP: float
-
-    # Usage / volume
-    POSS_OFF: float
-    POSS_DEF: float
-    POSS_PCT_OFF: float
-    POSS_PCT_DEF: float
-
-    # Shooting / scoring profile
-    FG_PCT_OFF: float
-    EFG_PCT_OFF: float
-    EFG_PCT_DEF: float
-    SCORE_POSS_PCT_OFF: float
-    SCORE_POSS_PCT_DEF: float
-    TOV_POSS_PCT_OFF: float
-    TOV_POSS_PCT_DEF: float
-
-    # Text explanation built in baseline_recommender.py
-    RATIONALE: str
-
-
-class BaselineResponse(BaseModel):
-    """Response shape for /rank-plays/baseline."""
-
-    season: str
-    our_team: str
-    opp_team: str
-    k: int
-    rankings: List[BaselineResponseItem]
-
-
-class ModelMetric(BaseModel):
-    """Cross-validated metrics for a single model."""
-
-    model: str
-    RMSE_mean: float
-    RMSE_std: float
-    MAE_mean: float
-    MAE_std: float
-    R2_mean: float
-    R2_std: float
-
-
-class ModelComparisonResponse(BaseModel):
-    """Response shape for /metrics/baseline-vs-ml."""
-
-    n_splits: int
-    metrics: List[ModelMetric]
-
-
-class ContextPlayItem(BaseModel):
-    """One ranked play type from the context-aware ML model."""
-
-    PLAY_TYPE: str
-
-    # Core ML prediction and matchup info
-    PPP_PRED_ML: float
-    PPP_ML: float
-    PPP_DEF_SHRUNK: float
-    PPP_GAP_ML: float
-
-    # Final context-aware score and explanation
-    CONTEXT_SCORE: float
-    CONTEXT_RATIONALE: str
-
-
-class ContextMLResponse(BaseModel):
-    """Response shape for /rank-plays/context-ml."""
-
-    season: str
-    our_team: str
-    opp_team: str
-    k: int
-    margin: float
-    period: int
-    time_remaining_period_sec: float
-    rankings: List[ContextPlayItem]
+def _validate_matchup(season: str, our: str, opp: str) -> None:
+    if season not in _VALID_SEASONS:
+        raise HTTPException(400, f"Unknown season '{season}'.")
+    if our not in _VALID_TEAMS:
+        raise HTTPException(400, f"Unknown team '{our}'.")
+    if opp not in _VALID_TEAMS:
+        raise HTTPException(400, f"Unknown team '{opp}'.")
+    if our == opp:
+        raise HTTPException(400, "Our team and opponent must be different.")
 
 
 @app.get("/health")
-def healthcheck() -> Dict[str, str]:
-    """Simple healthcheck endpoint."""
-    # Handy for docker / deployment checks: just returns {"status": "ok"}.
+def health() -> Dict[str, str]:
     return {"status": "ok"}
 
 
-@app.get("/rank-plays/baseline", response_model=BaselineResponse)
-def rank_plays_baseline(
-    season: str = Query(..., description="Season label, e.g. '2019-20'."),
-    our: str = Query(..., description="Our team abbreviation, e.g. 'LAL'."),
-    opp: str = Query(..., description="Opponent team abbreviation, e.g. 'BOS'."),
-    k: int = Query(5, ge=1, le=10, description="Number of top play types to return."),
-) -> BaselineResponse:
-    """Baseline ranking for a given season and matchup."""
-    # Basic input validation before we touch the recommender.
-    if season not in VALID_SEASONS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Unknown season '{season}'. Allowed: {sorted(VALID_SEASONS)}",
-        )
-    if our not in VALID_TEAMS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Unknown our-team code '{our}'.",
-        )
-    if opp not in VALID_TEAMS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Unknown opponent-team code '{opp}'.",
-        )
-    if our == opp:
-        raise HTTPException(
-            status_code=400,
-            detail="Our team and opponent must be different.",
-        )
+@app.get("/meta/options")
+def meta_options() -> Dict[str, Any]:
+    return get_meta_options()
 
-    # Main call into the BaselineRecommender.
-    try:
-        df = rec.rank(season=season, our_team=our, opp_team=opp, k=k)
-    except ValueError as e:
-        # If the recommender raises (e.g. no data for that matchup),
-        # we turn it into a 400 with the message.
-        raise HTTPException(status_code=400, detail=str(e))
 
-    # Convert the pandas DataFrame into a list of dicts for Pydantic.
-    records: List[Dict[str, Any]] = df.to_dict(orient="records")
+@app.get("/meta/pipeline")
+def meta_pipeline() -> Dict[str, Any]:
+    return get_pipeline_info()
 
-    return BaselineResponse(
-        season=season,
-        our_team=our,
-        opp_team=opp,
-        k=k,
-        rankings=records,  # type: ignore[arg-type]
+
+@app.get("/meta/baseline")
+def meta_baseline() -> Dict[str, Any]:
+    return get_baseline_formula()
+
+
+@app.get("/data/team-playtypes")
+def data_team_playtypes(
+    season: Optional[str] = Query(None),
+    team: Optional[str] = Query(None),
+    side: Optional[str] = Query(None, description="offense|defense"),
+    play_type: Optional[str] = Query(None),
+    min_poss: float = Query(0, ge=0),
+    limit: int = Query(200, ge=1, le=1000),
+) -> Dict[str, Any]:
+    """Preview of the cleaned team-level dataset (NOT recommendations)."""
+
+    df = baseline_rec.team_df.copy()
+
+    if season is not None:
+        if season not in _VALID_SEASONS:
+            raise HTTPException(400, f"Unknown season '{season}'.")
+        df = df[df["SEASON"] == season]
+
+    if team is not None:
+        if team not in _VALID_TEAMS:
+            raise HTTPException(400, f"Unknown team '{team}'.")
+        df = df[df["TEAM_ABBREVIATION"] == team]
+
+    if side is not None:
+        s = str(side).strip().lower()
+        if s not in _VALID_SIDES:
+            raise HTTPException(400, "side must be 'offense' or 'defense'.")
+        df = df[df["SIDE"] == s]
+
+    if play_type is not None:
+        df = df[df["PLAY_TYPE"] == play_type]
+
+    if min_poss > 0:
+        df = df[df["POSS"] >= float(min_poss)]
+
+    total_rows = int(df.shape[0])
+
+    keep_cols = [
+        "SEASON",
+        "TEAM_ABBREVIATION",
+        "TEAM_NAME",
+        "PLAY_TYPE",
+        "SIDE",
+        "GP",
+        "POSS",
+        "POSS_PCT",
+        "PPP",
+        "FG_PCT",
+        "EFG_PCT",
+        "SCORE_POSS_PCT",
+        "TOV_POSS_PCT",
+        "SF_POSS_PCT",
+        "FT_POSS_PCT",
+        "PLUSONE_POSS_PCT",
+    ]
+    keep_cols = [c for c in keep_cols if c in df.columns]
+
+    df = df[keep_cols].sort_values(
+        ["SEASON", "TEAM_ABBREVIATION", "SIDE", "POSS"],
+        ascending=[True, True, True, False],
     )
 
+    out = df.head(limit)
+    return {
+        "total_rows": total_rows,
+        "returned_rows": int(out.shape[0]),
+        "rows": out.to_dict(orient="records"),
+    }
 
-@app.get("/rank-plays/baseline.csv")
-def rank_plays_baseline_csv(
-    season: str = Query(..., description="Season label, e.g. '2019-20'."),
-    our: str = Query(..., description="Our team abbreviation, e.g. 'LAL'."),
-    opp: str = Query(..., description="Opponent team abbreviation, e.g. 'BOS'."),
-    k: int = Query(5, ge=1, le=10, description="Number of top play types to return."),
+
+@app.get("/data/team-playtypes.csv")
+def data_team_playtypes_csv(
+    season: Optional[str] = Query(None),
+    team: Optional[str] = Query(None),
+    side: Optional[str] = Query(None),
+    play_type: Optional[str] = Query(None),
+    min_poss: float = Query(0, ge=0),
+    limit: int = Query(1000, ge=1, le=5000),
 ):
-    """CSV version of the baseline rankings."""
-    # Slightly simpler validation here, but same idea.
-    if season not in VALID_SEASONS:
-        raise HTTPException(status_code=400, detail="Invalid season")
-    if our not in VALID_TEAMS or opp not in VALID_TEAMS or our == opp:
-        raise HTTPException(status_code=400, detail="Invalid team codes")
+    resp = data_team_playtypes(
+        season=season,
+        team=team,
+        side=side,
+        play_type=play_type,
+        min_poss=min_poss,
+        limit=limit,
+    )
 
-    try:
-        df = rec.rank(season=season, our_team=our, opp_team=opp, k=k)
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
+    rows: List[Dict[str, Any]] = resp.get("rows", [])
 
-    # We stream the CSV back using an in-memory buffer.
-    import csv
-    import io
+    buf = io.StringIO()
+    w = csv.writer(buf)
 
-    buffer = io.StringIO()
-    writer = csv.writer(buffer)
+    if not rows:
+        w.writerow(["NO_ROWS"])
+    else:
+        header = list(rows[0].keys())
+        w.writerow(header)
+        for r in rows:
+            w.writerow([r.get(h) for h in header])
 
-    # First row: header.
-    writer.writerow(df.columns)
-    # Then write each row from the DataFrame.
-    for _, row in df.iterrows():
-        writer.writerow(list(row.values))
+    buf.seek(0)
 
-    buffer.seek(0)
-    filename = f"baseline_{season}_{our}_vs_{opp}_top{k}.csv"
+    filename_bits = ["team_playtypes"]
+    if season:
+        filename_bits.append(season)
+    if team:
+        filename_bits.append(team)
+    if side:
+        filename_bits.append(side)
+    filename = "_".join(filename_bits) + ".csv"
 
     return StreamingResponse(
-        buffer,
+        buf,
         media_type="text/csv",
         headers={"Content-Disposition": f'attachment; filename="{filename}"'},
     )
 
 
-@app.get("/rank-plays/context-ml", response_model=ContextMLResponse)
-def rank_plays_context_ml(
-    season: str = Query(..., description="Season label, e.g. '2019-20'."),
-    our: str = Query(..., description="Our team abbreviation, e.g. 'LAL'."),
-    opp: str = Query(..., description="Opponent team abbreviation, e.g. 'BOS'."),
-    margin: float = Query(
-        ...,
-        description="Score margin (our score − theirs). Positive if we are leading.",
-    ),
-    period: int = Query(
-        ...,
-        ge=1,
-        le=5,
-        description="Game period: 1–4 for regulation, 5 for OT.",
-    ),
-    time_remaining: float = Query(
-        ...,
-        ge=0,
-        le=720,
-        description="Seconds remaining in the current period (0–720).",
-    ),
-    k: int = Query(5, ge=1, le=10, description="Number of top play types to return."),
-) -> ContextMLResponse:
-    """Context-aware ML ranking for a given matchup and game state."""
-    # Same input checks as baseline, plus context fields.
-    if season not in VALID_SEASONS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Unknown season '{season}'. Allowed: {sorted(VALID_SEASONS)}",
-        )
-    if our not in VALID_TEAMS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Unknown our-team code '{our}'.",
-        )
-    if opp not in VALID_TEAMS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Unknown opponent-team code '{opp}'.",
-        )
-    if our == opp:
-        raise HTTPException(
-            status_code=400,
-            detail="Our team and opponent must be different.",
-        )
+@app.get("/rank-plays/baseline")
+def rank_plays_baseline(
+    season: str = Query(...),
+    our: str = Query(...),
+    opp: str = Query(...),
+    k: int = Query(5, ge=1, le=10),
+    w_off: float = Query(0.7, ge=0, le=1),
+    w_def: float = Query(0.3, ge=0, le=1),
+) -> Dict[str, Any]:
+    """Explainable baseline matchup ranking.
 
-    # Make sure period stays in [1, 5] before passing it into the urgency logic.
-    # We still return the original value in the response for transparency.
-    clamped_period = max(1, min(period, 5))
+    PPP_pred = w_off * PPP_off_shrunk + w_def * PPP_def_shrunk
+    """
+
+    _validate_matchup(season, our, opp)
+    if (w_off + w_def) <= 0:
+        raise HTTPException(400, "w_off and w_def cannot both be 0.")
+
+    try:
+        df = baseline_rec.rank(
+            season=season,
+            our_team=our,
+            opp_team=opp,
+            k=k,
+            w_off=w_off,
+            w_def=w_def,
+        )
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
+    norm = float(w_off + w_def)
+    return {
+        "season": season,
+        "our_team": our,
+        "opp_team": opp,
+        "k": int(k),
+        "w_off": float(w_off / norm),
+        "w_def": float(w_def / norm),
+        "rankings": df.to_dict(orient="records"),
+    }
+
+
+@app.get("/rank-plays/baseline.csv")
+def rank_plays_baseline_csv(
+    season: str = Query(...),
+    our: str = Query(...),
+    opp: str = Query(...),
+    k: int = Query(5, ge=1, le=10),
+    w_off: float = Query(0.7, ge=0, le=1),
+    w_def: float = Query(0.3, ge=0, le=1),
+):
+    payload = rank_plays_baseline(season=season, our=our, opp=opp, k=k, w_off=w_off, w_def=w_def)
+    rows: List[Dict[str, Any]] = payload["rankings"]
+
+    buf = io.StringIO()
+    w = csv.writer(buf)
+
+    if not rows:
+        w.writerow(["NO_ROWS"])
+    else:
+        header = list(rows[0].keys())
+        w.writerow(header)
+        for r in rows:
+            w.writerow([r.get(h) for h in header])
+
+    buf.seek(0)
+    filename = f"baseline_{season}_{our}_vs_{opp}_top{k}.csv"
+
+    return StreamingResponse(
+        buf,
+        media_type="text/csv",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
+
+
+@app.get("/rank-plays/context-ml")
+def rank_plays_context_ml(
+    season: str = Query(...),
+    our: str = Query(...),
+    opp: str = Query(...),
+    margin: float = Query(...),
+    period: int = Query(..., ge=1, le=5),
+    time_remaining: float = Query(..., ge=0, le=720),
+    k: int = Query(5, ge=1, le=10),
+) -> Dict[str, Any]:
+    _validate_matchup(season, our, opp)
 
     try:
         df = rank_ml_with_context(
             season=season,
             our_team=our,
             opp_team=opp,
-            margin=margin,
-            period=clamped_period,
-            time_remaining_period_sec=time_remaining,
-            k=k,
+            margin=float(margin),
+            period=int(period),
+            time_remaining_period_sec=float(time_remaining),
+            k=int(k),
         )
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
+    except (ValueError, FileNotFoundError) as e:
+        raise HTTPException(400, str(e))
 
-    records: List[Dict[str, Any]] = df.to_dict(orient="records")
-
-    return ContextMLResponse(
-        season=season,
-        our_team=our,
-        opp_team=opp,
-        k=k,
-        margin=margin,
-        period=period,
-        time_remaining_period_sec=time_remaining,
-        rankings=records,  # type: ignore[arg-type]
-    )
+    return {
+        "season": season,
+        "our_team": our,
+        "opp_team": opp,
+        "k": int(k),
+        "margin": float(margin),
+        "period": int(period),
+        "time_remaining_period_sec": float(time_remaining),
+        "rankings": df.to_dict(orient="records"),
+    }
 
 
-@app.get("/metrics/baseline-vs-ml", response_model=ModelComparisonResponse)
-def baseline_vs_ml_metrics(
-    n_splits: int = Query(
-        5,
-        ge=2,
-        le=10,
-        description="Number of cross-validation folds.",
-    ),
-) -> ModelComparisonResponse:
-    """Offline comparison of baseline vs ML models."""
-    # run_cv_evaluation does the heavy lifting:
-    # it runs K-fold CV for each model and returns a summary DataFrame.
-    summary_df, _ = run_cv_evaluation(n_splits=n_splits)
+@lru_cache(maxsize=8)
+def _cached_cv(n_splits: int) -> Dict[str, Any]:
+    summary_df, fold_metrics = run_cv_evaluation(n_splits=n_splits)
 
-    metric_items: List[ModelMetric] = []
-    # summary_df is indexed by model name, with metric columns.
+    metrics: List[Dict[str, Any]] = []
     for model_name, row in summary_df.iterrows():
-        metric_items.append(
-            ModelMetric(
-                model=model_name,
-                RMSE_mean=float(row["RMSE_mean"]),
-                RMSE_std=float(row["RMSE_std"]),
-                MAE_mean=float(row["MAE_mean"]),
-                MAE_std=float(row["MAE_std"]),
-                R2_mean=float(row["R2_mean"]),
-                R2_std=float(row["R2_std"]),
-            )
+        metrics.append(
+            {
+                "model": str(model_name),
+                "RMSE_mean": float(row["RMSE_mean"]),
+                "RMSE_std": float(row["RMSE_std"]),
+                "MAE_mean": float(row["MAE_mean"]),
+                "MAE_std": float(row["MAE_std"]),
+                "R2_mean": float(row["R2_mean"]),
+                "R2_std": float(row["R2_std"]),
+            }
         )
 
-    return ModelComparisonResponse(n_splits=n_splits, metrics=metric_items)
+    t_stat, p_val = paired_t_test_rmse(fold_metrics)
+
+    # NaN-safe handling
+    t_out = None if t_stat != t_stat else float(t_stat)
+    p_out = None if p_val != p_val else float(p_val)
+
+    return {
+        "n_splits": int(n_splits),
+        "metrics": metrics,
+        "rf_vs_baseline_t": t_out,
+        "rf_vs_baseline_p": p_out,
+    }
+
+
+@app.get("/metrics/baseline-vs-ml")
+def baseline_vs_ml_metrics(n_splits: int = Query(5, ge=2, le=10)) -> Dict[str, Any]:
+    return _cached_cv(int(n_splits))
