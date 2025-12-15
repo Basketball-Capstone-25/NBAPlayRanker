@@ -2,7 +2,7 @@
 //
 // This file implements the **Model Performance (Baseline vs ML)** screen.
 //
-// Purpose (for defence):
+// Purpose:
 // - Show an **offline experiment** comparing our simple statistical baseline
 //   model to machine learning models (Ridge and RandomForest).
 // - Use cross-validation on historical Synergy data to estimate how well each

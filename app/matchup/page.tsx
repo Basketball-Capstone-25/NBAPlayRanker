@@ -2,7 +2,7 @@
 //
 // This file implements the **Matchup Console (Baseline)** screen.
 //
-// Purpose (for defence):
+// Purpose:
 // - Show a clean, worked example of our **baseline recommendation engine**
 //   for a single matchup.
 // - Use a fixed Season + Our team + Opponent so we can talk through the logic

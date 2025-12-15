@@ -1,8 +1,8 @@
 // app/data-explorer/page.tsx
 //
-// This file implements the **Data Explorer** screen.
+// This file implements the Data Explorer screen.
 //
-// Purpose (for defence):
+// Purpose
 // - Let the user choose Season + Offense team + Opponent.
 // - Call the baseline ranking endpoint and preview the **underlying PPP inputs**
 //   for that matchup (our offense PPP and opponent defense PPP allowed).

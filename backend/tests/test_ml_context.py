@@ -88,7 +88,7 @@ def main():
     print(f"T_early (Q1, 10:00 left): {T_early:.1f} sec")
     print(f"T_late  (Q4, 2:00 left): {T_late:.1f} sec")
 
-    # compute_urgencies(...) takes:
+    # compute_urgencies() takes:
     #   - margin: our score minus theirs,
     #   - T_left: total time remaining (from total_time_remaining),
     # and returns two numbers:
@@ -157,7 +157,7 @@ def main():
 
 if __name__ == "__main__":
     # Using the standard Python entry-point guard means:
-    #   - `main()` runs when we execute this file directly:
+    #   - main() runs when we execute this file directly:
     #         python ml_context_demo.py
     #   - but nothing runs if we import this module from somewhere else
     #     (e.g. for tests or experiments).
