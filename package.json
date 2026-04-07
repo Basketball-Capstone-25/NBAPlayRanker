@@ -6,7 +6,9 @@
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start -p 3000",
-    "lint": "echo \"(lint intentionally minimal for PSPI)\""
+    "lint": "echo \"(lint intentionally minimal for PSPI)\"",
+    "test:rbac": "vitest run tests/middleware.auth-analyst.test.ts",
+    "test:rbac:coach": "vitest run tests/middleware.auth-coach.test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.9.0",
@@ -20,6 +22,7 @@
   "devDependencies": {
     "@types/node": "24.9.1",
     "@types/react": "19.2.2",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "^3.2.4"
   }
 }

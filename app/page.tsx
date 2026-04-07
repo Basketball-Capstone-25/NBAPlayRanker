@@ -115,7 +115,7 @@ const audienceCards = [
 export default function Page() {
   return (
     <main className="hp-page">
-      <style>{`
+      <style suppressHydrationWarning>{`
         :root {
           --hp-bg: #f7f9fc;
           --hp-line: rgba(15,23,42,0.09);

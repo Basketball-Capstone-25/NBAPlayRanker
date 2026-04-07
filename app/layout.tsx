@@ -10,7 +10,7 @@
 import "./globals.css";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import NavBar from "./components/NavBar";
+import NavBar from "./ui/_shared/components/NavBar";
 
 
 export const metadata = {

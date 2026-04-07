@@ -40,9 +40,7 @@ const TERMS: Array<{
   where?: WhereLink[];
   aliases?: string[];
 }> = [
-  // ------------------------
   // Product / Pages
-  // ------------------------
   {
     term: "NBA Play Ranker",
     meaning:
@@ -163,10 +161,7 @@ const TERMS: Array<{
     where: [{ label: "Shot Statistical Analysis", href: "/shot-statistical-analysis" }],
     aliases: ["Shot EDA"],
   },
-
-  // ------------------------
   // Datasets / Data engineering
-  // ------------------------
   {
     term: "Dataset1 (Synergy Play Types)",
     meaning:
@@ -259,10 +254,7 @@ const TERMS: Array<{
     ],
     aliases: ["Min Poss", "Minimum sample"],
   },
-
-  // ------------------------
   // Core basketball / app inputs
-  // ------------------------
   {
     term: "Season",
     meaning:
@@ -311,10 +303,7 @@ const TERMS: Array<{
     ],
     aliases: ["k"],
   },
-
-  // ------------------------
   // Dataset1 metrics + fields
-  // ------------------------
   {
     term: "Play Type",
     meaning:
@@ -462,10 +451,7 @@ const TERMS: Array<{
       { label: "Gameplan", href: "/gameplan" },
     ],
   },
-
-  // ------------------------
   // Context / AI fields (Dataset1)
-  // ------------------------
   {
     term: "PPP_BASELINE",
     meaning:
@@ -560,10 +546,7 @@ const TERMS: Array<{
     where: [{ label: "AI Context", href: "/context" }],
     aliases: ["varianceProxy"],
   },
-
-  // ------------------------
   // Modeling + evaluation (Dataset1)
-  // ------------------------
   {
     term: "Holdout evaluation (season splits)",
     meaning:
@@ -722,10 +705,7 @@ const TERMS: Array<{
       { label: "Statistical Analysis", href: "/statistical-analysis" },
     ],
   },
-
-  // ------------------------
   // Visuals + exports
-  // ------------------------
   {
     term: "SportyPy court map",
     meaning:
@@ -768,10 +748,7 @@ const TERMS: Array<{
     tags: ["Exports", "Viz", "Dataset1"],
     where: [{ label: "Matchup (Baseline)", href: "/matchup" }],
   },
-
-  // ------------------------
   // Dataset2 (shots) terminology
-  // ------------------------
   {
     term: "Play-by-play (PBP)",
     meaning:
@@ -850,10 +827,7 @@ const TERMS: Array<{
     tags: ["Dataset2", "Engineering"],
     where: [{ label: "Shot Heatmap", href: "/shot-heatmap" }],
   },
-
-  // ------------------------
   // Dataset2 evaluation / leakage control
-  // ------------------------
   {
     term: "GroupKFold by GAME_ID",
     meaning:
@@ -876,10 +850,7 @@ const TERMS: Array<{
       { label: "Shot Model Metrics", href: "/shot-model-metrics" },
     ],
   },
-
-  // ------------------------
   // Gameplan NLP / interpretation (as implemented)
-  // ------------------------
   {
     term: "Natural language interpretation (NLP → structured context)",
     meaning:
@@ -909,10 +880,7 @@ const TERMS: Array<{
     tags: ["AI", "Explainability"],
     where: [{ label: "Gameplan", href: "/gameplan" }],
   },
-
-  // ------------------------
   // A few “common UI labels” that appear across screens
-  // ------------------------
   {
     term: "Explainable / Trust anchor",
     meaning:
