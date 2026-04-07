@@ -1,84 +1,178 @@
-# Basketball Game Strategy Analysis (BGS) — PSPI (Elaboration / Defense-Ready Prototype)
+# NBA Play Ranker
 
-This repository contains the **Potentially Shippable Product Increment (PSPI)** for our capstone: a **decision-support prototype** that helps coaches/analysts identify effective offensive play types against a selected opponent.  
+A decision-support tool for basketball coaches and analysts. Coaches get ranked play-type recommendations for upcoming matchups; analysts explore the underlying data, evaluate model performance, and review shot-level analysis.
 
-The PSPI is designed to be understandable to **non-basketball stakeholders** by showing a clear workflow:
-1) **Explore raw matchup data**  
-2) Generate **transparent baseline recommendations** (explainable ranking)  
-3) Generate **AI contextual recommendations** (situation-aware ranking)  
-4) Review **model testing + evaluation evidence** (metrics + visuals)
+## Quick Start
+
+### Prerequisites
+- Python 3.11+
+- Node.js 18+ and npm
+
+### 1. Clone and install
+
+```bash
+git clone https://github.com/Basketball-Capstone-25/NBAPlayRanker.git
+cd NBAPlayRanker
+
+# Frontend
+npm install
+
+# Backend
+cd backend
+python -m venv .venv
+# Windows
+.venv\Scripts\activate
+# macOS/Linux
+source .venv/bin/activate
+pip install -r requirements.txt
+cd ..
+```
+
+### 2. Configure environment variables
+
+```bash
+cp .env.example .env
+```
+
+Open `.env` and fill in:
+
+| Variable | Where to find it |
+|----------|-----------------|
+| `SUPABASE_JWT_SECRET` | Supabase Dashboard > Settings > API > JWT Settings |
+| `SUPABASE_URL` | Supabase Dashboard > Settings > API > Project URL |
+| `NEXT_PUBLIC_SUPABASE_URL` | Same as `SUPABASE_URL` |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase Dashboard > Settings > API > `anon` public key |
+| `NEXT_PUBLIC_API_BASE` | `http://localhost:8000` (default for local dev) |
+
+### 3. Run
+
+```bash
+# Terminal 1 — Backend
+cd backend
+python -m uvicorn application.api_coordination.app:app --host 127.0.0.1 --port 8000
+
+# Terminal 2 — Frontend
+npm run dev
+```
+
+Open http://localhost:3000.
+
+### 4. Run tests
+
+```bash
+# Backend (53 tests)
+cd backend
+python -m pytest tests/ -v
+
+# Frontend RBAC middleware tests
+npm run test:rbac
+npm run test:rbac:coach
+```
 
 ---
 
-## What problem does this solve?
-In real-world scouting and game planning, staff often review multiple tables/reports under time pressure. This tool consolidates matchup tendencies and produces a ranked shortlist of play types **with evidence**, reducing manual comparison and improving consistency of recommendations.
+## Pages
+
+### Public
+| Route | Purpose |
+|-------|---------|
+| `/` | Landing page with workflow overview |
+| `/login` | Sign in with Supabase auth |
+| `/signup` | Register a new account |
+| `/forgot-password` | Request password reset email |
+| `/reset-password` | Set new password after email link |
+| `/glossary` | Definitions for basketball and ML terms (requires sign-in) |
+
+### Coach
+| Route | Purpose |
+|-------|---------|
+| `/matchup` | Top-K baseline play-type rankings for a chosen matchup |
+| `/context` | AI context simulator — re-ranks plays using game situation (score, period, time) |
+| `/gameplan` | Visual game plan built from ranked output |
+
+### Analyst
+| Route | Purpose |
+|-------|---------|
+| `/data-explorer` | Browse Synergy play-type data with filtering and CSV export |
+| `/statistical-analysis` | ML model evaluation (RMSE, MAE, R²) |
+| `/model-metrics` | Cross-validation comparison between Baseline and ML models |
+| `/shot-explorer` | Browse NBA play-by-play shot data |
+| `/shot-heatmap` | Court heatmap of shot locations by team/player |
+| `/shot-plan` | Shot-type ranking by location and context |
+| `/shot-model-metrics` | Shot prediction model cross-validation metrics |
+| `/shot-statistical-analysis` | Shot model statistical breakdown |
 
 ---
 
-## What’s included (Pages)
-- **Home (`/`)**  
-  Explains the problem, workflow, and links to the core modules.
+## Architecture
 
-- **Data Explorer (`/data-explorer`)**  
-  Displays a preview of **raw, non-predicted** matchup data (play-type level) filtered by season/team/opponent.  
-  Includes **CSV export** so analysts can use the data externally.
+### Frontend
+Next.js 14 (App Router) with TypeScript. Supabase handles authentication. Middleware enforces role-based routing so coaches and analysts each see only their own pages.
 
-- **Matchup Console — Baseline (`/matchup`)**  
-  Produces Top-K ranked play types using a **transparent baseline formula**.  
-  Shows the ranking breakdown and a short “why” rationale for each recommendation.
+### Backend — 4-Tier Layered Architecture
 
-- **Context Simulator — AI (`/context`)**  
-  Produces Top-K ranked play types using an **ML-based PPP estimate** combined with game context inputs  
-  (e.g., time remaining, score margin).  
-  Compares **Baseline vs AI** to show how recommendations change by situation.
+```
+application/          <- API routing, auth, service orchestration
+  api_coordination/        FastAPI endpoints and routers
+  access_control_services/ JWT validation, RBAC enforcement
+  analytics_services/      Statistical analysis orchestration
+  recommendation_services/ Ranking orchestration, PDF export
 
-- **Model Metrics (`/model-metrics`)**  
-  Shows **model evaluation evidence** (e.g., RMSE/MAE/R²) across candidate models and includes at least one
-  visualization to support model selection.
+domain/               <- Core business logic (no framework dependencies)
+  baseline_recommendation/   Play-type ranking logic
+  context_ml_recommendation/ Game-context adjustments (score, time, period)
+  shot_analysis/             Shot ETL, aggregation, ML models
+  statistical_analysis/      Model evaluation and cross-validation
 
-- **Glossary (`/glossary`)**  
-  Quick definitions for both basketball + ML terms used in the app.
+infrastructure/       <- External integrations and data access
+  data_access/             Parquet/CSV loading and caching
+  external_integrations/   NLP parsing, Supabase JWT, SportyPy rendering
+  model_management/        Ridge regression training, CV pipelines
+  visualization_and_export/ PDF generation, PNG court visualizations
+
+data/                 <- Datasets (committed to git, no rebuild needed)
+  synergy_playtypes_2019_2025_players.csv
+  ml_offense_ppp_predictions.csv
+  pbp/                     Play-by-play shot data (parquet)
+  etl/                     Data build scripts (only needed to rebuild)
+```
+
+Each subsystem exposes a public interface via `__init__.py`. No upward imports between layers.
+
+### Datasets
+
+Two datasets are included in the repository:
+
+1. **Synergy play-type data** (`data/synergy_playtypes_2019_2025_players.csv`) — historical play-type performance by team, opponent, and season. Powers the baseline and context-ML recommendation engines.
+
+2. **NBA play-by-play shots** (`data/pbp/`) — 1.3M+ shot records sourced via hoopR. Powers the shot explorer, heatmaps, shot plans, and shot model analysis.
+
+Both datasets are committed to the repo. No download or rebuild step is required to run the app.
 
 ---
 
-## Backend (API + Recommenders)
-This project includes a backend service that:
-- exposes endpoints for **raw data retrieval and CSV export**
-- computes **baseline** and **context-ML** ranked recommendations
-- supports **multi-user concurrent usage** via a stateless request design and safe model/data loading at startup
+## Tests
 
-Core backend modules:
-- `app.py` — FastAPI service + endpoints  
-- `baseline_recommender.py` — baseline scoring + raw matchup data functions  
-- `ml_context_recommender.py` — contextual ranking using ML outputs + context adjustments  
-- `ml_models.py` — training + evaluation pipeline (candidate model comparisons)
-
----
-
-## Dataset
-The app is intended to be evaluated on a selected historical dataset (play-type performance by team/opponent/season).
-The **Model Metrics** page and ML pipeline are used to validate model suitability and show evidence-based model choice.
-
-> Note: The Data Explorer page shows **raw observed values only** (no predicted/calculated values in the preview table).
+| File | Tests | What it covers |
+|------|-------|----------------|
+| `test_baseline.py` | 6 | Baseline recommender output shape and values |
+| `test_baseline_api.py` | 3 | `/rank-plays/baseline` endpoint validation |
+| `test_ridge_model.py` | 8 | Ridge pipeline structure, fitting, regularization |
+| `test_context_ml.py` | 8 | Context factors, time calculations, labeling |
+| `test_access_control.py` | 10 | JWT validation, role extraction, session checks |
+| `test_access_control_api_bypass.py` | 12 | RBAC enforcement across coach/analyst endpoints |
+| `test_access_analyst_workspace_api.py` | 3 | Analyst workspace filtering and limits |
+| `middleware.auth-analyst.test.ts` | 3 | Analyst middleware routing |
+| `middleware.auth-coach.test.ts` | 3 | Coach middleware routing |
 
 ---
 
 ## Tech Stack
-- **Frontend:** Next.js (App Router), React  
-- **Backend:** FastAPI (Python)  
-- **ML / Data:** scikit-learn, pandas (modeling + evaluation)
 
----
-
-## How to Run (Local)
-
-### Frontend
-```bash
-npm install
-npm run dev
-# open http://localhost:3000
-
-# from backend folder (or project root if applicable)
-pip install -r requirements.txt
-uvicorn app:app --host 0.0.0.0 --port 8000 --workers 2
+- **Frontend:** Next.js 14, React 18, TypeScript, Supabase SSR
+- **Backend:** FastAPI, Python 3.11
+- **ML:** scikit-learn (Ridge regression), pandas, scipy
+- **Auth:** Supabase (ES256 JWT via JWKS)
+- **Visualization:** SportyPy (court diagrams), Matplotlib (heatmaps), ReportLab (PDF export)
+- **Testing:** pytest (backend), Vitest (frontend)
 
