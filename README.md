@@ -57,18 +57,6 @@ npm run dev
 
 Open http://localhost:3000.
 
-### 4. Run tests
-
-```bash
-# Backend (53 tests)
-cd backend
-python -m pytest tests/ -v
-
-# Frontend RBAC middleware tests
-npm run test:rbac
-npm run test:rbac:coach
-```
-
 ---
 
 ## Pages
@@ -104,41 +92,6 @@ npm run test:rbac:coach
 
 ---
 
-## Architecture
-
-### Frontend
-Next.js 14 (App Router) with TypeScript. Supabase handles authentication. Middleware enforces role-based routing so coaches and analysts each see only their own pages.
-
-### Backend — 4-Tier Layered Architecture
-
-```
-application/          <- API routing, auth, service orchestration
-  api_coordination/        FastAPI endpoints and routers
-  access_control_services/ JWT validation, RBAC enforcement
-  analytics_services/      Statistical analysis orchestration
-  recommendation_services/ Ranking orchestration, PDF export
-
-domain/               <- Core business logic (no framework dependencies)
-  baseline_recommendation/   Play-type ranking logic
-  context_ml_recommendation/ Game-context adjustments (score, time, period)
-  shot_analysis/             Shot ETL, aggregation, ML models
-  statistical_analysis/      Model evaluation and cross-validation
-
-infrastructure/       <- External integrations and data access
-  data_access/             Parquet/CSV loading and caching
-  external_integrations/   NLP parsing, Supabase JWT, SportyPy rendering
-  model_management/        Ridge regression training, CV pipelines
-  visualization_and_export/ PDF generation, PNG court visualizations
-
-data/                 <- Datasets (committed to git, no rebuild needed)
-  synergy_playtypes_2019_2025_players.csv
-  ml_offense_ppp_predictions.csv
-  pbp/                     Play-by-play shot data (parquet)
-  etl/                     Data build scripts (only needed to rebuild)
-```
-
-Each subsystem exposes a public interface via `__init__.py`. No upward imports between layers.
-
 ### Datasets
 
 Two datasets are included in the repository:
@@ -146,8 +99,6 @@ Two datasets are included in the repository:
 1. **Synergy play-type data** (`data/synergy_playtypes_2019_2025_players.csv`) — historical play-type performance by team, opponent, and season. Powers the baseline and context-ML recommendation engines.
 
 2. **NBA play-by-play shots** (`data/pbp/`) — 1.3M+ shot records sourced via hoopR. Powers the shot explorer, heatmaps, shot plans, and shot model analysis.
-
-Both datasets are committed to the repo. No download or rebuild step is required to run the app.
 
 ---
 
@@ -172,7 +123,7 @@ Both datasets are committed to the repo. No download or rebuild step is required
 - **Frontend:** Next.js 14, React 18, TypeScript, Supabase SSR
 - **Backend:** FastAPI, Python 3.11
 - **ML:** scikit-learn (Ridge regression), pandas, scipy
-- **Auth:** Supabase (ES256 JWT via JWKS)
+- **Auth:** Supabase
 - **Visualization:** SportyPy (court diagrams), Matplotlib (heatmaps), ReportLab (PDF export)
 - **Testing:** pytest (backend), Vitest (frontend)
 
