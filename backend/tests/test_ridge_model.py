@@ -8,6 +8,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 from domain.baseline_recommendation import BaselineRecommender
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+
 from infrastructure.model_management.ml_models import (
     _make_ridge,
     FEATURE_COLS,
@@ -16,6 +18,7 @@ from infrastructure.model_management.ml_models import (
     load_offense_dataset,
     run_cv_evaluation,
     get_features_and_target,
+    make_season_holdout_splits,
 )
 
 @pytest.fixture(scope="module")
@@ -171,3 +174,41 @@ def test_ridge_regularization_effect():
     norm_high = _coef_l2_norm(10.0)
 
     assert norm_high < norm_tuned < norm_low
+
+
+@pytest.mark.integration
+def test_ridge_season_holdout_accuracy(offense_data):
+    """TC-ML-09 verify: train on prior seasons, predict held-out season, report metrics."""
+    TEST_SEASON = "2024-25"
+    RMSE_UPPER = 0.05
+
+    train_df = offense_data[offense_data["SEASON"] != TEST_SEASON]
+    test_df = offense_data[offense_data["SEASON"] == TEST_SEASON]
+
+    train_seasons = sorted(train_df["SEASON"].unique())
+    X_train = train_df[FEATURE_COLS].to_numpy(dtype=float)
+    y_train = train_df["PPP"].to_numpy(dtype=float)
+    X_test = test_df[FEATURE_COLS].to_numpy(dtype=float)
+    y_test = test_df["PPP"].to_numpy(dtype=float)
+
+    model = _make_ridge()
+    model.fit(X_train, y_train)
+    preds = model.predict(X_test)
+
+    rmse = float(np.sqrt(mean_squared_error(y_test, preds)))
+    mae = float(mean_absolute_error(y_test, preds))
+    r2 = float(r2_score(y_test, preds))
+
+    print()
+    print("=" * 60)
+    print("SEASON HOLDOUT — RIDGE PREDICTION ACCURACY")
+    print("=" * 60)
+    print(f"  Trained on: {', '.join(train_seasons)}")
+    print(f"  Tested on:  {TEST_SEASON}  ({len(test_df)} observations)")
+    print(f"  RMSE: {rmse:.4f}")
+    print(f"  MAE:  {mae:.4f}")
+    print(f"  R2:   {r2:.4f}")
+    print("=" * 60)
+
+    assert rmse < RMSE_UPPER, f"RMSE {rmse:.4f} exceeds threshold {RMSE_UPPER}"
+    assert r2 > 0.90, f"R2 {r2:.4f} below 0.90"
