@@ -3,9 +3,9 @@
 // Gameplan (Client):
 // - Coach-friendly “set the situation → get top options → see visuals/counters → build a plan” flow.
 // - Combines Dataset1 (play-type rankings + play zones viz) + Dataset2 (shot plan + heatmap + PDF).
-// - NLP is optional: it can parse a natural-language situation and produce short explanations.
+// - NLP is optional, but when used it now preserves and passes the full advanced context cleanly
+//   through parse -> ranking -> explanation -> UI state.
 // - UI stores plan/notes/roles locally (localStorage) so the demo is smooth.
-// - IMPORTANT: This file does not change backend behavior — it only calls existing endpoints via ../utils.
 
 "use client";
 
@@ -15,12 +15,16 @@ import styles from "./Gameplan.module.css";
 import {
   baselineRank,
   contextRank,
+  explainNlpRecommendations,
   fetchMetaOptions,
   fetchPlaytypeViz,
   fetchShotHeatmap,
   fetchShotPlanRank,
   getShotPlanPdfUrl,
+  parseNlpPrompt,
+  type AdvancedContextPayload,
   type MetaOptions,
+  type NlpExplainPlay,
 } from "../utils";
 
 type TeamOption = { code: string; name?: string };
@@ -47,45 +51,23 @@ type RoleAssignments = {
   safety: string;
 };
 
-type NlpContext = {
-  period?: number | null;
-  time_remaining?: number | null; // returned by NLP service (snake), we map it internally
-  margin?: number | null;
-  after_timeout?: boolean | null;
-  late_clock?: boolean | null;
-  need3?: boolean | null;
-  protect_lead?: boolean | null;
-  end_of_quarter?: boolean | null;
-  vs_switching?: boolean | null;
-  defense_style?: string | null;
-  pace?: string | null;
-  must_stop?: boolean | null;
-  quick2?: boolean | null;
-  two_for_one?: boolean | null;
-};
+type ExplainItem = NlpExplainPlay;
 
-type NlpParseResponse = {
-  context: NlpContext;
-  confidence: number;
-  clarifying_questions?: string[];
-  warnings?: string[];
+type BuildContextSnapshot = {
+  period: number;
+  time_remaining: number;
+  margin: number;
+  after_timeout: boolean;
+  late_clock: boolean;
+  need3: boolean;
+  protect_lead: boolean;
+  end_of_quarter: boolean;
+  vs_switching: boolean;
+  must_stop: boolean;
+  quick2: boolean;
+  two_for_one: boolean;
+  advanced: AdvancedContextPayload;
 };
-
-type ExplainItem = {
-  play_type?: string;
-  summary?: string;
-  evidence?: string[];
-  caution?: string;
-};
-
-type NlpExplainResponse = {
-  mode: "baseline" | "context-ml";
-  explanation: ExplainItem[];
-};
-
-const API_BASE =
-  (process.env.NEXT_PUBLIC_API_BASE as string | undefined) ||
-  "http://127.0.0.1:8000";
 
 function clamp(n: number, lo: number, hi: number) {
   return Math.max(lo, Math.min(hi, n));
@@ -104,6 +86,21 @@ function normalizeTeams(meta: MetaOptions | null): TeamOption[] {
     .map((t) => String(t))
     .filter(Boolean)
     .map((code) => ({ code, name: teamNames[code] }));
+}
+
+function dedupeStrings(values: Array<string | null | undefined>) {
+  const out: string[] = [];
+  const seen = new Set<string>();
+
+  for (const value of values) {
+    if (typeof value !== "string") continue;
+    const clean = value.trim();
+    if (!clean || seen.has(clean)) continue;
+    out.push(clean);
+    seen.add(clean);
+  }
+
+  return out;
 }
 
 function normalizeWhy(raw: any): string[] {
@@ -132,7 +129,6 @@ function normalizeWhy(raw: any): string[] {
       const trimmed = line.trim();
       if (!trimmed) continue;
 
-      // Split bullet separators within the line.
       const parts = trimmed
         .split(/(?:•|·|\u2022)/g)
         .map((p) => p.trim())
@@ -144,7 +140,6 @@ function normalizeWhy(raw: any): string[] {
       else out.push(trimmed.replace(/^\-+\s*/, ""));
     }
 
-    // If we still have one big string with hyphen bullets, try a light split.
     if (out.length <= 1 && text.includes(" - ")) {
       return text
         .split(" - ")
@@ -172,7 +167,6 @@ function normalizePlay(
     raw?.label ??
     `Play ${idx + 1}`;
 
-  // Headline points-per-play.
   const ppp =
     toNumMaybe(raw?.PPP_CONTEXT) ??
     toNumMaybe(raw?.PPP_PRED) ??
@@ -181,7 +175,6 @@ function normalizePlay(
     toNumMaybe(raw?.pred_ppp) ??
     null;
 
-  // Edge / advantage stat for secondary display.
   const edge =
     toNumMaybe(raw?.DELTA_VS_BASELINE) ??
     toNumMaybe(raw?.PPP_GAP) ??
@@ -215,24 +208,15 @@ function normalizePlay(
   };
 }
 
-async function postJson<T>(url: string, body: any): Promise<T> {
-  const r = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body ?? {}),
-  });
-  if (!r.ok) {
-    const text = await r.text().catch(() => "");
-    throw new Error(`${r.status} ${r.statusText}${text ? ` — ${text}` : ""}`);
-  }
-  return (await r.json()) as T;
-}
-
 function prettyTime(seconds: number) {
   const s = clamp(seconds, 0, 720);
   const m = Math.floor(s / 60);
   const r = s % 60;
   return `${m}:${String(r).padStart(2, "0")}`;
+}
+
+function prettyPeriodLabel(period: number) {
+  return period === 5 ? "OT" : `Q${period}`;
 }
 
 function gradeFromRank(rank: number) {
@@ -342,6 +326,62 @@ function counterPlanFor(playType: string) {
   ];
 }
 
+function contextTagSummary(context: AdvancedContextPayload | null): string[] {
+  if (!context) return [];
+
+  const tags: string[] = [];
+
+  if (context.need) tags.push(`Need: ${context.need}`);
+  if (context.defense_style) tags.push(`Defense: ${context.defense_style}`);
+  if (context.pace) tags.push(`Pace: ${context.pace}`);
+
+  if (context.after_timeout) tags.push("After timeout");
+  if (context.slob) tags.push("SLOB");
+  if (context.blob) tags.push("BLOB");
+  if (context.advance_ball) tags.push("Advance ball");
+  if (context.late_clock) tags.push("Late clock");
+  if (context.need3) tags.push("Need 3");
+  if (context.protect_lead) tags.push("Protect lead");
+  if (context.end_of_quarter) tags.push("End of quarter");
+  if (context.vs_switching) tags.push("Vs switching");
+  if (context.must_stop) tags.push("Need stop");
+  if (context.quick2) tags.push("Quick 2");
+  if (context.two_for_one) tags.push("2-for-1");
+  if (context.hold_for_last) tags.push("Last shot");
+  if (context.foul_game) tags.push("Foul game");
+  if (context.no_three) tags.push("No 3");
+
+  (context.special_situations ?? []).forEach((x) => tags.push(String(x)));
+  (context.preferred_play_families ?? []).forEach((x) => tags.push(`Family: ${x}`));
+
+  return dedupeStrings(tags).slice(0, 8);
+}
+
+function mergeAdvancedContext(
+  base: AdvancedContextPayload,
+  patch?: AdvancedContextPayload | null
+): AdvancedContextPayload {
+  if (!patch) return { ...base };
+
+  return {
+    ...base,
+    ...patch,
+    needs: dedupeStrings([...(base.needs ?? []), ...(patch.needs ?? [])]),
+    special_situations: dedupeStrings([
+      ...(base.special_situations ?? []),
+      ...(patch.special_situations ?? []),
+    ]),
+    preferred_play_families: dedupeStrings([
+      ...(base.preferred_play_families ?? []),
+      ...(patch.preferred_play_families ?? []),
+    ]),
+    intent_tags: dedupeStrings([
+      ...(((base as any).intent_tags ?? []) as string[]),
+      ...((((patch as any).intent_tags ?? []) as string[]) ?? []),
+    ]) as any,
+  };
+}
+
 function Chip({
   active,
   label,
@@ -394,6 +434,8 @@ export default function GameplanClient() {
   const [nlConfidence, setNlConfidence] = useState<number | null>(null);
   const [nlQuestions, setNlQuestions] = useState<string[]>([]);
   const [nlWarnings, setNlWarnings] = useState<string[]>([]);
+  const [parsedContext, setParsedContext] = useState<AdvancedContextPayload | null>(null);
+  const [parsedContextSummary, setParsedContextSummary] = useState<string>("");
 
   // Controls
   const [showPlays, setShowPlays] = useState(5);
@@ -407,6 +449,9 @@ export default function GameplanClient() {
 
   // NLP explanations for top plays
   const [explainMap, setExplainMap] = useState<Record<string, ExplainItem>>({});
+  const [explainOverallSummary, setExplainOverallSummary] = useState<string>("");
+  const [explainContextSummary, setExplainContextSummary] = useState<string>("");
+  const [explainNotes, setExplainNotes] = useState<string[]>([]);
 
   // Visuals
   const [vizTab, setVizTab] = useState<"playZones" | "shotHeatmap">("playZones");
@@ -441,10 +486,8 @@ export default function GameplanClient() {
 
   const [statusHint, setStatusHint] = useState<string>("");
 
-  // Used to ignore stale async responses when the user rebuilds quickly.
   const latestBuildRef = useRef<number>(0);
 
-  // Load options
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -475,7 +518,6 @@ export default function GameplanClient() {
     };
   }, []);
 
-  // Load saved plan/notes/roles
   useEffect(() => {
     const rawNotes = safeLocalGet("nbaPlayRanker_gameplan_notes_v2");
     if (rawNotes) {
@@ -511,7 +553,6 @@ export default function GameplanClient() {
     safeLocalSet("nbaPlayRanker_gameplan_roles_v2", JSON.stringify(roles));
   }, [roles]);
 
-  // Derived weights
   const wDef = useMemo(() => clamp(focus / 100, 0, 1), [focus]);
   const wOff = useMemo(() => Number((1 - wDef).toFixed(2)), [wDef]);
 
@@ -535,8 +576,50 @@ export default function GameplanClient() {
     const upDown =
       margin === 0 ? "Tied" : margin > 0 ? `Up ${margin}` : `Down ${Math.abs(margin)}`;
     const t = prettyTime(timeLeft);
-    return `Q${quarter} • ${t} left • ${upDown}`;
+    return `${prettyPeriodLabel(quarter)} • ${t} left • ${upDown}`;
   }, [quarter, timeLeft, margin]);
+
+  const currentUiContext = useMemo<AdvancedContextPayload>(() => {
+    const needs = dedupeStrings([
+      ctxNeed3 ? "need3" : null,
+      ctxProtectLead ? "safe" : null,
+    ]);
+
+    const specialSituations = dedupeStrings([
+      ctxAfterTimeout ? "after_timeout" : null,
+    ]);
+
+    return {
+      period: quarter,
+      time_remaining: timeLeft,
+      margin,
+      after_timeout: ctxAfterTimeout,
+      late_clock: ctxLateClock,
+      need3: ctxNeed3,
+      protect_lead: ctxProtectLead,
+      end_of_quarter: ctxEndQ,
+      vs_switching: ctxVsSwitching,
+      needs,
+      need: ctxNeed3 ? "need3" : ctxProtectLead ? "safe" : null,
+      defense_style: ctxVsSwitching ? "switch" : null,
+      special_situations: specialSituations,
+      shot_clock: null,
+    };
+  }, [
+    quarter,
+    timeLeft,
+    margin,
+    ctxAfterTimeout,
+    ctxLateClock,
+    ctxNeed3,
+    ctxProtectLead,
+    ctxEndQ,
+    ctxVsSwitching,
+  ]);
+
+  const liveAdvancedContext = useMemo<AdvancedContextPayload>(() => {
+    return mergeAdvancedContext(currentUiContext, parsedContext);
+  }, [currentUiContext, parsedContext]);
 
   function addToPlan(play: NormalizedPlay) {
     setPlan((prev) => {
@@ -564,55 +647,79 @@ export default function GameplanClient() {
     });
   }
 
-  async function runNlpParse() {
+  function applyNlpContextToUi(c?: AdvancedContextPayload | null): BuildContextSnapshot {
+    const nextAdvanced = mergeAdvancedContext(currentUiContext, c ?? {});
+
+    const next: BuildContextSnapshot = {
+      period: clamp(Number(nextAdvanced.period ?? quarter), 1, 5),
+      time_remaining: clamp(Number(nextAdvanced.time_remaining ?? timeLeft), 0, 720),
+      margin: clamp(Number(nextAdvanced.margin ?? margin), -30, 30),
+      after_timeout: Boolean(nextAdvanced.after_timeout ?? ctxAfterTimeout),
+      late_clock: Boolean(nextAdvanced.late_clock ?? ctxLateClock),
+      need3: Boolean(nextAdvanced.need3 ?? ctxNeed3),
+      protect_lead: Boolean(nextAdvanced.protect_lead ?? ctxProtectLead),
+      end_of_quarter: Boolean(nextAdvanced.end_of_quarter ?? ctxEndQ),
+      vs_switching: Boolean(
+        nextAdvanced.vs_switching ??
+          (nextAdvanced.defense_style === "switch" ? true : ctxVsSwitching)
+      ),
+      must_stop: Boolean(nextAdvanced.must_stop),
+      quick2: Boolean(nextAdvanced.quick2),
+      two_for_one: Boolean(nextAdvanced.two_for_one),
+      advanced: nextAdvanced,
+    };
+
+    setQuarter(next.period);
+    setTimeLeft(next.time_remaining);
+    setMargin(next.margin);
+    setCtxAfterTimeout(next.after_timeout);
+    setCtxLateClock(next.late_clock);
+    setCtxNeed3(next.need3);
+    setCtxProtectLead(next.protect_lead);
+    setCtxEndQ(next.end_of_quarter);
+    setCtxVsSwitching(next.vs_switching);
+
+    if (next.must_stop) setFocus(70);
+    if (next.need3 || next.quick2) setFocus(25);
+
+    setParsedContext(nextAdvanced);
+    setParsedContextSummary(
+      typeof nextAdvanced.context_brief === "string" ? nextAdvanced.context_brief : ""
+    );
+
+    return next;
+  }
+
+  async function runNlpParse(): Promise<BuildContextSnapshot | null> {
     if (!nlText.trim()) {
       setNlConfidence(null);
       setNlQuestions([]);
       setNlWarnings([]);
-      return;
+      setParsedContext(null);
+      setParsedContextSummary("");
+      return null;
     }
 
     try {
       setStatusHint("Understanding situation…");
-      const res = await postJson<NlpParseResponse>(`${API_BASE}/nlp/parse`, {
+
+      const res = await parseNlpPrompt({
         text: nlText,
-        defaults: {
-          period: quarter,
-          time_remaining: timeLeft,
-          margin,
-        },
+        defaults: currentUiContext,
       });
 
       setNlConfidence(res.confidence ?? null);
       setNlQuestions(res.clarifying_questions ?? []);
       setNlWarnings(res.warnings ?? []);
 
-      const c = res.context ?? {};
-
-      if (c.period !== undefined && c.period !== null) {
-        setQuarter(clamp(Number(c.period), 1, 4));
-      }
-      if (c.time_remaining !== undefined && c.time_remaining !== null) {
-        setTimeLeft(clamp(Number(c.time_remaining), 0, 720));
-      }
-      if (c.margin !== undefined && c.margin !== null) {
-        setMargin(clamp(Number(c.margin), -30, 30));
-      }
-
-      setCtxAfterTimeout(Boolean(c.after_timeout));
-      setCtxLateClock(Boolean(c.late_clock));
-      setCtxNeed3(Boolean(c.need3));
-      setCtxProtectLead(Boolean(c.protect_lead));
-      setCtxEndQ(Boolean(c.end_of_quarter));
-      setCtxVsSwitching(Boolean(c.vs_switching));
-
-      if (c.must_stop) setFocus(70);
-      if (c.need3 || c.quick2) setFocus(25);
+      const snapshot = applyNlpContextToUi((res.context ?? {}) as AdvancedContextPayload);
 
       setStatusHint("Situation parsed ✅");
       setTimeout(() => setStatusHint(""), 900);
+      return snapshot;
     } catch (e: any) {
       setStatusHint(e?.message || "Couldn’t parse the situation.");
+      return null;
     }
   }
 
@@ -623,13 +730,28 @@ export default function GameplanClient() {
     setLoading(true);
     setStatusHint("");
     setExplainMap({});
+    setExplainOverallSummary("");
+    setExplainContextSummary("");
+    setExplainNotes([]);
+
+    let effectiveContext = currentUiContext;
+    let effectivePeriod = quarter;
+    let effectiveTimeLeft = timeLeft;
+    let effectiveMargin = margin;
 
     try {
       if (nlText.trim()) {
-        await runNlpParse();
+        const parsed = await runNlpParse();
+        if (parsed) {
+          effectiveContext = parsed.advanced;
+          effectivePeriod = parsed.period;
+          effectiveTimeLeft = parsed.time_remaining;
+          effectiveMargin = parsed.margin;
+        }
+      } else {
+        effectiveContext = mergeAdvancedContext(currentUiContext, parsedContext);
       }
 
-      // Baseline recommendations (Dataset1)
       const baseRankRaw = await baselineRank({
         season,
         our,
@@ -645,30 +767,46 @@ export default function GameplanClient() {
       const baseline = baseRank.map((x, i) => normalizePlay(x, i, "baseline"));
       setBaselinePlays(baseline);
 
-      // Smart recommendations (Dataset1 + context)
       let smart: NormalizedPlay[] = [];
-      let smartRaw: any[] = [];
+      let smartRankingsRaw: any[] = [];
+      let smartContextSummary = "";
+      let smartNotes: string[] = [];
+      let smartWarnings: string[] = [];
 
       try {
-        const smartRankRaw = await contextRank({
+        const smartRankRes = await contextRank({
           season,
           our,
           opp,
-          margin,
-          period: quarter,
-          timeRemaining: timeLeft,
+          margin: effectiveMargin,
+          period: effectivePeriod,
+          timeRemaining: effectiveTimeLeft,
           k: clamp(showPlays, 1, 12),
           wOff,
+          wDef,
+          context: effectiveContext,
         });
 
-        smartRaw = Array.isArray(smartRankRaw) ? smartRankRaw : [];
-        smart = smartRaw.map((x, i) => normalizePlay(x, i, "smart"));
+        smartRankingsRaw = Array.isArray(smartRankRes.rankings)
+          ? smartRankRes.rankings.map((x) => x.raw)
+          : [];
+
+        smart = smartRankingsRaw.map((x, i) => normalizePlay(x, i, "smart"));
+        smartContextSummary =
+          typeof (smartRankRes.context as any)?.context_brief === "string"
+            ? (smartRankRes.context as any).context_brief
+            : "";
+        smartNotes = Array.isArray(smartRankRes.notes) ? smartRankRes.notes : [];
+        smartWarnings = Array.isArray(smartRankRes.warnings) ? smartRankRes.warnings : [];
 
         if (latestBuildRef.current !== myBuildId) return;
         setSmartPlays(smart);
       } catch {
         smart = [];
-        smartRaw = [];
+        smartRankingsRaw = [];
+        smartContextSummary = "";
+        smartNotes = [];
+        smartWarnings = [];
         if (latestBuildRef.current !== myBuildId) return;
         setSmartPlays([]);
       }
@@ -677,51 +815,45 @@ export default function GameplanClient() {
         recommendationStyle === "baseline"
           ? baseline
           : smart.length
-          ? smart
-          : baseline;
+            ? smart
+            : baseline;
 
       setSelectedId(nextActive[0]?.id ?? null);
 
-      // NLP explanations (optional)
       try {
-        const mode: "baseline" | "context-ml" =
-          recommendationStyle === "baseline" || !smartRaw.length ? "baseline" : "context-ml";
-
-        const rankings = (mode === "context-ml" ? smartRaw : baseRank).slice(
-          0,
-          clamp(showPlays, 1, 12)
-        );
-
-        const explain = await postJson<NlpExplainResponse>(`${API_BASE}/nlp/explain`, {
-          mode,
-          context: {
-            period: quarter,
-            time_remaining: timeLeft,
-            margin,
-            after_timeout: ctxAfterTimeout,
-            late_clock: ctxLateClock,
-            need3: ctxNeed3,
-            protect_lead: ctxProtectLead,
-            end_of_quarter: ctxEndQ,
-            vs_switching: ctxVsSwitching,
-          },
-          rankings,
-          top_n: 6,
+        const explain = await explainNlpRecommendations({
+          context: effectiveContext as Record<string, any>,
+          rankedContext:
+            recommendationStyle === "baseline" || !smartRankingsRaw.length
+              ? baseRank.map((x) => x.raw)
+              : smartRankingsRaw,
+          rankedBaseline: baseRank.map((x) => x.raw),
+          topK: clamp(showPlays, 1, 12),
+          parserWarnings: [...nlWarnings, ...smartWarnings],
+          clarifyingQuestions: nlQuestions,
         });
 
         if (latestBuildRef.current !== myBuildId) return;
 
+        const items = Array.isArray(explain.plays) ? explain.plays : [];
+
         const map: Record<string, ExplainItem> = {};
-        for (const item of explain.explanation ?? []) {
-          const key = String(item.play_type ?? "");
+        for (const item of items) {
+          const key = String(item.play_name ?? item.play_type ?? "");
           if (key) map[key] = item;
         }
+
         setExplainMap(map);
+        setExplainOverallSummary(explain.overall_summary ?? "");
+        setExplainContextSummary(
+          explain.context_summary || smartContextSummary || parsedContextSummary || ""
+        );
+        setExplainNotes(Array.isArray(explain.notes) ? explain.notes : smartNotes);
       } catch {
-        // optional
+        setExplainContextSummary(smartContextSummary || parsedContextSummary || "");
+        setExplainNotes(smartNotes);
       }
 
-      // Shot plan ranking (Dataset2) optional
       setShotLoading(true);
       setShotError(null);
       try {
@@ -765,7 +897,6 @@ export default function GameplanClient() {
     }
   }
 
-  // Fetch play zones visualization when selection changes.
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -800,7 +931,6 @@ export default function GameplanClient() {
     };
   }, [selectedPlay?.playType, season, our, opp, wOff]);
 
-  // Fetch shot heatmap when tab is active.
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -839,10 +969,12 @@ export default function GameplanClient() {
   const shotPlanBullets = useMemo(() => {
     const bullets: string[] = [];
 
-    if (ctxNeed3) {
+    if (liveAdvancedContext.need3) {
       bullets.push("Primary: create an open 3 (corner or slot) off a paint touch.");
-    } else if (ctxProtectLead) {
+    } else if (liveAdvancedContext.protect_lead) {
       bullets.push("Primary: safe, high-quality shot (rim or catch-and-shoot). No risky passes.");
+    } else if (liveAdvancedContext.quick2) {
+      bullets.push("Primary: get a fast, efficient 2 before the defense fully loads.");
     } else {
       bullets.push("Primary: get a clean rim touch or a catch-and-shoot 3.");
     }
@@ -850,15 +982,25 @@ export default function GameplanClient() {
     if (selectedShotType) bullets.push(`Look for: ${selectedShotType}.`);
     if (selectedZone) bullets.push(`Target zone: ${selectedZone}.`);
 
-    if (ctxVsSwitching) bullets.push("Vs switch: slip early, then attack the mismatch with pace.");
-    if (ctxLateClock) bullets.push("Late clock: simplify — 1 action to the rim, 1 kick-out option.");
+    if (liveAdvancedContext.vs_switching) {
+      bullets.push("Vs switch: slip early, then attack the mismatch with pace.");
+    }
+    if (liveAdvancedContext.late_clock) {
+      bullets.push("Late clock: simplify — 1 action to the rim, 1 kick-out option.");
+    }
+    if (liveAdvancedContext.after_timeout) {
+      bullets.push("After timeout: use your cleanest first action and make the first read decisive.");
+    }
+    if (liveAdvancedContext.two_for_one) {
+      bullets.push("2-for-1: shot timing matters — do not use the whole clock.");
+    }
 
     if (!selectedShotType && !selectedZone) {
       bullets.push("(Shot plan will auto-fill when the Dataset2 endpoint responds.)");
     }
 
     return bullets;
-  }, [ctxNeed3, ctxProtectLead, ctxVsSwitching, ctxLateClock, selectedShotType, selectedZone]);
+  }, [liveAdvancedContext, selectedShotType, selectedZone]);
 
   const shotTypeOptions = useMemo(() => {
     const opts = topShotTypes.map((x) => String(x?.SHOT_TYPE ?? "")).filter(Boolean);
@@ -875,9 +1017,10 @@ export default function GameplanClient() {
     return item ?? null;
   };
 
+  const parsedTags = useMemo(() => contextTagSummary(parsedContext), [parsedContext]);
+
   return (
     <div className={styles.page}>
-      {/* HERO / TOP BAR */}
       <header className={styles.hero}>
         <div className={styles.heroTop}>
           <div>
@@ -908,12 +1051,11 @@ export default function GameplanClient() {
           </div>
         </div>
 
-        {/* Natural language input */}
         <div className={styles.panel} style={{ marginTop: 14 }}>
           <div className={styles.panelHeader}>
             <h2 className={styles.h2}>Describe the situation</h2>
             <span className={styles.smallMuted}>
-              Type it like a coach: score, time, any constraints.
+              Type it like a coach: score, time, coverage, constraints, urgency.
             </span>
           </div>
 
@@ -921,7 +1063,7 @@ export default function GameplanClient() {
             className={styles.textarea}
             value={nlText}
             onChange={(e) => setNlText(e.target.value)}
-            placeholder="Example: 'Tied, 0:38 left in Q4. Need a good look. They are switching.'"
+            placeholder="Example: 'Down 3 with 0:28 left in Q4. Need a quick 2 or a clean 3. They are switching. After timeout.'"
           />
 
           <div className={styles.cardBtns}>
@@ -936,6 +1078,8 @@ export default function GameplanClient() {
                 setNlConfidence(null);
                 setNlQuestions([]);
                 setNlWarnings([]);
+                setParsedContext(null);
+                setParsedContextSummary("");
                 setStatusHint("Cleared.");
                 setTimeout(() => setStatusHint(""), 800);
               }}
@@ -951,6 +1095,19 @@ export default function GameplanClient() {
 
             {statusHint ? <span className={styles.statusHint}>{statusHint}</span> : null}
           </div>
+
+          {parsedContextSummary ? (
+            <div className={styles.warn}>
+              <div className={styles.warnSmall}>
+                <b>Parsed context:</b> {parsedContextSummary}
+              </div>
+              {parsedTags.length ? (
+                <div className={styles.warnSmall} style={{ marginTop: 6 }}>
+                  {parsedTags.join(" • ")}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
 
           {nlWarnings.length ? (
             <div className={styles.warn}>
@@ -971,7 +1128,6 @@ export default function GameplanClient() {
           ) : null}
         </div>
 
-        {/* Situation controls */}
         <div className={styles.situationBar}>
           <div className={styles.sitBlock}>
             <div className={styles.sitLabel}>Season</div>
@@ -1059,7 +1215,6 @@ export default function GameplanClient() {
           </div>
         </div>
 
-        {/* Context row */}
         <div className={styles.contextRow}>
           <div className={styles.contextLeft}>
             <div className={styles.contextTitle}>Context</div>
@@ -1076,14 +1231,14 @@ export default function GameplanClient() {
           <div className={styles.contextRight}>
             <div className={styles.miniInputs}>
               <div className={styles.miniBlock}>
-                <div className={styles.sitLabel}>Quarter</div>
+                <div className={styles.sitLabel}>Period</div>
                 <input
                   className={styles.input}
                   type="number"
                   min={1}
-                  max={4}
+                  max={5}
                   value={quarter}
-                  onChange={(e) => setQuarter(clamp(Number(e.target.value || 4), 1, 4))}
+                  onChange={(e) => setQuarter(clamp(Number(e.target.value || 4), 1, 5))}
                 />
               </div>
 
@@ -1126,15 +1281,26 @@ export default function GameplanClient() {
         ) : null}
       </header>
 
-      {/* MAIN GRID */}
       <div className={styles.grid}>
-        {/* LEFT: Quick Call + Plan */}
         <aside className={styles.left}>
           <section className={styles.panel}>
             <div className={styles.panelHeader}>
               <h2 className={styles.h2}>Quick Call</h2>
               <span className={styles.smallMuted}>The “what to run next” board.</span>
             </div>
+
+            {explainOverallSummary ? (
+              <div className={styles.warn} style={{ marginBottom: 12 }}>
+                <div className={styles.warnSmall}>
+                  <b>Gameplan summary:</b> {explainOverallSummary}
+                </div>
+                {explainContextSummary ? (
+                  <div className={styles.warnSmall} style={{ marginTop: 6 }}>
+                    <b>Context:</b> {explainContextSummary}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
 
             {!top3.length ? (
               <div className={styles.empty}>
@@ -1153,8 +1319,8 @@ export default function GameplanClient() {
                     coachExplain?.evidence?.length
                       ? coachExplain.evidence
                       : p.why.length
-                      ? p.why
-                      : ["Strong fit for your matchup + focus settings."];
+                        ? p.why
+                        : ["Strong fit for your matchup + focus settings."];
 
                   return (
                     <div
@@ -1255,6 +1421,16 @@ export default function GameplanClient() {
                 })}
               </div>
             )}
+
+            {explainNotes.length ? (
+              <div className={styles.warn} style={{ marginTop: 12 }}>
+                {explainNotes.slice(0, 3).map((note, idx) => (
+                  <div key={idx} className={styles.warnSmall}>
+                    {note}
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </section>
 
           <section className={styles.panel}>
@@ -1313,7 +1489,6 @@ export default function GameplanClient() {
           </section>
         </aside>
 
-        {/* RIGHT: Details */}
         <main className={styles.right}>
           <section className={styles.panel}>
             <div className={styles.panelHeader}>
@@ -1323,7 +1498,7 @@ export default function GameplanClient() {
 
             <div className={styles.shotPlan}>
               <div className={styles.shotHeadline}>
-                {ctxNeed3 ? "We want an open 3…" : "We want a high-quality shot…"}
+                {liveAdvancedContext.need3 ? "We want an open 3…" : "We want a high-quality shot…"}
               </div>
 
               <ul className={styles.bullets}>
@@ -1437,7 +1612,6 @@ export default function GameplanClient() {
                     <div className={styles.warnSmall}>{playVizError}</div>
                   ) : playVizBase64 ? (
                     <>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         className={styles.vizImg}
                         src={`data:image/png;base64,${playVizBase64}`}
@@ -1464,7 +1638,6 @@ export default function GameplanClient() {
                   <div className={styles.warnSmall}>{shotVizError}</div>
                 ) : shotVizBase64 ? (
                   <>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img className={styles.vizImg} src={`data:image/png;base64,${shotVizBase64}`} alt="Shot heatmap" />
                     {shotVizCaption ? (
                       <div className={styles.vizCaption}>{shotVizCaption}</div>
@@ -1577,9 +1750,9 @@ export default function GameplanClient() {
                       </span>
                     </div>
                     <div className={styles.detailRow}>
-                      <span className={styles.detailKey}>Data note</span>
+                      <span className={styles.detailKey}>Context engine</span>
                       <span className={styles.detailVal}>
-                        We keep the UI coach-friendly — deep stats stay in the Data Explorer.
+                        Full NLP context is preserved through ranking and explanation.
                       </span>
                     </div>
                   </div>

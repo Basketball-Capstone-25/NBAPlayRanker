@@ -1,25 +1,26 @@
-# backend/app.py
-#
-# Basketball Strategy backend (FastAPI)
-#
-# This file is intentionally written to be *defense-friendly*:
-# - Clear separation of concerns (data access, baseline, ML, context adjustments)
-# - API endpoints that map 1:1 to the pages in the frontend
-# - Caches expensive artifacts in memory at startup (important for multi-user)
-#
-# Key committee fixes addressed here:
-# Infrastructure for AI models + multi-user: model/data loaded once (startup cache)
-# “Use cases not demonstrated based on AI models”: explicit AI endpoint (/rank-plays/context-ml)
-# “Pipeline cleaning raw data not demonstrated”: /meta/pipeline describes ETL/aggregation steps
-# “Default model used without checking fit”: /metrics/baseline-vs-ml shows CV metrics + optional t-test
-# “Need raw data preview + export”: /data/team-playtypes and /data/team-playtypes.csv
-
 from __future__ import annotations
+
+"""
+backend/app.py
+
+Basketball Strategy backend (FastAPI)
+
+This version keeps the existing endpoints working while upgrading the
+context-ML flow so Gameplan/NLP can send richer basketball context.
+
+Key NLP/Gameplan upgrades in this file:
+- keeps the existing GET /rank-plays/context-ml endpoint for backwards compatibility
+- adds POST /rank-plays/context-ml for richer NLP payloads
+- accepts advanced parsed context fields from /nlp/parse
+- pushes all ranking logic through backend/ml_context_recommender.py
+  so NLP affects the ranking itself, not only explanation text
+- keeps router loading fault-tolerant so NLP/PBP imports cannot break the whole API
+"""
 
 import logging
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Sequence
 
 # ---------------------------------------------------------------------
 # IMPORTANT: make backend/ imports work no matter where uvicorn is run from
@@ -39,16 +40,22 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+from pydantic import BaseModel, Field, model_validator
 
 from baseline_recommender import BaselineRecommender, rank_playtypes_baseline
-from shot_baseline_recommender import ShotBaselineRecommender
-from shot_etl import CLEAN_PARQUET
+from export_pdf import create_pdf_router
+from ml_context_recommender import (
+    rank_ml_with_context,
+    recommender_health,
+    sanitize_context_for_ranking,
+    validate_context_guardrails,
+)
 from ml_models import paired_t_test_rmse, run_cv_evaluation
 from ml_stat_analysis import compute_ml_analysis
+from shot_baseline_recommender import ShotBaselineRecommender
+from shot_etl import CLEAN_PARQUET
 from shot_ml_models import run_shot_model_cv
 from shot_ml_stat_analysis import compute_shot_ml_analysis
-
-from export_pdf import create_pdf_router
 
 # IMPORTANT:
 # Do NOT import viz_sportypy here at module load time.
@@ -89,26 +96,7 @@ except Exception as e:
     )
 
 # ---------------------------------------------------------------------
-# IMPORTANT ADDITION:
-# Your frontend is calling:
-#   /pbp/shots/preview
-#   /pbp/shots.csv
-#
-# Your logs show /pbp/meta/options is working (200), but /pbp/shots/preview was 404.
-# That means your current /pbp router does NOT define the shots explorer endpoints.
-#
-# Fix (safe + non-breaking):
-# - We optionally mount a SECOND router that *only* adds the missing shots endpoints.
-# - If you haven't created backend/pbp_shots_endpoints.py yet, this block is a no-op.
-#
-# Create this file (recommended):
-#   backend/pbp_shots_endpoints.py
-# with:
-#   router = APIRouter(prefix="/pbp", tags=["pbp"])
-#   @router.get("/shots/preview") ...
-#   @router.get("/shots.csv") ...
-#
-# This keeps Dataset1 stable and avoids changing your existing pbp_endpoints.
+# OPTIONAL shots explorer router.
 # ---------------------------------------------------------------------
 try:
     from pbp_shots_endpoints import router as pbp_shots_router  # type: ignore
@@ -124,7 +112,6 @@ except Exception as e:
 
 # ---------------------------------------------------------------------
 # IMPORTANT: NLP router should NOT be able to break startup either.
-# If NLP modules have an import error, core playtype + shot endpoints must still work.
 # ---------------------------------------------------------------------
 try:
     from nlp_endpoints import router as nlp_router  # type: ignore
@@ -137,7 +124,6 @@ except Exception as e:
         "Core endpoints will still work.",
         e,
     )
-
 
 # Allow local dev + keep permissive for defense demo environments.
 origins = [
@@ -243,29 +229,399 @@ def _get_shots_clean_df() -> pd.DataFrame:
     return SHOT_CLEAN_DF
 
 
-def _total_seconds_remaining(period: int, time_remaining_period_sec: float) -> float:
-    """
-    Convert (period, seconds remaining in that period) into total seconds remaining in regulation.
-    OT is treated as 0 remaining to represent a 'very late' situation.
-    """
-    if period >= 5:
-        return 0.0
-    total_reg = 4 * 12 * 60  # 2880
-    elapsed = (period - 1) * 12 * 60 + (12 * 60 - time_remaining_period_sec)
-    return float(max(0.0, total_reg - elapsed))
+def _safe_float(x: Any) -> Optional[float]:
+    try:
+        v = float(x)
+        if np.isnan(v) or np.isinf(v):
+            return None
+        return float(v)
+    except Exception:
+        return None
 
 
-def _clamp(x: float, lo: float, hi: float) -> float:
-    return float(max(lo, min(hi, x)))
+def _safe_str(x: Any) -> Optional[str]:
+    if isinstance(x, str):
+        value = x.strip()
+        return value if value else None
+    return None
 
 
-# Small hand-crafted “play style” weights for context. (Explainable + stable.)
-QUICK_WEIGHTS = {
-    "Spotup": 1.0,
-    "OffScreen": 0.8,
-    "Cut": 0.6,
-    "Isolation": 0.4,
-}
+def _as_list_str(x: Any) -> List[str]:
+    out: List[str] = []
+    seen = set()
+
+    if isinstance(x, list):
+        items = x
+    elif isinstance(x, tuple):
+        items = list(x)
+    else:
+        return out
+
+    for item in items:
+        if not isinstance(item, str):
+            continue
+        value = item.strip()
+        if not value or value in seen:
+            continue
+        out.append(value)
+        seen.add(value)
+
+    return out
+
+
+def _truthy(x: Any) -> bool:
+    if isinstance(x, bool):
+        return x
+    if isinstance(x, (int, float)):
+        return bool(x)
+    if isinstance(x, str):
+        return x.strip().lower() in {"1", "true", "yes", "y", "on"}
+    return False
+
+
+def _dedupe_keep_order(items: Sequence[str]) -> List[str]:
+    out: List[str] = []
+    seen = set()
+    for item in items:
+        if not isinstance(item, str):
+            continue
+        value = item.strip()
+        if not value or value in seen:
+            continue
+        out.append(value)
+        seen.add(value)
+    return out
+
+
+# ---------------------------------------------------------------------
+# NLP-aware context request model + normalization helpers
+# ---------------------------------------------------------------------
+
+
+class ContextMLRequest(BaseModel):
+    season: str
+    our: str
+    opp: str
+
+    # Legacy flat fields
+    margin: Optional[float] = None
+    period: Optional[int] = Field(default=None, ge=1, le=5)
+    time_remaining: Optional[float] = Field(default=None, ge=0, le=720)
+    k: int = Field(default=5, ge=1, le=10)
+    w_off: float = Field(default=0.7, ge=0, le=1)
+
+    shot_clock: Optional[float] = Field(default=None, ge=0, le=24)
+    need: Optional[str] = None
+    needs: List[str] = Field(default_factory=list)
+    defense_style: Optional[str] = None
+    pace: Optional[str] = None
+
+    after_timeout: bool = False
+    slob: bool = False
+    blob: bool = False
+    advance_ball: bool = False
+    late_clock: bool = False
+    need3: bool = False
+    protect_lead: bool = False
+    end_of_quarter: bool = False
+    vs_switching: bool = False
+    must_stop: bool = False
+    quick2: bool = False
+    two_for_one: bool = False
+    hold_for_last: bool = False
+    foul_game: bool = False
+    no_three: bool = False
+    must_score: bool = False
+    safe: bool = False
+
+    special_situations: List[str] = Field(default_factory=list)
+    preferred_play_families: List[str] = Field(default_factory=list)
+    intent_tags: List[str] = Field(default_factory=list)
+    offense_bias: Optional[float] = Field(default=None, ge=0, le=1)
+    defense_bias: Optional[float] = Field(default=None, ge=0, le=1)
+
+    # New richer nested NLP payload from Gameplan / /nlp/parse
+    context: Optional[Dict[str, Any]] = None
+
+    @model_validator(mode="after")
+    def merge_nested_context(self) -> "ContextMLRequest":
+        ctx = self.context if isinstance(self.context, dict) else {}
+        if not ctx:
+            return self
+
+        if self.margin is None:
+            parsed = _safe_float(ctx.get("margin"))
+            if parsed is not None:
+                self.margin = parsed
+
+        if self.period is None:
+            parsed_period = _safe_float(ctx.get("period"))
+            if parsed_period is not None:
+                rounded = int(round(parsed_period))
+                if 1 <= rounded <= 5:
+                    self.period = rounded
+
+        if self.time_remaining is None:
+            parsed_time = _safe_float(ctx.get("time_remaining"))
+            if parsed_time is not None:
+                self.time_remaining = parsed_time
+
+        if self.shot_clock is None:
+            parsed_shot_clock = _safe_float(ctx.get("shot_clock"))
+            if parsed_shot_clock is not None:
+                self.shot_clock = parsed_shot_clock
+
+        if self.need is None:
+            self.need = _safe_str(ctx.get("need"))
+
+        if not self.needs:
+            self.needs = _as_list_str(ctx.get("needs"))
+
+        if self.defense_style is None:
+            self.defense_style = _safe_str(ctx.get("defense_style"))
+
+        if self.pace is None:
+            self.pace = _safe_str(ctx.get("pace"))
+
+        if not self.special_situations:
+            self.special_situations = _as_list_str(ctx.get("special_situations"))
+
+        if not self.preferred_play_families:
+            self.preferred_play_families = _as_list_str(ctx.get("preferred_play_families"))
+
+        if not self.intent_tags:
+            self.intent_tags = _as_list_str(ctx.get("intent_tags"))
+
+        if self.offense_bias is None:
+            parsed_off = _safe_float(ctx.get("offense_bias"))
+            if parsed_off is not None:
+                self.offense_bias = parsed_off
+
+        if self.defense_bias is None:
+            parsed_def = _safe_float(ctx.get("defense_bias"))
+            if parsed_def is not None:
+                self.defense_bias = parsed_def
+
+        bool_keys = [
+            "after_timeout",
+            "slob",
+            "blob",
+            "advance_ball",
+            "late_clock",
+            "need3",
+            "protect_lead",
+            "end_of_quarter",
+            "vs_switching",
+            "must_stop",
+            "quick2",
+            "two_for_one",
+            "hold_for_last",
+            "foul_game",
+            "no_three",
+            "must_score",
+            "safe",
+        ]
+        for key in bool_keys:
+            current_value = bool(getattr(self, key))
+            nested_value = _truthy(ctx.get(key))
+            setattr(self, key, current_value or nested_value)
+
+        return self
+
+
+def _merge_request_context(req: ContextMLRequest) -> Dict[str, Any]:
+    nested = dict(req.context or {})
+
+    if req.margin is not None:
+        nested["margin"] = req.margin
+    if req.period is not None:
+        nested["period"] = req.period
+    if req.time_remaining is not None:
+        nested["time_remaining"] = req.time_remaining
+    if req.shot_clock is not None:
+        nested["shot_clock"] = req.shot_clock
+
+    if req.need:
+        nested["need"] = req.need
+
+    merged_needs = _dedupe_keep_order(
+        [
+            *_as_list_str(nested.get("needs")),
+            *(req.needs or []),
+            *([req.need] if req.need else []),
+        ]
+    )
+    if merged_needs:
+        nested["needs"] = merged_needs
+
+    if req.defense_style:
+        nested["defense_style"] = req.defense_style
+    if req.pace:
+        nested["pace"] = req.pace
+
+    merged_special = _dedupe_keep_order(
+        [
+            *_as_list_str(nested.get("special_situations")),
+            *(req.special_situations or []),
+            *(["after_timeout"] if req.after_timeout else []),
+            *(["slob"] if req.slob else []),
+            *(["blob"] if req.blob else []),
+            *(["advance_ball"] if req.advance_ball else []),
+        ]
+    )
+    if merged_special:
+        nested["special_situations"] = merged_special
+
+    merged_families = _dedupe_keep_order(
+        [
+            *_as_list_str(nested.get("preferred_play_families")),
+            *(req.preferred_play_families or []),
+        ]
+    )
+    if merged_families:
+        nested["preferred_play_families"] = merged_families
+
+    merged_tags = _dedupe_keep_order(
+        [
+            *_as_list_str(nested.get("intent_tags")),
+            *(req.intent_tags or []),
+        ]
+    )
+    if merged_tags:
+        nested["intent_tags"] = merged_tags
+
+    if req.offense_bias is not None:
+        nested["offense_bias"] = req.offense_bias
+    if req.defense_bias is not None:
+        nested["defense_bias"] = req.defense_bias
+
+    bool_keys = [
+        "after_timeout",
+        "slob",
+        "blob",
+        "advance_ball",
+        "late_clock",
+        "need3",
+        "protect_lead",
+        "end_of_quarter",
+        "vs_switching",
+        "must_stop",
+        "quick2",
+        "two_for_one",
+        "hold_for_last",
+        "foul_game",
+        "no_three",
+        "must_score",
+        "safe",
+    ]
+    for key in bool_keys:
+        nested[key] = bool(getattr(req, key)) or _truthy(nested.get(key))
+
+    return nested
+
+
+def _serialize_context_request(req: ContextMLRequest, applied_context: Dict[str, Any]) -> Dict[str, Any]:
+    payload = req.model_dump()
+    payload["w_def"] = float(1.0 - float(req.w_off))
+    payload["applied_context"] = applied_context
+    return payload
+
+
+def _rank_context_ml_response(req: ContextMLRequest) -> Dict[str, Any]:
+    _require_season(req.season)
+    _require_team(req.our, "our")
+    _require_team(req.opp, "opponent")
+    if req.our == req.opp:
+        raise HTTPException(status_code=400, detail="Our team and opponent must be different.")
+
+    if ML_PRED_DF is None or ML_PRED_DF.empty:
+        raise HTTPException(
+            status_code=400,
+            detail="ML predictions not found. Run backend/ml_models.py to generate data/ml_offense_ppp_predictions.csv",
+        )
+
+    merged_context = _merge_request_context(req)
+    applied_context = sanitize_context_for_ranking(
+        merged_context,
+        margin=req.margin,
+        period=req.period,
+        time_remaining=req.time_remaining,
+    )
+
+    try:
+        ranked_df = rank_ml_with_context(
+            season=req.season,
+            our_team=req.our,
+            opp_team=req.opp,
+            margin=applied_context["margin"],
+            period=applied_context["period"],
+            time_remaining_period_sec=applied_context["time_remaining"],
+            k=req.k,
+            w_off=float(req.w_off),
+            w_def=float(1.0 - float(req.w_off)),
+            context=applied_context,
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Context-ML ranking failed: {e}")
+
+    out_cols = [
+        "PLAY_TYPE",
+        "PLAY_FAMILY",
+        "PPP_CONTEXT",
+        "PPP_ML_BLEND",
+        "PPP_BASELINE",
+        "DELTA_VS_BASELINE",
+        "CONTEXT_LABEL",
+        "RATIONALE",
+        "CONTEXT_ADJ",
+        "NLP_CONTEXT_ADJ",
+        "LEGACY_CONTEXT_ADJ",
+        "NEED_ADJ",
+        "DEFENSE_STYLE_ADJ",
+        "PACE_ADJ",
+        "SPECIAL_ADJ",
+        "FAMILY_PREF_ADJ",
+        "LATE_CLOCK_ADJ",
+        "BALL_SECURITY_PENALTY",
+        "EFFECTIVE_W_OFF",
+        "EFFECTIVE_W_DEF",
+        "LATE_GAME_FACTOR",
+        "TRAILING_FACTOR",
+        "LEADING_FACTOR",
+        "CONTEXT_DEFAULTS_USED",
+        "CONTEXT_GUARDRAILS",
+        "CONTEXT_PARSE_STATUS",
+        "CONTEXT_VALIDATION_OK",
+        "RATIONALE_MODE",
+    ]
+    out_cols = [c for c in out_cols if c in ranked_df.columns]
+    rankings = _df_to_records(ranked_df[out_cols])
+
+    payload = _serialize_context_request(req, applied_context)
+
+    return jsonable_encoder(
+        {
+            "season": req.season,
+            "our_team": req.our,
+            "opp_team": req.opp,
+            "k": int(req.k),
+            "margin": float(applied_context["margin"]),
+            "period": int(applied_context["period"]),
+            "time_remaining_period_sec": float(applied_context["time_remaining"]),
+            "w_off": float(req.w_off),
+            "w_def": float(1.0 - float(req.w_off)),
+            "context_payload": payload,
+            "applied_context": applied_context,
+            "rankings": rankings,
+        }
+    )
+
 
 # ---------------------------------------------------------------------
 # Health
@@ -275,6 +631,17 @@ QUICK_WEIGHTS = {
 @app.get("/health")
 def health() -> Dict[str, str]:
     return {"status": "ok"}
+
+
+@app.get("/health/context-ml")
+def context_ml_health() -> Dict[str, Any]:
+    return jsonable_encoder(
+        {
+            "status": "ok",
+            "recommender": recommender_health(),
+            "guardrail_validation": validate_context_guardrails(),
+        }
+    )
 
 
 # ---------------------------------------------------------------------
@@ -300,11 +667,6 @@ def meta_options() -> Dict[str, Any]:
 
 @app.get("/meta/pipeline")
 def pipeline_info() -> Dict[str, Any]:
-    """
-    A plain-English explanation of the data pipeline.
-    This is used on the Model Performance page to satisfy the feedback
-    about missing cleaning/processing steps.
-    """
     return {
         "dataSource": "Synergy play-type snapshot (player rows) aggregated into team-level play-type tables (offense/defense).",
         "cleaning_and_aggregation": [
@@ -317,7 +679,8 @@ def pipeline_info() -> Dict[str, Any]:
         "modeling": [
             "Baseline model: shrink team offense/defense toward league baselines; combine into PPP_PRED.",
             "ML model: RandomForest predicts offense PPP using team-level play-type features (offline CV).",
-            "AI use case: ML-based PPP blended with opponent defense, then adjusted using small, transparent context bonuses/penalties.",
+            "AI use case: ML-based PPP blended with opponent defense, then adjusted using score/time context.",
+            "Advanced NLP context: parse-derived fields (need, defense style, shot clock, ATO, preferred play families) now flow into backend/ml_context_recommender.py so they affect ranking, not only explanation text.",
         ],
         "etl_reference": "See backend/data/etl/build_synergy_dataset.R for the dataset build logic (if applicable in your repo).",
     }
@@ -325,9 +688,6 @@ def pipeline_info() -> Dict[str, Any]:
 
 @app.get("/meta/baseline-formula")
 def baseline_formula() -> Dict[str, Any]:
-    """
-    Baseline formula explanation (so the committee can defend/understand it).
-    """
     return {
         "inputs": ["PPP_OFF (team offense)", "PPP_DEF (opponent defense allowed)", "league baselines", "reliability weights"],
         "shrinkage": "PPP_SHRUNK = REL * PPP_TEAM + (1-REL) * PPP_LEAGUE",
@@ -351,10 +711,6 @@ def team_playtypes(
     min_poss: float = Query(0, ge=0, description="Minimum possessions (optional)."),
     limit: int = Query(200, ge=1, le=2000, description="Rows to return (preview limit)."),
 ) -> Dict[str, Any]:
-    """
-    Returns a preview of the aggregated dataset. NO predictions.
-    This is intentionally 'raw' and exportable for analysts.
-    """
     _require_season(season)
     df = rec.team_df.copy()
 
@@ -411,7 +767,6 @@ def team_playtypes_csv(
     play_type: Optional[str] = Query(None),
     min_poss: float = Query(0, ge=0),
 ) -> StreamingResponse:
-    """CSV export for the Data Explorer table."""
     _require_season(season)
     df = rec.team_df.copy()
     df = df[df["SEASON"] == season]
@@ -457,7 +812,6 @@ def rank_baseline(
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.7, ge=0, le=1),
 ) -> Dict[str, Any]:
-    """Baseline play-type ranking (transparent)."""
     _require_season(season)
     _require_team(our, "our")
     _require_team(opp, "opponent")
@@ -501,7 +855,6 @@ def rank_baseline_csv(
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.7, ge=0, le=1),
 ) -> StreamingResponse:
-    """CSV download for baseline rankings."""
     w_def = float(1.0 - w_off)
     try:
         df = rank_playtypes_baseline(
@@ -532,7 +885,7 @@ def rank_baseline_csv(
 
 
 # ---------------------------------------------------------------------
-# AI endpoint: ML + context
+# AI endpoint: ML + context (GET kept for backwards compatibility)
 # ---------------------------------------------------------------------
 
 
@@ -541,167 +894,36 @@ def rank_context_ml(
     season: str = Query(...),
     our: str = Query(...),
     opp: str = Query(...),
-    margin: float = Query(..., description="Our score minus opponent score."),
-    period: int = Query(..., ge=1, le=5),
-    time_remaining: float = Query(..., ge=0, le=720),
+    margin: Optional[float] = Query(None, description="Our score minus opponent score."),
+    period: Optional[int] = Query(None, ge=1, le=5),
+    time_remaining: Optional[float] = Query(None, ge=0, le=720),
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.7, ge=0, le=1),
+    shot_clock: Optional[float] = Query(None, ge=0, le=24),
+    need: Optional[str] = Query(None),
+    defense_style: Optional[str] = Query(None),
+    pace: Optional[str] = Query(None),
 ) -> Dict[str, Any]:
-    """
-    AI use case:
-      - ML predicts our offense PPP for each play type (offline-trained RandomForest).
-      - Opponent defense is shrunk toward league to avoid small-sample noise.
-      - Blend offense + defense into PPP_ML_BLEND.
-      - Apply small, transparent adjustments from game context (score/time).
-    """
-    _require_season(season)
-    _require_team(our, "our")
-    _require_team(opp, "opponent")
-    if our == opp:
-        raise HTTPException(status_code=400, detail="Our team and opponent must be different.")
-
-    if ML_PRED_DF is None or ML_PRED_DF.empty:
-        raise HTTPException(
-            status_code=400,
-            detail="ML predictions not found. Run backend/ml_models.py to generate data/ml_offense_ppp_predictions.csv",
-        )
-
-    w_def = float(1.0 - w_off)
-
-    team_df = rec.team_df
-    league_df = rec.league_df
-
-    off = team_df.query("SEASON == @season and TEAM_ABBREVIATION == @our and SIDE == 'offense'").copy()
-    deff = team_df.query("SEASON == @season and TEAM_ABBREVIATION == @opp and SIDE == 'defense'").copy()
-
-    if off.empty or deff.empty:
-        raise HTTPException(status_code=400, detail="No offense/defense data for this matchup/season.")
-
-    ml_slice = ML_PRED_DF[ML_PRED_DF["SEASON"] == season].copy()
-    off = off.merge(
-        ml_slice[["SEASON", "TEAM_ABBREVIATION", "PLAY_TYPE", "PPP_ML"]],
-        on=["SEASON", "TEAM_ABBREVIATION", "PLAY_TYPE"],
-        how="left",
+    req = ContextMLRequest(
+        season=season,
+        our=our,
+        opp=opp,
+        margin=margin,
+        period=period,
+        time_remaining=time_remaining,
+        k=k,
+        w_off=w_off,
+        shot_clock=shot_clock,
+        need=need,
+        defense_style=defense_style,
+        pace=pace,
     )
+    return _rank_context_ml_response(req)
 
-    league_off = league_df.query("SEASON == @season and SIDE == 'offense'")[["PLAY_TYPE", "PPP"]].rename(
-        columns={"PPP": "PPP_LEAGUE_OFF"}
-    )
-    league_def = league_df.query("SEASON == @season and SIDE == 'defense'")[["PLAY_TYPE", "PPP"]].rename(
-        columns={"PPP": "PPP_LEAGUE_DEF"}
-    )
 
-    merged = off.merge(
-        deff[
-            ["PLAY_TYPE", "PPP", "POSS", "POSS_PCT", "RELIABILITY_WEIGHT", "EFG_PCT", "TOV_POSS_PCT"]
-        ].copy(),
-        on="PLAY_TYPE",
-        suffixes=("_OFF", "_DEF"),
-    )
-    merged = merged.merge(league_off, on="PLAY_TYPE", how="left")
-    merged = merged.merge(league_def, on="PLAY_TYPE", how="left")
-
-    rel_off = merged["RELIABILITY_WEIGHT_OFF"]
-    rel_def = merged["RELIABILITY_WEIGHT_DEF"]
-
-    merged["PPP_OFF_SHRUNK"] = rel_off * merged["PPP_OFF"] + (1 - rel_off) * merged["PPP_LEAGUE_OFF"]
-    merged["PPP_DEF_SHRUNK"] = rel_def * merged["PPP_DEF"] + (1 - rel_def) * merged["PPP_LEAGUE_DEF"]
-
-    merged["PPP_BASELINE"] = (
-        float(w_off) * merged["PPP_OFF_SHRUNK"]
-        + float(w_def) * (2 * merged["PPP_LEAGUE_OFF"] - merged["PPP_DEF_SHRUNK"])
-    )
-
-    merged = merged[merged["PPP_ML"].notna()].copy()
-    if merged.empty:
-        raise HTTPException(status_code=400, detail="No ML predictions available for this matchup.")
-
-    merged["PPP_ML_BLEND"] = (
-        float(w_off) * merged["PPP_ML"]
-        + float(w_def) * (2 * merged["PPP_LEAGUE_OFF"] - merged["PPP_DEF_SHRUNK"])
-    )
-
-    T_left = _total_seconds_remaining(period, time_remaining)
-    late_window = 180.0
-    late_game_factor = _clamp((late_window - T_left) / late_window, 0.0, 1.0)
-
-    trailing_factor = _clamp((-margin) / 10.0, 0.0, 1.0) if margin < 0 else 0.0
-    leading_factor = _clamp((margin) / 10.0, 0.0, 1.0) if margin > 0 else 0.0
-
-    avg_efg = float(merged["EFG_PCT_OFF"].mean()) if "EFG_PCT_OFF" in merged.columns else 0.0
-    avg_tov = float(merged["TOV_POSS_PCT_OFF"].mean()) if "TOV_POSS_PCT_OFF" in merged.columns else 0.0
-
-    merged["QUICK_PRIORITY"] = merged["PLAY_TYPE"].map(QUICK_WEIGHTS).fillna(0.0)
-
-    merged["BONUS_QUICK"] = 0.04 * late_game_factor * (0.3 + trailing_factor) * merged["QUICK_PRIORITY"]
-    merged["BONUS_SCORE"] = (
-        0.25 * late_game_factor * trailing_factor * np.maximum(0.0, merged["EFG_PCT_OFF"] - avg_efg)
-    )
-    merged["PENALTY_PROTECT"] = (
-        0.30 * late_game_factor * leading_factor * np.maximum(0.0, merged["TOV_POSS_PCT_OFF"] - avg_tov)
-    )
-
-    merged["CONTEXT_ADJ"] = merged["BONUS_QUICK"] + merged["BONUS_SCORE"] - merged["PENALTY_PROTECT"]
-    merged["PPP_CONTEXT"] = merged["PPP_ML_BLEND"] + merged["CONTEXT_ADJ"]
-    merged["DELTA_VS_BASELINE"] = merged["PPP_CONTEXT"] - merged["PPP_BASELINE"]
-
-    def label_context() -> str:
-        if late_game_factor >= 0.5 and trailing_factor > 0:
-            return "Late & trailing"
-        if late_game_factor >= 0.5 and leading_factor > 0:
-            return "Late & leading"
-        return "Normal context"
-
-    context_label = label_context()
-    merged["CONTEXT_LABEL"] = context_label
-
-    def build_rationale(row: pd.Series) -> str:
-        return (
-            f"{row['PLAY_TYPE']}: ML base {row['PPP_ML_BLEND']:.3f}, "
-            f"adj {row['CONTEXT_ADJ']:+.3f} ({context_label}). "
-            f"Late={late_game_factor:.2f}, trailing={trailing_factor:.2f}, leading={leading_factor:.2f}."
-        )
-
-    merged["RATIONALE"] = merged.apply(build_rationale, axis=1)
-    merged["LATE_GAME_FACTOR"] = float(late_game_factor)
-    merged["TRAILING_FACTOR"] = float(trailing_factor)
-    merged["LEADING_FACTOR"] = float(leading_factor)
-
-    merged = merged.sort_values(["PPP_CONTEXT", "PPP_ML_BLEND"], ascending=False).head(k).reset_index(drop=True)
-
-    out_cols = [
-        "PLAY_TYPE",
-        "PPP_CONTEXT",
-        "PPP_ML_BLEND",
-        "PPP_BASELINE",
-        "DELTA_VS_BASELINE",
-        "CONTEXT_LABEL",
-        "RATIONALE",
-        "CONTEXT_ADJ",
-        "BONUS_QUICK",
-        "BONUS_SCORE",
-        "PENALTY_PROTECT",
-        "LATE_GAME_FACTOR",
-        "TRAILING_FACTOR",
-        "LEADING_FACTOR",
-    ]
-    out_cols = [c for c in out_cols if c in merged.columns]
-    rankings = _df_to_records(merged[out_cols])
-
-    return jsonable_encoder(
-        {
-            "season": season,
-            "our_team": our,
-            "opp_team": opp,
-            "k": k,
-            "margin": float(margin),
-            "period": int(period),
-            "time_remaining_period_sec": float(time_remaining),
-            "w_off": float(w_off),
-            "w_def": float(w_def),
-            "rankings": rankings,
-        }
-    )
+@app.post("/rank-plays/context-ml")
+def rank_context_ml_post(req: ContextMLRequest) -> Dict[str, Any]:
+    return _rank_context_ml_response(req)
 
 
 # ---------------------------------------------------------------------
@@ -806,7 +1028,6 @@ def viz_playtype_zones(
     if our == opp:
         raise HTTPException(status_code=400, detail="Our team and opponent must be different.")
 
-    # Lazy-import viz module so backend can start even if SportyPy deps are missing
     try:
         from viz_sportypy import render_playtype_zone_png, png_bytes_to_base64
     except Exception as e:
@@ -893,7 +1114,6 @@ def viz_shot_heatmap(
     shot_type: Optional[str] = Query(None),
     zone: Optional[str] = Query(None),
 ) -> Dict[str, Any]:
-    # Lazy import to avoid SportyPy import issues at startup
     try:
         from viz_shot_heatmap import render_shot_heatmap_png, png_bytes_to_base64
     except Exception as e:

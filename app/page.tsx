@@ -9,48 +9,18 @@
 
 import Link from "next/link";
 
-const valuePills = [
-  "Matchup planning",
-  "Context-aware",
-  "Explainable output",
-  "Visual proof",
-];
-
 const sellingPoints = [
   {
-    title: "Start from a transparent baseline",
-    desc: "Open every matchup from a clear, evidence-first ranking before adding scenario pressure or model-driven re-ordering.",
+    title: "Rank play types with a clear baseline",
+    desc: "Start from a transparent ranking of offensive play types and courses of action using historical matchup data before layering in live game pressure.",
   },
   {
-    title: "Adapt to game context quickly",
-    desc: "Re-rank recommendations for clock, score, and possession context without losing sight of what changed and why.",
+    title: "Adapt recommendations to game context",
+    desc: "See live recommendations update for score, clock, and possession context so the ranked options stay useful as the game changes.",
   },
   {
-    title: "Present decisions with confidence",
-    desc: "Turn ranked recommendations into a cleaner coaching conversation with court visuals, supporting metrics, and a sharper gameplan view.",
-  },
-];
-
-const workflow = [
-  {
-    step: "01",
-    title: "Choose the opponent",
-    desc: "Open the matchup and immediately see the baseline ranking against that defense.",
-  },
-  {
-    step: "02",
-    title: "Layer in context",
-    desc: "Adjust for score, time, and late-game pressure to see how the recommendation changes.",
-  },
-  {
-    step: "03",
-    title: "Build the gameplan",
-    desc: "Convert the ranked output into a set of options that is easier to coach, review, and communicate.",
-  },
-  {
-    step: "04",
-    title: "Validate the evidence",
-    desc: "Use explorer, metrics, and statistical views to support the recommendation with traceable proof.",
+    title: "Support coaching and player collaboration",
+    desc: "Turn ranked outputs into clearer on-court collaboration with visuals, supporting evidence, and a gameplan that is easier to communicate to players.",
   },
 ];
 
@@ -146,7 +116,7 @@ export default function Page() {
         }
 
         .hp-wrap {
-          width: min(1280px, calc(100% - 28px));
+          width: min(1450px, calc(100% - 28px));
           margin: 0 auto;
         }
 
@@ -175,66 +145,6 @@ export default function Page() {
             linear-gradient(180deg, rgba(255,255,255,0.18), transparent 22%),
             radial-gradient(700px 120px at 50% 0%, rgba(255,255,255,0.35), transparent 70%);
           opacity: 0.9;
-        }
-
-        .hp-topbar {
-          position: relative;
-          z-index: 1;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 12px;
-          flex-wrap: wrap;
-          padding: 12px 16px;
-          border-bottom: 1px solid var(--hp-line);
-          background: rgba(15,23,42,0.02);
-        }
-
-        .hp-brandline {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          min-width: 0;
-        }
-
-        .hp-branddot {
-          width: 10px;
-          height: 10px;
-          border-radius: 999px;
-          background: linear-gradient(135deg, var(--hp-blue) 0%, var(--hp-purple) 55%, var(--hp-pink) 100%);
-          box-shadow: 0 0 0 6px rgba(37,99,235,0.1);
-          flex-shrink: 0;
-        }
-
-        .hp-brandcopy {
-          font-size: 13px;
-          font-weight: 950;
-          letter-spacing: -0.02em;
-          color: rgba(15,23,42,0.88);
-          white-space: nowrap;
-        }
-
-        .hp-pillrow {
-          display: inline-flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          justify-content: flex-end;
-        }
-
-        .hp-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 7px 11px;
-          border-radius: 999px;
-          border: 1px solid var(--hp-line);
-          background: rgba(255,255,255,0.68);
-          color: rgba(15,23,42,0.72);
-          font-size: 12px;
-          font-weight: 900;
-          line-height: 1;
-          white-space: nowrap;
-          box-shadow: 0 10px 22px rgba(15,23,42,0.04);
         }
 
         .hp-hero {
@@ -318,7 +228,7 @@ export default function Page() {
 
         .hp-sub {
           margin: 0;
-          max-width: 62ch;
+          max-width: 68ch;
           font-size: 16px;
           line-height: 1.75;
           color: var(--hp-muted);
@@ -888,141 +798,6 @@ export default function Page() {
           color: var(--hp-muted);
         }
 
-        .hp-why-grid {
-          display: grid;
-          gap: 12px;
-        }
-
-        @media (min-width: 900px) {
-          .hp-why-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-          }
-        }
-
-        .hp-feature-card {
-          position: relative;
-          overflow: hidden;
-          border-radius: 22px;
-          border: 1px solid var(--hp-line);
-          background: rgba(255,255,255,0.74);
-          padding: 18px;
-          box-shadow: 0 18px 34px rgba(15,23,42,0.05);
-        }
-
-        .hp-feature-card::before {
-          content: "";
-          position: absolute;
-          inset: -1px;
-          pointer-events: none;
-          background:
-            radial-gradient(260px 120px at 10% 0%, rgba(37,99,235,0.1), transparent 60%),
-            radial-gradient(240px 120px at 100% 0%, rgba(124,58,237,0.08), transparent 60%);
-          opacity: 0.9;
-        }
-
-        .hp-feature-icon {
-          position: relative;
-          width: 44px;
-          height: 44px;
-          border-radius: 14px;
-          display: grid;
-          place-items: center;
-          margin-bottom: 14px;
-          background: linear-gradient(135deg, rgba(37,99,235,0.12) 0%, rgba(124,58,237,0.12) 55%, rgba(236,72,153,0.12) 100%);
-          border: 1px solid rgba(15,23,42,0.06);
-          box-shadow: 0 12px 26px rgba(15,23,42,0.04);
-        }
-
-        .hp-feature-icon svg {
-          width: 22px;
-          height: 22px;
-          stroke: var(--hp-text);
-        }
-
-        .hp-feature-card h3 {
-          position: relative;
-          margin: 0;
-          font-size: 16px;
-          font-weight: 950;
-          letter-spacing: -0.03em;
-          color: var(--hp-text);
-        }
-
-        .hp-feature-card p {
-          position: relative;
-          margin: 10px 0 0;
-          font-size: 14px;
-          line-height: 1.7;
-          color: var(--hp-muted);
-        }
-
-        .hp-workflow-card {
-          border-radius: 24px;
-          border: 1px solid var(--hp-line);
-          background: rgba(255,255,255,0.72);
-          padding: 16px;
-          box-shadow: 0 20px 40px rgba(15,23,42,0.05);
-        }
-
-        .hp-workflow-grid {
-          display: grid;
-          gap: 12px;
-        }
-
-        @media (min-width: 980px) {
-          .hp-workflow-grid {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-          }
-        }
-
-        .hp-step {
-          border-radius: 18px;
-          border: 1px solid var(--hp-line);
-          background: rgba(255,255,255,0.68);
-          padding: 14px;
-          min-height: 140px;
-          box-shadow: 0 14px 28px rgba(15,23,42,0.04);
-        }
-
-        .hp-step-top {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 10px;
-        }
-
-        .hp-step-badge {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-width: 42px;
-          height: 28px;
-          padding: 0 10px;
-          border-radius: 999px;
-          border: 1px solid var(--hp-line);
-          background: rgba(15,23,42,0.03);
-          color: rgba(15,23,42,0.72);
-          font-size: 11px;
-          font-weight: 950;
-          letter-spacing: 0.08em;
-        }
-
-        .hp-step h3 {
-          margin: 0;
-          font-size: 14px;
-          font-weight: 950;
-          color: var(--hp-text);
-          letter-spacing: -0.02em;
-        }
-
-        .hp-step p {
-          margin: 0;
-          font-size: 13px;
-          line-height: 1.7;
-          color: var(--hp-muted);
-        }
-
         .hp-proof-grid {
           display: grid;
           gap: 12px;
@@ -1153,118 +928,6 @@ export default function Page() {
           box-shadow: 0 0 0 5px rgba(37,99,235,0.08);
         }
 
-        details.hp-more {
-          margin: 0 18px 18px;
-          border-top: 1px solid var(--hp-line);
-          padding-top: 14px;
-        }
-
-        details.hp-more summary {
-          list-style: none;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          color: rgba(15,23,42,0.88);
-          font-size: 14px;
-          font-weight: 950;
-          letter-spacing: -0.02em;
-        }
-
-        details.hp-more summary::-webkit-details-marker {
-          display: none;
-        }
-
-        .hp-summary-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 999px;
-          background: linear-gradient(135deg, var(--hp-blue) 0%, var(--hp-purple) 55%, var(--hp-pink) 100%);
-        }
-
-        .hp-more-grid {
-          display: grid;
-          gap: 12px;
-          margin-top: 14px;
-        }
-
-        @media (min-width: 900px) {
-          .hp-more-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-        }
-
-        .hp-more-box {
-          border-radius: 18px;
-          border: 1px solid var(--hp-line);
-          background: rgba(255,255,255,0.72);
-          padding: 14px;
-        }
-
-        .hp-more-box h3 {
-          margin: 0;
-          font-size: 14px;
-          font-weight: 950;
-          color: var(--hp-text);
-        }
-
-        .hp-more-box ul {
-          margin: 10px 0 0;
-          padding-left: 18px;
-        }
-
-        .hp-more-box li {
-          font-size: 13px;
-          line-height: 1.7;
-          color: var(--hp-muted);
-          margin: 6px 0;
-        }
-
-        .hp-final {
-          position: relative;
-          z-index: 1;
-          padding: 0 18px 18px;
-        }
-
-        .hp-final-card {
-          position: relative;
-          overflow: hidden;
-          border-radius: 26px;
-          border: 1px solid var(--hp-line);
-          background:
-            radial-gradient(520px 220px at 10% 0%, rgba(37,99,235,0.14), transparent 58%),
-            radial-gradient(580px 240px at 100% 10%, rgba(124,58,237,0.12), transparent 58%),
-            radial-gradient(520px 220px at 65% 100%, rgba(236,72,153,0.1), transparent 58%),
-            rgba(255,255,255,0.84);
-          padding: 22px;
-          box-shadow: 0 22px 46px rgba(15,23,42,0.07);
-        }
-
-        .hp-final-card h2 {
-          margin: 0;
-          max-width: 16ch;
-          font-size: clamp(28px, 4vw, 48px);
-          line-height: 0.98;
-          letter-spacing: -0.05em;
-          font-weight: 1000;
-          color: var(--hp-text);
-        }
-
-        .hp-final-card p {
-          margin: 12px 0 0;
-          max-width: 62ch;
-          font-size: 15px;
-          line-height: 1.75;
-          color: var(--hp-muted);
-        }
-
-        .hp-final-actions {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 12px;
-          margin-top: 18px;
-        }
-
         @keyframes hpMarquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -1293,7 +956,6 @@ export default function Page() {
             border-radius: 24px;
           }
 
-          .hp-topbar,
           .hp-hero,
           .hp-section {
             padding-left: 14px;
@@ -1313,14 +975,6 @@ export default function Page() {
             align-items: flex-start;
           }
 
-          .hp-final-card {
-            padding: 18px;
-          }
-
-          .hp-final-card h2 {
-            max-width: none;
-          }
-
           .hp-surface {
             margin: 10px;
             border-radius: 20px;
@@ -1334,33 +988,19 @@ export default function Page() {
 
       <div className="hp-wrap">
         <section className="hp-shell">
-          <div className="hp-topbar">
-            <div className="hp-brandline">
-              <span className="hp-branddot" />
-              <span className="hp-brandcopy">NBA Play Ranker • Basketball Decision Support</span>
-            </div>
-
-            <div className="hp-pillrow">
-              {valuePills.map((pill) => (
-                <span key={pill} className="hp-pill">
-                  {pill}
-                </span>
-              ))}
-            </div>
-          </div>
-
           <section className="hp-hero">
             <div className="hp-copy">
-              <div className="hp-kicker">Scouting, context, and decision support built into one workflow</div>
+              <div className="hp-kicker">Historical data, live recommendations, and context-aware decision support</div>
 
               <h1 className="hp-title">
-                From scouting report to <span className="hp-gradient">playable decision.</span>
+                Rank the right <span className="hp-gradient">play type</span> for the next decision.
               </h1>
 
               <p className="hp-sub">
-                NBA Play Ranker turns opponent tendencies into a clearer offensive plan. It combines a transparent
-                matchup baseline, context-aware re-ranking, and visual proof so coaches and analysts can move from
-                raw information to a decision that is easier to trust, explain, and use.
+                NBA Play Ranker helps coaches and analysts rank offensive play types and courses of action using
+                historical data, then adapt those recommendations live as score, time, and game context change. The
+                platform is built to support clearer player collaboration, faster coaching communication, and decisions
+                that stay explainable from scouting report to gameplan.
               </p>
 
               <div className="hp-actions">
@@ -1373,9 +1013,9 @@ export default function Page() {
               </div>
 
               <div className="hp-proofline">
-                <span>Transparent baseline before context shifts</span>
-                <span>Late-game scenarios that stay readable</span>
-                <span>Metrics and analysis for validation</span>
+                <span>Ranks play types and courses of action</span>
+                <span>Live recommendations adapted to game context</span>
+                <span>Historical data and evidence for player collaboration</span>
               </div>
 
               <div className="hp-mini-grid">
@@ -1526,92 +1166,6 @@ export default function Page() {
             </div>
           </div>
 
-          <section className="hp-section">
-            <div className="hp-section-head">
-              <div>
-                <p className="hp-eyebrow">Product value</p>
-                <h2 className="hp-section-title">Decision support that feels native to basketball.</h2>
-              </div>
-
-              <p className="hp-section-sub">
-                NBA Play Ranker is built to surface recommendations in a way that still feels readable, explainable,
-                and operational once the game context gets more demanding.
-              </p>
-            </div>
-
-            <div className="hp-why-grid">
-              <div className="hp-feature-card">
-                <div className="hp-feature-icon" aria-hidden>
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 18l4.5-6 3.5 3 6-8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M17 7h2v2" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <h3>Recommendation hierarchy that stays clear</h3>
-                <p>
-                  Ranked outputs are structured to show priority, context movement, and practical value instead of
-                  turning every result into the same visual weight.
-                </p>
-              </div>
-
-              <div className="hp-feature-card">
-                <div className="hp-feature-icon" aria-hidden>
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <rect x="4" y="5" width="16" height="14" rx="3" strokeWidth="1.8" />
-                    <path d="M8 12h8M12 8v8" strokeWidth="1.8" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <h3>Basketball-first visual language</h3>
-                <p>
-                  Matchups, court surfaces, scenario chips, and ranked actions keep the product grounded in the
-                  decisions coaches and analysts already make.
-                </p>
-              </div>
-
-              <div className="hp-feature-card">
-                <div className="hp-feature-icon" aria-hidden>
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M4 18h16" strokeWidth="1.8" strokeLinecap="round" />
-                    <path d="M7 14l3-3 2.5 2.5L17 9" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <h3>Evidence stays close to the decision</h3>
-                <p>
-                  Explorer, metrics, and statistical review sit within the same story, so validation supports the
-                  recommendation instead of feeling disconnected from it.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="hp-section">
-            <div className="hp-section-head">
-              <div>
-                <p className="hp-eyebrow">Workflow</p>
-                <h2 className="hp-section-title">A faster path from matchup to gameplan.</h2>
-              </div>
-
-              <p className="hp-section-sub">
-                The platform is designed to move naturally from opponent setup to context adjustment to proof-backed
-                decision making.
-              </p>
-            </div>
-
-            <div className="hp-workflow-card">
-              <div className="hp-workflow-grid">
-                {workflow.map((item) => (
-                  <div key={item.step} className="hp-step">
-                    <div className="hp-step-top">
-                      <span className="hp-step-badge">{item.step}</span>
-                    </div>
-                    <h3>{item.title}</h3>
-                    <p>{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
           <section className="hp-section" id="proof">
             <div className="hp-section-head">
               <div>
@@ -1665,53 +1219,6 @@ export default function Page() {
               ))}
             </div>
           </section>
-
-          <details className="hp-more">
-            <summary>
-              <span className="hp-summary-dot" />
-              Inside the platform
-            </summary>
-
-            <div className="hp-more-grid">
-              <div className="hp-more-box">
-                <h3>Recommended starting path</h3>
-                <ul>
-                  <li>Start in Gameplan for the fastest high-level view of the decision flow.</li>
-                  <li>Open Matchup / Baseline to anchor the recommendation in a transparent ranking.</li>
-                  <li>Use Context / ML to see how game state changes the order of preferred actions.</li>
-                  <li>Review Model Metrics or Statistical Analysis when deeper validation is needed.</li>
-                </ul>
-              </div>
-
-              <div className="hp-more-box">
-                <h3>How the decision model is structured</h3>
-                <ul>
-                  <li>The baseline acts as the reference point for every opponent-specific recommendation.</li>
-                  <li>Context-aware re-ranking is used to reflect score, time, and late-game conditions.</li>
-                  <li>Explorer and evidence pages keep the workflow traceable for analyst review and communication.</li>
-                </ul>
-              </div>
-            </div>
-          </details>
-
-          <div className="hp-final">
-            <div className="hp-final-card">
-              <h2>See the matchup. Add context. Leave with a plan.</h2>
-              <p>
-                NBA Play Ranker is designed to make basketball decision support feel sharper at every stage of the
-                workflow, from opponent scouting to scenario planning to final recommendation review.
-              </p>
-
-              <div className="hp-final-actions">
-                <Link href="/signup" className="hp-btn hp-btn-primary">
-                  Create account
-                </Link>
-                <Link href="/login" className="hp-btn hp-btn-secondary">
-                  Open the platform
-                </Link>
-              </div>
-            </div>
-          </div>
         </section>
       </div>
     </main>

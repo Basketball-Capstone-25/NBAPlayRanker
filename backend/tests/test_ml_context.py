@@ -1,164 +1,262 @@
-# ml_context_demo.py
-#
-# This is a small **driver script** for the context-aware ML recommender.
-#
-# It’s not part of the web API – it’s something we run from the command line to:
-#   1. Sanity-check the **play-type flags** (e.g., which plays are three-point
-#      oriented or “quick”).
-#   2. Inspect how we compute **time remaining** and the corresponding
-#      “urgency” scores.
-#   3. Compare how the **context-aware ranking** changes between an early-game
-#      low-urgency situation and a late-game high-urgency situation.
-#
-# This is very useful for defence because it gives us concrete numbers we can
-# reference when we explain how context affects the ranking.
+from __future__ import annotations
+
+"""
+backend/test_ml_context.py
+
+Small driver script for the CURRENT context-aware ML recommender.
+
+Why this file exists:
+- sanity-check the live context-aware ranking flow from the command line
+- show how guardrails/defaults behave for ambiguous prompts
+- show how score/time context changes ranking between early and late game
+- use the CURRENT public API from ml_context_recommender.py
+
+This version removes references to old functions that no longer exist
+(e.g. add_playtype_flags, compute_urgencies) and uses the current
+recommender pipeline instead.
+"""
+
+from typing import Dict, List
+
+import pandas as pd
 
 from ml_context_recommender import (
+    apply_context_adjustments,
     build_ml_matchup_table,
-    add_playtype_flags,
-    total_time_remaining,
-    compute_urgencies,
+    compute_context_factors,
     rank_ml_with_context,
+    recommender_health,
+    sanitize_context_for_ranking,
+    total_time_remaining,
+    validate_context_guardrails,
 )
 
 
-def main():
-    # ---------------------------------------------------------
-    # 1) Build the ML matchup table and inspect play-type flags
-    # ---------------------------------------------------------
-    #
-    # build_ml_matchup_table(...) constructs the **feature table** that our
-    # ML model uses for a given matchup:
-    #   - It filters the underlying Synergy-derived team tables to the chosen
-    #     season and teams.
-    #   - It assembles one row per play type for this matchup, including
-    #     features like offensive PPP, defensive PPP allowed, frequency, etc.
-    #
-    # In this example we use:
-    #   season: "2019-20"
-    #   our_team: "LAL"
-    #   opp_team: "BOS"
-    #
-    # That gives us the raw ML input for **Lakers offense vs Celtics defense**.
-    df = build_ml_matchup_table("2019-20", "LAL", "BOS")
+def _print_header(title: str) -> None:
+    print("\n" + "=" * 78)
+    print(title)
+    print("=" * 78)
 
-    # add_playtype_flags(...) enriches that table with simple boolean / numeric
-    # flags that capture our prior basketball knowledge about each play type,
-    # for example:
-    #   - THREE_PT_PRIORITY: how much this play type leans on three-point shots.
-    #   - QUICK_PRIORITY: how well this play type fits “quick” late-game
-    #     situations (e.g., transition, early clock actions).
-    #
-    # These flags are later combined with urgency scores to produce a
-    # context-aware ranking.
-    df_flags = add_playtype_flags(df)
 
-    print("=== Play-type priorities (LAL offense vs BOS defense, 2019-20) ===")
-    print(
-        df_flags[
-            [
-                "PLAY_TYPE",
-                "THREE_PT_PRIORITY",
-                "QUICK_PRIORITY",
-                "IS_3PT_ORIENTED",
-                "IS_QUICK",
-            ]
-        ].to_string(index=False)
+def _safe_cols(df: pd.DataFrame, cols: List[str]) -> pd.DataFrame:
+    keep = [c for c in cols if c in df.columns]
+    return df[keep].copy()
+
+
+def main() -> None:
+    season = "2019-20"
+    our_team = "LAL"
+    opp_team = "BOS"
+
+    _print_header("1) Recommender health + guardrail validation")
+    print("Recommender health:")
+    print(recommender_health())
+
+    print("\nGuardrail validation:")
+    print(validate_context_guardrails())
+
+    _print_header("2) Neutral sanitized context")
+    neutral_context = sanitize_context_for_ranking(
+        {
+            "need": "quick2",
+            "needs": ["quick2"],
+            "defense_style": "switch",
+            "after_timeout": True,
+            "special_situations": ["after_timeout"],
+            "preferred_play_families": ["ball_screen", "cut"],
+            "shot_clock": 7,
+            "late_clock": True,
+            "offense_bias": 0.75,
+            "defense_bias": 0.25,
+            "parser_version": "3.0.0",
+            "nlp_pipeline_version": "1.0.0",
+        },
+        margin=-4,
+        period=4,
+        time_remaining=28,
+    )
+    print(neutral_context)
+
+    _print_header("3) Ambiguous prompt fallback / defaults")
+    fallback_context = sanitize_context_for_ranking(
+        {"raw_text": "Just win the game"},
+        margin=None,
+        period=None,
+        time_remaining=None,
+    )
+    print(fallback_context)
+
+    _print_header("4) Build matchup table and inspect current play-family mapping")
+    matchup_df = build_ml_matchup_table(
+        season=season,
+        our_team=our_team,
+        opp_team=opp_team,
+        context=neutral_context,
     )
 
-    # ---------------------------------------------------------
-    # 2) Check time and urgency values
-    # ---------------------------------------------------------
-    #
-    # The idea behind `total_time_remaining` is:
-    #   - Convert period + time remaining in the current period into a single
-    #     scalar “seconds of basketball left in regulation/OT”.
-    #   - This gives us a consistent notion of "T_left" that the urgency
-    #     function can use.
-    #
-    # Example 1: early game
-    #   Q1, 10:00 left  -> lots of time.
-    # Example 2: late game
-    #   Q4, 2:00 left   -> very little time, so urgency should be higher.
+    print(
+        _safe_cols(
+            matchup_df,
+            [
+                "PLAY_TYPE",
+                "PLAY_FAMILY",
+                "PPP_ML_BLEND",
+                "PPP_BASELINE",
+                "EFFECTIVE_W_OFF",
+                "EFFECTIVE_W_DEF",
+            ],
+        ).to_string(index=False)
+    )
 
-    T_early = total_time_remaining(period=1, time_remaining_period_sec=600)   # Q1, 10:00 left
-    T_late = total_time_remaining(period=4, time_remaining_period_sec=120)   # Q4, 2:00 left
+    _print_header("5) Time remaining + context factors")
+    t_early = total_time_remaining(period=1, time_remaining_period_sec=600)  # Q1, 10:00 left
+    t_late = total_time_remaining(period=4, time_remaining_period_sec=120)   # Q4, 2:00 left
 
-    print("\n=== Time remaining checks ===")
-    print(f"T_early (Q1, 10:00 left): {T_early:.1f} sec")
-    print(f"T_late  (Q4, 2:00 left): {T_late:.1f} sec")
+    lg_early, trail_early, lead_early = compute_context_factors(
+        margin=0,
+        period=1,
+        time_remaining_period_sec=600,
+    )
+    lg_late, trail_late, lead_late = compute_context_factors(
+        margin=-5,
+        period=4,
+        time_remaining_period_sec=120,
+    )
 
-    # compute_urgencies() takes:
-    #   - margin: our score minus theirs,
-    #   - T_left: total time remaining (from total_time_remaining),
-    # and returns two numbers:
-    #   - three_urg: how urgent it is to look for 3-point oriented plays.
-    #   - quick_urg: how urgent it is to look for quick-hitting plays.
-    #
-    # Intuition:
-    #   - Early in the game with lots of time and a tie score, both urgencies
-    #     should be relatively low (you don’t need to panic).
-    #   - Late in the game, down multiple points with very little time left,
-    #     three_urg and quick_urg should both be higher.
-    three_early, quick_early = compute_urgencies(margin=0, T_left=T_early)
-    three_late, quick_late = compute_urgencies(margin=-5, T_left=T_late)
+    print(f"T_early (Q1, 10:00 left): {t_early:.1f} sec")
+    print(f"T_late  (Q4, 2:00 left): {t_late:.1f} sec")
+    print(
+        f"Early game factors -> late_game={lg_early:.3f}, trailing={trail_early:.3f}, leading={lead_early:.3f}"
+    )
+    print(
+        f"Late game factors  -> late_game={lg_late:.3f}, trailing={trail_late:.3f}, leading={lead_late:.3f}"
+    )
 
-    print("\n=== Urgencies ===")
-    print(f"Early game, tie:       three_urg={three_early:.3f}, quick_urg={quick_early:.3f}")
-    print(f"Late game, down 5:     three_urg={three_late:.3f}, quick_urg={quick_late:.3f}")
+    _print_header("6) Apply full current context adjustments to a matchup table")
+    adjusted_df = apply_context_adjustments(
+        df=matchup_df,
+        margin=neutral_context["margin"],
+        period=neutral_context["period"],
+        time_remaining_period_sec=neutral_context["time_remaining"],
+        context=neutral_context,
+    )
 
-    # ---------------------------------------------------------
-    # 3) Context-aware rankings for two scenarios
-    # ---------------------------------------------------------
-    #
-    # rank_ml_with_context(...) is the main high-level function here. It:
-    #   - Builds the ML matchup table for the given season / teams.
-    #   - Computes T_left and urgencies based on margin + period + time_remaining.
-    #   - Applies a context-aware scoring rule to each play type:
-    #       CONTEXT_SCORE = f(ML_predicted_PPP, three_urg, quick_urg, play flags)
-    #   - Sorts by CONTEXT_SCORE and returns the Top-K plays.
-    #
-    # Below we compare two very different situations:
-    #
-    #   A) EARLY GAME, tie score (low urgency)
-    #   B) LATE GAME, down 5 with 2:00 left (high urgency)
-    #
-    # We keep everything else the same (same season, teams, K) so we can see how
-    # the ranking shifts purely due to context.
+    print(
+        _safe_cols(
+            adjusted_df.sort_values(["PPP_CONTEXT", "NLP_CONTEXT_ADJ"], ascending=False).head(10),
+            [
+                "PLAY_TYPE",
+                "PLAY_FAMILY",
+                "PPP_CONTEXT",
+                "PPP_ML_BLEND",
+                "PPP_BASELINE",
+                "CONTEXT_ADJ",
+                "LEGACY_CONTEXT_ADJ",
+                "NLP_CONTEXT_ADJ",
+                "DELTA_VS_BASELINE",
+                "CONTEXT_LABEL",
+                "CONTEXT_PARSE_STATUS",
+            ],
+        ).to_string(index=False)
+    )
 
-    # A) Early-game, low urgency (Q1, 10:00 left, margin = 0).
-    df_early = rank_ml_with_context(
-        season="2019-20",
-        our_team="LAL",
-        opp_team="BOS",
+    _print_header("7) Compare rankings: early-game vs late-game")
+    early_df = rank_ml_with_context(
+        season=season,
+        our_team=our_team,
+        opp_team=opp_team,
         margin=0,
         period=1,
         time_remaining_period_sec=600,
         k=7,
+        context={
+            "need": None,
+            "needs": [],
+            "special_situations": [],
+            "preferred_play_families": [],
+        },
     )
 
-    # B) Late-game, high urgency (Q4, 2:00 left, margin = -5).
-    df_late = rank_ml_with_context(
-        season="2019-20",
-        our_team="LAL",
-        opp_team="BOS",
+    late_df = rank_ml_with_context(
+        season=season,
+        our_team=our_team,
+        opp_team=opp_team,
         margin=-5,
         period=4,
         time_remaining_period_sec=120,
         k=7,
+        context={
+            "need": "quick2",
+            "needs": ["quick2", "must_score"],
+            "defense_style": "switch",
+            "after_timeout": True,
+            "special_situations": ["after_timeout"],
+            "preferred_play_families": ["ball_screen", "cut"],
+            "shot_clock": 7,
+            "late_clock": True,
+        },
     )
 
-    print("\n=== EARLY GAME (low urgency) ===")
-    print(df_early[["PLAY_TYPE", "PPP_PRED_ML", "CONTEXT_SCORE"]].to_string(index=False))
+    print("\nEARLY GAME (tie, Q1, 10:00 left)")
+    print(
+        _safe_cols(
+            early_df,
+            [
+                "PLAY_TYPE",
+                "PLAY_FAMILY",
+                "PPP_CONTEXT",
+                "PPP_ML_BLEND",
+                "PPP_BASELINE",
+                "DELTA_VS_BASELINE",
+                "CONTEXT_LABEL",
+            ],
+        ).to_string(index=False)
+    )
 
-    print("\n=== LATE GAME (down 5, 2:00 left) ===")
-    print(df_late[["PLAY_TYPE", "PPP_PRED_ML", "CONTEXT_SCORE"]].to_string(index=False))
+    print("\nLATE GAME (down 5, Q4, 2:00 left, quick2 + ATO + switch)")
+    print(
+        _safe_cols(
+            late_df,
+            [
+                "PLAY_TYPE",
+                "PLAY_FAMILY",
+                "PPP_CONTEXT",
+                "PPP_ML_BLEND",
+                "PPP_BASELINE",
+                "DELTA_VS_BASELINE",
+                "CONTEXT_LABEL",
+                "CONTEXT_PARSE_STATUS",
+            ],
+        ).to_string(index=False)
+    )
+
+    _print_header("8) Show ranking movement from early -> late")
+    early_map: Dict[str, int] = {play: idx + 1 for idx, play in enumerate(early_df["PLAY_TYPE"].tolist())}
+    late_map: Dict[str, int] = {play: idx + 1 for idx, play in enumerate(late_df["PLAY_TYPE"].tolist())}
+
+    all_plays = sorted(set(early_map.keys()) | set(late_map.keys()))
+    rows = []
+    for play in all_plays:
+        early_rank = early_map.get(play)
+        late_rank = late_map.get(play)
+        movement = None
+        if early_rank is not None and late_rank is not None:
+            movement = early_rank - late_rank
+        rows.append(
+            {
+                "PLAY_TYPE": play,
+                "EARLY_RANK": early_rank,
+                "LATE_RANK": late_rank,
+                "UP_IN_LATE_GAME": movement,
+            }
+        )
+
+    movement_df = pd.DataFrame(rows).sort_values(
+        by=["LATE_RANK", "EARLY_RANK"],
+        na_position="last",
+    )
+    print(movement_df.to_string(index=False))
 
 
 if __name__ == "__main__":
-    # Using the standard Python entry-point guard means:
-    #   - main() runs when we execute this file directly:
-    #         python ml_context_demo.py
-    #   - but nothing runs if we import this module from somewhere else
-    #     (e.g. for tests or experiments).
     main()

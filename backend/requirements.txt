@@ -9,3 +9,5 @@ matplotlib
 pillow
 reportlab
 sportypy
+spacy
+nltk

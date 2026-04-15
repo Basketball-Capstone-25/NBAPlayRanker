@@ -96,7 +96,6 @@ function safeNum(n: any, fallback = NaN) {
 }
 
 function prettyModelName(m: string) {
-  // keep your backend labels, but soften common ones for display
   const s = String(m || "");
   if (/random\s*forest/i.test(s)) return "Random Forest";
   if (/gradient\s*boost/i.test(s)) return "Gradient Boosting";
@@ -106,20 +105,17 @@ function prettyModelName(m: string) {
 type TabKey = "scoreboard" | "holdout" | "tuning" | "trace";
 
 export default function ModelMetricsPage() {
-  // Data
   const [pipeline, setPipeline] = useState<PipelineInfo | null>(null);
   const [nSplits, setNSplits] = useState<number>(5);
   const [data, setData] = useState<MetricsResponse | null>(null);
   const [ml, setMl] = useState<MlAnalysisSlim | null>(null);
 
-  // UI state
   const [tab, setTab] = useState<TabKey>("scoreboard");
-  const [compareA, setCompareA] = useState<string>(""); // “better” (left)
-  const [compareB, setCompareB] = useState<string>(""); // “baseline/other” (right)
-  const [poss, setPoss] = useState<number>(100); // possessions scale for “basketball terms”
+  const [compareA, setCompareA] = useState<string>("");
+  const [compareB, setCompareB] = useState<string>("");
+  const [poss, setPoss] = useState<number>(100);
   const [tuningRequested, setTuningRequested] = useState<boolean>(false);
 
-  // Loading flags
   const [loadingPipeline, setLoadingPipeline] = useState<boolean>(false);
   const [loadingHoldout, setLoadingHoldout] = useState<boolean>(false);
   const [loadingTuning, setLoadingTuning] = useState<boolean>(false);
@@ -127,8 +123,11 @@ export default function ModelMetricsPage() {
 
   const loading = loadingPipeline || loadingHoldout || loadingTuning;
 
-  // Guards against Strict Mode duplicate calls + stale results
-  const activeReqIdRef = useRef<number>(0);
+  // Keep request guards separate so one request type doesn't invalidate another.
+  const pipelineReqIdRef = useRef<number>(0);
+  const holdoutReqIdRef = useRef<number>(0);
+  const tuningReqIdRef = useRef<number>(0);
+
   const lastPipelineKeyRef = useRef<string>("");
   const lastHoldoutKeyRef = useRef<string>("");
   const lastTuningKeyRef = useRef<string>("");
@@ -138,18 +137,17 @@ export default function ModelMetricsPage() {
     if (!opts?.force && lastPipelineKeyRef.current === key && pipeline) return;
     lastPipelineKeyRef.current = key;
 
-    const reqId = ++activeReqIdRef.current;
+    const reqId = ++pipelineReqIdRef.current;
 
     try {
       setLoadingPipeline(true);
       const p = await fetchPipelineInfo();
-      if (reqId !== activeReqIdRef.current) return;
+      if (reqId !== pipelineReqIdRef.current) return;
       setPipeline(p);
     } catch (e) {
-      // Pipeline not critical — don’t hard fail the page
       console.warn("[model-metrics] pipeline load failed:", e);
     } finally {
-      if (reqId === activeReqIdRef.current) setLoadingPipeline(false);
+      if (reqId === pipelineReqIdRef.current) setLoadingPipeline(false);
     }
   }
 
@@ -158,57 +156,57 @@ export default function ModelMetricsPage() {
     if (!opts?.force && lastHoldoutKeyRef.current === key && data) return;
     lastHoldoutKeyRef.current = key;
 
-    const reqId = ++activeReqIdRef.current;
+    const reqId = ++holdoutReqIdRef.current;
 
     try {
       setError(null);
       setLoadingHoldout(true);
       const m = await fetchModelMetrics(nSplits);
-      if (reqId !== activeReqIdRef.current) return;
+      if (reqId !== holdoutReqIdRef.current) return;
       setData(m);
     } catch (e: any) {
-      if (reqId !== activeReqIdRef.current) return;
+      if (reqId !== holdoutReqIdRef.current) return;
       console.error(e);
       setError(e?.message ?? "Failed to load holdout model metrics.");
       setData(null);
     } finally {
-      if (reqId === activeReqIdRef.current) setLoadingHoldout(false);
+      if (reqId === holdoutReqIdRef.current) setLoadingHoldout(false);
     }
   }
 
-  async function loadTuning(opts?: { force?: boolean }) {
-    if (!tuningRequested && !opts?.force) return;
+  async function loadTuning(opts?: { force?: boolean; allowFirstLoad?: boolean }) {
+    if (!tuningRequested && !opts?.force && !opts?.allowFirstLoad) return;
 
     const key = `tuning:nSplits=${nSplits}:minPoss=25:refresh=false`;
     if (!opts?.force && lastTuningKeyRef.current === key && ml) return;
     lastTuningKeyRef.current = key;
 
-    const reqId = ++activeReqIdRef.current;
+    const reqId = ++tuningReqIdRef.current;
 
     try {
       setError(null);
       setLoadingTuning(true);
       const a = await fetchMlAnalysis({ nSplits, minPoss: 25, refresh: false });
-      if (reqId !== activeReqIdRef.current) return;
+      if (reqId !== tuningReqIdRef.current) return;
       setMl(a);
     } catch (e: any) {
-      if (reqId !== activeReqIdRef.current) return;
+      if (reqId !== tuningReqIdRef.current) return;
       console.error(e);
       setError(e?.message ?? "Failed to load tuning evidence.");
       setMl(null);
     } finally {
-      if (reqId === activeReqIdRef.current) setLoadingTuning(false);
+      if (reqId === tuningReqIdRef.current) setLoadingTuning(false);
     }
   }
 
   async function refreshAll() {
-    // Force reload everything. Tuning only reloads if it’s been requested (or already present).
     await loadPipeline({ force: true });
     await loadHoldout({ force: true });
-    if (tuningRequested || ml) await loadTuning({ force: true });
+    if (tuningRequested || ml) {
+      await loadTuning({ force: true });
+    }
   }
 
-  // Initial + changes: keep page snappy (pipeline + holdout first)
   useEffect(() => {
     loadPipeline();
     loadHoldout();
@@ -217,20 +215,27 @@ export default function ModelMetricsPage() {
 
   useEffect(() => {
     loadHoldout();
-    if (tuningRequested) loadTuning();
+    if (tuningRequested) {
+      loadTuning({ allowFirstLoad: true });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nSplits]);
 
-  // Lazy-load tuning when user opens the tab
   useEffect(() => {
     if (tab !== "tuning") return;
-    if (!tuningRequested) setTuningRequested(true);
+
+    if (!tuningRequested) {
+      setTuningRequested(true);
+      loadTuning({ allowFirstLoad: true });
+      return;
+    }
+
     loadTuning();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab]);
+  }, [tab, tuningRequested]);
 
   const rows = useMemo(() => {
-    return Array.isArray(data?.metrics) ? data!.metrics : [];
+    return Array.isArray(data?.metrics) ? data.metrics : [];
   }, [data]);
 
   const modelNames = useMemo(() => {
@@ -252,12 +257,10 @@ export default function ModelMetricsPage() {
   }, [rows]);
 
   const baselineGuess = useMemo(() => {
-    // try to find a “Baseline” label if it exists; otherwise pick worst as the “comparison”
     const baseline = rows.find((r) => /baseline/i.test(r.model));
     return baseline ?? worstModel ?? null;
   }, [rows, worstModel]);
 
-  // Default comparisons once we have data
   useEffect(() => {
     if (!rows.length) return;
     if (!compareA) {
@@ -269,7 +272,6 @@ export default function ModelMetricsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rows.length]);
 
-  // RMSE bars (normalized)
   const rmseBars = useMemo(() => {
     if (!rows.length) return [];
     const vals = rows.map((r) => safeNum(r.RMSE_mean)).filter((x) => Number.isFinite(x));
@@ -299,8 +301,8 @@ export default function ModelMetricsPage() {
     if (!tuning) return null;
     const candidates = [
       { name: "Ridge", rmse: tuning.ridge?.best_rmse ?? Infinity },
-      { name: "RandomForest", rmse: tuning.random_forest?.best_rmse ?? Infinity },
-      { name: "GradientBoosting", rmse: tuning.gradient_boosting?.best_rmse ?? Infinity },
+      { name: "Random Forest", rmse: tuning.random_forest?.best_rmse ?? Infinity },
+      { name: "Gradient Boosting", rmse: tuning.gradient_boosting?.best_rmse ?? Infinity },
     ].filter((x) => Number.isFinite(x.rmse));
     if (!candidates.length) return null;
     return candidates.sort((a, b) => a.rmse - b.rmse)[0];
@@ -319,7 +321,6 @@ export default function ModelMetricsPage() {
     return [];
   }, [tuning, ml]);
 
-  // Comparison math (basketball terms)
   const compare = useMemo(() => {
     if (!rows.length || !compareA || !compareB) return null;
     const a = rows.find((r) => r.model === compareA);
@@ -331,7 +332,7 @@ export default function ModelMetricsPage() {
     const aMAE = safeNum(a.MAE_mean);
     const bMAE = safeNum(b.MAE_mean);
 
-    const dRMSE = bRMSE - aRMSE; // positive means A is better (lower error)
+    const dRMSE = bRMSE - aRMSE;
     const dMAE = bMAE - aMAE;
 
     const pctRMSE = Number.isFinite(bRMSE) && bRMSE > 0 ? (dRMSE / bRMSE) * 100 : NaN;
@@ -390,7 +391,6 @@ export default function ModelMetricsPage() {
 
   return (
     <section className="card" style={{ padding: 0, overflow: "hidden" }}>
-      {/* HERO */}
       <div
         style={{
           padding: "18px 18px 16px",
@@ -447,7 +447,6 @@ export default function ModelMetricsPage() {
           </div>
         </div>
 
-        {/* Controls row */}
         <div
           style={{
             marginTop: 14,
@@ -521,12 +520,9 @@ export default function ModelMetricsPage() {
         ) : null}
       </div>
 
-      {/* BODY */}
       <div style={{ padding: 18 }}>
-        {/* SCOREBOARD TAB */}
         {tab === "scoreboard" ? (
           <>
-            {/* KPI strip */}
             <div className="grid" style={{ marginTop: 2 }}>
               <div className="kpi">
                 <div className="label">What’s being predicted</div>
@@ -557,7 +553,6 @@ export default function ModelMetricsPage() {
               </div>
             </div>
 
-            {/* Model comparison panel */}
             <div
               style={{
                 marginTop: 14,
@@ -639,7 +634,6 @@ export default function ModelMetricsPage() {
                   className="btn"
                   type="button"
                   onClick={() => {
-                    // quick swap
                     const a = compareA;
                     setCompareA(compareB);
                     setCompareB(a);
@@ -662,7 +656,6 @@ export default function ModelMetricsPage() {
                 </button>
               </div>
 
-              {/* Comparison output */}
               <div style={{ marginTop: 12 }}>
                 {compare ? (
                   <div className="grid" style={{ marginTop: 0 }}>
@@ -733,7 +726,6 @@ export default function ModelMetricsPage() {
               </div>
             </div>
 
-            {/* Quick RMSE bar scan */}
             {rows.length ? (
               <div style={{ marginTop: 14 }}>
                 <h2 style={{ margin: "8px 0 6px", fontSize: 16, fontWeight: 900 }}>
@@ -826,7 +818,6 @@ export default function ModelMetricsPage() {
               </div>
             ) : null}
 
-            {/* Stats line in plain terms */}
             {data ? (
               <div style={{ marginTop: 14 }}>
                 <h2 style={{ margin: "8px 0 6px", fontSize: 16, fontWeight: 900 }}>Is the improvement real?</h2>
@@ -852,7 +843,6 @@ export default function ModelMetricsPage() {
           </>
         ) : null}
 
-        {/* HOLDOUT TAB */}
         {tab === "holdout" ? (
           <>
             <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
@@ -922,7 +912,6 @@ export default function ModelMetricsPage() {
           </>
         ) : null}
 
-        {/* TUNING TAB */}
         {tab === "tuning" ? (
           <>
             <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
@@ -937,7 +926,15 @@ export default function ModelMetricsPage() {
                 <button className="btn" type="button" onClick={() => setTab("scoreboard")}>
                   Back to Scoreboard
                 </button>
-                <button className="btn" type="button" onClick={() => loadTuning({ force: true })} disabled={loadingTuning}>
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={() => {
+                    setTuningRequested(true);
+                    loadTuning({ force: true, allowFirstLoad: true });
+                  }}
+                  disabled={loadingTuning}
+                >
                   {loadingTuning ? "Loading…" : "Reload tuning"}
                 </button>
               </div>
@@ -945,7 +942,14 @@ export default function ModelMetricsPage() {
 
             {!tuningRequested ? (
               <div style={{ marginTop: 12 }}>
-                <button className="btn" type="button" onClick={() => setTuningRequested(true)}>
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={() => {
+                    setTuningRequested(true);
+                    loadTuning({ allowFirstLoad: true });
+                  }}
+                >
                   Load tuning evidence
                 </button>
                 <p className="muted" style={{ fontSize: 12, marginTop: 8 }}>
@@ -1062,7 +1066,6 @@ export default function ModelMetricsPage() {
           </>
         ) : null}
 
-        {/* TRACEABILITY TAB */}
         {tab === "trace" ? (
           <>
             <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>

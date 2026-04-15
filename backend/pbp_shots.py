@@ -11,6 +11,8 @@ import numpy as np
 import pandas as pd
 from fastapi.responses import StreamingResponse
 
+from pbp_loader import get_pbp_canonical_df
+
 
 # ---------------------------------------------------------------------
 # Paths + caching
@@ -36,76 +38,64 @@ _SHOTS_DF: Optional[pd.DataFrame] = None
 
 def _load_canonical_shots_df() -> pd.DataFrame:
     """
-    Load canonical shots parquet once and normalize column names.
+    Load canonical shots once and normalize columns to the explorer-friendly schema.
 
-    Downstream code (preview, csv, heatmap, rankers) expects these columns:
-      SEASON_STR, TEAM_ABBR, OPP_ABBR, SHOT_TYPE, ZONE, X, Y, IS_MAKE, POINTS
-
-    If your parquet uses alternate names, we rename here so the rest of the
-    backend stays stable.
+    Important behavior:
+    - If the canonical parquet is missing, we try to BUILD it through pbp_loader
+      from the raw PBP parquet / clean parquet instead of failing immediately.
+    - We normalize both snake_case canonical columns and legacy uppercase columns
+      into one stable uppercase schema the frontend already expects.
     """
     global _SHOTS_DF
     if _SHOTS_DF is not None:
         return _SHOTS_DF
 
-    if not CANONICAL_PARQUET.exists():
-        raise FileNotFoundError(f"{CANONICAL_PARQUET} not found")
+    # pbp_loader already handles: ensure canonical cache exists, reuse process cache,
+    # and rebuild when the upstream fingerprint changes.
+    df = get_pbp_canonical_df(ensure=True, force_rebuild=False).copy()
 
-    df = pd.read_parquet(CANONICAL_PARQUET)
-
-    # Normalize expected columns for downstream code (viz + API)
+    # Normalize expected columns for downstream code (preview + CSV export).
     rename_map: Dict[str, str] = {}
 
-    if "SEASON" in df.columns and "SEASON_STR" not in df.columns:
-        rename_map["SEASON"] = "SEASON_STR"
-    if "season" in df.columns and "SEASON_STR" not in df.columns:
-        rename_map["season"] = "SEASON_STR"
+    # Canonical snake_case -> stable explorer schema
+    snake_to_ui = {
+        "season": "SEASON_STR",
+        "team": "TEAM_ABBR",
+        "opp": "OPP_ABBR",
+        "game_id": "GAME_ID",
+        "period": "PERIOD",
+        "clock_sec": "CLOCK_SEC",
+        "shot_type": "SHOT_TYPE",
+        "zone": "ZONE",
+        "is_make": "IS_MAKE",
+        "points": "POINTS",
+        "x": "X",
+        "y": "Y",
+        "dist": "DIST",
+        "angle": "ANGLE",
+    }
+    for src, dst in snake_to_ui.items():
+        if src in df.columns and dst not in df.columns:
+            rename_map[src] = dst
 
-    if "TEAM" in df.columns and "TEAM_ABBR" not in df.columns:
-        rename_map["TEAM"] = "TEAM_ABBR"
-    if "team" in df.columns and "TEAM_ABBR" not in df.columns:
-        rename_map["team"] = "TEAM_ABBR"
-
-    # Opponent columns
-    if "OPP_TEAM" in df.columns and "OPP_ABBR" not in df.columns:
-        rename_map["OPP_TEAM"] = "OPP_ABBR"
-    if "opp" in df.columns and "OPP_ABBR" not in df.columns:
-        rename_map["opp"] = "OPP_ABBR"
-    if "opponent" in df.columns and "OPP_ABBR" not in df.columns:
-        rename_map["opponent"] = "OPP_ABBR"
-
-    # Shot type / zone
-    if "SHOTTYPE" in df.columns and "SHOT_TYPE" not in df.columns:
-        rename_map["SHOTTYPE"] = "SHOT_TYPE"
-    if "shot_type" in df.columns and "SHOT_TYPE" not in df.columns:
-        rename_map["shot_type"] = "SHOT_TYPE"
-
-    if "SHOT_ZONE" in df.columns and "ZONE" not in df.columns:
-        rename_map["SHOT_ZONE"] = "ZONE"
-    if "zone" in df.columns and "ZONE" not in df.columns:
-        rename_map["zone"] = "ZONE"
-
-    # Locations
-    if "LOC_X" in df.columns and "X" not in df.columns:
-        rename_map["LOC_X"] = "X"
-    if "loc_x" in df.columns and "X" not in df.columns:
-        rename_map["loc_x"] = "X"
-
-    if "LOC_Y" in df.columns and "Y" not in df.columns:
-        rename_map["LOC_Y"] = "Y"
-    if "loc_y" in df.columns and "Y" not in df.columns:
-        rename_map["loc_y"] = "Y"
-
-    # Make + points
-    if "MADE" in df.columns and "IS_MAKE" not in df.columns:
-        rename_map["MADE"] = "IS_MAKE"
-    if "is_make" in df.columns and "IS_MAKE" not in df.columns:
-        rename_map["is_make"] = "IS_MAKE"
-
-    if "PTS" in df.columns and "POINTS" not in df.columns:
-        rename_map["PTS"] = "POINTS"
-    if "points" in df.columns and "POINTS" not in df.columns:
-        rename_map["points"] = "POINTS"
+    # Legacy alternate names -> stable explorer schema
+    legacy_to_ui = {
+        "SEASON": "SEASON_STR",
+        "TEAM": "TEAM_ABBR",
+        "OPP_TEAM": "OPP_ABBR",
+        "opponent": "OPP_ABBR",
+        "SHOTTYPE": "SHOT_TYPE",
+        "SHOT_ZONE": "ZONE",
+        "LOC_X": "X",
+        "loc_x": "X",
+        "LOC_Y": "Y",
+        "loc_y": "Y",
+        "MADE": "IS_MAKE",
+        "PTS": "POINTS",
+    }
+    for src, dst in legacy_to_ui.items():
+        if src in df.columns and dst not in df.columns:
+            rename_map[src] = dst
 
     if rename_map:
         df = df.rename(columns=rename_map)
@@ -309,5 +299,5 @@ def get_shots_csv_response(
     return StreamingResponse(
         buf,
         media_type="text/csv",
-        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+        headers={"Content-Disposition": f'attachment; filename=\"{filename}\"'},
     )

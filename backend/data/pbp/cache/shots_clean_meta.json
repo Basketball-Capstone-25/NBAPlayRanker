@@ -1,0 +1,30 @@
+{
+  "columns": [
+    "SEASON_STR",
+    "TEAM_ABBR",
+    "OPP_ABBR",
+    "HOME_FLAG",
+    "SHOT_TYPE",
+    "SHOT_VALUE",
+    "MADE",
+    "POINTS",
+    "X",
+    "Y",
+    "DIST",
+    "ANGLE",
+    "ZONE",
+    "PERIOD",
+    "CLOCK_SEC",
+    "MARGIN",
+    "GAME_ID",
+    "SHOOTER_ID"
+  ],
+  "fingerprint": {
+    "schema_version": "clean_v2",
+    "source_mtime_ns": 1768268261468012607,
+    "source_path": "/Users/gurkasahan/Downloads/bgs-pspi 2/backend/data/pbp/nba_pbp_2021_present.parquet",
+    "source_size": 141153753
+  },
+  "notes": "Uppercase clean Dataset2 shots table rebuilt from raw parquet using shot_etl.build_shots_clean.",
+  "rows": 1531887
+}

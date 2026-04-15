@@ -2,34 +2,14 @@
 //
 // TypeScript API helpers for the PSPI.
 //
-// Endpoints used (Dataset1):
-// - GET  /meta/options
-// - GET  /meta/pipeline
-// - GET  /meta/baseline-formula
-// - GET  /data/team-playtypes
-// - GET  /data/team-playtypes.csv
-// - GET  /rank-plays/baseline
-// - GET  /rank-plays/baseline.csv
-// - GET  /rank-plays/context-ml
-// - GET  /metrics/baseline-vs-ml
-// - GET  /analysis/ml   <-- Statistical Analysis page
-// - GET  /viz/playtype-zones  <-- SportyPy visualization
+// This updated version keeps all existing Dataset1 / Dataset2 helpers,
+// and adds richer NLP + contextual ranking support for Gameplan.
 //
-// Endpoints used (Dataset2 / PBP):
-// - GET  /pbp/meta/options
-// - GET  /pbp/shotplan/rank
-// - GET  /pbp/viz/shot-heatmap
-// - GET  /pbp/shots/preview
-// - GET  /pbp/shots.csv
-//
-// GOAL:
-// - Keep Dataset1 behavior stable.
-// - Add Dataset2 helpers defensively (if /pbp isn't mounted, UI still doesn't crash).
-// - Make responses easy to consume by the frontend with consistent shapes.
-//
-// NOTE:
-// - Prefer /pbp endpoints for Dataset2.
-// - Fallback to legacy root endpoints only where it makes sense (heatmap, etc.)
+// New capabilities:
+// - Advanced context payload typing for expanded NLP fields
+// - POST-first context ranking helper with GET fallback
+// - NLP parse / explain helpers
+// - Backward compatibility for existing pages
 
 export const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:8000";
@@ -54,19 +34,20 @@ export const FALLBACK_TEAMS = [
 // ---------------------------
 // Small fetch helpers
 // ---------------------------
-//
-// We keep these tiny and predictable.
-// - fetchJson(): strict (throws on any non-2xx), good for stable Dataset1 endpoints.
-// - fetchJsonWithStatus(): throws an ApiError that includes HTTP status so we can fallback
-//   (super useful for Dataset2 because routes might be mounted under /pbp or at root).
 
 async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url, { cache: "no-store" });
+  const text = await res.text();
+
   if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`API error ${res.status}: ${text}`);
+    throw new ApiError(res.status, url, text);
   }
-  return (await res.json()) as T;
+
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    throw new ApiError(res.status, url, text);
+  }
 }
 
 class ApiError extends Error {
@@ -83,7 +64,19 @@ class ApiError extends Error {
 }
 
 async function fetchJsonWithStatus<T>(url: string): Promise<T> {
-  const res = await fetch(url, { cache: "no-store" });
+  return await fetchJson<T>(url);
+}
+
+async function postJsonWithStatus<T>(url: string, body: unknown): Promise<T> {
+  const res = await fetch(url, {
+    method: "POST",
+    cache: "no-store",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
   const text = await res.text();
 
   if (!res.ok) {
@@ -93,20 +86,13 @@ async function fetchJsonWithStatus<T>(url: string): Promise<T> {
   try {
     return JSON.parse(text) as T;
   } catch {
-    // If backend accidentally returned non-JSON, surface it clearly.
     throw new ApiError(res.status, url, text);
   }
 }
 
-/**
- * Try a list of candidate URLs in order and return the first one that works.
- * This is the core trick that makes Dataset2 "just work" even if routes differ.
- */
 async function tryJsonCandidates<T>(
   urls: string[],
   opts?: {
-    // If true, we'll keep trying after 400/422 (useful when param names differ).
-    // If false, we'll stop on non-404 errors.
     keepTryingOnClientError?: boolean;
   }
 ): Promise<{ data: T; usedUrl: string }> {
@@ -119,21 +105,47 @@ async function tryJsonCandidates<T>(
     } catch (e: any) {
       lastErr = e;
 
-      // 404 => endpoint doesn't exist at this path; try the next candidate.
       if (e?.status === 404) continue;
 
-      // Some endpoints exist but have different query param names, which can cause 422.
-      // If keepTryingOnClientError is enabled, continue trying alternates.
       if (opts?.keepTryingOnClientError && (e?.status === 400 || e?.status === 422)) {
         continue;
       }
 
-      // Otherwise stop early to avoid hiding real server errors (500, etc.)
       break;
     }
   }
 
   const attempted = urls.map((u) => `- ${u}`).join("\n");
+  const msg = (lastErr as any)?.message ?? "Unknown error";
+  throw new Error(`Request failed.\nTried:\n${attempted}\n\nLast error: ${msg}`);
+}
+
+async function tryPostJsonCandidates<T>(
+  requests: Array<{ url: string; body: unknown }>,
+  opts?: {
+    keepTryingOnClientError?: boolean;
+  }
+): Promise<{ data: T; usedUrl: string; usedBody: unknown }> {
+  let lastErr: unknown = null;
+
+  for (const req of requests) {
+    try {
+      const data = await postJsonWithStatus<T>(req.url, req.body);
+      return { data, usedUrl: req.url, usedBody: req.body };
+    } catch (e: any) {
+      lastErr = e;
+
+      if (e?.status === 404) continue;
+
+      if (opts?.keepTryingOnClientError && (e?.status === 400 || e?.status === 422)) {
+        continue;
+      }
+
+      break;
+    }
+  }
+
+  const attempted = requests.map((r) => `- POST ${r.url}`).join("\n");
   const msg = (lastErr as any)?.message ?? "Unknown error";
   throw new Error(`Request failed.\nTried:\n${attempted}\n\nLast error: ${msg}`);
 }
@@ -180,6 +192,11 @@ export type ContextRankResponse = {
   w_off: number;
   w_def: number;
   rankings: Record<string, any>[];
+  context?: Record<string, any>;
+  notes?: string[];
+  warnings?: string[];
+  parser_warnings?: string[];
+  clarifying_questions?: string[];
 };
 
 export type ModelMetricsResponse = {
@@ -197,7 +214,6 @@ export type ModelMetricsResponse = {
   rf_vs_baseline_p: number | null;
 };
 
-// Statistical analysis response (what /analysis/ml returns)
 export type MlAnalysisResponse = {
   dataset: any;
   eda: any;
@@ -211,7 +227,6 @@ export type MlAnalysisResponse = {
 // Types (Dataset2 / Shots Intelligence + Viz)
 // ---------------------------
 
-// Shot Plan ranking response (Baseline shot recommender on Dataset2)
 export type ShotPlanRankResponse = {
   season: string;
   our_team: string;
@@ -219,22 +234,15 @@ export type ShotPlanRankResponse = {
   k: number;
   w_off: number;
   w_def: number;
-
   best_shooter?: any;
   top_shot_types: Record<string, any>[];
   top_zones: Record<string, any>[];
   top_pairs?: Record<string, any>[];
-
   metadata?: any;
   notes?: string[];
-
-  // Optional debug: which endpoint actually served this response.
   _endpoint_used?: string;
 };
 
-// Heatmap responses can come from:
-// - Dataset1/root endpoint:     GET /viz/shot-heatmap      -> { caption, image_base64 }
-// - Dataset2/PBP endpoint:      GET /pbp/viz/shot-heatmap  -> { season, team, opp, shot_type, zone, max_shots, image_base64 }
 export type ShotHeatmapResponse = {
   image_base64: string;
   caption?: string;
@@ -244,8 +252,6 @@ export type ShotHeatmapResponse = {
   shot_type?: string | null;
   zone?: string | null;
   max_shots?: number;
-
-  // Optional debug: which endpoint actually served this response.
   _endpoint_used?: string;
 };
 
@@ -271,7 +277,6 @@ export type ShotMlAnalysisResponse = {
   model_selection: any;
 };
 
-// Dataset2: PBP meta options for dropdowns
 export type PbpMetaOptions = {
   seasons: string[];
   teams: string[];
@@ -279,7 +284,6 @@ export type PbpMetaOptions = {
   zones?: string[];
 };
 
-// Dataset2: PBP shots preview response for Shots Explorer page
 export type PbpShotsPreviewResponse = {
   season: string;
   team: string;
@@ -290,20 +294,169 @@ export type PbpShotsPreviewResponse = {
   returned_rows: number;
   columns: string[];
   rows: Record<string, any>[];
+  _endpoint_used?: string;
+};
 
-  // Optional debug: which endpoint actually served this response.
+// ---------------------------
+// Types (NLP / Gameplan)
+// ---------------------------
+
+export type AdvancedContextPayload = {
+  period?: number | null;
+  margin?: number | null;
+  timeRemaining?: number | null;
+  time_remaining?: number | null;
+  shotClock?: number | null;
+  shot_clock?: number | null;
+
+  need?: string | null;
+  needs?: string[];
+  defenseStyle?: string | null;
+  defense_style?: string | null;
+  pace?: string | null;
+
+  specialSituations?: string[];
+  special_situations?: string[];
+  preferredPlayFamilies?: string[];
+  preferred_play_families?: string[];
+
+  afterTimeout?: boolean;
+  after_timeout?: boolean;
+  slob?: boolean;
+  blob?: boolean;
+  advanceBall?: boolean;
+  advance_ball?: boolean;
+
+  lateClock?: boolean;
+  late_clock?: boolean;
+  need3?: boolean;
+  protectLead?: boolean;
+  protect_lead?: boolean;
+  endOfQuarter?: boolean;
+  end_of_quarter?: boolean;
+  vsSwitching?: boolean;
+  vs_switching?: boolean;
+  mustStop?: boolean;
+  must_stop?: boolean;
+  quick2?: boolean;
+  twoForOne?: boolean;
+  two_for_one?: boolean;
+  holdForLast?: boolean;
+  hold_for_last?: boolean;
+  foulGame?: boolean;
+  foul_game?: boolean;
+  noThree?: boolean;
+  no_three?: boolean;
+  mustScore?: boolean;
+  must_score?: boolean;
+  safe?: boolean;
+
+  offenseBias?: number | null;
+  offense_bias?: number | null;
+  defenseBias?: number | null;
+  defense_bias?: number | null;
+
+  intentTags?: string[];
+  intent_tags?: string[];
+
+  contextBrief?: string | null;
+  context_brief?: string | null;
+  objectiveSummary?: string | null;
+  objective_summary?: string | null;
+
+  parserVersion?: string | null;
+  parser_version?: string | null;
+  rawText?: string | null;
+  raw_text?: string | null;
+  textNormalized?: string | null;
+  text_normalized?: string | null;
+};
+
+export type ContextRankOpts = {
+  season: string;
+  our: string;
+  opp: string;
+  margin?: number;
+  period?: number;
+  timeRemaining?: number;
+  shotClock?: number;
+  k?: number;
+  wOff?: number;
+  wDef?: number;
+  context?: AdvancedContextPayload;
+};
+
+export type ContextRankRow = {
+  playType: string;
+  finalPPP: number;
+  mlPPP: number;
+  baselinePPP: number;
+  deltaPPP: number;
+  contextLabel: string;
+  rationale: string;
+  contextAdj?: number;
+  bonusQuick?: number;
+  bonusScore?: number;
+  penaltyProtect?: number;
+  raw: Record<string, any>;
+};
+
+export type ContextRankResult = {
+  season: string;
+  our_team: string;
+  opp_team: string;
+  k: number;
+  margin: number;
+  period: number;
+  time_remaining_period_sec: number;
+  w_off: number;
+  w_def: number;
+  rankings: ContextRankRow[];
+  context?: Record<string, any>;
+  notes?: string[];
+  warnings?: string[];
+  parser_warnings?: string[];
+  clarifying_questions?: string[];
+  _endpoint_used?: string;
+  _method_used?: "GET" | "POST";
+};
+
+export type NlpParseResponse = {
+  raw_text?: string;
+  context: Record<string, any>;
+  confidence?: number;
+  clarifying_questions?: string[];
+  matches?: Record<string, string>;
+  warnings?: string[];
+  parser_version?: string;
+  _endpoint_used?: string;
+};
+
+export type NlpExplainPlay = {
+  play_name: string;
+  play_type: string;
+  rank: number;
+  summary: string;
+  evidence: string[];
+  caution?: string | null;
+  matched_context?: string[];
+  metrics_used?: Record<string, any>;
+};
+
+export type NlpExplainResponse = {
+  context_summary: string;
+  overall_summary: string;
+  plays: NlpExplainPlay[];
+  notes?: string[];
+  parser_warnings?: string[];
+  clarifying_questions?: string[];
+  explainer_version?: string;
   _endpoint_used?: string;
 };
 
 // ---------------------------
 // Helpers to keep UI from crashing
 // ---------------------------
-//
-// You hit a runtime error like:
-//   data.feature_selection.correlation_filter.threshold is undefined
-//
-// That’s a *shape mismatch* issue. The cleanest fix is to normalize the response
-// here so pages can safely read expected fields without tons of optional chaining.
 
 function normalizeFeatureSelection(fs: any): any {
   const out = fs && typeof fs === "object" ? { ...fs } : {};
@@ -315,17 +468,252 @@ function normalizeFeatureSelection(fs: any): any {
   out.correlation_filter = {
     threshold: cfRaw.threshold ?? null,
     kept: Array.isArray(cfRaw.kept) ? cfRaw.kept : [],
-    removed: Array.isArray(cfRaw.removed) ? cfRaw.removed : [],
+    dropped: Array.isArray(cfRaw.dropped)
+      ? cfRaw.dropped
+      : Array.isArray(cfRaw.removed)
+        ? cfRaw.removed
+        : [],
   };
 
-  // You can extend normalization here if pages rely on other keys.
   return out;
 }
 
+function unwrapMaybeCachedPayload(raw: any): any {
+  if (raw && typeof raw === "object" && raw.payload && typeof raw.payload === "object") {
+    return raw.payload;
+  }
+  return raw;
+}
+
 function normalizeAnalysisResponse<T extends { feature_selection?: any }>(raw: any): T {
-  const obj = raw && typeof raw === "object" ? { ...raw } : {};
+  const base = unwrapMaybeCachedPayload(raw);
+  const obj = base && typeof base === "object" ? { ...base } : {};
   obj.feature_selection = normalizeFeatureSelection(obj.feature_selection);
   return obj as T;
+}
+
+// ---------------------------
+// Context payload normalization
+// ---------------------------
+
+function dedupeStrings(values: Array<string | null | undefined>): string[] {
+  const out: string[] = [];
+  const seen = new Set<string>();
+
+  for (const value of values) {
+    if (typeof value !== "string") continue;
+    const clean = value.trim();
+    if (!clean || seen.has(clean)) continue;
+    out.push(clean);
+    seen.add(clean);
+  }
+
+  return out;
+}
+
+function toSnakeCaseContext(context?: AdvancedContextPayload): Record<string, any> {
+  const c = context ?? {};
+
+  const timeRemaining =
+    c.time_remaining ??
+    c.timeRemaining ??
+    null;
+
+  const shotClock =
+    c.shot_clock ??
+    c.shotClock ??
+    null;
+
+  const defenseStyle =
+    c.defense_style ??
+    c.defenseStyle ??
+    null;
+
+  const specialSituations = Array.isArray(c.special_situations)
+    ? c.special_situations
+    : Array.isArray(c.specialSituations)
+      ? c.specialSituations
+      : [];
+
+  const preferredPlayFamilies = Array.isArray(c.preferred_play_families)
+    ? c.preferred_play_families
+    : Array.isArray(c.preferredPlayFamilies)
+      ? c.preferredPlayFamilies
+      : [];
+
+  const intentTags = Array.isArray(c.intent_tags)
+    ? c.intent_tags
+    : Array.isArray(c.intentTags)
+      ? c.intentTags
+      : [];
+
+  return {
+    period: c.period ?? null,
+    margin: c.margin ?? null,
+    time_remaining: timeRemaining,
+    shot_clock: shotClock,
+
+    need: c.need ?? null,
+    needs: Array.isArray(c.needs) ? c.needs : [],
+
+    defense_style: defenseStyle,
+    pace: c.pace ?? null,
+
+    special_situations: specialSituations,
+    preferred_play_families: preferredPlayFamilies,
+
+    after_timeout: c.after_timeout ?? c.afterTimeout ?? undefined,
+    slob: c.slob ?? undefined,
+    blob: c.blob ?? undefined,
+    advance_ball: c.advance_ball ?? c.advanceBall ?? undefined,
+
+    late_clock: c.late_clock ?? c.lateClock ?? undefined,
+    need3: c.need3 ?? undefined,
+    protect_lead: c.protect_lead ?? c.protectLead ?? undefined,
+    end_of_quarter: c.end_of_quarter ?? c.endOfQuarter ?? undefined,
+    vs_switching: c.vs_switching ?? c.vsSwitching ?? undefined,
+    must_stop: c.must_stop ?? c.mustStop ?? undefined,
+    quick2: c.quick2 ?? undefined,
+    two_for_one: c.two_for_one ?? c.twoForOne ?? undefined,
+    hold_for_last: c.hold_for_last ?? c.holdForLast ?? undefined,
+    foul_game: c.foul_game ?? c.foulGame ?? undefined,
+    no_three: c.no_three ?? c.noThree ?? undefined,
+    must_score: c.must_score ?? c.mustScore ?? undefined,
+    safe: c.safe ?? undefined,
+
+    offense_bias: c.offense_bias ?? c.offenseBias ?? undefined,
+    defense_bias: c.defense_bias ?? c.defenseBias ?? undefined,
+
+    intent_tags: intentTags,
+
+    context_brief: c.context_brief ?? c.contextBrief ?? undefined,
+    objective_summary: c.objective_summary ?? c.objectiveSummary ?? undefined,
+
+    parser_version: c.parser_version ?? c.parserVersion ?? undefined,
+    raw_text: c.raw_text ?? c.rawText ?? undefined,
+    text_normalized: c.text_normalized ?? c.textNormalized ?? undefined,
+  };
+}
+
+function compactObject<T extends Record<string, any>>(obj: T): T {
+  const out: Record<string, any> = {};
+
+  Object.entries(obj).forEach(([key, value]) => {
+    if (value === undefined) return;
+    if (Array.isArray(value) && value.length === 0) return;
+    out[key] = value;
+  });
+
+  return out as T;
+}
+
+function buildExpandedContextFromOpts(opts: ContextRankOpts): Record<string, any> {
+  const normalized = toSnakeCaseContext(opts.context);
+
+  const merged = compactObject({
+    ...normalized,
+    period: normalized.period ?? opts.period ?? null,
+    margin: normalized.margin ?? opts.margin ?? null,
+    time_remaining: normalized.time_remaining ?? opts.timeRemaining ?? null,
+    shot_clock: normalized.shot_clock ?? opts.shotClock ?? undefined,
+  });
+
+  merged.needs = dedupeStrings(Array.isArray(merged.needs) ? merged.needs : []);
+  merged.special_situations = dedupeStrings(
+    Array.isArray(merged.special_situations) ? merged.special_situations : []
+  );
+  merged.preferred_play_families = dedupeStrings(
+    Array.isArray(merged.preferred_play_families) ? merged.preferred_play_families : []
+  );
+  merged.intent_tags = dedupeStrings(
+    Array.isArray(merged.intent_tags) ? merged.intent_tags : []
+  );
+
+  return merged;
+}
+
+function normalizeContextRankResponse(
+  raw: any,
+  fallback: {
+    season: string;
+    our: string;
+    opp: string;
+    k: number;
+    wOff: number;
+    wDef: number;
+    context: Record<string, any>;
+  },
+  endpointUsed: string,
+  methodUsed: "GET" | "POST"
+): ContextRankResult {
+  const data = unwrapMaybeCachedPayload(raw);
+  const rows = Array.isArray(data?.rankings) ? data.rankings : [];
+
+  const normalizedRows: ContextRankRow[] = rows.map((r: Record<string, any>) => ({
+    playType:
+      r.PLAY_TYPE ??
+      r.play_type ??
+      r.playType ??
+      r.name ??
+      "Unknown Play",
+    finalPPP: Number(r.PPP_CONTEXT ?? r.finalPPP ?? r.context_ppp ?? 0),
+    mlPPP: Number(r.PPP_ML_BLEND ?? r.mlPPP ?? r.ml_ppp ?? 0),
+    baselinePPP: Number(r.PPP_BASELINE ?? r.baselinePPP ?? r.baseline_ppp ?? r.PPP_PRED ?? 0),
+    deltaPPP: Number(r.DELTA_VS_BASELINE ?? r.deltaPPP ?? r.delta_vs_baseline ?? 0),
+    contextLabel: String(r.CONTEXT_LABEL ?? r.contextLabel ?? r.context_label ?? ""),
+    rationale: String(r.RATIONALE ?? r.rationale ?? ""),
+    contextAdj:
+      r.CONTEXT_ADJ != null ? Number(r.CONTEXT_ADJ) :
+      r.context_adj != null ? Number(r.context_adj) :
+      undefined,
+    bonusQuick:
+      r.BONUS_QUICK != null ? Number(r.BONUS_QUICK) :
+      r.bonus_quick != null ? Number(r.bonus_quick) :
+      undefined,
+    bonusScore:
+      r.BONUS_SCORE != null ? Number(r.BONUS_SCORE) :
+      r.bonus_score != null ? Number(r.bonus_score) :
+      undefined,
+    penaltyProtect:
+      r.PENALTY_PROTECT != null ? Number(r.PENALTY_PROTECT) :
+      r.penalty_protect != null ? Number(r.penalty_protect) :
+      undefined,
+    raw: r,
+  }));
+
+  const margin =
+    Number(data?.margin ?? fallback.context.margin ?? 0);
+
+  const period =
+    Number(data?.period ?? fallback.context.period ?? 4);
+
+  const timeRemaining =
+    Number(
+      data?.time_remaining_period_sec ??
+      data?.time_remaining ??
+      fallback.context.time_remaining ??
+      0
+    );
+
+  return {
+    season: String(data?.season ?? fallback.season),
+    our_team: String(data?.our_team ?? data?.our ?? fallback.our),
+    opp_team: String(data?.opp_team ?? data?.opp ?? fallback.opp),
+    k: Number(data?.k ?? fallback.k),
+    margin,
+    period,
+    time_remaining_period_sec: timeRemaining,
+    w_off: Number(data?.w_off ?? fallback.wOff),
+    w_def: Number(data?.w_def ?? fallback.wDef),
+    rankings: normalizedRows,
+    context: data?.context ?? fallback.context,
+    notes: Array.isArray(data?.notes) ? data.notes : [],
+    warnings: Array.isArray(data?.warnings) ? data.warnings : [],
+    parser_warnings: Array.isArray(data?.parser_warnings) ? data.parser_warnings : [],
+    clarifying_questions: Array.isArray(data?.clarifying_questions) ? data.clarifying_questions : [],
+    _endpoint_used: endpointUsed,
+    _method_used: methodUsed,
+  };
 }
 
 // ---------------------------
@@ -336,7 +724,6 @@ export async function fetchMetaOptions(): Promise<MetaOptions> {
   try {
     return await fetchJson<MetaOptions>(`${API_BASE}/meta/options`);
   } catch {
-    // If backend isn't running, keep UI usable with fallback dropdowns.
     return {
       seasons: FALLBACK_SEASONS,
       teams: FALLBACK_TEAMS,
@@ -352,17 +739,6 @@ export async function fetchMetaOptions(): Promise<MetaOptions> {
 // ---------------------------
 // Dataset2 (PBP) Meta
 // ---------------------------
-//
-// We keep Dataset2 dropdowns separate from Dataset1 meta, because Dataset2 has
-// its own set of seasons/teams coming from the PBP shots parquet.
-//
-// Backend exposes:
-//   GET /pbp/meta/options
-// returning:
-//   { seasons: [...], teams: [...], shotTypes: [...], zones: [...] }
-//
-// Defensive behavior:
-// - If /pbp isn't mounted, we fall back to Dataset1 meta so UI doesn't crash.
 
 export async function fetchPbpMetaOptions(): Promise<PbpMetaOptions> {
   try {
@@ -419,7 +795,7 @@ export function getTeamPlaytypesCsvUrl(opts: {
   side?: string;
   playType?: string;
   minPoss?: number;
-  limit?: number; //
+  limit?: number;
 }): string {
   const { season, team, side, playType, minPoss = 0 } = opts;
 
@@ -429,7 +805,6 @@ export function getTeamPlaytypesCsvUrl(opts: {
   if (side) params.set("side", side);
   if (playType) params.set("play_type", playType);
   params.set("min_poss", String(minPoss));
-
 
   return `${API_BASE}/data/team-playtypes.csv?${params.toString()}`;
 }
@@ -456,7 +831,6 @@ export async function baselineRank(opts: {
     raw: Record<string, any>;
   }>
 > {
-  // ✅ FIX: destructure wDef so it exists (and give it a safe default)
   const { season, our, opp, k = 5, wOff = 0.7, wDef = 0.3 } = opts;
 
   const params = new URLSearchParams({
@@ -511,70 +885,132 @@ export function getBaselineCsvUrl(opts: {
 // Context + ML ranking (Dataset1)
 // ---------------------------
 
-export async function contextRank(opts: {
-  season: string;
-  our: string;
-  opp: string;
-  margin: number;
-  period: number;
-  timeRemaining: number; // seconds remaining in current period
-  k?: number;
-  wOff?: number;
-}): Promise<
-  Array<{
-    playType: string;
-    finalPPP: number;
-    mlPPP: number;
-    baselinePPP: number;
-    deltaPPP: number;
-    contextLabel: string;
-    rationale: string;
-    raw: Record<string, any>;
-  }>
-> {
+export async function contextRank(opts: ContextRankOpts): Promise<ContextRankResult> {
   const {
     season,
     our,
     opp,
-    margin,
-    period,
-    timeRemaining,
     k = 5,
     wOff = 0.7,
+    wDef = opts.wDef ?? (1 - wOff),
   } = opts;
 
-  const params = new URLSearchParams({
-    season,
-    our,
-    opp,
-    margin: String(margin),
-    period: String(period),
-    time_remaining: String(timeRemaining),
-    k: String(k),
-    w_off: String(wOff),
-  });
+  const contextPayload = buildExpandedContextFromOpts(opts);
 
-  const data = await fetchJson<ContextRankResponse>(
-    `${API_BASE}/rank-plays/context-ml?${params.toString()}`
-  );
+  const postBodies = [
+    {
+      season,
+      our,
+      opp,
+      k,
+      w_off: wOff,
+      w_def: wDef,
+      context: contextPayload,
+    },
+    {
+      season,
+      our_team: our,
+      opp_team: opp,
+      k,
+      w_off: wOff,
+      w_def: wDef,
+      context: contextPayload,
+    },
+    {
+      season,
+      our,
+      opp,
+      k,
+      w_off: wOff,
+      w_def: wDef,
+      ...contextPayload,
+    },
+  ];
 
-  const rows = Array.isArray(data.rankings) ? data.rankings : [];
+  const postCandidates = [
+    { url: `${API_BASE}/rank-plays/context-ml`, body: postBodies[0] },
+    { url: `${API_BASE}/rank-plays/context-ml`, body: postBodies[1] },
+    { url: `${API_BASE}/rank-plays/context-ml`, body: postBodies[2] },
+  ];
 
-  return rows.map((r) => ({
-    playType: r.PLAY_TYPE,
-    finalPPP: Number(r.PPP_CONTEXT),
-    mlPPP: Number(r.PPP_ML_BLEND),
-    baselinePPP: Number(r.PPP_BASELINE),
-    deltaPPP: Number(r.DELTA_VS_BASELINE),
-    contextLabel: r.CONTEXT_LABEL || "",
-    rationale: r.RATIONALE || "",
-    raw: r,
-  }));
+  try {
+    const { data, usedUrl } = await tryPostJsonCandidates<any>(postCandidates, {
+      keepTryingOnClientError: true,
+    });
+
+    return normalizeContextRankResponse(
+      data,
+      {
+        season,
+        our,
+        opp,
+        k,
+        wOff,
+        wDef,
+        context: contextPayload,
+      },
+      usedUrl,
+      "POST"
+    );
+  } catch {
+    const margin =
+      contextPayload.margin ??
+      opts.margin ??
+      0;
+
+    const period =
+      contextPayload.period ??
+      opts.period ??
+      4;
+
+    const timeRemaining =
+      contextPayload.time_remaining ??
+      opts.timeRemaining ??
+      0;
+
+    const params = new URLSearchParams({
+      season,
+      our,
+      opp,
+      margin: String(margin),
+      period: String(period),
+      time_remaining: String(timeRemaining),
+      k: String(k),
+      w_off: String(wOff),
+    });
+
+    if (opts.wDef != null) {
+      params.set("w_def", String(wDef));
+    }
+
+    if (contextPayload.shot_clock != null) {
+      params.set("shot_clock", String(contextPayload.shot_clock));
+    }
+
+    const getCandidates = [
+      `${API_BASE}/rank-plays/context-ml?${params.toString()}`,
+    ];
+
+    const { data, usedUrl } = await tryJsonCandidates<any>(getCandidates, {
+      keepTryingOnClientError: true,
+    });
+
+    return normalizeContextRankResponse(
+      data,
+      {
+        season,
+        our,
+        opp,
+        k,
+        wOff,
+        wDef,
+        context: contextPayload,
+      },
+      usedUrl,
+      "GET"
+    );
+  }
 }
-
-// ---------------------------
-// Model metrics (Dataset1)
-// ---------------------------
 
 export async function fetchModelMetrics(nSplits = 5): Promise<ModelMetricsResponse> {
   const params = new URLSearchParams({ n_splits: String(nSplits) });
@@ -604,7 +1040,6 @@ export async function fetchMlAnalysis(opts?: {
     `${API_BASE}/analysis/ml?${params.toString()}`
   );
 
-  // Normalize so pages can read expected fields safely.
   return normalizeAnalysisResponse<MlAnalysisResponse>(raw);
 }
 
@@ -633,13 +1068,98 @@ export async function fetchPlaytypeViz(opts: {
 }
 
 // ---------------------------
+// NLP / Gameplan helpers
+// ---------------------------
+
+export async function parseNlpPrompt(opts: {
+  text: string;
+  defaults?: AdvancedContextPayload;
+}): Promise<NlpParseResponse> {
+  const bodyA = {
+    text: opts.text,
+    defaults: compactObject(toSnakeCaseContext(opts.defaults)),
+  };
+
+  const bodyB = {
+    prompt: opts.text,
+    defaults: compactObject(toSnakeCaseContext(opts.defaults)),
+  };
+
+  const candidates = [
+    { url: `${API_BASE}/nlp/parse`, body: bodyA },
+    { url: `${API_BASE}/nlp/parse`, body: bodyB },
+  ];
+
+  const { data, usedUrl } = await tryPostJsonCandidates<any>(candidates, {
+    keepTryingOnClientError: true,
+  });
+
+  const base = unwrapMaybeCachedPayload(data);
+
+  return {
+    raw_text: base?.raw_text ?? opts.text,
+    context: base?.context ?? {},
+    confidence: base?.confidence,
+    clarifying_questions: Array.isArray(base?.clarifying_questions) ? base.clarifying_questions : [],
+    matches: base?.matches ?? {},
+    warnings: Array.isArray(base?.warnings) ? base.warnings : [],
+    parser_version: base?.parser_version,
+    _endpoint_used: usedUrl,
+  };
+}
+
+export async function explainNlpRecommendations(opts: {
+  context: Record<string, any>;
+  rankedContext: any;
+  rankedBaseline?: any;
+  topK?: number;
+  parserWarnings?: string[];
+  clarifyingQuestions?: string[];
+}): Promise<NlpExplainResponse> {
+  const bodyA = {
+    context: opts.context,
+    ranked_context: opts.rankedContext,
+    ranked_baseline: opts.rankedBaseline,
+    top_k: opts.topK ?? 5,
+    parser_warnings: opts.parserWarnings ?? [],
+    clarifying_questions: opts.clarifyingQuestions ?? [],
+  };
+
+  const bodyB = {
+    context: opts.context,
+    rankings: opts.rankedContext,
+    baseline: opts.rankedBaseline,
+    k: opts.topK ?? 5,
+    parser_warnings: opts.parserWarnings ?? [],
+    clarifying_questions: opts.clarifyingQuestions ?? [],
+  };
+
+  const candidates = [
+    { url: `${API_BASE}/nlp/explain`, body: bodyA },
+    { url: `${API_BASE}/nlp/explain`, body: bodyB },
+  ];
+
+  const { data, usedUrl } = await tryPostJsonCandidates<any>(candidates, {
+    keepTryingOnClientError: true,
+  });
+
+  const base = unwrapMaybeCachedPayload(data);
+
+  return {
+    context_summary: String(base?.context_summary ?? ""),
+    overall_summary: String(base?.overall_summary ?? ""),
+    plays: Array.isArray(base?.plays) ? base.plays : [],
+    notes: Array.isArray(base?.notes) ? base.notes : [],
+    parser_warnings: Array.isArray(base?.parser_warnings) ? base.parser_warnings : [],
+    clarifying_questions: Array.isArray(base?.clarifying_questions) ? base.clarifying_questions : [],
+    explainer_version: base?.explainer_version,
+    _endpoint_used: usedUrl,
+  };
+}
+
+// ---------------------------
 // Shot Intelligence (Dataset2)
 // ---------------------------
-//
-
-//
-// we implement defensive helpers that try the most likely candidate paths
-// and also try alternate query param naming (our/opp vs our_team/opp_team).
 
 export async function fetchShotPlanRank(opts: {
   season: string;
@@ -650,7 +1170,6 @@ export async function fetchShotPlanRank(opts: {
 }): Promise<ShotPlanRankResponse> {
   const { season, our, opp, k = 5, wOff = 0.7 } = opts;
 
-  // Build multiple param variants (FastAPI ignores unknown params, so this is safe).
   const pA = new URLSearchParams({
     season,
     our,
@@ -667,43 +1186,44 @@ export async function fetchShotPlanRank(opts: {
     w_off: String(wOff),
   });
 
-  // Candidate URLs in priority order.
   const candidates = [
-    // Preferred Dataset2 mount
     `${API_BASE}/pbp/shotplan/rank?${pA.toString()}`,
+    `${API_BASE}/pbp/shotplan?${pA.toString()}`,
     `${API_BASE}/pbp/shotplan/rank?${pB.toString()}`,
-
-    // Legacy / root mounts (some builds do this)
+    `${API_BASE}/pbp/shotplan?${pB.toString()}`,
     `${API_BASE}/shotplan/rank?${pA.toString()}`,
+    `${API_BASE}/shotplan?${pA.toString()}`,
     `${API_BASE}/shotplan/rank?${pB.toString()}`,
+    `${API_BASE}/shotplan?${pB.toString()}`,
   ];
 
   const { data, usedUrl } = await tryJsonCandidates<ShotPlanRankResponse>(candidates, {
-    keepTryingOnClientError: true, // helps if one variant 422s but another works
+    keepTryingOnClientError: true,
   });
 
-  // Normalize fields so UI can rely on a consistent shape.
-  const safe: ShotPlanRankResponse = {
-    season: (data as any)?.season ?? season,
-    our_team: (data as any)?.our_team ?? (data as any)?.our ?? our,
-    opp_team: (data as any)?.opp_team ?? (data as any)?.opp ?? opp,
-    k: (data as any)?.k ?? k,
-    w_off: (data as any)?.w_off ?? (data as any)?.wOff ?? wOff,
-    w_def: (data as any)?.w_def ?? (data as any)?.wDef ?? (1 - wOff),
+  const base = unwrapMaybeCachedPayload(data);
 
-    top_shot_types: Array.isArray((data as any)?.top_shot_types)
-      ? (data as any).top_shot_types
+  const safe: ShotPlanRankResponse = {
+    season: (base as any)?.season ?? season,
+    our_team: (base as any)?.our_team ?? (base as any)?.our ?? our,
+    opp_team: (base as any)?.opp_team ?? (base as any)?.opp ?? opp,
+    k: (base as any)?.k ?? k,
+    w_off: (base as any)?.w_off ?? (base as any)?.wOff ?? wOff,
+    w_def: (base as any)?.w_def ?? (base as any)?.wDef ?? (1 - wOff),
+
+    top_shot_types: Array.isArray((base as any)?.top_shot_types)
+      ? (base as any).top_shot_types
       : [],
-    top_zones: Array.isArray((data as any)?.top_zones)
-      ? (data as any).top_zones
+    top_zones: Array.isArray((base as any)?.top_zones)
+      ? (base as any).top_zones
       : [],
-    top_pairs: Array.isArray((data as any)?.top_pairs)
-      ? (data as any).top_pairs
+    top_pairs: Array.isArray((base as any)?.top_pairs)
+      ? (base as any).top_pairs
       : undefined,
 
-    best_shooter: (data as any)?.best_shooter,
-    metadata: (data as any)?.metadata,
-    notes: Array.isArray((data as any)?.notes) ? (data as any).notes : undefined,
+    best_shooter: (base as any)?.best_shooter,
+    metadata: (base as any)?.metadata,
+    notes: Array.isArray((base as any)?.notes) ? (base as any).notes : undefined,
     _endpoint_used: usedUrl,
   };
 
@@ -724,17 +1244,24 @@ export async function fetchShotHeatmap(opts: {
     throw new Error("fetchShotHeatmap requires either `team` or `our`.");
   }
 
-  // Dataset2 query style (team/opp) + max_shots
-  const pPbp = new URLSearchParams({
+  const pPbpOur = new URLSearchParams({
+    season: opts.season,
+    our: team,
+    opp: opts.opp,
+  });
+  if (opts.shotType) pPbpOur.set("shot_type", opts.shotType);
+  if (opts.zone) pPbpOur.set("zone", opts.zone);
+  if (opts.maxShots != null) pPbpOur.set("max_shots", String(opts.maxShots));
+
+  const pPbpTeam = new URLSearchParams({
     season: opts.season,
     team,
     opp: opts.opp,
   });
-  if (opts.shotType) pPbp.set("shot_type", opts.shotType);
-  if (opts.zone) pPbp.set("zone", opts.zone);
-  if (opts.maxShots != null) pPbp.set("max_shots", String(opts.maxShots));
+  if (opts.shotType) pPbpTeam.set("shot_type", opts.shotType);
+  if (opts.zone) pPbpTeam.set("zone", opts.zone);
+  if (opts.maxShots != null) pPbpTeam.set("max_shots", String(opts.maxShots));
 
-  // Legacy/root query style (our/opp)
   const pRoot = new URLSearchParams({
     season: opts.season,
     our: team,
@@ -742,15 +1269,12 @@ export async function fetchShotHeatmap(opts: {
   });
   if (opts.shotType) pRoot.set("shot_type", opts.shotType);
   if (opts.zone) pRoot.set("zone", opts.zone);
+  if (opts.maxShots != null) pRoot.set("max_shots", String(opts.maxShots));
 
   const candidates = [
-    // Preferred Dataset2 name
-    `${API_BASE}/pbp/viz/shot-heatmap?${pPbp.toString()}`,
-
-    // Some people accidentally name it /pbp/viz/heatmap ( earlier URL)
-    `${API_BASE}/pbp/viz/heatmap?${pPbp.toString()}`,
-
-    // Legacy/root endpoint
+    `${API_BASE}/pbp/viz/shot-heatmap?${pPbpOur.toString()}`,
+    `${API_BASE}/pbp/viz/shot-heatmap?${pPbpTeam.toString()}`,
+    `${API_BASE}/pbp/viz/heatmap?${pPbpTeam.toString()}`,
     `${API_BASE}/viz/shot-heatmap?${pRoot.toString()}`,
   ];
 
@@ -758,15 +1282,23 @@ export async function fetchShotHeatmap(opts: {
     keepTryingOnClientError: true,
   });
 
-  // Normalize so UI always gets image_base64
-  if (!(data as any)?.image_base64) {
-    throw new Error(
-      `Heatmap response missing image_base64. Endpoint used: ${usedUrl}`
-    );
+  const base = unwrapMaybeCachedPayload(data);
+
+  if (!(base as any)?.image_base64) {
+    throw new Error(`Heatmap response missing image_base64. Endpoint used: ${usedUrl}`);
   }
 
   return {
-    ...data,
+    ...base,
+    caption:
+      (base as any)?.caption ??
+      `Shot Heatmap • ${team} vs ${opts.opp} • ${opts.season}`,
+    season: (base as any)?.season ?? opts.season,
+    team: (base as any)?.team ?? team,
+    opp: (base as any)?.opp ?? opts.opp,
+    shot_type: (base as any)?.shot_type ?? opts.shotType ?? null,
+    zone: (base as any)?.zone ?? opts.zone ?? null,
+    max_shots: (base as any)?.max_shots ?? opts.maxShots,
     _endpoint_used: usedUrl,
   };
 }
@@ -781,8 +1313,6 @@ export function getShotPlanPdfUrl(opts: {
   zone?: string;
   maxShots?: number;
 }): string {
-  // Keep PDF export on the legacy root endpoint unless backend explicitly adds /pbp/export.
-  // This keeps existing exports stable.
   const { season, our, opp, k = 5, wOff = 0.7, shotType, zone } = opts;
 
   const params = new URLSearchParams({
@@ -808,35 +1338,45 @@ export async function fetchShotMlAnalysis(opts?: {
   params.set("n_splits", String(nSplits));
   if (opts?.refresh) params.set("refresh", "true");
 
-  const raw = await fetchJson<ShotMlAnalysisResponse>(
-    `${API_BASE}/analysis/shot-ml?${params.toString()}`
-  );
+  const candidates = [
+    `${API_BASE}/pbp/analysis/shot-ml?${params.toString()}`,
+    `${API_BASE}/analysis/shot-ml?${params.toString()}`,
+  ];
 
-  // Normalize so pages can safely access correlation_filter.threshold, kept, etc.
-  return normalizeAnalysisResponse<ShotMlAnalysisResponse>(raw);
+  const { data } = await tryJsonCandidates<any>(candidates, {
+    keepTryingOnClientError: true,
+  });
+
+  return normalizeAnalysisResponse<ShotMlAnalysisResponse>(data);
 }
 
 export async function fetchShotModelMetrics(
-  nSplits = 5
+  nSplits = 5,
+  refresh = false
 ): Promise<ShotModelMetricsResponse> {
   const params = new URLSearchParams({ n_splits: String(nSplits) });
-  return await fetchJson<ShotModelMetricsResponse>(
-    `${API_BASE}/metrics/shot-models?${params.toString()}`
-  );
+  if (refresh) params.set("refresh", "true");
+
+  const candidates = [
+    `${API_BASE}/pbp/metrics/shot-models?${params.toString()}`,
+    `${API_BASE}/metrics/shot-models?${params.toString()}`,
+  ];
+
+  const { data } = await tryJsonCandidates<any>(candidates, {
+    keepTryingOnClientError: true,
+  });
+
+  const base = unwrapMaybeCachedPayload(data);
+
+  return {
+    n_splits: Number((base as any)?.n_splits ?? nSplits),
+    metrics: Array.isArray((base as any)?.metrics) ? (base as any).metrics : [],
+  };
 }
 
 // ---------------------------
-// Dataset2 Shots Explorer helpers (WHAT shot-explorer PAGE NEEDS)
+// Dataset2 Shots Explorer helpers
 // ---------------------------
-//
-//  backend currently 404s on:
-//   GET /pbp/shots/preview
-//
-// That means either:
-// - the endpoint isn't implemented, OR
-// - it exists at a different mount path (often /shots/preview)
-//
-// We handle that here by trying both paths so the UI doesn't break.
 
 function buildPbpShotsParams(opts: {
   season: string;
@@ -850,14 +1390,11 @@ function buildPbpShotsParams(opts: {
 
   params.set("season", opts.season);
   params.set("limit", String(opts.limit ?? 50));
-
-  // Team naming variants: some endpoints use team, some use our
   params.set("team", opts.team);
   params.set("our", opts.team);
 
   if (opts.opp) params.set("opp", opts.opp);
 
-  // Shot type naming variants
   if (opts.shotType) {
     params.set("shot_type", opts.shotType);
     params.set("shotType", opts.shotType);
@@ -879,10 +1416,7 @@ export async function fetchPbpShotsPreview(opts: {
   const params = buildPbpShotsParams(opts);
 
   const candidates = [
-    // Preferred Dataset2 mount
     `${API_BASE}/pbp/shots/preview?${params.toString()}`,
-
-    // Fallback if backend mounted it at root
     `${API_BASE}/shots/preview?${params.toString()}`,
   ];
 
@@ -890,20 +1424,16 @@ export async function fetchPbpShotsPreview(opts: {
     keepTryingOnClientError: true,
   });
 
-  // Normalize table-safe shape (so UI never crashes)
   const safe: PbpShotsPreviewResponse = {
     season: (data as any)?.season ?? opts.season,
     team: (data as any)?.team ?? (data as any)?.our ?? opts.team,
     opp: (data as any)?.opp ?? null,
     shot_type: (data as any)?.shot_type ?? null,
     zone: (data as any)?.zone ?? null,
-
     total_rows: Number((data as any)?.total_rows ?? 0),
     returned_rows: Number((data as any)?.returned_rows ?? (data as any)?.rows?.length ?? 0),
-
     columns: Array.isArray((data as any)?.columns) ? (data as any).columns : [],
     rows: Array.isArray((data as any)?.rows) ? (data as any).rows : [],
-
     _endpoint_used: usedUrl,
   };
 
@@ -920,17 +1450,12 @@ export function getPbpShotsCsvUrl(opts: {
 }): string {
   const params = buildPbpShotsParams({
     ...opts,
-    limit: opts.limit ?? 5000, // exports usually larger than preview
+    limit: opts.limit ?? 5000,
   });
 
-  // Prefer /pbp path
   return `${API_BASE}/pbp/shots.csv?${params.toString()}`;
 }
 
-/**
- * Optional helper: if /pbp/shots.csv is not mounted in  backend,
- *  can use this as a fallback link in the UI.
- */
 export function getPbpShotsCsvUrlLegacy(opts: {
   season: string;
   team: string;

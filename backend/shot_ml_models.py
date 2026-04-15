@@ -1,25 +1,3 @@
-"""backend/shot_ml_models.py
-
-Dataset2 (NBA play-by-play shots) ML model evaluation utilities.
-
-This module is **Dataset2-only**. It does not touch Dataset1 code.
-
-Phase 1 pipeline outputs (confirmed in this repo):
-  - backend/data/pbp/shots_clean.parquet
-    Columns (18):
-      SEASON_STR, TEAM_ABBR, OPP_ABBR, HOME_FLAG, SHOT_TYPE, SHOT_VALUE,
-      MADE, POINTS, X, Y, DIST, ANGLE, ZONE, PERIOD, CLOCK_SEC, MARGIN,
-      GAME_ID, SHOOTER_ID
-  - backend/data/pbp/cache/shots_canonical.parquet
-    Columns (18): season, team, opp, game_id, shooter_id, home, period,
-    clock_sec, margin, shot_type, zone, shot_value, is_make, points,
-    x, y, dist, angle
-
-Some earlier code expected legacy/raw column names (TEAM_ABBREVIATION,
-SHOT_DISTANCE, SHOT_CLOCK, PTS, etc.). This file normalizes those to the
-Phase 1 schema so Phase 2 CV + analysis endpoints do not crash.
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -36,11 +14,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 from pbp_constants import CLEAN_PARQUET
-
-
-# -----------------------------------------------------------------------------
-# In-process cache for shots_clean.parquet
-# -----------------------------------------------------------------------------
+from pbp_clean import ensure_clean_parquet
 
 
 @dataclass
@@ -61,10 +35,7 @@ def _clean_cache_id() -> str:
 
 
 def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
-    """Rename legacy/raw columns into the Phase 1 *clean* schema."""
-
     rename = {
-        # season/team
         "SEASON": "SEASON_STR",
         "SEASON_STRING": "SEASON_STR",
         "TEAM_ABBREVIATION": "TEAM_ABBR",
@@ -72,11 +43,9 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         "TEAM": "TEAM_ABBR",
         "OPP_ABBREVIATION": "OPP_ABBR",
         "OPP": "OPP_ABBR",
-        # shot outcomes
         "SHOT_MADE_FLAG": "MADE",
         "FGM": "MADE",
         "PTS": "POINTS",
-        # types/locations
         "ACTION_TYPE": "SHOT_TYPE",
         "SHOT_DISTANCE": "DIST",
         "DISTANCE": "DIST",
@@ -87,7 +56,6 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         "LOC_Y": "Y",
         "ZONE_BASIC": "ZONE",
         "SHOT_ZONE_BASIC": "ZONE",
-        # ids/flags
         "PLAYER_ID": "SHOOTER_ID",
         "HOME": "HOME_FLAG",
     }
@@ -98,14 +66,26 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def _looks_poisoned(df: pd.DataFrame) -> bool:
+    if df.empty:
+        return True
+    if not {"MADE", "POINTS"}.issubset(df.columns):
+        return True
+
+    made_sum = pd.to_numeric(df["MADE"], errors="coerce").fillna(0).sum()
+    points_sum = pd.to_numeric(df["POINTS"], errors="coerce").fillna(0).sum()
+    return made_sum <= 0 or points_sum <= 0
+
+
 def get_shots_clean_df(*, force_reload: bool = False) -> pd.DataFrame:
-    """Load shots_clean.parquet once per process (cached)."""
     global _CLEAN_CACHE
+
+    ensure_clean_parquet(force_rebuild=False)
 
     if not CLEAN_PARQUET.exists():
         raise FileNotFoundError(
             "shots_clean.parquet not found. Run Phase 1 build:\n"
-            "  python backend/data/etl/build_pbp_pipeline.py"
+            "  python backend/data/etl/build_pbp_pipeline.py --force"
         )
 
     cid = _clean_cache_id()
@@ -133,19 +113,23 @@ def get_shots_clean_df(*, force_reload: bool = False) -> pd.DataFrame:
 
         df = pd.read_parquet(CLEAN_PARQUET, columns=wanted)
         df = _normalize_columns(df)
-        _CLEAN_CACHE = _CleanCache(cache_id=cid, df=df)
+
+        if _looks_poisoned(df):
+            ensure_clean_parquet(force_rebuild=True)
+            df = pd.read_parquet(CLEAN_PARQUET, columns=wanted)
+            df = _normalize_columns(df)
+            if _looks_poisoned(df):
+                raise RuntimeError(
+                    "shots_clean.parquet still looks invalid after rebuild. "
+                    "Check backend/shot_etl.py against the raw parquet schema."
+                )
+
+        _CLEAN_CACHE = _CleanCache(cache_id=_clean_cache_id(), df=df)
 
     return _CLEAN_CACHE.df
 
 
-# -----------------------------------------------------------------------------
-# Feature specification
-# -----------------------------------------------------------------------------
-
-
 def get_feature_spec(*, include_shooter: bool = False) -> Dict[str, object]:
-    """Return canonical feature + target definitions for Dataset2 ML."""
-
     categorical = ["SEASON_STR", "TEAM_ABBR", "OPP_ABBR", "HOME_FLAG", "PERIOD", "SHOT_TYPE", "ZONE"]
     numeric = ["CLOCK_SEC", "MARGIN", "SHOT_VALUE", "DIST", "ANGLE", "X", "Y"]
 
@@ -166,8 +150,6 @@ def load_shots_for_ml(
     random_state: int = 42,
     include_shooter: bool = False,
 ) -> pd.DataFrame:
-    """Load + lightly clean a working ML dataframe."""
-
     df = get_shots_clean_df().copy()
     df = _normalize_columns(df)
 
@@ -181,16 +163,12 @@ def load_shots_for_ml(
         df[c] = pd.to_numeric(df[c], errors="coerce")
     df[spec["target"]] = pd.to_numeric(df[spec["target"]], errors="coerce")
 
-    # Impute numeric NaNs with medians (models used in CV don't accept NaNs)
     for c in spec["numeric_features"]:
-        if c in df.columns:
-            med = float(df[c].median()) if df[c].notna().any() else 0.0
-            df[c] = df[c].fillna(med)
+        med = float(df[c].median()) if df[c].notna().any() else 0.0
+        df[c] = df[c].fillna(med)
 
-    # Drop rows missing core target + key categoricals
     core = [spec["target"], "SHOT_TYPE", "ZONE", "GAME_ID"]
-    keep = [c for c in core if c in df.columns]
-    df = df.dropna(subset=keep).reset_index(drop=True)
+    df = df.dropna(subset=[c for c in core if c in df.columns]).reset_index(drop=True)
 
     if include_shooter and "SHOOTER_ID" in df.columns:
         vc = df["SHOOTER_ID"].value_counts(dropna=True)
@@ -201,11 +179,6 @@ def load_shots_for_ml(
         df = df.sample(n=int(max_rows), random_state=int(random_state)).reset_index(drop=True)
 
     return df
-
-
-# -----------------------------------------------------------------------------
-# CV utilities
-# -----------------------------------------------------------------------------
 
 
 def _fit_and_eval(
@@ -235,8 +208,6 @@ def run_shot_model_cv(
     max_rows: Optional[int] = 75_000,
     include_shooter: bool = False,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
-    """Cross-validate simple regressors to predict POINTS per shot."""
-
     df = load_shots_for_ml(max_rows=max_rows, random_state=random_state, include_shooter=include_shooter)
     spec = get_feature_spec(include_shooter=include_shooter)
 
@@ -248,7 +219,6 @@ def run_shot_model_cv(
     group_col = str(spec["group_col"])
     groups = df[group_col] if group_col in df.columns else None
 
-    # Keep model zoo small + reasonably fast
     models: Dict[str, Pipeline] = {
         "ridge": Pipeline(
             [
@@ -274,7 +244,7 @@ def run_shot_model_cv(
 
     fold_rows: List[Dict[str, float]] = []
 
-    if groups is not None:
+    if groups is not None and pd.Series(groups).nunique() >= int(n_splits):
         splitter = GroupKFold(n_splits=int(n_splits))
         splits = splitter.split(X, y, groups=groups)
     else:
