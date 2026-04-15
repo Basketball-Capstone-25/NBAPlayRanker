@@ -4,6 +4,10 @@ venv/
 env/
 ENV/
 backend/.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # --- Node / frontend dependencies ---
 node_modules/
@@ -20,6 +24,8 @@ build/
 backend/data/synergy_chunks/
 
 .env.local
+.env
+
 # Large datasets / artifacts
 backend/data/pbp/*.parquet
 *.zip
@@ -27,3 +33,7 @@ backend/data/pbp/*.parquet
 # Large datasets / artifacts
 backend/data/pbp/*.parquet
 *.zip
+
+/Notebook
+
+shotplan_preview.pdf

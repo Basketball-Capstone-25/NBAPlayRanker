@@ -21,10 +21,10 @@
   ],
   "fingerprint": {
     "schema_version": "canonical_v1",
-    "source_mtime_ns": 1768268261468012607,
-    "source_path": "/Users/gurkasahan/Downloads/bgs-pspi 2/backend/data/pbp/nba_pbp_2021_present.parquet",
-    "source_size": 141153753
+    "source_mtime_ns": 1775565541218928200,
+    "source_path": "C:\\Users\\amous\\NBAPlayRanker-1\\backend\\data\\pbp\\nba_pbp_2021_present.parquet",
+    "source_size": 154249970
   },
   "notes": "Derived from shot_etl CLEAN_PARQUET; snake_case canonical for /pbp/*.",
-  "rows": 1531887
+  "rows": 1332515
 }

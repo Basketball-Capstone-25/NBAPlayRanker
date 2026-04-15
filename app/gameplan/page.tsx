@@ -1,5 +1,5 @@
 // app/gameplan/page.tsx
-import GameplanClient from "./GameplanClient";
+import GameplanClient from "../ui/gameplan/_components/GameplanClient";
 
 export const metadata = {
   title: "Gameplan | NBA Play Ranker",

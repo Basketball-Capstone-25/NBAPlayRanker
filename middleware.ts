@@ -31,9 +31,17 @@ function defaultPathForRole(role: UserRole) {
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+
+  // Local-dev fallback: allow app pages to load when Supabase env vars are not configured.
+  if (!supabaseUrl || !supabaseKey) {
+    return response;
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    supabaseUrl,
+    supabaseKey,
     {
       cookies: {
         getAll() {
@@ -58,9 +66,15 @@ export async function middleware(request: NextRequest) {
     matchesRoute(path, coachOnly) ||
     matchesRoute(path, analystOnly);
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user: Awaited<ReturnType<typeof supabase.auth.getUser>>["data"]["user"] = null;
+  try {
+    const {
+      data: { user: resolvedUser },
+    } = await supabase.auth.getUser();
+    user = resolvedUser;
+  } catch {
+    user = null;
+  }
 
   if (!user && requiresAuth) {
     const url = request.nextUrl.clone();
@@ -73,11 +87,17 @@ export async function middleware(request: NextRequest) {
     return response;
   }
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
+  let profile: { role?: UserRole } | null = null;
+  try {
+    const { data } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .single();
+    profile = data as { role?: UserRole } | null;
+  } catch {
+    profile = null;
+  }
 
   const metadataRole =
     user.user_metadata?.role === "coach" || user.user_metadata?.role === "analyst"
