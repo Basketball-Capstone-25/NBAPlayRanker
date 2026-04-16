@@ -1,4 +1,4 @@
-"""Tests for Ridge model evaluation."""
+"""Tests for the Ridge regression model."""
 from __future__ import annotations
 
 import numpy as np
@@ -23,43 +23,37 @@ from infrastructure.model_management.ml_models import (
 
 @pytest.fixture(scope="module")
 def _recommender():
-    """Build BaselineRecommender once for all tests in the module."""
+    """Build recommender once for the whole module (slow to init)."""
     return BaselineRecommender(str(DATA_CSV_PATH))
 
 @pytest.fixture(scope="module")
 def offense_data(_recommender):
-    """Load offense dataset once for integration tests."""
+    """Load offense data once."""
     return load_offense_dataset(_recommender.team_df, _recommender.league_df)
 
 @pytest.fixture(scope="module")
 def cv_output(_recommender):
-    """Run 5-fold season holdout once for reuse across tests."""
+    """Run 5-fold CV once, reuse across tests."""
     return run_cv_evaluation(_recommender.team_df, _recommender.league_df, n_splits=5, random_state=42)
 
 def test_ridge_pipeline_structure():
-    """TC-ML-01 verify: pipeline has scaler then Ridge with tuned alpha."""
+    """Make sure the pipeline is scaler -> Ridge with the right alpha."""
     pipeline = _make_ridge()
 
-    assert isinstance(pipeline, Pipeline), (
-        "Expected a sklearn Pipeline; got: " + type(pipeline).__name__
-    )
+    assert isinstance(pipeline, Pipeline), "should be a Pipeline"
     assert len(pipeline.steps) == 2, (
-        f"Pipeline should have exactly 2 steps; got {len(pipeline.steps)}"
+        f"expected 2 steps, got {len(pipeline.steps)}"
     )
 
     _scaler_name, scaler = pipeline.steps[0]
     _model_name, model = pipeline.steps[1]
 
-    assert isinstance(scaler, StandardScaler), (
-        "Step 0 must be StandardScaler; got: " + type(scaler).__name__
-    )
-    assert isinstance(model, Ridge), (
-        "Step 1 must be Ridge; got: " + type(model).__name__
-    )
+    assert isinstance(scaler, StandardScaler), "first step should be StandardScaler"
+    assert isinstance(model, Ridge), "second step should be Ridge"
     assert model.alpha == RIDGE_ALPHA
 
 def test_ridge_fits_synthetic_data():
-    """TC-ML-02 verify: Ridge trains on synthetic data and predicts finite values."""
+    """Sanity check: Ridge should train on random data without blowing up."""
     rng = np.random.default_rng(42)
     n_samples = 200
     n_features = len(FEATURE_COLS)
@@ -75,7 +69,7 @@ def test_ridge_fits_synthetic_data():
     assert preds.shape == (n_samples,)
 
 def test_ridge_coefficients_bounded():
-    """TC-ML-03 derive: Ridge coefficient norm stays under a loose bound."""
+    """Coefficients shouldn't explode — L2 norm should stay reasonable."""
     COEF_L2_UPPER_BOUND = 50.0
 
     rng = np.random.default_rng(0)
@@ -98,7 +92,7 @@ def test_ridge_coefficients_bounded():
 
 @pytest.mark.integration
 def test_ridge_outperforms_baseline(cv_output):
-    """TC-ML-04 verify: Ridge beats league-mean baseline on holdout RMSE."""
+    """Ridge should beat the naive league-mean baseline on RMSE."""
     summary_df, _ = cv_output
 
     ridge_rmse = float(summary_df.loc["Ridge", "RMSE_mean"])
@@ -108,7 +102,7 @@ def test_ridge_outperforms_baseline(cv_output):
 
 @pytest.mark.integration
 def test_ridge_predictions_in_valid_range(offense_data):
-    """TC-ML-05 derive: predictions stay within realistic PPP bounds."""
+    """Predictions should be in a realistic PPP range (0 to 2.5)."""
     PPP_MIN, PPP_MAX = 0.0, 2.5
 
     seasons = sorted(offense_data["SEASON"].unique())
@@ -130,7 +124,7 @@ def test_ridge_predictions_in_valid_range(offense_data):
 
 @pytest.mark.integration
 def test_ridge_per_fold_rmse_acceptable(cv_output):
-    """TC-ML-06 derive: each holdout fold RMSE stays under a safety ceiling."""
+    """No single fold should have a crazy high RMSE."""
     RMSE_FOLD_UPPER_BOUND = 0.50
 
     _, fold_metrics = cv_output
@@ -141,7 +135,7 @@ def test_ridge_per_fold_rmse_acceptable(cv_output):
 
 @pytest.mark.integration
 def test_feature_dataset_shape(offense_data):
-    """TC-ML-07 verify: feature matrix shape and finiteness are valid."""
+    """Check the feature matrix has the right shape and no NaN/Inf."""
     X, y = get_features_and_target(offense_data, FEATURE_COLS)
 
     assert X.ndim == 2
@@ -152,7 +146,7 @@ def test_feature_dataset_shape(offense_data):
     assert np.all(np.isfinite(y))
 
 def test_ridge_regularization_effect():
-    """TC-ML-08 verify: larger alpha should shrink coefficient norm."""
+    """Higher alpha -> smaller coefficients, thats the whole point of Ridge."""
     rng = np.random.default_rng(99)
     n_samples = 300
     n_features = len(FEATURE_COLS)
@@ -178,7 +172,7 @@ def test_ridge_regularization_effect():
 
 @pytest.mark.integration
 def test_ridge_season_holdout_accuracy(offense_data):
-    """TC-ML-09 verify: train on prior seasons, predict held-out season, report metrics."""
+    """Train on 2019-2024, predict 2024-25, check RMSE and R2."""
     TEST_SEASON = "2024-25"
     RMSE_UPPER = 0.05
 

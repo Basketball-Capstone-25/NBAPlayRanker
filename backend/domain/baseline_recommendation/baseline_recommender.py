@@ -7,11 +7,8 @@ from typing import Any, Dict, List, Tuple
 
 from domain.baseline_recommendation.interfaces import IBaselineRecommender
 
-# Stats that are averaged using possessions (POSS) as weights.
-#
-# Why weight by POSS?
-# - Player lines have different sample sizes.
-# - A player with 5 possessions should not influence a team average as much as a player with 200.
+# Rate stats we average using POSS as weights (so players with more
+# possessions have a bigger influence on the team number).
 WEIGHT_COLS = [
     "PPP",
     "FG_PCT",
@@ -36,12 +33,11 @@ def build_team_playtype_tables(raw_df: pd.DataFrame) -> pd.DataFrame:
 
     def agg_func(group: pd.DataFrame) -> pd.Series:
         poss = group["POSS"].sum()
-        poss_pct = group["POSS_PCT"].sum()
 
         out = {
             "GP": group["GP"].sum(),       # total games (sum over players; used only as reference)
             "POSS": poss,                 # total possessions for the team/playtype/side
-            "POSS_PCT": poss_pct,         # share of team possessions (summing player shares)
+            "POSS_PCT": np.nan,           # placeholder — recomputed after groupby
         }
 
         # Weighted averages for rate stats
@@ -56,6 +52,12 @@ def build_team_playtype_tables(raw_df: pd.DataFrame) -> pd.DataFrame:
 
     # Group and aggregate
     team_df = df.groupby(group_cols, as_index=False).apply(agg_func)
+
+    # Recompute POSS_PCT as the fraction of a team's total possessions
+    # that go to each play type (per season/team/side).
+    team_totals = team_df.groupby(["SEASON", "TEAM_ABBREVIATION", "SIDE"])["POSS"].transform("sum")
+    team_df["POSS_PCT"] = team_df["POSS"] / team_totals
+
     return team_df
 
 def add_team_reliability_weights(team_df: pd.DataFrame) -> pd.DataFrame:

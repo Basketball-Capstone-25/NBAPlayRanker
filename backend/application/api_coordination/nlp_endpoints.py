@@ -22,20 +22,16 @@ from typing import Any, Dict, List, Optional
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field, field_validator, model_validator
 
-try:
-    from .nlp_parser import (  # type: ignore
-        NLPParseResult,
-        context_to_context_ml_params,
-        parse_game_context,
-    )
-    from .nlp_explain import (  # type: ignore
-        ExplanationResult,
-        explain_recommendations,
-        explain_shotplan,
-    )
-except Exception:  # pragma: no cover
-    from nlp_parser import NLPParseResult, context_to_context_ml_params, parse_game_context
-    from nlp_explain import ExplanationResult, explain_recommendations, explain_shotplan
+from infrastructure.external_integrations.nlp_parser import (
+    NLPParseResult,
+    context_to_context_ml_params,
+    parse_game_context,
+)
+from infrastructure.external_integrations.nlp_explain import (
+    ExplanationResult,
+    explain_recommendations,
+    explain_shotplan,
+)
 
 
 router = APIRouter(prefix="/nlp", tags=["nlp"])

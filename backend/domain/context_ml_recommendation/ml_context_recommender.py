@@ -38,17 +38,11 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 import numpy as np
 import pandas as pd
 
-try:
-    from .baseline_recommender import BaselineRecommender  # type: ignore
-except Exception:  # pragma: no cover
-    from baseline_recommender import BaselineRecommender
+from domain.baseline_recommendation import BaselineRecommender
 
 try:
-    from .nlp_reasoning import infer_play_family_from_name  # type: ignore
+    from infrastructure.external_integrations.nlp_reasoning import infer_play_family_from_name
 except Exception:  # pragma: no cover
-    try:
-        from nlp_reasoning import infer_play_family_from_name  # type: ignore
-    except Exception:  # pragma: no cover
 
         def infer_play_family_from_name(play_name: str) -> Optional[str]:
             name = (play_name or "").strip().lower().replace("_", " ").replace("-", " ")
@@ -75,7 +69,7 @@ except Exception:  # pragma: no cover
 # Data paths / caches
 # ---------------------------------------------------------------------
 
-DATA_DIR = Path(__file__).parent / "data"
+DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
 SYNERGY_CSV_PATH = DATA_DIR / "synergy_playtypes_2019_2025_players.csv"
 ML_PRED_PATH = DATA_DIR / "ml_offense_ppp_predictions.csv"
 

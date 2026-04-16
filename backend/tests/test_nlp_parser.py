@@ -3,6 +3,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
@@ -348,4 +349,198 @@ def test_full_parse_then_explain_gameplan_style_flow():
     assert any(
         "Context-adjusted efficiency" in bullet
         for bullet in explain_data["plays"][0]["evidence"]
+    )
+
+
+# -- fallback / error-handling tests --
+
+def test_unparseable_prompt_uses_ui_defaults():
+    """Vague prompt should fall back to whatever defaults the frontend sends."""
+    client = make_client()
+
+    res = client.post("/nlp/parse", json={
+        "text": "Just win the game",
+        "defaults": {"period": 4, "time_remaining": 180, "margin": 0},
+    })
+    assert res.status_code == 200
+
+    ctx = res.json()["context"]
+    # The vague text has nothing to extract, so defaults must fill in.
+    assert ctx["period"] == 4
+    assert ctx["time_remaining"] == 180.0
+    assert ctx["margin"] == 0.0
+
+
+def test_unparseable_prompt_low_confidence_and_questions():
+    """Vague input → lower confidence + clarifying questions."""
+    client = make_client()
+
+    res = client.post("/nlp/parse", json={
+        "text": "Just win the game",
+        "defaults": {"period": 4, "time_remaining": 180, "margin": 0},
+    })
+    data = res.json()
+
+    # defaults push confidence up a bit but it should still be
+    # lower than a fully-detailed prompt (~0.99)
+    assert data["confidence"] < 0.95, "confidence too high for a vague prompt"
+    assert len(data.get("clarifying_questions", [])) > 0, "should ask follow-up questions"
+
+
+def test_unparseable_prompt_without_defaults_still_200():
+    """No defaults + vague text should still return 200, not crash."""
+    client = make_client()
+
+    res = client.post("/nlp/parse", json={"text": "Let's go team"})
+    assert res.status_code == 200
+
+    ctx = res.json()["context"]
+    # Without defaults, fields remain None — that's acceptable.
+    assert ctx.get("period") is None or isinstance(ctx["period"], (int, float))
+
+
+# -- extraction accuracy tests (margin, period, time, defense) --
+
+MARGIN_CASES = [
+    ("down 5",             -5.0),
+    ("Down 3",             -3.0),
+    ("trailing by 10",     -10.0),
+    ("behind by 7",        -7.0),
+    ("leading by 3",        3.0),
+    ("up 8",                8.0),
+    ("ahead by 12",         12.0),
+    ("tied",                0.0),
+    ("score is even",       0.0),
+]
+
+
+@pytest.mark.parametrize("phrase,expected_margin", MARGIN_CASES,
+                         ids=[c[0] for c in MARGIN_CASES])
+def test_margin_extraction_accuracy(phrase, expected_margin):
+    """'down 5' → -5, 'up 3' → +3, etc."""
+    client = make_client()
+
+    res = client.post("/nlp/parse", json={"text": phrase})
+    assert res.status_code == 200
+
+    ctx = res.json()["context"]
+    assert ctx["margin"] == expected_margin, (
+        f"'{phrase}' should parse to margin={expected_margin}, got {ctx['margin']}"
+    )
+
+
+PERIOD_CASES = [
+    ("Q1 situation",   1),
+    ("in Q2",          2),
+    ("third quarter",  3),
+    ("Q4 crunch time", 4),
+    ("in overtime",    5),
+]
+
+
+@pytest.mark.parametrize("phrase,expected_period", PERIOD_CASES,
+                         ids=[c[0] for c in PERIOD_CASES])
+def test_period_extraction_accuracy(phrase, expected_period):
+    """Check that Q1/Q2/.../OT get parsed to the right period number."""
+    client = make_client()
+
+    res = client.post("/nlp/parse", json={"text": phrase})
+    assert res.status_code == 200
+
+    ctx = res.json()["context"]
+    assert ctx["period"] == expected_period, (
+        f"'{phrase}' should parse to period={expected_period}, got {ctx['period']}"
+    )
+
+
+TIME_CASES = [
+    ("0:28 left",          28.0),
+    ("2:15 remaining",     135.0),
+    ("45 seconds left",    45.0),
+    ("5 minutes remaining", 300.0),
+]
+
+
+@pytest.mark.parametrize("phrase,expected_seconds", TIME_CASES,
+                         ids=[c[0] for c in TIME_CASES])
+def test_time_extraction_accuracy(phrase, expected_seconds):
+    """'0:28 left' → 28s, '5 minutes remaining' → 300s, etc."""
+    client = make_client()
+
+    res = client.post("/nlp/parse", json={"text": phrase})
+    assert res.status_code == 200
+
+    ctx = res.json()["context"]
+    assert ctx["time_remaining"] == expected_seconds, (
+        f"'{phrase}' should parse to time_remaining={expected_seconds}, "
+        f"got {ctx['time_remaining']}"
+    )
+
+
+DEFENSE_CASES = [
+    ("they're switching everything", "switch"),
+    ("against a zone defense",       "generic_zone"),
+]
+
+
+@pytest.mark.parametrize("phrase,expected_defense", DEFENSE_CASES,
+                         ids=[c[0] for c in DEFENSE_CASES])
+def test_defense_style_extraction(phrase, expected_defense):
+    """Make sure switching/zone defense gets picked up."""
+    client = make_client()
+
+    res = client.post("/nlp/parse", json={"text": phrase})
+    assert res.status_code == 200
+
+    ctx = res.json()["context"]
+    assert ctx["defense_style"] == expected_defense, (
+        f"'{phrase}' should parse to defense_style='{expected_defense}', "
+        f"got '{ctx['defense_style']}'"
+    )
+
+
+# -- determinism & template-based explanations --
+
+def test_explanations_are_deterministic():
+    """Same request twice → same output. No randomness in the templates."""
+    client = make_client()
+
+    payload = {
+        "mode": "baseline",
+        "context": {"period": 4, "time_remaining": 30, "margin": -3},
+        "rankings": [
+            {"PLAY_TYPE": "Transition", "PPP_PRED": 1.10},
+            {"PLAY_TYPE": "Spotup", "PPP_PRED": 0.98},
+        ],
+        "top_n": 2,
+    }
+
+    res1 = client.post("/nlp/explain", json=payload).json()
+    res2 = client.post("/nlp/explain", json=payload).json()
+
+    assert res1["plays"] == res2["plays"], "got different results on same input??"
+    assert res1["overall_summary"] == res2["overall_summary"]
+
+
+def test_explanation_evidence_contains_real_metrics():
+    """Evidence should include the actual PPP value we passed in."""
+    client = make_client()
+
+    payload = {
+        "mode": "baseline",
+        "context": {"period": 4, "time_remaining": 30, "margin": -3},
+        "rankings": [
+            {"PLAY_TYPE": "Transition", "PPP_PRED": 1.10},
+        ],
+        "top_n": 1,
+    }
+
+    res = client.post("/nlp/explain", json=payload)
+    data = res.json()
+
+    play = data["plays"][0]
+    evidence_text = " ".join(play["evidence"])
+    # make sure it actually uses the PPP we gave it
+    assert "1.10" in evidence_text or "1.1" in evidence_text, (
+        f"Expected PPP 1.10 somewhere in evidence, got: {play['evidence']}"
     )
