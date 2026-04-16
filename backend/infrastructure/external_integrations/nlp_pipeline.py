@@ -24,7 +24,6 @@ from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
 
 import nltk
 from nltk.stem import PorterStemmer
-from nltk.tokenize import TreebankWordTokenizer
 
 import spacy
 from spacy.language import Language
@@ -42,7 +41,6 @@ except Exception:  # pragma: no cover
 # Shared vocabulary
 # ---------------------------------------------------------------------
 
-TOKENIZER = TreebankWordTokenizer()
 STEMMER = PorterStemmer()
 PIPELINE_VERSION = "1.0.0"
 DEFAULT_SPACY_MODEL = "en_core_web_sm"
@@ -214,8 +212,6 @@ class NLPTokenInfo:
     text: str
     lemma: str
     stem: str
-    pos: str
-    dep: str
     is_stop: bool
     is_alpha: bool
 
@@ -547,8 +543,6 @@ class BasketballNLPPipeline:
                     text=token.text,
                     lemma=lemma,
                     stem=STEMMER.stem(token.text.lower()),
-                    pos=token.pos_ or "",
-                    dep=token.dep_ or "",
                     is_stop=bool(token.is_stop),
                     is_alpha=bool(token.is_alpha),
                 )
@@ -567,7 +561,6 @@ class BasketballNLPPipeline:
             "wordnet_available": bool(_safe_wordnet_synonyms("fast")) if wn is not None else False,
             "token_count": len(tokens),
             "sentence_count": sum(1 for _ in doc.sents),
-            "treebank_tokens": TOKENIZER.tokenize(normalized_text),
         }
 
         return NLPPipelineResult(
