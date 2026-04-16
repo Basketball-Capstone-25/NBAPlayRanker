@@ -204,7 +204,7 @@ def test_ridge_season_holdout_accuracy(offense_data):
     print("SEASON HOLDOUT — RIDGE PREDICTION ACCURACY")
     print("=" * 60)
     print(f"  Trained on: {', '.join(train_seasons)}")
-    print(f"  Tested on:  {TEST_SEASON}  ({len(test_df)} observations)")
+    print(f"  Tested on:  {TEST_SEASON}")
     print(f"  RMSE: {rmse:.4f}")
     print(f"  MAE:  {mae:.4f}")
     print(f"  R2:   {r2:.4f}")
