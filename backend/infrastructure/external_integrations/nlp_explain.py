@@ -1,19 +1,62 @@
-"""Explanation generator for recommendation results."""
 from __future__ import annotations
 
-from dataclasses import dataclass, asdict, field
-import math
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple, Union
+"""
+backend/nlp_explain.py
 
-# Data structures
+Deterministic basketball explanation builder.
+
+Purpose:
+- turn ranked play outputs + parsed NLP context into coach-friendly explanations
+- support both backend-native ranking payloads and frontend-remapped payloads
+- preserve advanced context signals (need3, quick2, switching, ATO, etc.)
+- mention extracted basketball context more clearly
+- stay metrics-backed, stable, and defendable
+"""
+
+from dataclasses import asdict, dataclass, field
+import math
+from typing import Any, Dict, List, Optional, Sequence
+
+try:
+    from .nlp_reasoning import (  # type: ignore
+        context_objective_sentence,
+        defense_style_label,
+        describe_context_brief,
+        family_fit_sentences,
+        infer_play_family_from_name,
+        need_label,
+        pace_label,
+        special_situation_labels,
+    )
+    from .nlp_taxonomy import family_label  # type: ignore
+except Exception:  # pragma: no cover
+    from nlp_reasoning import (
+        context_objective_sentence,
+        defense_style_label,
+        describe_context_brief,
+        family_fit_sentences,
+        infer_play_family_from_name,
+        need_label,
+        pace_label,
+        special_situation_labels,
+    )
+    from nlp_taxonomy import family_label
+
+
+EXPLAINER_VERSION = "3.0.0"
+
 
 @dataclass(frozen=True)
 class PlayExplanation:
     play_name: str
+    play_type: str
+    rank: int
     summary: str
     evidence: List[str] = field(default_factory=list)
     caution: Optional[str] = None
+    matched_context: List[str] = field(default_factory=list)
     metrics_used: Dict[str, Any] = field(default_factory=dict)
+
 
 @dataclass(frozen=True)
 class ExplanationResult:
@@ -21,13 +64,53 @@ class ExplanationResult:
     overall_summary: str
     plays: List[PlayExplanation] = field(default_factory=list)
     notes: List[str] = field(default_factory=list)
+    parser_warnings: List[str] = field(default_factory=list)
+    clarifying_questions: List[str] = field(default_factory=list)
+    explainer_version: str = EXPLAINER_VERSION
 
     def to_dict(self) -> Dict[str, Any]:
-        d = asdict(self)
-        # dataclasses convert nested dataclasses fine, but we ensure JSON-friendly types
-        return d
+        return asdict(self)
 
-# Helpers
+
+_EFF_KEYS = (
+    "PPP_CONTEXT",
+    "PPP_PRED",
+    "PPP_ML_BLEND",
+    "PPP_BASELINE",
+    "ppp",
+    "pppPred",
+    "finalPPP",
+    "mlPPP",
+    "baselinePPP",
+    "predicted_ppp",
+    "expected_ppp",
+    "expected_points_per_possession",
+)
+
+_DELTA_KEYS = (
+    "DELTA_VS_BASELINE",
+    "delta_vs_baseline",
+    "deltaPPP",
+    "pppGap",
+    "PPP_GAP",
+    "lift",
+    "improvement",
+)
+
+_CONTEXT_PPP_KEYS = ("PPP_CONTEXT", "finalPPP", "context_ppp")
+_ML_PPP_KEYS = ("PPP_ML_BLEND", "mlPPP", "ml_ppp")
+_BASELINE_PPP_KEYS = ("PPP_BASELINE", "baselinePPP", "PPP_PRED", "pppPred", "baseline_ppp")
+_CTX_LABEL_KEYS = ("CONTEXT_LABEL", "contextLabel", "context_label")
+_RATIONALE_KEYS = ("RATIONALE", "rationale")
+_CTX_ADJ_KEYS = ("CONTEXT_ADJ", "context_adj", "context_adjustment")
+_FREQ_KEYS = ("freq", "frequency", "usage", "share", "rate", "pct", "percent")
+_COUNT_KEYS = ("n", "N", "count", "possessions", "samples", "attempts")
+_TOV_KEYS = ("tov", "turnover_rate", "to_rate", "TOV_RATE", "turnovers")
+_FOUL_KEYS = ("foul_rate", "ft_rate", "FTA_RATE", "ftr", "free_throw_rate")
+_OFF_PPP_KEYS = ("PPP_OFF", "ppp_off", "our_ppp", "offense_ppp")
+_DEF_PPP_KEYS = ("PPP_DEF", "ppp_def", "their_ppp_allowed", "defense_ppp")
+_RAW_RANK_KEYS = ("rank", "RANK", "position", "idx")
+
 
 def _is_number(x: Any) -> bool:
     try:
@@ -36,35 +119,53 @@ def _is_number(x: Any) -> bool:
     except Exception:
         return False
 
+
 def _to_float(x: Any) -> Optional[float]:
-    return float(x) if _is_number(x) else None
+    if _is_number(x):
+        return float(x)
+    return None
+
 
 def _clamp(x: float, lo: float, hi: float) -> float:
     return float(max(lo, min(hi, x)))
 
+
+def _dedupe_keep_order(items: Sequence[str]) -> List[str]:
+    out: List[str] = []
+    seen = set()
+    for item in items:
+        if not isinstance(item, str):
+            continue
+        item = item.strip()
+        if not item or item in seen:
+            continue
+        out.append(item)
+        seen.add(item)
+    return out
+
+
 def _fmt_clock(seconds: Optional[float]) -> Optional[str]:
     if seconds is None or not _is_number(seconds):
         return None
-    s = int(round(float(seconds)))
-    s = max(0, s)
-    mm = s // 60
-    ss = s % 60
-    return f"{mm}:{ss:02d}"
+    s = max(0, int(round(float(seconds))))
+    return f"{s // 60}:{s % 60:02d}"
+
 
 def _fmt_pct(x: Optional[float]) -> Optional[str]:
     if x is None:
         return None
-    # If it's already likely a percent (e.g., 35), handle it.
     v = float(x)
     if v > 1.0:
         v = v / 100.0
     v = _clamp(v, 0.0, 1.0)
     return f"{v * 100:.0f}%"
 
+
 def _fmt_ppp(x: Optional[float]) -> Optional[str]:
     if x is None:
         return None
     return f"{float(x):.2f} PPP"
+
 
 def _first_present(d: Dict[str, Any], keys: Sequence[str]) -> Optional[Any]:
     for k in keys:
@@ -72,281 +173,215 @@ def _first_present(d: Dict[str, Any], keys: Sequence[str]) -> Optional[Any]:
             return d[k]
     return None
 
+
 def _coerce_rankings(obj: Any) -> List[Dict[str, Any]]:
-    """Accepts a list of dicts OR a response dict with common wrappers:"""
     if obj is None:
         return []
+
     if isinstance(obj, list):
         return [x for x in obj if isinstance(x, dict)]
+
     if isinstance(obj, dict):
-        for key in ("rankings", "results", "data", "items", "plays"):
-            v = obj.get(key)
-            if isinstance(v, list):
-                return [x for x in v if isinstance(x, dict)]
-        # Sometimes a single play dict is returned
-        if obj and any(isinstance(v, (int, float, str)) for v in obj.values()):
+        for key in (
+            "rankings",
+            "results",
+            "data",
+            "items",
+            "plays",
+            "recommendations",
+            "top_k",
+            "top_plays",
+            "explanation",
+        ):
+            value = obj.get(key)
+            if isinstance(value, list):
+                return [x for x in value if isinstance(x, dict)]
+
+        if obj and any(isinstance(v, (int, float, str, list, dict)) for v in obj.values()):
             return [obj]
+
     return []
 
+
 def _play_name(play: Dict[str, Any]) -> str:
-    """Try several common keys for a human-readable play label."""
-    for k in ("play_type", "playType", "play", "name", "action", "label", "type"):
-        v = play.get(k)
-        if isinstance(v, str) and v.strip():
-            return v.strip()
-    # Fallback: try nested shape
+    for key in (
+        "play_name",
+        "play_type",
+        "PLAY_TYPE",
+        "playType",
+        "play",
+        "name",
+        "action",
+        "label",
+        "type",
+    ):
+        value = play.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+
     meta = play.get("meta")
     if isinstance(meta, dict):
-        v = meta.get("play_type") or meta.get("name")
-        if isinstance(v, str) and v.strip():
-            return v.strip()
+        for key in ("play_type", "name", "label"):
+            value = meta.get(key)
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+
+    raw = play.get("raw")
+    if isinstance(raw, dict):
+        return _play_name(raw)
+
     return "Unknown Play"
 
-# Metric extraction (flexible key mapping)
-
-# Efficiency / expected points per possession
-_EFF_KEYS = (
-    "PPP_PRED",
-    "ppp_pred",
-    "ppp",
-    "predicted_ppp",
-    "expected_ppp",
-    "expected_points_per_possession",
-)
-
-# Delta/lift vs baseline (optional)
-_DELTA_KEYS = (
-    "DELTA_VS_BASELINE",
-    "delta_vs_baseline",
-    "lift",
-    "improvement",
-)
-
-# Context adjustment (optional)
-_CTX_ADJ_KEYS = (
-    "CONTEXT_ADJ",
-    "context_adj",
-    "context_adjustment",
-)
-
-# Frequency / usage (optional)
-_FREQ_KEYS = (
-    "freq",
-    "frequency",
-    "usage",
-    "share",
-    "rate",
-    "pct",
-    "percent",
-)
-
-# Sample size / count (optional)
-_COUNT_KEYS = (
-    "n",
-    "N",
-    "count",
-    "possessions",
-    "samples",
-    "attempts",
-)
-
-# Risk metrics (optional)
-_TOV_KEYS = ("tov", "turnover_rate", "to_rate", "TOV_RATE", "turnovers")
-_FOUL_KEYS = ("foul_rate", "ft_rate", "FTA_RATE", "ftr", "free_throw_rate")
 
 def _extract_metrics(play: Dict[str, Any]) -> Dict[str, Any]:
-    """Extract a normalized set of key metrics if present."""
+    raw = play.get("raw") if isinstance(play.get("raw"), dict) else None
+
     eff = _to_float(_first_present(play, _EFF_KEYS))
+    if eff is None and raw is not None:
+        eff = _to_float(_first_present(raw, _EFF_KEYS))
+
+    context_ppp = _to_float(_first_present(play, _CONTEXT_PPP_KEYS))
+    if context_ppp is None and raw is not None:
+        context_ppp = _to_float(_first_present(raw, _CONTEXT_PPP_KEYS))
+
+    ml_ppp = _to_float(_first_present(play, _ML_PPP_KEYS))
+    if ml_ppp is None and raw is not None:
+        ml_ppp = _to_float(_first_present(raw, _ML_PPP_KEYS))
+
+    baseline_ppp = _to_float(_first_present(play, _BASELINE_PPP_KEYS))
+    if baseline_ppp is None and raw is not None:
+        baseline_ppp = _to_float(_first_present(raw, _BASELINE_PPP_KEYS))
+
     delta = _to_float(_first_present(play, _DELTA_KEYS))
-    ctx_adj = _to_float(_first_present(play, _CTX_ADJ_KEYS))
-    freq_raw = _first_present(play, _FREQ_KEYS)
-    freq = _to_float(freq_raw) if freq_raw is not None else None
+    if delta is None and raw is not None:
+        delta = _to_float(_first_present(raw, _DELTA_KEYS))
+
+    context_adj = _to_float(_first_present(play, _CTX_ADJ_KEYS))
+    if context_adj is None and raw is not None:
+        context_adj = _to_float(_first_present(raw, _CTX_ADJ_KEYS))
+
+    freq = _to_float(_first_present(play, _FREQ_KEYS))
+    if freq is None and raw is not None:
+        freq = _to_float(_first_present(raw, _FREQ_KEYS))
+
     count_raw = _first_present(play, _COUNT_KEYS)
-    count = int(count_raw) if isinstance(count_raw, int) else (int(float(count_raw)) if _is_number(count_raw) else None)
+    if count_raw is None and raw is not None:
+        count_raw = _first_present(raw, _COUNT_KEYS)
+    count = int(float(count_raw)) if _is_number(count_raw) else None
 
     tov = _to_float(_first_present(play, _TOV_KEYS))
+    if tov is None and raw is not None:
+        tov = _to_float(_first_present(raw, _TOV_KEYS))
+
     foul = _to_float(_first_present(play, _FOUL_KEYS))
+    if foul is None and raw is not None:
+        foul = _to_float(_first_present(raw, _FOUL_KEYS))
 
-    out: Dict[str, Any] = {}
+    off_ppp = _to_float(_first_present(play, _OFF_PPP_KEYS))
+    if off_ppp is None and raw is not None:
+        off_ppp = _to_float(_first_present(raw, _OFF_PPP_KEYS))
+
+    def_ppp = _to_float(_first_present(play, _DEF_PPP_KEYS))
+    if def_ppp is None and raw is not None:
+        def_ppp = _to_float(_first_present(raw, _DEF_PPP_KEYS))
+
+    ctx_label = _first_present(play, _CTX_LABEL_KEYS)
+    if ctx_label is None and raw is not None:
+        ctx_label = _first_present(raw, _CTX_LABEL_KEYS)
+
+    rationale = _first_present(play, _RATIONALE_KEYS)
+    if rationale is None and raw is not None:
+        rationale = _first_present(raw, _RATIONALE_KEYS)
+
+    top_factors = play.get("top_factors") or play.get("feature_contrib") or play.get("shap_top")
+    if top_factors is None and raw is not None:
+        top_factors = raw.get("top_factors") or raw.get("feature_contrib") or raw.get("shap_top")
+
+    metrics: Dict[str, Any] = {}
+
     if eff is not None:
-        out["ppp"] = eff
+        metrics["ppp"] = eff
+    if context_ppp is not None:
+        metrics["context_ppp"] = context_ppp
+    if ml_ppp is not None:
+        metrics["ml_ppp"] = ml_ppp
+    if baseline_ppp is not None:
+        metrics["baseline_ppp"] = baseline_ppp
     if delta is not None:
-        out["delta_vs_baseline"] = delta
-    if ctx_adj is not None:
-        out["context_adj"] = ctx_adj
+        metrics["delta_vs_baseline"] = delta
+    if context_adj is not None:
+        metrics["context_adj"] = context_adj
     if freq is not None:
-        out["freq"] = freq
+        metrics["freq"] = freq
     if count is not None:
-        out["count"] = count
+        metrics["count"] = count
     if tov is not None:
-        out["turnover_rate"] = tov
+        metrics["turnover_rate"] = tov
     if foul is not None:
-        out["foul_rate"] = foul
+        metrics["foul_rate"] = foul
+    if off_ppp is not None:
+        metrics["off_ppp"] = off_ppp
+    if def_ppp is not None:
+        metrics["def_ppp"] = def_ppp
+    if isinstance(ctx_label, str) and ctx_label.strip():
+        metrics["context_label"] = ctx_label.strip()
+    if isinstance(rationale, str) and rationale.strip():
+        metrics["rationale"] = rationale.strip()
+    if top_factors is not None:
+        metrics["top_factors"] = top_factors
 
-    # Optional: include top factors if present in common shapes
-    # e.g. play["top_factors"] = [{"feature":"...", "direction":"+","value":...}, ...]
-    # or play["top_factors"] = [("feature", 0.12), ...]
-    tf = play.get("top_factors") or play.get("feature_contrib") or play.get("shap_top")
-    if tf is not None:
-        out["top_factors"] = tf
+    return metrics
 
-    return out
-
-# Context summarization
 
 def summarize_context(context: Dict[str, Any]) -> str:
-    """Build a short, human-readable summary of the parsed context."""
+    if isinstance(context.get("context_brief"), str) and context["context_brief"].strip():
+        return context["context_brief"].strip()
+
+    brief = describe_context_brief(context)
+    if brief:
+        return brief
+
     parts: List[str] = []
 
     period = context.get("period")
     if isinstance(period, int):
-        if period == 5:
-            parts.append("OT")
-        else:
-            parts.append(f"Q{period}")
+        parts.append("OT" if period == 5 else f"Q{period}")
 
     clock = _fmt_clock(_to_float(context.get("time_remaining")))
     if clock:
         parts.append(clock)
+
+    shot_clock = _to_float(context.get("shot_clock"))
+    if shot_clock is not None:
+        parts.append(f"{int(round(shot_clock))} on shot clock")
 
     margin = _to_float(context.get("margin"))
     if margin is not None:
         if abs(margin) < 0.001:
             parts.append("tied")
         elif margin < 0:
-            parts.append(f"down {int(abs(margin)) if float(margin).is_integer() else abs(margin):g}")
+            parts.append(f"down {abs(margin):g}")
         else:
-            parts.append(f"up {int(margin) if float(margin).is_integer() else margin:g}")
+            parts.append(f"up {margin:g}")
 
-    need = context.get("need")
-    if isinstance(need, str) and need:
-        # friendly label
-        mapping = {
-            "quick2": "quick 2",
-            "need3": "need a 3",
-            "stop": "need a stop",
-            "two_for_one": "2-for-1",
-            "safe": "protect possession",
-        }
-        parts.append(mapping.get(need, need))
+    need = need_label(context.get("need"))
+    if need:
+        parts.append(need)
 
-    defense_style = context.get("defense_style")
-    if isinstance(defense_style, str) and defense_style:
-        mapping = {
-            "switch": "vs switching",
-            "drop": "vs drop",
-            "zone_2_3": "vs 2-3 zone",
-            "zone_3_2": "vs 3-2 zone",
-            "zone_1_3_1": "vs 1-3-1",
-            "box_and_1": "vs box-and-1",
-        }
-        parts.append(mapping.get(defense_style, f"vs {defense_style}"))
+    defense = defense_style_label(context.get("defense_style"))
+    if defense:
+        parts.append(f"vs {defense}")
 
-    pace = context.get("pace")
-    if isinstance(pace, str) and pace:
-        parts.append("push pace" if pace == "push" else ("slow pace" if pace == "slow" else pace))
+    pace = pace_label(context.get("pace"))
+    if pace:
+        parts.append(pace)
 
-    return " • ".join(parts) if parts else "Game context"
+    parts.extend(special_situation_labels(context))
 
-# Explanation generation
+    return " • ".join(_dedupe_keep_order(parts)) if parts else "Game context"
 
-def _context_intent_sentence(context: Dict[str, Any]) -> str:
-    """A single sentence describing the objective implied by context."""
-    need = context.get("need")
-    if need == "need3":
-        return "Priority is generating a clean 3-point look quickly."
-    if need == "quick2":
-        return "Priority is creating a quick, high-quality 2-point look."
-    if need == "two_for_one":
-        return "Priority is optimizing for a 2-for-1 sequence (quick shot + last possession)."
-    if need == "stop":
-        return "Priority is securing a stop and avoiding transition breakdowns."
-    if need == "safe":
-        return "Priority is protecting the ball and avoiding empty possessions."
-    # If margin/time suggests urgency, we can hint without inventing.
-    margin = _to_float(context.get("margin"))
-    tr = _to_float(context.get("time_remaining"))
-    if margin is not None and tr is not None and tr <= 45 and margin < 0:
-        return "Priority is getting a quality shot quickly while managing the clock."
-    return "Recommendations are selected to maximize expected efficiency for the given situation."
-
-def _choose_caution(context: Dict[str, Any], play_metrics: Dict[str, Any]) -> Optional[str]:
-    """Deterministic caution based on known signals."""
-    need = context.get("need")
-    defense_style = context.get("defense_style")
-
-    # If we know turnover rate, caution on high turnover
-    tov = _to_float(play_metrics.get("turnover_rate"))
-    if tov is not None and tov >= 0.18:
-        return "Caution: turnover risk is relatively high—prioritize clean spacing and secure entry."
-
-    if need == "two_for_one":
-        return "Caution: keep the first action quick enough to preserve the final possession window."
-
-    if defense_style == "switch":
-        return "Caution: expect switches—have a slip/short-roll counter ready if the first option is contained."
-
-    if need == "need3":
-        return "Caution: don’t force a contested 3—use one extra advantage-creating pass if it’s not clean."
-
-    if need == "quick2":
-        return "Caution: don’t burn time hunting a perfect look—take the best clean advantage early."
-
-    return None
-
-def _evidence_bullets(context: Dict[str, Any], m: Dict[str, Any]) -> List[str]:
-    """Build up to ~3 evidence bullets using only available metrics."""
-    bullets: List[str] = []
-
-    ppp = _to_float(m.get("ppp"))
-    if ppp is not None:
-        bullets.append(f"Efficiency: {_fmt_ppp(ppp)} (model estimate).")
-
-    delta = _to_float(m.get("delta_vs_baseline"))
-    if delta is not None:
-        sign = "+" if delta >= 0 else ""
-        bullets.append(f"Lift vs baseline: {sign}{delta:.2f} PPP.")
-
-    ctx_adj = _to_float(m.get("context_adj"))
-    if ctx_adj is not None:
-        sign = "+" if ctx_adj >= 0 else ""
-        bullets.append(f"Context adjustment: {sign}{ctx_adj:.2f} (directional boost for this situation).")
-
-    freq = _to_float(m.get("freq"))
-    if freq is not None:
-        pct = _fmt_pct(freq)
-        if pct:
-            bullets.append(f"Usage signal: {pct} (how often this action appears in the dataset).")
-
-    count = m.get("count")
-    if isinstance(count, int) and count > 0:
-        bullets.append(f"Sample size: {count} possessions/entries (where available).")
-
-    tov = _to_float(m.get("turnover_rate"))
-    if tov is not None:
-        pct = _fmt_pct(tov)
-        if pct:
-            bullets.append(f"Turnover rate: {pct} (lower is safer).")
-
-    foul = _to_float(m.get("foul_rate"))
-    if foul is not None:
-        pct = _fmt_pct(foul)
-        if pct:
-            bullets.append(f"Foul/FT signal: {pct} (chance of drawing fouls/free throws).")
-
-    # Optional: top factors (if present)
-    # We keep this extremely cautious: we only mention labels, not invented magnitudes.
-    tf = m.get("top_factors")
-    if tf:
-        top_feats = _format_top_factors(tf)
-        if top_feats:
-            bullets.append(f"Top drivers: {top_feats}.")
-
-    # Keep at most 3-4 bullets; UI-friendly
-    return bullets[:4]
 
 def _format_top_factors(tf: Any, max_items: int = 3) -> Optional[str]:
-    """Attempt to format top explanatory factors from common shapes."""
     items: List[str] = []
 
     if isinstance(tf, list):
@@ -359,101 +394,386 @@ def _format_top_factors(tf: Any, max_items: int = 3) -> Optional[str]:
                 feat = entry.get("feature") or entry.get("name")
                 if isinstance(feat, str) and feat.strip():
                     items.append(feat.strip())
-            elif isinstance(entry, (tuple, list)) and len(entry) >= 1:
+            elif isinstance(entry, (tuple, list)) and entry:
                 feat = entry[0]
                 if isinstance(feat, str) and feat.strip():
                     items.append(feat.strip())
 
-    if not items:
-        return None
-    return ", ".join(items)
+    return ", ".join(items) if items else None
 
-def explain_play(
-    play: Dict[str, Any],
+
+def _format_freeform_rationale(text: Optional[str]) -> Optional[str]:
+    if not isinstance(text, str):
+        return None
+    cleaned = " ".join(text.split()).strip()
+    if not cleaned:
+        return None
+    return cleaned.rstrip(".") + "."
+
+
+def _context_fit_tags(context: Dict[str, Any], play_name: str) -> List[str]:
+    tags: List[str] = []
+
+    play_family = infer_play_family_from_name(play_name)
+    requested_families = list(context.get("preferred_play_families") or [])
+    if play_family and play_family in requested_families:
+        tags.append(family_label(play_family))
+
+    if context.get("after_timeout"):
+        tags.append("after-timeout")
+    if context.get("slob"):
+        tags.append("SLOB")
+    if context.get("blob"):
+        tags.append("BLOB")
+    if context.get("advance_ball"):
+        tags.append("advanced-ball")
+    if context.get("vs_switching"):
+        tags.append("switch coverage")
+    if context.get("need3"):
+        tags.append("need-3 urgency")
+    if context.get("quick2"):
+        tags.append("quick-2 urgency")
+    if context.get("two_for_one"):
+        tags.append("2-for-1")
+    if context.get("hold_for_last"):
+        tags.append("last-shot")
+    if context.get("must_stop"):
+        tags.append("stop need")
+    if context.get("protect_lead"):
+        tags.append("protect lead")
+    if context.get("late_clock"):
+        tags.append("late clock")
+
+    return _dedupe_keep_order(tags)
+
+
+def _choose_caution(
     context: Dict[str, Any],
-) -> PlayExplanation:
-    """Build a deterministic explanation for one play."""
+    play_metrics: Dict[str, Any],
+    play_name: str,
+) -> Optional[str]:
+    need = context.get("need")
+    defense_style = context.get("defense_style")
+    play_family = infer_play_family_from_name(play_name)
+    turnover_rate = _to_float(play_metrics.get("turnover_rate"))
+    foul_rate = _to_float(play_metrics.get("foul_rate"))
+
+    if turnover_rate is not None and turnover_rate >= 0.18:
+        return "Caution: turnover risk is relatively high here, so spacing and entry timing matter."
+    if context.get("two_for_one"):
+        return "Caution: keep the first action quick enough to preserve the final-possession window."
+    if need == "need3":
+        return "Caution: do not settle for a heavily contested 3 just because the clock is low."
+    if need == "quick2":
+        return "Caution: do not burn extra time searching for a perfect look—take the first clean advantage."
+    if need == "foul_game":
+        return "Caution: the score state points to foul-game management, so clock and free-throw math matter as much as shot quality."
+    if context.get("protect_lead") and turnover_rate is not None and turnover_rate >= 0.14:
+        return "Caution: protecting the lead raises the cost of a live-ball turnover here."
+    if defense_style == "switch" and play_family == "ball_screen":
+        return "Caution: if they switch cleanly, have the slip or mismatch counter ready immediately."
+    if defense_style == "drop" and play_family == "ball_screen":
+        return "Caution: if the pull-up is not there, get off it early rather than dribbling into the drop."
+    if isinstance(defense_style, str) and defense_style.startswith("zone"):
+        return "Caution: versus zone, weakside timing and gap occupation matter more than holding the ball."
+    if foul_rate is not None and foul_rate < 0.05 and need == "quick2":
+        return "Caution: this option does not project much foul pressure, so finishing cleanly matters."
+
+    return None
+
+
+def _build_extracted_context_notes(context: Dict[str, Any]) -> List[str]:
+    notes: List[str] = []
+
+    period = context.get("period")
+    time_remaining = _to_float(context.get("time_remaining"))
+    shot_clock = _to_float(context.get("shot_clock"))
+    margin = _to_float(context.get("margin"))
+    need = context.get("need")
+    needs = list(context.get("needs") or [])
+    defense_style = context.get("defense_style")
+    pace = context.get("pace")
+    special_situations = list(context.get("special_situations") or [])
+    play_families = list(context.get("preferred_play_families") or [])
+    parser_version = context.get("parser_version")
+    pipeline_version = context.get("nlp_pipeline_version")
+
+    core_parts: List[str] = []
+    if isinstance(period, int):
+        core_parts.append("OT" if period == 5 else f"Q{period}")
+    if time_remaining is not None:
+        core_parts.append(f"{_fmt_clock(time_remaining)} remaining")
+    if shot_clock is not None:
+        core_parts.append(f"{int(round(shot_clock))} on the shot clock")
+    if margin is not None:
+        if abs(margin) < 0.001:
+            core_parts.append("game tied")
+        elif margin < 0:
+            core_parts.append(f"down {abs(margin):g}")
+        else:
+            core_parts.append(f"up {margin:g}")
+    if core_parts:
+        notes.append("Extracted game state: " + ", ".join(core_parts) + ".")
+
+    if need or needs:
+        label = need_label(need) if need else None
+        extra_needs = [need_label(x) or str(x) for x in needs if x != need]
+        if label and extra_needs:
+            notes.append("Extracted objective: " + label + " with secondary signals of " + ", ".join(extra_needs) + ".")
+        elif label:
+            notes.append("Extracted objective: " + label + ".")
+        elif extra_needs:
+            notes.append("Extracted objective signals: " + ", ".join(extra_needs) + ".")
+
+    if defense_style:
+        defense_text = defense_style_label(defense_style) or str(defense_style)
+        notes.append(f"Extracted defense context: {defense_text}.")
+
+    if pace:
+        pace_text = pace_label(pace) or str(pace)
+        notes.append(f"Extracted pace intent: {pace_text}.")
+
+    if special_situations:
+        situation_labels = special_situation_labels(context)
+        if situation_labels:
+            notes.append("Extracted special situations: " + ", ".join(situation_labels) + ".")
+
+    if play_families:
+        labels = [family_label(x) for x in play_families]
+        notes.append("Extracted play-family cues: " + ", ".join(_dedupe_keep_order(labels)) + ".")
+
+    if pipeline_version:
+        if parser_version:
+            notes.append(f"Explanation used parser {parser_version} with NLP pipeline {pipeline_version}.")
+        else:
+            notes.append(f"Explanation used NLP pipeline {pipeline_version}.")
+
+    return _dedupe_keep_order(notes)
+
+
+def _evidence_bullets(context: Dict[str, Any], play_name: str, metrics: Dict[str, Any]) -> List[str]:
+    bullets: List[str] = []
+
+    context_ppp = _to_float(metrics.get("context_ppp"))
+    ppp = _to_float(metrics.get("ppp")) or context_ppp
+    ml_ppp = _to_float(metrics.get("ml_ppp"))
+    baseline_ppp = _to_float(metrics.get("baseline_ppp"))
+    delta = _to_float(metrics.get("delta_vs_baseline"))
+    context_adj = _to_float(metrics.get("context_adj"))
+    off_ppp = _to_float(metrics.get("off_ppp"))
+    def_ppp = _to_float(metrics.get("def_ppp"))
+
+    if context_ppp is not None:
+        bullets.append(f"Context-adjusted efficiency: {_fmt_ppp(context_ppp)}.")
+    elif ppp is not None:
+        bullets.append(f"Efficiency signal: {_fmt_ppp(ppp)}.")
+
+    if ml_ppp is not None and baseline_ppp is not None:
+        bullets.append(f"Blend components: ML {_fmt_ppp(ml_ppp)} vs baseline {_fmt_ppp(baseline_ppp)}.")
+    elif baseline_ppp is not None and delta is None:
+        bullets.append(f"Baseline matchup signal: {_fmt_ppp(baseline_ppp)}.")
+
+    if delta is not None:
+        sign = "+" if delta >= 0 else ""
+        bullets.append(f"Lift vs baseline: {sign}{delta:.2f} PPP.")
+    elif context_adj is not None:
+        sign = "+" if context_adj >= 0 else ""
+        bullets.append(f"Context adjustment: {sign}{context_adj:.2f}.")
+
+    if off_ppp is not None and def_ppp is not None:
+        bullets.append(f"Matchup profile: our side {_fmt_ppp(off_ppp)} vs their allowance {_fmt_ppp(def_ppp)}.")
+
+    freq = _to_float(metrics.get("freq"))
+    if freq is not None:
+        pct = _fmt_pct(freq)
+        if pct:
+            bullets.append(f"Usage signal: {pct} in the underlying sample.")
+
+    count = metrics.get("count")
+    if isinstance(count, int) and count > 0:
+        bullets.append(f"Sample size: {count} tracked possessions/entries.")
+
+    fit_lines = family_fit_sentences(list(context.get("preferred_play_families") or []), play_name)
+    bullets.extend(fit_lines)
+
+    ctx_label = metrics.get("context_label")
+    if isinstance(ctx_label, str) and ctx_label.strip():
+        bullets.append(f"Model context label: {ctx_label.strip()}.")
+
+    rationale = _format_freeform_rationale(metrics.get("rationale"))
+    if rationale:
+        bullets.append(f"Model rationale: {rationale}")
+
+    top_factors = _format_top_factors(metrics.get("top_factors"))
+    if top_factors:
+        bullets.append(f"Top drivers: {top_factors}.")
+
+    return bullets[:6]
+
+
+def explain_play(play: Dict[str, Any], context: Dict[str, Any], rank: int) -> PlayExplanation:
     name = _play_name(play)
     metrics = _extract_metrics(play)
+    play_family = infer_play_family_from_name(name)
 
-    # Summary: prefer efficiency sentence if we have PPP
-    ppp = _to_float(metrics.get("ppp"))
+    context_ppp = _to_float(metrics.get("context_ppp"))
+    ppp = context_ppp or _to_float(metrics.get("ppp"))
+    delta = _to_float(metrics.get("delta_vs_baseline"))
+    need = need_label(context.get("need"))
+    defense = defense_style_label(context.get("defense_style"))
+    requested_families = list(context.get("preferred_play_families") or [])
+
     if ppp is not None:
-        summary = f"{name} rates well here at {_fmt_ppp(ppp)}."
+        summary = f"{name} ranks #{rank} here at {_fmt_ppp(ppp)}."
     else:
-        summary = f"{name} is recommended for this context based on available model signals."
+        summary = f"{name} ranks #{rank} here based on the available matchup and context signals."
 
-    evidence = _evidence_bullets(context, metrics)
-    caution = _choose_caution(context, metrics)
+    if play_family and requested_families and play_family in requested_families:
+        summary = f"{name} ranks #{rank} here and aligns with the prompt’s {family_label(play_family)} cue."
+
+    if delta is not None and ppp is not None and not (play_family and requested_families and play_family in requested_families):
+        sign = "+" if delta >= 0 else ""
+        summary = f"{name} ranks #{rank} here at {_fmt_ppp(ppp)}, with {sign}{delta:.2f} PPP versus baseline."
+
+    if need and defense:
+        summary += f" It fits the parsed {need.lower()} situation against {defense.lower()}."
+    elif need:
+        summary += f" It fits the parsed {need.lower()} situation."
+    elif defense:
+        summary += f" It is being evaluated against the parsed {defense.lower()} look."
+
+    evidence = _evidence_bullets(context, name, metrics)
+    caution = _choose_caution(context, metrics, name)
+    matched_context = _context_fit_tags(context, name)
 
     return PlayExplanation(
         play_name=name,
+        play_type=name,
+        rank=rank,
         summary=summary,
         evidence=evidence,
         caution=caution,
+        matched_context=matched_context,
         metrics_used=metrics,
     )
+
 
 def explain_recommendations(
     context: Dict[str, Any],
     ranked_context: Any,
     ranked_baseline: Any = None,
     top_k: int = 5,
+    parser_warnings: Optional[List[str]] = None,
+    clarifying_questions: Optional[List[str]] = None,
 ) -> ExplanationResult:
-    """Build an overall explanation package from ranked play outputs."""
-    ctx_summary = summarize_context(context)
-    overall = _context_intent_sentence(context)
+    context_summary = summarize_context(context)
+    overall_summary = context.get("objective_summary") or context_objective_sentence(context)
 
-    ctx_list = _coerce_rankings(ranked_context)
-    base_list = _coerce_rankings(ranked_baseline) if ranked_baseline is not None else []
-
-    # Build a quick lookup for baseline by play name (best-effort)
-    baseline_by_name: Dict[str, Dict[str, Any]] = {}
-    for b in base_list:
-        baseline_by_name[_play_name(b)] = b
+    context_list = _coerce_rankings(ranked_context)
+    baseline_list = _coerce_rankings(ranked_baseline) if ranked_baseline is not None else []
+    baseline_by_name: Dict[str, Dict[str, Any]] = {_play_name(b): b for b in baseline_list}
 
     plays_out: List[PlayExplanation] = []
     notes: List[str] = []
+    notes.extend(_build_extracted_context_notes(context))
 
-    for play in ctx_list[: max(1, int(top_k))]:
-        pe = explain_play(play, context)
+    limit = max(1, int(top_k))
 
-        # Optional: if baseline PPP exists and context PPP exists, compute delta note
-        b = baseline_by_name.get(pe.play_name)
-        if b is not None:
-            b_metrics = _extract_metrics(b)
-            b_ppp = _to_float(b_metrics.get("ppp"))
-            c_ppp = _to_float(pe.metrics_used.get("ppp"))
-            if b_ppp is not None and c_ppp is not None:
-                delta = c_ppp - b_ppp
-                # Add a small extra evidence line only if we can compute it honestly
-                sign = "+" if delta >= 0 else ""
-                extra = f"Context vs baseline: {sign}{delta:.2f} PPP for this situation."
-                # Avoid duplication if delta already provided by model
-                if "delta_vs_baseline" not in pe.metrics_used:
-                    pe.evidence.append(extra)
+    for i, play in enumerate(context_list[:limit], start=1):
+        rank_raw = _first_present(play, _RAW_RANK_KEYS)
+        rank = int(float(rank_raw)) if _is_number(rank_raw) else i
 
-        plays_out.append(pe)
+        explained = explain_play(play, context, rank=rank)
 
-    # Add a gentle note if context missing core fields
-    missing = []
-    for k in ("period", "time_remaining", "margin"):
-        if context.get(k) is None:
-            missing.append(k)
-    if missing:
-        notes.append(f"Some context fields are missing ({', '.join(missing)}), so explanations may be less specific.")
+        baseline_play = baseline_by_name.get(explained.play_name)
+        if baseline_play is not None:
+            baseline_metrics = _extract_metrics(baseline_play)
+            baseline_ppp = _to_float(baseline_metrics.get("context_ppp")) or _to_float(baseline_metrics.get("ppp"))
+            current_ppp = _to_float(explained.metrics_used.get("context_ppp")) or _to_float(explained.metrics_used.get("ppp"))
+
+            if (
+                baseline_ppp is not None
+                and current_ppp is not None
+                and "delta_vs_baseline" not in explained.metrics_used
+            ):
+                delta_val = current_ppp - baseline_ppp
+                sign = "+" if delta_val >= 0 else ""
+                explained.evidence.append(f"Context vs baseline: {sign}{delta_val:.2f} PPP for this situation.")
+
+        plays_out.append(
+            PlayExplanation(
+                play_name=explained.play_name,
+                play_type=explained.play_type,
+                rank=explained.rank,
+                summary=explained.summary,
+                evidence=_dedupe_keep_order(explained.evidence),
+                caution=explained.caution,
+                matched_context=_dedupe_keep_order(explained.matched_context),
+                metrics_used=explained.metrics_used,
+            )
+        )
+
+    missing_core = [k for k in ("period", "time_remaining", "margin") if context.get(k) is None]
+    if missing_core:
+        notes.append(
+            f"Some core context fields are missing ({', '.join(missing_core)}), so the explanation is less specific than it could be."
+        )
+
+    requested_families = list(context.get("preferred_play_families") or [])
+    if requested_families and plays_out:
+        if not any(infer_play_family_from_name(p.play_name) in requested_families for p in plays_out):
+            labels = ", ".join(family_label(f) for f in requested_families)
+            notes.append(
+                f"The prompt suggested {labels}, but none of the top returned play families matched exactly. That can happen if the ranking model prefers a different family in this matchup."
+            )
+
+    if context.get("need3") and plays_out:
+        if all("3" not in p.play_name.lower() for p in plays_out[: min(3, len(plays_out))]):
+            notes.append(
+                "The parsed game state suggests a 3 may be required, but the top recommendations are not obviously 3-point-oriented by name. Double-check score-clock intent versus the model’s efficiency preference."
+            )
+
+    if context.get("quick2") and plays_out:
+        top_name = plays_out[0].play_name.lower()
+        if "post" in top_name or "iso" in top_name:
+            notes.append(
+                "The parsed game state suggests quick-2 urgency. If the top option becomes too slow to enter, move immediately to the next clean trigger."
+            )
+
+    if context.get("two_for_one"):
+        notes.append("2-for-1 logic increases the value of shot timing, not only raw expected PPP.")
+
+    if context.get("must_stop"):
+        notes.append("The parsed prompt includes a stop need, so offensive rankings alone may not fully answer the possession-management question.")
+
+    if context.get("after_timeout"):
+        notes.append("Because the parsed prompt includes an after-timeout situation, set quality and immediate execution matter more than generic half-court value.")
+
+    if context.get("slob") or context.get("blob"):
+        inbound_context = "sideline" if context.get("slob") else "baseline"
+        notes.append(
+            f"The parsed prompt includes a {inbound_context} out-of-bounds situation, so space, timing, and first-option clarity matter more than normal flow offense."
+        )
+
+    if not context_list:
+        notes.append("No ranked context plays were provided, so there was nothing to explain.")
+
+    merged_parser_warnings = _dedupe_keep_order(
+        list(parser_warnings or []) + list(context.get("warnings") or [])
+    )
+    merged_clarifying_questions = _dedupe_keep_order(list(clarifying_questions or []))
 
     return ExplanationResult(
-        context_summary=ctx_summary,
-        overall_summary=overall,
+        context_summary=context_summary,
+        overall_summary=str(overall_summary),
         plays=plays_out,
-        notes=notes,
+        notes=_dedupe_keep_order(notes),
+        parser_warnings=merged_parser_warnings,
+        clarifying_questions=merged_clarifying_questions,
     )
 
-# Optional shot-plan explanation (if you want it)
 
 def explain_shotplan(context: Dict[str, Any], shotplan: Dict[str, Any]) -> Dict[str, Any]:
-    """Deterministic explanation for shot-plan output."""
     out: Dict[str, Any] = {}
     if not isinstance(shotplan, dict):
         return out
@@ -461,6 +781,16 @@ def explain_shotplan(context: Dict[str, Any], shotplan: Dict[str, Any]) -> Dict[
     shot_type = shotplan.get("shot_type") or shotplan.get("shotType") or shotplan.get("type")
     zone = shotplan.get("zone") or shotplan.get("shot_zone") or shotplan.get("shotZone")
     shooter = shotplan.get("shooter") or shotplan.get("player") or shotplan.get("name")
+
+    if not shot_type and isinstance(shotplan.get("top_shot_types"), list) and shotplan["top_shot_types"]:
+        first = shotplan["top_shot_types"][0]
+        if isinstance(first, dict):
+            shot_type = first.get("SHOT_TYPE") or first.get("shot_type") or first.get("type")
+
+    if not zone and isinstance(shotplan.get("top_zones"), list) and shotplan["top_zones"]:
+        first = shotplan["top_zones"][0]
+        if isinstance(first, dict):
+            zone = first.get("ZONE") or first.get("zone")
 
     parts: List[str] = []
     if isinstance(shot_type, str) and shot_type:
@@ -471,21 +801,91 @@ def explain_shotplan(context: Dict[str, Any], shotplan: Dict[str, Any]) -> Dict[
         parts.append(f"via {shooter}")
 
     if parts:
-        out["summary"] = "Best shot option: " + " • ".join(parts)
+        out["summary"] = "Best shot-plan direction: " + " • ".join(parts)
 
-    eff = _to_float(_first_present(shotplan, _EFF_KEYS + ("expected_value", "expected_points")))
-    if eff is not None:
-        out["evidence"] = [f"Expected efficiency: {_fmt_ppp(eff)} (from shot-plan model/aggregate)."]
-    else:
-        out["evidence"] = []
+    expected_ppp = _to_float(
+        shotplan.get("expected_ppp")
+        or shotplan.get("expected_value")
+        or shotplan.get("expected_points")
+        or shotplan.get("ppp")
+    )
 
-    # context-aware caution
-    need = context.get("need")
-    if need == "need3" and isinstance(shot_type, str) and "3" not in shot_type:
-        out["caution"] = "Caution: your intent indicates a 3 may be required—consider a 3-point option if needed."
+    evidence: List[str] = []
+    if expected_ppp is not None:
+        evidence.append(f"Expected efficiency: {_fmt_ppp(expected_ppp)}.")
+
+    if isinstance(shotplan.get("rationale"), str) and shotplan["rationale"].strip():
+        formatted = _format_freeform_rationale(shotplan["rationale"])
+        if formatted:
+            evidence.append(formatted)
+
+    period = context.get("period")
+    time_remaining = _to_float(context.get("time_remaining"))
+    margin = _to_float(context.get("margin"))
+    if period is not None or time_remaining is not None or margin is not None:
+        context_bits: List[str] = []
+        if isinstance(period, int):
+            context_bits.append("OT" if period == 5 else f"Q{period}")
+        if time_remaining is not None:
+            context_bits.append(_fmt_clock(time_remaining) or "")
+        if margin is not None:
+            if abs(margin) < 0.001:
+                context_bits.append("tied")
+            elif margin < 0:
+                context_bits.append(f"down {abs(margin):g}")
+            else:
+                context_bits.append(f"up {margin:g}")
+        context_bits = [x for x in context_bits if x]
+        if context_bits:
+            evidence.append("Parsed context: " + " • ".join(context_bits) + ".")
+
+    out["evidence"] = [x for x in evidence if x]
+
+    if context.get("need3") and isinstance(shot_type, str) and "3" not in shot_type:
+        out["caution"] = (
+            "Caution: the parsed game state suggests a 3 may be required, so double-check whether this shot type matches the score-clock need."
+        )
     else:
         out["caution"] = None
 
     return out
 
-# Quick manual demo
+
+if __name__ == "__main__":
+    context_demo = {
+        "period": 4,
+        "time_remaining": 28,
+        "margin": -3,
+        "need": "quick2",
+        "needs": ["quick2", "must_score"],
+        "defense_style": "switch",
+        "pace": "push",
+        "preferred_play_families": ["ball_screen"],
+        "special_situations": ["after_timeout"],
+        "after_timeout": True,
+        "vs_switching": True,
+        "quick2": True,
+        "context_brief": "Q4 • 0:28 left • down 3 • quick 2 • switching • after timeout",
+        "objective_summary": "Priority is generating a fast, efficient 2-point look and staying ahead of the clock.",
+        "parser_version": "3.0.0",
+        "nlp_pipeline_version": "1.0.0",
+    }
+
+    ranked_context_demo = {
+        "rankings": [
+            {
+                "play_type": "P&R Ball Handler",
+                "PPP_CONTEXT": 1.08,
+                "PPP_ML_BLEND": 1.06,
+                "PPP_BASELINE": 1.00,
+                "DELTA_VS_BASELINE": 0.08,
+            },
+            {
+                "play_type": "Post Up",
+                "PPP_CONTEXT": 1.02,
+                "PPP_BASELINE": 1.00,
+            },
+        ]
+    }
+
+    print(explain_recommendations(context_demo, ranked_context_demo).to_dict())
