@@ -41,7 +41,7 @@ import pandas as pd
 try:
     from .baseline_recommender import BaselineRecommender  # type: ignore
 except Exception:  # pragma: no cover
-    from baseline_recommender import BaselineRecommender
+    from baseline_recommendation import BaselineRecommender
 
 try:
     from .nlp_reasoning import infer_play_family_from_name  # type: ignore

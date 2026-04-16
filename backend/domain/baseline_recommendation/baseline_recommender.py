@@ -1,9 +1,9 @@
-#baseline_recommender.py
+# baseline_recommender.py
 
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Tuple
 
 from domain.baseline_recommendation.interfaces import IBaselineRecommender
 
@@ -23,8 +23,20 @@ WEIGHT_COLS = [
     "PLUSONE_POSS_PCT",
 ]
 
+
 def build_team_playtype_tables(raw_df: pd.DataFrame) -> pd.DataFrame:
-    """Aggregate Synergy player-level data into TEAM-level play-type rows."""
+    """
+    Aggregate Synergy player-level data into TEAM-level play-type rows.
+
+    IMPORTANT:
+    - The raw Synergy file is player-level.
+    - POSS_PCT in the raw file is therefore a player-level share.
+    - Summing raw POSS_PCT across players inflates team usage and can push it above 100%.
+
+    Correct team-level usage must be recomputed AFTER aggregation as:
+        team play-type POSS / total team POSS
+    for the same (SEASON, TEAM_ABBREVIATION, TEAM_NAME, SIDE).
+    """
     df = raw_df.copy()
 
     # Map Synergy's TYPE_GROUPING to a simple SIDE flag.
@@ -32,16 +44,17 @@ def build_team_playtype_tables(raw_df: pd.DataFrame) -> pd.DataFrame:
         {"offensive": "offense", "defensive": "defense"}
     )
 
+    # Keep only rows with a valid side.
+    df = df[df["SIDE"].notna()].copy()
+
     group_cols = ["SEASON", "TEAM_ABBREVIATION", "TEAM_NAME", "PLAY_TYPE", "SIDE"]
 
     def agg_func(group: pd.DataFrame) -> pd.Series:
         poss = group["POSS"].sum()
-        poss_pct = group["POSS_PCT"].sum()
 
         out = {
-            "GP": group["GP"].sum(),       # total games (sum over players; used only as reference)
-            "POSS": poss,                 # total possessions for the team/playtype/side
-            "POSS_PCT": poss_pct,         # share of team possessions (summing player shares)
+            "GP": group["GP"].sum(),   # total games (sum over players; used only as reference)
+            "POSS": poss,             # total possessions for the team/playtype/side
         }
 
         # Weighted averages for rate stats
@@ -54,9 +67,28 @@ def build_team_playtype_tables(raw_df: pd.DataFrame) -> pd.DataFrame:
         out["FGA"] = group["FGA"].sum()
         return pd.Series(out)
 
-    # Group and aggregate
-    team_df = df.groupby(group_cols, as_index=False).apply(agg_func)
+    # Group and aggregate to team play-type rows
+    team_df = (
+        df.groupby(group_cols, as_index=False)
+        .apply(agg_func)
+        .reset_index(drop=True)
+    )
+
+    # Recompute team-level usage correctly from aggregated team possessions.
+    team_total_cols = ["SEASON", "TEAM_ABBREVIATION", "TEAM_NAME", "SIDE"]
+    team_df["TEAM_TOTAL_POSS"] = team_df.groupby(team_total_cols)["POSS"].transform("sum")
+
+    team_df["POSS_PCT"] = np.where(
+        team_df["TEAM_TOTAL_POSS"] > 0,
+        team_df["POSS"] / team_df["TEAM_TOTAL_POSS"],
+        np.nan,
+    )
+
+    # Helper column was only needed to compute team-level usage.
+    team_df = team_df.drop(columns=["TEAM_TOTAL_POSS"])
+
     return team_df
+
 
 def add_team_reliability_weights(team_df: pd.DataFrame) -> pd.DataFrame:
     """Add RELIABILITY_WEIGHT in [0, 1] based on log1p(POSS)."""
@@ -64,6 +96,7 @@ def add_team_reliability_weights(team_df: pd.DataFrame) -> pd.DataFrame:
     max_log = np.log1p(result["POSS"]).max()
     result["RELIABILITY_WEIGHT"] = np.log1p(result["POSS"]) / max_log if max_log > 0 else 0.0
     return result
+
 
 def build_league_averages(team_df: pd.DataFrame) -> pd.DataFrame:
     """Build league-average stats per (SEASON, PLAY_TYPE, SIDE)."""
@@ -76,18 +109,24 @@ def build_league_averages(team_df: pd.DataFrame) -> pd.DataFrame:
             out[col] = np.average(group[col], weights=group["POSS"]) if poss > 0 else np.nan
         return pd.Series(out)
 
-    league_df = team_df.groupby(group_cols, as_index=False).apply(agg)
+    league_df = (
+        team_df.groupby(group_cols, as_index=False)
+        .apply(agg)
+        .reset_index(drop=True)
+    )
 
     max_log = np.log1p(league_df["LEAGUE_POSS"]).max()
     league_df["RELIABILITY_WEIGHT"] = np.log1p(league_df["LEAGUE_POSS"]) / max_log if max_log > 0 else 0.0
     return league_df
 
+
 def prepare_baseline_tables(raw_df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
-    """Full baseline ETL pipeline:"""
+    """Full baseline ETL pipeline."""
     team_df = build_team_playtype_tables(raw_df)
     team_df = add_team_reliability_weights(team_df)
     league_df = build_league_averages(team_df)
     return team_df, league_df
+
 
 def rank_playtypes_baseline(
     team_df: pd.DataFrame,
@@ -111,6 +150,7 @@ def rank_playtypes_baseline(
         raise ValueError(f"Unknown opp_team '{opp_team}'.")
     if not (1 <= k <= 10):
         raise ValueError("k must be between 1 and 10.")
+
     off = team_df.query(
         "SEASON == @season and TEAM_ABBREVIATION == @our_team and SIDE == 'offense'"
     ).copy()
@@ -121,6 +161,7 @@ def rank_playtypes_baseline(
 
     if off.empty or deff.empty:
         raise ValueError("No data for this matchup (offense or defense table is empty).")
+
     league_off = league_df.query(
         "SEASON == @season and SIDE == 'offense'"
     )[["PLAY_TYPE", "PPP"]].rename(columns={"PPP": "PPP_LEAGUE_OFF"})
@@ -143,6 +184,7 @@ def rank_playtypes_baseline(
             "TOV_POSS_PCT",
         ]
     ].copy()
+
     merged = off.merge(
         deff_subset,
         on="PLAY_TYPE",
@@ -157,14 +199,14 @@ def rank_playtypes_baseline(
     # Add league anchors per play type
     merged = merged.merge(league_off, on="PLAY_TYPE", how="left")
     merged = merged.merge(league_def, on="PLAY_TYPE", how="left")
-    #
+
     # PPP_SHRUNK = REL * PPP_TEAM + (1-REL) * PPP_LEAGUE
     rel_off = merged["RELIABILITY_WEIGHT_OFF"]
     rel_def = merged["RELIABILITY_WEIGHT_DEF"]
 
     merged["PPP_OFF_SHRUNK"] = rel_off * merged["PPP_OFF"] + (1 - rel_off) * merged["PPP_LEAGUE_OFF"]
     merged["PPP_DEF_SHRUNK"] = rel_def * merged["PPP_DEF"] + (1 - rel_def) * merged["PPP_LEAGUE_DEF"]
-    #
+
     # PPP_PRED = w_off * PPP_OFF_SHRUNK
     #          + w_def * (2*PPP_LEAGUE_OFF - PPP_DEF_SHRUNK)
     #
@@ -192,7 +234,7 @@ def rank_playtypes_baseline(
         )
 
     merged["RATIONALE"] = merged.apply(build_rationale, axis=1)
-    #
+
     # These columns are used by the updated frontend Matchup/Baseline page to show a full breakdown.
     cols = [
         "PLAY_TYPE",
@@ -221,8 +263,9 @@ def rank_playtypes_baseline(
     cols = [c for c in cols if c in merged.columns]
     return merged.head(k)[cols].reset_index(drop=True)
 
+
 class BaselineRecommender(IBaselineRecommender):
-    """Simple wrapper used by the API:"""
+    """Simple wrapper used by the API."""
 
     def __init__(self, synergy_csv_path: str):
         synergy_csv_path = Path(synergy_csv_path)
