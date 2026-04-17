@@ -14,6 +14,25 @@ export interface SignInResult {
   role: UserRole;
 }
 
+function normalizeUserRole(value: unknown): UserRole | null {
+  return value === "coach" || value === "analyst" ? value : null;
+}
+
+function getEmailRedirectUrl(): string {
+  if (typeof window !== "undefined") {
+    return new URL("/auth/callback?next=/login", window.location.origin).toString();
+  }
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (siteUrl) {
+    return new URL("/auth/callback?next=/login", siteUrl.replace(/\/+$/, "")).toString();
+  }
+
+  throw new Error(
+    "Unable to determine auth redirect URL. Set NEXT_PUBLIC_SITE_URL or call signUp from the browser.",
+  );
+}
+
 export async function signIn(
   email: string,
   password: string,
@@ -29,20 +48,20 @@ export async function signIn(
     throw new Error(error?.message ?? "Unable to log in right now.");
   }
 
-  const { data: profile } = await supabase
+  const { data: profile, error: profileError } = await supabase
     .from("profiles")
     .select("role")
     .eq("id", data.user.id)
-    .single();
+    .maybeSingle();
 
-  const metadataRole =
-    data.user.user_metadata?.role === "coach" ||
-    data.user.user_metadata?.role === "analyst"
-      ? (data.user.user_metadata.role as UserRole)
-      : null;
+  if (profileError) {
+    throw new Error(profileError.message);
+  }
 
-  const role: UserRole =
-    (profile?.role as UserRole | undefined) ?? metadataRole ?? "analyst";
+  const profileRole = normalizeUserRole(profile?.role);
+  const metadataRole = normalizeUserRole(data.user.user_metadata?.role);
+
+  const role: UserRole = profileRole ?? metadataRole ?? "analyst";
 
   return { userId: data.user.id, role };
 }
@@ -59,7 +78,7 @@ export async function signUp(
     password,
     options: {
       data: { role },
-      emailRedirectTo: `${window.location.origin}/auth/callback?next=/`,
+      emailRedirectTo: getEmailRedirectUrl(),
     },
   });
 
