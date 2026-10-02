@@ -1,7 +1,7 @@
 # The frontend deploy uses Cloud Run for all Python work.
-backend/
-supabase/
-Notebook/
+/backend/
+/supabase/
+/Notebook/
 .git/
 .venv/
 node_modules/
