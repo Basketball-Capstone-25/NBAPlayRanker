@@ -20,4 +20,4 @@ RUN python -m spacy download en_core_web_sm
 COPY . /app
 
 # Cloud Run provides $PORT; default locally to 8080
-CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port ${PORT:-8080}"]
+CMD ["sh", "-c", "exec uvicorn application.api_coordination.app:app --host 0.0.0.0 --port ${PORT:-8080}"]

@@ -19,6 +19,11 @@ _JWT_SECRET: Optional[str] = None
 _JWKS_CLIENT: Optional[PyJWKClient] = None
 
 
+def is_insecure_dev_auth_enabled() -> bool:
+    """Allow unauthenticated local experiments only after an explicit opt-in."""
+    return os.environ.get("ALLOW_INSECURE_DEV_AUTH", "").lower() == "true"
+
+
 def get_jwt_secret() -> Optional[str]:
     """Lazily read the secret so tests/CI can run without it."""
     global _JWT_SECRET
@@ -41,13 +46,6 @@ def _get_jwks_client() -> Optional[PyJWKClient]:
 
 def decode_supabase_jwt(token: str) -> Optional[Dict[str, Any]]:
     """Verify and decode a Supabase access-token JWT."""
-    secret = get_jwt_secret()
-    if secret is None:
-        logger.warning(
-            "SUPABASE_JWT_SECRET not set – skipping JWT verification (dev mode)."
-        )
-        return None
-
     try:
         header = jwt.get_unverified_header(token)
     except jwt.InvalidTokenError as exc:
@@ -55,15 +53,23 @@ def decode_supabase_jwt(token: str) -> Optional[Dict[str, Any]]:
         return None
 
     alg = header.get("alg", "HS256")
+    url = os.environ.get("SUPABASE_URL", "").rstrip("/")
+    issuer = f"{url}/auth/v1" if url else None
+    required_claims = ["exp", "sub"] + (["iss"] if issuer else [])
 
     try:
         if alg == "HS256":
+            secret = get_jwt_secret()
+            if secret is None:
+                logger.warning("Cannot verify HS256 token without SUPABASE_JWT_SECRET.")
+                return None
             return jwt.decode(
                 token,
                 secret,
                 algorithms=["HS256"],
                 audience="authenticated",
-                options={"require": ["exp", "sub"]},
+                issuer=issuer,
+                options={"require": required_claims},
             )
 
         if alg in ("ES256", "RS256"):
@@ -80,7 +86,8 @@ def decode_supabase_jwt(token: str) -> Optional[Dict[str, Any]]:
                 signing_key.key,
                 algorithms=[alg],
                 audience="authenticated",
-                options={"require": ["exp", "sub"]},
+                issuer=issuer,
+                options={"require": required_claims},
             )
             return result
 
@@ -92,4 +99,7 @@ def decode_supabase_jwt(token: str) -> Optional[Dict[str, Any]]:
         return None
     except jwt.InvalidTokenError as exc:
         logger.warning("JWT verification failed: %s", exc)
+        return None
+    except jwt.PyJWKClientError as exc:
+        logger.warning("JWT signing key unavailable: %s", exc)
         return None

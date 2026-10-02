@@ -66,10 +66,10 @@ def ensure_clean_parquet(*, force_rebuild: bool = False) -> Path:
     if CLEAN_PARQUET.exists() and not force_rebuild:
         return CLEAN_PARQUET
 
-    raise FileNotFoundError(
-        f"shots_clean.parquet not found at {CLEAN_PARQUET}.\n"
-        "Run the ETL pipeline first:\n"
-        "  python backend/data/etl/build_pbp_pipeline.py"
+    from domain.shot_analysis.shot_etl import build_shots_dataset
+
+    return build_shots_dataset(
+        parquet_path=_resolve_source_parquet(), output_path=CLEAN_PARQUET
     )
 
 def build_canonical_from_clean(clean_df: pd.DataFrame) -> pd.DataFrame:
@@ -152,8 +152,11 @@ def ensure_canonical_parquet(*, force_rebuild: bool = False) -> Path:
 
     ensure_dir(CACHE_DIR)
 
-    src = _resolve_source_parquet()
-    fp = fingerprint_file(src, schema_version=CANONICAL_SCHEMA_VERSION)
+    # Canonical rows are derived from the clean table. Serving the distributed
+    # clean dataset must not require the much larger raw download to be present.
+    # The ETL command rebuilds clean data explicitly when --force is requested.
+    ensure_clean_parquet()
+    fp = fingerprint_file(CLEAN_PARQUET, schema_version=CANONICAL_SCHEMA_VERSION)
 
     if (
         CANONICAL_PARQUET.exists()
@@ -162,9 +165,6 @@ def ensure_canonical_parquet(*, force_rebuild: bool = False) -> Path:
         and not force_rebuild
     ):
         return CANONICAL_PARQUET
-
-    # Make sure the upstream clean parquet exists.
-    ensure_clean_parquet(force_rebuild=force_rebuild)
 
     clean_df = pd.read_parquet(CLEAN_PARQUET)
     canonical_df = build_canonical_from_clean(clean_df)

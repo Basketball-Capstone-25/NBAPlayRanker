@@ -1,9 +1,16 @@
+import pytest
 from fastapi.testclient import TestClient
 
 from application.api_coordination.app import app
 
 
 client = TestClient(app)
+
+
+@pytest.fixture(autouse=True)
+def local_data_api_mode(strict_auth_by_default, monkeypatch):
+    """Data-flow tests opt in explicitly; RBAC is verified separately."""
+    monkeypatch.setenv("ALLOW_INSECURE_DEV_AUTH", "true")
 
 
 def test_access_workspace_returns_table_with_meta():

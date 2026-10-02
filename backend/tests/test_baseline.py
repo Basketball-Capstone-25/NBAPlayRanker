@@ -2,7 +2,7 @@ import pathlib
 
 import pytest
 
-from baseline_recommender import BaselineRecommender
+from domain.baseline_recommendation import BaselineRecommender
 
 #
 #

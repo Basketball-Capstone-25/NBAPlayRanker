@@ -6,6 +6,7 @@ from infrastructure.external_integrations.interfaces import (
 from infrastructure.external_integrations.supabase_jwt import (
     decode_supabase_jwt,
     get_jwt_secret,
+    is_insecure_dev_auth_enabled,
 )
 from infrastructure.external_integrations.nlp_parser import (
     parse_game_context,
@@ -21,6 +22,7 @@ __all__ = [
     "IGetJWTSecret",
     "decode_supabase_jwt",
     "get_jwt_secret",
+    "is_insecure_dev_auth_enabled",
     "parse_game_context",
     "context_to_context_ml_params",
     "explain_recommendations",

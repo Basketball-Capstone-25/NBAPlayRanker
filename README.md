@@ -6,7 +6,7 @@ A decision-support tool for basketball coaches and analysts. Coaches get ranked 
 
 ### Prerequisites
 - Python 3.11+
-- Node.js 18+ and npm
+- Node.js 22 LTS and npm
 
 ### 1. Clone and install
 
@@ -15,7 +15,7 @@ git clone https://github.com/Basketball-Capstone-25/NBAPlayRanker.git
 cd NBAPlayRanker
 
 # Frontend
-npm install
+npm ci
 
 # Backend
 cd backend
@@ -24,7 +24,10 @@ python -m venv .venv
 .venv\Scripts\activate
 # macOS/Linux
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install --prefer-binary -r requirements.txt
+# Development/test tools
+pip install --prefer-binary -r requirements-dev.txt
+python -m spacy download en_core_web_sm
 cd ..
 ```
 
@@ -38,17 +41,28 @@ Open `.env` and fill in:
 
 | Variable | Where to find it |
 |----------|-----------------|
-| `SUPABASE_JWT_SECRET` | Supabase Dashboard > Settings > API > JWT Settings |
-| `SUPABASE_URL` | Supabase Dashboard > Settings > API > Project URL |
+| `SUPABASE_JWT_SECRET` | Only needed for legacy HS256 tokens; use the project's legacy JWT secret |
+| `SUPABASE_URL` | Supabase project URL; ES256/RS256 tokens are verified through its public JWKS |
 | `NEXT_PUBLIC_SUPABASE_URL` | Same as `SUPABASE_URL` |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase Dashboard > Settings > API > `anon` public key |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | The project's publishable key (`sb_publishable_…`); the SDK also accepts a legacy `anon` key |
 | `NEXT_PUBLIC_API_BASE` | `http://localhost:8000` (default for local dev) |
+
+Both applications read this repository-root `.env`. The backend also accepts
+`backend/.env` for backend-only overrides; exported shell variables take
+precedence over either file. Backend authentication fails closed when credentials are
+missing. For ES256/RS256 projects, configure `SUPABASE_URL`; no private signing
+key or legacy secret is needed. Never commit either `.env` file.
+
+For isolated local data experiments only, setting `ALLOW_INSECURE_DEV_AUTH=true`
+explicitly disables backend authentication and role checks. Its default is
+`false`; keep it false for normal login testing and all hosted environments.
 
 ### 3. Run
 
 ```bash
 # Terminal 1 — Backend
 cd backend
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 python -m uvicorn application.api_coordination.app:app --host 127.0.0.1 --port 8000
 
 # Terminal 2 — Frontend
@@ -56,6 +70,17 @@ npm run dev
 ```
 
 Open http://localhost:3000.
+
+The backend health check is http://127.0.0.1:8000/health and its interactive API
+documentation is http://127.0.0.1:8000/docs. Login also requires a running
+Supabase project with the team's auth/profile schema and matching credentials.
+
+To build/run the backend container from the repository root:
+
+```bash
+docker build -t nba-playranker-api ./backend
+docker run --rm --env-file .env -p 8000:8080 nba-playranker-api
+```
 
 ---
 
@@ -96,34 +121,61 @@ Open http://localhost:3000.
 
 Two datasets are included in the repository:
 
-1. **Synergy play-type data** (`data/synergy_playtypes_2019_2025_players.csv`) — historical play-type performance by team, opponent, and season. Powers the baseline and context-ML recommendation engines.
+1. **Synergy play-type data** (`backend/data/synergy_playtypes_2019_2025_players.csv`) — historical play-type performance by team, opponent, and season. Powers the baseline and context-ML recommendation engines. Precomputed predictions are in `backend/data/ml_offense_ppp_predictions.csv`.
 
-2. **NBA play-by-play shots** (`data/pbp/`) — 1.3M+ shot records sourced via hoopR. Powers the shot explorer, heatmaps, shot plans, and shot model analysis.
+2. **NBA play-by-play shots** (`backend/data/pbp/`) — shot records sourced via hoopR. The distributed `shots_clean.parquet`, `shots_agg.parquet`, `shots_agg_league.parquet` and `cache/shots_canonical.parquet` power the shot explorer, heatmaps, shot plans, and shot model analysis. The raw download is not needed to serve these generated files.
+
+To rebuild missing/stale aggregates and the canonical cache from the clean data,
+run from the repository root with the backend environment activated:
+
+```bash
+python backend/data/etl/build_pbp_pipeline.py
+```
+
+To rebuild the clean data too, obtain the original
+`backend/data/pbp/nba_pbp_2021_present.parquet` using the team's source snapshot or
+`backend/data/etl/download_hoopr_pbp.R`, then run the same command with `--force`.
+This intentionally requires the raw source and regenerates derived files.
 
 ---
 
 ## Tests
 
-| File | Tests | What it covers |
-|------|-------|----------------|
-| `test_baseline.py` | 6 | Baseline recommender output shape and values |
-| `test_baseline_api.py` | 3 | `/rank-plays/baseline` endpoint validation |
-| `test_ridge_model.py` | 8 | Ridge pipeline structure, fitting, regularization |
-| `test_context_ml.py` | 8 | Context factors, time calculations, labeling |
-| `test_access_control.py` | 10 | JWT validation, role extraction, session checks |
-| `test_access_control_api_bypass.py` | 12 | RBAC enforcement across coach/analyst endpoints |
-| `test_access_analyst_workspace_api.py` | 3 | Analyst workspace filtering and limits |
-| `middleware.auth-analyst.test.ts` | 3 | Analyst middleware routing |
-| `middleware.auth-coach.test.ts` | 3 | Coach middleware routing |
+From the repository root after installing the development requirements:
+
+```bash
+backend/.venv/bin/python -m pytest backend/tests -v
+npm run test:rbac
+npm run test:rbac:coach
+npm run build
+```
+
+On Windows, use `backend\.venv\Scripts\python` for the Python command. For the
+faster backend subset, add `-m "not integration"`. Passing tests do not replace
+the authenticated coach/analyst browser walkthrough against the deployment.
+
+| File | What it covers |
+|------|----------------|
+| `test_baseline.py` | Baseline recommender output shape and values |
+| `test_baseline_api.py` | `/rank-plays/baseline` endpoint validation |
+| `test_ridge_model.py` | Ridge pipeline structure, fitting, regularization |
+| `test_context_ml.py` | Context factors, time calculations, labeling |
+| `test_access_control.py` | JWT validation, role extraction, session checks |
+| `test_access_control_api_bypass.py` | RBAC enforcement across coach/analyst endpoints |
+| `test_supabase_jwt.py` | ES256 signature/issuer/expiry checks without a legacy secret; fail-closed errors |
+| `test_access_analyst_workspace_api.py` | Analyst workspace filtering and limits |
+| `test_nlp_parser.py`, `test_nlp_integration.py`, `test_nlp_explain.py` | Prompt extraction, defaults, explanations and API integration |
+| `test_pbp_cache.py` | Shot cache generation without the raw download and clean-input invalidation |
+| `middleware.auth-analyst.test.ts` | Analyst middleware routing |
+| `middleware.auth-coach.test.ts` | Coach middleware routing |
 
 ---
 
 ## Tech Stack
 
-- **Frontend:** Next.js 14, React 18, TypeScript, Supabase SSR
+- **Frontend:** Next.js 15, React 19, TypeScript, Supabase SSR
 - **Backend:** FastAPI, Python 3.11
 - **ML:** scikit-learn (Ridge regression), pandas, scipy
 - **Auth:** Supabase
 - **Visualization:** SportyPy (court diagrams), Matplotlib (heatmaps), ReportLab (PDF export)
 - **Testing:** pytest (backend), Vitest (frontend)
-

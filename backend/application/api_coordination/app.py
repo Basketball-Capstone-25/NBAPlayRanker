@@ -7,9 +7,12 @@ import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
-load_dotenv(Path(__file__).resolve().parent.parent.parent / ".env")
 from typing import Any, Dict, List, Optional
-BACKEND_DIR = Path(__file__).resolve().parent
+BACKEND_DIR = Path(__file__).resolve().parents[2]
+# Shell variables take precedence; a backend-specific file can override the
+# shared root file used by Next.js and documented in the quick start.
+load_dotenv(BACKEND_DIR / ".env")
+load_dotenv(BACKEND_DIR.parent / ".env")
 if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
@@ -150,7 +153,7 @@ def _get_shot_rec() -> ShotBaselineRecommender:
                 status_code=400,
                 detail=(
                     "Shot aggregates not found. Run:\n"
-                    "  python backend/shot_aggregates.py\n"
+                    "  python backend/data/etl/build_pbp_pipeline.py\n"
                     f"Missing: {e}"
                 ),
             )

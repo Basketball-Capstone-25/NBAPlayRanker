@@ -50,7 +50,7 @@ def main() -> None:
 
     backend_dir = _ensure_backend_on_path()
 
-    from pbp_constants import (
+    from infrastructure.data_access.pbp_constants import (
         AGG_LEAGUE_PARQUET,
         AGG_META_JSON,
         AGG_PARQUET,
@@ -58,10 +58,10 @@ def main() -> None:
         CLEAN_PARQUET,
         SOURCE_PARQUET,
     )
-    from pbp_cache import build_meta, cache_valid, fingerprint_file, write_json_atomic
-    from pbp_constants import AGG_SCHEMA_VERSION
-    from pbp_clean import ensure_canonical_parquet, ensure_clean_parquet
-    from shot_aggregates import build_and_save_aggregates
+    from infrastructure.data_access.pbp_cache import build_meta, cache_valid, fingerprint_file, write_json_atomic
+    from infrastructure.data_access.pbp_constants import AGG_SCHEMA_VERSION
+    from infrastructure.data_access.pbp_clean import ensure_canonical_parquet, ensure_clean_parquet
+    from domain.shot_analysis.shot_aggregates import build_and_save_aggregates
 
     print("[build_pbp_pipeline] Starting Phase 1 build (Dataset2)")
     print(f"[build_pbp_pipeline] Backend dir: {backend_dir}")

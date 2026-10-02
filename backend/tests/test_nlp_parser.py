@@ -13,7 +13,7 @@ BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
-from nlp_endpoints import router  # noqa: E402
+from application.api_coordination.nlp_endpoints import router  # noqa: E402
 
 
 def make_client() -> TestClient:

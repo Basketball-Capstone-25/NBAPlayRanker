@@ -12,9 +12,9 @@ from application.api_coordination.app import app
 client = TestClient(app)
 
 
-JWT_SECRET_PATCH = patch(
-    "application.access_control_services.access_control_service.get_jwt_secret",
-    return_value="test-secret",
+DEV_BYPASS_PATCH = patch(
+    "application.access_control_services.access_control_service.is_insecure_dev_auth_enabled",
+    return_value=False,
 )
 
 def _patch_role(role: str):
@@ -33,7 +33,7 @@ def _patch_role(role: str):
 class TestCoachCannotBypassToAnalystEndpoints:
     """A coach token sent directly to analyst-only endpoints must get 403."""
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     @_patch_role("coach")
     def test_coach_blocked_from_data_explorer(self, _decode, _secret):
         """Coach calls /data/team-playtypes directly → 403."""
@@ -44,7 +44,7 @@ class TestCoachCannotBypassToAnalystEndpoints:
         )
         assert resp.status_code == 403
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     @_patch_role("coach")
     def test_coach_blocked_from_data_csv_export(self, _decode, _secret):
         """Coach calls /data/team-playtypes.csv directly → 403."""
@@ -55,7 +55,7 @@ class TestCoachCannotBypassToAnalystEndpoints:
         )
         assert resp.status_code == 403
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     @_patch_role("coach")
     def test_coach_blocked_from_model_metrics(self, _decode, _secret):
         """Coach calls /metrics/baseline-vs-ml directly → 403."""
@@ -65,7 +65,7 @@ class TestCoachCannotBypassToAnalystEndpoints:
         )
         assert resp.status_code == 403
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     @_patch_role("coach")
     def test_coach_blocked_from_ml_analysis(self, _decode, _secret):
         """Coach calls /analysis/ml directly → 403."""
@@ -75,7 +75,7 @@ class TestCoachCannotBypassToAnalystEndpoints:
         )
         assert resp.status_code == 403
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     @_patch_role("coach")
     def test_coach_blocked_from_shot_metrics(self, _decode, _secret):
         """Coach calls /metrics/shot-models directly → 403."""
@@ -89,7 +89,7 @@ class TestCoachCannotBypassToAnalystEndpoints:
 class TestAnalystCannotBypassToCoachEndpoints:
     """An analyst token sent directly to coach-only endpoints must get 403."""
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     @_patch_role("analyst")
     def test_analyst_blocked_from_baseline_ranking(self, _decode, _secret):
         """Analyst calls /rank-plays/baseline directly → 403."""
@@ -104,7 +104,7 @@ class TestAnalystCannotBypassToCoachEndpoints:
         )
         assert resp.status_code == 403
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     @_patch_role("analyst")
     def test_analyst_blocked_from_context_ml(self, _decode, _secret):
         """Analyst calls /rank-plays/context-ml directly → 403."""
@@ -119,7 +119,7 @@ class TestAnalystCannotBypassToCoachEndpoints:
         )
         assert resp.status_code == 403
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     @_patch_role("analyst")
     def test_analyst_blocked_from_viz(self, _decode, _secret):
         """Analyst calls /viz/playtype-zones directly → 403."""
@@ -134,7 +134,7 @@ class TestAnalystCannotBypassToCoachEndpoints:
 class TestUnauthenticatedRequestsBlocked:
     """Requests with no token must get 401 regardless of endpoint."""
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     def test_no_token_data_explorer(self, _secret):
         """No Authorization header → 401."""
         resp = client.get(
@@ -143,7 +143,7 @@ class TestUnauthenticatedRequestsBlocked:
         )
         assert resp.status_code == 401
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     def test_no_token_baseline(self, _secret):
         """No Authorization header → 401."""
         resp = client.get(
@@ -156,7 +156,7 @@ class TestUnauthenticatedRequestsBlocked:
 class TestAuthorizedRolesSucceed:
     """Confirm the access-control service allows the correct role through."""
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     @_patch_role("analyst")
     def test_analyst_can_access_data_explorer(self, _decode, _secret):
         """Analyst calls /data/team-playtypes → 200."""
@@ -167,7 +167,7 @@ class TestAuthorizedRolesSucceed:
         )
         assert resp.status_code == 200
 
-    @JWT_SECRET_PATCH
+    @DEV_BYPASS_PATCH
     @_patch_role("coach")
     def test_coach_can_access_baseline(self, _decode, _secret):
         """Coach calls /rank-plays/baseline → 200."""

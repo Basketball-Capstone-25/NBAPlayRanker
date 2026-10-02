@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'codex/**'
+  pull_request:
+    branches:
+      - main
+      - 'codex/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+      LOKY_MAX_CPU_COUNT: '2'
+      MPLBACKEND: Agg
+      ALLOW_INSECURE_DEV_AUTH: 'false'
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: |
+            backend/requirements.txt
+            backend/requirements-dev.txt
+      - name: Install backend dependencies
+        run: python -m pip install --prefer-binary --no-compile -r backend/requirements-dev.txt
+      - name: Install NLP model
+        run: python -m spacy download en_core_web_sm
+      - name: Run all backend tests
+        run: python -m pytest backend/tests -v
+
+  frontend:
+    name: Frontend tests and build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install frontend dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Test analyst access control
+        run: npm run test:rbac -- --maxWorkers=1 --minWorkers=1
+      - name: Test coach access control
+        run: npm run test:rbac:coach -- --maxWorkers=1 --minWorkers=1
+      - name: Build frontend
+        env:
+          # Next.js derives one static build worker from this value (2 - 1).
+          CIRCLE_NODE_TOTAL: '2'
+        run: npm run build
