@@ -1,0 +1,14 @@
+# Keep deployment data, including tracked Parquet files, in the source upload.
+# Do not include the repository .gitignore: it excludes required datasets.
+.git/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+tests/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example

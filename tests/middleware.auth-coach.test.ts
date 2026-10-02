@@ -68,4 +68,32 @@ describe("Coach access control in middleware", () => {
     expect(res.status).toBeLessThan(400);
     expect(res.headers.get("location")).toContain("/matchup");
   });
+
+  it("ignores a self-assigned coach claim when the profile is pending", async () => {
+    mockGetUser.mockResolvedValue({
+      data: { user: { id: "pending", user_metadata: { role: "coach" } } },
+    });
+    mockSingle.mockResolvedValue({ data: { role: null } });
+    const res = await middleware(new NextRequest("http://localhost:3000/matchup"));
+    expect(res.headers.get("location")).toBe("http://localhost:3000/login?access=pending");
+  });
+
+  it("keeps the login page available for a pending account", async () => {
+    mockGetUser.mockResolvedValue({
+      data: { user: { id: "pending", user_metadata: { role: "coach" } } },
+    });
+    mockSingle.mockResolvedValue({ data: { role: null } });
+    const res = await middleware(new NextRequest("http://localhost:3000/login?access=pending"));
+    expect(res.status).toBe(200);
+    expect(res.headers.get("location")).toBeNull();
+  });
+
+  it("denies access when a profile cannot be loaded instead of trusting metadata", async () => {
+    mockGetUser.mockResolvedValue({
+      data: { user: { id: "offline", user_metadata: { role: "coach" } } },
+    });
+    mockSingle.mockRejectedValue(new Error("offline"));
+    const res = await middleware(new NextRequest("http://localhost:3000/matchup"));
+    expect(res.headers.get("location")).toBe("http://localhost:3000/login?access=pending");
+  });
 });

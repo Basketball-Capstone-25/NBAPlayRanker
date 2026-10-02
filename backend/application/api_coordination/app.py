@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import logging
+import os
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from dotenv import load_dotenv
 from typing import Any, Dict, List, Optional
@@ -73,16 +75,32 @@ except Exception as e:
         e,
     )
 
-# Allow local dev + keep permissive for defense demo environments.
-origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
+def _cors_origins() -> List[str]:
+    """Use explicit deployment origins; default to the local Next.js server."""
+    configured = os.environ.get("FRONTEND_ORIGIN", "").strip()
+    if not configured:
+        return ["http://localhost:3000", "http://127.0.0.1:3000"]
+
+    origins = list(dict.fromkeys(value.strip().rstrip("/") for value in configured.split(",")))
+    for origin in origins:
+        parsed = urlsplit(origin)
+        if (
+            parsed.scheme not in {"http", "https"}
+            or not parsed.netloc
+            or parsed.path
+            or parsed.query
+            or parsed.fragment
+            or parsed.username
+            or parsed.password
+            or "*" in origin
+        ):
+            raise ValueError("FRONTEND_ORIGIN must contain explicit HTTP(S) origins, separated by commas.")
+    return origins
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins + ["*"],
+    allow_origins=_cors_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

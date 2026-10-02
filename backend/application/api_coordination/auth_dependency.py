@@ -22,13 +22,18 @@ def _extract_token(request: Request) -> Optional[str]:
         return auth[7:]
     return None
 
-async def require_auth(request: Request) -> dict:
+def require_auth(request: Request) -> dict:
     """FastAPI dependency – ensures the request carries a valid session."""
     token = _extract_token(request)
     if not validate_session(token):
         raise HTTPException(status_code=401, detail="Invalid or missing session token.")
 
     role = get_user_role(token) if token else None
+    if not check_user_access(role, "meta"):
+        raise HTTPException(
+            status_code=403,
+            detail="Your account has no assigned role. Contact the project administrator.",
+        )
     return {"token": token, "role": role}
 
 class _RequireRole:

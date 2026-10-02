@@ -21,7 +21,7 @@ export default function SignupPageClient() {
 
     try {
       await signUp(email, password, role);
-      setMessage("Check your email to verify your account, then sign in.");
+      setMessage("Check your email to verify your account. A project administrator must approve your requested role before you can access a workspace.");
       setSuccess(true);
     } catch (err: unknown) {
       setMessage(err instanceof Error ? err.message : "Sign-up failed.");
@@ -40,7 +40,7 @@ export default function SignupPageClient() {
           <h1 className="auth-title">Create your role-based account.</h1>
 
           <p className="auth-copy">
-            Pick the workspace that matches how you use the platform. Coaches get decision-ready
+            Request the workspace that matches how you use the platform. Coaches get decision-ready
             recommendations. Analysts get the deeper evidence, metrics, and exploratory views.
           </p>
 
@@ -79,12 +79,12 @@ export default function SignupPageClient() {
           <div className="auth-panel-kicker">Sign up</div>
           <h2 className="auth-panel-title">Create your account</h2>
           <p className="auth-panel-copy">
-            Choose a role, then set your credentials to get started.
+            Request a role and create your account. Access begins after administrator approval.
           </p>
 
           <form className="auth-form" onSubmit={handleSignup}>
             <div className="auth-field">
-              <span className="auth-label">Choose your role</span>
+              <span className="auth-label">Requested role</span>
 
               <div className="auth-role-grid">
                 <button

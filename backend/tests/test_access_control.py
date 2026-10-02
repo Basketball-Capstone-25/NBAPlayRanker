@@ -45,28 +45,28 @@ def test_get_user_role_returns_none_on_invalid_token(mock_decode):
     assert get_user_role("bad") is None
 
 
-@patch(
-    "application.access_control_services.access_control_service.decode_supabase_jwt",
-    return_value={"user_metadata": {"role": "coach"}, "app_metadata": {}},
-)
-def test_get_user_role_extracts_coach(mock_decode):
-    assert get_user_role("tok") == "coach"
+@pytest.mark.parametrize("profile_role", ["coach", "analyst", None])
+def test_profile_is_authority_despite_forged_or_stale_metadata(profile_role):
+    service = "application.access_control_services.access_control_service"
+    claims = {
+        "sub": "user-123",
+        "user_metadata": {"role": "coach"},
+        "app_metadata": {"role": "analyst"},
+    }
+    with patch(f"{service}.decode_supabase_jwt", return_value=claims), patch(
+        f"{service}.get_profile_role", return_value=profile_role
+    ) as lookup:
+        assert get_user_role("tok") == profile_role
+        lookup.assert_called_once_with("tok", "user-123")
 
 
-@patch(
-    "application.access_control_services.access_control_service.decode_supabase_jwt",
-    return_value={"user_metadata": {}, "app_metadata": {"role": "analyst"}},
-)
-def test_get_user_role_extracts_analyst_from_app_metadata(mock_decode):
-    assert get_user_role("tok") == "analyst"
-
-
-@patch(
-    "application.access_control_services.access_control_service.decode_supabase_jwt",
-    return_value={"user_metadata": {"role": "admin"}, "app_metadata": {}},
-)
-def test_get_user_role_rejects_unknown_role(mock_decode):
-    assert get_user_role("tok") is None
+def test_missing_subject_never_looks_up_a_role():
+    service = "application.access_control_services.access_control_service"
+    with patch(f"{service}.decode_supabase_jwt", return_value={}), patch(
+        f"{service}.get_profile_role"
+    ) as lookup:
+        assert get_user_role("tok") is None
+        lookup.assert_not_called()
 
 
 @patch("application.access_control_services.access_control_service.is_insecure_dev_auth_enabled", return_value=True)

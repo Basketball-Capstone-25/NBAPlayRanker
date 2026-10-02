@@ -104,12 +104,7 @@ export default function NavBar() {
       .eq("id", user.id)
       .single();
 
-    const metadataRole =
-      user.user_metadata?.role === "coach" || user.user_metadata?.role === "analyst"
-        ? (user.user_metadata.role as UserRole)
-        : null;
-
-    setUserRole(((profile?.role as UserRole | undefined) ?? metadataRole ?? null) as UserRole);
+    setUserRole(profile?.role === "coach" || profile?.role === "analyst" ? profile.role : null);
     setAuthLoading(false);
   }
 

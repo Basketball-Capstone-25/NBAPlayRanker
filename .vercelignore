@@ -1,0 +1,13 @@
+# The frontend deploy uses Cloud Run for all Python work.
+backend/
+supabase/
+Notebook/
+.git/
+.venv/
+node_modules/
+.next/
+.env
+.env.*
+*.tsbuildinfo
+*.log
+*.zip

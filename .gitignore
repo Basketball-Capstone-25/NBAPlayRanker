@@ -25,6 +25,10 @@ backend/data/synergy_chunks/
 
 .env.local
 .env
+.env.*
+!.env.example
+*.tsbuildinfo
+supabase/.temp/
 
 # Large datasets / artifacts
 backend/data/pbp/*.parquet
@@ -37,3 +41,4 @@ backend/data/pbp/*.parquet
 /Notebook
 
 shotplan_preview.pdf
+.vercel

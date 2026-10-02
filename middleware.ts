@@ -99,12 +99,16 @@ export async function middleware(request: NextRequest) {
     profile = null;
   }
 
-  const metadataRole =
-    user.user_metadata?.role === "coach" || user.user_metadata?.role === "analyst"
-      ? (user.user_metadata.role as UserRole)
-      : null;
+  const role: UserRole =
+    profile?.role === "coach" || profile?.role === "analyst" ? profile.role : null;
 
-  const role = ((profile?.role as UserRole | undefined) ?? metadataRole ?? null) as UserRole;
+  if (!role) {
+    // Keep the login page available so pending accounts can see their status.
+    if (requiresAuth) {
+      return NextResponse.redirect(new URL("/login?access=pending", request.url));
+    }
+    return response;
+  }
 
   if (isAuthPage) {
     const url = request.nextUrl.clone();

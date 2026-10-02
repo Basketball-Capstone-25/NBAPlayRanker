@@ -58,10 +58,12 @@ export async function signIn(
     throw new Error(profileError.message);
   }
 
-  const profileRole = normalizeUserRole(profile?.role);
-  const metadataRole = normalizeUserRole(data.user.user_metadata?.role);
-
-  const role: UserRole = profileRole ?? metadataRole ?? "analyst";
+  const role = normalizeUserRole(profile?.role);
+  if (!role) {
+    throw new Error(
+      "Your account is awaiting role approval. Ask the project administrator to assign coach or analyst access.",
+    );
+  }
 
   return { userId: data.user.id, role };
 }
@@ -77,7 +79,7 @@ export async function signUp(
     email,
     password,
     options: {
-      data: { role },
+      data: { requested_role: role },
       emailRedirectTo: getEmailRedirectUrl(),
     },
   });

@@ -87,6 +87,12 @@ function LoginPageContent() {
             <div className="auth-inline-note">After login, you will continue to: {next}</div>
           ) : null}
 
+          {searchParams.get("access") === "pending" ? (
+            <div className="auth-inline-note">
+              Your account is awaiting role approval. Ask the project administrator to assign coach or analyst access, then sign in again.
+            </div>
+          ) : null}
+
           <form className="auth-form" onSubmit={handleLogin}>
             <label className="auth-field">
               <span className="auth-label">Email</span>

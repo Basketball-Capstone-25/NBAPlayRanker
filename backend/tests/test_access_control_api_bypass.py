@@ -4,6 +4,7 @@ even when requests bypass the frontend middleware entirely."""
 from __future__ import annotations
 
 from unittest.mock import patch
+import pytest
 
 from fastapi.testclient import TestClient
 
@@ -17,17 +18,36 @@ DEV_BYPASS_PATCH = patch(
     return_value=False,
 )
 
-def _patch_role(role: str):
-    """Mock the JWT decode so the request is treated as *role*."""
-    return patch(
+@pytest.fixture(autouse=True)
+def valid_test_session():
+    with patch(
         "application.access_control_services.access_control_service.decode_supabase_jwt",
-        return_value={
-            "sub": "user-123",
-            "exp": 9999999999,
-            "user_metadata": {"role": role},
-            "app_metadata": {},
-        },
+        return_value={"sub": "user-123", "exp": 9999999999},
+    ):
+        yield
+
+
+def _patch_role(role: str):
+    """A current database role, independent of anything the caller claims."""
+    return patch(
+        "application.access_control_services.access_control_service.get_profile_role",
+        return_value=role,
     )
+
+
+@pytest.mark.parametrize("path", ["/rank-plays/baseline", "/meta/options"])
+def test_self_assigned_metadata_cannot_access_protected_api(path):
+    service = "application.access_control_services.access_control_service"
+    with patch(
+        f"{service}.decode_supabase_jwt",
+        return_value={"sub": "user-123", "user_metadata": {"role": "coach"}},
+    ), patch(f"{service}.get_profile_role", return_value=None):
+        response = client.get(
+            path,
+            params={"season": "2019-20", "our": "TOR", "opp": "BOS"},
+            headers={"Authorization": "Bearer user.with.edited.metadata"},
+        )
+        assert response.status_code == 403
 
 
 class TestCoachCannotBypassToAnalystEndpoints:

@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from infrastructure.external_integrations import (
     decode_supabase_jwt,
     is_insecure_dev_auth_enabled,
 )
+from infrastructure.external_integrations.supabase_profiles import get_profile_role
 
 logger = logging.getLogger(__name__)
 
@@ -36,18 +37,15 @@ def validate_session(session_token: Optional[str]) -> bool:
     return claims is not None
 
 def get_user_role(session_token: str) -> Optional[str]:
-    """Extract the user role (coach | analyst) from the JWT claims."""
+    """Look up the current protected profile role after verifying the token."""
     claims = decode_supabase_jwt(session_token)
     if claims is None:
         return None
 
-    user_meta = claims.get("user_metadata", {})
-    app_meta = claims.get("app_metadata", {})
-    role = user_meta.get("role") or app_meta.get("role")
-
-    if role in ("coach", "analyst"):
-        return role
-    return None
+    user_id = claims.get("sub")
+    if not isinstance(user_id, str) or not user_id:
+        return None
+    return get_profile_role(session_token, user_id)
 
 def check_user_access(user_role: Optional[str], resource: str) -> bool:
     """Return True if user_role may access resource."""

@@ -67,10 +67,8 @@ jobs:
           cache-dependency-path: package-lock.json
       - name: Install frontend dependencies
         run: npm ci --no-audit --no-fund
-      - name: Test analyst access control
-        run: npm run test:rbac -- --maxWorkers=1 --minWorkers=1
-      - name: Test coach access control
-        run: npm run test:rbac:coach -- --maxWorkers=1 --minWorkers=1
+      - name: Run all frontend tests
+        run: npx vitest run --maxWorkers=1 --minWorkers=1
       - name: Build frontend
         env:
           # Next.js derives one static build worker from this value (2 - 1).
