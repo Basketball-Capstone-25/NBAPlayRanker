@@ -1,0 +1,20 @@
+"Issue key","Summary","Status","Issue type","Parent","Assignee","Assignee account ID","Story points","Planning forecast (hours)","Original estimate (seconds)","Remaining estimate (seconds)","Time spent (seconds)","Worklog count","Sprint","Due date","Updated","Description","Comments","Worklogs","Custom fields","Source URL","Snapshot captured UTC"
+"SCRUM-526","Evaluate PPP forecasts with strictly lagged predictors and untouched time holdouts","To Do","Story","SCRUM-5","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","3","","","","","0","Iteration-15 (id 183, future)","","2026-10-03T18:27:57.617-0400","As an analyst, I want PPP forecasting evaluated using only information available before the prediction time and untouched later observations, so forecast claims are supported by prospective-style evidence.
+
+Follow-up to [SCRUM-476](https://basketball-strategy.atlassian.net/browse/SCRUM-476). The current calibration report uses a fixed Ridge configuration and separate earlier-season training/later-season evaluation rows, but includes retrospective same-season rate statistics. Its results do not establish pre-game forecasting accuracy. This enhancement is outside the current calibration-display implementation.
+
+Acceptance criteria:
+
+* Define the prediction timestamp and target horizon; document each predictor's availability time.
+* Build strictly lagged predictors without using held-out outcomes or statistics computed from future games/seasons.
+* Freeze an untouched chronological holdout; use only earlier data for feature selection, scaling and model/hyperparameter choice.
+* Compare an eligible baseline and forecast model on the same untouched observations; report error and calibration with sample counts and limitations.
+* Add leakage/availability tests proving that changing future observations cannot change earlier prediction inputs or training-fitted transformations.
+* Document the evaluation protocol and source/data version so the results can be reproduced.
+
+Planning estimate: 3 story points, not time spent. Planned for the existing future Iteration-15 (sprint 183, October 6–12, 2026 local time). No implementation or completed validation is claimed by creation.","Comment 10888 | 2026-10-03T18:27:57.617-0400 | Gurkaranjit Asahan
+October 3, 2026 — Future iteration allocation.
+
+Assigned this forecasting-validation enhancement to the existing future Iteration-15 (sprint 183, October 6–12 local time), verified on SCRUM board 1. Its status remains To Do, assigned to Gurkaranjit Asahan, with the existing 3-point planning estimate. No implementation, test PASS, or time spent is claimed for this future work.
+
+The completed SCRUM-476 diagnostic separates earlier training rows from later evaluation rows and fits preprocessing only on training data, but its same-season rate predictors remain retrospective outcome proxies. This story will establish strictly lagged predictor availability and untouched forecast holdouts before prospective accuracy claims are made. It is kept separate from the completed Iteration-14 delivery and from teammate work.","[]","{""Sprint"":{""id"":""customfield_10020"",""value"":[{""id"":183,""name"":""Iteration-15"",""state"":""future"",""boardId"":1,""goal"":""Complete Alpha Release Issues"",""startDate"":""2026-10-06T04:00:00.000Z"",""endDate"":""2026-10-13T03:59:00.000Z""}]},""Story point estimate"":{""id"":""customfield_10016"",""value"":3},""Rank"":{""id"":""customfield_10019"",""value"":""0|i0045q:""},""Story Type"":{""id"":""customfield_10059"",""value"":{""value"":""User Story"",""id"":""10024""}}}","https://basketball-strategy.atlassian.net/browse/SCRUM-526","2026-10-03T22:28:16.320Z"

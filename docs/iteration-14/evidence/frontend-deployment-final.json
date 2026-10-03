@@ -1,0 +1,25 @@
+{
+  "captured_at_utc": "2026-10-03T22:17:35.295230+00:00",
+  "source_commit": "18baffc0cc6f99273f60e797a499804029b8b84f",
+  "command": "npx --yes vercel@62.2.0 deploy --prod --yes --scope pearson-manufacturing",
+  "deployment": {
+    "id": "dpl_7JaSVKvgfxo7yQpia6ZhUmFXLh75",
+    "url": "https://nbaplayranker-opgk9mifv-pearson-manufacturing.vercel.app",
+    "productionUrl": "https://nbaplayranker-seven.vercel.app",
+    "inspectorUrl": "https://vercel.com/pearson-manufacturing/nba_play_ranker/7JaSVKvgfxo7yQpia6ZhUmFXLh75",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_7JaSVKvgfxo7yQpia6ZhUmFXLh75",
+    "buildMachine": {
+      "cores": 2,
+      "memory": 8192,
+      "machine": "basic",
+      "selectionType": "fixed",
+      "selectionSource": "plan-default"
+    },
+    "deploymentProtection": [
+      "vercel_authentication"
+    ]
+  },
+  "note": "Application source matches indicated commit; uncommitted evidence/scripts also present. Backend unchanged at e950869."
+}

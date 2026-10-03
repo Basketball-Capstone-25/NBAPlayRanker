@@ -1,0 +1,107 @@
+{
+  "captured_at_utc": "2026-10-03T22:19:18.709764+00:00",
+  "source": "Read actual files saved in user Downloads after browser UI export actions; filenames only, no account credentials.",
+  "files": [
+    {
+      "filename": "shots_2024-25_TOR.csv",
+      "modified_at_utc": "2026-10-03T22:10:45.471232+00:00",
+      "bytes": 163774,
+      "sha256": "3fa19ca215002f32046f249f28a363d83f3cb553bbbe5602349c855d5aca28ca",
+      "data_rows": 5000,
+      "header": [
+        "SEASON_STR",
+        "TEAM_ABBR",
+        "OPP_ABBR",
+        "SHOT_TYPE",
+        "ZONE",
+        "IS_MAKE",
+        "POINTS"
+      ]
+    },
+    {
+      "filename": "team_playtypes_2024-25_TOR_offense.csv",
+      "modified_at_utc": "2026-10-03T22:05:33.006296+00:00",
+      "bytes": 3160,
+      "sha256": "fb46cff41f82d4b6933665cf02ebfd321fd70d4c278d9a0bab30f701d85f8938",
+      "data_rows": 11,
+      "header": [
+        "SEASON",
+        "TEAM_ABBREVIATION",
+        "TEAM_NAME",
+        "PLAY_TYPE",
+        "SIDE",
+        "GP",
+        "POSS",
+        "POSS_PCT",
+        "PPP",
+        "FG_PCT",
+        "EFG_PCT",
+        "SCORE_POSS_PCT",
+        "TOV_POSS_PCT",
+        "SF_POSS_PCT",
+        "FT_POSS_PCT",
+        "PLUSONE_POSS_PCT",
+        "PTS",
+        "FGM",
+        "FGA",
+        "RELIABILITY_WEIGHT"
+      ]
+    },
+    {
+      "filename": "shotplan_2024-25_TOR_vs_BOS (1).pdf",
+      "modified_at_utc": "2026-10-03T22:11:19.839328+00:00",
+      "bytes": 75158,
+      "sha256": "3e408e7e79e26602720a0b1a19b56ec8e76b04ae919cacdfb95e0112eeb50d43",
+      "pdf_signature": true,
+      "has_eof": true,
+      "readable_pdf_pages": 1,
+      "contains_selected_teams": true,
+      "contains_selected_season": true,
+      "rendered_visual_review": "PASS: rendered first page visually inspected; headings, selected matchup, court graphic and table/caption are readable without clipped content."
+    },
+    {
+      "filename": "baseline_2024-25_TOR_vs_BOS_top5 (1).csv",
+      "modified_at_utc": "2026-10-03T22:18:19.275703+00:00",
+      "bytes": 2563,
+      "sha256": "b7ab5125e1138714081112a497a3e44750532d03ee1f1ea96f4f61389a8109c3",
+      "data_rows": 5,
+      "header": [
+        "PLAY_TYPE",
+        "PPP_PRED",
+        "PPP_OFF_SHRUNK",
+        "PPP_DEF_SHRUNK",
+        "PPP_GAP",
+        "PPP_LEAGUE_OFF",
+        "PPP_LEAGUE_DEF",
+        "RELIABILITY_WEIGHT_OFF",
+        "RELIABILITY_WEIGHT_DEF",
+        "POSS_OFF",
+        "POSS_DEF",
+        "POSS_PCT_OFF",
+        "POSS_PCT_DEF",
+        "FG_PCT_OFF",
+        "EFG_PCT_OFF",
+        "EFG_PCT_DEF",
+        "SCORE_POSS_PCT_OFF",
+        "SCORE_POSS_PCT_DEF",
+        "TOV_POSS_PCT_OFF",
+        "TOV_POSS_PCT_DEF",
+        "RATIONALE"
+      ]
+    },
+    {
+      "filename": "playtype_viz_2024-25_TOR_vs_BOS_PRRollMan (4).pdf",
+      "modified_at_utc": "2026-10-03T22:18:21.527054+00:00",
+      "bytes": 42424,
+      "sha256": "bd418224c5edae83718f4c36246e55feb57405428f9c811f6da1068235ff1353",
+      "pdf_signature": true,
+      "has_eof": true,
+      "readable_pdf_pages": 1,
+      "contains_selected_teams": true,
+      "contains_selected_season": true,
+      "contains_selected_playtype": true,
+      "rendered_visual_review": "PASS: rendered first page visually inspected; headings, selected matchup, court graphic and table/caption are readable without clipped content."
+    }
+  ],
+  "visual_review_recorded_at_utc": "2026-10-03T22:23:43.504797+00:00"
+}

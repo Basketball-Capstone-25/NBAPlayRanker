@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="34" failures="0" errors="0" time="0.065486351">
+    <testsuite name="tests/auth.profile-role.test.ts" timestamp="2026-10-03T22:14:32.500Z" hostname="Gurks-MacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.008546458">
+        <testcase classname="tests/auth.profile-role.test.ts" name="administrator-assigned profile roles &gt; uses the profile role despite edited signup metadata" time="0.002786938">
+        </testcase>
+        <testcase classname="tests/auth.profile-role.test.ts" name="administrator-assigned profile roles &gt; shows pending access instead of granting an unassigned account a role" time="0.001424625">
+        </testcase>
+        <testcase classname="tests/auth.profile-role.test.ts" name="administrator-assigned profile roles &gt; submits a requested role rather than an authorization claim" time="0.003032098">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/authenticated-download.test.ts" timestamp="2026-10-03T22:14:32.502Z" hostname="Gurks-MacBook-Pro.local" tests="5" failures="0" errors="0" skipped="0" time="0.012343323">
+        <testcase classname="tests/authenticated-download.test.ts" name="authenticated HTTP downloads &gt; opens a same-origin HTTP attachment without putting a token in the URL" time="0.006387826">
+        </testcase>
+        <testcase classname="tests/authenticated-download.test.ts" name="authenticated HTTP downloads &gt; rejects a missing session before navigating" time="0.001958658">
+        </testcase>
+        <testcase classname="tests/authenticated-download.test.ts" name="authenticated HTTP downloads &gt; rejects unsupported export targets: https://foreign.example.test/data/team-playtypes.csv" time="0.000695558">
+        </testcase>
+        <testcase classname="tests/authenticated-download.test.ts" name="authenticated HTTP downloads &gt; rejects unsupported export targets: http://127.0.0.1:8000/meta/options" time="0.000699739">
+        </testcase>
+        <testcase classname="tests/authenticated-download.test.ts" name="authenticated HTTP downloads &gt; removes the temporary link if browser navigation fails" time="0.000743681">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/export-route.test.ts" timestamp="2026-10-03T22:14:32.503Z" hostname="Gurks-MacBook-Pro.local" tests="17" failures="0" errors="0" skipped="0" time="0.023049907">
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; verifies the SSR cookie identity, forwards its token and streams the exact CSV" time="0.008714805">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; returns 401 without attachment or upstream fetch for an invalid cookie session" time="0.001303973">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; rejects a cookie session that disagrees with the verified identity" time="0.000666284">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; preserves upstream denial 401 as JSON, never an attachment" time="0.001307563">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; preserves upstream denial 403 as JSON, never an attachment" time="0.00124794">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; preserves upstream denial 422 as JSON, never an attachment" time="0.000935313">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; rejects unapproved paths without authentication or upstream fetch: https://foreign.example.test/file.csv" time="0.000474714">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; rejects unapproved paths without authentication or upstream fetch: //foreign.example.test/file.csv" time="0.000586989">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; rejects unapproved paths without authentication or upstream fetch: /meta/options" time="0.000886474">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; rejects unapproved paths without authentication or upstream fetch: /data/../meta/options" time="0.000521477">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; rejects cross-origin requests" time="0.000382339">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; rejects cross-origin requests" time="0.000240175">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; rejects arbitrary target parameters and duplicate route selectors" time="0.000478816">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; preserves PDF headers and a safe server filename for /export/shotplan.pdf" time="0.001307343">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; preserves PDF headers and a safe server filename for /export/playtype-viz.pdf" time="0.000748913">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; supplies the route filename and strips unsafe characters in requested names" time="0.000896066">
+        </testcase>
+        <testcase classname="tests/export-route.test.ts" name="same-origin export proxy &gt; does not follow redirects or serve a successful JSON error as a CSV" time="0.000830565">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/middleware.auth-analyst.test.ts" timestamp="2026-10-03T22:14:32.509Z" hostname="Gurks-MacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.00956244">
+        <testcase classname="tests/middleware.auth-analyst.test.ts" name="Analyst access control in middleware &gt; allows analyst to access /data-explorer" time="0.005773667">
+        </testcase>
+        <testcase classname="tests/middleware.auth-analyst.test.ts" name="Analyst access control in middleware &gt; redirects coach away from /data-explorer" time="0.001151511">
+        </testcase>
+        <testcase classname="tests/middleware.auth-analyst.test.ts" name="Analyst access control in middleware &gt; redirects unauthenticated user to /login with next" time="0.001159974">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/middleware.auth-coach.test.ts" timestamp="2026-10-03T22:14:32.509Z" hostname="Gurks-MacBook-Pro.local" tests="6" failures="0" errors="0" skipped="0" time="0.011984223">
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; redirects signed-in coach from auth page to /matchup" time="0.006965217">
+        </testcase>
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; allows coach to access /matchup" time="0.000907684">
+        </testcase>
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; redirects coach away from analyst-only /data-explorer" time="0.000751184">
+        </testcase>
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; ignores a self-assigned coach claim when the profile is pending" time="0.000629096">
+        </testcase>
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; keeps the login page available for a pending account" time="0.000706989">
+        </testcase>
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; denies access when a profile cannot be loaded instead of trusting metadata" time="0.000728991">
+        </testcase>
+    </testsuite>
+</testsuites>

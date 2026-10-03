@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-03",
+  "scope": "SCRUM-527 same-origin HTTP export delivery correction",
+  "source": "Working-tree changes based on 1068ef2076d04d01b8ac81e0cbf988c464a80e2d; root commits the reviewed correction separately.",
+  "files": [
+    "app/api/exports/route.ts",
+    "app/infrastructure/export-contract.ts",
+    "app/infrastructure/api-client.ts",
+    "tests/export-route.test.ts",
+    "tests/authenticated-download.test.ts"
+  ],
+  "checks": [
+    {
+      "command": "npx vitest run --maxWorkers=1 --minWorkers=1",
+      "exitCode": 0,
+      "result": "PASS",
+      "testFiles": 5,
+      "tests": 33,
+      "testsByFile": {
+        "tests/export-route.test.ts": 16,
+        "tests/authenticated-download.test.ts": 5,
+        "tests/middleware.auth-coach.test.ts": 6,
+        "tests/middleware.auth-analyst.test.ts": 3,
+        "tests/auth.profile-role.test.ts": 3
+      },
+      "durationSeconds": 2.64
+    },
+    { "command": "npx tsc --noEmit", "exitCode": 0, "result": "PASS" },
+    {
+      "command": "CIRCLE_NODE_TOTAL=2 NEXT_TELEMETRY_DISABLED=1 npm run build",
+      "exitCode": 0,
+      "result": "PASS",
+      "nextVersion": "15.5.27",
+      "staticPages": 21,
+      "exportRoute": "Dynamic /api/exports"
+    },
+    { "command": "git diff --check", "exitCode": 0, "result": "PASS" }
+  ],
+  "automatedCoverage": [
+    "SSR cookie client, verified user/session identity, server-side Bearer forwarding",
+    "Exact CSV stream, query encoding and repeated query parameter preservation",
+    "PDF content type and filename, safe CSV filename fallback",
+    "Missing session, mismatched user, upstream401/403/422 have no attachment header",
+    "Unknown and cross-origin paths/requests rejected, redirects not followed",
+    "Unexpected JSON response is not delivered as a CSV",
+    "Client uses ordinary same-origin HTTP navigation with no token URL, blob URL or download attribute"
+  ],
+  "productionRetest": "PENDING; the prior user-confirmed Stopped downloads remain recorded as failure until this correction is deployed and retested."
+}

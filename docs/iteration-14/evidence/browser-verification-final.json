@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-03",
+  "frontend_commit": "c3044da",
+  "deployment": "dpl_2W9TUnSUZDwfSXfzBpsBbK5wmhTM",
+  "url": "https://nbaplayranker-seven.vercel.app",
+  "initial_evidence": "browser-verification-initial.json",
+  "regression_history": [
+    {
+      "revision": "before1068ef2",
+      "result": "FAIL",
+      "observation": "DataExplorer direct export URL omitted Bearer and returned401."
+    },
+    {
+      "revision": "1068ef2",
+      "result": "FAIL",
+      "observation": "Authenticated fetch returned200 but user reported Downloads entries Stopped for blob delivery."
+    }
+  ],
+  "final_retest": {
+    "page": "/data-explorer",
+    "role": "analyst",
+    "filters": {
+      "season": "2024-25",
+      "team": "TOR",
+      "side": "offense"
+    },
+    "visible_rows": 11,
+    "action": "Clicked Export CSV after reloading final production deployment. Ordinary same-origin /api/exports HTTP request uses SSR session cookies.",
+    "result": "PASS",
+    "user_confirmation": "Finishes and opens as CSV",
+    "time_utc_approximate": "2026-10-03T22:05:30Z",
+    "confirmation_recorded_at_utc": "2026-10-03T22:08:13.366464+00:00"
+  },
+  "related_live_verification": "export-proxy-live-verification.json",
+  "boundary": "Fourteen real-session HTTP checks verify analyst and coach export/denial behavior. Actual browser-saved DataExplorer CSV, ShotExplorer CSV, ShotPlan PDF, coach baseline CSV and coach play-diagram PDF were inspected in Downloads with current timestamps and valid content. Historical local blob-generated metric CSV exports on unrelated pages were not part of this backend export regression.",
+  "downloaded_file_evidence": "downloaded-file-verification.json",
+  "additional_browser_checks": [
+    {
+      "test": "ShotExplorer filters and export",
+      "result": "PASS",
+      "details": "TOR2024-25 preview50 of6486 rows; CSV button saved5000data rows to Downloads."
+    },
+    {
+      "test": "ShotPlan PDF export",
+      "result": "PASS",
+      "details": "TORvsBOS2024-25 export saved75158bytePDF to Downloads; readable1page, correct teams and season, PDFsignature+EOF."
+    },
+    {
+      "test": "Analyst sign-out and protected route",
+      "result": "PASS",
+      "details": "Sign out returned public home; following Baseline redirected to /login?next=%2Fmatchup."
+    },
+    {
+      "test": "Coach baseline CSV on final deployment",
+      "result": "PASS",
+      "details": "Reloaded18baffc, TOR/BOS2024-25, TopK5, clickedExportCSV; actualsavedfile5data rows."
+    },
+    {
+      "test": "Coach one-page play diagram PDF on final deployment",
+      "result": "PASS",
+      "details": "ClickedExport1-pagePDF forPRRollMan; actualsaved1page PDF validates selectedteams/season/playtype."
+    }
+  ],
+  "latest_frontend_commit": "18baffc",
+  "latest_deployment": "dpl_7JaSVKvgfxo7yQpia6ZhUmFXLh75"
+}

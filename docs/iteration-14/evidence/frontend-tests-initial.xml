@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="12" failures="0" errors="0" time="0.041195389">
+    <testsuite name="tests/auth.profile-role.test.ts" timestamp="2026-10-03T21:19:08.802Z" hostname="Gurks-MacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.009415308">
+        <testcase classname="tests/auth.profile-role.test.ts" name="administrator-assigned profile roles &gt; uses the profile role despite edited signup metadata" time="0.003374493">
+        </testcase>
+        <testcase classname="tests/auth.profile-role.test.ts" name="administrator-assigned profile roles &gt; shows pending access instead of granting an unassigned account a role" time="0.001433105">
+        </testcase>
+        <testcase classname="tests/auth.profile-role.test.ts" name="administrator-assigned profile roles &gt; submits a requested role rather than an authorization claim" time="0.003019671">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/middleware.auth-analyst.test.ts" timestamp="2026-10-03T21:19:08.804Z" hostname="Gurks-MacBook-Pro.local" tests="3" failures="0" errors="0" skipped="0" time="0.011916361">
+        <testcase classname="tests/middleware.auth-analyst.test.ts" name="Analyst access control in middleware &gt; allows analyst to access /data-explorer" time="0.008101749">
+        </testcase>
+        <testcase classname="tests/middleware.auth-analyst.test.ts" name="Analyst access control in middleware &gt; redirects coach away from /data-explorer" time="0.001386125">
+        </testcase>
+        <testcase classname="tests/middleware.auth-analyst.test.ts" name="Analyst access control in middleware &gt; redirects unauthenticated user to /login with next" time="0.001129455">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/middleware.auth-coach.test.ts" timestamp="2026-10-03T21:19:08.805Z" hostname="Gurks-MacBook-Pro.local" tests="6" failures="0" errors="0" skipped="0" time="0.01986372">
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; redirects signed-in coach from auth page to /matchup" time="0.013124617">
+        </testcase>
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; allows coach to access /matchup" time="0.001094601">
+        </testcase>
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; redirects coach away from analyst-only /data-explorer" time="0.000930276">
+        </testcase>
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; ignores a self-assigned coach claim when the profile is pending" time="0.000800356">
+        </testcase>
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; keeps the login page available for a pending account" time="0.001088011">
+        </testcase>
+        <testcase classname="tests/middleware.auth-coach.test.ts" name="Coach access control in middleware &gt; denies access when a profile cannot be loaded instead of trusting metadata" time="0.000922619">
+        </testcase>
+    </testsuite>
+</testsuites>

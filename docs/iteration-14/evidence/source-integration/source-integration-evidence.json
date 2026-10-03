@@ -1,0 +1,54 @@
+{
+  "scope": "Source integration validation after teammate SCRUM-502 changes; no redeployment or Jira ownership changes",
+  "tested_head": "a924304320f7044542352890cef0655bade405a4",
+  "teammate_commits": [
+    {
+      "commit": "5425bb8ebb7cebe579ef8ce571e52f663db26506",
+      "owner": "Abdul",
+      "issue": "SCRUM-502"
+    },
+    {
+      "commit": "2060473cb06c0a4f48abf94e0ea62d6a588dcde3",
+      "owner": "Abdul",
+      "issue": "SCRUM-502"
+    }
+  ],
+  "integrated_origin_main": "6886865f3e1df65359f9e44f30abd45d8c739b70",
+  "started_at_utc": "2026-10-03T22:36:42.367381+00:00",
+  "finished_at_utc": "2026-10-03T22:37:50.007784+00:00",
+  "duration_seconds": 67.64,
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "tests",
+    "--junitxml=/Users/gurkasahan/Developer/Capstone-Submission/validation/source-integration/backend-tests.xml"
+  ],
+  "working_directory": "backend",
+  "numeric_thread_limits": 1,
+  "exit_code": 0,
+  "counts": {
+    "tests": 182,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 182
+  },
+  "passed": true,
+  "artifacts": {
+    "junit": "backend-tests.xml",
+    "log": "backend-tests.txt"
+  },
+  "deployed_release_unchanged": {
+    "backend_commit": "e950869",
+    "backend_revision": "nba-playranker-api-00005-hrn",
+    "frontend_commit": "18baffc",
+    "frontend_deployment": "dpl_7JaSVKvgfxo7yQpia6ZhUmFXLh75"
+  },
+  "pytest_junit_duration_seconds": 43.89,
+  "duration_note": "duration_seconds is subprocess wall time; pytest_junit_duration_seconds is the test runner reported suite duration.",
+  "artifact_sha256": {
+    "backend-tests.xml": "e891dc5021ecce76e0b1d52f0b98d178b4e9580ab15af69c85ebd817e90a1e52",
+    "backend-tests.txt": "b73820c45c06b2e86cd4042215f6da807769d3f54a62051b88734a2fd7b78068"
+  }
+}

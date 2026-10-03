@@ -1,0 +1,291 @@
+CREATE SCHEMA
+DO
+GRANT
+CREATE FUNCTION
+CREATE TABLE
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+REVOKE
+GRANT
+DROP POLICY
+DROP POLICY
+CREATE POLICY
+CREATE SCHEMA
+CREATE FUNCTION
+REVOKE
+DROP TRIGGER
+CREATE TRIGGER
+DROP FUNCTION
+CREATE SCHEMA
+CREATE FUNCTION
+REVOKE
+GRANT
+GRANT
+CREATE TABLE
+COMMENT
+COMMENT
+CREATE FUNCTION
+REVOKE
+CREATE TRIGGER
+ALTER TABLE
+REVOKE
+GRANT
+GRANT
+GRANT
+GRANT
+CREATE POLICY
+BEGIN
+CREATE TABLE
+INSERT 0 4
+GRANT
+INSERT 0 4
+UPDATE 2
+UPDATE 1
+CREATE FUNCTION
+CREATE FUNCTION
+ assert_true 
+-------------
+ 
+(1 row)
+
+                                 set_config                                 
+----------------------------------------------------------------------------
+ {"sub" : "e8345cbb-fdd1-439e-89cd-d81381a8cac8", "role" : "authenticated"}
+(1 row)
+
+SET
+INSERT 0 1
+RESET
+                                 set_config                                 
+----------------------------------------------------------------------------
+ {"sub" : "0af36352-40bb-4c2d-83e4-b185f165121c", "role" : "authenticated"}
+(1 row)
+
+SET
+INSERT 0 1
+ assert_true 
+-------------
+ 
+(1 row)
+
+ assert_true 
+-------------
+ 
+(1 row)
+
+ assert_true 
+-------------
+ 
+(1 row)
+
+ assert_true 
+-------------
+ 
+(1 row)
+
+UPDATE 1
+ assert_true 
+-------------
+ 
+(1 row)
+
+ assert_true 
+-------------
+ 
+(1 row)
+
+ assert_true 
+-------------
+ 
+(1 row)
+
+INSERT 0 2
+ assert_true 
+-------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+ assert_true 
+-------------
+ 
+(1 row)
+
+ assert_true 
+-------------
+ 
+(1 row)
+
+ assert_true 
+-------------
+ 
+(1 row)
+
+RESET
+UPDATE 1
+SET
+ assert_true 
+-------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+RESET
+                                                    set_config                                                    
+------------------------------------------------------------------------------------------------------------------
+ {"sub" : "7a6930c4-6960-4d75-8dcf-7358010eaffe", "role" : "authenticated", "user_metadata" : {"role" : "coach"}}
+(1 row)
+
+SET
+ assert_true 
+-------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+RESET
+                                 set_config                                 
+----------------------------------------------------------------------------
+ {"sub" : "19b7a714-96c6-46ab-94ca-56cf67593cdb", "role" : "authenticated"}
+(1 row)
+
+SET
+ assert_true 
+-------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+RESET
+SET
+ expect_error 
+--------------
+ 
+(1 row)
+
+ expect_error 
+--------------
+ 
+(1 row)
+
+RESET
+DELETE 1
+ assert_true 
+-------------
+ 
+(1 row)
+
+ROLLBACK
+                                                                   result                                                                   
+--------------------------------------------------------------------------------------------------------------------------------------------
+ PASS: Gameplan owner CRUD, isolation, trusted roles, constraints, optimistic revision, audit columns and cascade; all fixtures rolled back
+(1 row)
+

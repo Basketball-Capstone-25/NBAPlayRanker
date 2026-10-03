@@ -1,0 +1,55 @@
+{
+  "captured_at_utc": "2026-10-03T22:28:16.320Z",
+  "snapshot_sha256": "c9130b78a696ee1d2c1563e7eb1b5d954a7fbc053d4b45d311ebe1be83b6f1bb",
+  "files": [
+    {
+      "file": "jira-final-snapshot.json",
+      "source_artifact": "jira-final-snapshot.json",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 390726,
+      "sha256": "c9130b78a696ee1d2c1563e7eb1b5d954a7fbc053d4b45d311ebe1be83b6f1bb"
+    },
+    {
+      "file": "jira-export-verification.json",
+      "source_artifact": "jira-export-verification.json",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 1938,
+      "sha256": "03b32e638cb10b8d5a9625fa62404f7f7881e32f1fcd44e3889c306aee66e79b"
+    },
+    {
+      "file": "jira-export-manifest.json",
+      "source_artifact": "jira-export-manifest.json",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 3438,
+      "sha256": "f0d8a7d32d034d26847a8e5d631142a01345faa2f62cfa1d98f884908ba6e10f"
+    },
+    {
+      "file": "Jira-current-iteration-plan.csv",
+      "source_artifact": "Jira-current-iteration-plan.csv",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 68599,
+      "sha256": "2de815ad1c197a2690c4ceb307ef267634a3cd6fa8d672a6964dd78e5125d354"
+    },
+    {
+      "file": "Jira-future-iteration-work.csv",
+      "source_artifact": "Jira-future-iteration-work.csv",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 3696,
+      "sha256": "dc9e16b391b5aef9a8a7fdcd34a5dbf28065bde039871416f7b386425c4814c6"
+    },
+    {
+      "file": "Jira-iteration-tests.csv",
+      "source_artifact": "Jira-iteration-tests.csv",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 48337,
+      "sha256": "9fdcf79bb0222ebc69f3297a131fb281701a94adf38132fe36ced56ba68597ab"
+    },
+    {
+      "file": "Jira-risk-monitoring.csv",
+      "source_artifact": "Jira-risk-monitoring.csv",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 31974,
+      "sha256": "6df580ba1fc7770ac43011d55197e65e9d26e31a4dadde91ef031265b439fb56"
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+"Issue key","Summary","Status","Issue type","Parent","Assignee","Assignee account ID","Story points","Planning forecast (hours)","Original estimate (seconds)","Remaining estimate (seconds)","Time spent (seconds)","Worklog count","Sprint","Due date","Updated","Description","Comments","Worklogs","Custom fields","Source URL","Snapshot captured UTC"
+"BST-120","Iteration-14 — Gurkaranjit Asahan elaboration verification","Pass","Test Suite","","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:21:26.554-0400","Test suite for the implementation assigned to Gurkaranjit Asahan in SCRUM-475, SCRUM-476, SCRUM-481 and SCRUM-506. Covers Top-K uplift API/export contracts and authorization, chronological PPP calibration, Gameplan storage constraints and row isolation, deployment smoke, real coach/analyst journeys and authenticated CSV/PDF downloads.
+
+Execution status: See dated execution comments and current workflow status. Nine child cases BST-121 through BST-129 record their actual source revisions, environments, procedures, failures, fixes and final results. Initial failed results remain in history. Future forecasting enhancement SCRUM-526 and teammate frontend persistence SCRUM-482 are outside this suite.","Comment 10876 | 2026-10-03T18:21:23.983-0400 | Gurkaranjit Asahan
+October 3 final suite result: PASS. All nine child cases BST-121 through BST-129 are Pass, with dated methods, actual results and evidence recorded separately.
+
+Coverage: weighted uplift arithmetic/API/exports/roles; chronological calibration fitting/numerics/sparse guards/analyst UI; Gameplan schema/constraints/ownership; deployment smoke and real authenticated coach/analyst browser journeys; successful saved CSV/PDF downloads after defect fixes.
+
+Final application commit [18baffc](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/18baffc0cc6f99273f60e797a499804029b8b84f) is READY in Vercel deployment dpl_7JaSVKvgfxo7yQpia6ZhUmFXLh75 at https://nbaplayranker-seven.vercel.app. Backend remains nba-playranker-api-00005-hrn from e950869. All 34 frontend tests, TypeScript and production build passed; [GitHub CI 37157802665](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/37157802665) succeeded.
+
+Final real SSR-cookie production verification passed 14/14 checks at 22:17:35–22:17:54 UTC, including analyst/coach CSV delivery, shot-plan PDF, coach play-type PDF, valid content signatures/EOF, filenames/private no-store, missing-session401, role-denied403, foreign-origin403 and unsupported-path400. Earlier backend smoke 8/8 and real-session API/database 49/49 also passed.
+
+Actual files saved after browser export clicks were inspected, excluding historical files: analyst Data Explorer CSV 11 rows; Shot Explorer CSV 5,000 rows; shot-plan PDF 75,158 bytes/readable one page; coach baseline CSV 5 rows at 22:18:19 UTC; coach PRRollMan play-type PDF 42,424 bytes/readable one page at 22:18:21 UTC with matching TOR/BOS/2024-25/play-type content. The user separately confirmed the Data Explorer CSV finishes and opens. Evidence: downloaded-file-verification.json, browser-verification-final.json and export-proxy-live-verification.json.
+
+Native Visual Paradigm Team revision 51 is committed under asahang@sheridancollege.ca with 186 diagrams and preserved baseline. [Published native model/revision evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ee01a18302bd3082a4e75cc1fd22bb618636b00d/docs/model) records the exact comment and synchronized commit metadata.
+
+The integrated backend suite passed176 tests. Future strictly lagged forecast evaluation SCRUM-526 and teammate frontend cloud persistence SCRUM-482 are excluded from this suite's completion claim. Retrospective calibration is not prospective forecast-accuracy evidence.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i0041t:""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BST-120","2026-10-03T22:28:16.320Z"
+"BST-121","TC-I14-UPLIFT-01 — Weighted arithmetic and seasonal baseline scope","Pass","Test Case","BST-120","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T17:50:55.322-0400","Covers [SCRUM-475](https://basketball-strategy.atlassian.net/browse/SCRUM-475) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+
+Preconditions:    
+A controlled fixture with multiple teams, seasons, play types and unequal possession counts; the implementation's metric definition is documented.
+
+Procedure:
+
+1. Hand-calculate the team/season reference PPP and selected Top-K PPP using the documented possession weighting.
+2. Call the calculation/API on the same fixture and compare values, absolute uplift and any relative uplift.
+3. Vary another team/season and confirm it does not contaminate the selected reference.
+4. Exercise zero/invalid denominator and insufficient-data cases.
+
+Expected result:    
+Returned values match independent arithmetic within the stated tolerance. Baseline scope is explicit and restricted to the intended team/season. Invalid denominators have a documented safe result/error. Output labels seasonal descriptive uplift accurately and does not claim held-out or causal improvement.
+
+Execution status: See dated execution comments and current workflow status.","Comment 10808 | 2026-10-03T17:28:27.274-0400 | Gurkaranjit Asahan
+October 3, 2026 — Automated result: PASS for the fixture/arithmetic scope.
+
+Source: [5092bf1](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/5092bf1d93ed7c30f2e2b7b34eddd613f4ece474), `backend/tests/test_topk_uplift.py` and `backend/domain/statistical_analysis/topk_uplift.py`. Tests verify a possession-weighted seasonal reference of 700/400 = 1.75 PPP and Top-K modeled PPP of 820/400 = 2.05, giving +0.30 PPP uplift; K=1 still retains the entire team's seasonal reference. Other team/season/defense rows do not contaminate that baseline. Negative uplift is preserved; zero reference produces null relative uplift with an explanation; unusable/empty sources are rejected.
+
+Integrated local verification on the combined source revision completed on October 3: 176 backend tests passed; 12 frontend tests passed; TypeScript and the production build passed. These are local automated results, not a claim that the new release is deployed or that real-account browser journeys have passed.
+
+This metric is labeled a historical modeled recommendation comparison, not held-out or causal uplift. Production verification remains pending under BST-127/128.
+
+Comment 10837 | 2026-10-03T17:50:51.059-0400 | Gurkaranjit Asahan
+Final execution result: PASS.
+
+Execution date: October 3, 2026. Backend release source [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da), Cloud Run revision nba-playranker-api-00005-hrn. Production checks used real password sessions and current protected profile roles. Evidence is preserved in the iteration evidence pack (live-verification.json, backend-production-smoke.json, browser-verification-initial.json and the per-feature source/test files).
+
+The independent fixture arithmetic and team/season isolation tests passed in backend/tests/test_topk_uplift.py (feature commit 5092bf1). Reference 700/400=1.75 PPP; modeled Top-K 820/400=2.05; difference +0.30 PPP. K=1 retains the whole selected team's seasonal reference. Tests cover negative uplift, zero-reference relative uplift and invalid/empty source guards. The deployed TOR/BOS 2024-25 K=3 result independently records 8,255/8,517=0.969238 reference PPP, modeled Top-K1.071696 and difference0.102458, with JSON/CSV parity. This is a historical modeled comparison, not observed or causal improvement.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i0043w:""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BST-121","2026-10-03T22:28:16.320Z"
+"BST-122","TC-I14-UPLIFT-02 — Analyst authorization, exports and input contract","Pass","Test Case","BST-120","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T17:50:59.013-0400","Covers [SCRUM-475](https://basketball-strategy.atlassian.net/browse/SCRUM-475) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+
+Preconditions:    
+API available from a known commit; controlled analyst, coach, pending and unauthenticated requests; valid dataset selections.
+
+Procedure:
+
+1. Request JSON and CSV with identical valid parameters and compare all exported metric values and metadata.
+2. Verify CSV content type/filename and JSON schema.
+3. Try missing/invalid season, team, opponent if accepted, K bounds and unsupported format if accepted.
+4. Repeat access checks as analyst, coach, pending and unauthenticated caller.
+
+Expected result:    
+Authorized analysts receive the documented payload/export with matching values. Invalid inputs return documented client errors without a server crash. Anonymous/pending callers and unauthorized roles cannot retrieve the protected metrics. No secrets appear in output.
+
+Execution status: See dated execution comments and current workflow status.","Comment 10809 | 2026-10-03T17:28:28.542-0400 | Gurkaranjit Asahan
+October 3, 2026 — Automated result: PASS for API contract and controlled authorization tests.
+
+Source: [5092bf1](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/5092bf1d93ed7c30f2e2b7b34eddd613f4ece474), `backend/application/api_coordination/topk_uplift_endpoints.py` and `backend/tests/test_topk_uplift.py`. The tests exercise /metrics/topk-uplift and its .json/.csv exports using the committed dataset slice; JSON/CSV values, download headers and source SHA256 agree. Invalid season/team/same-team/K/nonfinite-weight requests return the expected 400/422 responses; empty recommendations return 404. Anonymous requests return 401 and controlled coach requests 403.
+
+Authorized role scenarios use FastAPI auth dependency overrides; they do not prove real Supabase login or production account access. Integrated local verification on the combined source revision completed on October 3: 176 backend tests passed; 12 frontend tests passed; TypeScript and the production build passed. These are local automated results, not a claim that the new release is deployed or that real-account browser journeys have passed.
+
+Real-account and production checks remain pending under BST-127/128.
+
+Comment 10838 | 2026-10-03T17:50:56.666-0400 | Gurkaranjit Asahan
+Final execution result: PASS for the API/export/input contract.
+
+Execution date: October 3, 2026. Backend release source [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da), Cloud Run revision nba-playranker-api-00005-hrn. Production checks used real password sessions and current protected profile roles. Evidence is preserved in the iteration evidence pack (live-verification.json, backend-production-smoke.json, browser-verification-initial.json and the per-feature source/test files).
+
+Production verification completed49/49 checks overall. Missing sessions returned401 and coach sessions403 for analyst-only uplift JSON/CSV routes; authorized analysts received200. JSON and CSV values matched for the same filters; season/team/K/weight input guards returned the expected client errors. Controlled local tests additionally cover pending and invalid authorization conditions. Actual API export files are preserved as topk-uplift-live.json and topk-uplift-live.csv. This passes the HTTP contract; browser file saving is tracked separately in BST-129 and remains unconfirmed.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i00446:""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BST-122","2026-10-03T22:28:16.320Z"
+"BST-123","TC-I14-CAL-01 — Temporal holdout and train-only preprocessing","Pass","Test Case","BST-120","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:26:47.708-0400","Covers [SCRUM-476](https://basketball-strategy.atlassian.net/browse/SCRUM-476) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+
+Preconditions:      
+A multi-season fixture with identifiable held-out rows and a later-season target/feature distribution different from training.
+
+Procedure:
+
+1. Inspect returned split metadata and captured fit inputs.
+2. Confirm all training seasons precede the held-out season and no held-out row enters fitting.
+3. Confirm the direct raw PPP target is excluded from FEATURE_COLS, and that the diagnostic warns that its remaining same-season rate predictors are retrospective outcome proxies.
+4. Perturb held-out targets and feature scale, then compare the fitted preprocessing parameters and training-only model inputs.
+
+Expected result:      
+Training and evaluation observations are disjoint and time ordered. Scaling and reliability normalization are fitted only on training data. Raw PPP is not a predictor. Altering held-out data does not change training-fitted preprocessing; evaluation metrics respond appropriately. The diagnostic clearly identifies the retrospective same-season rate predictors. This test does not establish prospective forecasting accuracy or the absence of all outcome proxies; strictly lagged predictors and untouched forecasting holdouts remain future SCRUM-526.
+
+Execution status: See dated execution comments and current workflow status.","Comment 10810 | 2026-10-03T17:28:29.633-0400 | Gurkaranjit Asahan
+October 3, 2026 — Automated result: PASS for chronological fold separation, held-out target isolation and training-only preprocessing scope.
+
+Source: [b9f145d](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d15189dd7f6be6854166bce0aef3f58f01), `backend/domain/statistical_analysis/calibration.py` and `backend/tests/test_calibration.py`. The model spy verifies fit observations come only from earlier seasons. Perturbing held-out PPP leaves predictions/bin boundaries unchanged while changing measured bias; replacing global reliability columns does not alter fold results. Reliability normalization uses training-only maxima; StandardScaler is inside the pipeline fitted on training rows.
+
+Integrated local verification on the combined source revision completed on October 3: 176 backend tests passed; 12 frontend tests passed; TypeScript and the production build passed. These are local automated results, not a claim that the new release is deployed or that real-account browser journeys have passed.
+
+The fixed Ridge evaluation uses earlier-season training and later-season test rows, but its predictors include retrospective same-season rate statistics. This does not establish pre-game forecasting accuracy. [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526) tracks strictly lagged predictors and an untouched forecasting holdout as separate future work. The PASS is not a blanket claim that every predictor is available before a future game.
+
+Comment 10839 | 2026-10-03T17:51:00.368-0400 | Gurkaranjit Asahan
+Final execution result: PASS for temporal fold separation and train-only fitting.
+
+Execution date: October 3, 2026. Backend release source [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da), Cloud Run revision nba-playranker-api-00005-hrn. Production checks used real password sessions and current protected profile roles. Evidence is preserved in the iteration evidence pack (live-verification.json, backend-production-smoke.json, browser-verification-initial.json and the per-feature source/test files).
+
+backend/tests/test_calibration.py passed within the176-test backend suite. Tests verify expanding earlier-season training/later-season evaluation, scaler fitting only on training rows, training-fold reliability normalization, and held-out target perturbation without changed predictions. Production calibration metadata confirms five later-season evaluation folds and1,650 held-out rows. The model does not directly train on held-out PPP targets. Same-season explanatory shooting/scoring rates remain retrospective outcome proxies: this result does not establish pre-game forecast accuracy. Strictly lagged predictors and untouched prospective-style holdouts remain future SCRUM-526.
+
+Comment 10887 | 2026-10-03T18:26:47.708-0400 | Gurkaranjit Asahan
+October 3, 2026 — Test-description scope clarification after final evidence review.
+
+The PASS covers chronological training/evaluation row separation, training-only preprocessing and reliability normalization, held-out target perturbation, and exclusion of the direct raw PPP target from FEATURE_COLS. The description now states this precise scope. Same-season rate features remain retrospective outcome proxies, as already documented in the execution comments; no general claim of outcome-proxy-free or prospective forecasting accuracy is made. The diagnostic scope warning was verified, and SCRUM-526 retains strictly lagged predictors and untouched forecasting holdouts as future work. Existing results and history are preserved; no additional execution or time log is claimed.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i00448:""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BST-123","2026-10-03T22:28:16.320Z"
+"BST-124","TC-I14-CAL-02 — Calibration metrics, sparse guards and analyst UI","Pass","Test Case","BST-120","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T17:51:07.127-0400","Covers [SCRUM-476](https://basketball-strategy.atlassian.net/browse/SCRUM-476) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+
+Preconditions:    
+Known predicted/realized PPP pairs, ordinary and sparse/constant fixtures, and the analyst page available from the same source revision.
+
+Procedure:
+
+1. Independently calculate reported bias and calibration/bin summaries for the known pairs.
+2. Compare API values and sample counts to these calculations.
+3. Exercise empty, sparse, constant and otherwise unsupported split cases.
+4. Open the analyst calibration view and compare rendered values, split labels and unavailable states to the API response.
+
+Expected result:    
+Metrics and counts match the independent calculation within documented tolerances. Sparse/undefined results are handled explicitly without misleading finite values or invalid JSON numbers. The analyst view uses the returned values and explains the holdout and limitations; unauthorized access remains blocked.
+
+Execution status: See dated execution comments and current workflow status.","Comment 10811 | 2026-10-03T17:28:30.627-0400 | Gurkaranjit Asahan
+October 3, 2026 — Numerical automated tests: PASS. Actual analyst browser UI verification: PENDING.
+
+Source: [b9f145d](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d15189dd7f6be6854166bce0aef3f58f01), `backend/tests/test_calibration.py`, `backend/domain/statistical_analysis/calibration.py`, and `app/ui/analytics/_components/CalibrationPanel.tsx`. Verified known-pair signed bias/MAE/RMSE, perfect/identical predictions, explicit empty bins, inclusion of the upper bin edge, sparse flags, invalid arrays, missing schema, nonfinite/negative inputs and insufficient seasons. Role/API tests use controlled JWT/profile-role stubs. TypeScript and the production build passed with the panel integrated into Model Metrics; that is not an executed browser interaction.
+
+Integrated local verification on the combined source revision completed on October 3: 176 backend tests passed; 12 frontend tests passed; TypeScript and the production build passed. These are local automated results, not a claim that the new release is deployed or that real-account browser journeys have passed.
+
+The fixed Ridge evaluation uses earlier-season training and later-season test rows, but its predictors include retrospective same-season rate statistics. This does not establish pre-game forecasting accuracy. [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526) tracks strictly lagged predictors and an untouched forecasting holdout as separate future work. Keep the full UI test pending until an analyst signs in and the rendered values are compared with the API.
+
+Comment 10840 | 2026-10-03T17:51:04.448-0400 | Gurkaranjit Asahan
+Final execution result: PASS for numerical diagnostics, sparse guards and the analyst presentation.
+
+Execution date: October 3, 2026. Backend release source [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da), Cloud Run revision nba-playranker-api-00005-hrn. Production checks used real password sessions and current protected profile roles. Evidence is preserved in the iteration evidence pack (live-verification.json, backend-production-smoke.json, browser-verification-initial.json and the per-feature source/test files).
+
+Numerical tests verify bias/error/bin calculations and explicit sparse/empty/constant-data behavior. A real signed-in analyst opened the production Calibration tab: it displayed1,650 rows over five held-out seasons, MAE0.0085 and RMSE0.0113, prediction-bin and chronological-fold tables, and retrospective/sparse warnings. These match the saved calibration-live.json values (MAE0.008489534 and RMSE0.011340119). The coach request is403 at the API and /model-metrics redirects to the coach workspace. Browser evidence records the actual display; no future forecasting accuracy is inferred.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i0044h:""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BST-124","2026-10-03T22:28:16.320Z"
+"BST-125","TC-I14-GP-01 — Gameplan constraints, JSON state and matchup uniqueness","Pass","Test Case","BST-120","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T17:51:10.769-0400","Covers [SCRUM-481](https://basketball-strategy.atlassian.net/browse/SCRUM-481) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+
+Preconditions:    
+Target schema/migration available; isolated test transaction with rollback and valid test identities; expected state contract documented.
+
+Procedure:
+
+1. Insert a valid owner/matchup notes/tactics state and read it back.
+2. Attempt a duplicate logical owner/matchup record.
+3. Attempt malformed state shapes/types and invalid required/matchup values.
+4. Verify timestamps and repeatable update behavior.
+5. Roll back all test data.
+
+Expected result:    
+Valid state persists and matches the contract. Logical uniqueness and documented constraints reject duplicates/invalid state as intended. Timestamps behave as documented. Tests leave no persistent fixture records and do not require the future frontend persistence story.
+
+Execution status: See dated execution comments and current workflow status.","Comment 10812 | 2026-10-03T17:28:31.856-0400 | Gurkaranjit Asahan
+October 3, 2026 — Database integration result: PASS in isolated local PostgreSQL and live Supabase rollback transactions.
+
+Source: [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da). Verification script: `supabase/tests/gameplan_state_verification.sql`; migration: `supabase/migrations/20261003211500_gameplan_state_schema.sql`; contract: `docs/gameplan-storage-contract.md`.
+
+Verified valid notes/ordered plans/roles round-trip, owner+season+directed-matchup uniqueness, separate seasons/reversed matchups, malformed or oversized JSON rejection, invalid season/team/same-team rejection, non-null constraints, server revision/timestamps and stale revision guard. The script reached its PASS marker and rolled back all fixture users, role changes, state rows and helpers.
+
+This verifies the schema contract. It does not claim the future SCRUM-482 frontend save flow is implemented.
+
+Comment 10841 | 2026-10-03T17:51:08.367-0400 | Gurkaranjit Asahan
+Final execution result: PASS for the Gameplan schema contract.
+
+Execution date: October 3, 2026. Backend release source [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da), Cloud Run revision nba-playranker-api-00005-hrn. Production checks used real password sessions and current protected profile roles. Evidence is preserved in the iteration evidence pack (live-verification.json, backend-production-smoke.json, browser-verification-initial.json and the per-feature source/test files).
+
+Migration20261003211500_gameplan_state_schema.sql and supabase/tests/gameplan_state_verification.sql passed in isolated PostgreSQL and in a live Supabase rollback transaction. Valid owner/matchup state, JSON shape/size constraints, matchup uniqueness, immutable identity/audit fields and revision behavior were exercised. Real-session REST checks separately inserted valid state, PATCHed revision1→2, rejected a stale conditional update with zero changed rows, rejected malformed state with400, and removed the fixture successfully. No persistent SQL fixture remained. This validates schema/storage only; frontend cloud persistence remains teammate-owned SCRUM-482.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i0044i:""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BST-125","2026-10-03T22:28:16.320Z"
+"BST-126","TC-I14-GP-02 — Ownership, authorized roles and row isolation","Pass","Test Case","BST-120","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T17:51:14.969-0400","Covers [SCRUM-481](https://basketball-strategy.atlassian.net/browse/SCRUM-481) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+
+Preconditions:    
+Rollback-only database test transaction; two distinct user identities plus anonymous, pending and other disallowed-role contexts.
+
+Procedure:
+
+1. As an authorized owner, create/read/update/delete the owner's own Gameplan state.
+2. As another user, attempt to read and mutate that state.
+3. Attempt to insert for another owner or reassign ownership via update/upsert.
+4. Exercise anonymous, pending and disallowed-role access.
+5. Verify existing protected-profile behavior remains intact, then roll back fixtures.
+
+Expected result:    
+Only the permitted owner and role combinations can access state. Cross-user reads expose no other user's data, and unauthorized writes/owner reassignment are denied. Anonymous/pending/other disallowed roles are denied according to the schema contract. Existing profile protections remain effective.
+
+Execution status: See dated execution comments and current workflow status.","Comment 10813 | 2026-10-03T17:28:32.941-0400 | Gurkaranjit Asahan
+October 3, 2026 — Database authorization result: PASS in isolated local PostgreSQL and live Supabase rollback transactions.
+
+Source: [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da), `supabase/tests/gameplan_state_verification.sql` against `public.gameplan_notes`. Verified owner CRUD, cross-user read isolation and denied updates/deletes, denied ownership/audit-column forgery, trusted profiles.role enforcement, immediate loss of access after coach demotion, and denial for analyst, pending and anonymous contexts. Forged signup/user metadata did not grant the protected coach role. All temporary fixtures were rolled back.
+
+These are actual SQL/RLS integration results using controlled transaction identities. They do not substitute for browser sign-in or demonstrate a Gameplan frontend save flow; SCRUM-482 remains separate.
+
+Comment 10842 | 2026-10-03T17:51:12.288-0400 | Gurkaranjit Asahan
+Final execution result: PASS for ownership, permitted roles and isolation.
+
+Execution date: October 3, 2026. Backend release source [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da), Cloud Run revision nba-playranker-api-00005-hrn. Production checks used real password sessions and current protected profile roles. Evidence is preserved in the iteration evidence pack (live-verification.json, backend-production-smoke.json, browser-verification-initial.json and the per-feature source/test files).
+
+Isolated and live rollback SQL tests exercised coach CRUD, cross-user isolation, owner forgery/reassignment denial, anonymous/pending/analyst denial and protected-profile behavior. Real coach and analyst password sessions separately confirmed coach-owned REST insertion/update, analyst read isolation/write denial, owner-forgery denial and successful fixture cleanup within the49/49 production checks. RLS decisions use current protected profiles.role. Test fixtures were rolled back or deleted. This does not claim the future SCRUM-482 browser persistence integration.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i0044q:""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BST-126","2026-10-03T22:28:16.320Z"
+"BST-127","TC-I14-DEPLOY-01 — Production deployment and smoke verification","Pass","Test Case","BST-120","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:01:25.480-0400","Covers [SCRUM-506](https://basketball-strategy.atlassian.net/browse/SCRUM-506) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+
+Preconditions:    
+Reviewed source commit deployed to the existing Cloud Run service and Vercel production alias; deployment identifiers and previous rollback revision recorded.
+
+Procedure:
+
+1. Record the source SHA, backend revision, frontend deployment and production URLs.
+2. Check backend health and protected endpoints without authentication.
+3. Check approved-origin and foreign-origin CORS requests.
+4. Check frontend home/login and protected-route redirects.
+5. Verify deployed configuration retains existing approved resource limits, hosting plans and cost controls; check required runtime data after startup.
+
+Expected result:    
+Health and public pages work; protected unauthenticated requests fail safely; CORS behaves as configured; frontend routes resolve/redirect correctly. Required runtime artifacts are present. Deployment matches the reviewed revision and respects existing hosting limits. No actual billing guarantee is inferred from alert thresholds or delayed spend-cap enforcement.
+
+Execution status: See dated execution comments and current workflow status.","Comment 10814 | 2026-10-03T17:28:34.076-0400 | Gurkaranjit Asahan
+October 3, 2026 — Current release deployment verification: PENDING.
+
+Release source includes [5092bf1](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/5092bf1d93ed7c30f2e2b7b34eddd613f4ece474), [b9f145d](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d15189dd7f6be6854166bce0aef3f58f01) and [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da). Integrated local verification on the combined source revision completed on October 3: 176 backend tests passed; 12 frontend tests passed; TypeScript and the production build passed. These are local automated results, not a claim that the new release is deployed or that real-account browser journeys have passed.
+
+Earlier production restoration checks are recorded under SCRUM-506, but are not being reused as proof for the new release. Next: record the newly deployed Cloud Run revision, Vercel deployment/alias and source SHA, then run health, protected unauthenticated, CORS, frontend routes and runtime-data checks within the existing hosting limits.
+
+Comment 10843 | 2026-10-03T17:51:16.277-0400 | Gurkaranjit Asahan
+Final execution result: PASS for deployment and smoke verification.
+
+Execution date: October 3, 2026. Backend release source [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da), Cloud Run revision nba-playranker-api-00005-hrn. Production checks used real password sessions and current protected profile roles. Evidence is preserved in the iteration evidence pack (live-verification.json, backend-production-smoke.json, browser-verification-initial.json and the per-feature source/test files).
+
+Backend deployment completed21:28:03UTC from e950869, revision nba-playranker-api-00005-hrn at100% traffic, build7d519406-32d9-4196-be2b-6d640016974b. At21:29:53UTC, all8 smoke checks passed: health200, protected anonymous401, approved production-origin CORS200 and foreign-origin CORS400. The49 real-session API/database checks also passed. Initial frontend deployment dpl_3VGStQCMoBAbXg97FedCrZZtBwez was READY at https://nbaplayranker-seven.vercel.app and real coach/analyst sign-in/pages loaded.
+
+Cloud Run retained minimum0/maximum2 instances,1CPU/2GiB, concurrency2, request-based CPU and numerical thread limits1. Approved CAD$10 project budget and CAD$7 gross Cloud Run cap are retained, with delayed enforcement and no total-billing guarantee; no paid Supabase/Vercel upgrade. Rollback reference is nba-playranker-api-00005-muh. The later frontend export correction is commit1068ef2076d04d01b8ac81e0cbf988c464a80e2d, covered by17 passing frontend tests, TypeScript and production build. Final user-visible file-save confirmation remains open in BST-128/129; this deployment smoke PASS does not claim it.
+
+Comment 10848 | 2026-10-03T18:01:25.480-0400 | Gurkaranjit Asahan
+October 3 frontend deployment evidence update: the authenticated export helper correction in commit 1068ef2076d04d01b8ac81e0cbf988c464a80e2d reached READY deployment dpl_C6pK3fHKH4ZHGbM7EydmzVdDySWR. GitHub CI run https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/37155825368 succeeded. This supplements the initial deployment/smoke result above. User file-save verification subsequently found Stopped downloads, recorded as FAIL in BST-129; a further delivery fix is underway under SCRUM-527. Deployment availability passing does not mean that unresolved browser download case has passed.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i00455:""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BST-127","2026-10-03T22:28:16.320Z"
+"BST-128","TC-I14-DEPLOY-02 — Authenticated coach and analyst production journeys","Pass","Test Case","BST-120","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:14:23.864-0400","Covers [SCRUM-506](https://basketball-strategy.atlassian.net/browse/SCRUM-506) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+
+Preconditions:    
+Production available; user signs into authorized existing coach and analyst accounts without sharing passwords in Jira/chat. Record environment and source revision.
+
+Procedure:
+
+1. Sign in through the production login flow as a coach; generate a supported matchup/context ranking and inspect the returned result.
+2. Verify the coach cannot access analyst-only pages/API functions.
+3. Sign in as an analyst; load/filter the Data Explorer, perform a supported export, inspect available metrics/calibration and verify values load.
+4. Verify analyst/coach navigation and role restrictions remain correct, then sign out.
+5. Record failures separately with exact reproduction and observed error.
+
+Expected result:    
+Actual browser sign-in, navigation and implemented data flows complete for the permitted role, while forbidden routes remain blocked. Evidence identifies the account role and observed outcome without credentials. Both real authenticated journeys must be supported by dated browser evidence; synthetic-token or mock tests do not satisfy them.
+
+Execution status: See dated execution comments and current workflow status.","Comment 10815 | 2026-10-03T17:28:35.120-0400 | Gurkaranjit Asahan
+October 3, 2026 — Real authenticated coach and analyst production journeys: PENDING.
+
+The current release's local automated checks passed, but fixture tokens, auth dependency overrides, SQL role tests and static builds do not constitute real browser sign-in. Test-account provisioning is being handled separately; no successful provisioning or journey is claimed in this entry.
+
+Next: use verified coach and analyst accounts to execute the listed production journeys after deployment, record actual permitted and forbidden behavior plus source/deployment identifiers, and retain any blocked result until the missing step is completed. Do not include passwords or tokens in evidence.
+
+Comment 10833 | 2026-10-03T17:30:54.327-0400 | Gurkaranjit Asahan
+October 3 partial real-browser observation: analyst sign-in and Data Explorer load succeeded with 11 TOR offense rows. The CSV export step failed with ""Invalid or missing session token."" This specific failure is recorded in BST-129 and SCRUM-527. The full journey cannot be marked passed until the export fix is retested; later verified API/database checks should be recorded separately from this browser step.
+
+Comment 10870 | 2026-10-03T18:14:21.247-0400 | Gurkaranjit Asahan
+Final execution result: PASS. Actual coach and analyst browser journeys were executed on October 3, 2026.
+
+Final frontend commit c3044dab9d153e52ebe735c36bd9adca09202f4c is READY in Vercel deployment dpl_2W9TUnSUZDwfSXfzBpsBbK5wmhTM at https://nbaplayranker-seven.vercel.app. Backend remains nba-playranker-api-00005-hrn from e950869cb318c6b44220d3c06be4ba2aa16521da; backend rollback reference nba-playranker-api-00005-muh. Records: frontend-deployment-final.json and backend-deployment.json.
+
+Coach: password sign-in reached Matchup; TOR/BOS 2024-25 displayed five baseline recommendations, and Context/ML displayed five recommendations and an explanation. Build Gameplan produced quick calls, court-zone visualization, counters and shot guidance. Opening the analyst /model-metrics page as coach redirected to /matchup, while protected API role checks rejected access.
+
+Analyst: password sign-in reached Data Explorer, the selected TOR offense dataset displayed 11 rows, and Calibration displayed 1,650 held-out rows over five seasons with matching metrics, fold/bin tables and limitations. The corrected Data Explorer CSV finished downloading and opened, confirmed by the user. Subsequent actual disk evidence verifies the 11-row CSV, a 5,000-row Shot Explorer CSV and a readable one-page TOR/BOS 2024-25 PDF after the final deployment. Analyst sign-out returned to the public home; following the protected Baseline link then redirected to /login?next=/matchup.
+
+Evidence: browser-verification-final.json, downloaded-file-verification.json, live-verification.json and export-proxy-live-verification.json. The initial export failures remain in BST-129 history. A separate coach browser CSV save is not required by this test and is not claimed here; its authenticated HTTP delivery passed. Browser Gameplan still uses localStorage; future SCRUM-482 cloud persistence is outside this test.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i0045c:""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BST-128","2026-10-03T22:28:16.320Z"
+"BST-129","Signed-in browser downloads preserve authorization","Pass","Test Case","BST-120","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:21:22.515-0400","Covers [SCRUM-527](https://basketball-strategy.atlassian.net/browse/SCRUM-527) under SCRUM-506.
+
+Preconditions: deployed frontend/backend; signed-in account with the required page role; loaded dataset/table.
+
+Steps:
+
+1. As an analyst, load Data Explorer and export its primary and filtered CSV views; inspect downloaded headers/rows and filename.
+2. Load Shot Explorer and export CSV.
+3. Verify successful protected download requests preserve the current session's Bearer authorization.
+4. Exercise a denied/expired-session response: show an actionable error, clear busy state, and do not download the error response as a file.
+5. Review existing baseline CSV and shot PDF download paths using the appropriate account role; record actual outcomes.
+
+Expected: allowed exports download successfully with correct content, filenames and authorization. Unauthorized responses produce visible errors without a file download.
+
+Initial observed result on October 3: FAIL for production Data Explorer Export CSV. An authenticated analyst saw 11 TOR offense rows, but clicking Export CSV navigated directly to Cloud Run and displayed ""Invalid or missing session token."" This creation-time failure is retained for history. See the dated execution comments and current workflow status for fixes, subsequent failures and the final saved-file retest.","Comment 10832 | 2026-10-03T17:30:53.339-0400 | Gurkaranjit Asahan
+October 3 production browser result: FAIL. A signed-in analyst loaded Data Explorer and saw 11 TOR offense rows. Clicking Export CSV opened a Cloud Run tab with ""Invalid or missing session token."" Direct anchor navigation did not preserve Bearer authorization. Fix in SCRUM-527 is in progress; no successful browser retest is claimed yet. Baseline CSV and shot PDF were flagged for review, not recorded as observed failures.
+
+Comment 10836 | 2026-10-03T17:37:50.539-0400 | Gurkaranjit Asahan
+October 3 automated regression result: PASS (unit scope only). Five tests in tests/authenticated-download.test.ts pass with a mocked session, fetch response, and DOM: sends Bearer authorization and exact CSV bytes with explicit filename; preserves server PDF filename; retains .csv filename from URL when Content-Disposition is unavailable; delays cleanup and still releases the blob after a click exception; rejects 403 without creating a downloaded file. Full frontend suite: 17 passed; TypeScript passed. The original production failure remains recorded above. Production redeployment and signed-in browser CSV/PDF retest are pending. A coach baseline browser click also timed out waiting for a download in the in-app browser; this is inconclusive, not a PASS. No workflow completion transition was made.
+
+Comment 10847 | 2026-10-03T17:52:14.642-0400 | Gurkaranjit Asahan
+October 3 user-confirmed production retest: FAIL. After the authenticated export correction (frontend commit1068ef2, Vercel deployment dpl_C6pK3fHKH4ZHGbM7EydmzVdDySWR), clicking Export CSV creates a browser Downloads entry, but all such entries show Stopped. This is an observed delivery failure, not merely an automation download-event limitation. The previous Bearer request/CSV HTTP contract checks and17 unit tests still pass but do not establish successful file saving. SCRUM-527 remains In Progress; a same-origin authenticated HTTP download route will be implemented and retested. No successful browser file save is claimed.
+
+Comment 10871 | 2026-10-03T18:14:26.236-0400 | Gurkaranjit Asahan
+Final deployed retest result: PASS. The initial missing-token failure and later user-confirmed Stopped downloads are preserved in earlier comments.
+
+Final frontend commit c3044dab9d153e52ebe735c36bd9adca09202f4c is READY in Vercel deployment dpl_2W9TUnSUZDwfSXfzBpsBbK5wmhTM at https://nbaplayranker-seven.vercel.app. Backend remains nba-playranker-api-00005-hrn from e950869cb318c6b44220d3c06be4ba2aa16521da; backend rollback reference nba-playranker-api-00005-muh. Records: frontend-deployment-final.json and backend-deployment.json.
+
+The same-origin HTTP attachment correction is commit c3044dab9d153e52ebe735c36bd9adca09202f4c. All 33 frontend tests, TypeScript and production build passed; application CI run37157122411 succeeded.
+
+Actual saved-file evidence after browser clicks on the final deployment:
+
+* Data Explorer: team_playtypes_2024-25_TOR_offense.csv, modified 22:05:33UTC, 11 data rows. The user confirmed it finishes and opens as a CSV. Both page export controls use the same reviewed filter URL/handler.
+* Shot Explorer: shots_2024-25_TOR.csv, modified 22:10:45UTC, 5,000 data rows, matching the export cap after a 50-of-6,486-row preview.
+* Shot-plan PDF: shotplan_2024-25_TOR_vs_BOS (1).pdf, modified 22:11:19UTC, 75,158 raw bytes, a readable one-page PDF for TOR/BOS/2024-25 with valid signature/EOF. Old historical download files were excluded.
+
+Expanded real SSR-cookie production checks passed 12/12 at 22:09:17–22:09:35UTC: selected analyst CSVs and shot PDF delivery, coach baseline CSV delivery, headers/content, anonymous401, coach analyst-export403, foreign-origin403 and unsupported-path400. Errors had no attachment header; successful files had safe names and private no-store. Unit tests additionally verify session identity mismatch, missing-session client errors, query fidelity, redirects and incorrect content types. No separate visual coach file-save is claimed.
+
+Evidence: downloaded-file-verification.json, export-proxy-live-verification.json, export-proxy-validation.json, frontend-deployment-final.json and final browser record.
+
+Comment 10872 | 2026-10-03T18:15:03.758-0400 | Gurkaranjit Asahan
+October 3 additional review found one remaining export route after the saved-file retest above: the coach Matchup one-page PDF uses /export/playtype-viz.pdf, which is absent from the initial proxy allowlist in c3044da. Reopening this case to Fail until that exact existing path is added and tested. The successful Data Explorer CSV, Shot Explorer CSV and shot-plan PDF saves remain valid evidence; they do not cover this distinct coach PDF route. SCRUM-527 and SCRUM-506 remain In Progress. A further source/deployment correction and retest will be recorded separately.
+
+Comment 10875 | 2026-10-03T18:21:21.225-0400 | Gurkaranjit Asahan
+October 3 final compatibility correction and retest: PASS.
+
+Final application commit [18baffc](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/18baffc0cc6f99273f60e797a499804029b8b84f) is READY in Vercel deployment dpl_7JaSVKvgfxo7yQpia6ZhUmFXLh75 at https://nbaplayranker-seven.vercel.app. Backend remains nba-playranker-api-00005-hrn from e950869. All 34 frontend tests, TypeScript and production build passed; [GitHub CI 37157802665](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/37157802665) succeeded.
+
+The allowlist now includes the distinct existing coach endpoint /export/playtype-viz.pdf. Regression coverage verifies that route. Final real SSR-cookie production verification passed 14/14 checks at 22:17:35–22:17:54 UTC, including analyst/coach CSV delivery, shot-plan PDF, coach play-type PDF, valid content signatures/EOF, filenames/private no-store, missing-session401, role-denied403, foreign-origin403 and unsupported-path400. Earlier backend smoke 8/8 and real-session API/database 49/49 also passed.
+
+Actual files saved after browser export clicks were inspected, excluding historical files: analyst Data Explorer CSV 11 rows; Shot Explorer CSV 5,000 rows; shot-plan PDF 75,158 bytes/readable one page; coach baseline CSV 5 rows at 22:18:19 UTC; coach PRRollMan play-type PDF 42,424 bytes/readable one page at 22:18:21 UTC with matching TOR/BOS/2024-25/play-type content. The user separately confirmed the Data Explorer CSV finishes and opens. Evidence: downloaded-file-verification.json, browser-verification-final.json and export-proxy-live-verification.json.
+
+This successful retest supersedes the reopened coach-PDF failure. All original missing-token, Stopped-download and omitted-route findings remain in the preceding comments; none are erased or described as passing at their original execution time.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i00469:""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BST-129","2026-10-03T22:28:16.320Z"

@@ -2,6 +2,14 @@
 
 A decision-support tool for basketball coaches and analysts. Coaches get ranked play-type recommendations for upcoming matchups; analysts explore the underlying data, evaluate model performance, and review shot-level analysis.
 
+The [Iteration 14 elaboration evidence](docs/iteration-14/README.md) links the
+assigned stories, test results, deployment records and native model revision 51.
+This release adds analyst Top-K uplift JSON/CSV endpoints, a Calibration tab
+on Model Metrics, and the coach-owned Gameplan storage schema. Calibration is a
+retrospective season-holdout diagnostic; browser Gameplan cloud persistence is
+the separate future SCRUM-482 task. The storage API contract is documented in
+[gameplan-storage-contract.md](docs/gameplan-storage-contract.md).
+
 ## Quick Start
 
 ### Prerequisites
@@ -74,6 +82,10 @@ Open http://localhost:3000.
 The backend health check is http://127.0.0.1:8000/health and its interactive API
 documentation is http://127.0.0.1:8000/docs. Login also requires a running
 Supabase project with the team's auth/profile schema and matching credentials.
+Access is determined by the current protected `profiles.role`. New accounts
+remain pending until an administrator assigns their role. Browser CSV/PDF
+exports use a same-origin authenticated `/api/exports` route; session tokens
+are never placed in download URLs.
 
 To build/run the backend container from the repository root:
 
@@ -108,7 +120,7 @@ docker run --rm --env-file .env -p 8000:8080 nba-playranker-api
 |-------|---------|
 | `/data-explorer` | Browse Synergy play-type data with filtering and CSV export |
 | `/statistical-analysis` | ML model evaluation (RMSE, MAE, R²) |
-| `/model-metrics` | Cross-validation comparison between Baseline and ML models |
+| `/model-metrics` | Cross-validation comparison and held-out PPP calibration |
 | `/shot-explorer` | Browse NBA play-by-play shot data |
 | `/shot-heatmap` | Court heatmap of shot locations by team/player |
 | `/shot-plan` | Shot-type ranking by location and context |
@@ -145,8 +157,8 @@ From the repository root after installing the development requirements:
 
 ```bash
 backend/.venv/bin/python -m pytest backend/tests -v
-npm run test:rbac
-npm run test:rbac:coach
+npx vitest run --maxWorkers=1 --minWorkers=1
+npx tsc --noEmit
 npm run build
 ```
 
@@ -166,8 +178,11 @@ the authenticated coach/analyst browser walkthrough against the deployment.
 | `test_access_analyst_workspace_api.py` | Analyst workspace filtering and limits |
 | `test_nlp_parser.py`, `test_nlp_integration.py`, `test_nlp_explain.py` | Prompt extraction, defaults, explanations and API integration |
 | `test_pbp_cache.py` | Shot cache generation without the raw download and clean-input invalidation |
+| `test_topk_uplift.py` | Weighted uplift arithmetic, JSON/CSV parity, validation and analyst access |
+| `test_calibration.py` | Temporal folds, train-only preprocessing, calibration metrics and sparse bins |
 | `middleware.auth-analyst.test.ts` | Analyst middleware routing |
 | `middleware.auth-coach.test.ts` | Coach middleware routing |
+| `export-route.test.ts`, `authenticated-download.test.ts` | Session-cookie export proxy, allowed file paths, role failures and download delivery |
 
 ---
 

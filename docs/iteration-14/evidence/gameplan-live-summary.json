@@ -1,0 +1,19 @@
+{
+  "captured_at_utc": "2026-10-03T21:15:30Z",
+  "source_artifact": "gameplan-live-evidence.json",
+  "project_ref": "qdodginqubodugfeyiwi",
+  "migration": "gameplan_state_schema",
+  "database_migration_version": "20261003211500",
+  "local_database_test": "PASS; isolated PostgreSQL database capstone_gameplan_20261003; fixtures rolled back",
+  "live_database_test": "PASS: Gameplan owner CRUD, isolation, trusted roles, constraints, optimistic revision, audit columns and cascade; all fixtures rolled back",
+  "performance_advisor_findings": [],
+  "security_advisor_findings": [
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "title": "Leaked Password Protection Disabled",
+      "scope": "existing Auth configuration; no paid upgrade applied"
+    }
+  ],
+  "derivation": "Selected nonsecret result fields from captured Supabase tool responses; raw transport wrappers and account/session information omitted."
+}

@@ -1,0 +1,25 @@
+{
+  "captured_at_utc": "2026-10-03T22:06:30Z",
+  "source_commit": "c3044dab9d153e52ebe735c36bd9adca09202f4c",
+  "command": "npx --yes vercel@62.2.0 deploy --prod --yes --scope pearson-manufacturing",
+  "deployment": {
+    "id": "dpl_2W9TUnSUZDwfSXfzBpsBbK5wmhTM",
+    "url": "https://nbaplayranker-f01xo159t-pearson-manufacturing.vercel.app",
+    "productionUrl": "https://nbaplayranker-seven.vercel.app",
+    "inspectorUrl": "https://vercel.com/pearson-manufacturing/nba_play_ranker/2W9TUnSUZDwfSXfzBpsBbK5wmhTM",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_2W9TUnSUZDwfSXfzBpsBbK5wmhTM",
+    "buildMachine": {
+      "cores": 2,
+      "memory": 8192,
+      "machine": "basic",
+      "selectionType": "fixed",
+      "selectionSource": "plan-default"
+    },
+    "deploymentProtection": [
+      "vercel_authentication"
+    ]
+  },
+  "note": "Application source is the indicated committed revision; uncommitted model/evidence documentation was also present in the checkout. No backend changes or redeployment."
+}

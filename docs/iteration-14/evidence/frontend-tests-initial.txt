@@ -1,0 +1,13 @@
+
+ RUN  v3.2.7 /Users/gurkasahan/Developer/NBAPlayRanker
+
+ ✓ tests/middleware.auth-coach.test.ts (6 tests) 20ms
+ ✓ tests/middleware.auth-analyst.test.ts (3 tests) 12ms
+ ✓ tests/auth.profile-role.test.ts (3 tests) 9ms
+
+ Test Files  3 passed (3)
+      Tests  12 passed (12)
+   Start at  17:19:06
+   Duration  1.69s (transform 279ms, setup 0ms, collect 430ms, tests 41ms, environment 1ms, prepare 324ms)
+
+JUNIT report written to /Users/gurkasahan/Documents/ChatGPT/Capstone/tmp/elaboration/frontend-tests.xml

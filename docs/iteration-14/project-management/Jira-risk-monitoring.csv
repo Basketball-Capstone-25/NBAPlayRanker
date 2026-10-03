@@ -1,0 +1,182 @@
+"Issue key","Summary","Status","Issue type","Parent","Assignee","Assignee account ID","Story points","Planning forecast (hours)","Original estimate (seconds)","Remaining estimate (seconds)","Time spent (seconds)","Worklog count","Sprint","Due date","Updated","Description","Comments","Worklogs","Custom fields","Source URL","Snapshot captured UTC"
+"BSR-43","Poor calibration of predicted PPP","Monitoring","Risk","","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:07:42.198-0400","Predicted PPP is systematically higher/lower than realized PPP.","Comment 10014 | 2025-12-07T21:54:09.161-0500 | Gurkaranjit Asahan
+Actions:
+
+* Ran quick checks comparing predicted PPP vs baseline PPP across sample plays.
+* Looked at high-level distributions to verify predictions are in a reasonable range (no extreme unrealistic PPP values).
+
+Result:
+
+* No obvious calibration disasters detected, but we have not fully tuned calibration yet.
+
+Assessment:
+
+* Probability medium.
+* Impact high; we explicitly call this out as a limitation when discussing ML vs baseline in the defence.
+
+
+
+Comment 10828 | 2026-10-03T17:29:07.501-0400 | Gurkaranjit Asahan
+October 3 monitoring update for SCRUM-476: [b9f145d](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d15189dd7f6be6854166bce0aef3f58f01) adds explicit signed PPP bias and calibration bins. Numerical/edge-case tests passed within the 176-test backend run; BST-123/124 distinguish automated coverage from pending analyst browser verification.
+
+The fixed Ridge evaluation uses earlier-season training and later-season test rows, but its predictors include retrospective same-season rate statistics. This does not establish pre-game forecasting accuracy. [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526) tracks strictly lagged predictors and an untouched forecasting holdout as separate future work.
+
+These tests validate the reporting implementation, not that real predictions are well calibrated. The earlier Resolved status is not new evidence of forecasting accuracy and is unchanged by this comment. Continue reviewing observed calibration/sample sizes and the follow-up forecasting work before making performance claims.
+
+Comment 10859 | 2026-10-03T18:07:41.063-0400 | Gurkaranjit Asahan
+October 3 risk review: reopening to Monitoring. SCRUM-476 and BST-123/124 now include verified numerical diagnostics, real production calibration output and an analyst browser display; native model Team revision 51 records the design. The live fixed-Ridge retrospective report has 1,650 held-out rows across five seasons, with MAE0.008489534 and RMSE0.011340119, but those figures do not establish calibration of prospective pre-game forecasts or every recommendation model. Same-season explanatory rates remain outcome proxies. Continue checking bias/bin sample sizes and predictor availability; SCRUM-526 tracks strictly lagged predictors and untouched forecasting holdouts. No claim of resolved forecasting accuracy or reduced risk rating is made.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i0005q:d""},""Risk Area"":{""id"":""customfield_10091"",""value"":{""value"":""Product"",""id"":""10054"",""color"":""GREY_DARKEST""}},""Impact"":{""id"":""customfield_10092"",""value"":{""value"":""Tolerable"",""id"":""10058"",""color"":""MAGENTA_DARKER""}},""Probability"":{""id"":""customfield_10093"",""value"":{""value"":""Moderate"",""id"":""10062"",""color"":""RED_DARKER""}},""Mitigation Strategy"":{""id"":""customfield_10094"",""value"":""Add calibration plots; isotonic/Platt scaling if needed; sanity checks by play type.""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BSR-43","2026-10-03T22:28:16.320Z"
+"BSR-45","Data leakage inflates results","Monitoring","Risk","","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:07:43.730-0400","Not using strict time splits leaks future info into training, inflating metrics.","Comment 10016 | 2025-12-07T21:54:46.548-0500 | Gurkaranjit Asahan
+Actions:
+
+* Reviewed feature engineering to avoid including direct outcome-like fields in the inputs.
+* Used time-based splits to make sure future information does not leak into training.
+
+Result:
+
+* No obvious direct leakage features remain in the current feature set.
+
+Assessment:
+
+* Probability reduced to medium.
+* Impact high if leakage is discovered later, so we continue to treat evaluation results as approximate.
+
+
+
+Comment 10829 | 2026-10-03T17:29:08.547-0400 | Gurkaranjit Asahan
+October 3 leakage review: [b9f145d](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d15189dd7f6be6854166bce0aef3f58f01) refits the scaler per chronological training fold and derives reliability normalization maxima from training rows only. Tests verify earlier-season fitting, held-out PPP perturbation isolation and independence from precomputed global reliability columns; automated result PASS is recorded in BST-123.
+
+The fixed Ridge evaluation uses earlier-season training and later-season test rows, but its predictors include retrospective same-season rate statistics. This does not establish pre-game forecasting accuracy. [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526) tracks strictly lagged predictors and an untouched forecasting holdout as separate future work.
+
+Residual risk remains around predictor availability at forecast time. Continue Monitoring; this review does not claim leakage-free pre-game forecasts or lower the recorded risk rating.
+
+Comment 10860 | 2026-10-03T18:07:43.730-0400 | Gurkaranjit Asahan
+October 3 final iteration review: retain Monitoring. BST-123 passed chronological fold separation, train-only scaling/reliability fitting and held-out target perturbation checks. Production metadata and model Team revision 51 document the implemented evaluation. A real analyst can inspect fold provenance and limitations. Residual risk remains because same-season explanatory statistics are available retrospectively, not necessarily at prediction time; time-separated training rows alone do not establish leakage-free pre-game forecasts. Future SCRUM-526 remains To Do. The historical broad no-leakage wording should not be used as evidence that prospective availability has been validated.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i00047:1""},""Risk Area"":{""id"":""customfield_10091"",""value"":{""value"":""Project"",""id"":""10053""}},""Impact"":{""id"":""customfield_10092"",""value"":{""value"":""Serious"",""id"":""10057"",""color"":""GREY_DARKEST""}},""Probability"":{""id"":""customfield_10093"",""value"":{""value"":""Low"",""id"":""10063"",""color"":""TEAL_DARKER""}},""Mitigation Strategy"":{""id"":""customfield_10094"",""value"":""Enforce season-wise holdout; lock split files; review code for leakage.""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BSR-45","2026-10-03T22:28:16.320Z"
+"BSR-96","Broken endpoints / API contract drift","Monitoring","Risk","","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:21:36.806-0400","Trigger / Early Warning Signs:
+
+* Frontend expects fields that backend no longer returns
+* Endpoint parameters change without coordinated update
+* Frequent 4xx/5xx responses after merges
+
+Impact on project:
+
+* Features break unexpectedly
+* Increased debugging and rework
+* Demo reliability decreases
+
+","Comment 10830 | 2026-10-03T17:29:09.631-0400 | Gurkaranjit Asahan
+October 3 API contract monitoring: [5092bf1](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/5092bf1d93ed7c30f2e2b7b34eddd613f4ece474) adds documented JSON/CSV uplift output with matching metric values, numerators/denominators, dataset source hash and explicit evaluation scope. `backend/tests/test_topk_uplift.py` passed export parity, headers, invalid inputs, empty-result and controlled authorization checks (BST-122).
+
+Integrated checks passed: 176 backend tests, 12 frontend tests, TypeScript and production build. Production contract checks and real-account access remain pending in BST-127/128. Continue monitoring after deployment; no production success is inferred from local tests.
+
+Comment 10861 | 2026-10-03T18:07:44.764-0400 | Gurkaranjit Asahan
+October 3 monitoring found an active integration defect, so this risk is Active. Real production API checks passed JSON/CSV parity, role checks and input guards, while the analyst browser initially lost authentication on raw export navigation. SCRUM-527 corrected those links, but the user then confirmed all browser Downloads entries were Stopped. BST-129 is Fail. The further same-origin HTTP attachment correction is committed as c3044da, with 33 frontend tests, TypeScript and build passing; deployment and actual file-save retest are still pending. Keep the risk active until an actual file saves/opens. This distinguishes working API bytes from successful browser delivery.
+
+Comment 10869 | 2026-10-03T18:12:31.725-0400 | Gurkaranjit Asahan
+October 3 retest update: move from Active to Monitoring. The user confirmed the corrected production Data Explorer download finishes and opens as a CSV. Same-origin HTTP attachment delivery in commit c3044dab9d153e52ebe735c36bd9adca09202f4c is live in READY Vercel deployment dpl_2W9TUnSUZDwfSXfzBpsBbK5wmhTM. Expanded real SSR-cookie verification passed 12/12 checks, including Shot Explorer CSV, complete PDF response markers, analyst/coach export authorization and error responses without attachments. All 33 frontend tests and final application CI run37157122411 passed. The original missing-token and Stopped-download failures remain in BST-129 history. Continue export/auth contract checks after future deployments; the actual analyst browser save is distinguished from HTTP delivery checks for the other file types.
+
+Comment 10874 | 2026-10-03T18:16:02.620-0400 | Gurkaranjit Asahan
+October 3 follow-up route inventory found the separate coach Matchup PDF endpoint /export/playtype-viz.pdf missing from the initial proxy allowlist. BST-129 is reopened to Fail and SCRUM-527 remains In Progress while the exact endpoint is added and deployed. Restoring Active temporarily reflects this known remaining contract mismatch; the already verified analyst CSV/shot CSV/shot-plan PDF results remain valid. Record the final coach-PDF correction/retest before returning this risk to Monitoring.
+
+Comment 10880 | 2026-10-03T18:21:35.783-0400 | Gurkaranjit Asahan
+October 3 final correction verified: return to Monitoring. The existing coach /export/playtype-viz.pdf path is now included by18baffc, with regression coverage and successful production delivery. Final application commit [18baffc](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/18baffc0cc6f99273f60e797a499804029b8b84f) is READY in Vercel deployment dpl_7JaSVKvgfxo7yQpia6ZhUmFXLh75 at https://nbaplayranker-seven.vercel.app. Backend remains nba-playranker-api-00005-hrn from e950869. All 34 frontend tests, TypeScript and production build passed; [GitHub CI 37157802665](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/37157802665) succeeded.
+
+Final real SSR-cookie production verification passed 14/14 checks at 22:17:35–22:17:54 UTC, including analyst/coach CSV delivery, shot-plan PDF, coach play-type PDF, valid content signatures/EOF, filenames/private no-store, missing-session401, role-denied403, foreign-origin403 and unsupported-path400. Earlier backend smoke 8/8 and real-session API/database 49/49 also passed.
+
+Actual coach browser exports saved a five-row baseline CSV and a readable one-page play-type PDF with the selected teams/season/play type. The analyst Data Explorer/Shot Explorer CSV and shot-plan PDF saves are also verified. BST-129 now Pass preserves all prior failed attempts. Continue route/role/export checks on future releases; local success alone remains insufficient.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i000wm:zzzzzx""},""Risk Area"":{""id"":""customfield_10091"",""value"":{""value"":""Product"",""id"":""10054"",""color"":""GREY_DARKEST""}},""Impact"":{""id"":""customfield_10092"",""value"":{""value"":""Serious"",""id"":""10057"",""color"":""GREY_DARKEST""}},""Probability"":{""id"":""customfield_10093"",""value"":{""value"":""Moderate"",""id"":""10062"",""color"":""RED_DARKER""}},""Mitigation Strategy"":{""id"":""customfield_10094"",""value"":""* Define and document API contracts (request/response schemas)\n* Use versioning or backward-compatible changes when possible\n* Add integration smoke tests (frontend calls backend endpoints)\n* Require PR review that checks for contract impacts\n* Log and monitor error rates for key endpoints\n\n""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BSR-96","2026-10-03T22:28:16.320Z"
+"BSR-98","Works locally but not in demo","Monitoring","Risk","","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:10:12.491-0400","Trigger / Early Warning Signs:
+
+* Differences between local and demo environment (data paths, env vars, ports)
+* Demo machine lacks dependencies or uses different versions
+* Performance issues only appear in deployed environment
+
+Impact on project:
+
+* High demo/defense risk
+* Last-minute debugging and reduced confidence
+* Stakeholders perceive project as incomplete
+
+","Comment 10866 | 2026-10-03T18:10:12.491-0400 | Gurkaranjit Asahan
+October 3 demo-environment monitoring: keep Monitoring. The deployed release passed 8/8 backend health/auth/CORS smoke checks, 49/49 real-session API/database checks and 8/8 same-origin HTTP export checks. Real coach login, baseline/context ranking, Gameplan generation, shot guidance and analyst-role exclusion worked; real analyst login, dataset and calibration display worked. The browser export defect demonstrated why local/API success alone is insufficient. After correction c3044da and READY deployment dpl_2W9TUnSUZDwfSXfzBpsBbK5wmhTM, the user confirmed the analyst CSV finishes and opens. Preserve the initial failure and perform a brief role/demo smoke check before presenting. This is dated evidence, not a guarantee of future service availability.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i000wm:zzzzzz""},""Risk Area"":{""id"":""customfield_10091"",""value"":{""value"":""Product"",""id"":""10054"",""color"":""GREY_DARKEST""}},""Impact"":{""id"":""customfield_10092"",""value"":{""value"":""Serious"",""id"":""10057"",""color"":""GREY_DARKEST""}},""Probability"":{""id"":""customfield_10093"",""value"":{""value"":""Moderate"",""id"":""10062"",""color"":""RED_DARKER""}},""Mitigation Strategy"":{""id"":""customfield_10094"",""value"":""* Maintain a demo runbook with exact steps and required versions\n* Create a “demo mode” with stable sample data and cached outputs\n* Run an end-to-end smoke test on demo environment before presentation\n* Use containerization or consistent environment setup where possible\n* Freeze changes 24 hours before demo and only allow critical fixes\n\n""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BSR-98","2026-10-03T22:28:16.320Z"
+"BSR-108","Runtime data and model artifacts are unavailable after restart or redeployment","Monitoring","Risk","","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:10:14.477-0400","A restart or redeployment may leave the application without required datasets, model/prediction files, or compatible saved state.  
+Trigger: a clean start cannot load the required artifacts.  
+Proposed assessment: Moderate probability; Serious impact because recommendations may become unavailable. No failure is established by this review.","Comment 10790 | 2026-09-22T12:54:49.580-0400 | Gurkaranjit Asahan
+Elaboration review: probability Moderate; impact Serious. Added this risk and its response plan.  
+Next action: Document required file locations and test a safe clean start followed by a recommendation.  
+Current mitigation result: not established by this planning update; record the actual observation after the check.  
+Next review: within seven days, or sooner if the trigger occurs.
+
+Comment 10867 | 2026-10-03T18:10:13.473-0400 | Gurkaranjit Asahan
+October 3 runtime-artifact check: move to Monitoring. A new Cloud Run source deployment produced revision nba-playranker-api-00005-hrn from e950869 and served 100% of production traffic. After startup, actual coach baseline/context recommendations and analyst dataset/calibration requests completed, and the relevant production API/database checks passed. This verifies required data/model artifacts were usable in the new deployed runtime. Deployment evidence records source SHA, image digest, build ID and prior rollback revision; resource/authentication configuration was preserved. Recheck data loading and a real recommendation after future redeployments. No hypothetical missing-artifact outage was recorded as having occurred.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i003mv:""},""Risk Area"":{""id"":""customfield_10091"",""value"":{""value"":""Product"",""id"":""10054"",""color"":""GREY_DARKEST""}},""Impact"":{""id"":""customfield_10092"",""value"":{""value"":""Serious"",""id"":""10057"",""color"":""GREY_DARKEST""}},""Probability"":{""id"":""customfield_10093"",""value"":{""value"":""Moderate"",""id"":""10062"",""color"":""RED_DARKER""}},""Mitigation Strategy"":{""id"":""customfield_10094"",""value"":""Record where each required file is stored. Keep compatible versions of data, models/predictions, and configuration together. Keep a recoverable working release.  \nTest a restart or clean deployment in a safe test environment, then request a recommendation. Restore the working release when required inputs are unavailable. Attach the results and review after deployments and weekly.""}}","https://basketball-strategy.atlassian.net/browse/BSR-108","2026-10-03T22:28:16.320Z"
+"BSR-110","Google Cloud trial expiry creates hosting costs and interruption risk","Monitoring","Risk","","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:10:18.229-0400","Current status — October 3, 2026: Monitoring. Existing billing was reactivated on October 2 under the approved CAD$10/month capstone allowance; backend production checks pass. A CAD$10 budget and CAD$7 gross Cloud Run cap are configured controls, with delayed enforcement and no total-billing guarantee. See dated monitoring comments for resource limits and billing-review actions.
+
+Original trial-expiry incident record (September 22, retained for history):
+
+The Google Cloud free trial used for the capstone has expired. Continuing the hosted backend requires a confirmed funding or alternative hosting plan.
+
+Trigger: trial credits expire, hosting becomes unaffordable, or billing problems interrupt the backend.
+
+Probability: Very High because the trial has already expired and the hosting arrangement needs attention.    
+Impact: Serious because unexpected costs or backend unavailability could delay development, testing, and demonstrations.
+
+Actual charges and service availability still need to be checked.","Comment 10801 | 2026-09-22T13:19:32.628-0400 | Gurkaranjit Asahan
+The Google Cloud free trial used for the capstone has expired. Added this as an Active risk because the hosting arrangement needs attention.
+
+Probability: Very High. Impact: Serious.
+
+Next action: check billing and backend availability, then agree an affordable hosting plan with Abdul.
+
+No specific charge, outage, or completed mitigation is being claimed in this entry. Next review: within 48 hours.
+
+Comment 10868 | 2026-10-03T18:10:15.937-0400 | Gurkaranjit Asahan
+October 3 hosting review: move to Monitoring. The existing Google Cloud billing account was reactivated on October 2 within the user's approved CAD$10/month allowance. The capstone backend is deployed and passing production checks. Controls retained: CAD$10 monthly project budget with 50/80/100% alerts, configured CAD$7 gross Cloud Run cap, minimum0/maximum2 instances,1CPU/2GiB, concurrency2 and request-based CPU. Budget alerts do not stop spending; cap enforcement uses delayed cost data, and builds/storage/other products may add costs. No zero-charge claim or absolute CAD$10 total guarantee is made. Check actual billing before demonstrations and after substantial builds/traffic; Supabase remains Free and Vercel Hobby.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i0020z:""},""Risk Area"":{""id"":""customfield_10091"",""value"":{""value"":""Project"",""id"":""10053""}},""Impact"":{""id"":""customfield_10092"",""value"":{""value"":""Serious"",""id"":""10057"",""color"":""GREY_DARKEST""}},""Probability"":{""id"":""customfield_10093"",""value"":{""value"":""High"",""id"":""10061"",""color"":""MAGENTA_DARKER""}},""Mitigation Strategy"":{""id"":""customfield_10094"",""value"":""1. Check Google Cloud Billing and record the trial status, actual costs, and affected services.\n2. Agree a hosting budget and billing owner with Abdul. Set budget alerts and reduce unnecessary resource usage. Alerts alone do not stop charges.\n3. Choose an affordable hosting arrangement or investigate academic credits for which the team is eligible. Do not rely on creating another Google account to repeat the introductory trial.\n4. Back up required data and configuration before any migration. Test the frontend-to-backend recommendation workflow after changes.\n5. Review costs and availability daily until stable, then weekly. Move to Monitoring after affordable hosting and a working application are verified.\n\n""}}","https://basketball-strategy.atlassian.net/browse/BSR-110","2026-10-03T22:28:16.320Z"
+"BSR-111","Visual Paradigm version mismatch blocks shared model access and import","Resolved","Risk","","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:07:49.864-0400","Current status — October 3, 2026: Resolved. Native Desktop Team commit revision 51 succeeded and was verified against the current project, synchronized origin copy and repository metadata. The shared-model workflow is working. See the dated resolution comment for author, commit text and preservation evidence.
+
+Original incident record (September 22, retained for history):
+
+Visual Paradigm displays a desktop/online version-mismatch message when connecting to the shared Mousaa workspace. This is blocking the attempted Pipeline import and delaying the deployment-model revision.
+
+Trigger: incompatible desktop and online repository versions prevent login, import, or sharing.
+
+Probability: Very High because the mismatch is already affecting the workflow.    
+Impact: Serious because the revised model may not be imported, shared, or submitted on time.
+
+The repository upgrade and successful import have not yet been verified.","Comment 10802 | 2026-09-22T13:20:46.882-0400 | Gurkaranjit Asahan
+A desktop/online version-mismatch message appeared while connecting to the Mousaa workspace for Pipeline import. Added this as an Active risk because the deployment-model workflow is blocked.
+
+Probability: Very High. Impact: Serious.
+
+Next action: back up the project and coordinate compatible versions with Abdul and the workspace administrator.
+
+The upgrade and successful import are not yet verified. Next review: within 48 hours.
+
+Comment 10862 | 2026-10-03T18:07:47.184-0400 | Gurkaranjit Asahan
+October 3 resolution evidence: the user completed a native Visual Paradigm Desktop Team commit, and read-only verification confirms shared revision 51. The current VPP and synchronized .orig agree; desktop repository lastServerRevision is 51 and local TW_HISTORY count is 0. Author asahang@sheridancollege.ca; commit time 2026-10-03 21:59:49.692UTC. Exact comment: Gurkaranjit Asahan: elaborate analyst evidence APIs, coach Gameplan schema and deployed architecture (SCRUM-475/476/481/506). The native deliverable has 186 diagrams, preserving the saved 182-diagram baseline and adding four editable UML diagrams. The operative shared-model/import/commit blocker is resolved. This result does not diagnose which earlier version check caused the original message or claim every possible future version combination is compatible.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i00211:""},""Risk Area"":{""id"":""customfield_10091"",""value"":{""value"":""Project"",""id"":""10053""}},""Impact"":{""id"":""customfield_10092"",""value"":{""value"":""Serious"",""id"":""10057"",""color"":""GREY_DARKEST""}},""Probability"":{""id"":""customfield_10093"",""value"":{""value"":""Very High"",""id"":""10060""}},""Mitigation Strategy"":{""id"":""customfield_10094"",""value"":""1. Save a local backup of the .vpp project and retain the generated diagram source files before changing versions.\n2. Record the desktop version and error message. Contact the Mousaa workspace administrator to confirm repository compatibility and request the required upgrade.\n3. Coordinate compatible desktop versions with Abdul before the shared repository is upgraded.\n4. After completion, test login, diagram import, project saving, and sharing. Confirm Abdul can open the updated project.\n5. Continue local model work while access is blocked. Contact Visual Paradigm support or the supervisor if unresolved within 48 hours or sooner if the submission is at risk.\n6. Review daily while blocked. Move to Monitoring after access and the required model workflow are verified.\n\n""},""Development"":{""id"":""customfield_10000"",""value"":""{}""}}","https://basketball-strategy.atlassian.net/browse/BSR-111","2026-10-03T22:28:16.320Z"
+"BSR-112","Supabase free-project limit prevents resuming the capstone project","Monitoring","Risk","","Gurkaranjit Asahan","712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36","","","","","","0","","","2026-10-03T18:07:53.621-0400","Current status — October 3, 2026: Monitoring. The capstone Supabase project is restored on the Free plan. Real sign-in, profile access, schema/RLS and application checks passed. The prior resumption blocker is no longer present; free-project availability remains subject to monitoring. See dated execution comments.
+
+Original incident record (September 22, retained for history):
+
+The Supabase project ""Basketball Playtype Ranker"" is paused. Resuming it is blocked because an organization owner/administrator has reached the limit of two active free projects across organizations where they are an owner or administrator.
+
+Trigger: the project is paused and the dashboard refuses to resume it because of the active free-project limit. This condition has already occurred; the original reason for the pause has not been confirmed.
+
+Probability: Very High because the resumption blocker is already present.    
+Impact: Serious because functions that depend on this Supabase project may remain unavailable, delaying integration testing and demonstrations. Restoring availability may also require an approved paid plan.
+
+The dashboard reports that data, backups, and storage objects remain safe. It displays 01 Jun 2027 as the last date for resuming this project. After that date, it says the project cannot be resumed but data remains available for download. No data loss is currently reported.","Comment 10803 | 2026-09-22T13:56:02.544-0400 | Gurkaranjit Asahan
+The Supabase dashboard reports that ""Basketball Playtype Ranker"" is paused and cannot be resumed because an owner/administrator has reached the two-active-free-project limit.
+
+Recorded as Active. Probability: Very High. Impact: Serious.
+
+The dashboard says data, backups, and storage objects remain safe and the project can be resumed until 01 Jun 2027. No data loss is being reported.
+
+Next action: preserve the available backups, review active free projects with Abdul, and free capacity by pausing an approved unused project or agree a paid-plan option before upgrading.
+
+Resumption and application tests have not yet been verified. Next review: within 48 hours.
+
+Comment 10831 | 2026-10-03T17:29:10.614-0400 | Gurkaranjit Asahan
+October 3 availability/schema monitoring: the capstone Supabase project is restored on the Free plan. The SCRUM-481 migration in [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da) was applied, and `supabase/tests/gameplan_state_verification.sql` passed in live rollback-only transactions, alongside isolated PostgreSQL tests. Owner/role isolation and constraints are recorded in BST-125/126; temporary fixture data was rolled back.
+
+This confirms current database availability and tested schema/RLS behavior. It does not by itself prove the production browser sign-in journey or guarantee that a free project will never pause again. BST-128 remains pending for actual coach/analyst journeys. No paid plan change or completed test-account provisioning is claimed by this entry. Review availability before the next demo and after the pending application checks.
+
+Comment 10863 | 2026-10-03T18:07:51.226-0400 | Gurkaranjit Asahan
+October 3 availability verification: move from Active to Monitoring. Supabase is restored on the Free plan. Beyond the earlier rollback SQL PASS, real coach/analyst password sessions, protected profile roles and live Gameplan REST ownership/constraint/revision checks passed within 49/49 production checks. Browser sign-in and the applicable coach/analyst pages also worked; temporary test-state fixtures were removed. The current resumption blocker is no longer present. Monitor free-project availability before demonstrations and after inactivity. No paid upgrade, indefinite availability guarantee or change to another project's state is claimed.","[]","{""Rank"":{""id"":""customfield_10019"",""value"":""0|i00212:""},""Risk Area"":{""id"":""customfield_10091"",""value"":{""value"":""Project"",""id"":""10053""}},""Impact"":{""id"":""customfield_10092"",""value"":{""value"":""Serious"",""id"":""10057"",""color"":""GREY_DARKEST""}},""Probability"":{""id"":""customfield_10093"",""value"":{""value"":""High"",""id"":""10061"",""color"":""MAGENTA_DARKER""}},""Mitigation Strategy"":{""id"":""customfield_10094"",""value"":""1. Save the pause and free-project-limit notices as evidence. Download the available database backup and storage objects and keep them securely before changing project arrangements.\n2. Review active free projects with Abdul and the relevant project owners. With the owner's approval, pause an unused, non-critical project to free capacity. Do not pause another required service or delete the capstone project.\n3. If no suitable project can be paused, agree an affordable paid-plan option with the team before upgrading. Do not make unapproved billing changes.\n4. After freeing capacity or arranging an approved upgrade, resume \""Basketball Playtype Ranker\"". Verify the dashboard status and test the application's implemented Supabase-dependent functions, including login and profile/role access where used.\n5. Record the action taken and actual test results in Jira. If resuming is still blocked, contact Supabase support and notify Abdul and the supervisor when a deadline is at risk.\n6. Review within 48 hours, then daily while blocked. After successful resumption and application checks, move to Monitoring and reassess probability. Review availability and free-project capacity weekly and before demonstrations. Track the dashboard's 01 Jun 2027 resumption deadline.\n\n""}}","https://basketball-strategy.atlassian.net/browse/BSR-112","2026-10-03T22:28:16.320Z"

@@ -1,0 +1,264 @@
+{
+  "captured_at_utc": "2026-10-03T21:34:23.473739+00:00",
+  "files": [
+    {
+      "file": "backend-tests.xml",
+      "source_artifact": "backend-tests.xml",
+      "bytes": 21606,
+      "sha256": "accb5a9ad935fac8b9bce3e72f945a511bf7f667185660554cb958fb4bdb6db5"
+    },
+    {
+      "file": "backend-tests.txt",
+      "source_artifact": "backend-tests.log",
+      "bytes": 2239,
+      "sha256": "d3a13a96f73068a74625dd65e24ebb32601745cc3447a3cb822ab60ea1cd3e76"
+    },
+    {
+      "file": "frontend-tests-initial.xml",
+      "source_artifact": "frontend-tests.xml",
+      "bytes": 3265,
+      "sha256": "6a03a1fe291fa407dc5ea8cffdcdbbc6d791f2e9cfcdbb4dcd92d189f300b6dd"
+    },
+    {
+      "file": "frontend-tests-initial.txt",
+      "source_artifact": "frontend-tests.log",
+      "bytes": 511,
+      "sha256": "37ab569ae2e6252f84dc520a2ad79c6ed00960635b8834a49befe5932903346d"
+    },
+    {
+      "file": "frontend-build-initial.txt",
+      "source_artifact": "frontend-build.log",
+      "bytes": 2198,
+      "sha256": "ad623e3b36856ceeecdd14967189282e8e4de1b6d165b79c137b4918afc490ec"
+    },
+    {
+      "file": "frontend-validation-initial.json",
+      "source_artifact": "frontend-validation.json",
+      "bytes": 1305,
+      "sha256": "d9a83958f46b7e2fb0ec07c2f9692d0c2f4c0e5ab4031347676f4d0f4954ad6f"
+    },
+    {
+      "file": "backend-deployment.json",
+      "source_artifact": "backend-deployment.json",
+      "bytes": 3319,
+      "sha256": "30d115fc89d307ee0901c472f3830d71ad3a9e84bc8fb6ec3a36b8ced2ff9230"
+    },
+    {
+      "file": "backend-production-smoke.json",
+      "source_artifact": "backend-production-smoke.json",
+      "bytes": 2987,
+      "sha256": "3d76fa58afa12ceaa7ec54ec137d3c56249d6a24aab660e613d56f8d5ca57431"
+    },
+    {
+      "file": "gameplan-local-test.txt",
+      "source_artifact": "gameplan-local-test.log",
+      "bytes": 3734,
+      "sha256": "d326db88ae44a913ec709d37b6654887875764eb5d67f4814e270e7f02f078fa"
+    },
+    {
+      "file": "live-verification.json",
+      "source_artifact": "live/live-verification.json",
+      "bytes": 6227,
+      "sha256": "7a1a941da1d39d99e5bf202753d8aca8d4a5adaabe44a84bdf783b760c8029c3"
+    },
+    {
+      "file": "calibration-live.json",
+      "source_artifact": "live/calibration-live.json",
+      "bytes": 6903,
+      "sha256": "940a7d7e0c1d8d024ce21910f182bdbcac041ae3844308515556337926db8866"
+    },
+    {
+      "file": "topk-uplift-live.json",
+      "source_artifact": "live/topk-uplift-live.json",
+      "bytes": 3196,
+      "sha256": "a3d42fb9e213b54132cc7b23f4e17908675f1c1dd98d4216f3ea43df1f7bc2a8"
+    },
+    {
+      "file": "topk-uplift-live.csv",
+      "source_artifact": "live/topk-uplift-live.csv",
+      "bytes": 5179,
+      "sha256": "3177cf621c257aecb13e6a0c9e155333bf27d67c0abab25fbdc095485e4001aa"
+    },
+    {
+      "file": "browser-verification-initial.json",
+      "source_artifact": "browser-verification.json",
+      "derivation": "Exact copy of root browser observation record",
+      "bytes": 2100,
+      "sha256": "410f863ae4e5f9dab6f29ba5c6bec798c9bd80c98fa06c65c035eee71efabe9f"
+    },
+    {
+      "file": "gameplan-live-summary.json",
+      "source_artifact": "gameplan-live-evidence.json",
+      "derivation": "Curated nonsecret result fields",
+      "bytes": 948,
+      "sha256": "b5ab720f3e06dc643034b270f4114ea202cd26c154e18f44af8e8a88fec66827"
+    },
+    {
+      "file": "frontend-deployment-initial.json",
+      "source_artifact": "vercel-deploy.log",
+      "derivation": "Curated deployment metadata",
+      "bytes": 644,
+      "sha256": "37cc3dd89984c3537a7f26aac2b8ce0e0e7c6e84cb77cfe6e5464c53fb5ccb6a"
+    },
+    {
+      "file": "export-proxy-validation.json",
+      "source_artifact": "export-proxy-validation.json",
+      "derivation": "Exact copy of recorded execution/release evidence",
+      "bytes": 2057,
+      "sha256": "974b33a20d2dc8fd8d4193af8f333f9d10b0f9c653da6cd5ddf9b915176954af"
+    },
+    {
+      "file": "frontend-deployment-proxy.json",
+      "source_artifact": "frontend-deployment-final.json",
+      "derivation": "Preserved intermediate release record before final coach PDF compatibility correction",
+      "bytes": 1088,
+      "sha256": "074236852668375013daf1d68ba5ed75ce5141e8b079c55c81ffec9cc9c529d6"
+    },
+    {
+      "file": "export-proxy-ci.json",
+      "source_artifact": "final-application-ci.json",
+      "derivation": "Preserved intermediate release record before final coach PDF compatibility correction",
+      "bytes": 289,
+      "sha256": "87f7d091c97f1370151f0ee3f0acbcde0af4c833990229eab2240938e1bc7c8e"
+    },
+    {
+      "file": "export-proxy-live-intermediate.json",
+      "source_artifact": "export-proxy-live-verification.json",
+      "derivation": "Preserved intermediate release record before final coach PDF compatibility correction",
+      "bytes": 3354,
+      "sha256": "ec93559a7e5bfd043e7537606a16c10c081b0b50878daf86b9763e7ea5f548a4"
+    },
+    {
+      "file": "frontend-deployment-final.json",
+      "source_artifact": "frontend-deployment-final.json",
+      "derivation": "Exact copy of recorded evidence",
+      "bytes": 1051,
+      "sha256": "d5a98e40eef12d1b78534ba4cf17cffc549e4b850eac48371adec0a0ee9c8d85"
+    },
+    {
+      "file": "final-application-ci.json",
+      "source_artifact": "final-application-ci.json",
+      "derivation": "Exact copy of recorded evidence",
+      "bytes": 289,
+      "sha256": "58f4cfbed520b8407014463baf25531141072166ba41797f99dcb2db0c1fb66b"
+    },
+    {
+      "file": "export-proxy-live-verification.json",
+      "source_artifact": "export-proxy-live-verification.json",
+      "derivation": "Exact copy of recorded evidence",
+      "bytes": 3483,
+      "sha256": "9092acf8df7288df5c70145bf85bc0389a6a2d94e58db09b2608177cb17340dd"
+    },
+    {
+      "file": "frontend-tests-final.xml",
+      "source_artifact": "frontend-tests-final.xml",
+      "derivation": "Exact copy of recorded evidence",
+      "bytes": 8229,
+      "sha256": "815bd58a6465022e01c9f9c6693cf071baf4629130ba4325b3860aec72300d71"
+    },
+    {
+      "file": "frontend-tests-final.txt",
+      "source_artifact": "frontend-tests-final.log",
+      "derivation": "Exact copy of recorded evidence",
+      "bytes": 622,
+      "sha256": "38c3ec4c7b39ea477022746ff811d419270c7bfea919c7b2acb5bd830b2918f6"
+    },
+    {
+      "file": "verifier-safety-tests.txt",
+      "source_artifact": "verifier-safety-tests.log",
+      "derivation": "Exact copy of recorded evidence",
+      "bytes": 1203,
+      "sha256": "64f116bea9eb55d94cfafd2bb9c90c4646c3b82de634c37d6b0a5f8017dfbf8c"
+    },
+    {
+      "file": "browser-verification-final.json",
+      "source_artifact": "browser-verification-final.json",
+      "derivation": "Exact copy of recorded final evidence",
+      "bytes": 2832,
+      "sha256": "0954a225ed936120244bed8b1492b47cffd6372eac536d425167a897fcd6776f"
+    },
+    {
+      "file": "downloaded-file-verification.json",
+      "source_artifact": "downloaded-file-verification.json",
+      "derivation": "Exact copy of recorded final evidence",
+      "bytes": 3405,
+      "sha256": "8698e99ff86d9f5357c38dee397a93f0e3ffee66c3927b4b587e22c1db395052"
+    },
+    {
+      "file": "export-proxy-validation-final.json",
+      "source_artifact": "export-proxy-validation-final.json",
+      "derivation": "Exact copy of recorded final evidence",
+      "bytes": 760,
+      "sha256": "65a4754922b213368f73add6b4a3504d4c3efe09b95c30ee3f0fc26c4b9840e1"
+    },
+    {
+      "file": "../project-management/jira-final-snapshot.json",
+      "source_artifact": "jira-final-snapshot.json",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 390726,
+      "sha256": "c9130b78a696ee1d2c1563e7eb1b5d954a7fbc053d4b45d311ebe1be83b6f1bb"
+    },
+    {
+      "file": "../project-management/jira-export-verification.json",
+      "source_artifact": "jira-export-verification.json",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 1938,
+      "sha256": "03b32e638cb10b8d5a9625fa62404f7f7881e32f1fcd44e3889c306aee66e79b"
+    },
+    {
+      "file": "../project-management/jira-export-manifest.json",
+      "source_artifact": "jira-export-manifest.json",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 3438,
+      "sha256": "f0d8a7d32d034d26847a8e5d631142a01345faa2f62cfa1d98f884908ba6e10f"
+    },
+    {
+      "file": "../project-management/Jira-current-iteration-plan.csv",
+      "source_artifact": "Jira-current-iteration-plan.csv",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 68599,
+      "sha256": "2de815ad1c197a2690c4ceb307ef267634a3cd6fa8d672a6964dd78e5125d354"
+    },
+    {
+      "file": "../project-management/Jira-future-iteration-work.csv",
+      "source_artifact": "Jira-future-iteration-work.csv",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 3696,
+      "sha256": "dc9e16b391b5aef9a8a7fdcd34a5dbf28065bde039871416f7b386425c4814c6"
+    },
+    {
+      "file": "../project-management/Jira-iteration-tests.csv",
+      "source_artifact": "Jira-iteration-tests.csv",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 48337,
+      "sha256": "9fdcf79bb0222ebc69f3297a131fb281701a94adf38132fe36ced56ba68597ab"
+    },
+    {
+      "file": "../project-management/Jira-risk-monitoring.csv",
+      "source_artifact": "Jira-risk-monitoring.csv",
+      "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
+      "bytes": 31974,
+      "sha256": "6df580ba1fc7770ac43011d55197e65e9d26e31a4dadde91ef031265b439fb56"
+    },
+    {
+      "file": "source-integration/backend-tests.txt",
+      "source_artifact": "validation/source-integration/backend-tests.txt",
+      "bytes": 2256,
+      "sha256": "b73820c45c06b2e86cd4042215f6da807769d3f54a62051b88734a2fd7b78068"
+    },
+    {
+      "file": "source-integration/backend-tests.xml",
+      "source_artifact": "validation/source-integration/backend-tests.xml",
+      "bytes": 22422,
+      "sha256": "e891dc5021ecce76e0b1d52f0b98d178b4e9580ab15af69c85ebd817e90a1e52"
+    },
+    {
+      "file": "source-integration/source-integration-evidence.json",
+      "source_artifact": "validation/source-integration/source-integration-evidence.json",
+      "bytes": 1781,
+      "sha256": "4a2ff9764b2a09d45e3eb32639c733313a891edda30c1e8b830eb40a5bc72161"
+    }
+  ],
+  "scope": "Inspected nonsecret execution evidence only; no passwords, JWTs, API keys or administrator environment files. Initial frontend/browser records are preserved alongside SCRUM-527 correction, final release and retest. Source .log artifacts use .txt extension so repository ignore rules do not omit them.",
+  "updated_at_utc": "2026-10-03T22:39:26.623926+00:00"
+}

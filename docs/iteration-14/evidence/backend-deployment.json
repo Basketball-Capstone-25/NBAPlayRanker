@@ -1,0 +1,108 @@
+{
+  "commit": "e950869cb318c6b44220d3c06be4ba2aa16521da",
+  "command": [
+    "gcloud",
+    "run",
+    "deploy",
+    "nba-playranker-api",
+    "--project=nba-playranker",
+    "--region=northamerica-northeast1",
+    "--source=backend",
+    "--update-labels=commit=e950869",
+    "--quiet"
+  ],
+  "start_utc": "2026-10-03T21:23:46.936678+00:00",
+  "end_utc": "2026-10-03T21:28:03.524137+00:00",
+  "seconds": 256.587,
+  "exit_code": 0,
+  "before": {
+    "revision": "nba-playranker-api-00005-muh",
+    "latest_created_revision": "nba-playranker-api-00005-muh",
+    "url": "https://nba-playranker-api-bbv5uwlpba-nn.a.run.app",
+    "traffic": [
+      {
+        "latestRevision": true,
+        "percent": 100,
+        "revisionName": "nba-playranker-api-00005-muh"
+      }
+    ],
+    "labels": {
+      "cloud.googleapis.com/location": "northamerica-northeast1",
+      "run.googleapis.com/satisfiesPzs": "true"
+    },
+    "build_id": "ee12ec06-f451-4942-96b3-87012947889d",
+    "build_name": "projects/937082897804/locations/northamerica-northeast1/builds/ee12ec06-f451-4942-96b3-87012947889d",
+    "image": "northamerica-northeast1-docker.pkg.dev/nba-playranker/cloud-run-source-deploy/nba-playranker-api@sha256:5e51a3c2b6f50ab15d33aa467b92a8b6cd36a89027520437a4d99424df5bce22",
+    "resources": {
+      "limits": {
+        "cpu": "1",
+        "memory": "2Gi"
+      }
+    },
+    "concurrency": 2,
+    "timeout_seconds": 300,
+    "service_max": "2",
+    "service_min": "0",
+    "revision_max": "2",
+    "revision_min": "0",
+    "cpu_throttling": "true",
+    "env_names": [
+      "SUPABASE_URL",
+      "SUPABASE_PUBLISHABLE_KEY",
+      "FRONTEND_ORIGIN",
+      "ALLOW_INSECURE_DEV_AUTH",
+      "MPLBACKEND",
+      "OPENBLAS_NUM_THREADS",
+      "OMP_NUM_THREADS",
+      "MKL_NUM_THREADS",
+      "NUMEXPR_NUM_THREADS",
+      "LOKY_MAX_CPU_COUNT"
+    ]
+  },
+  "after": {
+    "revision": "nba-playranker-api-00005-hrn",
+    "latest_created_revision": "nba-playranker-api-00005-hrn",
+    "url": "https://nba-playranker-api-bbv5uwlpba-nn.a.run.app",
+    "traffic": [
+      {
+        "latestRevision": true,
+        "percent": 100,
+        "revisionName": "nba-playranker-api-00005-hrn"
+      }
+    ],
+    "labels": {
+      "cloud.googleapis.com/location": "northamerica-northeast1",
+      "commit": "e950869",
+      "run.googleapis.com/satisfiesPzs": "true"
+    },
+    "build_id": "7d519406-32d9-4196-be2b-6d640016974b",
+    "build_name": "projects/937082897804/locations/northamerica-northeast1/builds/7d519406-32d9-4196-be2b-6d640016974b",
+    "image": "northamerica-northeast1-docker.pkg.dev/nba-playranker/cloud-run-source-deploy/nba-playranker-api@sha256:ce804f589a7d3811462682a341829902d58586f7769d76cd0a432233e4193573",
+    "resources": {
+      "limits": {
+        "cpu": "1",
+        "memory": "2Gi"
+      }
+    },
+    "concurrency": 2,
+    "timeout_seconds": 300,
+    "service_max": "2",
+    "service_min": "0",
+    "revision_max": "2",
+    "revision_min": "0",
+    "cpu_throttling": "true",
+    "env_names": [
+      "SUPABASE_URL",
+      "SUPABASE_PUBLISHABLE_KEY",
+      "FRONTEND_ORIGIN",
+      "ALLOW_INSECURE_DEV_AUTH",
+      "MPLBACKEND",
+      "OPENBLAS_NUM_THREADS",
+      "OMP_NUM_THREADS",
+      "MKL_NUM_THREADS",
+      "NUMEXPR_NUM_THREADS",
+      "LOKY_MAX_CPU_COUNT"
+    ]
+  },
+  "environment_preserved": true
+}

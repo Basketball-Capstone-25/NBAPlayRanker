@@ -1,0 +1,49 @@
+{
+  "capturedAtUTC": "2026-10-03T22:28:16.320Z",
+  "snapshotFile": "/Users/gurkasahan/Documents/ChatGPT/Capstone/tmp/elaboration/jira-final-snapshot.json",
+  "snapshotSha256": "c9130b78a696ee1d2c1563e7eb1b5d954a7fbc053d4b45d311ebe1be83b6f1bb",
+  "csvExports": [
+    {
+      "group": "current_plan",
+      "file": "/Users/gurkasahan/Documents/ChatGPT/Capstone/outputs/iteration-14-jira-2026-10-03/Jira-current-iteration-plan.csv",
+      "rows": 13,
+      "columns": 22,
+      "sha256": "2de815ad1c197a2690c4ceb307ef267634a3cd6fa8d672a6964dd78e5125d354"
+    },
+    {
+      "group": "future_work",
+      "file": "/Users/gurkasahan/Documents/ChatGPT/Capstone/outputs/iteration-14-jira-2026-10-03/Jira-future-iteration-work.csv",
+      "rows": 1,
+      "columns": 22,
+      "sha256": "dc9e16b391b5aef9a8a7fdcd34a5dbf28065bde039871416f7b386425c4814c6"
+    },
+    {
+      "group": "tests",
+      "file": "/Users/gurkasahan/Documents/ChatGPT/Capstone/outputs/iteration-14-jira-2026-10-03/Jira-iteration-tests.csv",
+      "rows": 10,
+      "columns": 22,
+      "sha256": "9fdcf79bb0222ebc69f3297a131fb281701a94adf38132fe36ced56ba68597ab"
+    },
+    {
+      "group": "risks",
+      "file": "/Users/gurkasahan/Documents/ChatGPT/Capstone/outputs/iteration-14-jira-2026-10-03/Jira-risk-monitoring.csv",
+      "rows": 8,
+      "columns": 22,
+      "sha256": "6df580ba1fc7770ac43011d55197e65e9d26e31a4dadde91ef031265b439fb56"
+    }
+  ],
+  "roundTripPreservesDescriptionsCommentsWorklogsAndCustomFields": true,
+  "currentPlanDone": 13,
+  "currentParentStoryPoints": 13,
+  "testsPassIncludingSuite": 10,
+  "futureWork": {
+    "key": "SCRUM-526",
+    "status": "To Do",
+    "sprint": "Iteration-15",
+    "sprintId": 183,
+    "storyPoints": 3
+  },
+  "worklogCount": 7,
+  "timeSpentSeconds": 4500,
+  "previewVisualInspection": "All four previews reviewed; headers, issue keys, summaries, statuses, types, parents and assignees visible without truncation."
+}

@@ -1,0 +1,35 @@
+# Iteration 14 scope and test traceability
+
+The four parent tasks below were assigned to Gurkaranjit Asahan in Iteration 14.
+The execution evidence reflects the recorded runs. The
+[final Jira snapshot](project-management/README.md), captured at 22:28:16.320 UTC
+on 3 October, records all 13 current story/subtask records Done and all nine test
+cases plus their suite Pass. The test plan is
+[BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+
+| Parent scope | Development and verification subtasks | Test cases | Implementation and evidence |
+| --- | --- | --- | --- |
+| [SCRUM-475 — Add /metrics/topk-uplift API endpoint with CSV/JSON export](https://basketball-strategy.atlassian.net/browse/SCRUM-475) | [SCRUM-518 — JSON/CSV contract](https://basketball-strategy.atlassian.net/browse/SCRUM-518); [SCRUM-519 — arithmetic, parity, validation and roles](https://basketball-strategy.atlassian.net/browse/SCRUM-519) | [BST-121 — weighted arithmetic and seasonal scope](https://basketball-strategy.atlassian.net/browse/BST-121); [BST-122 — authorization and export contract](https://basketball-strategy.atlassian.net/browse/BST-122) | [Domain calculation](../../backend/domain/statistical_analysis/topk_uplift.py), [API router](../../backend/application/api_coordination/topk_uplift_endpoints.py), [tests](../../backend/tests/test_topk_uplift.py). Commit [5092bf1](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/5092bf1). [Live JSON](evidence/topk-uplift-live.json), [CSV](evidence/topk-uplift-live.csv), authenticated export/parity checks in [live verification](evidence/live-verification.json). |
+| [SCRUM-476 — Implement calibration check (predicted vs. realized PPP)](https://basketball-strategy.atlassian.net/browse/SCRUM-476) | [SCRUM-520 — holdout analysis and analyst presentation](https://basketball-strategy.atlassian.net/browse/SCRUM-520); [SCRUM-521 — calculations, sparse data and analyst workflow](https://basketball-strategy.atlassian.net/browse/SCRUM-521) | [BST-123 — temporal holdout and train-only preprocessing](https://basketball-strategy.atlassian.net/browse/BST-123); [BST-124 — metrics, sparse guards and UI](https://basketball-strategy.atlassian.net/browse/BST-124) | [Calibration domain](../../backend/domain/statistical_analysis/calibration.py), [API router](../../backend/application/api_coordination/calibration_endpoints.py), [tests](../../backend/tests/test_calibration.py), [panel](../../app/ui/analytics/_components/CalibrationPanel.tsx), [service](../../app/services/calibration.ts). Commit [b9f145d](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d). [Live report](evidence/calibration-live.json) and analyst calibration observation in [browser verification](evidence/browser-verification-initial.json). |
+| [SCRUM-481 — Design Supabase schema for Gameplan notes / tactics board state](https://basketball-strategy.atlassian.net/browse/SCRUM-481) | [SCRUM-522 — migration, constraints and ownership](https://basketball-strategy.atlassian.net/browse/SCRUM-522); [SCRUM-523 — constraints and cross-user isolation](https://basketball-strategy.atlassian.net/browse/SCRUM-523) | [BST-125 — JSON state and matchup uniqueness](https://basketball-strategy.atlassian.net/browse/BST-125); [BST-126 — ownership and role isolation](https://basketball-strategy.atlassian.net/browse/BST-126) | [Migration](../../supabase/migrations/20261003211500_gameplan_state_schema.sql), [rollback SQL verification](../../supabase/tests/gameplan_state_verification.sql), [storage contract](../gameplan-storage-contract.md). Commit [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869). [Local SQL output](evidence/gameplan-local-test.txt), [live SQL summary](evidence/gameplan-live-summary.json), real-session CRUD/isolation checks in [live verification](evidence/live-verification.json). |
+| [SCRUM-506 — Redeploy Website](https://basketball-strategy.atlassian.net/browse/SCRUM-506) | [SCRUM-524 — release within hosting limits](https://basketball-strategy.atlassian.net/browse/SCRUM-524); [SCRUM-525 — production smoke and application journeys](https://basketball-strategy.atlassian.net/browse/SCRUM-525) | [BST-127 — deployment/smoke](https://basketball-strategy.atlassian.net/browse/BST-127); [BST-128 — authenticated journeys](https://basketball-strategy.atlassian.net/browse/BST-128) | [Backend release](evidence/backend-deployment.json), [8 smoke checks](evidence/backend-production-smoke.json), [final frontend release](evidence/frontend-deployment-final.json), [49 real-session checks](evidence/live-verification.json), [initial browser results](evidence/browser-verification-initial.json), [final browser retest](evidence/browser-verification-final.json) and [actual saved file inspection](evidence/downloaded-file-verification.json). |
+| [SCRUM-527 — Fix authenticated browser export downloads](https://basketball-strategy.atlassian.net/browse/SCRUM-527), under SCRUM-506 | Regression correction in [1068ef2](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/1068ef2), same-origin HTTP delivery in [c3044da](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/c3044da), and coach PDF compatibility in [18baffc](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/18baffc). | [BST-129 — Signed-in browser downloads preserve authorization](https://basketball-strategy.atlassian.net/browse/BST-129) | Initial direct CSV navigation omitted the Bearer header; browser blob downloads then stopped. The corrected [export route](../../app/api/exports/route.ts) uses verified session cookies and server-side Bearer forwarding. [34-test final JUnit](evidence/frontend-tests-final.xml), [14 live checks](evidence/export-proxy-live-verification.json), and [browser plus saved-file results](evidence/browser-verification-final.json) record the correction. |
+
+## Dependency and ownership boundaries
+
+- [SCRUM-474](https://basketball-strategy.atlassian.net/browse/SCRUM-474), Abdul's
+  Top-K calculation work, remains separately owned. SCRUM-475's minimal pure
+  calculation adapter supplies its endpoint contract; that does not establish
+  completion of SCRUM-474 or the broader time-split uplift requirement.
+- [SCRUM-482](https://basketball-strategy.atlassian.net/browse/SCRUM-482), Abdul's
+  future Iteration 16 migration of Tactics Board state from localStorage, remains
+  separate. SCRUM-481 supplies a live schema and integration contract, not a
+  currently implemented browser cloud-save flow.
+- [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526) tracks
+  evaluation with strictly lagged predictors and untouched time holdouts.
+  It is scheduled in **Iteration 15 (ID 183)**, To Do, with a 3-point estimate.
+  SCRUM-476 does not claim that its retrospective errors measure future-game
+  forecasting accuracy.
+- Visual Paradigm alignment is committed in teamwork revision 51, with the
+  native model and actual author/comment recorded in the [model package](../model/README.md)
+  and [synchronized desktop revision evidence](../model/teamwork-revision-evidence.json).
