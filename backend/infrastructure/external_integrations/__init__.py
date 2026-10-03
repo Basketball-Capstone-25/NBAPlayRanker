@@ -11,6 +11,7 @@ from infrastructure.external_integrations.supabase_jwt import (
 from infrastructure.external_integrations.nlp_parser import (
     parse_game_context,
     context_to_context_ml_params,
+    resolve_context_ml_params,
 )
 from infrastructure.external_integrations.nlp_explain import (
     explain_recommendations,
@@ -25,6 +26,7 @@ __all__ = [
     "is_insecure_dev_auth_enabled",
     "parse_game_context",
     "context_to_context_ml_params",
+    "resolve_context_ml_params",
     "explain_recommendations",
     "explain_shotplan",
 ]

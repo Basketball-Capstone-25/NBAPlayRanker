@@ -7,6 +7,7 @@ What changed from the old version:
 - Keeps the same public functions:
     - parse_game_context(...)
     - context_to_context_ml_params(...)
+    - resolve_context_ml_params(...)
 - Preserves the same main response shape for the frontend.
 - Uses the new spaCy/NLTK pipeline as the primary extraction layer.
 - Keeps deterministic regex/taxonomy parsing as a fallback for stability and
@@ -925,6 +926,74 @@ def context_to_context_ml_params(context: Dict[str, Any]) -> Dict[str, Any]:
             out[key] = context[key]
 
     return out
+
+
+# ---------------------------------------------------------------------------
+# Context guard (SCRUM-502): neutral defaults + range validation
+# ---------------------------------------------------------------------------
+# Values passed to the recommender when a prompt cannot be parsed
+# (e.g. "Just win the game"): tied score at the start of the game, which the
+# context model treats as a neutral, baseline-equivalent situation.
+NEUTRAL_CONTEXT_DEFAULTS: Dict[str, Any] = {
+    "period": 1,
+    "margin": 0.0,
+    "time_remaining": 720.0,
+}
+
+# Inclusive plausible bounds. Anything outside is rejected and replaced by the
+# neutral default so garbage never reaches the ranking logic.
+CONTEXT_FIELD_BOUNDS: Dict[str, Tuple[float, float]] = {
+    "period": (1.0, 5.0),
+    "margin": (-60.0, 60.0),
+    "time_remaining": (0.0, 720.0),
+}
+
+
+@dataclass(frozen=True)
+class ContextGuardResult:
+    params: Dict[str, Any]
+    defaulted_fields: List[str] = field(default_factory=list)
+    rejected_fields: List[str] = field(default_factory=list)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+def _in_bounds(name: str, value: Any) -> bool:
+    number = _safe_float(value)
+    if number is None:
+        return False
+    lo, hi = CONTEXT_FIELD_BOUNDS[name]
+    return lo <= number <= hi
+
+
+def apply_neutral_defaults(context: Dict[str, Any]) -> List[str]:
+    """Fill missing required fields in place; return the names that were defaulted."""
+    defaulted: List[str] = []
+    for name, default in NEUTRAL_CONTEXT_DEFAULTS.items():
+        if context.get(name) is None:
+            context[name] = default
+            defaulted.append(name)
+    return defaulted
+
+
+def resolve_context_ml_params(context: Dict[str, Any]) -> ContextGuardResult:
+    """Always return recommender-safe params, reporting what was defaulted or rejected."""
+    safe: Dict[str, Any] = dict(context or {})
+    rejected: List[str] = []
+    for name in NEUTRAL_CONTEXT_DEFAULTS:
+        if safe.get(name) is not None and not _in_bounds(name, safe[name]):
+            rejected.append(name)
+            safe[name] = None
+
+    shot_clock = _safe_float(safe.get("shot_clock"))
+    if safe.get("shot_clock") is not None and (shot_clock is None or not 0.0 <= shot_clock <= 24.0):
+        rejected.append("shot_clock")
+        safe["shot_clock"] = None
+
+    defaulted = apply_neutral_defaults(safe)
+    params = context_to_context_ml_params(safe)
+    return ContextGuardResult(params=params, defaulted_fields=defaulted, rejected_fields=rejected)
 
 
 if __name__ == "__main__":

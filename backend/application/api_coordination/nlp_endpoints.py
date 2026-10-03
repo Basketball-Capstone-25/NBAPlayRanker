@@ -24,8 +24,8 @@ from pydantic import BaseModel, Field, field_validator, model_validator
 
 from infrastructure.external_integrations.nlp_parser import (
     NLPParseResult,
-    context_to_context_ml_params,
     parse_game_context,
+    resolve_context_ml_params,
 )
 from infrastructure.external_integrations.nlp_explain import (
     ExplanationResult,
@@ -62,6 +62,8 @@ class ParseResponse(BaseModel):
     matches: Dict[str, str] = Field(default_factory=dict)
     warnings: List[str] = Field(default_factory=list)
     context_ml_params: Optional[Dict[str, Any]] = None
+    defaulted_fields: List[str] = Field(default_factory=list)
+    rejected_fields: List[str] = Field(default_factory=list)
     parser_version: Optional[str] = None
     raw_text: Optional[str] = None
 
@@ -250,11 +252,10 @@ def _build_overall_summary(context: Dict[str, Any]) -> str:
 def nlp_parse(req: ParseRequest) -> ParseResponse:
     result = _safe_parse_text(req.text, req.defaults)
 
-    context_ml_params: Optional[Dict[str, Any]] = None
-    try:
-        context_ml_params = context_to_context_ml_params(result.context)
-    except Exception:
-        context_ml_params = None
+    # Unparseable or out-of-range fields fall back to neutral defaults so the
+    # recommender never receives missing or garbage values (SCRUM-502).
+    guard = resolve_context_ml_params(result.context)
+    context_ml_params: Optional[Dict[str, Any]] = guard.params
 
     context = dict(result.context)
     if "warnings" not in context:
@@ -270,6 +271,8 @@ def nlp_parse(req: ParseRequest) -> ParseResponse:
         matches=dict(result.matches),
         warnings=list(result.warnings),
         context_ml_params=context_ml_params,
+        defaulted_fields=list(guard.defaulted_fields),
+        rejected_fields=list(guard.rejected_fields),
         parser_version=parser_version_str,
         raw_text=str(result.raw_text or req.text),
     )
