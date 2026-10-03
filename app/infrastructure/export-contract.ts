@@ -6,6 +6,7 @@ export const EXPORT_PATHS = new Set([
   "/shots.csv",
   "/metrics/topk-uplift.csv",
   "/export/shotplan.pdf",
+  "/export/playtype-viz.pdf",
 ]);
 
 export function exportFilename(path: string, requested?: string | null): string {

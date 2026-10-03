@@ -95,9 +95,9 @@ describe("same-origin export proxy", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it("preserves PDF headers and a safe server filename", async () => {
+  it.each(["/export/shotplan.pdf", "/export/playtype-viz.pdf"])("preserves PDF headers and a safe server filename for %s", async path => {
     fetchMock.mockResolvedValue(new Response("%PDF-fixture", { headers: { "content-type": "application/pdf", "content-disposition": 'attachment; filename="TOR_shotplan.pdf"' } }));
-    const response = await GET(request("/export/shotplan.pdf"));
+    const response = await GET(request(path));
     expect(response.headers.get("content-disposition")).toBe('attachment; filename="TOR_shotplan.pdf"');
     expect(await response.text()).toBe("%PDF-fixture");
   });
