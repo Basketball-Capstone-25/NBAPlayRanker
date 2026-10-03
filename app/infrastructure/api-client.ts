@@ -28,6 +28,7 @@ export const FALLBACK_TEAMS = [
 //   (super useful for Dataset2 because routes might be mounted under /pbp or at root).
 
 import { createClient } from "../../lib/supabase/client";
+import { localExportUrl } from "./export-contract";
 
 /** Get Authorization headers for the current Supabase session. */
 async function getAuthHeaders(): Promise<Record<string, string>> {
@@ -100,49 +101,22 @@ async function fetchJsonWithStatus<T>(url: string): Promise<T> {
 
 /**
  * Authenticated file download (PDF, CSV, etc.).
- * Uses fetch + blob to attach the auth header, then triggers a browser download.
+ * Uses a same-origin HTTP attachment. The server forwards the session token.
  */
 export async function authenticatedDownload(url: string, filename?: string): Promise<void> {
+  const downloadUrl = localExportUrl(url, API_BASE, filename);
   const headers = await getAuthHeaders();
-  const res = await fetch(url, { cache: "no-store", headers });
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`Download failed (${res.status}): ${text}`);
-  }
-  const blob = await res.blob();
+  if (!headers.Authorization) throw new Error("Sign in to download this file.");
   const a = document.createElement("a");
-  const blobUrl = URL.createObjectURL(blob);
   try {
-    a.href = blobUrl;
-    a.download = filename || extractFilename(res) || filenameFromUrl(url) || "download";
+    a.href = downloadUrl;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    // Do not force a download attribute: server errors must remain error pages.
     document.body.appendChild(a);
     a.click();
   } finally {
-    // Give the browser time to consume the blob before releasing it.
-    setTimeout(() => {
-      try {
-        a.remove();
-      } finally {
-        URL.revokeObjectURL(blobUrl);
-      }
-    }, 1000);
-  }
-}
-
-function extractFilename(res: Response): string | null {
-  const cd = res.headers.get("Content-Disposition");
-  if (!cd) return null;
-  const match = cd.match(/filename="?([^";\s]+)"?/);
-  return match?.[1] ?? null;
-}
-
-function filenameFromUrl(url: string): string | null {
-  try {
-    // Cross-origin responses may not expose Content-Disposition to JavaScript.
-    const name = new URL(url, API_BASE).pathname.split("/").pop();
-    return name ? decodeURIComponent(name) : null;
-  } catch {
-    return null;
+    a.remove();
   }
 }
 
