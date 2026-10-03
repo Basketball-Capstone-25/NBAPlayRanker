@@ -239,8 +239,26 @@
       "derivation": "Exact copy of finalized live Jira snapshot/export evidence",
       "bytes": 31974,
       "sha256": "6df580ba1fc7770ac43011d55197e65e9d26e31a4dadde91ef031265b439fb56"
+    },
+    {
+      "file": "source-integration/backend-tests.txt",
+      "source_artifact": "validation/source-integration/backend-tests.txt",
+      "bytes": 2256,
+      "sha256": "b73820c45c06b2e86cd4042215f6da807769d3f54a62051b88734a2fd7b78068"
+    },
+    {
+      "file": "source-integration/backend-tests.xml",
+      "source_artifact": "validation/source-integration/backend-tests.xml",
+      "bytes": 22422,
+      "sha256": "e891dc5021ecce76e0b1d52f0b98d178b4e9580ab15af69c85ebd817e90a1e52"
+    },
+    {
+      "file": "source-integration/source-integration-evidence.json",
+      "source_artifact": "validation/source-integration/source-integration-evidence.json",
+      "bytes": 1781,
+      "sha256": "4a2ff9764b2a09d45e3eb32639c733313a891edda30c1e8b830eb40a5bc72161"
     }
   ],
   "scope": "Inspected nonsecret execution evidence only; no passwords, JWTs, API keys or administrator environment files. Initial frontend/browser records are preserved alongside SCRUM-527 correction, final release and retest. Source .log artifacts use .txt extension so repository ignore rules do not omit them.",
-  "updated_at_utc": "2026-10-03T22:33:08.362832+00:00"
+  "updated_at_utc": "2026-10-03T22:39:26.623926+00:00"
 }

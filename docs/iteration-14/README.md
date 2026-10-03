@@ -11,6 +11,12 @@ The deployed backend snapshot is commit `e950869cb318c6b44220d3c06be4ba2aa16521d
 The frontend correction is committed as `18baffc` and deployed; the user
 confirmed that the Data Explorer CSV finishes downloading and opens as CSV.
 
+The final shared-source archive also preserves Abdul's later SCRUM-502 NLP
+commits, integrated from `6886865`. All **182 backend tests passed** on that
+combined source. The dated production deployment above remains the release
+verified for the assigned work; the later NLP source changes are separately
+attributed and recorded in the [source integration evidence](evidence/source-integration/source-integration-evidence.json).
+
 | Assigned item | Implemented result | Evidence and remaining boundary |
 | --- | --- | --- |
 | [SCRUM-475](https://basketball-strategy.atlassian.net/browse/SCRUM-475) | Analyst-only Top-K PPP uplift JSON and CSV endpoints with matching results, validation and provenance. | Arithmetic/API tests and authenticated production exports passed. The result is a descriptive historical comparison, not causal or held-out uplift. Teammate SCRUM-474 remains separately owned. |

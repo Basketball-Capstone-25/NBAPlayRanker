@@ -9,6 +9,7 @@ future deployments or third-party services remain unchanged.
 | Check | Result | Evidence |
 | --- | --- | --- |
 | Integrated backend suite | **176 passed**, 0 failed/skipped, 57.37 seconds; one existing Starlette/httpx deprecation warning. | [JUnit](evidence/backend-tests.xml), [output](evidence/backend-tests.txt). |
+| Final shared-source integration | **182 passed**, zero failures/errors/skips, 43.90 seconds in pytest. Includes Abdul's later SCRUM-502 changes from `6886865`; no additional deployment was made during packaging. | [Integration record](evidence/source-integration/source-integration-evidence.json), [JUnit](evidence/source-integration/backend-tests.xml), [output](evidence/source-integration/backend-tests.txt). |
 | Initial frontend suite | **12 passed** in three auth/middleware test files. This run predates SCRUM-527 and does not claim calibration component unit coverage. | [JUnit](evidence/frontend-tests-initial.xml), [output](evidence/frontend-tests-initial.txt). |
 | Initial TypeScript and production build | Both exit 0; build generated 21 static pages. | [Commands, timestamps and exits](evidence/frontend-validation-initial.json), [build output](evidence/frontend-build-initial.txt). |
 | Export correction frontend validation | **33 passed** in five files, TypeScript and production build passed; includes server export authorization and response behavior. | [Validation](evidence/export-proxy-validation.json), initial proxy correction commit `c3044da`. |
