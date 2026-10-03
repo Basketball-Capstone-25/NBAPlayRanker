@@ -544,3 +544,54 @@ def test_explanation_evidence_contains_real_metrics():
     assert "1.10" in evidence_text or "1.1" in evidence_text, (
         f"Expected PPP 1.10 somewhere in evidence, got: {play['evidence']}"
     )
+
+
+# -- context guard: neutral defaults + range validation (SCRUM-502) --
+
+def test_unparseable_prompt_passes_neutral_defaults_to_recommender():
+    """'Just win the game' must still give the recommender valid values."""
+    client = make_client()
+
+    res = client.post("/nlp/parse", json={"text": "Just win the game"})
+    assert res.status_code == 200
+
+    data = res.json()
+    params = data["context_ml_params"]
+    assert params["period"] == 1
+    assert params["margin"] == 0.0
+    assert params["time_remaining"] == 720.0
+    assert set(data["defaulted_fields"]) == {"period", "margin", "time_remaining"}
+    assert data["rejected_fields"] == []
+
+
+def test_fully_parsed_prompt_reports_no_defaulted_fields():
+    client = make_client()
+
+    res = client.post("/nlp/parse", json={"text": "Down 5 with 2:00 left in the 4th"})
+    data = res.json()
+
+    assert data["context_ml_params"]["margin"] == -5.0
+    assert data["context_ml_params"]["period"] == 4
+    assert data["context_ml_params"]["time_remaining"] == 120.0
+    assert data["defaulted_fields"] == []
+    assert data["rejected_fields"] == []
+
+
+@pytest.mark.parametrize("bad_context,field_name", [
+    ({"period": 9, "margin": 0.0, "time_remaining": 60.0}, "period"),
+    ({"period": 4, "margin": 250.0, "time_remaining": 60.0}, "margin"),
+    ({"period": 4, "margin": 0.0, "time_remaining": -30.0}, "time_remaining"),
+    ({"period": 4, "margin": float("nan"), "time_remaining": 60.0}, "margin"),
+])
+def test_out_of_range_values_are_rejected_before_ranking(bad_context, field_name):
+    """Garbage values are replaced by neutral defaults and reported."""
+    from infrastructure.external_integrations.nlp_parser import (
+        NEUTRAL_CONTEXT_DEFAULTS,
+        resolve_context_ml_params,
+    )
+
+    guard = resolve_context_ml_params(bad_context)
+
+    assert field_name in guard.rejected_fields
+    assert field_name in guard.defaulted_fields
+    assert guard.params[field_name] == NEUTRAL_CONTEXT_DEFAULTS[field_name]
