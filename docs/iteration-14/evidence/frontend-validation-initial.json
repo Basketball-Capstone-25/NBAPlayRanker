@@ -1,0 +1,46 @@
+[
+  {
+    "check": "frontend-tests",
+    "command": [
+      "node_modules/.bin/vitest",
+      "run",
+      "--maxWorkers=1",
+      "--minWorkers=1",
+      "--reporter=default",
+      "--reporter=junit",
+      "--outputFile.junit=/Users/gurkasahan/Documents/ChatGPT/Capstone/tmp/elaboration/frontend-tests.xml"
+    ],
+    "start_utc": "2026-10-03T21:19:06.361965+00:00",
+    "end_utc": "2026-10-03T21:19:08.967366+00:00",
+    "seconds": 2.605,
+    "exit_code": 0,
+    "log": "/Users/gurkasahan/Documents/ChatGPT/Capstone/tmp/elaboration/frontend-tests.log"
+  },
+  {
+    "check": "frontend-typescript",
+    "command": [
+      "node_modules/.bin/tsc",
+      "--noEmit",
+      "--incremental",
+      "false"
+    ],
+    "start_utc": "2026-10-03T21:19:08.969569+00:00",
+    "end_utc": "2026-10-03T21:19:17.608517+00:00",
+    "seconds": 8.639,
+    "exit_code": 0,
+    "log": "/Users/gurkasahan/Documents/ChatGPT/Capstone/tmp/elaboration/frontend-typescript.log"
+  },
+  {
+    "check": "frontend-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "start_utc": "2026-10-03T21:19:17.609484+00:00",
+    "end_utc": "2026-10-03T21:19:51.786941+00:00",
+    "seconds": 34.177,
+    "exit_code": 0,
+    "log": "/Users/gurkasahan/Documents/ChatGPT/Capstone/tmp/elaboration/frontend-build.log"
+  }
+]

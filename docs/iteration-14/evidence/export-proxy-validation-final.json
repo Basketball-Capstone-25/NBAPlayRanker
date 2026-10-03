@@ -1,0 +1,26 @@
+{
+  "captured_at_utc": "2026-10-03T22:18:41.370278+00:00",
+  "source_commit": "18baffc0cc6f99273f60e797a499804029b8b84f",
+  "scope": "SCRUM-527 final seven-path HTTP export allowlist, including existing coach play diagram PDF",
+  "frontend_unit_tests": {
+    "passed": 34,
+    "files": 5,
+    "duration_seconds": 2.35,
+    "junit": "frontend-tests-final.xml",
+    "log": "frontend-tests-final.log"
+  },
+  "typescript": {
+    "command": "node_modules/.bin/tsc --noEmit --incremental false",
+    "exit_code": 0
+  },
+  "diff_check": {
+    "command": "git diff --check",
+    "exit_code": 0
+  },
+  "production_build": {
+    "exit_code": 0,
+    "deployment": "dpl_7JaSVKvgfxo7yQpia6ZhUmFXLh75",
+    "log": "vercel-final-deploy.log"
+  },
+  "github_ci": 37157802665
+}

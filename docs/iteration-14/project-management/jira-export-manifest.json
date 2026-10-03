@@ -1,0 +1,121 @@
+{
+  "site": "https://basketball-strategy.atlassian.net",
+  "cloudId": "d0d4e0e8-b1b5-4849-b26a-d7c66415d6e5",
+  "assigneeAccountId": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+  "phase": "Finalized; all 32 issues freshly captured after the final test clarification and future-iteration allocation",
+  "groups": {
+    "current_plan": [
+      "SCRUM-475",
+      "SCRUM-476",
+      "SCRUM-481",
+      "SCRUM-506",
+      "SCRUM-518",
+      "SCRUM-519",
+      "SCRUM-520",
+      "SCRUM-521",
+      "SCRUM-522",
+      "SCRUM-523",
+      "SCRUM-524",
+      "SCRUM-525",
+      "SCRUM-527"
+    ],
+    "future_work": [
+      "SCRUM-526"
+    ],
+    "tests": [
+      "BST-120",
+      "BST-121",
+      "BST-122",
+      "BST-123",
+      "BST-124",
+      "BST-125",
+      "BST-126",
+      "BST-127",
+      "BST-128",
+      "BST-129"
+    ],
+    "risks": [
+      "BSR-43",
+      "BSR-45",
+      "BSR-96",
+      "BSR-98",
+      "BSR-108",
+      "BSR-110",
+      "BSR-111",
+      "BSR-112"
+    ]
+  },
+  "testCaseWorkflow": {
+    "sourceIssue": "BST-121",
+    "verify": "11",
+    "testingInProgress": "21",
+    "fail": "2",
+    "pass": {
+      "transitionId": "31",
+      "transitionName": "Done",
+      "destinationStatus": "Pass",
+      "destinationStatusCategory": "done"
+    },
+    "resultField": "No dedicated result field returned among all19 Test Case creation fields. Actual execution details go in comments; workflow status captures Pass/Fail."
+  },
+  "deploymentDescriptionUpdated": true,
+  "worklogsAdded": true,
+  "doneTransitions": true,
+  "capturedAtUTC": "2026-10-03T22:28:16.320Z",
+  "validation": {
+    "issues": 32,
+    "currentPlanDone": 13,
+    "testsPass": 10,
+    "futureWork": 1,
+    "futureSprint": {
+      "id": 183,
+      "name": "Iteration-15",
+      "state": "future"
+    },
+    "riskStatuses": {
+      "BSR-43": "Monitoring",
+      "BSR-45": "Monitoring",
+      "BSR-96": "Monitoring",
+      "BSR-98": "Monitoring",
+      "BSR-108": "Monitoring",
+      "BSR-110": "Monitoring",
+      "BSR-111": "Resolved",
+      "BSR-112": "Monitoring"
+    },
+    "worklogCount": 7,
+    "timeSpentSeconds": 4500,
+    "commentsComplete": true,
+    "worklogsComplete": true
+  },
+  "exports": [
+    {
+      "group": "current_plan",
+      "file": "/Users/gurkasahan/Documents/ChatGPT/Capstone/outputs/iteration-14-jira-2026-10-03/Jira-current-iteration-plan.csv",
+      "rows": 13,
+      "columns": 22,
+      "sha256": "2de815ad1c197a2690c4ceb307ef267634a3cd6fa8d672a6964dd78e5125d354"
+    },
+    {
+      "group": "future_work",
+      "file": "/Users/gurkasahan/Documents/ChatGPT/Capstone/outputs/iteration-14-jira-2026-10-03/Jira-future-iteration-work.csv",
+      "rows": 1,
+      "columns": 22,
+      "sha256": "dc9e16b391b5aef9a8a7fdcd34a5dbf28065bde039871416f7b386425c4814c6"
+    },
+    {
+      "group": "tests",
+      "file": "/Users/gurkasahan/Documents/ChatGPT/Capstone/outputs/iteration-14-jira-2026-10-03/Jira-iteration-tests.csv",
+      "rows": 10,
+      "columns": 22,
+      "sha256": "9fdcf79bb0222ebc69f3297a131fb281701a94adf38132fe36ced56ba68597ab"
+    },
+    {
+      "group": "risks",
+      "file": "/Users/gurkasahan/Documents/ChatGPT/Capstone/outputs/iteration-14-jira-2026-10-03/Jira-risk-monitoring.csv",
+      "rows": 8,
+      "columns": 22,
+      "sha256": "6df580ba1fc7770ac43011d55197e65e9d26e31a4dadde91ef031265b439fb56"
+    }
+  ],
+  "snapshotSha256": "c9130b78a696ee1d2c1563e7eb1b5d954a7fbc053d4b45d311ebe1be83b6f1bb"
+}

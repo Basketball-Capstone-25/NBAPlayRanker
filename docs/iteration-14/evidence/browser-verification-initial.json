@@ -1,0 +1,57 @@
+{
+  "captured_at_utc": "2026-10-03T21:36:10Z",
+  "environment": "https://nbaplayranker-seven.vercel.app",
+  "frontend_deployment": "dpl_3VGStQCMoBAbXg97FedCrZZtBwez",
+  "checks": [
+    {
+      "id": "analyst-login",
+      "result": "PASS",
+      "observed": "Password login reaches Data Explorer; analyst workspace navigation visible."
+    },
+    {
+      "id": "analyst-data",
+      "result": "PASS",
+      "observed": "2024-25 TOR offense shows 11 rows."
+    },
+    {
+      "id": "analyst-calibration",
+      "result": "PASS",
+      "observed": "Calibration tab displays 1,650 rows over 5 held-out seasons, MAE0.0085, RMSE0.0113, prediction-bin and chronological-fold tables, and retrospective/sparse warnings."
+    },
+    {
+      "id": "analyst-csv-before-fix",
+      "result": "FAIL",
+      "observed": "Raw export link opened separate Cloud Run tab with Invalid or missing session token. Tracked SCRUM-527 / BST-129."
+    },
+    {
+      "id": "coach-login",
+      "result": "PASS",
+      "observed": "Password login reaches Matchup/Baseline."
+    },
+    {
+      "id": "coach-baseline",
+      "result": "PASS",
+      "observed": "TOR/BOS 2024-25 automatically displays five recommendations; PRRollMan first, predictedPPP1.154."
+    },
+    {
+      "id": "coach-context",
+      "result": "PASS",
+      "observed": "Context/ML displays five recommendations and explanation; PRRollMan1.160PPP for default context."
+    },
+    {
+      "id": "coach-csv-before-fix",
+      "result": "UNVERIFIED",
+      "observed": "Click produces no UI/console error, but in-app browser download-event wait times out after15s; API CSV export passed separately."
+    },
+    {
+      "id": "coach-gameplan",
+      "result": "PASS",
+      "observed": "Build Gameplan produces PRRollMan, Spotup and OffScreen quick calls; court-zone image, counters and shot-type/zone guidance load. Existing localStorage notes/assignments were not edited."
+    },
+    {
+      "id": "coach-analyst-page-isolation",
+      "result": "PASS",
+      "observed": "Opening /model-metrics while signed in as coach redirects to /matchup."
+    }
+  ]
+}

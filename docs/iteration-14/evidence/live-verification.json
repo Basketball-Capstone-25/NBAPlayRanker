@@ -1,0 +1,277 @@
+{
+  "started_at_utc": "2026-10-03T21:29:04.445135+00:00",
+  "finished_at_utc": "2026-10-03T21:29:16.463306+00:00",
+  "api": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app",
+  "authentication": "Real password sessions; current protected profile roles",
+  "tests": [
+    {
+      "test": "public health",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "analyst password sign-in",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "analyst protected profile",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "analyst trusted profile role",
+      "passed": true
+    },
+    {
+      "test": "analyst metadata",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "coach password sign-in",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "coach protected profile",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "coach trusted profile role",
+      "passed": true
+    },
+    {
+      "test": "coach metadata",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "anonymous denied /metrics/topk-uplift",
+      "expected_status": 401,
+      "actual_status": 401,
+      "passed": true
+    },
+    {
+      "test": "coach denied /metrics/topk-uplift",
+      "expected_status": 403,
+      "actual_status": 403,
+      "passed": true
+    },
+    {
+      "test": "anonymous denied /metrics/topk-uplift.json",
+      "expected_status": 401,
+      "actual_status": 401,
+      "passed": true
+    },
+    {
+      "test": "coach denied /metrics/topk-uplift.json",
+      "expected_status": 403,
+      "actual_status": 403,
+      "passed": true
+    },
+    {
+      "test": "anonymous denied /metrics/topk-uplift.csv",
+      "expected_status": 401,
+      "actual_status": 401,
+      "passed": true
+    },
+    {
+      "test": "coach denied /metrics/topk-uplift.csv",
+      "expected_status": 403,
+      "actual_status": 403,
+      "passed": true
+    },
+    {
+      "test": "anonymous denied /metrics/calibration",
+      "expected_status": 401,
+      "actual_status": 401,
+      "passed": true
+    },
+    {
+      "test": "coach denied /metrics/calibration",
+      "expected_status": 403,
+      "actual_status": 403,
+      "passed": true
+    },
+    {
+      "test": "analyst Top-K JSON",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "analyst Top-K JSON attachment",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "analyst Top-K CSV attachment",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "JSON download parity",
+      "passed": true
+    },
+    {
+      "test": "CSV parity",
+      "passed": true
+    },
+    {
+      "test": "attachment headers",
+      "passed": true
+    },
+    {
+      "test": "Top-K invalid K",
+      "expected_status": 422,
+      "actual_status": 422,
+      "passed": true
+    },
+    {
+      "test": "Top-K identical teams",
+      "expected_status": 400,
+      "actual_status": 400,
+      "passed": true
+    },
+    {
+      "test": "analyst calibration",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "calibration strictly later seasons",
+      "passed": true
+    },
+    {
+      "test": "calibration observations",
+      "passed": true
+    },
+    {
+      "test": "calibration invalid bins",
+      "expected_status": 422,
+      "actual_status": 422,
+      "passed": true
+    },
+    {
+      "test": "coach baseline",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "coach baseline CSV",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "analyst coach-API denied",
+      "expected_status": 403,
+      "actual_status": 403,
+      "passed": true
+    },
+    {
+      "test": "coach context recommendations",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "analyst data explorer",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "coach test matchup initially empty",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "refuse to overwrite existing test state",
+      "passed": true
+    },
+    {
+      "test": "coach Gameplan insert",
+      "expected_status": 201,
+      "actual_status": 201,
+      "passed": true
+    },
+    {
+      "test": "initial server revision",
+      "passed": true
+    },
+    {
+      "test": "coach Gameplan conditional update",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "revision increments",
+      "passed": true
+    },
+    {
+      "test": "stale conditional update",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "stale update affects zero rows",
+      "passed": true
+    },
+    {
+      "test": "analyst Gameplan select",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "analyst sees no Gameplan state",
+      "passed": true
+    },
+    {
+      "test": "analyst Gameplan insert denied",
+      "expected_status": 403,
+      "actual_status": 403,
+      "passed": true
+    },
+    {
+      "test": "coach owner forgery denied",
+      "expected_status": 403,
+      "actual_status": 403,
+      "passed": true
+    },
+    {
+      "test": "malformed Gameplan JSON denied",
+      "expected_status": 400,
+      "actual_status": 400,
+      "passed": true
+    },
+    {
+      "test": "remove disposable Gameplan fixture",
+      "expected_status": 200,
+      "actual_status": 200,
+      "passed": true
+    },
+    {
+      "test": "disposable fixture removed",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

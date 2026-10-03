@@ -1,0 +1,220 @@
+{
+  "model": "Ridge",
+  "evaluation": {
+    "method": "expanding-window season holdout",
+    "model_parameters": {
+      "alpha": 0.1
+    },
+    "parameters_source": "existing fixed Ridge configuration; no tuning or calibration correction fitted during this evaluation",
+    "scaler_fit": "training rows only, refitted for each fold",
+    "reliability_features": "possession-based reliability normalizations use training-only maxima in each fold",
+    "unit": "points per possession (PPP)",
+    "row_unit": "team / play type / offensive season",
+    "weighting": "each held-out team-play-type row has equal weight",
+    "binning": "equal-width predicted PPP bins; final interval includes its upper edge",
+    "requested_bins": 10,
+    "n_splits": 5,
+    "input_rows": 1980,
+    "features": [
+      "POSS",
+      "POSS_PCT",
+      "RELIABILITY_WEIGHT",
+      "FG_PCT",
+      "EFG_PCT",
+      "SCORE_POSS_PCT",
+      "TOV_POSS_PCT",
+      "SF_POSS_PCT",
+      "FT_POSS_PCT",
+      "PLUSONE_POSS_PCT",
+      "REL_LEAGUE"
+    ]
+  },
+  "summary": {
+    "count": 1650,
+    "mean_predicted_ppp": 0.9985420849064788,
+    "mean_realized_ppp": 0.9985765664490082,
+    "bias_ppp": -3.448154252937638e-05,
+    "mae_ppp": 0.008489533585686231,
+    "rmse_ppp": 0.011340118590325235,
+    "binned_absolute_bias_ppp": 0.0019262347504851191,
+    "bins": [
+      {
+        "lower_ppp": 0.37471692909143584,
+        "upper_ppp": 0.48120187403328196,
+        "count": 23,
+        "mean_predicted_ppp": 0.4299501921986973,
+        "mean_realized_ppp": 0.44656165142306586,
+        "bias_ppp": -0.01661145922436861,
+        "sparse": false
+      },
+      {
+        "lower_ppp": 0.48120187403328196,
+        "upper_ppp": 0.5876868189751281,
+        "count": 85,
+        "mean_predicted_ppp": 0.5357855633828809,
+        "mean_realized_ppp": 0.5315553988132014,
+        "bias_ppp": 0.004230164569679408,
+        "sparse": false
+      },
+      {
+        "lower_ppp": 0.5876868189751281,
+        "upper_ppp": 0.6941717639169741,
+        "count": 41,
+        "mean_predicted_ppp": 0.6208489516891298,
+        "mean_realized_ppp": 0.6140653233617933,
+        "bias_ppp": 0.006783628327336567,
+        "sparse": false
+      },
+      {
+        "lower_ppp": 0.6941717639169741,
+        "upper_ppp": 0.8006567088588202,
+        "count": 19,
+        "mean_predicted_ppp": 0.7671856665629146,
+        "mean_realized_ppp": 0.7648779534831919,
+        "bias_ppp": 0.002307713079722697,
+        "sparse": true
+      },
+      {
+        "lower_ppp": 0.8006567088588202,
+        "upper_ppp": 0.9071416538006664,
+        "count": 229,
+        "mean_predicted_ppp": 0.8650666452582604,
+        "mean_realized_ppp": 0.8629329787349186,
+        "bias_ppp": 0.002133666523341731,
+        "sparse": false
+      },
+      {
+        "lower_ppp": 0.9071416538006664,
+        "upper_ppp": 1.0136265987425124,
+        "count": 431,
+        "mean_predicted_ppp": 0.9590150284980946,
+        "mean_realized_ppp": 0.960715377673924,
+        "bias_ppp": -0.001700349175829583,
+        "sparse": false
+      },
+      {
+        "lower_ppp": 1.0136265987425124,
+        "upper_ppp": 1.1201115436843585,
+        "count": 377,
+        "mean_predicted_ppp": 1.0659113331235717,
+        "mean_realized_ppp": 1.0659843443227262,
+        "bias_ppp": -7.301119915433515e-05,
+        "sparse": false
+      },
+      {
+        "lower_ppp": 1.1201115436843585,
+        "upper_ppp": 1.2265964886262046,
+        "count": 291,
+        "mean_predicted_ppp": 1.1605794737990403,
+        "mean_realized_ppp": 1.1592373862926488,
+        "bias_ppp": 0.0013420875063915848,
+        "sparse": false
+      },
+      {
+        "lower_ppp": 1.2265964886262046,
+        "upper_ppp": 1.3330814335680508,
+        "count": 106,
+        "mean_predicted_ppp": 1.278580115256651,
+        "mean_realized_ppp": 1.2817426967797498,
+        "bias_ppp": -0.003162581523099218,
+        "sparse": false
+      },
+      {
+        "lower_ppp": 1.3330814335680508,
+        "upper_ppp": 1.4395663785098969,
+        "count": 48,
+        "mean_predicted_ppp": 1.366459320343602,
+        "mean_realized_ppp": 1.3693742791199401,
+        "bias_ppp": -0.002914958776338105,
+        "sparse": false
+      }
+    ]
+  },
+  "folds": [
+    {
+      "train_seasons": [
+        "2019-20"
+      ],
+      "test_season": "2020-21",
+      "train_rows": 330,
+      "count": 330,
+      "mean_predicted_ppp": 0.9969131508012502,
+      "mean_realized_ppp": 0.9970067464329102,
+      "bias_ppp": -9.359563166009142e-05,
+      "mae_ppp": 0.009180029380000749,
+      "rmse_ppp": 0.012658534218478562,
+      "binned_absolute_bias_ppp": 0.002645947935974512
+    },
+    {
+      "train_seasons": [
+        "2019-20",
+        "2020-21"
+      ],
+      "test_season": "2021-22",
+      "train_rows": 660,
+      "count": 330,
+      "mean_predicted_ppp": 0.9867570803315535,
+      "mean_realized_ppp": 0.9850725607684918,
+      "bias_ppp": 0.0016845195630616305,
+      "mae_ppp": 0.008525400119316656,
+      "rmse_ppp": 0.010904830937080926,
+      "binned_absolute_bias_ppp": 0.002925024707978861
+    },
+    {
+      "train_seasons": [
+        "2019-20",
+        "2020-21",
+        "2021-22"
+      ],
+      "test_season": "2022-23",
+      "train_rows": 990,
+      "count": 330,
+      "mean_predicted_ppp": 1.0066313192343677,
+      "mean_realized_ppp": 1.0070863682855933,
+      "bias_ppp": -0.0004550490512257396,
+      "mae_ppp": 0.008399779515536566,
+      "rmse_ppp": 0.011183951889343728,
+      "binned_absolute_bias_ppp": 0.0021259442614736342
+    },
+    {
+      "train_seasons": [
+        "2019-20",
+        "2020-21",
+        "2021-22",
+        "2022-23"
+      ],
+      "test_season": "2023-24",
+      "train_rows": 1320,
+      "count": 330,
+      "mean_predicted_ppp": 1.0083221803302056,
+      "mean_realized_ppp": 1.0095301619252117,
+      "bias_ppp": -0.0012079815950060994,
+      "mae_ppp": 0.00804356132921792,
+      "rmse_ppp": 0.010955276565864374,
+      "binned_absolute_bias_ppp": 0.0015554203480017906
+    },
+    {
+      "train_seasons": [
+        "2019-20",
+        "2020-21",
+        "2021-22",
+        "2022-23",
+        "2023-24"
+      ],
+      "test_season": "2024-25",
+      "train_rows": 1650,
+      "count": 330,
+      "mean_predicted_ppp": 0.9940866938350174,
+      "mean_realized_ppp": 0.9941869948328338,
+      "bias_ppp": -0.0001003009978165822,
+      "mae_ppp": 0.008298897584359269,
+      "rmse_ppp": 0.01089673150025996,
+      "binned_absolute_bias_ppp": 0.002741449343099698
+    }
+  ],
+  "warnings": [
+    "This is retrospective held-out evaluation using season-level features, including same-season rate statistics. It does not establish pre-game forecasting accuracy.",
+    "PPP is a continuous outcome, not a probability; positive bias means overprediction and negative bias means underprediction.",
+    "Bins with fewer than 20 held-out rows are sparse; do not draw strong conclusions from them."
+  ]
+}

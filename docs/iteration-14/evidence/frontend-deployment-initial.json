@@ -1,0 +1,11 @@
+{
+  "evidence_date": "2026-10-03",
+  "source_artifact": "vercel-deploy.log",
+  "deployment_id": "dpl_3VGStQCMoBAbXg97FedCrZZtBwez",
+  "ready_state": "READY",
+  "deployment_url": "https://nbaplayranker-18vzetmz3-pearson-manufacturing.vercel.app",
+  "production_alias": "https://nbaplayranker-seven.vercel.app",
+  "scope": "Initial Iteration 14 release; before SCRUM-527 authenticated browser export correction.",
+  "git_integration": "Manual deployment from canonical shared checkout; organization Git integration not authorized.",
+  "pending": "Later frontend commit, deployment, regression suite and browser retest for SCRUM-527 / BST-129."
+}

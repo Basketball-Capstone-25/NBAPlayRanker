@@ -1,0 +1,104 @@
+{
+  "base_url": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app",
+  "revision": "nba-playranker-api-00005-hrn",
+  "commit": "e950869cb318c6b44220d3c06be4ba2aa16521da",
+  "checked_at_utc": "2026-10-03T21:29:53.380Z",
+  "checks": [
+    {
+      "name": "health",
+      "path": "/health",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "allow_origin": null,
+      "allow_credentials": null,
+      "body": "{\"status\":\"ok\"}",
+      "milliseconds": 246
+    },
+    {
+      "name": "metadata rejects missing session",
+      "path": "/meta/options",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "allow_origin": null,
+      "allow_credentials": null,
+      "body": "{\"detail\":\"Invalid or missing session token.\"}",
+      "milliseconds": 129
+    },
+    {
+      "name": "calibration rejects missing session",
+      "path": "/metrics/calibration",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "allow_origin": null,
+      "allow_credentials": null,
+      "body": "{\"detail\":\"Invalid or missing session token.\"}",
+      "milliseconds": 39
+    },
+    {
+      "name": "uplift rejects missing session",
+      "path": "/metrics/topk-uplift?season=2024-25&our=TOR&opp=BOS",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "allow_origin": null,
+      "allow_credentials": null,
+      "body": "{\"detail\":\"Invalid or missing session token.\"}",
+      "milliseconds": 33
+    },
+    {
+      "name": "uplift CSV rejects missing session",
+      "path": "/metrics/topk-uplift.csv?season=2024-25&our=TOR&opp=BOS",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "allow_origin": null,
+      "allow_credentials": null,
+      "body": "{\"detail\":\"Invalid or missing session token.\"}",
+      "milliseconds": 39
+    },
+    {
+      "name": "uplift JSON rejects missing session",
+      "path": "/metrics/topk-uplift.json?season=2024-25&our=TOR&opp=BOS",
+      "method": "GET",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "allow_origin": null,
+      "allow_credentials": null,
+      "body": "{\"detail\":\"Invalid or missing session token.\"}",
+      "milliseconds": 46
+    },
+    {
+      "name": "production CORS",
+      "path": "/metrics/calibration",
+      "method": "OPTIONS",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "allow_origin": "https://nbaplayranker-seven.vercel.app",
+      "allow_credentials": "true",
+      "body": "OK",
+      "milliseconds": 41
+    },
+    {
+      "name": "foreign-origin CORS",
+      "path": "/metrics/calibration",
+      "method": "OPTIONS",
+      "status": 400,
+      "expected": 400,
+      "passed": true,
+      "allow_origin": null,
+      "allow_credentials": "true",
+      "body": "Disallowed CORS origin",
+      "milliseconds": 43
+    }
+  ]
+}

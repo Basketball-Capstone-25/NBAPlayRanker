@@ -1,0 +1,115 @@
+{
+  "started_at_utc": "2026-10-03T22:17:35.459Z",
+  "site": "https://nbaplayranker-seven.vercel.app",
+  "checks": [
+    {
+      "name": "anonymous valid export requires session",
+      "passed": true,
+      "status": 401,
+      "content_type": "application/json",
+      "content_disposition": null,
+      "cache_control": "private, no-store",
+      "bytes": 42
+    },
+    {
+      "name": "non-allowlisted target rejected",
+      "passed": true,
+      "status": 400,
+      "content_type": "application/json",
+      "content_disposition": null,
+      "cache_control": "private, no-store",
+      "bytes": 36
+    },
+    {
+      "name": "analyst data CSV streams with session cookie",
+      "passed": true,
+      "status": 200,
+      "content_type": "text/csv; charset=utf-8",
+      "content_disposition": "attachment; filename=\"team-playtypes.csv\"",
+      "cache_control": "private, no-store",
+      "bytes": 3160
+    },
+    {
+      "name": "analyst CSV contains selected team",
+      "passed": true
+    },
+    {
+      "name": "analyst uplift CSV streams with session cookie",
+      "passed": true,
+      "status": 200,
+      "content_type": "text/csv; charset=utf-8",
+      "content_disposition": "attachment; filename=\"topk_uplift_2024-25_TOR_vs_BOS_top3.csv\"",
+      "cache_control": "private, no-store",
+      "bytes": 5136
+    },
+    {
+      "name": "analyst Shot Explorer CSV streams with session cookie",
+      "passed": true,
+      "status": 200,
+      "content_type": "text/csv; charset=utf-8",
+      "content_disposition": "attachment; filename=\"pbp_shots_2024-25_TOR.csv\"",
+      "cache_control": "private, no-store",
+      "bytes": 163774
+    },
+    {
+      "name": "shot CSV has header and shot rows",
+      "passed": true
+    },
+    {
+      "name": "analyst shot plan PDF streams with session cookie",
+      "passed": true,
+      "status": 200,
+      "content_type": "application/pdf",
+      "content_disposition": "attachment; filename=\"shotplan_2024-25_TOR_vs_BOS.pdf\"",
+      "cache_control": "private, no-store",
+      "bytes": 75158
+    },
+    {
+      "name": "shot PDF has PDF signature and completion marker",
+      "passed": true
+    },
+    {
+      "name": "foreign Origin rejected",
+      "passed": true,
+      "status": 403,
+      "content_type": "application/json",
+      "content_disposition": null,
+      "cache_control": "private, no-store",
+      "bytes": 57
+    },
+    {
+      "name": "coach matchup CSV streams with session cookie",
+      "passed": true,
+      "status": 200,
+      "content_type": "text/csv; charset=utf-8",
+      "content_disposition": "attachment; filename=\"baseline_2024-25_TOR_vs_BOS_top5.csv\"",
+      "cache_control": "private, no-store",
+      "bytes": 2560
+    },
+    {
+      "name": "coach play diagram PDF streams with session cookie",
+      "passed": true,
+      "status": 200,
+      "content_type": "application/pdf",
+      "content_disposition": "attachment; filename=\"playtype_viz_2024-25_TOR_vs_BOS_PRRollMan.pdf\"",
+      "cache_control": "private, no-store",
+      "bytes": 42424
+    },
+    {
+      "name": "coach play diagram is a complete PDF",
+      "passed": true
+    },
+    {
+      "name": "coach denied analyst data export",
+      "passed": true,
+      "status": 403,
+      "content_type": "application/json",
+      "content_disposition": null,
+      "cache_control": "private, no-store",
+      "bytes": 72
+    }
+  ],
+  "complete": true,
+  "finished_at_utc": "2026-10-03T22:17:54.094Z",
+  "passed": true
+}
