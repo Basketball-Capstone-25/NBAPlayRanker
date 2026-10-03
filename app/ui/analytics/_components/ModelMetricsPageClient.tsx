@@ -5,6 +5,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { fetchModelMetrics, fetchPipelineInfo, fetchMlAnalysis } from "../../../services/analytics";
+import CalibrationPanel from "./CalibrationPanel";
 
 type MetricsRow = {
   model: string;
@@ -88,7 +89,7 @@ function prettyModelName(m: string) {
   return s;
 }
 
-type TabKey = "scoreboard" | "holdout" | "tuning" | "trace";
+type TabKey = "scoreboard" | "holdout" | "calibration" | "tuning" | "trace";
 
 export default function ModelMetricsPage() {
   // Data
@@ -479,6 +480,9 @@ export default function ModelMetricsPage() {
             <div style={pillStyle(tab === "holdout")} onClick={() => setTab("holdout")}>
               Holdout
             </div>
+            <button type="button" style={pillStyle(tab === "calibration")} onClick={() => setTab("calibration")} aria-pressed={tab === "calibration"}>
+              Calibration
+            </button>
             <div style={pillStyle(tab === "tuning")} onClick={() => setTab("tuning")}>
               Tuning
             </div>
@@ -836,6 +840,8 @@ export default function ModelMetricsPage() {
             ) : null}
           </>
         ) : null}
+
+        {tab === "calibration" ? <CalibrationPanel nSplits={nSplits} /> : null}
 
         {/* HOLDOUT TAB */}
         {tab === "holdout" ? (
