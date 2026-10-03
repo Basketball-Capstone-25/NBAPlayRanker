@@ -4,6 +4,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
+  authenticatedDownload,
   fetchMetaOptions,
   fetchPbpMetaOptions,
   fetchPbpShotsPreview,
@@ -60,6 +61,8 @@ export default function ShotExplorerPage() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [exporting, setExporting] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
 
   const [data, setData] = useState<PbpShotsPreviewResponse | null>(null);
 
@@ -126,6 +129,19 @@ export default function ShotExplorerPage() {
       limit: 5000,
     });
   }, [season, team, opp, shotType, zone]);
+
+  async function exportCsv() {
+    if (!csvUrl || exporting) return;
+    setExporting(true);
+    setExportError(null);
+    try {
+      await authenticatedDownload(csvUrl, `shots_${season}_${team}${opp ? `_vs_${opp}` : ""}.csv`);
+    } catch (err) {
+      setExportError(err instanceof Error ? err.message : "Unable to export CSV. Please try again.");
+    } finally {
+      setExporting(false);
+    }
+  }
 
   async function run() {
     // Minimum required filters so the backend isn’t asked for “everything.”
@@ -214,18 +230,19 @@ export default function ShotExplorerPage() {
             </button>
 
             {csvUrl ? (
-              <a
+              <button
                 className="btn"
-                href={csvUrl}
-                target="_blank"
-                rel="noreferrer"
+                type="button"
+                onClick={exportCsv}
+                disabled={loading || exporting}
+                aria-busy={exporting}
                 style={{
                   background: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.12)",
                 }}
               >
-                Export CSV (up to 5,000 rows)
-              </a>
+                {exporting ? "Exporting CSV…" : "Export CSV (up to 5,000 rows)"}
+              </button>
             ) : null}
           </div>
         </div>
@@ -318,6 +335,7 @@ export default function ShotExplorerPage() {
         </div>
 
         {/* Error panel keeps failures obvious without breaking the page */}
+        {exportError && <p role="alert" style={{ marginTop: 12 }}>{exportError}</p>}
         {error ? (
           <div className="card" style={{ marginTop: 12, borderColor: "rgba(239,68,68,0.35)" }}>
             <div className="muted" style={{ color: "rgba(239,68,68,0.95)" }}>

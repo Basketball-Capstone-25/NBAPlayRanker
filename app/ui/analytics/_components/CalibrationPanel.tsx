@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { fetchCalibration, type CalibrationReport } from "../../../services/calibration";
 
-const format = (value: number | null) => value === null ? "—" : value.toFixed(4);
+const format = (value: number | null) => value === null ? "—"
+  : value.toFixed(value !== 0 && Math.abs(value) < 0.0001 ? 6 : 4);
 
 export default function CalibrationPanel({ nSplits }: { nSplits: number }) {
   const [report, setReport] = useState<CalibrationReport | null>(null);

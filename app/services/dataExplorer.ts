@@ -1,6 +1,7 @@
 // Service layer for data-explorer API helpers.
 export {
   API_BASE,
+  authenticatedDownload,
   fetchMetaOptions,
   fetchPipelineInfo,
   fetchTeamPlaytypesPreview,

@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   API_BASE,
+  authenticatedDownload,
   fetchMetaOptions,
   fetchPipelineInfo,
   fetchTeamPlaytypesPreview,
@@ -91,6 +92,8 @@ export default function DataExplorerClient() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [exporting, setExporting] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
 
   // UI-only presentation controls
   const [sortKey, setSortKey] = useState<string>("PPP");
@@ -247,6 +250,22 @@ export default function DataExplorerClient() {
     });
   }, [season, team, side, playType, minPoss, limit]);
 
+  async function exportCsv() {
+    if (!season || exporting) return;
+    setExporting(true);
+    setExportError(null);
+    try {
+      await authenticatedDownload(
+        csvUrl,
+        `team_playtypes_${season}_${team || "all"}_${side || "all"}.csv`
+      );
+    } catch (err) {
+      setExportError(err instanceof Error ? err.message : "Unable to export CSV. Please try again.");
+    } finally {
+      setExporting(false);
+    }
+  }
+
   const columns = useMemo(() => {
     const base = [
       { key: "PLAY_TYPE", label: "Play Type" },
@@ -376,9 +395,9 @@ export default function DataExplorerClient() {
           </div>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <a className="btn btn--secondary" href={csvUrl} target="_blank" rel="noopener noreferrer">
-              Export CSV
-            </a>
+            <button className="btn btn--secondary" type="button" onClick={exportCsv} disabled={!season || loading || exporting} aria-busy={exporting}>
+              {exporting ? "Exporting CSV…" : "Export CSV"}
+            </button>
             <Link className="btn" href="/matchup">
               Next: Baseline Matchup
             </Link>
@@ -424,6 +443,8 @@ export default function DataExplorerClient() {
           </div>
         </div>
       </header>
+
+      {exportError && <p role="alert" className="card">{exportError}</p>}
 
       {/* FILTERS */}
       <section className="card" style={{ marginTop: 14 }}>
@@ -657,9 +678,9 @@ export default function DataExplorerClient() {
             <span className="badge">
               Export rows cap: {Math.max(limit, 1000)}
             </span>
-            <a className="btn" href={csvUrl} target="_blank" rel="noopener noreferrer">
-              Export CSV
-            </a>
+            <button className="btn" type="button" onClick={exportCsv} disabled={!season || loading || exporting} aria-busy={exporting}>
+              {exporting ? "Exporting CSV…" : "Export CSV"}
+            </button>
           </div>
         </div>
 

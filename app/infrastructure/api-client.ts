@@ -110,14 +110,23 @@ export async function authenticatedDownload(url: string, filename?: string): Pro
     throw new Error(`Download failed (${res.status}): ${text}`);
   }
   const blob = await res.blob();
-  const blobUrl = URL.createObjectURL(blob);
   const a = document.createElement("a");
-  a.href = blobUrl;
-  a.download = filename || extractFilename(res) || "download";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(blobUrl);
+  const blobUrl = URL.createObjectURL(blob);
+  try {
+    a.href = blobUrl;
+    a.download = filename || extractFilename(res) || filenameFromUrl(url) || "download";
+    document.body.appendChild(a);
+    a.click();
+  } finally {
+    // Give the browser time to consume the blob before releasing it.
+    setTimeout(() => {
+      try {
+        a.remove();
+      } finally {
+        URL.revokeObjectURL(blobUrl);
+      }
+    }, 1000);
+  }
 }
 
 function extractFilename(res: Response): string | null {
@@ -125,6 +134,16 @@ function extractFilename(res: Response): string | null {
   if (!cd) return null;
   const match = cd.match(/filename="?([^";\s]+)"?/);
   return match?.[1] ?? null;
+}
+
+function filenameFromUrl(url: string): string | null {
+  try {
+    // Cross-origin responses may not expose Content-Disposition to JavaScript.
+    const name = new URL(url, API_BASE).pathname.split("/").pop();
+    return name ? decodeURIComponent(name) : null;
+  } catch {
+    return null;
+  }
 }
 
 /** Try a list of candidate URLs in order and return the first one that works. */
