@@ -28,8 +28,26 @@ listed in `rejected_fields`. The suite runs in CI on every push.
 The spaCy pipeline is built once per process (`get_nlp_pipeline` singleton) and
 excludes the NER component; if `en_core_web_sm` is unavailable it falls back to
 `spacy.blank("en")`. The backend is deployed on Cloud Run with 2 GiB memory
-and at most two instances. A multi-user load and memory measurement against
-the deployed service has not been recorded yet and remains open.
+and at most two instances.
+
+`backend/tests/test_nlp_load.py` simulates 8 concurrent coaches sending 400
+`/nlp/parse` and `/nlp/explain` requests to the full FastAPI app in one process
+and records process memory (results in `docs/nlp-load-test-results.json`).
+Run on 2026-10-03 on a Windows 11 development machine, Python 3.14:
+
+| Measure | Result |
+|---|---|
+| Failed requests | 0 of 400 |
+| Throughput | 138 requests/s |
+| Latency p50 / p95 / max | 61 ms / 77 ms / 84 ms |
+| Process memory before first NLP request | 306 MB |
+| Peak process memory under load | 308 MB (limit 2048 MB) |
+| Memory growth during the run | about 1 MB |
+
+Limits of this result: on that machine `en_core_web_sm` was not installed, so
+the pipeline ran on its `spacy.blank("en")` fallback and the figures do not
+include the trained model that the Cloud Run image downloads. Memory on the
+deployed service itself has not been measured.
 
 ## 4. Integration boundary
 The rationale text is produced by deterministic templates in `nlp_explain.py`,

@@ -1,0 +1,36 @@
+{
+  "scenario": "in-process FastAPI app, threads as concurrent users",
+  "concurrent_users": 8,
+  "requests_total": 400,
+  "errors": 0,
+  "duration_seconds": 2.9,
+  "requests_per_second": 138.2,
+  "latency_ms": {
+    "p50": 60.9,
+    "p95": 76.9,
+    "max": 83.7
+  },
+  "memory_mb": {
+    "rss_before_first_nlp_request": 306.3,
+    "rss_after_nlp_warmup": 307.4,
+    "rss_peak_under_load": 308.4,
+    "rss_after_load": 307.5,
+    "limit": 2048
+  },
+  "nlp_pipeline": {
+    "status": "ok",
+    "pipeline_version": "1.0.0",
+    "spacy_model_requested": "en_core_web_sm",
+    "spacy_model_loaded": "spacy.blank('en')",
+    "spacy_pipe_names": [
+      "sentencizer",
+      "entity_ruler"
+    ],
+    "nltk_version": "3.9.4",
+    "wordnet_available": false
+  },
+  "environment": {
+    "python": "3.14.0",
+    "platform": "Windows-11-10.0.26200-SP0"
+  }
+}
