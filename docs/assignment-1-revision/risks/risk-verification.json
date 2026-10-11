@@ -1,0 +1,17 @@
+{
+  "verified": true,
+  "risksReviewed": 84,
+  "risksWithLinkedWorkItems": 84,
+  "expectedLinks": 190,
+  "reviewComments": 84,
+  "statusCounts": {
+    "Monitoring": 41,
+    "Active": 21,
+    "Planning": 7,
+    "Analysis": 7,
+    "Identification": 7,
+    "Resolved": 1
+  },
+  "ownersAndHistoryPreserved": true,
+  "errors": []
+}
