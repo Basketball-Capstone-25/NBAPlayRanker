@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="3.099" timestamp="2026-10-11T16:25:00.832273-04:00" hostname="Gurks-MacBook-Pro.local"><testcase classname="tests.test_shot_attribution_regression" name="test_shooting_team_and_opponent_follow_event_team_id[0]" time="0.110"><failure message="AssertionError: assert {'away-shoote...FLAG': False}} == {'home-shoote...FLAG': False}}&#10;  &#10;  Differing items:&#10;  {'home-shooter': {'TEAM_ABBR': 'TOR', 'OPP_ABBR': 'TOR', 'HOME_FLAG': False}} != {'home-shooter': {'TEAM_ABBR': 'TOR', 'OPP_ABBR': 'BOS', 'HOME_FLAG': True}}&#10;  {'away-shooter': {'TEAM_ABBR': 'TOR', 'OPP_ABBR': 'TOR', 'HOME_FLAG': False}} != {'away-shooter': {'TEAM_ABBR': 'BOS', 'OPP_ABBR': 'TOR', 'HOME_FLAG': False}}&#10;  Use -v to get more diff">home_score = 0
+
+    @KNOWN_ATTRIBUTION_DEFECT
+    @pytest.mark.parametrize("home_score", [0, 42])
+    def test_shooting_team_and_opponent_follow_event_team_id(home_score):
+        raw = pd.DataFrame(
+            {
+                "shooting_play": [True, True],
+                "season": [2025, 2025],
+                "game_id": ["fixture-game", "fixture-game"],
+                "team_id": [1610612761, 1610612738],
+                "home_team_abbreviation": ["TOR", "TOR"],
+                "away_team_abbreviation": ["BOS", "BOS"],
+                "home_score": [home_score, home_score],
+                "shooter_id": ["home-shooter", "away-shooter"],
+                "x": [1.0, 2.0],
+                "y": [2.0, 3.0],
+                "period": [1, 1],
+                "clock": ["11:30", "11:00"],
+            }
+        )
+    
+        clean = build_shots_clean(raw).set_index("SHOOTER_ID")
+    
+        assert len(clean) == 2
+        actual = clean[["TEAM_ABBR", "OPP_ABBR", "HOME_FLAG"]].to_dict("index")
+&gt;       assert actual == {
+            "home-shooter": {"TEAM_ABBR": "TOR", "OPP_ABBR": "BOS", "HOME_FLAG": True},
+            "away-shooter": {"TEAM_ABBR": "BOS", "OPP_ABBR": "TOR", "HOME_FLAG": False},
+        }
+E       AssertionError: assert {'away-shoote...FLAG': False}} == {'home-shoote...FLAG': False}}
+E         
+E         Differing items:
+E         {'home-shooter': {'TEAM_ABBR': 'TOR', 'OPP_ABBR': 'TOR', 'HOME_FLAG': False}} != {'home-shooter': {'TEAM_ABBR': 'TOR', 'OPP_ABBR': 'BOS', 'HOME_FLAG': True}}
+E         {'away-shooter': {'TEAM_ABBR': 'TOR', 'OPP_ABBR': 'TOR', 'HOME_FLAG': False}} != {'away-shooter': {'TEAM_ABBR': 'BOS', 'OPP_ABBR': 'TOR', 'HOME_FLAG': False}}
+E         Use -v to get more diff
+
+backend/tests/test_shot_attribution_regression.py:45: AssertionError</failure></testcase><testcase classname="tests.test_shot_attribution_regression" name="test_shooting_team_and_opponent_follow_event_team_id[42]" time="0.128"><failure message="AssertionError: assert {'away-shoote..._FLAG': True}} == {'home-shoote...FLAG': False}}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'away-shooter': {'TEAM_ABBR': 'TOR', 'OPP_ABBR': 'BOS', 'HOME_FLAG': True}} != {'away-shooter': {'TEAM_ABBR': 'BOS', 'OPP_ABBR': 'TOR', 'HOME_FLAG': False}}&#10;  Use -v to get more diff">home_score = 42
+
+    @KNOWN_ATTRIBUTION_DEFECT
+    @pytest.mark.parametrize("home_score", [0, 42])
+    def test_shooting_team_and_opponent_follow_event_team_id(home_score):
+        raw = pd.DataFrame(
+            {
+                "shooting_play": [True, True],
+                "season": [2025, 2025],
+                "game_id": ["fixture-game", "fixture-game"],
+                "team_id": [1610612761, 1610612738],
+                "home_team_abbreviation": ["TOR", "TOR"],
+                "away_team_abbreviation": ["BOS", "BOS"],
+                "home_score": [home_score, home_score],
+                "shooter_id": ["home-shooter", "away-shooter"],
+                "x": [1.0, 2.0],
+                "y": [2.0, 3.0],
+                "period": [1, 1],
+                "clock": ["11:30", "11:00"],
+            }
+        )
+    
+        clean = build_shots_clean(raw).set_index("SHOOTER_ID")
+    
+        assert len(clean) == 2
+        actual = clean[["TEAM_ABBR", "OPP_ABBR", "HOME_FLAG"]].to_dict("index")
+&gt;       assert actual == {
+            "home-shooter": {"TEAM_ABBR": "TOR", "OPP_ABBR": "BOS", "HOME_FLAG": True},
+            "away-shooter": {"TEAM_ABBR": "BOS", "OPP_ABBR": "TOR", "HOME_FLAG": False},
+        }
+E       AssertionError: assert {'away-shoote..._FLAG': True}} == {'home-shoote...FLAG': False}}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'away-shooter': {'TEAM_ABBR': 'TOR', 'OPP_ABBR': 'BOS', 'HOME_FLAG': True}} != {'away-shooter': {'TEAM_ABBR': 'BOS', 'OPP_ABBR': 'TOR', 'HOME_FLAG': False}}
+E         Use -v to get more diff
+
+backend/tests/test_shot_attribution_regression.py:45: AssertionError</failure></testcase><testcase classname="tests.test_shot_attribution_regression" name="test_clean_shots_never_list_the_shooting_team_as_its_opponent" time="1.317"><failure message="AssertionError: 18746 of 1332515 shots have identical team and opponent&#10;assert not np.True_&#10; +  where np.True_ = any()&#10; +    where any = 0          False\n1          False\n2          False\n3          False\n4          False\n           ...  \n1332510    False\n1332511    False\n1332512    False\n1332513    False\n1332514    False\nLength: 1332515, dtype: bool.any">clean_shot_identities =         SEASON_STR    GAME_ID TEAM_ABBR OPP_ABBR
+0          2020-21  401266794       MIA       NO
+1          2020-21  ...3    2025-26  401858694       MIL      DAL
+1332514    2025-26  401858694       MIL      DAL
+
+[1332515 rows x 4 columns]
+
+    @pytest.mark.integration
+    @KNOWN_ATTRIBUTION_DEFECT
+    def test_clean_shots_never_list_the_shooting_team_as_its_opponent(clean_shot_identities):
+        invalid = clean_shot_identities["TEAM_ABBR"].eq(clean_shot_identities["OPP_ABBR"])
+&gt;       assert not invalid.any(), f"{int(invalid.sum())} of {len(invalid)} shots have identical team and opponent"
+E       AssertionError: 18746 of 1332515 shots have identical team and opponent
+E       assert not np.True_
+E        +  where np.True_ = any()
+E        +    where any = 0          False\n1          False\n2          False\n3          False\n4          False\n           ...  \n1332510    False\n1332511    False\n1332512    False\n1332513    False\n1332514    False\nLength: 1332515, dtype: bool.any
+
+backend/tests/test_shot_attribution_regression.py:63: AssertionError</failure></testcase><testcase classname="tests.test_shot_attribution_regression" name="test_complete_game_groups_include_both_shooting_teams" time="0.464"><failure message="AssertionError: 7520 of 7520 substantial game groups lack two shooting teams&#10;assert not np.True_&#10; +  where np.True_ = any()&#10; +    where any = SEASON_STR  GAME_ID  \n2020-21     401266794    True\n            401266795    True\n            401266796    True\n      ...01857824    True\n            401858693    True\n            401858694    True\nName: TEAM_ABBR, Length: 7520, dtype: bool.any">clean_shot_identities =         SEASON_STR    GAME_ID TEAM_ABBR OPP_ABBR
+0          2020-21  401266794       MIA       NO
+1          2020-21  ...3    2025-26  401858694       MIL      DAL
+1332514    2025-26  401858694       MIL      DAL
+
+[1332515 rows x 4 columns]
+
+    @pytest.mark.integration
+    @KNOWN_ATTRIBUTION_DEFECT
+    def test_complete_game_groups_include_both_shooting_teams(clean_shot_identities):
+        # A complete NBA game with at least 100 recorded shots must contain both
+        # shooting teams. Tiny/partial samples are deliberately excluded.
+        groups = clean_shot_identities.groupby(["SEASON_STR", "GAME_ID"])
+        rows = groups.size()
+        teams = groups["TEAM_ABBR"].nunique()
+        complete = teams[rows &gt;= 100]
+        assert len(complete) &gt; 0
+        invalid = complete.ne(2)
+&gt;       assert not invalid.any(), f"{int(invalid.sum())} of {len(complete)} substantial game groups lack two shooting teams"
+E       AssertionError: 7520 of 7520 substantial game groups lack two shooting teams
+E       assert not np.True_
+E        +  where np.True_ = any()
+E        +    where any = SEASON_STR  GAME_ID  \n2020-21     401266794    True\n            401266795    True\n            401266796    True\n      ...01857824    True\n            401858693    True\n            401858694    True\nName: TEAM_ABBR, Length: 7520, dtype: bool.any
+
+backend/tests/test_shot_attribution_regression.py:77: AssertionError</failure></testcase></testsuite></testsuites>

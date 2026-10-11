@@ -1,0 +1,93 @@
+{
+  "context": {
+    "period": 4,
+    "time_remaining": 28.0,
+    "margin": -3.0,
+    "need": null,
+    "needs": [],
+    "defense_style": null,
+    "pace": null,
+    "special_situations": [],
+    "preferred_play_families": [],
+    "text_normalized": "down 3 with 28 seconds left in the fourth quarter",
+    "raw_text": "Down 3 with 28 seconds left in the fourth quarter",
+    "parser_version": "3.0.0",
+    "nlp_pipeline_version": "1.0.0",
+    "nlp_token_count": 10,
+    "after_timeout": false,
+    "slob": false,
+    "blob": false,
+    "advance_ball": false,
+    "late_clock": true,
+    "need3": false,
+    "protect_lead": false,
+    "end_of_quarter": true,
+    "vs_switching": false,
+    "must_stop": false,
+    "quick2": false,
+    "two_for_one": false,
+    "hold_for_last": false,
+    "foul_game": false,
+    "no_three": false,
+    "must_score": false,
+    "safe": false,
+    "offense_bias": 0.75,
+    "defense_bias": 0.25,
+    "intent_tags": [
+      "tempo:late_clock"
+    ],
+    "context_brief": "Q4 \u2022 0:28 left \u2022 down 3",
+    "objective_summary": "Priority is urgency with control: attack quickly, but do not settle for a forced shot.",
+    "warnings": [
+      "Late-game clock was parsed, but no explicit shot-clock value was found. The urgency is usable, but a real shot clock would sharpen the recommendation."
+    ]
+  },
+  "confidence": 0.98,
+  "clarifying_questions": [
+    "If shot-clock timing matters, specify it explicitly (e.g., 7 on the shot clock).",
+    "What is the defensive look or action family? (e.g., switching, drop, zone, ball-screen, handoff)"
+  ],
+  "matches": {
+    "period": "fourth quarter",
+    "time_remaining": "28 seconds",
+    "margin": "down 3"
+  },
+  "warnings": [
+    "Late-game clock was parsed, but no explicit shot-clock value was found. The urgency is usable, but a real shot clock would sharpen the recommendation."
+  ],
+  "context_ml_params": {
+    "period": 4,
+    "margin": -3.0,
+    "time_remaining": 28.0,
+    "needs": [],
+    "after_timeout": false,
+    "slob": false,
+    "blob": false,
+    "advance_ball": false,
+    "late_clock": true,
+    "need3": false,
+    "protect_lead": false,
+    "end_of_quarter": true,
+    "vs_switching": false,
+    "must_stop": false,
+    "quick2": false,
+    "two_for_one": false,
+    "hold_for_last": false,
+    "foul_game": false,
+    "no_three": false,
+    "must_score": false,
+    "safe": false,
+    "special_situations": [],
+    "preferred_play_families": [],
+    "intent_tags": [
+      "tempo:late_clock"
+    ],
+    "offense_bias": 0.75,
+    "defense_bias": 0.25,
+    "context_brief": "Q4 \u2022 0:28 left \u2022 down 3",
+    "objective_summary": "Priority is urgency with control: attack quickly, but do not settle for a forced shot.",
+    "nlp_pipeline_version": "1.0.0"
+  },
+  "parser_version": "3.0.0",
+  "raw_text": "Down 3 with 28 seconds left in the fourth quarter"
+}

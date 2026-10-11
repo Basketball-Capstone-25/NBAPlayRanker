@@ -1,0 +1,482 @@
+[
+  {
+    "code": "F26-SHOT-IDENTITY",
+    "title": "Shot data uses different shooting and opposing teams",
+    "use_cases": [
+      "UC63 Compute Aggregates",
+      "UC70 Get accurate shot type predictions using an appropriate model"
+    ],
+    "stories": [
+      "SCRUM-479",
+      "SCRUM-480"
+    ],
+    "steps": [
+      "Read shooting team, opponent, season and game ID from the retained clean shot dataset.",
+      "Check that team and opponent differ on every row and both shooting teams appear in complete game groups.",
+      "As an analyst, export TOR 2025-26 shots with a 5000-row limit and repeat the identity check."
+    ],
+    "expected": "No shot lists its own team as the opponent; complete game groups contain both shooting teams.",
+    "result": "Fail",
+    "evidence": [
+      "shot-attribution-junit.xml",
+      "shot-data-current.json",
+      "shot-TOR-2025-26.csv"
+    ],
+    "actual": "Fresh checks found 18,746 of 1,332,515 rows with the same team and opponent; all 7,520 game groups with at least 100 shots contained only one shooting-team label. The fresh live CSV contained 51 invalid rows out of 5,000.",
+    "bug_topic": "Repair shot-team attribution and rebuild derived data",
+    "bug_key": "SCRUM-538",
+    "bug_url": "https://basketball-strategy.atlassian.net/browse/SCRUM-538",
+    "key": "BST-138",
+    "jira_status": "Fail"
+  },
+  {
+    "code": "F26-SHOT-ETL",
+    "title": "Shot import keeps the event team separate from home team and score",
+    "use_cases": [
+      "UC63 Compute Aggregates",
+      "UC70 Get accurate shot type predictions using an appropriate model"
+    ],
+    "stories": [
+      "SCRUM-479"
+    ],
+    "steps": [
+      "Create two synthetic shot events in one TOR/BOS game, one from each shooting-team ID.",
+      "Include home-team and away-team abbreviations and a numeric home score, but no shooting-team abbreviation or home flag.",
+      "Run build_shots_clean once with home_score 0 and once with home_score 42.",
+      "Compare team, opponent and home/away flag against the independently specified shooter IDs."
+    ],
+    "expected": "The TOR event maps to TOR/BOS/home and the BOS event to BOS/TOR/away, regardless of the home score.",
+    "result": "Fail",
+    "evidence": [
+      "shot-attribution-junit.xml",
+      "shot-attribution.log"
+    ],
+    "actual": "Both score variants misattribute the shooting teams. This proves a current ETL defect on a representative schema; it does not prove the historical raw schema.",
+    "bug_topic": "Repair shot-team attribution and rebuild derived data",
+    "bug_key": "SCRUM-538",
+    "bug_url": "https://basketball-strategy.atlassian.net/browse/SCRUM-538",
+    "key": "BST-139",
+    "jira_status": "Fail"
+  },
+  {
+    "code": "F26-GP-FIRST",
+    "title": "Gameplan uses the new situation on the first Build",
+    "use_cases": [
+      "UC45 Generate Context-Aware Top-K Play Types and Shot Types",
+      "UC50 Build Context Features"
+    ],
+    "stories": [
+      "SCRUM-326"
+    ],
+    "steps": [
+      "Sign in as a coach and choose TOR/BOS 2024-25.",
+      "Start with Q4, 180 seconds, margin -2.",
+      "Enter: Q4 down 5 with 0:28 left. Need a three. They are switching.",
+      "Build once, record the parsed context and rankings, then build again without changing inputs."
+    ],
+    "expected": "Both requests use Q4, 28 seconds, margin -5, and identical unchanged inputs produce identical ranks and values.",
+    "result": "Fail",
+    "evidence": [
+      "gameplan-first-build.txt",
+      "gameplan-second-build.txt",
+      "gameplan-context-source.txt"
+    ],
+    "actual": "The first Build showed Q4, 28 seconds and a five-point deficit, but its top PPPs were 1.162, 1.068 and 0.994. Building again without changing the prompt gave 1.163, 1.089 and 1.013. The first request also used the previous focus setting.",
+    "bug_topic": "Use the parsed context immediately for Gameplan ranking",
+    "bug_key": "SCRUM-539",
+    "bug_url": "https://basketball-strategy.atlassian.net/browse/SCRUM-539",
+    "key": "BST-140",
+    "jira_status": "Fail"
+  },
+  {
+    "code": "F26-GP-FLAGS",
+    "title": "Gameplan forwards supported coaching conditions to ranking",
+    "use_cases": [
+      "UC45 Generate Context-Aware Top-K Play Types and Shot Types",
+      "UC50 Build Context Features"
+    ],
+    "stories": [
+      "SCRUM-502"
+    ],
+    "steps": [
+      "Enter a situation containing Need a three and They are switching.",
+      "Compare the parsed conditions with the current frontend request construction and backend contract.",
+      "Check the ranking input contract for the supported qualitative conditions."
+    ],
+    "expected": "Supported conditions reach the ranking service, or the screen clearly marks unsupported conditions without claiming they influenced the result.",
+    "result": "Fail",
+    "evidence": [
+      "gameplan-first-build.txt",
+      "gameplan-context-source.txt"
+    ],
+    "actual": "The page displayed the parsed need-three and switching conditions, but the current request-building code forwards only the numeric context and weights. This failure was confirmed by reviewing the request construction; it was not a network capture.",
+    "bug_topic": "Forward supported NLP conditions to ranking",
+    "bug_key": "SCRUM-540",
+    "bug_url": "https://basketball-strategy.atlassian.net/browse/SCRUM-540",
+    "key": "BST-141",
+    "jira_status": "Fail"
+  },
+  {
+    "code": "F26-GP-OT",
+    "title": "Gameplan preserves overtime from the parsed situation",
+    "use_cases": [
+      "UC11 Rank Plays with Game Context",
+      "UC50 Build Context Features"
+    ],
+    "stories": [
+      "SCRUM-502"
+    ],
+    "steps": [
+      "Enter: Overtime, down 2 with 1:00 left.",
+      "Choose Understand and compare the parsed period with the displayed quarter and context summary.",
+      "Inspect the frontend period normalization. Stop at the first mismatch."
+    ],
+    "expected": "Overtime remains overtime throughout parsing, display and ranking; it is not silently changed to quarter 4.",
+    "result": "Fail",
+    "evidence": [
+      "gameplan-overtime.txt",
+      "nlp-overtime-current.json",
+      "gameplan-context-source.txt"
+    ],
+    "actual": "The parser returned overtime as period 5 with 60 seconds and a two-point deficit. After Understand, the page still showed quarter 4 and Q4 in its summary. The check stopped at that mismatch.",
+    "bug_topic": "Preserve overtime in Gameplan context",
+    "bug_key": "SCRUM-541",
+    "bug_url": "https://basketball-strategy.atlassian.net/browse/SCRUM-541",
+    "key": "BST-142",
+    "jira_status": "Fail"
+  },
+  {
+    "code": "F26-SHOT-PLAN",
+    "title": "Analyst Shot Plan page can use its required API",
+    "use_cases": [
+      "UC62 Access Analyst Workspace",
+      "UC70 Get accurate shot type predictions using an appropriate model"
+    ],
+    "stories": [
+      "SCRUM-126"
+    ],
+    "steps": [
+      "Sign in as an analyst and open the analyst Shot Plan page.",
+      "Choose TOR/BOS 2021-22 with a 1,000-shot limit and run the page action.",
+      "Inspect the request status and visible result."
+    ],
+    "expected": "The page role matches its API policy and an allowed analyst can complete the advertised workflow.",
+    "result": "Fail",
+    "evidence": [
+      "shot-plan-browser.txt",
+      "live-additional.json"
+    ],
+    "actual": "The analyst Shot Plan page returned 403: this role is not allowed to access shotplan.",
+    "bug_topic": "Align shot-page routes with their API permissions",
+    "bug_key": "SCRUM-544",
+    "bug_url": "https://basketball-strategy.atlassian.net/browse/SCRUM-544",
+    "key": "BST-143",
+    "jira_status": "Fail"
+  },
+  {
+    "code": "F26-SHOT-HEATMAP",
+    "title": "Analyst Shot Heatmap page can use its required API",
+    "use_cases": [
+      "UC62 Access Analyst Workspace",
+      "UC70 Get accurate shot type predictions using an appropriate model"
+    ],
+    "stories": [
+      "SCRUM-126"
+    ],
+    "steps": [
+      "Sign in as an analyst and open Shot Heatmap.",
+      "Select TOR/BOS 2025-26 with a 1,000-shot limit and generate the heatmap.",
+      "Inspect the API status and image or error shown."
+    ],
+    "expected": "The page role matches the heatmap API policy and the permitted user receives an image.",
+    "result": "Fail",
+    "evidence": [
+      "shot-heatmap-browser.txt",
+      "live-additional.json"
+    ],
+    "actual": "The analyst Shot Heatmap page returned 403: this role is not allowed to access visualization.",
+    "bug_topic": "Align shot-page routes with their API permissions",
+    "bug_key": "SCRUM-544",
+    "bug_url": "https://basketball-strategy.atlassian.net/browse/SCRUM-544",
+    "key": "BST-144",
+    "jira_status": "Fail"
+  },
+  {
+    "code": "F26-METRICS-LOAD",
+    "title": "Model Metrics finishes loading after successful metadata",
+    "use_cases": [
+      "UC65 Evaluate Model",
+      "UC62 Access Analyst Workspace"
+    ],
+    "stories": [
+      "SCRUM-477"
+    ],
+    "steps": [
+      "Sign in as an analyst and open Model Metrics.",
+      "Record successful metadata responses and wait for the metadata loading indicator to finish.",
+      "Inspect holdout requests and navigate between metric panels."
+    ],
+    "expected": "The loading indicator clears when its request completes and unrelated panel state does not trigger duplicate holdout work.",
+    "result": "Fail",
+    "evidence": [
+      "model-metrics-browser.txt"
+    ],
+    "actual": "Fresh browser observation: the holdout results appeared, but Loading pipeline summary remained and Refreshing stayed disabled. Duplicate calls were not established by this browser observation.",
+    "bug_topic": "Separate Model Metrics request state",
+    "bug_key": "SCRUM-542",
+    "bug_url": "https://basketball-strategy.atlassian.net/browse/SCRUM-542",
+    "key": "BST-145",
+    "jira_status": "Fail"
+  },
+  {
+    "code": "F26-SHOT-METRICS",
+    "title": "Shot Model Metrics completes within its request limit",
+    "use_cases": [
+      "UC65 Evaluate Model",
+      "UC70 Get accurate shot type predictions using an appropriate model"
+    ],
+    "stories": [
+      "SCRUM-126"
+    ],
+    "steps": [
+      "Run the documented default Shot Model Metrics action once under approved resource limits.",
+      "Record duration, response status and the rendered metrics or error.",
+      "Check that opening the page does not repeatedly launch training."
+    ],
+    "expected": "The supported metric request completes before the platform timeout, or returns an explicit bounded job/cached-result workflow.",
+    "result": "Not run",
+    "evidence": [
+      "historical/shot-metrics-runtime-diagnostics.json"
+    ],
+    "actual": "The October 6 production run timed out after 300 seconds. No expensive repeat was triggered during this revision; retain that original failure evidence and rerun after the planned fix.",
+    "bug_topic": "Cache or precompute shot metrics instead of training in a page request",
+    "bug_key": "SCRUM-543",
+    "bug_url": "https://basketball-strategy.atlassian.net/browse/SCRUM-543",
+    "key": "BST-146",
+    "jira_status": "Verify"
+  },
+  {
+    "code": "F26-SHOT-ANALYSIS",
+    "title": "Shot Statistical Analysis renders the returned response",
+    "use_cases": [
+      "UC65 Evaluate Model",
+      "UC62 Access Analyst Workspace"
+    ],
+    "stories": [
+      "SCRUM-126"
+    ],
+    "steps": [
+      "Sign in as an analyst and open Shot Statistical Analysis.",
+      "Run the supported analysis and inspect the page and browser console.",
+      "Check the dataset, correlation and feature-selection sections for valid values or explicit unavailable states."
+    ],
+    "expected": "A successful current response renders without a client exception; the page does not claim methods that were not computed.",
+    "result": "Fail",
+    "evidence": [
+      "shot-analysis-browser.txt",
+      "shot-analysis-console.json"
+    ],
+    "actual": "Shot Statistical Analysis showed an application error. The browser console recorded a TypeError while reading length.",
+    "bug_topic": "Align Shot Statistical Analysis with its API response",
+    "bug_key": "SCRUM-545",
+    "bug_url": "https://basketball-strategy.atlassian.net/browse/SCRUM-545",
+    "key": "BST-147",
+    "jira_status": "Fail"
+  },
+  {
+    "code": "F26-GP-CONFLICT",
+    "title": "A stale Gameplan update cannot overwrite a newer revision",
+    "use_cases": [
+      "UC42 Save Notes to Tactics Board / Plan",
+      "UC48 Save Notes to Tactics Board / Plan"
+    ],
+    "stories": [
+      "SCRUM-481"
+    ],
+    "steps": [
+      "Create a disposable Gameplan with the authorized coach session.",
+      "Update revision 1 and confirm the server returns revision 2.",
+      "Try another update conditional on stale revision 1.",
+      "Read the row and delete the disposable fixture."
+    ],
+    "expected": "The stale update changes zero rows, the newer state survives, and cleanup removes the fixture.",
+    "result": "Pass",
+    "evidence": [
+      "live-core/live-verification.json"
+    ],
+    "actual": "The live update advanced revision 1 to 2; the stale revision 1 request changed zero rows; fixture cleanup passed.",
+    "bug_topic": null,
+    "key": "BST-148",
+    "jira_status": "Pass"
+  },
+  {
+    "code": "F26-PROFILE-PRIVATE",
+    "title": "One account cannot read another account profile",
+    "use_cases": [
+      "UC69 Authenticate Analyst Access",
+      "UC71 Validate Coach Access"
+    ],
+    "stories": [
+      "SCRUM-75"
+    ],
+    "steps": [
+      "Sign in with the controlled coach and analyst accounts.",
+      "As each role, query profiles filtered to the other account ID.",
+      "Do not change any profile or role."
+    ],
+    "expected": "Both requests return no other-account row; the caller can still retrieve its own trusted role.",
+    "result": "Pass",
+    "evidence": [
+      "live-additional.json",
+      "live-core/live-verification.json"
+    ],
+    "actual": "Both other-account profile queries returned HTTP 200 with empty lists; own-role checks passed.",
+    "bug_topic": null,
+    "key": "BST-149",
+    "jira_status": "Pass"
+  },
+  {
+    "code": "F26-EXPORT-IDENTITY",
+    "title": "Export proxy rejects a cookie session for the wrong verified user",
+    "use_cases": [
+      "UC62 Access Analyst Workspace"
+    ],
+    "stories": [
+      "SCRUM-527"
+    ],
+    "steps": [
+      "Run the export route test with a verified user and a session belonging to another user.",
+      "Record the status and whether any upstream fetch starts."
+    ],
+    "expected": "The route returns 401 and never calls the backend with the mismatched session.",
+    "result": "Pass",
+    "evidence": [
+      "frontend-vitest.json"
+    ],
+    "actual": "The mismatched-session regression passed using isolated request fixtures. This is a local route check, not a new browser execution.",
+    "bug_topic": null,
+    "key": "BST-150",
+    "jira_status": "Pass"
+  },
+  {
+    "code": "F26-EXPORT-TARGET",
+    "title": "Export proxy rejects arbitrary backend targets",
+    "use_cases": [
+      "UC62 Access Analyst Workspace"
+    ],
+    "stories": [
+      "SCRUM-527"
+    ],
+    "steps": [
+      "Request absolute external URLs, protocol-relative URLs, unsupported paths and traversal-style paths.",
+      "Also supply an arbitrary url parameter or duplicate path selector.",
+      "Check that rejection happens before authentication or an upstream fetch."
+    ],
+    "expected": "Unsupported targets return 400 and cannot turn the export route into an arbitrary proxy.",
+    "result": "Pass",
+    "evidence": [
+      "frontend-vitest.json"
+    ],
+    "actual": "All target allowlist and duplicate-selector cases passed locally.",
+    "bug_topic": null,
+    "key": "BST-151",
+    "jira_status": "Pass"
+  },
+  {
+    "code": "F26-EXPORT-ORIGIN",
+    "title": "Export proxy rejects foreign-site download requests",
+    "use_cases": [
+      "UC62 Access Analyst Workspace"
+    ],
+    "stories": [
+      "SCRUM-527"
+    ],
+    "steps": [
+      "Call the same-origin export route with a foreign Origin header.",
+      "Repeat with Sec-Fetch-Site set to cross-site.",
+      "Check status and whether an upstream request starts."
+    ],
+    "expected": "Both calls return 403 without contacting the backend.",
+    "result": "Pass",
+    "evidence": [
+      "frontend-vitest.json"
+    ],
+    "actual": "Both foreign-site request fixtures returned 403 and no upstream request.",
+    "bug_topic": null,
+    "key": "BST-152",
+    "jira_status": "Pass"
+  },
+  {
+    "code": "F26-EXPORT-TYPE",
+    "title": "Export proxy rejects redirects and wrong file content",
+    "use_cases": [
+      "UC62 Access Analyst Workspace"
+    ],
+    "stories": [
+      "SCRUM-527"
+    ],
+    "steps": [
+      "Have the upstream endpoint return a 302 redirect to another site.",
+      "Have it return HTTP 200 JSON for a CSV request.",
+      "Check the route response and download headers."
+    ],
+    "expected": "The proxy follows neither redirect and returns 502 without a download attachment for invalid file content.",
+    "result": "Pass",
+    "evidence": [
+      "frontend-vitest.json"
+    ],
+    "actual": "Redirect and wrong-content-type cases both passed locally; neither created an attachment.",
+    "bug_topic": null,
+    "key": "BST-153",
+    "jira_status": "Pass"
+  },
+  {
+    "code": "F26-EXPORT-ERROR",
+    "title": "Export proxy keeps denied responses out of downloaded files",
+    "use_cases": [
+      "UC62 Access Analyst Workspace"
+    ],
+    "stories": [
+      "SCRUM-527"
+    ],
+    "steps": [
+      "Return upstream 401, 403 and 422 responses to a permitted export path.",
+      "Check response status, content type, attachment header and body."
+    ],
+    "expected": "The status stays accurate, the body is an error response rather than an attachment, and tokens do not appear.",
+    "result": "Pass",
+    "evidence": [
+      "frontend-vitest.json"
+    ],
+    "actual": "All three upstream rejection cases passed locally.",
+    "bug_topic": null,
+    "key": "BST-154",
+    "jira_status": "Pass"
+  },
+  {
+    "code": "F26-NLP-INPUT",
+    "title": "NLP rejects empty and overlength coaching prompts",
+    "use_cases": [
+      "UC50 Build Context Features",
+      "UC45 Generate Context-Aware Top-K Play Types and Shot Types"
+    ],
+    "stories": [
+      "SCRUM-502"
+    ],
+    "steps": [
+      "Send a whitespace-only coaching prompt.",
+      "Send a 2,001-character prompt.",
+      "Send a normal bounded coaching prompt and compare parsed numeric context."
+    ],
+    "expected": "The two invalid prompts return 422; the valid prompt returns the intended margin and remaining time.",
+    "result": "Pass",
+    "evidence": [
+      "live-additional.json",
+      "nlp-live-parse.json"
+    ],
+    "actual": "Fresh live requests rejected both invalid prompts and parsed down 3 with 28 seconds correctly.",
+    "bug_topic": null,
+    "key": "BST-155",
+    "jira_status": "Pass"
+  }
+]

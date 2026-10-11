@@ -1,0 +1,1428 @@
+[
+  {
+    "key": "BST-32",
+    "summary": "Analyst middleware allows the Data Explorer route",
+    "file": "tests/middleware.auth-analyst.test.ts",
+    "test": "allows analyst to access /data-explorer",
+    "input": "an analyst profile and GET /data-explorer.",
+    "expected": "The response is 200 and has no redirect location.",
+    "scope": "Frontend middleware unit test with stubbed session/profile",
+    "uc": [
+      "UC62",
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "frontend-vitest.json",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC62, UC69.\n\nScope: Frontend middleware unit test with stubbed session/profile. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `npx vitest run tests/middleware.auth-analyst.test.ts -t 'allows analyst to access /data-explorer'`.\n2. Use an analyst profile and GET /data-explorer.\n3. Compare the returned values with the expected result.\n\nExpected result: The response is 200 and has no redirect location.\n\nExecution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.",
+    "comment": "The middleware test allowed an analyst profile to open Data Explorer without redirecting.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc62",
+      "uc69",
+      "fa-analyst-workspace"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-33",
+    "summary": "Workspace API returns rows and matching counts",
+    "file": "backend/tests/test_access_analyst_workspace_api.py",
+    "test": "test_access_workspace_returns_table_with_meta",
+    "input": "GET /data/team-playtypes for 2019-20.",
+    "expected": "The response is 200, includes season, total_rows, returned_rows and rows, and returned_rows matches the list length.",
+    "scope": "Local API data-flow test with explicit development authentication bypass",
+    "uc": [
+      "UC62",
+      "UC63"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC62, UC63.\n\nScope: Local API data-flow test with explicit development authentication bypass. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_analyst_workspace_api.py::test_access_workspace_returns_table_with_meta.\n2. Use GET /data/team-playtypes for 2019-20.\n3. Compare the returned values with the expected result.\n\nExpected result: The response is 200, includes season, total_rows, returned_rows and rows, and returned_rows matches the list length.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The 2019-20 workspace response included its rows and summary counts. The returned-row count matched the list length.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc62",
+      "uc63",
+      "fa-analyst-workspace"
+    ],
+    "feature": "SCRUM-317",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-34",
+    "summary": "Analyst profile can read the workspace API",
+    "file": "backend/tests/test_access_control_api_bypass.py",
+    "test": "test_analyst_can_access_data_explorer",
+    "input": "a current analyst role and GET /data/team-playtypes for 2019-20.",
+    "expected": "The API accepts the analyst role and returns 200.",
+    "scope": "Local backend API test with stubbed verified session/profile and strict role checks",
+    "uc": [
+      "UC62",
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC62, UC69.\n\nScope: Local backend API test with stubbed verified session/profile and strict role checks. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_can_access_data_explorer -q`.\n2. Use a current analyst role and GET /data/team-playtypes for 2019-20.\n3. Compare the returned values with the expected result.\n\nExpected result: The API accepts the analyst role and returns 200.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The API role check accepted the analyst profile and returned the 2019-20 workspace data.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc62",
+      "uc69",
+      "fa-analyst-workspace"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-35",
+    "summary": "Workspace filters preserve the requested team and side",
+    "file": "backend/tests/test_access_analyst_workspace_api.py",
+    "test": "test_access_workspace_applies_team_and_side_filters",
+    "input": "season 2019-20, team TOR, side offense and limit 100.",
+    "expected": "The API returns 200 and each returned row matches the requested season, team and side.",
+    "scope": "Local API data-flow test with explicit development authentication bypass",
+    "uc": [
+      "UC62",
+      "UC63"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC62, UC63.\n\nScope: Local API data-flow test with explicit development authentication bypass. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_analyst_workspace_api.py::test_access_workspace_applies_team_and_side_filters.\n2. Use season 2019-20, team TOR, side offense and limit 100.\n3. Compare the returned values with the expected result.\n\nExpected result: The API returns 200 and each returned row matches the requested season, team and side.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The workspace filter check kept every returned row within TOR offense for 2019-20.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc62",
+      "uc63",
+      "fa-analyst-workspace"
+    ],
+    "feature": "SCRUM-317",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-36",
+    "summary": "Workspace row limits agree with response counts",
+    "file": "backend/tests/test_access_analyst_workspace_api.py",
+    "test": "test_access_workspace_respects_limit_and_reports_counts",
+    "input": "GET /data/team-playtypes for 2019-20 with limit 7.",
+    "expected": "The response has at most seven rows, returned_rows equals the list length and total_rows is at least returned_rows.",
+    "scope": "Local API data-flow test with explicit development authentication bypass",
+    "uc": [
+      "UC62",
+      "UC63"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC62, UC63.\n\nScope: Local API data-flow test with explicit development authentication bypass. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_analyst_workspace_api.py::test_access_workspace_respects_limit_and_reports_counts.\n2. Use GET /data/team-playtypes for 2019-20 with limit 7.\n3. Compare the returned values with the expected result.\n\nExpected result: The response has at most seven rows, returned_rows equals the list length and total_rows is at least returned_rows.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "With the row limit set to seven, the workspace returned no more than seven rows. Both response counts agreed with the returned list.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc62",
+      "uc63",
+      "fa-analyst-workspace"
+    ],
+    "feature": "SCRUM-317",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-37",
+    "summary": "Coach profile cannot read the analyst workspace API",
+    "file": "backend/tests/test_access_control_api_bypass.py",
+    "test": "test_coach_blocked_from_data_explorer",
+    "input": "a coach role and GET /data/team-playtypes for 2019-20.",
+    "expected": "The API returns 403.",
+    "scope": "Local backend API test with stubbed verified session/profile and strict role checks",
+    "uc": [
+      "UC62",
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC62, UC69.\n\nScope: Local backend API test with stubbed verified session/profile and strict role checks. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_coach_blocked_from_data_explorer -q`.\n2. Use a coach role and GET /data/team-playtypes for 2019-20.\n3. Compare the returned values with the expected result.\n\nExpected result: The API returns 403.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The API role check rejected a coach profile trying to read the analyst workspace with 403.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc62",
+      "uc69",
+      "fa-analyst-workspace"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-38",
+    "summary": "Coach profile cannot export analyst workspace CSV",
+    "file": "backend/tests/test_access_control_api_bypass.py",
+    "test": "test_coach_blocked_from_data_csv_export",
+    "input": "a coach role and GET /data/team-playtypes.csv for 2019-20.",
+    "expected": "The API returns 403.",
+    "scope": "Local backend API test with stubbed verified session/profile and strict role checks",
+    "uc": [
+      "UC62",
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC62, UC69.\n\nScope: Local backend API test with stubbed verified session/profile and strict role checks. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_coach_blocked_from_data_csv_export -q`.\n2. Use a coach role and GET /data/team-playtypes.csv for 2019-20.\n3. Compare the returned values with the expected result.\n\nExpected result: The API returns 403.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The coach profile was rejected from the analyst workspace CSV endpoint with 403.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc62",
+      "uc69",
+      "fa-analyst-workspace"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-39",
+    "summary": "Workspace API rejects a missing session",
+    "file": "backend/tests/test_access_control_api_bypass.py",
+    "test": "test_no_token_data_explorer",
+    "input": "GET /data/team-playtypes for 2019-20 without Authorization.",
+    "expected": "The API returns 401.",
+    "scope": "Local backend API test with stubbed verified session/profile and strict role checks",
+    "uc": [
+      "UC62",
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC62, UC69.\n\nScope: Local backend API test with stubbed verified session/profile and strict role checks. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_no_token_data_explorer -q`.\n2. Use GET /data/team-playtypes for 2019-20 without Authorization.\n3. Compare the returned values with the expected result.\n\nExpected result: The API returns 401.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The workspace API rejected a request without an Authorization header with 401.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc62",
+      "uc69",
+      "fa-analyst-workspace"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-40",
+    "summary": "Coach middleware redirects the analyst workspace route",
+    "file": "tests/middleware.auth-analyst.test.ts",
+    "test": "redirects coach away from /data-explorer",
+    "input": "a coach profile and GET /data-explorer.",
+    "expected": "The middleware returns a redirect to /matchup.",
+    "scope": "Frontend middleware unit test with stubbed session/profile",
+    "uc": [
+      "UC62",
+      "UC71"
+    ],
+    "result": "Pass",
+    "evidence": "frontend-vitest.json",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC62, UC71.\n\nScope: Frontend middleware unit test with stubbed session/profile. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `npx vitest run tests/middleware.auth-analyst.test.ts -t 'redirects coach away from /data-explorer'`.\n2. Use a coach profile and GET /data-explorer.\n3. Compare the returned values with the expected result.\n\nExpected result: The middleware returns a redirect to /matchup.\n\nExecution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.",
+    "comment": "A coach profile requesting Data Explorer was redirected to Matchup in the middleware test.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc62",
+      "uc71",
+      "fa-analyst-workspace"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-41",
+    "summary": "Signed-out workspace request keeps its return path",
+    "file": "tests/middleware.auth-analyst.test.ts",
+    "test": "redirects unauthenticated user to /login with next",
+    "input": "no session and GET /data-explorer?x=1.",
+    "expected": "The middleware redirects to /login with the encoded original path and query in next.",
+    "scope": "Frontend middleware unit test with stubbed session/profile",
+    "uc": [
+      "UC62",
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "frontend-vitest.json",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC62, UC69.\n\nScope: Frontend middleware unit test with stubbed session/profile. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `npx vitest run tests/middleware.auth-analyst.test.ts -t 'redirects unauthenticated user to /login with next'`.\n2. Use no session and GET /data-explorer?x=1.\n3. Compare the returned values with the expected result.\n\nExpected result: The middleware redirects to /login with the encoded original path and query in next.\n\nExecution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.",
+    "comment": "A signed-out Data Explorer request was redirected to login. The original path and query were preserved in the return link.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc62",
+      "uc69",
+      "fa-analyst-workspace"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-45",
+    "summary": "Explicit local development mode permits a missing session",
+    "file": "backend/tests/test_access_control.py",
+    "test": "test_validate_session_dev_mode_allows",
+    "input": "the development-auth switch enabled and validate_session(None).",
+    "expected": "Session validation returns True.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC69.\n\nScope: Local backend unit test. This bypass is a local test configuration; it is not enabled for production access.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_control.py::test_validate_session_dev_mode_allows.\n2. Use the development-auth switch enabled and validate_session(None).\n3. Compare the returned values with the expected result.\n\nExpected result: Session validation returns True.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "With development access enabled, the local session check accepted a missing token. This setting is limited to the test environment.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc69",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-46",
+    "summary": "Session validation rejects a missing token",
+    "file": "backend/tests/test_access_control.py",
+    "test": "test_validate_session_rejects_none_token",
+    "input": "development bypass disabled and validate_session(None).",
+    "expected": "Session validation returns False.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC69.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_control.py::test_validate_session_rejects_none_token.\n2. Use development bypass disabled and validate_session(None).\n3. Compare the returned values with the expected result.\n\nExpected result: Session validation returns False.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Missing tokens were rejected with development access disabled.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc69",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-47",
+    "summary": "Session validation rejects a failed JWT verification",
+    "file": "backend/tests/test_access_control.py",
+    "test": "test_validate_session_rejects_invalid_jwt",
+    "input": "development bypass disabled and the JWT verifier returning no claims.",
+    "expected": "Session validation returns False.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC69.\n\nScope: Local backend unit test. JWT decoding is stubbed in this unit test.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_control.py::test_validate_session_rejects_invalid_jwt.\n2. Use development bypass disabled and the JWT verifier returning no claims.\n3. Compare the returned values with the expected result.\n\nExpected result: Session validation returns False.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The session check rejected the token when JWT verification returned no claims.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc69",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-48",
+    "summary": "Session validation accepts verified subject claims",
+    "file": "backend/tests/test_access_control.py",
+    "test": "test_validate_session_accepts_valid_jwt",
+    "input": "development bypass disabled and verified claims with a subject and valid expiry.",
+    "expected": "Session validation returns True.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC69.\n\nScope: Local backend unit test. JWT decoding is stubbed in this unit test.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_control.py::test_validate_session_accepts_valid_jwt.\n2. Use development bypass disabled and verified claims with a subject and valid expiry.\n3. Compare the returned values with the expected result.\n\nExpected result: Session validation returns True.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The session check accepted the verified subject and expiry claims supplied by the test fixture.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc69",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-49",
+    "summary": "A failed token verification cannot produce a role",
+    "file": "backend/tests/test_access_control.py",
+    "test": "test_get_user_role_returns_none_on_invalid_token",
+    "input": "the JWT verifier returning no claims.",
+    "expected": "Role lookup returns None.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC69.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_control.py::test_get_user_role_returns_none_on_invalid_token.\n2. Use the JWT verifier returning no claims.\n3. Compare the returned values with the expected result.\n\nExpected result: Role lookup returns None.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "A token that failed verification produced no user role.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc69",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-52",
+    "summary": "Unsupported and malformed profiles cannot grant a role",
+    "file": "backend/tests/test_supabase_profiles.py",
+    "test": "test_missing_pending_and_malformed_profiles_deny_access",
+    "input": "empty, pending, unsupported admin-role, incorrectly shaped and null profile responses.",
+    "expected": "All five profile responses produce no authorized role.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC69",
+      "UC71"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 5,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC69, UC71.\n\nScope: Local backend unit test. The profile HTTP response is stubbed.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_supabase_profiles.py::test_missing_pending_and_malformed_profiles_deny_access.\n2. Use empty, pending, unsupported admin-role, incorrectly shaped and null profile responses.\n3. Compare the returned values with the expected result.\n\nExpected result: All five profile responses produce no authorized role.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Empty, pending, unsupported and malformed profile responses all returned no authorized role. All five input cases passed.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc69",
+      "uc71",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-53",
+    "summary": "Explicit local development mode permits the analytics guard",
+    "file": "backend/tests/test_access_control.py",
+    "test": "test_check_user_access_dev_mode_allows",
+    "input": "the development-auth switch enabled and check_user_access(None, analytics).",
+    "expected": "The analytics permission check returns True.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC69.\n\nScope: Local backend unit test. This bypass is a local test configuration; it is not enabled for production access.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_control.py::test_check_user_access_dev_mode_allows.\n2. Use the development-auth switch enabled and check_user_access(None, analytics).\n3. Compare the returned values with the expected result.\n\nExpected result: The analytics permission check returns True.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The local analytics guard allowed access without a role only when development access was enabled.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc69",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-54",
+    "summary": "Analytics permission rejects the coach role",
+    "file": "backend/tests/test_access_control.py",
+    "test": "test_check_user_access_rejects_wrong_role",
+    "input": "development bypass disabled and check_user_access(coach, analytics).",
+    "expected": "The analytics permission check returns False.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC69.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_control.py::test_check_user_access_rejects_wrong_role.\n2. Use development bypass disabled and check_user_access(coach, analytics).\n3. Compare the returned values with the expected result.\n\nExpected result: The analytics permission check returns False.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "With development access disabled, a coach role could not pass the analytics permission check.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc69",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-55",
+    "summary": "Analytics permission accepts the analyst role",
+    "file": "backend/tests/test_access_control.py",
+    "test": "test_check_user_access_accepts_correct_role",
+    "input": "development bypass disabled and check_user_access(analyst, analytics).",
+    "expected": "The analytics permission check returns True.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC69"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC69.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_access_control.py::test_check_user_access_accepts_correct_role.\n2. Use development bypass disabled and check_user_access(analyst, analytics).\n3. Compare the returned values with the expected result.\n\nExpected result: The analytics permission check returns True.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The analyst role passed the analytics permission check with development access disabled.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc69",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-58",
+    "summary": "Baseline returns five plays with ranking values",
+    "file": "backend/tests/test_baseline.py",
+    "test": "test_rank_returns_k_rows",
+    "input": "2019-20 TOR against BOS with K=5.",
+    "expected": "Exactly five rows are returned with PLAY_TYPE, PPP_PRED and PPP_GAP columns.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC10",
+      "UC55"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC10, UC55.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_baseline.py::test_rank_returns_k_rows.\n2. Use 2019-20 TOR against BOS with K=5.\n3. Compare the returned values with the expected result.\n\nExpected result: Exactly five rows are returned with PLAY_TYPE, PPP_PRED and PPP_GAP columns.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "TOR against BOS in 2019-20 returned exactly five baseline plays, including each play type, predicted PPP and PPP gap.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc10",
+      "uc55",
+      "fa-baseline-ranking"
+    ],
+    "feature": "SCRUM-321",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-59",
+    "summary": "Baseline predictions are nonnegative for the test matchup",
+    "file": "backend/tests/test_baseline.py",
+    "test": "test_rank_ppp_pred_non_negative",
+    "input": "2019-20 TOR against BOS with K=5.",
+    "expected": "Every returned PPP_PRED value is at least zero.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC10",
+      "UC55"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC10, UC55.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_baseline.py::test_rank_ppp_pred_non_negative.\n2. Use 2019-20 TOR against BOS with K=5.\n3. Compare the returned values with the expected result.\n\nExpected result: Every returned PPP_PRED value is at least zero.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "All five baseline PPP predictions for TOR against BOS in 2019-20 were nonnegative.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc10",
+      "uc55",
+      "fa-baseline-ranking"
+    ],
+    "feature": "SCRUM-321",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-60",
+    "summary": "Baseline K=10 returns a nonempty bounded list",
+    "file": "backend/tests/test_baseline.py",
+    "test": "test_rank_k_exceeds_available",
+    "input": "2019-20 TOR against BOS with K=10.",
+    "expected": "The result contains between one and ten rows.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC10",
+      "UC55"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC10, UC55.\n\nScope: Local backend unit test. This assertion checks the returned bound, not the availability of every possible play type.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_baseline.py::test_rank_k_exceeds_available.\n2. Use 2019-20 TOR against BOS with K=10.\n3. Compare the returned values with the expected result.\n\nExpected result: The result contains between one and ten rows.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Requesting ten baseline plays returned a nonempty list with no more than ten rows. This check covers the row limit.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc10",
+      "uc55",
+      "fa-baseline-ranking"
+    ],
+    "feature": "SCRUM-321",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-61",
+    "summary": "Changing the team changes baseline predictions",
+    "file": "backend/tests/test_baseline.py",
+    "test": "test_different_teams_produce_different_rankings",
+    "input": "2019-20 LAL against BOS and MIA against BOS, both K=5.",
+    "expected": "The two PPP_PRED lists differ.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC10",
+      "UC55"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC10, UC55.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_baseline.py::test_different_teams_produce_different_rankings.\n2. Use 2019-20 LAL against BOS and MIA against BOS, both K=5.\n3. Compare the returned values with the expected result.\n\nExpected result: The two PPP_PRED lists differ.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Changing the team from LAL to MIA against BOS changed the predicted PPP list for 2019-20.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc10",
+      "uc55",
+      "fa-baseline-ranking"
+    ],
+    "feature": "SCRUM-321",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-62",
+    "summary": "Baseline API returns the requested Top-K and matchup metadata",
+    "file": "backend/tests/test_baseline_api.py",
+    "test": "test_rank_baseline_api_returns_top_k_rows",
+    "input": "2019-20 TOR against BOS with K=3.",
+    "expected": "The API returns 200, three rows, matching matchup metadata and the expected ranking columns.",
+    "scope": "Local API data-flow test with explicit development authentication bypass",
+    "uc": [
+      "UC18"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC18.\n\nScope: Local API data-flow test with explicit development authentication bypass. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_baseline_api.py::test_rank_baseline_api_returns_top_k_rows.\n2. Use 2019-20 TOR against BOS with K=3.\n3. Compare the returned values with the expected result.\n\nExpected result: The API returns 200, three rows, matching matchup metadata and the expected ranking columns.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The baseline API returned three plays for TOR against BOS and kept the requested 2019-20 matchup details in its response.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc18",
+      "fa-baseline-ranking"
+    ],
+    "feature": "SCRUM-321",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-63",
+    "summary": "Baseline API rejects the same team on both sides",
+    "file": "backend/tests/test_baseline_api.py",
+    "test": "test_rank_baseline_api_rejects_same_team_matchup",
+    "input": "2019-20 TOR against TOR with K=5.",
+    "expected": "The API returns 400 and explains that the teams must differ.",
+    "scope": "Local API data-flow test with explicit development authentication bypass",
+    "uc": [
+      "UC18"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC18.\n\nScope: Local API data-flow test with explicit development authentication bypass. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_baseline_api.py::test_rank_baseline_api_rejects_same_team_matchup.\n2. Use 2019-20 TOR against TOR with K=5.\n3. Compare the returned values with the expected result.\n\nExpected result: The API returns 400 and explains that the teams must differ.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The baseline API rejected TOR against TOR with 400 and explained that the two teams must differ.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc18",
+      "fa-baseline-ranking"
+    ],
+    "feature": "SCRUM-321",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-64",
+    "summary": "Baseline API rejects K=0",
+    "file": "backend/tests/test_baseline_api.py",
+    "test": "test_rank_baseline_api_rejects_invalid_k",
+    "input": "2019-20 TOR against BOS with K=0.",
+    "expected": "Query validation returns 422.",
+    "scope": "Local API data-flow test with explicit development authentication bypass",
+    "uc": [
+      "UC18"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+    "description": "Use-case coverage: UC18.\n\nScope: Local API data-flow test with explicit development authentication bypass. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_baseline_api.py::test_rank_baseline_api_rejects_invalid_k.\n2. Use 2019-20 TOR against BOS with K=0.\n3. Compare the returned values with the expected result.\n\nExpected result: Query validation returns 422.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The baseline API rejected K=0 with a 422 validation response.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc18",
+      "fa-baseline-ranking"
+    ],
+    "feature": "SCRUM-321",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-67",
+    "summary": "Coach middleware allows the matchup route",
+    "file": "tests/middleware.auth-coach.test.ts",
+    "test": "allows coach to access /matchup",
+    "input": "a coach profile and GET /matchup.",
+    "expected": "The response is 200 and has no redirect location.",
+    "scope": "Frontend middleware unit test with stubbed session/profile",
+    "uc": [
+      "UC71"
+    ],
+    "result": "Pass",
+    "evidence": "frontend-vitest.json",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC71.\n\nScope: Frontend middleware unit test with stubbed session/profile. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `npx vitest run tests/middleware.auth-coach.test.ts -t 'allows coach to access /matchup'`.\n2. Use a coach profile and GET /matchup.\n3. Compare the returned values with the expected result.\n\nExpected result: The response is 200 and has no redirect location.\n\nExecution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.",
+    "comment": "The coach profile could access the Matchup route without a redirect in the middleware test.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc71",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-68",
+    "summary": "Coach middleware redirects analyst-only pages",
+    "file": "tests/middleware.auth-coach.test.ts",
+    "test": "redirects coach away from analyst-only /data-explorer",
+    "input": "a coach profile and GET /data-explorer.",
+    "expected": "The middleware redirects to /matchup.",
+    "scope": "Frontend middleware unit test with stubbed session/profile",
+    "uc": [
+      "UC71"
+    ],
+    "result": "Pass",
+    "evidence": "frontend-vitest.json",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC71.\n\nScope: Frontend middleware unit test with stubbed session/profile. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `npx vitest run tests/middleware.auth-coach.test.ts -t 'redirects coach away from analyst-only /data-explorer'`.\n2. Use a coach profile and GET /data-explorer.\n3. Compare the returned values with the expected result.\n\nExpected result: The middleware redirects to /matchup.\n\nExecution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.",
+    "comment": "The middleware sent a coach profile away from the analyst-only Data Explorer route and back to Matchup.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc71",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-69",
+    "summary": "Signed-in coach is redirected away from login",
+    "file": "tests/middleware.auth-coach.test.ts",
+    "test": "redirects signed-in coach from auth page to /matchup",
+    "input": "a coach profile and GET /login.",
+    "expected": "The middleware redirects to /matchup.",
+    "scope": "Frontend middleware unit test with stubbed session/profile",
+    "uc": [
+      "UC71"
+    ],
+    "result": "Pass",
+    "evidence": "frontend-vitest.json",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC71.\n\nScope: Frontend middleware unit test with stubbed session/profile. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `npx vitest run tests/middleware.auth-coach.test.ts -t 'redirects signed-in coach from auth page to /matchup'`.\n2. Use a coach profile and GET /login.\n3. Compare the returned values with the expected result.\n\nExpected result: The middleware redirects to /matchup.\n\nExecution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.",
+    "comment": "A signed-in coach visiting login was redirected to Matchup in the middleware test.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc71",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-70",
+    "summary": "Coach profile can call the baseline API",
+    "file": "backend/tests/test_access_control_api_bypass.py",
+    "test": "test_coach_can_access_baseline",
+    "input": "a coach role and 2019-20 TOR against BOS.",
+    "expected": "The baseline endpoint returns 200.",
+    "scope": "Local backend API test with stubbed verified session/profile and strict role checks",
+    "uc": [
+      "UC71",
+      "UC18"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC71, UC18.\n\nScope: Local backend API test with stubbed verified session/profile and strict role checks. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_coach_can_access_baseline -q`.\n2. Use a coach role and 2019-20 TOR against BOS.\n3. Compare the returned values with the expected result.\n\nExpected result: The baseline endpoint returns 200.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The API role check let the coach profile request baseline rankings for TOR against BOS.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc18",
+      "uc71",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-71",
+    "summary": "Analyst profile cannot call the coach baseline API",
+    "file": "backend/tests/test_access_control_api_bypass.py",
+    "test": "test_analyst_blocked_from_baseline_ranking",
+    "input": "an analyst role and 2019-20 TOR against BOS.",
+    "expected": "The baseline endpoint returns 403.",
+    "scope": "Local backend API test with stubbed verified session/profile and strict role checks",
+    "uc": [
+      "UC71",
+      "UC18"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC71, UC18.\n\nScope: Local backend API test with stubbed verified session/profile and strict role checks. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_blocked_from_baseline_ranking -q`.\n2. Use an analyst role and 2019-20 TOR against BOS.\n3. Compare the returned values with the expected result.\n\nExpected result: The baseline endpoint returns 403.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The API role check rejected an analyst profile calling the coach baseline endpoint with 403.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc18",
+      "uc71",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-72",
+    "summary": "Analyst profile cannot call the coach context API",
+    "file": "backend/tests/test_access_control_api_bypass.py",
+    "test": "test_analyst_blocked_from_context_ml",
+    "input": "an analyst role and 2019-20 TOR against BOS.",
+    "expected": "The context ranking endpoint returns 403.",
+    "scope": "Local backend API test with stubbed verified session/profile and strict role checks",
+    "uc": [
+      "UC71",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC71, UC59.\n\nScope: Local backend API test with stubbed verified session/profile and strict role checks. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_blocked_from_context_ml -q`.\n2. Use an analyst role and 2019-20 TOR against BOS.\n3. Compare the returned values with the expected result.\n\nExpected result: The context ranking endpoint returns 403.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The analyst profile was rejected from the coach context-ranking endpoint with 403.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc59",
+      "uc71",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-73",
+    "summary": "Analyst profile cannot call the coach visualization API",
+    "file": "backend/tests/test_access_control_api_bypass.py",
+    "test": "test_analyst_blocked_from_viz",
+    "input": "an analyst role and GET /viz/playtype-zones for 2019-20 TOR against BOS.",
+    "expected": "The visualization endpoint returns 403.",
+    "scope": "Local backend API test with stubbed verified session/profile and strict role checks",
+    "uc": [
+      "UC71"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC71.\n\nScope: Local backend API test with stubbed verified session/profile and strict role checks. The separate analyst-page/API permission mismatch is a failing regression in BST-143 and BST-144.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_blocked_from_viz -q`.\n2. Use an analyst role and GET /viz/playtype-zones for 2019-20 TOR against BOS.\n3. Compare the returned values with the expected result.\n\nExpected result: The visualization endpoint returns 403.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The analyst profile was rejected from the coach visualization endpoint with 403. The analyst-page mismatch is tracked separately in BST-143 and BST-144.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc71",
+      "fa-access-control"
+    ],
+    "feature": "SCRUM-75",
+    "description_needs_command_update": true
+  },
+  {
+    "key": "BST-77",
+    "summary": "Regulation clock starts with 2,880 seconds",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_total_time_remaining_start_of_game",
+    "input": "period 1 and 720 seconds left in the period.",
+    "expected": "The helper returns 2,880 seconds.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_total_time_remaining_start_of_game.\n2. Use period 1 and 720 seconds left in the period.\n3. Compare the returned values with the expected result.\n\nExpected result: The helper returns 2,880 seconds.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The regulation clock returned 2,880 seconds at the start of the first quarter.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-78",
+    "summary": "Regulation clock reaches zero at the fourth-quarter end",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_total_time_remaining_end_of_regulation",
+    "input": "period 4 and zero seconds left.",
+    "expected": "The helper returns zero seconds.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_total_time_remaining_end_of_regulation.\n2. Use period 4 and zero seconds left.\n3. Compare the returned values with the expected result.\n\nExpected result: The helper returns zero seconds.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The regulation clock returned zero at the end of the fourth quarter.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-79",
+    "summary": "Regulation-clock helper returns zero during overtime",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_total_time_remaining_overtime_returns_zero",
+    "input": "period 5 and 120 seconds left in overtime.",
+    "expected": "The regulation-clock helper returns zero.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. This helper result does not validate the Gameplan overtime display; that flow fails in BST-142.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_total_time_remaining_overtime_returns_zero.\n2. Use period 5 and 120 seconds left in overtime.\n3. Compare the returned values with the expected result.\n\nExpected result: The regulation-clock helper returns zero.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Period five returned zero remaining regulation time, as expected for this helper. The Gameplan overtime display still needs the fix in BST-142.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-80",
+    "summary": "Third-quarter clock includes the remaining regulation periods",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_total_time_remaining_mid_third_quarter",
+    "input": "period 3 and 360 seconds left.",
+    "expected": "The helper returns 1,080 seconds within a one-second tolerance.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_total_time_remaining_mid_third_quarter.\n2. Use period 3 and 360 seconds left.\n3. Compare the returned values with the expected result.\n\nExpected result: The helper returns 1,080 seconds within a one-second tolerance.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "With six minutes left in the third quarter, the helper returned 1,080 seconds of regulation time.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-81",
+    "summary": "Opening tied-game context has zero urgency factors",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_compute_context_factors_normal",
+    "input": "margin 0, period 1 and 720 seconds left.",
+    "expected": "Late-game, trailing and leading factors are all zero.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_compute_context_factors_normal.\n2. Use margin 0, period 1 and 720 seconds left.\n3. Compare the returned values with the expected result.\n\nExpected result: Late-game, trailing and leading factors are all zero.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "A tied game at the start of the first quarter produced zero late-game, trailing and leading factors.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-82",
+    "summary": "Late trailing context raises late-game and trailing factors",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_compute_context_factors_late_trailing",
+    "input": "margin -8, period 4 and 60 seconds left.",
+    "expected": "The late-game factor exceeds 0.5, trailing is positive and leading is zero.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_compute_context_factors_late_trailing.\n2. Use margin -8, period 4 and 60 seconds left.\n3. Compare the returned values with the expected result.\n\nExpected result: The late-game factor exceeds 0.5, trailing is positive and leading is zero.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Down eight with one minute left in the fourth quarter produced a late-game factor above 0.5 and a positive trailing factor. The leading factor stayed zero.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-83",
+    "summary": "Late large lead raises only the leading factor",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_compute_context_factors_blowout_leading",
+    "input": "margin +20, period 4 and 30 seconds left.",
+    "expected": "The leading factor is positive and trailing is zero.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_compute_context_factors_blowout_leading.\n2. Use margin +20, period 4 and 30 seconds left.\n3. Compare the returned values with the expected result.\n\nExpected result: The leading factor is positive and trailing is zero.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Up twenty with thirty seconds left produced a positive leading factor and no trailing factor.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-84",
+    "summary": "Overtime context has maximum late-game weighting",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_compute_context_factors_overtime",
+    "input": "margin -2, period 5 and 60 seconds left.",
+    "expected": "The late-game factor is 1.0 and the trailing factor is positive.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. This helper result does not validate the Gameplan overtime display; that flow fails in BST-142.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_compute_context_factors_overtime.\n2. Use margin -2, period 5 and 60 seconds left.\n3. Compare the returned values with the expected result.\n\nExpected result: The late-game factor is 1.0 and the trailing factor is positive.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Period five with sixty seconds left produced maximum late-game weighting and a positive trailing factor. The separate Gameplan display issue remains in BST-142.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-85",
+    "summary": "Zero context factors use the normal label",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_label_context_normal",
+    "input": "late, trailing and leading factors of 0, 0 and 0.",
+    "expected": "The label is Normal context.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_label_context_normal.\n2. Use late, trailing and leading factors of 0, 0 and 0.\n3. Compare the returned values with the expected result.\n\nExpected result: The label is Normal context.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Zero context factors produced the Normal context label.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-86",
+    "summary": "Late trailing factors use the trailing label",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_label_context_late_trailing",
+    "input": "late, trailing and leading factors of 0.8, 0.5 and 0.",
+    "expected": "The label is Late & trailing.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_label_context_late_trailing.\n2. Use late, trailing and leading factors of 0.8, 0.5 and 0.\n3. Compare the returned values with the expected result.\n\nExpected result: The label is Late & trailing.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Late-game and trailing factors of 0.8 and 0.5 produced the Late & trailing label.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-87",
+    "summary": "Late leading factors use the leading label",
+    "file": "backend/tests/test_context_ml.py",
+    "test": "test_label_context_late_leading",
+    "input": "late, trailing and leading factors of 0.8, 0 and 0.5.",
+    "expected": "The label is Late & leading.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC50",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC50, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_context_ml.py::test_label_context_late_leading.\n2. Use late, trailing and leading factors of 0.8, 0 and 0.5.\n3. Compare the returned values with the expected result.\n\nExpected result: The label is Late & leading.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Late-game and leading factors of 0.8 and 0.5 produced the Late & leading label.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc50",
+      "uc59",
+      "fa-context-ranking"
+    ],
+    "feature": "SCRUM-326",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-88",
+    "summary": "Ridge pipeline scales features before fitting",
+    "file": "backend/tests/test_ridge_model.py",
+    "test": "test_ridge_pipeline_structure",
+    "input": "the configured Ridge pipeline.",
+    "expected": "The two steps are StandardScaler followed by Ridge with RIDGE_ALPHA.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC65",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC65, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_ridge_model.py::test_ridge_pipeline_structure.\n2. Use the configured Ridge pipeline.\n3. Compare the returned values with the expected result.\n\nExpected result: The two steps are StandardScaler followed by Ridge with RIDGE_ALPHA.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The model pipeline contains StandardScaler followed by Ridge, using the configured regularization value.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc59",
+      "uc65",
+      "fa-model-evaluation"
+    ],
+    "feature": "SCRUM-477",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-89",
+    "summary": "Ridge fits 200 synthetic rows without invalid predictions",
+    "file": "backend/tests/test_ridge_model.py",
+    "test": "test_ridge_fits_synthetic_data",
+    "input": "200 seeded synthetic rows with the declared feature count.",
+    "expected": "All 200 predictions are finite and have the expected one-dimensional shape.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC65",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC65, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_ridge_model.py::test_ridge_fits_synthetic_data.\n2. Use 200 seeded synthetic rows with the declared feature count.\n3. Compare the returned values with the expected result.\n\nExpected result: All 200 predictions are finite and have the expected one-dimensional shape.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Ridge fitted the 200 synthetic rows and returned 200 finite predictions.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc59",
+      "uc65",
+      "fa-model-evaluation"
+    ],
+    "feature": "SCRUM-477",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-90",
+    "summary": "Synthetic Ridge coefficients stay finite and bounded",
+    "file": "backend/tests/test_ridge_model.py",
+    "test": "test_ridge_coefficients_bounded",
+    "input": "200 seeded synthetic rows.",
+    "expected": "Every coefficient is finite and their L2 norm is below 50.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC65",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC65, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_ridge_model.py::test_ridge_coefficients_bounded.\n2. Use 200 seeded synthetic rows.\n3. Compare the returned values with the expected result.\n\nExpected result: Every coefficient is finite and their L2 norm is below 50.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The synthetic fit produced finite coefficients with an L2 norm below 50.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc59",
+      "uc65",
+      "fa-model-evaluation"
+    ],
+    "feature": "SCRUM-477",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-91",
+    "summary": "Historical Ridge cross-validation beats the league-mean baseline",
+    "file": "backend/tests/test_ridge_model.py",
+    "test": "test_ridge_outperforms_baseline",
+    "input": "five-fold evaluation of the retained historical play-type dataset.",
+    "expected": "Ridge mean RMSE is below the league-mean baseline RMSE.",
+    "scope": "Local model evaluation on the retained historical play-type data",
+    "uc": [
+      "UC65",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC65, UC59.\n\nScope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_ridge_model.py::test_ridge_outperforms_baseline.\n2. Use five-fold evaluation of the retained historical play-type dataset.\n3. Compare the returned values with the expected result.\n\nExpected result: Ridge mean RMSE is below the league-mean baseline RMSE.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Ridge had lower mean RMSE than the league-mean baseline in the historical five-fold evaluation. This does not measure future-game accuracy.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc59",
+      "uc65",
+      "fa-model-evaluation"
+    ],
+    "feature": "SCRUM-477",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-92",
+    "summary": "Historical held-out Ridge predictions stay within the PPP bounds",
+    "file": "backend/tests/test_ridge_model.py",
+    "test": "test_ridge_predictions_in_valid_range",
+    "input": "the earlier 80% of seasons for training and the remaining seasons for prediction.",
+    "expected": "All predicted PPP values are between 0 and 2.5.",
+    "scope": "Local model evaluation on the retained historical play-type data",
+    "uc": [
+      "UC65",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC65, UC59.\n\nScope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_ridge_model.py::test_ridge_predictions_in_valid_range.\n2. Use the earlier 80% of seasons for training and the remaining seasons for prediction.\n3. Compare the returned values with the expected result.\n\nExpected result: All predicted PPP values are between 0 and 2.5.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "All predictions for the held-out historical seasons stayed between 0 and 2.5 PPP. This uses contemporaneous features, not a pre-game forecast.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc59",
+      "uc65",
+      "fa-model-evaluation"
+    ],
+    "feature": "SCRUM-477",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-93",
+    "summary": "Every historical Ridge fold meets the RMSE threshold",
+    "file": "backend/tests/test_ridge_model.py",
+    "test": "test_ridge_per_fold_rmse_acceptable",
+    "input": "five-fold evaluation of the retained historical dataset.",
+    "expected": "Ridge RMSE is below 0.50 in each fold.",
+    "scope": "Local model evaluation on the retained historical play-type data",
+    "uc": [
+      "UC65",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC65, UC59.\n\nScope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_ridge_model.py::test_ridge_per_fold_rmse_acceptable.\n2. Use five-fold evaluation of the retained historical dataset.\n3. Compare the returned values with the expected result.\n\nExpected result: Ridge RMSE is below 0.50 in each fold.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Each of the five historical Ridge folds had RMSE below 0.50.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc59",
+      "uc65",
+      "fa-model-evaluation"
+    ],
+    "feature": "SCRUM-477",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-94",
+    "summary": "Model feature and target arrays are aligned and finite",
+    "file": "backend/tests/test_ridge_model.py",
+    "test": "test_feature_dataset_shape",
+    "input": "the retained offense dataset and declared feature columns.",
+    "expected": "X is two-dimensional with the declared feature count; y is one-dimensional; row counts match and all values are finite.",
+    "scope": "Local model evaluation on the retained historical play-type data",
+    "uc": [
+      "UC65",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC65, UC59.\n\nScope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.\n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_ridge_model.py::test_feature_dataset_shape.\n2. Use the retained offense dataset and declared feature columns.\n3. Compare the returned values with the expected result.\n\nExpected result: X is two-dimensional with the declared feature count; y is one-dimensional; row counts match and all values are finite.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "The feature and target arrays had matching row counts, the expected dimensions and no NaN or infinite values.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc59",
+      "uc65",
+      "fa-model-evaluation"
+    ],
+    "feature": "SCRUM-477",
+    "description_needs_command_update": false
+  },
+  {
+    "key": "BST-95",
+    "summary": "Increasing Ridge alpha reduces synthetic coefficient norms",
+    "file": "backend/tests/test_ridge_model.py",
+    "test": "test_ridge_regularization_effect",
+    "input": "the same 300 seeded synthetic rows with alpha 0.001, RIDGE_ALPHA and 10.0.",
+    "expected": "Coefficient norms decrease strictly from the low alpha through the configured alpha to the high alpha.",
+    "scope": "Local backend unit test",
+    "uc": [
+      "UC65",
+      "UC59"
+    ],
+    "result": "Pass",
+    "evidence": "backend-junit.xml",
+    "assertions": 1,
+    "owner": "639a8938f134138b5a513b32",
+    "description": "Use-case coverage: UC65, UC59.\n\nScope: Local backend unit test. \n\nPreconditions: install the pinned development dependencies and use the shared repository's test fixtures.\n\nSteps:\n1. Run backend/tests/test_ridge_model.py::test_ridge_regularization_effect.\n2. Use the same 300 seeded synthetic rows with alpha 0.001, RIDGE_ALPHA and 10.0.\n3. Compare the returned values with the expected result.\n\nExpected result: Coefficient norms decrease strictly from the low alpha through the configured alpha to the high alpha.\n\nExecution evidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "comment": "Using the same synthetic data, increasing Ridge alpha from 0.001 through the configured value to 10 reduced the coefficient norm each time.\n\n[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",
+    "labels": [
+      "assignment-1-revision",
+      "fall-2026",
+      "uc59",
+      "uc65",
+      "fa-model-evaluation"
+    ],
+    "feature": "SCRUM-477",
+    "description_needs_command_update": false
+  }
+]

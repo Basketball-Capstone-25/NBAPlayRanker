@@ -1,0 +1,172 @@
+Browser tab: 11, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/shot-heatmap".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-heatmap
+	2 container
+		3 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		4 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		62 container
+			63 heading Shot Heatmap, Value: 1
+				64 text Shot Heatmap
+			65 text Real, on-court shot density from Dataset2 (play-by-play shots). For ranked recommendations, use
+			66 link Description: Shot Plan, Value: nbaplayranker-seven.vercel.app/shot-plan
+			67 text .
+			68 link Description: Back to Shot Plan, Value: nbaplayranker-seven.vercel.app/shot-plan
+			69 button Render
+			70 text Quick presets:
+			71 button All shots, Help: Sets shot type + zone (when available in your metadata)
+			72 button Rim pressure, Help: Sets shot type + zone (when available in your metadata)
+			73 button Corner 3s, Help: Sets shot type + zone (when available in your metadata)
+			74 button Above-break 3s, Help: Sets shot type + zone (when available in your metadata)
+			75 button Midrange, Help: Sets shot type + zone (when available in your metadata)
+			76 checkbox (settable, integer) Description: Auto-render on change, Value: 0
+			77 button Reset
+		78 container
+			79 heading Filters, Value: 2
+				80 text Filters
+			81 text Tip: Keep Auto-render on during exploration, turn it off if your backend is busy. Season
+			82 pop up button (collapsed, settable) Season, Value: 2025-26, Secondary Actions: Expand
+				103 menu
+					104 (disabled) 2020-21
+					105 (disabled) 2021-22
+					106 (disabled) 2022-23
+					107 (disabled) 2023-24
+					108 (disabled) 2024-25
+					109 (disabled) 2025-26
+			83 text Team
+			84 pop up button (collapsed, settable) Team, Value: TOR — Toronto Raptors, Secondary Actions: Expand
+				110 menu
+					111 (disabled) ATL — Atlanta Hawks
+					112 (disabled) BKN — Brooklyn Nets
+					113 (disabled) BOS — Boston Celtics
+					114 (disabled) CAN
+					115 (disabled) CHA — Charlotte Hornets
+					116 (disabled) CHI — Chicago Bulls
+					117 (disabled) CHK
+					118 (disabled) CLE — Cleveland Cavaliers
+					119 (disabled) DAL — Dallas Mavericks
+					120 (disabled) DEN — Denver Nuggets
+					121 (disabled) DET — Detroit Pistons
+					122 (disabled) DUR
+					123 (disabled) EAST
+					124 (disabled) GIA
+					125 (disabled) GS
+					126 (disabled) HOU — Houston Rockets
+					127 (disabled) IND — Indiana Pacers
+					128 (disabled) KEN
+					129 (disabled) LAC — LA Clippers
+					130 (disabled) LAL — Los Angeles Lakers
+					131 (disabled) LEB
+					132 (disabled) MEM — Memphis Grizzlies
+					133 (disabled) MIA — Miami Heat
+					134 (disabled) MIL — Milwaukee Bucks
+					135 (disabled) MIN — Minnesota Timberwolves
+					136 (disabled) NO
+					137 (disabled) NY
+					138 (disabled) OKC — Oklahoma City Thunder
+					139 (disabled) ORL — Orlando Magic
+					140 (disabled) PHI — Philadelphia 76ers
+					141 (disabled) PHX — Phoenix Suns
+					142 (disabled) POR — Portland Trail Blazers
+					143 (disabled) SA
+					144 (disabled) SAC — Sacramento Kings
+					145 (disabled) SHQ
+					146 (disabled) STARS
+					147 (disabled) STRIPES
+					148 (disabled) TOR — Toronto Raptors
+					149 (disabled) UTAH
+					150 (disabled) WEST
+					151 (disabled) WORLD
+					152 (disabled) WSH
+			85 text Opponent
+			86 pop up button (collapsed, settable) Opponent, Value: BOS — Boston Celtics, Secondary Actions: Expand
+				153 menu
+					154 (disabled) ATL — Atlanta Hawks
+					155 (disabled) BKN — Brooklyn Nets
+					156 (disabled) BOS — Boston Celtics
+					157 (disabled) CAN
+					158 (disabled) CHA — Charlotte Hornets
+					159 (disabled) CHI — Chicago Bulls
+					160 (disabled) CHK
+					161 (disabled) CLE — Cleveland Cavaliers
+					162 (disabled) DAL — Dallas Mavericks
+					163 (disabled) DEN — Denver Nuggets
+					164 (disabled) DET — Detroit Pistons
+					165 (disabled) DUR
+					166 (disabled) EAST
+					167 (disabled) GIA
+					168 (disabled) GS
+					169 (disabled) HOU — Houston Rockets
+					170 (disabled) IND — Indiana Pacers
+					171 (disabled) KEN
+					172 (disabled) LAC — LA Clippers
+					173 (disabled) LAL — Los Angeles Lakers
+					174 (disabled) LEB
+					175 (disabled) MEM — Memphis Grizzlies
+					176 (disabled) MIA — Miami Heat
+					177 (disabled) MIL — Milwaukee Bucks
+					178 (disabled) MIN — Minnesota Timberwolves
+					179 (disabled) NO
+					180 (disabled) NY
+					181 (disabled) OKC — Oklahoma City Thunder
+					182 (disabled) ORL — Orlando Magic
+					183 (disabled) PHI — Philadelphia 76ers
+					184 (disabled) PHX — Phoenix Suns
+					185 (disabled) POR — Portland Trail Blazers
+					186 (disabled) SA
+					187 (disabled) SAC — Sacramento Kings
+					188 (disabled) SHQ
+					189 (disabled) STARS
+					190 (disabled) STRIPES
+					191 (disabled) TOR — Toronto Raptors
+					192 (disabled) UTAH
+					193 (disabled) WEST
+					194 (disabled) WORLD
+					195 (disabled) WSH
+			87 button Swap teams ↔
+			88 text Shot type (optional)
+			89 pop up button (collapsed, settable) Shot type (optional), Value: All, Secondary Actions: Expand
+				90 menu
+					91 (disabled) All
+					196 (disabled) Bank Shot
+					197 (disabled) Dunk
+					198 (disabled) Fadeaway
+					199 (disabled) Floater
+					200 (disabled) Hook Shot
+					201 (disabled) Jump Shot
+					202 (disabled) Layup
+					203 (disabled) Other
+					204 (disabled) Pullup
+					205 (disabled) Tip Shot
+			92 text Zone (optional)
+			93 pop up button (collapsed, settable) Zone (optional), Value: All, Secondary Actions: Expand
+				94 menu
+					95 (disabled) All
+					206 (disabled) arc3
+					207 (disabled) corner3
+					208 (disabled) mid
+					209 (disabled) paint
+					210 (disabled) rim
+			96 text Max shots (downsample)
+			97 stepper (settable, integer) Max shots (downsample) If there are more shots than this, the backend samples for speed., Value: 1000
+			98 text If there are more shots than this, the backend samples for speed.
+			211 text Request failed. Tried: - https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/pbp/viz/shot-heatmap?season=2025-26&team=TOR&opp=BOS&max_shots=1000 - https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/pbp/viz/heatmap?season=2025-26&team=TOR&opp=BOS&max_shots=1000 - https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/viz/shot-heatmap?season=2025-26&our=TOR&opp=BOS Last error: API error 403: {"detail":"Role 'analyst' cannot access 'viz' resources."}
+		99 container
+			100 heading Heatmap, Value: 2
+				101 text Heatmap
+			102 text TOR — Toronto Raptors vs BOS — Boston Celtics • Season: 2025-26 • Max Shots: 1,000 Click “Render” to display an image.
+		48 container
+			49 text Built with  Next.js  (UI) +  FastAPI  (services).
+		50 container
+			51 text Tip for reviewers: start at 
+			52 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			53 text  to see the dataset, then compare 
+			54 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			55 text  vs 
+			56 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			57 text , and verify evidence in 
+			58 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			59 text  and
+			60 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			61 text .
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-heatmap

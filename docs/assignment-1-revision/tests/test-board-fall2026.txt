@@ -1,0 +1,421 @@
+Browser tab: 23, Title: "Board - BST board - Jira", URL: "https://basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4?filter=labels%20%3D%20%22fall-2026%22&groupBy=subtask".
+1 AXWebArea Board - BST board - Jira, URL: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4?filter=labels%20%3D%20%22fall-2026%22&groupBy=subtask
+	2 container jira
+		3 container jira-frontend
+			435 container
+				436 text Skip to:
+				437 content list
+					438 link Description: Top Bar, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4?filter=labels%20%3D%20%22fall-2026%22&groupBy=subtask#jira-page-layout-top-nav
+					439 link Description: Sidebar, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4?filter=labels%20%3D%20%22fall-2026%22&groupBy=subtask#jira-page-layout-side-nav
+					440 link Description: Main Content, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4?filter=labels%20%3D%20%22fall-2026%22&groupBy=subtask#jira-page-layout-main
+					441 link Description: Space navigation, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4?filter=labels%20%3D%20%22fall-2026%22&groupBy=subtask#_R6l8sqlcn99cnal6p_
+			4 container unsafe-design-system-page-layout-root
+				5 container jira-page-layout-top-nav
+					6 button Expand sidebar
+					7 pop up button (collapsed) Switch sites or apps, Secondary Actions: Expand
+					9 link Description: Go to your Jira homepage, Value: basketball-strategy.atlassian.net/jira
+					10 button Search
+						11 text Search
+					12 button Create
+					13 container Actions
+						442 pop up button (collapsed) Show more, Secondary Actions: Expand
+				14 container jira-page-layout-main
+					15 container ak-project-view-navigation
+						16 container Breadcrumbs
+							17 content list
+								18 link Description: Spaces, Value: basketball-strategy.atlassian.net/jira/projects
+						19 button Edit, Space name
+						20 heading Basketball Strategy – Tests, Value: 1
+							21 text Basketball Strategy – Tests
+						22 pop up button Link contributing teams
+						23 pop up button (collapsed) More actions, Secondary Actions: Expand
+							24 image More actions
+						25 pop up button (collapsed) Share, ID: po-spotlight-share-button, Secondary Actions: Expand
+							26 image Share
+						27 pop up button (collapsed) Automation, Secondary Actions: Expand
+							28 image Automation
+						29 button Give feedback
+						30 button Enter full screen
+						31 container Space navigation
+							32 content list
+								33 container
+									34 link Description: Summary, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/summary
+									35 pop up button (collapsed) More actions, Secondary Actions: Expand
+								36 container
+									37 link Description: Backlog, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4/backlog
+									38 pop up button (collapsed) More actions, Secondary Actions: Expand
+								42 container
+									43 heading Board, Value: 2
+										44 text Board
+									45 pop up button (collapsed) More actions, Secondary Actions: Expand
+							443 pop up button (collapsed) Description: 8 more tabs, Secondary Actions: Expand
+							67 pop up button (collapsed) Add to navigation, Secondary Actions: Expand
+								68 image Add to navigation
+					69 container
+						70 container
+							71 text field (settable) Search board
+							72 container Filter by assignee
+								73 text Filter by assignee
+								74 checkbox (settable, integer) Description: Filter assignees by Unassigned, Value: 0, ID: assignee-empty
+								75 checkbox (settable, integer) Description: Filter assignees by Gurkaranjit Asahan, Value: 0, ID: assignee-712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36
+								76 checkbox (settable, integer) Description: Filter assignees by Abdulrahman Mousa, Value: 0, ID: assignee-639a8938f134138b5a513b32
+							77 pop up button (collapsed) Description: Filter: 1 field, Secondary Actions: Expand
+							78 button Clear filters
+							79 pop up button (collapsed) Description: Group by Test Case, Secondary Actions: Expand
+						80 container
+							81 button (collapsed) Board insights, Secondary Actions: Expand
+							82 button (collapsed) View settings, Secondary Actions: Expand
+							83 pop up button (collapsed) Save or reset view settings, Secondary Actions: Expand
+							84 pop up button (collapsed) More board view actions, Secondary Actions: Expand
+						85 container
+							86 content list
+								87 container
+									88 button (expanded) Collapse Fall 2026 elaboration regression tests group, Secondary Actions: Collapse
+									89 heading Test Suite BST-137 Fall 2026 elaboration regression tests Testing In Progress Gurkaranjit Asahan, Value: 3
+										90 image Test Suite
+										91 link Description: BST-137, Value: basketball-strategy.atlassian.net/browse/BST-137
+										92 text Fall 2026 elaboration regression tests Testing In Progress
+										93 image Gurkaranjit Asahan
+									94 container 18 issues in Fall 2026 elaboration regression tests
+										95 text 18
+									96 container
+										97 button Edit Verify status column
+										98 button Collapse Verify
+										99 pop up button (collapsed) More actions for column Verify, Secondary Actions: Expand
+									100 content list
+										101 container
+											102 button Create work item after work item BST-146
+											103 container
+												104 link Value: basketball-strategy.atlassian.net/browse/BST-146, Description: BST-146 Shot Model Metrics completes within its request limit. Use the enter key to load the work item.
+												105 container
+													106 text Shot Model Metrics completes within its request limit
+													107 button Edit summary for BST-146 Shot Model Metrics completes within its request limit
+												108 pop up button (collapsed) Card actions on Test Case BST-146 of the Verify column, Secondary Actions: Expand
+												109 container Labels
+													110 text assignment-1-revision fall-2026 uc65 uc70
+												111 container Parent
+													112 container
+														113 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												114 image Test Case
+												115 link Description: BST-146, Value: basketball-strategy.atlassian.net/browse/BST-146
+												116 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+									117 button Create
+										118 image Create
+									119 container
+										120 button Edit Testing In Progress status column
+										121 button Collapse Testing In Progress
+										122 pop up button (collapsed) More actions for column Testing In Progress, Secondary Actions: Expand
+									123 button Create
+										124 image Create
+									125 container
+										126 button Edit Pass status column
+										127 button Collapse Pass
+										128 pop up button (collapsed) More actions for column Pass, Secondary Actions: Expand
+									129 content list
+										130 container
+											131 button Create work item after work item BST-148
+											132 container
+												133 link Value: basketball-strategy.atlassian.net/browse/BST-148, Description: BST-148 A stale Gameplan update cannot overwrite a newer revision. Use the enter key to load the work item.
+												134 container
+													135 text A stale Gameplan update cannot overwrite a newer revision
+													136 button Edit summary for BST-148 A stale Gameplan update cannot overwrite a newer revision
+												137 pop up button (collapsed) Card actions on Test Case BST-148 of the Pass column, Secondary Actions: Expand
+												138 container Labels
+													139 text assignment-1-revision fall-2026 uc42 uc48
+												140 container Parent
+													141 container
+														142 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												143 image Test Case
+												144 link Description: BST-148, Value: basketball-strategy.atlassian.net/browse/BST-148
+												145 image Work item is completed
+												146 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										147 container
+											148 button Create work item after work item BST-149
+											149 container
+												150 link Description: BST-149 One account cannot read another account profile. Use the enter key to load the work item., Value: basketball-strategy.atlassian.net/browse/BST-149
+												151 container
+													152 text One account cannot read another account profile
+													153 button Edit summary for BST-149 One account cannot read another account profile
+												154 pop up button (collapsed) Card actions on Test Case BST-149 of the Pass column, Secondary Actions: Expand
+												155 container Labels
+													156 text assignment-1-revision fall-2026 uc69 uc71
+												157 container Parent
+													158 container
+														159 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												160 image Test Case
+												161 link Description: BST-149, Value: basketball-strategy.atlassian.net/browse/BST-149
+												162 image Work item is completed
+												163 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										164 container
+											165 button Create work item after work item BST-150
+											166 container
+												167 link Value: basketball-strategy.atlassian.net/browse/BST-150, Description: BST-150 Export proxy rejects a cookie session for the wrong verified user. Use the enter key to load the work item.
+												168 container
+													169 text Export proxy rejects a cookie session for the wrong verified user
+													170 button Edit summary for BST-150 Export proxy rejects a cookie session for the wrong verified user
+												171 pop up button (collapsed) Card actions on Test Case BST-150 of the Pass column, Secondary Actions: Expand
+												172 container Labels
+													173 text assignment-1-revision fall-2026 uc62
+												174 container Parent
+													175 container
+														176 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												177 image Test Case
+												178 link Description: BST-150, Value: basketball-strategy.atlassian.net/browse/BST-150
+												179 image Work item is completed
+												180 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										181 container
+											182 button Create work item after work item BST-151
+											183 container
+												184 link Description: BST-151 Export proxy rejects arbitrary backend targets. Use the enter key to load the work item., Value: basketball-strategy.atlassian.net/browse/BST-151
+												185 container
+													186 text Export proxy rejects arbitrary backend targets
+													187 button Edit summary for BST-151 Export proxy rejects arbitrary backend targets
+												188 pop up button (collapsed) Card actions on Test Case BST-151 of the Pass column, Secondary Actions: Expand
+												189 container Labels
+													190 text assignment-1-revision fall-2026 uc62
+												191 container Parent
+													192 container
+														193 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												194 image Test Case
+												195 link Description: BST-151, Value: basketball-strategy.atlassian.net/browse/BST-151
+												196 image Work item is completed
+												197 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										198 container
+											199 button Create work item after work item BST-152
+											200 container
+												201 link Value: basketball-strategy.atlassian.net/browse/BST-152, Description: BST-152 Export proxy rejects foreign-site download requests. Use the enter key to load the work item.
+												202 container
+													203 text Export proxy rejects foreign-site download requests
+													204 button Edit summary for BST-152 Export proxy rejects foreign-site download requests
+												205 pop up button (collapsed) Card actions on Test Case BST-152 of the Pass column, Secondary Actions: Expand
+												206 container Labels
+													207 text assignment-1-revision fall-2026 uc62
+												208 container Parent
+													209 container
+														210 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												211 image Test Case
+												212 link Description: BST-152, Value: basketball-strategy.atlassian.net/browse/BST-152
+												213 image Work item is completed
+												214 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										215 container
+											216 button Create work item after work item BST-153
+											217 container
+												218 link Value: basketball-strategy.atlassian.net/browse/BST-153, Description: BST-153 Export proxy rejects redirects and wrong file content. Use the enter key to load the work item.
+												219 container
+													220 text Export proxy rejects redirects and wrong file content
+													221 button Edit summary for BST-153 Export proxy rejects redirects and wrong file content
+												222 pop up button (collapsed) Card actions on Test Case BST-153 of the Pass column, Secondary Actions: Expand
+												223 container Labels
+													224 text assignment-1-revision fall-2026 uc62
+												225 container Parent
+													226 container
+														227 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												228 image Test Case
+												229 link Description: BST-153, Value: basketball-strategy.atlassian.net/browse/BST-153
+												230 image Work item is completed
+												231 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										232 container
+											233 button Create work item after work item BST-154
+											234 container
+												235 link Value: basketball-strategy.atlassian.net/browse/BST-154, Description: BST-154 Export proxy keeps denied responses out of downloaded files. Use the enter key to load the work item.
+												236 container
+													237 text Export proxy keeps denied responses out of downloaded files
+													238 button Edit summary for BST-154 Export proxy keeps denied responses out of downloaded files
+												239 pop up button (collapsed) Card actions on Test Case BST-154 of the Pass column, Secondary Actions: Expand
+												240 container Labels
+													241 text assignment-1-revision fall-2026 uc62
+												242 container Parent
+													243 container
+														244 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												245 image Test Case
+												246 link Description: BST-154, Value: basketball-strategy.atlassian.net/browse/BST-154
+												247 image Work item is completed
+												248 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										249 container
+											250 button Create work item after work item BST-155
+											251 container
+												252 link Description: BST-155 NLP rejects empty and overlength coaching prompts. Use the enter key to load the work item., Value: basketball-strategy.atlassian.net/browse/BST-155
+												253 container
+													254 text NLP rejects empty and overlength coaching prompts
+													255 button Edit summary for BST-155 NLP rejects empty and overlength coaching prompts
+												256 pop up button (collapsed) Card actions on Test Case BST-155 of the Pass column, Secondary Actions: Expand
+												257 container Labels
+													258 text assignment-1-revision fall-2026 uc45 uc50
+												259 container Parent
+													260 container
+														261 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												262 image Test Case
+												263 link Description: BST-155, Value: basketball-strategy.atlassian.net/browse/BST-155
+												264 image Work item is completed
+												265 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+									266 button Create
+										267 image Create
+									268 container
+										269 button Edit Fail status column
+										270 button Collapse Fail
+										271 pop up button (collapsed) More actions for column Fail, Secondary Actions: Expand
+									272 content list
+										273 container
+											274 button Create work item after work item BST-138
+											275 container
+												276 link Value: basketball-strategy.atlassian.net/browse/BST-138, Description: BST-138 Shot data uses different shooting and opposing teams. Use the enter key to load the work item.
+												277 container
+													278 text Shot data uses different shooting and opposing teams
+													279 button Edit summary for BST-138 Shot data uses different shooting and opposing teams
+												280 pop up button (collapsed) Card actions on Test Case BST-138 of the Fail column, Secondary Actions: Expand
+												281 container Labels
+													282 text assignment-1-revision fall-2026 uc63 uc70
+												283 container Parent
+													284 container
+														285 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												286 image Test Case
+												287 link Description: BST-138, Value: basketball-strategy.atlassian.net/browse/BST-138
+												288 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										289 container
+											290 button Create work item after work item BST-139
+											291 container
+												292 link Value: basketball-strategy.atlassian.net/browse/BST-139, Description: BST-139 Shot import keeps the event team separate from home team and score. Use the enter key to load the work item.
+												293 container
+													294 text Shot import keeps the event team separate from home team and score
+													295 button Edit summary for BST-139 Shot import keeps the event team separate from home team and score
+												296 pop up button (collapsed) Card actions on Test Case BST-139 of the Fail column, Secondary Actions: Expand
+												297 container Labels
+													298 text assignment-1-revision fall-2026 uc63 uc70
+												299 container Parent
+													300 container
+														301 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												302 image Test Case
+												303 link Description: BST-139, Value: basketball-strategy.atlassian.net/browse/BST-139
+												304 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										305 container
+											306 button Create work item after work item BST-140
+											307 container
+												308 link Description: BST-140 Gameplan uses the new situation on the first Build. Use the enter key to load the work item., Value: basketball-strategy.atlassian.net/browse/BST-140
+												309 container
+													310 text Gameplan uses the new situation on the first Build
+													311 button Edit summary for BST-140 Gameplan uses the new situation on the first Build
+												312 pop up button (collapsed) Card actions on Test Case BST-140 of the Fail column, Secondary Actions: Expand
+												313 container Labels
+													314 text assignment-1-revision fall-2026 uc45 uc50
+												315 container Parent
+													316 container
+														317 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												318 image Test Case
+												319 link Description: BST-140, Value: basketball-strategy.atlassian.net/browse/BST-140
+												320 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										321 container
+											322 button Create work item after work item BST-141
+											323 container
+												324 link Value: basketball-strategy.atlassian.net/browse/BST-141, Description: BST-141 Gameplan forwards supported coaching conditions to ranking. Use the enter key to load the work item.
+												325 container
+													326 text Gameplan forwards supported coaching conditions to ranking
+													327 button Edit summary for BST-141 Gameplan forwards supported coaching conditions to ranking
+												328 pop up button (collapsed) Card actions on Test Case BST-141 of the Fail column, Secondary Actions: Expand
+												329 container Labels
+													330 text assignment-1-revision fall-2026 uc45 uc50
+												331 container Parent
+													332 container
+														333 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												334 image Test Case
+												335 link Description: BST-141, Value: basketball-strategy.atlassian.net/browse/BST-141
+												336 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										337 container
+											338 button Create work item after work item BST-142
+											339 container
+												340 link Value: basketball-strategy.atlassian.net/browse/BST-142, Description: BST-142 Gameplan preserves overtime from the parsed situation. Use the enter key to load the work item.
+												341 container
+													342 text Gameplan preserves overtime from the parsed situation
+													343 button Edit summary for BST-142 Gameplan preserves overtime from the parsed situation
+												344 pop up button (collapsed) Card actions on Test Case BST-142 of the Fail column, Secondary Actions: Expand
+												345 container Labels
+													346 text assignment-1-revision fall-2026 uc11 uc50
+												347 container Parent
+													348 container
+														349 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												350 image Test Case
+												351 link Description: BST-142, Value: basketball-strategy.atlassian.net/browse/BST-142
+												352 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										353 container
+											354 button Create work item after work item BST-143
+											355 container
+												356 link Description: BST-143 Analyst Shot Plan page can use its required API. Use the enter key to load the work item., Value: basketball-strategy.atlassian.net/browse/BST-143
+												357 container
+													358 text Analyst Shot Plan page can use its required API
+													359 button Edit summary for BST-143 Analyst Shot Plan page can use its required API
+												360 pop up button (collapsed) Card actions on Test Case BST-143 of the Fail column, Secondary Actions: Expand
+												361 container Labels
+													362 text assignment-1-revision fall-2026 uc62 uc70
+												363 container Parent
+													364 container
+														365 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												366 image Test Case
+												367 link Description: BST-143, Value: basketball-strategy.atlassian.net/browse/BST-143
+												368 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										369 container
+											370 button Create work item after work item BST-144
+											371 container
+												372 link Description: BST-144 Analyst Shot Heatmap page can use its required API. Use the enter key to load the work item., Value: basketball-strategy.atlassian.net/browse/BST-144
+												373 container
+													374 text Analyst Shot Heatmap page can use its required API
+													375 button Edit summary for BST-144 Analyst Shot Heatmap page can use its required API
+												376 pop up button (collapsed) Card actions on Test Case BST-144 of the Fail column, Secondary Actions: Expand
+												377 container Labels
+													378 text assignment-1-revision fall-2026 uc62 uc70
+												379 container Parent
+													380 container
+														381 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												382 image Test Case
+												383 link Description: BST-144, Value: basketball-strategy.atlassian.net/browse/BST-144
+												384 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+										385 container
+											386 button Create work item after work item BST-145
+											387 container
+												388 link Value: basketball-strategy.atlassian.net/browse/BST-145, Description: BST-145 Model Metrics finishes loading after successful metadata. Use the enter key to load the work item.
+												389 container
+													390 text Model Metrics finishes loading after successful metadata
+													391 button Edit summary for BST-145 Model Metrics finishes loading after successful metadata
+												392 pop up button (collapsed) Card actions on Test Case BST-145 of the Fail column, Secondary Actions: Expand
+												393 container Labels
+													394 text assignment-1-revision fall-2026 uc62 uc65
+												395 container Parent
+													396 container
+														397 pop up button (collapsed) Description: Parent: Fall 2026 elaboration regression tests, Secondary Actions: Expand
+												398 image Test Case
+												399 link Description: BST-145, Value: basketball-strategy.atlassian.net/browse/BST-145
+												400 pop up button (collapsed) Description: Assignee: Gurkaranjit Asahan, Secondary Actions: Expand
+									401 button Create
+										402 image Create
+								403 container
+									404 button (expanded) Collapse No Test Case group, Secondary Actions: Collapse
+									405 heading No Test Case, Value: 3
+										406 text No Test Case
+									407 container 0 issues in No Test Case
+										408 text 0
+									409 container
+										410 button Edit Verify status column
+										411 button Collapse Verify
+										412 pop up button (collapsed) More actions for column Verify, Secondary Actions: Expand
+									413 button Create
+										414 image Create
+									415 container
+										416 button Edit Testing In Progress status column
+										417 button Collapse Testing In Progress
+										418 pop up button (collapsed) More actions for column Testing In Progress, Secondary Actions: Expand
+									419 button Create
+										420 image Create
+									421 container
+										422 button Edit Pass status column
+										423 button Collapse Pass
+										424 pop up button (collapsed) More actions for column Pass, Secondary Actions: Expand
+									425 button Create
+										426 image Create
+									427 container
+										428 button Edit Fail status column
+										429 button Collapse Fail
+										430 pop up button (collapsed) More actions for column Fail, Secondary Actions: Expand
+									431 button Create
+										432 image Create
+							433 button Add status
+								434 image Add status
+
+The focused UI element is 1 AXWebArea Board - BST board - Jira, URL: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4?filter=labels%20%3D%20%22fall-2026%22&groupBy=subtask

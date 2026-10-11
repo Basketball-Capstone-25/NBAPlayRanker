@@ -1,0 +1,30 @@
+{
+  "purpose": "Remove personal local filesystem prefixes from shareable test evidence. Assertion names, inputs, results and timestamps are unchanged. Original outputs are retained separately.",
+  "files": [
+    {
+      "file": "backend.log",
+      "raw_sha256": "6ffb3aa32c8c7688e4015a36dfd9bb44ec86285c9d6e9838980772f3ebad49f4",
+      "published_sha256": "46479d31940656af3be28441cc47e0cd3d246095550cd9a22efd9ed66f9be58a",
+      "replacement_counts": {
+        "<project>": 1
+      }
+    },
+    {
+      "file": "frontend.log",
+      "raw_sha256": "67e11ea7ae9e33c98ea08dbf017c6cdf2a1ffea55e1d4feee9f94a2920f7b94f",
+      "published_sha256": "a500de2d49b28e7c981df5b022a00c298cbb764a01f1d7d3789c233f6ed05ab4",
+      "replacement_counts": {
+        "<project>": 1,
+        "<evidence>": 1
+      }
+    },
+    {
+      "file": "frontend-vitest.json",
+      "raw_sha256": "be3b4654680a4044bc66d09af568994a72b3ced8c13851441ce7d2365e442a0f",
+      "published_sha256": "cf15a9cff5b2cf8b0e8f8270ed28d6c7c4110f9af553bf60bd6830b774ee2718",
+      "replacement_counts": {
+        "<project>": 5
+      }
+    }
+  ]
+}

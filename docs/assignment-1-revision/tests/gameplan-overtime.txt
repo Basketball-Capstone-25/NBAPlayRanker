@@ -1,0 +1,364 @@
+Browser tab: 11, Title: "Gameplan | NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/gameplan".
+1 AXWebArea Gameplan | NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/gameplan
+	2 container
+		3 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		4 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		6 heading Gameplan, Value: 1
+			7 text Gameplan
+		8 text Set the situation → get 3 clear options → tap for diagram & counters.
+		9 button Print / Save PDF, Help: Print this page (save as PDF)
+		10 button Build Gameplan
+		11 heading Describe the situation, Value: 2
+			12 text Describe the situation
+		13 text Type it like a coach: score, time, any constraints.
+		14 text entry area (settable) Overtime, down 2 with 1:00 left.
+		15 container
+			16 button Understand
+			17 button Clear
+			201 text Confidence:  98 %
+		202 text Parsed overtime as period 5. Make sure your UI and ranking flow preserve OT instead of forcing quarter 4.
+		203 container
+			204 text Quick questions:  What is the defensive look or action family? (e.g., switching, drop, zone, ball-screen, handoff)
+		18 text Season
+		19 pop up button (collapsed, settable) Value: 2024-25, Secondary Actions: Expand
+			20 menu
+				138 2019-20
+				139 2020-21
+				140 2021-22
+				141 2022-23
+				142 2023-24
+				21 (selected) 2024-25
+		22 text Our team
+		23 pop up button (collapsed, settable) Value: TOR — Toronto Raptors, Secondary Actions: Expand
+			24 menu
+				143 ATL — Atlanta Hawks
+				144 BKN — Brooklyn Nets
+				145 BOS — Boston Celtics
+				146 CHA — Charlotte Hornets
+				147 CHI — Chicago Bulls
+				148 CLE — Cleveland Cavaliers
+				149 DAL — Dallas Mavericks
+				150 DEN — Denver Nuggets
+				151 DET — Detroit Pistons
+				152 GSW — Golden State Warriors
+				153 HOU — Houston Rockets
+				154 IND — Indiana Pacers
+				155 LAC — LA Clippers
+				156 LAL — Los Angeles Lakers
+				157 MEM — Memphis Grizzlies
+				158 MIA — Miami Heat
+				159 MIL — Milwaukee Bucks
+				160 MIN — Minnesota Timberwolves
+				161 NOP — New Orleans Pelicans
+				162 NYK — New York Knicks
+				163 OKC — Oklahoma City Thunder
+				164 ORL — Orlando Magic
+				165 PHI — Philadelphia 76ers
+				166 PHX — Phoenix Suns
+				167 POR — Portland Trail Blazers
+				168 SAC — Sacramento Kings
+				169 SAS — San Antonio Spurs
+				25 (selected) TOR — Toronto Raptors
+				170 UTA — Utah Jazz
+				171 WAS — Washington Wizards
+		26 text Opponent
+		27 pop up button (collapsed, settable) Value: BOS — Boston Celtics, Secondary Actions: Expand
+			28 menu
+				172 ATL — Atlanta Hawks
+				173 BKN — Brooklyn Nets
+				29 (selected) BOS — Boston Celtics
+				174 CHA — Charlotte Hornets
+				175 CHI — Chicago Bulls
+				176 CLE — Cleveland Cavaliers
+				177 DAL — Dallas Mavericks
+				178 DEN — Denver Nuggets
+				179 DET — Detroit Pistons
+				180 GSW — Golden State Warriors
+				181 HOU — Houston Rockets
+				182 IND — Indiana Pacers
+				183 LAC — LA Clippers
+				184 LAL — Los Angeles Lakers
+				185 MEM — Memphis Grizzlies
+				186 MIA — Miami Heat
+				187 MIL — Milwaukee Bucks
+				188 MIN — Minnesota Timberwolves
+				189 NOP — New Orleans Pelicans
+				190 NYK — New York Knicks
+				191 OKC — Oklahoma City Thunder
+				192 ORL — Orlando Magic
+				193 PHI — Philadelphia 76ers
+				194 PHX — Phoenix Suns
+				195 POR — Portland Trail Blazers
+				196 SAC — Sacramento Kings
+				197 SAS — San Antonio Spurs
+				198 TOR — Toronto Raptors
+				199 UTA — Utah Jazz
+				200 WAS — Washington Wizards
+		30 container
+			31 text Focus  Need a bucket ↔ Must get a stop
+		32 slider (settable, integer) 25
+		33 text Bucket Stop
+		34 text Plays shown
+		35 pop up button (collapsed, settable) Value: 5, Secondary Actions: Expand
+			36 menu
+				37 3
+				38 (selected) 5
+				39 7
+				40 10
+		41 text Recommendations
+		42 pop up button (collapsed, settable) Value: Smart (ML + context), Secondary Actions: Expand
+			43 menu
+				44 (selected) Smart (ML + context)
+				45 Baseline
+		46 text Context
+		47 checkbox After timeout, Value: 0
+		48 checkbox Late clock, Value: 0
+		49 checkbox Need a 3, Value: 0
+		50 checkbox Protect lead, Value: 0
+		51 checkbox End of quarter, Value: 0
+		52 checkbox Vs switching, Value: 0
+		53 text Quarter
+		54 stepper (settable, integer) 4
+		55 text Time left (sec)
+		56 stepper (settable, integer) 60
+		57 text Score (our − opp)
+		58 stepper (settable, integer) -2
+		59 text Q4 • 1:00 left • Down 2
+		60 container
+			61 heading Quick Call, Value: 2
+				62 text Quick Call
+			63 text The “what to run next” board.
+			208 text PRIMARY
+			209 text PRRollMan
+			210 text A
+			211 text Points / play
+			212 text 1.163
+			213 text Edge
+			214 text +0.014
+			215 text Why it works
+			370 text PRRollMan ranks #1 here at 1.16 PPP, with +0.01 PPP versus baseline.
+			217 content list
+				218 container
+					219 AXListMarker • 
+					220 text Context-adjusted efficiency: 1.16 PPP.
+				371 container
+					372 AXListMarker • 
+					373 text Blend components: ML 1.15 PPP vs baseline 1.15 PPP.
+				374 container
+					375 AXListMarker • 
+					376 text Lift vs baseline: +0.01 PPP.
+			227 text How to run
+			228 content list
+				229 container
+					230 AXListMarker 1. 
+					231 text Screen: be still and hit the defender's path.
+				232 container
+					233 AXListMarker 2. 
+					234 text Ball: get shoulder-to-hip and force 2 defenders to react.
+				235 container
+					236 AXListMarker 3. 
+					237 text Roll: sprint to the rim with hands ready.
+			238 container
+				239 button Diagram
+				240 button Counters
+				241 button Add to plan
+			242 button Select PRRollMan
+			243 text SECONDARY
+			244 text Spotup
+			245 text B
+			246 text Points / play
+			247 text 1.089
+			248 text Edge
+			249 text +0.028
+			250 text Why it works
+			377 text Spotup ranks #2 here at 1.09 PPP, with +0.03 PPP versus baseline.
+			252 content list
+				253 container
+					254 AXListMarker • 
+					255 text Context-adjusted efficiency: 1.09 PPP.
+				378 container
+					379 AXListMarker • 
+					380 text Blend components: ML 1.06 PPP vs baseline 1.06 PPP.
+				381 container
+					382 AXListMarker • 
+					383 text Lift vs baseline: +0.03 PPP.
+			262 text How to run
+			263 content list
+				264 container
+					265 AXListMarker 1. 
+					266 text Be shot-ready on the catch (feet set, hands ready).
+				267 container
+					268 AXListMarker 2. 
+					269 text Attack closeouts with 1–2 dribbles max.
+				270 container
+					271 AXListMarker 3. 
+					272 text If help comes, make the simple kick-out.
+			273 container
+				274 button Diagram
+				275 button Counters
+				276 button Add to plan
+			277 button Select Spotup
+			278 text SAFETY
+			279 text OffScreen
+			280 text C
+			281 text Points / play
+			282 text 1.013
+			283 text Edge
+			284 text +0.022
+			285 text Why it works
+			384 text OffScreen ranks #3 here at 1.01 PPP, with +0.02 PPP versus baseline.
+			287 content list
+				288 container
+					289 AXListMarker • 
+					290 text Context-adjusted efficiency: 1.01 PPP.
+				385 container
+					386 AXListMarker • 
+					387 text Blend components: ML 0.99 PPP vs baseline 0.99 PPP.
+				388 container
+					389 AXListMarker • 
+					390 text Lift vs baseline: +0.02 PPP.
+			297 text How to run
+			298 content list
+				299 container
+					300 AXListMarker 1. 
+					301 text Keep spacing (corners & slots) to open driving lanes.
+				302 container
+					303 AXListMarker 2. 
+					304 text First read fast: rim → kick → swing.
+				305 container
+					306 AXListMarker 3. 
+					307 text If the defense loads up, move it with one extra pass.
+			308 container
+				309 button Diagram
+				310 button Counters
+				311 button Add to plan
+			312 button Select OffScreen
+		64 container
+			65 heading Your Plan, Value: 2
+				66 text Your Plan
+			67 text For the huddle / timeout. Add plays from  Quick Call .
+			68 button Copy link
+			69 button Print / Save PDF
+		70 container
+			71 heading Shot Plan, Value: 2
+				72 text Shot Plan
+			73 text Simple “what shot we want” guidance. We want a high-quality shot…
+			74 content list
+				75 container
+					76 AXListMarker • 
+					77 text Primary: get a clean rim touch or a catch-and-shoot 3.
+				78 container
+					79 AXListMarker • 
+					80 text Look for: Jump Shot.
+				81 container
+					82 AXListMarker • 
+					83 text Target zone: arc3.
+			84 button Show heatmap
+			85 button Export PDF
+			86 text Shot type
+			87 pop up button (collapsed, settable) Value: Jump Shot, Secondary Actions: Expand
+				88 menu
+					89 (Any)
+					316 (selected) Jump Shot
+					317 Layup
+					318 Pullup
+					319 Floater
+					320 Dunk
+			90 text Zone
+			91 pop up button (collapsed, settable) Value: arc3, Secondary Actions: Expand
+				92 menu
+					93 (Any)
+					321 (selected) arc3
+					322 rim
+					323 paint
+					324 mid
+		94 container
+			95 heading Court View, Value: 2
+				96 text Court View
+			97 text Visual only — no clutter.
+			98 button Play zones
+			99 button Shot heatmap
+			325 text Diagram for:  PRRollMan
+			326 image Play zones for PRRollMan
+			327 text PRRollMan: Pred 1.149 PPP. Our(off) 1.127 vs Opp(def) 0.991.
+		101 container counters
+			102 heading Counters, Value: 2
+				103 text Counters
+			104 text “If they adjust… here’s what we do.”
+			328 text If they switch…
+			329 text When their big ends up on our ball handler (or they switch everything).
+			330 content list
+				331 container
+					332 AXListMarker • 
+					333 text Re-screen quickly (flip it).
+				334 container
+					335 AXListMarker • 
+					336 text Hit the slip early.
+				337 container
+					338 AXListMarker • 
+					339 text Attack the mismatch with pace.
+			340 text Goal: create a mismatch or force help.
+			341 text If they go under…
+			342 text When the on-ball defender ducks under the screen.
+			343 content list
+				344 container
+					345 AXListMarker • 
+					346 text Re-screen higher (pull-up space).
+				347 container
+					348 AXListMarker • 
+					349 text Use a handoff into flow.
+				350 container
+					351 AXListMarker • 
+					352 text Punish with the catch-and-shoot.
+			353 text Goal: get a clean rhythm shot.
+			354 text If they trap/hedge…
+			355 text When they send two to the ball to take away the first option.
+			356 content list
+				357 container
+					358 AXListMarker • 
+					359 text Hit the short roll.
+				360 container
+					361 AXListMarker • 
+					362 text Corners stay lifted for the skip.
+				363 container
+					364 AXListMarker • 
+					365 text One more pass = open shot.
+			366 text Goal: beat the trap with spacing + quick pass.
+		106 container
+			107 heading Assignments, Value: 2
+				108 text Assignments
+			109 text Player roles (fill in names for your lineup). Ball Handler
+			110 text field (settable)
+			111 text Screener / Roller
+			112 text field (settable)
+			113 text Corner Spacer
+			114 text field (settable)
+			115 text Weak-side Cutter
+			116 text field (settable)
+			117 text Safety Outlet
+			118 text field (settable)
+			119 text Tip: Keep the “safety” player high for spacing + transition defense.
+		120 container
+			121 heading Notes, Value: 2
+				122 text Notes
+			123 text Keep it simple: reminders for the huddle. Notes for:  PRRollMan
+			367 text entry area (settable)
+			368 button (collapsed) More details (optional), Secondary Actions: Expand
+				369 text More details (optional)
+		124 container
+			125 text Built with  Next.js  (UI) +  FastAPI  (services).
+		126 container
+			127 text Tip for reviewers: start at 
+			128 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			129 text  to see the dataset, then compare 
+			130 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			131 text  vs 
+			132 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			133 text , and verify evidence in 
+			134 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			135 text  and
+			136 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			137 text .
+
+The focused UI element is 16 button Understand

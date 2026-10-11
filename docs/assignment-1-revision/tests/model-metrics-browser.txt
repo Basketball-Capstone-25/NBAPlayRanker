@@ -1,0 +1,131 @@
+Browser tab: 11, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/model-metrics".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/model-metrics
+	2 container
+		3 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		4 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		6 heading Model Performance — Baseline vs ML, Value: 1
+			7 text Model Performance  — Baseline vs ML
+		8 container
+			9 text Think of this like a  scouting report  for the model. We test generalization across seasons (holdout) and show tuning evidence (how we searched features + hyperparameters).
+		10 text PPP target Season holdout Coach-friendly interpretation Best holdout: Ridge (RMSE 0.011 PPP)
+		11 link Description: Back: Context Simulator, Value: nbaplayranker-seven.vercel.app/context
+		12 link Description: Next: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+		13 container
+			14 text Season folds (n_splits)
+			15 pop up button (collapsed, settable) Season folds (n_splits), Value: 5, Secondary Actions: Expand
+				16 menu
+					17 3
+					18 4
+					19 (selected) 5
+					20 6
+		21 button (disabled) Refreshing…
+		22 text Loading pipeline summary…
+		23 text Scoreboard
+		24 text Holdout
+		25 checkbox Calibration, Value: 0
+		26 text Tuning
+		27 text Traceability
+		28 text What’s being predicted
+		29 text Play Type PPP
+		30 text Points per possession by play type (team-level).
+		31 text Holdout method
+		32 text Season splits
+		33 text Grouped by season to prevent leakage.
+		34 text Folds
+		35 text 5
+		36 text More folds = more repeated testing.
+		37 heading “How much better is it?” (Basketball terms), Value: 2
+			38 text “How much better is it?” (Basketball terms)
+		39 container
+			40 text RMSE/MAE are  prediction error  on PPP. Converting PPP error to “points”:
+			41 text 0.01 PPP error ≈ 1.0 point per 100 possessions (of prediction error)
+		42 container
+			43 text Possessions scale
+			44 stepper (settable, integer) Possessions scale, Value: 100
+		45 container
+			46 text Model A (better)
+			47 pop up button (collapsed, settable) Model A (better), Value: Ridge, Secondary Actions: Expand
+				82 menu
+					83 (disabled) Ridge
+					84 (disabled) Gradient Boosting
+					85 (disabled) Random Forest
+					86 (disabled) Baseline (league mean)
+		48 container
+			49 text Model B (compare)
+			50 pop up button (collapsed, settable) Model B (compare), Value: Baseline (league mean), Secondary Actions: Expand
+				87 menu
+					88 (disabled) Ridge
+					89 (disabled) Gradient Boosting
+					90 (disabled) Random Forest
+					91 (disabled) Baseline (league mean)
+		51 button Swap
+		52 button Compare vs Baseline
+		92 text RMSE improvement (PPP error)
+		93 container
+			94 text + 0.0530  PPP
+		95 text 82.4% lower RMSE vs Baseline (league mean)
+		96 text ≈ points / 100 possessions (error)
+		97 container
+			98 text + 5.30
+		99 container
+			100 text “Closer to true PPP” by ~ 5.30  points per 100 poss.
+		101 container
+			102 text ≈ points /  100  possessions (error)
+		103 container
+			104 text + 5.30
+		105 text Scales the same error to your chosen possession count.
+		54 text Coach translation (quick)
+		55 content list
+			56 container
+				57 AXListMarker • 
+				58 text PPP  is points per possession for a play type (like “PnR Ball Handler”).
+			59 container
+				60 AXListMarker • 
+				61 text RMSE  is “typical miss” on PPP predictions. Lower means the model is more reliable.
+			62 container
+				63 AXListMarker • 
+				64 text A drop of  0.01 PPP  in RMSE ≈  1 point per 100 possessions  less prediction error (not guaranteed points scored).
+		65 heading Holdout scan (lower RMSE is better), Value: 2
+			66 text Holdout scan (lower RMSE is better)
+		67 text Bars are scaled within this run. This is the fastest way for a coach to see what wins.
+		106 text Ridge
+		107 text best
+		108 container
+			109 text RMSE  0.011  ±  0.001
+		110 text 0.011
+		111 text Gradient Boosting
+		112 container
+			113 text RMSE  0.020  ±  0.008
+		114 text 0.020
+		115 text Random Forest
+		116 container
+			117 text RMSE  0.023  ±  0.012
+		118 text 0.023
+		119 text Baseline (league mean)
+		120 container
+			121 text RMSE  0.064  ±  0.002
+		122 text 0.064
+		123 button Open full holdout table
+		124 button Open tuning evidence
+		125 heading Is the improvement real?, Value: 2
+			126 text Is the improvement real?
+		127 container
+			128 text Optional paired test (fold-by-fold RMSE): t =  7.676  | p = 0.0015
+		129 text Coach translation: smaller p-value means the “better model” wins more consistently across seasons, not just by luck. If p is “—”, SciPy might not be installed or there weren’t enough folds.
+		68 container
+			69 text Built with  Next.js  (UI) +  FastAPI  (services).
+		70 container
+			71 text Tip for reviewers: start at 
+			72 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			73 text  to see the dataset, then compare 
+			74 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			75 text  vs 
+			76 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			77 text , and verify evidence in 
+			78 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			79 text  and
+			80 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			81 text .
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/model-metrics

@@ -1,0 +1,93 @@
+{
+  "execution_date": "2026-10-11",
+  "overall": "Issues found; scoped passing checks do not establish whole-app readiness.",
+  "source_commit": "64beaf2ed44d42cb5dd038ac6a71bc85e23f911a",
+  "python_suite": {
+    "passed": 202,
+    "backend_tests_passed": 195,
+    "fixture_cleanup_safety_tests_passed": 7,
+    "known_failures_xfailed": 4,
+    "skipped": 0,
+    "evidence": "backend-junit.xml"
+  },
+  "explicit_defect_execution": {
+    "failed": 4,
+    "command": "python -m pytest backend/tests/test_shot_attribution_regression.py --runxfail -q",
+    "evidence": "shot-attribution-junit.xml"
+  },
+  "frontend_suite": {
+    "passed": 34,
+    "evidence": "frontend-vitest.json"
+  },
+  "typescript": {
+    "passed": true,
+    "evidence": "typescript.log"
+  },
+  "live_core": {
+    "passed": true,
+    "assertions": 54,
+    "cleanup_passed": true,
+    "evidence": "live-core/live-verification.json"
+  },
+  "live_additional": {
+    "assertions": 52,
+    "passed": 52,
+    "failed": 0,
+    "evidence": "live-additional.json"
+  },
+  "transactional_sql": {
+    "passed": 2,
+    "remaining_test_users": {
+      "gameplan_test_users": 0,
+      "role_test_users": 0
+    },
+    "evidence": "sql-verification.json"
+  },
+  "nlp_load": {
+    "requests": 400,
+    "errors": 0,
+    "p95_ms": 333.1,
+    "peak_rss_mib": 299.3,
+    "scope": "Local full FastAPI process, not production capacity."
+  },
+  "shot_data_failure": {
+    "local_rows": 1332515,
+    "same_team_opponent_rows": 18746,
+    "live_csv_rows": 5000,
+    "live_invalid_rows": 51
+  },
+  "limits": [
+    "No application fix or deployment was made. Regression tests and one pinned development dependency were committed separately.",
+    "No new expensive shot-model training request.",
+    "Browser observations are recorded separately.",
+    "Calibration evaluates historical seasons using contemporaneous predictors; it does not establish future-game prediction accuracy.",
+    "The final Python suite includes known failure markers; these are not passing test results."
+  ],
+  "published_test_commit": "9804b32ca45ce9f21763cc027cf75e8f30d397aa",
+  "known_failure_marker_refinement": "After the full local run, xfail was restricted to AssertionError; the focused final marker verification still reports 4 expected failures.",
+  "published_test_file_hashes": {
+    "backend/requirements-dev.txt": "d2f19df09f6c8b9987deb07adf757ab71f82e7b673bc21708886c1e06759861e",
+    "backend/tests/test_shot_attribution_regression.py": "816b96162df3ab877ac0851eb27847bce576d313d72dc87a95c4f58c937c83a7"
+  },
+  "github_ci": {
+    "run_id": 38173001625,
+    "status": "success",
+    "tested_commit": "9804b32ca45ce9f21763cc027cf75e8f30d397aa",
+    "includes": [
+      "backend tests",
+      "frontend tests",
+      "production build"
+    ]
+  },
+  "new_jira_campaign": {
+    "suite": "BST-137",
+    "pass": 8,
+    "fail": 9,
+    "verify": 1,
+    "status": "Testing In Progress"
+  },
+  "test_files_at_full_local_run_before_marker_refinement": {
+    "backend/requirements-dev.txt": "d2f19df09f6c8b9987deb07adf757ab71f82e7b673bc21708886c1e06759861e",
+    "backend/tests/test_shot_attribution_regression.py": "448086d374e02fb3154f99585fa96357697d3f26a05595f7ba28ea66b4b74954"
+  }
+}

@@ -1,0 +1,2772 @@
+{
+  "captured_at_utc": "2026-10-11T21:22:27.977Z",
+  "verified_at_utc": "2026-10-11T21:22:28.808973+00:00",
+  "scope": "18 new campaign cases, 52 exact-match legacy cases, protected-profile corrections and the existing elaboration retest items. This is not a statement that every project case was executed.",
+  "checks_passed": 644,
+  "new_campaign_status_counts": {
+    "Fail": 9,
+    "Verify": 1,
+    "Pass": 8
+  },
+  "legacy_exact_matches_passed": 52,
+  "original_assignments_preserved": true,
+  "historical_comments_preserved": true,
+  "issues": [
+    {
+      "key": "BST-1",
+      "title": "Data Explorer displays the current raw dataset",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "FA1-DataExplorer",
+        "UC1-ViewData",
+        "assignment-1-revision",
+        "data-explorer",
+        "fall-2026",
+        "pass",
+        "uc62",
+        "uc63"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10030",
+        "10039",
+        "11083"
+      ]
+    },
+    {
+      "key": "BST-2",
+      "title": "Data Explorer filters rows by season, team and side",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "FA1-DataExplorer",
+        "UC1-ViewData",
+        "assignment-1-revision",
+        "data-explorer",
+        "fall-2026",
+        "pass",
+        "uc62",
+        "uc63"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10031",
+        "10041",
+        "11084"
+      ]
+    },
+    {
+      "key": "BST-3",
+      "title": "Data Explorer CSV matches the visible raw data",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "FA1-DataExplorer",
+        "UC2-Export",
+        "assignment-1-revision",
+        "data-explorer",
+        "fall-2026",
+        "pass",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "BST-135"
+      ],
+      "comment_ids": [
+        "10032",
+        "10038",
+        "11085"
+      ]
+    },
+    {
+      "key": "BST-4",
+      "title": "FA2 \u2013 Baseline \u2013 UC3 Get Top-K \u2013 TC04 Valid parameters",
+      "status": "Verify",
+      "status_category": "To Do",
+      "parent": null,
+      "labels": [
+        "FA2-Baseline",
+        "UC3-TopK",
+        "pass"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10035",
+        "10043"
+      ]
+    },
+    {
+      "key": "BST-5",
+      "title": "FA2 \u2013 Baseline \u2013 UC3 Get Top-K \u2013 TC05 Invalid parameters & validation",
+      "status": "Verify",
+      "status_category": "To Do",
+      "parent": null,
+      "labels": [
+        "FA2-Baseline",
+        "UC3-TopK",
+        "Validation",
+        "pass"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10036"
+      ]
+    },
+    {
+      "key": "BST-6",
+      "title": "Coach Matchup displays the Top-K baseline cards",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "FA3-Tactics",
+        "UC4-TopKUI",
+        "assignment-1-revision",
+        "coach-access",
+        "fall-2026",
+        "pass",
+        "uc18",
+        "uc71"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10037",
+        "10042",
+        "11086"
+      ]
+    },
+    {
+      "key": "BST-13",
+      "title": "Access Analyst Workspace",
+      "status": "Verify",
+      "status_category": "To Do",
+      "parent": null,
+      "labels": [],
+      "links": [],
+      "comment_ids": []
+    },
+    {
+      "key": "BST-18",
+      "title": "mn k",
+      "status": "Verify",
+      "status_category": "To Do",
+      "parent": null,
+      "labels": [],
+      "links": [],
+      "comment_ids": []
+    },
+    {
+      "key": "BST-27",
+      "title": "Access Analyst Workspace",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63",
+        "uc69",
+        "uc71"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10740",
+        "11112"
+      ]
+    },
+    {
+      "key": "BST-28",
+      "title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69",
+        "uc71"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11113"
+      ]
+    },
+    {
+      "key": "BST-29",
+      "title": "Ranked list via API",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc18",
+        "uc55"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10739",
+        "11114"
+      ]
+    },
+    {
+      "key": "BST-30",
+      "title": "Validate Coach Access",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc18",
+        "uc59",
+        "uc71"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11115"
+      ]
+    },
+    {
+      "key": "BST-31",
+      "title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc50",
+        "uc59",
+        "uc65"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11116"
+      ]
+    },
+    {
+      "key": "BST-32",
+      "title": "Analyst middleware allows the Data Explorer route",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11007"
+      ]
+    },
+    {
+      "key": "BST-33",
+      "title": "Workspace API returns rows and matching counts",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-317"
+      ],
+      "comment_ids": [
+        "10736",
+        "11009"
+      ]
+    },
+    {
+      "key": "BST-34",
+      "title": "Analyst profile can read the workspace API",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11011"
+      ]
+    },
+    {
+      "key": "BST-35",
+      "title": "Workspace filters preserve the requested team and side",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-317"
+      ],
+      "comment_ids": [
+        "11013"
+      ]
+    },
+    {
+      "key": "BST-36",
+      "title": "Workspace row limits agree with response counts",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-317"
+      ],
+      "comment_ids": [
+        "11015"
+      ]
+    },
+    {
+      "key": "BST-37",
+      "title": "Coach profile cannot read the analyst workspace API",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11018"
+      ]
+    },
+    {
+      "key": "BST-38",
+      "title": "Coach profile cannot export analyst workspace CSV",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11020"
+      ]
+    },
+    {
+      "key": "BST-39",
+      "title": "Workspace API rejects a missing session",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11022"
+      ]
+    },
+    {
+      "key": "BST-40",
+      "title": "Coach middleware redirects the analyst workspace route",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11023"
+      ]
+    },
+    {
+      "key": "BST-41",
+      "title": "Signed-out workspace request keeps its return path",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11026"
+      ]
+    },
+    {
+      "key": "BST-42",
+      "title": "Session validation accepts verified tokens and rejects missing or invalid tokens",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11073"
+      ]
+    },
+    {
+      "key": "BST-43",
+      "title": "Role lookup uses protected profiles and rejects invalid profile data",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11074"
+      ]
+    },
+    {
+      "key": "BST-44",
+      "title": "Analytics permission checks distinguish analyst and coach roles",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11075"
+      ]
+    },
+    {
+      "key": "BST-45",
+      "title": "Explicit local development mode permits a missing session",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11028"
+      ]
+    },
+    {
+      "key": "BST-46",
+      "title": "Session validation rejects a missing token",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11030"
+      ]
+    },
+    {
+      "key": "BST-47",
+      "title": "Session validation rejects a failed JWT verification",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11032"
+      ]
+    },
+    {
+      "key": "BST-48",
+      "title": "Session validation accepts verified subject claims",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11033"
+      ]
+    },
+    {
+      "key": "BST-49",
+      "title": "A failed token verification cannot produce a role",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11034"
+      ]
+    },
+    {
+      "key": "BST-50",
+      "title": "Coach access uses the protected profile role",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "uc69",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "10983"
+      ]
+    },
+    {
+      "key": "BST-51",
+      "title": "Analyst access uses the current protected profile role",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "uc69",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "10986"
+      ]
+    },
+    {
+      "key": "BST-52",
+      "title": "Unsupported and malformed profiles cannot grant a role",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11035"
+      ]
+    },
+    {
+      "key": "BST-53",
+      "title": "Explicit local development mode permits the analytics guard",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11036"
+      ]
+    },
+    {
+      "key": "BST-54",
+      "title": "Analytics permission rejects the coach role",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11037"
+      ]
+    },
+    {
+      "key": "BST-55",
+      "title": "Analytics permission accepts the analyst role",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11038"
+      ]
+    },
+    {
+      "key": "BST-56",
+      "title": "Baseline ranking returns bounded matchup-specific results",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc10",
+        "uc18"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10735",
+        "11076"
+      ]
+    },
+    {
+      "key": "BST-57",
+      "title": "Baseline API validates matchup and result count",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10738",
+        "11077"
+      ]
+    },
+    {
+      "key": "BST-58",
+      "title": "Baseline returns five plays with ranking values",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "links": [
+        "SCRUM-321"
+      ],
+      "comment_ids": [
+        "11039"
+      ]
+    },
+    {
+      "key": "BST-59",
+      "title": "Baseline predictions are nonnegative for the test matchup",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "links": [
+        "SCRUM-321"
+      ],
+      "comment_ids": [
+        "11040"
+      ]
+    },
+    {
+      "key": "BST-60",
+      "title": "Baseline K=10 returns a nonempty bounded list",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "links": [
+        "SCRUM-321"
+      ],
+      "comment_ids": [
+        "10737",
+        "11041"
+      ]
+    },
+    {
+      "key": "BST-61",
+      "title": "Changing the team changes baseline predictions",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "links": [
+        "SCRUM-321"
+      ],
+      "comment_ids": [
+        "11042"
+      ]
+    },
+    {
+      "key": "BST-62",
+      "title": "Baseline API returns the requested Top-K and matchup metadata",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [
+        "SCRUM-321"
+      ],
+      "comment_ids": [
+        "11043"
+      ]
+    },
+    {
+      "key": "BST-63",
+      "title": "Baseline API rejects the same team on both sides",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [
+        "SCRUM-321"
+      ],
+      "comment_ids": [
+        "11044"
+      ]
+    },
+    {
+      "key": "BST-64",
+      "title": "Baseline API rejects K=0",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [
+        "SCRUM-321"
+      ],
+      "comment_ids": [
+        "11045"
+      ]
+    },
+    {
+      "key": "BST-65",
+      "title": "Coach workspace routes enforce the signed-in role",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11078"
+      ]
+    },
+    {
+      "key": "BST-66",
+      "title": "Ranking APIs enforce coach access",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11079"
+      ]
+    },
+    {
+      "key": "BST-67",
+      "title": "Coach middleware allows the matchup route",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11046"
+      ]
+    },
+    {
+      "key": "BST-68",
+      "title": "Coach middleware redirects analyst-only pages",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11047"
+      ]
+    },
+    {
+      "key": "BST-69",
+      "title": "Signed-in coach is redirected away from login",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11048"
+      ]
+    },
+    {
+      "key": "BST-70",
+      "title": "Coach profile can call the baseline API",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc18",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11050"
+      ]
+    },
+    {
+      "key": "BST-71",
+      "title": "Analyst profile cannot call the coach baseline API",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc18",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11051"
+      ]
+    },
+    {
+      "key": "BST-72",
+      "title": "Analyst profile cannot call the coach context API",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc59",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11052"
+      ]
+    },
+    {
+      "key": "BST-73",
+      "title": "Analyst profile cannot call the coach visualization API",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "11053"
+      ]
+    },
+    {
+      "key": "BST-74",
+      "title": "Context helpers handle regulation clocks and score factors",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11080"
+      ]
+    },
+    {
+      "key": "BST-75",
+      "title": "Context labels describe normal, trailing and leading situations",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc59"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11081"
+      ]
+    },
+    {
+      "key": "BST-76",
+      "title": "Ridge model meets the documented historical evaluation checks",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc65"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11082"
+      ]
+    },
+    {
+      "key": "BST-77",
+      "title": "Regulation clock starts with 2,880 seconds",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11054"
+      ]
+    },
+    {
+      "key": "BST-78",
+      "title": "Regulation clock reaches zero at the fourth-quarter end",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11055"
+      ]
+    },
+    {
+      "key": "BST-79",
+      "title": "Regulation-clock helper returns zero during overtime",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11056"
+      ]
+    },
+    {
+      "key": "BST-80",
+      "title": "Third-quarter clock includes the remaining regulation periods",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11057"
+      ]
+    },
+    {
+      "key": "BST-81",
+      "title": "Opening tied-game context has zero urgency factors",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11058"
+      ]
+    },
+    {
+      "key": "BST-82",
+      "title": "Late trailing context raises late-game and trailing factors",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11059"
+      ]
+    },
+    {
+      "key": "BST-83",
+      "title": "Late large lead raises only the leading factor",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11060"
+      ]
+    },
+    {
+      "key": "BST-84",
+      "title": "Overtime context has maximum late-game weighting",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11061"
+      ]
+    },
+    {
+      "key": "BST-85",
+      "title": "Zero context factors use the normal label",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11062"
+      ]
+    },
+    {
+      "key": "BST-86",
+      "title": "Late trailing factors use the trailing label",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11063"
+      ]
+    },
+    {
+      "key": "BST-87",
+      "title": "Late leading factors use the leading label",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ],
+      "comment_ids": [
+        "11064"
+      ]
+    },
+    {
+      "key": "BST-88",
+      "title": "Ridge pipeline scales features before fitting",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ],
+      "comment_ids": [
+        "11065"
+      ]
+    },
+    {
+      "key": "BST-89",
+      "title": "Ridge fits 200 synthetic rows without invalid predictions",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ],
+      "comment_ids": [
+        "11066"
+      ]
+    },
+    {
+      "key": "BST-90",
+      "title": "Synthetic Ridge coefficients stay finite and bounded",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ],
+      "comment_ids": [
+        "11067"
+      ]
+    },
+    {
+      "key": "BST-91",
+      "title": "Historical Ridge cross-validation beats the league-mean baseline",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ],
+      "comment_ids": [
+        "11068"
+      ]
+    },
+    {
+      "key": "BST-92",
+      "title": "Historical held-out Ridge predictions stay within the PPP bounds",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ],
+      "comment_ids": [
+        "11069"
+      ]
+    },
+    {
+      "key": "BST-93",
+      "title": "Every historical Ridge fold meets the RMSE threshold",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ],
+      "comment_ids": [
+        "11070"
+      ]
+    },
+    {
+      "key": "BST-94",
+      "title": "Model feature and target arrays are aligned and finite",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ],
+      "comment_ids": [
+        "11071"
+      ]
+    },
+    {
+      "key": "BST-95",
+      "title": "Increasing Ridge alpha reduces synthetic coefficient norms",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ],
+      "comment_ids": [
+        "11072"
+      ]
+    },
+    {
+      "key": "BST-96",
+      "title": "Generate Play Explanations",
+      "status": "Testing In Progress",
+      "status_category": "In Progress",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc45",
+        "uc50",
+        "uc60",
+        "uc67"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127"
+      ],
+      "comment_ids": [
+        "11117"
+      ]
+    },
+    {
+      "key": "BST-97",
+      "title": "Rationale generated for each Top-K play",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc60",
+        "uc67"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127"
+      ],
+      "comment_ids": [
+        "11092"
+      ]
+    },
+    {
+      "key": "BST-98",
+      "title": "Rationale values match ranking output",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc60",
+        "uc67"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127"
+      ],
+      "comment_ids": [
+        "11093"
+      ]
+    },
+    {
+      "key": "BST-99",
+      "title": "Baseline rationale states when context is missing",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc67"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127",
+        "SCRUM-546"
+      ],
+      "comment_ids": [
+        "11095"
+      ]
+    },
+    {
+      "key": "BST-100",
+      "title": "NLP parses a trailing fourth-quarter context",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127",
+        "SCRUM-502"
+      ],
+      "comment_ids": [
+        "10881",
+        "11108"
+      ]
+    },
+    {
+      "key": "BST-101",
+      "title": "NLP parses a leading score margin",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127",
+        "SCRUM-502"
+      ],
+      "comment_ids": [
+        "10882",
+        "11109"
+      ]
+    },
+    {
+      "key": "BST-102",
+      "title": "Unparseable NLP text produces neutral context defaults",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127",
+        "SCRUM-502"
+      ],
+      "comment_ids": [
+        "10883",
+        "11110"
+      ]
+    },
+    {
+      "key": "BST-103",
+      "title": "NLP rejects out-of-range values before ranking",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127",
+        "SCRUM-502"
+      ],
+      "comment_ids": [
+        "10884",
+        "11111"
+      ]
+    },
+    {
+      "key": "BST-104",
+      "title": "Access Stored Datasets",
+      "status": "Testing In Progress",
+      "status_category": "In Progress",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-121"
+      ],
+      "comment_ids": [
+        "11118"
+      ]
+    },
+    {
+      "key": "BST-105",
+      "title": "Play-type dataset loads from storage",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-104",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-121"
+      ],
+      "comment_ids": [
+        "11096"
+      ]
+    },
+    {
+      "key": "BST-106",
+      "title": "Season and team query returns matching rows",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-104",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-121"
+      ],
+      "comment_ids": [
+        "11097"
+      ]
+    },
+    {
+      "key": "BST-107",
+      "title": "Missing play-type dataset has a controlled error",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-104",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-121",
+        "SCRUM-547"
+      ],
+      "comment_ids": [
+        "11098"
+      ]
+    },
+    {
+      "key": "BST-108",
+      "title": "API Stability and Deployment",
+      "status": "Testing In Progress",
+      "status_category": "In Progress",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc18",
+        "uc62",
+        "uc64",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132"
+      ],
+      "comment_ids": [
+        "11119"
+      ]
+    },
+    {
+      "key": "BST-109",
+      "title": "Deployed health endpoint responds",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-108",
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc62",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132"
+      ],
+      "comment_ids": [
+        "11099"
+      ]
+    },
+    {
+      "key": "BST-110",
+      "title": "Concurrent Top-K requests complete",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-108",
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132"
+      ],
+      "comment_ids": [
+        "11100"
+      ]
+    },
+    {
+      "key": "BST-111",
+      "title": "Top-K response time meets an agreed threshold",
+      "status": "Verify",
+      "status_category": "To Do",
+      "parent": "BST-108",
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132",
+        "SCRUM-550"
+      ],
+      "comment_ids": [
+        "11101"
+      ]
+    },
+    {
+      "key": "BST-112",
+      "title": "Deployed Matchup page loads data from the API",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-108",
+      "labels": [
+        "assignment-1-revision",
+        "coach-access",
+        "fall-2026",
+        "uc18",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132"
+      ],
+      "comment_ids": [
+        "11087"
+      ]
+    },
+    {
+      "key": "BST-113",
+      "title": "Missing required configuration stops backend startup",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-108",
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc62",
+        "uc64"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132",
+        "SCRUM-547"
+      ],
+      "comment_ids": [
+        "11102"
+      ]
+    },
+    {
+      "key": "BST-114",
+      "title": "Validate Second Dataset and Models",
+      "status": "Testing In Progress",
+      "status_category": "In Progress",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc64",
+        "uc65",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126"
+      ],
+      "comment_ids": [
+        "11120"
+      ]
+    },
+    {
+      "key": "BST-115",
+      "title": "Retained second-dataset schema maps required model columns",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-114",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc64"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126",
+        "SCRUM-538"
+      ],
+      "comment_ids": [
+        "11103"
+      ]
+    },
+    {
+      "key": "BST-116",
+      "title": "Schema mapping reports missing and unmapped columns",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-114",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc64"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126",
+        "SCRUM-548"
+      ],
+      "comment_ids": [
+        "11104"
+      ]
+    },
+    {
+      "key": "BST-117",
+      "title": "Shot features are complete and available before possession",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-114",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126",
+        "SCRUM-538",
+        "SCRUM-549"
+      ],
+      "comment_ids": [
+        "11105"
+      ]
+    },
+    {
+      "key": "BST-118",
+      "title": "Selected shot model beats baseline on a holdout season",
+      "status": "Verify",
+      "status_category": "To Do",
+      "parent": "BST-114",
+      "labels": [
+        "assignment-1-revision",
+        "blocked-data",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc65",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126",
+        "SCRUM-538",
+        "SCRUM-549"
+      ],
+      "comment_ids": [
+        "11106"
+      ]
+    },
+    {
+      "key": "BST-119",
+      "title": "Selected shot model reports cross-validation statistics",
+      "status": "Verify",
+      "status_category": "To Do",
+      "parent": "BST-114",
+      "labels": [
+        "assignment-1-revision",
+        "blocked-data",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc65",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126",
+        "SCRUM-538",
+        "SCRUM-549"
+      ],
+      "comment_ids": [
+        "11107"
+      ]
+    },
+    {
+      "key": "BST-120",
+      "title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "uc28",
+        "uc29",
+        "uc42",
+        "uc48",
+        "verification"
+      ],
+      "links": [
+        "SCRUM-475",
+        "SCRUM-476",
+        "SCRUM-481",
+        "SCRUM-506"
+      ],
+      "comment_ids": [
+        "10876"
+      ]
+    },
+    {
+      "key": "BST-121",
+      "title": "Top-K uplift matches possession-weighted calculations",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-475",
+        "uc29"
+      ],
+      "links": [
+        "SCRUM-475"
+      ],
+      "comment_ids": [
+        "10808",
+        "10837",
+        "10987"
+      ]
+    },
+    {
+      "key": "BST-122",
+      "title": "Top-K JSON and CSV match and enforce analyst access",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-475",
+        "uc29",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-475"
+      ],
+      "comment_ids": [
+        "10809",
+        "10838",
+        "10989"
+      ]
+    },
+    {
+      "key": "BST-123",
+      "title": "Calibration trains on earlier seasons only",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-476",
+        "uc28",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-476"
+      ],
+      "comment_ids": [
+        "10810",
+        "10839",
+        "10887",
+        "10990"
+      ]
+    },
+    {
+      "key": "BST-124",
+      "title": "Calibration values and limits match the analyst page",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-476",
+        "uc62",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-476"
+      ],
+      "comment_ids": [
+        "10811",
+        "10840",
+        "10991"
+      ]
+    },
+    {
+      "key": "BST-125",
+      "title": "Gameplan storage validates notes, matchups and revisions",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-481",
+        "uc42",
+        "uc48"
+      ],
+      "links": [
+        "SCRUM-481"
+      ],
+      "comment_ids": [
+        "10812",
+        "10841",
+        "10993"
+      ]
+    },
+    {
+      "key": "BST-126",
+      "title": "Gameplan ownership and role restrictions hold",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-481",
+        "uc42",
+        "uc48",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-481"
+      ],
+      "comment_ids": [
+        "10813",
+        "10842",
+        "10994"
+      ]
+    },
+    {
+      "key": "BST-127",
+      "title": "Production health, access rules and deployment checks",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-506",
+        "uc62",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-506"
+      ],
+      "comment_ids": [
+        "10814",
+        "10843",
+        "10848",
+        "10996"
+      ]
+    },
+    {
+      "key": "BST-128",
+      "title": "TC-I14-DEPLOY-02 \u2014 Authenticated coach and analyst production journeys",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-506"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10815",
+        "10833",
+        "10870"
+      ]
+    },
+    {
+      "key": "BST-129",
+      "title": "Signed-in browser downloads preserve authorization",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "regression",
+        "scrum-506"
+      ],
+      "links": [],
+      "comment_ids": [
+        "10832",
+        "10836",
+        "10847",
+        "10871",
+        "10872",
+        "10875"
+      ]
+    },
+    {
+      "key": "BST-130",
+      "title": "Compute & Export Top-K Uplift",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc29"
+      ],
+      "links": [
+        "SCRUM-474"
+      ],
+      "comment_ids": [
+        "11121"
+      ]
+    },
+    {
+      "key": "BST-131",
+      "title": "Top-K uplift matches the team-season reference",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-130",
+      "labels": [
+        "uc29"
+      ],
+      "links": [
+        "SCRUM-474",
+        "SCRUM-475"
+      ],
+      "comment_ids": [
+        "10889",
+        "10997"
+      ]
+    },
+    {
+      "key": "BST-132",
+      "title": "Run Data Quality Checks",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-478"
+      ],
+      "comment_ids": [
+        "11122"
+      ]
+    },
+    {
+      "key": "BST-133",
+      "title": "Synergy data quality flags schema, missing data and coverage",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-132",
+      "labels": [
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-478"
+      ],
+      "comment_ids": [
+        "10894",
+        "10999"
+      ]
+    },
+    {
+      "key": "BST-134",
+      "title": "Export Results (CSV/PDF)",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-484"
+      ],
+      "comment_ids": [
+        "11123"
+      ]
+    },
+    {
+      "key": "BST-135",
+      "title": "Exports keep values and headers consistent across formats",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-134",
+      "labels": [
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-484",
+        "BST-3"
+      ],
+      "comment_ids": [
+        "10898",
+        "11000"
+      ]
+    },
+    {
+      "key": "BST-136",
+      "title": "NLP handles concurrent requests within local memory limits",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-96",
+      "labels": [
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-502"
+      ],
+      "comment_ids": [
+        "10901",
+        "11001"
+      ]
+    },
+    {
+      "key": "BST-137",
+      "title": "Fall 2026 elaboration regression tests",
+      "status": "Testing In Progress",
+      "status_category": "In Progress",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "execution-campaign",
+        "fa-access-control",
+        "fa-context-ranking",
+        "fa-exports",
+        "fa-model-evaluation",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc11",
+        "uc42",
+        "uc45",
+        "uc48",
+        "uc50",
+        "uc62",
+        "uc63",
+        "uc65",
+        "uc69",
+        "uc70",
+        "uc71"
+      ],
+      "links": [],
+      "comment_ids": [
+        "11124"
+      ]
+    },
+    {
+      "key": "BST-138",
+      "title": "Shot data uses different shooting and opposing teams",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc63",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-479",
+        "SCRUM-480",
+        "SCRUM-538"
+      ],
+      "comment_ids": [
+        "10923"
+      ]
+    },
+    {
+      "key": "BST-139",
+      "title": "Shot import keeps the event team separate from home team and score",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc63",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-479",
+        "SCRUM-538"
+      ],
+      "comment_ids": [
+        "10925"
+      ]
+    },
+    {
+      "key": "BST-140",
+      "title": "Gameplan uses the new situation on the first Build",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-326",
+        "SCRUM-539"
+      ],
+      "comment_ids": [
+        "10927"
+      ]
+    },
+    {
+      "key": "BST-141",
+      "title": "Gameplan forwards supported coaching conditions to ranking",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-502",
+        "SCRUM-540"
+      ],
+      "comment_ids": [
+        "10929"
+      ]
+    },
+    {
+      "key": "BST-142",
+      "title": "Gameplan preserves overtime from the parsed situation",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc11",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-502",
+        "SCRUM-541"
+      ],
+      "comment_ids": [
+        "10931"
+      ]
+    },
+    {
+      "key": "BST-143",
+      "title": "Analyst Shot Plan page can use its required API",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-126",
+        "SCRUM-544"
+      ],
+      "comment_ids": [
+        "10933"
+      ]
+    },
+    {
+      "key": "BST-144",
+      "title": "Analyst Shot Heatmap page can use its required API",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-126",
+        "SCRUM-544"
+      ],
+      "comment_ids": [
+        "10935"
+      ]
+    },
+    {
+      "key": "BST-145",
+      "title": "Model Metrics finishes loading after successful metadata",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc62",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477",
+        "SCRUM-542"
+      ],
+      "comment_ids": [
+        "10937"
+      ]
+    },
+    {
+      "key": "BST-146",
+      "title": "Shot Model Metrics completes within its request limit",
+      "status": "Verify",
+      "status_category": "To Do",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc65",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-126",
+        "SCRUM-543"
+      ],
+      "comment_ids": [
+        "10939"
+      ]
+    },
+    {
+      "key": "BST-147",
+      "title": "Shot Statistical Analysis renders the returned response",
+      "status": "Fail",
+      "status_category": "In Progress",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-126",
+        "SCRUM-545"
+      ],
+      "comment_ids": [
+        "10941"
+      ]
+    },
+    {
+      "key": "BST-148",
+      "title": "A stale Gameplan update cannot overwrite a newer revision",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc42",
+        "uc48"
+      ],
+      "links": [
+        "SCRUM-481"
+      ],
+      "comment_ids": [
+        "10944"
+      ]
+    },
+    {
+      "key": "BST-149",
+      "title": "One account cannot read another account profile",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ],
+      "comment_ids": [
+        "10946"
+      ]
+    },
+    {
+      "key": "BST-150",
+      "title": "Export proxy rejects a cookie session for the wrong verified user",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-527"
+      ],
+      "comment_ids": [
+        "10947"
+      ]
+    },
+    {
+      "key": "BST-151",
+      "title": "Export proxy rejects arbitrary backend targets",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-527"
+      ],
+      "comment_ids": [
+        "10949"
+      ]
+    },
+    {
+      "key": "BST-152",
+      "title": "Export proxy rejects foreign-site download requests",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-527"
+      ],
+      "comment_ids": [
+        "10950"
+      ]
+    },
+    {
+      "key": "BST-153",
+      "title": "Export proxy rejects redirects and wrong file content",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-527"
+      ],
+      "comment_ids": [
+        "10951"
+      ]
+    },
+    {
+      "key": "BST-154",
+      "title": "Export proxy keeps denied responses out of downloaded files",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-527"
+      ],
+      "comment_ids": [
+        "10953"
+      ]
+    },
+    {
+      "key": "BST-155",
+      "title": "NLP rejects empty and overlength coaching prompts",
+      "status": "Pass",
+      "status_category": "Done",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-502"
+      ],
+      "comment_ids": [
+        "10955"
+      ]
+    }
+  ]
+}

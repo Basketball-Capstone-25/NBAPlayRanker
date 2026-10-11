@@ -1,0 +1,175 @@
+{
+  "source": "additional-live-api.json",
+  "scope": "All number tokens in 5 baseline and 5 context rationales. Rounding checked at displayed precision. No uplift number is cited by these templates; returned delta was independently checked against PPP_CONTEXT minus PPP_BASELINE. Legacy/NLP components are derived from returned bonus/penalty and context total fields because the endpoint omits standalone legacy/NLP fields.",
+  "all_nonempty": true,
+  "all_numbers_match": true,
+  "context_math_matches": true,
+  "baseline_notice_count": 0,
+  "checks": [
+    {
+      "mode": "baseline",
+      "play": "PRRollMan",
+      "rationale": "PRRollMan: Pred 1.154 PPP. Our(off) 1.127 vs Opp(def) 0.991 (+0.136). Reliability off=0.74, def=0.66.",
+      "all_number_tokens_matched": true,
+      "compared_fields": {
+        "PPP_PRED": 1.1537222821639372,
+        "PPP_OFF_SHRUNK": 1.1267814971452141,
+        "PPP_DEF_SHRUNK": 0.9912790260125357,
+        "PPP_GAP": 0.13550247113267844,
+        "RELIABILITY_WEIGHT_OFF": 0.7387763119287268,
+        "RELIABILITY_WEIGHT_DEF": 0.6571467190357199
+      },
+      "context_not_applied_notice": false
+    },
+    {
+      "mode": "baseline",
+      "play": "Spotup",
+      "rationale": "Spotup: Pred 1.065 PPP. Our(off) 1.034 vs Opp(def) 0.979 (+0.055). Reliability off=0.90, def=0.92.",
+      "all_number_tokens_matched": true,
+      "compared_fields": {
+        "PPP_PRED": 1.0654977911074488,
+        "PPP_OFF_SHRUNK": 1.0344750765415416,
+        "PPP_DEF_SHRUNK": 0.9790602734874766,
+        "PPP_GAP": 0.05541480305406499,
+        "RELIABILITY_WEIGHT_OFF": 0.8979484664365927,
+        "RELIABILITY_WEIGHT_DEF": 0.9176669266328921
+      },
+      "context_not_applied_notice": false
+    },
+    {
+      "mode": "baseline",
+      "play": "OffScreen",
+      "rationale": "OffScreen: Pred 0.993 PPP. Our(off) 0.981 vs Opp(def) 0.973 (+0.009). Reliability off=0.70, def=0.64.",
+      "all_number_tokens_matched": true,
+      "compared_fields": {
+        "PPP_PRED": 0.9933435896993468,
+        "PPP_OFF_SHRUNK": 0.9813568282183438,
+        "PPP_DEF_SHRUNK": 0.9725332747545843,
+        "PPP_GAP": 0.008823553463759515,
+        "RELIABILITY_WEIGHT_OFF": 0.7039727857180166,
+        "RELIABILITY_WEIGHT_DEF": 0.6420209487266181
+      },
+      "context_not_applied_notice": false
+    },
+    {
+      "mode": "baseline",
+      "play": "Postup",
+      "rationale": "Postup: Pred 0.967 PPP. Our(off) 0.952 vs Opp(def) 0.996 (-0.044). Reliability off=0.67, def=0.71.",
+      "all_number_tokens_matched": true,
+      "compared_fields": {
+        "PPP_PRED": 0.9672598764072047,
+        "PPP_OFF_SHRUNK": 0.9516395131431703,
+        "PPP_DEF_SHRUNK": 0.9959127935646548,
+        "PPP_GAP": -0.044273280421484484,
+        "RELIABILITY_WEIGHT_OFF": 0.6656553285509134,
+        "RELIABILITY_WEIGHT_DEF": 0.7094736942068988
+      },
+      "context_not_applied_notice": false
+    },
+    {
+      "mode": "baseline",
+      "play": "Isolation",
+      "rationale": "Isolation: Pred 0.902 PPP. Our(off) 0.894 vs Opp(def) 0.918 (-0.024). Reliability off=0.70, def=0.79.",
+      "all_number_tokens_matched": true,
+      "compared_fields": {
+        "PPP_PRED": 0.9017437474120693,
+        "PPP_OFF_SHRUNK": 0.8940734940279422,
+        "PPP_DEF_SHRUNK": 0.9181484630562999,
+        "PPP_GAP": -0.024074969028357707,
+        "RELIABILITY_WEIGHT_OFF": 0.6950372712726034,
+        "RELIABILITY_WEIGHT_DEF": 0.7923344284696806
+      },
+      "context_not_applied_notice": false
+    },
+    {
+      "mode": "context",
+      "play": "PRRollMan",
+      "rationale": "PRRollMan [other]: ML base 1.158, legacy +0.003, NLP +0.000, total +0.003 (Late & trailing). Blend off/def=0.70/0.30. no extra NLP family adjustments. Late=0.60, trailing=0.20, leading=0.00.",
+      "all_number_tokens_matched": true,
+      "compared_fields": {
+        "PPP_ML_BLEND": 1.158049992659318,
+        "legacy_from_components": 0.002685242656473597,
+        "NLP_from_total_minus_legacy": 0.0,
+        "CONTEXT_ADJ": 0.002685242656473597,
+        "w_off": 0.7,
+        "w_def": 0.30000000000000004,
+        "LATE_GAME_FACTOR": 0.6,
+        "TRAILING_FACTOR": 0.2,
+        "LEADING_FACTOR": 0.0
+      },
+      "rank_math_consistent": true
+    },
+    {
+      "mode": "context",
+      "play": "Spotup",
+      "rationale": "Spotup [other]: ML base 1.063, legacy +0.013, NLP +0.000, total +0.013 (Late & trailing). Blend off/def=0.70/0.30. no extra NLP family adjustments. Late=0.60, trailing=0.20, leading=0.00.",
+      "all_number_tokens_matched": true,
+      "compared_fields": {
+        "PPP_ML_BLEND": 1.0630577631175802,
+        "legacy_from_components": 0.013149779506033686,
+        "NLP_from_total_minus_legacy": 0.0,
+        "CONTEXT_ADJ": 0.013149779506033686,
+        "w_off": 0.7,
+        "w_def": 0.30000000000000004,
+        "LATE_GAME_FACTOR": 0.6,
+        "TRAILING_FACTOR": 0.2,
+        "LEADING_FACTOR": 0.0
+      },
+      "rank_math_consistent": true
+    },
+    {
+      "mode": "context",
+      "play": "OffScreen",
+      "rationale": "OffScreen [other]: ML base 0.992, legacy +0.010, NLP +0.000, total +0.010 (Late & trailing). Blend off/def=0.70/0.30. no extra NLP family adjustments. Late=0.60, trailing=0.20, leading=0.00.",
+      "all_number_tokens_matched": true,
+      "compared_fields": {
+        "PPP_ML_BLEND": 0.9923179237022317,
+        "legacy_from_components": 0.00999105904651509,
+        "NLP_from_total_minus_legacy": 0.0,
+        "CONTEXT_ADJ": 0.00999105904651509,
+        "w_off": 0.7,
+        "w_def": 0.30000000000000004,
+        "LATE_GAME_FACTOR": 0.6,
+        "TRAILING_FACTOR": 0.2,
+        "LEADING_FACTOR": 0.0
+      },
+      "rank_math_consistent": true
+    },
+    {
+      "mode": "context",
+      "play": "Postup",
+      "rationale": "Postup [post_up]: ML base 0.939, legacy +0.004, NLP +0.000, total +0.004 (Late & trailing). Blend off/def=0.70/0.30. no extra NLP family adjustments. Late=0.60, trailing=0.20, leading=0.00.",
+      "all_number_tokens_matched": true,
+      "compared_fields": {
+        "PPP_ML_BLEND": 0.9392564281335232,
+        "legacy_from_components": 0.0036,
+        "NLP_from_total_minus_legacy": 0.0,
+        "CONTEXT_ADJ": 0.0036,
+        "w_off": 0.7,
+        "w_def": 0.30000000000000004,
+        "LATE_GAME_FACTOR": 0.6,
+        "TRAILING_FACTOR": 0.2,
+        "LEADING_FACTOR": 0.0
+      },
+      "rank_math_consistent": true
+    },
+    {
+      "mode": "context",
+      "play": "Isolation",
+      "rationale": "Isolation [isolation]: ML base 0.909, legacy +0.005, NLP +0.000, total +0.005 (Late & trailing). Blend off/def=0.70/0.30. no extra NLP family adjustments. Late=0.60, trailing=0.20, leading=0.00.",
+      "all_number_tokens_matched": true,
+      "compared_fields": {
+        "PPP_ML_BLEND": 0.9087954161254079,
+        "legacy_from_components": 0.0048000000000000004,
+        "NLP_from_total_minus_legacy": 0.0,
+        "CONTEXT_ADJ": 0.0048000000000000004,
+        "w_off": 0.7,
+        "w_def": 0.30000000000000004,
+        "LATE_GAME_FACTOR": 0.6,
+        "TRAILING_FACTOR": 0.2,
+        "LEADING_FACTOR": 0.0
+      },
+      "rank_math_consistent": true
+    }
+  ]
+}

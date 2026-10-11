@@ -1,24 +1,26 @@
 {
-  "exportedAt": "2026-10-11T20:57:41.574Z",
+  "exportedAt": "2026-10-11T21:22:38.644Z",
   "source": "https://basketball-strategy.atlassian.net",
   "query": "project = BSR ORDER BY key ASC",
   "issueCount": 84,
   "changes": {
     "reviews": 84,
+    "followupReviews": 5,
     "mitigations": 84,
-    "linkedWorkItems": 190,
+    "followupMitigationUpdates": 5,
+    "linkedWorkItems": 196,
     "titles": 80,
     "ratings": 27,
-    "statuses": 33,
+    "statuses": 34,
+    "statusTransitions": 36,
     "filledMissingDescriptions": 4
   },
   "statusCounts": {
-    "Monitoring": 41,
-    "Active": 21,
+    "Monitoring": 40,
+    "Active": 24,
     "Planning": 7,
-    "Analysis": 7,
-    "Identification": 7,
-    "Resolved": 1
+    "Analysis": 6,
+    "Identification": 7
   },
   "risks": [
     {
@@ -117,7 +119,7 @@
         {
           "key": "SCRUM-529",
           "title": "Review risk ratings and link mitigation tasks",
-          "status": "In Progress",
+          "status": "Done",
           "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-529"
         },
         {
@@ -369,12 +371,12 @@
       "key": "BSR-39",
       "title": "Recommendation explanations may be unclear",
       "owner": "Gurkaranjit Asahan",
-      "status": "Monitoring",
+      "status": "Active",
       "probability": "Moderate",
       "impact": "Tolerable",
-      "review": "The current rationale uses deterministic templates, and the glossary explains the metrics. There is still no recorded coach review showing that the wording makes the recommendation clear.",
-      "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-39?focusedCommentId=10914",
-      "mitigation": "Keep each explanation short and tied to a displayed value. Ask a reviewer to explain the recommendation and its limits, then change unclear labels or glossary entries.",
+      "review": "The five baseline explanations returned for TOR against BOS did not say that score, period and clock were not applied. Their numbers matched the ranking output, but the missing-context notice required by BST-99 is absent. Add that notice and repeat the explanation checks; coach comprehension still needs the planned stakeholder review.",
+      "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-39?focusedCommentId=11088",
+      "mitigation": "State when a recommendation uses baseline data without game context. Keep each explanation tied to displayed values, repeat BST-97–99 after the change and ask a reviewer to explain the recommendation and its limits.",
       "linkedWorkItems": [
         {
           "key": "SCRUM-497",
@@ -393,6 +395,12 @@
           "title": "Review three coaching scenarios with a stakeholder",
           "status": "To Do",
           "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-536"
+        },
+        {
+          "key": "SCRUM-546",
+          "title": "State when baseline explanations do not use game context",
+          "status": "To Do",
+          "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-546"
         }
       ],
       "url": "https://basketball-strategy.atlassian.net/browse/BSR-39",
@@ -576,15 +584,27 @@
       "status": "Monitoring",
       "probability": "High",
       "impact": "Serious",
-      "review": "Training and test seasons are separated, but the current diagnostic still uses same-season rate features. Keep the timing of every predictor in the next evaluation so future information cannot enter a forecasting claim.",
-      "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-45?focusedCommentId=10921",
-      "mitigation": "Freeze the prediction time, feature cutoff and test period. Fit preprocessing on training data only and fail the evaluation if any predictor is unavailable at the prediction time.",
+      "review": "The shot model uses the location and type of the shot actually taken, while BST-117 expects information available before the possession. Those inputs can describe conditional shot quality, but they do not establish a pre-possession forecast. Document the prediction moment and feature availability before the repaired dataset is used for holdout or cross-validation claims.",
+      "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-45?focusedCommentId=11091",
+      "mitigation": "Define the prediction moment and whether each feature is observed, lagged or supplied as a planned action. Fit preprocessing on training data only and use an untouched time holdout. Do not present conditional or retrospective estimates as prospective accuracy.",
       "linkedWorkItems": [
         {
           "key": "SCRUM-526",
           "title": "Evaluate PPP forecasts with strictly lagged predictors and untouched time holdouts",
           "status": "To Do",
           "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-526"
+        },
+        {
+          "key": "SCRUM-538",
+          "title": "Fix shot-team attribution and rebuild the shot dataset",
+          "status": "To Do",
+          "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-538"
+        },
+        {
+          "key": "SCRUM-549",
+          "title": "Validate shot margins and define when prediction inputs are available",
+          "status": "To Do",
+          "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-549"
         }
       ],
       "url": "https://basketball-strategy.atlassian.net/browse/BSR-45",
@@ -1455,7 +1475,7 @@
         {
           "key": "SCRUM-529",
           "title": "Review risk ratings and link mitigation tasks",
-          "status": "In Progress",
+          "status": "Done",
           "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-529"
         },
         {
@@ -1589,7 +1609,7 @@
         {
           "key": "SCRUM-529",
           "title": "Review risk ratings and link mitigation tasks",
-          "status": "In Progress",
+          "status": "Done",
           "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-529"
         },
         {
@@ -1649,12 +1669,12 @@
       "key": "BSR-78",
       "title": "Missing raw fields may prevent reliable shot features",
       "owner": "Gurkaranjit Asahan",
-      "status": "Analysis",
+      "status": "Active",
       "probability": "High",
       "impact": "Serious",
-      "review": "The original raw shot events were unavailable in the audit, so required source fields and their mappings could not be fully verified. Move this out of Resolved until the feature-availability check is supported.",
-      "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-78?focusedCommentId=10973",
-      "mitigation": "Recover the raw source and list required game, team, opponent and event fields. Record unavailable fields and disable any feature that cannot be calculated reliably.",
+      "review": "Every retained shot row has a missing score margin: 1,332,515 rows in total. The model loader replaces the entire column with zero, so a finite input check cannot establish valid game context. Recover the source fields, report missing and unmapped inputs and rebuild the features before repeating model evaluation.",
+      "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-78?focusedCommentId=11090",
+      "mitigation": "Recover authoritative raw events and verify required game, participant, clock and margin fields. Report missing or unmapped columns, preserve missingness instead of presenting fabricated ties and disable any feature that cannot be calculated reliably.",
       "linkedWorkItems": [
         {
           "key": "SCRUM-488",
@@ -1667,6 +1687,18 @@
           "title": "Fix shot-team attribution and rebuild the shot dataset",
           "status": "To Do",
           "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-538"
+        },
+        {
+          "key": "SCRUM-548",
+          "title": "Report unmapped shot-data columns during schema validation",
+          "status": "To Do",
+          "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-548"
+        },
+        {
+          "key": "SCRUM-549",
+          "title": "Validate shot margins and define when prediction inputs are available",
+          "status": "To Do",
+          "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-549"
         }
       ],
       "url": "https://basketball-strategy.atlassian.net/browse/BSR-78",
@@ -2666,9 +2698,9 @@
       "status": "Monitoring",
       "probability": "Moderate",
       "impact": "Serious",
-      "review": "The recorded backend deployment loaded the data and model files needed for its smoke checks. Later releases still need a versioned artifact set and a recovery check, especially while the shot-data repair is pending.",
-      "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-108?focusedCommentId=11025",
-      "mitigation": "Version runtime data, model files and configuration together. Check required files after a restart or deployment and retain a tested rollback release.",
+      "review": "The isolated missing-data check stopped startup with a traceback naming the Synergy file. A separate process without Supabase configuration still returned a healthy liveness response. Define the production startup and readiness checks and provide clear recovery errors; the deployed service passed its health checks.",
+      "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-108?focusedCommentId=11089",
+      "mitigation": "Version runtime data, model files and configuration together. Validate production prerequisites with clear diagnostics, distinguish liveness from readiness and verify recovery from a clean checkout before replacing the release.",
       "linkedWorkItems": [
         {
           "key": "SCRUM-487",
@@ -2687,6 +2719,12 @@
           "title": "Verify clean-checkout setup and service recovery",
           "status": "To Do",
           "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-532"
+        },
+        {
+          "key": "SCRUM-547",
+          "title": "Define backend readiness and explain missing prerequisites",
+          "status": "To Do",
+          "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-547"
         }
       ],
       "url": "https://basketball-strategy.atlassian.net/browse/BSR-108",
@@ -2765,12 +2803,12 @@
       "key": "BSR-111",
       "title": "Visual Paradigm compatibility may block shared model updates",
       "owner": "Gurkaranjit Asahan",
-      "status": "Resolved",
-      "probability": "Low",
+      "status": "Active",
+      "probability": "High",
       "impact": "Serious",
-      "review": "The current shared Visual Paradigm project synchronized successfully at revision 54. Shared access is working, and the interaction-model corrections are tracked separately in SCRUM-528; keep compatibility checks on future updates.",
-      "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-111?focusedCommentId=11029",
-      "mitigation": "Back up the native project before version changes and use compatible teamwork versions. Verify the shared revision after a substantive update and record a new failure if access or import stops working.",
+      "review": "The project synchronized, but the commit tool failed. The saved changes still need a Desktop Team commit before the shared revision is confirmed.",
+      "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-111?focusedCommentId=11125",
+      "mitigation": "Back up the saved native project and use compatible teamwork versions. Publish the prepared changes through Desktop Team Commit, then retrieve and verify the shared revision before treating publication as complete.",
       "linkedWorkItems": [
         {
           "key": "SCRUM-503",

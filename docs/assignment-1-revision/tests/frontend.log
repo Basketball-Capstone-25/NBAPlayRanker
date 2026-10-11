@@ -1,0 +1,44 @@
+
+ RUN  v3.2.7 <project>
+
+ ✓ tests/auth.profile-role.test.ts > administrator-assigned profile roles > uses the profile role despite edited signup metadata 13ms
+ ✓ tests/auth.profile-role.test.ts > administrator-assigned profile roles > shows pending access instead of granting an unassigned account a role 3ms
+ ✓ tests/auth.profile-role.test.ts > administrator-assigned profile roles > submits a requested role rather than an authorization claim 12ms
+ ✓ tests/authenticated-download.test.ts > authenticated HTTP downloads > opens a same-origin HTTP attachment without putting a token in the URL 28ms
+ ✓ tests/authenticated-download.test.ts > authenticated HTTP downloads > rejects a missing session before navigating 3ms
+ ✓ tests/authenticated-download.test.ts > authenticated HTTP downloads > rejects unsupported export targets: https://foreign.example.test/data/team-playtypes.csv 2ms
+ ✓ tests/authenticated-download.test.ts > authenticated HTTP downloads > rejects unsupported export targets: http://127.0.0.1:8000/meta/options 1ms
+ ✓ tests/authenticated-download.test.ts > authenticated HTTP downloads > removes the temporary link if browser navigation fails 2ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > verifies the SSR cookie identity, forwards its token and streams the exact CSV 46ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > returns 401 without attachment or upstream fetch for an invalid cookie session 12ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > rejects a cookie session that disagrees with the verified identity 35ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > preserves upstream denial 401 as JSON, never an attachment 3ms
+ ✓ tests/middleware.auth-analyst.test.ts > Analyst access control in middleware > allows analyst to access /data-explorer 20ms
+ ✓ tests/middleware.auth-analyst.test.ts > Analyst access control in middleware > redirects coach away from /data-explorer 2ms
+ ✓ tests/middleware.auth-analyst.test.ts > Analyst access control in middleware > redirects unauthenticated user to /login with next 9ms
+ ✓ tests/middleware.auth-coach.test.ts > Coach access control in middleware > redirects signed-in coach from auth page to /matchup 11ms
+ ✓ tests/middleware.auth-coach.test.ts > Coach access control in middleware > allows coach to access /matchup 1ms
+ ✓ tests/middleware.auth-coach.test.ts > Coach access control in middleware > redirects coach away from analyst-only /data-explorer 1ms
+ ✓ tests/middleware.auth-coach.test.ts > Coach access control in middleware > ignores a self-assigned coach claim when the profile is pending 1ms
+ ✓ tests/middleware.auth-coach.test.ts > Coach access control in middleware > keeps the login page available for a pending account 1ms
+ ✓ tests/middleware.auth-coach.test.ts > Coach access control in middleware > denies access when a profile cannot be loaded instead of trusting metadata 1ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > preserves upstream denial 403 as JSON, never an attachment 3ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > preserves upstream denial 422 as JSON, never an attachment 3ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > rejects unapproved paths without authentication or upstream fetch: https://foreign.example.test/file.csv 1ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > rejects unapproved paths without authentication or upstream fetch: //foreign.example.test/file.csv 1ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > rejects unapproved paths without authentication or upstream fetch: /meta/options 2ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > rejects unapproved paths without authentication or upstream fetch: /data/../meta/options 1ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > rejects cross-origin requests 5ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > rejects cross-origin requests 2ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > rejects arbitrary target parameters and duplicate route selectors 5ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > preserves PDF headers and a safe server filename for /export/shotplan.pdf 4ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > preserves PDF headers and a safe server filename for /export/playtype-viz.pdf 1ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > supplies the route filename and strips unsafe characters in requested names 6ms
+ ✓ tests/export-route.test.ts > same-origin export proxy > does not follow redirects or serve a successful JSON error as a CSV 7ms
+
+ Test Files  5 passed (5)
+      Tests  34 passed (34)
+   Start at  16:31:37
+   Duration  1.93s (transform 728ms, setup 0ms, collect 1.70s, tests 270ms, environment 2ms, prepare 2.09s)
+
+JSON report written to <evidence>/frontend-vitest.json

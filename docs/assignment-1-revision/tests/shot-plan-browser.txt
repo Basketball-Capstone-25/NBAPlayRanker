@@ -1,0 +1,173 @@
+Browser tab: 11, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/shot-plan".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-plan
+	2 container
+		3 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		4 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		6 container
+			7 heading Shot Plan, Value: 1
+				8 text Shot Plan
+			9 text Dataset2 • PBP Shots Baseline Offense vs Defense Rank the best  shot types  and  zones  for  TOR (Toronto Raptors)  vs BOS (Boston Celtics) , then render a real heatmap for the selected filters. Want raw shots? Try 
+			10 link Description: Shots Explorer, Value: nbaplayranker-seven.vercel.app/shot-explorer
+			11 text .
+		12 container
+			13 heading Inputs, Value: 2
+				14 text Inputs
+			15 text wOff= 0.70 wDef= 0.30
+			16 checkbox (settable, integer) Description: Show “Why” explanations, Value: 0
+			17 text Show “Why” explanations Season
+			18 pop up button (collapsed, settable) Value: 2021-22, Secondary Actions: Expand
+				62 menu
+					63 2020-21
+					64 (selected) 2021-22
+					65 2022-23
+					66 2023-24
+					67 2024-25
+					68 2025-26
+			19 text Our team
+			20 pop up button (collapsed, settable) Value: TOR (Toronto Raptors), Secondary Actions: Expand
+				69 menu
+					70 ATL (Atlanta Hawks)
+					71 BKN (Brooklyn Nets)
+					72 BOS (Boston Celtics)
+					73 CAN
+					74 CHA (Charlotte Hornets)
+					75 CHI (Chicago Bulls)
+					76 CHK
+					77 CLE (Cleveland Cavaliers)
+					78 DAL (Dallas Mavericks)
+					79 DEN (Denver Nuggets)
+					80 DET (Detroit Pistons)
+					81 DUR
+					82 EAST
+					83 GIA
+					84 GS
+					85 HOU (Houston Rockets)
+					86 IND (Indiana Pacers)
+					87 KEN
+					88 LAC (LA Clippers)
+					89 LAL (Los Angeles Lakers)
+					90 LEB
+					91 MEM (Memphis Grizzlies)
+					92 MIA (Miami Heat)
+					93 MIL (Milwaukee Bucks)
+					94 MIN (Minnesota Timberwolves)
+					95 NO
+					96 NY
+					97 OKC (Oklahoma City Thunder)
+					98 ORL (Orlando Magic)
+					99 PHI (Philadelphia 76ers)
+					100 PHX (Phoenix Suns)
+					101 POR (Portland Trail Blazers)
+					102 SA
+					103 SAC (Sacramento Kings)
+					104 SHQ
+					105 STARS
+					106 STRIPES
+					107 (selected) TOR (Toronto Raptors)
+					108 UTAH
+					109 WEST
+					110 WORLD
+					111 WSH
+			21 text Opponent
+			22 pop up button (collapsed, settable) Value: BOS (Boston Celtics), Secondary Actions: Expand
+				112 menu
+					113 ATL (Atlanta Hawks)
+					114 BKN (Brooklyn Nets)
+					115 (selected) BOS (Boston Celtics)
+					116 CAN
+					117 CHA (Charlotte Hornets)
+					118 CHI (Chicago Bulls)
+					119 CHK
+					120 CLE (Cleveland Cavaliers)
+					121 DAL (Dallas Mavericks)
+					122 DEN (Denver Nuggets)
+					123 DET (Detroit Pistons)
+					124 DUR
+					125 EAST
+					126 GIA
+					127 GS
+					128 HOU (Houston Rockets)
+					129 IND (Indiana Pacers)
+					130 KEN
+					131 LAC (LA Clippers)
+					132 LAL (Los Angeles Lakers)
+					133 LEB
+					134 MEM (Memphis Grizzlies)
+					135 MIA (Miami Heat)
+					136 MIL (Milwaukee Bucks)
+					137 MIN (Minnesota Timberwolves)
+					138 NO
+					139 NY
+					140 OKC (Oklahoma City Thunder)
+					141 ORL (Orlando Magic)
+					142 PHI (Philadelphia 76ers)
+					143 PHX (Phoenix Suns)
+					144 POR (Portland Trail Blazers)
+					145 SA
+					146 SAC (Sacramento Kings)
+					147 SHQ
+					148 STARS
+					149 STRIPES
+					150 TOR (Toronto Raptors)
+					151 UTAH
+					152 WEST
+					153 WORLD
+					154 WSH
+			23 text Top K results (k)
+			24 stepper (settable, integer) 5
+			25 text Backend validation:  1–10 . Offense weight (wOff)
+			26 stepper (settable, float) Value: 0.699999988079071, Details: 0.7
+			27 text Higher = trust our offense more. Lower = trust opponent defense more. Heatmap max shots
+			28 stepper (settable, integer) 1000
+			29 text Downsamples for speed (Dataset2 endpoint supports this). Heatmap shot type (optional)
+			30 pop up button (collapsed, settable) Value: (All shot types), Secondary Actions: Expand
+				31 menu
+					32 (selected) (All shot types)
+					155 Bank Shot
+					156 Dunk
+					157 Fadeaway
+					158 Floater
+					159 Hook Shot
+					160 Jump Shot
+					161 Layup
+					162 Other
+					163 Pullup
+					164 Tip Shot
+			33 text Heatmap zone (optional)
+			34 pop up button (collapsed, settable) Value: (All zones), Secondary Actions: Expand
+				35 menu
+					36 (selected) (All zones)
+					165 arc3
+					166 corner3
+					167 mid
+					168 paint
+					169 rim
+			37 button Run
+			38 button Export PDF
+			39 link Description: Open Heatmap Page, Value: nbaplayranker-seven.vercel.app/shot-heatmap
+			170 text Request failed. Tried: - https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/pbp/shotplan/rank?season=2021-22&our=TOR&opp=BOS&k=5&w_off=0.7 - https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/pbp/shotplan/rank?season=2021-22&our_team=TOR&opp_team=BOS&k=5&w_off=0.7 - https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/shotplan/rank?season=2021-22&our=TOR&opp=BOS&k=5&w_off=0.7 - https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/shotplan/rank?season=2021-22&our_team=TOR&opp_team=BOS&k=5&w_off=0.7 Last error: API error 403: {"detail":"Role 'analyst' cannot access 'shotplan' resources."}
+		40 container
+			41 heading Shot Plan Results, Value: 2
+				42 text Shot Plan Results
+			43 text Run the model to see recommended shot plans.
+		44 container
+			45 heading Heatmap, Value: 2
+				46 text Heatmap
+			47 text Run the model to render the shot heatmap.
+		48 container
+			49 text Built with  Next.js  (UI) +  FastAPI  (services).
+		50 container
+			51 text Tip for reviewers: start at 
+			52 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			53 text  to see the dataset, then compare 
+			54 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			55 text  vs 
+			56 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			57 text , and verify evidence in 
+			58 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			59 text  and
+			60 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			61 text .
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-plan

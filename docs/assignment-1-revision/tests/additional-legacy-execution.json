@@ -1,0 +1,499 @@
+{
+  "recorded_at": "2026-10-11T21:05:50.234065+00:00",
+  "source_commit": "41bd91c6b58b3cc143fa9986806bf25a8c605828",
+  "live_environment": "Existing deployed Cloud Run API; no deployment change",
+  "local_environment": "Current shared repository source, isolated child processes and in-memory data checks",
+  "execution_started_at": "2026-10-11T21:01:45.115501+00:00",
+  "execution_finished_at": "2026-10-11T21:03:43.724892+00:00",
+  "scope": "15 existing test cases; no Jira updates, production changes, database writes, new accounts or model training.",
+  "counts": {
+    "Pass": 7,
+    "Fail": 5,
+    "Verify": 1,
+    "Blocked": 2
+  },
+  "cases": [
+    {
+      "key": "BST-97",
+      "status": "Pass",
+      "recommended_jira_status": "Pass",
+      "title": "Rationale generated for each Top-K play",
+      "steps": [
+        "Sign in as the existing coach test account.",
+        "Request TOR vs BOS, 2024-25, K=5 from baseline and context APIs; context is margin -2, Q4, 72 seconds.",
+        "Inspect each returned RATIONALE."
+      ],
+      "expected": "Every returned play has a non-empty rationale.",
+      "actual": "All 10 returned plays had non-empty explanations.",
+      "evidence_files": [
+        "additional-live-api.json",
+        "additional-rationale-checks.json"
+      ],
+      "planned_work": [],
+      "limitation": null,
+      "use_cases": [
+        "UC67",
+        "UC60"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "uc67",
+        "uc60"
+      ],
+      "execution_comment": "All ten baseline and context recommendations for TOR against BOS had an explanation.",
+      "jira_description": "Use-case coverage: UC67, UC60.\n\n\n\nSteps:\n1. Sign in as the existing coach test account.\n2. Request TOR vs BOS, 2024-25, K=5 from baseline and context APIs; context is margin -2, Q4, 72 seconds.\n3. Inspect each returned RATIONALE.\n\nExpected result: Every returned play has a non-empty rationale.\n\nCurrent result: Pass. All 10 returned plays had non-empty explanations.\n\nEvidence: docs/assignment-1-revision/tests/additional-live-api.json, docs/assignment-1-revision/tests/additional-rationale-checks.json."
+    },
+    {
+      "key": "BST-98",
+      "status": "Pass",
+      "recommended_jira_status": "Pass",
+      "title": "Rationale values match ranking output",
+      "steps": [
+        "Parse every numeric token in the same 10 rationales.",
+        "Compare displayed numbers with response values rounded to the displayed precision.",
+        "Recompute context PPP and delta from the returned fields."
+      ],
+      "expected": "Every cited number agrees with the returned metrics; no unsupported numerical claim.",
+      "actual": "All 75 cited numeric values matched. Context PPP equalled ML blend plus adjustment, and delta equalled context PPP minus baseline for all five context plays.",
+      "evidence_files": [
+        "additional-rationale-checks.json"
+      ],
+      "planned_work": [],
+      "limitation": "The templates do not cite an uplift number. Legacy and NLP adjustments were derived from the returned component fields; the endpoint does not expose those two standalone fields.",
+      "use_cases": [
+        "UC67",
+        "UC60"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "uc67",
+        "uc60"
+      ],
+      "execution_comment": "All 75 numbers quoted in the explanations matched the returned ranking values. The context PPP and delta calculations also matched for all five plays.",
+      "jira_description": "Use-case coverage: UC67, UC60.\n\n\n\nSteps:\n1. Parse every numeric token in the same 10 rationales.\n2. Compare displayed numbers with response values rounded to the displayed precision.\n3. Recompute context PPP and delta from the returned fields.\n\nExpected result: Every cited number agrees with the returned metrics; no unsupported numerical claim.\n\nCurrent result: Pass. All 75 cited numeric values matched. Context PPP equalled ML blend plus adjustment, and delta equalled context PPP minus baseline for all five context plays.\n\nScope: The templates do not cite an uplift number. Legacy and NLP adjustments were derived from the returned component fields; the endpoint does not expose those two standalone fields.\n\nEvidence: docs/assignment-1-revision/tests/additional-rationale-checks.json."
+    },
+    {
+      "key": "BST-99",
+      "status": "Fail",
+      "recommended_jira_status": "Fail",
+      "title": "Baseline rationale states when context is missing",
+      "steps": [
+        "Request baseline Top-K with season=2024-25, our=TOR, opp=BOS, k=5.",
+        "Supply no margin, period or clock.",
+        "Inspect all five rationale strings."
+      ],
+      "expected": "A baseline explanation explicitly indicates that game context was not applied.",
+      "actual": "HTTP 200 and five baseline explanations were returned, but none said that game context was not applied.",
+      "evidence_files": [
+        "additional-live-api.json",
+        "additional-rationale-checks.json"
+      ],
+      "planned_work": [
+        "SCRUM-546"
+      ],
+      "limitation": null,
+      "use_cases": [
+        "UC67"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "uc67"
+      ],
+      "execution_comment": "All five baseline explanations were returned, but none said that game context had not been applied. The missing notice is tracked in SCRUM-546.",
+      "jira_description": "Use-case coverage: UC67.\n\n\n\nSteps:\n1. Request baseline Top-K with season=2024-25, our=TOR, opp=BOS, k=5.\n2. Supply no margin, period or clock.\n3. Inspect all five rationale strings.\n\nExpected result: A baseline explanation explicitly indicates that game context was not applied.\n\nCurrent result: Fail. HTTP 200 and five baseline explanations were returned, but none said that game context was not applied.\n\nEvidence: docs/assignment-1-revision/tests/additional-live-api.json, docs/assignment-1-revision/tests/additional-rationale-checks.json."
+    },
+    {
+      "key": "BST-105",
+      "status": "Pass",
+      "recommended_jira_status": "Pass",
+      "title": "Play-type dataset loads from storage",
+      "steps": [
+        "Start the current backend in a child process.",
+        "Open its FastAPI lifespan and call /health.",
+        "Inspect the loaded recommender tables and required columns."
+      ],
+      "expected": "Backend starts and a non-empty dataset with the required schema loads.",
+      "actual": "Startup succeeded; /health returned 200. The loader read 47,982 player rows and produced 3,240 team rows and 108 league rows across six seasons. Required season, team, play-type, possessions and PPP columns were present.",
+      "evidence_files": [
+        "additional-local-checks.json"
+      ],
+      "planned_work": [],
+      "limitation": null,
+      "use_cases": [
+        "UC62"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "uc62"
+      ],
+      "execution_comment": "The local backend loaded 47,982 player rows into 3,240 team rows and 108 league rows across six seasons. The required columns were present and health returned 200.",
+      "jira_description": "Use-case coverage: UC62.\n\n\n\nSteps:\n1. Start the current backend in a child process.\n2. Open its FastAPI lifespan and call /health.\n3. Inspect the loaded recommender tables and required columns.\n\nExpected result: Backend starts and a non-empty dataset with the required schema loads.\n\nCurrent result: Pass. Startup succeeded; /health returned 200. The loader read 47,982 player rows and produced 3,240 team rows and 108 league rows across six seasons. Required season, team, play-type, possessions and PPP columns were present.\n\nEvidence: docs/assignment-1-revision/tests/additional-local-checks.json."
+    },
+    {
+      "key": "BST-106",
+      "status": "Pass",
+      "recommended_jira_status": "Pass",
+      "title": "Season and team query returns matching rows",
+      "steps": [
+        "Sign in as the existing analyst test account.",
+        "GET /data/team-playtypes?season=2024-25&team=TOR&side=offense&limit=500.",
+        "Check every returned row."
+      ],
+      "expected": "Only the selected season and team are returned.",
+      "actual": "HTTP 200 returned 11 rows. Every row was TOR, 2024-25, offense.",
+      "evidence_files": [
+        "additional-live-api.json"
+      ],
+      "planned_work": [],
+      "limitation": null,
+      "use_cases": [
+        "UC62",
+        "UC63"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "uc62",
+        "uc63"
+      ],
+      "execution_comment": "Filtering the live workspace to TOR offense in 2024-25 returned 11 rows, all matching the selected team, season and side.",
+      "jira_description": "Use-case coverage: UC62, UC63.\n\n\n\nSteps:\n1. Sign in as the existing analyst test account.\n2. GET /data/team-playtypes?season=2024-25&team=TOR&side=offense&limit=500.\n3. Check every returned row.\n\nExpected result: Only the selected season and team are returned.\n\nCurrent result: Pass. HTTP 200 returned 11 rows. Every row was TOR, 2024-25, offense.\n\nEvidence: docs/assignment-1-revision/tests/additional-live-api.json."
+    },
+    {
+      "key": "BST-107",
+      "status": "Fail",
+      "recommended_jira_status": "Fail",
+      "title": "Missing play-type dataset has a controlled error",
+      "steps": [
+        "In an isolated child process, suppress dotenv file loading.",
+        "Make Path.exists return false only for synergy_playtypes_2019_2025_players.csv.",
+        "Import the backend startup module and capture exit status and error output."
+      ],
+      "expected": "A clear controlled error is returned or logged without an unhandled exception.",
+      "actual": "Startup exited 1 with an unhandled FileNotFoundError while importing the context recommender. The traceback identified the dataset path, but there was no controlled startup diagnostic.",
+      "evidence_files": [
+        "additional-local-checks.json"
+      ],
+      "planned_work": [
+        "SCRUM-547"
+      ],
+      "limitation": "Only the child process saw the simulated missing file; the real dataset and production service were unchanged.",
+      "scope_clarification": "This is a startup/readiness contract gap. Missing auth configuration still fails closed at protected endpoints; the result does not demonstrate a security bypass.",
+      "use_cases": [
+        "UC62"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "uc62"
+      ],
+      "execution_comment": "The isolated missing-dataset check ended with an unhandled FileNotFoundError. SCRUM-547 tracks a controlled startup/readiness diagnostic; the real dataset was unchanged.",
+      "jira_description": "Use-case coverage: UC62.\n\nThis is a startup/readiness contract gap. Missing auth configuration still fails closed at protected endpoints; the result does not demonstrate a security bypass.\n\nSteps:\n1. In an isolated child process, suppress dotenv file loading.\n2. Make Path.exists return false only for synergy_playtypes_2019_2025_players.csv.\n3. Import the backend startup module and capture exit status and error output.\n\nExpected result: A clear controlled error is returned or logged without an unhandled exception.\n\nCurrent result: Fail. Startup exited 1 with an unhandled FileNotFoundError while importing the context recommender. The traceback identified the dataset path, but there was no controlled startup diagnostic.\n\nScope: Only the child process saw the simulated missing file; the real dataset and production service were unchanged.\n\nEvidence: docs/assignment-1-revision/tests/additional-local-checks.json."
+    },
+    {
+      "key": "BST-109",
+      "status": "Pass",
+      "recommended_jira_status": "Pass",
+      "title": "Deployed health endpoint responds",
+      "steps": [
+        "GET the Cloud Run /health endpoint before and after the bounded concurrent requests."
+      ],
+      "expected": "HTTP 200 with healthy status.",
+      "actual": "Both calls returned 200 with status ok; durations were 258.883 ms and 151.392 ms.",
+      "evidence_files": [
+        "additional-live-api.json"
+      ],
+      "planned_work": [],
+      "limitation": null,
+      "use_cases": [
+        "UC62",
+        "UC71"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-deployment",
+        "uc62",
+        "uc71"
+      ],
+      "execution_comment": "The deployed health endpoint returned 200 before and after the request sample.",
+      "jira_description": "Use-case coverage: UC62, UC71.\n\n\n\nSteps:\n1. GET the Cloud Run /health endpoint before and after the bounded concurrent requests.\n\nExpected result: HTTP 200 with healthy status.\n\nCurrent result: Pass. Both calls returned 200 with status ok; durations were 258.883 ms and 151.392 ms.\n\nEvidence: docs/assignment-1-revision/tests/additional-live-api.json."
+    },
+    {
+      "key": "BST-110",
+      "status": "Pass",
+      "recommended_jira_status": "Pass",
+      "title": "Concurrent Top-K requests complete",
+      "steps": [
+        "Use four concurrent workers to issue eight read-only baseline Top-K requests.",
+        "Use TOR/BOS and LAL/GSW in both directions, with K=3 or 5.",
+        "Inspect status and returned count for each request; call health afterward."
+      ],
+      "expected": "All requests complete with no 5xx errors or crash.",
+      "actual": "All eight requests returned 200 with the requested ranking count. The following health request also returned 200. Two requests took about 33 seconds.",
+      "evidence_files": [
+        "additional-live-api.json"
+      ],
+      "planned_work": [],
+      "limitation": "A small bounded run of independent HTTP requests using the existing coach test account; this is not a multi-account permission test or capacity benchmark.",
+      "use_cases": [
+        "UC18"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-deployment",
+        "uc18"
+      ],
+      "execution_comment": "All eight requests from four concurrent workers returned the requested ranking count without errors. Two took about 33 seconds, so this does not establish acceptable response time.",
+      "jira_description": "Use-case coverage: UC18.\n\n\n\nSteps:\n1. Use four concurrent workers to issue eight read-only baseline Top-K requests.\n2. Use TOR/BOS and LAL/GSW in both directions, with K=3 or 5.\n3. Inspect status and returned count for each request; call health afterward.\n\nExpected result: All requests complete with no 5xx errors or crash.\n\nCurrent result: Pass. All eight requests returned 200 with the requested ranking count. The following health request also returned 200. Two requests took about 33 seconds.\n\nScope: A small bounded run of independent HTTP requests using the existing coach test account; this is not a multi-account permission test or capacity benchmark.\n\nEvidence: docs/assignment-1-revision/tests/additional-live-api.json."
+    },
+    {
+      "key": "BST-111",
+      "status": "Verify",
+      "recommended_jira_status": "Verify",
+      "title": "Top-K response time meets an agreed threshold",
+      "steps": [
+        "Measure client-observed duration of the eight requests in BST-110.",
+        "Calculate the nearest-rank p95.",
+        "Look for an agreed deployed Top-K latency limit in the case and available project requirements."
+      ],
+      "expected": "The measured p95 is below the agreed threshold.",
+      "actual": "The eight-request sample had median 705.493 ms and p95 33,859.822 ms. No agreed deployed Top-K threshold was found, so no Pass/Fail decision was made.",
+      "evidence_files": [
+        "additional-live-api.json"
+      ],
+      "planned_work": [
+        "SCRUM-550"
+      ],
+      "limitation": "The existing local NLP parser threshold covers a different operation. One small sample cannot establish service capacity or a stable latency distribution; the source of the two slow requests is unconfirmed.",
+      "use_cases": [
+        "UC18"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-deployment",
+        "uc18"
+      ],
+      "execution_comment": "The eight-request sample had a p95 of 33.86 seconds. This remains Verify until SCRUM-550 defines the deployed Top-K timing target and a repeatable measurement.",
+      "jira_description": "Use-case coverage: UC18.\n\n\n\nSteps:\n1. Measure client-observed duration of the eight requests in BST-110.\n2. Calculate the nearest-rank p95.\n3. Look for an agreed deployed Top-K latency limit in the case and available project requirements.\n\nExpected result: The measured p95 is below the agreed threshold.\n\nCurrent result: Verify. The eight-request sample had median 705.493 ms and p95 33,859.822 ms. No agreed deployed Top-K threshold was found, so no Pass/Fail decision was made.\n\nScope: The existing local NLP parser threshold covers a different operation. One small sample cannot establish service capacity or a stable latency distribution; the source of the two slow requests is unconfirmed.\n\nEvidence: docs/assignment-1-revision/tests/additional-live-api.json."
+    },
+    {
+      "key": "BST-113",
+      "status": "Fail",
+      "recommended_jira_status": "Fail",
+      "title": "Missing required configuration stops backend startup",
+      "steps": [
+        "Start an isolated child process with Supabase environment values absent and insecure development auth disabled.",
+        "Disable dotenv loading in that child so private files cannot refill the removed value.",
+        "Import the backend, open lifespan and call /health."
+      ],
+      "expected": "Startup fails with a clear missing-configuration error.",
+      "actual": "Without SUPABASE_URL, startup still completed and /health returned 200 with status ok. No configuration error was logged at startup.",
+      "evidence_files": [
+        "additional-local-checks.json"
+      ],
+      "planned_work": [
+        "SCRUM-547"
+      ],
+      "limitation": "This did not bypass authentication or change production configuration. Auth dependencies still fail closed on protected requests.",
+      "scope_clarification": "This is a startup/readiness contract gap. Missing auth configuration still fails closed at protected endpoints; the result does not demonstrate a security bypass.",
+      "use_cases": [
+        "UC62",
+        "UC64"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-deployment",
+        "uc62",
+        "uc64"
+      ],
+      "execution_comment": "With auth configuration removed in an isolated process, startup still reported healthy. Protected requests still fail closed; SCRUM-547 will define the startup/readiness contract.",
+      "jira_description": "Use-case coverage: UC62, UC64.\n\nThis is a startup/readiness contract gap. Missing auth configuration still fails closed at protected endpoints; the result does not demonstrate a security bypass.\n\nSteps:\n1. Start an isolated child process with Supabase environment values absent and insecure development auth disabled.\n2. Disable dotenv loading in that child so private files cannot refill the removed value.\n3. Import the backend, open lifespan and call /health.\n\nExpected result: Startup fails with a clear missing-configuration error.\n\nCurrent result: Fail. Without SUPABASE_URL, startup still completed and /health returned 200 with status ok. No configuration error was logged at startup.\n\nScope: This did not bypass authentication or change production configuration. Auth dependencies still fail closed on protected requests.\n\nEvidence: docs/assignment-1-revision/tests/additional-local-checks.json."
+    },
+    {
+      "key": "BST-115",
+      "status": "Pass",
+      "recommended_jira_status": "Pass",
+      "title": "Retained second-dataset schema maps required model columns",
+      "steps": [
+        "Read the retained shots_clean.parquet.",
+        "Run the current schema normalizer and canonical mapper in memory.",
+        "Compare columns against get_feature_spec and CANONICAL_COLUMNS."
+      ],
+      "expected": "All required model columns are present after schema mapping.",
+      "actual": "All 16 required model columns were present, and canonical mapping produced the expected 18 columns for all 1,332,515 retained rows.",
+      "evidence_files": [
+        "additional-local-checks.json"
+      ],
+      "planned_work": [
+        "SCRUM-538"
+      ],
+      "limitation": "This verifies retained clean-to-model/canonical mapping only. The original raw event file is absent, and column presence does not resolve the known team-attribution defects.",
+      "use_cases": [
+        "UC64",
+        "UC62"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "uc64",
+        "uc62"
+      ],
+      "execution_comment": "The retained shot dataset mapped to all 16 required model columns and 18 canonical columns. This checks column coverage; the attribution defect in SCRUM-538 remains.",
+      "jira_description": "Use-case coverage: UC64, UC62.\n\n\n\nSteps:\n1. Read the retained shots_clean.parquet.\n2. Run the current schema normalizer and canonical mapper in memory.\n3. Compare columns against get_feature_spec and CANONICAL_COLUMNS.\n\nExpected result: All required model columns are present after schema mapping.\n\nCurrent result: Pass. All 16 required model columns were present, and canonical mapping produced the expected 18 columns for all 1,332,515 retained rows.\n\nScope: This verifies retained clean-to-model/canonical mapping only. The original raw event file is absent, and column presence does not resolve the known team-attribution defects.\n\nEvidence: docs/assignment-1-revision/tests/additional-local-checks.json."
+    },
+    {
+      "key": "BST-116",
+      "status": "Fail",
+      "recommended_jira_status": "Fail",
+      "title": "Schema mapping reports missing and unmapped columns",
+      "steps": [
+        "Use a five-row retained shot fixture in memory.",
+        "Remove TEAM_ABBR and run the model loader.",
+        "Separately add UNMAPPED_FIXTURE and repeat while capturing warnings and output."
+      ],
+      "expected": "Missing or unmapped input columns are reported.",
+      "actual": "Missing TEAM_ABBR produced a clear KeyError. The extra UNMAPPED_FIXTURE column was silently retained with no warning or diagnostic, so the unmapped-column check failed.",
+      "evidence_files": [
+        "additional-local-checks.json"
+      ],
+      "planned_work": [
+        "SCRUM-548"
+      ],
+      "limitation": "Both fixtures were local copies; no dataset file was edited.",
+      "scope_clarification": "The fix should provide useful diagnostics for unmapped columns, not reject valid extra metadata.",
+      "use_cases": [
+        "UC64",
+        "UC62"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "uc64",
+        "uc62"
+      ],
+      "execution_comment": "Removing TEAM_ABBR produced an error, but adding an unmapped column produced no diagnostic. SCRUM-548 tracks that warning without rejecting valid extra metadata.",
+      "jira_description": "Use-case coverage: UC64, UC62.\n\nThe fix should provide useful diagnostics for unmapped columns, not reject valid extra metadata.\n\nSteps:\n1. Use a five-row retained shot fixture in memory.\n2. Remove TEAM_ABBR and run the model loader.\n3. Separately add UNMAPPED_FIXTURE and repeat while capturing warnings and output.\n\nExpected result: Missing or unmapped input columns are reported.\n\nCurrent result: Fail. Missing TEAM_ABBR produced a clear KeyError. The extra UNMAPPED_FIXTURE column was silently retained with no warning or diagnostic, so the unmapped-column check failed.\n\nScope: Both fixtures were local copies; no dataset file was edited.\n\nEvidence: docs/assignment-1-revision/tests/additional-local-checks.json."
+    },
+    {
+      "key": "BST-117",
+      "status": "Fail",
+      "recommended_jira_status": "Fail",
+      "title": "Shot features are complete and available before possession",
+      "steps": [
+        "Inspect null values in the retained generated shot dataset.",
+        "Run the existing ML loader on a reproducible 20,000-row sample with seed 42 and check finite inputs.",
+        "Compare the feature specification with the stated pre-possession requirement."
+      ],
+      "expected": "No NaN/inf values and every feature is available before the possession.",
+      "actual": "All 1,332,515 retained MARGIN values were missing; the ML loader replaced them with zero. The 20,000-row model sample was finite, but actual shot type, location and related fields have no pre-possession input contract. This does not establish the required leakage-free feature set.",
+      "evidence_files": [
+        "additional-local-checks.json"
+      ],
+      "planned_work": [
+        "SCRUM-538",
+        "SCRUM-549"
+      ],
+      "limitation": "This records the mismatch with the existing test requirement; it does not assert that conditional shot-quality modelling itself is invalid.",
+      "use_cases": [
+        "UC70"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "uc70"
+      ],
+      "execution_comment": "Every retained shot margin was missing and became zero in the loader. SCRUM-538 and SCRUM-549 cover the data repair and the inputs that must be available before possession.",
+      "jira_description": "Use-case coverage: UC70.\n\n\n\nSteps:\n1. Inspect null values in the retained generated shot dataset.\n2. Run the existing ML loader on a reproducible 20,000-row sample with seed 42 and check finite inputs.\n3. Compare the feature specification with the stated pre-possession requirement.\n\nExpected result: No NaN/inf values and every feature is available before the possession.\n\nCurrent result: Fail. All 1,332,515 retained MARGIN values were missing; the ML loader replaced them with zero. The 20,000-row model sample was finite, but actual shot type, location and related fields have no pre-possession input contract. This does not establish the required leakage-free feature set.\n\nScope: This records the mismatch with the existing test requirement; it does not assert that conditional shot-quality modelling itself is invalid.\n\nEvidence: docs/assignment-1-revision/tests/additional-local-checks.json."
+    },
+    {
+      "key": "BST-118",
+      "status": "Blocked",
+      "recommended_jira_status": "Verify",
+      "title": "Selected shot model beats baseline on a holdout season",
+      "steps": [
+        "Check whether the source and derived second dataset are ready for trustworthy evaluation.",
+        "Verify retained attribution and feature diagnostics before training."
+      ],
+      "expected": "The selected model has lower MAE and RMSE than the baseline on a time-based holdout.",
+      "actual": "Training was not run. The retained data still has 18,746 self-opponent rows and all 7,527 game groups have one shooting-team label; raw events needed for repair are absent. Missing margins and the pre-possession feature contract also need resolution.",
+      "evidence_files": [
+        "additional-local-checks.json"
+      ],
+      "planned_work": [
+        "SCRUM-538",
+        "SCRUM-549"
+      ],
+      "limitation": "No fresh shot-model accuracy or cross-validation claim is made. Re-run on repaired data with a documented split and feature contract; avoid repeating expensive production training.",
+      "use_cases": [
+        "UC70",
+        "UC65"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "uc70",
+        "uc65",
+        "blocked-data"
+      ],
+      "execution_comment": "Holdout training is blocked until the shot attribution and feature inputs are repaired in SCRUM-538 and SCRUM-549. No new model-accuracy result is claimed.",
+      "jira_description": "Use-case coverage: UC70, UC65.\n\n\n\nSteps:\n1. Check whether the source and derived second dataset are ready for trustworthy evaluation.\n2. Verify retained attribution and feature diagnostics before training.\n\nExpected result: The selected model has lower MAE and RMSE than the baseline on a time-based holdout.\n\nCurrent result: Blocked. Training was not run. The retained data still has 18,746 self-opponent rows and all 7,527 game groups have one shooting-team label; raw events needed for repair are absent. Missing margins and the pre-possession feature contract also need resolution.\n\nScope: No fresh shot-model accuracy or cross-validation claim is made. Re-run on repaired data with a documented split and feature contract; avoid repeating expensive production training.\n\nEvidence: docs/assignment-1-revision/tests/additional-local-checks.json."
+    },
+    {
+      "key": "BST-119",
+      "status": "Blocked",
+      "recommended_jira_status": "Verify",
+      "title": "Selected shot model reports cross-validation statistics",
+      "steps": [
+        "Check whether the source and derived second dataset are ready for trustworthy evaluation.",
+        "Verify retained attribution and feature diagnostics before training."
+      ],
+      "expected": "Per-fold metrics and summary statistics are produced and saved.",
+      "actual": "Training was not run. The retained data still has 18,746 self-opponent rows and all 7,527 game groups have one shooting-team label; raw events needed for repair are absent. Missing margins and the pre-possession feature contract also need resolution.",
+      "evidence_files": [
+        "additional-local-checks.json"
+      ],
+      "planned_work": [
+        "SCRUM-538",
+        "SCRUM-549"
+      ],
+      "limitation": "No fresh shot-model accuracy or cross-validation claim is made. Re-run on repaired data with a documented split and feature contract; avoid repeating expensive production training.",
+      "use_cases": [
+        "UC70",
+        "UC65"
+      ],
+      "labels": [
+        "fall-2026",
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "uc70",
+        "uc65",
+        "blocked-data"
+      ],
+      "execution_comment": "Cross-validation is blocked by the same shot-data and feature issues in SCRUM-538 and SCRUM-549. The model was not trained again on the invalid data.",
+      "jira_description": "Use-case coverage: UC70, UC65.\n\n\n\nSteps:\n1. Check whether the source and derived second dataset are ready for trustworthy evaluation.\n2. Verify retained attribution and feature diagnostics before training.\n\nExpected result: Per-fold metrics and summary statistics are produced and saved.\n\nCurrent result: Blocked. Training was not run. The retained data still has 18,746 self-opponent rows and all 7,527 game groups have one shooting-team label; raw events needed for repair are absent. Missing margins and the pre-possession feature contract also need resolution.\n\nScope: No fresh shot-model accuracy or cross-validation claim is made. Re-run on repaired data with a documented split and feature contract; avoid repeating expensive production training.\n\nEvidence: docs/assignment-1-revision/tests/additional-local-checks.json."
+    }
+  ],
+  "supporting_files": {
+    "additional-live-api.json": "f824a8f62b7e59cc2bdb65886c1c734fe042b6ca5ff4e079141728750ee95e0d",
+    "additional-rationale-checks.json": "f8d7f4f6e0dedbd7d2d5830d1dccd88a9225523a48a9927abee97fb8f3fba24a",
+    "additional-local-checks.json": "31aa6c12ced226440e40df2dcf8bd1f232cb97e739418153d137297e80d8086a"
+  }
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "level": "error",
+    "message": "TypeError: Cannot read properties of undefined (reading 'length')\n    at m (https://nbaplayranker-seven.vercel.app/_next/static/chunks/app/shot-statistical-analysis/page-2d89a8fc6504890d.js:1:16294)\n    at l9 (https://nbaplayranker-seven.vercel.app/_next/static/chunks/4bd1b696-c023c6e3521b1417.js:1:51124)\n    at o_ (https://nbaplayranker-seven.vercel.app/_next/static/chunks/4bd1b696-c023c6e3521b1417.js:1:70984)\n    at oq (https://nbaplayranker-seven.vercel.app/_next/static/chunks/4bd1b696-c023c6e3521b1417.js:1:82014)\n    at ik (https://nbaplayranker-seven.vercel.app/_next/static/chunks/4bd1b696-c023c6e3521b1417.js:1:114676)\n    at https://nbaplayranker-seven.vercel.app/_next/static/chunks/4bd1b696-c023c6e3521b1417.js:1:114521\n    at ib (https://nbaplayranker-seven.vercel.app/_next/static/chunks/4bd1b696-c023c6e3521b1417.js:1:114529)\n    at iu (https://nbaplayranker-seven.vercel.app/_next/static/chunks/4bd1b696-c023c6e3521b1417.js:1:111612)\n    at iX (https://nbaplayranker-seven.vercel.app/_next/static/chunks/4bd1b696-c023c6e3521b1417.js:1:132928)\n    at MessagePort.w (https://nbaplayranker-seven.vercel.app/_next/static/chunks/255-ce8c7c75002f810b.js:1:114973)",
+    "timestamp": "2026-10-11T20:35:00.361Z",
+    "url": "https://nbaplayranker-seven.vercel.app/_next/static/chunks/app/shot-statistical-analysis/page-2d89a8fc6504890d.js"
+  }
+]

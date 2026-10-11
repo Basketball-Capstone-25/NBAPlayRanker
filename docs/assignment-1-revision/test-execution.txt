@@ -1,0 +1,203 @@
+Assignment 1 test-plan revision
+
+Current result: issues found. The focused automated checks pass, but the app
+still has failures in shot data, Gameplan context and several analyst pages.
+
+What changed
+
+The Jira test project already had 97 Test Cases and 13 Test Suites. The revision
+adds 18 Fall 2026 cases under BST-137, bringing it to 115 Test Cases and 14 Test
+Suites. BST-137 is an execution campaign for the elaboration features. Existing
+use-case suites retain their structure and owners.
+
+The final live Test Case totals are 97 Pass, 14 Fail and 4 Verify. Of the 97
+passes, 95 have current-run evidence; BST-128 and BST-129 retain their earlier
+execution evidence. Of the four Verify cases, BST-111 has a timing measurement
+but no agreed target, BST-118/119 are blocked on data/features, and BST-146 was
+not rerun. Nine Test Suites are Pass and five remain Testing In Progress.
+Four top-level Jira Tasks also passed browser checks. Two legacy Tasks and two
+Epics remain Verify and are counted separately from the 115 Test Cases.
+
+Each new case has concrete inputs, steps, expected results, use-case coverage,
+feature links and an execution comment. Failed cases link to a planned fix.
+Functional-area and use-case labels make the coverage filterable. The test
+board now shows the suites and their cases instead of leaving them in backlog.
+The campaign contains 8 Pass, 9 Fail and 1 Verify; it remains Testing In Progress.
+
+Existing tests were also reviewed against the current assertions. The two old
+metadata-role cases now test the protected profile role. Eleven elaboration
+cases have current scoped execution comments. Another 52 granular legacy cases
+map to exact passing tests in the fresh JUnit or Vitest reports. Deferred checks
+stay Verify; this revision does not claim every project test was run. Four NLP
+cases, BST-100–103, also have fresh parser/default-validation results. The old
+BST-102 wording was narrowed to the parser boundary actually covered by its
+test; it does not claim a ranking call.
+No historical execution comments or teammate assignments were removed.
+
+What ran
+
+Local application source: 64beaf2ed44d42cb5dd038ac6a71bc85e23f911a.
+The added regression checks and pinned psutil dependency were published as
+9804b32ca45ce9f21763cc027cf75e8f30d397aa. No application fix or deployment is
+part of this test revision.
+
+- Python: 195 backend tests and 7 fixture-cleanup safety tests passed. Four
+  shot-attribution checks are recorded as strict expected failures, not passes.
+  Running those same checks with --runxfail produced four actual failures.
+- Frontend: all 34 tests passed. TypeScript passed.
+- Shared GitHub CI at 9804b32 passed the backend checks, frontend checks and
+  production build: https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38173001625
+- Live API/database: 54 core assertions and 52 additional assertions passed.
+  These used real analyst and coach sessions. Two transactional SQL suites
+  passed for Gameplan storage and protected profiles. Their fixtures were
+  rolled back, and the follow-up check found no test users left behind.
+- Local NLP load: 400 requests from eight concurrent users, zero errors,
+  p95 333.1 ms and peak process memory 299.3 MiB. This measures the local
+  FastAPI process, not production capacity.
+- Browser: calibration values and warnings matched its report. Fresh browser
+  checks reproduced the Gameplan, permissions, loading and analysis failures
+  below. Browser trees and the relevant console output are retained.
+- Additional browser checks confirmed sign-out and role redirects, and a
+  filtered Data Explorer CSV matched all 11 displayed TOR offense rows and
+  seven columns. Coach Matchup showed five rankings after a reload; its initial
+  client navigation stayed Loading. Both observations are retained, with no
+  assumed cause for that initial loading state.
+
+Current failures and planned fixes
+
+BST-138 / BST-139 -> SCRUM-538: shot-team attribution.
+The retained dataset has 18,746 self-opponent rows out of 1,332,515. All 7,520
+game groups with at least 100 shots have only one shooting-team label. A fresh
+5,000-row TOR export contains 51 self-opponent rows. Two synthetic ETL checks
+also fail. Repair from authoritative raw events, rebuild derived data and rerun
+the checks. The historical raw source is unavailable, so the synthetic ETL
+defect does not prove the cause of every corrupted retained row. Synergy
+play-type rankings are a separate dataset.
+
+BST-140 -> SCRUM-539: the first Gameplan Build uses old context.
+The same Q4, down-five, 28-second prompt produced different ranking values on
+the first and second builds. The first request captures earlier state, including
+the focus weight. Build from the newly parsed context snapshot and verify that
+the first and repeated builds use the same inputs.
+
+BST-141 -> SCRUM-540: Gameplan drops parsed qualitative flags.
+The screen recognizes need-three and switching flags, but the current request
+construction omits them. This result combines browser state with source review;
+it is not a new network-payload capture. Forward and validate the flags, then
+test their effect at the ranking boundary.
+
+BST-142 -> SCRUM-541: overtime becomes quarter four in Gameplan.
+For "Overtime, down 2 with 1:00 left.", the live parser returns period 5 and the
+screen reports an overtime warning, but the quarter control and summary show
+Q4. The check stops at that mismatch. Preserve the overtime period through
+display and request construction, then rerun the whole flow.
+
+BST-143 / BST-144 -> SCRUM-544: analyst shot pages call coach-only APIs.
+Shot Plan and Shot Heatmap return 403 from an analyst session. Align the page
+and endpoint permissions, then verify the allowed role and rejected roles.
+
+BST-145 -> SCRUM-542: Model Metrics does not finish its loading state.
+Holdout results appear while the pipeline summary remains Loading and the
+Refreshing button stays disabled. Separate request states and confirm that
+success and error paths both return the page to a usable state. The fresh
+evidence does not claim a duplicate-request network trace.
+
+BST-147 -> SCRUM-545: Shot Statistical Analysis crashes after loading data.
+The current browser shows a client exception; its console reports a TypeError
+reading length. Align the response adapter and UI schema, then verify empty
+and populated responses render without an exception.
+
+BST-146 -> SCRUM-543 remains Verify. The expensive default Shot Model Metrics
+request timed out after 300 seconds in the October 6 audit. It was not repeated
+in this revision. The historical evidence is kept in tests/historical, and the
+planned fix remains linked. This is not counted as a newly executed failure.
+
+Additional legacy execution
+
+Fifteen other scoped checks passed after review of their constituent checks and
+fresh browser evidence: ten earlier umbrella items and BST-1, BST-2, BST-3,
+BST-6 and BST-112. The umbrella acceptance criteria now describe their actual
+component/API scope; a passing umbrella does not clear a separate app failure.
+
+A further 15-case run recorded seven Pass, five Fail, one Verify and two Blocked
+outcomes. Its inputs, results and limitations are in additional-legacy-execution.json.
+
+- BST-99 -> SCRUM-546: baseline explanations do not say that game context was
+  not applied.
+- BST-107 and BST-113 -> SCRUM-547: missing data/configuration does not produce
+  the intended controlled startup/readiness result. Auth still fails closed at
+  protected endpoints; this is not a demonstrated access-control bypass.
+- BST-116 -> SCRUM-548: missing required columns have an error, but unmapped
+  columns have no diagnostic. The fix should identify unmapped columns while
+  allowing valid extra metadata.
+- BST-117 -> SCRUM-538 and SCRUM-549: every retained shot margin is missing and
+  replaced with zero by the model loader. A pre-possession feature contract is
+  also missing. Repair and define the inputs before relying on those features.
+- BST-111 -> SCRUM-550 stays Verify. The eight-request timing sample is recorded,
+  but no agreed deployed Top-K latency target was found.
+- BST-118 and BST-119 are blocked on SCRUM-538 and SCRUM-549. Their Jira status
+  stays Verify while the data and feature inputs are repaired. Shot-model
+  holdout/cross-validation training was not repeated on the invalid data.
+
+Coverage map
+
+UC62 Access Analyst Workspace / UC69 Authenticate Analyst Access:
+  BST-32–41 and the role cases BST-45–55; current profile privacy BST-149;
+  export security BST-150–154. Features: SCRUM-317, SCRUM-75, SCRUM-527.
+UC10/UC55 Generate Baseline Top-K Plays / UC18 Ranked List via API (Baseline):
+  BST-58–64, plus coach role checks BST-70–71. Feature: SCRUM-321.
+UC71 Validate Coach Access:
+  BST-67–73 and protected-profile checks. Feature: SCRUM-75.
+UC45 Generate Context-Aware Top-K Play Types and Shot Types /
+UC50 Build Context Features / UC11 and UC59 Rank Plays with Game Context:
+  BST-77–87, BST-140–142 and BST-155. Features: SCRUM-326, SCRUM-502.
+UC63 Compute Aggregates / UC70 Shot-Type Predictions:
+  BST-138–139, BST-143–144. Features: SCRUM-479, SCRUM-480, SCRUM-126.
+UC65 Evaluate Model / UC28 Seasonal Holdout:
+  BST-88–95, BST-123–124, BST-145–147. Features: SCRUM-476, SCRUM-477,
+  SCRUM-126. Calibration is a historical diagnostic with contemporaneous rate
+  features; it does not establish pre-game forecast accuracy.
+UC29 Compute & Export Top-K Uplift:
+  BST-121–122 and BST-131. Feature: SCRUM-475.
+UC42 / UC48 Save Notes to Tactics Board / Plan:
+  BST-125–126 and BST-148. Feature: SCRUM-481, database storage only.
+  SCRUM-482 remains the separate frontend migration from local storage.
+
+The authoritative model has no dedicated named Shot Explorer, Heatmap or
+Statistical Analysis use case. Those features are mapped to the applicable
+workspace, aggregate, evaluation and shot-prediction use cases above.
+The numbered UC mapping here is the current Jira trace. Existing native test
+packages contain some duplicate unnumbered use-case models and older role-case
+titles; this test execution revision does not claim those were reconciled.
+
+How to review and rerun
+
+Open BST-137 at https://basketball-strategy.atlassian.net/browse/BST-137 and
+follow each case's feature or fix link. The case descriptions contain the
+specific steps. tests/coverage.json records the 18 current campaign results;
+tests/legacy-coverage.json maps the 52 legacy cases to exact test names.
+tests/jira-verification.json records the final readback and preserved owners.
+tests/jira-project-status.json records the full live project counts and issue
+statuses. tests/additional-jira-verification.json covers the added legacy
+results and suite rollups; browser-and-suite-verification.json records the other
+fifteen scoped checks.
+Personal local path prefixes in three shareable logs were replaced by
+<project> and <evidence>; evidence-normalization.json records their source and
+published hashes. Test results, inputs, assertion names and times are unchanged.
+
+From the repository root, use the pinned Python development dependencies and
+Node lockfile, restore the shot dataset if needed, then run:
+
+  backend/.venv/bin/python -m pytest backend/tests scripts/test_verify_elaboration_live.py -q
+  backend/.venv/bin/python -m pytest backend/tests/test_shot_attribution_regression.py --runxfail -q
+  npx vitest run
+  npx tsc --noEmit --incremental false
+
+The second command is expected to fail until SCRUM-538 is fixed. The strict
+xfail markers make an unexpected pass visible, so the markers must be reviewed
+when the fix lands. Authenticated live tests require the private test accounts;
+their credentials are excluded from the repository and evidence.
+
+Retest each failed case after its linked fix. Keep the suite in progress until
+the required cases pass. Passing isolated unit, API and database checks does
+not clear the browser failures or validate every application feature.

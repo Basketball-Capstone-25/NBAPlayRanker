@@ -1,0 +1,6 @@
+Browser tab: 11, Title: "nbaplayranker-seven.vercel.app/shot-statistical-analysis", URL: "https://nbaplayranker-seven.vercel.app/shot-statistical-analysis".
+1 AXWebArea nbaplayranker-seven.vercel.app/shot-statistical-analysis
+	2 heading Value: 2, Application error: a client-side exception has occurred while loading nbaplayranker-seven.vercel.app (see the browser console for more information).
+		3 text Application error: a  client -side exception has occurred while loading  nbaplayranker-seven.vercel.app  (see the browser console  for more information).
+
+The focused UI element is 1 AXWebArea nbaplayranker-seven.vercel.app/shot-statistical-analysis

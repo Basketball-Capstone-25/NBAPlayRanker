@@ -1,0 +1,158 @@
+2026-10-11T20:59:48.975Z
+SIGN OUT
+Browser tab: 11, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/
+	71 container
+		72 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		73 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		74 container
+			75 text Historical data, live recommendations, and context-aware decision support
+			76 heading Rank the right play type for the next decision., Value: 1
+				77 text Rank the right  play type  for the next decision.
+			78 text NBA Play Ranker helps coaches and analysts rank offensive play types and courses of action using historical data, then adapt those recommendations live as score, time, and game context change. The platform is built to support clearer player collaboration, faster coaching communication, and decisions that stay explainable from scouting report to gameplan.
+			79 link Description: Create account, Value: nbaplayranker-seven.vercel.app/signup
+			80 link Description: Log in to explore, Value: nbaplayranker-seven.vercel.app/login
+			81 text Ranks play types and courses of action Live recommendations adapted to game context Historical data and evidence for player collaboration
+			82 heading Rank play types with a clear baseline, Value: 3
+				83 text Rank play types with a clear baseline
+			84 text Start from a transparent ranking of offensive play types and courses of action using historical matchup data before layering in live game pressure.
+			85 heading Adapt recommendations to game context, Value: 3
+				86 text Adapt recommendations to game context
+			87 text See live recommendations update for score, clock, and possession context so the ranked options stay useful as the game changes.
+			88 heading Support coaching and player collaboration, Value: 3
+				89 text Support coaching and player collaboration
+			90 text Turn ranked outputs into clearer on-court collaboration with visuals, supporting evidence, and a gameplan that is easier to communicate to players.
+			91 container NBA Play Ranker product preview
+				92 text Matchup Explorer Gameplan Evidence Coach-facing flow
+				93 text OPPONENT SETUP
+				94 text TOR vs BOS
+				95 text 1:12
+				96 text Late-game context
+				97 text 1
+				98 text PnR Ball Handler
+				99 text Strong baseline profile with stable value under pressure.
+				100 text 2
+				101 text Handoff
+				102 text Useful entry option against the matchup shell and help timing.
+				103 text 3
+				104 text Spot Up
+				105 text Reliable secondary action when coverage collapses late.
+				106 heading Court view, Value: 4
+					107 text Court view
+				108 text Visual proof
+				109 heading Scenario, Value: 4
+					110 text Scenario
+				111 text SCORE
+				112 text +2
+				113 text TIME
+				114 text 1:12 left
+				115 text PRESSURE
+				116 text Possession-heavy
+				117 heading Evidence, Value: 4
+					118 text Evidence
+				119 text Holdout
+				120 text MODEL CHECK
+				121 text Compare
+				122 text BASELINE VS CONTEXT
+				123 text Review
+				124 text STATS + EXPLORER
+				125 heading Decision use, Value: 4
+					126 text Decision use
+				127 text Built for pre-game planning, scenario prep, and clearer coaching conversations.
+			128 container proof
+				129 text PLATFORM SURFACES
+				130 heading Every key surface supports the same decision flow., Value: 2
+					131 text Every key surface supports the same decision flow.
+				132 text Matchup, context, gameplan, explorer, and evidence pages are designed to work together so users can move between recommendation and validation without losing continuity.
+				133 link Value: nbaplayranker-seven.vercel.app/matchup, Description: Coach → Matchup / Baseline A transparent starting point for every opponent. See the initial ranking before context shifts the decision.
+				134 link Value: nbaplayranker-seven.vercel.app/context, Description: Coach → Context / ML Re-rank recommendations for score, time, and pressure so late-game decisions reflect the situation on the floor.
+				135 link Value: nbaplayranker-seven.vercel.app/gameplan, Description: Coach → Gameplan A cleaner end-state for decision making: what to prioritize, what to prepare, and what to communicate.
+				136 link Value: nbaplayranker-seven.vercel.app/data-explorer, Description: Analyst → Data Explorer Inspect the supporting data directly and move from recommendation to underlying evidence without losing context.
+				137 link Value: nbaplayranker-seven.vercel.app/model-metrics, Description: Analyst → Model Metrics Review performance evidence so the recommendation is supported by measured validation, not just output.
+				138 link Value: nbaplayranker-seven.vercel.app/statistical-analysis, Description: Analyst → Statistical Analysis Extend the workflow with deeper quantitative review for analyst interpretation and decision support.
+			139 text ROLES
+			140 heading Built for the people who have to use the answer., Value: 2
+				141 text Built for the people who have to use the answer.
+			142 text Coaches need a faster path to action. Analysts need a stronger path to verification. The product is designed to support both without making either workflow feel secondary.
+			143 heading For coaches, Value: 3
+				144 text For coaches
+			145 content list
+				146 text See priority play types faster before film room discussions get crowded.
+				147 text Adjust recommendations for score, time, and pressure without losing the trust anchor.
+				148 text Walk into pre-game and late-game planning with a cleaner, more presentable decision flow.
+			149 heading For analysts, Value: 3
+				150 text For analysts
+			151 content list
+				152 text Move from surfaced recommendation to underlying data, metrics, and statistical review.
+				153 text Compare baseline and context-aware behavior in a way that stays readable and defensible.
+				154 text Support coaching conversations with evidence that is structured for explanation, not just inspection.
+		57 container
+			58 text Built with  Next.js  (UI) +  FastAPI  (services).
+		59 container
+			60 text Tip for reviewers: start at 
+			61 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			62 text  to see the dataset, then compare 
+			63 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			64 text  vs 
+			65 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			66 text , and verify evidence in 
+			67 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			68 text  and
+			69 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			70 text .
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/
+PROTECTED ROUTE
+Browser tab: 11, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/login?next=%2Fmatchup".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/login?next=%2Fmatchup
+	71 container
+		72 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		73 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		74 container
+			75 text NBA Play Ranker • Secure access
+			76 heading Welcome back to the film room., Value: 1
+				77 text Welcome back to the film room.
+			78 text Sign in to continue into your role-based workspace and pick up right where your scouting, matchup analysis, or evidence review left off.
+			79 text Coach workflow
+			80 text Matchup baseline, context-aware recommendations, and a polished gameplan view.
+			81 text Analyst workflow
+			82 text Data explorer, metrics, heatmaps, shot analysis, and evidence-first reporting pages.
+			83 text Explainable output
+			84 text The product is built to feel like a finished decision-support tool, not a rough demo.
+			85 text Role-aware access
+			86 text Navigation stays clean and only surfaces the views that matter to the signed-in user.
+			87 text LOG IN
+			88 heading Access your workspace, Value: 2
+				89 text Access your workspace
+			90 text Use your account credentials to continue into the platform.
+			91 container
+				92 text After login, you will continue to:  /matchup
+			93 container
+				94 text Email
+				95 text field (settable) Email
+				96 text Password
+				97 container
+					98 text field (settable) Password Show
+					99 button Show
+				100 button Log in
+			101 container
+				102 text Need an account? 
+				103 link Description: Create one here, Value: nbaplayranker-seven.vercel.app/signup
+		57 container
+			58 text Built with  Next.js  (UI) +  FastAPI  (services).
+		59 container
+			60 text Tip for reviewers: start at 
+			61 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			62 text  to see the dataset, then compare 
+			63 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			64 text  vs 
+			65 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			66 text , and verify evidence in 
+			67 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			68 text  and
+			69 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			70 text .
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/login?next=%2Fmatchup

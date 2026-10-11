@@ -1,0 +1,29 @@
+{
+  "commit": "64beaf2ed44d42cb5dd038ac6a71bc85e23f911a",
+  "results": [
+    {
+      "check": "backend",
+      "started_at_utc": "2026-10-11T20:29:32.036984+00:00",
+      "finished_at_utc": "2026-10-11T20:31:36.880257+00:00",
+      "elapsed_seconds": 124.84,
+      "exit_code": 0,
+      "log": "backend.log"
+    },
+    {
+      "check": "frontend",
+      "started_at_utc": "2026-10-11T20:31:36.918863+00:00",
+      "finished_at_utc": "2026-10-11T20:31:40.392746+00:00",
+      "elapsed_seconds": 3.474,
+      "exit_code": 0,
+      "log": "frontend.log"
+    },
+    {
+      "check": "typescript",
+      "started_at_utc": "2026-10-11T20:31:40.412986+00:00",
+      "finished_at_utc": "2026-10-11T20:31:56.462076+00:00",
+      "elapsed_seconds": 16.049,
+      "exit_code": 0,
+      "log": "typescript.log"
+    }
+  ]
+}

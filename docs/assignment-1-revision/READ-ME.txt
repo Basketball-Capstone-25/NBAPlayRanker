@@ -1,0 +1,25 @@
+Assignment 1 revision
+
+This folder covers the assigned interaction-model, risk-plan and test-plan
+feedback. Architecture, deployment and timeline revisions belong to the other
+group member and must be combined with this work before submission.
+
+Start with START-HERE.pdf. It is alongside these files in the repository and
+at the top of the smaller handoff ZIP.
+
+interaction/ contains the native Visual Paradigm project, all 17 sequence
+previews and the notation/preservation checks. Read teamwork-status.json for
+the actual publication state; a saved file is not proof of an online commit.
+
+risks/ contains the reviewed 84-card register and linked mitigation work.
+
+test-execution.txt explains the passing checks, current failures and planned
+fixes. tests/ contains execution records, coverage maps and Jira readbacks.
+
+course-standards.txt records the relevant SLATE lesson requirements and the
+remaining submission checks. Actual personal work hours must be supplied
+before new work logs can be entered.
+
+Application source is pinned at 9804b32ca45ce9f21763cc027cf75e8f30d397aa.
+That commit adds regression checks; this revision does not deploy app fixes.
+Keep failed tests visible and rerun each one after its linked repair.

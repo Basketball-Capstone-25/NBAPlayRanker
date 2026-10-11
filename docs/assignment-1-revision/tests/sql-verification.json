@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-11T20:29:15.016Z",
+  "project": "qdodginqubodugfeyiwi",
+  "method": "Committed transactional SQL scripts; all fixtures rolled back. Follow-up query checks test-email domains.",
+  "executions": [
+    {
+      "script": "supabase/tests/gameplan_state_verification.sql",
+      "passed": true,
+      "result": "PASS: Gameplan owner CRUD, isolation, trusted roles, constraints, optimistic revision, audit columns and cascade; all fixtures rolled back"
+    },
+    {
+      "script": "supabase/tests/profile_roles_verification.sql",
+      "passed": true,
+      "result": "PASS: forged signup metadata, own-profile role update, insert, delete, other-profile reads, and anonymous reads rejected; administrator assignment preserved; all test data rolled back"
+    }
+  ],
+  "cleanup_verification": {
+    "gameplan_test_users": 0,
+    "role_test_users": 0
+  }
+}

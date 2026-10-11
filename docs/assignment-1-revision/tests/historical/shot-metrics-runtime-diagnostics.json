@@ -1,0 +1,46 @@
+{
+  "checked_at": "2026-10-06T17:06:30.589172+00:00",
+  "since": "2026-10-06T16:59:00Z",
+  "query_limit": 150,
+  "query_hit_limit": false,
+  "records": [
+    {
+      "timestamp": "2026-10-06T17:01:20.473139Z",
+      "severity": "ERROR",
+      "revision": "nba-playranker-api-00005-hrn",
+      "path": "/metrics/shot-models",
+      "method": "GET",
+      "status": 504,
+      "latency": "300.000515136s",
+      "message": "The request has been terminated because it has reached the maximum request timeout. To change this limit, see https://cloud.google.com/run/docs/configuring/request-timeout"
+    },
+    {
+      "timestamp": "2026-10-06T17:01:20.426104Z",
+      "severity": "INFO",
+      "revision": "nba-playranker-api-00005-hrn",
+      "path": "/metrics/shot-models",
+      "method": "OPTIONS",
+      "status": 200,
+      "latency": "0.001924431s"
+    }
+  ],
+  "notes": "Read-only Cloud Logging query. No evaluation endpoint called; completion logs can lag or be absent for in-flight requests.",
+  "diagnosis": "Confirmed HTTP 504 at the maximum request timeout of 300 seconds. No OOM or Python exception appeared in the scoped logs.",
+  "cloud_run_timeout_seconds": 300,
+  "frontend": {
+    "source": "app/infrastructure/api-client.ts:813",
+    "endpoint": "/metrics/shot-models?n_splits=5",
+    "fetch_helper": "fetchJson at line 48 awaits native fetch without an AbortController, AbortSignal, or explicit deadline.",
+    "page": "ShotModelMetricsPageClient.tsx",
+    "loading_behavior": "Sets loading true and only clears in finally after fetch settles; no progress/timeout estimate. Auto-refresh defaultsfalse; if enabled it can start another load while oldrequest remains pending.",
+    "deployed_source_identical_to_local_inspected": true
+  },
+  "backend": {
+    "source": "backend/application/api_coordination/app.py:532",
+    "default_work": "Fresh run_shot_model_cv on every request: 75,000 sampled rows and five grouped folds across Ridge, GBR and Random Forest (120 trees, depth 18). The root route does not read a CV cache.",
+    "cached_alternative": "By default, /pbp/metrics/shot-models reads the shipped pbp_phase2_shot_model_cv.json. The frontend does not call this alias. Its age and source validity require review before using it.",
+    "continuation_after_504": "Processing may continue. Cloud Run request timeout does not terminate the container, and this synchronous sklearn workload has no application deadline or disconnect cancellation. Continued training after the 504 was not directly observed.",
+    "official_reference": "https://docs.cloud.google.com/run/docs/configuring/request-timeout"
+  },
+  "updated_at": "2026-10-06T17:09:32.102508+00:00"
+}

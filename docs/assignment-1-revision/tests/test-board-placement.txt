@@ -1,0 +1,101 @@
+Browser tab: 23, Title: "Basketball Strategy – Tests - Backlog - Jira", URL: "https://basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4/backlog".
+1 AXWebArea Basketball Strategy – Tests - Backlog - Jira, URL: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4/backlog
+	2 container jira
+		3 container jira-frontend
+			69 container
+				70 text Skip to:
+				71 content list
+					72 link Description: Top Bar, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4/backlog#jira-page-layout-top-nav
+					73 link Description: Sidebar, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4/backlog#jira-page-layout-side-nav
+					74 link Description: Main Content, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4/backlog#jira-page-layout-main
+					75 link Description: Space navigation, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4/backlog#_R6l8sqlcn99cnal6p_
+			4 container unsafe-design-system-page-layout-root
+				5 container jira-page-layout-top-nav
+					6 button Expand sidebar
+					7 pop up button (collapsed) Switch sites or apps, Secondary Actions: Expand
+					9 link Description: Go to your Jira homepage, Value: basketball-strategy.atlassian.net/jira
+					10 button Search
+						11 text Search
+					12 button Create
+					13 container Actions
+						76 pop up button (collapsed) Show more, Secondary Actions: Expand
+				14 container jira-page-layout-main
+					15 container ak-project-view-navigation
+						16 container Breadcrumbs
+							17 content list
+								18 link Description: Spaces, Value: basketball-strategy.atlassian.net/jira/projects
+						19 button Edit, Space name
+						20 heading Basketball Strategy – Tests, Value: 1
+							21 text Basketball Strategy – Tests
+						22 pop up button Link contributing teams
+						23 pop up button (collapsed) More actions, Secondary Actions: Expand
+							24 image More actions
+						25 pop up button (collapsed) Share, ID: po-spotlight-share-button, Secondary Actions: Expand
+							26 image Share
+						27 pop up button (collapsed) Automation, Secondary Actions: Expand
+							28 image Automation
+						29 button Give feedback
+						30 button Enter full screen
+						31 container Space navigation
+							32 content list
+								33 container
+									34 link Description: Summary, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/summary
+									35 pop up button (collapsed) More actions, Secondary Actions: Expand
+								36 container
+									37 heading Backlog, Value: 2
+										38 text Backlog
+									39 pop up button (collapsed) More actions, Secondary Actions: Expand
+								40 container
+									41 link Description: Timeline, Value: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4/timeline
+									42 pop up button (collapsed) More actions, Secondary Actions: Expand
+							77 pop up button (collapsed) Description: 8 more tabs, Secondary Actions: Expand
+							67 pop up button (collapsed) Add to navigation, Secondary Actions: Expand
+								68 image Add to navigation
+					78 container
+						79 text field (settable) Search backlog
+						80 container Filter by assignee
+							81 text Filter by assignee
+							82 checkbox (settable, integer) Description: Filter assignees by Unassigned, Value: 0, ID: assignee-empty
+							83 checkbox (settable, integer) Description: Filter assignees by Gurkaranjit Asahan, Value: 0, ID: assignee-712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36
+							84 checkbox (settable, integer) Description: Filter assignees by Abdulrahman Mousa, Value: 0, ID: assignee-639a8938f134138b5a513b32
+						85 pop up button (collapsed) Description: Filter, Secondary Actions: Expand
+						86 pop up button (collapsed) View settings, Secondary Actions: Expand
+						87 pop up button (collapsed) More actions, Secondary Actions: Expand
+						88 content list
+							281 container
+								282 checkbox (settable, integer) Description: Select all work items in Board, Value: 0
+								283 button (collapsed) Board (19 work items), Secondary Actions: Expand
+								284 button (collapsed) Expand
+								285 container leftside-container-BOARD
+									286 heading Board, Value: 2
+										287 text Board
+									288 text (19 work items)
+								289 text Board 19 work items
+								290 container To Do: 19 of 19 (work item count)
+								291 text To Do: 19 of 19 (work item count)
+								292 container In Progress: 0 of 19 (work item count)
+								293 text In Progress: 0 of 19 (work item count)
+								294 container Done: 0 of 19 (work item count)
+								295 text Done: 0 of 19 (work item count)
+							250 container
+								251 checkbox (disabled, settable, integer) Description: Select all work items in Backlog, Value: 0
+								252 button (expanded) Backlog (0 work items), Secondary Actions: Collapse
+								253 button (expanded) Collapse
+								254 container leftside-container-BACKLOG
+									255 heading Backlog, Value: 2
+										256 text Backlog
+									257 text (0 work items)
+								258 container
+									259 text Backlog 0 work items
+								260 container To Do: 0 of 0 (work item count)
+								261 text To Do: 0 of 0 (work item count)
+								262 container In Progress: 0 of 0 (work item count)
+								263 text In Progress: 0 of 0 (work item count)
+								264 container Done: 0 of 0 (work item count)
+								265 text Done: 0 of 0 (work item count)
+								266 container backlog-accordion-BACKLOG
+									296 text Your backlog is empty.
+									279 button (collapsed) Create work items for Backlog, Secondary Actions: Expand
+									280 text Create work items for Backlog
+
+The focused UI element is 1 AXWebArea Basketball Strategy – Tests - Backlog - Jira, URL: basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4/backlog

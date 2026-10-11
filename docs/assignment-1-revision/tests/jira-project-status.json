@@ -1,0 +1,2352 @@
+{
+  "captured_at_utc": "2026-10-11T21:22:27.977Z",
+  "project": "BST",
+  "total_issues": 137,
+  "counts_by_type_and_status": {
+    "Task": {
+      "Pass": 4,
+      "Verify": 2
+    },
+    "Epic": {
+      "Verify": 2
+    },
+    "Test Suite": {
+      "Pass": 9,
+      "Testing In Progress": 5
+    },
+    "Test Case": {
+      "Pass": 97,
+      "Fail": 14,
+      "Verify": 4
+    }
+  },
+  "current_run_test_cases": {
+    "Pass": 95,
+    "Fail": 14,
+    "measured_without_acceptance_threshold": 1,
+    "blocked_before_training": 2,
+    "not_rerun": 1
+  },
+  "historical_pass_cases": [
+    "BST-128",
+    "BST-129"
+  ],
+  "other_current_browser_checks": [
+    "BST-1",
+    "BST-2",
+    "BST-3",
+    "BST-6"
+  ],
+  "legacy_verify_containers": [
+    "BST-4",
+    "BST-5",
+    "BST-13",
+    "BST-18"
+  ],
+  "original_assignments_preserved": true,
+  "issues": [
+    {
+      "key": "BST-1",
+      "type": "Task",
+      "title": "Data Explorer displays the current raw dataset",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "FA1-DataExplorer",
+        "UC1-ViewData",
+        "assignment-1-revision",
+        "data-explorer",
+        "fall-2026",
+        "pass",
+        "uc62",
+        "uc63"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-2",
+      "type": "Task",
+      "title": "Data Explorer filters rows by season, team and side",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "FA1-DataExplorer",
+        "UC1-ViewData",
+        "assignment-1-revision",
+        "data-explorer",
+        "fall-2026",
+        "pass",
+        "uc62",
+        "uc63"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-3",
+      "type": "Task",
+      "title": "Data Explorer CSV matches the visible raw data",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "FA1-DataExplorer",
+        "UC2-Export",
+        "assignment-1-revision",
+        "data-explorer",
+        "fall-2026",
+        "pass",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "BST-135"
+      ]
+    },
+    {
+      "key": "BST-4",
+      "type": "Task",
+      "title": "FA2 \u2013 Baseline \u2013 UC3 Get Top-K \u2013 TC04 Valid parameters",
+      "status": "Verify",
+      "parent": null,
+      "labels": [
+        "FA2-Baseline",
+        "UC3-TopK",
+        "pass"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-5",
+      "type": "Task",
+      "title": "FA2 \u2013 Baseline \u2013 UC3 Get Top-K \u2013 TC05 Invalid parameters & validation",
+      "status": "Verify",
+      "parent": null,
+      "labels": [
+        "FA2-Baseline",
+        "UC3-TopK",
+        "Validation",
+        "pass"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-6",
+      "type": "Task",
+      "title": "Coach Matchup displays the Top-K baseline cards",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "FA3-Tactics",
+        "UC4-TopKUI",
+        "assignment-1-revision",
+        "coach-access",
+        "fall-2026",
+        "pass",
+        "uc18",
+        "uc71"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-13",
+      "type": "Epic",
+      "title": "Access Analyst Workspace",
+      "status": "Verify",
+      "parent": null,
+      "labels": [],
+      "links": []
+    },
+    {
+      "key": "BST-18",
+      "type": "Epic",
+      "title": "mn k",
+      "status": "Verify",
+      "parent": null,
+      "labels": [],
+      "links": []
+    },
+    {
+      "key": "BST-27",
+      "type": "Test Suite",
+      "title": "Access Analyst Workspace",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63",
+        "uc69",
+        "uc71"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-28",
+      "type": "Test Suite",
+      "title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69",
+        "uc71"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-29",
+      "type": "Test Suite",
+      "title": "Ranked list via API",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc18",
+        "uc55"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-30",
+      "type": "Test Suite",
+      "title": "Validate Coach Access",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc18",
+        "uc59",
+        "uc71"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-31",
+      "type": "Test Suite",
+      "title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc50",
+        "uc59",
+        "uc65"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-32",
+      "type": "Test Case",
+      "title": "Analyst middleware allows the Data Explorer route",
+      "status": "Pass",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-33",
+      "type": "Test Case",
+      "title": "Workspace API returns rows and matching counts",
+      "status": "Pass",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-317"
+      ]
+    },
+    {
+      "key": "BST-34",
+      "type": "Test Case",
+      "title": "Analyst profile can read the workspace API",
+      "status": "Pass",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-35",
+      "type": "Test Case",
+      "title": "Workspace filters preserve the requested team and side",
+      "status": "Pass",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-317"
+      ]
+    },
+    {
+      "key": "BST-36",
+      "type": "Test Case",
+      "title": "Workspace row limits agree with response counts",
+      "status": "Pass",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-317"
+      ]
+    },
+    {
+      "key": "BST-37",
+      "type": "Test Case",
+      "title": "Coach profile cannot read the analyst workspace API",
+      "status": "Pass",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-38",
+      "type": "Test Case",
+      "title": "Coach profile cannot export analyst workspace CSV",
+      "status": "Pass",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-39",
+      "type": "Test Case",
+      "title": "Workspace API rejects a missing session",
+      "status": "Pass",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-40",
+      "type": "Test Case",
+      "title": "Coach middleware redirects the analyst workspace route",
+      "status": "Pass",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-41",
+      "type": "Test Case",
+      "title": "Signed-out workspace request keeps its return path",
+      "status": "Pass",
+      "parent": "BST-27",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-42",
+      "type": "Test Case",
+      "title": "Session validation accepts verified tokens and rejects missing or invalid tokens",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-43",
+      "type": "Test Case",
+      "title": "Role lookup uses protected profiles and rejects invalid profile data",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-44",
+      "type": "Test Case",
+      "title": "Analytics permission checks distinguish analyst and coach roles",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-45",
+      "type": "Test Case",
+      "title": "Explicit local development mode permits a missing session",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-46",
+      "type": "Test Case",
+      "title": "Session validation rejects a missing token",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-47",
+      "type": "Test Case",
+      "title": "Session validation rejects a failed JWT verification",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-48",
+      "type": "Test Case",
+      "title": "Session validation accepts verified subject claims",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-49",
+      "type": "Test Case",
+      "title": "A failed token verification cannot produce a role",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-50",
+      "type": "Test Case",
+      "title": "Coach access uses the protected profile role",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "uc69",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-51",
+      "type": "Test Case",
+      "title": "Analyst access uses the current protected profile role",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "uc69",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-52",
+      "type": "Test Case",
+      "title": "Unsupported and malformed profiles cannot grant a role",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-53",
+      "type": "Test Case",
+      "title": "Explicit local development mode permits the analytics guard",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-54",
+      "type": "Test Case",
+      "title": "Analytics permission rejects the coach role",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-55",
+      "type": "Test Case",
+      "title": "Analytics permission accepts the analyst role",
+      "status": "Pass",
+      "parent": "BST-28",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-56",
+      "type": "Test Case",
+      "title": "Baseline ranking returns bounded matchup-specific results",
+      "status": "Pass",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc10",
+        "uc18"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-57",
+      "type": "Test Case",
+      "title": "Baseline API validates matchup and result count",
+      "status": "Pass",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-58",
+      "type": "Test Case",
+      "title": "Baseline returns five plays with ranking values",
+      "status": "Pass",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "links": [
+        "SCRUM-321"
+      ]
+    },
+    {
+      "key": "BST-59",
+      "type": "Test Case",
+      "title": "Baseline predictions are nonnegative for the test matchup",
+      "status": "Pass",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "links": [
+        "SCRUM-321"
+      ]
+    },
+    {
+      "key": "BST-60",
+      "type": "Test Case",
+      "title": "Baseline K=10 returns a nonempty bounded list",
+      "status": "Pass",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "links": [
+        "SCRUM-321"
+      ]
+    },
+    {
+      "key": "BST-61",
+      "type": "Test Case",
+      "title": "Changing the team changes baseline predictions",
+      "status": "Pass",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "links": [
+        "SCRUM-321"
+      ]
+    },
+    {
+      "key": "BST-62",
+      "type": "Test Case",
+      "title": "Baseline API returns the requested Top-K and matchup metadata",
+      "status": "Pass",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [
+        "SCRUM-321"
+      ]
+    },
+    {
+      "key": "BST-63",
+      "type": "Test Case",
+      "title": "Baseline API rejects the same team on both sides",
+      "status": "Pass",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [
+        "SCRUM-321"
+      ]
+    },
+    {
+      "key": "BST-64",
+      "type": "Test Case",
+      "title": "Baseline API rejects K=0",
+      "status": "Pass",
+      "parent": "BST-29",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [
+        "SCRUM-321"
+      ]
+    },
+    {
+      "key": "BST-65",
+      "type": "Test Case",
+      "title": "Coach workspace routes enforce the signed-in role",
+      "status": "Pass",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-66",
+      "type": "Test Case",
+      "title": "Ranking APIs enforce coach access",
+      "status": "Pass",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-67",
+      "type": "Test Case",
+      "title": "Coach middleware allows the matchup route",
+      "status": "Pass",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-68",
+      "type": "Test Case",
+      "title": "Coach middleware redirects analyst-only pages",
+      "status": "Pass",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-69",
+      "type": "Test Case",
+      "title": "Signed-in coach is redirected away from login",
+      "status": "Pass",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-70",
+      "type": "Test Case",
+      "title": "Coach profile can call the baseline API",
+      "status": "Pass",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc18",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-71",
+      "type": "Test Case",
+      "title": "Analyst profile cannot call the coach baseline API",
+      "status": "Pass",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc18",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-72",
+      "type": "Test Case",
+      "title": "Analyst profile cannot call the coach context API",
+      "status": "Pass",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc59",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-73",
+      "type": "Test Case",
+      "title": "Analyst profile cannot call the coach visualization API",
+      "status": "Pass",
+      "parent": "BST-30",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-74",
+      "type": "Test Case",
+      "title": "Context helpers handle regulation clocks and score factors",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-75",
+      "type": "Test Case",
+      "title": "Context labels describe normal, trailing and leading situations",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc59"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-76",
+      "type": "Test Case",
+      "title": "Ridge model meets the documented historical evaluation checks",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc65"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-77",
+      "type": "Test Case",
+      "title": "Regulation clock starts with 2,880 seconds",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-78",
+      "type": "Test Case",
+      "title": "Regulation clock reaches zero at the fourth-quarter end",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-79",
+      "type": "Test Case",
+      "title": "Regulation-clock helper returns zero during overtime",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-80",
+      "type": "Test Case",
+      "title": "Third-quarter clock includes the remaining regulation periods",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-81",
+      "type": "Test Case",
+      "title": "Opening tied-game context has zero urgency factors",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-82",
+      "type": "Test Case",
+      "title": "Late trailing context raises late-game and trailing factors",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-83",
+      "type": "Test Case",
+      "title": "Late large lead raises only the leading factor",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-84",
+      "type": "Test Case",
+      "title": "Overtime context has maximum late-game weighting",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-85",
+      "type": "Test Case",
+      "title": "Zero context factors use the normal label",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-86",
+      "type": "Test Case",
+      "title": "Late trailing factors use the trailing label",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-87",
+      "type": "Test Case",
+      "title": "Late leading factors use the leading label",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "links": [
+        "SCRUM-326"
+      ]
+    },
+    {
+      "key": "BST-88",
+      "type": "Test Case",
+      "title": "Ridge pipeline scales features before fitting",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ]
+    },
+    {
+      "key": "BST-89",
+      "type": "Test Case",
+      "title": "Ridge fits 200 synthetic rows without invalid predictions",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ]
+    },
+    {
+      "key": "BST-90",
+      "type": "Test Case",
+      "title": "Synthetic Ridge coefficients stay finite and bounded",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ]
+    },
+    {
+      "key": "BST-91",
+      "type": "Test Case",
+      "title": "Historical Ridge cross-validation beats the league-mean baseline",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ]
+    },
+    {
+      "key": "BST-92",
+      "type": "Test Case",
+      "title": "Historical held-out Ridge predictions stay within the PPP bounds",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ]
+    },
+    {
+      "key": "BST-93",
+      "type": "Test Case",
+      "title": "Every historical Ridge fold meets the RMSE threshold",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ]
+    },
+    {
+      "key": "BST-94",
+      "type": "Test Case",
+      "title": "Model feature and target arrays are aligned and finite",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ]
+    },
+    {
+      "key": "BST-95",
+      "type": "Test Case",
+      "title": "Increasing Ridge alpha reduces synthetic coefficient norms",
+      "status": "Pass",
+      "parent": "BST-31",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477"
+      ]
+    },
+    {
+      "key": "BST-96",
+      "type": "Test Suite",
+      "title": "Generate Play Explanations",
+      "status": "Testing In Progress",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc45",
+        "uc50",
+        "uc60",
+        "uc67"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127"
+      ]
+    },
+    {
+      "key": "BST-97",
+      "type": "Test Case",
+      "title": "Rationale generated for each Top-K play",
+      "status": "Pass",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc60",
+        "uc67"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127"
+      ]
+    },
+    {
+      "key": "BST-98",
+      "type": "Test Case",
+      "title": "Rationale values match ranking output",
+      "status": "Pass",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc60",
+        "uc67"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127"
+      ]
+    },
+    {
+      "key": "BST-99",
+      "type": "Test Case",
+      "title": "Baseline rationale states when context is missing",
+      "status": "Fail",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc67"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127",
+        "SCRUM-546"
+      ]
+    },
+    {
+      "key": "BST-100",
+      "type": "Test Case",
+      "title": "NLP parses a trailing fourth-quarter context",
+      "status": "Pass",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127",
+        "SCRUM-502"
+      ]
+    },
+    {
+      "key": "BST-101",
+      "type": "Test Case",
+      "title": "NLP parses a leading score margin",
+      "status": "Pass",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127",
+        "SCRUM-502"
+      ]
+    },
+    {
+      "key": "BST-102",
+      "type": "Test Case",
+      "title": "Unparseable NLP text produces neutral context defaults",
+      "status": "Pass",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127",
+        "SCRUM-502"
+      ]
+    },
+    {
+      "key": "BST-103",
+      "type": "Test Case",
+      "title": "NLP rejects out-of-range values before ranking",
+      "status": "Pass",
+      "parent": "BST-96",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-120",
+        "SCRUM-127",
+        "SCRUM-502"
+      ]
+    },
+    {
+      "key": "BST-104",
+      "type": "Test Suite",
+      "title": "Access Stored Datasets",
+      "status": "Testing In Progress",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-121"
+      ]
+    },
+    {
+      "key": "BST-105",
+      "type": "Test Case",
+      "title": "Play-type dataset loads from storage",
+      "status": "Pass",
+      "parent": "BST-104",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-121"
+      ]
+    },
+    {
+      "key": "BST-106",
+      "type": "Test Case",
+      "title": "Season and team query returns matching rows",
+      "status": "Pass",
+      "parent": "BST-104",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-121"
+      ]
+    },
+    {
+      "key": "BST-107",
+      "type": "Test Case",
+      "title": "Missing play-type dataset has a controlled error",
+      "status": "Fail",
+      "parent": "BST-104",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-121",
+        "SCRUM-547"
+      ]
+    },
+    {
+      "key": "BST-108",
+      "type": "Test Suite",
+      "title": "API Stability and Deployment",
+      "status": "Testing In Progress",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc18",
+        "uc62",
+        "uc64",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132"
+      ]
+    },
+    {
+      "key": "BST-109",
+      "type": "Test Case",
+      "title": "Deployed health endpoint responds",
+      "status": "Pass",
+      "parent": "BST-108",
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc62",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132"
+      ]
+    },
+    {
+      "key": "BST-110",
+      "type": "Test Case",
+      "title": "Concurrent Top-K requests complete",
+      "status": "Pass",
+      "parent": "BST-108",
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132"
+      ]
+    },
+    {
+      "key": "BST-111",
+      "type": "Test Case",
+      "title": "Top-K response time meets an agreed threshold",
+      "status": "Verify",
+      "parent": "BST-108",
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc18"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132",
+        "SCRUM-550"
+      ]
+    },
+    {
+      "key": "BST-112",
+      "type": "Test Case",
+      "title": "Deployed Matchup page loads data from the API",
+      "status": "Pass",
+      "parent": "BST-108",
+      "labels": [
+        "assignment-1-revision",
+        "coach-access",
+        "fall-2026",
+        "uc18",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132"
+      ]
+    },
+    {
+      "key": "BST-113",
+      "type": "Test Case",
+      "title": "Missing required configuration stops backend startup",
+      "status": "Fail",
+      "parent": "BST-108",
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc62",
+        "uc64"
+      ],
+      "links": [
+        "SCRUM-122",
+        "SCRUM-123",
+        "SCRUM-131",
+        "SCRUM-132",
+        "SCRUM-547"
+      ]
+    },
+    {
+      "key": "BST-114",
+      "type": "Test Suite",
+      "title": "Validate Second Dataset and Models",
+      "status": "Testing In Progress",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc64",
+        "uc65",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126"
+      ]
+    },
+    {
+      "key": "BST-115",
+      "type": "Test Case",
+      "title": "Retained second-dataset schema maps required model columns",
+      "status": "Pass",
+      "parent": "BST-114",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc64"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126",
+        "SCRUM-538"
+      ]
+    },
+    {
+      "key": "BST-116",
+      "type": "Test Case",
+      "title": "Schema mapping reports missing and unmapped columns",
+      "status": "Fail",
+      "parent": "BST-114",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc64"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126",
+        "SCRUM-548"
+      ]
+    },
+    {
+      "key": "BST-117",
+      "type": "Test Case",
+      "title": "Shot features are complete and available before possession",
+      "status": "Fail",
+      "parent": "BST-114",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126",
+        "SCRUM-538",
+        "SCRUM-549"
+      ]
+    },
+    {
+      "key": "BST-118",
+      "type": "Test Case",
+      "title": "Selected shot model beats baseline on a holdout season",
+      "status": "Verify",
+      "parent": "BST-114",
+      "labels": [
+        "assignment-1-revision",
+        "blocked-data",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc65",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126",
+        "SCRUM-538",
+        "SCRUM-549"
+      ]
+    },
+    {
+      "key": "BST-119",
+      "type": "Test Case",
+      "title": "Selected shot model reports cross-validation statistics",
+      "status": "Verify",
+      "parent": "BST-114",
+      "labels": [
+        "assignment-1-revision",
+        "blocked-data",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc65",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-124",
+        "SCRUM-125",
+        "SCRUM-126",
+        "SCRUM-538",
+        "SCRUM-549"
+      ]
+    },
+    {
+      "key": "BST-120",
+      "type": "Test Suite",
+      "title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "uc28",
+        "uc29",
+        "uc42",
+        "uc48",
+        "verification"
+      ],
+      "links": [
+        "SCRUM-475",
+        "SCRUM-476",
+        "SCRUM-481",
+        "SCRUM-506"
+      ]
+    },
+    {
+      "key": "BST-121",
+      "type": "Test Case",
+      "title": "Top-K uplift matches possession-weighted calculations",
+      "status": "Pass",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-475",
+        "uc29"
+      ],
+      "links": [
+        "SCRUM-475"
+      ]
+    },
+    {
+      "key": "BST-122",
+      "type": "Test Case",
+      "title": "Top-K JSON and CSV match and enforce analyst access",
+      "status": "Pass",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-475",
+        "uc29",
+        "uc69"
+      ],
+      "links": [
+        "SCRUM-475"
+      ]
+    },
+    {
+      "key": "BST-123",
+      "type": "Test Case",
+      "title": "Calibration trains on earlier seasons only",
+      "status": "Pass",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-476",
+        "uc28",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-476"
+      ]
+    },
+    {
+      "key": "BST-124",
+      "type": "Test Case",
+      "title": "Calibration values and limits match the analyst page",
+      "status": "Pass",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-476",
+        "uc62",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-476"
+      ]
+    },
+    {
+      "key": "BST-125",
+      "type": "Test Case",
+      "title": "Gameplan storage validates notes, matchups and revisions",
+      "status": "Pass",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-481",
+        "uc42",
+        "uc48"
+      ],
+      "links": [
+        "SCRUM-481"
+      ]
+    },
+    {
+      "key": "BST-126",
+      "type": "Test Case",
+      "title": "Gameplan ownership and role restrictions hold",
+      "status": "Pass",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-481",
+        "uc42",
+        "uc48",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-481"
+      ]
+    },
+    {
+      "key": "BST-127",
+      "type": "Test Case",
+      "title": "Production health, access rules and deployment checks",
+      "status": "Pass",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-506",
+        "uc62",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-506"
+      ]
+    },
+    {
+      "key": "BST-128",
+      "type": "Test Case",
+      "title": "TC-I14-DEPLOY-02 \u2014 Authenticated coach and analyst production journeys",
+      "status": "Pass",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-506"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-129",
+      "type": "Test Case",
+      "title": "Signed-in browser downloads preserve authorization",
+      "status": "Pass",
+      "parent": "BST-120",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "regression",
+        "scrum-506"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-130",
+      "type": "Test Suite",
+      "title": "Compute & Export Top-K Uplift",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc29"
+      ],
+      "links": [
+        "SCRUM-474"
+      ]
+    },
+    {
+      "key": "BST-131",
+      "type": "Test Case",
+      "title": "Top-K uplift matches the team-season reference",
+      "status": "Pass",
+      "parent": "BST-130",
+      "labels": [
+        "uc29"
+      ],
+      "links": [
+        "SCRUM-474",
+        "SCRUM-475"
+      ]
+    },
+    {
+      "key": "BST-132",
+      "type": "Test Suite",
+      "title": "Run Data Quality Checks",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-478"
+      ]
+    },
+    {
+      "key": "BST-133",
+      "type": "Test Case",
+      "title": "Synergy data quality flags schema, missing data and coverage",
+      "status": "Pass",
+      "parent": "BST-132",
+      "labels": [
+        "uc63"
+      ],
+      "links": [
+        "SCRUM-478"
+      ]
+    },
+    {
+      "key": "BST-134",
+      "type": "Test Suite",
+      "title": "Export Results (CSV/PDF)",
+      "status": "Pass",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-484"
+      ]
+    },
+    {
+      "key": "BST-135",
+      "type": "Test Case",
+      "title": "Exports keep values and headers consistent across formats",
+      "status": "Pass",
+      "parent": "BST-134",
+      "labels": [
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-484",
+        "BST-3"
+      ]
+    },
+    {
+      "key": "BST-136",
+      "type": "Test Case",
+      "title": "NLP handles concurrent requests within local memory limits",
+      "status": "Pass",
+      "parent": "BST-96",
+      "labels": [
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-502"
+      ]
+    },
+    {
+      "key": "BST-137",
+      "type": "Test Suite",
+      "title": "Fall 2026 elaboration regression tests",
+      "status": "Testing In Progress",
+      "parent": null,
+      "labels": [
+        "assignment-1-revision",
+        "execution-campaign",
+        "fa-access-control",
+        "fa-context-ranking",
+        "fa-exports",
+        "fa-model-evaluation",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc11",
+        "uc42",
+        "uc45",
+        "uc48",
+        "uc50",
+        "uc62",
+        "uc63",
+        "uc65",
+        "uc69",
+        "uc70",
+        "uc71"
+      ],
+      "links": []
+    },
+    {
+      "key": "BST-138",
+      "type": "Test Case",
+      "title": "Shot data uses different shooting and opposing teams",
+      "status": "Fail",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc63",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-479",
+        "SCRUM-480",
+        "SCRUM-538"
+      ]
+    },
+    {
+      "key": "BST-139",
+      "type": "Test Case",
+      "title": "Shot import keeps the event team separate from home team and score",
+      "status": "Fail",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc63",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-479",
+        "SCRUM-538"
+      ]
+    },
+    {
+      "key": "BST-140",
+      "type": "Test Case",
+      "title": "Gameplan uses the new situation on the first Build",
+      "status": "Fail",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-326",
+        "SCRUM-539"
+      ]
+    },
+    {
+      "key": "BST-141",
+      "type": "Test Case",
+      "title": "Gameplan forwards supported coaching conditions to ranking",
+      "status": "Fail",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-502",
+        "SCRUM-540"
+      ]
+    },
+    {
+      "key": "BST-142",
+      "type": "Test Case",
+      "title": "Gameplan preserves overtime from the parsed situation",
+      "status": "Fail",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc11",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-502",
+        "SCRUM-541"
+      ]
+    },
+    {
+      "key": "BST-143",
+      "type": "Test Case",
+      "title": "Analyst Shot Plan page can use its required API",
+      "status": "Fail",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-126",
+        "SCRUM-544"
+      ]
+    },
+    {
+      "key": "BST-144",
+      "type": "Test Case",
+      "title": "Analyst Shot Heatmap page can use its required API",
+      "status": "Fail",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-126",
+        "SCRUM-544"
+      ]
+    },
+    {
+      "key": "BST-145",
+      "type": "Test Case",
+      "title": "Model Metrics finishes loading after successful metadata",
+      "status": "Fail",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc62",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-477",
+        "SCRUM-542"
+      ]
+    },
+    {
+      "key": "BST-146",
+      "type": "Test Case",
+      "title": "Shot Model Metrics completes within its request limit",
+      "status": "Verify",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc65",
+        "uc70"
+      ],
+      "links": [
+        "SCRUM-126",
+        "SCRUM-543"
+      ]
+    },
+    {
+      "key": "BST-147",
+      "type": "Test Case",
+      "title": "Shot Statistical Analysis renders the returned response",
+      "status": "Fail",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc65"
+      ],
+      "links": [
+        "SCRUM-126",
+        "SCRUM-545"
+      ]
+    },
+    {
+      "key": "BST-148",
+      "type": "Test Case",
+      "title": "A stale Gameplan update cannot overwrite a newer revision",
+      "status": "Pass",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc42",
+        "uc48"
+      ],
+      "links": [
+        "SCRUM-481"
+      ]
+    },
+    {
+      "key": "BST-149",
+      "type": "Test Case",
+      "title": "One account cannot read another account profile",
+      "status": "Pass",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69",
+        "uc71"
+      ],
+      "links": [
+        "SCRUM-75"
+      ]
+    },
+    {
+      "key": "BST-150",
+      "type": "Test Case",
+      "title": "Export proxy rejects a cookie session for the wrong verified user",
+      "status": "Pass",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-527"
+      ]
+    },
+    {
+      "key": "BST-151",
+      "type": "Test Case",
+      "title": "Export proxy rejects arbitrary backend targets",
+      "status": "Pass",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-527"
+      ]
+    },
+    {
+      "key": "BST-152",
+      "type": "Test Case",
+      "title": "Export proxy rejects foreign-site download requests",
+      "status": "Pass",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-527"
+      ]
+    },
+    {
+      "key": "BST-153",
+      "type": "Test Case",
+      "title": "Export proxy rejects redirects and wrong file content",
+      "status": "Pass",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-527"
+      ]
+    },
+    {
+      "key": "BST-154",
+      "type": "Test Case",
+      "title": "Export proxy keeps denied responses out of downloaded files",
+      "status": "Pass",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "links": [
+        "SCRUM-527"
+      ]
+    },
+    {
+      "key": "BST-155",
+      "type": "Test Case",
+      "title": "NLP rejects empty and overlength coaching prompts",
+      "status": "Pass",
+      "parent": "BST-137",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "links": [
+        "SCRUM-502"
+      ]
+    }
+  ]
+}

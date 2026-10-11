@@ -1,0 +1,201 @@
+2026-10-11T21:00:42.577Z
+Analyst sign-in with next=/matchup redirected to Data Explorer.
+Browser tab: 11, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/data-explorer".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/data-explorer
+	71 container
+		72 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		73 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		74 container
+			75 heading Data Explorer, Value: 1
+				76 text Data Explorer
+			77 text Preview the 
+			78 text cleaned, team-level dataset
+			79 text  used by the recommenders. This page contains
+			80 text no predictions
+			81 text —only filterable data you can export for analysis.
+			82 button Export CSV
+			83 link Description: Next: Baseline Matchup, Value: nbaplayranker-seven.vercel.app/matchup
+			84 text Season 
+			85 text 2024-25
+			86 text  • 
+			87 text TOR (Toronto Raptors)
+			88 text  • Side
+			89 text offense
+			90 text  • Showing 
+			91 text 1
+			92 text  / 
+			93 text 1
+			94 text rows
+			95 button Reset UI, Help: Resets UI filters (does not change backend behavior)
+		96 container
+			97 heading Filters, Value: 2
+				98 text Filters
+			99 text Filter the dataset preview. Export uses the same filters (with a higher row cap). Search (UI)
+			100 text field (settable) Search (UI)
+			101 text Sort
+			102 pop up button (collapsed, settable) Sort, Value: PPP, Secondary Actions: Expand
+				103 menu
+					104 (disabled) Play Type
+					105 (disabled) Side
+					106 (disabled) Possessions
+					107 (disabled) Usage %
+					108 (disabled) PPP
+					109 (disabled) eFG%
+					110 (disabled) TOV%
+			111 button Desc ↓, Help: Toggle sort direction (UI only)
+			112 container
+				113 text Season
+				114 pop up button (collapsed, settable) Season, Value: 2024-25, Secondary Actions: Expand
+					115 menu
+						116 2019-20
+						117 2020-21
+						118 2021-22
+						119 2022-23
+						120 2023-24
+						121 (selected) 2024-25
+			122 container
+				123 text Team (optional)
+				124 pop up button (collapsed, settable) Team (optional), Value: TOR, Secondary Actions: Expand
+					125 menu
+						126 All teams
+						127 ATL
+						128 BKN
+						129 BOS
+						130 CHA
+						131 CHI
+						132 CLE
+						133 DAL
+						134 DEN
+						135 DET
+						136 GSW
+						137 HOU
+						138 IND
+						139 LAC
+						140 LAL
+						141 MEM
+						142 MIA
+						143 MIL
+						144 MIN
+						145 NOP
+						146 NYK
+						147 OKC
+						148 ORL
+						149 PHI
+						150 PHX
+						151 POR
+						152 SAC
+						153 SAS
+						154 (selected) TOR
+						155 UTA
+						156 WAS
+			157 container
+				158 text Side
+				159 pop up button (collapsed, settable) Side, Value: offense, Secondary Actions: Expand
+					160 menu
+						161 (selected) offense
+						162 defense
+			163 container
+				164 text Play Type (optional)
+				165 pop up button (collapsed, settable) Play Type (optional), Value: Spotup, Secondary Actions: Expand
+					166 menu
+						167 All play types
+						168 Cut
+						169 Handoff
+						170 Isolation
+						171 Misc
+						172 OffRebound
+						173 OffScreen
+						174 PRBallHandler
+						175 PRRollMan
+						176 Postup
+						177 (selected) Spotup
+						178 Transition
+			179 container
+				180 text Min possessions
+				181 stepper (settable, integer) Min possessions, Value: 0
+			182 container
+				183 text Rows to show
+				184 stepper (settable, integer) Rows to show, Value: 200
+			185 text Visible rows 1 After UI search + sort. Total possessions 1828 Sum over visible rows. Avg PPP 1.032
+			186 text Typical range ~0.7–1.3 PPP. PPP range 1.032  – 1.032 Min/Max within visible rows.
+		187 container
+			188 heading Preview table, Value: 2
+				189 text Preview table
+			190 text Committee-friendly subset of columns. (UI search/sort does not change the exported CSV.) Export rows cap:  1000
+			191 button Export CSV
+			192 table
+				193 row
+					194 cell
+						195 text #
+					196 cell Click to sort (UI)
+						197 text Play Type
+					198 cell Click to sort (UI)
+						199 text Side
+					200 cell Click to sort (UI)
+						201 text Possessions
+					202 cell Click to sort (UI)
+						203 text Usage %
+					204 cell Click to sort (UI)
+						205 text PPP ↓
+					206 cell Click to sort (UI)
+						207 text eFG%
+					208 cell Click to sort (UI)
+						209 text TOV%
+				210 row
+					211 cell
+						212 text 1
+					213 cell
+						214 text Spotup
+					215 cell
+						216 text offense
+					217 cell
+						218 text 1828
+					219 cell 0.21462956440061054
+						220 text 21.5%
+					221 cell
+						222 text 1.032
+					223 cell 0.5313490153172866
+						224 text 53.1%
+					225 cell 0.049350656455142236
+						226 text 4.9%
+		227 container
+			228 heading Pipeline summary (what this data represents), Value: 2
+				229 text Pipeline summary (what this data represents)
+			230 text Evidence for the defense: cleaning + aggregation pipeline (player rows → team rows) with export parity.
+			231 button Hide details
+			232 text No predictions on this page Filter + export only Team-level aggregation Synergy play-type snapshot (player rows) aggregated into team-level play-type tables (offense/defense). Explainability
+			233 content list
+				234 container
+					235 AXListMarker • 
+					236 text Map Synergy TYPE_GROUPING to SIDE = offense/defense.
+				237 container
+					238 AXListMarker • 
+					239 text Group player rows into team-level rows by (SEASON, TEAM, PLAY_TYPE, SIDE).
+				240 container
+					241 AXListMarker • 
+					242 text Compute possession-weighted averages for efficiency stats (PPP, eFG%, TOV%, etc.).
+				243 container
+					244 AXListMarker • 
+					245 text Compute RELIABILITY_WEIGHT from log1p(POSS) to reduce noise from small samples (used for shrinkage).
+				246 container
+					247 AXListMarker • 
+					248 text Build league baselines per (SEASON, PLAY_TYPE, SIDE) for shrinkage anchors.
+			249 text API call:
+			250 text https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/data/team-playtypes?season=2024-25&team=TOR&side=offense&play_type=Spotup&limit=200
+		57 container
+			58 text Built with  Next.js  (UI) +  FastAPI  (services).
+		59 container
+			60 text Tip for reviewers: start at 
+			61 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			62 text  to see the dataset, then compare 
+			63 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			64 text  vs 
+			65 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			66 text , and verify evidence in 
+			67 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			68 text  and
+			69 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			70 text .
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/data-explorer

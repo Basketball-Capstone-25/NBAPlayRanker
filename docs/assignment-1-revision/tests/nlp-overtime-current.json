@@ -1,0 +1,101 @@
+{
+  "recorded_at_utc": "2026-10-11T20:38:36.249185+00:00",
+  "url": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/nlp/parse",
+  "request": {
+    "text": "Overtime, down 2 with 1:00 left.",
+    "defaults": {
+      "period": 4,
+      "time_remaining": 28,
+      "margin": -5
+    }
+  },
+  "status": 200,
+  "response": {
+    "context": {
+      "period": 5,
+      "time_remaining": 60.0,
+      "margin": -2.0,
+      "need": null,
+      "needs": [],
+      "defense_style": null,
+      "pace": null,
+      "special_situations": [],
+      "preferred_play_families": [],
+      "text_normalized": "overtime, down 2 with 1:00 left.",
+      "raw_text": "Overtime, down 2 with 1:00 left.",
+      "parser_version": "3.0.0",
+      "nlp_pipeline_version": "1.0.0",
+      "nlp_token_count": 8,
+      "after_timeout": false,
+      "slob": false,
+      "blob": false,
+      "advance_ball": false,
+      "late_clock": false,
+      "need3": false,
+      "protect_lead": false,
+      "end_of_quarter": false,
+      "vs_switching": false,
+      "must_stop": false,
+      "quick2": false,
+      "two_for_one": false,
+      "hold_for_last": false,
+      "foul_game": false,
+      "no_three": false,
+      "must_score": false,
+      "safe": false,
+      "offense_bias": 0.75,
+      "defense_bias": 0.25,
+      "intent_tags": [],
+      "context_brief": "OT \u2022 1:00 left \u2022 down 2",
+      "objective_summary": "Priority is selecting the highest-efficiency option for the current game state.",
+      "warnings": [
+        "Parsed overtime as period 5. Make sure your UI and ranking flow preserve OT instead of forcing quarter 4."
+      ]
+    },
+    "confidence": 0.98,
+    "clarifying_questions": [
+      "What is the defensive look or action family? (e.g., switching, drop, zone, ball-screen, handoff)"
+    ],
+    "matches": {
+      "period": "overtime",
+      "time_remaining": "1:00",
+      "margin": "down 2"
+    },
+    "warnings": [
+      "Parsed overtime as period 5. Make sure your UI and ranking flow preserve OT instead of forcing quarter 4."
+    ],
+    "context_ml_params": {
+      "period": 5,
+      "margin": -2.0,
+      "time_remaining": 60.0,
+      "needs": [],
+      "after_timeout": false,
+      "slob": false,
+      "blob": false,
+      "advance_ball": false,
+      "late_clock": false,
+      "need3": false,
+      "protect_lead": false,
+      "end_of_quarter": false,
+      "vs_switching": false,
+      "must_stop": false,
+      "quick2": false,
+      "two_for_one": false,
+      "hold_for_last": false,
+      "foul_game": false,
+      "no_three": false,
+      "must_score": false,
+      "safe": false,
+      "special_situations": [],
+      "preferred_play_families": [],
+      "intent_tags": [],
+      "offense_bias": 0.75,
+      "defense_bias": 0.25,
+      "context_brief": "OT \u2022 1:00 left \u2022 down 2",
+      "objective_summary": "Priority is selecting the highest-efficiency option for the current game state.",
+      "nlp_pipeline_version": "1.0.0"
+    },
+    "parser_version": "3.0.0",
+    "raw_text": "Overtime, down 2 with 1:00 left."
+  }
+}

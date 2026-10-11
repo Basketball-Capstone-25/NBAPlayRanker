@@ -1,0 +1,58 @@
+{
+  "source": "Actual file saved after Export CSV browser click",
+  "modified_utc": "2026-10-11T21:01:13.515356+00:00",
+  "file": "team_playtypes_2023-24_TOR_offense.csv",
+  "bytes": 3158,
+  "sha256": "0fdda2d05c849bb9db00e80d929340053f0b5c77859cde7c506024f87289c55a",
+  "rows": 11,
+  "visible_data_columns_compared": 7,
+  "every_visible_value_matches": true,
+  "all_rows_match_season_team_side": true,
+  "checks": [
+    {
+      "play_type": "Cut",
+      "match": true
+    },
+    {
+      "play_type": "OffRebound",
+      "match": true
+    },
+    {
+      "play_type": "Transition",
+      "match": true
+    },
+    {
+      "play_type": "PRRollMan",
+      "match": true
+    },
+    {
+      "play_type": "Spotup",
+      "match": true
+    },
+    {
+      "play_type": "Postup",
+      "match": true
+    },
+    {
+      "play_type": "OffScreen",
+      "match": true
+    },
+    {
+      "play_type": "Handoff",
+      "match": true
+    },
+    {
+      "play_type": "Isolation",
+      "match": true
+    },
+    {
+      "play_type": "PRBallHandler",
+      "match": true
+    },
+    {
+      "play_type": "Misc",
+      "match": true
+    }
+  ],
+  "limitation": "CSV includes additional raw fields beyond the seven fields displayed by the table; no model prediction fields appear."
+}

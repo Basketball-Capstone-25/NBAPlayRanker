@@ -1,0 +1,225 @@
+{
+  "captured_at_utc": "2026-10-11T21:22:27.977Z",
+  "cases": [
+    {
+      "key": "BST-97",
+      "execution_result": "Pass",
+      "jira_status": "Pass",
+      "links": []
+    },
+    {
+      "key": "BST-98",
+      "execution_result": "Pass",
+      "jira_status": "Pass",
+      "links": []
+    },
+    {
+      "key": "BST-99",
+      "execution_result": "Fail",
+      "jira_status": "Fail",
+      "links": [
+        "SCRUM-546"
+      ]
+    },
+    {
+      "key": "BST-105",
+      "execution_result": "Pass",
+      "jira_status": "Pass",
+      "links": []
+    },
+    {
+      "key": "BST-106",
+      "execution_result": "Pass",
+      "jira_status": "Pass",
+      "links": []
+    },
+    {
+      "key": "BST-107",
+      "execution_result": "Fail",
+      "jira_status": "Fail",
+      "links": [
+        "SCRUM-547"
+      ]
+    },
+    {
+      "key": "BST-109",
+      "execution_result": "Pass",
+      "jira_status": "Pass",
+      "links": []
+    },
+    {
+      "key": "BST-110",
+      "execution_result": "Pass",
+      "jira_status": "Pass",
+      "links": []
+    },
+    {
+      "key": "BST-111",
+      "execution_result": "Verify",
+      "jira_status": "Verify",
+      "links": [
+        "SCRUM-550"
+      ]
+    },
+    {
+      "key": "BST-113",
+      "execution_result": "Fail",
+      "jira_status": "Fail",
+      "links": [
+        "SCRUM-547"
+      ]
+    },
+    {
+      "key": "BST-115",
+      "execution_result": "Pass",
+      "jira_status": "Pass",
+      "links": [
+        "SCRUM-538"
+      ]
+    },
+    {
+      "key": "BST-116",
+      "execution_result": "Fail",
+      "jira_status": "Fail",
+      "links": [
+        "SCRUM-548"
+      ]
+    },
+    {
+      "key": "BST-117",
+      "execution_result": "Fail",
+      "jira_status": "Fail",
+      "links": [
+        "SCRUM-538",
+        "SCRUM-549"
+      ]
+    },
+    {
+      "key": "BST-118",
+      "execution_result": "Blocked",
+      "jira_status": "Verify",
+      "links": [
+        "SCRUM-538",
+        "SCRUM-549"
+      ]
+    },
+    {
+      "key": "BST-119",
+      "execution_result": "Blocked",
+      "jira_status": "Verify",
+      "links": [
+        "SCRUM-538",
+        "SCRUM-549"
+      ]
+    }
+  ],
+  "suite_rollups": [
+    {
+      "key": "BST-27",
+      "status": "Pass",
+      "counts": {
+        "Pass": 10
+      }
+    },
+    {
+      "key": "BST-28",
+      "status": "Pass",
+      "counts": {
+        "Pass": 14
+      }
+    },
+    {
+      "key": "BST-29",
+      "status": "Pass",
+      "counts": {
+        "Pass": 9
+      }
+    },
+    {
+      "key": "BST-30",
+      "status": "Pass",
+      "counts": {
+        "Pass": 9
+      }
+    },
+    {
+      "key": "BST-31",
+      "status": "Pass",
+      "counts": {
+        "Pass": 22
+      }
+    },
+    {
+      "key": "BST-96",
+      "status": "Testing In Progress",
+      "counts": {
+        "Pass": 7,
+        "Fail": 1
+      }
+    },
+    {
+      "key": "BST-104",
+      "status": "Testing In Progress",
+      "counts": {
+        "Pass": 2,
+        "Fail": 1
+      }
+    },
+    {
+      "key": "BST-108",
+      "status": "Testing In Progress",
+      "counts": {
+        "Pass": 3,
+        "Verify": 1,
+        "Fail": 1
+      }
+    },
+    {
+      "key": "BST-114",
+      "status": "Testing In Progress",
+      "counts": {
+        "Pass": 1,
+        "Fail": 2,
+        "Verify": 2
+      }
+    },
+    {
+      "key": "BST-130",
+      "status": "Pass",
+      "counts": {
+        "Pass": 1
+      }
+    },
+    {
+      "key": "BST-132",
+      "status": "Pass",
+      "counts": {
+        "Pass": 1
+      }
+    },
+    {
+      "key": "BST-134",
+      "status": "Pass",
+      "counts": {
+        "Pass": 1
+      }
+    },
+    {
+      "key": "BST-137",
+      "status": "Testing In Progress",
+      "counts": {
+        "Fail": 9,
+        "Verify": 1,
+        "Pass": 8
+      }
+    }
+  ],
+  "refreshed_nlp_cases": [
+    "BST-100",
+    "BST-101",
+    "BST-102",
+    "BST-103"
+  ],
+  "passed": true,
+  "problems": []
+}

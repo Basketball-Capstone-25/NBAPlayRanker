@@ -1,0 +1,46 @@
+[
+  {
+    "key": "BST-100",
+    "title": "NLP parses a trailing fourth-quarter context",
+    "test": "test_fully_parsed_prompt_reports_no_defaulted_fields",
+    "inputs": "POST /nlp/parse with \"Down 5 with 2:00 left in the 4th\".",
+    "expected": "The parser returns margin -5, period 4 and 120 seconds, with no defaulted or rejected fields.",
+    "comment": "The parser read the prompt as down five in Q4 with 120 seconds left. No fields were defaulted or rejected.",
+    "description": "Use-case coverage: UC45, UC50.\n\nScope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.\n\nSteps:\n1. Run the pinned backend test environment.\n2. POST /nlp/parse with \"Down 5 with 2:00 left in the 4th\".\n3. Inspect test_fully_parsed_prompt_reports_no_defaulted_fields and compare the result.\n\nExpected result: The parser returns margin -5, period 4 and 120 seconds, with no defaulted or rejected fields.\n\nEvidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "matched_assertions": 1,
+    "result": "Pass"
+  },
+  {
+    "key": "BST-101",
+    "title": "NLP parses a leading score margin",
+    "test": "test_margin_extraction_accuracy[leading by 3]",
+    "inputs": "POST /nlp/parse with \"leading by 3\".",
+    "expected": "HTTP 200 is returned and context.margin is 3.",
+    "comment": "The leading-by-three prompt returned a margin of +3.",
+    "description": "Use-case coverage: UC45, UC50.\n\nScope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.\n\nSteps:\n1. Run the pinned backend test environment.\n2. POST /nlp/parse with \"leading by 3\".\n3. Inspect test_margin_extraction_accuracy[leading by 3] and compare the result.\n\nExpected result: HTTP 200 is returned and context.margin is 3.\n\nEvidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "matched_assertions": 1,
+    "result": "Pass"
+  },
+  {
+    "key": "BST-102",
+    "title": "Unparseable NLP text produces neutral context defaults",
+    "test": "test_unparseable_prompt_passes_neutral_defaults_to_recommender",
+    "inputs": "POST /nlp/parse with \"Just win the game\".",
+    "expected": "HTTP 200 contains period 1, margin 0 and 720 seconds in context_ml_params. All three fields are marked defaulted, with none rejected. This checks parser output; it does not call the ranker.",
+    "comment": "The unparseable prompt returned neutral defaults: Q1, a tied score and 720 seconds. All three fields were marked as defaults; this test stops at the parser output.",
+    "description": "Use-case coverage: UC45, UC50.\n\nScope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.\n\nSteps:\n1. Run the pinned backend test environment.\n2. POST /nlp/parse with \"Just win the game\".\n3. Inspect test_unparseable_prompt_passes_neutral_defaults_to_recommender and compare the result.\n\nExpected result: HTTP 200 contains period 1, margin 0 and 720 seconds in context_ml_params. All three fields are marked defaulted, with none rejected. This checks parser output; it does not call the ranker.\n\nEvidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "matched_assertions": 1,
+    "result": "Pass"
+  },
+  {
+    "key": "BST-103",
+    "title": "NLP rejects out-of-range values before ranking",
+    "test": "test_out_of_range_values_are_rejected_before_ranking",
+    "inputs": "Pass period 9, margin 250, time -30 and NaN margin to the context resolver in separate fixtures.",
+    "expected": "Each invalid field is both rejected and defaulted to its neutral value.",
+    "comment": "Period nine, margin 250, negative time and NaN were each rejected and replaced with the documented neutral value.",
+    "description": "Use-case coverage: UC45, UC50.\n\nScope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.\n\nSteps:\n1. Run the pinned backend test environment.\n2. Pass period 9, margin 250, time -30 and NaN margin to the context resolver in separate fixtures.\n3. Inspect test_out_of_range_values_are_rejected_before_ranking and compare the result.\n\nExpected result: Each invalid field is both rejected and defaulted to its neutral value.\n\nEvidence: docs/assignment-1-revision/tests/backend-junit.xml.",
+    "matched_assertions": 4,
+    "result": "Pass"
+  }
+]

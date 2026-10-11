@@ -1,0 +1,5001 @@
+SEASON_STR,TEAM_ABBR,OPP_ABBR,SHOT_TYPE,ZONE,IS_MAKE,POINTS
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Pullup,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Jump Shot,rim,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Layup,paint,0,0
+2025-26,TOR,TOR,Dunk,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Fadeaway,mid,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Hook Shot,paint,1,2
+2025-26,TOR,WSH,Pullup,mid,0,0
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Fadeaway,paint,0,0
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Pullup,mid,0,0
+2025-26,TOR,WSH,Fadeaway,paint,0,0
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Pullup,arc3,0,0
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Fadeaway,mid,1,2
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Bank Shot,paint,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Pullup,mid,0,0
+2025-26,TOR,WSH,Dunk,rim,1,2
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Floater,paint,0,0
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Dunk,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Bank Shot,mid,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Floater,paint,1,2
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Pullup,mid,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Fadeaway,mid,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Jump Shot,paint,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Bank Shot,paint,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Layup,paint,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Fadeaway,mid,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Tip Shot,rim,0,0
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Fadeaway,paint,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Pullup,arc3,1,3
+2025-26,TOR,WSH,Hook Shot,paint,1,2
+2025-26,TOR,WSH,Floater,paint,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Floater,mid,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Layup,paint,1,2
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Pullup,arc3,0,0
+2025-26,TOR,WSH,Hook Shot,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Bank Shot,mid,1,2
+2025-26,TOR,WSH,Bank Shot,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,paint,1,2
+2025-26,TOR,WSH,Dunk,rim,1,2
+2025-26,TOR,WSH,Floater,paint,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,paint,1,2
+2025-26,TOR,WSH,Jump Shot,mid,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Jump Shot,mid,1,2
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Jump Shot,paint,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,paint,0,0
+2025-26,TOR,WSH,Jump Shot,mid,1,2
+2025-26,TOR,WSH,Fadeaway,mid,1,2
+2025-26,TOR,WSH,Pullup,mid,1,2
+2025-26,TOR,WSH,Pullup,arc3,1,3
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,mid,0,0
+2025-26,TOR,WSH,Floater,paint,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Hook Shot,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,mid,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Fadeaway,mid,0,0
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Dunk,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Dunk,rim,1,2
+2025-26,TOR,WSH,Dunk,rim,1,2
+2025-26,TOR,WSH,Layup,rim,0,0
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Layup,paint,0,0
+2025-26,TOR,WSH,Pullup,mid,0,0
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Floater,paint,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Hook Shot,paint,0,0
+2025-26,TOR,WSH,Dunk,rim,1,2
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Layup,paint,0,0
+2025-26,TOR,WSH,Jump Shot,mid,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,1,3
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Layup,rim,1,2
+2025-26,TOR,WSH,Fadeaway,mid,0,0
+2025-26,TOR,WSH,Fadeaway,mid,1,2
+2025-26,TOR,WSH,Jump Shot,arc3,0,0
+2025-26,TOR,WSH,Bank Shot,arc3,0,0
+2025-26,TOR,WSH,Dunk,rim,1,2
+2025-26,TOR,WSH,Hook Shot,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,mid,1,2
+2025-26,TOR,IND,Jump Shot,paint,1,2
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Hook Shot,paint,0,0
+2025-26,TOR,IND,Pullup,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Fadeaway,paint,0,0
+2025-26,TOR,IND,Floater,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,mid,0,0
+2025-26,TOR,IND,Floater,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,mid,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Fadeaway,mid,0,0
+2025-26,TOR,IND,Fadeaway,paint,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Fadeaway,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Dunk,rim,0,0
+2025-26,TOR,IND,Pullup,arc3,0,0
+2025-26,TOR,IND,Bank Shot,rim,1,2
+2025-26,TOR,IND,Floater,paint,1,2
+2025-26,TOR,IND,Floater,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Jump Shot,corner3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Floater,paint,1,2
+2025-26,TOR,IND,Fadeaway,paint,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Pullup,arc3,0,0
+2025-26,TOR,IND,Jump Shot,mid,1,2
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,paint,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Hook Shot,paint,0,0
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Bank Shot,mid,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Tip Shot,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Fadeaway,paint,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Floater,mid,1,2
+2025-26,TOR,IND,Floater,paint,0,0
+2025-26,TOR,IND,Jump Shot,paint,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Pullup,arc3,0,0
+2025-26,TOR,IND,Floater,paint,0,0
+2025-26,TOR,IND,Jump Shot,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Hook Shot,paint,0,0
+2025-26,TOR,IND,Pullup,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Bank Shot,paint,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Fadeaway,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Bank Shot,paint,1,2
+2025-26,TOR,IND,Jump Shot,paint,0,0
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Jump Shot,mid,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Jump Shot,mid,1,2
+2025-26,TOR,IND,Layup,paint,0,0
+2025-26,TOR,IND,Bank Shot,mid,1,2
+2025-26,TOR,IND,Jump Shot,paint,0,0
+2025-26,TOR,IND,Bank Shot,arc3,0,0
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Fadeaway,paint,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Bank Shot,paint,0,0
+2025-26,TOR,IND,Floater,paint,1,2
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Jump Shot,mid,1,2
+2025-26,TOR,IND,Dunk,rim,0,0
+2025-26,TOR,IND,Layup,paint,0,0
+2025-26,TOR,IND,Bank Shot,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Pullup,arc3,1,3
+2025-26,TOR,IND,Jump Shot,arc3,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Fadeaway,mid,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Floater,paint,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Fadeaway,paint,1,2
+2025-26,TOR,IND,Floater,paint,0,0
+2025-26,TOR,IND,Jump Shot,mid,0,0
+2025-26,TOR,IND,Pullup,arc3,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Pullup,arc3,1,3
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Jump Shot,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Floater,rim,1,2
+2025-26,TOR,NY,Bank Shot,paint,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Tip Shot,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Fadeaway,mid,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Tip Shot,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,mid,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,TOR,Jump Shot,mid,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Pullup,arc3,1,3
+2025-26,TOR,NY,Jump Shot,mid,0,0
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Pullup,arc3,1,3
+2025-26,TOR,NY,Hook Shot,paint,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Jump Shot,mid,0,0
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Floater,paint,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Fadeaway,mid,1,2
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Floater,paint,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Bank Shot,paint,0,0
+2025-26,TOR,NY,Hook Shot,rim,0,0
+2025-26,TOR,NY,Layup,paint,1,2
+2025-26,TOR,NY,Pullup,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,mid,0,0
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Pullup,arc3,0,0
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Fadeaway,paint,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Floater,paint,1,2
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Fadeaway,mid,1,2
+2025-26,TOR,NY,Bank Shot,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Tip Shot,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Tip Shot,rim,0,0
+2025-26,TOR,NY,Fadeaway,paint,0,0
+2025-26,TOR,NY,Floater,rim,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Pullup,arc3,1,3
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Bank Shot,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Fadeaway,mid,0,0
+2025-26,TOR,NY,Pullup,mid,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Dunk,rim,0,0
+2025-26,TOR,NY,Layup,paint,1,2
+2025-26,TOR,NY,Floater,paint,1,2
+2025-26,TOR,NY,Pullup,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Fadeaway,paint,0,0
+2025-26,TOR,NY,Jump Shot,mid,1,2
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,mid,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,paint,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Pullup,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Floater,mid,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Pullup,mid,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,paint,0,0
+2025-26,TOR,NY,Pullup,arc3,1,3
+2025-26,TOR,NY,Jump Shot,mid,0,0
+2025-26,TOR,NY,Fadeaway,mid,1,2
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Pullup,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Floater,paint,1,2
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Fadeaway,mid,0,0
+2025-26,TOR,NY,Layup,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Fadeaway,paint,1,2
+2025-26,TOR,NY,Layup,paint,0,0
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Pullup,mid,0,0
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Pullup,mid,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Floater,paint,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Pullup,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,TOR,Jump Shot,mid,0,0
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Bank Shot,mid,0,0
+2025-26,TOR,MIL,Tip Shot,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Tip Shot,rim,1,2
+2025-26,TOR,MIL,Floater,paint,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Floater,rim,1,2
+2025-26,TOR,MIL,Pullup,arc3,1,3
+2025-26,TOR,MIL,Floater,paint,0,0
+2025-26,TOR,MIL,Pullup,mid,0,0
+2025-26,TOR,MIL,Floater,mid,0,0
+2025-26,TOR,MIL,Fadeaway,paint,1,2
+2025-26,TOR,MIL,Pullup,paint,0,0
+2025-26,TOR,MIL,Floater,mid,0,0
+2025-26,TOR,MIL,Fadeaway,mid,1,2
+2025-26,TOR,MIL,Floater,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Bank Shot,rim,1,2
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Fadeaway,paint,1,2
+2025-26,TOR,MIL,Bank Shot,paint,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Fadeaway,paint,0,0
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,mid,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Floater,paint,1,2
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Hook Shot,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Fadeaway,mid,0,0
+2025-26,TOR,MIL,Floater,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Pullup,mid,0,0
+2025-26,TOR,MIL,Jump Shot,paint,1,2
+2025-26,TOR,MIL,Tip Shot,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Pullup,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Pullup,arc3,1,3
+2025-26,TOR,MIL,Bank Shot,paint,1,2
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Tip Shot,rim,0,0
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Tip Shot,rim,1,2
+2025-26,TOR,MIL,Jump Shot,mid,0,0
+2025-26,TOR,MIL,Tip Shot,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,mid,0,0
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Pullup,arc3,1,3
+2025-26,TOR,MIL,Fadeaway,mid,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Tip Shot,rim,0,0
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Layup,mid,0,0
+2025-26,TOR,MIL,Layup,paint,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Layup,paint,1,2
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Tip Shot,rim,0,0
+2025-26,TOR,MIL,Pullup,arc3,1,3
+2025-26,TOR,MIL,Pullup,mid,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Floater,paint,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Tip Shot,rim,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,paint,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Pullup,mid,1,2
+2025-26,TOR,MIL,Floater,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Floater,paint,1,2
+2025-26,TOR,MIL,Jump Shot,paint,1,2
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Hook Shot,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,paint,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Floater,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Floater,paint,1,2
+2025-26,TOR,HOU,Pullup,arc3,1,3
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Layup,paint,1,2
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Fadeaway,paint,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Pullup,mid,1,2
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,mid,1,2
+2025-26,TOR,TOR,Bank Shot,paint,0,0
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,mid,1,2
+2025-26,TOR,HOU,Tip Shot,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Fadeaway,paint,1,2
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,paint,0,0
+2025-26,TOR,HOU,Fadeaway,mid,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Pullup,arc3,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,mid,0,0
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Pullup,paint,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Pullup,mid,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Pullup,mid,0,0
+2025-26,TOR,HOU,Floater,paint,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,mid,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Hook Shot,paint,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Pullup,mid,0,0
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Jump Shot,mid,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Bank Shot,paint,1,2
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Fadeaway,paint,1,2
+2025-26,TOR,HOU,Pullup,mid,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Tip Shot,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Hook Shot,rim,0,0
+2025-26,TOR,HOU,Floater,paint,0,0
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Hook Shot,paint,1,2
+2025-26,TOR,HOU,Jump Shot,mid,0,0
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Pullup,arc3,1,3
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Floater,paint,0,0
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Pullup,mid,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Pullup,paint,0,0
+2025-26,TOR,HOU,Fadeaway,mid,1,2
+2025-26,TOR,HOU,Pullup,paint,0,0
+2025-26,TOR,HOU,Floater,paint,1,2
+2025-26,TOR,HOU,Pullup,mid,1,2
+2025-26,TOR,HOU,Pullup,mid,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Fadeaway,mid,0,0
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Layup,paint,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Floater,paint,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Tip Shot,rim,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Pullup,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,mid,0,0
+2025-26,TOR,HOU,Layup,paint,1,2
+2025-26,TOR,HOU,Pullup,mid,0,0
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Hook Shot,paint,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Pullup,paint,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Fadeaway,mid,0,0
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Floater,paint,1,2
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Pullup,arc3,0,0
+2025-26,TOR,HOU,Pullup,arc3,0,0
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Fadeaway,mid,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Pullup,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Pullup,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Tip Shot,rim,1,2
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Layup,rim,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Floater,mid,0,0
+2025-26,TOR,HOU,Pullup,mid,0,0
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Floater,mid,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Layup,paint,0,0
+2025-26,TOR,HOU,Dunk,rim,1,2
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Pullup,mid,0,0
+2025-26,TOR,HOU,Pullup,mid,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Layup,rim,1,2
+2025-26,TOR,HOU,Pullup,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,mid,1,2
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,HOU,Jump Shot,arc3,0,0
+2025-26,TOR,HOU,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Layup,rim,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Layup,rim,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Tip Shot,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Hook Shot,paint,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,paint,1,2
+2025-26,TOR,TOR,Hook Shot,mid,0,0
+2025-26,TOR,MEM,Tip Shot,rim,1,2
+2025-26,TOR,MEM,Pullup,arc3,0,0
+2025-26,TOR,MEM,Dunk,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Tip Shot,rim,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Layup,rim,0,0
+2025-26,TOR,MEM,Dunk,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Floater,mid,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Pullup,arc3,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Floater,mid,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,mid,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Hook Shot,paint,1,2
+2025-26,TOR,MEM,Pullup,mid,1,2
+2025-26,TOR,MEM,Fadeaway,mid,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Floater,paint,0,0
+2025-26,TOR,MEM,Dunk,rim,0,0
+2025-26,TOR,MEM,Jump Shot,mid,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Hook Shot,paint,0,0
+2025-26,TOR,MEM,Floater,paint,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Pullup,mid,0,0
+2025-26,TOR,MEM,Floater,paint,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Dunk,rim,1,2
+2025-26,TOR,MEM,Floater,paint,1,2
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,paint,1,2
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Pullup,mid,0,0
+2025-26,TOR,MEM,Layup,paint,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Bank Shot,paint,1,2
+2025-26,TOR,MEM,Pullup,mid,0,0
+2025-26,TOR,MEM,Tip Shot,rim,1,2
+2025-26,TOR,MEM,Layup,paint,1,2
+2025-26,TOR,MEM,Floater,paint,1,2
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Pullup,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Pullup,mid,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Floater,paint,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,mid,0,0
+2025-26,TOR,MEM,Bank Shot,mid,1,2
+2025-26,TOR,MEM,Layup,rim,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Pullup,arc3,0,0
+2025-26,TOR,MEM,Dunk,rim,1,2
+2025-26,TOR,MEM,Jump Shot,mid,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Floater,mid,0,0
+2025-26,TOR,MEM,Bank Shot,paint,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Floater,paint,1,2
+2025-26,TOR,MEM,Pullup,mid,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Pullup,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Fadeaway,mid,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Floater,paint,0,0
+2025-26,TOR,MEM,Layup,mid,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Dunk,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Pullup,mid,1,2
+2025-26,TOR,MEM,Pullup,mid,0,0
+2025-26,TOR,MEM,Jump Shot,mid,0,0
+2025-26,TOR,MEM,Pullup,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Fadeaway,mid,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Layup,rim,0,0
+2025-26,TOR,MEM,Jump Shot,rim,1,2
+2025-26,TOR,MEM,Floater,paint,1,2
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Layup,paint,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Bank Shot,paint,1,2
+2025-26,TOR,MEM,Pullup,paint,0,0
+2025-26,TOR,MEM,Floater,mid,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Layup,rim,0,0
+2025-26,TOR,MEM,Dunk,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,paint,0,0
+2025-26,TOR,MEM,Jump Shot,paint,1,2
+2025-26,TOR,MEM,Bank Shot,paint,0,0
+2025-26,TOR,MEM,Hook Shot,paint,1,2
+2025-26,TOR,MEM,Fadeaway,paint,1,2
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Bank Shot,paint,1,2
+2025-26,TOR,MEM,Tip Shot,rim,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Layup,paint,0,0
+2025-26,TOR,MEM,Dunk,rim,1,2
+2025-26,TOR,MEM,Fadeaway,mid,1,2
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Jump Shot,mid,1,2
+2025-26,TOR,MEM,Dunk,rim,0,0
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Jump Shot,arc3,1,3
+2025-26,TOR,MEM,Layup,rim,1,2
+2025-26,TOR,MEM,Jump Shot,arc3,0,0
+2025-26,TOR,MEM,Hook Shot,paint,0,0
+2025-26,TOR,MIL,Jump Shot,mid,0,0
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Floater,mid,0,0
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Tip Shot,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Bank Shot,mid,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Layup,paint,1,2
+2025-26,TOR,MIL,Hook Shot,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Fadeaway,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Pullup,arc3,1,3
+2025-26,TOR,MIL,Tip Shot,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Floater,paint,0,0
+2025-26,TOR,MIL,Bank Shot,paint,1,2
+2025-26,TOR,MIL,Tip Shot,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Floater,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Pullup,arc3,1,3
+2025-26,TOR,MIL,Bank Shot,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,mid,0,0
+2025-26,TOR,MIL,Bank Shot,paint,1,2
+2025-26,TOR,MIL,Floater,paint,1,2
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Fadeaway,mid,0,0
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Pullup,arc3,1,2
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Pullup,paint,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Floater,paint,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Hook Shot,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Pullup,mid,1,2
+2025-26,TOR,MIL,Pullup,paint,1,2
+2025-26,TOR,MIL,Floater,mid,0,0
+2025-26,TOR,MIL,Floater,paint,1,2
+2025-26,TOR,MIL,Tip Shot,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Dunk,rim,1,2
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Jump Shot,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Bank Shot,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,mid,0,0
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Pullup,mid,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Pullup,mid,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Bank Shot,paint,1,2
+2025-26,TOR,MIL,Fadeaway,mid,1,2
+2025-26,TOR,MIL,Floater,paint,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Pullup,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Pullup,paint,0,0
+2025-26,TOR,MIL,Pullup,mid,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,mid,0,0
+2025-26,TOR,MIL,Jump Shot,mid,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Floater,paint,0,0
+2025-26,TOR,MIL,Jump Shot,paint,0,0
+2025-26,TOR,MIL,Fadeaway,mid,0,0
+2025-26,TOR,MIL,Bank Shot,arc3,0,0
+2025-26,TOR,MIL,Bank Shot,mid,0,0
+2025-26,TOR,MIL,Floater,mid,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Fadeaway,paint,0,0
+2025-26,TOR,MIL,Hook Shot,paint,0,0
+2025-26,TOR,MIL,Fadeaway,mid,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Hook Shot,paint,1,2
+2025-26,TOR,MIL,Hook Shot,paint,1,2
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Floater,paint,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,rim,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Floater,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Layup,paint,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Pullup,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,0,0
+2025-26,TOR,MIL,Floater,paint,0,0
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,MIL,Pullup,mid,0,0
+2025-26,TOR,MIL,Jump Shot,paint,0,0
+2025-26,TOR,MIL,Jump Shot,arc3,1,3
+2025-26,TOR,MIL,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Dunk,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Hook Shot,paint,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Pullup,mid,1,2
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Bank Shot,mid,1,2
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,paint,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Hook Shot,paint,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Fadeaway,mid,1,2
+2025-26,TOR,CHA,Jump Shot,rim,0,0
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Jump Shot,mid,1,2
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,paint,0,0
+2025-26,TOR,CHA,Layup,paint,1,2
+2025-26,TOR,CHA,Bank Shot,rim,1,2
+2025-26,TOR,CHA,Tip Shot,rim,1,2
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Jump Shot,paint,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,mid,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Pullup,mid,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,mid,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Hook Shot,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Pullup,mid,0,0
+2025-26,TOR,CHA,Pullup,arc3,1,3
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Dunk,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Fadeaway,mid,1,2
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Pullup,mid,0,0
+2025-26,TOR,CHA,Fadeaway,paint,1,2
+2025-26,TOR,CHA,Bank Shot,arc3,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Fadeaway,paint,1,2
+2025-26,TOR,CHA,Layup,paint,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Fadeaway,mid,0,0
+2025-26,TOR,CHA,Layup,paint,1,2
+2025-26,TOR,CHA,Pullup,mid,0,0
+2025-26,TOR,CHA,Fadeaway,mid,1,2
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Bank Shot,paint,1,2
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,mid,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Fadeaway,mid,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,paint,0,0
+2025-26,TOR,CHA,Dunk,rim,0,0
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,paint,1,2
+2025-26,TOR,CHA,Hook Shot,paint,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Floater,mid,1,2
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Fadeaway,mid,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,BKN,Pullup,mid,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Bank Shot,paint,1,2
+2025-26,TOR,BKN,Pullup,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,mid,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Jump Shot,mid,0,0
+2025-26,TOR,BKN,Pullup,mid,0,0
+2025-26,TOR,BKN,Layup,paint,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Layup,paint,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Pullup,mid,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Fadeaway,paint,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,mid,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Floater,rim,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Bank Shot,paint,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Layup,rim,0,0
+2025-26,TOR,BKN,Floater,mid,0,0
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Pullup,arc3,0,0
+2025-26,TOR,BKN,Pullup,arc3,0,0
+2025-26,TOR,BKN,Fadeaway,mid,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Fadeaway,mid,1,2
+2025-26,TOR,BKN,Pullup,paint,0,0
+2025-26,TOR,BKN,Fadeaway,arc3,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Layup,paint,0,0
+2025-26,TOR,BKN,Bank Shot,paint,0,0
+2025-26,TOR,BKN,Pullup,mid,0,0
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Fadeaway,paint,1,2
+2025-26,TOR,BKN,Pullup,mid,0,0
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Floater,paint,1,2
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Hook Shot,paint,1,2
+2025-26,TOR,BKN,Layup,paint,1,2
+2025-26,TOR,BKN,Bank Shot,arc3,1,3
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Jump Shot,paint,0,0
+2025-26,TOR,BKN,Pullup,arc3,0,0
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Fadeaway,mid,0,0
+2025-26,TOR,BKN,Layup,rim,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Fadeaway,mid,0,0
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Layup,paint,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Fadeaway,paint,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Layup,rim,0,0
+2025-26,TOR,BKN,Bank Shot,paint,0,0
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Fadeaway,arc3,1,3
+2025-26,TOR,BKN,Pullup,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,2
+2025-26,TOR,BKN,Pullup,mid,0,0
+2025-26,TOR,BKN,Layup,rim,0,0
+2025-26,TOR,BKN,Hook Shot,paint,1,2
+2025-26,TOR,BKN,Fadeaway,mid,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Fadeaway,paint,0,0
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Layup,rim,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Layup,rim,0,0
+2025-26,TOR,BKN,Pullup,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Fadeaway,paint,0,0
+2025-26,TOR,BKN,Floater,paint,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Tip Shot,rim,1,2
+2025-26,TOR,BKN,Layup,rim,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Layup,rim,0,0
+2025-26,TOR,BKN,Layup,rim,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Tip Shot,rim,1,2
+2025-26,TOR,BKN,Layup,paint,0,0
+2025-26,TOR,BKN,Fadeaway,mid,0,0
+2025-26,TOR,BKN,Jump Shot,mid,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Hook Shot,paint,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Fadeaway,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Jump Shot,paint,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,BKN,Pullup,mid,1,2
+2025-26,TOR,BKN,Jump Shot,arc3,1,3
+2025-26,TOR,BKN,Dunk,rim,1,2
+2025-26,TOR,BKN,Layup,rim,1,2
+2025-26,TOR,BKN,Pullup,mid,0,0
+2025-26,TOR,BKN,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,0,0
+2025-26,TOR,CLE,Dunk,rim,1,2
+2025-26,TOR,TOR,Pullup,arc3,0,0
+2025-26,TOR,CLE,Fadeaway,mid,1,2
+2025-26,TOR,CLE,Pullup,arc3,1,3
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Layup,rim,0,0
+2025-26,TOR,CLE,Fadeaway,mid,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Fadeaway,mid,1,2
+2025-26,TOR,CLE,Tip Shot,rim,1,2
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Fadeaway,mid,0,0
+2025-26,TOR,CLE,Dunk,rim,1,2
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,0,0
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Fadeaway,paint,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,TOR,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,paint,1,2
+2025-26,TOR,CLE,Layup,rim,0,0
+2025-26,TOR,CLE,Jump Shot,mid,0,0
+2025-26,TOR,CLE,Pullup,mid,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Fadeaway,mid,0,0
+2025-26,TOR,CLE,Layup,paint,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Pullup,arc3,1,3
+2025-26,TOR,CLE,Floater,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Tip Shot,rim,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Floater,mid,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Hook Shot,paint,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Floater,mid,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Dunk,rim,1,2
+2025-26,TOR,CLE,Dunk,rim,1,2
+2025-26,TOR,CLE,Fadeaway,mid,1,2
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Hook Shot,rim,1,2
+2025-26,TOR,CLE,Jump Shot,mid,0,0
+2025-26,TOR,CLE,Pullup,mid,0,0
+2025-26,TOR,CLE,Floater,paint,1,2
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,paint,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Pullup,mid,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Layup,paint,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Floater,mid,0,0
+2025-26,TOR,CLE,Pullup,mid,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Floater,paint,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Pullup,arc3,1,3
+2025-26,TOR,CLE,Pullup,mid,1,2
+2025-26,TOR,CLE,Fadeaway,mid,1,2
+2025-26,TOR,CLE,Jump Shot,mid,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,mid,0,0
+2025-26,TOR,CLE,Fadeaway,mid,1,2
+2025-26,TOR,CLE,Layup,rim,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Fadeaway,mid,0,0
+2025-26,TOR,CLE,Floater,paint,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Dunk,rim,1,2
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,mid,0,0
+2025-26,TOR,CLE,Jump Shot,mid,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Dunk,rim,1,2
+2025-26,TOR,CLE,Floater,paint,0,0
+2025-26,TOR,CLE,Pullup,mid,0,0
+2025-26,TOR,CLE,Jump Shot,mid,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Dunk,rim,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,mid,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Fadeaway,mid,1,2
+2025-26,TOR,CLE,Bank Shot,paint,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Floater,mid,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,mid,1,2
+2025-26,TOR,CLE,Dunk,rim,1,2
+2025-26,TOR,CLE,Fadeaway,mid,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Floater,paint,0,0
+2025-26,TOR,CLE,Pullup,mid,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Hook Shot,paint,1,2
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Floater,paint,1,2
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Floater,paint,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Pullup,mid,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Floater,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Layup,paint,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,1,3
+2025-26,TOR,CLE,Floater,paint,1,2
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Pullup,mid,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Floater,paint,1,2
+2025-26,TOR,CLE,Pullup,mid,0,0
+2025-26,TOR,CLE,Pullup,arc3,0,0
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Dunk,rim,1,2
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Layup,rim,1,2
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Fadeaway,mid,0,0
+2025-26,TOR,CLE,Jump Shot,arc3,0,0
+2025-26,TOR,CLE,Layup,paint,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Tip Shot,rim,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Jump Shot,mid,0,0
+2025-26,TOR,POR,Bank Shot,mid,0,0
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Floater,mid,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Floater,mid,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Floater,paint,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Hook Shot,paint,1,2
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Jump Shot,mid,1,2
+2025-26,TOR,POR,Floater,mid,1,2
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Tip Shot,rim,1,2
+2025-26,TOR,POR,Pullup,arc3,1,3
+2025-26,TOR,POR,Jump Shot,mid,0,0
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Floater,mid,0,0
+2025-26,TOR,POR,Pullup,arc3,0,0
+2025-26,TOR,POR,Pullup,arc3,1,3
+2025-26,TOR,POR,Hook Shot,paint,0,0
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Pullup,arc3,1,3
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Pullup,mid,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Jump Shot,mid,0,0
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Pullup,arc3,0,0
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Layup,paint,0,0
+2025-26,TOR,POR,Pullup,mid,0,0
+2025-26,TOR,POR,Pullup,arc3,0,0
+2025-26,TOR,POR,Fadeaway,mid,1,2
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Pullup,arc3,0,0
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Hook Shot,paint,0,0
+2025-26,TOR,POR,Hook Shot,paint,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Fadeaway,mid,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Bank Shot,paint,1,2
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Pullup,mid,1,2
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Pullup,mid,0,0
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Pullup,arc3,1,3
+2025-26,TOR,POR,Floater,paint,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Layup,paint,0,0
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Hook Shot,paint,1,2
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Jump Shot,paint,1,2
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Fadeaway,paint,1,2
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Pullup,mid,1,2
+2025-26,TOR,POR,Layup,paint,0,0
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Pullup,mid,0,0
+2025-26,TOR,POR,Tip Shot,rim,0,0
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Fadeaway,paint,0,0
+2025-26,TOR,POR,Fadeaway,paint,0,0
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Pullup,arc3,1,3
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Pullup,mid,1,2
+2025-26,TOR,POR,Pullup,paint,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Pullup,mid,0,0
+2025-26,TOR,POR,Fadeaway,mid,1,2
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Hook Shot,paint,1,2
+2025-26,TOR,POR,Pullup,arc3,1,3
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Floater,paint,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Pullup,arc3,1,3
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Pullup,arc3,0,0
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Layup,rim,0,0
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Pullup,paint,0,0
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Jump Shot,mid,0,0
+2025-26,TOR,POR,Floater,paint,0,0
+2025-26,TOR,POR,Floater,rim,1,2
+2025-26,TOR,POR,Pullup,mid,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Jump Shot,arc3,1,3
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Pullup,arc3,0,0
+2025-26,TOR,POR,Dunk,rim,1,2
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Layup,rim,1,2
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Bank Shot,arc3,0,0
+2025-26,TOR,POR,Hook Shot,rim,1,2
+2025-26,TOR,POR,Floater,paint,0,0
+2025-26,TOR,POR,Pullup,arc3,0,0
+2025-26,TOR,POR,Jump Shot,arc3,0,0
+2025-26,TOR,POR,Dunk,rim,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Bank Shot,arc3,0,0
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,TOR,Jump Shot,mid,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,TOR,Floater,paint,0,0
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,TOR,Hook Shot,rim,0,0
+2025-26,TOR,LAL,Jump Shot,paint,1,2
+2025-26,TOR,LAL,Fadeaway,mid,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Floater,paint,0,0
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Jump Shot,mid,1,2
+2025-26,TOR,LAL,Jump Shot,paint,1,2
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Hook Shot,paint,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Pullup,arc3,1,3
+2025-26,TOR,TOR,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,TOR,Layup,paint,1,2
+2025-26,TOR,LAL,Fadeaway,mid,0,0
+2025-26,TOR,LAL,Bank Shot,paint,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,paint,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Pullup,mid,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Pullup,paint,0,0
+2025-26,TOR,LAL,Pullup,mid,1,2
+2025-26,TOR,LAL,Bank Shot,rim,1,2
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Fadeaway,paint,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Hook Shot,paint,1,2
+2025-26,TOR,LAL,Layup,paint,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Fadeaway,paint,1,2
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Jump Shot,mid,0,0
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Floater,paint,1,2
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Fadeaway,mid,1,2
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,mid,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Floater,mid,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Hook Shot,rim,0,0
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Dunk,paint,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Floater,mid,0,0
+2025-26,TOR,LAL,Dunk,rim,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Dunk,rim,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Hook Shot,paint,0,0
+2025-26,TOR,LAL,Jump Shot,mid,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,mid,1,2
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Layup,paint,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Hook Shot,paint,0,0
+2025-26,TOR,LAL,Pullup,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Fadeaway,mid,0,0
+2025-26,TOR,LAL,Pullup,mid,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Fadeaway,mid,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Tip Shot,rim,0,0
+2025-26,TOR,LAL,Fadeaway,paint,0,0
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Bank Shot,paint,1,2
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Pullup,paint,1,2
+2025-26,TOR,LAL,Floater,paint,1,2
+2025-26,TOR,LAL,Fadeaway,paint,1,2
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Pullup,arc3,0,0
+2025-26,TOR,LAL,Pullup,arc3,0,0
+2025-26,TOR,LAL,Pullup,arc3,0,0
+2025-26,TOR,LAL,Pullup,arc3,1,3
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Bank Shot,mid,1,2
+2025-26,TOR,LAL,Pullup,mid,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Fadeaway,mid,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,mid,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Pullup,arc3,0,0
+2025-26,TOR,LAL,Pullup,mid,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Pullup,paint,0,0
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,mid,0,0
+2025-26,TOR,LAL,Fadeaway,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Pullup,arc3,0,0
+2025-26,TOR,LAL,Layup,paint,0,0
+2025-26,TOR,LAL,Bank Shot,mid,0,0
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Tip Shot,rim,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Fadeaway,mid,1,2
+2025-26,TOR,LAL,Floater,paint,1,2
+2025-26,TOR,LAL,Bank Shot,paint,0,0
+2025-26,TOR,LAL,Dunk,rim,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Floater,rim,1,2
+2025-26,TOR,LAL,Dunk,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,1,3
+2025-26,TOR,LAL,Jump Shot,paint,1,2
+2025-26,TOR,LAL,Pullup,arc3,0,0
+2025-26,TOR,LAL,Layup,rim,0,0
+2025-26,TOR,LAL,Layup,rim,1,2
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,arc3,0,0
+2025-26,TOR,LAL,Jump Shot,mid,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Bank Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Pullup,arc3,1,3
+2025-26,TOR,CHA,Floater,mid,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Dunk,rim,0,0
+2025-26,TOR,CHA,Hook Shot,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,paint,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Bank Shot,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Floater,mid,1,2
+2025-26,TOR,CHA,Fadeaway,mid,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Pullup,mid,1,2
+2025-26,TOR,CHA,Fadeaway,mid,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Pullup,paint,1,2
+2025-26,TOR,CHA,Fadeaway,paint,1,2
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,mid,1,2
+2025-26,TOR,CHA,Floater,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Fadeaway,mid,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Fadeaway,paint,0,0
+2025-26,TOR,CHA,Floater,mid,0,0
+2025-26,TOR,CHA,Bank Shot,paint,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Hook Shot,paint,1,2
+2025-26,TOR,CHA,Bank Shot,paint,1,2
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Jump Shot,mid,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Fadeaway,mid,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Pullup,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Pullup,paint,1,2
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Pullup,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Pullup,paint,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Floater,mid,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Hook Shot,paint,0,0
+2025-26,TOR,CHA,Fadeaway,paint,0,0
+2025-26,TOR,CHA,Bank Shot,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Pullup,mid,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Fadeaway,mid,0,0
+2025-26,TOR,CHA,Dunk,paint,0,0
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Bank Shot,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Floater,mid,0,0
+2025-26,TOR,CHA,Pullup,mid,0,0
+2025-26,TOR,CHA,Fadeaway,paint,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Tip Shot,rim,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Pullup,mid,0,0
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Floater,paint,1,2
+2025-26,TOR,CHA,Pullup,arc3,1,3
+2025-26,TOR,CHA,Floater,paint,0,0
+2025-26,TOR,CHA,Floater,mid,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Bank Shot,paint,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Floater,mid,1,2
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Pullup,mid,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Bank Shot,paint,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Bank Shot,paint,1,2
+2025-26,TOR,CHA,Floater,mid,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Floater,mid,1,2
+2025-26,TOR,CHA,Pullup,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Hook Shot,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Dunk,rim,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Fadeaway,paint,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,1,2
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,CHA,Hook Shot,paint,1,2
+2025-26,TOR,CHA,Pullup,mid,0,0
+2025-26,TOR,CHA,Hook Shot,paint,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Layup,rim,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Fadeaway,paint,1,2
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Floater,mid,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,0,0
+2025-26,TOR,CHA,Jump Shot,arc3,1,3
+2025-26,TOR,CHA,Pullup,mid,0,0
+2025-26,TOR,CHA,Tip Shot,rim,0,0
+2025-26,TOR,CHA,Layup,paint,0,0
+2025-26,TOR,BOS,Jump Shot,paint,0,0
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,TOR,Layup,paint,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,TOR,Hook Shot,paint,0,0
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,TOR,Pullup,mid,1,2
+2025-26,TOR,BOS,Layup,paint,0,0
+2025-26,TOR,TOR,Pullup,mid,0,0
+2025-26,TOR,BOS,Pullup,mid,1,2
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Tip Shot,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Fadeaway,mid,1,2
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,BOS,Layup,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Fadeaway,paint,0,0
+2025-26,TOR,BOS,Tip Shot,rim,1,2
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Dunk,rim,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Dunk,rim,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,TOR,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Tip Shot,rim,0,0
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Hook Shot,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Bank Shot,mid,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Layup,paint,0,0
+2025-26,TOR,BOS,Layup,paint,1,2
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Dunk,rim,1,2
+2025-26,TOR,BOS,Floater,mid,0,0
+2025-26,TOR,BOS,Dunk,rim,1,2
+2025-26,TOR,BOS,Tip Shot,rim,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,mid,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,mid,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Pullup,paint,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Dunk,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Fadeaway,mid,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Hook Shot,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Pullup,mid,1,2
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Fadeaway,mid,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Layup,paint,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Bank Shot,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,BOS,Hook Shot,rim,1,2
+2025-26,TOR,BOS,Fadeaway,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Pullup,mid,1,2
+2025-26,TOR,BOS,Floater,mid,0,0
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Fadeaway,mid,0,0
+2025-26,TOR,BOS,Pullup,mid,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Layup,paint,0,0
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Dunk,rim,1,2
+2025-26,TOR,BOS,Bank Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,mid,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Bank Shot,paint,1,2
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Hook Shot,paint,0,0
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Hook Shot,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Hook Shot,paint,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,mid,1,2
+2025-26,TOR,BOS,Dunk,rim,0,0
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,paint,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Pullup,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Tip Shot,rim,1,2
+2025-26,TOR,BOS,Layup,paint,0,0
+2025-26,TOR,BOS,Tip Shot,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Dunk,paint,1,2
+2025-26,TOR,BOS,Jump Shot,mid,1,2
+2025-26,TOR,BOS,Dunk,rim,1,2
+2025-26,TOR,BOS,Layup,paint,0,0
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Jump Shot,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Floater,mid,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Tip Shot,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,mid,1,2
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Dunk,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Floater,paint,1,2
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Floater,mid,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,paint,1,2
+2025-26,TOR,BOS,Tip Shot,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,paint,1,2
+2025-26,TOR,BOS,Layup,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Layup,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,mid,1,2
+2025-26,TOR,BOS,Layup,paint,1,2
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Bank Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,mid,0,0
+2025-26,TOR,BOS,Jump Shot,mid,0,0
+2025-26,TOR,BOS,Bank Shot,paint,1,2
+2025-26,TOR,BOS,Dunk,rim,1,2
+2025-26,TOR,BOS,Bank Shot,paint,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,1,2
+2025-26,TOR,BOS,Fadeaway,mid,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,mid,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Jump Shot,mid,0,0
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Fadeaway,paint,1,2
+2025-26,TOR,BOS,Layup,paint,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,paint,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Pullup,mid,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,mid,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Dunk,rim,0,0
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Fadeaway,paint,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Tip Shot,rim,1,2
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Pullup,mid,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Pullup,mid,1,2
+2025-26,TOR,BOS,Fadeaway,paint,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Dunk,rim,1,2
+2025-26,TOR,BOS,Fadeaway,mid,0,0
+2025-26,TOR,BOS,Fadeaway,mid,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Hook Shot,paint,1,2
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Tip Shot,rim,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,mid,0,0
+2025-26,TOR,BOS,Layup,rim,0,0
+2025-26,TOR,BOS,Jump Shot,mid,1,2
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Pullup,arc3,0,0
+2025-26,TOR,BOS,Floater,paint,0,0
+2025-26,TOR,BOS,Pullup,paint,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Fadeaway,mid,1,2
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Jump Shot,arc3,1,3
+2025-26,TOR,BOS,Fadeaway,paint,0,0
+2025-26,TOR,BOS,Jump Shot,mid,1,2
+2025-26,TOR,BOS,Jump Shot,mid,0,0
+2025-26,TOR,BOS,Layup,rim,1,2
+2025-26,TOR,BOS,Pullup,arc3,1,3
+2025-26,TOR,BOS,Jump Shot,arc3,0,0
+2025-26,TOR,BOS,Bank Shot,mid,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,paint,0,0
+2025-26,TOR,GS,Pullup,mid,1,2
+2025-26,TOR,GS,Dunk,rim,0,0
+2025-26,TOR,GS,Pullup,mid,1,2
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Bank Shot,paint,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,mid,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Fadeaway,paint,1,2
+2025-26,TOR,GS,Hook Shot,paint,1,2
+2025-26,TOR,GS,Floater,paint,0,0
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Pullup,arc3,0,0
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Pullup,mid,1,2
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Fadeaway,mid,0,0
+2025-26,TOR,TOR,Pullup,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Floater,mid,1,2
+2025-26,TOR,GS,Jump Shot,paint,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Tip Shot,rim,0,0
+2025-26,TOR,GS,Pullup,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Floater,paint,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Pullup,arc3,0,0
+2025-26,TOR,GS,Tip Shot,rim,1,2
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Hook Shot,paint,1,2
+2025-26,TOR,GS,Tip Shot,rim,1,2
+2025-26,TOR,GS,Floater,paint,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Fadeaway,mid,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Tip Shot,rim,0,0
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Dunk,rim,0,0
+2025-26,TOR,GS,Pullup,paint,1,2
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Pullup,mid,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Tip Shot,rim,1,2
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,mid,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Layup,paint,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Pullup,mid,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,paint,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Floater,mid,1,2
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,paint,0,0
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Pullup,paint,1,2
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Floater,mid,0,0
+2025-26,TOR,GS,Floater,paint,0,0
+2025-26,TOR,GS,Dunk,rim,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Fadeaway,paint,0,0
+2025-26,TOR,GS,Bank Shot,rim,1,2
+2025-26,TOR,GS,Jump Shot,mid,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,paint,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Floater,paint,0,0
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Bank Shot,mid,1,2
+2025-26,TOR,GS,Jump Shot,mid,0,0
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Floater,paint,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,paint,0,0
+2025-26,TOR,GS,Tip Shot,rim,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Pullup,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Pullup,arc3,0,0
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Floater,mid,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Pullup,mid,0,0
+2025-26,TOR,GS,Pullup,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Floater,mid,0,0
+2025-26,TOR,GS,Pullup,arc3,0,0
+2025-26,TOR,GS,Fadeaway,mid,0,0
+2025-26,TOR,GS,Fadeaway,paint,1,2
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Bank Shot,paint,0,0
+2025-26,TOR,GS,Fadeaway,mid,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Pullup,mid,1,2
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,mid,0,0
+2025-26,TOR,GS,Floater,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Tip Shot,rim,1,2
+2025-26,TOR,GS,Pullup,arc3,0,0
+2025-26,TOR,GS,Bank Shot,mid,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Pullup,mid,0,0
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Pullup,arc3,0,0
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,mid,1,2
+2025-26,TOR,GS,Bank Shot,mid,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Fadeaway,mid,1,2
+2025-26,TOR,GS,Pullup,mid,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Floater,mid,1,2
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,2
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Floater,paint,1,2
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,GS,Layup,rim,0,0
+2025-26,TOR,GS,Pullup,mid,1,2
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Tip Shot,rim,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Pullup,arc3,0,0
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Layup,rim,1,2
+2025-26,TOR,GS,Jump Shot,arc3,1,3
+2025-26,TOR,GS,Jump Shot,arc3,0,0
+2025-26,TOR,GS,Dunk,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Hook Shot,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Pullup,mid,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Fadeaway,mid,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,TOR,Pullup,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Fadeaway,mid,1,2
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Layup,paint,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Layup,mid,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Dunk,rim,0,0
+2025-26,TOR,ORL,Pullup,arc3,0,0
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Dunk,rim,0,0
+2025-26,TOR,ORL,Hook Shot,rim,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Hook Shot,paint,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Fadeaway,mid,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Pullup,mid,0,0
+2025-26,TOR,ORL,Layup,paint,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Jump Shot,mid,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Fadeaway,mid,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Tip Shot,rim,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Floater,mid,0,0
+2025-26,TOR,ORL,Bank Shot,paint,1,2
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Floater,mid,1,2
+2025-26,TOR,ORL,Pullup,mid,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Floater,mid,1,2
+2025-26,TOR,ORL,Floater,paint,1,2
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Fadeaway,mid,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Floater,mid,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Tip Shot,rim,1,2
+2025-26,TOR,ORL,Bank Shot,paint,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Pullup,mid,1,2
+2025-26,TOR,ORL,Tip Shot,rim,0,0
+2025-26,TOR,ORL,Tip Shot,rim,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Bank Shot,paint,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Pullup,arc3,0,0
+2025-26,TOR,ORL,Pullup,arc3,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Tip Shot,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Floater,paint,1,2
+2025-26,TOR,ORL,Jump Shot,paint,1,2
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Pullup,arc3,0,0
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Layup,paint,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Pullup,mid,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Bank Shot,paint,0,0
+2025-26,TOR,ORL,Layup,paint,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Hook Shot,paint,0,0
+2025-26,TOR,ORL,Fadeaway,mid,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Tip Shot,rim,1,2
+2025-26,TOR,ORL,Pullup,mid,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Fadeaway,paint,1,2
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Layup,paint,0,0
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Dunk,rim,0,0
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Pullup,arc3,0,0
+2025-26,TOR,ORL,Pullup,arc3,0,0
+2025-26,TOR,ORL,Fadeaway,paint,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,mid,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Pullup,mid,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Pullup,mid,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Layup,paint,0,0
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Pullup,mid,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Jump Shot,paint,0,0
+2025-26,TOR,ORL,Pullup,arc3,0,0
+2025-26,TOR,ORL,Layup,paint,0,0
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Dunk,rim,1,2
+2025-26,TOR,ORL,Jump Shot,mid,1,2
+2025-26,TOR,ORL,Jump Shot,mid,1,2
+2025-26,TOR,ORL,Layup,rim,1,2
+2025-26,TOR,ORL,Layup,paint,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,1,3
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Pullup,mid,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,ORL,Jump Shot,arc3,0,0
+2025-26,TOR,ORL,Pullup,arc3,0,0
+2025-26,TOR,ORL,Floater,paint,0,0
+2025-26,TOR,ORL,Layup,rim,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Floater,mid,0,0
+2025-26,TOR,DEN,Dunk,rim,1,2
+2025-26,TOR,DEN,Pullup,mid,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,mid,0,0
+2025-26,TOR,DEN,Bank Shot,paint,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Layup,paint,0,0
+2025-26,TOR,DEN,Pullup,arc3,0,0
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Jump Shot,mid,1,2
+2025-26,TOR,DEN,Jump Shot,paint,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Hook Shot,paint,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,mid,0,0
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Pullup,arc3,1,3
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Fadeaway,mid,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Dunk,rim,1,2
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Fadeaway,mid,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Dunk,rim,1,2
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Pullup,paint,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Dunk,rim,1,2
+2025-26,TOR,DEN,Floater,mid,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Fadeaway,paint,0,0
+2025-26,TOR,DEN,Pullup,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,paint,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Bank Shot,paint,1,2
+2025-26,TOR,DEN,Pullup,mid,0,0
+2025-26,TOR,DEN,Jump Shot,mid,1,2
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Dunk,rim,1,2
+2025-26,TOR,DEN,Pullup,mid,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Floater,mid,1,2
+2025-26,TOR,DEN,Fadeaway,mid,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,paint,0,0
+2025-26,TOR,DEN,Fadeaway,paint,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Floater,paint,1,2
+2025-26,TOR,DEN,Fadeaway,paint,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Fadeaway,mid,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Fadeaway,mid,1,2
+2025-26,TOR,DEN,Layup,rim,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,rim,0,0
+2025-26,TOR,DEN,Pullup,mid,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Pullup,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,rim,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Layup,paint,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Pullup,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Dunk,rim,0,0
+2025-26,TOR,DEN,Floater,mid,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Floater,mid,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Fadeaway,paint,0,0
+2025-26,TOR,DEN,Fadeaway,paint,0,0
+2025-26,TOR,DEN,Layup,rim,0,0
+2025-26,TOR,DEN,Floater,paint,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,mid,0,0
+2025-26,TOR,DEN,Floater,paint,1,2
+2025-26,TOR,DEN,Pullup,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Hook Shot,paint,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Dunk,rim,1,2
+2025-26,TOR,DEN,Bank Shot,arc3,0,0
+2025-26,TOR,DEN,Fadeaway,arc3,0,0
+2025-26,TOR,DEN,Fadeaway,paint,0,0
+2025-26,TOR,DEN,Layup,rim,0,0
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,mid,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Pullup,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,2
+2025-26,TOR,DEN,Hook Shot,paint,0,0
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Pullup,mid,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Dunk,rim,1,2
+2025-26,TOR,DEN,Floater,paint,1,2
+2025-26,TOR,DEN,Layup,paint,0,0
+2025-26,TOR,DEN,Layup,paint,0,0
+2025-26,TOR,DEN,Jump Shot,paint,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Pullup,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Dunk,rim,0,0
+2025-26,TOR,DEN,Pullup,mid,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Tip Shot,rim,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,1,3
+2025-26,TOR,DEN,Tip Shot,rim,0,0
+2025-26,TOR,DEN,Layup,rim,1,2
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,paint,0,0
+2025-26,TOR,DEN,Tip Shot,rim,1,2
+2025-26,TOR,DEN,Layup,rim,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Layup,rim,0,0
+2025-26,TOR,DEN,Floater,paint,0,0
+2025-26,TOR,DEN,Fadeaway,mid,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Pullup,arc3,1,3
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,DEN,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Fadeaway,mid,1,2
+2025-26,TOR,ATL,Pullup,mid,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,paint,1,2
+2025-26,TOR,ATL,Hook Shot,rim,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,TOR,Pullup,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Fadeaway,mid,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,mid,0,0
+2025-26,TOR,ATL,Pullup,mid,1,2
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Floater,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,paint,0,0
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Bank Shot,paint,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,TOR,Floater,paint,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Bank Shot,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Floater,mid,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Floater,mid,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Floater,paint,1,2
+2025-26,TOR,ATL,Bank Shot,paint,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Dunk,rim,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Floater,arc3,0,0
+2025-26,TOR,ATL,Pullup,mid,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Bank Shot,paint,0,0
+2025-26,TOR,ATL,Fadeaway,mid,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Bank Shot,mid,0,0
+2025-26,TOR,ATL,Jump Shot,paint,1,2
+2025-26,TOR,ATL,Floater,paint,1,2
+2025-26,TOR,ATL,Fadeaway,mid,1,2
+2025-26,TOR,ATL,Floater,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,paint,1,2
+2025-26,TOR,ATL,Pullup,arc3,1,3
+2025-26,TOR,ATL,Dunk,rim,0,0
+2025-26,TOR,ATL,Fadeaway,mid,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Floater,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Layup,paint,1,2
+2025-26,TOR,ATL,Tip Shot,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,mid,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Pullup,mid,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Bank Shot,rim,1,2
+2025-26,TOR,ATL,Bank Shot,paint,1,2
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Fadeaway,paint,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Pullup,mid,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Pullup,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Pullup,mid,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Bank Shot,paint,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Fadeaway,paint,0,0
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Floater,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Hook Shot,paint,0,0
+2025-26,TOR,ATL,Jump Shot,mid,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Fadeaway,mid,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,mid,0,0
+2025-26,TOR,ATL,Bank Shot,paint,1,2
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Floater,mid,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Tip Shot,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Fadeaway,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Pullup,mid,0,0
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Floater,mid,0,0
+2025-26,TOR,ATL,Bank Shot,paint,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Fadeaway,mid,0,0
+2025-26,TOR,ATL,Floater,mid,0,0
+2025-26,TOR,ATL,Floater,mid,0,0
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,paint,1,2
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Floater,mid,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Fadeaway,mid,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Pullup,mid,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,mid,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,mid,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Fadeaway,paint,1,2
+2025-26,TOR,ATL,Floater,rim,1,2
+2025-26,TOR,ATL,Fadeaway,rim,0,0
+2025-26,TOR,ATL,Fadeaway,mid,0,0
+2025-26,TOR,ATL,Hook Shot,paint,1,2
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Tip Shot,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Bank Shot,rim,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Dunk,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Floater,paint,1,2
+2025-26,TOR,ATL,Hook Shot,paint,1,2
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Hook Shot,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Fadeaway,paint,1,2
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Pullup,mid,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,mid,1,2
+2025-26,TOR,ATL,Jump Shot,mid,0,0
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Fadeaway,mid,1,2
+2025-26,TOR,ATL,Fadeaway,paint,0,0
+2025-26,TOR,ATL,Tip Shot,rim,1,2
+2025-26,TOR,ATL,Layup,paint,1,2
+2025-26,TOR,ATL,Hook Shot,paint,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Pullup,mid,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,paint,0,0
+2025-26,TOR,ATL,Hook Shot,rim,1,2
+2025-26,TOR,ATL,Layup,paint,1,2
+2025-26,TOR,ATL,Bank Shot,paint,1,2
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,paint,0,0
+2025-26,TOR,ATL,Tip Shot,rim,1,2
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Bank Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Pullup,arc3,1,3
+2025-26,TOR,ATL,Hook Shot,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Dunk,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,mid,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Hook Shot,paint,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,mid,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Tip Shot,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Fadeaway,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Bank Shot,mid,1,2
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Fadeaway,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Jump Shot,mid,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Bank Shot,arc3,0,0
+2025-26,TOR,ATL,Fadeaway,paint,0,0
+2025-26,TOR,ATL,Bank Shot,paint,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Floater,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Hook Shot,rim,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Floater,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Hook Shot,paint,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Fadeaway,mid,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,0,0
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Floater,paint,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,0,0
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,ATL,Layup,rim,1,2
+2025-26,TOR,ATL,Pullup,arc3,0,0
+2025-26,TOR,ATL,Bank Shot,paint,1,2
+2025-26,TOR,ATL,Floater,paint,0,0
+2025-26,TOR,ATL,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,mid,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Pullup,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,mid,0,0
+2025-26,TOR,PHI,Jump Shot,mid,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Floater,mid,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Layup,paint,1,2
+2025-26,TOR,PHI,Hook Shot,paint,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Tip Shot,rim,1,2
+2025-26,TOR,PHI,Layup,paint,0,0
+2025-26,TOR,PHI,Bank Shot,mid,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,mid,1,2
+2025-26,TOR,PHI,Jump Shot,paint,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Floater,rim,0,0
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Hook Shot,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,paint,1,2
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Fadeaway,paint,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Layup,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Floater,paint,1,2
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Layup,paint,0,0
+2025-26,TOR,PHI,Pullup,mid,0,0
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Layup,paint,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Layup,paint,1,2
+2025-26,TOR,PHI,Hook Shot,mid,1,2
+2025-26,TOR,PHI,Floater,mid,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Fadeaway,mid,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,paint,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Tip Shot,rim,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Jump Shot,mid,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Fadeaway,mid,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Floater,mid,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Hook Shot,paint,1,2
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Pullup,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,paint,0,0
+2025-26,TOR,PHI,Jump Shot,mid,1,2
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,mid,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Fadeaway,paint,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Floater,paint,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Layup,paint,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Dunk,rim,0,0
+2025-26,TOR,PHI,Hook Shot,paint,0,0
+2025-26,TOR,PHI,Hook Shot,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Pullup,mid,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Pullup,arc3,1,3
+2025-26,TOR,PHI,Fadeaway,mid,0,0
+2025-26,TOR,PHI,Floater,rim,1,2
+2025-26,TOR,PHI,Jump Shot,mid,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,paint,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,mid,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Hook Shot,paint,1,2
+2025-26,TOR,PHI,Jump Shot,mid,0,0
+2025-26,TOR,PHI,Floater,mid,0,0
+2025-26,TOR,PHI,Hook Shot,paint,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Layup,paint,1,2
+2025-26,TOR,PHI,Bank Shot,paint,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Fadeaway,mid,0,0
+2025-26,TOR,PHI,Fadeaway,mid,1,2
+2025-26,TOR,PHI,Fadeaway,mid,1,2
+2025-26,TOR,PHI,Fadeaway,mid,0,0
+2025-26,TOR,PHI,Jump Shot,mid,1,2
+2025-26,TOR,PHI,Jump Shot,mid,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Layup,paint,1,2
+2025-26,TOR,PHI,Jump Shot,mid,1,2
+2025-26,TOR,PHI,Layup,paint,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Bank Shot,paint,1,2
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Floater,mid,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Layup,paint,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Pullup,mid,0,0
+2025-26,TOR,PHI,Pullup,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,arc3,1,3
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,mid,1,2
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Layup,paint,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,mid,0,0
+2025-26,TOR,PHI,Fadeaway,paint,1,2
+2025-26,TOR,PHI,Layup,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Pullup,paint,1,2
+2025-26,TOR,PHI,Fadeaway,mid,1,2
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Tip Shot,rim,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,mid,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Floater,paint,1,2
+2025-26,TOR,PHI,Pullup,mid,1,2
+2025-26,TOR,PHI,Pullup,mid,0,0
+2025-26,TOR,PHI,Fadeaway,paint,1,2
+2025-26,TOR,PHI,Pullup,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,mid,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,mid,1,2
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,rim,1,2
+2025-26,TOR,PHI,Pullup,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Pullup,arc3,1,3
+2025-26,TOR,PHI,Pullup,mid,1,2
+2025-26,TOR,PHI,Layup,paint,0,0
+2025-26,TOR,PHI,Jump Shot,paint,1,2
+2025-26,TOR,PHI,Fadeaway,paint,1,2
+2025-26,TOR,PHI,Floater,paint,1,2
+2025-26,TOR,PHI,Fadeaway,mid,1,2
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Bank Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Fadeaway,paint,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Floater,paint,1,2
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Pullup,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Pullup,arc3,1,3
+2025-26,TOR,PHI,Bank Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Fadeaway,mid,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Fadeaway,mid,1,2
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,paint,1,2
+2025-26,TOR,PHI,Pullup,mid,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Tip Shot,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Jump Shot,mid,0,0
+2025-26,TOR,PHI,Jump Shot,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Bank Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Layup,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,mid,1,2
+2025-26,TOR,PHI,Hook Shot,paint,0,0
+2025-26,TOR,PHI,Pullup,arc3,1,3
+2025-26,TOR,PHI,Floater,paint,1,2
+2025-26,TOR,PHI,Jump Shot,mid,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Fadeaway,paint,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Hook Shot,rim,1,2
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,mid,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Pullup,mid,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Bank Shot,mid,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Fadeaway,mid,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Dunk,rim,0,0
+2025-26,TOR,PHI,Fadeaway,paint,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Fadeaway,mid,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,arc3,1,3
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,mid,0,0
+2025-26,TOR,PHI,Tip Shot,rim,0,0
+2025-26,TOR,PHI,Dunk,rim,1,2
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Fadeaway,paint,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Dunk,rim,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Layup,rim,1,2
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Fadeaway,mid,0,0
+2025-26,TOR,PHI,Layup,rim,0,0
+2025-26,TOR,PHI,Floater,mid,1,2
+2025-26,TOR,PHI,Layup,paint,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Pullup,arc3,0,0
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Hook Shot,rim,0,0
+2025-26,TOR,PHI,Floater,paint,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,1,3
+2025-26,TOR,PHI,Hook Shot,rim,1,2
+2025-26,TOR,PHI,Jump Shot,arc3,0,0
+2025-26,TOR,PHI,Floater,paint,0,0
+2025-26,TOR,LAC,Pullup,arc3,0,0
+2025-26,TOR,LAC,Bank Shot,rim,1,2
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Pullup,arc3,1,3
+2025-26,TOR,LAC,Fadeaway,paint,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Layup,rim,0,0
+2025-26,TOR,LAC,Pullup,mid,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Bank Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Pullup,mid,1,2
+2025-26,TOR,LAC,Layup,paint,1,2
+2025-26,TOR,LAC,Floater,paint,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,TOR,Fadeaway,mid,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,paint,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,TOR,Hook Shot,paint,0,0
+2025-26,TOR,LAC,Dunk,rim,1,2
+2025-26,TOR,LAC,Floater,mid,1,2
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Floater,paint,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Layup,rim,0,0
+2025-26,TOR,LAC,Pullup,mid,0,0
+2025-26,TOR,LAC,Hook Shot,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Jump Shot,mid,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Hook Shot,paint,1,2
+2025-26,TOR,LAC,Fadeaway,mid,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Floater,mid,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Layup,rim,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Pullup,arc3,1,3
+2025-26,TOR,LAC,Bank Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,mid,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Fadeaway,paint,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Floater,paint,1,2
+2025-26,TOR,LAC,Fadeaway,paint,1,2
+2025-26,TOR,LAC,Pullup,mid,1,2
+2025-26,TOR,LAC,Floater,paint,1,2
+2025-26,TOR,LAC,Pullup,mid,0,0
+2025-26,TOR,LAC,Floater,paint,0,0
+2025-26,TOR,LAC,Layup,rim,0,0
+2025-26,TOR,LAC,Layup,rim,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Floater,paint,0,0
+2025-26,TOR,LAC,Pullup,mid,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Pullup,arc3,0,0
+2025-26,TOR,LAC,Pullup,mid,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Pullup,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,paint,0,0
+2025-26,TOR,LAC,Bank Shot,paint,1,2
+2025-26,TOR,LAC,Layup,paint,0,0
+2025-26,TOR,LAC,Dunk,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Dunk,rim,0,0
+2025-26,TOR,LAC,Dunk,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Floater,mid,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Bank Shot,paint,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Hook Shot,rim,0,0
+2025-26,TOR,LAC,Hook Shot,paint,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Pullup,paint,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,paint,1,2
+2025-26,TOR,LAC,Fadeaway,mid,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Hook Shot,paint,0,0
+2025-26,TOR,LAC,Fadeaway,mid,0,0
+2025-26,TOR,LAC,Floater,paint,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Dunk,rim,1,2
+2025-26,TOR,LAC,Jump Shot,mid,1,2
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,0,0
+2025-26,TOR,LAC,Jump Shot,mid,1,2
+2025-26,TOR,LAC,Dunk,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Pullup,paint,0,0
+2025-26,TOR,LAC,Dunk,rim,1,2
+2025-26,TOR,LAC,Layup,rim,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Dunk,rim,1,2
+2025-26,TOR,LAC,Layup,rim,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Layup,rim,0,0
+2025-26,TOR,LAC,Jump Shot,paint,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Fadeaway,paint,1,2
+2025-26,TOR,LAC,Layup,rim,0,0
+2025-26,TOR,LAC,Dunk,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,LAC,Floater,paint,1,2
+2025-26,TOR,LAC,Jump Shot,mid,0,0
+2025-26,TOR,LAC,Pullup,mid,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Pullup,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,1,3
+2025-26,TOR,LAC,Jump Shot,mid,1,2
+2025-26,TOR,LAC,Hook Shot,paint,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Pullup,arc3,0,0
+2025-26,TOR,LAC,Pullup,arc3,0,0
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Pullup,mid,1,2
+2025-26,TOR,LAC,Jump Shot,arc3,0,0
+2025-26,TOR,LAC,Floater,paint,0,0
+2025-26,TOR,LAC,Fadeaway,mid,1,2
+2025-26,TOR,LAC,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Fadeaway,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Bank Shot,mid,0,0
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,mid,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Pullup,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Tip Shot,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,mid,1,2
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Tip Shot,rim,0,0
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Hook Shot,paint,0,0
+2025-26,TOR,NY,Jump Shot,mid,0,0
+2025-26,TOR,NY,Pullup,paint,0,0
+2025-26,TOR,NY,Pullup,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Hook Shot,paint,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Tip Shot,rim,0,0
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Floater,mid,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Hook Shot,paint,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Hook Shot,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Jump Shot,mid,0,0
+2025-26,TOR,NY,Fadeaway,mid,0,0
+2025-26,TOR,NY,Floater,mid,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,mid,0,0
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Floater,paint,1,2
+2025-26,TOR,NY,Tip Shot,rim,0,0
+2025-26,TOR,NY,Bank Shot,rim,1,2
+2025-26,TOR,NY,Tip Shot,rim,0,0
+2025-26,TOR,NY,Hook Shot,paint,0,0
+2025-26,TOR,NY,Fadeaway,mid,1,2
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Floater,mid,0,0
+2025-26,TOR,NY,Floater,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Floater,paint,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Floater,paint,1,2
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Pullup,mid,0,0
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Fadeaway,mid,0,0
+2025-26,TOR,NY,Floater,paint,1,2
+2025-26,TOR,NY,Fadeaway,mid,1,2
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Hook Shot,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Tip Shot,rim,1,2
+2025-26,TOR,NY,Layup,rim,0,0
+2025-26,TOR,NY,Hook Shot,paint,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Pullup,mid,0,0
+2025-26,TOR,NY,Fadeaway,paint,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Pullup,mid,1,2
+2025-26,TOR,NY,Jump Shot,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Pullup,arc3,1,3
+2025-26,TOR,NY,Jump Shot,mid,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Pullup,paint,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Floater,rim,0,0
+2025-26,TOR,NY,Dunk,rim,1,2
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,paint,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Jump Shot,mid,1,2
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Layup,rim,1,2
+2025-26,TOR,NY,Jump Shot,arc3,1,3
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Floater,paint,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,NY,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,mid,1,2
+2025-26,TOR,UTAH,Jump Shot,mid,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Floater,mid,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Floater,paint,1,2
+2025-26,TOR,UTAH,Hook Shot,paint,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Fadeaway,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Layup,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Floater,rim,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Hook Shot,paint,0,0
+2025-26,TOR,UTAH,Pullup,mid,0,0
+2025-26,TOR,UTAH,Pullup,arc3,0,0
+2025-26,TOR,UTAH,Fadeaway,paint,0,0
+2025-26,TOR,UTAH,Floater,mid,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Pullup,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Pullup,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Floater,mid,0,0
+2025-26,TOR,UTAH,Pullup,mid,0,0
+2025-26,TOR,UTAH,Jump Shot,paint,1,2
+2025-26,TOR,UTAH,Layup,paint,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Floater,mid,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Floater,paint,0,0
+2025-26,TOR,UTAH,Pullup,arc3,1,3
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Fadeaway,mid,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,mid,0,0
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Pullup,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Bank Shot,paint,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Dunk,rim,1,2
+2025-26,TOR,UTAH,Pullup,mid,0,0
+2025-26,TOR,UTAH,Dunk,rim,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Floater,paint,1,2
+2025-26,TOR,UTAH,Fadeaway,paint,0,0
+2025-26,TOR,UTAH,Layup,mid,0,0
+2025-26,TOR,UTAH,Hook Shot,paint,0,0
+2025-26,TOR,UTAH,Floater,paint,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Pullup,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,paint,0,0
+2025-26,TOR,UTAH,Hook Shot,paint,1,2
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Jump Shot,mid,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Floater,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,mid,0,0
+2025-26,TOR,UTAH,Hook Shot,paint,0,0
+2025-26,TOR,UTAH,Pullup,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Hook Shot,paint,0,0
+2025-26,TOR,UTAH,Hook Shot,paint,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Pullup,mid,1,2
+2025-26,TOR,UTAH,Tip Shot,rim,0,0
+2025-26,TOR,UTAH,Dunk,rim,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Pullup,mid,1,2
+2025-26,TOR,UTAH,Tip Shot,rim,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Fadeaway,mid,0,0
+2025-26,TOR,UTAH,Pullup,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Dunk,rim,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Pullup,arc3,1,3
+2025-26,TOR,UTAH,Jump Shot,mid,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Layup,paint,0,0
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Dunk,rim,1,2
+2025-26,TOR,UTAH,Layup,paint,0,0
+2025-26,TOR,UTAH,Hook Shot,paint,0,0
+2025-26,TOR,UTAH,Pullup,mid,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Floater,paint,1,2
+2025-26,TOR,UTAH,Fadeaway,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Hook Shot,paint,0,0
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,1,3
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Dunk,rim,1,2
+2025-26,TOR,UTAH,Jump Shot,paint,1,2
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Tip Shot,rim,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Pullup,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Dunk,rim,1,2
+2025-26,TOR,UTAH,Layup,rim,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Hook Shot,paint,1,2
+2025-26,TOR,UTAH,Layup,rim,1,2
+2025-26,TOR,UTAH,Bank Shot,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Fadeaway,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Tip Shot,rim,1,2
+2025-26,TOR,UTAH,Layup,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,mid,1,2
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,UTAH,Bank Shot,paint,0,0
+2025-26,TOR,UTAH,Bank Shot,paint,0,0
+2025-26,TOR,UTAH,Hook Shot,paint,0,0
+2025-26,TOR,UTAH,Fadeaway,mid,0,0
+2025-26,TOR,UTAH,Layup,paint,0,0
+2025-26,TOR,UTAH,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Pullup,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Pullup,mid,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Jump Shot,mid,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Bank Shot,paint,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Pullup,mid,1,2
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,mid,0,0
+2025-26,TOR,MIN,Pullup,mid,0,0
+2025-26,TOR,MIN,Pullup,mid,1,2
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Bank Shot,mid,1,2
+2025-26,TOR,MIN,Hook Shot,rim,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,mid,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Pullup,mid,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Floater,mid,0,0
+2025-26,TOR,MIN,Layup,paint,1,2
+2025-26,TOR,TOR,Fadeaway,mid,1,2
+2025-26,TOR,MIN,Pullup,mid,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Jump Shot,mid,1,2
+2025-26,TOR,MIN,Pullup,mid,1,2
+2025-26,TOR,MIN,Bank Shot,paint,0,0
+2025-26,TOR,MIN,Tip Shot,rim,0,0
+2025-26,TOR,MIN,Hook Shot,paint,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Pullup,arc3,0,0
+2025-26,TOR,MIN,Layup,paint,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Fadeaway,mid,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,0,0
+2025-26,TOR,MIN,Floater,paint,1,2
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Fadeaway,mid,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Pullup,mid,0,0
+2025-26,TOR,MIN,Layup,rim,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Fadeaway,mid,0,0
+2025-26,TOR,MIN,Jump Shot,mid,1,2
+2025-26,TOR,MIN,Floater,paint,0,0
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Pullup,arc3,1,3
+2025-26,TOR,MIN,Fadeaway,mid,1,2
+2025-26,TOR,MIN,Pullup,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Pullup,arc3,0,0
+2025-26,TOR,MIN,Pullup,arc3,1,3
+2025-26,TOR,MIN,Fadeaway,paint,0,0
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Layup,rim,0,0
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,mid,0,0
+2025-26,TOR,MIN,Pullup,mid,0,0
+2025-26,TOR,MIN,Bank Shot,paint,0,0
+2025-26,TOR,MIN,Layup,paint,0,0
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Layup,paint,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Layup,rim,0,0
+2025-26,TOR,MIN,Pullup,arc3,1,3
+2025-26,TOR,MIN,Bank Shot,mid,0,0
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,0,0
+2025-26,TOR,MIN,Fadeaway,mid,1,2
+2025-26,TOR,MIN,Fadeaway,arc3,0,0
+2025-26,TOR,MIN,Pullup,mid,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Bank Shot,mid,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Pullup,arc3,0,0
+2025-26,TOR,MIN,Bank Shot,paint,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Pullup,arc3,1,3
+2025-26,TOR,MIN,Floater,paint,1,2
+2025-26,TOR,MIN,Jump Shot,mid,1,2
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Pullup,paint,0,0
+2025-26,TOR,MIN,Floater,paint,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Floater,paint,0,0
+2025-26,TOR,MIN,Jump Shot,mid,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Tip Shot,rim,1,2
+2025-26,TOR,MIN,Pullup,mid,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Layup,paint,0,0
+2025-26,TOR,MIN,Hook Shot,paint,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Tip Shot,rim,0,0
+2025-26,TOR,MIN,Floater,paint,0,0
+2025-26,TOR,MIN,Hook Shot,paint,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Layup,paint,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Floater,paint,1,2
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Dunk,rim,0,0
+2025-26,TOR,MIN,Pullup,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Pullup,paint,0,0
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Fadeaway,mid,1,2
+2025-26,TOR,MIN,Pullup,mid,1,2
+2025-26,TOR,MIN,Fadeaway,mid,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,mid,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Dunk,rim,1,2
+2025-26,TOR,MIN,Dunk,paint,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Floater,paint,0,0
+2025-26,TOR,MIN,Pullup,arc3,1,3
+2025-26,TOR,MIN,Jump Shot,arc3,1,3
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Floater,paint,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Floater,paint,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Fadeaway,mid,1,2
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,MIN,Fadeaway,mid,0,0
+2025-26,TOR,MIN,Floater,paint,1,2
+2025-26,TOR,MIN,Layup,paint,0,0
+2025-26,TOR,MIN,Pullup,mid,0,0
+2025-26,TOR,MIN,Tip Shot,rim,0,0
+2025-26,TOR,MIN,Layup,rim,0,0
+2025-26,TOR,MIN,Jump Shot,arc3,0,0
+2025-26,TOR,MIN,Layup,rim,1,2
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Hook Shot,paint,1,2
+2025-26,TOR,CHI,Hook Shot,rim,1,2
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,mid,1,2
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Bank Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,mid,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Jump Shot,mid,0,0
+2025-26,TOR,CHI,Jump Shot,mid,1,2
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Floater,paint,0,0
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Dunk,rim,1,2
+2025-26,TOR,CHI,Layup,paint,0,0
+2025-26,TOR,CHI,Pullup,arc3,1,3
+2025-26,TOR,CHI,Fadeaway,mid,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Hook Shot,rim,1,2
+2025-26,TOR,CHI,Floater,mid,0,0
+2025-26,TOR,CHI,Floater,paint,1,2
+2025-26,TOR,CHI,Dunk,rim,1,2
+2025-26,TOR,CHI,Layup,paint,0,0
+2025-26,TOR,CHI,Pullup,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Layup,paint,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Dunk,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Fadeaway,paint,0,0
+2025-26,TOR,CHI,Hook Shot,paint,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Floater,paint,1,2
+2025-26,TOR,CHI,Dunk,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Pullup,mid,1,2
+2025-26,TOR,CHI,Fadeaway,mid,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Layup,paint,0,0
+2025-26,TOR,CHI,Dunk,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,mid,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Pullup,mid,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Layup,paint,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,mid,1,2
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Hook Shot,rim,1,2
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Fadeaway,paint,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Pullup,arc3,1,3
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,mid,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Floater,paint,1,2
+2025-26,TOR,CHI,Floater,paint,1,2
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Hook Shot,paint,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Pullup,mid,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Dunk,rim,1,2
+2025-26,TOR,CHI,Pullup,mid,0,0
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Layup,paint,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Pullup,arc3,1,3
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Pullup,paint,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Tip Shot,rim,0,0
+2025-26,TOR,CHI,Floater,paint,0,0
+2025-26,TOR,CHI,Fadeaway,mid,1,2
+2025-26,TOR,CHI,Floater,paint,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Dunk,rim,1,2
+2025-26,TOR,CHI,Bank Shot,paint,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Layup,paint,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Fadeaway,paint,1,2
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Bank Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Floater,paint,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Layup,rim,0,0
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,0,0
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Pullup,arc3,0,0
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Tip Shot,rim,0,0
+2025-26,TOR,CHI,Layup,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,CHI,Pullup,paint,0,0
+2025-26,TOR,CHI,Hook Shot,rim,1,2
+2025-26,TOR,CHI,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Bank Shot,mid,0,0
+2025-26,TOR,IND,Jump Shot,mid,0,0
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Fadeaway,mid,0,0
+2025-26,TOR,IND,Layup,paint,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,mid,1,2
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Bank Shot,paint,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Floater,paint,0,0
+2025-26,TOR,IND,Floater,mid,0,0
+2025-26,TOR,IND,Fadeaway,paint,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Layup,paint,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Layup,paint,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,mid,0,0
+2025-26,TOR,IND,Jump Shot,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,paint,0,0
+2025-26,TOR,IND,Floater,paint,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,paint,0,0
+2025-26,TOR,IND,Layup,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Floater,paint,1,2
+2025-26,TOR,IND,Hook Shot,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Pullup,arc3,1,3
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Fadeaway,mid,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Fadeaway,paint,1,2
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Fadeaway,mid,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Jump Shot,mid,0,0
+2025-26,TOR,IND,Floater,paint,0,0
+2025-26,TOR,IND,Fadeaway,mid,0,0
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Bank Shot,paint,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Pullup,arc3,1,3
+2025-26,TOR,IND,Bank Shot,arc3,0,0
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Fadeaway,mid,0,0
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Hook Shot,paint,0,0
+2025-26,TOR,IND,Pullup,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Jump Shot,mid,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Fadeaway,paint,0,0
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,paint,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Hook Shot,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Pullup,arc3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Pullup,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Tip Shot,rim,0,0
+2025-26,TOR,IND,Floater,paint,0,0
+2025-26,TOR,IND,Floater,paint,0,0
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Pullup,mid,0,0
+2025-26,TOR,IND,Pullup,mid,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Jump Shot,mid,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Fadeaway,mid,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Tip Shot,rim,0,0
+2025-26,TOR,IND,Pullup,arc3,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Hook Shot,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Fadeaway,paint,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Pullup,paint,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,paint,0,0
+2025-26,TOR,IND,Floater,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Fadeaway,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,paint,1,2
+2025-26,TOR,IND,Fadeaway,mid,1,2
+2025-26,TOR,IND,Pullup,arc3,0,0
+2025-26,TOR,IND,Hook Shot,paint,1,2
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Floater,paint,0,0
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,paint,0,0
+2025-26,TOR,IND,Bank Shot,arc3,1,3
+2025-26,TOR,IND,Layup,rim,1,2
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Layup,paint,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Bank Shot,arc3,0,0
+2025-26,TOR,IND,Bank Shot,paint,1,2
+2025-26,TOR,IND,Dunk,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Tip Shot,rim,1,2
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Pullup,arc3,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Floater,mid,0,0
+2025-26,TOR,IND,Jump Shot,arc3,0,0
+2025-26,TOR,IND,Jump Shot,arc3,1,3
+2025-26,TOR,IND,Tip Shot,rim,0,0
+2025-26,TOR,IND,Layup,rim,0,0
+2025-26,TOR,IND,Dunk,rim,1,2
+2025-26,TOR,DET,Layup,rim,1,2
+2025-26,TOR,DET,Pullup,arc3,0,0
+2025-26,TOR,DET,Jump Shot,arc3,0,0
+2025-26,TOR,DET,Dunk,rim,1,2
+2025-26,TOR,DET,Dunk,rim,1,2
+2025-26,TOR,DET,Jump Shot,arc3,0,0
+2025-26,TOR,DET,Pullup,mid,0,0
+2025-26,TOR,DET,Jump Shot,arc3,0,0
+2025-26,TOR,DET,Layup,rim,1,2
+2025-26,TOR,TOR,Bank Shot,paint,0,0
+2025-26,TOR,DET,Jump Shot,arc3,0,0
+2025-26,TOR,DET,Jump Shot,arc3,1,3
+2025-26,TOR,DET,Hook Shot,paint,0,0
+2025-26,TOR,DET,Jump Shot,arc3,0,0
+2025-26,TOR,DET,Jump Shot,arc3,0,0
+2025-26,TOR,TOR,Jump Shot,arc3,1,3
+2025-26,TOR,DET,Jump Shot,arc3,1,3
+2025-26,TOR,DET,Layup,rim,0,0
+2025-26,TOR,DET,Pullup,arc3,0,0
+2025-26,TOR,DET,Layup,paint,0,0
+2025-26,TOR,DET,Dunk,rim,1,2
+2025-26,TOR,DET,Layup,rim,0,0
+2025-26,TOR,DET,Pullup,arc3,0,0
+2025-26,TOR,DET,Layup,rim,0,0
+2025-26,TOR,DET,Layup,paint,0,0
+2025-26,TOR,DET,Layup,rim,1,2
+2025-26,TOR,DET,Layup,rim,1,2
+2025-26,TOR,DET,Jump Shot,arc3,0,0
+2025-26,TOR,DET,Layup,rim,1,2

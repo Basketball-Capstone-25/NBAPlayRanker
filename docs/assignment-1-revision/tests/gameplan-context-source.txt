@@ -1,0 +1,144 @@
+Current source inspection: request context, weights and overtime normalization.
+
+app/ui/gameplan/_components/GameplanClient.tsx
+340:       const res = await postJson<NlpParseResponse>(`${API_BASE}/nlp/parse`, {
+341:         text: nlText,
+342:         defaults: {
+343:           period: quarter,
+344:           time_remaining: timeLeft,
+345:           margin,
+346:         },
+347:       });
+348: 
+349:       setNlConfidence(res.confidence ?? null);
+350:       setNlQuestions(res.clarifying_questions ?? []);
+351:       setNlWarnings(res.warnings ?? []);
+352: 
+353:       const c = res.context ?? {};
+354: 
+355:       if (c.period !== undefined && c.period !== null) {
+356:         setQuarter(clamp(Number(c.period), 1, 4));
+357:       }
+358:       if (c.time_remaining !== undefined && c.time_remaining !== null) {
+359:         setTimeLeft(clamp(Number(c.time_remaining), 0, 720));
+360:       }
+361:       if (c.margin !== undefined && c.margin !== null) {
+362:         setMargin(clamp(Number(c.margin), -30, 30));
+363:       }
+364: 
+365:       setCtxAfterTimeout(Boolean(c.after_timeout));
+366:       setCtxLateClock(Boolean(c.late_clock));
+367:       setCtxNeed3(Boolean(c.need3));
+368:       setCtxProtectLead(Boolean(c.protect_lead));
+369:       setCtxEndQ(Boolean(c.end_of_quarter));
+370:       setCtxVsSwitching(Boolean(c.vs_switching));
+371: 
+372:       if (c.must_stop) setFocus(70);
+373:       if (c.need3 || c.quick2) setFocus(25);
+374: 
+375:       setStatusHint("Situation parsed ✅");
+376:       setTimeout(() => setStatusHint(""), 900);
+377:     } catch (e: any) {
+378:       setStatusHint(e?.message || "Couldn’t parse the situation.");
+379:     }
+380:   }
+381: 
+382:   async function buildGameplan() {
+383:     const myBuildId = Date.now();
+384:     latestBuildRef.current = myBuildId;
+385: 
+386:     setLoading(true);
+387:     setStatusHint("");
+388:     setExplainMap({});
+389: 
+390:     try {
+391:       if (nlText.trim()) {
+392:         await runNlpParse();
+393:       }
+394: 
+395:       // Baseline recommendations (Dataset1)
+396:       const baseRankRaw = await baselineRank({
+397:         season,
+398:         our,
+399:         opp,
+400:         k: clamp(showPlays, 1, 12),
+401:         wOff,
+402:         wDef,
+403:       });
+404: 
+405:       if (latestBuildRef.current !== myBuildId) return;
+406: 
+407:       const baseRank = Array.isArray(baseRankRaw) ? baseRankRaw : [];
+408:       const baseline = baseRank.map((x, i) => normalizePlay(x, i, "baseline"));
+409:       setBaselinePlays(baseline);
+410: 
+411:       // Smart recommendations (Dataset1 + context)
+412:       let smart: NormalizedPlay[] = [];
+413:       let smartRaw: any[] = [];
+414: 
+415:       try {
+416:         const smartRankRaw = await contextRank({
+417:           season,
+418:           our,
+419:           opp,
+420:           margin,
+421:           period: quarter,
+422:           timeRemaining: timeLeft,
+423:           k: clamp(showPlays, 1, 12),
+424:           wOff,
+425:         });
+426: 
+427:         smartRaw = Array.isArray(smartRankRaw) ? smartRankRaw : [];
+428:         smart = smartRaw.map((x, i) => normalizePlay(x, i, "smart"));
+429: 
+430:         if (latestBuildRef.current !== myBuildId) return;
+431:         setSmartPlays(smart);
+432:       } catch {
+433:         smart = [];
+
+app/infrastructure/api-client.ts
+516: export async function contextRank(opts: {
+517:   season: string;
+518:   our: string;
+519:   opp: string;
+520:   margin: number;
+521:   period: number;
+522:   timeRemaining: number; // seconds remaining in current period
+523:   k?: number;
+524:   wOff?: number;
+525: }): Promise<
+526:   Array<{
+527:     playType: string;
+528:     finalPPP: number;
+529:     mlPPP: number;
+530:     baselinePPP: number;
+531:     deltaPPP: number;
+532:     contextLabel: string;
+533:     rationale: string;
+534:     raw: Record<string, any>;
+535:   }>
+536: > {
+537:   const {
+538:     season,
+539:     our,
+540:     opp,
+541:     margin,
+542:     period,
+543:     timeRemaining,
+544:     k = 5,
+545:     wOff = 0.7,
+546:   } = opts;
+547: 
+548:   const params = new URLSearchParams({
+549:     season,
+550:     our,
+551:     opp,
+552:     margin: String(margin),
+553:     period: String(period),
+554:     time_remaining: String(timeRemaining),
+555:     k: String(k),
+556:     w_off: String(wOff),
+557:   });
+558: 
+559:   const data = await fetchJson<ContextRankResponse>(
+560:     `${API_BASE}/rank-plays/context-ml?${params.toString()}`

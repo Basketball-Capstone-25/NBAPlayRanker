@@ -1,0 +1,265 @@
+Browser tab: 11, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/model-metrics".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/model-metrics
+	2 container
+		3 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		4 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		6 heading Model Performance — Baseline vs ML, Value: 1
+			7 text Model Performance  — Baseline vs ML
+		8 container
+			9 text Think of this like a  scouting report  for the model. We test generalization across seasons (holdout) and show tuning evidence (how we searched features + hyperparameters).
+		10 text PPP target Season holdout Coach-friendly interpretation Best holdout: Ridge (RMSE 0.011 PPP)
+		11 link Description: Back: Context Simulator, Value: nbaplayranker-seven.vercel.app/context
+		12 link Description: Next: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+		13 container
+			14 text Season folds (n_splits)
+			15 pop up button (collapsed, settable) Season folds (n_splits), Value: 5, Secondary Actions: Expand
+				16 menu
+					17 3
+					18 4
+					19 (selected) 5
+					20 6
+		21 button (disabled) Refreshing…
+		22 text Loading pipeline summary…
+		23 text Scoreboard
+		24 text Holdout
+		25 checkbox Calibration, Value: 1
+		26 text Tuning
+		27 text Traceability
+		82 container Predicted versus realized PPP
+			83 heading Predicted versus realized PPP, Value: 2, ID: calibration-heading
+				84 text Predicted versus realized PPP
+			85 text Fixed Ridge model, tested on later seasons. Positive bias means PPP is overpredicted; negative bias means it is underpredicted. This check does not change the model.
+			86 text Signed bias
+			87 container
+				88 text -0.000034  PPP
+			89 text MAE
+			90 container
+				91 text 0.0085  PPP
+			92 text RMSE
+			93 container
+				94 text 0.0113  PPP
+			95 container
+				96 text 1,650  held-out team/play-type rows across  5  seasons. Mean predicted:  0.9985  PPP; realized:  0.9986  PPP.
+			97 container Mean predicted versus realized PPP by prediction bin Each point is a populated prediction bin. Points below the diagonal overpredict PPP. The table below contains exact values., Help: Each point is a populated prediction bin. Points below the diagonal overpredict PPP. The table below contains exact values.
+			98 table Equal-width prediction bins; sparse means fewer than 20 rows. Empty bins have no mean.
+				99 text Equal-width prediction bins; sparse means fewer than 20 rows. Empty bins have no mean.
+				100 row
+					101 cell
+						102 text Predicted range
+					103 cell
+						104 text Rows
+					105 cell
+						106 text Predicted PPP
+					107 cell
+						108 text Realized PPP
+					109 cell
+						110 text Bias (PPP)
+				111 row
+					112 cell
+						113 text 0.3747 – 0.4812
+					114 cell
+						115 text 23
+					116 cell
+						117 text 0.4300
+					118 cell
+						119 text 0.4466
+					120 cell
+						121 text -0.0166
+				122 row
+					123 cell
+						124 text 0.4812 – 0.5877
+					125 cell
+						126 text 85
+					127 cell
+						128 text 0.5358
+					129 cell
+						130 text 0.5316
+					131 cell
+						132 text 0.0042
+				133 row
+					134 cell
+						135 text 0.5877 – 0.6942
+					136 cell
+						137 text 41
+					138 cell
+						139 text 0.6208
+					140 cell
+						141 text 0.6141
+					142 cell
+						143 text 0.0068
+				144 row
+					145 cell
+						146 text 0.6942 – 0.8007
+					147 cell
+						148 text 19  (sparse)
+					149 cell
+						150 text 0.7672
+					151 cell
+						152 text 0.7649
+					153 cell
+						154 text 0.0023
+				155 row
+					156 cell
+						157 text 0.8007 – 0.9071
+					158 cell
+						159 text 229
+					160 cell
+						161 text 0.8651
+					162 cell
+						163 text 0.8629
+					164 cell
+						165 text 0.0021
+				166 row
+					167 cell
+						168 text 0.9071 – 1.0136
+					169 cell
+						170 text 431
+					171 cell
+						172 text 0.9590
+					173 cell
+						174 text 0.9607
+					175 cell
+						176 text -0.0017
+				177 row
+					178 cell
+						179 text 1.0136 – 1.1201
+					180 cell
+						181 text 377
+					182 cell
+						183 text 1.0659
+					184 cell
+						185 text 1.0660
+					186 cell
+						187 text -0.000073
+				188 row
+					189 cell
+						190 text 1.1201 – 1.2266
+					191 cell
+						192 text 291
+					193 cell
+						194 text 1.1606
+					195 cell
+						196 text 1.1592
+					197 cell
+						198 text 0.0013
+				199 row
+					200 cell
+						201 text 1.2266 – 1.3331
+					202 cell
+						203 text 106
+					204 cell
+						205 text 1.2786
+					206 cell
+						207 text 1.2817
+					208 cell
+						209 text -0.0032
+				210 row
+					211 cell
+						212 text 1.3331 – 1.4396
+					213 cell
+						214 text 48
+					215 cell
+						216 text 1.3665
+					217 cell
+						218 text 1.3694
+					219 cell
+						220 text -0.0029
+			221 heading Evaluation provenance, Value: 3
+				222 text Evaluation provenance
+			223 container
+				224 text expanding-window season holdout ; Ridge alpha  0.1 . Scaling uses  training rows only, refitted for each fold .  each held-out team-play-type row has equal weight .
+			225 table Each held-out season is strictly later than its training seasons.
+				226 text Each held-out season is strictly later than its training seasons.
+				227 row
+					228 cell
+						229 text Training seasons
+					230 cell
+						231 text Test season
+					232 cell
+						233 text Test rows
+					234 cell
+						235 text Bias (PPP)
+					236 cell
+						237 text RMSE (PPP)
+				238 row
+					239 cell
+						240 text 2019-20
+					241 cell
+						242 text 2020-21
+					243 cell
+						244 text 330
+					245 cell
+						246 text -0.000094
+					247 cell
+						248 text 0.0127
+				249 row
+					250 cell
+						251 text 2019-20, 2020-21
+					252 cell
+						253 text 2021-22
+					254 cell
+						255 text 330
+					256 cell
+						257 text 0.0017
+					258 cell
+						259 text 0.0109
+				260 row
+					261 cell
+						262 text 2019-20, 2020-21, 2021-22
+					263 cell
+						264 text 2022-23
+					265 cell
+						266 text 330
+					267 cell
+						268 text -0.0005
+					269 cell
+						270 text 0.0112
+				271 row
+					272 cell
+						273 text 2019-20, 2020-21, 2021-22, 2022-23
+					274 cell
+						275 text 2023-24
+					276 cell
+						277 text 330
+					278 cell
+						279 text -0.0012
+					280 cell
+						281 text 0.0110
+				282 row
+					283 cell
+						284 text 2019-20, 2020-21, 2021-22, 2022-23, 2023-24
+					285 cell
+						286 text 2024-25
+					287 cell
+						288 text 330
+					289 cell
+						290 text -0.0001
+					291 cell
+						292 text 0.0109
+			293 content list
+				294 container
+					295 AXListMarker • 
+					296 text This is retrospective held-out evaluation using season-level features, including same-season rate statistics. It does not establish pre-game forecasting accuracy.
+				297 container
+					298 AXListMarker • 
+					299 text PPP is a continuous outcome, not a probability; positive bias means overprediction and negative bias means underprediction.
+				300 container
+					301 AXListMarker • 
+					302 text Bins with fewer than 20 held-out rows are sparse; do not draw strong conclusions from them.
+		68 container
+			69 text Built with  Next.js  (UI) +  FastAPI  (services).
+		70 container
+			71 text Tip for reviewers: start at 
+			72 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			73 text  to see the dataset, then compare 
+			74 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			75 text  vs 
+			76 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			77 text , and verify evidence in 
+			78 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			79 text  and
+			80 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			81 text .
+
+The focused UI element is 25 checkbox Calibration, Value: 1

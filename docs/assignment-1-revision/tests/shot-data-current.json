@@ -1,0 +1,29 @@
+{
+  "recorded_at_utc": "2026-10-11T20:25:52.993350+00:00",
+  "local_source": "backend/data/pbp/shots_clean.parquet",
+  "source_sha256": "36f128eec443543c7b59dee537fcfc7162ae66b336eece5abf8d25c77cec0fce",
+  "rows": 1332515,
+  "same_team_opponent_rows": 18746,
+  "season_game_groups": 7527,
+  "groups_with_only_one_shooting_team": 7527,
+  "passed": false,
+  "live_csv": {
+    "status": 200,
+    "season": "2025-26",
+    "team": "TOR",
+    "limit": 5000,
+    "sha256": "744307ac2e4594b44c2112050e119590ecc3457104d75a733f594e821cd9daca",
+    "rows": 5000,
+    "same_team_opponent_rows": 51,
+    "columns": [
+      "SEASON_STR",
+      "TEAM_ABBR",
+      "OPP_ABBR",
+      "SHOT_TYPE",
+      "ZONE",
+      "IS_MAKE",
+      "POINTS"
+    ]
+  },
+  "scope": "Read-only check. Obvious self-opponent rows do not bound the total attribution error. Original raw events were not available; the historical cause is not proven."
+}

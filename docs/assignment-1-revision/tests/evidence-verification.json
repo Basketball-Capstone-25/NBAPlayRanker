@@ -1,0 +1,43 @@
+{
+  "verified_at_utc": "2026-10-11T21:24:48.079482+00:00",
+  "referenced_evidence_files": [
+    "additional-live-api.json",
+    "additional-local-checks.json",
+    "additional-rationale-checks.json",
+    "backend-junit.xml",
+    "backend.log",
+    "frontend-vitest.json",
+    "frontend.log",
+    "gameplan-context-source.txt",
+    "gameplan-first-build.txt",
+    "gameplan-overtime.txt",
+    "gameplan-second-build.txt",
+    "historical/shot-metrics-runtime-diagnostics.json",
+    "live-additional.json",
+    "live-core/live-verification.json",
+    "model-metrics-browser.txt",
+    "nlp-live-parse.json",
+    "nlp-overtime-current.json",
+    "shot-TOR-2025-26.csv",
+    "shot-analysis-browser.txt",
+    "shot-analysis-console.json",
+    "shot-attribution-junit.xml",
+    "shot-attribution.log",
+    "shot-data-current.json",
+    "shot-heatmap-browser.txt",
+    "shot-plan-browser.txt",
+    "sql-verification.json",
+    "typescript.log"
+  ],
+  "missing_references": [],
+  "supporting_hashes_match": true,
+  "private_value_and_personal_path_scan": "passed",
+  "gitignored_files_requiring_explicit_staging": [
+    "docs/assignment-1-revision/tests/typescript.log",
+    "docs/assignment-1-revision/tests/backend.log",
+    "docs/assignment-1-revision/tests/frontend.log",
+    "docs/assignment-1-revision/tests/shot-attribution.log",
+    "docs/assignment-1-revision/tests/shot-regression-markers.log"
+  ],
+  "manifest_scope": "Every file in this tests directory except manifest.json itself."
+}

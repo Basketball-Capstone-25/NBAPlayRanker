@@ -1,0 +1,98 @@
+{
+  "verified_at": "2026-10-11T21:11:46.091Z",
+  "cases": [
+    {
+      "key": "BST-112",
+      "summary": "Deployed Matchup page loads data from the API",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-76",
+      "summary": "Ridge model meets the documented historical evaluation checks",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-75",
+      "summary": "Context labels describe normal, trailing and leading situations",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-74",
+      "summary": "Context helpers handle regulation clocks and score factors",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-66",
+      "summary": "Ranking APIs enforce coach access",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-65",
+      "summary": "Coach workspace routes enforce the signed-in role",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-57",
+      "summary": "Baseline API validates matchup and result count",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-56",
+      "summary": "Baseline ranking returns bounded matchup-specific results",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-44",
+      "summary": "Analytics permission checks distinguish analyst and coach roles",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-43",
+      "summary": "Role lookup uses protected profiles and rejects invalid profile data",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-42",
+      "summary": "Session validation accepts verified tokens and rejects missing or invalid tokens",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-6",
+      "summary": "Coach Matchup displays the Top-K baseline cards",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-3",
+      "summary": "Data Explorer CSV matches the visible raw data",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-2",
+      "summary": "Data Explorer filters rows by season, team and side",
+      "status": "Pass",
+      "owner_preserved": true
+    },
+    {
+      "key": "BST-1",
+      "summary": "Data Explorer displays the current raw dataset",
+      "status": "Pass",
+      "owner_preserved": true
+    }
+  ],
+  "all_pass": true,
+  "all_owners_preserved": true,
+  "scope": "Ten scoped component/API cases and five current browser/data-export cases."
+}

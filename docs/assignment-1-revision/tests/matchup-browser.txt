@@ -1,0 +1,204 @@
+2026-10-11T20:59:29.638Z
+Browser tab: 11, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/matchup".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/matchup
+	2 container
+		3 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		4 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		6 image
+		7 text Baseline • Coach view
+		8 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+		9 link Description: Next: Context / ML, Value: nbaplayranker-seven.vercel.app/context?season=2024-25&our=TOR&opp=BOS&k=5
+		10 heading Matchup / Baseline, Value: 1
+			11 text Matchup / Baseline
+		12 text Pick a matchup and get the Top-K play types. This is the transparent “trust anchor” before Context / ML.
+		13 heading Matchup + context inputs, Value: 2
+			14 text Matchup + context inputs
+		15 text Ready
+		16 container
+			17 text Season
+			18 pop up button (collapsed, settable) Season, Value: 2024-25, Secondary Actions: Expand
+				71 menu
+					72 2019-20
+					73 2020-21
+					74 2021-22
+					75 2022-23
+					76 2023-24
+					77 (selected) 2024-25
+		19 container
+			20 text Top-K
+			21 pop up button (collapsed, settable) Top-K, Value: 5, Secondary Actions: Expand
+				22 menu
+					23 3
+					24 (selected) 5
+					25 7
+					26 10
+		27 container
+			28 text Our Team
+			29 pop up button (collapsed, settable) Our Team, Value: TOR, Secondary Actions: Expand
+				78 menu
+					79 ATL
+					80 BKN
+					81 BOS
+					82 CHA
+					83 CHI
+					84 CLE
+					85 DAL
+					86 DEN
+					87 DET
+					88 GSW
+					89 HOU
+					90 IND
+					91 LAC
+					92 LAL
+					93 MEM
+					94 MIA
+					95 MIL
+					96 MIN
+					97 NOP
+					98 NYK
+					99 OKC
+					100 ORL
+					101 PHI
+					102 PHX
+					103 POR
+					104 SAC
+					105 SAS
+					106 (selected) TOR
+					107 UTA
+					108 WAS
+		30 container
+			31 text Opponent
+			32 pop up button (collapsed, settable) Opponent, Value: BOS, Secondary Actions: Expand
+				109 menu
+					110 ATL
+					111 BKN
+					112 (selected) BOS
+					113 CHA
+					114 CHI
+					115 CLE
+					116 DAL
+					117 DEN
+					118 DET
+					119 GSW
+					120 HOU
+					121 IND
+					122 LAC
+					123 LAL
+					124 MEM
+					125 MIA
+					126 MIL
+					127 MIN
+					128 NOP
+					129 NYK
+					130 OKC
+					131 ORL
+					132 PHI
+					133 PHX
+					134 POR
+					135 SAC
+					136 SAS
+					137 (disabled) TOR
+					138 UTA
+					139 WAS
+		33 heading Weights (auto-normalized), Value: 2
+			34 text Weights (auto-normalized)
+		35 text off= 0.70  • def= 0.30
+		36 text Offense weight
+		37 text Controls how much our offense drives the ranking.
+		38 stepper (settable, float) Value: 0.699999988079071, Details: 0.7
+		39 slider (settable, float) Value: 0.699999988079071, Details: 0.7
+		40 text Defense weight
+		41 text Controls how much opponent defense drives the ranking.
+		42 stepper (settable, float) Value: 0.30000001192092896, Details: 0.3
+		43 slider (settable, float) Value: 0.30000001192092896, Details: 0.3
+		44 button Run Baseline
+			45 image
+			46 text Run Baseline
+		47 button Export CSV
+			48 image
+			49 text Export CSV
+		50 text TOR (Toronto Raptors) vs BOS (Boston Celtics)
+		51 heading Top recommendations, Value: 2
+			52 text Top recommendations
+		53 text TOR vs BOS • 2024-25
+		140 container
+			141 text # 1 PRRollMan
+		142 text Pred PPP 1.154
+		143 text PRRollMan: Pred 1.154 PPP. Our(off) 1.127 vs Opp(def) 0.991 (+0.136). Reliability off=0.74, def=0.66.
+		144 button Generate map
+			145 image
+			146 text Generate map
+		147 button Export 1-page PDF
+			148 image
+			149 text Export 1-page PDF
+		150 container
+			151 text # 1 PRRollMan
+		152 container
+			153 text gap  0.136
+		154 container Predicted PPP bar for PRRollMan
+		155 text 1.154
+		156 container
+			157 text # 2 Spotup
+		158 container
+			159 text gap  0.055
+		160 container Predicted PPP bar for Spotup
+		161 text 1.065
+		162 container
+			163 text # 3 OffScreen
+		164 container
+			165 text gap  0.009
+		166 container Predicted PPP bar for OffScreen
+		167 text 0.993
+		168 container
+			169 text # 4 Postup
+		170 container
+			171 text gap  -0.044
+		172 container Predicted PPP bar for Postup
+		173 text 0.967
+		174 container
+			175 text # 5 Isolation
+		176 container
+			177 text gap  -0.024
+		178 container Predicted PPP bar for Isolation
+		179 text 0.902
+		180 heading Court map, Value: 2
+			181 text Court map
+		182 text SportyPy
+		183 container
+			184 text Play type
+			185 pop up button (collapsed, settable) Play type, Value: PRRollMan, Secondary Actions: Expand
+				186 menu
+					187 (selected) PRRollMan
+					188 Spotup
+					189 OffScreen
+					190 Postup
+					191 Isolation
+		192 button Generate map
+			193 image
+			194 text Generate map
+		195 button Export PDF
+			196 image
+			197 text Export PDF
+		198 text Generate a map to attach a clean visual to your recommendation.
+		199 text No map yet. Generate a map for the selected play type.
+		200 button (collapsed) Show details table, Secondary Actions: Expand
+			201 text Show details table
+		55 button (collapsed) More info, Secondary Actions: Expand
+			56 text More info
+		57 container
+			58 text Built with  Next.js  (UI) +  FastAPI  (services).
+		59 container
+			60 text Tip for reviewers: start at 
+			61 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			62 text  to see the dataset, then compare 
+			63 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			64 text  vs 
+			65 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			66 text , and verify evidence in 
+			67 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			68 text  and
+			69 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			70 text .
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/matchup

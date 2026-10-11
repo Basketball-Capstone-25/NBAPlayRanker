@@ -1,0 +1,209 @@
+{
+  "started_at": "2026-10-11T21:02:48.518040+00:00",
+  "finished_at": "2026-10-11T21:03:43.724892+00:00",
+  "source_commit": "41bd91c6b58b3cc143fa9986806bf25a8c605828",
+  "scope": "Read-only current-source checks; child-process negative startup cases; no dataset changes or model training.",
+  "results": {
+    "missing_supabase_url": {
+      "returncode": 0,
+      "stdout": "{\"startup_completed\": true, \"health_status\": 200, \"health_body\": {\"status\": \"ok\"}, \"required_env_present\": false}\n",
+      "stderr": "INFO:basketball_strategy:Loaded Dataset2 (/pbp) router successfully.\nINFO:basketball_strategy:Loaded NLP (/nlp) router successfully.\n<repository>/backend/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\nINFO:httpx:HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\"\n",
+      "isolation": "Child process only; dotenv disabled for missing-configuration probes; missing file simulated by a narrowly scoped Path.exists replacement."
+    },
+    "missing_playtype_dataset": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 9, in <module>\n    from application.api_coordination.app import app\n  File \"<repository>/backend/application/api_coordination/app.py\", line 35, in <module>\n    from domain.context_ml_recommendation import rank_ml_with_context\n  File \"<repository>/backend/domain/context_ml_recommendation/__init__.py\", line 8, in <module>\n    from domain.context_ml_recommendation.ml_context_recommender import (\n        rank_ml_with_context,\n    )\n  File \"<repository>/backend/domain/context_ml_recommendation/ml_context_recommender.py\", line 76, in <module>\n    _rec = BaselineRecommender(str(SYNERGY_CSV_PATH))\n  File \"<repository>/backend/domain/baseline_recommendation/baseline_recommender.py\", line 232, in __init__\n    raise FileNotFoundError(synergy_csv_path)\nFileNotFoundError: <repository>/backend/data/synergy_playtypes_2019_2025_players.csv\n",
+      "isolation": "Child process only; dotenv disabled for missing-configuration probes; missing file simulated by a narrowly scoped Path.exists replacement."
+    },
+    "normal_dataset_load": {
+      "returncode": 0,
+      "stdout": "{\"startup_completed\": true, \"health_status\": 200, \"raw_rows\": 47982, \"team_rows\": 3240, \"league_rows\": 108, \"team_columns\": [\"SEASON\", \"TEAM_ABBREVIATION\", \"TEAM_NAME\", \"PLAY_TYPE\", \"SIDE\", \"GP\", \"POSS\", \"POSS_PCT\", \"PPP\", \"FG_PCT\", \"EFG_PCT\", \"SCORE_POSS_PCT\", \"TOV_POSS_PCT\", \"SF_POSS_PCT\", \"FT_POSS_PCT\", \"PLUSONE_POSS_PCT\", \"PTS\", \"FGM\", \"FGA\", \"RELIABILITY_WEIGHT\"], \"seasons\": [\"2019-20\", \"2020-21\", \"2021-22\", \"2022-23\", \"2023-24\", \"2024-25\"]}\n",
+      "stderr": "INFO:basketball_strategy:Loaded Dataset2 (/pbp) router successfully.\nINFO:basketball_strategy:Loaded NLP (/nlp) router successfully.\n<repository>/backend/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\nINFO:httpx:HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\"\n",
+      "isolation": "Child process only; dotenv disabled for missing-configuration probes; missing file simulated by a narrowly scoped Path.exists replacement."
+    },
+    "second_dataset": {
+      "source": "backend/data/pbp/shots_clean.parquet",
+      "sha256": "36f128eec443543c7b59dee537fcfc7162ae66b336eece5abf8d25c77cec0fce",
+      "source_rows": 1332515,
+      "raw_available": false,
+      "raw_paths_checked": [
+        "backend/data/pbp/nba_pbp_2021_present.parquet",
+        "backend/data/nba_pbp_2021_present.parquet"
+      ],
+      "normalized_required_columns": [
+        "SEASON_STR",
+        "TEAM_ABBR",
+        "OPP_ABBR",
+        "HOME_FLAG",
+        "PERIOD",
+        "SHOT_TYPE",
+        "ZONE",
+        "CLOCK_SEC",
+        "MARGIN",
+        "SHOT_VALUE",
+        "DIST",
+        "ANGLE",
+        "X",
+        "Y",
+        "POINTS",
+        "GAME_ID"
+      ],
+      "missing_required_columns": [],
+      "canonical_columns": [
+        "season",
+        "team",
+        "opp",
+        "game_id",
+        "shooter_id",
+        "home",
+        "period",
+        "clock_sec",
+        "margin",
+        "shot_type",
+        "zone",
+        "shot_value",
+        "is_make",
+        "points",
+        "x",
+        "y",
+        "dist",
+        "angle"
+      ],
+      "expected_canonical_columns": [
+        "season",
+        "team",
+        "opp",
+        "game_id",
+        "shooter_id",
+        "home",
+        "period",
+        "clock_sec",
+        "margin",
+        "shot_type",
+        "zone",
+        "shot_value",
+        "is_make",
+        "points",
+        "x",
+        "y",
+        "dist",
+        "angle"
+      ],
+      "canonical_rows": 1332515,
+      "feature_spec": {
+        "categorical_features": [
+          "SEASON_STR",
+          "TEAM_ABBR",
+          "OPP_ABBR",
+          "HOME_FLAG",
+          "PERIOD",
+          "SHOT_TYPE",
+          "ZONE"
+        ],
+        "numeric_features": [
+          "CLOCK_SEC",
+          "MARGIN",
+          "SHOT_VALUE",
+          "DIST",
+          "ANGLE",
+          "X",
+          "Y"
+        ],
+        "target": "POINTS",
+        "group_col": "GAME_ID"
+      },
+      "sample_seed": 42,
+      "ml_sample_rows": 20000,
+      "ml_numeric_nan": 0,
+      "ml_numeric_inf": 0,
+      "ml_null_counts": {
+        "SEASON_STR": 0,
+        "TEAM_ABBR": 0,
+        "OPP_ABBR": 0,
+        "HOME_FLAG": 0,
+        "PERIOD": 0,
+        "SHOT_TYPE": 0,
+        "ZONE": 0,
+        "CLOCK_SEC": 0,
+        "MARGIN": 0,
+        "SHOT_VALUE": 0,
+        "DIST": 0,
+        "ANGLE": 0,
+        "X": 0,
+        "Y": 0,
+        "POINTS": 0,
+        "GAME_ID": 0
+      },
+      "raw_null_counts": {
+        "SEASON_STR": 0,
+        "TEAM_ABBR": 0,
+        "OPP_ABBR": 0,
+        "HOME_FLAG": 0,
+        "PERIOD": 0,
+        "SHOT_TYPE": 0,
+        "ZONE": 0,
+        "CLOCK_SEC": 0,
+        "MARGIN": 1332515,
+        "SHOT_VALUE": 0,
+        "DIST": 0,
+        "ANGLE": 0,
+        "X": 0,
+        "Y": 0,
+        "POINTS": 0,
+        "GAME_ID": 0
+      },
+      "self_opponent_rows": 18746,
+      "game_groups": 7527,
+      "games_with_one_shooting_team": 7527,
+      "pre_possession_information_gap": [
+        "SHOT_TYPE",
+        "ZONE",
+        "SHOT_VALUE",
+        "DIST",
+        "ANGLE",
+        "X",
+        "Y"
+      ],
+      "gap_explanation": "These model inputs describe the shot actually taken during the possession. The retained pipeline has no pre-possession snapshot or planned-shot input contract establishing that they were available before the possession."
+    },
+    "schema_validation_fixtures": [
+      {
+        "fixture": "missing_TEAM_ABBR",
+        "completed": false,
+        "error_type": "KeyError",
+        "error": "\"shots_clean.parquet is missing required columns: ['TEAM_ABBR']\"",
+        "warnings": [],
+        "output": ""
+      },
+      {
+        "fixture": "extra_UNMAPPED_FIXTURE",
+        "completed": true,
+        "rows": 5,
+        "columns": [
+          "SEASON_STR",
+          "TEAM_ABBR",
+          "OPP_ABBR",
+          "HOME_FLAG",
+          "SHOT_TYPE",
+          "SHOT_VALUE",
+          "MADE",
+          "POINTS",
+          "X",
+          "Y",
+          "DIST",
+          "ANGLE",
+          "ZONE",
+          "PERIOD",
+          "CLOCK_SEC",
+          "MARGIN",
+          "GAME_ID",
+          "SHOOTER_ID",
+          "UNMAPPED_FIXTURE"
+        ],
+        "warnings": [],
+        "output": ""
+      }
+    ]
+  }
+}
