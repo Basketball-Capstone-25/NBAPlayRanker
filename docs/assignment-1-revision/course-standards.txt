@@ -10,12 +10,22 @@ hours, with each estimate no larger than four hours. Estimates and actual work
 logs are separate. Personal work hours still need confirmed totals before any
 new work logs can be entered.
 
+SCRUM-551 through SCRUM-565 provide the revision breakdown under SCRUM-528,
+SCRUM-529 and SCRUM-530. Each has acceptance criteria and an Effort Estimate
+between 0.5 and 3 hours. These are current sizing estimates, not historical
+estimates or actual time. See tracking/ for the verified Jira snapshot.
+
 Test Planning, pages 8–23
 Tests should trace from functional areas and use cases to specific steps,
 inputs and expected results. The existing use-case suites remain in place.
 BST-137 groups the new Fall execution results across those use cases. Failed
 cases link to planned fixes and need another execution after the fix. Cases
 whose complete scope has not been executed remain Verify.
+
+Page 15 specifies Epic-level Test Suites and Task-level Test Cases. The target
+types have been configured in BST. Existing cases still require conversion
+from the former subtask type, with their original results and suite membership
+restored. SCRUM-564 tracks this remaining hierarchy migration.
 
 Interaction and Detailed Design, pages 4–16
 The five existing complete use-case collaborations retain their realization

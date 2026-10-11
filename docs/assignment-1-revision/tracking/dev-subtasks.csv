@@ -1,0 +1,16 @@
+Key,Parent,Summary,Status,Assignee,Effort Estimate (current person-hours),Worklog count
+SCRUM-551,SCRUM-528,Use consistent names for sequence lifelines,Done,Gurkaranjit Asahan,1.5,0
+SCRUM-552,SCRUM-528,Define sequence inputs and return values,Done,Gurkaranjit Asahan,3,0
+SCRUM-553,SCRUM-528,Verify sequence renders and preserve the shared model,Done,Gurkaranjit Asahan,1.5,0
+SCRUM-554,SCRUM-528,Publish the revised sequences to Visual Paradigm Teamwork,In Progress,Gurkaranjit Asahan,0.5,0
+SCRUM-555,SCRUM-529,"Review the probability, impact and status of every risk",Done,Gurkaranjit Asahan,2,0
+SCRUM-556,SCRUM-529,Link risks to mitigation and monitoring work,Done,Gurkaranjit Asahan,2,0
+SCRUM-557,SCRUM-529,"Clarify risk titles, findings and next actions",Done,Gurkaranjit Asahan,2,0
+SCRUM-558,SCRUM-529,Verify and publish the revised risk register,Done,Gurkaranjit Asahan,0.5,0
+SCRUM-559,SCRUM-530,Add Fall 2026 cases for Elaboration features,Done,Gurkaranjit Asahan,1.5,0
+SCRUM-560,SCRUM-530,Refresh legacy test coverage and trace it to features,Done,Gurkaranjit Asahan,2,0
+SCRUM-561,SCRUM-530,Run regression suites and reproduce shot-data failures,Done,Gurkaranjit Asahan,2,0
+SCRUM-562,SCRUM-530,Check live feature flows and record their actual results,Done,Gurkaranjit Asahan,2,0
+SCRUM-563,SCRUM-530,Link failed tests to planned bug fixes,Done,Gurkaranjit Asahan,1,0
+SCRUM-564,SCRUM-530,Align test-suite and test-case hierarchy with the course,In Progress,Gurkaranjit Asahan,2,0
+SCRUM-565,SCRUM-530,Publish the test evidence and revision handoff,Done,Gurkaranjit Asahan,1,0

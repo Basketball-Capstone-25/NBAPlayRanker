@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-10-11T21:39:07.622954+00:00",
+  "method": "Read-only SQLite connections and file hashes; no import, update, commit or workspace write.",
+  "native": {
+    "sha256": "c1c0ea90f39ca8b74c32d4f9eb2560ce7dd62560bc154bc84afa334aa29c3cc0",
+    "teamwork_revision": 54,
+    "pending_history_count": 1370,
+    "diagrams": 192,
+    "model_elements": 2194,
+    "diagram_elements": 1760
+  },
+  "pristine": {
+    "sha256": "b678ff36f6c4dd3f6ad14495e5ffcf67b694196d493eec73860985a9f550e02c",
+    "teamwork_revision": 54,
+    "pending_history_count": 0,
+    "diagrams": 192,
+    "model_elements": 2157,
+    "diagram_elements": 1725
+  },
+  "matches_verified_assignment_revision": true,
+  "verified_sequence_contracts_still_applicable": true,
+  "publication_confirmed": false,
+  "current_remote_revision_queried": false,
+  "last_confirmed_remote_revision": 54,
+  "remote_revision_note": "Revision 54 was confirmed before import. Cached local metadata is not a fresh server query.",
+  "official_commit_failure": "The previous supported CommitTeamworkProject invocation authenticated, then failed with NullPointerException in v.bye.by.a. It was not repeated.",
+  "required_action": "Open the existing shared Basketball Playtype Ranker project in Visual Paradigm Desktop, choose Team > Commit, review the changes, and commit. If conflicts appear, resolve them before publication.",
+  "requested_commit_comment": "Clarify sequence lifelines, request parameters and return values (SCRUM-528)",
+  "references": [
+    "https://circle.visual-paradigm.com/docs/export-and-import/command-line-interface/committing-teamwork-project-with-command/",
+    "https://www.visual-paradigm.com/support/documents/vpuserguide/100/2449/30943_commitworkst.html"
+  ]
+}

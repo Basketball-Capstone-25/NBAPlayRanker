@@ -1,0 +1,226 @@
+{
+  "verified_at": "2026-10-11T21:43:56.551Z",
+  "purpose": "Current task breakdown for Assignment 1 revision; estimates are recorded during this review, not reconstructed historical estimates or personal work time.",
+  "course_standard": {
+    "source": "SYST30025 - Software Engineering/Modules/3. Software Management/2. Project Planning with JIRA.pdf",
+    "lesson_sections": [
+      "Issue Types - Subtasks",
+      "Dev Subtasks Lifecycle"
+    ],
+    "requirements": [
+      "Dev Subtasks belong under Task or Story.",
+      "Estimate in person-hours using the effort field.",
+      "Each subtask is no larger than four hours.",
+      "Actual worklogs are separate from estimates."
+    ]
+  },
+  "totals": {
+    "subtasks": 15,
+    "done": 13,
+    "in_progress": 2,
+    "worklogs_added": 0,
+    "estimated_person_hours": 24.5
+  },
+  "issues": [
+    {
+      "key": "SCRUM-551",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-551",
+      "summary": "Use consistent names for sequence lifelines",
+      "parent": "SCRUM-528",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 1.5,
+      "description": "Use the same instance : Class notation for participants in all sequence diagrams.\n\nAcceptance criteria:\n\n* All 95 lifelines follow the agreed notation.\n* Existing participant identities and unrelated model elements are retained.\n\nCurrent result: The 17 sequences now use named classifiers consistently.\n\nEvidence:\n\n* [sequence-contracts.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/sequence-contracts.json)\n* [verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/verification.json)\n\nEffort estimate: 1.5 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-552",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-552",
+      "summary": "Define sequence inputs and return values",
+      "parent": "SCRUM-528",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 3,
+      "description": "Give each request and reply a clear operation or result name with typed parameters. Complete the empty Glossary sequences and missing NLP replies.\n\nAcceptance criteria:\n\n* All 241 messages have labels and documented inputs or result types.\n* The three Glossary flows and missing NLP return paths are present.\n\nCurrent result: Requests and replies have typed labels, including the completed Glossary and NLP paths.\n\nEvidence:\n\n* [sequence-contracts.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/sequence-contracts.json)\n* [interaction-guide.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/interaction-guide.txt)\n\nEffort estimate: 3 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-553",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-553",
+      "summary": "Verify sequence renders and preserve the shared model",
+      "parent": "SCRUM-528",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 1.5,
+      "description": "Check the imported project and diagram previews against shared revision 54.\n\nAcceptance criteria:\n\n* All 192 original diagram IDs and creator metadata remain intact.\n* The 175 unrelated diagrams remain unchanged, and revised sequences render correctly.\n* The native model and verification results are available in the shared repository.\n\nCurrent result: The import round trip and model comparisons passed. The native project and 17 sequence previews are on main.\n\nEvidence:\n\n* [verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/verification.json)\n* [render-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/render-verification.json)\n\nEffort estimate: 1.5 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-554",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-554",
+      "summary": "Publish the revised sequences to Visual Paradigm Teamwork",
+      "parent": "SCRUM-528",
+      "status": "In Progress",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 0.5,
+      "description": "Publish the saved sequence edits to the existing shared Visual Paradigm project and verify the resulting server revision.\n\nAcceptance criteria:\n\n* Teamwork shows a new shared revision containing the saved sequence changes.\n* The local project and pristine copy agree on that revision with no pending history.\n* Refresh the publication evidence and submission copy after confirmation.\n\nCurrent result: The revised model is saved on main. The official commit command crashes after authentication; shared publication is still unconfirmed.\n\nEvidence:\n\n* [teamwork-status.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/teamwork-status.json)\n\nEffort estimate: 0.5 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-555",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-555",
+      "summary": "Review the probability, impact and status of every risk",
+      "parent": "SCRUM-529",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 2,
+      "description": "Reassess all 84 risks using the current implementation, deployment and test findings.\n\nAcceptance criteria:\n\n* Each risk has a recorded review and an evidence-based status.\n* Unresolved problems remain active rather than being closed without support.\n\nCurrent result: All 84 risks were reviewed. The shot-data problems and pending model publication remain visible as active risks.\n\nEvidence:\n\n* [risk-register.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-register.json)\n* [risk-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-verification.json)\n\nEffort estimate: 2 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-556",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-556",
+      "summary": "Link risks to mitigation and monitoring work",
+      "parent": "SCRUM-529",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 2,
+      "description": "Connect each risk to the task that implements or monitors its mitigation.\n\nAcceptance criteria:\n\n* All 84 risk cards have relevant Linked work items.\n* BSR-110 links the migration and hosting follow-up tasks.\n* Missing mitigation work has an assigned task and acceptance criteria.\n\nCurrent result: The risk register has 196 formal work-item links. BSR-110 links SCRUM-506, SCRUM-524 and SCRUM-534.\n\nEvidence:\n\n* [risk-register.csv](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-register.csv)\n* [risk-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-verification.json)\n\nEffort estimate: 2 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-557",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-557",
+      "summary": "Clarify risk titles, findings and next actions",
+      "parent": "SCRUM-529",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 2,
+      "description": "Make the risk register readable and specific enough to show what still needs attention.\n\nAcceptance criteria:\n\n* Titles name the actual risk instead of a vague activity.\n* Review comments state the finding and next action clearly.\n* Existing owners and historical comments are preserved.\n\nCurrent result: Updated 80 titles, filled four missing descriptions and added concise reviews with specific follow-ups.\n\nEvidence:\n\n* [READ-ME.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/READ-ME.txt)\n* [risk-register.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-register.json)\n\nEffort estimate: 2 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-558",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-558",
+      "summary": "Verify and publish the revised risk register",
+      "parent": "SCRUM-529",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 0.5,
+      "description": "Export the revised risks and verify that the shared evidence matches Jira.\n\nAcceptance criteria:\n\n* The CSV and JSON contain the same 84 risks and mitigation links.\n* Verification confirms preserved owners and history.\n* The exports are committed to the shared repository.\n\nCurrent result: The register and verification are on main. All 84 risks have linked work, including the follow-ups from test findings.\n\nEvidence:\n\n* [risk-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-verification.json)\n* [risk-register.csv](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-register.csv)\n\nEffort estimate: 0.5 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-559",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-559",
+      "summary": "Add Fall 2026 cases for Elaboration features",
+      "parent": "SCRUM-530",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 1.5,
+      "description": "Add tests for the current features and the gaps found during the full-app review.\n\nAcceptance criteria:\n\n* The new cases specify inputs, steps, expected results and related features.\n* Coverage includes Gameplan context, shot features, metrics, exports and access controls.\n* Unexecuted or blocked tests remain unverified.\n\nCurrent result: BST-138 through BST-155 add 18 cases under BST-137, with feature and defect links.\n\nEvidence:\n\n* [coverage.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/coverage.json)\n* [jira-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/jira-verification.json)\n\nEffort estimate: 1.5 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-560",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-560",
+      "summary": "Refresh legacy test coverage and trace it to features",
+      "parent": "SCRUM-530",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 2,
+      "description": "Replace vague legacy coverage descriptions with concrete inputs, outcomes and supporting checks.\n\nAcceptance criteria:\n\n* Current results identify the exact test or browser evidence that supports them.\n* Cases link to the related feature or use case.\n* Historical export results remain identified as historical.\n\nCurrent result: Legacy cases now map to specific checks. BST-128 and BST-129 retain their earlier results without claiming a new execution.\n\nEvidence:\n\n* [legacy-coverage.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/legacy-coverage.json)\n* [additional-legacy-execution.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/additional-legacy-execution.json)\n* [jira-project-status.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/jira-project-status.json)\n\nEffort estimate: 2 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-561",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-561",
+      "summary": "Run regression suites and reproduce shot-data failures",
+      "parent": "SCRUM-530",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 2,
+      "description": "Run the local suites and add regression checks that expose the retained shot-data defects.\n\nAcceptance criteria:\n\n* Backend, fixture-safety, frontend and TypeScript results are saved.\n* The known shot failures are reproduced without treating expected failures as passes.\n* The source checks and production build pass in shared GitHub CI.\n\nCurrent result: 202 Python checks and 34 frontend tests passed. Four shot-data checks failed when run explicitly; their strict expected-failure markers remain visible in the normal suite.\n\nEvidence:\n\n* [verification-summary.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/verification-summary.json)\n* [shot-attribution-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/shot-attribution-junit.xml)\n* [github-ci.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/github-ci.json)\n\nEffort estimate: 2 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-562",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-562",
+      "summary": "Check live feature flows and record their actual results",
+      "parent": "SCRUM-530",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 2,
+      "description": "Exercise the deployed features using analyst and coach accounts and verify the relevant API, database and download behavior.\n\nAcceptance criteria:\n\n* Each result records its environment and observed behavior.\n* Temporary database fixtures are removed after the checks.\n* Browser failures and slow requests remain documented alongside passing checks.\n\nCurrent result: Recorded 106 live assertions, two transactional SQL suites and the browser findings. The downloaded analyst CSV matched all 11 rows and seven visible columns.\n\nEvidence:\n\n* [live-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/live-core/live-verification.json)\n* [live-additional.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/live-additional.json)\n* [browser-and-suite-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/browser-and-suite-verification.json)\n* [data-explorer-download-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/data-explorer-download-verification.json)\n\nEffort estimate: 2 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-563",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-563",
+      "summary": "Link failed tests to planned bug fixes",
+      "parent": "SCRUM-530",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 1,
+      "description": "Create reproducible repair tasks for failed tests and keep blocked or unrun cases separate.\n\nAcceptance criteria:\n\n* Every Fail case has a planned bug-fix link.\n* Repair tasks include the observed defect and acceptance criteria.\n* No repair is marked complete merely because its failure was documented.\n\nCurrent result: All 14 failed test cases have planned-fix links. SCRUM-538 through SCRUM-549 remain repair work, and SCRUM-550 defines the missing latency target.\n\nEvidence:\n\n* [jira-project-status.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/jira-project-status.json)\n* [additional-jira-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/additional-jira-verification.json)\n\nEffort estimate: 1 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-564",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-564",
+      "summary": "Align test-suite and test-case hierarchy with the course",
+      "parent": "SCRUM-530",
+      "status": "In Progress",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 2,
+      "description": "Use Epic-level Test Suites and Task-level Test Cases while preserving the existing tests and board placement.\n\nAcceptance criteria:\n\n* Suites use the Epic hierarchy and cases use the Task hierarchy.\n* Issue keys, parent membership, owners, history, result statuses and defect links are preserved.\n* Relevant test cards remain visible on the Kanban board.\n\nCurrent result: The existing cases and execution records are preserved. Hierarchy alignment is being verified as part of this closeout.\n\nEffort estimate: 2 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    },
+    {
+      "key": "SCRUM-565",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-565",
+      "summary": "Publish the test evidence and revision handoff",
+      "parent": "SCRUM-530",
+      "status": "Done",
+      "type": "Dev Subtask",
+      "assignee": "Gurkaranjit Asahan",
+      "effort_estimate_hours": 1,
+      "description": "Collect the results, coverage and concise walkthrough in the shared repository and a review package.\n\nAcceptance criteria:\n\n* Evidence paths and hashes are verified.\n* The review archive is below 20 MB and contains no credentials.\n* The guide identifies remaining repairs and submission steps accurately.\n\nCurrent result: The verified 16.76 MB review handoff includes the code, native model, Jira evidence and walkthrough. VP publication and personal worklogs are explicitly still pending.\n\nEvidence:\n\n* [evidence-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/evidence-verification.json)\n* [READ-ME.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/READ-ME.txt)\n\nEffort estimate: 1 person-hours, recorded now during the task-breakdown review. This is a current sizing estimate, not an original pre-work estimate or logged time. Actual hours are recorded separately.",
+      "worklog_count": 0,
+      "story_points": null
+    }
+  ],
+  "pending": [
+    "SCRUM-554: confirm the shared Visual Paradigm revision and refresh publication evidence.",
+    "SCRUM-564: complete and verify test-suite/test-case hierarchy migration.",
+    "Actual personal work-hour totals are still needed before logging time."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "files": {
+    "READ-ME.txt": "0bd9dd6df008766e1be9d7b643a01fe384d029d7f2f7a02b4770d413cfb430d3",
+    "dev-subtasks.csv": "b6064e0035a0e551125d1c17aa57a56fd30a78506416048deba46ab956e136fd",
+    "dev-subtasks.json": "a67a989050af8bf8b87d50fc919bd7a86f09aa34b1ca8256c79616f6fa3e59ab",
+    "verification.json": "19dbf196ed9e8cce581f608b36a1cbb3a334f7216e003cd8f34d8cbcadd262e6"
+  },
+  "evidence_references_checked": 31,
+  "all_referenced_files_exist": true
+}

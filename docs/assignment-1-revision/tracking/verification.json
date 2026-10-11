@@ -1,0 +1,271 @@
+{
+  "verified": true,
+  "check_count": 180,
+  "totals": {
+    "subtasks": 15,
+    "done": 13,
+    "in_progress": 2,
+    "worklogs_added": 0,
+    "estimated_person_hours": 24.5
+  },
+  "checks": [
+    {
+      "key": "SCRUM-551",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-552",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-553",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-554",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-555",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-556",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-557",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-558",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-559",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-560",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-561",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-562",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-563",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-564",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    },
+    {
+      "key": "SCRUM-565",
+      "checks": {
+        "exists": true,
+        "correct_parent": true,
+        "dev_subtask": true,
+        "assigned_to_gurk": true,
+        "correct_status": true,
+        "effort_matches": true,
+        "effort_at_most_four": true,
+        "estimate_not_actual": true,
+        "acceptance_criteria_present": true,
+        "no_actual_hours": true,
+        "story_points_unused": true,
+        "iteration_15": true
+      }
+    }
+  ],
+  "no_existing_issue_description_or_owner_changed": true,
+  "parent_status_changes_by_this_step": 0,
+  "no_backdated_issues_or_worklogs": true
+}

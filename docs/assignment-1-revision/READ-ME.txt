@@ -13,6 +13,10 @@ the actual publication state; a saved file is not proof of an online commit.
 
 risks/ contains the reviewed 84-card register and linked mitigation work.
 
+tracking/ contains the 15 revision Dev Subtasks, acceptance criteria and effort
+estimates. Estimates are separate from actual work logs. VP publication and
+test hierarchy migration remain open until their completion is verified.
+
 test-execution.txt explains the passing checks, current failures and planned
 fixes. tests/ contains execution records, coverage maps and Jira readbacks.
 

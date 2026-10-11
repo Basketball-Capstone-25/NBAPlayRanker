@@ -5,5 +5,7 @@
   "official_commit_attempt": "Authenticated successfully, then vendor NullPointerException in CommitTeamworkProject",
   "pending_history_count": 1370,
   "requested_commit_comment": "Clarify sequence lifelines, request parameters and return values (SCRUM-528)",
-  "native_sha256": "c1c0ea90f39ca8b74c32d4f9eb2560ce7dd62560bc154bc84afa334aa29c3cc0"
+  "native_sha256": "c1c0ea90f39ca8b74c32d4f9eb2560ce7dd62560bc154bc84afa334aa29c3cc0",
+  "latest_read_only_check": "publication-check.json",
+  "current_remote_revision_queried": false
 }
