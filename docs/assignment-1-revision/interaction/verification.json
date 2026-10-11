@@ -1,0 +1,42 @@
+{
+  "base_teamwork_revision": 54,
+  "checks": {
+    "DIAGRAM_all_original_ids_retained": true,
+    "MODEL_ELEMENT_all_original_ids_retained": true,
+    "DIAGRAM_ELEMENT_all_original_ids_retained": true,
+    "unrelated_diagrams_byte_identical": true,
+    "unrelated_diagram_elements_byte_identical": true,
+    "all_other_models_byte_identical": true,
+    "original_model_identity_and_creator_metadata_unchanged": true,
+    "all_original_composite_ids_retained": true,
+    "all_created_ids_roundtripped": true,
+    "all_model_labels_roundtripped": true,
+    "all_sequences_populated": true,
+    "lifelines_use_named_classifier": true,
+    "all_messages_labeled_and_documented": true,
+    "all_reply_labels_name_result_type": true,
+    "same_sequence_diagram_ids": true
+  },
+  "counts": {
+    "DIAGRAM": {
+      "before": 192,
+      "after": 192,
+      "new": 0
+    },
+    "MODEL_ELEMENT": {
+      "before": 2157,
+      "after": 2194,
+      "new": 37
+    },
+    "DIAGRAM_ELEMENT": {
+      "before": 1725,
+      "after": 1760,
+      "new": 35
+    },
+    "sequences": 17,
+    "participants": 95,
+    "messages": 241
+  },
+  "native_sha256": "c1c0ea90f39ca8b74c32d4f9eb2560ce7dd62560bc154bc84afa334aa29c3cc0",
+  "verified": true
+}

@@ -1,0 +1,3101 @@
+{
+  "source_export_sha256": "9f367217bf44b05a4bf9a4fa9e1b4ecfe5adb555cf96bd61192dccbef14ecdb4",
+  "base_teamwork_revision": 54,
+  "created_ids": {
+    "6NkbwIWAUAAADT7b.action": "Rev0d8226f147513",
+    "ppUbwIWAUAAADT7u.action": "Rev42cfa1cd5d56f",
+    "EH8bwIWAUAAADT8b.action": "Rev6d3da7986d5f4",
+    "qpxbwIWAUAAADT80.action": "Revb07bcf61145dd",
+    "QjZbwIWAUAAADT8..action": "Reva4012a7fdd6ba",
+    "BaTnwIWAUAAADWJU.action": "Revf2cb34e982cea",
+    "iCznwIWAUAAADWJm.action": "Revdc080bf099fbd",
+    "0nbnwIWAUAAADWJ2.action": "Rev12d821206b6b7",
+    "l_7nwIWAUAAADWKF.action": "Rev1bf4912807f7c",
+    "alJ3wIWAUAAADXy2.action": "Revde0232de4835f",
+    ".Np3wIWAUAAADXzI.action": "Rev2337a62b1a335",
+    "aHZ3wIWAUAAADXzQ.action": "Revfcd8cd4094fbe",
+    "44F3wIWAUAAADXze.action": "Revcfe972c06d302",
+    "U37owNmGAqAALl6O.user": "Rev8b6b31e09729f",
+    "U37owNmGAqAALl6O.mw": "Rev663ab38b8042a",
+    "U37owNmGAqAALl6O.sb": "Rev30f86dcea33f0",
+    "U37owNmGAqAALl6O.page": "Reve35c26bab8efe",
+    "U37owNmGAqAALl6O.step.0": "Rev8613e9136f24f",
+    "Rev8613e9136f24f.action": "Rev9b916bdb960c5",
+    "U37owNmGAqAALl6O.step.0.FromEnd": "Rev5537d5ed408bf",
+    "U37owNmGAqAALl6O.step.0.ToEnd": "Revbeb91200adedf",
+    "U37owNmGAqAALl6O.step.1": "Rev924a6fbd87453",
+    "Rev924a6fbd87453.action": "Rev85f304afbe0f8",
+    "U37owNmGAqAALl6O.step.1.FromEnd": "Revae4dd680288d1",
+    "U37owNmGAqAALl6O.step.1.ToEnd": "Revaf6b084747048",
+    "U37owNmGAqAALl6O.step.2": "Rev3a5fe3c743042",
+    "Rev3a5fe3c743042.action": "Rev2752453555b3b",
+    "U37owNmGAqAALl6O.step.2.FromEnd": "Rev14a81283056b1",
+    "U37owNmGAqAALl6O.step.2.ToEnd": "Rev6e53b257e07e9",
+    "U37owNmGAqAALl6O.step.3": "Rev64e0ec034f04d",
+    "Rev64e0ec034f04d.action": "Rev9a04f2adc1b53",
+    "U37owNmGAqAALl6O.step.3.FromEnd": "Reve00c3ce9c8166",
+    "U37owNmGAqAALl6O.step.3.ToEnd": "Rev694246ef8d06b",
+    "U37owNmGAqAALl6O.step.4": "Revdf9a2b2b827c0",
+    "Revdf9a2b2b827c0.action": "Rev0aee2af7738f7",
+    "U37owNmGAqAALl6O.step.4.FromEnd": "Rev4e95b1cf83659",
+    "U37owNmGAqAALl6O.step.4.ToEnd": "Reve7d34782eedc2",
+    "U37owNmGAqAALl6O.step.5": "Revf0bd923779a6e",
+    "Revf0bd923779a6e.action": "Rev34be3b0d9b24c",
+    "U37owNmGAqAALl6O.step.5.FromEnd": "Rev23dafb97854fa",
+    "U37owNmGAqAALl6O.step.5.ToEnd": "Revfb6e6f0bed418",
+    "U37owNmGAqAALl6O.step.6": "Rev5a5e893016132",
+    "Rev5a5e893016132.action": "Rev03221af29cb08",
+    "U37owNmGAqAALl6O.step.6.FromEnd": "Rev3776667632e53",
+    "U37owNmGAqAALl6O.step.6.ToEnd": "Rev591830ba09a71",
+    "U37owNmGAqAALl6O.step.7": "Rev59767f8924125",
+    "Rev59767f8924125.action": "Rev7da3a705d38fe",
+    "U37owNmGAqAALl6O.step.7.FromEnd": "Revcf6e190493a0f",
+    "U37owNmGAqAALl6O.step.7.ToEnd": "Rev7bee99aac3b31",
+    "rMy0wNmHC6keOwB1.frame": "Reve0f27b10d8dad",
+    "rMy0wNmHC6keOwB1.user": "Reve45b2b8f37e04",
+    "rMy0wNmHC6keOwB1.page": "Rev7183897661ecb",
+    "rMy0wNmHC6keOwB1.step.0": "Revdc58d66c82883",
+    "Revdc58d66c82883.action": "Revb0cd505356782",
+    "rMy0wNmHC6keOwB1.step.0.FromEnd": "Rev6e6627806df62",
+    "rMy0wNmHC6keOwB1.step.0.ToEnd": "Rev6ff333faeaf30",
+    "rMy0wNmHC6keOwB1.step.1": "Rev1df98d28eba1d",
+    "Rev1df98d28eba1d.action": "Revc88507156242e",
+    "rMy0wNmHC6keOwB1.step.1.FromEnd": "Rev3c14d2b468f67",
+    "rMy0wNmHC6keOwB1.step.1.ToEnd": "Rev644215a675df5",
+    "rMy0wNmHC6keOwB1.step.2": "Rev80ac4d52596cf",
+    "Rev80ac4d52596cf.action": "Rev07653f362f3fd",
+    "rMy0wNmHC6keOwB1.step.2.FromEnd": "Rev0f470bcae0bc9",
+    "rMy0wNmHC6keOwB1.step.2.ToEnd": "Rev835b3c299d3a0",
+    "rMy0wNmHC6keOwB1.step.3": "Rev20311e581147f",
+    "Rev20311e581147f.action": "Rev5ea85ad541637",
+    "rMy0wNmHC6keOwB1.step.3.FromEnd": "Revda6bde8e7fe47",
+    "rMy0wNmHC6keOwB1.step.3.ToEnd": "Rev9393e1b0c3246",
+    "rMy0wNmHC6keOwB1.step.4": "Revf2ccd3e0bcdda",
+    "Revf2ccd3e0bcdda.action": "Rev454f9c3c849d4",
+    "rMy0wNmHC6keOwB1.step.4.FromEnd": "Revadd39e72037dc",
+    "rMy0wNmHC6keOwB1.step.4.ToEnd": "Rev77a5ba10e501b",
+    "rMy0wNmHC6keOwB1.step.5": "Revd320d59d11c68",
+    "Revd320d59d11c68.action": "Rev9b391bf82b971",
+    "rMy0wNmHC6keOwB1.step.5.FromEnd": "Revba7c4e534caae",
+    "rMy0wNmHC6keOwB1.step.5.ToEnd": "Reve69db05a39cd7",
+    "rMy0wNmHC6keOwB1.step.6": "Revb6acb24b8bcaf",
+    "Revb6acb24b8bcaf.action": "Revbd412dc866908",
+    "rMy0wNmHC6keOwB1.step.6.FromEnd": "Rev510800c03ce23",
+    "rMy0wNmHC6keOwB1.step.6.ToEnd": "Rev9f662a9d08191",
+    "rMy0wNmHC6keOwB1.step.7": "Rev33a3e0c75b45a",
+    "Rev33a3e0c75b45a.action": "Rev11cca453fac3c",
+    "rMy0wNmHC6keOwB1.step.7.FromEnd": "Revcdf8a6e2bbffb",
+    "rMy0wNmHC6keOwB1.step.7.ToEnd": "Revd65e8c64fc2bc",
+    "qZVcwNmHsyjA9QB9.frame": "Rev6a316e2b32bb7",
+    "qZVcwNmHsyjA9QB9.user": "Reva870039a1be53",
+    "qZVcwNmHsyjA9QB9.mw": "Rev084cef99edfc4",
+    "qZVcwNmHsyjA9QB9.sb": "Rev20e4e1c909450",
+    "qZVcwNmHsyjA9QB9.step.0": "Revd250e3c404d39",
+    "Revd250e3c404d39.action": "Rev4639a62a7d7d3",
+    "qZVcwNmHsyjA9QB9.step.0.FromEnd": "Reva517ea2120789",
+    "qZVcwNmHsyjA9QB9.step.0.ToEnd": "Rev52cac914569ab",
+    "qZVcwNmHsyjA9QB9.step.1": "Rev6db53c0c62bfa",
+    "Rev6db53c0c62bfa.action": "Rev27b4e8939b43b",
+    "qZVcwNmHsyjA9QB9.step.1.FromEnd": "Revd1562e6a89cf7",
+    "qZVcwNmHsyjA9QB9.step.1.ToEnd": "Rev8465b2900da7f",
+    "qZVcwNmHsyjA9QB9.step.2": "Revf1fdd6f94a9d5",
+    "Revf1fdd6f94a9d5.action": "Rev5197f9d56477a",
+    "qZVcwNmHsyjA9QB9.step.2.FromEnd": "Revc19c52a83f7e8",
+    "qZVcwNmHsyjA9QB9.step.2.ToEnd": "Rev4609edd2530e4",
+    "qZVcwNmHsyjA9QB9.step.3": "Rev1a4ebd6975cfa",
+    "Rev1a4ebd6975cfa.action": "Revc42154e0e57c9",
+    "qZVcwNmHsyjA9QB9.step.3.FromEnd": "Reva2c6ed9e03af7",
+    "qZVcwNmHsyjA9QB9.step.3.ToEnd": "Reve79c944d31d3d",
+    "qZVcwNmHsyjA9QB9.step.4": "Revab569e2533adb",
+    "Revab569e2533adb.action": "Rev2b48a38b32472",
+    "qZVcwNmHsyjA9QB9.step.4.FromEnd": "Rev6f0113734069e",
+    "qZVcwNmHsyjA9QB9.step.4.ToEnd": "Revd775b4cdf737d",
+    "qZVcwNmHsyjA9QB9.step.5": "Rev2c6a6974b6b1f",
+    "Rev2c6a6974b6b1f.action": "Rev7f1de14cfc480",
+    "qZVcwNmHsyjA9QB9.step.5.FromEnd": "Rev3a912b4760080",
+    "qZVcwNmHsyjA9QB9.step.5.ToEnd": "Revece2a149e4cad",
+    "qZVcwNmHsyjA9QB9.step.6": "Rev09de840fe1164",
+    "Rev09de840fe1164.action": "Rev05a4fdb49d027",
+    "qZVcwNmHsyjA9QB9.step.6.FromEnd": "Rev6c19fb858ed56",
+    "qZVcwNmHsyjA9QB9.step.6.ToEnd": "Revdd07c3263799c",
+    "nlp.parse.reply": "Rev500e998e44922",
+    "Rev500e998e44922.action": "Revb48a6326702b5",
+    "nlp.parse.reply.FromEnd": "Rev107caa9bdca95",
+    "nlp.parse.reply.ToEnd": "Revdaf479ebd0eb2",
+    "nlp.guard.reply": "Rev6c056eede6998",
+    "Rev6c056eede6998.action": "Revc78f24a7c3307",
+    "nlp.guard.reply.FromEnd": "Revb17af5798f61d",
+    "nlp.guard.reply.ToEnd": "Reve2d3051fd3fcd",
+    "nlp.http.reply": "Rev5fba8a7e845d4",
+    "Rev5fba8a7e845d4.action": "Revb2459fe98f9b8",
+    "nlp.http.reply.FromEnd": "Rev3c4dbe10c356c",
+    "nlp.http.reply.ToEnd": "Revce362fe61a098"
+  },
+  "changed_model_ids": [
+    ".7PN.wWAUAAADb6c",
+    ".JPN.wWAUAAADbxJ",
+    ".Np3wIWAUAAADXzI",
+    ".ZPN.wWAUAAADbyC",
+    ".cPN.wWAUAAADbli",
+    ".jPN.wWAUAAADb2l",
+    "0GPN.wWAUAAADbq9",
+    "0IPN.wWAUAAADbgL",
+    "0aPN.wWAUAAADbqJ",
+    "0fPN.wWAUAAADb88",
+    "0mPN.wWAUAAADbri",
+    "0nbnwIWAUAAADWJ2",
+    "0pPN.wWAUAAADbxc",
+    "1MPN.wWAUAAADbku",
+    "2SPN.wWAUAAADboa",
+    "34PN.wWAUAAADbh1",
+    "3SPN.wWAUAAADboj",
+    "3lPN.wWAUAAADbzl",
+    "44F3wIWAUAAADXze",
+    "45PN.wWAUAAADbyW",
+    "49PN.wWAUAAADb1i",
+    "4IvN.wWAUAAADb_p",
+    "4sPN.wWAUAAADbk6",
+    "5VPN.wWAUAAADbz3",
+    "5dPN.wWAUAAADb1c",
+    "5gvN.wWAUAAADb.i",
+    "5sPN.wWAUAAADblH",
+    "6NkbwIWAUAAADT7b",
+    "6WPN.wWAUAAADbsI",
+    "6dPN.wWAUAAADb1Z",
+    "6tPN.wWAUAAADb1E",
+    "6yobwIWAUAAADT7B",
+    "7AvN.wWAUAAADb.N",
+    "7FPN.wWAUAAADby7",
+    "7GPN.wWAUAAADbrW",
+    "7IPN.wWAUAAADbgd",
+    "7WPN.wWAUAAADbsY",
+    "7YPN.wWAUAAADbhV",
+    "8BPN.wWAUAAADbvo",
+    "8QvN.wWAUAAADb.0",
+    "8RPN.wWAUAAADbwP",
+    "8jPN.wWAUAAADb2e",
+    "9EPN.wWAUAAADbiN",
+    "9JPN.wWAUAAADbxP",
+    "9RPN.wWAUAAADbwb",
+    "9bPN.wWAUAAADb5v",
+    "ARPN.wWAUAAADbwJ",
+    "B8PN.wWAUAAADbmF",
+    "BGPN.wWAUAAADbrM",
+    "BJIbwIWAUAAADT64",
+    "BPPN.wWAUAAADb8K",
+    "BaTnwIWAUAAADWJU",
+    "BnPN.wWAUAAADb7J",
+    "BvPN.wWAUAAADb8q",
+    "CFPN.wWAUAAADbyy",
+    "CJPN.wWAUAAADbxC",
+    "C_PN.wWAUAAADb9g",
+    "CwPN.wWAUAAADbfw",
+    "DSPN.wWAUAAADbog",
+    "DTPN.wWAUAAADb3M",
+    "DfPN.wWAUAAADb9F",
+    "DgPN.wWAUAAADbei",
+    "DqPN.wWAUAAADbp9",
+    "DuPN.wWAUAAADbuU",
+    "E0PN.wWAUAAADbj.",
+    "ECPN.wWAUAAADbmY",
+    "EEPN.wWAUAAADbh7",
+    "EH8bwIWAUAAADT8b",
+    "EQPN.wWAUAAADbeo",
+    "EVPN.wWAUAAADbzr",
+    "EYPN.wWAUAAADbhC",
+    "EePN.wWAUAAADbua",
+    "EgvN.wWAUAAADb.V",
+    "Elab0b9f0d5159c2",
+    "Elab4d590ee6bc78",
+    "Elab50d5234ff3b2",
+    "Elab5466829501c6",
+    "Elab5b0006a6e2ea",
+    "Elab5e83cea0d23b",
+    "Elab761a673e14dc",
+    "Elab780a3a2e83ef",
+    "Elab7c93b2a6ddaa",
+    "Elab85e5dc5c7bf5",
+    "Elab8d305fc27b03",
+    "Elab8ded94bb419e",
+    "Elab9c0885ece08e",
+    "Elab9eb3a75c0478",
+    "Elab9efd88b67a77",
+    "Elab9fd4d998f9de",
+    "Elabadcb401e76d2",
+    "Elabb09d32732731",
+    "Elabb0b598f784d9",
+    "Elabb93732be7085",
+    "Elabbb58f378b92b",
+    "Elabc09607c550b1",
+    "Elabd72370dfd943",
+    "Elabdbc0b76a5bcb",
+    "Elabeb3eadb8b59a",
+    "Elabed2e43a54ed7",
+    "Elabf95e6c4ed316",
+    "EvPN.wWAUAAADb8e",
+    "F2PN.wWAUAAADbsr",
+    "FWPN.wWAUAAADbsS",
+    "GKPN.wWAUAAADbpr",
+    "GfPN.wWAUAAADb8_",
+    "GgPN.wWAUAAADbec",
+    "GmPN.wWAUAAADbro",
+    "GpPN.wWAUAAADbxi",
+    "GsPN.wWAUAAADblB",
+    "HdPN.wWAUAAADb1f",
+    "HePN.wWAUAAADbum",
+    "IPPN.wWAUAAADb79",
+    "IlPN.wWAUAAADby.",
+    "JAvN.wWAUAAADb.F",
+    "JfPN.wWAUAAADb9C",
+    "JzPN.wWAUAAADb3m",
+    "KCPN.wWAUAAADbme",
+    "KEPN.wWAUAAADbiB",
+    "KXPN.wWAUAAADb7W",
+    "KvPN.wWAUAAADb8k",
+    "KwvN.wWAUAAADb_V",
+    "LDPN.wWAUAAADb2S",
+    "LHPN.wWAUAAADb62",
+    "LIvN.wWAUAAADb_8",
+    "LQvN.wWAUAAADb_A",
+    "LwvN.wWAUAAADb_j",
+    "M8PN.wWAUAAADbl3",
+    "MqPN.wWAUAAADbpx",
+    "MxPN.wWAUAAADbwn",
+    "NPPN.wWAUAAADb8Q",
+    "NcPN.wWAUAAADblo",
+    "NePN.wWAUAAADbuj",
+    "NvPN.wWAUAAADb8w",
+    "NwPN.wWAUAAADbf9",
+    "O6PN.wWAUAAADbqo",
+    "OFPN.wWAUAAADby1",
+    "OTPN.wWAUAAADb3A",
+    "OwPN.wWAUAAADbf2",
+    "PEPN.wWAUAAADbiT",
+    "PbPN.wWAUAAADb5y",
+    "PcPN.wWAUAAADblv",
+    "PuPN.wWAUAAADbuX",
+    "QOPN.wWAUAAADbs3",
+    "QgPN.wWAUAAADbeW",
+    "QjPN.wWAUAAADb2Y",
+    "QjZbwIWAUAAADT8.",
+    "QoPN.wWAUAAADbgj",
+    "R0PN.wWAUAAADbkE",
+    "R9PN.wWAUAAADb1o",
+    "RDPN.wWAUAAADb2M",
+    "RHPN.wWAUAAADb6w",
+    "RbPN.wWAUAAADb5s",
+    "Rev03221af29cb08",
+    "Rev05a4fdb49d027",
+    "Rev07653f362f3fd",
+    "Rev084cef99edfc4",
+    "Rev09de840fe1164",
+    "Rev0aee2af7738f7",
+    "Rev0d8226f147513",
+    "Rev0f470bcae0bc9",
+    "Rev107caa9bdca95",
+    "Rev11cca453fac3c",
+    "Rev12d821206b6b7",
+    "Rev14a81283056b1",
+    "Rev1a4ebd6975cfa",
+    "Rev1bf4912807f7c",
+    "Rev1df98d28eba1d",
+    "Rev20311e581147f",
+    "Rev20e4e1c909450",
+    "Rev2337a62b1a335",
+    "Rev23dafb97854fa",
+    "Rev2752453555b3b",
+    "Rev27b4e8939b43b",
+    "Rev2b48a38b32472",
+    "Rev2c6a6974b6b1f",
+    "Rev30f86dcea33f0",
+    "Rev33a3e0c75b45a",
+    "Rev34be3b0d9b24c",
+    "Rev3776667632e53",
+    "Rev3a5fe3c743042",
+    "Rev3a912b4760080",
+    "Rev3c14d2b468f67",
+    "Rev3c4dbe10c356c",
+    "Rev42cfa1cd5d56f",
+    "Rev454f9c3c849d4",
+    "Rev4609edd2530e4",
+    "Rev4639a62a7d7d3",
+    "Rev4e95b1cf83659",
+    "Rev500e998e44922",
+    "Rev510800c03ce23",
+    "Rev5197f9d56477a",
+    "Rev52cac914569ab",
+    "Rev5537d5ed408bf",
+    "Rev591830ba09a71",
+    "Rev59767f8924125",
+    "Rev5a5e893016132",
+    "Rev5ea85ad541637",
+    "Rev5fba8a7e845d4",
+    "Rev644215a675df5",
+    "Rev64e0ec034f04d",
+    "Rev663ab38b8042a",
+    "Rev694246ef8d06b",
+    "Rev6a316e2b32bb7",
+    "Rev6c056eede6998",
+    "Rev6c19fb858ed56",
+    "Rev6d3da7986d5f4",
+    "Rev6db53c0c62bfa",
+    "Rev6e53b257e07e9",
+    "Rev6e6627806df62",
+    "Rev6f0113734069e",
+    "Rev6ff333faeaf30",
+    "Rev7183897661ecb",
+    "Rev77a5ba10e501b",
+    "Rev7bee99aac3b31",
+    "Rev7da3a705d38fe",
+    "Rev7f1de14cfc480",
+    "Rev80ac4d52596cf",
+    "Rev835b3c299d3a0",
+    "Rev8465b2900da7f",
+    "Rev85f304afbe0f8",
+    "Rev8613e9136f24f",
+    "Rev8b6b31e09729f",
+    "Rev924a6fbd87453",
+    "Rev9393e1b0c3246",
+    "Rev9a04f2adc1b53",
+    "Rev9b391bf82b971",
+    "Rev9b916bdb960c5",
+    "Rev9f662a9d08191",
+    "Reva2c6ed9e03af7",
+    "Reva4012a7fdd6ba",
+    "Reva517ea2120789",
+    "Reva870039a1be53",
+    "Revab569e2533adb",
+    "Revadd39e72037dc",
+    "Revae4dd680288d1",
+    "Revaf6b084747048",
+    "Revb07bcf61145dd",
+    "Revb0cd505356782",
+    "Revb17af5798f61d",
+    "Revb2459fe98f9b8",
+    "Revb48a6326702b5",
+    "Revb6acb24b8bcaf",
+    "Revba7c4e534caae",
+    "Revbd412dc866908",
+    "Revbeb91200adedf",
+    "Revc19c52a83f7e8",
+    "Revc42154e0e57c9",
+    "Revc78f24a7c3307",
+    "Revc88507156242e",
+    "Revcdf8a6e2bbffb",
+    "Revce362fe61a098",
+    "Revcf6e190493a0f",
+    "Revcfe972c06d302",
+    "Revd1562e6a89cf7",
+    "Revd250e3c404d39",
+    "Revd320d59d11c68",
+    "Revd65e8c64fc2bc",
+    "Revd775b4cdf737d",
+    "Revda6bde8e7fe47",
+    "Revdaf479ebd0eb2",
+    "Revdc080bf099fbd",
+    "Revdc58d66c82883",
+    "Revdd07c3263799c",
+    "Revde0232de4835f",
+    "Revdf9a2b2b827c0",
+    "Reve00c3ce9c8166",
+    "Reve0f27b10d8dad",
+    "Reve2d3051fd3fcd",
+    "Reve35c26bab8efe",
+    "Reve45b2b8f37e04",
+    "Reve69db05a39cd7",
+    "Reve79c944d31d3d",
+    "Reve7d34782eedc2",
+    "Revece2a149e4cad",
+    "Revf0bd923779a6e",
+    "Revf1fdd6f94a9d5",
+    "Revf2cb34e982cea",
+    "Revf2ccd3e0bcdda",
+    "Revfb6e6f0bed418",
+    "Revfcd8cd4094fbe",
+    "S4PN.wWAUAAADbhi",
+    "S5PN.wWAUAAADbyc",
+    "SAvN.wWAUAAADb9.",
+    "SpdnwIWAUAAADWI8",
+    "T2PN.wWAUAAADbsx",
+    "TBPN.wWAUAAADbv0",
+    "TrPN.wWAUAAADb5g",
+    "TsPN.wWAUAAADblN",
+    "UTPN.wWAUAAADb25",
+    "UbPN.wWAUAAADb5m",
+    "UnPN.wWAUAAADb69",
+    "UtPN.wWAUAAADb0.",
+    "UyPN.wWAUAAADbom",
+    "V7PN.wWAUAAADb6i",
+    "VFPN.wWAUAAADby4",
+    "VIvN.wWAUAAADb_2",
+    "WoPN.wWAUAAADbgv",
+    "WxPN.wWAUAAADbwt",
+    "WzPN.wWAUAAADb3g",
+    "XJPN.wWAUAAADbxV",
+    "XUPN.wWAUAAADbj7",
+    "XZPN.wWAUAAADbyQ",
+    "X_PN.wWAUAAADb9y",
+    "XaPN.wWAUAAADbqb",
+    "Y2PN.wWAUAAADbse",
+    "YFPN.wWAUAAADbyv",
+    "YZPN.wWAUAAADbx2",
+    "Yf.3wIWAUAAADXyn",
+    "YhPN.wWAUAAADbv7",
+    "Z3PN.wWAUAAADb73",
+    "ZIPN.wWAUAAADbgX",
+    "ZNPN.wWAUAAADb0s",
+    "ZYPN.wWAUAAADbhO",
+    "ZaPN.wWAUAAADbqV",
+    "ZrPN.wWAUAAADb5d",
+    "Zy9nwIWAUAAADWJF",
+    "_.PN.wWAUAAADbvi",
+    "_1PN.wWAUAAADb0e",
+    "_NPN.wWAUAAADb04",
+    "_QvN.wWAUAAADb_D",
+    "_rPN.wWAUAAADb5j",
+    "_xPN.wWAUAAADbw7",
+    "aDPN.wWAUAAADb2G",
+    "aHZ3wIWAUAAADXzQ",
+    "aIPN.wWAUAAADbgR",
+    "aIvN.wWAUAAADb_v",
+    "abPN.wWAUAAADb5p",
+    "agvN.wWAUAAADb.b",
+    "alJ3wIWAUAAADXy2",
+    "ayPN.wWAUAAADbop",
+    "bC.3wIWAUAAADXye",
+    "bgvN.wWAUAAADb.o",
+    "boPN.wWAUAAADbg7",
+    "c6PN.wWAUAAADbqi",
+    "cMPN.wWAUAAADbkK",
+    "cgPN.wWAUAAADbeZ",
+    "coPN.wWAUAAADbgp",
+    "czPN.wWAUAAADb3a",
+    "d0PN.wWAUAAADbkH",
+    "d1PN.wWAUAAADb0X",
+    "d9PN.wWAUAAADb1r",
+    "dXPN.wWAUAAADb7i",
+    "d_PN.wWAUAAADb9s",
+    "djPN.wWAUAAADb2s",
+    "e1PN.wWAUAAADb0Q",
+    "eRPN.wWAUAAADbwV",
+    "elPN.wWAUAAADbzE",
+    "eqPN.wWAUAAADbp3",
+    "fQPN.wWAUAAADbfq",
+    "fjPN.wWAUAAADb2z",
+    "g1PN.wWAUAAADb0D",
+    "g3PN.wWAUAAADb7p",
+    "gQYbwIWAUAAADT7K",
+    "gxPN.wWAUAAADbwh",
+    "gzPN.wWAUAAADb3U",
+    "hXPN.wWAUAAADb7c",
+    "hePN.wWAUAAADbug",
+    "hmPN.wWAUAAADbru",
+    "hwvN.wWAUAAADb_b",
+    "iCznwIWAUAAADWJm",
+    "iZPN.wWAUAAADbx8",
+    "ilPN.wWAUAAADbzB",
+    "jNPN.wWAUAAADb0y",
+    "jQPN.wWAUAAADbfk",
+    "jmPN.wWAUAAADbr0",
+    "kdPN.wWAUAAADb1W",
+    "l4PN.wWAUAAADbhu",
+    "lZPN.wWAUAAADbyI",
+    "l_7nwIWAUAAADWKF",
+    "lhPN.wWAUAAADbwB",
+    "m2PN.wWAUAAADbsl",
+    "mVPN.wWAUAAADbzx",
+    "mYPN.wWAUAAADbhI",
+    "maPN.wWAUAAADbqP",
+    "n6PN.wWAUAAADbq1",
+    "nMPN.wWAUAAADbk0",
+    "nwPN.wWAUAAADbgD",
+    "o.PN.wWAUAAADbup",
+    "oAvN.wWAUAAADb94",
+    "oovN.wWAUAAADcAD",
+    "p5PN.wWAUAAADbyj",
+    "pSPN.wWAUAAADbod",
+    "pTPN.wWAUAAADb3G",
+    "pgPN.wWAUAAADbef",
+    "poPN.wWAUAAADbg1",
+    "ppUbwIWAUAAADT7u",
+    "q0PN.wWAUAAADbkB",
+    "qPPN.wWAUAAADb8E",
+    "qePN.wWAUAAADbud",
+    "qnPN.wWAUAAADb7D",
+    "qpxbwIWAUAAADT80",
+    "rVPN.wWAUAAADbz9",
+    "rpPN.wWAUAAADbxv",
+    "s1PN.wWAUAAADb0J",
+    "t6PN.wWAUAAADbqv",
+    "t8PN.wWAUAAADbmL",
+    "txPN.wWAUAAADbw0",
+    "u4PN.wWAUAAADbho",
+    "u_PN.wWAUAAADb9m",
+    "v7PN.wWAUAAADb6q",
+    "v8PN.wWAUAAADbmS",
+    "vPPN.wWAUAAADb8Y",
+    "vgPN.wWAUAAADbel",
+    "vqPN.wWAUAAADbqD",
+    "w4PN.wWAUAAADbhb",
+    "wQvN.wWAUAAADb.u",
+    "wWPN.wWAUAAADbr_",
+    "wcPN.wWAUAAADblU",
+    "xBPN.wWAUAAADbvu",
+    "xEPN.wWAUAAADbiH",
+    "xpPN.wWAUAAADbxo",
+    "xtPN.wWAUAAADb1K",
+    "y3PN.wWAUAAADb7w",
+    "y9PN.wWAUAAADb1l",
+    "yNPN.wWAUAAADb0l",
+    "ycPN.wWAUAAADblc",
+    "znPN.wWAUAAADb7Q"
+  ],
+  "changed_diagram_ids": [
+    "4rPN.wWAUAAADb5X",
+    "7vPN.wWAUAAADb82",
+    "DtPN.wWAUAAADb1Q",
+    "Elab86fdd4b13a52",
+    "Elabcccf12e8a8ce",
+    "FAPN.wWAUAAADbeQ",
+    "OQvN.wWAUAAADb.6",
+    "U37owNmGAqAALl6O",
+    "WuPN.wWAUAAADbuO",
+    "ayu3wIWAUAAADXxt",
+    "cBlnwIWAUAAADWHW",
+    "j5PN.wWAUAAADbyp",
+    "lvbrwIWAUAAADT6c",
+    "qZVcwNmHsyjA9QB9",
+    "rMy0wNmHC6keOwB1",
+    "uUPN.wWAUAAADbj1",
+    "wSPN.wWAUAAADboU"
+  ],
+  "changes": [
+    {
+      "id": "cgPN.wWAUAAADbeZ",
+      "type": "InteractionLifeLine",
+      "before": "sb",
+      "after": "supabase"
+    },
+    {
+      "id": "QgPN.wWAUAAADbeW",
+      "type": "InteractionLifeLine",
+      "before": "mw",
+      "after": "middleware"
+    },
+    {
+      "id": "pgPN.wWAUAAADbef",
+      "type": "InteractionLifeLine",
+      "before": "api",
+      "after": "apiClient"
+    },
+    {
+      "id": "vgPN.wWAUAAADbel",
+      "type": "InteractionLifeLine",
+      "before": "require_role(\"data\")",
+      "after": "dataGuard"
+    },
+    {
+      "id": "EQPN.wWAUAAADbeo",
+      "type": "InteractionLifeLine",
+      "before": "rec",
+      "after": "baselineRecommender"
+    },
+    {
+      "id": "GgPN.wWAUAAADbec",
+      "type": "InteractionLifeLine",
+      "before": "ui",
+      "after": "dataExplorer"
+    },
+    {
+      "id": "DgPN.wWAUAAADbei",
+      "type": "InteractionLifeLine",
+      "before": "app",
+      "after": "api"
+    },
+    {
+      "id": "jQPN.wWAUAAADbfk",
+      "type": "Message",
+      "before": "GET /data-explorer",
+      "after": "GET /data-explorer(request: NextRequest)"
+    },
+    {
+      "id": "fQPN.wWAUAAADbfq",
+      "type": "Message",
+      "before": "",
+      "after": "getUser()"
+    },
+    {
+      "id": "CwPN.wWAUAAADbfw",
+      "type": "Message",
+      "before": "user",
+      "after": "user: User"
+    },
+    {
+      "id": "OwPN.wWAUAAADbf2",
+      "type": "Message",
+      "before": "",
+      "after": "selectProfileRole(userId: string)"
+    },
+    {
+      "id": "NwPN.wWAUAAADbf9",
+      "type": "Message",
+      "before": "role = analyst",
+      "after": "role: UserRole = analyst"
+    },
+    {
+      "id": "nwPN.wWAUAAADbgD",
+      "type": "Message",
+      "before": "",
+      "after": "matchesRoute(path: string, routes: string[])"
+    },
+    {
+      "id": "0IPN.wWAUAAADbgL",
+      "type": "Message",
+      "before": "NextResponse.next(): render DataExplorerClient",
+      "after": "render(page: DataExplorerClient)"
+    },
+    {
+      "id": "aIPN.wWAUAAADbgR",
+      "type": "Message",
+      "before": "",
+      "after": "init()"
+    },
+    {
+      "id": "ZIPN.wWAUAAADbgX",
+      "type": "Message",
+      "before": "",
+      "after": "fetchMetaOptions()"
+    },
+    {
+      "id": "7IPN.wWAUAAADbgd",
+      "type": "Message",
+      "before": "GET /meta/options  [Depends(require_auth)]",
+      "after": "GET /meta/options()"
+    },
+    {
+      "id": "QoPN.wWAUAAADbgj",
+      "type": "Message",
+      "before": "MetaOptions {seasons, teams, playTypes, sides}",
+      "after": "options: MetaOptions"
+    },
+    {
+      "id": "coPN.wWAUAAADbgp",
+      "type": "Message",
+      "before": "MetaOptions",
+      "after": "options: MetaOptions"
+    },
+    {
+      "id": "WoPN.wWAUAAADbgv",
+      "type": "Message",
+      "before": "choose season, team, side, play type, min poss",
+      "after": "setFilters(filters: DataFilters)"
+    },
+    {
+      "id": "poPN.wWAUAAADbg1",
+      "type": "Message",
+      "before": "",
+      "after": "run()"
+    },
+    {
+      "id": "boPN.wWAUAAADbg7",
+      "type": "Message",
+      "before": "",
+      "after": "fetchTeamPlaytypesPreview(opts: DataFilters)"
+    },
+    {
+      "id": "EYPN.wWAUAAADbhC",
+      "type": "Message",
+      "before": "",
+      "after": "getAuthHeaders()"
+    },
+    {
+      "id": "mYPN.wWAUAAADbhI",
+      "type": "Message",
+      "before": "GET /data/team-playtypes?season&team&side&play_type&min_poss&limit",
+      "after": "GET /data/team-playtypes(filters: DataFilters)"
+    },
+    {
+      "id": "ZYPN.wWAUAAADbhO",
+      "type": "Message",
+      "before": "",
+      "after": "__call__(user: AuthContext)"
+    },
+    {
+      "id": "7YPN.wWAUAAADbhV",
+      "type": "Message",
+      "before": "user {token, role: analyst}",
+      "after": "authorizedUser: AuthContext"
+    },
+    {
+      "id": "w4PN.wWAUAAADbhb",
+      "type": "Message",
+      "before": "",
+      "after": "_require_season(season: string)"
+    },
+    {
+      "id": "S4PN.wWAUAAADbhi",
+      "type": "Message",
+      "before": "team_df.copy()",
+      "after": "copyTeamRows(): DataFrame"
+    },
+    {
+      "id": "u4PN.wWAUAAADbho",
+      "type": "Message",
+      "before": "team play-type DataFrame",
+      "after": "teamRows: DataFrame"
+    },
+    {
+      "id": "l4PN.wWAUAAADbhu",
+      "type": "Message",
+      "before": "",
+      "after": "_df_to_records(df: DataFrame)"
+    },
+    {
+      "id": "34PN.wWAUAAADbh1",
+      "type": "Message",
+      "before": "{season, total_rows, returned_rows, rows}",
+      "after": "preview: TeamPlaytypesPreviewResponse"
+    },
+    {
+      "id": "EEPN.wWAUAAADbh7",
+      "type": "Message",
+      "before": "TeamPlaytypesPreviewResponse",
+      "after": "preview: TeamPlaytypesPreviewResponse"
+    },
+    {
+      "id": "KEPN.wWAUAAADbiB",
+      "type": "Message",
+      "before": "",
+      "after": "viewRows()"
+    },
+    {
+      "id": "xEPN.wWAUAAADbiH",
+      "type": "Message",
+      "before": "table, KPIs and CSV link",
+      "after": "view: DataExplorerView"
+    },
+    {
+      "id": "9EPN.wWAUAAADbiN",
+      "type": "Message",
+      "before": "GET /data/team-playtypes.csv (csvUrl)",
+      "after": "team_playtypes_csv(filters: DataFilters)"
+    },
+    {
+      "id": "PEPN.wWAUAAADbiT",
+      "type": "Message",
+      "before": "CSV StreamingResponse",
+      "after": "download: CsvDownload"
+    },
+    {
+      "id": "XUPN.wWAUAAADbj7",
+      "type": "InteractionLifeLine",
+      "before": "ui",
+      "after": "matchupPage"
+    },
+    {
+      "id": "E0PN.wWAUAAADbj.",
+      "type": "InteractionLifeLine",
+      "before": "api",
+      "after": "apiClient"
+    },
+    {
+      "id": "R0PN.wWAUAAADbkE",
+      "type": "InteractionLifeLine",
+      "before": "require_role(\"recommendation\")",
+      "after": "recommendationGuard"
+    },
+    {
+      "id": "d0PN.wWAUAAADbkH",
+      "type": "InteractionLifeLine",
+      "before": "acs",
+      "after": "accessControl"
+    },
+    {
+      "id": "cMPN.wWAUAAADbkK",
+      "type": "InteractionLifeLine",
+      "before": "rec",
+      "after": "baselineRecommender"
+    },
+    {
+      "id": "q0PN.wWAUAAADbkB",
+      "type": "InteractionLifeLine",
+      "before": "app",
+      "after": "api"
+    },
+    {
+      "id": "1MPN.wWAUAAADbku",
+      "type": "Message",
+      "before": "select season, our team, opponent, k, weights; Run",
+      "after": "setMatchup(matchup: Matchup)"
+    },
+    {
+      "id": "nMPN.wWAUAAADbk0",
+      "type": "Message",
+      "before": "",
+      "after": "runBaseline()"
+    },
+    {
+      "id": "4sPN.wWAUAAADbk6",
+      "type": "Message",
+      "before": "",
+      "after": "baselineRank(opts: Matchup)"
+    },
+    {
+      "id": "GsPN.wWAUAAADblB",
+      "type": "Message",
+      "before": "",
+      "after": "getAuthHeaders()"
+    },
+    {
+      "id": "5sPN.wWAUAAADblH",
+      "type": "Message",
+      "before": "GET /rank-plays/baseline?season&our&opp&k&w_off",
+      "after": "GET /rank-plays/baseline(matchup: Matchup)"
+    },
+    {
+      "id": "TsPN.wWAUAAADblN",
+      "type": "Message",
+      "before": "",
+      "after": "__call__(user: AuthContext)"
+    },
+    {
+      "id": "wcPN.wWAUAAADblU",
+      "type": "Message",
+      "before": "",
+      "after": "check_user_access(role: UserRole, resource: string)"
+    },
+    {
+      "id": "ycPN.wWAUAAADblc",
+      "type": "Message",
+      "before": "true",
+      "after": "allowed: boolean = true"
+    },
+    {
+      "id": ".cPN.wWAUAAADbli",
+      "type": "Message",
+      "before": "user",
+      "after": "authorizedUser: AuthContext"
+    },
+    {
+      "id": "NcPN.wWAUAAADblo",
+      "type": "Message",
+      "before": "",
+      "after": "_require_season(season: string)"
+    },
+    {
+      "id": "PcPN.wWAUAAADblv",
+      "type": "Message",
+      "before": "",
+      "after": "_require_team(team: string, label: string)"
+    },
+    {
+      "id": "M8PN.wWAUAAADbl3",
+      "type": "Message",
+      "before": "",
+      "after": "rank_playtypes_baseline(tables: BaselineTables, matchup: Matchup)"
+    },
+    {
+      "id": "B8PN.wWAUAAADbmF",
+      "type": "Message",
+      "before": "top-k DataFrame (PPP_PRED, PPP_OFF, PPP_DEF, RATIONALE)",
+      "after": "rankedRows: DataFrame"
+    },
+    {
+      "id": "t8PN.wWAUAAADbmL",
+      "type": "Message",
+      "before": "",
+      "after": "_df_to_records(df: DataFrame)"
+    },
+    {
+      "id": "v8PN.wWAUAAADbmS",
+      "type": "Message",
+      "before": "BaselineRankResponse {season, our_team, opp_team, k, w_off, w_def, rankings}",
+      "after": "response: BaselineRankResponse"
+    },
+    {
+      "id": "ECPN.wWAUAAADbmY",
+      "type": "Message",
+      "before": "BaselineRow[] {playType, pppPred, pppOff, pppDef, pppGap, rationale}",
+      "after": "rankings: BaselineRow[]"
+    },
+    {
+      "id": "KCPN.wWAUAAADbme",
+      "type": "Message",
+      "before": "ranked list with metrics and rationale",
+      "after": "view: BaselineRankingsView"
+    },
+    {
+      "id": "DuPN.wWAUAAADbuU",
+      "type": "InteractionLifeLine",
+      "before": "mw",
+      "after": "middleware"
+    },
+    {
+      "id": "EePN.wWAUAAADbua",
+      "type": "InteractionLifeLine",
+      "before": "api",
+      "after": "apiClient"
+    },
+    {
+      "id": "PuPN.wWAUAAADbuX",
+      "type": "InteractionLifeLine",
+      "before": "sb",
+      "after": "supabase"
+    },
+    {
+      "id": "hePN.wWAUAAADbug",
+      "type": "InteractionLifeLine",
+      "before": "require_role(\"data\")",
+      "after": "dataGuard"
+    },
+    {
+      "id": "NePN.wWAUAAADbuj",
+      "type": "InteractionLifeLine",
+      "before": "auth",
+      "after": "auth"
+    },
+    {
+      "id": "o.PN.wWAUAAADbup",
+      "type": "InteractionLifeLine",
+      "before": "jwt",
+      "after": "jwtVerifier"
+    },
+    {
+      "id": "HePN.wWAUAAADbum",
+      "type": "InteractionLifeLine",
+      "before": "acs",
+      "after": "accessControl"
+    },
+    {
+      "id": "qePN.wWAUAAADbud",
+      "type": "InteractionLifeLine",
+      "before": "app",
+      "after": "api"
+    },
+    {
+      "id": "_.PN.wWAUAAADbvi",
+      "type": "Message",
+      "before": "GET /data-explorer",
+      "after": "GET /data-explorer(request: NextRequest)"
+    },
+    {
+      "id": "8BPN.wWAUAAADbvo",
+      "type": "Message",
+      "before": "",
+      "after": "getUser()"
+    },
+    {
+      "id": "xBPN.wWAUAAADbvu",
+      "type": "Message",
+      "before": "user",
+      "after": "user: User"
+    },
+    {
+      "id": "TBPN.wWAUAAADbv0",
+      "type": "Message",
+      "before": "",
+      "after": "selectProfileRole(userId: string)"
+    },
+    {
+      "id": "YhPN.wWAUAAADbv7",
+      "type": "Message",
+      "before": "role = analyst",
+      "after": "role: UserRole = analyst"
+    },
+    {
+      "id": "lhPN.wWAUAAADbwB",
+      "type": "Message",
+      "before": "",
+      "after": "matchesRoute(path: string, routes: string[])"
+    },
+    {
+      "id": "ARPN.wWAUAAADbwJ",
+      "type": "Message",
+      "before": "NextResponse.next(): workspace page",
+      "after": "response: NextResponse = workspace"
+    },
+    {
+      "id": "8RPN.wWAUAAADbwP",
+      "type": "Message",
+      "before": "workspace issues API request (e.g. fetchTeamPlaytypesPreview)",
+      "after": "fetchTeamPlaytypesPreview(opts: DataFilters)"
+    },
+    {
+      "id": "eRPN.wWAUAAADbwV",
+      "type": "Message",
+      "before": "",
+      "after": "getAuthHeaders()"
+    },
+    {
+      "id": "9RPN.wWAUAAADbwb",
+      "type": "Message",
+      "before": "",
+      "after": "getSession()"
+    },
+    {
+      "id": "gxPN.wWAUAAADbwh",
+      "type": "Message",
+      "before": "session.access_token",
+      "after": "accessToken: string"
+    },
+    {
+      "id": "MxPN.wWAUAAADbwn",
+      "type": "Message",
+      "before": "GET /data/team-playtypes  Authorization: Bearer <token>",
+      "after": "GET /data/team-playtypes(filters: DataFilters)"
+    },
+    {
+      "id": "WxPN.wWAUAAADbwt",
+      "type": "Message",
+      "before": "",
+      "after": "__call__(user: AuthContext)"
+    },
+    {
+      "id": "txPN.wWAUAAADbw0",
+      "type": "Message",
+      "before": "",
+      "after": "require_auth(request: Request)"
+    },
+    {
+      "id": "_xPN.wWAUAAADbw7",
+      "type": "Message",
+      "before": "",
+      "after": "_extract_token(request: Request)"
+    },
+    {
+      "id": "CJPN.wWAUAAADbxC",
+      "type": "Message",
+      "before": "",
+      "after": "validate_session(token: string?)"
+    },
+    {
+      "id": ".JPN.wWAUAAADbxJ",
+      "type": "Message",
+      "before": "",
+      "after": "get_jwt_secret(): string?"
+    },
+    {
+      "id": "9JPN.wWAUAAADbxP",
+      "type": "Message",
+      "before": "verified signing key (JWKS)",
+      "after": "key: VerificationKey"
+    },
+    {
+      "id": "XJPN.wWAUAAADbxV",
+      "type": "Message",
+      "before": "",
+      "after": "decode_supabase_jwt(token: string)"
+    },
+    {
+      "id": "0pPN.wWAUAAADbxc",
+      "type": "Message",
+      "before": "claims",
+      "after": "claims: VerifiedClaims"
+    },
+    {
+      "id": "GpPN.wWAUAAADbxi",
+      "type": "Message",
+      "before": "true",
+      "after": "validSession: boolean = true"
+    },
+    {
+      "id": "xpPN.wWAUAAADbxo",
+      "type": "Message",
+      "before": "",
+      "after": "get_user_role(token: string)"
+    },
+    {
+      "id": "rpPN.wWAUAAADbxv",
+      "type": "Message",
+      "before": "",
+      "after": "decode_supabase_jwt(token: string)"
+    },
+    {
+      "id": "YZPN.wWAUAAADbx2",
+      "type": "Message",
+      "before": "verified claims (sub; role resolved from protected profile)",
+      "after": "claims: VerifiedClaims"
+    },
+    {
+      "id": "iZPN.wWAUAAADbx8",
+      "type": "Message",
+      "before": "\"analyst\"",
+      "after": "role: UserRole = analyst"
+    },
+    {
+      "id": ".ZPN.wWAUAAADbyC",
+      "type": "Message",
+      "before": "{token, role: analyst}",
+      "after": "authenticatedUser: AuthContext"
+    },
+    {
+      "id": "lZPN.wWAUAAADbyI",
+      "type": "Message",
+      "before": "",
+      "after": "check_user_access(role: UserRole, resource: string)"
+    },
+    {
+      "id": "XZPN.wWAUAAADbyQ",
+      "type": "Message",
+      "before": "true",
+      "after": "allowed: boolean = true"
+    },
+    {
+      "id": "45PN.wWAUAAADbyW",
+      "type": "Message",
+      "before": "user",
+      "after": "authorizedUser: AuthContext"
+    },
+    {
+      "id": "S5PN.wWAUAAADbyc",
+      "type": "Message",
+      "before": "",
+      "after": "team_playtypes(filters: DataFilters)"
+    },
+    {
+      "id": "p5PN.wWAUAAADbyj",
+      "type": "Message",
+      "before": "200 OK + JSON",
+      "after": "response: TeamPlaytypesPreviewResponse [200]"
+    },
+    {
+      "id": "YFPN.wWAUAAADbyv",
+      "type": "InteractionLifeLine",
+      "before": "mw",
+      "after": "middleware"
+    },
+    {
+      "id": "CFPN.wWAUAAADbyy",
+      "type": "InteractionLifeLine",
+      "before": "sb",
+      "after": "supabase"
+    },
+    {
+      "id": "VFPN.wWAUAAADby4",
+      "type": "InteractionLifeLine",
+      "before": "app",
+      "after": "api"
+    },
+    {
+      "id": "7FPN.wWAUAAADby7",
+      "type": "InteractionLifeLine",
+      "before": "require_role(\"data\")",
+      "after": "dataGuard"
+    },
+    {
+      "id": "IlPN.wWAUAAADby.",
+      "type": "InteractionLifeLine",
+      "before": "auth",
+      "after": "auth"
+    },
+    {
+      "id": "ilPN.wWAUAAADbzB",
+      "type": "InteractionLifeLine",
+      "before": "acs",
+      "after": "accessControl"
+    },
+    {
+      "id": "elPN.wWAUAAADbzE",
+      "type": "InteractionLifeLine",
+      "before": "jwt",
+      "after": "jwtVerifier"
+    },
+    {
+      "id": "OFPN.wWAUAAADby1",
+      "type": "InteractionLifeLine",
+      "before": "api",
+      "after": "apiClient"
+    },
+    {
+      "id": "3lPN.wWAUAAADbzl",
+      "type": "Message",
+      "before": "GET /data-explorer  [no session]",
+      "after": "GET /data-explorer(request: NextRequest) [no session]"
+    },
+    {
+      "id": "EVPN.wWAUAAADbzr",
+      "type": "Message",
+      "before": "",
+      "after": "getUser()"
+    },
+    {
+      "id": "mVPN.wWAUAAADbzx",
+      "type": "Message",
+      "before": "null",
+      "after": "user: User? = null"
+    },
+    {
+      "id": "5VPN.wWAUAAADbz3",
+      "type": "Message",
+      "before": "redirect /login?next=/data-explorer",
+      "after": "redirect: NextResponse [/login?next=/data-explorer]"
+    },
+    {
+      "id": "rVPN.wWAUAAADbz9",
+      "type": "Message",
+      "before": "API request with invalid / expired token",
+      "after": "fetchTeamPlaytypesPreview(opts: DataFilters)"
+    },
+    {
+      "id": "g1PN.wWAUAAADb0D",
+      "type": "Message",
+      "before": "GET /data/team-playtypes  Authorization: Bearer <bad token>",
+      "after": "GET /data/team-playtypes(filters: DataFilters) [invalid token]"
+    },
+    {
+      "id": "s1PN.wWAUAAADb0J",
+      "type": "Message",
+      "before": "",
+      "after": "__call__(user: AuthContext)"
+    },
+    {
+      "id": "e1PN.wWAUAAADb0Q",
+      "type": "Message",
+      "before": "",
+      "after": "require_auth(request: Request)"
+    },
+    {
+      "id": "d1PN.wWAUAAADb0X",
+      "type": "Message",
+      "before": "",
+      "after": "_extract_token(request: Request)"
+    },
+    {
+      "id": "_1PN.wWAUAAADb0e",
+      "type": "Message",
+      "before": "",
+      "after": "validate_session(token: string?)"
+    },
+    {
+      "id": "yNPN.wWAUAAADb0l",
+      "type": "Message",
+      "before": "",
+      "after": "decode_supabase_jwt(token: string)"
+    },
+    {
+      "id": "ZNPN.wWAUAAADb0s",
+      "type": "Message",
+      "before": "None (signature / expiry / audience invalid)",
+      "after": "claims: VerifiedClaims? = None"
+    },
+    {
+      "id": "jNPN.wWAUAAADb0y",
+      "type": "Message",
+      "before": "false",
+      "after": "validSession: boolean = false"
+    },
+    {
+      "id": "_NPN.wWAUAAADb04",
+      "type": "Message",
+      "before": "HTTPException 401 \"Invalid or missing session token.\"",
+      "after": "error: HttpError [401, invalid/missing token]"
+    },
+    {
+      "id": "UtPN.wWAUAAADb0.",
+      "type": "Message",
+      "before": "401 Unauthorized",
+      "after": "error: HttpError [401]"
+    },
+    {
+      "id": "6tPN.wWAUAAADb1E",
+      "type": "Message",
+      "before": "fetchJson throws Error(\"API error 401\")",
+      "after": "reject(error: Error [401])"
+    },
+    {
+      "id": "xtPN.wWAUAAADb1K",
+      "type": "Message",
+      "before": "error shown; Analyst must sign in again",
+      "after": "view: SignInRequiredError"
+    },
+    {
+      "id": "kdPN.wWAUAAADb1W",
+      "type": "InteractionLifeLine",
+      "before": "mw",
+      "after": "middleware"
+    },
+    {
+      "id": "d9PN.wWAUAAADb1r",
+      "type": "InteractionLifeLine",
+      "before": "jwt",
+      "after": "jwtVerifier"
+    },
+    {
+      "id": "5dPN.wWAUAAADb1c",
+      "type": "InteractionLifeLine",
+      "before": "api",
+      "after": "apiClient"
+    },
+    {
+      "id": "HdPN.wWAUAAADb1f",
+      "type": "InteractionLifeLine",
+      "before": "app",
+      "after": "api"
+    },
+    {
+      "id": "49PN.wWAUAAADb1i",
+      "type": "InteractionLifeLine",
+      "before": "require_role(\"recommendation\")",
+      "after": "recommendationGuard"
+    },
+    {
+      "id": "y9PN.wWAUAAADb1l",
+      "type": "InteractionLifeLine",
+      "before": "auth",
+      "after": "auth"
+    },
+    {
+      "id": "6dPN.wWAUAAADb1Z",
+      "type": "InteractionLifeLine",
+      "before": "sb",
+      "after": "supabase"
+    },
+    {
+      "id": "R9PN.wWAUAAADb1o",
+      "type": "InteractionLifeLine",
+      "before": "acs",
+      "after": "accessControl"
+    },
+    {
+      "id": "aDPN.wWAUAAADb2G",
+      "type": "Message",
+      "before": "request a coach-only resource (e.g. /rank-plays/baseline)",
+      "after": "baselineRank(opts: Matchup) [analyst]"
+    },
+    {
+      "id": "RDPN.wWAUAAADb2M",
+      "type": "Message",
+      "before": "",
+      "after": "getSession()"
+    },
+    {
+      "id": "LDPN.wWAUAAADb2S",
+      "type": "Message",
+      "before": "session.access_token",
+      "after": "accessToken: string"
+    },
+    {
+      "id": "QjPN.wWAUAAADb2Y",
+      "type": "Message",
+      "before": "GET /rank-plays/baseline  Authorization: Bearer <token>",
+      "after": "GET /rank-plays/baseline(matchup: Matchup)"
+    },
+    {
+      "id": "8jPN.wWAUAAADb2e",
+      "type": "Message",
+      "before": "",
+      "after": "__call__(user: AuthContext)"
+    },
+    {
+      "id": ".jPN.wWAUAAADb2l",
+      "type": "Message",
+      "before": "",
+      "after": "require_auth(request: Request)"
+    },
+    {
+      "id": "djPN.wWAUAAADb2s",
+      "type": "Message",
+      "before": "",
+      "after": "validate_session(token: string?)"
+    },
+    {
+      "id": "fjPN.wWAUAAADb2z",
+      "type": "Message",
+      "before": "true",
+      "after": "validSession: boolean = true"
+    },
+    {
+      "id": "UTPN.wWAUAAADb25",
+      "type": "Message",
+      "before": "",
+      "after": "get_user_role(token: string)"
+    },
+    {
+      "id": "OTPN.wWAUAAADb3A",
+      "type": "Message",
+      "before": "\"analyst\"",
+      "after": "role: UserRole = analyst"
+    },
+    {
+      "id": "pTPN.wWAUAAADb3G",
+      "type": "Message",
+      "before": "{token, role: analyst}",
+      "after": "authenticatedUser: AuthContext"
+    },
+    {
+      "id": "DTPN.wWAUAAADb3M",
+      "type": "Message",
+      "before": "",
+      "after": "check_user_access(role: UserRole, resource: string)"
+    },
+    {
+      "id": "gzPN.wWAUAAADb3U",
+      "type": "Message",
+      "before": "false  (_ROLE_PERMISSIONS[\"recommendation\"] = {coach})",
+      "after": "allowed: boolean = false"
+    },
+    {
+      "id": "czPN.wWAUAAADb3a",
+      "type": "Message",
+      "before": "HTTPException 403 \"Role 'analyst' cannot access 'recommendation' resources.\"",
+      "after": "error: HttpError [403, role lacks permission]"
+    },
+    {
+      "id": "WzPN.wWAUAAADb3g",
+      "type": "Message",
+      "before": "403 Forbidden",
+      "after": "error: HttpError [403]"
+    },
+    {
+      "id": "JzPN.wWAUAAADb3m",
+      "type": "Message",
+      "before": "access denied message",
+      "after": "view: AccessDeniedError"
+    },
+    {
+      "id": "ZrPN.wWAUAAADb5d",
+      "type": "InteractionLifeLine",
+      "before": "mw",
+      "after": "middleware"
+    },
+    {
+      "id": "_rPN.wWAUAAADb5j",
+      "type": "InteractionLifeLine",
+      "before": "ui",
+      "after": "matchupPage"
+    },
+    {
+      "id": "UbPN.wWAUAAADb5m",
+      "type": "InteractionLifeLine",
+      "before": "api",
+      "after": "apiClient"
+    },
+    {
+      "id": "abPN.wWAUAAADb5p",
+      "type": "InteractionLifeLine",
+      "before": "app",
+      "after": "api"
+    },
+    {
+      "id": "RbPN.wWAUAAADb5s",
+      "type": "InteractionLifeLine",
+      "before": "require_role(\"recommendation\")",
+      "after": "recommendationGuard"
+    },
+    {
+      "id": "9bPN.wWAUAAADb5v",
+      "type": "InteractionLifeLine",
+      "before": "auth",
+      "after": "auth"
+    },
+    {
+      "id": "TrPN.wWAUAAADb5g",
+      "type": "InteractionLifeLine",
+      "before": "sb",
+      "after": "supabase"
+    },
+    {
+      "id": "PbPN.wWAUAAADb5y",
+      "type": "InteractionLifeLine",
+      "before": "acs",
+      "after": "accessControl"
+    },
+    {
+      "id": ".7PN.wWAUAAADb6c",
+      "type": "Message",
+      "before": "GET /matchup",
+      "after": "GET /matchup(request: NextRequest)"
+    },
+    {
+      "id": "V7PN.wWAUAAADb6i",
+      "type": "Message",
+      "before": "",
+      "after": "matchesRoute(path: string, routes: string[])"
+    },
+    {
+      "id": "v7PN.wWAUAAADb6q",
+      "type": "Message",
+      "before": "",
+      "after": "getUser()"
+    },
+    {
+      "id": "RHPN.wWAUAAADb6w",
+      "type": "Message",
+      "before": "user",
+      "after": "user: User"
+    },
+    {
+      "id": "LHPN.wWAUAAADb62",
+      "type": "Message",
+      "before": "",
+      "after": "selectProfileRole(userId: string)"
+    },
+    {
+      "id": "UnPN.wWAUAAADb69",
+      "type": "Message",
+      "before": "role = coach",
+      "after": "role: UserRole = coach"
+    },
+    {
+      "id": "qnPN.wWAUAAADb7D",
+      "type": "Message",
+      "before": "NextResponse.next(): render MatchupPageClient",
+      "after": "render(page: MatchupPageClient)"
+    },
+    {
+      "id": "BnPN.wWAUAAADb7J",
+      "type": "Message",
+      "before": "",
+      "after": "baselineRank(opts: Matchup)"
+    },
+    {
+      "id": "znPN.wWAUAAADb7Q",
+      "type": "Message",
+      "before": "",
+      "after": "getSession()"
+    },
+    {
+      "id": "KXPN.wWAUAAADb7W",
+      "type": "Message",
+      "before": "session.access_token",
+      "after": "accessToken: string"
+    },
+    {
+      "id": "hXPN.wWAUAAADb7c",
+      "type": "Message",
+      "before": "GET /rank-plays/baseline  Authorization: Bearer <token>",
+      "after": "GET /rank-plays/baseline(matchup: Matchup)"
+    },
+    {
+      "id": "dXPN.wWAUAAADb7i",
+      "type": "Message",
+      "before": "",
+      "after": "__call__(user: AuthContext)"
+    },
+    {
+      "id": "g3PN.wWAUAAADb7p",
+      "type": "Message",
+      "before": "",
+      "after": "require_auth(request: Request)"
+    },
+    {
+      "id": "y3PN.wWAUAAADb7w",
+      "type": "Message",
+      "before": "",
+      "after": "validate_session(token: string?)"
+    },
+    {
+      "id": "Z3PN.wWAUAAADb73",
+      "type": "Message",
+      "before": "true",
+      "after": "validSession: boolean = true"
+    },
+    {
+      "id": "IPPN.wWAUAAADb79",
+      "type": "Message",
+      "before": "",
+      "after": "get_user_role(token: string)"
+    },
+    {
+      "id": "qPPN.wWAUAAADb8E",
+      "type": "Message",
+      "before": "\"coach\"",
+      "after": "role: UserRole = coach"
+    },
+    {
+      "id": "BPPN.wWAUAAADb8K",
+      "type": "Message",
+      "before": "{token, role: coach}",
+      "after": "authenticatedUser: AuthContext"
+    },
+    {
+      "id": "NPPN.wWAUAAADb8Q",
+      "type": "Message",
+      "before": "",
+      "after": "check_user_access(role: UserRole, resource: string)"
+    },
+    {
+      "id": "vPPN.wWAUAAADb8Y",
+      "type": "Message",
+      "before": "true",
+      "after": "allowed: boolean = true"
+    },
+    {
+      "id": "EvPN.wWAUAAADb8e",
+      "type": "Message",
+      "before": "user",
+      "after": "authorizedUser: AuthContext"
+    },
+    {
+      "id": "KvPN.wWAUAAADb8k",
+      "type": "Message",
+      "before": "200 OK rankings",
+      "after": "response: BaselineRankResponse [200]"
+    },
+    {
+      "id": "BvPN.wWAUAAADb8q",
+      "type": "Message",
+      "before": "BaselineRow[]",
+      "after": "rankings: BaselineRow[]"
+    },
+    {
+      "id": "NvPN.wWAUAAADb8w",
+      "type": "Message",
+      "before": "page loaded with data",
+      "after": "view: MatchupView"
+    },
+    {
+      "id": "JfPN.wWAUAAADb9C",
+      "type": "InteractionLifeLine",
+      "before": "lp",
+      "after": "loginPage"
+    },
+    {
+      "id": "DfPN.wWAUAAADb9F",
+      "type": "InteractionLifeLine",
+      "before": "ag",
+      "after": "authGateway"
+    },
+    {
+      "id": "GfPN.wWAUAAADb8_",
+      "type": "InteractionLifeLine",
+      "before": "sb",
+      "after": "supabase"
+    },
+    {
+      "id": "0fPN.wWAUAAADb88",
+      "type": "InteractionLifeLine",
+      "before": "mw",
+      "after": "middleware"
+    },
+    {
+      "id": "C_PN.wWAUAAADb9g",
+      "type": "Message",
+      "before": "GET /matchup  [no session]",
+      "after": "GET /matchup(request: NextRequest) [no session]"
+    },
+    {
+      "id": "u_PN.wWAUAAADb9m",
+      "type": "Message",
+      "before": "",
+      "after": "getUser()"
+    },
+    {
+      "id": "d_PN.wWAUAAADb9s",
+      "type": "Message",
+      "before": "null",
+      "after": "user: User? = null"
+    },
+    {
+      "id": "X_PN.wWAUAAADb9y",
+      "type": "Message",
+      "before": "redirect /login?next=/matchup",
+      "after": "redirect: NextResponse [/login?next=/matchup]"
+    },
+    {
+      "id": "oAvN.wWAUAAADb94",
+      "type": "Message",
+      "before": "enter email and password; Sign in",
+      "after": "submit(email: string, password: string)"
+    },
+    {
+      "id": "SAvN.wWAUAAADb9.",
+      "type": "Message",
+      "before": "",
+      "after": "handleLogin(event: FormEvent)"
+    },
+    {
+      "id": "JAvN.wWAUAAADb.F",
+      "type": "Message",
+      "before": "",
+      "after": "signIn(email: string, password: string)"
+    },
+    {
+      "id": "7AvN.wWAUAAADb.N",
+      "type": "Message",
+      "before": "",
+      "after": "signInWithPassword(credentials: Credentials)"
+    },
+    {
+      "id": "EgvN.wWAUAAADb.V",
+      "type": "Message",
+      "before": "user + session",
+      "after": "authResult: AuthResponse"
+    },
+    {
+      "id": "agvN.wWAUAAADb.b",
+      "type": "Message",
+      "before": "",
+      "after": "selectProfileRole(userId: string)"
+    },
+    {
+      "id": "5gvN.wWAUAAADb.i",
+      "type": "Message",
+      "before": "role = coach",
+      "after": "role: UserRole = coach"
+    },
+    {
+      "id": "bgvN.wWAUAAADb.o",
+      "type": "Message",
+      "before": "{userId, role: coach}",
+      "after": "result: SignInResult"
+    },
+    {
+      "id": "wQvN.wWAUAAADb.u",
+      "type": "Message",
+      "before": "router.push(next = /matchup)",
+      "after": "navigation: string = /matchup"
+    },
+    {
+      "id": "8QvN.wWAUAAADb.0",
+      "type": "Message",
+      "before": "GET /matchup  (session cookie present; continues as in Behavioural Overview)",
+      "after": "GET /matchup(request: NextRequest) [signed in]"
+    },
+    {
+      "id": "LQvN.wWAUAAADb_A",
+      "type": "InteractionLifeLine",
+      "before": "mw",
+      "after": "middleware"
+    },
+    {
+      "id": "_QvN.wWAUAAADb_D",
+      "type": "InteractionLifeLine",
+      "before": "sb",
+      "after": "supabase"
+    },
+    {
+      "id": "KwvN.wWAUAAADb_V",
+      "type": "Message",
+      "before": "GET /gameplan  [signed in without coach role]",
+      "after": "GET /gameplan(request: NextRequest) [non-coach]"
+    },
+    {
+      "id": "hwvN.wWAUAAADb_b",
+      "type": "Message",
+      "before": "",
+      "after": "matchesRoute(path: string, routes: string[])"
+    },
+    {
+      "id": "LwvN.wWAUAAADb_j",
+      "type": "Message",
+      "before": "",
+      "after": "getUser()"
+    },
+    {
+      "id": "4IvN.wWAUAAADb_p",
+      "type": "Message",
+      "before": "user",
+      "after": "user: User"
+    },
+    {
+      "id": "aIvN.wWAUAAADb_v",
+      "type": "Message",
+      "before": "",
+      "after": "selectProfileRole(userId: string)"
+    },
+    {
+      "id": "VIvN.wWAUAAADb_2",
+      "type": "Message",
+      "before": "role = analyst (or none)",
+      "after": "role: UserRole = analyst | null"
+    },
+    {
+      "id": "LIvN.wWAUAAADb_8",
+      "type": "Message",
+      "before": "",
+      "after": "defaultPathForRole(role: UserRole)"
+    },
+    {
+      "id": "oovN.wWAUAAADcAD",
+      "type": "Message",
+      "before": "NextResponse.redirect(/data-explorer or /): access denied",
+      "after": "redirect: NextResponse [analyst home or pending login]"
+    },
+    {
+      "id": "pSPN.wWAUAAADbod",
+      "type": "InteractionLifeLine",
+      "before": "api",
+      "after": "apiClient"
+    },
+    {
+      "id": "3SPN.wWAUAAADboj",
+      "type": "InteractionLifeLine",
+      "before": "require_role(\"recommendation\")",
+      "after": "recommendationGuard"
+    },
+    {
+      "id": "ayPN.wWAUAAADbop",
+      "type": "InteractionLifeLine",
+      "before": "rec",
+      "after": "baselineRecommender"
+    },
+    {
+      "id": "UyPN.wWAUAAADbom",
+      "type": "InteractionLifeLine",
+      "before": "ml",
+      "after": "contextRecommender"
+    },
+    {
+      "id": "DSPN.wWAUAAADbog",
+      "type": "InteractionLifeLine",
+      "before": "app",
+      "after": "api"
+    },
+    {
+      "id": "2SPN.wWAUAAADboa",
+      "type": "InteractionLifeLine",
+      "before": "ui",
+      "after": "contextPage"
+    },
+    {
+      "id": "GKPN.wWAUAAADbpr",
+      "type": "Message",
+      "before": "open /context",
+      "after": "open(path: string = /context)"
+    },
+    {
+      "id": "MqPN.wWAUAAADbpx",
+      "type": "Message",
+      "before": "",
+      "after": "init()"
+    },
+    {
+      "id": "eqPN.wWAUAAADbp3",
+      "type": "Message",
+      "before": "",
+      "after": "fetchMetaOptions()"
+    },
+    {
+      "id": "DqPN.wWAUAAADbp9",
+      "type": "Message",
+      "before": "GET /meta/options",
+      "after": "GET /meta/options()"
+    },
+    {
+      "id": "vqPN.wWAUAAADbqD",
+      "type": "Message",
+      "before": "MetaOptions {seasons, teams, playTypes}",
+      "after": "options: MetaOptions"
+    },
+    {
+      "id": "0aPN.wWAUAAADbqJ",
+      "type": "Message",
+      "before": "MetaOptions",
+      "after": "options: MetaOptions"
+    },
+    {
+      "id": "maPN.wWAUAAADbqP",
+      "type": "Message",
+      "before": "select matchup; enter margin, period, time remaining; Run",
+      "after": "setContext(inputs: ContextInputs)"
+    },
+    {
+      "id": "ZaPN.wWAUAAADbqV",
+      "type": "Message",
+      "before": "",
+      "after": "runContext()"
+    },
+    {
+      "id": "XaPN.wWAUAAADbqb",
+      "type": "Message",
+      "before": "",
+      "after": "contextRank(opts: ContextInputs)"
+    },
+    {
+      "id": "c6PN.wWAUAAADbqi",
+      "type": "Message",
+      "before": "GET /rank-plays/context-ml?season&our&opp&margin&period&time_remaining&k",
+      "after": "GET /rank-plays/context-ml(inputs: ContextInputs)"
+    },
+    {
+      "id": "O6PN.wWAUAAADbqo",
+      "type": "Message",
+      "before": "",
+      "after": "__call__(user: AuthContext)"
+    },
+    {
+      "id": "t6PN.wWAUAAADbqv",
+      "type": "Message",
+      "before": "user",
+      "after": "authorizedUser: AuthContext"
+    },
+    {
+      "id": "n6PN.wWAUAAADbq1",
+      "type": "Message",
+      "before": "",
+      "after": "_require_team(team: string, label: string)"
+    },
+    {
+      "id": "0GPN.wWAUAAADbq9",
+      "type": "Message",
+      "before": "",
+      "after": "rank_ml_with_context(inputs: ContextInputs)"
+    },
+    {
+      "id": "BGPN.wWAUAAADbrM",
+      "type": "Message",
+      "before": "",
+      "after": "_normalize_context(inputs: ContextInputs, context: dict?)"
+    },
+    {
+      "id": "7GPN.wWAUAAADbrW",
+      "type": "Message",
+      "before": "",
+      "after": "build_ml_matchup_table(matchup: Matchup, context: dict?)"
+    },
+    {
+      "id": "0mPN.wWAUAAADbri",
+      "type": "Message",
+      "before": "_rec.team_df / _rec.league_df",
+      "after": "readTables(): {team_df, league_df}"
+    },
+    {
+      "id": "GmPN.wWAUAAADbro",
+      "type": "Message",
+      "before": "baseline tables",
+      "after": "tables: {team_df: DataFrame, league_df: DataFrame}"
+    },
+    {
+      "id": "hmPN.wWAUAAADbru",
+      "type": "Message",
+      "before": "",
+      "after": "_get_ml_pred_df()"
+    },
+    {
+      "id": "jmPN.wWAUAAADbr0",
+      "type": "Message",
+      "before": "",
+      "after": "apply_context_adjustments(df: DataFrame, inputs: ContextInputs, context: dict?)"
+    },
+    {
+      "id": "wWPN.wWAUAAADbr_",
+      "type": "Message",
+      "before": "",
+      "after": "compute_context_factors(margin: float, period: int, seconds: float)"
+    },
+    {
+      "id": "6WPN.wWAUAAADbsI",
+      "type": "Message",
+      "before": "",
+      "after": "_make_context_label(ctx: dict, late: float, trailing: float, leading: float)"
+    },
+    {
+      "id": "FWPN.wWAUAAADbsS",
+      "type": "Message",
+      "before": "sort_values(PPP_CONTEXT).head(k)",
+      "after": "sort_values(by: string = PPP_CONTEXT).head(k: integer)"
+    },
+    {
+      "id": "7WPN.wWAUAAADbsY",
+      "type": "Message",
+      "before": "top-k DataFrame (PPP_CONTEXT, PPP_ML_BLEND, PPP_BASELINE, CONTEXT_LABEL, RATIONALE)",
+      "after": "rankedRows: DataFrame"
+    },
+    {
+      "id": "Y2PN.wWAUAAADbse",
+      "type": "Message",
+      "before": "",
+      "after": "_df_to_records(df: DataFrame)"
+    },
+    {
+      "id": "m2PN.wWAUAAADbsl",
+      "type": "Message",
+      "before": "ContextRankResponse",
+      "after": "response: ContextRankResponse"
+    },
+    {
+      "id": "F2PN.wWAUAAADbsr",
+      "type": "Message",
+      "before": "ContextRow[] {playType, finalPPP, mlPPP, baselinePPP, deltaPPP, contextLabel, rationale}",
+      "after": "rankings: ContextRow[]"
+    },
+    {
+      "id": "T2PN.wWAUAAADbsx",
+      "type": "Message",
+      "before": "",
+      "after": "displayRows()"
+    },
+    {
+      "id": "QOPN.wWAUAAADbs3",
+      "type": "Message",
+      "before": "re-ranked list with rationale and context inputs",
+      "after": "view: ContextRankingsView"
+    },
+    {
+      "id": "Elab8ded94bb419e",
+      "type": "InteractionLifeLine",
+      "before": "Analyst / Export Client",
+      "after": "analystClient"
+    },
+    {
+      "id": "Elab85e5dc5c7bf5",
+      "type": "InteractionLifeLine",
+      "before": "TopKUpliftEndpoints",
+      "after": "upliftApi"
+    },
+    {
+      "id": "Elab9c0885ece08e",
+      "type": "InteractionLifeLine",
+      "before": "AuthDependency",
+      "after": "auth"
+    },
+    {
+      "id": "Elabbb58f378b92b",
+      "type": "InteractionLifeLine",
+      "before": "Supabase Profiles",
+      "after": "profiles"
+    },
+    {
+      "id": "Elab50d5234ff3b2",
+      "type": "InteractionLifeLine",
+      "before": "TopKUplift",
+      "after": "uplift"
+    },
+    {
+      "id": "Elabdbc0b76a5bcb",
+      "type": "Message",
+      "before": "GET /metrics/topk-uplift[.json|.csv] + Bearer",
+      "after": "GET /metrics/topk-uplift[.json|.csv](matchup: Matchup)"
+    },
+    {
+      "id": "Elab5b0006a6e2ea",
+      "type": "Message",
+      "before": "require_role(analytics); verify JWT via JWKS",
+      "after": "authorize(request: Request, resource: string = analytics)"
+    },
+    {
+      "id": "Elab9efd88b67a77",
+      "type": "Message",
+      "before": "SELECT protected role for verified subject",
+      "after": "get_profile_role(token: string, user_id: string)"
+    },
+    {
+      "id": "Elab9eb3a75c0478",
+      "type": "Message",
+      "before": "current role = analyst",
+      "after": "role: UserRole = analyst"
+    },
+    {
+      "id": "Elabeb3eadb8b59a",
+      "type": "Message",
+      "before": "authorized analyst",
+      "after": "authorizedUser: AuthContext"
+    },
+    {
+      "id": "Elab780a3a2e83ef",
+      "type": "Message",
+      "before": "compute from baseline rankings; retain all team-season rows",
+      "after": "compute_topk_uplift(rows: UpliftInputs, matchup: Matchup, provenance: dict)"
+    },
+    {
+      "id": "Elab5466829501c6",
+      "type": "Message",
+      "before": "weighted Top-K PPP minus seasonal SUM(PTS)/SUM(POSS)",
+      "after": "report: UpliftReport"
+    },
+    {
+      "id": "Elabc09607c550b1",
+      "type": "Message",
+      "before": "JSON/CSV + numerators, scope, units, K, source SHA-256",
+      "after": "response: UpliftReport | CsvDownload"
+    },
+    {
+      "id": "Elab5e83cea0d23b",
+      "type": "InteractionLifeLine",
+      "before": "ModelMetricsPageClient",
+      "after": "metricsPage"
+    },
+    {
+      "id": "Elab9fd4d998f9de",
+      "type": "InteractionLifeLine",
+      "before": "CalibrationPanel",
+      "after": "calibrationPanel"
+    },
+    {
+      "id": "Elabb09d32732731",
+      "type": "InteractionLifeLine",
+      "before": "CalibrationEndpoints",
+      "after": "calibrationApi"
+    },
+    {
+      "id": "Elab761a673e14dc",
+      "type": "InteractionLifeLine",
+      "before": "Protected role / Auth",
+      "after": "auth"
+    },
+    {
+      "id": "Elabd72370dfd943",
+      "type": "InteractionLifeLine",
+      "before": "Calibration",
+      "after": "calibration"
+    },
+    {
+      "id": "Elabed2e43a54ed7",
+      "type": "Message",
+      "before": "render with requested fold count",
+      "after": "render(nSplits: integer)"
+    },
+    {
+      "id": "Elabf95e6c4ed316",
+      "type": "Message",
+      "before": "GET /metrics/calibration + session Bearer",
+      "after": "GET /metrics/calibration(query: CalibrationRequest)"
+    },
+    {
+      "id": "Elabb93732be7085",
+      "type": "Message",
+      "before": "verify JWT and current profiles.role = analyst",
+      "after": "authorize(request: Request, resource: string = analytics)"
+    },
+    {
+      "id": "Elab8d305fc27b03",
+      "type": "Message",
+      "before": "authorized (otherwise 401/403)",
+      "after": "authorization: AuthContext | HttpError"
+    },
+    {
+      "id": "Elabadcb401e76d2",
+      "type": "Message",
+      "before": "cache miss: compute_calibration(folds, bins)",
+      "after": "compute_calibration(data: DataFrame, n_splits: int, n_bins: int)"
+    },
+    {
+      "id": "Elab0b9f0d5159c2",
+      "type": "Message",
+      "before": "held-out fold results (trained only on prior seasons)",
+      "after": "folds: CalibrationFold[]"
+    },
+    {
+      "id": "Elab4d590ee6bc78",
+      "type": "Message",
+      "before": "PPP bins, signed bias, MAE/RMSE, fold provenance",
+      "after": "report: CalibrationReport"
+    },
+    {
+      "id": "Elabb0b598f784d9",
+      "type": "Message",
+      "before": "report JSON (or explicit error)",
+      "after": "response: ApiResult<CalibrationReport>"
+    },
+    {
+      "id": "Elab7c93b2a6ddaa",
+      "type": "Message",
+      "before": "chart + exact values + sparse warnings; retry errors",
+      "after": "render(view: CalibrationView)"
+    },
+    {
+      "id": "gQYbwIWAUAAADT7K",
+      "type": "InteractionLifeLine",
+      "before": "NLPParser",
+      "after": "nlpParser"
+    },
+    {
+      "id": "6yobwIWAUAAADT7B",
+      "type": "InteractionLifeLine",
+      "before": "NlpEndpoints",
+      "after": "nlpApi"
+    },
+    {
+      "id": "BJIbwIWAUAAADT64",
+      "type": "InteractionLifeLine",
+      "before": "ContextSimulatorPage",
+      "after": "gameplan"
+    },
+    {
+      "id": "6NkbwIWAUAAADT7b",
+      "type": "Message",
+      "before": "enter free-text game situation",
+      "after": "enterSituation(text: string)"
+    },
+    {
+      "id": "Rev0d8226f147513",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "ppUbwIWAUAAADT7u",
+      "type": "Message",
+      "before": "POST /nlp/parse(text, defaults)",
+      "after": "POST /nlp/parse(request: ParseRequest)"
+    },
+    {
+      "id": "Rev42cfa1cd5d56f",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "EH8bwIWAUAAADT8b",
+      "type": "Message",
+      "before": "parse_game_context(text, defaults)",
+      "after": "parse_game_context(text: string, defaults: dict?)"
+    },
+    {
+      "id": "Rev6d3da7986d5f4",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "qpxbwIWAUAAADT80",
+      "type": "Message",
+      "before": "resolve_context_ml_params(context)",
+      "after": "resolve_context_ml_params(context: dict)"
+    },
+    {
+      "id": "Revb07bcf61145dd",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "QjZbwIWAUAAADT8.",
+      "type": "Message",
+      "before": "show defaulted_fields notice and neutral context",
+      "after": "view: ContextParseView"
+    },
+    {
+      "id": "Reva4012a7fdd6ba",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Zy9nwIWAUAAADWJF",
+      "type": "InteractionLifeLine",
+      "before": "DataQualityChecker",
+      "after": "qualityChecker"
+    },
+    {
+      "id": "SpdnwIWAUAAADWI8",
+      "type": "InteractionLifeLine",
+      "before": "DataExplorerPage",
+      "after": "dataExplorer"
+    },
+    {
+      "id": "BaTnwIWAUAAADWJU",
+      "type": "Message",
+      "before": "run data quality checks",
+      "after": "requestChecks(dataset: DataFrame)"
+    },
+    {
+      "id": "Revf2cb34e982cea",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "iCznwIWAUAAADWJm",
+      "type": "Message",
+      "before": "run_data_quality_checks(df)",
+      "after": "run_data_quality_checks(df: DataFrame, options: QualityOptions)"
+    },
+    {
+      "id": "Revdc080bf099fbd",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "0nbnwIWAUAAADWJ2",
+      "type": "Message",
+      "before": "DataQualityReport(status, checks)",
+      "after": "report: DataQualityReport"
+    },
+    {
+      "id": "Rev12d821206b6b7",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "l_7nwIWAUAAADWKF",
+      "type": "Message",
+      "before": "show pass or fail per check and flag unsafe data",
+      "after": "view: DataQualityView"
+    },
+    {
+      "id": "Rev1bf4912807f7c",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Yf.3wIWAUAAADXyn",
+      "type": "InteractionLifeLine",
+      "before": "ExportContract",
+      "after": "exportContract"
+    },
+    {
+      "id": "bC.3wIWAUAAADXye",
+      "type": "InteractionLifeLine",
+      "before": "RankingPage",
+      "after": "matchupPage"
+    },
+    {
+      "id": "alJ3wIWAUAAADXy2",
+      "type": "Message",
+      "before": "click Export and choose format",
+      "after": "chooseExport(format: csv | json | pdf)"
+    },
+    {
+      "id": "Revde0232de4835f",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": ".Np3wIWAUAAADXzI",
+      "type": "Message",
+      "before": "build_export(report, format, filters)",
+      "after": "build_export(payload: ExportPayload, format: string)"
+    },
+    {
+      "id": "Rev2337a62b1a335",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "aHZ3wIWAUAAADXzQ",
+      "type": "Message",
+      "before": "ExportFile(content, media_type, filename)",
+      "after": "file: ExportFile"
+    },
+    {
+      "id": "Revfcd8cd4094fbe",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "44F3wIWAUAAADXze",
+      "type": "Message",
+      "before": "download file or show retry on failure",
+      "after": "download: ExportFile | ExportError"
+    },
+    {
+      "id": "Revcfe972c06d302",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": ".JPN.wWAUAAADbxJ",
+      "type": "Message",
+      "before": "get_jwt_secret(): string?",
+      "after": "[HS256 only] get_jwt_secret()"
+    },
+    {
+      "id": "9JPN.wWAUAAADbxP",
+      "type": "Message",
+      "before": "key: VerificationKey",
+      "after": "secret: string? [HS256 only]"
+    },
+    {
+      "id": "Elab0b9f0d5159c2",
+      "type": "Message",
+      "before": "folds: CalibrationFold[]",
+      "after": "folds: CalibrationFold[] [part of report]"
+    },
+    {
+      "id": "9EPN.wWAUAAADbiN",
+      "type": "Message",
+      "before": "team_playtypes_csv(filters: DataFilters)",
+      "after": "GET /data/team-playtypes.csv(filters: DataFilters) [via export proxy]"
+    },
+    {
+      "id": "Rev8b6b31e09729f",
+      "type": "InteractionLifeLine",
+      "before": "middleware",
+      "after": "user"
+    },
+    {
+      "id": "Rev663ab38b8042a",
+      "type": "InteractionLifeLine",
+      "before": "middleware",
+      "after": "middleware"
+    },
+    {
+      "id": "Rev30f86dcea33f0",
+      "type": "InteractionLifeLine",
+      "before": "middleware",
+      "after": "supabase"
+    },
+    {
+      "id": "Reve35c26bab8efe",
+      "type": "InteractionLifeLine",
+      "before": "middleware",
+      "after": "glossaryPage"
+    },
+    {
+      "id": "Rev8613e9136f24f",
+      "type": "Message",
+      "before": "user: User",
+      "after": "GET /glossary(request: NextRequest)"
+    },
+    {
+      "id": "Rev9b916bdb960c5",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Rev5537d5ed408bf",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revbeb91200adedf",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev924a6fbd87453",
+      "type": "Message",
+      "before": "user: User",
+      "after": "getUser()"
+    },
+    {
+      "id": "Rev85f304afbe0f8",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Revae4dd680288d1",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revaf6b084747048",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev3a5fe3c743042",
+      "type": "Message",
+      "before": "user: User",
+      "after": "user: User"
+    },
+    {
+      "id": "Rev2752453555b3b",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Rev14a81283056b1",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev6e53b257e07e9",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev64e0ec034f04d",
+      "type": "Message",
+      "before": "user: User",
+      "after": "selectProfileRole(userId: string)"
+    },
+    {
+      "id": "Rev9a04f2adc1b53",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Reve00c3ce9c8166",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev694246ef8d06b",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revdf9a2b2b827c0",
+      "type": "Message",
+      "before": "user: User",
+      "after": "role: UserRole = coach | analyst"
+    },
+    {
+      "id": "Rev0aee2af7738f7",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Rev4e95b1cf83659",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Reve7d34782eedc2",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revf0bd923779a6e",
+      "type": "Message",
+      "before": "user: User",
+      "after": "render(page: GlossaryPage)"
+    },
+    {
+      "id": "Rev34be3b0d9b24c",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Rev23dafb97854fa",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revfb6e6f0bed418",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev5a5e893016132",
+      "type": "Message",
+      "before": "user: User",
+      "after": "loadTerms(terms: GlossaryTerm[])"
+    },
+    {
+      "id": "Rev03221af29cb08",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Rev3776667632e53",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev591830ba09a71",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev59767f8924125",
+      "type": "Message",
+      "before": "user: User",
+      "after": "view: GlossaryView [terms, meanings, links]"
+    },
+    {
+      "id": "Rev7da3a705d38fe",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Revcf6e190493a0f",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev7bee99aac3b31",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Reve0f27b10d8dad",
+      "type": "Frame",
+      "before": "Behavioural Overview - Authenticate Analyst Access",
+      "after": "Detailed Sequence - Glossary Search and Tag Filters (UC15)"
+    },
+    {
+      "id": "Reve45b2b8f37e04",
+      "type": "InteractionLifeLine",
+      "before": "middleware",
+      "after": "user"
+    },
+    {
+      "id": "Rev7183897661ecb",
+      "type": "InteractionLifeLine",
+      "before": "middleware",
+      "after": "glossaryPage"
+    },
+    {
+      "id": "Revdc58d66c82883",
+      "type": "Message",
+      "before": "user: User",
+      "after": "setQuery(query: string)"
+    },
+    {
+      "id": "Revb0cd505356782",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Rev6e6627806df62",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev6ff333faeaf30",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev1df98d28eba1d",
+      "type": "Message",
+      "before": "user: User",
+      "after": "setTag(tag: string)"
+    },
+    {
+      "id": "Revc88507156242e",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Rev3c14d2b468f67",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev644215a675df5",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev80ac4d52596cf",
+      "type": "Message",
+      "before": "user: User",
+      "after": "normalize(query: string): string [trim, lowercase]"
+    },
+    {
+      "id": "Rev07653f362f3fd",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Rev0f470bcae0bc9",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev835b3c299d3a0",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev20311e581147f",
+      "type": "Message",
+      "before": "user: User",
+      "after": "filter(terms: GlossaryTerm[], query: string, tag: string): GlossaryTerm[]"
+    },
+    {
+      "id": "Rev5ea85ad541637",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Revda6bde8e7fe47",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev9393e1b0c3246",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revf2ccd3e0bcdda",
+      "type": "Message",
+      "before": "user: User",
+      "after": "view: GlossaryView [matches.length > 0]"
+    },
+    {
+      "id": "Rev454f9c3c849d4",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Revadd39e72037dc",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev77a5ba10e501b",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revd320d59d11c68",
+      "type": "Message",
+      "before": "user: User",
+      "after": "view: EmptyResult [if matches.length = 0]"
+    },
+    {
+      "id": "Rev9b391bf82b971",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Revba7c4e534caae",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Reve69db05a39cd7",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revb6acb24b8bcaf",
+      "type": "Message",
+      "before": "user: User",
+      "after": "clearFilters()"
+    },
+    {
+      "id": "Revbd412dc866908",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Rev510800c03ce23",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev9f662a9d08191",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev33a3e0c75b45a",
+      "type": "Message",
+      "before": "user: User",
+      "after": "view: GlossaryView [query=\"\", tag=All]"
+    },
+    {
+      "id": "Rev11cca453fac3c",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Revcdf8a6e2bbffb",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revd65e8c64fc2bc",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev6a316e2b32bb7",
+      "type": "Frame",
+      "before": "Behavioural Overview - Authenticate Analyst Access",
+      "after": "Detailed Sequence - Glossary Access Denied (UC15)"
+    },
+    {
+      "id": "Reva870039a1be53",
+      "type": "InteractionLifeLine",
+      "before": "middleware",
+      "after": "user"
+    },
+    {
+      "id": "Rev084cef99edfc4",
+      "type": "InteractionLifeLine",
+      "before": "middleware",
+      "after": "middleware"
+    },
+    {
+      "id": "Rev20e4e1c909450",
+      "type": "InteractionLifeLine",
+      "before": "middleware",
+      "after": "supabase"
+    },
+    {
+      "id": "Revd250e3c404d39",
+      "type": "Message",
+      "before": "user: User",
+      "after": "GET /glossary(request: NextRequest)"
+    },
+    {
+      "id": "Rev4639a62a7d7d3",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Reva517ea2120789",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev52cac914569ab",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev6db53c0c62bfa",
+      "type": "Message",
+      "before": "user: User",
+      "after": "getUser()"
+    },
+    {
+      "id": "Rev27b4e8939b43b",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Revd1562e6a89cf7",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev8465b2900da7f",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revf1fdd6f94a9d5",
+      "type": "Message",
+      "before": "user: User",
+      "after": "user: User? [null or verified user]"
+    },
+    {
+      "id": "Rev5197f9d56477a",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Revc19c52a83f7e8",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev4609edd2530e4",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev1a4ebd6975cfa",
+      "type": "Message",
+      "before": "user: User",
+      "after": "redirect: /login?next=/glossary [user=null]"
+    },
+    {
+      "id": "Revc42154e0e57c9",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Reva2c6ed9e03af7",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Reve79c944d31d3d",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revab569e2533adb",
+      "type": "Message",
+      "before": "user: User",
+      "after": "selectProfileRole(userId: string) [user exists]"
+    },
+    {
+      "id": "Rev2b48a38b32472",
+      "type": "ActionTypeCall",
+      "before": "Call",
+      "after": "Call"
+    },
+    {
+      "id": "Rev6f0113734069e",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revd775b4cdf737d",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev2c6a6974b6b1f",
+      "type": "Message",
+      "before": "user: User",
+      "after": "role: UserRole = null [pending/unavailable]"
+    },
+    {
+      "id": "Rev7f1de14cfc480",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Rev3a912b4760080",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revece2a149e4cad",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev09de840fe1164",
+      "type": "Message",
+      "before": "user: User",
+      "after": "redirect: /login?access=pending"
+    },
+    {
+      "id": "Rev05a4fdb49d027",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Rev6c19fb858ed56",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revdd07c3263799c",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev500e998e44922",
+      "type": "Message",
+      "before": "user: User",
+      "after": "parsed: NLPParseResult"
+    },
+    {
+      "id": "Revb48a6326702b5",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Rev107caa9bdca95",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revdaf479ebd0eb2",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev6c056eede6998",
+      "type": "Message",
+      "before": "user: User",
+      "after": "guard: ContextGuardResult"
+    },
+    {
+      "id": "Revc78f24a7c3307",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Revb17af5798f61d",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Reve2d3051fd3fcd",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Rev5fba8a7e845d4",
+      "type": "Message",
+      "before": "user: User",
+      "after": "response: ParseResponse [200] | HttpError"
+    },
+    {
+      "id": "Revb2459fe98f9b8",
+      "type": "ActionTypeReturn",
+      "before": "Return",
+      "after": "Return"
+    },
+    {
+      "id": "Rev3c4dbe10c356c",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    },
+    {
+      "id": "Revce362fe61a098",
+      "type": "MessageEnd",
+      "before": "",
+      "after": ""
+    }
+  ],
+  "contracts": "Notation: objectName : Classifier. Actor names identify user roles. Calls use operation(parameter: Type); replies use result: Type. HTTP/SDK requests use asynchronous call arrows and their completion uses a named dashed reply. Local calculations use synchronous calls. Contract names below group fields for readability; they are documentation aliases, not additional runtime classes.\nCredentials = {email: string, password: string}; BaselineTables = {team_df: DataFrame, league_df: DataFrame}; UpliftInputs = {teamRows: DataFrame, rankings: DataFrame}; QualityOptions = {required_columns?: Sequence[str], key_fields?: Sequence[str], row_key?: Sequence[str], seasons?: Sequence[str], teams?: Sequence[str]}. UserRole = coach | analyst | null; null means no assigned role. VerifiedClaims contains sub, exp, aud and iss after signature/issuer/audience/expiry validation. AuthContext = {token: string, role: coach | analyst}; token values are never shown. HttpError = {status: integer, detail: string}. ApiResult<T> = successful body T or HttpError.\nDataFilters = {season: string, team?: string, side?: offense | defense, play_type?: string, min_poss: number >= 0, limit: integer 1..2000}; preview defaults limit=200. CSV uses the same filters except limit. TeamPlaytypesPreviewResponse = {season: string, total_rows: integer, returned_rows: integer, rows: TeamPlayRow[]}. TeamPlayRow contains the selected source columns, including PLAY_TYPE, POSS and PPP.\nMatchup = {season: string, our: team code, opp: different team code, k: integer 1..10, w_off: number 0..1}. Backend w_def = 1-w_off. ContextInputs adds margin: number, period: integer 1..5, time_remaining: seconds 0..720. Frontend maps timeRemaining to time_remaining. These are the current API limits.\nMetaOptions = {seasons: string[], teams: string[], teamNames: map, playTypes: string[], sides: string[], hasMlPredictions: boolean}; frontend fallback adds _fallback=true. BaselineRankResponse = {season, our_team, opp_team, k, w_off, w_def, rankings: records[]}. BaselineRow = {playType, pppPred, pppOff, pppDef, pppGap, rationale, raw}. ContextRankResponse includes matchup, context and rankings; ContextRow = {playType, finalPPP, mlPPP, baselinePPP, deltaPPP, contextLabel, rationale, raw}.\nCalibrationRequest = {n_splits: integer 1..10, n_bins: integer 2..20}; panel supplies n_bins=10. CalibrationReport = {model, evaluation, summary, folds[], warnings[]}; summary includes count, mean_predicted_ppp, mean_realized_ppp, bias_ppp, mae_ppp, rmse_ppp, binned_absolute_bias_ppp and bins[]. Each bin includes lower_ppp, upper_ppp, count, nullable means/bias and sparse. UpliftReport includes matchup, requested/actual K, historical seasonal PPP, modeled Top-K PPP, absolute/relative uplift, formulas, units, provenance and rankings[]. These reports describe retrospective evidence, not future forecast accuracy.\nCsvDownload = {status: 200, mediaType: text/csv, filename: string, body: UTF-8 bytes}. Credentials and concrete JWT values are intentionally absent. Promise completion returns the named payload; failures reject or return the labeled HTTP error and do not become successful exports."
+}

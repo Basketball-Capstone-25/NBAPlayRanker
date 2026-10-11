@@ -1,0 +1,42 @@
+ASSIGNMENT 1 — INTERACTION MODEL
+
+Open Basketball Playtype Ranker - Assignment 1 Revision.vpp in Visual Paradigm.
+The renders folder contains all 17 updated sequence diagrams as JPGs.
+
+What changed
+- Lifelines follow objectName : Classifier throughout the sequence diagrams.
+- Calls include typed inputs. Replies identify their results and types.
+- The NLP flow includes the parser, context guard and API completion replies.
+- Three empty diagrams now show glossary access, search/tag filters and denied access.
+- Auth, CSV proxy, uplift and calibration messages match the current code contracts.
+
+What to check
+1. Find the diagrams by title in the Diagram Navigator. The glossary diagrams are
+   at project root; uplift/calibration are under Interaction Model. The remaining
+   sequences are inside their existing use-case collaborations.
+2. Compare the lifeline headers and arrow labels with the instructor feedback.
+3. Open a diagram or message specification for the fields inside grouped inputs.
+4. Check the three Glossary diagrams and NLP Context Fallback.
+5. Use README.md for the complete diagram list and linked review images.
+
+The model contains 192 diagrams. All original IDs are preserved. The 175 diagrams
+outside the interaction model are unchanged. The data-quality/export diagrams
+identify planned UI integration separately from the implemented backend libraries.
+
+Publication
+The shared baseline is Teamwork revision 54. These changes are saved in the native
+project. Teamwork publication is pending because the official commit command failed.
+Use Team > Commit with:
+Clarify sequence lifelines, request parameters and return values (SCRUM-528)
+
+teamwork-status.json records the exact state of this snapshot.
+
+Course structure
+The five existing workspace, baseline, context and role-access collaborations keep
+their use-case links and three overview diagrams. This revision fixes the assigned
+lifeline/message feedback. Broader organization still needs work: the export
+collaboration lacks its overview pair, and glossary/uplift/calibration sequences
+are not grouped inside complete use-case collaborations.
+
+Five native test suites already contain 64 cases and five test-plan diagrams.
+Those model cases were preserved. See the Jira test evidence for fresh executions.

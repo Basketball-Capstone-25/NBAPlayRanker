@@ -1,0 +1,8 @@
+{
+  "native_sha256": "c1c0ea90f39ca8b74c32d4f9eb2560ce7dd62560bc154bc84afa334aa29c3cc0",
+  "native_and_official_export_scanned": true,
+  "embedded_resources_scanned": 537,
+  "configured_secret_values_compared": 2,
+  "findings": [],
+  "passed": true
+}

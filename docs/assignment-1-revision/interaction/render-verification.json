@@ -1,0 +1,215 @@
+{
+  "renderer": "Visual Paradigm ExportDiagramImage",
+  "diagram_count": 17,
+  "visual_definitions_match_authoritative": true,
+  "evaluation_watermarks_preserved": true,
+  "reviewed_all_rendered_diagrams": true,
+  "diagrams": [
+    {
+      "id": "U37owNmGAqAALl6O",
+      "name": "Behavioural Overview - Glossary Access (UC15)",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "rMy0wNmHC6keOwB1",
+      "name": "Detailed Sequence - Glossary Search and Tag Filters (UC15)",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "qZVcwNmHsyjA9QB9",
+      "name": "Detailed Sequence - Glossary Access Denied (UC15)",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "FAPN.wWAUAAADbeQ",
+      "name": "Behavioural Overview - Access Analyst Workspace",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "uUPN.wWAUAAADbj1",
+      "name": "Behavioural Overview - Ranked List via API (Baseline)",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "WuPN.wWAUAAADbuO",
+      "name": "Behavioural Overview - Authenticate Analyst Access",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "j5PN.wWAUAAADbyp",
+      "name": "Detailed Sequence - Authenticate Analyst Access - Invalid or Missing Token",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "DtPN.wWAUAAADb1Q",
+      "name": "Detailed Sequence - Authenticate Analyst Access - Role Lacks Permission",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "4rPN.wWAUAAADb5X",
+      "name": "Behavioural Overview - Validate Coach Access",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "7vPN.wWAUAAADb82",
+      "name": "Detailed Sequence - Validate Coach Access - No Valid Session",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "OQvN.wWAUAAADb.6",
+      "name": "Detailed Sequence - Validate Coach Access - Role Lacks Permission",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "wSPN.wWAUAAADboU",
+      "name": "Behavioural Overview - Rank Plays with Game Context",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "Elabcccf12e8a8ce",
+      "name": "Detailed Sequence - Analyst Top-K Uplift (475)",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "Elab86fdd4b13a52",
+      "name": "Detailed Sequence - Inspect PPP Calibration (476)",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "lvbrwIWAUAAADT6c",
+      "name": "Detailed Sequence - NLP Context Fallback (502)",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "cBlnwIWAUAAADWHW",
+      "name": "Detailed Sequence - Run Data Quality Checks (478)",
+      "visual_definition_matches_authoritative": true
+    },
+    {
+      "id": "ayu3wIWAUAAADXxt",
+      "name": "Detailed Sequence - Unified Export Contract (484)",
+      "visual_definition_matches_authoritative": true
+    }
+  ],
+  "files": [
+    {
+      "file": "renders/Behavioural Overview - Access Analyst Workspace.jpg",
+      "sha256": "c8f466685f1d0875605d40a41186b5abcde606ab7b0afdfb0cd627539a5f5eff",
+      "bytes": 734262,
+      "width": 2529,
+      "height": 2128
+    },
+    {
+      "file": "renders/Behavioural Overview - Authenticate Analyst Access.jpg",
+      "sha256": "f28c5c502d1c1c7fab4c1d8c317d946779b5a67a0feb65795ab538a596271e17",
+      "bytes": 891474,
+      "width": 2881,
+      "height": 2306
+    },
+    {
+      "file": "renders/Behavioural Overview - Glossary Access (UC15).jpg",
+      "sha256": "4afde2c6cedab353a32cdb513b771d7f940c53eac51aa197459147282d607533",
+      "bytes": 181197,
+      "width": 1442,
+      "height": 906
+    },
+    {
+      "file": "renders/Behavioural Overview - Rank Plays with Game Context.jpg",
+      "sha256": "70b7e2a7556399a7b71451a29a9844d96b0f0be1fc23601baa2f45a9db987bef",
+      "bytes": 723974,
+      "width": 2472,
+      "height": 2176
+    },
+    {
+      "file": "renders/Behavioural Overview - Ranked List via API (Baseline).jpg",
+      "sha256": "350f9ddf1d58216c497c7fada0674de2ed5b35442a138dca8119a78b45c51acd",
+      "bytes": 471048,
+      "width": 2482,
+      "height": 1396
+    },
+    {
+      "file": "renders/Behavioural Overview - Validate Coach Access.jpg",
+      "sha256": "f7d0c5cfe99baa4b4ea97877f00607149303077829b0c7d5c6324c2677eb03ee",
+      "bytes": 752919,
+      "width": 3044,
+      "height": 1852
+    },
+    {
+      "file": "renders/Detailed Sequence - Analyst Top-K Uplift (475).jpg",
+      "sha256": "8a14ad559b56f4169b2a1b7128de5ee74703e47d1f40eacc28757c599393252f",
+      "bytes": 245787,
+      "width": 2006,
+      "height": 881
+    },
+    {
+      "file": "renders/Detailed Sequence - Authenticate Analyst Access - Invalid or Missing Token.jpg",
+      "sha256": "e0996e7c8e6c385c5e1c2615fc23517126cb91d8664f0003d2fe5d4182f838f1",
+      "bytes": 543081,
+      "width": 2881,
+      "height": 1396
+    },
+    {
+      "file": "renders/Detailed Sequence - Authenticate Analyst Access - Role Lacks Permission.jpg",
+      "sha256": "4607213ad9ad009702f42b5d78996fe354457a7dd4e6de568a25f1746412ac8d",
+      "bytes": 537260,
+      "width": 2989,
+      "height": 1332
+    },
+    {
+      "file": "renders/Detailed Sequence - Glossary Access Denied (UC15).jpg",
+      "sha256": "9dfcb2f91b38e5e9338c6e267140983613ff2e120cdd0553e68e59c71854679c",
+      "bytes": 123195,
+      "width": 1046,
+      "height": 821
+    },
+    {
+      "file": "renders/Detailed Sequence - Glossary Search and Tag Filters (UC15).jpg",
+      "sha256": "88d1080f1e05378010fa65fd981f105cbf86defd2c0b4f51009b2528e60d23bf",
+      "bytes": 102088,
+      "width": 757,
+      "height": 906
+    },
+    {
+      "file": "renders/Detailed Sequence - Inspect PPP Calibration (476).jpg",
+      "sha256": "5edf23bb1d82062830cec503ecfaff24af13c59211bd65dad1581f13883ae2d4",
+      "bytes": 265822,
+      "width": 2006,
+      "height": 962
+    },
+    {
+      "file": "renders/Detailed Sequence - NLP Context Fallback (502).jpg",
+      "sha256": "c3a156bf6dc4a4dededf44532c0da461e7ee16256180a8ae7eb2216ae5b4be07",
+      "bytes": 122638,
+      "width": 840,
+      "height": 1006
+    },
+    {
+      "file": "renders/Detailed Sequence - Run Data Quality Checks (478).jpg",
+      "sha256": "f0006ef1e2fbd0dff704ea2b79f5b26fb384ef405b52060279101aa61038fc6d",
+      "bytes": 33039,
+      "width": 747,
+      "height": 224
+    },
+    {
+      "file": "renders/Detailed Sequence - Unified Export Contract (484).jpg",
+      "sha256": "f699e9ea70270e7f979fee3491db5c9b110daad114cb677bcb9df7d31a2a3672",
+      "bytes": 31244,
+      "width": 726,
+      "height": 224
+    },
+    {
+      "file": "renders/Detailed Sequence - Validate Coach Access - No Valid Session.jpg",
+      "sha256": "9a2be9ebbfa7a8c283f3bd879b95b03b97d74e1786210e4da2c8514edf6d2ee0",
+      "bytes": 243482,
+      "width": 1389,
+      "height": 1202
+    },
+    {
+      "file": "renders/Detailed Sequence - Validate Coach Access - Role Lacks Permission.jpg",
+      "sha256": "ef147c4daf3f1815cc76afc37d6be41d85b81beede866140906c2e3a27081e52",
+      "bytes": 95598,
+      "width": 764,
+      "height": 812
+    }
+  ]
+}

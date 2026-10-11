@@ -1,0 +1,2249 @@
+[
+  {
+    "id": "U37owNmGAqAALl6O",
+    "name": "Behavioural Overview - Glossary Access (UC15)",
+    "lifelines": [
+      {
+        "id": "Rev8b6b31e09729f",
+        "type": "InteractionLifeLine",
+        "name": "user",
+        "classifier_id": "Z9YMi1mGAqAALhL1",
+        "classifier": "Coach"
+      },
+      {
+        "id": "Rev663ab38b8042a",
+        "type": "InteractionLifeLine",
+        "name": "middleware",
+        "classifier_id": "37xo4bmAUAAADR8Q",
+        "classifier": "Middleware"
+      },
+      {
+        "id": "Rev30f86dcea33f0",
+        "type": "InteractionLifeLine",
+        "name": "supabase",
+        "classifier_id": "MHxo4bmAUAAADR8V",
+        "classifier": "SupabaseClient"
+      },
+      {
+        "id": "Reve35c26bab8efe",
+        "type": "InteractionLifeLine",
+        "name": "glossaryPage",
+        "classifier_id": "4TMZ.wWAUAAADVik",
+        "classifier": "GlossaryPage"
+      }
+    ],
+    "messages": [
+      {
+        "id": "Rev8613e9136f24f",
+        "label": "GET /glossary(request: NextRequest)",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access. Both coach and analyst can use this signed-in page. The Coach actor represents either approved role here. middleware.ts verifies the user and protected profile before serving /glossary. app/glossary/page.tsx reads the bundled TERMS array locally; no glossary backend endpoint or database lookup exists. GlossaryTerm = {term:string,meaning:string,whyItMatters?:string,tags?:string[],where?:WhereLink[],aliases?:string[]}; WhereLink = {label:string,href:string}. GlossaryView contains filtered terms, count and selected filters.\nGET /glossary(request: NextRequest)\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev924a6fbd87453",
+        "label": "getUser()",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access. Both coach and analyst can use this signed-in page. The Coach actor represents either approved role here. middleware.ts verifies the user and protected profile before serving /glossary. app/glossary/page.tsx reads the bundled TERMS array locally; no glossary backend endpoint or database lookup exists. GlossaryTerm = {term:string,meaning:string,whyItMatters?:string,tags?:string[],where?:WhereLink[],aliases?:string[]}; WhereLink = {label:string,href:string}. GlossaryView contains filtered terms, count and selected filters.\ngetUser()\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev3a5fe3c743042",
+        "label": "user: User",
+        "action": "ActionTypeReturn",
+        "documentation": "UC15 Glossary Access. Both coach and analyst can use this signed-in page. The Coach actor represents either approved role here. middleware.ts verifies the user and protected profile before serving /glossary. app/glossary/page.tsx reads the bundled TERMS array locally; no glossary backend endpoint or database lookup exists. GlossaryTerm = {term:string,meaning:string,whyItMatters?:string,tags?:string[],where?:WhereLink[],aliases?:string[]}; WhereLink = {label:string,href:string}. GlossaryView contains filtered terms, count and selected filters.\nuser: User\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev64e0ec034f04d",
+        "label": "selectProfileRole(userId: string)",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access. Both coach and analyst can use this signed-in page. The Coach actor represents either approved role here. middleware.ts verifies the user and protected profile before serving /glossary. app/glossary/page.tsx reads the bundled TERMS array locally; no glossary backend endpoint or database lookup exists. GlossaryTerm = {term:string,meaning:string,whyItMatters?:string,tags?:string[],where?:WhereLink[],aliases?:string[]}; WhereLink = {label:string,href:string}. GlossaryView contains filtered terms, count and selected filters.\nselectProfileRole(userId: string)\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Revdf9a2b2b827c0",
+        "label": "role: UserRole = coach | analyst",
+        "action": "ActionTypeReturn",
+        "documentation": "UC15 Glossary Access. Both coach and analyst can use this signed-in page. The Coach actor represents either approved role here. middleware.ts verifies the user and protected profile before serving /glossary. app/glossary/page.tsx reads the bundled TERMS array locally; no glossary backend endpoint or database lookup exists. GlossaryTerm = {term:string,meaning:string,whyItMatters?:string,tags?:string[],where?:WhereLink[],aliases?:string[]}; WhereLink = {label:string,href:string}. GlossaryView contains filtered terms, count and selected filters.\nrole: UserRole = coach | analyst\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Revf0bd923779a6e",
+        "label": "render(page: GlossaryPage)",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access. Both coach and analyst can use this signed-in page. The Coach actor represents either approved role here. middleware.ts verifies the user and protected profile before serving /glossary. app/glossary/page.tsx reads the bundled TERMS array locally; no glossary backend endpoint or database lookup exists. GlossaryTerm = {term:string,meaning:string,whyItMatters?:string,tags?:string[],where?:WhereLink[],aliases?:string[]}; WhereLink = {label:string,href:string}. GlossaryView contains filtered terms, count and selected filters.\nrender(page: GlossaryPage)\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev5a5e893016132",
+        "label": "loadTerms(terms: GlossaryTerm[])",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access. Both coach and analyst can use this signed-in page. The Coach actor represents either approved role here. middleware.ts verifies the user and protected profile before serving /glossary. app/glossary/page.tsx reads the bundled TERMS array locally; no glossary backend endpoint or database lookup exists. GlossaryTerm = {term:string,meaning:string,whyItMatters?:string,tags?:string[],where?:WhereLink[],aliases?:string[]}; WhereLink = {label:string,href:string}. GlossaryView contains filtered terms, count and selected filters.\nloadTerms(terms: GlossaryTerm[])\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev59767f8924125",
+        "label": "view: GlossaryView [terms, meanings, links]",
+        "action": "ActionTypeReturn",
+        "documentation": "UC15 Glossary Access. Both coach and analyst can use this signed-in page. The Coach actor represents either approved role here. middleware.ts verifies the user and protected profile before serving /glossary. app/glossary/page.tsx reads the bundled TERMS array locally; no glossary backend endpoint or database lookup exists. GlossaryTerm = {term:string,meaning:string,whyItMatters?:string,tags?:string[],where?:WhereLink[],aliases?:string[]}; WhereLink = {label:string,href:string}. GlossaryView contains filtered terms, count and selected filters.\nview: GlossaryView [terms, meanings, links]\nParameter and result definitions are in the diagram documentation."
+      }
+    ]
+  },
+  {
+    "id": "rMy0wNmHC6keOwB1",
+    "name": "Detailed Sequence - Glossary Search and Tag Filters (UC15)",
+    "lifelines": [
+      {
+        "id": "Reve45b2b8f37e04",
+        "type": "InteractionLifeLine",
+        "name": "user",
+        "classifier_id": "CE8Mi1mGAqAALhMB",
+        "classifier": "Analyst"
+      },
+      {
+        "id": "Rev7183897661ecb",
+        "type": "InteractionLifeLine",
+        "name": "glossaryPage",
+        "classifier_id": "4TMZ.wWAUAAADVik",
+        "classifier": "GlossaryPage"
+      }
+    ],
+    "messages": [
+      {
+        "id": "Revdc58d66c82883",
+        "label": "setQuery(query: string)",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access search extension. Both approved roles can search. These are local React state/useMemo transitions in app/glossary/page.tsx, not remote calls. Search checks term, meaning, whyItMatters, link labels/URLs and aliases. Tag filtering is combined with the query. No matches shows the existing empty state. Clear filters restores query=\"\" and tag=\"All\". Steps showing matches and EmptyResult are mutually exclusive outcomes of filtering.\nsetQuery(query: string)\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev1df98d28eba1d",
+        "label": "setTag(tag: string)",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access search extension. Both approved roles can search. These are local React state/useMemo transitions in app/glossary/page.tsx, not remote calls. Search checks term, meaning, whyItMatters, link labels/URLs and aliases. Tag filtering is combined with the query. No matches shows the existing empty state. Clear filters restores query=\"\" and tag=\"All\". Steps showing matches and EmptyResult are mutually exclusive outcomes of filtering.\nsetTag(tag: string)\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev80ac4d52596cf",
+        "label": "normalize(query: string): string [trim, lowercase]",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access search extension. Both approved roles can search. These are local React state/useMemo transitions in app/glossary/page.tsx, not remote calls. Search checks term, meaning, whyItMatters, link labels/URLs and aliases. Tag filtering is combined with the query. No matches shows the existing empty state. Clear filters restores query=\"\" and tag=\"All\". Steps showing matches and EmptyResult are mutually exclusive outcomes of filtering.\nnormalize(query: string): string [trim, lowercase]\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev20311e581147f",
+        "label": "filter(terms: GlossaryTerm[], query: string, tag: string): GlossaryTerm[]",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access search extension. Both approved roles can search. These are local React state/useMemo transitions in app/glossary/page.tsx, not remote calls. Search checks term, meaning, whyItMatters, link labels/URLs and aliases. Tag filtering is combined with the query. No matches shows the existing empty state. Clear filters restores query=\"\" and tag=\"All\". Steps showing matches and EmptyResult are mutually exclusive outcomes of filtering.\nfilter(terms: GlossaryTerm[], query: string, tag: string): GlossaryTerm[]\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Revf2ccd3e0bcdda",
+        "label": "view: GlossaryView [matches.length > 0]",
+        "action": "ActionTypeReturn",
+        "documentation": "UC15 Glossary Access search extension. Both approved roles can search. These are local React state/useMemo transitions in app/glossary/page.tsx, not remote calls. Search checks term, meaning, whyItMatters, link labels/URLs and aliases. Tag filtering is combined with the query. No matches shows the existing empty state. Clear filters restores query=\"\" and tag=\"All\". Steps showing matches and EmptyResult are mutually exclusive outcomes of filtering.\nview: GlossaryView [matches.length > 0]\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Revd320d59d11c68",
+        "label": "view: EmptyResult [if matches.length = 0]",
+        "action": "ActionTypeReturn",
+        "documentation": "UC15 Glossary Access search extension. Both approved roles can search. These are local React state/useMemo transitions in app/glossary/page.tsx, not remote calls. Search checks term, meaning, whyItMatters, link labels/URLs and aliases. Tag filtering is combined with the query. No matches shows the existing empty state. Clear filters restores query=\"\" and tag=\"All\". Steps showing matches and EmptyResult are mutually exclusive outcomes of filtering.\nview: EmptyResult [if matches.length = 0]\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Revb6acb24b8bcaf",
+        "label": "clearFilters()",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access search extension. Both approved roles can search. These are local React state/useMemo transitions in app/glossary/page.tsx, not remote calls. Search checks term, meaning, whyItMatters, link labels/URLs and aliases. Tag filtering is combined with the query. No matches shows the existing empty state. Clear filters restores query=\"\" and tag=\"All\". Steps showing matches and EmptyResult are mutually exclusive outcomes of filtering.\nclearFilters()\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev33a3e0c75b45a",
+        "label": "view: GlossaryView [query=\"\", tag=All]",
+        "action": "ActionTypeReturn",
+        "documentation": "UC15 Glossary Access search extension. Both approved roles can search. These are local React state/useMemo transitions in app/glossary/page.tsx, not remote calls. Search checks term, meaning, whyItMatters, link labels/URLs and aliases. Tag filtering is combined with the query. No matches shows the existing empty state. Clear filters restores query=\"\" and tag=\"All\". Steps showing matches and EmptyResult are mutually exclusive outcomes of filtering.\nview: GlossaryView [query=\"\", tag=All]\nParameter and result definitions are in the diagram documentation."
+      }
+    ]
+  },
+  {
+    "id": "qZVcwNmHsyjA9QB9",
+    "name": "Detailed Sequence - Glossary Access Denied (UC15)",
+    "lifelines": [
+      {
+        "id": "Reva870039a1be53",
+        "type": "InteractionLifeLine",
+        "name": "user",
+        "classifier_id": "CE8Mi1mGAqAALhMB",
+        "classifier": "Analyst"
+      },
+      {
+        "id": "Rev084cef99edfc4",
+        "type": "InteractionLifeLine",
+        "name": "middleware",
+        "classifier_id": "37xo4bmAUAAADR8Q",
+        "classifier": "Middleware"
+      },
+      {
+        "id": "Rev20e4e1c909450",
+        "type": "InteractionLifeLine",
+        "name": "supabase",
+        "classifier_id": "MHxo4bmAUAAADR8V",
+        "classifier": "SupabaseClient"
+      }
+    ],
+    "messages": [
+      {
+        "id": "Revd250e3c404d39",
+        "label": "GET /glossary(request: NextRequest)",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access alternate paths, source middleware.ts. The first branch redirects a missing/invalid session. The second branch only runs when a verified user exists but no valid protected profile role is available. No glossary content is rendered in either branch. The successful coach/analyst branch is in Behavioural Overview - Glossary Access (UC15).\nGET /glossary(request: NextRequest)\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev6db53c0c62bfa",
+        "label": "getUser()",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access alternate paths, source middleware.ts. The first branch redirects a missing/invalid session. The second branch only runs when a verified user exists but no valid protected profile role is available. No glossary content is rendered in either branch. The successful coach/analyst branch is in Behavioural Overview - Glossary Access (UC15).\ngetUser()\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Revf1fdd6f94a9d5",
+        "label": "user: User? [null or verified user]",
+        "action": "ActionTypeReturn",
+        "documentation": "UC15 Glossary Access alternate paths, source middleware.ts. The first branch redirects a missing/invalid session. The second branch only runs when a verified user exists but no valid protected profile role is available. No glossary content is rendered in either branch. The successful coach/analyst branch is in Behavioural Overview - Glossary Access (UC15).\nuser: User? [null or verified user]\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev1a4ebd6975cfa",
+        "label": "redirect: /login?next=/glossary [user=null]",
+        "action": "ActionTypeReturn",
+        "documentation": "UC15 Glossary Access alternate paths, source middleware.ts. The first branch redirects a missing/invalid session. The second branch only runs when a verified user exists but no valid protected profile role is available. No glossary content is rendered in either branch. The successful coach/analyst branch is in Behavioural Overview - Glossary Access (UC15).\nredirect: /login?next=/glossary [user=null]\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Revab569e2533adb",
+        "label": "selectProfileRole(userId: string) [user exists]",
+        "action": "ActionTypeCall",
+        "documentation": "UC15 Glossary Access alternate paths, source middleware.ts. The first branch redirects a missing/invalid session. The second branch only runs when a verified user exists but no valid protected profile role is available. No glossary content is rendered in either branch. The successful coach/analyst branch is in Behavioural Overview - Glossary Access (UC15).\nselectProfileRole(userId: string) [user exists]\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev2c6a6974b6b1f",
+        "label": "role: UserRole = null [pending/unavailable]",
+        "action": "ActionTypeReturn",
+        "documentation": "UC15 Glossary Access alternate paths, source middleware.ts. The first branch redirects a missing/invalid session. The second branch only runs when a verified user exists but no valid protected profile role is available. No glossary content is rendered in either branch. The successful coach/analyst branch is in Behavioural Overview - Glossary Access (UC15).\nrole: UserRole = null [pending/unavailable]\nParameter and result definitions are in the diagram documentation."
+      },
+      {
+        "id": "Rev09de840fe1164",
+        "label": "redirect: /login?access=pending",
+        "action": "ActionTypeReturn",
+        "documentation": "UC15 Glossary Access alternate paths, source middleware.ts. The first branch redirects a missing/invalid session. The second branch only runs when a verified user exists but no valid protected profile role is available. No glossary content is rendered in either branch. The successful coach/analyst branch is in Behavioural Overview - Glossary Access (UC15).\nredirect: /login?access=pending\nParameter and result definitions are in the diagram documentation."
+      }
+    ]
+  },
+  {
+    "id": "FAPN.wWAUAAADbeQ",
+    "name": "Behavioural Overview - Access Analyst Workspace",
+    "lifelines": [
+      {
+        "id": "bAPN.wWAUAAADbeT",
+        "type": "InteractionActor",
+        "name": "Analyst",
+        "classifier_id": null,
+        "classifier": null
+      },
+      {
+        "id": "cgPN.wWAUAAADbeZ",
+        "type": "InteractionLifeLine",
+        "name": "supabase",
+        "classifier_id": "MHxo4bmAUAAADR8V",
+        "classifier": "SupabaseClient"
+      },
+      {
+        "id": "QgPN.wWAUAAADbeW",
+        "type": "InteractionLifeLine",
+        "name": "middleware",
+        "classifier_id": "37xo4bmAUAAADR8Q",
+        "classifier": "Middleware"
+      },
+      {
+        "id": "pgPN.wWAUAAADbef",
+        "type": "InteractionLifeLine",
+        "name": "apiClient",
+        "classifier_id": "rcKwWwWAUAAADRbs",
+        "classifier": "ApiClient"
+      },
+      {
+        "id": "vgPN.wWAUAAADbel",
+        "type": "InteractionLifeLine",
+        "name": "dataGuard",
+        "classifier_id": "ciKwWwWAUAAADRc_",
+        "classifier": "_RequireRole"
+      },
+      {
+        "id": "EQPN.wWAUAAADbeo",
+        "type": "InteractionLifeLine",
+        "name": "baselineRecommender",
+        "classifier_id": "NbKZ.wWAUAAADVtN",
+        "classifier": "BaselineRecommender"
+      },
+      {
+        "id": "GgPN.wWAUAAADbec",
+        "type": "InteractionLifeLine",
+        "name": "dataExplorer",
+        "classifier_id": "whWfYbmAUAAADRc2",
+        "classifier": "DataExplorerClient"
+      },
+      {
+        "id": "DgPN.wWAUAAADbei",
+        "type": "InteractionLifeLine",
+        "name": "api",
+        "classifier_id": "T.g44bmAUAAADSCx",
+        "classifier": "FastAPIApp"
+      }
+    ],
+    "messages": [
+      {
+        "id": "jQPN.wWAUAAADbfk",
+        "label": "GET /data-explorer(request: NextRequest)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /data-explorer(request: NextRequest)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "fQPN.wWAUAAADbfq",
+        "label": "getUser()",
+        "action": "ActionTypeCall",
+        "documentation": "getUser()\nSupabase auth.getUser() returns data.user: User | null and error. It verifies the stored session with Auth. Design operation: getUser (model ID wBXN.wWAUAAADbFy). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "CwPN.wWAUAAADbfw",
+        "label": "user: User",
+        "action": "ActionTypeReturn",
+        "documentation": "user: User\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "OwPN.wWAUAAADbf2",
+        "label": "selectProfileRole(userId: string)",
+        "action": "ActionTypeCall",
+        "documentation": "selectProfileRole(userId: string)\nDesign shorthand for from(\"profiles\").select(\"role\").eq(\"id\", userId).single()/maybeSingle(). userId is the verified User.id. Result is UserRole; pending and invalid roles map to null. Design operation: selectProfileRole (model ID wBXN.wWAUAAADbF4). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "NwPN.wWAUAAADbf9",
+        "label": "role: UserRole = analyst",
+        "action": "ActionTypeReturn",
+        "documentation": "role: UserRole = analyst\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "nwPN.wWAUAAADbgD",
+        "label": "matchesRoute(path: string, routes: string[])",
+        "action": "ActionTypeCall",
+        "documentation": "matchesRoute(path: string, routes: string[])\n Design operation: matchesRoute (model ID R0XN.wWAUAAADazi). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "0IPN.wWAUAAADbgL",
+        "label": "render(page: DataExplorerClient)",
+        "action": "ActionTypeCall",
+        "documentation": "render(page: DataExplorerClient)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "aIPN.wWAUAAADbgR",
+        "label": "init()",
+        "action": "ActionTypeCall",
+        "documentation": "init()\nDesign name for the component mount/useEffect initialization, not an exported API. Resolves metadata and sets component state. Design operation: init (model ID 0kXN.wWAUAAADaxj). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "ZIPN.wWAUAAADbgX",
+        "label": "fetchMetaOptions()",
+        "action": "ActionTypeCall",
+        "documentation": "fetchMetaOptions()\n Design operation: fetchMetaOptions (model ID D.XN.wWAUAAADbFN). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "7IPN.wWAUAAADbgd",
+        "label": "GET /meta/options()",
+        "action": "ActionTypeCall",
+        "documentation": "GET /meta/options()\nImplementation signature: meta_options() -> Dict[str, Any]. Source: backend/application/api_coordination/app.py. Design operation: meta_options (model ID M8XN.wWAUAAADa2g). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "QoPN.wWAUAAADbgj",
+        "label": "options: MetaOptions",
+        "action": "ActionTypeReturn",
+        "documentation": "options: MetaOptions\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "coPN.wWAUAAADbgp",
+        "label": "options: MetaOptions",
+        "action": "ActionTypeReturn",
+        "documentation": "options: MetaOptions\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "WoPN.wWAUAAADbgv",
+        "label": "setFilters(filters: DataFilters)",
+        "action": "ActionTypeCall",
+        "documentation": "setFilters(filters: DataFilters)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "poPN.wWAUAAADbg1",
+        "label": "run()",
+        "action": "ActionTypeCall",
+        "documentation": "run()\n Design operation: run (model ID 0kXN.wWAUAAADaxk). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "boPN.wWAUAAADbg7",
+        "label": "fetchTeamPlaytypesPreview(opts: DataFilters)",
+        "action": "ActionTypeCall",
+        "documentation": "fetchTeamPlaytypesPreview(opts: DataFilters)\n Design operation: fetchTeamPlaytypesPreview (model ID T.XN.wWAUAAADbFQ). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "EYPN.wWAUAAADbhC",
+        "label": "getAuthHeaders()",
+        "action": "ActionTypeCall",
+        "documentation": "getAuthHeaders()\nReturns Promise<Record<string,string>> with Authorization: Bearer token only when a session token exists. Design operation: getAuthHeaders (model ID J.XN.wWAUAAADbFC). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "mYPN.wWAUAAADbhI",
+        "label": "GET /data/team-playtypes(filters: DataFilters)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /data/team-playtypes(filters: DataFilters)\nImplementation signature: team_playtypes(season: str=Query(..., description='Season label (required).'), team: Optional[str]=Query(None, description='Team abbreviation filter (optional).'), side: Optional[str]=Query(None, description='Side filter: offense/defense (optional).'), play_type: Optional[str]=Query(None, description='Play type filter (optional).'), min_poss: float=Query(0, ge=0, description='Minimum possessions (optional).'), limit: int=Query(200, ge=1, le=2000, description='Rows to return (preview limit).')) -> Dict[str, Any]. Source: backend/application/api_coordination/app.py. Design operation: team_playtypes (model ID c8XN.wWAUAAADa2j). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "ZYPN.wWAUAAADbhO",
+        "label": "__call__(user: AuthContext)",
+        "action": "ActionTypeCall",
+        "documentation": "__call__(user: AuthContext)\nThe _RequireRole instance stores resource=\"data\", \"recommendation\" or \"analytics\". __call__(user: dict = Depends(require_auth)) returns that AuthContext after check_user_access, otherwise HTTP 403. Design operation: __call__ (model ID yCXN.wWAUAAADa3.). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "7YPN.wWAUAAADbhV",
+        "label": "authorizedUser: AuthContext",
+        "action": "ActionTypeReturn",
+        "documentation": "authorizedUser: AuthContext\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "w4PN.wWAUAAADbhb",
+        "label": "_require_season(season: string)",
+        "action": "ActionTypeCall",
+        "documentation": "_require_season(season: string)\nImplementation signature: _require_season(season: str) -> None. Source: backend/application/api_coordination/app.py. Design operation: _require_season (model ID _8XN.wWAUAAADa3q). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "S4PN.wWAUAAADbhi",
+        "label": "copyTeamRows(): DataFrame",
+        "action": "ActionTypeCall",
+        "documentation": "copyTeamRows(): DataFrame\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "u4PN.wWAUAAADbho",
+        "label": "teamRows: DataFrame",
+        "action": "ActionTypeReturn",
+        "documentation": "teamRows: DataFrame\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "l4PN.wWAUAAADbhu",
+        "label": "_df_to_records(df: DataFrame)",
+        "action": "ActionTypeCall",
+        "documentation": "_df_to_records(df: DataFrame)\nImplementation signature: _df_to_records(df: pd.DataFrame) -> List[Dict[str, object]]. Source: backend/domain/baseline_recommendation/shot_baseline_recommender.py. Design operation: _df_to_records (model ID ICXN.wWAUAAADa3x). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "34PN.wWAUAAADbh1",
+        "label": "preview: TeamPlaytypesPreviewResponse",
+        "action": "ActionTypeReturn",
+        "documentation": "preview: TeamPlaytypesPreviewResponse\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "EEPN.wWAUAAADbh7",
+        "label": "preview: TeamPlaytypesPreviewResponse",
+        "action": "ActionTypeReturn",
+        "documentation": "preview: TeamPlaytypesPreviewResponse\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "KEPN.wWAUAAADbiB",
+        "label": "viewRows()",
+        "action": "ActionTypeCall",
+        "documentation": "viewRows()\nDesign name for memoized table rows derived from preview state; no network request. Design operation: viewRows (model ID 6kXN.wWAUAAADaxm). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "xEPN.wWAUAAADbiH",
+        "label": "view: DataExplorerView",
+        "action": "ActionTypeReturn",
+        "documentation": "view: DataExplorerView\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "9EPN.wWAUAAADbiN",
+        "label": "GET /data/team-playtypes.csv(filters: DataFilters) [via export proxy]",
+        "action": "ActionTypeCall",
+        "documentation": "Browser initiates same-origin /api/exports?path=/data/team-playtypes.csv&... using a session cookie. The server verifies session/user, accepts only allowlisted export paths, and forwards a Bearer header to this FastAPI CSV endpoint. The actor-to-API arrow summarizes that server-mediated request; it is not direct browser navigation. filters:DataFilters excluding limit. Source: app/api/exports/route.ts and app/infrastructure/api-client.ts."
+      },
+      {
+        "id": "PEPN.wWAUAAADbiT",
+        "label": "download: CsvDownload",
+        "action": "ActionTypeReturn",
+        "documentation": "download:CsvDownload. FastAPI returns UTF-8 CSV; the same-origin export proxy forwards the file with Content-Disposition and private,no-store. Failed authentication returns an error, not a file attachment."
+      }
+    ]
+  },
+  {
+    "id": "uUPN.wWAUAAADbj1",
+    "name": "Behavioural Overview - Ranked List via API (Baseline)",
+    "lifelines": [
+      {
+        "id": "1UPN.wWAUAAADbj4",
+        "type": "InteractionActor",
+        "name": "Coach",
+        "classifier_id": null,
+        "classifier": null
+      },
+      {
+        "id": "XUPN.wWAUAAADbj7",
+        "type": "InteractionLifeLine",
+        "name": "matchupPage",
+        "classifier_id": "CntA4bmAUAAADRhs",
+        "classifier": "MatchupPageClient"
+      },
+      {
+        "id": "E0PN.wWAUAAADbj.",
+        "type": "InteractionLifeLine",
+        "name": "apiClient",
+        "classifier_id": "rcKwWwWAUAAADRbs",
+        "classifier": "ApiClient"
+      },
+      {
+        "id": "R0PN.wWAUAAADbkE",
+        "type": "InteractionLifeLine",
+        "name": "recommendationGuard",
+        "classifier_id": "ciKwWwWAUAAADRc_",
+        "classifier": "_RequireRole"
+      },
+      {
+        "id": "d0PN.wWAUAAADbkH",
+        "type": "InteractionLifeLine",
+        "name": "accessControl",
+        "classifier_id": "aTt44bmAUAAADSFB",
+        "classifier": "AccessControlService"
+      },
+      {
+        "id": "cMPN.wWAUAAADbkK",
+        "type": "InteractionLifeLine",
+        "name": "baselineRecommender",
+        "classifier_id": "NbKZ.wWAUAAADVtN",
+        "classifier": "BaselineRecommender"
+      },
+      {
+        "id": "q0PN.wWAUAAADbkB",
+        "type": "InteractionLifeLine",
+        "name": "api",
+        "classifier_id": "T.g44bmAUAAADSCx",
+        "classifier": "FastAPIApp"
+      }
+    ],
+    "messages": [
+      {
+        "id": "1MPN.wWAUAAADbku",
+        "label": "setMatchup(matchup: Matchup)",
+        "action": "ActionTypeCall",
+        "documentation": "setMatchup(matchup: Matchup)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "nMPN.wWAUAAADbk0",
+        "label": "runBaseline()",
+        "action": "ActionTypeCall",
+        "documentation": "runBaseline()\n Design operation: runBaseline (model ID FkXN.wWAUAAADax3). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "4sPN.wWAUAAADbk6",
+        "label": "baselineRank(opts: Matchup)",
+        "action": "ActionTypeCall",
+        "documentation": "baselineRank(opts: Matchup)\n Design operation: baselineRank (model ID T.XN.wWAUAAADbFU). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "GsPN.wWAUAAADblB",
+        "label": "getAuthHeaders()",
+        "action": "ActionTypeCall",
+        "documentation": "getAuthHeaders()\nReturns Promise<Record<string,string>> with Authorization: Bearer token only when a session token exists. Design operation: getAuthHeaders (model ID J.XN.wWAUAAADbFC). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "5sPN.wWAUAAADblH",
+        "label": "GET /rank-plays/baseline(matchup: Matchup)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /rank-plays/baseline(matchup: Matchup)\nImplementation signature: rank_baseline(season: str=Query(...), our: str=Query(..., description='Our team abbreviation.'), opp: str=Query(..., description='Opponent team abbreviation.'), k: int=Query(5, ge=1, le=10), w_off: float=Query(0.7, ge=0, le=1)) -> Dict[str, Any]. Source: backend/application/api_coordination/app.py. Design operation: rank_baseline (model ID m8XN.wWAUAAADa2w). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "TsPN.wWAUAAADblN",
+        "label": "__call__(user: AuthContext)",
+        "action": "ActionTypeCall",
+        "documentation": "__call__(user: AuthContext)\nThe _RequireRole instance stores resource=\"data\", \"recommendation\" or \"analytics\". __call__(user: dict = Depends(require_auth)) returns that AuthContext after check_user_access, otherwise HTTP 403. Design operation: __call__ (model ID yCXN.wWAUAAADa3.). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "wcPN.wWAUAAADblU",
+        "label": "check_user_access(role: UserRole, resource: string)",
+        "action": "ActionTypeCall",
+        "documentation": "check_user_access(role: UserRole, resource: string)\nImplementation signature: check_user_access(user_role: Optional[str], resource: str) -> bool. Source: backend/application/access_control_services/access_control_service.py. Design operation: check_user_access (model ID 7SXN.wWAUAAADa6j). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "ycPN.wWAUAAADblc",
+        "label": "allowed: boolean = true",
+        "action": "ActionTypeReturn",
+        "documentation": "allowed: boolean = true\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": ".cPN.wWAUAAADbli",
+        "label": "authorizedUser: AuthContext",
+        "action": "ActionTypeReturn",
+        "documentation": "authorizedUser: AuthContext\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "NcPN.wWAUAAADblo",
+        "label": "_require_season(season: string)",
+        "action": "ActionTypeCall",
+        "documentation": "_require_season(season: string)\nImplementation signature: _require_season(season: str) -> None. Source: backend/application/api_coordination/app.py. Design operation: _require_season (model ID _8XN.wWAUAAADa3q). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "PcPN.wWAUAAADblv",
+        "label": "_require_team(team: string, label: string)",
+        "action": "ActionTypeCall",
+        "documentation": "_require_team(team: string, label: string)\nImplementation signature: _require_team(team: str, label: str) -> None. Source: backend/application/api_coordination/app.py. Design operation: _require_team (model ID gCXN.wWAUAAADa3s). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "M8PN.wWAUAAADbl3",
+        "label": "rank_playtypes_baseline(tables: BaselineTables, matchup: Matchup)",
+        "action": "ActionTypeCall",
+        "documentation": "rank_playtypes_baseline(tables: BaselineTables, matchup: Matchup)\ntables means team_df: pandas.DataFrame and league_df: pandas.DataFrame. matchup expands to season, our_team, opp_team, k, w_off, w_def. Returns pandas.DataFrame. Design operation: rank_playtypes_baseline (model ID rKXN.wWAUAAADa8O). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "B8PN.wWAUAAADbmF",
+        "label": "rankedRows: DataFrame",
+        "action": "ActionTypeReturn",
+        "documentation": "rankedRows: DataFrame\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "t8PN.wWAUAAADbmL",
+        "label": "_df_to_records(df: DataFrame)",
+        "action": "ActionTypeCall",
+        "documentation": "_df_to_records(df: DataFrame)\nImplementation signature: _df_to_records(df: pd.DataFrame) -> List[Dict[str, object]]. Source: backend/domain/baseline_recommendation/shot_baseline_recommender.py. Design operation: _df_to_records (model ID ICXN.wWAUAAADa3x). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "v8PN.wWAUAAADbmS",
+        "label": "response: BaselineRankResponse",
+        "action": "ActionTypeReturn",
+        "documentation": "response: BaselineRankResponse\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "ECPN.wWAUAAADbmY",
+        "label": "rankings: BaselineRow[]",
+        "action": "ActionTypeReturn",
+        "documentation": "rankings: BaselineRow[]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "KCPN.wWAUAAADbme",
+        "label": "view: BaselineRankingsView",
+        "action": "ActionTypeReturn",
+        "documentation": "view: BaselineRankingsView\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "WuPN.wWAUAAADbuO",
+    "name": "Behavioural Overview - Authenticate Analyst Access",
+    "lifelines": [
+      {
+        "id": "JuPN.wWAUAAADbuR",
+        "type": "InteractionActor",
+        "name": "Analyst",
+        "classifier_id": null,
+        "classifier": null
+      },
+      {
+        "id": "DuPN.wWAUAAADbuU",
+        "type": "InteractionLifeLine",
+        "name": "middleware",
+        "classifier_id": "37xo4bmAUAAADR8Q",
+        "classifier": "Middleware"
+      },
+      {
+        "id": "EePN.wWAUAAADbua",
+        "type": "InteractionLifeLine",
+        "name": "apiClient",
+        "classifier_id": "rcKwWwWAUAAADRbs",
+        "classifier": "ApiClient"
+      },
+      {
+        "id": "PuPN.wWAUAAADbuX",
+        "type": "InteractionLifeLine",
+        "name": "supabase",
+        "classifier_id": "MHxo4bmAUAAADR8V",
+        "classifier": "SupabaseClient"
+      },
+      {
+        "id": "hePN.wWAUAAADbug",
+        "type": "InteractionLifeLine",
+        "name": "dataGuard",
+        "classifier_id": "ciKwWwWAUAAADRc_",
+        "classifier": "_RequireRole"
+      },
+      {
+        "id": "NePN.wWAUAAADbuj",
+        "type": "InteractionLifeLine",
+        "name": "auth",
+        "classifier_id": "jBg44bmAUAAADSDJ",
+        "classifier": "AuthDependency"
+      },
+      {
+        "id": "o.PN.wWAUAAADbup",
+        "type": "InteractionLifeLine",
+        "name": "jwtVerifier",
+        "classifier_id": "6FTC4bmAUAAADS4S",
+        "classifier": "SupabaseJWT"
+      },
+      {
+        "id": "HePN.wWAUAAADbum",
+        "type": "InteractionLifeLine",
+        "name": "accessControl",
+        "classifier_id": "aTt44bmAUAAADSFB",
+        "classifier": "AccessControlService"
+      },
+      {
+        "id": "qePN.wWAUAAADbud",
+        "type": "InteractionLifeLine",
+        "name": "api",
+        "classifier_id": "T.g44bmAUAAADSCx",
+        "classifier": "FastAPIApp"
+      }
+    ],
+    "messages": [
+      {
+        "id": "_.PN.wWAUAAADbvi",
+        "label": "GET /data-explorer(request: NextRequest)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /data-explorer(request: NextRequest)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "8BPN.wWAUAAADbvo",
+        "label": "getUser()",
+        "action": "ActionTypeCall",
+        "documentation": "getUser()\nSupabase auth.getUser() returns data.user: User | null and error. It verifies the stored session with Auth. Design operation: getUser (model ID wBXN.wWAUAAADbFy). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "xBPN.wWAUAAADbvu",
+        "label": "user: User",
+        "action": "ActionTypeReturn",
+        "documentation": "user: User\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "TBPN.wWAUAAADbv0",
+        "label": "selectProfileRole(userId: string)",
+        "action": "ActionTypeCall",
+        "documentation": "selectProfileRole(userId: string)\nDesign shorthand for from(\"profiles\").select(\"role\").eq(\"id\", userId).single()/maybeSingle(). userId is the verified User.id. Result is UserRole; pending and invalid roles map to null. Design operation: selectProfileRole (model ID wBXN.wWAUAAADbF4). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "YhPN.wWAUAAADbv7",
+        "label": "role: UserRole = analyst",
+        "action": "ActionTypeReturn",
+        "documentation": "role: UserRole = analyst\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "lhPN.wWAUAAADbwB",
+        "label": "matchesRoute(path: string, routes: string[])",
+        "action": "ActionTypeCall",
+        "documentation": "matchesRoute(path: string, routes: string[])\n Design operation: matchesRoute (model ID R0XN.wWAUAAADazi). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "ARPN.wWAUAAADbwJ",
+        "label": "response: NextResponse = workspace",
+        "action": "ActionTypeReturn",
+        "documentation": "response: NextResponse = workspace\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "8RPN.wWAUAAADbwP",
+        "label": "fetchTeamPlaytypesPreview(opts: DataFilters)",
+        "action": "ActionTypeCall",
+        "documentation": "fetchTeamPlaytypesPreview(opts: DataFilters)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "eRPN.wWAUAAADbwV",
+        "label": "getAuthHeaders()",
+        "action": "ActionTypeCall",
+        "documentation": "getAuthHeaders()\nReturns Promise<Record<string,string>> with Authorization: Bearer token only when a session token exists. Design operation: getAuthHeaders (model ID J.XN.wWAUAAADbFC). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "9RPN.wWAUAAADbwb",
+        "label": "getSession()",
+        "action": "ActionTypeCall",
+        "documentation": "getSession()\nSupabase auth.getSession() returns data.session: Session | null. Session.access_token supplies the Bearer header; browser state alone never authorizes the backend. Design operation: getSession (model ID wBXN.wWAUAAADbFx). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "gxPN.wWAUAAADbwh",
+        "label": "accessToken: string",
+        "action": "ActionTypeReturn",
+        "documentation": "accessToken: string\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "MxPN.wWAUAAADbwn",
+        "label": "GET /data/team-playtypes(filters: DataFilters)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /data/team-playtypes(filters: DataFilters)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "WxPN.wWAUAAADbwt",
+        "label": "__call__(user: AuthContext)",
+        "action": "ActionTypeCall",
+        "documentation": "__call__(user: AuthContext)\nThe _RequireRole instance stores resource=\"data\", \"recommendation\" or \"analytics\". __call__(user: dict = Depends(require_auth)) returns that AuthContext after check_user_access, otherwise HTTP 403. Design operation: __call__ (model ID yCXN.wWAUAAADa3.). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "txPN.wWAUAAADbw0",
+        "label": "require_auth(request: Request)",
+        "action": "ActionTypeCall",
+        "documentation": "require_auth(request: Request)\nImplementation signature: require_auth(request: Request) -> dict. Source: backend/application/api_coordination/auth_dependency.py. Design operation: require_auth (model ID 0CXN.wWAUAAADa33). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "_xPN.wWAUAAADbw7",
+        "label": "_extract_token(request: Request)",
+        "action": "ActionTypeCall",
+        "documentation": "_extract_token(request: Request)\nImplementation signature: _extract_token(request: Request) -> Optional[str]. Source: backend/application/api_coordination/auth_dependency.py. Design operation: _extract_token (model ID UCXN.wWAUAAADa31). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "CJPN.wWAUAAADbxC",
+        "label": "validate_session(token: string?)",
+        "action": "ActionTypeCall",
+        "documentation": "validate_session(token: string?)\nImplementation signature: validate_session(session_token: Optional[str]) -> bool. Source: backend/application/access_control_services/access_control_service.py. Design operation: validate_session (model ID 7SXN.wWAUAAADa6f). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": ".JPN.wWAUAAADbxJ",
+        "label": "[HS256 only] get_jwt_secret()",
+        "action": "ActionTypeCall",
+        "documentation": "Optional legacy HS256 branch inside decode_supabase_jwt. Production ES256 uses PyJWKClient and JWKS; it does not call get_jwt_secret. The following decoder returns verified claims, not an authorization role."
+      },
+      {
+        "id": "9JPN.wWAUAAADbxP",
+        "label": "secret: string? [HS256 only]",
+        "action": "ActionTypeReturn",
+        "documentation": "Optional legacy HS256 branch inside decode_supabase_jwt. Production ES256 uses PyJWKClient and JWKS; it does not call get_jwt_secret. The following decoder returns verified claims, not an authorization role."
+      },
+      {
+        "id": "XJPN.wWAUAAADbxV",
+        "label": "decode_supabase_jwt(token: string)",
+        "action": "ActionTypeCall",
+        "documentation": "decode_supabase_jwt(token: string)\nImplementation signature: decode_supabase_jwt(token: str) -> Optional[Dict[str, Any]]. Source: backend/infrastructure/external_integrations/supabase_jwt.py. Design operation: decode_supabase_jwt (model ID NuXN.wWAUAAADbDa). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "0pPN.wWAUAAADbxc",
+        "label": "claims: VerifiedClaims",
+        "action": "ActionTypeReturn",
+        "documentation": "claims: VerifiedClaims\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "GpPN.wWAUAAADbxi",
+        "label": "validSession: boolean = true",
+        "action": "ActionTypeReturn",
+        "documentation": "validSession: boolean = true\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "xpPN.wWAUAAADbxo",
+        "label": "get_user_role(token: string)",
+        "action": "ActionTypeCall",
+        "documentation": "get_user_role(token: string)\nImplementation signature: get_user_role(session_token: str) -> Optional[str]. Source: backend/application/access_control_services/access_control_service.py. Design operation: get_user_role (model ID 7SXN.wWAUAAADa6h). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "rpPN.wWAUAAADbxv",
+        "label": "decode_supabase_jwt(token: string)",
+        "action": "ActionTypeCall",
+        "documentation": "decode_supabase_jwt(token: string)\nImplementation signature: decode_supabase_jwt(token: str) -> Optional[Dict[str, Any]]. Source: backend/infrastructure/external_integrations/supabase_jwt.py. Design operation: decode_supabase_jwt (model ID NuXN.wWAUAAADbDa). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "YZPN.wWAUAAADbx2",
+        "label": "claims: VerifiedClaims",
+        "action": "ActionTypeReturn",
+        "documentation": "claims: VerifiedClaims\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "iZPN.wWAUAAADbx8",
+        "label": "role: UserRole = analyst",
+        "action": "ActionTypeReturn",
+        "documentation": "role: UserRole read by get_user_role from protected public.profiles after decoding the verified subject. get_profile_role(token,user_id) performs the RLS-scoped read; JWT user metadata is not used. Returns null on unavailable/invalid profile. Source: access_control_service.py and supabase_profiles.py."
+      },
+      {
+        "id": ".ZPN.wWAUAAADbyC",
+        "label": "authenticatedUser: AuthContext",
+        "action": "ActionTypeReturn",
+        "documentation": "authenticatedUser: AuthContext\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "lZPN.wWAUAAADbyI",
+        "label": "check_user_access(role: UserRole, resource: string)",
+        "action": "ActionTypeCall",
+        "documentation": "check_user_access(role: UserRole, resource: string)\nImplementation signature: check_user_access(user_role: Optional[str], resource: str) -> bool. Source: backend/application/access_control_services/access_control_service.py. Design operation: check_user_access (model ID 7SXN.wWAUAAADa6j). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "XZPN.wWAUAAADbyQ",
+        "label": "allowed: boolean = true",
+        "action": "ActionTypeReturn",
+        "documentation": "allowed: boolean = true\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "45PN.wWAUAAADbyW",
+        "label": "authorizedUser: AuthContext",
+        "action": "ActionTypeReturn",
+        "documentation": "authorizedUser: AuthContext\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "S5PN.wWAUAAADbyc",
+        "label": "team_playtypes(filters: DataFilters)",
+        "action": "ActionTypeCall",
+        "documentation": "team_playtypes(filters: DataFilters)\nImplementation signature: team_playtypes(season: str=Query(..., description='Season label (required).'), team: Optional[str]=Query(None, description='Team abbreviation filter (optional).'), side: Optional[str]=Query(None, description='Side filter: offense/defense (optional).'), play_type: Optional[str]=Query(None, description='Play type filter (optional).'), min_poss: float=Query(0, ge=0, description='Minimum possessions (optional).'), limit: int=Query(200, ge=1, le=2000, description='Rows to return (preview limit).')) -> Dict[str, Any]. Source: backend/application/api_coordination/app.py. Design operation: team_playtypes (model ID c8XN.wWAUAAADa2j). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "p5PN.wWAUAAADbyj",
+        "label": "response: TeamPlaytypesPreviewResponse [200]",
+        "action": "ActionTypeReturn",
+        "documentation": "response: TeamPlaytypesPreviewResponse [200]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "j5PN.wWAUAAADbyp",
+    "name": "Detailed Sequence - Authenticate Analyst Access - Invalid or Missing Token",
+    "lifelines": [
+      {
+        "id": "35PN.wWAUAAADbys",
+        "type": "InteractionActor",
+        "name": "Analyst",
+        "classifier_id": null,
+        "classifier": null
+      },
+      {
+        "id": "YFPN.wWAUAAADbyv",
+        "type": "InteractionLifeLine",
+        "name": "middleware",
+        "classifier_id": "37xo4bmAUAAADR8Q",
+        "classifier": "Middleware"
+      },
+      {
+        "id": "CFPN.wWAUAAADbyy",
+        "type": "InteractionLifeLine",
+        "name": "supabase",
+        "classifier_id": "MHxo4bmAUAAADR8V",
+        "classifier": "SupabaseClient"
+      },
+      {
+        "id": "VFPN.wWAUAAADby4",
+        "type": "InteractionLifeLine",
+        "name": "api",
+        "classifier_id": "T.g44bmAUAAADSCx",
+        "classifier": "FastAPIApp"
+      },
+      {
+        "id": "7FPN.wWAUAAADby7",
+        "type": "InteractionLifeLine",
+        "name": "dataGuard",
+        "classifier_id": "ciKwWwWAUAAADRc_",
+        "classifier": "_RequireRole"
+      },
+      {
+        "id": "IlPN.wWAUAAADby.",
+        "type": "InteractionLifeLine",
+        "name": "auth",
+        "classifier_id": "jBg44bmAUAAADSDJ",
+        "classifier": "AuthDependency"
+      },
+      {
+        "id": "ilPN.wWAUAAADbzB",
+        "type": "InteractionLifeLine",
+        "name": "accessControl",
+        "classifier_id": "aTt44bmAUAAADSFB",
+        "classifier": "AccessControlService"
+      },
+      {
+        "id": "elPN.wWAUAAADbzE",
+        "type": "InteractionLifeLine",
+        "name": "jwtVerifier",
+        "classifier_id": "6FTC4bmAUAAADS4S",
+        "classifier": "SupabaseJWT"
+      },
+      {
+        "id": "OFPN.wWAUAAADby1",
+        "type": "InteractionLifeLine",
+        "name": "apiClient",
+        "classifier_id": "rcKwWwWAUAAADRbs",
+        "classifier": "ApiClient"
+      }
+    ],
+    "messages": [
+      {
+        "id": "3lPN.wWAUAAADbzl",
+        "label": "GET /data-explorer(request: NextRequest) [no session]",
+        "action": "ActionTypeCall",
+        "documentation": "GET /data-explorer(request: NextRequest) [no session]\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "EVPN.wWAUAAADbzr",
+        "label": "getUser()",
+        "action": "ActionTypeCall",
+        "documentation": "getUser()\nSupabase auth.getUser() returns data.user: User | null and error. It verifies the stored session with Auth. Design operation: getUser (model ID wBXN.wWAUAAADbFy). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "mVPN.wWAUAAADbzx",
+        "label": "user: User? = null",
+        "action": "ActionTypeReturn",
+        "documentation": "user: User? = null\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "5VPN.wWAUAAADbz3",
+        "label": "redirect: NextResponse [/login?next=/data-explorer]",
+        "action": "ActionTypeReturn",
+        "documentation": "redirect: NextResponse [/login?next=/data-explorer]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "rVPN.wWAUAAADbz9",
+        "label": "fetchTeamPlaytypesPreview(opts: DataFilters)",
+        "action": "ActionTypeCall",
+        "documentation": "fetchTeamPlaytypesPreview(opts: DataFilters)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "g1PN.wWAUAAADb0D",
+        "label": "GET /data/team-playtypes(filters: DataFilters) [invalid token]",
+        "action": "ActionTypeCall",
+        "documentation": "GET /data/team-playtypes(filters: DataFilters) [invalid token]\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "s1PN.wWAUAAADb0J",
+        "label": "__call__(user: AuthContext)",
+        "action": "ActionTypeCall",
+        "documentation": "__call__(user: AuthContext)\nThe _RequireRole instance stores resource=\"data\", \"recommendation\" or \"analytics\". __call__(user: dict = Depends(require_auth)) returns that AuthContext after check_user_access, otherwise HTTP 403. Design operation: __call__ (model ID yCXN.wWAUAAADa3.). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "e1PN.wWAUAAADb0Q",
+        "label": "require_auth(request: Request)",
+        "action": "ActionTypeCall",
+        "documentation": "require_auth(request: Request)\nImplementation signature: require_auth(request: Request) -> dict. Source: backend/application/api_coordination/auth_dependency.py. Design operation: require_auth (model ID 0CXN.wWAUAAADa33). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "d1PN.wWAUAAADb0X",
+        "label": "_extract_token(request: Request)",
+        "action": "ActionTypeCall",
+        "documentation": "_extract_token(request: Request)\nImplementation signature: _extract_token(request: Request) -> Optional[str]. Source: backend/application/api_coordination/auth_dependency.py. Design operation: _extract_token (model ID UCXN.wWAUAAADa31). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "_1PN.wWAUAAADb0e",
+        "label": "validate_session(token: string?)",
+        "action": "ActionTypeCall",
+        "documentation": "validate_session(token: string?)\nImplementation signature: validate_session(session_token: Optional[str]) -> bool. Source: backend/application/access_control_services/access_control_service.py. Design operation: validate_session (model ID 7SXN.wWAUAAADa6f). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "yNPN.wWAUAAADb0l",
+        "label": "decode_supabase_jwt(token: string)",
+        "action": "ActionTypeCall",
+        "documentation": "decode_supabase_jwt(token: string)\nImplementation signature: decode_supabase_jwt(token: str) -> Optional[Dict[str, Any]]. Source: backend/infrastructure/external_integrations/supabase_jwt.py. Design operation: decode_supabase_jwt (model ID NuXN.wWAUAAADbDa). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "ZNPN.wWAUAAADb0s",
+        "label": "claims: VerifiedClaims? = None",
+        "action": "ActionTypeReturn",
+        "documentation": "claims: VerifiedClaims? = None\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "jNPN.wWAUAAADb0y",
+        "label": "validSession: boolean = false",
+        "action": "ActionTypeReturn",
+        "documentation": "validSession: boolean = false\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "_NPN.wWAUAAADb04",
+        "label": "error: HttpError [401, invalid/missing token]",
+        "action": "ActionTypeReturn",
+        "documentation": "error: HttpError [401, invalid/missing token]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "UtPN.wWAUAAADb0.",
+        "label": "error: HttpError [401]",
+        "action": "ActionTypeReturn",
+        "documentation": "error: HttpError [401]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "6tPN.wWAUAAADb1E",
+        "label": "reject(error: Error [401])",
+        "action": "ActionTypeCall",
+        "documentation": "reject(error: Error [401])\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "xtPN.wWAUAAADb1K",
+        "label": "view: SignInRequiredError",
+        "action": "ActionTypeReturn",
+        "documentation": "view: SignInRequiredError\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "DtPN.wWAUAAADb1Q",
+    "name": "Detailed Sequence - Authenticate Analyst Access - Role Lacks Permission",
+    "lifelines": [
+      {
+        "id": "PtPN.wWAUAAADb1T",
+        "type": "InteractionActor",
+        "name": "Analyst",
+        "classifier_id": null,
+        "classifier": null
+      },
+      {
+        "id": "kdPN.wWAUAAADb1W",
+        "type": "InteractionLifeLine",
+        "name": "middleware",
+        "classifier_id": "37xo4bmAUAAADR8Q",
+        "classifier": "Middleware"
+      },
+      {
+        "id": "d9PN.wWAUAAADb1r",
+        "type": "InteractionLifeLine",
+        "name": "jwtVerifier",
+        "classifier_id": "6FTC4bmAUAAADS4S",
+        "classifier": "SupabaseJWT"
+      },
+      {
+        "id": "5dPN.wWAUAAADb1c",
+        "type": "InteractionLifeLine",
+        "name": "apiClient",
+        "classifier_id": "rcKwWwWAUAAADRbs",
+        "classifier": "ApiClient"
+      },
+      {
+        "id": "HdPN.wWAUAAADb1f",
+        "type": "InteractionLifeLine",
+        "name": "api",
+        "classifier_id": "T.g44bmAUAAADSCx",
+        "classifier": "FastAPIApp"
+      },
+      {
+        "id": "49PN.wWAUAAADb1i",
+        "type": "InteractionLifeLine",
+        "name": "recommendationGuard",
+        "classifier_id": "ciKwWwWAUAAADRc_",
+        "classifier": "_RequireRole"
+      },
+      {
+        "id": "y9PN.wWAUAAADb1l",
+        "type": "InteractionLifeLine",
+        "name": "auth",
+        "classifier_id": "jBg44bmAUAAADSDJ",
+        "classifier": "AuthDependency"
+      },
+      {
+        "id": "6dPN.wWAUAAADb1Z",
+        "type": "InteractionLifeLine",
+        "name": "supabase",
+        "classifier_id": "MHxo4bmAUAAADR8V",
+        "classifier": "SupabaseClient"
+      },
+      {
+        "id": "R9PN.wWAUAAADb1o",
+        "type": "InteractionLifeLine",
+        "name": "accessControl",
+        "classifier_id": "aTt44bmAUAAADSFB",
+        "classifier": "AccessControlService"
+      }
+    ],
+    "messages": [
+      {
+        "id": "aDPN.wWAUAAADb2G",
+        "label": "baselineRank(opts: Matchup) [analyst]",
+        "action": "ActionTypeCall",
+        "documentation": "baselineRank(opts: Matchup) [analyst]\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "RDPN.wWAUAAADb2M",
+        "label": "getSession()",
+        "action": "ActionTypeCall",
+        "documentation": "getSession()\nSupabase auth.getSession() returns data.session: Session | null. Session.access_token supplies the Bearer header; browser state alone never authorizes the backend. Design operation: getSession (model ID wBXN.wWAUAAADbFx). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "LDPN.wWAUAAADb2S",
+        "label": "accessToken: string",
+        "action": "ActionTypeReturn",
+        "documentation": "accessToken: string\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "QjPN.wWAUAAADb2Y",
+        "label": "GET /rank-plays/baseline(matchup: Matchup)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /rank-plays/baseline(matchup: Matchup)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "8jPN.wWAUAAADb2e",
+        "label": "__call__(user: AuthContext)",
+        "action": "ActionTypeCall",
+        "documentation": "__call__(user: AuthContext)\nThe _RequireRole instance stores resource=\"data\", \"recommendation\" or \"analytics\". __call__(user: dict = Depends(require_auth)) returns that AuthContext after check_user_access, otherwise HTTP 403. Design operation: __call__ (model ID yCXN.wWAUAAADa3.). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": ".jPN.wWAUAAADb2l",
+        "label": "require_auth(request: Request)",
+        "action": "ActionTypeCall",
+        "documentation": "require_auth(request: Request)\nImplementation signature: require_auth(request: Request) -> dict. Source: backend/application/api_coordination/auth_dependency.py. Design operation: require_auth (model ID 0CXN.wWAUAAADa33). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "djPN.wWAUAAADb2s",
+        "label": "validate_session(token: string?)",
+        "action": "ActionTypeCall",
+        "documentation": "validate_session(token: string?)\nImplementation signature: validate_session(session_token: Optional[str]) -> bool. Source: backend/application/access_control_services/access_control_service.py. Design operation: validate_session (model ID 7SXN.wWAUAAADa6f). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "fjPN.wWAUAAADb2z",
+        "label": "validSession: boolean = true",
+        "action": "ActionTypeReturn",
+        "documentation": "validSession: boolean = true\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "UTPN.wWAUAAADb25",
+        "label": "get_user_role(token: string)",
+        "action": "ActionTypeCall",
+        "documentation": "get_user_role(token: string)\nImplementation signature: get_user_role(session_token: str) -> Optional[str]. Source: backend/application/access_control_services/access_control_service.py. Design operation: get_user_role (model ID 7SXN.wWAUAAADa6h). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "OTPN.wWAUAAADb3A",
+        "label": "role: UserRole = analyst",
+        "action": "ActionTypeReturn",
+        "documentation": "role: UserRole read by get_user_role from protected public.profiles after decoding the verified subject. get_profile_role(token,user_id) performs the RLS-scoped read; JWT user metadata is not used. Returns null on unavailable/invalid profile. Source: access_control_service.py and supabase_profiles.py."
+      },
+      {
+        "id": "pTPN.wWAUAAADb3G",
+        "label": "authenticatedUser: AuthContext",
+        "action": "ActionTypeReturn",
+        "documentation": "authenticatedUser: AuthContext\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "DTPN.wWAUAAADb3M",
+        "label": "check_user_access(role: UserRole, resource: string)",
+        "action": "ActionTypeCall",
+        "documentation": "check_user_access(role: UserRole, resource: string)\nImplementation signature: check_user_access(user_role: Optional[str], resource: str) -> bool. Source: backend/application/access_control_services/access_control_service.py. Design operation: check_user_access (model ID 7SXN.wWAUAAADa6j). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "gzPN.wWAUAAADb3U",
+        "label": "allowed: boolean = false",
+        "action": "ActionTypeReturn",
+        "documentation": "allowed: boolean = false\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "czPN.wWAUAAADb3a",
+        "label": "error: HttpError [403, role lacks permission]",
+        "action": "ActionTypeReturn",
+        "documentation": "error: HttpError [403, role lacks permission]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "WzPN.wWAUAAADb3g",
+        "label": "error: HttpError [403]",
+        "action": "ActionTypeReturn",
+        "documentation": "error: HttpError [403]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "JzPN.wWAUAAADb3m",
+        "label": "view: AccessDeniedError",
+        "action": "ActionTypeReturn",
+        "documentation": "view: AccessDeniedError\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "4rPN.wWAUAAADb5X",
+    "name": "Behavioural Overview - Validate Coach Access",
+    "lifelines": [
+      {
+        "id": "6rPN.wWAUAAADb5a",
+        "type": "InteractionActor",
+        "name": "Coach",
+        "classifier_id": null,
+        "classifier": null
+      },
+      {
+        "id": "ZrPN.wWAUAAADb5d",
+        "type": "InteractionLifeLine",
+        "name": "middleware",
+        "classifier_id": "37xo4bmAUAAADR8Q",
+        "classifier": "Middleware"
+      },
+      {
+        "id": "_rPN.wWAUAAADb5j",
+        "type": "InteractionLifeLine",
+        "name": "matchupPage",
+        "classifier_id": "CntA4bmAUAAADRhs",
+        "classifier": "MatchupPageClient"
+      },
+      {
+        "id": "UbPN.wWAUAAADb5m",
+        "type": "InteractionLifeLine",
+        "name": "apiClient",
+        "classifier_id": "rcKwWwWAUAAADRbs",
+        "classifier": "ApiClient"
+      },
+      {
+        "id": "abPN.wWAUAAADb5p",
+        "type": "InteractionLifeLine",
+        "name": "api",
+        "classifier_id": "T.g44bmAUAAADSCx",
+        "classifier": "FastAPIApp"
+      },
+      {
+        "id": "RbPN.wWAUAAADb5s",
+        "type": "InteractionLifeLine",
+        "name": "recommendationGuard",
+        "classifier_id": "ciKwWwWAUAAADRc_",
+        "classifier": "_RequireRole"
+      },
+      {
+        "id": "9bPN.wWAUAAADb5v",
+        "type": "InteractionLifeLine",
+        "name": "auth",
+        "classifier_id": "jBg44bmAUAAADSDJ",
+        "classifier": "AuthDependency"
+      },
+      {
+        "id": "TrPN.wWAUAAADb5g",
+        "type": "InteractionLifeLine",
+        "name": "supabase",
+        "classifier_id": "MHxo4bmAUAAADR8V",
+        "classifier": "SupabaseClient"
+      },
+      {
+        "id": "PbPN.wWAUAAADb5y",
+        "type": "InteractionLifeLine",
+        "name": "accessControl",
+        "classifier_id": "aTt44bmAUAAADSFB",
+        "classifier": "AccessControlService"
+      }
+    ],
+    "messages": [
+      {
+        "id": ".7PN.wWAUAAADb6c",
+        "label": "GET /matchup(request: NextRequest)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /matchup(request: NextRequest)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "V7PN.wWAUAAADb6i",
+        "label": "matchesRoute(path: string, routes: string[])",
+        "action": "ActionTypeCall",
+        "documentation": "matchesRoute(path: string, routes: string[])\n Design operation: matchesRoute (model ID R0XN.wWAUAAADazi). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "v7PN.wWAUAAADb6q",
+        "label": "getUser()",
+        "action": "ActionTypeCall",
+        "documentation": "getUser()\nSupabase auth.getUser() returns data.user: User | null and error. It verifies the stored session with Auth. Design operation: getUser (model ID wBXN.wWAUAAADbFy). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "RHPN.wWAUAAADb6w",
+        "label": "user: User",
+        "action": "ActionTypeReturn",
+        "documentation": "user: User\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "LHPN.wWAUAAADb62",
+        "label": "selectProfileRole(userId: string)",
+        "action": "ActionTypeCall",
+        "documentation": "selectProfileRole(userId: string)\nDesign shorthand for from(\"profiles\").select(\"role\").eq(\"id\", userId).single()/maybeSingle(). userId is the verified User.id. Result is UserRole; pending and invalid roles map to null. Design operation: selectProfileRole (model ID wBXN.wWAUAAADbF4). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "UnPN.wWAUAAADb69",
+        "label": "role: UserRole = coach",
+        "action": "ActionTypeReturn",
+        "documentation": "role: UserRole = coach\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "qnPN.wWAUAAADb7D",
+        "label": "render(page: MatchupPageClient)",
+        "action": "ActionTypeCall",
+        "documentation": "render(page: MatchupPageClient)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "BnPN.wWAUAAADb7J",
+        "label": "baselineRank(opts: Matchup)",
+        "action": "ActionTypeCall",
+        "documentation": "baselineRank(opts: Matchup)\n Design operation: baselineRank (model ID T.XN.wWAUAAADbFU). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "znPN.wWAUAAADb7Q",
+        "label": "getSession()",
+        "action": "ActionTypeCall",
+        "documentation": "getSession()\nSupabase auth.getSession() returns data.session: Session | null. Session.access_token supplies the Bearer header; browser state alone never authorizes the backend. Design operation: getSession (model ID wBXN.wWAUAAADbFx). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "KXPN.wWAUAAADb7W",
+        "label": "accessToken: string",
+        "action": "ActionTypeReturn",
+        "documentation": "accessToken: string\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "hXPN.wWAUAAADb7c",
+        "label": "GET /rank-plays/baseline(matchup: Matchup)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /rank-plays/baseline(matchup: Matchup)\nImplementation signature: rank_baseline(season: str=Query(...), our: str=Query(..., description='Our team abbreviation.'), opp: str=Query(..., description='Opponent team abbreviation.'), k: int=Query(5, ge=1, le=10), w_off: float=Query(0.7, ge=0, le=1)) -> Dict[str, Any]. Source: backend/application/api_coordination/app.py. Design operation: rank_baseline (model ID m8XN.wWAUAAADa2w). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "dXPN.wWAUAAADb7i",
+        "label": "__call__(user: AuthContext)",
+        "action": "ActionTypeCall",
+        "documentation": "__call__(user: AuthContext)\nThe _RequireRole instance stores resource=\"data\", \"recommendation\" or \"analytics\". __call__(user: dict = Depends(require_auth)) returns that AuthContext after check_user_access, otherwise HTTP 403. Design operation: __call__ (model ID yCXN.wWAUAAADa3.). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "g3PN.wWAUAAADb7p",
+        "label": "require_auth(request: Request)",
+        "action": "ActionTypeCall",
+        "documentation": "require_auth(request: Request)\nImplementation signature: require_auth(request: Request) -> dict. Source: backend/application/api_coordination/auth_dependency.py. Design operation: require_auth (model ID 0CXN.wWAUAAADa33). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "y3PN.wWAUAAADb7w",
+        "label": "validate_session(token: string?)",
+        "action": "ActionTypeCall",
+        "documentation": "validate_session(token: string?)\nImplementation signature: validate_session(session_token: Optional[str]) -> bool. Source: backend/application/access_control_services/access_control_service.py. Design operation: validate_session (model ID 7SXN.wWAUAAADa6f). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Z3PN.wWAUAAADb73",
+        "label": "validSession: boolean = true",
+        "action": "ActionTypeReturn",
+        "documentation": "validSession: boolean = true\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "IPPN.wWAUAAADb79",
+        "label": "get_user_role(token: string)",
+        "action": "ActionTypeCall",
+        "documentation": "get_user_role(token: string)\nImplementation signature: get_user_role(session_token: str) -> Optional[str]. Source: backend/application/access_control_services/access_control_service.py. Design operation: get_user_role (model ID 7SXN.wWAUAAADa6h). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "qPPN.wWAUAAADb8E",
+        "label": "role: UserRole = coach",
+        "action": "ActionTypeReturn",
+        "documentation": "role: UserRole read by get_user_role from protected public.profiles after decoding the verified subject. get_profile_role(token,user_id) performs the RLS-scoped read; JWT user metadata is not used. Returns null on unavailable/invalid profile. Source: access_control_service.py and supabase_profiles.py."
+      },
+      {
+        "id": "BPPN.wWAUAAADb8K",
+        "label": "authenticatedUser: AuthContext",
+        "action": "ActionTypeReturn",
+        "documentation": "authenticatedUser: AuthContext\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "NPPN.wWAUAAADb8Q",
+        "label": "check_user_access(role: UserRole, resource: string)",
+        "action": "ActionTypeCall",
+        "documentation": "check_user_access(role: UserRole, resource: string)\nImplementation signature: check_user_access(user_role: Optional[str], resource: str) -> bool. Source: backend/application/access_control_services/access_control_service.py. Design operation: check_user_access (model ID 7SXN.wWAUAAADa6j). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "vPPN.wWAUAAADb8Y",
+        "label": "allowed: boolean = true",
+        "action": "ActionTypeReturn",
+        "documentation": "allowed: boolean = true\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "EvPN.wWAUAAADb8e",
+        "label": "authorizedUser: AuthContext",
+        "action": "ActionTypeReturn",
+        "documentation": "authorizedUser: AuthContext\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "KvPN.wWAUAAADb8k",
+        "label": "response: BaselineRankResponse [200]",
+        "action": "ActionTypeReturn",
+        "documentation": "response: BaselineRankResponse [200]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "BvPN.wWAUAAADb8q",
+        "label": "rankings: BaselineRow[]",
+        "action": "ActionTypeReturn",
+        "documentation": "rankings: BaselineRow[]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "NvPN.wWAUAAADb8w",
+        "label": "view: MatchupView",
+        "action": "ActionTypeReturn",
+        "documentation": "view: MatchupView\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "7vPN.wWAUAAADb82",
+    "name": "Detailed Sequence - Validate Coach Access - No Valid Session",
+    "lifelines": [
+      {
+        "id": "QfPN.wWAUAAADb85",
+        "type": "InteractionActor",
+        "name": "Coach",
+        "classifier_id": null,
+        "classifier": null
+      },
+      {
+        "id": "JfPN.wWAUAAADb9C",
+        "type": "InteractionLifeLine",
+        "name": "loginPage",
+        "classifier_id": "3bxo4bmAUAAADR8D",
+        "classifier": "LoginPageClient"
+      },
+      {
+        "id": "DfPN.wWAUAAADb9F",
+        "type": "InteractionLifeLine",
+        "name": "authGateway",
+        "classifier_id": "F8KwWwWAUAAADRb_",
+        "classifier": "AuthGateway"
+      },
+      {
+        "id": "GfPN.wWAUAAADb8_",
+        "type": "InteractionLifeLine",
+        "name": "supabase",
+        "classifier_id": "MHxo4bmAUAAADR8V",
+        "classifier": "SupabaseClient"
+      },
+      {
+        "id": "0fPN.wWAUAAADb88",
+        "type": "InteractionLifeLine",
+        "name": "middleware",
+        "classifier_id": "37xo4bmAUAAADR8Q",
+        "classifier": "Middleware"
+      }
+    ],
+    "messages": [
+      {
+        "id": "C_PN.wWAUAAADb9g",
+        "label": "GET /matchup(request: NextRequest) [no session]",
+        "action": "ActionTypeCall",
+        "documentation": "GET /matchup(request: NextRequest) [no session]\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "u_PN.wWAUAAADb9m",
+        "label": "getUser()",
+        "action": "ActionTypeCall",
+        "documentation": "getUser()\nSupabase auth.getUser() returns data.user: User | null and error. It verifies the stored session with Auth. Design operation: getUser (model ID wBXN.wWAUAAADbFy). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "d_PN.wWAUAAADb9s",
+        "label": "user: User? = null",
+        "action": "ActionTypeReturn",
+        "documentation": "user: User? = null\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "X_PN.wWAUAAADb9y",
+        "label": "redirect: NextResponse [/login?next=/matchup]",
+        "action": "ActionTypeReturn",
+        "documentation": "redirect: NextResponse [/login?next=/matchup]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "oAvN.wWAUAAADb94",
+        "label": "submit(email: string, password: string)",
+        "action": "ActionTypeCall",
+        "documentation": "submit(email: string, password: string)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "SAvN.wWAUAAADb9.",
+        "label": "handleLogin(event: FormEvent)",
+        "action": "ActionTypeCall",
+        "documentation": "handleLogin(event: FormEvent)\nFormEvent is prevented. Current email and password state are passed to signIn; failures update the login error state. Design operation: handleLogin (model ID 00XN.wWAUAAADazE). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "JAvN.wWAUAAADb.F",
+        "label": "signIn(email: string, password: string)",
+        "action": "ActionTypeCall",
+        "documentation": "signIn(email: string, password: string)\n Design operation: signIn (model ID C.XN.wWAUAAADbE3). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "7AvN.wWAUAAADb.N",
+        "label": "signInWithPassword(credentials: Credentials)",
+        "action": "ActionTypeCall",
+        "documentation": "signInWithPassword(credentials: Credentials)\ncredentials.email and credentials.password are strings supplied by the user. Result is AuthResponse with data.user/data.session or an error. Design operation: signInWithPassword (model ID wBXN.wWAUAAADbFz). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "EgvN.wWAUAAADb.V",
+        "label": "authResult: AuthResponse",
+        "action": "ActionTypeReturn",
+        "documentation": "authResult: AuthResponse\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "agvN.wWAUAAADb.b",
+        "label": "selectProfileRole(userId: string)",
+        "action": "ActionTypeCall",
+        "documentation": "selectProfileRole(userId: string)\nDesign shorthand for from(\"profiles\").select(\"role\").eq(\"id\", userId).single()/maybeSingle(). userId is the verified User.id. Result is UserRole; pending and invalid roles map to null. Design operation: selectProfileRole (model ID wBXN.wWAUAAADbF4). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "5gvN.wWAUAAADb.i",
+        "label": "role: UserRole = coach",
+        "action": "ActionTypeReturn",
+        "documentation": "role: UserRole = coach\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "bgvN.wWAUAAADb.o",
+        "label": "result: SignInResult",
+        "action": "ActionTypeReturn",
+        "documentation": "result: SignInResult\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "wQvN.wWAUAAADb.u",
+        "label": "navigation: string = /matchup",
+        "action": "ActionTypeReturn",
+        "documentation": "navigation: string = /matchup\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "8QvN.wWAUAAADb.0",
+        "label": "GET /matchup(request: NextRequest) [signed in]",
+        "action": "ActionTypeCall",
+        "documentation": "GET /matchup(request: NextRequest) [signed in]\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "OQvN.wWAUAAADb.6",
+    "name": "Detailed Sequence - Validate Coach Access - Role Lacks Permission",
+    "lifelines": [
+      {
+        "id": "lQvN.wWAUAAADb.9",
+        "type": "InteractionActor",
+        "name": "Coach",
+        "classifier_id": null,
+        "classifier": null
+      },
+      {
+        "id": "LQvN.wWAUAAADb_A",
+        "type": "InteractionLifeLine",
+        "name": "middleware",
+        "classifier_id": "37xo4bmAUAAADR8Q",
+        "classifier": "Middleware"
+      },
+      {
+        "id": "_QvN.wWAUAAADb_D",
+        "type": "InteractionLifeLine",
+        "name": "supabase",
+        "classifier_id": "MHxo4bmAUAAADR8V",
+        "classifier": "SupabaseClient"
+      }
+    ],
+    "messages": [
+      {
+        "id": "KwvN.wWAUAAADb_V",
+        "label": "GET /gameplan(request: NextRequest) [non-coach]",
+        "action": "ActionTypeCall",
+        "documentation": "GET /gameplan(request: NextRequest) [non-coach]\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "hwvN.wWAUAAADb_b",
+        "label": "matchesRoute(path: string, routes: string[])",
+        "action": "ActionTypeCall",
+        "documentation": "matchesRoute(path: string, routes: string[])\n Design operation: matchesRoute (model ID R0XN.wWAUAAADazi). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "LwvN.wWAUAAADb_j",
+        "label": "getUser()",
+        "action": "ActionTypeCall",
+        "documentation": "getUser()\nSupabase auth.getUser() returns data.user: User | null and error. It verifies the stored session with Auth. Design operation: getUser (model ID wBXN.wWAUAAADbFy). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "4IvN.wWAUAAADb_p",
+        "label": "user: User",
+        "action": "ActionTypeReturn",
+        "documentation": "user: User\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "aIvN.wWAUAAADb_v",
+        "label": "selectProfileRole(userId: string)",
+        "action": "ActionTypeCall",
+        "documentation": "selectProfileRole(userId: string)\nDesign shorthand for from(\"profiles\").select(\"role\").eq(\"id\", userId).single()/maybeSingle(). userId is the verified User.id. Result is UserRole; pending and invalid roles map to null. Design operation: selectProfileRole (model ID wBXN.wWAUAAADbF4). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "VIvN.wWAUAAADb_2",
+        "label": "role: UserRole = analyst | null",
+        "action": "ActionTypeReturn",
+        "documentation": "role: UserRole = analyst | null\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "LIvN.wWAUAAADb_8",
+        "label": "defaultPathForRole(role: UserRole)",
+        "action": "ActionTypeCall",
+        "documentation": "defaultPathForRole(role: UserRole)\n Design operation: defaultPathForRole (model ID t0XN.wWAUAAADazl). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "oovN.wWAUAAADcAD",
+        "label": "redirect: NextResponse [analyst home or pending login]",
+        "action": "ActionTypeReturn",
+        "documentation": "redirect: NextResponse [analyst home or pending login]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "wSPN.wWAUAAADboU",
+    "name": "Behavioural Overview - Rank Plays with Game Context",
+    "lifelines": [
+      {
+        "id": "cSPN.wWAUAAADboX",
+        "type": "InteractionActor",
+        "name": "Coach",
+        "classifier_id": null,
+        "classifier": null
+      },
+      {
+        "id": "pSPN.wWAUAAADbod",
+        "type": "InteractionLifeLine",
+        "name": "apiClient",
+        "classifier_id": "rcKwWwWAUAAADRbs",
+        "classifier": "ApiClient"
+      },
+      {
+        "id": "3SPN.wWAUAAADboj",
+        "type": "InteractionLifeLine",
+        "name": "recommendationGuard",
+        "classifier_id": "ciKwWwWAUAAADRc_",
+        "classifier": "_RequireRole"
+      },
+      {
+        "id": "ayPN.wWAUAAADbop",
+        "type": "InteractionLifeLine",
+        "name": "baselineRecommender",
+        "classifier_id": "NbKZ.wWAUAAADVtN",
+        "classifier": "BaselineRecommender"
+      },
+      {
+        "id": "UyPN.wWAUAAADbom",
+        "type": "InteractionLifeLine",
+        "name": "contextRecommender",
+        "classifier_id": "hRE04bmAUAAADSTj",
+        "classifier": "MLContextRecommender"
+      },
+      {
+        "id": "DSPN.wWAUAAADbog",
+        "type": "InteractionLifeLine",
+        "name": "api",
+        "classifier_id": "T.g44bmAUAAADSCx",
+        "classifier": "FastAPIApp"
+      },
+      {
+        "id": "2SPN.wWAUAAADboa",
+        "type": "InteractionLifeLine",
+        "name": "contextPage",
+        "classifier_id": "LXtA4bmAUAAADRh4",
+        "classifier": "ContextPageClient"
+      }
+    ],
+    "messages": [
+      {
+        "id": "GKPN.wWAUAAADbpr",
+        "label": "open(path: string = /context)",
+        "action": "ActionTypeCall",
+        "documentation": "open(path: string = /context)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "MqPN.wWAUAAADbpx",
+        "label": "init()",
+        "action": "ActionTypeCall",
+        "documentation": "init()\nDesign name for the component mount/useEffect initialization, not an exported API. Resolves metadata and sets component state. Design operation: init (model ID fkXN.wWAUAAADayM). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "eqPN.wWAUAAADbp3",
+        "label": "fetchMetaOptions()",
+        "action": "ActionTypeCall",
+        "documentation": "fetchMetaOptions()\n Design operation: fetchMetaOptions (model ID D.XN.wWAUAAADbFN). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "DqPN.wWAUAAADbp9",
+        "label": "GET /meta/options()",
+        "action": "ActionTypeCall",
+        "documentation": "GET /meta/options()\nImplementation signature: meta_options() -> Dict[str, Any]. Source: backend/application/api_coordination/app.py. Design operation: meta_options (model ID M8XN.wWAUAAADa2g). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "vqPN.wWAUAAADbqD",
+        "label": "options: MetaOptions",
+        "action": "ActionTypeReturn",
+        "documentation": "options: MetaOptions\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "0aPN.wWAUAAADbqJ",
+        "label": "options: MetaOptions",
+        "action": "ActionTypeReturn",
+        "documentation": "options: MetaOptions\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "maPN.wWAUAAADbqP",
+        "label": "setContext(inputs: ContextInputs)",
+        "action": "ActionTypeCall",
+        "documentation": "setContext(inputs: ContextInputs)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "ZaPN.wWAUAAADbqV",
+        "label": "runContext()",
+        "action": "ActionTypeCall",
+        "documentation": "runContext()\n Design operation: runContext (model ID fkXN.wWAUAAADayN). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "XaPN.wWAUAAADbqb",
+        "label": "contextRank(opts: ContextInputs)",
+        "action": "ActionTypeCall",
+        "documentation": "contextRank(opts: ContextInputs)\n Design operation: contextRank (model ID T.XN.wWAUAAADbFY). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "c6PN.wWAUAAADbqi",
+        "label": "GET /rank-plays/context-ml(inputs: ContextInputs)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /rank-plays/context-ml(inputs: ContextInputs)\nImplementation signature: rank_context_ml(season: str=Query(...), our: str=Query(...), opp: str=Query(...), margin: float=Query(..., description='Our score minus opponent score.'), period: int=Query(..., ge=1, le=5), time_remaining: float=Query(..., ge=0, le=720), k: int=Query(5, ge=1, le=10), w_off: float=Query(0.7, ge=0, le=1)) -> Dict[str, Any]. Source: backend/application/api_coordination/app.py. Design operation: rank_context_ml (model ID h8XN.wWAUAAADa28). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "O6PN.wWAUAAADbqo",
+        "label": "__call__(user: AuthContext)",
+        "action": "ActionTypeCall",
+        "documentation": "__call__(user: AuthContext)\nThe _RequireRole instance stores resource=\"data\", \"recommendation\" or \"analytics\". __call__(user: dict = Depends(require_auth)) returns that AuthContext after check_user_access, otherwise HTTP 403. Design operation: __call__ (model ID yCXN.wWAUAAADa3.). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "t6PN.wWAUAAADbqv",
+        "label": "authorizedUser: AuthContext",
+        "action": "ActionTypeReturn",
+        "documentation": "authorizedUser: AuthContext\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "n6PN.wWAUAAADbq1",
+        "label": "_require_team(team: string, label: string)",
+        "action": "ActionTypeCall",
+        "documentation": "_require_team(team: string, label: string)\nImplementation signature: _require_team(team: str, label: str) -> None. Source: backend/application/api_coordination/app.py. Design operation: _require_team (model ID gCXN.wWAUAAADa3s). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "0GPN.wWAUAAADbq9",
+        "label": "rank_ml_with_context(inputs: ContextInputs)",
+        "action": "ActionTypeCall",
+        "documentation": "rank_ml_with_context(inputs: ContextInputs)\nImplementation signature: rank_ml_with_context(season: str, our_team: str, opp_team: str, margin: Any, period: Any, time_remaining_period_sec: Any, k: int=5, w_off: float=0.7, w_def: float=0.3, context: Optional[Dict[str, Any]]=None) -> pd.DataFrame. Source: backend/domain/context_ml_recommendation/ml_context_recommender.py. Design operation: rank_ml_with_context (model ID TaXN.wWAUAAADa9L). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "BGPN.wWAUAAADbrM",
+        "label": "_normalize_context(inputs: ContextInputs, context: dict?)",
+        "action": "ActionTypeCall",
+        "documentation": "_normalize_context(inputs: ContextInputs, context: dict?)\ninputs is the diagram alias for margin, period and time_remaining_period_sec arguments. margin, period and time_remaining_period_sec accept numeric input; context is optional Dict[str,Any]. Returns normalized Dict[str,Any]. Design operation: _normalize_context (model ID naXN.wWAUAAADa9W). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "7GPN.wWAUAAADbrW",
+        "label": "build_ml_matchup_table(matchup: Matchup, context: dict?)",
+        "action": "ActionTypeCall",
+        "documentation": "build_ml_matchup_table(matchup: Matchup, context: dict?)\nImplementation signature: build_ml_matchup_table(season: str, our_team: str, opp_team: str, w_off: float=0.7, w_def: float=0.3, context: Optional[Dict[str, Any]]=None) -> pd.DataFrame. Source: backend/domain/context_ml_recommendation/ml_context_recommender.py. Design operation: build_ml_matchup_table (model ID vaXN.wWAUAAADa9b). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "0mPN.wWAUAAADbri",
+        "label": "readTables(): {team_df, league_df}",
+        "action": "ActionTypeCall",
+        "documentation": "readTables(): {team_df, league_df}\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "GmPN.wWAUAAADbro",
+        "label": "tables: {team_df: DataFrame, league_df: DataFrame}",
+        "action": "ActionTypeReturn",
+        "documentation": "tables: {team_df: DataFrame, league_df: DataFrame}\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "hmPN.wWAUAAADbru",
+        "label": "_get_ml_pred_df()",
+        "action": "ActionTypeCall",
+        "documentation": "_get_ml_pred_df()\nImplementation signature: _get_ml_pred_df() -> pd.DataFrame. Source: backend/domain/context_ml_recommendation/ml_context_recommender.py. Design operation: _get_ml_pred_df (model ID vaXN.wWAUAAADa9i). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "jmPN.wWAUAAADbr0",
+        "label": "apply_context_adjustments(df: DataFrame, inputs: ContextInputs, context: dict?)",
+        "action": "ActionTypeCall",
+        "documentation": "apply_context_adjustments(df: DataFrame, inputs: ContextInputs, context: dict?)\ninputs is the diagram alias for margin, period and time_remaining_period_sec arguments. df: pandas.DataFrame; margin, period, time_remaining_period_sec: numeric; context: optional Dict[str,Any]. Returns adjusted pandas.DataFrame. Design operation: apply_context_adjustments (model ID vaXN.wWAUAAADa9j). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "wWPN.wWAUAAADbr_",
+        "label": "compute_context_factors(margin: float, period: int, seconds: float)",
+        "action": "ActionTypeCall",
+        "documentation": "compute_context_factors(margin: float, period: int, seconds: float)\nmargin: float; period: int; seconds = time_remaining_period_sec: float. Returns (late_game_factor, trailing_factor, leading_factor): tuple[float,float,float]. Design operation: compute_context_factors (model ID k6XN.wWAUAAADa9p). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "6WPN.wWAUAAADbsI",
+        "label": "_make_context_label(ctx: dict, late: float, trailing: float, leading: float)",
+        "action": "ActionTypeCall",
+        "documentation": "_make_context_label(ctx: dict, late: float, trailing: float, leading: float)\nctx: Dict[str,Any]; late_game_factor, trailing_factor, leading_factor: float. Returns str. Design operation: _make_context_label (model ID 06XN.wWAUAAADa90). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "FWPN.wWAUAAADbsS",
+        "label": "sort_values(by: string = PPP_CONTEXT).head(k: integer)",
+        "action": "ActionTypeCall",
+        "documentation": "sort_values(by: string = PPP_CONTEXT).head(k: integer)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "7WPN.wWAUAAADbsY",
+        "label": "rankedRows: DataFrame",
+        "action": "ActionTypeReturn",
+        "documentation": "rankedRows: DataFrame\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Y2PN.wWAUAAADbse",
+        "label": "_df_to_records(df: DataFrame)",
+        "action": "ActionTypeCall",
+        "documentation": "_df_to_records(df: DataFrame)\nImplementation signature: _df_to_records(df: pd.DataFrame) -> List[Dict[str, object]]. Source: backend/domain/baseline_recommendation/shot_baseline_recommender.py. Design operation: _df_to_records (model ID ICXN.wWAUAAADa3x). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "m2PN.wWAUAAADbsl",
+        "label": "response: ContextRankResponse",
+        "action": "ActionTypeReturn",
+        "documentation": "response: ContextRankResponse\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "F2PN.wWAUAAADbsr",
+        "label": "rankings: ContextRow[]",
+        "action": "ActionTypeReturn",
+        "documentation": "rankings: ContextRow[]\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "T2PN.wWAUAAADbsx",
+        "label": "displayRows()",
+        "action": "ActionTypeCall",
+        "documentation": "displayRows()\nDesign name for memoized context display rows; no network request. Design operation: displayRows (model ID EUXN.wWAUAAADayO). The explicit message label carries the argument contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "QOPN.wWAUAAADbs3",
+        "label": "view: ContextRankingsView",
+        "action": "ActionTypeReturn",
+        "documentation": "view: ContextRankingsView\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "Elabcccf12e8a8ce",
+    "name": "Detailed Sequence - Analyst Top-K Uplift (475)",
+    "lifelines": [
+      {
+        "id": "Elab8ded94bb419e",
+        "type": "InteractionLifeLine",
+        "name": "analystClient",
+        "classifier_id": "rcKwWwWAUAAADRbs",
+        "classifier": "ApiClient"
+      },
+      {
+        "id": "Elab85e5dc5c7bf5",
+        "type": "InteractionLifeLine",
+        "name": "upliftApi",
+        "classifier_id": "Elab6d77d9dbf369",
+        "classifier": "TopKUpliftEndpoints"
+      },
+      {
+        "id": "Elab9c0885ece08e",
+        "type": "InteractionLifeLine",
+        "name": "auth",
+        "classifier_id": "jBg44bmAUAAADSDJ",
+        "classifier": "AuthDependency"
+      },
+      {
+        "id": "Elabbb58f378b92b",
+        "type": "InteractionLifeLine",
+        "name": "profiles",
+        "classifier_id": "Elab0a3d79024b46",
+        "classifier": "ProtectedProfile"
+      },
+      {
+        "id": "Elab50d5234ff3b2",
+        "type": "InteractionLifeLine",
+        "name": "uplift",
+        "classifier_id": "Elab71605d6c9012",
+        "classifier": "TopKUplift"
+      }
+    ],
+    "messages": [
+      {
+        "id": "Elabdbc0b76a5bcb",
+        "label": "GET /metrics/topk-uplift[.json|.csv](matchup: Matchup)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /metrics/topk-uplift[.json|.csv](matchup: Matchup)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elab5b0006a6e2ea",
+        "label": "authorize(request: Request, resource: string = analytics)",
+        "action": "ActionTypeCall",
+        "documentation": "authorize(request: Request, resource: string = analytics)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elab9efd88b67a77",
+        "label": "get_profile_role(token: string, user_id: string)",
+        "action": "ActionTypeCall",
+        "documentation": "get_profile_role(token: string, user_id: string)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elab9eb3a75c0478",
+        "label": "role: UserRole = analyst",
+        "action": "ActionTypeReturn",
+        "documentation": "role: UserRole = analyst\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elabeb3eadb8b59a",
+        "label": "authorizedUser: AuthContext",
+        "action": "ActionTypeReturn",
+        "documentation": "authorizedUser: AuthContext\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elab780a3a2e83ef",
+        "label": "compute_topk_uplift(rows: UpliftInputs, matchup: Matchup, provenance: dict)",
+        "action": "ActionTypeCall",
+        "documentation": "compute_topk_uplift(rows: UpliftInputs, matchup: Matchup, provenance: dict)\nrows: UpliftInputs groups teamRows and rankings, both pandas.DataFrames. Named keyword arguments are season:str, our_team:str, opp_team:str, k:int, w_off:float, provenance:dict. The endpoint obtains rankings from rank_playtypes_baseline before this call. Source: backend/domain/statistical_analysis/topk_uplift.py.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elab5466829501c6",
+        "label": "report: UpliftReport",
+        "action": "ActionTypeReturn",
+        "documentation": "report: UpliftReport\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elabc09607c550b1",
+        "label": "response: UpliftReport | CsvDownload",
+        "action": "ActionTypeReturn",
+        "documentation": "response: UpliftReport | CsvDownload\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "Elab86fdd4b13a52",
+    "name": "Detailed Sequence - Inspect PPP Calibration (476)",
+    "lifelines": [
+      {
+        "id": "Elab5e83cea0d23b",
+        "type": "InteractionLifeLine",
+        "name": "metricsPage",
+        "classifier_id": "QBAo4bmAUAAADR5m",
+        "classifier": "ModelMetricsPageClient"
+      },
+      {
+        "id": "Elab9fd4d998f9de",
+        "type": "InteractionLifeLine",
+        "name": "calibrationPanel",
+        "classifier_id": "Elab3acee1106220",
+        "classifier": "CalibrationPanel"
+      },
+      {
+        "id": "Elabb09d32732731",
+        "type": "InteractionLifeLine",
+        "name": "calibrationApi",
+        "classifier_id": "Elabf1821e825bff",
+        "classifier": "CalibrationEndpoints"
+      },
+      {
+        "id": "Elab761a673e14dc",
+        "type": "InteractionLifeLine",
+        "name": "auth",
+        "classifier_id": "jBg44bmAUAAADSDJ",
+        "classifier": "AuthDependency"
+      },
+      {
+        "id": "Elabd72370dfd943",
+        "type": "InteractionLifeLine",
+        "name": "calibration",
+        "classifier_id": "Elab9b640ef7067d",
+        "classifier": "Calibration"
+      }
+    ],
+    "messages": [
+      {
+        "id": "Elabed2e43a54ed7",
+        "label": "render(nSplits: integer)",
+        "action": "ActionTypeCall",
+        "documentation": "render(nSplits: integer)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elabf95e6c4ed316",
+        "label": "GET /metrics/calibration(query: CalibrationRequest)",
+        "action": "ActionTypeCall",
+        "documentation": "GET /metrics/calibration(query: CalibrationRequest)\nfetchCalibration(nSplits:number,signal?:AbortSignal) supplies n_splits=nSplits,n_bins=10 and the session Bearer header. Cancellation cannot overwrite newer UI state. Source: app/infrastructure/calibration.ts.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elabb93732be7085",
+        "label": "authorize(request: Request, resource: string = analytics)",
+        "action": "ActionTypeCall",
+        "documentation": "authorize(request: Request, resource: string = analytics)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elab8d305fc27b03",
+        "label": "authorization: AuthContext | HttpError",
+        "action": "ActionTypeReturn",
+        "documentation": "authorization: AuthContext | HttpError\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elabadcb401e76d2",
+        "label": "compute_calibration(data: DataFrame, n_splits: int, n_bins: int)",
+        "action": "ActionTypeCall",
+        "documentation": "compute_calibration(data: DataFrame, n_splits: int, n_bins: int)\ndata: pandas.DataFrame from load_offense_dataset(team_df,league_df); n_splits:int; n_bins:int. Executes on a cache miss; report(n_splits,n_bins) returns the cached report otherwise. Source: calibration_endpoints.py and domain/statistical_analysis/calibration.py.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elab0b9f0d5159c2",
+        "label": "folds: CalibrationFold[] [part of report]",
+        "action": "ActionTypeReturn",
+        "documentation": "This diagram decomposes one CalibrationReport into fold evidence and summary fields. compute_calibration returns a single report dictionary, not two independent network responses. Each fold includes train_seasons:string[],test_season:string,train_rows:int,count:int and PPP error metrics."
+      },
+      {
+        "id": "Elab4d590ee6bc78",
+        "label": "report: CalibrationReport",
+        "action": "ActionTypeReturn",
+        "documentation": "report: CalibrationReport\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elabb0b598f784d9",
+        "label": "response: ApiResult<CalibrationReport>",
+        "action": "ActionTypeReturn",
+        "documentation": "response: ApiResult<CalibrationReport>\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Elab7c93b2a6ddaa",
+        "label": "render(view: CalibrationView)",
+        "action": "ActionTypeCall",
+        "documentation": "render(view: CalibrationView)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "lvbrwIWAUAAADT6c",
+    "name": "Detailed Sequence - NLP Context Fallback (502)",
+    "lifelines": [
+      {
+        "id": "gQYbwIWAUAAADT7K",
+        "type": "InteractionLifeLine",
+        "name": "nlpParser",
+        "classifier_id": "UlTC4bmAUAAADS4f",
+        "classifier": "NLPParser"
+      },
+      {
+        "id": "6yobwIWAUAAADT7B",
+        "type": "InteractionLifeLine",
+        "name": "nlpApi",
+        "classifier_id": "rHMZ.wWAUAAADVi8",
+        "classifier": "NlpEndpoints"
+      },
+      {
+        "id": "BJIbwIWAUAAADT64",
+        "type": "InteractionLifeLine",
+        "name": "gameplan",
+        "classifier_id": "8oJY4bmAUAAADSAI",
+        "classifier": "GameplanClient"
+      },
+      {
+        "id": "pHwbwIWAUAAADT6u",
+        "type": "InteractionActor",
+        "name": "Coach",
+        "classifier_id": null,
+        "classifier": null
+      }
+    ],
+    "messages": [
+      {
+        "id": "6NkbwIWAUAAADT7b",
+        "label": "enterSituation(text: string)",
+        "action": "ActionTypeCall",
+        "documentation": "enterSituation(text: string)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "ppUbwIWAUAAADT7u",
+        "label": "POST /nlp/parse(request: ParseRequest)",
+        "action": "ActionTypeCall",
+        "documentation": "POST /nlp/parse(request: ParseRequest)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "EH8bwIWAUAAADT8b",
+        "label": "parse_game_context(text: string, defaults: dict?)",
+        "action": "ActionTypeCall",
+        "documentation": "parse_game_context(text: string, defaults: dict?)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "qpxbwIWAUAAADT80",
+        "label": "resolve_context_ml_params(context: dict)",
+        "action": "ActionTypeCall",
+        "documentation": "resolve_context_ml_params(context: dict)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "QjZbwIWAUAAADT8.",
+        "label": "view: ContextParseView",
+        "action": "ActionTypeReturn",
+        "documentation": "view: ContextParseView\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "Rev500e998e44922",
+        "label": "parsed: NLPParseResult",
+        "action": "ActionTypeReturn",
+        "documentation": "parse_game_context returns context:dict,confidence:float,clarifying_questions:string[],matches:dict,warnings:string[],raw_text:string. Source: backend/infrastructure/external_integrations/nlp_parser.py."
+      },
+      {
+        "id": "Rev6c056eede6998",
+        "label": "guard: ContextGuardResult",
+        "action": "ActionTypeReturn",
+        "documentation": "resolve_context_ml_params returns params:dict,defaulted_fields:string[],rejected_fields:string[]. The current params use neutral values for missing/out-of-range context. Source: backend/infrastructure/external_integrations/nlp_parser.py."
+      },
+      {
+        "id": "Rev5fba8a7e845d4",
+        "label": "response: ParseResponse [200] | HttpError",
+        "action": "ActionTypeReturn",
+        "documentation": "ParseResponse includes context,confidence,clarifying_questions,matches,warnings,context_ml_params,defaulted_fields,rejected_fields,parser_version,raw_text. Current Gameplan uses the endpoint; the separate Context page uses numeric fields. Source: nlp_endpoints.py and GameplanClient.tsx."
+      }
+    ]
+  },
+  {
+    "id": "cBlnwIWAUAAADWHW",
+    "name": "Detailed Sequence - Run Data Quality Checks (478)",
+    "lifelines": [
+      {
+        "id": "Zy9nwIWAUAAADWJF",
+        "type": "InteractionLifeLine",
+        "name": "qualityChecker",
+        "classifier_id": "kb4nwIWAUAAADV2r",
+        "classifier": "DataQualityChecker"
+      },
+      {
+        "id": "SpdnwIWAUAAADWI8",
+        "type": "InteractionLifeLine",
+        "name": "dataExplorer",
+        "classifier_id": "whWfYbmAUAAADRc2",
+        "classifier": "DataExplorerClient"
+      },
+      {
+        "id": "sbtnwIWAUAAADWIz",
+        "type": "InteractionActor",
+        "name": "Analyst",
+        "classifier_id": null,
+        "classifier": null
+      }
+    ],
+    "messages": [
+      {
+        "id": "BaTnwIWAUAAADWJU",
+        "label": "requestChecks(dataset: DataFrame)",
+        "action": "ActionTypeCall",
+        "documentation": "requestChecks(dataset: DataFrame)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "iCznwIWAUAAADWJm",
+        "label": "run_data_quality_checks(df: DataFrame, options: QualityOptions)",
+        "action": "ActionTypeCall",
+        "documentation": "run_data_quality_checks(df: DataFrame, options: QualityOptions)\nLibrary call: df:pandas.DataFrame; keyword options include required_columns, key_fields, row_key, seasons and teams. Returns DataQualityReport. Current repository provides this checker and tests; direct Data Explorer integration is planned, not claimed deployed.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "0nbnwIWAUAAADWJ2",
+        "label": "report: DataQualityReport",
+        "action": "ActionTypeReturn",
+        "documentation": "report: DataQualityReport\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "l_7nwIWAUAAADWKF",
+        "label": "view: DataQualityView",
+        "action": "ActionTypeReturn",
+        "documentation": "view: DataQualityView\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  },
+  {
+    "id": "ayu3wIWAUAAADXxt",
+    "name": "Detailed Sequence - Unified Export Contract (484)",
+    "lifelines": [
+      {
+        "id": "Yf.3wIWAUAAADXyn",
+        "type": "InteractionLifeLine",
+        "name": "exportContract",
+        "classifier_id": "DUf3wIWAUAAADYEB",
+        "classifier": "ExportContract"
+      },
+      {
+        "id": "bC.3wIWAUAAADXye",
+        "type": "InteractionLifeLine",
+        "name": "matchupPage",
+        "classifier_id": "CntA4bmAUAAADRhs",
+        "classifier": "MatchupPageClient"
+      },
+      {
+        "id": "zRe3wIWAUAAADXyV",
+        "type": "InteractionActor",
+        "name": "Coach",
+        "classifier_id": null,
+        "classifier": null
+      }
+    ],
+    "messages": [
+      {
+        "id": "alJ3wIWAUAAADXy2",
+        "label": "chooseExport(format: csv | json | pdf)",
+        "action": "ActionTypeCall",
+        "documentation": "chooseExport(format: csv | json | pdf)\n\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": ".Np3wIWAUAAADXzI",
+        "label": "build_export(payload: ExportPayload, format: string)",
+        "action": "ActionTypeCall",
+        "documentation": "build_export(payload: ExportPayload, format: string)\nLibrary method ExportContract.build_export(payload:ExportPayload,format:str)->ExportFile. ExportPayload contains report:str,filters:Mapping,columns:Sequence[str],rows:Sequence[Mapping],metadata:Mapping. CSV/JSON supported; PDF requires configured renderer. The shared contract exists as a tested library; integration with all existing UI exports is planned.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "aHZ3wIWAUAAADXzQ",
+        "label": "file: ExportFile",
+        "action": "ActionTypeReturn",
+        "documentation": "file: ExportFile\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      },
+      {
+        "id": "44F3wIWAUAAADXze",
+        "label": "download: ExportFile | ExportError",
+        "action": "ActionTypeReturn",
+        "documentation": "download: ExportFile | ExportError\nNamed completion of the preceding request. Payload fields and error outcomes are defined in this diagram contract.\nSource: middleware.ts; app/infrastructure/api-client.ts; app/infrastructure/auth.ts; backend/application/api_coordination/app.py and auth_dependency.py; backend/application/access_control_services/access_control_service.py."
+      }
+    ]
+  }
+]
