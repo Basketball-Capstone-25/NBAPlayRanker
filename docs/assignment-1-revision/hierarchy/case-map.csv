@@ -1,0 +1,116 @@
+Test Case,Title,Test Suite,Suite title,Original result,Verified result,Verified type,Priority,Assignee
+BST-32,Analyst middleware allows the Data Explorer route,BST-27,Access Analyst Workspace,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-33,Workspace API returns rows and matching counts,BST-27,Access Analyst Workspace,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-34,Analyst profile can read the workspace API,BST-27,Access Analyst Workspace,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-35,Workspace filters preserve the requested team and side,BST-27,Access Analyst Workspace,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-36,Workspace row limits agree with response counts,BST-27,Access Analyst Workspace,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-37,Coach profile cannot read the analyst workspace API,BST-27,Access Analyst Workspace,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-38,Coach profile cannot export analyst workspace CSV,BST-27,Access Analyst Workspace,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-39,Workspace API rejects a missing session,BST-27,Access Analyst Workspace,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-40,Coach middleware redirects the analyst workspace route,BST-27,Access Analyst Workspace,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-41,Signed-out workspace request keeps its return path,BST-27,Access Analyst Workspace,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-42,Session validation accepts verified tokens and rejects missing or invalid tokens,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-43,Role lookup uses protected profiles and rejects invalid profile data,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-44,Analytics permission checks distinguish analyst and coach roles,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-45,Explicit local development mode permits a missing session,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-46,Session validation rejects a missing token,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-47,Session validation rejects a failed JWT verification,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-48,Session validation accepts verified subject claims,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-49,A failed token verification cannot produce a role,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-50,Coach access uses the protected profile role,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-51,Analyst access uses the current protected profile role,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-52,Unsupported and malformed profiles cannot grant a role,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-53,Explicit local development mode permits the analytics guard,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-54,Analytics permission rejects the coach role,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-55,Analytics permission accepts the analyst role,BST-28,Authenticate Analyst Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-56,Baseline ranking returns bounded matchup-specific results,BST-29,Ranked list via API,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-57,Baseline API validates matchup and result count,BST-29,Ranked list via API,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-58,Baseline returns five plays with ranking values,BST-29,Ranked list via API,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-59,Baseline predictions are nonnegative for the test matchup,BST-29,Ranked list via API,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-60,Baseline K=10 returns a nonempty bounded list,BST-29,Ranked list via API,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-61,Changing the team changes baseline predictions,BST-29,Ranked list via API,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-62,Baseline API returns the requested Top-K and matchup metadata,BST-29,Ranked list via API,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-63,Baseline API rejects the same team on both sides,BST-29,Ranked list via API,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-64,Baseline API rejects K=0,BST-29,Ranked list via API,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-65,Coach workspace routes enforce the signed-in role,BST-30,Validate Coach Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-66,Ranking APIs enforce coach access,BST-30,Validate Coach Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-67,Coach middleware allows the matchup route,BST-30,Validate Coach Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-68,Coach middleware redirects analyst-only pages,BST-30,Validate Coach Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-69,Signed-in coach is redirected away from login,BST-30,Validate Coach Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-70,Coach profile can call the baseline API,BST-30,Validate Coach Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-71,Analyst profile cannot call the coach baseline API,BST-30,Validate Coach Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-72,Analyst profile cannot call the coach context API,BST-30,Validate Coach Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-73,Analyst profile cannot call the coach visualization API,BST-30,Validate Coach Access,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-74,Context helpers handle regulation clocks and score factors,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-75,"Context labels describe normal, trailing and leading situations",BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-76,Ridge model meets the documented historical evaluation checks,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-77,"Regulation clock starts with 2,880 seconds",BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-78,Regulation clock reaches zero at the fourth-quarter end,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-79,Regulation-clock helper returns zero during overtime,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-80,Third-quarter clock includes the remaining regulation periods,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-81,Opening tied-game context has zero urgency factors,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-82,Late trailing context raises late-game and trailing factors,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-83,Late large lead raises only the leading factor,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-84,Overtime context has maximum late-game weighting,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-85,Zero context factors use the normal label,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-86,Late trailing factors use the trailing label,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-87,Late leading factors use the leading label,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-88,Ridge pipeline scales features before fitting,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-89,Ridge fits 200 synthetic rows without invalid predictions,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-90,Synthetic Ridge coefficients stay finite and bounded,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-91,Historical Ridge cross-validation beats the league-mean baseline,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-92,Historical held-out Ridge predictions stay within the PPP bounds,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-93,Every historical Ridge fold meets the RMSE threshold,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-94,Model feature and target arrays are aligned and finite,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-95,Increasing Ridge alpha reduces synthetic coefficient norms,BST-31,Rank Plays with Game Context,Pass,Pass,Test Case,Medium,Abdulrahman Mousa
+BST-97,Rationale generated for each Top-K play,BST-96,Generate Play Explanations,Pass,Pass,Test Case,Medium,
+BST-98,Rationale values match ranking output,BST-96,Generate Play Explanations,Pass,Pass,Test Case,Medium,
+BST-99,Baseline rationale states when context is missing,BST-96,Generate Play Explanations,Fail,Fail,Test Case,Medium,
+BST-100,NLP parses a trailing fourth-quarter context,BST-96,Generate Play Explanations,Pass,Pass,Test Case,Medium,
+BST-101,NLP parses a leading score margin,BST-96,Generate Play Explanations,Pass,Pass,Test Case,Medium,
+BST-102,Unparseable NLP text produces neutral context defaults,BST-96,Generate Play Explanations,Pass,Pass,Test Case,Medium,
+BST-103,NLP rejects out-of-range values before ranking,BST-96,Generate Play Explanations,Pass,Pass,Test Case,Medium,
+BST-105,Play-type dataset loads from storage,BST-104,Access Stored Datasets,Pass,Pass,Test Case,Medium,
+BST-106,Season and team query returns matching rows,BST-104,Access Stored Datasets,Pass,Pass,Test Case,Medium,
+BST-107,Missing play-type dataset has a controlled error,BST-104,Access Stored Datasets,Fail,Fail,Test Case,Medium,
+BST-109,Deployed health endpoint responds,BST-108,API Stability and Deployment,Pass,Pass,Test Case,Medium,
+BST-110,Concurrent Top-K requests complete,BST-108,API Stability and Deployment,Pass,Pass,Test Case,Medium,
+BST-111,Top-K response time meets an agreed threshold,BST-108,API Stability and Deployment,Verify,Verify,Test Case,Medium,
+BST-112,Deployed Matchup page loads data from the API,BST-108,API Stability and Deployment,Pass,Pass,Test Case,Medium,
+BST-113,Missing required configuration stops backend startup,BST-108,API Stability and Deployment,Fail,Fail,Test Case,Medium,
+BST-115,Retained second-dataset schema maps required model columns,BST-114,Validate Second Dataset and Models,Pass,Pass,Test Case,Medium,
+BST-116,Schema mapping reports missing and unmapped columns,BST-114,Validate Second Dataset and Models,Fail,Fail,Test Case,Medium,
+BST-117,Shot features are complete and available before possession,BST-114,Validate Second Dataset and Models,Fail,Fail,Test Case,Medium,
+BST-118,Selected shot model beats baseline on a holdout season,BST-114,Validate Second Dataset and Models,Verify,Verify,Test Case,Medium,
+BST-119,Selected shot model reports cross-validation statistics,BST-114,Validate Second Dataset and Models,Verify,Verify,Test Case,Medium,
+BST-121,Top-K uplift matches possession-weighted calculations,BST-120,Iteration 14 elaboration verification,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-122,Top-K JSON and CSV match and enforce analyst access,BST-120,Iteration 14 elaboration verification,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-123,Calibration trains on earlier seasons only,BST-120,Iteration 14 elaboration verification,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-124,Calibration values and limits match the analyst page,BST-120,Iteration 14 elaboration verification,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-125,"Gameplan storage validates notes, matchups and revisions",BST-120,Iteration 14 elaboration verification,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-126,Gameplan ownership and role restrictions hold,BST-120,Iteration 14 elaboration verification,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-127,"Production health, access rules and deployment checks",BST-120,Iteration 14 elaboration verification,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-128,TC-I14-DEPLOY-02 — Authenticated coach and analyst production journeys,BST-120,Iteration 14 elaboration verification,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-129,Signed-in browser downloads preserve authorization,BST-120,Iteration 14 elaboration verification,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-131,Top-K uplift matches the team-season reference,BST-130,Compute & Export Top-K Uplift,Pass,Pass,Test Case,Medium,
+BST-133,"Synergy data quality flags schema, missing data and coverage",BST-132,Run Data Quality Checks,Pass,Pass,Test Case,Medium,
+BST-135,Exports keep values and headers consistent across formats,BST-134,Export Results (CSV/PDF),Pass,Pass,Test Case,Medium,
+BST-136,NLP handles concurrent requests within local memory limits,BST-96,Generate Play Explanations,Pass,Pass,Test Case,Medium,
+BST-138,Shot data uses different shooting and opposing teams,BST-137,Fall 2026 elaboration regression tests,Fail,Fail,Test Case,Medium,Gurkaranjit Asahan
+BST-139,Shot import keeps the event team separate from home team and score,BST-137,Fall 2026 elaboration regression tests,Fail,Fail,Test Case,Medium,Gurkaranjit Asahan
+BST-140,Gameplan uses the new situation on the first Build,BST-137,Fall 2026 elaboration regression tests,Fail,Fail,Test Case,Medium,Gurkaranjit Asahan
+BST-141,Gameplan forwards supported coaching conditions to ranking,BST-137,Fall 2026 elaboration regression tests,Fail,Fail,Test Case,Medium,Gurkaranjit Asahan
+BST-142,Gameplan preserves overtime from the parsed situation,BST-137,Fall 2026 elaboration regression tests,Fail,Fail,Test Case,Medium,Gurkaranjit Asahan
+BST-143,Analyst Shot Plan page can use its required API,BST-137,Fall 2026 elaboration regression tests,Fail,Fail,Test Case,Medium,Gurkaranjit Asahan
+BST-144,Analyst Shot Heatmap page can use its required API,BST-137,Fall 2026 elaboration regression tests,Fail,Fail,Test Case,Medium,Gurkaranjit Asahan
+BST-145,Model Metrics finishes loading after successful metadata,BST-137,Fall 2026 elaboration regression tests,Fail,Fail,Test Case,Medium,Gurkaranjit Asahan
+BST-146,Shot Model Metrics completes within its request limit,BST-137,Fall 2026 elaboration regression tests,Verify,Verify,Test Case,Medium,Gurkaranjit Asahan
+BST-147,Shot Statistical Analysis renders the returned response,BST-137,Fall 2026 elaboration regression tests,Fail,Fail,Test Case,Medium,Gurkaranjit Asahan
+BST-148,A stale Gameplan update cannot overwrite a newer revision,BST-137,Fall 2026 elaboration regression tests,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-149,One account cannot read another account profile,BST-137,Fall 2026 elaboration regression tests,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-150,Export proxy rejects a cookie session for the wrong verified user,BST-137,Fall 2026 elaboration regression tests,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-151,Export proxy rejects arbitrary backend targets,BST-137,Fall 2026 elaboration regression tests,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-152,Export proxy rejects foreign-site download requests,BST-137,Fall 2026 elaboration regression tests,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-153,Export proxy rejects redirects and wrong file content,BST-137,Fall 2026 elaboration regression tests,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-154,Export proxy keeps denied responses out of downloaded files,BST-137,Fall 2026 elaboration regression tests,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan
+BST-155,NLP rejects empty and overlength coaching prompts,BST-137,Fall 2026 elaboration regression tests,Pass,Pass,Test Case,Medium,Gurkaranjit Asahan

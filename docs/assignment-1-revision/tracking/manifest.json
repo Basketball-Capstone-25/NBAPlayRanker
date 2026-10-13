@@ -1,9 +1,11 @@
 {
   "files": {
-    "READ-ME.txt": "0bd9dd6df008766e1be9d7b643a01fe384d029d7f2f7a02b4770d413cfb430d3",
-    "dev-subtasks.csv": "b6064e0035a0e551125d1c17aa57a56fd30a78506416048deba46ab956e136fd",
-    "dev-subtasks.json": "a67a989050af8bf8b87d50fc919bd7a86f09aa34b1ca8256c79616f6fa3e59ab",
-    "verification.json": "19dbf196ed9e8cce581f608b36a1cbb3a334f7216e003cd8f34d8cbcadd262e6"
+    "READ-ME.txt": "6731b855b219139d68be0d60cb2bade6580d4eb1bd19b1bb74b4f2a12bf10d37",
+    "dev-subtasks.csv": "af21968b91b550dfada87431640bcd8064a94cc2a3b4ea54295d5ed40bf176b2",
+    "dev-subtasks.json": "e17768cbd11834f282465e43d9c742bc2b8a9c19ba57a1b9e4e5fcf3e67af275",
+    "plain-language-verification.json": "ab05487e6ccfcf2d9094ed3c919ea18fb3de74dbdae1e7fda3810d10d8fa0e2c",
+    "revision-task-text.json": "98c07f3a26fa9003aeaa0b5b41f4331440491a1fe5024ec2e9f8481da2e67af8",
+    "verification.json": "e15960ce9a36efa22a8005f291a948b9fbe71e14264df090f2a01632114f9a22"
   },
   "evidence_references_checked": 31,
   "all_referenced_files_exist": true

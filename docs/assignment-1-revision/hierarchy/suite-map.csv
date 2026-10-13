@@ -1,0 +1,15 @@
+Test Suite,Title,Original result,Verified result,Cases,Verified type,Case keys
+BST-27,Access Analyst Workspace,Pass,Pass,10,Test Suite,"BST-32, BST-33, BST-34, BST-35, BST-36, BST-37, BST-38, BST-39, BST-40, BST-41"
+BST-28,Authenticate Analyst Access,Pass,Pass,14,Test Suite,"BST-42, BST-43, BST-44, BST-45, BST-46, BST-47, BST-48, BST-49, BST-50, BST-51, BST-52, BST-53, BST-54, BST-55"
+BST-29,Ranked list via API,Pass,Pass,9,Test Suite,"BST-56, BST-57, BST-58, BST-59, BST-60, BST-61, BST-62, BST-63, BST-64"
+BST-30,Validate Coach Access,Pass,Pass,9,Test Suite,"BST-65, BST-66, BST-67, BST-68, BST-69, BST-70, BST-71, BST-72, BST-73"
+BST-31,Rank Plays with Game Context,Pass,Pass,22,Test Suite,"BST-74, BST-75, BST-76, BST-77, BST-78, BST-79, BST-80, BST-81, BST-82, BST-83, BST-84, BST-85, BST-86, BST-87, BST-88, BST-89, BST-90, BST-91, BST-92, BST-93, BST-94, BST-95"
+BST-96,Generate Play Explanations,Testing In Progress,Testing In Progress,8,Test Suite,"BST-97, BST-98, BST-99, BST-100, BST-101, BST-102, BST-103, BST-136"
+BST-104,Access Stored Datasets,Testing In Progress,Testing In Progress,3,Test Suite,"BST-105, BST-106, BST-107"
+BST-108,API Stability and Deployment,Testing In Progress,Testing In Progress,5,Test Suite,"BST-109, BST-110, BST-111, BST-112, BST-113"
+BST-114,Validate Second Dataset and Models,Testing In Progress,Testing In Progress,5,Test Suite,"BST-115, BST-116, BST-117, BST-118, BST-119"
+BST-120,Iteration 14 elaboration verification,Pass,Pass,9,Test Suite,"BST-121, BST-122, BST-123, BST-124, BST-125, BST-126, BST-127, BST-128, BST-129"
+BST-130,Compute & Export Top-K Uplift,Pass,Pass,1,Test Suite,BST-131
+BST-132,Run Data Quality Checks,Pass,Pass,1,Test Suite,BST-133
+BST-134,Export Results (CSV/PDF),Pass,Pass,1,Test Suite,BST-135
+BST-137,Fall 2026 elaboration regression tests,Testing In Progress,Testing In Progress,18,Test Suite,"BST-138, BST-139, BST-140, BST-141, BST-142, BST-143, BST-144, BST-145, BST-146, BST-147, BST-148, BST-149, BST-150, BST-151, BST-152, BST-153, BST-154, BST-155"

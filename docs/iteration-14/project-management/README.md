@@ -1,44 +1,33 @@
-# Final Jira project, risk and test records
+# October 3 Jira records
 
-This snapshot was captured from the live Basketball Strategy Jira site at
-**2026-10-03 22:28:16.320 UTC**, after the final calibration-test clarification
-and future-iteration allocation. It covers the four assigned Iteration 14
-stories and their development, verification and risk records.
+These exports were captured on October 3, 2026 after the Iteration 14 work and
+retests. They are a historical snapshot. For later risk reviews and test failures,
+see the [Assignment 1 revision](../../assignment-1-revision/READ-ME.txt).
 
-| Record | Final state | Export |
+| Record | Status at capture | Export |
 | --- | --- | --- |
-| Current project plan | Four parent stories and nine development/verification subtasks: **13 Done**. Parent story-point estimates total 13. | [Current iteration plan](Jira-current-iteration-plan.csv) |
-| Future work | SCRUM-526: **To Do**, Iteration 15 (ID 183), assigned to Gurkaranjit Asahan, 3 story points. | [Future iteration work](Jira-future-iteration-work.csv) |
-| Test plan | BST-120 suite plus BST-121–129: **10 Pass records**, comprising nine test cases and their suite. | [Iteration tests](Jira-iteration-tests.csv) |
-| Risk plan | BSR-43, 45, 96, 98, 108, 110 and 112: **Monitoring**; BSR-111: **Resolved**. Current monitoring comments are retained. | [Risk monitoring](Jira-risk-monitoring.csv) |
+| Assigned work | Four stories and nine subtasks Done; parent estimates total 13 story points. | [Iteration plan](Jira-current-iteration-plan.csv) |
+| Planned evaluation | SCRUM-526 To Do in Iteration 15, with a 3-point estimate. | [Future work](Jira-future-iteration-work.csv) |
+| Tests | BST-121–129 and suite BST-120 Pass. | [Test results](Jira-iteration-tests.csv) |
+| Risks | BSR-43, 45, 96, 98, 108, 110 and 112 Monitoring; BSR-111 Resolved. | [Risk review](Jira-risk-monitoring.csv) |
 
-The [complete 32-issue snapshot](jira-final-snapshot.json) retains descriptions,
-comments, worklogs and custom fields. All four 22-column CSV exports were
-round-trip checked against that snapshot without truncating those fields.
-[Export verification](jira-export-verification.json) records row counts, hashes
-and the final validation. [Issue grouping and workflow metadata](jira-export-manifest.json)
-preserve the `future_work` group and exact issue keys; the local
-[copy manifest](manifest.json) verifies the files included here.
+Seven worklog entries total **75 minutes**. Their individual times and comments
+are preserved in the exports. Effort estimates are separate from those records.
 
-Seven recorded worklog entries total **4,500 seconds (75 minutes)**. These are
-recorded active-work intervals, not story points or planning estimates. The
-individual entries, authors, timestamps and comments remain in the snapshot
-and exports; no additional duration is inferred from calendar gaps.
+The [32-issue snapshot](jira-final-snapshot.json) contains the descriptions,
+comments, worklogs and custom fields. The four CSV exports were checked against
+it. [Export verification](jira-export-verification.json),
+[issue grouping](jira-export-manifest.json) and the [file manifest](manifest.json)
+provide the checks and hashes.
 
-BST-123 describes the actual regression scope: training-only scaling and
-reliability normalization, no later test-season PPP affecting those fitted
-transforms or the separately tested earlier fold, and the limit imposed by
-same-season explanatory features. It does not claim proof of future forecasting
-accuracy. [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526)
-is scheduled in future Iteration 15 for strictly lagged predictors and untouched
-time holdouts. SCRUM-482 remains the separate future Gameplan frontend migration;
-teammate-owned SCRUM-474 remains outside this completed assignment scope.
+The calibration tests used earlier seasons for training but still used same-season
+rates as inputs. They do not establish future-game accuracy; SCRUM-526 covers
+that work. The Gameplan browser migration remains SCRUM-482, and teammate
+SCRUM-474 stays separate from this assigned scope.
 
-The initial export failure and subsequent correction are preserved in Jira
-comments and the [technical verification history](../verification.md). The final
-Pass statuses describe the completed retest, not a rewritten initial result.
+The [verification report](../verification.md) keeps the initial download failure,
+its correction and the successful retest.
 
-Live references: [project plan](https://basketball-strategy.atlassian.net/jira/software/projects/SCRUM/list/VWtX8Ho),
+Live Jira links: [project plan](https://basketball-strategy.atlassian.net/jira/software/projects/SCRUM/list/VWtX8Ho),
 [risk board](https://basketball-strategy.atlassian.net/jira/software/projects/BSR/boards/3),
 [test suite BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
-The files are a dated export; later Jira changes will not modify this package.

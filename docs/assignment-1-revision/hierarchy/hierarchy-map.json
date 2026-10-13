@@ -1,0 +1,3521 @@
+{
+  "purpose": "Original test-suite membership and results used to verify the course hierarchy migration.",
+  "migration_verified": true,
+  "state": "Conversion, original results and suite membership verified from the Jira browser export.",
+  "source_snapshot_captured_at": "2026-10-13T00:09:25.422Z",
+  "source_snapshot_sha256": "db6e76ffdebce67c7784df9ba685f5da927fabacc82912f2a4e4891d89bd9256",
+  "counts": {
+    "mapped_cases": 115,
+    "mapped_suites": 14,
+    "other_existing_cases": 6,
+    "other_existing_suites": 2,
+    "total_issues": 137
+  },
+  "original_case_results": {
+    "Pass": 97,
+    "Fail": 14,
+    "Verify": 4
+  },
+  "original_suite_results": {
+    "Pass": 9,
+    "Testing In Progress": 5
+  },
+  "cases": [
+    {
+      "key": "BST-32",
+      "summary": "Analyst middleware allows the Data Explorer route",
+      "suite": "BST-27",
+      "suite_summary": "Access Analyst Workspace",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-27",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-33",
+      "summary": "Workspace API returns rows and matching counts",
+      "suite": "BST-27",
+      "suite_summary": "Access Analyst Workspace",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-317"
+        }
+      ],
+      "comment_count": 2,
+      "worklog_count": 1,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-27",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-34",
+      "summary": "Analyst profile can read the workspace API",
+      "suite": "BST-27",
+      "suite_summary": "Access Analyst Workspace",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-27",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-35",
+      "summary": "Workspace filters preserve the requested team and side",
+      "suite": "BST-27",
+      "suite_summary": "Access Analyst Workspace",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-317"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-27",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-36",
+      "summary": "Workspace row limits agree with response counts",
+      "suite": "BST-27",
+      "suite_summary": "Access Analyst Workspace",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-317"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-27",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-37",
+      "summary": "Coach profile cannot read the analyst workspace API",
+      "suite": "BST-27",
+      "suite_summary": "Access Analyst Workspace",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-27",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-38",
+      "summary": "Coach profile cannot export analyst workspace CSV",
+      "suite": "BST-27",
+      "suite_summary": "Access Analyst Workspace",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-27",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-39",
+      "summary": "Workspace API rejects a missing session",
+      "suite": "BST-27",
+      "suite_summary": "Access Analyst Workspace",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-27",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-40",
+      "summary": "Coach middleware redirects the analyst workspace route",
+      "suite": "BST-27",
+      "suite_summary": "Access Analyst Workspace",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-27",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-41",
+      "summary": "Signed-out workspace request keeps its return path",
+      "suite": "BST-27",
+      "suite_summary": "Access Analyst Workspace",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-27",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-42",
+      "summary": "Session validation accepts verified tokens and rejects missing or invalid tokens",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-43",
+      "summary": "Role lookup uses protected profiles and rejects invalid profile data",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-44",
+      "summary": "Analytics permission checks distinguish analyst and coach roles",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-45",
+      "summary": "Explicit local development mode permits a missing session",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-46",
+      "summary": "Session validation rejects a missing token",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-47",
+      "summary": "Session validation rejects a failed JWT verification",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-48",
+      "summary": "Session validation accepts verified subject claims",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-49",
+      "summary": "A failed token verification cannot produce a role",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-50",
+      "summary": "Coach access uses the protected profile role",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-51",
+      "summary": "Analyst access uses the current protected profile role",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-52",
+      "summary": "Unsupported and malformed profiles cannot grant a role",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-53",
+      "summary": "Explicit local development mode permits the analytics guard",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-54",
+      "summary": "Analytics permission rejects the coach role",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-55",
+      "summary": "Analytics permission accepts the analyst role",
+      "suite": "BST-28",
+      "suite_summary": "Authenticate Analyst Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-28",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-56",
+      "summary": "Baseline ranking returns bounded matchup-specific results",
+      "suite": "BST-29",
+      "suite_summary": "Ranked list via API",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [],
+      "comment_count": 2,
+      "worklog_count": 1,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-29",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-57",
+      "summary": "Baseline API validates matchup and result count",
+      "suite": "BST-29",
+      "suite_summary": "Ranked list via API",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [],
+      "comment_count": 2,
+      "worklog_count": 1,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-29",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-58",
+      "summary": "Baseline returns five plays with ranking values",
+      "suite": "BST-29",
+      "suite_summary": "Ranked list via API",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-321"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-29",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-59",
+      "summary": "Baseline predictions are nonnegative for the test matchup",
+      "suite": "BST-29",
+      "suite_summary": "Ranked list via API",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-321"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-29",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-60",
+      "summary": "Baseline K=10 returns a nonempty bounded list",
+      "suite": "BST-29",
+      "suite_summary": "Ranked list via API",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-321"
+        }
+      ],
+      "comment_count": 2,
+      "worklog_count": 1,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-29",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-61",
+      "summary": "Changing the team changes baseline predictions",
+      "suite": "BST-29",
+      "suite_summary": "Ranked list via API",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-321"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-29",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-62",
+      "summary": "Baseline API returns the requested Top-K and matchup metadata",
+      "suite": "BST-29",
+      "suite_summary": "Ranked list via API",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-321"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-29",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-63",
+      "summary": "Baseline API rejects the same team on both sides",
+      "suite": "BST-29",
+      "suite_summary": "Ranked list via API",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-321"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-29",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-64",
+      "summary": "Baseline API rejects K=0",
+      "suite": "BST-29",
+      "suite_summary": "Ranked list via API",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-321"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-29",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-65",
+      "summary": "Coach workspace routes enforce the signed-in role",
+      "suite": "BST-30",
+      "suite_summary": "Validate Coach Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-30",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-66",
+      "summary": "Ranking APIs enforce coach access",
+      "suite": "BST-30",
+      "suite_summary": "Validate Coach Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-30",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-67",
+      "summary": "Coach middleware allows the matchup route",
+      "suite": "BST-30",
+      "suite_summary": "Validate Coach Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-30",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-68",
+      "summary": "Coach middleware redirects analyst-only pages",
+      "suite": "BST-30",
+      "suite_summary": "Validate Coach Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-30",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-69",
+      "summary": "Signed-in coach is redirected away from login",
+      "suite": "BST-30",
+      "suite_summary": "Validate Coach Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-30",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-70",
+      "summary": "Coach profile can call the baseline API",
+      "suite": "BST-30",
+      "suite_summary": "Validate Coach Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-30",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-71",
+      "summary": "Analyst profile cannot call the coach baseline API",
+      "suite": "BST-30",
+      "suite_summary": "Validate Coach Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-30",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-72",
+      "summary": "Analyst profile cannot call the coach context API",
+      "suite": "BST-30",
+      "suite_summary": "Validate Coach Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-30",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-73",
+      "summary": "Analyst profile cannot call the coach visualization API",
+      "suite": "BST-30",
+      "suite_summary": "Validate Coach Access",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-30",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-74",
+      "summary": "Context helpers handle regulation clocks and score factors",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-75",
+      "summary": "Context labels describe normal, trailing and leading situations",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-76",
+      "summary": "Ridge model meets the documented historical evaluation checks",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-77",
+      "summary": "Regulation clock starts with 2,880 seconds",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-78",
+      "summary": "Regulation clock reaches zero at the fourth-quarter end",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-79",
+      "summary": "Regulation-clock helper returns zero during overtime",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-80",
+      "summary": "Third-quarter clock includes the remaining regulation periods",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-81",
+      "summary": "Opening tied-game context has zero urgency factors",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-82",
+      "summary": "Late trailing context raises late-game and trailing factors",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-83",
+      "summary": "Late large lead raises only the leading factor",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-84",
+      "summary": "Overtime context has maximum late-game weighting",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-85",
+      "summary": "Zero context factors use the normal label",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-86",
+      "summary": "Late trailing factors use the trailing label",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-87",
+      "summary": "Late leading factors use the leading label",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-88",
+      "summary": "Ridge pipeline scales features before fitting",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-477"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-89",
+      "summary": "Ridge fits 200 synthetic rows without invalid predictions",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-477"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-90",
+      "summary": "Synthetic Ridge coefficients stay finite and bounded",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-477"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-91",
+      "summary": "Historical Ridge cross-validation beats the league-mean baseline",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-477"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-92",
+      "summary": "Historical held-out Ridge predictions stay within the PPP bounds",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-477"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-93",
+      "summary": "Every historical Ridge fold meets the RMSE threshold",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-477"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-94",
+      "summary": "Model feature and target arrays are aligned and finite",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-477"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-95",
+      "summary": "Increasing Ridge alpha reduces synthetic coefficient norms",
+      "suite": "BST-31",
+      "suite_summary": "Rank Plays with Game Context",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-477"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-31",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-97",
+      "summary": "Rationale generated for each Top-K play",
+      "suite": "BST-96",
+      "suite_summary": "Generate Play Explanations",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-120"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-127"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-96",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-98",
+      "summary": "Rationale values match ranking output",
+      "suite": "BST-96",
+      "suite_summary": "Generate Play Explanations",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-120"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-127"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-96",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-99",
+      "summary": "Baseline rationale states when context is missing",
+      "suite": "BST-96",
+      "suite_summary": "Generate Play Explanations",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-120"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-127"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-546"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-96",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-100",
+      "summary": "NLP parses a trailing fourth-quarter context",
+      "suite": "BST-96",
+      "suite_summary": "Generate Play Explanations",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-120"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-127"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-502"
+        }
+      ],
+      "comment_count": 2,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-96",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-101",
+      "summary": "NLP parses a leading score margin",
+      "suite": "BST-96",
+      "suite_summary": "Generate Play Explanations",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-120"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-127"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-502"
+        }
+      ],
+      "comment_count": 2,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-96",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-102",
+      "summary": "Unparseable NLP text produces neutral context defaults",
+      "suite": "BST-96",
+      "suite_summary": "Generate Play Explanations",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-120"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-127"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-502"
+        }
+      ],
+      "comment_count": 2,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-96",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-103",
+      "summary": "NLP rejects out-of-range values before ranking",
+      "suite": "BST-96",
+      "suite_summary": "Generate Play Explanations",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-120"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-127"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-502"
+        }
+      ],
+      "comment_count": 2,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-96",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-105",
+      "summary": "Play-type dataset loads from storage",
+      "suite": "BST-104",
+      "suite_summary": "Access Stored Datasets",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-121"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-104",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-106",
+      "summary": "Season and team query returns matching rows",
+      "suite": "BST-104",
+      "suite_summary": "Access Stored Datasets",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-121"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-104",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-107",
+      "summary": "Missing play-type dataset has a controlled error",
+      "suite": "BST-104",
+      "suite_summary": "Access Stored Datasets",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-121"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-547"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-104",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-109",
+      "summary": "Deployed health endpoint responds",
+      "suite": "BST-108",
+      "suite_summary": "API Stability and Deployment",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-122"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-123"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-131"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-132"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-108",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-110",
+      "summary": "Concurrent Top-K requests complete",
+      "suite": "BST-108",
+      "suite_summary": "API Stability and Deployment",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-122"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-123"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-131"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-132"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-108",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-111",
+      "summary": "Top-K response time meets an agreed threshold",
+      "suite": "BST-108",
+      "suite_summary": "API Stability and Deployment",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Verify",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-122"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-123"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-131"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-132"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-550"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-108",
+      "current_status": "Verify"
+    },
+    {
+      "key": "BST-112",
+      "summary": "Deployed Matchup page loads data from the API",
+      "suite": "BST-108",
+      "suite_summary": "API Stability and Deployment",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-122"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-123"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-131"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-132"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-108",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-113",
+      "summary": "Missing required configuration stops backend startup",
+      "suite": "BST-108",
+      "suite_summary": "API Stability and Deployment",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-122"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-123"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-131"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-132"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-547"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-108",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-115",
+      "summary": "Retained second-dataset schema maps required model columns",
+      "suite": "BST-114",
+      "suite_summary": "Validate Second Dataset and Models",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-124"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-125"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-126"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-538"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-114",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-116",
+      "summary": "Schema mapping reports missing and unmapped columns",
+      "suite": "BST-114",
+      "suite_summary": "Validate Second Dataset and Models",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-124"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-125"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-126"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-548"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-114",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-117",
+      "summary": "Shot features are complete and available before possession",
+      "suite": "BST-114",
+      "suite_summary": "Validate Second Dataset and Models",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-124"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-125"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-126"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-538"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-549"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-114",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-118",
+      "summary": "Selected shot model beats baseline on a holdout season",
+      "suite": "BST-114",
+      "suite_summary": "Validate Second Dataset and Models",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Verify",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-124"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-125"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-126"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-538"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-549"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-114",
+      "current_status": "Verify"
+    },
+    {
+      "key": "BST-119",
+      "summary": "Selected shot model reports cross-validation statistics",
+      "suite": "BST-114",
+      "suite_summary": "Validate Second Dataset and Models",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Verify",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-124"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-125"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-126"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-538"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-549"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-114",
+      "current_status": "Verify"
+    },
+    {
+      "key": "BST-121",
+      "summary": "Top-K uplift matches possession-weighted calculations",
+      "suite": "BST-120",
+      "suite_summary": "Iteration 14 elaboration verification",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-475"
+        }
+      ],
+      "comment_count": 3,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-120",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-122",
+      "summary": "Top-K JSON and CSV match and enforce analyst access",
+      "suite": "BST-120",
+      "suite_summary": "Iteration 14 elaboration verification",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-475"
+        }
+      ],
+      "comment_count": 3,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-120",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-123",
+      "summary": "Calibration trains on earlier seasons only",
+      "suite": "BST-120",
+      "suite_summary": "Iteration 14 elaboration verification",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-476"
+        }
+      ],
+      "comment_count": 4,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-120",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-124",
+      "summary": "Calibration values and limits match the analyst page",
+      "suite": "BST-120",
+      "suite_summary": "Iteration 14 elaboration verification",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-476"
+        }
+      ],
+      "comment_count": 3,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-120",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-125",
+      "summary": "Gameplan storage validates notes, matchups and revisions",
+      "suite": "BST-120",
+      "suite_summary": "Iteration 14 elaboration verification",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-481"
+        }
+      ],
+      "comment_count": 3,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-120",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-126",
+      "summary": "Gameplan ownership and role restrictions hold",
+      "suite": "BST-120",
+      "suite_summary": "Iteration 14 elaboration verification",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-481"
+        }
+      ],
+      "comment_count": 3,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-120",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-127",
+      "summary": "Production health, access rules and deployment checks",
+      "suite": "BST-120",
+      "suite_summary": "Iteration 14 elaboration verification",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-506"
+        }
+      ],
+      "comment_count": 4,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-120",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-128",
+      "summary": "TC-I14-DEPLOY-02 \u2014 Authenticated coach and analyst production journeys",
+      "suite": "BST-120",
+      "suite_summary": "Iteration 14 elaboration verification",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [],
+      "comment_count": 3,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-120",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-129",
+      "summary": "Signed-in browser downloads preserve authorization",
+      "suite": "BST-120",
+      "suite_summary": "Iteration 14 elaboration verification",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [],
+      "comment_count": 6,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-120",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-131",
+      "summary": "Top-K uplift matches the team-season reference",
+      "suite": "BST-130",
+      "suite_summary": "Compute & Export Top-K Uplift",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-474"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-475"
+        }
+      ],
+      "comment_count": 2,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-130",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-133",
+      "summary": "Synergy data quality flags schema, missing data and coverage",
+      "suite": "BST-132",
+      "suite_summary": "Run Data Quality Checks",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-478"
+        }
+      ],
+      "comment_count": 2,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-132",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-135",
+      "summary": "Exports keep values and headers consistent across formats",
+      "suite": "BST-134",
+      "suite_summary": "Export Results (CSV/PDF)",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-484"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "BST-3"
+        }
+      ],
+      "comment_count": 2,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-134",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-136",
+      "summary": "NLP handles concurrent requests within local memory limits",
+      "suite": "BST-96",
+      "suite_summary": "Generate Play Explanations",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "outward",
+          "issue": "SCRUM-502"
+        }
+      ],
+      "comment_count": 2,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-96",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-138",
+      "summary": "Shot data uses different shooting and opposing teams",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-479"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-480"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-538"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-139",
+      "summary": "Shot import keeps the event team separate from home team and score",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-479"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-538"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-140",
+      "summary": "Gameplan uses the new situation on the first Build",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-326"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-539"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-141",
+      "summary": "Gameplan forwards supported coaching conditions to ranking",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-502"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-540"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-142",
+      "summary": "Gameplan preserves overtime from the parsed situation",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-502"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-541"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-143",
+      "summary": "Analyst Shot Plan page can use its required API",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-126"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-544"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-144",
+      "summary": "Analyst Shot Heatmap page can use its required API",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-126"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-544"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-145",
+      "summary": "Model Metrics finishes loading after successful metadata",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-477"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-542"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-146",
+      "summary": "Shot Model Metrics completes within its request limit",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Verify",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-126"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-543"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Verify"
+    },
+    {
+      "key": "BST-147",
+      "summary": "Shot Statistical Analysis renders the returned response",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Fail",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-126"
+        },
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-545"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Fail"
+    },
+    {
+      "key": "BST-148",
+      "summary": "A stale Gameplan update cannot overwrite a newer revision",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-481"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-149",
+      "summary": "One account cannot read another account profile",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-75"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-150",
+      "summary": "Export proxy rejects a cookie session for the wrong verified user",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-527"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-151",
+      "summary": "Export proxy rejects arbitrary backend targets",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-527"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-152",
+      "summary": "Export proxy rejects foreign-site download requests",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-527"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-153",
+      "summary": "Export proxy rejects redirects and wrong file content",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-527"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-154",
+      "summary": "Export proxy keeps denied responses out of downloaded files",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-527"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-155",
+      "summary": "NLP rejects empty and overlength coaching prompts",
+      "suite": "BST-137",
+      "suite_summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Case",
+      "expected_hierarchy_level": 0,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "linked_work": [
+        {
+          "relationship": "Relates",
+          "direction": "inward",
+          "issue": "SCRUM-502"
+        }
+      ],
+      "comment_count": 1,
+      "worklog_count": 0,
+      "attachment_count": 0,
+      "current_type": "Test Case",
+      "current_type_id": "10012",
+      "current_parent": "BST-137",
+      "current_status": "Pass"
+    }
+  ],
+  "suites": [
+    {
+      "key": "BST-27",
+      "summary": "Access Analyst Workspace",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "cases": [
+        "BST-32",
+        "BST-33",
+        "BST-34",
+        "BST-35",
+        "BST-36",
+        "BST-37",
+        "BST-38",
+        "BST-39",
+        "BST-40",
+        "BST-41"
+      ],
+      "case_count": 10,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-28",
+      "summary": "Authenticate Analyst Access",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "cases": [
+        "BST-42",
+        "BST-43",
+        "BST-44",
+        "BST-45",
+        "BST-46",
+        "BST-47",
+        "BST-48",
+        "BST-49",
+        "BST-50",
+        "BST-51",
+        "BST-52",
+        "BST-53",
+        "BST-54",
+        "BST-55"
+      ],
+      "case_count": 14,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-29",
+      "summary": "Ranked list via API",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "cases": [
+        "BST-56",
+        "BST-57",
+        "BST-58",
+        "BST-59",
+        "BST-60",
+        "BST-61",
+        "BST-62",
+        "BST-63",
+        "BST-64"
+      ],
+      "case_count": 9,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-30",
+      "summary": "Validate Coach Access",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "cases": [
+        "BST-65",
+        "BST-66",
+        "BST-67",
+        "BST-68",
+        "BST-69",
+        "BST-70",
+        "BST-71",
+        "BST-72",
+        "BST-73"
+      ],
+      "case_count": 9,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-31",
+      "summary": "Rank Plays with Game Context",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Abdulrahman Mousa",
+      "cases": [
+        "BST-74",
+        "BST-75",
+        "BST-76",
+        "BST-77",
+        "BST-78",
+        "BST-79",
+        "BST-80",
+        "BST-81",
+        "BST-82",
+        "BST-83",
+        "BST-84",
+        "BST-85",
+        "BST-86",
+        "BST-87",
+        "BST-88",
+        "BST-89",
+        "BST-90",
+        "BST-91",
+        "BST-92",
+        "BST-93",
+        "BST-94",
+        "BST-95"
+      ],
+      "case_count": 22,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-96",
+      "summary": "Generate Play Explanations",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Testing In Progress",
+      "original_priority": "Medium",
+      "assignee": null,
+      "cases": [
+        "BST-97",
+        "BST-98",
+        "BST-99",
+        "BST-100",
+        "BST-101",
+        "BST-102",
+        "BST-103",
+        "BST-136"
+      ],
+      "case_count": 8,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Testing In Progress"
+    },
+    {
+      "key": "BST-104",
+      "summary": "Access Stored Datasets",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Testing In Progress",
+      "original_priority": "Medium",
+      "assignee": null,
+      "cases": [
+        "BST-105",
+        "BST-106",
+        "BST-107"
+      ],
+      "case_count": 3,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Testing In Progress"
+    },
+    {
+      "key": "BST-108",
+      "summary": "API Stability and Deployment",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Testing In Progress",
+      "original_priority": "Medium",
+      "assignee": null,
+      "cases": [
+        "BST-109",
+        "BST-110",
+        "BST-111",
+        "BST-112",
+        "BST-113"
+      ],
+      "case_count": 5,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Testing In Progress"
+    },
+    {
+      "key": "BST-114",
+      "summary": "Validate Second Dataset and Models",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Testing In Progress",
+      "original_priority": "Medium",
+      "assignee": null,
+      "cases": [
+        "BST-115",
+        "BST-116",
+        "BST-117",
+        "BST-118",
+        "BST-119"
+      ],
+      "case_count": 5,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Testing In Progress"
+    },
+    {
+      "key": "BST-120",
+      "summary": "Iteration 14 elaboration verification",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": "Gurkaranjit Asahan",
+      "cases": [
+        "BST-121",
+        "BST-122",
+        "BST-123",
+        "BST-124",
+        "BST-125",
+        "BST-126",
+        "BST-127",
+        "BST-128",
+        "BST-129"
+      ],
+      "case_count": 9,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-130",
+      "summary": "Compute & Export Top-K Uplift",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "cases": [
+        "BST-131"
+      ],
+      "case_count": 1,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-132",
+      "summary": "Run Data Quality Checks",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "cases": [
+        "BST-133"
+      ],
+      "case_count": 1,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-134",
+      "summary": "Export Results (CSV/PDF)",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Pass",
+      "original_priority": "Medium",
+      "assignee": null,
+      "cases": [
+        "BST-135"
+      ],
+      "case_count": 1,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Pass"
+    },
+    {
+      "key": "BST-137",
+      "summary": "Fall 2026 elaboration regression tests",
+      "expected_type": "Test Suite",
+      "expected_hierarchy_level": 1,
+      "original_status": "Testing In Progress",
+      "original_priority": "High",
+      "assignee": "Gurkaranjit Asahan",
+      "cases": [
+        "BST-138",
+        "BST-139",
+        "BST-140",
+        "BST-141",
+        "BST-142",
+        "BST-143",
+        "BST-144",
+        "BST-145",
+        "BST-146",
+        "BST-147",
+        "BST-148",
+        "BST-149",
+        "BST-150",
+        "BST-151",
+        "BST-152",
+        "BST-153",
+        "BST-154",
+        "BST-155"
+      ],
+      "case_count": 18,
+      "current_type": "Test Suite",
+      "current_type_id": "10013",
+      "current_status": "Testing In Progress"
+    }
+  ],
+  "other_existing_items": [
+    {
+      "key": "BST-1",
+      "summary": "Data Explorer displays the current raw dataset",
+      "type": "Test Case",
+      "hierarchy_level": 0,
+      "original_status": "Pass"
+    },
+    {
+      "key": "BST-2",
+      "summary": "Data Explorer filters rows by season, team and side",
+      "type": "Test Case",
+      "hierarchy_level": 0,
+      "original_status": "Pass"
+    },
+    {
+      "key": "BST-3",
+      "summary": "Data Explorer CSV matches the visible raw data",
+      "type": "Test Case",
+      "hierarchy_level": 0,
+      "original_status": "Pass"
+    },
+    {
+      "key": "BST-4",
+      "summary": "FA2 \u2013 Baseline \u2013 UC3 Get Top-K \u2013 TC04 Valid parameters",
+      "type": "Test Case",
+      "hierarchy_level": 0,
+      "original_status": "Verify"
+    },
+    {
+      "key": "BST-5",
+      "summary": "FA2 \u2013 Baseline \u2013 UC3 Get Top-K \u2013 TC05 Invalid parameters & validation",
+      "type": "Test Case",
+      "hierarchy_level": 0,
+      "original_status": "Verify"
+    },
+    {
+      "key": "BST-6",
+      "summary": "Coach Matchup displays the Top-K baseline cards",
+      "type": "Test Case",
+      "hierarchy_level": 0,
+      "original_status": "Pass"
+    },
+    {
+      "key": "BST-13",
+      "summary": "Access Analyst Workspace",
+      "type": "Test Suite",
+      "hierarchy_level": 1,
+      "original_status": "Verify"
+    },
+    {
+      "key": "BST-18",
+      "summary": "mn k",
+      "type": "Test Suite",
+      "hierarchy_level": 1,
+      "original_status": "Verify"
+    }
+  ],
+  "verification_report": "browser-export-verification.json",
+  "after_xml_sha256": "c00bebeee78c396c27ca0a9a7d64d982b72ae739f4daa7dd20b4a44f9c6aad35",
+  "verified_at": "2026-10-13T00:57:57.877014+00:00"
+}

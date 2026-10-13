@@ -1,24 +1,37 @@
 # Assignment 1 interaction model revision
 
-The sequence diagrams now use the same lifeline and message notation across the project. Open the native project to edit the diagrams, or use the image links below to review them.
+Updated all 17 sequence diagrams to address the lifeline and message feedback.
+The model contains 95 participants and 241 messages across those sequences.
 
 - Lifelines use `objectName : Classifier`, such as `calibrationApi : CalibrationEndpoints`.
-- Calls name their parameters and types. Replies name the returned value and type. The diagram and message specifications define the fields inside grouped request and response types.
-- The NLP flow now includes the parser result, context guard result and HTTP response that were missing.
-- Three empty sequence containers now show the implemented glossary page: access, search/tag filtering and denied access.
-- Authentication uses the protected profile role. CSV requests describe the same-origin export proxy. Calibration remains a retrospective diagnostic.
+- Calls include parameter names and types. Replies name the result and its type.
+- The NLP sequence includes the missing parser, context-guard and API replies.
+- The three Glossary sequences now show access, search/tag filters and denied access.
 
-All 17 sequence diagrams were updated: 95 participants and 241 messages. The project still contains 192 diagrams. The 175 diagrams outside the interaction model are unchanged.
+The diagrams describe the current code. Calibration is a retrospective check;
+Gameplan frontend bugs and the planned data-quality/export UI remain separate work.
 
-The data-quality and unified-export sequences distinguish their tested backend libraries from their planned UI integration. The Gameplan NLP sequence records the current response contract; it does not claim the separate frontend context bugs are fixed.
+## Open and review
 
-## How to review
+Open `Basketball Playtype Ranker - Assignment 1 Revision.vpp` to review the saved
+model. Use Diagram Navigator to find the titles below. Glossary is at project
+root; uplift and calibration are under Interaction Model; the other sequences
+are in their existing use-case collaborations.
 
-1. Open `Basketball Playtype Ranker - Assignment 1 Revision.vpp` in Visual Paradigm.
-2. In the Diagram Navigator, find the sequence titles listed below. The three glossary diagrams are at project root. Uplift and calibration are directly under Interaction Model. The other sequences are inside their existing use-case collaborations.
-3. Check the lifeline headers and the typed labels on the arrows.
-4. Open a diagram or message specification to read the grouped parameter fields, response fields and source references.
-5. Use the matching JPG when comparing the submitted model with the feedback. Vendor evaluation watermarks remain intact.
+Check the lifeline headers and arrow labels. Open a message specification for
+fields inside grouped request and response types. The JPGs below are review
+copies; the VPP is the editable model.
+
+## Shared publication
+
+The changes are saved locally and in Git. The shared Teamwork commit is still
+pending. Open the existing shared **Basketball Playtype Ranker** project and use
+**Team > Commit** with:
+
+> Clarify sequence lifelines, request parameters and return values (SCRUM-528)
+
+The saved model is based on shared revision 54. See `teamwork-status.json` for
+publication evidence. Opening the packaged copy does not publish the changes.
 
 ## Diagrams
 
@@ -42,18 +55,25 @@ The data-quality and unified-export sequences distinguish their tested backend l
 | Detailed Sequence - Run Data Quality Checks (478) | 3 | 4 | [View](<renders/Detailed Sequence - Run Data Quality Checks (478).jpg>) |
 | Detailed Sequence - Unified Export Contract (484) | 3 | 4 | [View](<renders/Detailed Sequence - Unified Export Contract (484).jpg>) |
 
-## Preservation and validation
+## What was preserved
 
-The official Teamwork update first incorporated shared revisions 52–54. The edits were then tested on a copy and imported with Visual Paradigm's XML tools. Every pre-existing model, diagram, diagram element and composite ID was retained. Existing model types, parents, creators and creation times were preserved. Shared class, operation and use-case definitions were retained.
+All 192 diagram IDs and the original model identities, parents, creators and
+creation times were retained. The 175 diagrams outside the sequence revision
+were unchanged. Shared revisions 52–54 were included before the edits.
 
-`verification.json` contains the identity and contract checks. `sequence-contracts.json` lists the final participants and message definitions. `revision-manifest.json` records the exact model IDs changed or added. `render-verification.json` lists all 17 rendered images. `teamwork-status.json` records the publication state of the native project.
+The five existing complete use-case collaborations and their overview diagrams
+were preserved. The export collaboration still lacks its overview pair, and
+Glossary, uplift and calibration are not inside complete collaborations. This
+revision addresses the assigned lifeline and message feedback.
 
-The native file is editable. The JPGs are review copies, not replacements for the model.
+The existing Validation Model has five suites and 64 cases. Those cases and
+links were preserved; the Jira test evidence records current executions. Some
+older model links still point to duplicate, unnumbered use cases.
 
-## Course structure check
+## Evidence files
 
-The five existing collaborations for Access Analyst Workspace (UC62), Ranked List via API (Baseline) (UC18), Rank Plays with Game Context (UC11), Authenticate Analyst Access (UC69) and Validate Coach Access (UC71) retain their use-case realization links and their collaboration, structural and behavioural overview diagrams. Their sequence participants refer to existing Design Model classifiers.
-
-This correction addresses lifeline and message notation. It does not complete the broader collaboration structure: the Export Results collaboration still has only its sequence, uplift/calibration remain directly under Interaction Model, and the glossary sequences remain at project root.
-
-The Validation Model already contains five native test suites with 64 cases: workspace (10), analyst authentication (14), baseline API (9), coach access (9) and context ranking (22). Each suite has a test-plan diagram. These existing model test cases and their trace links were preserved; fresh Jira execution results are recorded separately. Some older test-plan links refer to duplicate, unnumbered use-case models, so this revision does not claim the entire native test model was reconciled.
+- `verification.json`: preservation and notation checks.
+- `sequence-contracts.json`: participant and message definitions.
+- `revision-manifest.json`: changed and added model IDs.
+- `render-verification.json`: the 17 exported images.
+- `teamwork-status.json`: publication status.

@@ -1,29 +1,29 @@
 Assignment 1 revision
 
-This folder covers the assigned interaction-model, risk-plan and test-plan
-feedback. Architecture, deployment and timeline revisions belong to the other
-group member and must be combined with this work before submission.
+This revision covers the interaction model, risk plan and test plan. Combine
+it with the other group member's architecture, deployment and timeline work
+before submitting.
 
-Start with START-HERE.pdf. It is alongside these files in the repository and
-at the top of the smaller handoff ZIP.
+Start with START-HERE.pdf. It is here in the repository and at the top of the
+handoff ZIP.
 
-interaction/ contains the native Visual Paradigm project, all 17 sequence
-previews and the notation/preservation checks. Read teamwork-status.json for
-the actual publication state; a saved file is not proof of an online commit.
+interaction/ contains the Visual Paradigm project and 17 sequence previews.
+The lifelines, parameters and return labels are corrected. The file is saved;
+the shared Teamwork commit still needs confirmation in SCRUM-554.
 
-risks/ contains the reviewed 84-card register and linked mitigation work.
+risks/ contains all 84 reviewed risks and their linked work items.
 
-tracking/ contains the 15 revision Dev Subtasks, acceptance criteria and effort
-estimates. Estimates are separate from actual work logs. VP publication and
-test hierarchy migration remain open until their completion is verified.
+hierarchy/ shows the 115 cases and 14 suites moved to the course structure,
+with every case kept under its original suite.
 
-test-execution.txt explains the passing checks, current failures and planned
-fixes. tests/ contains execution records, coverage maps and Jira readbacks.
+tracking/ lists the 15 revision Dev Subtasks, acceptance criteria and estimates.
+The test hierarchy is fixed. VP publication is still open.
 
-course-standards.txt records the relevant SLATE lesson requirements and the
-remaining submission checks. Actual personal work hours must be supplied
-before new work logs can be entered.
+test-execution.txt explains what passed, what failed and which tickets track
+the fixes. tests/ contains the results and use-case coverage.
 
-Application source is pinned at 9804b32ca45ce9f21763cc027cf75e8f30d397aa.
-That commit adds regression checks; this revision does not deploy app fixes.
-Keep failed tests visible and rerun each one after its linked repair.
+course-standards.txt lists the course requirements and submission checks.
+Actual hours still need to be entered.
+
+The source snapshot is commit 9804b32ca45ce9f21763cc027cf75e8f30d397aa.
+It adds regression tests. App fixes and deployment are still separate work.

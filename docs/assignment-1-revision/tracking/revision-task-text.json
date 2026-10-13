@@ -1,0 +1,311 @@
+{
+  "issues": [
+    {
+      "key": "SCRUM-528",
+      "summary": "Fix sequence lifelines and message signatures",
+      "status": "In Progress",
+      "description": "Fix the lifeline names and message labels in the shared Visual Paradigm project.\n\nAcceptance criteria:\n\n* Use the same lifeline naming style across all sequence diagrams.\n* Label requests and replies with their inputs or returned values, including asynchronous messages.\n* Keep existing model IDs and unrelated diagrams unchanged.\n* Save readable diagrams in the shared GitHub repository and publish the model to Visual Paradigm Teamwork.\n\n",
+      "comments": [
+        {
+          "id": "11094",
+          "body": "Standardized the lifeline names and added inputs and return values to the sequence messages. Finished the three Glossary sequences and missing NLP replies. The [model and previews are on main](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/5c838de/docs/assignment-1-revision/interaction); the VP Teamwork commit is still pending."
+        },
+        {
+          "id": "11128",
+          "body": "Added four subtasks for lifeline names, message labels, model checks and publishing. The diagram edits and checks are complete. SCRUM-554 is still open until the model is published to Teamwork."
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-529",
+      "summary": "Review risk ratings and link mitigation tasks",
+      "status": "Done",
+      "description": "Review all risk cards and link each one to the work needed to manage it.\n\nAcceptance criteria:\n\n* Every risk has a relevant Linked work item.\n* Probability, impact and status reflect the current findings.\n* Active risks name the next action and the task responsible for it.\n* Keep comments short and save the updated register in the shared repository.\n\n",
+      "comments": [
+        {
+          "id": "11049",
+          "body": "Reviewed all 84 risks and linked each one to its mitigation work, including BSR-110. Updated ratings and statuses based on the findings and kept unresolved risks open. The [revised register is on GitHub](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/41bd91c/docs/assignment-1-revision/risks)."
+        },
+        {
+          "id": "11127",
+          "body": "Linked the startup, data-column and explanation fixes to the related risks. Reopened BSR-111 because the shared VP commit is still pending. These changes are in the [updated risk register](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks)."
+        },
+        {
+          "id": "11129",
+          "body": "Added four completed subtasks for reviewing risks, linking mitigation work, clarifying the wording and checking the exports. Each links to the relevant files on main."
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-530",
+      "summary": "Expand and run Fall 2026 test coverage",
+      "status": "Done",
+      "description": "Update the test plan with Fall 2026 cases, current results and links to planned bug fixes.\n\nAcceptance criteria:\n\n* Show the relevant tests on the Kanban board.\n* Use Epic-level Test Suites and Task-level Test Cases.\n* Give each new case steps, inputs, expected results and a related feature or use case.\n* Record where each test ran and what happened. Leave unrun cases in Verify.\n* Link every failed case to a repair task and publish the results and review guide.\n\n",
+      "comments": [
+        {
+          "id": "11126",
+          "body": "Put the test suites on the board, added 18 Fall cases and recorded the test results. Every failed case links to a planned fix. Tests waiting on repaired data, a retest or a response-time target remain in Verify. The [report and results are on main](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision)."
+        },
+        {
+          "id": "11130",
+          "body": "Split the test work into seven subtasks covering new and older cases, local and live checks, bug links, the Jira hierarchy and the handoff. All seven are complete. The cases are now Task-level Test Cases under Epic-level Test Suites, with their original results and links preserved."
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-531",
+      "summary": "Record weekly capacity, backup owners and blocked work",
+      "status": "To Do",
+      "description": "Agree on each team member's remaining work and availability.\n\nAcceptance criteria:\n\n* Record weekly availability and planned tasks through December 18.\n* Name backups for code, data, diagrams and deployment, with any handoff needed.\n* Record blockers, exams, absences and agreed scope changes.\n* Review progress each week and adjust the plan with both members.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-532",
+      "summary": "Verify clean-checkout setup and service recovery",
+      "status": "To Do",
+      "description": "Check that a clean checkout and the saved backups can restore a working development and demo setup.\n\nAcceptance criteria:\n\n* Follow the setup guide in a clean directory and record the commands, dependencies and disk space needed.\n* Restore the pinned dataset and check its checksum. Keep the shot-data warning until the data is repaired.\n* Document deployment and database recovery without sharing credentials.\n* Record which recovery steps each team member has successfully checked.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-533",
+      "summary": "Check deployment secrets and recovery access",
+      "status": "To Do",
+      "description": "Check that private credentials stay out of the app and shared files, and that the team can recover service access.\n\nAcceptance criteria:\n\n* Check tracked files and the built frontend for exposed private keys.\n* Document required environment variable names, owners and recovery steps without their values.\n* Test signed-out, expired-session and wrong-role access to protected routes.\n* Confirm recovery contacts for GitHub, Google Cloud, Vercel, Supabase and Visual Paradigm.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-534",
+      "summary": "Check hosting costs and prepare an affordable fallback",
+      "status": "To Do",
+      "description": "Keep the backend within the approved CAD10 monthly budget and prepare a fallback for demos.\n\nAcceptance criteria:\n\n* Record current charges by service separately from the forecast.\n* Check the CAD10 alerts, CAD7 Cloud Run control and scale-to-zero settings. Account for delayed cost updates.\n* If the forecast exceeds the budget, prepare a lower-cost setup or migration with backups and rollback steps.\n* Verify sign-in and a recommendation on the chosen deployment and keep a usable fallback.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-535",
+      "summary": "Document dataset sources and sharing permissions",
+      "status": "To Do",
+      "description": "Document where the Synergy and play-by-play data came from and how it can be used and shared.\n\nAcceptance criteria:\n\n* Record each source, retrieval method and applicable terms.\n* Check permission for acquisition, hosting, reports and redistribution, including the assignment ZIP.\n* Assign any unanswered permission questions for follow-up.\n* Replace restricted data or remove it from distribution when permission is missing.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-536",
+      "summary": "Review three coaching scenarios with a stakeholder",
+      "status": "To Do",
+      "description": "Review scouting, matchup preparation and a late-game decision with a stakeholder.\n\nAcceptance criteria:\n\n* Prepare the teams, game situation and task for each scenario.\n* Record who reviewed it and whether they are a coach or a peer.\n* Check whether they understand the recommendation, sample size and limits without help.\n* Create tasks for the usability problems found and record unanswered questions.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-537",
+      "summary": "Define evidence and cost checks for generated explanations",
+      "status": "To Do",
+      "description": "Plan an optional feature that explains the existing rankings. The current app uses fixed explanation templates.\n\nAcceptance criteria:\n\n* Give the feature the play IDs, evidence and numbers it may use; reject invented or conflicting details.\n* Compare answers for accuracy and clarity, including repeated and unclear requests.\n* Include a template fallback, timeout, cache, request limit and spending cutoff.\n* Get separate provider and budget approval before enabling a paid model API.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-538",
+      "summary": "Fix shot-team attribution and rebuild the shot dataset",
+      "status": "To Do",
+      "description": "The shot data has incorrect team labels: 18,746 rows list the same team and opponent, and all 7,520 games with at least 100 shots show only one shooting team. A TOR 2025-26 export also had 51 invalid rows out of 5,000.\n\nTo reproduce, run backend/tests/test_shot_attribution_regression.py with --runxfail and compare the TOR/BOS input events with the output team, opponent and home flag.\n\nAcceptance criteria:\n\n* Use explicit participant IDs to identify the shooting team. Changing a score must not change the team.\n* Recover the original event data and rebuild the cleaned dataset and derived files.\n* Pass the row and game checks and compare samples with the original events before relying on shot results.\n\n",
+      "comments": [
+        {
+          "id": "10943",
+          "body": "Added four tests for incorrect shot-team labels: two small TOR/BOS examples and two checks of the saved dataset. All four still fail when run with `--runxfail`, so the data repair is still needed. The [tests are on main](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/9804b32ca45ce9f21763cc027cf75e8f30d397aa), and [CI passed with these marked as known failures](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38173001625)."
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-539",
+      "summary": "Use the new Gameplan situation on the first Build",
+      "status": "To Do",
+      "description": "The first Gameplan Build uses the previous game situation. Clicking Build again uses the new values and changes the rankings.\n\nTo reproduce, start with TOR/BOS 2024-25, Q4, 180 seconds and margin -2. Enter \"Q4 down 5 with 0:28 left\", then click Build twice without changing anything.\n\nAcceptance criteria:\n\n* The first request and the page both use period 4, 28 seconds and margin -5.\n* Pass the parsed situation directly into the ranking request.\n* Add a test showing that unchanged inputs give the first and second builds the same context.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-540",
+      "summary": "Pass supported coaching conditions into Gameplan ranking",
+      "status": "To Do",
+      "description": "Gameplan recognizes phrases such as \"Need a three\" and \"They are switching\", but only sends numeric context to the ranking API.\n\nTo reproduce, enter those conditions and compare the parsed values with the request built by GameplanClient.\n\nAcceptance criteria:\n\n* Define which coaching conditions the ranker supports.\n* Send supported conditions to the API and test their effect.\n* Clearly show when a condition is unsupported and does not affect the ranking.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-541",
+      "summary": "Preserve overtime in the Gameplan context",
+      "status": "To Do",
+      "description": "Gameplan changes overtime to quarter 4 before ranking.\n\nTo reproduce, enter an overtime situation, build the plan and compare the parser result with the displayed period and ranking request.\n\nAcceptance criteria:\n\n* Keep the overtime period through parsing, display and ranking.\n* Validate the overtime clock without changing the period.\n* Add a test covering the complete parser-to-ranker path.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-542",
+      "summary": "Clear Model Metrics loading state when requests finish",
+      "status": "To Do",
+      "description": "Model Metrics keeps showing \"Loading pipeline summary\" and disables Refresh even after the holdout results appear.\n\nTo reproduce, sign in as an analyst, open Model Metrics and wait for the results table. The recorded run displayed Ridge RMSE 0.011 while the loading message remained.\n\nAcceptance criteria:\n\n* Track the summary and evaluation requests separately.\n* Clear loading on success or error and allow a retry.\n* Avoid duplicate initial requests and test loading, success and failure states.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-543",
+      "summary": "Load saved shot metrics without training during page requests",
+      "status": "To Do",
+      "description": "The default Shot Model Metrics request timed out after 300 seconds with HTTP 504 in the October 6 run. It has not been repeated during this revision.\n\nUse the saved request and runtime results to investigate. After the fix, open the page once and record its result and response time.\n\nAcceptance criteria:\n\n* Load saved or precomputed metrics during normal page visits.\n* Run expensive evaluation in a separate bounded job or preparation step.\n* Show useful loading and error messages, and complete supported requests before the platform timeout.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-544",
+      "summary": "Align analyst shot pages with their API permissions",
+      "status": "To Do",
+      "description": "Analysts can open Shot Plan and Shot Heatmap, but their requests use coach-only APIs and return HTTP 403.\n\nTo reproduce, sign in as an analyst and run either page with a supported season and matchup.\n\nAcceptance criteria:\n\n* Decide which roles should use each page.\n* Make navigation, page access and API permissions agree.\n* Test allowed, wrong-role and signed-out access without opening unrelated coach-only routes.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-545",
+      "summary": "Render Shot Statistical Analysis using the current API fields",
+      "status": "To Do",
+      "description": "Shot Statistical Analysis receives a successful API response, then crashes while reading dropped.length. The response uses removed, and other page sections also expect older fields.\n\nTo reproduce, run the analysis as an analyst and compare the response with the fields used by the page.\n\nAcceptance criteria:\n\n* Update the types, response adapter and page components to match the API.\n* Handle missing optional sections with an accurate unavailable message.\n* Add a render test using a current response. Do not show results the API did not calculate.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-546",
+      "summary": "State when baseline explanations do not use game context",
+      "status": "To Do",
+      "description": "Baseline explanations do not say that score, period and clock were left out. BST-99 found this in all five returned explanations.\n\nTo reproduce, request baseline Top-K for 2024-25, TOR against BOS, K=5 without game context.\n\nAcceptance criteria:\n\n* Say when game context was not used.\n* Keep context-based explanations tied to the values actually used.\n* Rerun BST-97, BST-98 and BST-99 against the corrected code and deployment.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-547",
+      "summary": "Define backend readiness and explain missing prerequisites",
+      "status": "To Do",
+      "description": "A missing Synergy file produces a traceback. Missing Supabase settings still allow startup and /health 200, although protected requests remain blocked. The tests and app need a clear agreement on what \"ready\" means.\n\nAcceptance criteria:\n\n* Define startup requirements and separate running from ready to serve requests.\n* Report missing data or auth settings clearly without exposing secrets.\n* Do not report production readiness when required settings or data are absent.\n* Keep development and isolated tests supported, then update and rerun BST-107 and BST-113.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-548",
+      "summary": "Report unmapped shot-data columns during schema validation",
+      "status": "To Do",
+      "description": "BST-116 reports the missing TEAM_ABBR column but says nothing about an unused UNMAPPED_FIXTURE column. Extra metadata is allowed and is already excluded from model features.\n\nAcceptance criteria:\n\n* Report mapped, optional, ignored or unmapped, and missing required columns.\n* Identify unused metadata without treating every extra column as an error.\n* Keep missing-column errors clear and rerun both BST-116 examples.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-549",
+      "summary": "Validate shot margins and define when prediction inputs are available",
+      "status": "To Do",
+      "description": "All 1,332,515 retained shot rows have no MARGIN value, but model loading replaces it with zero. The app also needs to explain whether it predicts before a possession or evaluates a proposed shot.\n\nAcceptance criteria:\n\n* Recover real margins or show them as unavailable instead of treating missing values as tied scores.\n* State when each prediction input becomes available.\n* Use only prior information for pre-possession predictions. Define a separate input contract for a proposed-shot evaluation.\n* After SCRUM-538 repairs the source data, rerun BST-117, BST-118 and BST-119 with finite-feature checks and later-season, per-fold results.\n\nRelated work: SCRUM-526.",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-550",
+      "summary": "Set and verify the deployed Top-K response-time target",
+      "status": "To Do",
+      "description": "BST-111 needs an agreed response-time target. All eight test requests succeeded, but two took about 33 seconds with four running at once.\n\nAcceptance criteria:\n\n* Agree on a Top-K timing target, including cold starts and concurrent requests.\n* Investigate slow requests using a limited test run and service logs.\n* Rerun BST-111 and record the environment, sample size, target and p95 response time.\n* Stay within the approved hosting budget.\n\n",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-551",
+      "summary": "Use consistent names for sequence lifelines",
+      "status": "Done",
+      "description": "Updated all 95 lifelines across the 17 sequence diagrams to use instance : Class names.\n\nAcceptance criteria:\n\n* Use the same notation throughout the sequences.\n* Keep existing participant IDs and unrelated model elements unchanged.\n\n[sequence-contracts.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/sequence-contracts.json) \u00b7 [verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/verification.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-552",
+      "summary": "Define sequence inputs and return values",
+      "status": "Done",
+      "description": "Added typed inputs and return values to all 241 messages. Completed the three Glossary sequences and the missing NLP replies.\n\nAcceptance criteria:\n\n* Every request and reply has a clear label and defined parameters or result type.\n* The Glossary and NLP paths show their complete message flow.\n\n[sequence-contracts.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/sequence-contracts.json) \u00b7 [interaction-guide.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/interaction-guide.txt)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-553",
+      "summary": "Verify sequence renders and preserve the shared model",
+      "status": "Done",
+      "description": "Compared the revised model with shared revision 54. All 192 diagram IDs and existing creator details were preserved, and the 175 unrelated diagrams stayed unchanged. The native file and 17 sequence previews are on main.\n\nAcceptance criteria:\n\n* Preserve existing model identities and unrelated diagrams.\n* Check that every revised sequence displays correctly.\n* Commit the native model and comparison results to the shared repository.\n\n[verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/verification.json) \u00b7 [render-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/render-verification.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-554",
+      "summary": "Publish the revised sequences to Visual Paradigm Teamwork",
+      "status": "In Progress",
+      "description": "The revised model is saved on main, but its Visual Paradigm Teamwork commit is still unconfirmed. The command-line commit tool crashes after sign-in.\n\nAcceptance criteria:\n\n* Publish the saved changes from VP Desktop.\n* Confirm the new shared revision matches the local project and has no pending changes.\n* Update the publication record and submission copy.\n\n[teamwork-status.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/teamwork-status.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-555",
+      "summary": "Review the probability, impact and status of every risk",
+      "status": "Done",
+      "description": "Reviewed the probability, impact and status of all 84 risks using the app and test findings. The shot-data problems and unfinished model publication remain active.\n\nAcceptance criteria:\n\n* Give each risk a clear review and a supported status.\n* Keep unresolved problems open.\n\n[risk-register.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-register.json) \u00b7 [risk-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-verification.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-556",
+      "summary": "Link risks to mitigation and monitoring work",
+      "status": "Done",
+      "description": "Added 196 work-item links across all 84 risks. BSR-110 now links SCRUM-506, SCRUM-524 and SCRUM-534 for the migration and hosting work.\n\nAcceptance criteria:\n\n* Every risk has a relevant Linked work item.\n* New mitigation tasks have an owner and acceptance criteria.\n\n[risk-register.csv](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-register.csv) \u00b7 [risk-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-verification.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-557",
+      "summary": "Clarify risk titles, findings and next actions",
+      "status": "Done",
+      "description": "Clarified 80 risk titles, filled four missing descriptions and added short reviews explaining the findings and next steps.\n\nAcceptance criteria:\n\n* Titles identify the actual risk.\n* Comments say what was found and what happens next.\n* Preserve existing owners and earlier comments.\n\n[READ-ME.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/READ-ME.txt) \u00b7 [risk-register.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-register.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-558",
+      "summary": "Verify and publish the revised risk register",
+      "status": "Done",
+      "description": "Published matching CSV and JSON copies of the 84-risk register on main and checked their work-item links.\n\nAcceptance criteria:\n\n* Both exports match Jira's risk records and mitigation links.\n* Preserve owners and history.\n* Save the exports and verification in the shared repository.\n\n[risk-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-verification.json) \u00b7 [risk-register.csv](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/risks/risk-register.csv)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-559",
+      "summary": "Add Fall 2026 cases for Elaboration features",
+      "status": "Done",
+      "description": "Added 18 Fall 2026 cases, BST-138 through BST-155, under BST-137. They cover Gameplan context, shot features, metrics, exports and access controls.\n\nAcceptance criteria:\n\n* Include inputs, steps, expected results and a related feature or use case.\n* Link failures to the matching defect.\n* Leave blocked or unrun cases in Verify.\n\n[coverage.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/coverage.json) \u00b7 [jira-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/jira-verification.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-560",
+      "summary": "Refresh legacy test coverage and trace it to features",
+      "status": "Done",
+      "description": "Updated the older cases with specific inputs, results and links to the features they cover. BST-128 and BST-129 keep their earlier export results because those complete flows were not rerun.\n\nAcceptance criteria:\n\n* Link current results to the exact test or browser check.\n* Keep feature and use-case links clear.\n* Identify older results as historical.\n\n[legacy-coverage.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/legacy-coverage.json) \u00b7 [additional-legacy-execution.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/additional-legacy-execution.json) \u00b7 [jira-project-status.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/jira-project-status.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-561",
+      "summary": "Run regression suites and reproduce shot-data failures",
+      "status": "Done",
+      "description": "Ran the local checks: 202 Python checks and 34 frontend tests passed, along with TypeScript and shared CI. Four shot-data checks still fail when run directly and remain marked as known failures in the regular suite.\n\nAcceptance criteria:\n\n* Save the backend, fixture-safety, frontend, TypeScript and CI results.\n* Reproduce the shot-data failures and keep them separate from passing results.\n\n[verification-summary.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/verification-summary.json) \u00b7 [shot-attribution-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/shot-attribution-junit.xml) \u00b7 [github-ci.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/github-ci.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-562",
+      "summary": "Check live feature flows and record their actual results",
+      "status": "Done",
+      "description": "Checked the deployed app using analyst and coach accounts. Recorded 106 live checks and two database test suites, then removed their temporary data. The downloaded analyst CSV matched all 11 rows and seven visible columns.\n\nAcceptance criteria:\n\n* Record where each check ran and what happened.\n* Remove temporary database test data.\n* Keep browser failures and slow requests visible alongside passing checks.\n\n[live-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/live-core/live-verification.json) \u00b7 [live-additional.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/live-additional.json) \u00b7 [browser-and-suite-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/browser-and-suite-verification.json) \u00b7 [data-explorer-download-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/data-explorer-download-verification.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-563",
+      "summary": "Link failed tests to planned bug fixes",
+      "status": "Done",
+      "description": "Linked all 14 failed cases to planned repairs. SCRUM-538 through SCRUM-549 track the bugs, and SCRUM-550 sets the missing response-time target.\n\nAcceptance criteria:\n\n* Every Fail case links to a repair task with clear acceptance criteria.\n* Keep blocked or unrun cases separate.\n* Close repairs only after the fix is tested.\n\n[jira-project-status.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/jira-project-status.json) \u00b7 [additional-jira-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/additional-jira-verification.json)",
+      "comments": []
+    },
+    {
+      "key": "SCRUM-564",
+      "summary": "Align test-suite and test-case hierarchy with the course",
+      "status": "Done",
+      "description": "Moved 115 cases into Task-level Test Cases under 14 Epic-level Test Suites and restored their original suite links.\n\nAcceptance criteria:\n\n* Use the hierarchy required by the lesson.\n* Preserve issue keys, suite membership, owners, history, results and defect links.\n* Keep the relevant tests visible on the Kanban board.\n\n",
+      "comments": [
+        {
+          "id": "11131",
+          "body": "Moved 115 test cases under 14 Epic-level test suites. Kept their original ticket keys, results, comments, attachments and links. The [before-and-after check](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/hierarchy/READ-ME.txt) confirms each case is back under its original suite."
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-565",
+      "summary": "Publish the test evidence and revision handoff",
+      "status": "Done",
+      "description": "Published the test results, source, native model and review guide in a handoff ZIP below 20 MB. The guide identifies the remaining VP publication and submission steps.\n\nAcceptance criteria:\n\n* Verify the evidence files and their hashes.\n* Keep the archive below 20 MB and exclude credentials.\n* Clearly list unfinished work.\n\n[evidence-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/evidence-verification.json) \u00b7 [READ-ME.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/READ-ME.txt)",
+      "comments": []
+    }
+  ]
+}

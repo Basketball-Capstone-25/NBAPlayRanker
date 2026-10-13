@@ -1,42 +1,31 @@
-ASSIGNMENT 1 — INTERACTION MODEL
+Assignment 1 — Interaction model
 
-Open Basketball Playtype Ranker - Assignment 1 Revision.vpp in Visual Paradigm.
-The renders folder contains all 17 updated sequence diagrams as JPGs.
+All 17 sequence diagrams were updated. Lifelines use objectName : Classifier.
+Calls include typed inputs, and replies name their results and types. The NLP
+sequence has its missing replies. The three Glossary sequences now show access,
+search/tag filtering and denied access.
 
-What changed
-- Lifelines follow objectName : Classifier throughout the sequence diagrams.
-- Calls include typed inputs. Replies identify their results and types.
-- The NLP flow includes the parser, context guard and API completion replies.
-- Three empty diagrams now show glossary access, search/tag filters and denied access.
-- Auth, CSV proxy, uplift and calibration messages match the current code contracts.
+To review the saved model, open Basketball Playtype Ranker - Assignment 1
+Revision.vpp. Find the diagrams in Diagram Navigator. Glossary is at project
+root; uplift and calibration are under Interaction Model. Open a message
+specification to see the fields inside grouped inputs and outputs.
 
-What to check
-1. Find the diagrams by title in the Diagram Navigator. The glossary diagrams are
-   at project root; uplift/calibration are under Interaction Model. The remaining
-   sequences are inside their existing use-case collaborations.
-2. Compare the lifeline headers and arrow labels with the instructor feedback.
-3. Open a diagram or message specification for the fields inside grouped inputs.
-4. Check the three Glossary diagrams and NLP Context Fallback.
-5. Use README.md for the complete diagram list and linked review images.
+The renders folder contains the matching JPGs. README.md lists all 17 diagrams.
+The VPP remains editable. All 192 diagrams and original model IDs were retained;
+the 175 diagrams outside this sequence revision were unchanged.
 
-The model contains 192 diagrams. All original IDs are preserved. The 175 diagrams
-outside the interaction model are unchanged. The data-quality/export diagrams
-identify planned UI integration separately from the implemented backend libraries.
-
-Publication
-The shared baseline is Teamwork revision 54. These changes are saved in the native
-project. Teamwork publication is pending because the official commit command failed.
-Use Team > Commit with:
+The shared Teamwork commit is still pending. Open the existing shared Basketball
+Playtype Ranker project, then choose Team > Commit and use:
 Clarify sequence lifelines, request parameters and return values (SCRUM-528)
 
-teamwork-status.json records the exact state of this snapshot.
+The saved model is based on revision 54. Opening the packaged copy does not
+publish it. See teamwork-status.json for the publication evidence.
 
-Course structure
-The five existing workspace, baseline, context and role-access collaborations keep
-their use-case links and three overview diagrams. This revision fixes the assigned
-lifeline/message feedback. Broader organization still needs work: the export
-collaboration lacks its overview pair, and glossary/uplift/calibration sequences
-are not grouped inside complete use-case collaborations.
+This work addresses lifeline and message notation. Broader collaboration
+organization still needs work: export lacks its overview pair, and Glossary,
+uplift and calibration are not inside complete use-case collaborations. The
+five existing complete collaborations were preserved.
 
-Five native test suites already contain 64 cases and five test-plan diagrams.
-Those model cases were preserved. See the Jira test evidence for fresh executions.
+The model's five test suites and 64 cases were preserved. Current test results
+are in the Jira evidence. Calibration remains retrospective; the separate
+Gameplan bugs and planned data-quality/export UI are not claimed fixed.

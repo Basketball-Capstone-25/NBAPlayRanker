@@ -1,0 +1,133 @@
+{
+  "checked_at_utc": "2026-10-13T01:05:18.390333+00:00",
+  "verified": true,
+  "checks": 4650,
+  "failures": [],
+  "before_counts": {
+    "issues": 137,
+    "types": {
+      "10012": 6,
+      "10013": 2,
+      "10014": 115,
+      "10100": 14
+    },
+    "statuses": {
+      "Fail": 14,
+      "Pass": 110,
+      "Testing In Progress": 5,
+      "Verify": 8
+    },
+    "comments": 181,
+    "worklogs": 6,
+    "attachments": 5,
+    "issue_link_references": 182,
+    "parent_memberships": 115
+  },
+  "after_counts": {
+    "issues": 137,
+    "types": {
+      "10012": 121,
+      "10013": 16
+    },
+    "statuses": {
+      "Fail": 14,
+      "Pass": 110,
+      "Testing In Progress": 5,
+      "Verify": 8
+    },
+    "comments": 181,
+    "worklogs": 6,
+    "attachments": 5,
+    "issue_link_references": 182,
+    "parent_memberships": 115
+  },
+  "snapshot_sha256": {
+    "before": "db6e76ffdebce67c7784df9ba685f5da927fabacc82912f2a4e4891d89bd9256",
+    "after": "248a63edc5be110ae103889256d0dfed8fe499f584c420aef11e066e26736e98"
+  },
+  "expected_type_changes": {
+    "10014": "10012",
+    "10100": "10013",
+    "10012": "10012",
+    "10013": "10013"
+  },
+  "preserved_fields": [
+    "id",
+    "summary",
+    "description",
+    "created",
+    "assignee",
+    "reporter",
+    "priority",
+    "status",
+    "labels",
+    "parent",
+    "timetracking",
+    "comments",
+    "worklogs",
+    "attachments",
+    "links"
+  ],
+  "notes": [
+    "All 137 keys and IDs, 115 parent memberships, statuses, priorities, labels, owners, reporters and creation timestamps are compared.",
+    "All 181 comments retain IDs, original authors, creation timestamps and all other record metadata. Updated time and update author may change only for the three explicitly edited comment IDs; each update time is checked and the update author must be the original author.",
+    "All six detailed worklog records are compared, including IDs, authors, start/create/update times, duration and comment content. Per-issue timetracking totals and estimates are also compared.",
+    "All five attachments retain IDs, names, authors, timestamps, sizes, types and recorded resource addresses. Attachment bytes are not downloaded by this check.",
+    "All 182 formal-link references retain link IDs, relation type, direction and endpoint issue IDs/keys. Generated endpoint previews are excluded.",
+    "Body comparison ignores representation-only whitespace, paragraph wrapping, HTML entity spelling and generated editor-local IDs. Ordered text, hyperlinks, media attributes and meaningful list/table/formatting structure are compared.",
+    "Issue updated timestamps, conversion change history, generated subtask previews, rank and resolution metadata are not compared.",
+    "This verifies the fetched fields; it does not establish equality for custom fields not present in the before snapshot."
+  ],
+  "intentional_wording_edits": [
+    {
+      "issue": "BST-123",
+      "field": "comment",
+      "comment_id": "10990",
+      "before_body_sha256": "3361a8eb329e1ef88b4596912773cf7bfb1019b6db192bd36c82f42c3c28b511",
+      "expected_body": "Training used earlier seasons, and changing the test-season outcomes did not change the training process or predictions. The live report kept that season order. These are historical results using same-season rates, so they do not prove future-game accuracy. Evidence: [backend-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml), [calibration-live.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-core/calibration-live.json).",
+      "expected_body_verified": true,
+      "original_body_hash_verified": true,
+      "allowed_metadata_changes": [
+        "updated",
+        "updateAuthor"
+      ]
+    },
+    {
+      "issue": "BST-141",
+      "field": "comment",
+      "comment_id": "10929",
+      "before_body_sha256": "c40cbfab2e85195c2e2caf7fd000de3b928e098bcdf7e586eb0ecc802f9e3efb",
+      "expected_body": "The page shows the parsed need-three and switching conditions, but the code that builds the ranking request leaves those flags out. Fix: [SCRUM-540](https://basketball-strategy.atlassian.net/browse/SCRUM-540).\n\nEvidence: [gameplan-first-build.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/gameplan-first-build.txt), [gameplan-context-source.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/gameplan-context-source.txt).",
+      "expected_body_verified": true,
+      "original_body_hash_verified": true,
+      "allowed_metadata_changes": [
+        "updated",
+        "updateAuthor"
+      ]
+    },
+    {
+      "issue": "BST-114",
+      "field": "comment",
+      "comment_id": "11120",
+      "before_body_sha256": "96a6b533529a86c0025f2bb9d887561c8c83bc18f12f14d2f642e6f999d3f2c4",
+      "expected_body": "The saved dataset has the required columns. Missing-column warnings and shot margin values still need fixes (BST-116/117). BST-118/119 cannot run until the source data is repaired.",
+      "expected_body_verified": true,
+      "original_body_hash_verified": true,
+      "allowed_metadata_changes": [
+        "updated",
+        "updateAuthor"
+      ]
+    },
+    {
+      "issue": "BST-137",
+      "field": "description",
+      "before_body_sha256": "08ea9fbb38c4e627f5bb54417ce8dba2b199efb7f4df7750a5c601fc9fdba447",
+      "expected_body": "Fall 2026 tests for Gameplan context and storage, shot-data attribution, analyst pages, export security and NLP input validation.\n\nEach case lists its feature, use cases, steps and expected result. Record the result and evidence on the case. Link failures to their planned fixes and rerun them after the fixes. Leave cases that were not run in Verify.\n\nThe existing use-case suites keep their separate test plans.",
+      "expected_body_verified": true,
+      "original_body_hash_verified": true,
+      "allowed_metadata_changes": []
+    }
+  ],
+  "intentional_edit_count": 4,
+  "verification_method": "Compare complete REST snapshots, allowing only the declared type conversions and four exact wording replacements. Bodies are normalized from Markdown/HTML into ordered word/punctuation tokens, links, media attributes and structural list/table/formatting tags. All other compared data must match."
+}

@@ -1,0 +1,23 @@
+Observed Jira board DOM excerpt after disabling Backlog; grouping cleared temporarily to read totals.
+URL: https://basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4
+- textbox "Search board"
+- button "Edit Verify status column":
+  - heading [level=3]: Verify
+  - generic: "6"
+- button "Edit Testing In Progress status column":
+  - heading [level=3]: Testing In Progress
+  - generic: "0"
+- button "Edit Pass status column":
+  - heading [level=3]: Pass
+  - generic: "101"
+- button "Edit Fail status column":
+  - heading [level=3]: Fail
+  - generic: "14"
+
+The counts sum to 121 Test Cases. The view was subsequently grouped by Test Suite.
+
+Follow-up after saving the shared view and reloading the board:
+- The Save Board dialog completed and the Save or reset button disappeared.
+- Group by Test Suite remained selected.
+- Search board was empty.
+- No Backlog tab was visible.

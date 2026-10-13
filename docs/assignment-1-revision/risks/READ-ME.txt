@@ -1,19 +1,35 @@
 Risk plan revision
 
-All 84 risks were reviewed. Every card now has linked Jira work items. The update adds 196 links and a short, specific review on each card. Five cards also have a follow-up review for new execution evidence; earlier comments were preserved. It also updates the mitigation steps, corrects 80 titles, fills four missing descriptions and changes 27 ratings and 34 statuses where the recorded evidence supports a change.
+All 84 risks were reviewed and now have linked work items. The revision adds
+196 links, a short review on each card and five follow-up comments. It also
+corrects 80 titles, fills four missing descriptions, updates mitigation steps
+and changes 27 ratings and 34 statuses.
 
-Current status: 40 Monitoring, 24 Active, 7 Planning, 6 Analysis and 7 Identification. No risks are marked Resolved. Open risks remain open. Adding a task or link does not mean its mitigation is complete.
+Current status: 40 Monitoring, 24 Active, 7 Planning, 6 Analysis and
+7 Identification. No risks are marked Resolved.
 
-BSR-110 now links to SCRUM-506 and SCRUM-524 for the completed hosting work, and SCRUM-534 for the cost review and affordable hosting fallback. The current bill still needs that review.
+Key updates
 
-BSR-39 links to SCRUM-546 for the missing baseline context notice. BSR-108 links to SCRUM-547 for a defined startup/readiness contract and controlled missing-prerequisite diagnostics. These isolated checks do not show a current production outage. BSR-78 links to SCRUM-538, SCRUM-548 and SCRUM-549 for source repair, schema reporting and missing margins. Extra metadata may be allowed; the gap is that unmapped columns are not reported. BSR-45 links to SCRUM-549 and SCRUM-538 to establish the shot prediction moment and input availability.
+- BSR-110 links to SCRUM-506 and SCRUM-524 for completed hosting work, and
+  SCRUM-534 for the remaining cost review and affordable hosting fallback.
+- BSR-111 is Active. The project synced to revision 54, but the commit tool
+  failed. The saved model still needs a confirmed Desktop Team commit.
+- BSR-39 links to SCRUM-546 for the missing baseline context notice.
+- BSR-108 links to SCRUM-547 for clear startup and readiness errors when
+  required data or configuration is missing.
+- BSR-78 links to SCRUM-538, SCRUM-548 and SCRUM-549 for shot-data repair,
+  column reporting and missing margins. BSR-45 also links to the work that
+  defines which inputs are available when a shot prediction is made.
 
-BSR-111 is Active again. Synchronization at shared revision 54 succeeded, but the official commit tool failed and the saved changes still need a Desktop Team commit. The new shared revision has not been confirmed. Its existing SCRUM-528 link tracks the interaction-model work.
+The Gameplan, metrics, access and analysis failures have linked fix tickets.
+Prospective model evaluation, dataset permissions and coaching feedback remain
+open too.
 
-The shot-data, Gameplan context, metrics, access and analysis failures link to their specific repair tasks. The register also keeps strictly prospective model evaluation, dataset permissions and coaching feedback open.
+SCRUM-531 through SCRUM-536 cover capacity, recovery, access, hosting, dataset
+permissions and stakeholder review in Iteration 16. SCRUM-537 covers optional
+generated-explanation checks in the backlog. These tasks are To Do.
 
-SCRUM-531 through SCRUM-536 track the remaining capacity, recovery, access, hosting, dataset-permission and stakeholder-review work in Iteration 16. SCRUM-537 keeps the optional generated-explanation checks in the backlog. These tasks are To Do.
-
-To check the result, open any risk in Jira and look at Linked work items and its latest comment. The CSV has one row per risk. The JSON includes linked task titles and statuses. The previous ratings and status are included so the changes are visible.
-
-Readback verification confirmed all 84 cards, their reviews, ratings, statuses and planned links. Existing owners, historical comments, logged effort, priorities and attachments were preserved.
+To review the changes, open a risk in Jira and check Linked work items and the
+latest comment. The CSV has one row per risk. The JSON includes linked task
+titles and statuses, plus previous ratings and statuses. Existing owners,
+comments, logged effort, priorities and attachments were kept.

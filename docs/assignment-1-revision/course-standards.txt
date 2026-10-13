@@ -1,42 +1,33 @@
-Course standards used for this revision
+Course requirements
 
-The downloaded SLATE lessons were checked while preparing this revision.
-The course PDFs are not included in the shared repository.
+These notes follow the SLATE lessons. The course PDFs stay outside the shared
+repository.
 
-Project Planning with JIRA, pages 15–16 and 26–28
-Supporting work uses descriptive Task titles. Tasks have acceptance criteria
-and an assignee. Development subtasks use the Effort Estimate field in person
-hours, with each estimate no larger than four hours. Estimates and actual work
-logs are separate. Personal work hours still need confirmed totals before any
-new work logs can be entered.
+Project Planning with JIRA, pages 15-16 and 26-28
+Use clear task titles, an assignee and acceptance criteria. Each Dev Subtask
+needs an Effort Estimate of no more than four hours. Log actual hours separately.
 
-SCRUM-551 through SCRUM-565 provide the revision breakdown under SCRUM-528,
-SCRUM-529 and SCRUM-530. Each has acceptance criteria and an Effort Estimate
-between 0.5 and 3 hours. These are current sizing estimates, not historical
-estimates or actual time. See tracking/ for the verified Jira snapshot.
+SCRUM-551 through SCRUM-565 break down the interaction, risk and test revisions
+under SCRUM-528, SCRUM-529 and SCRUM-530. Their estimates range from 0.5 to 3
+hours. See tracking/ for the tasks and acceptance criteria.
 
-Test Planning, pages 8–23
-Tests should trace from functional areas and use cases to specific steps,
-inputs and expected results. The existing use-case suites remain in place.
-BST-137 groups the new Fall execution results across those use cases. Failed
-cases link to planned fixes and need another execution after the fix. Cases
-whose complete scope has not been executed remain Verify.
+Test Planning, pages 8-23
+Each test needs a functional area, use case, inputs, steps and expected result.
+Record the observed result and link failures to fix tickets. Rerun those tests
+after the fixes. Unfinished checks stay Verify.
 
-Page 15 specifies Epic-level Test Suites and Task-level Test Cases. The target
-types have been configured in BST. Existing cases still require conversion
-from the former subtask type, with their original results and suite membership
-restored. SCRUM-564 tracks this remaining hierarchy migration.
+Page 15 requires Epic-level Test Suites and Task-level Test Cases. The 115
+cases and 14 suites now use that structure. Each case is back under its
+original suite, with its key, results, links and owner kept. See hierarchy/.
 
-Interaction and Detailed Design, pages 4–16
-The five existing complete use-case collaborations retain their realization
-links, overview diagrams and Design Model classifiers. This revision corrects
-sequence lifelines, parameters and replies. It does not claim to complete the
-broader collaboration structure for every later feature; see the interaction
-guide for exact diagram locations and remaining model-organization gaps.
+Interaction and Detailed Design, pages 4-16
+The five complete use-case collaborations keep their realization links,
+overview diagrams and Design Model classifiers. This revision fixes sequence
+lifelines, parameters and replies. The interaction guide lists the diagram
+locations and model-organization work still needed for later features.
 
-Submission boundary
-This handoff covers interaction notation, risk review and test-plan feedback.
-The other group member is handling architecture, deployment and timeline
-corrections. Combine both contributions before submitting the native model
-and shared Jira/Visual Paradigm links. Confirm the SLATE deadline and professor
-access. This package has not been submitted to SLATE.
+Before submission
+Combine these changes with the other group member's architecture, deployment
+and timeline revisions. Include the native model and shared Jira and Visual
+Paradigm links. Confirm the deadline and professor access. No SLATE upload
+has been made.

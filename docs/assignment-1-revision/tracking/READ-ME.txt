@@ -1,28 +1,22 @@
 Revision development breakdown
 
-The three revision tasks now have 15 Dev Subtasks with specific acceptance
-criteria and links to their supporting evidence. All belong to Gurkaranjit
-Asahan and inherit Iteration-15 from their parent tasks.
+The 15 Dev Subtasks have acceptance criteria and links to the completed work.
+All are assigned to Gurkaranjit Asahan in Iteration-15.
 
-SCRUM-528: SCRUM-551 through SCRUM-554 cover lifeline naming, message contracts,
-model preservation and Teamwork publication. The first three are complete.
-SCRUM-554 remains In Progress until the shared VP revision is confirmed.
+SCRUM-551 to SCRUM-554: sequence diagrams and VP publication.
+SCRUM-555 to SCRUM-558: risk review, mitigation links and exports.
+SCRUM-559 to SCRUM-565: test cases, execution, bug links and the handoff.
 
-SCRUM-529: SCRUM-555 through SCRUM-558 cover risk ratings, mitigation links,
-clear descriptions and export verification. All four are complete.
+14 are Done. SCRUM-554 remains open for VP publication. The hierarchy migration
+is verified and SCRUM-564 is Done. Parent tasks SCRUM-529 and SCRUM-530 are Done;
+SCRUM-528 stays In Progress until the shared VP revision is published.
 
-SCRUM-530: SCRUM-559 through SCRUM-565 cover current cases, legacy coverage,
-local checks, live checks, failed-test links, hierarchy alignment and handoff.
-SCRUM-564 is In Progress while the course hierarchy is aligned. The other six
-have completed-work evidence in the shared repository.
+Estimates are in Jira's Effort Estimate field. Actual worklogs are pending.
 
-Effort Estimate is customfield_10061, in person-hours. Each item is sized at
-0.5 to 3 hours, below the course's four-hour limit. These estimates were entered
-during this breakdown review; they are not original pre-work estimates and do
-not state how many hours were actually worked. The 24.5-hour estimate total must
-not be presented as personal time spent. No new worklogs were entered. Actual
-personal time remains pending and must be recorded separately.
+The wording review shortened 39 descriptions and 11 existing comments, keeping
+acceptance criteria, test steps and evidence links. A separate completion
+comment records the finished hierarchy migration on SCRUM-564.
 
-dev-subtasks.json contains the readable issue snapshot. verification.json checks
-all 15 keys, parents, types, assignees, statuses, estimates and empty worklogs.
-No existing issue descriptions, owners or historical worklogs were changed.
+Use dev-subtasks.json for the breakdown and revision-task-text.json for the
+updated SCRUM wording. The verification files include the final BST text edits
+and focused Jira readback checks.

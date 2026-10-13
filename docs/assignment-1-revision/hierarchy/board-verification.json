@@ -1,0 +1,24 @@
+{
+  "board_url": "https://basketball-strategy.atlassian.net/jira/software/projects/BST/boards/4",
+  "backlog_enabled": false,
+  "grouping_observed": "Test Suite",
+  "visible_test_cases": 121,
+  "test_case_column_counts": {
+    "Verify": 6,
+    "Testing In Progress": 0,
+    "Pass": 101,
+    "Fail": 14
+  },
+  "count_scope": "Test Cases only; Test Suite statuses are excluded.",
+  "count_method": "Read column totals with grouping temporarily cleared, then restore Test Suite grouping.",
+  "evidence_file": "board-observation-excerpt.txt",
+  "evidence_sha256": "0cc5adb25a6ebb143f6d066d67450bd0afeeab5bfb282415d87cda62a6efce5e",
+  "evidence_kind": "Saved DOM excerpt, not a full board export.",
+  "future_tests": "Create new tests directly on the Kanban board.",
+  "shared_view_saved": true,
+  "reload_check": {
+    "grouping": "Test Suite",
+    "search_query": "",
+    "backlog_tab_visible": false
+  }
+}
