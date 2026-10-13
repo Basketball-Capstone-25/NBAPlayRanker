@@ -1,6 +1,6 @@
 {
-  "prepared_at": "2026-10-13T03:41:35.635323+00:00",
-  "source": "Focused live Jira closeout and verified committed Teamwork revision55",
+  "prepared_at": "2026-10-13T03:51:28.387183+00:00",
+  "source": "Published revision55 closeout with verified parent-task actual worklogs",
   "responsibilities": [
     "Deployment Model Revision",
     "Risk Management Plan",
@@ -159,8 +159,20 @@
   },
   "effort": {
     "new_deployment_estimate_hours": 2.5,
-    "actual_personal_hours": "Awaiting clarification and allocation",
-    "worklogs_added": 0
+    "actual_personal_hours": 9,
+    "actual_parent_hours": {
+      "SCRUM-529": 4,
+      "SCRUM-530": 4,
+      "SCRUM-440": 1
+    },
+    "worklogs_added": 3,
+    "worklog_ids": {
+      "SCRUM-529": "10118",
+      "SCRUM-530": "10119",
+      "SCRUM-440": "10120"
+    },
+    "evidence": "actual-hours-verification.json",
+    "allocation": "Recorded once on each parent task; no additional subtask worklogs."
   },
   "verification": {
     "checks": {
@@ -170,14 +182,15 @@
       "newChildrenEffortEstimatesCorrect": true,
       "interactionStatusesPreserved": true,
       "interactionDescriptionsStateExcludedScope": true,
-      "noWorklogsOnChangedIssues": true,
       "layoutSubtaskDone": true,
       "newCommentsReadBack": true,
-      "noDeploymentWorklogs": true,
       "olderDeploymentCommentAndScreenshotRetainedWithResolutionNote": true,
       "deploymentParentDone": true,
       "publicationSubtaskDone": true,
-      "publishedRevision55Verified": true
+      "publishedRevision55Verified": true,
+      "confirmedActualHoursMatchParentTotals": true,
+      "threeDistinctParentWorklogsVerified": true,
+      "noAdditionalSubtaskWorklogs": true
     },
     "all_checks_passed": true
   },
@@ -202,6 +215,7 @@
       "SCRUM-565",
       "BSR-111"
     ],
-    "worklogs_added": 0
+    "worklogs_added": 0,
+    "scope": "Publication closeout before the actual-hours worklogs were entered."
   }
 }

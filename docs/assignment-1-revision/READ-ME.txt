@@ -28,7 +28,7 @@ test-execution.txt explains what passed, what failed and which tickets track
 the fixes. tests/ contains the results and use-case coverage.
 
 course-standards.txt lists the course requirements and submission checks.
-Actual hours are awaiting allocation before worklogs are entered.
+Jira worklogs total 9 hours: 4 for risks, 4 for tests and 1 for the deployment model.
 
 The source snapshot is commit 9804b32ca45ce9f21763cc027cf75e8f30d397aa.
 It adds regression tests. App fixes and deployment are still separate work.

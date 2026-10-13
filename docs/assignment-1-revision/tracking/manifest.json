@@ -1,7 +1,8 @@
 {
   "files": {
-    "READ-ME.txt": "3450a73cd4f1401593c4a9cf093e6e8c505a863775a5361a2b5f3ad43ab5f090",
-    "current-scope.json": "dd610b6a3c757b466f0c85a34eb7271fb0f5f20cddc18481bb3b0e07b20996d8",
+    "READ-ME.txt": "01ce60e5ab66d2b66bac45db41cdf529c96bf5f7ef83764af987b10d78d8b6b6",
+    "actual-hours-verification.json": "835d6efbe9cb8fe2b1a764ab237aa47b17acc5924b0fdc1f4f563842b5e8ad4a",
+    "current-scope.json": "ddfb11c2cff3b5c85a2d786d70e68e7efb86fd14b6782e6879fd9891107e07d5",
     "dev-subtasks.csv": "af21968b91b550dfada87431640bcd8064a94cc2a3b4ea54295d5ed40bf176b2",
     "dev-subtasks.json": "e17768cbd11834f282465e43d9c742bc2b8a9c19ba57a1b9e4e5fcf3e67af275",
     "plain-language-verification.json": "ab05487e6ccfcf2d9094ed3c919ea18fb3de74dbdae1e7fda3810d10d8fa0e2c",

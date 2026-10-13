@@ -20,8 +20,9 @@ The earlier dev-subtasks.json and CSV record 15 subtasks: 14 Done and one open.
 That snapshot includes the separate interaction work. The current revision
 breakdown has 13 completed deployment, risk and test subtasks.
 
-Estimates are in Jira's Effort Estimate field. Actual hours await allocation;
-no worklogs were added during this update.
+Estimates remain in Jira's Effort Estimate field. Actual worklogs total 9 hours:
+4 on SCRUM-529 for risks, 4 on SCRUM-530 for tests and 1 on SCRUM-440 for deployment.
+Each total is recorded once on its parent task. See actual-hours-verification.json.
 
 The historical wording review shortened 39 descriptions and 11 existing comments,
 keeping acceptance criteria, test steps and evidence links. Its verification files

@@ -1,0 +1,35 @@
+{
+  "verified_at_utc": "2026-10-13T03:50:15.420Z",
+  "total_hours": 9,
+  "entries": [
+    {
+      "issue": "SCRUM-529",
+      "worklog_id": "10118",
+      "hours": 4,
+      "time_spent_seconds": 14400,
+      "started": "2026-10-12T23:49:53.336-0400",
+      "comment": "Reviewed all 84 risk cards, updated the ratings and mitigation notes, and linked the work needed to manage each risk.",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-529"
+    },
+    {
+      "issue": "SCRUM-530",
+      "worklog_id": "10119",
+      "hours": 4,
+      "time_spent_seconds": 14400,
+      "started": "2026-10-12T23:49:54.564-0400",
+      "comment": "Added Fall test cases, organized the suites and cases on the board, recorded the test results, and linked failed cases to bug-fix tickets.",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-530"
+    },
+    {
+      "issue": "SCRUM-440",
+      "worklog_id": "10120",
+      "hours": 1,
+      "time_spent_seconds": 3600,
+      "started": "2026-10-12T23:49:55.624-0400",
+      "comment": "Rearranged the deployment diagram, added protocol and port labels, and checked the published VP revision 55.",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-440"
+    }
+  ],
+  "source": "User-provided actual hours, recorded and read back from Jira.",
+  "allocation": "Recorded once on each parent task; no additional subtask worklogs."
+}
