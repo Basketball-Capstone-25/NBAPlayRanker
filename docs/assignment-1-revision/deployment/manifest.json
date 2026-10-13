@@ -1,0 +1,35 @@
+{
+  "verified": true,
+  "files": [
+    {
+      "path": "Basketball Playtype Ranker.vpp",
+      "bytes": 15609856,
+      "sha256": "b5fb0f566d1ebfde711ecdf7de087a8a0467dbb2d10b540907034ffd939b1c64"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2063,
+      "sha256": "751431604f3da1e10d5b7691b9547926bc0e2228faa9ae1b879d460779d45b32"
+    },
+    {
+      "path": "cloud-run-port-check.json",
+      "bytes": 412,
+      "sha256": "2dbecfdfd07398a6bc65066805fac2439ec4a2c7e8c1c068036b20a9f7d0b8bc"
+    },
+    {
+      "path": "deployment.jpg",
+      "bytes": 552565,
+      "sha256": "989d4678a5d28159a2fab845d735c66920c092524f33e4d486b65ba3bb0ef76f"
+    },
+    {
+      "path": "teamwork-status.json",
+      "bytes": 814,
+      "sha256": "aa517f70b4af48d147ed2d1201b4d489d8526b77570951d8894ee883c323e929"
+    },
+    {
+      "path": "verification.json",
+      "bytes": 4238,
+      "sha256": "5e72c1c5dc5e88631c671477a92f4c342102a2a32c3fcbe68a61b2c85d1fdbe7"
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "prepared_at": "2026-10-13T02:58:15.730880+00:00",
+  "source": "Live Jira readback after deployment layout completion and the pending publication update",
+  "responsibilities": [
+    "Deployment Model Revision",
+    "Risk Management Plan",
+    "Test Plan"
+  ],
+  "parent_statuses": {
+    "SCRUM-440": "In Progress",
+    "SCRUM-529": "Done",
+    "SCRUM-530": "Done"
+  },
+  "deployment": {
+    "parent": {
+      "key": "SCRUM-440",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-440",
+      "summary": "Deployment Model Revision",
+      "type": "Story",
+      "status": "In Progress",
+      "assignee": "Gurkaranjit Asahan",
+      "parent": "SCRUM-8"
+    },
+    "subtasks": [
+      {
+        "key": "SCRUM-566",
+        "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-566",
+        "summary": "Clarify deployment layout and protocol-port labels",
+        "type": "Dev Subtask",
+        "status": "Done",
+        "assignee": "Gurkaranjit Asahan",
+        "parent": "SCRUM-440",
+        "description": "Fix the deployment diagram layout and communication labels from the Assignment 1 feedback.\n\nAcceptance criteria:\n\n* Place devices, execution environments and artifacts so labels and connections are readable without overlap.\n* Label each communication path with the verified protocol and port used by the deployed app.\n* Preserve existing model identities and leave all other diagrams unchanged.\n* Save the revised native model and a readable deployment preview.\n\n",
+        "effort_estimate_hours": 2,
+        "comments": [
+          {
+            "id": "11133",
+            "body": "Rearranged the deployment diagram so the connections do not cross. Added HTTPS/TCP 443 labels to the six network paths and HTTP/TCP 8080 to the internal API server. The other 191 diagrams are unchanged.\n\n[Deployment diagram and checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/deployment)"
+          }
+        ]
+      },
+      {
+        "key": "SCRUM-567",
+        "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-567",
+        "summary": "Verify and publish the deployment diagram revision",
+        "type": "Dev Subtask",
+        "status": "In Progress",
+        "assignee": "Gurkaranjit Asahan",
+        "parent": "SCRUM-440",
+        "description": "Check and publish the deployment-only changes to the shared Visual Paradigm project.\n\nAcceptance criteria:\n\n* Compare the saved model with the shared baseline and confirm that only the deployment diagram changed.\n* Check the exported preview for readable labels, protocol-port details and clear connections.\n* Publish the revision to Teamwork and verify the new shared revision.\n* Commit the native model, preview and verification evidence to the shared repository.\n\n",
+        "effort_estimate_hours": 0.5,
+        "comments": [
+          {
+            "id": "11134",
+            "body": "The deployment-only model and preview are checked. The desktop Teamwork commit is still needed to publish the revision."
+          }
+        ]
+      }
+    ],
+    "previous_completed_children_preserved": [
+      "SCRUM-459",
+      "SCRUM-460",
+      "SCRUM-461",
+      "SCRUM-462",
+      "SCRUM-463"
+    ],
+    "scope_comment_id": "11132",
+    "publication": {
+      "status": "Pending desktop Teamwork commit",
+      "shared_revision_confirmed": false,
+      "comment_id": "11134"
+    },
+    "layout_verification": {
+      "verified": true,
+      "changed_diagrams": 1,
+      "unchanged_diagrams": 191,
+      "network_paths": 6,
+      "external_protocol_port": "HTTPS/TCP 443",
+      "internal_api_protocol_port": "HTTP/TCP 8080",
+      "native_sha256": "b5fb0f566d1ebfde711ecdf7de087a8a0467dbb2d10b540907034ffd939b1c64",
+      "evidence": "../deployment/verification.json",
+      "completion_comment_id": "11133"
+    }
+  },
+  "risk_and_test": {
+    "risk_parent": "SCRUM-529",
+    "risk_subtasks_done": [
+      "SCRUM-555",
+      "SCRUM-556",
+      "SCRUM-557",
+      "SCRUM-558"
+    ],
+    "test_parent": "SCRUM-530",
+    "test_subtasks_done": [
+      "SCRUM-559",
+      "SCRUM-560",
+      "SCRUM-561",
+      "SCRUM-562",
+      "SCRUM-563",
+      "SCRUM-564",
+      "SCRUM-565"
+    ]
+  },
+  "current_revision_subtask_counts": {
+    "total": 13,
+    "done": 12,
+    "in_progress": 1,
+    "to_do": 0
+  },
+  "interaction_work_retained_separately": {
+    "included_in_current_responsibilities": false,
+    "publication_confirmed": false,
+    "note": "Prepared interaction changes remain saved separately. They are excluded from the current deployment, risk and test revision and have not been published to Teamwork.",
+    "issues": [
+      {
+        "key": "SCRUM-528",
+        "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-528",
+        "summary": "Fix sequence lifelines and message signatures",
+        "type": "Task",
+        "status": "In Progress",
+        "assignee": "Gurkaranjit Asahan",
+        "parent": "SCRUM-8",
+        "description": "Fix the lifeline names and message labels in the shared Visual Paradigm project.\n\nThe prepared interaction changes are retained separately from the current deployment, risk and test revision. They have not been published to Teamwork.\n\nAcceptance criteria:\n\n* Use the same lifeline naming style across all sequence diagrams.\n* Label requests and replies with their inputs or returned values, including asynchronous messages.\n* Keep existing model IDs and unrelated diagrams unchanged.\n* Save readable diagrams in the shared GitHub repository and publish the model to Visual Paradigm Teamwork.\n\n"
+      },
+      {
+        "key": "SCRUM-554",
+        "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-554",
+        "summary": "Publish the revised sequences to Visual Paradigm Teamwork",
+        "type": "Dev Subtask",
+        "status": "In Progress",
+        "assignee": "Gurkaranjit Asahan",
+        "parent": "SCRUM-528",
+        "description": "The prepared sequence changes remain saved on main but are separate from the current deployment, risk and test revision. They have not been published to Teamwork.\n\nAcceptance criteria:\n\n* Publish the saved changes from VP Desktop.\n* Confirm the new shared revision matches the local project and has no pending changes.\n* Update the publication record and submission copy.\n\n[teamwork-status.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/teamwork-status.json)",
+        "effort_estimate_hours": 0.5
+      }
+    ],
+    "completed_preparation_subtasks": [
+      "SCRUM-551",
+      "SCRUM-552",
+      "SCRUM-553"
+    ],
+    "scope_comment_updated": "11128"
+  },
+  "effort": {
+    "new_deployment_estimate_hours": 2.5,
+    "actual_personal_hours": "Pending",
+    "worklogs_added": 0
+  },
+  "verification": {
+    "checks": {
+      "olderDeploymentCommentAndInlineScreenshotPreserved": true,
+      "previousFiveDeploymentChildrenPreserved": true,
+      "newChildrenLinkedTo440": true,
+      "newChildrenGurkOwned": true,
+      "newChildrenEffortEstimatesCorrect": true,
+      "interactionStatusesPreserved": true,
+      "interactionDescriptionsStateExcludedScope": true,
+      "noWorklogsOnChangedIssues": true,
+      "deploymentParentInProgress": true,
+      "layoutSubtaskDone": true,
+      "publicationSubtaskInProgress": true,
+      "newCommentsReadBack": true,
+      "noDeploymentWorklogs": true
+    },
+    "all_checks_passed": true
+  },
+  "historical_evidence": {
+    "preserved_files": [
+      "dev-subtasks.csv",
+      "dev-subtasks.json",
+      "plain-language-verification.json",
+      "revision-task-text.json",
+      "verification.json"
+    ],
+    "note": "The earlier 15-subtask snapshot records the previous interaction/risk/test scope. Its 14 Done and one open result is retained as historical evidence."
+  }
+}

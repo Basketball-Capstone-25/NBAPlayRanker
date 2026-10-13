@@ -5,26 +5,27 @@ context and several analyst pages. The fix tickets below are still open.
 
 Jira results
 
-The reviewed set has 115 Test Cases and 14 Test Suites, including 18 new Fall
-2026 cases in BST-137. Each new case has inputs, steps, expected results,
-use-case coverage and links to its feature or fix.
+There are 121 Test Cases and 16 Test Suites. This includes 18 new Fall 2026
+cases in BST-137. Each new case has inputs, steps, expected results, use-case
+coverage and links to its feature or fix.
 
-- Reviewed Test Cases: 97 Pass, 14 Fail and 4 Verify.
+- All Test Cases: 101 Pass, 14 Fail and 6 Verify.
 - New Fall cases: 8 Pass, 9 Fail and 1 Verify.
-- Reviewed Test Suites: 9 Pass and 5 Testing In Progress.
+- Test Suites: 8 Pass, 6 Testing In Progress and 2 Verify.
 
-Of the 97 passing cases, 95 have results from this test run. BST-128 and BST-129
-keep their earlier results. The four Verify cases are BST-111, which needs a
-latency target; BST-118 and BST-119, which need repaired shot data; and BST-146,
-which was not rerun. The 115 cases are now Task-level Test Cases under their
-14 original suites, which are Epic-level Test Suites. See hierarchy/ for the
-verified mapping.
+The initial 115-case review recorded 97 Pass, 14 Fail and four Verify. Of its
+97 passes, 95 had current-run evidence; BST-128 and BST-129 kept earlier results.
+The six older cases add four Pass and two Verify to the project totals.
 
-Six older cases and two older suites are outside that reviewed set.
-BST-1, BST-2, BST-3 and BST-6 passed browser checks. BST-4, BST-5, BST-13 and
-BST-18 remain Verify. Including these, the full project has 121 Test Cases
-(101 Pass, 14 Fail, 6 Verify) and 16 Test Suites (9 Pass, 5 Testing In Progress,
-2 Verify).
+BST-4/5 have revised baseline API definitions and still need execution.
+BST-111 needs a latency target; BST-118/119 need repaired shot data; BST-146
+was not rerun. These six cases remain Verify.
+
+All 121 cases now have a Task-level case type and an Epic-level suite parent.
+The six older cases were placed in the existing workspace and baseline suites.
+BST-29 is Testing In Progress because BST-4/5 remain Verify. The two unused
+legacy suites are clearly named and kept for history. See hierarchy/ for the
+current case and suite maps.
 
 All 121 cases are on the Kanban board, grouped by Test Suite. The backlog is
 disabled so the cases stay visible. Create future tests directly on the board.
@@ -157,7 +158,8 @@ Each case has its steps, result and feature or fix link.
 In tests/:
 - coverage.json lists the 18 new cases and results.
 - legacy-coverage.json maps 52 existing cases to exact test names.
-- jira-project-status.json lists the project totals and statuses.
+- jira-project-status.json preserves the earlier project snapshot. Current
+  grouping and suite totals are in ../hierarchy/current-hierarchy.json.
 - jira-verification.json and additional-jira-verification.json record the
   updated cases and suite results.
 - evidence-normalization.json records path-only edits to three shared logs.

@@ -1,10 +1,13 @@
 {
   "files": {
-    "READ-ME.txt": "5e8fe12c6dfcd94697cc0fed0703d8c9920f767c81231074441594c5d3d6d57c",
+    "READ-ME.txt": "595d7500cd7d9c41b4c9aabf717d6834d9e14a1533b1b8f81774087d3f7184b7",
     "board-observation-excerpt.txt": "0cc5adb25a6ebb143f6d066d67450bd0afeeab5bfb282415d87cda62a6efce5e",
     "board-verification.json": "11c0d8f9ad293948f40be7869074bf8247e0b1f43e31fb9f017e4e4db6c8053c",
     "browser-export-verification.json": "053e72a757032a503feba375c9b8d6dc96d18d0b551979b74234c10f57dc5124",
     "case-map.csv": "617bf1a5456e8b11ae2ce8f3f9b2cbc739324daaa507627f1ed3ef1c0ad39df8",
+    "current-case-map.csv": "93c070e4addaff4001825af6a68f49ceeed5d6c014a5dd48b3184796165ae22a",
+    "current-hierarchy.json": "c13f13b60af5aa5b6ce1b834e0c92820fae13542022e79f3dae590a16008cac9",
+    "current-suite-map.csv": "8c5addb0ecf3b194f482c145d3f426a1154c0df71ef56a3a61c7fcc0552f806b",
     "hierarchy-map.json": "547faf19cde26fa1307890f5164365d09323ecda9dea461fc103fe68ee606d62",
     "rest-preservation-verification.json": "884725b6d38a1ecf8c3d7861749170339f97c0db195cb3139fec7c843d3330d2",
     "suite-map.csv": "0458ad3388bb40c31e06928c98bf4f0f4ca277edee7d382ff9639083d7f1d9e6"
@@ -18,5 +21,8 @@
   "migration_verified": true,
   "verification_method": "Complete REST snapshot comparison after four exact approved wording edits, plus the earlier browser XML comparison.",
   "rest_checks_passed": 4650,
-  "rest_metadata_verified": true
+  "rest_metadata_verified": true,
+  "current_hierarchy_verified": true,
+  "current_case_count": 121,
+  "current_suite_count": 16
 }

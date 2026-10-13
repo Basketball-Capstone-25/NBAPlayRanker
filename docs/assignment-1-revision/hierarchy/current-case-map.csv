@@ -1,0 +1,122 @@
+Test Case,Title,Test Suite,Suite title,Current result,Hierarchy level,Assignee,Use-case labels
+BST-1,Data Explorer displays the current raw dataset,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc63"
+BST-2,"Data Explorer filters rows by season, team and side",BST-27,Access Analyst Workspace,Pass,0,Abdulrahman Mousa,"uc62, uc63"
+BST-3,Data Explorer CSV matches the visible raw data,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc63"
+BST-4,Baseline API returns the requested Top-K rankings,BST-29,Ranked list via API,Verify,0,Abdulrahman Mousa,"uc10, uc18, uc55"
+BST-5,Baseline API rejects missing or invalid parameters,BST-29,Ranked list via API,Verify,0,Gurkaranjit Asahan,"uc10, uc18, uc55"
+BST-6,Coach Matchup displays the Top-K baseline cards,BST-29,Ranked list via API,Pass,0,Abdulrahman Mousa,"uc18, uc71"
+BST-32,Analyst middleware allows the Data Explorer route,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc69"
+BST-33,Workspace API returns rows and matching counts,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc63"
+BST-34,Analyst profile can read the workspace API,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc69"
+BST-35,Workspace filters preserve the requested team and side,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc63"
+BST-36,Workspace row limits agree with response counts,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc63"
+BST-37,Coach profile cannot read the analyst workspace API,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc69"
+BST-38,Coach profile cannot export analyst workspace CSV,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc69"
+BST-39,Workspace API rejects a missing session,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc69"
+BST-40,Coach middleware redirects the analyst workspace route,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc71"
+BST-41,Signed-out workspace request keeps its return path,BST-27,Access Analyst Workspace,Pass,0,Gurkaranjit Asahan,"uc62, uc69"
+BST-42,Session validation accepts verified tokens and rejects missing or invalid tokens,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-43,Role lookup uses protected profiles and rejects invalid profile data,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-44,Analytics permission checks distinguish analyst and coach roles,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-45,Explicit local development mode permits a missing session,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-46,Session validation rejects a missing token,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-47,Session validation rejects a failed JWT verification,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-48,Session validation accepts verified subject claims,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-49,A failed token verification cannot produce a role,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-50,Coach access uses the protected profile role,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,"uc69, uc71"
+BST-51,Analyst access uses the current protected profile role,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,"uc69, uc71"
+BST-52,Unsupported and malformed profiles cannot grant a role,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,"uc69, uc71"
+BST-53,Explicit local development mode permits the analytics guard,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-54,Analytics permission rejects the coach role,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-55,Analytics permission accepts the analyst role,BST-28,Authenticate Analyst Access,Pass,0,Abdulrahman Mousa,uc69
+BST-56,Baseline ranking returns bounded matchup-specific results,BST-29,Ranked list via API,Pass,0,Gurkaranjit Asahan,"uc10, uc18"
+BST-57,Baseline API validates matchup and result count,BST-29,Ranked list via API,Pass,0,Gurkaranjit Asahan,uc18
+BST-58,Baseline returns five plays with ranking values,BST-29,Ranked list via API,Pass,0,Gurkaranjit Asahan,"uc10, uc55"
+BST-59,Baseline predictions are nonnegative for the test matchup,BST-29,Ranked list via API,Pass,0,Gurkaranjit Asahan,"uc10, uc55"
+BST-60,Baseline K=10 returns a nonempty bounded list,BST-29,Ranked list via API,Pass,0,Gurkaranjit Asahan,"uc10, uc55"
+BST-61,Changing the team changes baseline predictions,BST-29,Ranked list via API,Pass,0,Gurkaranjit Asahan,"uc10, uc55"
+BST-62,Baseline API returns the requested Top-K and matchup metadata,BST-29,Ranked list via API,Pass,0,Gurkaranjit Asahan,uc18
+BST-63,Baseline API rejects the same team on both sides,BST-29,Ranked list via API,Pass,0,Gurkaranjit Asahan,uc18
+BST-64,Baseline API rejects K=0,BST-29,Ranked list via API,Pass,0,Gurkaranjit Asahan,uc18
+BST-65,Coach workspace routes enforce the signed-in role,BST-30,Validate Coach Access,Pass,0,Abdulrahman Mousa,uc71
+BST-66,Ranking APIs enforce coach access,BST-30,Validate Coach Access,Pass,0,Abdulrahman Mousa,uc71
+BST-67,Coach middleware allows the matchup route,BST-30,Validate Coach Access,Pass,0,Abdulrahman Mousa,uc71
+BST-68,Coach middleware redirects analyst-only pages,BST-30,Validate Coach Access,Pass,0,Abdulrahman Mousa,uc71
+BST-69,Signed-in coach is redirected away from login,BST-30,Validate Coach Access,Pass,0,Abdulrahman Mousa,uc71
+BST-70,Coach profile can call the baseline API,BST-30,Validate Coach Access,Pass,0,Abdulrahman Mousa,"uc18, uc71"
+BST-71,Analyst profile cannot call the coach baseline API,BST-30,Validate Coach Access,Pass,0,Abdulrahman Mousa,"uc18, uc71"
+BST-72,Analyst profile cannot call the coach context API,BST-30,Validate Coach Access,Pass,0,Abdulrahman Mousa,"uc59, uc71"
+BST-73,Analyst profile cannot call the coach visualization API,BST-30,Validate Coach Access,Pass,0,Abdulrahman Mousa,uc71
+BST-74,Context helpers handle regulation clocks and score factors,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-75,"Context labels describe normal, trailing and leading situations",BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,uc59
+BST-76,Ridge model meets the documented historical evaluation checks,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,uc65
+BST-77,"Regulation clock starts with 2,880 seconds",BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-78,Regulation clock reaches zero at the fourth-quarter end,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-79,Regulation-clock helper returns zero during overtime,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-80,Third-quarter clock includes the remaining regulation periods,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-81,Opening tied-game context has zero urgency factors,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-82,Late trailing context raises late-game and trailing factors,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-83,Late large lead raises only the leading factor,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-84,Overtime context has maximum late-game weighting,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-85,Zero context factors use the normal label,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-86,Late trailing factors use the trailing label,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-87,Late leading factors use the leading label,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc50, uc59"
+BST-88,Ridge pipeline scales features before fitting,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc59, uc65"
+BST-89,Ridge fits 200 synthetic rows without invalid predictions,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc59, uc65"
+BST-90,Synthetic Ridge coefficients stay finite and bounded,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc59, uc65"
+BST-91,Historical Ridge cross-validation beats the league-mean baseline,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc59, uc65"
+BST-92,Historical held-out Ridge predictions stay within the PPP bounds,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc59, uc65"
+BST-93,Every historical Ridge fold meets the RMSE threshold,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc59, uc65"
+BST-94,Model feature and target arrays are aligned and finite,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc59, uc65"
+BST-95,Increasing Ridge alpha reduces synthetic coefficient norms,BST-31,Rank Plays with Game Context,Pass,0,Abdulrahman Mousa,"uc59, uc65"
+BST-97,Rationale generated for each Top-K play,BST-96,Generate Play Explanations,Pass,0,,"uc60, uc67"
+BST-98,Rationale values match ranking output,BST-96,Generate Play Explanations,Pass,0,,"uc60, uc67"
+BST-99,Baseline rationale states when context is missing,BST-96,Generate Play Explanations,Fail,0,,uc67
+BST-100,NLP parses a trailing fourth-quarter context,BST-96,Generate Play Explanations,Pass,0,,"uc45, uc50"
+BST-101,NLP parses a leading score margin,BST-96,Generate Play Explanations,Pass,0,,"uc45, uc50"
+BST-102,Unparseable NLP text produces neutral context defaults,BST-96,Generate Play Explanations,Pass,0,,"uc45, uc50"
+BST-103,NLP rejects out-of-range values before ranking,BST-96,Generate Play Explanations,Pass,0,,"uc45, uc50"
+BST-105,Play-type dataset loads from storage,BST-104,Access Stored Datasets,Pass,0,,uc62
+BST-106,Season and team query returns matching rows,BST-104,Access Stored Datasets,Pass,0,,"uc62, uc63"
+BST-107,Missing play-type dataset has a controlled error,BST-104,Access Stored Datasets,Fail,0,,uc62
+BST-109,Deployed health endpoint responds,BST-108,API Stability and Deployment,Pass,0,,"uc62, uc71"
+BST-110,Concurrent Top-K requests complete,BST-108,API Stability and Deployment,Pass,0,,uc18
+BST-111,Top-K response time meets an agreed threshold,BST-108,API Stability and Deployment,Verify,0,,uc18
+BST-112,Deployed Matchup page loads data from the API,BST-108,API Stability and Deployment,Pass,0,,"uc18, uc71"
+BST-113,Missing required configuration stops backend startup,BST-108,API Stability and Deployment,Fail,0,,"uc62, uc64"
+BST-115,Retained second-dataset schema maps required model columns,BST-114,Validate Second Dataset and Models,Pass,0,,"uc62, uc64"
+BST-116,Schema mapping reports missing and unmapped columns,BST-114,Validate Second Dataset and Models,Fail,0,,"uc62, uc64"
+BST-117,Shot features are complete and available before possession,BST-114,Validate Second Dataset and Models,Fail,0,,uc70
+BST-118,Selected shot model beats baseline on a holdout season,BST-114,Validate Second Dataset and Models,Verify,0,,"uc65, uc70"
+BST-119,Selected shot model reports cross-validation statistics,BST-114,Validate Second Dataset and Models,Verify,0,,"uc65, uc70"
+BST-121,Top-K uplift matches possession-weighted calculations,BST-120,Iteration 14 elaboration verification,Pass,0,Gurkaranjit Asahan,uc29
+BST-122,Top-K JSON and CSV match and enforce analyst access,BST-120,Iteration 14 elaboration verification,Pass,0,Gurkaranjit Asahan,"uc29, uc69"
+BST-123,Calibration trains on earlier seasons only,BST-120,Iteration 14 elaboration verification,Pass,0,Gurkaranjit Asahan,"uc28, uc65"
+BST-124,Calibration values and limits match the analyst page,BST-120,Iteration 14 elaboration verification,Pass,0,Gurkaranjit Asahan,"uc62, uc65"
+BST-125,"Gameplan storage validates notes, matchups and revisions",BST-120,Iteration 14 elaboration verification,Pass,0,Gurkaranjit Asahan,"uc42, uc48"
+BST-126,Gameplan ownership and role restrictions hold,BST-120,Iteration 14 elaboration verification,Pass,0,Gurkaranjit Asahan,"uc42, uc48, uc71"
+BST-127,"Production health, access rules and deployment checks",BST-120,Iteration 14 elaboration verification,Pass,0,Gurkaranjit Asahan,"uc62, uc71"
+BST-128,TC-I14-DEPLOY-02 — Authenticated coach and analyst production journeys,BST-120,Iteration 14 elaboration verification,Pass,0,Gurkaranjit Asahan,
+BST-129,Signed-in browser downloads preserve authorization,BST-120,Iteration 14 elaboration verification,Pass,0,Gurkaranjit Asahan,
+BST-131,Top-K uplift matches the team-season reference,BST-130,Compute & Export Top-K Uplift,Pass,0,,uc29
+BST-133,"Synergy data quality flags schema, missing data and coverage",BST-132,Run Data Quality Checks,Pass,0,,uc63
+BST-135,Exports keep values and headers consistent across formats,BST-134,Export Results (CSV/PDF),Pass,0,,uc62
+BST-136,NLP handles concurrent requests within local memory limits,BST-96,Generate Play Explanations,Pass,0,,"uc45, uc50"
+BST-138,Shot data uses different shooting and opposing teams,BST-137,Fall 2026 elaboration regression tests,Fail,0,Gurkaranjit Asahan,"uc63, uc70"
+BST-139,Shot import keeps the event team separate from home team and score,BST-137,Fall 2026 elaboration regression tests,Fail,0,Gurkaranjit Asahan,"uc63, uc70"
+BST-140,Gameplan uses the new situation on the first Build,BST-137,Fall 2026 elaboration regression tests,Fail,0,Gurkaranjit Asahan,"uc45, uc50"
+BST-141,Gameplan forwards supported coaching conditions to ranking,BST-137,Fall 2026 elaboration regression tests,Fail,0,Gurkaranjit Asahan,"uc45, uc50"
+BST-142,Gameplan preserves overtime from the parsed situation,BST-137,Fall 2026 elaboration regression tests,Fail,0,Gurkaranjit Asahan,"uc11, uc50"
+BST-143,Analyst Shot Plan page can use its required API,BST-137,Fall 2026 elaboration regression tests,Fail,0,Gurkaranjit Asahan,"uc62, uc70"
+BST-144,Analyst Shot Heatmap page can use its required API,BST-137,Fall 2026 elaboration regression tests,Fail,0,Gurkaranjit Asahan,"uc62, uc70"
+BST-145,Model Metrics finishes loading after successful metadata,BST-137,Fall 2026 elaboration regression tests,Fail,0,Gurkaranjit Asahan,"uc62, uc65"
+BST-146,Shot Model Metrics completes within its request limit,BST-137,Fall 2026 elaboration regression tests,Verify,0,Gurkaranjit Asahan,"uc65, uc70"
+BST-147,Shot Statistical Analysis renders the returned response,BST-137,Fall 2026 elaboration regression tests,Fail,0,Gurkaranjit Asahan,"uc62, uc65"
+BST-148,A stale Gameplan update cannot overwrite a newer revision,BST-137,Fall 2026 elaboration regression tests,Pass,0,Gurkaranjit Asahan,"uc42, uc48"
+BST-149,One account cannot read another account profile,BST-137,Fall 2026 elaboration regression tests,Pass,0,Gurkaranjit Asahan,"uc69, uc71"
+BST-150,Export proxy rejects a cookie session for the wrong verified user,BST-137,Fall 2026 elaboration regression tests,Pass,0,Gurkaranjit Asahan,uc62
+BST-151,Export proxy rejects arbitrary backend targets,BST-137,Fall 2026 elaboration regression tests,Pass,0,Gurkaranjit Asahan,uc62
+BST-152,Export proxy rejects foreign-site download requests,BST-137,Fall 2026 elaboration regression tests,Pass,0,Gurkaranjit Asahan,uc62
+BST-153,Export proxy rejects redirects and wrong file content,BST-137,Fall 2026 elaboration regression tests,Pass,0,Gurkaranjit Asahan,uc62
+BST-154,Export proxy keeps denied responses out of downloaded files,BST-137,Fall 2026 elaboration regression tests,Pass,0,Gurkaranjit Asahan,uc62
+BST-155,NLP rejects empty and overlength coaching prompts,BST-137,Fall 2026 elaboration regression tests,Pass,0,Gurkaranjit Asahan,"uc45, uc50"

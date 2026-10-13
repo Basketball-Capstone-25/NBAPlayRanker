@@ -1,22 +1,31 @@
-Revision development breakdown
+Current revision responsibilities
 
-The 15 Dev Subtasks have acceptance criteria and links to the completed work.
-All are assigned to Gurkaranjit Asahan in Iteration-15.
+Gurkaranjit Asahan's current scope is Deployment Model Revision, Risk Management
+Plan and Test Plan. Use current-scope.json for the latest ownership and statuses.
 
-SCRUM-551 to SCRUM-554: sequence diagrams and VP publication.
-SCRUM-555 to SCRUM-558: risk review, mitigation links and exports.
-SCRUM-559 to SCRUM-565: test cases, execution, bug links and the handoff.
+SCRUM-440 is In Progress. SCRUM-566 is Done: the deployment layout and protocol-port
+labels are corrected (2-hour estimate). The other 191 diagrams are unchanged.
+SCRUM-567 is In Progress (0.5-hour estimate); the checked model and preview still
+need a desktop Teamwork commit. The five earlier completed deployment subtasks,
+SCRUM-459 to SCRUM-463, are preserved.
 
-14 are Done. SCRUM-554 remains open for VP publication. The hierarchy migration
-is verified and SCRUM-564 is Done. Parent tasks SCRUM-529 and SCRUM-530 are Done;
-SCRUM-528 stays In Progress until the shared VP revision is published.
+SCRUM-529 and its four risk subtasks, SCRUM-555 to SCRUM-558, are Done.
+SCRUM-530 and its seven test subtasks, SCRUM-559 to SCRUM-565, are Done.
+The test hierarchy migration is verified and SCRUM-564 is Done.
 
-Estimates are in Jira's Effort Estimate field. Actual worklogs are pending.
+The prepared interaction changes remain separate from this revision. SCRUM-528
+and SCRUM-554 stay In Progress; their sequence changes have not been published
+to Teamwork. Their saved work and history are retained.
 
-The wording review shortened 39 descriptions and 11 existing comments, keeping
-acceptance criteria, test steps and evidence links. A separate completion
-comment records the finished hierarchy migration on SCRUM-564.
+The earlier dev-subtasks.json and CSV record 15 subtasks: 14 Done and one open.
+That snapshot includes the separate interaction work. The current revision
+breakdown has 12 completed subtasks and one open deployment publication subtask.
 
-Use dev-subtasks.json for the breakdown and revision-task-text.json for the
-updated SCRUM wording. The verification files include the final BST text edits
-and focused Jira readback checks.
+Estimates are in Jira's Effort Estimate field. Actual personal hours are pending;
+no worklogs were added during this update.
+
+The historical wording review shortened 39 descriptions and 11 existing comments,
+keeping acceptance criteria, test steps and evidence links. Its verification files
+and revision-task-text.json remain unchanged. current-scope.json records the newer
+scope clarification and deployment tasks. The live risk review is saved in
+../risks/latest-review.json.

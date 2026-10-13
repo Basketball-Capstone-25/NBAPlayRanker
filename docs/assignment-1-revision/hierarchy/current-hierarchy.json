@@ -1,0 +1,2475 @@
+{
+  "source": "Live Jira full-project readback after the six legacy case assignments.",
+  "case_count": 121,
+  "suite_count": 16,
+  "all_121_cases_have_valid_level_1_suite_parent": true,
+  "case_results": {
+    "Pass": 101,
+    "Fail": 14,
+    "Verify": 6
+  },
+  "suite_results": {
+    "Pass": 8,
+    "Testing In Progress": 6,
+    "Verify": 2
+  },
+  "case_changes": [
+    {
+      "key": "BST-1",
+      "parent_before": null,
+      "parent_after": "BST-27",
+      "status": "Pass",
+      "expected_fields_verified": true,
+      "existing_outcome_owner_comments_type_preserved": true,
+      "comment_count": 3,
+      "description_comparison": "Exact HTML after ignoring Jira-added paragraph wrappers inside list items."
+    },
+    {
+      "key": "BST-2",
+      "parent_before": null,
+      "parent_after": "BST-27",
+      "status": "Pass",
+      "expected_fields_verified": true,
+      "existing_outcome_owner_comments_type_preserved": true,
+      "comment_count": 3,
+      "description_comparison": "Exact HTML after ignoring Jira-added paragraph wrappers inside list items."
+    },
+    {
+      "key": "BST-3",
+      "parent_before": null,
+      "parent_after": "BST-27",
+      "status": "Pass",
+      "expected_fields_verified": true,
+      "existing_outcome_owner_comments_type_preserved": true,
+      "comment_count": 3,
+      "description_comparison": "Exact HTML after ignoring Jira-added paragraph wrappers inside list items."
+    },
+    {
+      "key": "BST-4",
+      "parent_before": null,
+      "parent_after": "BST-29",
+      "status": "Verify",
+      "expected_fields_verified": true,
+      "existing_outcome_owner_comments_type_preserved": true,
+      "comment_count": 2,
+      "description_comparison": "Exact HTML after ignoring Jira-added paragraph wrappers inside list items."
+    },
+    {
+      "key": "BST-5",
+      "parent_before": null,
+      "parent_after": "BST-29",
+      "status": "Verify",
+      "expected_fields_verified": true,
+      "existing_outcome_owner_comments_type_preserved": true,
+      "comment_count": 1,
+      "description_comparison": "Exact HTML after ignoring Jira-added paragraph wrappers inside list items."
+    },
+    {
+      "key": "BST-6",
+      "parent_before": null,
+      "parent_after": "BST-29",
+      "status": "Pass",
+      "expected_fields_verified": true,
+      "existing_outcome_owner_comments_type_preserved": true,
+      "comment_count": 3,
+      "description_comparison": "Exact HTML after ignoring Jira-added paragraph wrappers inside list items."
+    }
+  ],
+  "suite_rollup_change": {
+    "key": "BST-29",
+    "previous_status": "Pass",
+    "current_status": "Testing In Progress",
+    "reason": "BST-4 and BST-5 remain Verify after being placed in this suite.",
+    "cases": 12,
+    "Pass": 10,
+    "Verify": 2
+  },
+  "workspace_suite": {
+    "key": "BST-27",
+    "status": "Pass",
+    "cases": 13,
+    "Pass": 13
+  },
+  "cases": [
+    {
+      "key": "BST-1",
+      "title": "Data Explorer displays the current raw dataset",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "FA1-DataExplorer",
+        "UC1-ViewData",
+        "assignment-1-revision",
+        "data-explorer",
+        "fall-2026",
+        "pass",
+        "uc62",
+        "uc63"
+      ],
+      "description": "<p>Use cases: UC62, UC63.</p><p>Sign in as analyst and open Data Explorer. Use season 2024-25, TOR, offense and Spotup. Expect one raw-data row, no prediction column and no error. Then select 2023-24, TOR, offense, All play types; expect eleven rows. Evidence: analyst-role-redirect.txt and data-explorer-filter-browser.txt.</p>",
+      "created": "2025-12-07T22:05:40.072-0500"
+    },
+    {
+      "key": "BST-2",
+      "title": "Data Explorer filters rows by season, team and side",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "FA1-DataExplorer",
+        "UC1-ViewData",
+        "assignment-1-revision",
+        "data-explorer",
+        "fall-2026",
+        "pass",
+        "uc62",
+        "uc63"
+      ],
+      "description": "<p>Use cases: UC62, UC63.</p><p>Sign in as analyst. Select 2023-24, TOR, offense and All play types. Export the loaded data and compare each SEASON, TEAM_ABBREVIATION and SIDE field. Expect eleven matching rows and no values from another filter. Evidence: data-explorer-filter-browser.txt and data-explorer-download-verification.json.</p>",
+      "created": "2025-12-07T22:06:58.178-0500"
+    },
+    {
+      "key": "BST-3",
+      "title": "Data Explorer CSV matches the visible raw data",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "FA1-DataExplorer",
+        "UC2-Export",
+        "assignment-1-revision",
+        "data-explorer",
+        "fall-2026",
+        "pass",
+        "uc62",
+        "uc63"
+      ],
+      "description": "<p>Use cases: UC62, UC63.</p><p>Load 2023-24, TOR, offense, All play types with no UI search. Click Export CSV, open the saved file and compare every visible play-type, side, possessions, usage, PPP, eFG and TOV value using the displayed rounding. Expect eleven rows and every visible value to match. Extra raw CSV columns are allowed; prediction columns are not. Evidence: data-explorer-download-verification.json, data-explorer-table.json and team_playtypes_2023-24_TOR_offense.csv.</p>",
+      "created": "2025-12-07T22:07:46.473-0500"
+    },
+    {
+      "key": "BST-4",
+      "title": "Baseline API returns the requested Top-K rankings",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Verify",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "FA2-Baseline",
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc18",
+        "uc55"
+      ],
+      "description": "<p>Use cases: UC10/UC55 Generate Baseline Top-K Plays; UC18 Ranked List via API.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-321\">SCRUM-321</a>.</p><p>Precondition: the backend has loaded its play-type data and the request uses a valid coach session.</p><ol><li><p>Send GET /rank-plays/baseline?season=2024-25&amp;our=TOR&amp;opp=BOS&amp;k=5&amp;w_off=0.7.</p></li><li><p>Check the response metadata and each ranking.</p></li></ol><p>Expected result: HTTP 200; season=2024-25, our_team=TOR, opp_team=BOS, k=5, w_off=0.7 and w_def=0.3 (allow normal floating-point rounding). The rankings array contains five items, each with PLAY_TYPE, PPP_PRED and PPP_GAP.</p><p>This revised definition remains Verify until executed.</p>",
+      "created": "2025-12-07T22:08:37.845-0500"
+    },
+    {
+      "key": "BST-5",
+      "title": "Baseline API rejects missing or invalid parameters",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Verify",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "FA2-Baseline",
+        "Validation",
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc18",
+        "uc55"
+      ],
+      "description": "<p>Use cases: UC10/UC55 Generate Baseline Top-K Plays; UC18 Ranked List via API.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-321\">SCRUM-321</a>.</p><p>Precondition: the backend has loaded its play-type data and the request uses a valid coach session.</p><ol><li><p>Start with GET /rank-plays/baseline?season=2024-25&amp;our=TOR&amp;opp=BOS&amp;k=5&amp;w_off=0.7.</p></li><li><p>In separate requests, omit our; set k=-1; use season=invalid-season; then set our to an empty string. Keep the other parameters valid each time.</p></li><li><p>Check the status and JSON error body.</p></li></ol><p>Expected result: missing our and k=-1 return HTTP 422. The unknown season and empty our value return HTTP 400. Each response contains a detail field and no rankings result.</p><p>This revised definition remains Verify until executed.</p>",
+      "created": "2025-12-07T22:09:36.507-0500"
+    },
+    {
+      "key": "BST-6",
+      "title": "Coach Matchup displays the Top-K baseline cards",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "FA3-Tactics",
+        "UC4-TopKUI",
+        "assignment-1-revision",
+        "coach-access",
+        "fall-2026",
+        "pass",
+        "uc18",
+        "uc71"
+      ],
+      "description": "<p>Use cases: UC18, UC71.</p><p>Sign in as coach and open Matchup. Select 2024-25, TOR against BOS, K=5. Expect five cards with play-type names and predicted PPP, without raw errors. Evidence: matchup-browser.txt. Initial client navigation stayed Loading; a reload completed successfully, so this result does not establish navigation performance.</p>",
+      "created": "2025-12-07T22:10:17.940-0500"
+    },
+    {
+      "key": "BST-32",
+      "title": "Analyst middleware allows the Data Explorer route",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC69.</p><p>Scope: Frontend middleware unit test with stubbed session/profile.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>npx vitest run tests/middleware.auth-analyst.test.ts -t &#039;allows analyst to access /data-explorer&#039;</code>.</p></li><li><p>Use an analyst profile and GET /data-explorer.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The response is 200 and has no redirect location.</p><p>Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:32:55.444-0400"
+    },
+    {
+      "key": "BST-33",
+      "title": "Workspace API returns rows and matching counts",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC63.</p><p>Scope: Local API data-flow test with explicit development authentication bypass.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_analyst_workspace_api.py::test_access_workspace_returns_table_with_meta.</p></li><li><p>Use GET /data/team-playtypes for 2019-20.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The response is 200, includes season, total_rows, returned_rows and rows, and returned_rows matches the list length.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:32:56.803-0400"
+    },
+    {
+      "key": "BST-34",
+      "title": "Analyst profile can read the workspace API",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC69.</p><p>Scope: Local backend API test with stubbed verified session/profile and strict role checks.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_can_access_data_explorer -q</code>.</p></li><li><p>Use a current analyst role and GET /data/team-playtypes for 2019-20.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The API accepts the analyst role and returns 200.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:32:57.926-0400"
+    },
+    {
+      "key": "BST-35",
+      "title": "Workspace filters preserve the requested team and side",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC63.</p><p>Scope: Local API data-flow test with explicit development authentication bypass.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_analyst_workspace_api.py::test_access_workspace_applies_team_and_side_filters.</p></li><li><p>Use season 2019-20, team TOR, side offense and limit 100.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The API returns 200 and each returned row matches the requested season, team and side.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:32:59.147-0400"
+    },
+    {
+      "key": "BST-36",
+      "title": "Workspace row limits agree with response counts",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC63.</p><p>Scope: Local API data-flow test with explicit development authentication bypass.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_analyst_workspace_api.py::test_access_workspace_respects_limit_and_reports_counts.</p></li><li><p>Use GET /data/team-playtypes for 2019-20 with limit 7.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The response has at most seven rows, returned_rows equals the list length and total_rows is at least returned_rows.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:00.379-0400"
+    },
+    {
+      "key": "BST-37",
+      "title": "Coach profile cannot read the analyst workspace API",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC69.</p><p>Scope: Local backend API test with stubbed verified session/profile and strict role checks.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_coach_blocked_from_data_explorer -q</code>.</p></li><li><p>Use a coach role and GET /data/team-playtypes for 2019-20.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The API returns 403.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:01.534-0400"
+    },
+    {
+      "key": "BST-38",
+      "title": "Coach profile cannot export analyst workspace CSV",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC69.</p><p>Scope: Local backend API test with stubbed verified session/profile and strict role checks.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_coach_blocked_from_data_csv_export -q</code>.</p></li><li><p>Use a coach role and GET /data/team-playtypes.csv for 2019-20.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The API returns 403.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:02.736-0400"
+    },
+    {
+      "key": "BST-39",
+      "title": "Workspace API rejects a missing session",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC69.</p><p>Scope: Local backend API test with stubbed verified session/profile and strict role checks.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_no_token_data_explorer -q</code>.</p></li><li><p>Use GET /data/team-playtypes for 2019-20 without Authorization.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The API returns 401.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:03.854-0400"
+    },
+    {
+      "key": "BST-40",
+      "title": "Coach middleware redirects the analyst workspace route",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC71.</p><p>Scope: Frontend middleware unit test with stubbed session/profile.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>npx vitest run tests/middleware.auth-analyst.test.ts -t &#039;redirects coach away from /data-explorer&#039;</code>.</p></li><li><p>Use a coach profile and GET /data-explorer.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The middleware returns a redirect to /matchup.</p><p>Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:33:05.029-0400"
+    },
+    {
+      "key": "BST-41",
+      "title": "Signed-out workspace request keeps its return path",
+      "parent": "BST-27",
+      "parent_title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC69.</p><p>Scope: Frontend middleware unit test with stubbed session/profile.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>npx vitest run tests/middleware.auth-analyst.test.ts -t &#039;redirects unauthenticated user to /login with next&#039;</code>.</p></li><li><p>Use no session and GET /data-explorer?x=1.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The middleware redirects to /login with the encoded original path and query in next.</p><p>Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:33:06.294-0400"
+    },
+    {
+      "key": "BST-42",
+      "title": "Session validation accepts verified tokens and rejects missing or invalid tokens",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use cases: UC69.</p><p>Scope: The listed local component/API checks; production observations are identified separately.</p><p>Preconditions: install the pinned development dependencies and use the repository fixtures.</p><p>Run:\npython -m pytest backend/tests/test_access_control.py -q</p><p>Check these inputs and results:</p><ol><li><p>With the development-auth switch enabled and validate_session(None). Expected: Session validation returns True.</p></li><li><p>With development bypass disabled and validate_session(None). Expected: Session validation returns False.</p></li><li><p>With development bypass disabled and the JWT verifier returning no claims. Expected: Session validation returns False.</p></li><li><p>With development bypass disabled and verified claims with a subject and valid expiry. Expected: Session validation returns True.</p></li></ol><p>Related cases: BST-45, BST-46, BST-47, BST-48.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.\nBrowser steps: load Matchup as coach; sign out; open /matchup; sign in as analyst with next=/matchup. Expect rankings for the coach, a login redirect after sign-out and Data Explorer for the analyst. Evidence: matchup-browser.txt, session-signout-browser.txt and analyst-role-redirect.txt.</p>",
+      "created": "2026-04-12T22:33:07.429-0400"
+    },
+    {
+      "key": "BST-43",
+      "title": "Role lookup uses protected profiles and rejects invalid profile data",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use cases: UC69.</p><p>Scope: The listed local component/API checks; production observations are identified separately.</p><p>Preconditions: install the pinned development dependencies and use the repository fixtures.</p><p>Run:\npython -m pytest backend/tests/test_access_control.py -q\npython -m pytest backend/tests/test_supabase_profiles.py -q</p><p>Check these inputs and results:</p><ol><li><p>With the JWT verifier returning no claims. Expected: Role lookup returns None.</p></li><li><p>With empty, pending, unsupported admin-role, incorrectly shaped and null profile responses. Expected: All five profile responses produce no authorized role.</p></li></ol><p>Related cases: BST-49, BST-50, BST-51, BST-52.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.\nAlso run backend/tests/test_supabase_profiles.py and the transactional protected-profile SQL suite. A protected coach/analyst role overrides conflicting user metadata; self-updates cannot change the role. Evidence: sql-verification.json and the BST-50/51 execution records.</p>",
+      "created": "2026-04-12T22:33:08.634-0400"
+    },
+    {
+      "key": "BST-44",
+      "title": "Analytics permission checks distinguish analyst and coach roles",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use cases: UC69.</p><p>Scope: The listed local component/API checks; production observations are identified separately.</p><p>Preconditions: install the pinned development dependencies and use the repository fixtures.</p><p>Run:\npython -m pytest backend/tests/test_access_control.py -q</p><p>Check these inputs and results:</p><ol><li><p>With the development-auth switch enabled and check_user_access(None, analytics). Expected: The analytics permission check returns True.</p></li><li><p>With development bypass disabled and check_user_access(coach, analytics). Expected: The analytics permission check returns False.</p></li><li><p>With development bypass disabled and check_user_access(analyst, analytics). Expected: The analytics permission check returns True.</p></li></ol><p>Related cases: BST-53, BST-54, BST-55.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:33:09.766-0400"
+    },
+    {
+      "key": "BST-45",
+      "title": "Explicit local development mode permits a missing session",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC69.</p><p>Scope: Local backend unit test. This bypass is a local test configuration; it is not enabled for production access.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_control.py::test_validate_session_dev_mode_allows.</p></li><li><p>Use the development-auth switch enabled and validate_session(None).</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Session validation returns True.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:10.966-0400"
+    },
+    {
+      "key": "BST-46",
+      "title": "Session validation rejects a missing token",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC69.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_control.py::test_validate_session_rejects_none_token.</p></li><li><p>Use development bypass disabled and validate_session(None).</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Session validation returns False.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:12.118-0400"
+    },
+    {
+      "key": "BST-47",
+      "title": "Session validation rejects a failed JWT verification",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC69.</p><p>Scope: Local backend unit test. JWT decoding is stubbed in this unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_control.py::test_validate_session_rejects_invalid_jwt.</p></li><li><p>Use development bypass disabled and the JWT verifier returning no claims.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Session validation returns False.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:13.417-0400"
+    },
+    {
+      "key": "BST-48",
+      "title": "Session validation accepts verified subject claims",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC69.</p><p>Scope: Local backend unit test. JWT decoding is stubbed in this unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_control.py::test_validate_session_accepts_valid_jwt.</p></li><li><p>Use development bypass disabled and verified claims with a subject and valid expiry.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Session validation returns True.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:14.603-0400"
+    },
+    {
+      "key": "BST-49",
+      "title": "A failed token verification cannot produce a role",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC69.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_control.py::test_get_user_role_returns_none_on_invalid_token.</p></li><li><p>Use the JWT verifier returning no claims.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Role lookup returns None.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:15.830-0400"
+    },
+    {
+      "key": "BST-50",
+      "title": "Coach access uses the protected profile role",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "uc69",
+        "uc71"
+      ],
+      "description": "<p>Covers UC69 Authenticate Analyst Access and UC71 Validate Coach Access.</p><p>Steps:</p><ol><li><p>Give a fixture user conflicting or stale coach claims in signup/token metadata.</p></li><li><p>Set the current protected profile role independently.</p></li><li><p>Check backend role lookup and frontend access decisions.</p></li></ol><p>Expected result: Authorization follows the current protected profile. User-editable metadata cannot grant coach access; missing, pending and unavailable profiles fail closed.</p>",
+      "created": "2026-04-12T22:33:17.056-0400"
+    },
+    {
+      "key": "BST-51",
+      "title": "Analyst access uses the current protected profile role",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "uc69",
+        "uc71"
+      ],
+      "description": "<p>Covers UC69 Authenticate Analyst Access and UC71 Validate Coach Access.</p><p>Steps:</p><ol><li><p>Use a fixture with an analyst profile and a conflicting metadata role.</p></li><li><p>Check the returned role and analyst authorization.</p></li><li><p>Change or remove the trusted fixture role and repeat.</p></li></ol><p>Expected result: The current protected profile controls analyst access. An earlier metadata claim does not preserve access after the protected role changes.</p>",
+      "created": "2026-04-12T22:33:18.182-0400"
+    },
+    {
+      "key": "BST-52",
+      "title": "Unsupported and malformed profiles cannot grant a role",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC69, UC71.</p><p>Scope: Local backend unit test. The profile HTTP response is stubbed.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_supabase_profiles.py::test_missing_pending_and_malformed_profiles_deny_access.</p></li><li><p>Use empty, pending, unsupported admin-role, incorrectly shaped and null profile responses.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: All five profile responses produce no authorized role.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:19.400-0400"
+    },
+    {
+      "key": "BST-53",
+      "title": "Explicit local development mode permits the analytics guard",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC69.</p><p>Scope: Local backend unit test. This bypass is a local test configuration; it is not enabled for production access.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_control.py::test_check_user_access_dev_mode_allows.</p></li><li><p>Use the development-auth switch enabled and check_user_access(None, analytics).</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The analytics permission check returns True.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:20.507-0400"
+    },
+    {
+      "key": "BST-54",
+      "title": "Analytics permission rejects the coach role",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC69.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_control.py::test_check_user_access_rejects_wrong_role.</p></li><li><p>Use development bypass disabled and check_user_access(coach, analytics).</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The analytics permission check returns False.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:21.593-0400"
+    },
+    {
+      "key": "BST-55",
+      "title": "Analytics permission accepts the analyst role",
+      "parent": "BST-28",
+      "parent_title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC69.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_access_control.py::test_check_user_access_accepts_correct_role.</p></li><li><p>Use development bypass disabled and check_user_access(analyst, analytics).</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The analytics permission check returns True.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:22.719-0400"
+    },
+    {
+      "key": "BST-56",
+      "title": "Baseline ranking returns bounded matchup-specific results",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc10",
+        "uc18"
+      ],
+      "description": "<p>Use cases: UC10, UC18.</p><p>Scope: The listed local component/API checks; production observations are identified separately.</p><p>Preconditions: install the pinned development dependencies and use the repository fixtures.</p><p>Run:\npython -m pytest backend/tests/test_baseline.py -q</p><p>Check these inputs and results:</p><ol><li><p>With 2019-20 TOR against BOS with K=5. Expected: Exactly five rows are returned with PLAY_TYPE, PPP_PRED and PPP_GAP columns.</p></li><li><p>With 2019-20 TOR against BOS with K=5. Expected: Every returned PPP_PRED value is at least zero.</p></li><li><p>With 2019-20 TOR against BOS with K=10. Expected: The result contains between one and ten rows.</p></li><li><p>With 2019-20 LAL against BOS and MIA against BOS, both K=5. Expected: The two PPP_PRED lists differ.</p></li></ol><p>Related cases: BST-58, BST-59, BST-60, BST-61.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:33:23.837-0400"
+    },
+    {
+      "key": "BST-57",
+      "title": "Baseline API validates matchup and result count",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc18"
+      ],
+      "description": "<p>Use cases: UC18.</p><p>Scope: The listed local component/API checks; production observations are identified separately.</p><p>Preconditions: install the pinned development dependencies and use the repository fixtures.</p><p>Run:\npython -m pytest backend/tests/test_baseline_api.py -q</p><p>Check these inputs and results:</p><ol><li><p>With 2019-20 TOR against BOS with K=3. Expected: The API returns 200, three rows, matching matchup metadata and the expected ranking columns.</p></li><li><p>With 2019-20 TOR against TOR with K=5. Expected: The API returns 400 and explains that the teams must differ.</p></li><li><p>With 2019-20 TOR against BOS with K=0. Expected: Query validation returns 422.</p></li></ol><p>Related cases: BST-62, BST-63, BST-64.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:33:24.943-0400"
+    },
+    {
+      "key": "BST-58",
+      "title": "Baseline returns five plays with ranking values",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "description": "<p>Use-case coverage: UC10, UC55.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_baseline.py::test_rank_returns_k_rows.</p></li><li><p>Use 2019-20 TOR against BOS with K=5.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Exactly five rows are returned with PLAY_TYPE, PPP_PRED and PPP_GAP columns.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:26.191-0400"
+    },
+    {
+      "key": "BST-59",
+      "title": "Baseline predictions are nonnegative for the test matchup",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "description": "<p>Use-case coverage: UC10, UC55.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_baseline.py::test_rank_ppp_pred_non_negative.</p></li><li><p>Use 2019-20 TOR against BOS with K=5.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Every returned PPP_PRED value is at least zero.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:27.352-0400"
+    },
+    {
+      "key": "BST-60",
+      "title": "Baseline K=10 returns a nonempty bounded list",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "description": "<p>Use-case coverage: UC10, UC55.</p><p>Scope: Local backend unit test. This assertion checks the returned bound, not the availability of every possible play type.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_baseline.py::test_rank_k_exceeds_available.</p></li><li><p>Use 2019-20 TOR against BOS with K=10.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The result contains between one and ten rows.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:28.472-0400"
+    },
+    {
+      "key": "BST-61",
+      "title": "Changing the team changes baseline predictions",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc10",
+        "uc55"
+      ],
+      "description": "<p>Use-case coverage: UC10, UC55.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_baseline.py::test_different_teams_produce_different_rankings.</p></li><li><p>Use 2019-20 LAL against BOS and MIA against BOS, both K=5.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The two PPP_PRED lists differ.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:29.712-0400"
+    },
+    {
+      "key": "BST-62",
+      "title": "Baseline API returns the requested Top-K and matchup metadata",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc18"
+      ],
+      "description": "<p>Use-case coverage: UC18.</p><p>Scope: Local API data-flow test with explicit development authentication bypass.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_baseline_api.py::test_rank_baseline_api_returns_top_k_rows.</p></li><li><p>Use 2019-20 TOR against BOS with K=3.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The API returns 200, three rows, matching matchup metadata and the expected ranking columns.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:30.830-0400"
+    },
+    {
+      "key": "BST-63",
+      "title": "Baseline API rejects the same team on both sides",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc18"
+      ],
+      "description": "<p>Use-case coverage: UC18.</p><p>Scope: Local API data-flow test with explicit development authentication bypass.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_baseline_api.py::test_rank_baseline_api_rejects_same_team_matchup.</p></li><li><p>Use 2019-20 TOR against TOR with K=5.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The API returns 400 and explains that the teams must differ.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:31.955-0400"
+    },
+    {
+      "key": "BST-64",
+      "title": "Baseline API rejects K=0",
+      "parent": "BST-29",
+      "parent_title": "Ranked list via API",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-baseline-ranking",
+        "fall-2026",
+        "uc18"
+      ],
+      "description": "<p>Use-case coverage: UC18.</p><p>Scope: Local API data-flow test with explicit development authentication bypass.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_baseline_api.py::test_rank_baseline_api_rejects_invalid_k.</p></li><li><p>Use 2019-20 TOR against BOS with K=0.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Query validation returns 422.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:33.191-0400"
+    },
+    {
+      "key": "BST-65",
+      "title": "Coach workspace routes enforce the signed-in role",
+      "parent": "BST-30",
+      "parent_title": "Validate Coach Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc71"
+      ],
+      "description": "<p>Use cases: UC71.</p><p>Scope: Local middleware checks plus production browser role routing.</p><p>Preconditions: install the pinned development dependencies and use the repository fixtures.</p><p>Run:\nnpx vitest run tests/middleware.auth-coach.test.ts</p><p>Check these inputs and results:</p><ol><li><p>With a coach profile and GET /matchup. Expected: The response is 200 and has no redirect location.</p></li><li><p>With a coach profile and GET /data-explorer. Expected: The middleware redirects to /matchup.</p></li><li><p>With a coach profile and GET /login. Expected: The middleware redirects to /matchup.</p></li></ol><p>Related cases: BST-67, BST-68, BST-69.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.\nBrowser steps: load Matchup as coach; sign out; open /matchup; sign in as analyst with next=/matchup. Expect rankings for the coach, a login redirect after sign-out and Data Explorer for the analyst. Evidence: matchup-browser.txt, session-signout-browser.txt and analyst-role-redirect.txt.</p>",
+      "created": "2026-04-12T22:33:34.401-0400"
+    },
+    {
+      "key": "BST-66",
+      "title": "Ranking APIs enforce coach access",
+      "parent": "BST-30",
+      "parent_title": "Validate Coach Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc71"
+      ],
+      "description": "<p>Use cases: UC71.</p><p>Scope: The listed local component/API checks; production observations are identified separately.</p><p>Preconditions: install the pinned development dependencies and use the repository fixtures.</p><p>Run:\npython -m pytest backend/tests/test_access_control_api_bypass.py -q</p><p>Check these inputs and results:</p><ol><li><p>With a coach role and 2019-20 TOR against BOS. Expected: The baseline endpoint returns 200.</p></li><li><p>With an analyst role and 2019-20 TOR against BOS. Expected: The baseline endpoint returns 403.</p></li><li><p>With an analyst role and 2019-20 TOR against BOS. Expected: The context ranking endpoint returns 403.</p></li><li><p>With an analyst role and GET /viz/playtype-zones for 2019-20 TOR against BOS. Expected: The visualization endpoint returns 403.</p></li></ol><p>Related cases: BST-70, BST-71, BST-72, BST-73.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:33:35.550-0400"
+    },
+    {
+      "key": "BST-67",
+      "title": "Coach middleware allows the matchup route",
+      "parent": "BST-30",
+      "parent_title": "Validate Coach Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC71.</p><p>Scope: Frontend middleware unit test with stubbed session/profile.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>npx vitest run tests/middleware.auth-coach.test.ts -t &#039;allows coach to access /matchup&#039;</code>.</p></li><li><p>Use a coach profile and GET /matchup.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The response is 200 and has no redirect location.</p><p>Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:33:36.734-0400"
+    },
+    {
+      "key": "BST-68",
+      "title": "Coach middleware redirects analyst-only pages",
+      "parent": "BST-30",
+      "parent_title": "Validate Coach Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC71.</p><p>Scope: Frontend middleware unit test with stubbed session/profile.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>npx vitest run tests/middleware.auth-coach.test.ts -t &#039;redirects coach away from analyst-only /data-explorer&#039;</code>.</p></li><li><p>Use a coach profile and GET /data-explorer.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The middleware redirects to /matchup.</p><p>Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:33:37.969-0400"
+    },
+    {
+      "key": "BST-69",
+      "title": "Signed-in coach is redirected away from login",
+      "parent": "BST-30",
+      "parent_title": "Validate Coach Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC71.</p><p>Scope: Frontend middleware unit test with stubbed session/profile.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>npx vitest run tests/middleware.auth-coach.test.ts -t &#039;redirects signed-in coach from auth page to /matchup&#039;</code>.</p></li><li><p>Use a coach profile and GET /login.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The middleware redirects to /matchup.</p><p>Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:33:39.066-0400"
+    },
+    {
+      "key": "BST-70",
+      "title": "Coach profile can call the baseline API",
+      "parent": "BST-30",
+      "parent_title": "Validate Coach Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc18",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC71, UC18.</p><p>Scope: Local backend API test with stubbed verified session/profile and strict role checks.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_coach_can_access_baseline -q</code>.</p></li><li><p>Use a coach role and 2019-20 TOR against BOS.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The baseline endpoint returns 200.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:40.171-0400"
+    },
+    {
+      "key": "BST-71",
+      "title": "Analyst profile cannot call the coach baseline API",
+      "parent": "BST-30",
+      "parent_title": "Validate Coach Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc18",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC71, UC18.</p><p>Scope: Local backend API test with stubbed verified session/profile and strict role checks.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_blocked_from_baseline_ranking -q</code>.</p></li><li><p>Use an analyst role and 2019-20 TOR against BOS.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The baseline endpoint returns 403.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:41.338-0400"
+    },
+    {
+      "key": "BST-72",
+      "title": "Analyst profile cannot call the coach context API",
+      "parent": "BST-30",
+      "parent_title": "Validate Coach Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc59",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC71, UC59.</p><p>Scope: Local backend API test with stubbed verified session/profile and strict role checks.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_blocked_from_context_ml -q</code>.</p></li><li><p>Use an analyst role and 2019-20 TOR against BOS.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The context ranking endpoint returns 403.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:42.508-0400"
+    },
+    {
+      "key": "BST-73",
+      "title": "Analyst profile cannot call the coach visualization API",
+      "parent": "BST-30",
+      "parent_title": "Validate Coach Access",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC71.</p><p>Scope: Local backend API test with stubbed verified session/profile and strict role checks. The separate analyst-page/API permission mismatch is a failing regression in BST-143 and BST-144.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>From the repository root, run <code>backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_blocked_from_viz -q</code>.</p></li><li><p>Use an analyst role and GET /viz/playtype-zones for 2019-20 TOR against BOS.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The visualization endpoint returns 403.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:43.622-0400"
+    },
+    {
+      "key": "BST-74",
+      "title": "Context helpers handle regulation clocks and score factors",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use cases: UC50, UC59.</p><p>Scope: The listed local component/API checks; production observations are identified separately.</p><p>Preconditions: install the pinned development dependencies and use the repository fixtures.</p><p>Run:\npython -m pytest backend/tests/test_context_ml.py -q</p><p>Check these inputs and results:</p><ol><li><p>With period 1 and 720 seconds left in the period. Expected: The helper returns 2,880 seconds.</p></li><li><p>With period 4 and zero seconds left. Expected: The helper returns zero seconds.</p></li><li><p>With period 5 and 120 seconds left in overtime. Expected: The regulation-clock helper returns zero.</p></li><li><p>With period 3 and 360 seconds left. Expected: The helper returns 1,080 seconds within a one-second tolerance.</p></li><li><p>With margin 0, period 1 and 720 seconds left. Expected: Late-game, trailing and leading factors are all zero.</p></li><li><p>With margin -8, period 4 and 60 seconds left. Expected: The late-game factor exceeds 0.5, trailing is positive and leading is zero.</p></li><li><p>With margin +20, period 4 and 30 seconds left. Expected: The leading factor is positive and trailing is zero.</p></li><li><p>With margin -2, period 5 and 60 seconds left. Expected: The late-game factor is 1.0 and the trailing factor is positive.</p></li></ol><p>Related cases: BST-77, BST-78, BST-79, BST-80, BST-81, BST-82, BST-83, BST-84.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.\nThe regulation-clock helper does not implement overtime display. BST-142 separately records the current Gameplan overtime failure.</p>",
+      "created": "2026-04-12T22:33:44.798-0400"
+    },
+    {
+      "key": "BST-75",
+      "title": "Context labels describe normal, trailing and leading situations",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc59"
+      ],
+      "description": "<p>Use cases: UC59.</p><p>Scope: The listed local component/API checks; production observations are identified separately.</p><p>Preconditions: install the pinned development dependencies and use the repository fixtures.</p><p>Run:\npython -m pytest backend/tests/test_context_ml.py -q</p><p>Check these inputs and results:</p><ol><li><p>With late, trailing and leading factors of 0, 0 and 0. Expected: The label is Normal context.</p></li><li><p>With late, trailing and leading factors of 0.8, 0.5 and 0. Expected: The label is Late &amp; trailing.</p></li><li><p>With late, trailing and leading factors of 0.8, 0 and 0.5. Expected: The label is Late &amp; leading.</p></li></ol><p>Related cases: BST-85, BST-86, BST-87.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.</p>",
+      "created": "2026-04-12T22:33:45.884-0400"
+    },
+    {
+      "key": "BST-76",
+      "title": "Ridge model meets the documented historical evaluation checks",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fall-2026",
+        "uc65"
+      ],
+      "description": "<p>Use cases: UC65.</p><p>Scope: The listed local component/API checks; production observations are identified separately.</p><p>Preconditions: install the pinned development dependencies and use the repository fixtures.</p><p>Run:\npython -m pytest backend/tests/test_ridge_model.py -q</p><p>Check these inputs and results:</p><ol><li><p>With the configured Ridge pipeline. Expected: The two steps are StandardScaler followed by Ridge with RIDGE_ALPHA.</p></li><li><p>With 200 seeded synthetic rows with the declared feature count. Expected: All 200 predictions are finite and have the expected one-dimensional shape.</p></li><li><p>With 200 seeded synthetic rows. Expected: Every coefficient is finite and their L2 norm is below 50.</p></li><li><p>With five-fold evaluation of the retained historical play-type dataset. Expected: Ridge mean RMSE is below the league-mean baseline RMSE.</p></li><li><p>With the earlier 80% of seasons for training and the remaining seasons for prediction. Expected: All predicted PPP values are between 0 and 2.5.</p></li><li><p>With five-fold evaluation of the retained historical dataset. Expected: Ridge RMSE is below 0.50 in each fold.</p></li><li><p>With the retained offense dataset and declared feature columns. Expected: X is two-dimensional with the declared feature count; y is one-dimensional; row counts match and all values are finite.</p></li><li><p>With the same 300 seeded synthetic rows with alpha 0.001, RIDGE_ALPHA and 10.0. Expected: Coefficient norms decrease strictly from the low alpha through the configured alpha to the high alpha.</p></li></ol><p>Related cases: BST-88, BST-89, BST-90, BST-91, BST-92, BST-93, BST-94, BST-95.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.\nThis is a historical diagnostic using contemporaneous features. It does not establish future-game forecast accuracy; SCRUM-526 covers that work.</p>",
+      "created": "2026-04-12T22:33:47.099-0400"
+    },
+    {
+      "key": "BST-77",
+      "title": "Regulation clock starts with 2,880 seconds",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_total_time_remaining_start_of_game.</p></li><li><p>Use period 1 and 720 seconds left in the period.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The helper returns 2,880 seconds.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:48.271-0400"
+    },
+    {
+      "key": "BST-78",
+      "title": "Regulation clock reaches zero at the fourth-quarter end",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_total_time_remaining_end_of_regulation.</p></li><li><p>Use period 4 and zero seconds left.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The helper returns zero seconds.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:49.470-0400"
+    },
+    {
+      "key": "BST-79",
+      "title": "Regulation-clock helper returns zero during overtime",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test. This helper result does not validate the Gameplan overtime display; that flow fails in BST-142.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_total_time_remaining_overtime_returns_zero.</p></li><li><p>Use period 5 and 120 seconds left in overtime.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The regulation-clock helper returns zero.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:50.816-0400"
+    },
+    {
+      "key": "BST-80",
+      "title": "Third-quarter clock includes the remaining regulation periods",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_total_time_remaining_mid_third_quarter.</p></li><li><p>Use period 3 and 360 seconds left.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The helper returns 1,080 seconds within a one-second tolerance.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:52.024-0400"
+    },
+    {
+      "key": "BST-81",
+      "title": "Opening tied-game context has zero urgency factors",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_compute_context_factors_normal.</p></li><li><p>Use margin 0, period 1 and 720 seconds left.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Late-game, trailing and leading factors are all zero.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:53.213-0400"
+    },
+    {
+      "key": "BST-82",
+      "title": "Late trailing context raises late-game and trailing factors",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_compute_context_factors_late_trailing.</p></li><li><p>Use margin -8, period 4 and 60 seconds left.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The late-game factor exceeds 0.5, trailing is positive and leading is zero.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:54.335-0400"
+    },
+    {
+      "key": "BST-83",
+      "title": "Late large lead raises only the leading factor",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_compute_context_factors_blowout_leading.</p></li><li><p>Use margin +20, period 4 and 30 seconds left.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The leading factor is positive and trailing is zero.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:55.438-0400"
+    },
+    {
+      "key": "BST-84",
+      "title": "Overtime context has maximum late-game weighting",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test. This helper result does not validate the Gameplan overtime display; that flow fails in BST-142.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_compute_context_factors_overtime.</p></li><li><p>Use margin -2, period 5 and 60 seconds left.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The late-game factor is 1.0 and the trailing factor is positive.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:56.684-0400"
+    },
+    {
+      "key": "BST-85",
+      "title": "Zero context factors use the normal label",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_label_context_normal.</p></li><li><p>Use late, trailing and leading factors of 0, 0 and 0.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The label is Normal context.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:57.909-0400"
+    },
+    {
+      "key": "BST-86",
+      "title": "Late trailing factors use the trailing label",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_label_context_late_trailing.</p></li><li><p>Use late, trailing and leading factors of 0.8, 0.5 and 0.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The label is Late &amp; trailing.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:33:59.118-0400"
+    },
+    {
+      "key": "BST-87",
+      "title": "Late leading factors use the leading label",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc50",
+        "uc59"
+      ],
+      "description": "<p>Use-case coverage: UC50, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_context_ml.py::test_label_context_late_leading.</p></li><li><p>Use late, trailing and leading factors of 0.8, 0 and 0.5.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The label is Late &amp; leading.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:34:00.339-0400"
+    },
+    {
+      "key": "BST-88",
+      "title": "Ridge pipeline scales features before fitting",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "description": "<p>Use-case coverage: UC65, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_ridge_model.py::test_ridge_pipeline_structure.</p></li><li><p>Use the configured Ridge pipeline.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: The two steps are StandardScaler followed by Ridge with RIDGE_ALPHA.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:34:01.544-0400"
+    },
+    {
+      "key": "BST-89",
+      "title": "Ridge fits 200 synthetic rows without invalid predictions",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "description": "<p>Use-case coverage: UC65, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_ridge_model.py::test_ridge_fits_synthetic_data.</p></li><li><p>Use 200 seeded synthetic rows with the declared feature count.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: All 200 predictions are finite and have the expected one-dimensional shape.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:34:02.648-0400"
+    },
+    {
+      "key": "BST-90",
+      "title": "Synthetic Ridge coefficients stay finite and bounded",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "description": "<p>Use-case coverage: UC65, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_ridge_model.py::test_ridge_coefficients_bounded.</p></li><li><p>Use 200 seeded synthetic rows.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Every coefficient is finite and their L2 norm is below 50.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:34:03.833-0400"
+    },
+    {
+      "key": "BST-91",
+      "title": "Historical Ridge cross-validation beats the league-mean baseline",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "description": "<p>Use-case coverage: UC65, UC59.</p><p>Scope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_ridge_model.py::test_ridge_outperforms_baseline.</p></li><li><p>Use five-fold evaluation of the retained historical play-type dataset.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Ridge mean RMSE is below the league-mean baseline RMSE.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:34:05.086-0400"
+    },
+    {
+      "key": "BST-92",
+      "title": "Historical held-out Ridge predictions stay within the PPP bounds",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "description": "<p>Use-case coverage: UC65, UC59.</p><p>Scope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_ridge_model.py::test_ridge_predictions_in_valid_range.</p></li><li><p>Use the earlier 80% of seasons for training and the remaining seasons for prediction.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: All predicted PPP values are between 0 and 2.5.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:34:06.301-0400"
+    },
+    {
+      "key": "BST-93",
+      "title": "Every historical Ridge fold meets the RMSE threshold",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "description": "<p>Use-case coverage: UC65, UC59.</p><p>Scope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_ridge_model.py::test_ridge_per_fold_rmse_acceptable.</p></li><li><p>Use five-fold evaluation of the retained historical dataset.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Ridge RMSE is below 0.50 in each fold.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:34:07.531-0400"
+    },
+    {
+      "key": "BST-94",
+      "title": "Model feature and target arrays are aligned and finite",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "description": "<p>Use-case coverage: UC65, UC59.</p><p>Scope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_ridge_model.py::test_feature_dataset_shape.</p></li><li><p>Use the retained offense dataset and declared feature columns.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: X is two-dimensional with the declared feature count; y is one-dimensional; row counts match and all values are finite.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:34:08.730-0400"
+    },
+    {
+      "key": "BST-95",
+      "title": "Increasing Ridge alpha reduces synthetic coefficient norms",
+      "parent": "BST-31",
+      "parent_title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Abdulrahman Mousa",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc59",
+        "uc65"
+      ],
+      "description": "<p>Use-case coverage: UC65, UC59.</p><p>Scope: Local backend unit test.</p><p>Preconditions: install the pinned development dependencies and use the shared repository&#039;s test fixtures.</p><p>Steps:</p><ol><li><p>Run backend/tests/test_ridge_model.py::test_ridge_regularization_effect.</p></li><li><p>Use the same 300 seeded synthetic rows with alpha 0.001, RIDGE_ALPHA and 10.0.</p></li><li><p>Compare the returned values with the expected result.</p></li></ol><p>Expected result: Coefficient norms decrease strictly from the low alpha through the configured alpha to the high alpha.</p><p>Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-04-12T22:34:09.860-0400"
+    },
+    {
+      "key": "BST-97",
+      "title": "Rationale generated for each Top-K play",
+      "parent": "BST-96",
+      "parent_title": "Generate Play Explanations",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc60",
+        "uc67"
+      ],
+      "description": "<p>Use-case coverage: UC67, UC60.</p><p>Steps:</p><ol><li><p>Sign in as the existing coach test account.</p></li><li><p>Request TOR vs BOS, 2024-25, K=5 from baseline and context APIs; context is margin -2, Q4, 72 seconds.</p></li><li><p>Inspect each returned RATIONALE.</p></li></ol><p>Expected result: Every returned play has a non-empty rationale.</p><p>Current result: Pass. All 10 returned plays had non-empty explanations.</p><p>Evidence: docs/assignment-1-revision/tests/additional-live-api.json, docs/assignment-1-revision/tests/additional-rationale-checks.json.</p>",
+      "created": "2026-09-29T14:00:23.817-0400"
+    },
+    {
+      "key": "BST-98",
+      "title": "Rationale values match ranking output",
+      "parent": "BST-96",
+      "parent_title": "Generate Play Explanations",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc60",
+        "uc67"
+      ],
+      "description": "<p>Use-case coverage: UC67, UC60.</p><p>Steps:</p><ol><li><p>Parse every numeric token in the same 10 rationales.</p></li><li><p>Compare displayed numbers with response values rounded to the displayed precision.</p></li><li><p>Recompute context PPP and delta from the returned fields.</p></li></ol><p>Expected result: Every cited number agrees with the returned metrics; no unsupported numerical claim.</p><p>Current result: Pass. All 75 cited numeric values matched. Context PPP equalled ML blend plus adjustment, and delta equalled context PPP minus baseline for all five context plays.</p><p>Scope: The templates do not cite an uplift number. Legacy and NLP adjustments were derived from the returned component fields; the endpoint does not expose those two standalone fields.</p><p>Evidence: docs/assignment-1-revision/tests/additional-rationale-checks.json.</p>",
+      "created": "2026-09-29T14:00:26.096-0400"
+    },
+    {
+      "key": "BST-99",
+      "title": "Baseline rationale states when context is missing",
+      "parent": "BST-96",
+      "parent_title": "Generate Play Explanations",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-recommendation-explanations",
+        "fall-2026",
+        "uc67"
+      ],
+      "description": "<p>Use-case coverage: UC67.</p><p>Steps:</p><ol><li><p>Request baseline Top-K with season=2024-25, our=TOR, opp=BOS, k=5.</p></li><li><p>Supply no margin, period or clock.</p></li><li><p>Inspect all five rationale strings.</p></li></ol><p>Expected result: A baseline explanation explicitly indicates that game context was not applied.</p><p>Current result: Fail. HTTP 200 and five baseline explanations were returned, but none said that game context was not applied.</p><p>Evidence: docs/assignment-1-revision/tests/additional-live-api.json, docs/assignment-1-revision/tests/additional-rationale-checks.json.</p>",
+      "created": "2026-09-29T14:00:28.452-0400"
+    },
+    {
+      "key": "BST-100",
+      "title": "NLP parses a trailing fourth-quarter context",
+      "parent": "BST-96",
+      "parent_title": "Generate Play Explanations",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "description": "<p>Use-case coverage: UC45, UC50.</p><p>Scope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.</p><p>Steps:</p><ol><li><p>Run the pinned backend test environment.</p></li><li><p>POST /nlp/parse with &quot;Down 5 with 2:00 left in the 4th&quot;.</p></li><li><p>Inspect test_fully_parsed_prompt_reports_no_defaulted_fields and compare the result.</p></li></ol><p>Expected result: The parser returns margin -5, period 4 and 120 seconds, with no defaulted or rejected fields.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-09-29T14:00:30.569-0400"
+    },
+    {
+      "key": "BST-101",
+      "title": "NLP parses a leading score margin",
+      "parent": "BST-96",
+      "parent_title": "Generate Play Explanations",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "description": "<p>Use-case coverage: UC45, UC50.</p><p>Scope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.</p><p>Steps:</p><ol><li><p>Run the pinned backend test environment.</p></li><li><p>POST /nlp/parse with &quot;leading by 3&quot;.</p></li><li><p>Inspect test_margin_extraction_accuracy[leading by 3] and compare the result.</p></li></ol><p>Expected result: HTTP 200 is returned and context.margin is 3.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-09-29T14:00:32.735-0400"
+    },
+    {
+      "key": "BST-102",
+      "title": "Unparseable NLP text produces neutral context defaults",
+      "parent": "BST-96",
+      "parent_title": "Generate Play Explanations",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "description": "<p>Use-case coverage: UC45, UC50.</p><p>Scope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.</p><p>Steps:</p><ol><li><p>Run the pinned backend test environment.</p></li><li><p>POST /nlp/parse with &quot;Just win the game&quot;.</p></li><li><p>Inspect test_unparseable_prompt_passes_neutral_defaults_to_recommender and compare the result.</p></li></ol><p>Expected result: HTTP 200 contains period 1, margin 0 and 720 seconds in context_ml_params. All three fields are marked defaulted, with none rejected. This checks parser output; it does not call the ranker.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-09-29T14:00:34.532-0400"
+    },
+    {
+      "key": "BST-103",
+      "title": "NLP rejects out-of-range values before ranking",
+      "parent": "BST-96",
+      "parent_title": "Generate Play Explanations",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "description": "<p>Use-case coverage: UC45, UC50.</p><p>Scope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.</p><p>Steps:</p><ol><li><p>Run the pinned backend test environment.</p></li><li><p>Pass period 9, margin 250, time -30 and NaN margin to the context resolver in separate fixtures.</p></li><li><p>Inspect test_out_of_range_values_are_rejected_before_ranking and compare the result.</p></li></ol><p>Expected result: Each invalid field is both rejected and defaulted to its neutral value.</p><p>Evidence: docs/assignment-1-revision/tests/backend-junit.xml.</p>",
+      "created": "2026-09-29T14:00:36.532-0400"
+    },
+    {
+      "key": "BST-105",
+      "title": "Play-type dataset loads from storage",
+      "parent": "BST-104",
+      "parent_title": "Access Stored Datasets",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62"
+      ],
+      "description": "<p>Use-case coverage: UC62.</p><p>Steps:</p><ol><li><p>Start the current backend in a child process.</p></li><li><p>Open its FastAPI lifespan and call /health.</p></li><li><p>Inspect the loaded recommender tables and required columns.</p></li></ol><p>Expected result: Backend starts and a non-empty dataset with the required schema loads.</p><p>Current result: Pass. Startup succeeded; /health returned 200. The loader read 47,982 player rows and produced 3,240 team rows and 108 league rows across six seasons. Required season, team, play-type, possessions and PPP columns were present.</p><p>Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.</p>",
+      "created": "2026-09-29T14:00:39.891-0400"
+    },
+    {
+      "key": "BST-106",
+      "title": "Season and team query returns matching rows",
+      "parent": "BST-104",
+      "parent_title": "Access Stored Datasets",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62",
+        "uc63"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC63.</p><p>Steps:</p><ol><li><p>Sign in as the existing analyst test account.</p></li><li><p>GET /data/team-playtypes?season=2024-25&amp;team=TOR&amp;side=offense&amp;limit=500.</p></li><li><p>Check every returned row.</p></li></ol><p>Expected result: Only the selected season and team are returned.</p><p>Current result: Pass. HTTP 200 returned 11 rows. Every row was TOR, 2024-25, offense.</p><p>Evidence: docs/assignment-1-revision/tests/additional-live-api.json.</p>",
+      "created": "2026-09-29T14:00:41.431-0400"
+    },
+    {
+      "key": "BST-107",
+      "title": "Missing play-type dataset has a controlled error",
+      "parent": "BST-104",
+      "parent_title": "Access Stored Datasets",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-analyst-workspace",
+        "fall-2026",
+        "uc62"
+      ],
+      "description": "<p>Use-case coverage: UC62.</p><p>This is a startup/readiness contract gap. Missing auth configuration still fails closed at protected endpoints; the result does not demonstrate a security bypass.</p><p>Steps:</p><ol><li><p>In an isolated child process, suppress dotenv file loading.</p></li><li><p>Make Path.exists return false only for synergy_playtypes_2019_2025_players.csv.</p></li><li><p>Import the backend startup module and capture exit status and error output.</p></li></ol><p>Expected result: A clear controlled error is returned or logged without an unhandled exception.</p><p>Current result: Fail. Startup exited 1 with an unhandled FileNotFoundError while importing the context recommender. The traceback identified the dataset path, but there was no controlled startup diagnostic.</p><p>Scope: Only the child process saw the simulated missing file; the real dataset and production service were unchanged.</p><p>Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.</p>",
+      "created": "2026-09-29T14:00:42.727-0400"
+    },
+    {
+      "key": "BST-109",
+      "title": "Deployed health endpoint responds",
+      "parent": "BST-108",
+      "parent_title": "API Stability and Deployment",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc62",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC71.</p><p>Steps:</p><ol><li><p>GET the Cloud Run /health endpoint before and after the bounded concurrent requests.</p></li></ol><p>Expected result: HTTP 200 with healthy status.</p><p>Current result: Pass. Both calls returned 200 with status ok; durations were 258.883 ms and 151.392 ms.</p><p>Evidence: docs/assignment-1-revision/tests/additional-live-api.json.</p>",
+      "created": "2026-09-29T14:00:47.373-0400"
+    },
+    {
+      "key": "BST-110",
+      "title": "Concurrent Top-K requests complete",
+      "parent": "BST-108",
+      "parent_title": "API Stability and Deployment",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc18"
+      ],
+      "description": "<p>Use-case coverage: UC18.</p><p>Steps:</p><ol><li><p>Use four concurrent workers to issue eight read-only baseline Top-K requests.</p></li><li><p>Use TOR/BOS and LAL/GSW in both directions, with K=3 or 5.</p></li><li><p>Inspect status and returned count for each request; call health afterward.</p></li></ol><p>Expected result: All requests complete with no 5xx errors or crash.</p><p>Current result: Pass. All eight requests returned 200 with the requested ranking count. The following health request also returned 200. Two requests took about 33 seconds.</p><p>Scope: A small bounded run of independent HTTP requests using the existing coach test account; this is not a multi-account permission test or capacity benchmark.</p><p>Evidence: docs/assignment-1-revision/tests/additional-live-api.json.</p>",
+      "created": "2026-09-29T14:00:50.799-0400"
+    },
+    {
+      "key": "BST-111",
+      "title": "Top-K response time meets an agreed threshold",
+      "parent": "BST-108",
+      "parent_title": "API Stability and Deployment",
+      "status": "Verify",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc18"
+      ],
+      "description": "<p>Use-case coverage: UC18.</p><p>Steps:</p><ol><li><p>Measure client-observed duration of the eight requests in BST-110.</p></li><li><p>Calculate the nearest-rank p95.</p></li><li><p>Look for an agreed deployed Top-K latency limit in the case and available project requirements.</p></li></ol><p>Expected result: The measured p95 is below the agreed threshold.</p><p>Current result: Verify. The eight-request sample had median 705.493 ms and p95 33,859.822 ms. No agreed deployed Top-K threshold was found, so no Pass/Fail decision was made.</p><p>Scope: The existing local NLP parser threshold covers a different operation. One small sample cannot establish service capacity or a stable latency distribution; the source of the two slow requests is unconfirmed.</p><p>Evidence: docs/assignment-1-revision/tests/additional-live-api.json.</p>",
+      "created": "2026-09-29T14:00:53.747-0400"
+    },
+    {
+      "key": "BST-112",
+      "title": "Deployed Matchup page loads data from the API",
+      "parent": "BST-108",
+      "parent_title": "API Stability and Deployment",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "coach-access",
+        "fall-2026",
+        "uc18",
+        "uc71"
+      ],
+      "description": "<p>Use cases: UC18, UC71.</p><p>Sign in as coach on the deployed frontend and open Matchup. Use 2024-25, TOR against BOS, K=5. Expect the season/team choices and five baseline rankings to load. Evidence: matchup-browser.txt and matchup-initial-loading.txt. The first client navigation remained Loading; reloading completed, so that delay remains an observation rather than a successful timing test.</p>",
+      "created": "2026-09-29T14:00:57.094-0400"
+    },
+    {
+      "key": "BST-113",
+      "title": "Missing required configuration stops backend startup",
+      "parent": "BST-108",
+      "parent_title": "API Stability and Deployment",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-deployment",
+        "fall-2026",
+        "uc62",
+        "uc64"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC64.</p><p>This is a startup/readiness contract gap. Missing auth configuration still fails closed at protected endpoints; the result does not demonstrate a security bypass.</p><p>Steps:</p><ol><li><p>Start an isolated child process with Supabase environment values absent and insecure development auth disabled.</p></li><li><p>Disable dotenv loading in that child so private files cannot refill the removed value.</p></li><li><p>Import the backend, open lifespan and call /health.</p></li></ol><p>Expected result: Startup fails with a clear missing-configuration error.</p><p>Current result: Fail. Without SUPABASE_URL, startup still completed and /health returned 200 with status ok. No configuration error was logged at startup.</p><p>Scope: This did not bypass authentication or change production configuration. Auth dependencies still fail closed on protected requests.</p><p>Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.</p>",
+      "created": "2026-09-29T14:01:00.480-0400"
+    },
+    {
+      "key": "BST-115",
+      "title": "Retained second-dataset schema maps required model columns",
+      "parent": "BST-114",
+      "parent_title": "Validate Second Dataset and Models",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc64"
+      ],
+      "description": "<p>Use-case coverage: UC64, UC62.</p><p>Steps:</p><ol><li><p>Read the retained shots_clean.parquet.</p></li><li><p>Run the current schema normalizer and canonical mapper in memory.</p></li><li><p>Compare columns against get_feature_spec and CANONICAL_COLUMNS.</p></li></ol><p>Expected result: All required model columns are present after schema mapping.</p><p>Current result: Pass. All 16 required model columns were present, and canonical mapping produced the expected 18 columns for all 1,332,515 retained rows.</p><p>Scope: This verifies retained clean-to-model/canonical mapping only. The original raw event file is absent, and column presence does not resolve the known team-attribution defects.</p><p>Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.</p>",
+      "created": "2026-09-29T14:01:06.760-0400"
+    },
+    {
+      "key": "BST-116",
+      "title": "Schema mapping reports missing and unmapped columns",
+      "parent": "BST-114",
+      "parent_title": "Validate Second Dataset and Models",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc64"
+      ],
+      "description": "<p>Use-case coverage: UC64, UC62.</p><p>The fix should provide useful diagnostics for unmapped columns, not reject valid extra metadata.</p><p>Steps:</p><ol><li><p>Use a five-row retained shot fixture in memory.</p></li><li><p>Remove TEAM_ABBR and run the model loader.</p></li><li><p>Separately add UNMAPPED_FIXTURE and repeat while capturing warnings and output.</p></li></ol><p>Expected result: Missing or unmapped input columns are reported.</p><p>Current result: Fail. Missing TEAM_ABBR produced a clear KeyError. The extra UNMAPPED_FIXTURE column was silently retained with no warning or diagnostic, so the unmapped-column check failed.</p><p>Scope: Both fixtures were local copies; no dataset file was edited.</p><p>Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.</p>",
+      "created": "2026-09-29T14:01:09.398-0400"
+    },
+    {
+      "key": "BST-117",
+      "title": "Shot features are complete and available before possession",
+      "parent": "BST-114",
+      "parent_title": "Validate Second Dataset and Models",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc70"
+      ],
+      "description": "<p>Use-case coverage: UC70.</p><p>Steps:</p><ol><li><p>Inspect null values in the retained generated shot dataset.</p></li><li><p>Run the existing ML loader on a reproducible 20,000-row sample with seed 42 and check finite inputs.</p></li><li><p>Compare the feature specification with the stated pre-possession requirement.</p></li></ol><p>Expected result: No NaN/inf values and every feature is available before the possession.</p><p>Current result: Fail. All 1,332,515 retained MARGIN values were missing; the ML loader replaced them with zero. The 20,000-row model sample was finite, but actual shot type, location and related fields have no pre-possession input contract. This does not establish the required leakage-free feature set.</p><p>Scope: This records the mismatch with the existing test requirement; it does not assert that conditional shot-quality modelling itself is invalid.</p><p>Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.</p>",
+      "created": "2026-09-29T14:01:12.126-0400"
+    },
+    {
+      "key": "BST-118",
+      "title": "Selected shot model beats baseline on a holdout season",
+      "parent": "BST-114",
+      "parent_title": "Validate Second Dataset and Models",
+      "status": "Verify",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "blocked-data",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc65",
+        "uc70"
+      ],
+      "description": "<p>Use-case coverage: UC70, UC65.</p><p>Steps:</p><ol><li><p>Check whether the source and derived second dataset are ready for trustworthy evaluation.</p></li><li><p>Verify retained attribution and feature diagnostics before training.</p></li></ol><p>Expected result: The selected model has lower MAE and RMSE than the baseline on a time-based holdout.</p><p>Current result: Blocked. Training was not run. The retained data still has 18,746 self-opponent rows and all 7,527 game groups have one shooting-team label; raw events needed for repair are absent. Missing margins and the pre-possession feature contract also need resolution.</p><p>Scope: No fresh shot-model accuracy or cross-validation claim is made. Re-run on repaired data with a documented split and feature contract; avoid repeating expensive production training.</p><p>Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.</p>",
+      "created": "2026-09-29T14:01:14.840-0400"
+    },
+    {
+      "key": "BST-119",
+      "title": "Selected shot model reports cross-validation statistics",
+      "parent": "BST-114",
+      "parent_title": "Validate Second Dataset and Models",
+      "status": "Verify",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "assignment-1-revision",
+        "blocked-data",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc65",
+        "uc70"
+      ],
+      "description": "<p>Use-case coverage: UC70, UC65.</p><p>Steps:</p><ol><li><p>Check whether the source and derived second dataset are ready for trustworthy evaluation.</p></li><li><p>Verify retained attribution and feature diagnostics before training.</p></li></ol><p>Expected result: Per-fold metrics and summary statistics are produced and saved.</p><p>Current result: Blocked. Training was not run. The retained data still has 18,746 self-opponent rows and all 7,527 game groups have one shooting-team label; raw events needed for repair are absent. Missing margins and the pre-possession feature contract also need resolution.</p><p>Scope: No fresh shot-model accuracy or cross-validation claim is made. Re-run on repaired data with a documented split and feature contract; avoid repeating expensive production training.</p><p>Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.</p>",
+      "created": "2026-09-29T14:01:17.744-0400"
+    },
+    {
+      "key": "BST-121",
+      "title": "Top-K uplift matches possession-weighted calculations",
+      "parent": "BST-120",
+      "parent_title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-475",
+        "uc29"
+      ],
+      "description": "<p>Use-case coverage: UC29.</p><p>Covers <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-475\">SCRUM-475</a> under <a href=\"https://basketball-strategy.atlassian.net/browse/BST-120\">BST-120</a>.</p><p>Before testing: Use a small dataset with multiple teams, seasons and play types, unequal possession counts, and a documented calculation.</p><p>Steps:</p><ol><li><p>Calculate the team-season average PPP and selected Top-K PPP by hand, using the documented possession weighting.</p></li><li><p>Compare the calculation and API results with those values, including the PPP difference and any percentage difference.</p></li><li><p>Change another team or season and check that it does not affect the selected team-season average.</p></li><li><p>Test zero or invalid denominators and too little usable data.</p></li></ol><p>Expected: The values match the independent calculation within the stated tolerance, and the reference includes only the intended team and season. Invalid denominators produce a documented safe result or error. The result is clearly described as a historical modeled comparison, without claiming held-out accuracy or a proven improvement caused by the recommendations.</p>",
+      "created": "2026-10-03T17:11:20.845-0400"
+    },
+    {
+      "key": "BST-122",
+      "title": "Top-K JSON and CSV match and enforce analyst access",
+      "parent": "BST-120",
+      "parent_title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-475",
+        "uc29",
+        "uc69"
+      ],
+      "description": "<p>Use-case coverage: UC29, UC69.</p><p>Covers <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-475\">SCRUM-475</a> under <a href=\"https://basketball-strategy.atlassian.net/browse/BST-120\">BST-120</a>.</p><p>Before testing: Record the API version and use valid dataset choices plus analyst, coach, pending and signed-out requests.</p><p>Steps:</p><ol><li><p>Request JSON and CSV with the same filters and compare every exported metric and its supporting details.</p></li><li><p>Check the CSV file type and name, and the JSON fields and structure.</p></li><li><p>Test missing or invalid seasons and teams, opponent values if supported, K limits, and unsupported formats if supported.</p></li><li><p>Repeat the access checks as an analyst, coach, pending account and signed-out user.</p></li></ol><p>Expected: An authorized analyst gets matching JSON and CSV results. Invalid inputs return the documented client error without crashing the server. Signed-out users, pending accounts and disallowed roles cannot read the protected metrics, and responses contain no secrets.</p>",
+      "created": "2026-10-03T17:11:22.977-0400"
+    },
+    {
+      "key": "BST-123",
+      "title": "Calibration trains on earlier seasons only",
+      "parent": "BST-120",
+      "parent_title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-476",
+        "uc28",
+        "uc65"
+      ],
+      "description": "<p>Use-case coverage: UC28, UC65.</p><p>Covers <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-476\">SCRUM-476</a> under <a href=\"https://basketball-strategy.atlassian.net/browse/BST-120\">BST-120</a>.</p><p>Before testing: Use several seasons of identifiable test rows, with later-season values that differ from the training data.</p><p>Steps:</p><ol><li><p>Inspect the reported training/test splits and record the rows used to fit the model.</p></li><li><p>Check that every training season is earlier than the test season and no held-out row is used for training.</p></li><li><p>Check that raw PPP is excluded from FEATURE_COLS and that the report explains that some other inputs are same-season rates tied to the outcome.</p></li><li><p>Change the held-out target values and feature scale, then check that the training-only inputs and fitted preprocessing settings stay unchanged.</p></li></ol><p>Expected: Training and test rows stay separate and in time order. Scaling and reliability adjustments use only training data, and raw PPP is not an input. Changing the test data does not change fitted training settings, while the evaluation results respond as expected. The report explains that same-season inputs make this a historical evaluation; it does not prove future-game accuracy or rule out every outcome-related input. Using only earlier information and an untouched forecasting test set remains SCRUM-526.</p>",
+      "created": "2026-10-03T17:11:24.946-0400"
+    },
+    {
+      "key": "BST-124",
+      "title": "Calibration values and limits match the analyst page",
+      "parent": "BST-120",
+      "parent_title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-476",
+        "uc62",
+        "uc65"
+      ],
+      "description": "<p>Use-case coverage: UC65, UC62.</p><p>Covers <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-476\">SCRUM-476</a> under <a href=\"https://basketball-strategy.atlassian.net/browse/BST-120\">BST-120</a>.</p><p>Before testing: Use known predicted/actual PPP pairs, ordinary data and small or constant datasets, with the analyst page and API on the same version.</p><p>Steps:</p><ol><li><p>Calculate the bias and grouped calibration results independently from the known PPP pairs.</p></li><li><p>Compare the API values and row counts with those calculations.</p></li><li><p>Test empty, small and constant datasets, plus unsupported train/test splits.</p></li><li><p>Open the analyst Calibration page and compare its values, split labels and unavailable-result messages with the API.</p></li></ol><p>Expected: Metrics and counts match within the documented tolerance. Missing or unreliable results are labelled clearly instead of showing misleading values or invalid JSON numbers. The page shows the API values, explains the test split and limitations, and blocks unauthorized access.</p>",
+      "created": "2026-10-03T17:11:27.147-0400"
+    },
+    {
+      "key": "BST-125",
+      "title": "Gameplan storage validates notes, matchups and revisions",
+      "parent": "BST-120",
+      "parent_title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-481",
+        "uc42",
+        "uc48"
+      ],
+      "description": "<p>Use-case coverage: UC42, UC48.</p><p>Covers <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-481\">SCRUM-481</a> under <a href=\"https://basketball-strategy.atlassian.net/browse/BST-120\">BST-120</a>.</p><p>Before testing: Use the documented Gameplan data format, migration and valid test identities in a database transaction that will be rolled back.</p><p>Steps:</p><ol><li><p>Save valid notes and tactics for an owner and matchup, then read them back.</p></li><li><p>Try saving a duplicate record for the same owner and matchup.</p></li><li><p>Try invalid data shapes, types, required values and matchup details.</p></li><li><p>Check timestamps and repeated updates.</p></li><li><p>Roll back every test record.</p></li></ol><p>Expected: Valid data saves and reads back correctly. Duplicate records and invalid data are rejected according to the documented rules, and timestamps update as intended. No test records remain. This checks database storage without requiring the future screen-to-cloud saving work.</p>",
+      "created": "2026-10-03T17:11:29.456-0400"
+    },
+    {
+      "key": "BST-126",
+      "title": "Gameplan ownership and role restrictions hold",
+      "parent": "BST-120",
+      "parent_title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-481",
+        "uc42",
+        "uc48",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC42, UC48, UC71.</p><p>Covers <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-481\">SCRUM-481</a> under <a href=\"https://basketball-strategy.atlassian.net/browse/BST-120\">BST-120</a>.</p><p>Before testing: Use two different test users plus signed-out, pending and other disallowed roles in a transaction that will be rolled back.</p><p>Steps:</p><ol><li><p>As an authorized coach, create, read, update and delete a Gameplan owned by that coach.</p></li><li><p>As another user, try reading, changing and deleting the same plan.</p></li><li><p>Try creating a plan for another owner or changing ownership through an update or upsert.</p></li><li><p>Check signed-out, pending and disallowed-role requests.</p></li><li><p>Check that protected profile rules still work, then roll back the test data.</p></li></ol><p>Expected: Only an allowed role can access its own plans. Other users cannot read the data, write to it or change its owner. Signed-out, pending and disallowed roles are blocked according to the database rules, and existing profile protections remain intact.</p>",
+      "created": "2026-10-03T17:11:31.612-0400"
+    },
+    {
+      "key": "BST-127",
+      "title": "Production health, access rules and deployment checks",
+      "parent": "BST-120",
+      "parent_title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-506",
+        "uc62",
+        "uc71"
+      ],
+      "description": "<p>Use-case coverage: UC62, UC71.</p><p>Covers <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-506\">SCRUM-506</a> under <a href=\"https://basketball-strategy.atlassian.net/browse/BST-120\">BST-120</a>.</p><p>Before testing: Deploy the reviewed source to the existing Cloud Run service and Vercel production site, and record the deployment and rollback versions.</p><p>Steps:</p><ol><li><p>Record the source commit, backend version, frontend deployment and live URLs.</p></li><li><p>Check backend health and protected endpoints without signing in.</p></li><li><p>Check requests from the approved website origin and a foreign origin.</p></li><li><p>Check the public home/login pages and redirects from protected pages.</p></li><li><p>Check that required data files are available after startup and existing resource limits, hosting plans and cost controls remain in place.</p></li></ol><p>Expected: Health and public pages work, signed-out protected requests are blocked, origin rules work as configured, and frontend pages load or redirect correctly. Required runtime files are present, and the deployment matches the reviewed source and approved hosting limits. Budget alerts and delayed spending controls do not guarantee the final bill.</p>",
+      "created": "2026-10-03T17:11:33.652-0400"
+    },
+    {
+      "key": "BST-128",
+      "title": "TC-I14-DEPLOY-02 — Authenticated coach and analyst production journeys",
+      "parent": "BST-120",
+      "parent_title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "scrum-506"
+      ],
+      "description": "<p>Covers <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-506\">SCRUM-506</a> under <a href=\"https://basketball-strategy.atlassian.net/browse/BST-120\">BST-120</a>.</p><p>Before testing: Use the live app and authorized coach and analyst accounts, recording the environment and source version without putting passwords in Jira or chat.</p><p>Steps:</p><ol><li><p>Sign in as a coach, run a supported matchup/context ranking and inspect the result.</p></li><li><p>Check that the coach cannot use analyst-only pages or API functions.</p></li><li><p>Sign in as an analyst, load and filter Data Explorer, export a supported file, and inspect the metrics and calibration results.</p></li><li><p>Check navigation and role restrictions for both accounts, then sign out.</p></li><li><p>Record each failure with the steps and exact error observed.</p></li></ol><p>Expected: Both accounts complete the listed browser steps for their permitted role, and forbidden routes stay blocked. The recorded results must show real browser sign-in and observed results for each role without exposing credentials. Mock sessions and synthetic tokens alone do not satisfy this test.</p>",
+      "created": "2026-10-03T17:11:35.474-0400"
+    },
+    {
+      "key": "BST-129",
+      "title": "Signed-in browser downloads preserve authorization",
+      "parent": "BST-120",
+      "parent_title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "Iteration-14",
+        "elaboration",
+        "regression",
+        "scrum-506"
+      ],
+      "description": "<p>Covers <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-527\">SCRUM-527</a> under SCRUM-506.</p><p>Before testing: Use the deployed frontend/backend, a signed-in account with the required role, and a loaded dataset.</p><p>Steps:</p><ol><li><p>As an analyst, export the main and filtered Data Explorer CSVs, then check the saved filenames, headers and rows.</p></li><li><p>Export a CSV from Shot Explorer.</p></li><li><p>Check that protected download requests use the current session’s authorization token.</p></li><li><p>Test a denied or expired session: the page should show a useful error, stop its busy indicator and avoid saving the error response as a file.</p></li><li><p>Check the existing baseline CSV and shot PDF with the appropriate role and record what happens.</p></li></ol><p>Expected: Allowed exports save with the correct content, filenames and authorization. Unauthorized requests show an error and do not create a downloaded file.</p><p>The first export test failed. A signed-in analyst saw 11 TOR offense rows, but Export CSV opened Cloud Run with “Invalid or missing session token.” The comments show the fixes, later failures and final saved-file retest.</p>",
+      "created": "2026-10-03T17:30:10.650-0400"
+    },
+    {
+      "key": "BST-131",
+      "title": "Top-K uplift matches the team-season reference",
+      "parent": "BST-130",
+      "parent_title": "Compute & Export Top-K Uplift",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "uc29"
+      ],
+      "description": "<p>Use-case coverage: UC29.</p><p>Preconditions: Synergy team-season data loaded; baseline ranking available.</p><p>Steps: Run pytest backend/tests/test_topk_uplift.py.</p><p>Expected result: Uplift equals Top-K modeled PPP minus team season PPP; invalid or unusable inputs are rejected; CSV/JSON exports match.</p>",
+      "created": "2026-10-03T18:28:08.372-0400"
+    },
+    {
+      "key": "BST-133",
+      "title": "Synergy data quality flags schema, missing data and coverage",
+      "parent": "BST-132",
+      "parent_title": "Run Data Quality Checks",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "uc63"
+      ],
+      "description": "<p>Use-case coverage: UC63.</p><p>Preconditions: Synergy play-type CSV available in backend/data.</p><p>Steps: Run pytest backend/tests/test_data_quality.py.</p><p>Expected result: Clean data passes; missing columns, nulls in key fields, duplicate rows and missing season/team pairs are flagged; checks that cannot run are reported as not_run; the loaded Synergy dataset passes all checks.</p>",
+      "created": "2026-10-03T18:38:45.638-0400"
+    },
+    {
+      "key": "BST-135",
+      "title": "Exports keep values and headers consistent across formats",
+      "parent": "BST-134",
+      "parent_title": "Export Results (CSV/PDF)",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "uc62"
+      ],
+      "description": "<p>Use-case coverage: UC62.</p><p>Preconditions: Export contract module available.</p><p>Steps: Run pytest backend/tests/test_export_contract.py.</p><p>Expected result: CSV and JSON carry the same rows and columns; media type, filename and download header follow the contract; PDF uses the registered renderer; unknown formats and incomplete rows are rejected.</p>",
+      "created": "2026-10-03T18:48:37.601-0400"
+    },
+    {
+      "key": "BST-136",
+      "title": "NLP handles concurrent requests within local memory limits",
+      "parent": "BST-96",
+      "parent_title": "Generate Play Explanations",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": null,
+      "labels": [
+        "uc45",
+        "uc50"
+      ],
+      "description": "<p>Use-case coverage: UC45, UC50.</p><p>Preconditions: backend dependencies and psutil installed locally.</p><p>Steps: run pytest backend/tests/test_nlp_load.py (8 concurrent users, 400 /nlp/parse and /nlp/explain requests against the full FastAPI app).</p><p>Expected result: no failed requests, peak process memory below the 2048 MB Cloud Run limit, memory growth under 200 MB, p95 latency under 2 s.</p>",
+      "created": "2026-10-03T23:31:58.148-0400"
+    },
+    {
+      "key": "BST-138",
+      "title": "Shot data uses different shooting and opposing teams",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc63",
+        "uc70"
+      ],
+      "description": "<p>Covers UC63 Compute Aggregates; UC70 Get accurate shot type predictions using an appropriate model.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-479\">SCRUM-479</a>, <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-480\">SCRUM-480</a>.</p><p>Steps:</p><ol><li><p>Read shooting team, opponent, season and game ID from the retained clean shot dataset.</p></li><li><p>Check that team and opponent differ on every row and both shooting teams appear in complete game groups.</p></li><li><p>As an analyst, export TOR 2025-26 shots with a 5000-row limit and repeat the identity check.</p></li></ol><p>Expected result: No shot lists its own team as the opponent; complete game groups contain both shooting teams.</p>",
+      "created": "2026-10-11T16:36:11.896-0400"
+    },
+    {
+      "key": "BST-139",
+      "title": "Shot import keeps the event team separate from home team and score",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc63",
+        "uc70"
+      ],
+      "description": "<p>Covers UC63 Compute Aggregates; UC70 Get accurate shot type predictions using an appropriate model.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-479\">SCRUM-479</a>.</p><p>Steps:</p><ol><li><p>Create two synthetic shot events in one TOR/BOS game, one from each shooting-team ID.</p></li><li><p>Include home-team and away-team abbreviations and a numeric home score, but no shooting-team abbreviation or home flag.</p></li><li><p>Run build_shots_clean once with home_score 0 and once with home_score 42.</p></li><li><p>Compare team, opponent and home/away flag against the independently specified shooter IDs.</p></li></ol><p>Expected result: The TOR event maps to TOR/BOS/home and the BOS event to BOS/TOR/away, regardless of the home score.</p>",
+      "created": "2026-10-11T16:36:31.830-0400"
+    },
+    {
+      "key": "BST-140",
+      "title": "Gameplan uses the new situation on the first Build",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "description": "<p>Covers UC45 Generate Context-Aware Top-K Play Types and Shot Types; UC50 Build Context Features.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-326\">SCRUM-326</a>.</p><p>Steps:</p><ol><li><p>Sign in as a coach and choose TOR/BOS 2024-25.</p></li><li><p>Start with Q4, 180 seconds, margin -2.</p></li><li><p>Enter: Q4 down 5 with 0:28 left. Need a three. They are switching.</p></li><li><p>Build once, record the parsed context and rankings, then build again without changing inputs.</p></li></ol><p>Expected result: Both requests use Q4, 28 seconds, margin -5, and identical unchanged inputs produce identical ranks and values.</p>",
+      "created": "2026-10-11T16:36:36.047-0400"
+    },
+    {
+      "key": "BST-141",
+      "title": "Gameplan forwards supported coaching conditions to ranking",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "description": "<p>Covers UC45 Generate Context-Aware Top-K Play Types and Shot Types; UC50 Build Context Features.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-502\">SCRUM-502</a>.</p><p>Steps:</p><ol><li><p>Enter a situation containing Need a three and They are switching.</p></li><li><p>Compare the parsed conditions with the current frontend request construction and backend contract.</p></li><li><p>Check the ranking input contract for the supported qualitative conditions.</p></li></ol><p>Expected result: Supported conditions reach the ranking service, or the screen clearly marks unsupported conditions without claiming they influenced the result.</p>",
+      "created": "2026-10-11T16:36:40.210-0400"
+    },
+    {
+      "key": "BST-142",
+      "title": "Gameplan preserves overtime from the parsed situation",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc11",
+        "uc50"
+      ],
+      "description": "<p>Covers UC11 Rank Plays with Game Context; UC50 Build Context Features.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-502\">SCRUM-502</a>.</p><p>Steps:</p><ol><li><p>Enter: Overtime, down 2 with 1:00 left.</p></li><li><p>Choose Understand and compare the parsed period with the displayed quarter and context summary.</p></li><li><p>Inspect the frontend period normalization. Stop at the first mismatch.</p></li></ol><p>Expected result: Overtime remains overtime throughout parsing, display and ranking; it is not silently changed to quarter 4.</p>",
+      "created": "2026-10-11T16:36:44.493-0400"
+    },
+    {
+      "key": "BST-143",
+      "title": "Analyst Shot Plan page can use its required API",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc70"
+      ],
+      "description": "<p>Covers UC62 Access Analyst Workspace; UC70 Get accurate shot type predictions using an appropriate model.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-126\">SCRUM-126</a>.</p><p>Steps:</p><ol><li><p>Sign in as an analyst and open the analyst Shot Plan page.</p></li><li><p>Choose TOR/BOS 2021-22 with a 1,000-shot limit and run the page action.</p></li><li><p>Inspect the request status and visible result.</p></li></ol><p>Expected result: The page role matches its API policy and an allowed analyst can complete the advertised workflow.</p>",
+      "created": "2026-10-11T16:36:48.602-0400"
+    },
+    {
+      "key": "BST-144",
+      "title": "Analyst Shot Heatmap page can use its required API",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc70"
+      ],
+      "description": "<p>Covers UC62 Access Analyst Workspace; UC70 Get accurate shot type predictions using an appropriate model.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-126\">SCRUM-126</a>.</p><p>Steps:</p><ol><li><p>Sign in as an analyst and open Shot Heatmap.</p></li><li><p>Select TOR/BOS 2025-26 with a 1,000-shot limit and generate the heatmap.</p></li><li><p>Inspect the API status and image or error shown.</p></li></ol><p>Expected result: The page role matches the heatmap API policy and the permitted user receives an image.</p>",
+      "created": "2026-10-11T16:36:52.947-0400"
+    },
+    {
+      "key": "BST-145",
+      "title": "Model Metrics finishes loading after successful metadata",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-model-evaluation",
+        "fall-2026",
+        "uc62",
+        "uc65"
+      ],
+      "description": "<p>Covers UC65 Evaluate Model; UC62 Access Analyst Workspace.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-477\">SCRUM-477</a>.</p><p>Steps:</p><ol><li><p>Sign in as an analyst and open Model Metrics.</p></li><li><p>Record successful metadata responses and wait for the metadata loading indicator to finish.</p></li><li><p>Inspect holdout requests and navigate between metric panels.</p></li></ol><p>Expected result: The loading indicator clears when its request completes and unrelated panel state does not trigger duplicate holdout work.</p>",
+      "created": "2026-10-11T16:36:56.784-0400"
+    },
+    {
+      "key": "BST-146",
+      "title": "Shot Model Metrics completes within its request limit",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Verify",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc65",
+        "uc70"
+      ],
+      "description": "<p>Covers UC65 Evaluate Model; UC70 Get accurate shot type predictions using an appropriate model.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-126\">SCRUM-126</a>.</p><p>Steps:</p><ol><li><p>Run the documented default Shot Model Metrics action once under approved resource limits.</p></li><li><p>Record duration, response status and the rendered metrics or error.</p></li><li><p>Check that opening the page does not repeatedly launch training.</p></li></ol><p>Expected result: The supported metric request completes before the platform timeout, or returns an explicit bounded job/cached-result workflow.</p>",
+      "created": "2026-10-11T16:37:01.072-0400"
+    },
+    {
+      "key": "BST-147",
+      "title": "Shot Statistical Analysis renders the returned response",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Fail",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-shot-analysis",
+        "fall-2026",
+        "uc62",
+        "uc65"
+      ],
+      "description": "<p>Covers UC65 Evaluate Model; UC62 Access Analyst Workspace.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-126\">SCRUM-126</a>.</p><p>Steps:</p><ol><li><p>Sign in as an analyst and open Shot Statistical Analysis.</p></li><li><p>Run the supported analysis and inspect the page and browser console.</p></li><li><p>Check the dataset, correlation and feature-selection sections for valid values or explicit unavailable states.</p></li></ol><p>Expected result: A successful current response renders without a client exception; the page does not claim methods that were not computed.</p>",
+      "created": "2026-10-11T16:37:05.303-0400"
+    },
+    {
+      "key": "BST-148",
+      "title": "A stale Gameplan update cannot overwrite a newer revision",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc42",
+        "uc48"
+      ],
+      "description": "<p>Covers UC42 Save Notes to Tactics Board / Plan; UC48 Save Notes to Tactics Board / Plan.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-481\">SCRUM-481</a>.</p><p>Steps:</p><ol><li><p>Create a disposable Gameplan with the authorized coach session.</p></li><li><p>Update revision 1 and confirm the server returns revision 2.</p></li><li><p>Try another update conditional on stale revision 1.</p></li><li><p>Read the row and delete the disposable fixture.</p></li></ol><p>Expected result: The stale update changes zero rows, the newer state survives, and cleanup removes the fixture.</p>",
+      "created": "2026-10-11T16:37:09.524-0400"
+    },
+    {
+      "key": "BST-149",
+      "title": "One account cannot read another account profile",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-access-control",
+        "fall-2026",
+        "uc69",
+        "uc71"
+      ],
+      "description": "<p>Covers UC69 Authenticate Analyst Access; UC71 Validate Coach Access.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-75\">SCRUM-75</a>.</p><p>Steps:</p><ol><li><p>Sign in with the controlled coach and analyst accounts.</p></li><li><p>As each role, query profiles filtered to the other account ID.</p></li><li><p>Do not change any profile or role.</p></li></ol><p>Expected result: Both requests return no other-account row; the caller can still retrieve its own trusted role.</p>",
+      "created": "2026-10-11T16:37:13.723-0400"
+    },
+    {
+      "key": "BST-150",
+      "title": "Export proxy rejects a cookie session for the wrong verified user",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "description": "<p>Covers UC62 Access Analyst Workspace.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-527\">SCRUM-527</a>.</p><p>Steps:</p><ol><li><p>Run the export route test with a verified user and a session belonging to another user.</p></li><li><p>Record the status and whether any upstream fetch starts.</p></li></ol><p>Expected result: The route returns 401 and never calls the backend with the mismatched session.</p>",
+      "created": "2026-10-11T16:37:18.128-0400"
+    },
+    {
+      "key": "BST-151",
+      "title": "Export proxy rejects arbitrary backend targets",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "description": "<p>Covers UC62 Access Analyst Workspace.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-527\">SCRUM-527</a>.</p><p>Steps:</p><ol><li><p>Request absolute external URLs, protocol-relative URLs, unsupported paths and traversal-style paths.</p></li><li><p>Also supply an arbitrary url parameter or duplicate path selector.</p></li><li><p>Check that rejection happens before authentication or an upstream fetch.</p></li></ol><p>Expected result: Unsupported targets return 400 and cannot turn the export route into an arbitrary proxy.</p>",
+      "created": "2026-10-11T16:37:22.169-0400"
+    },
+    {
+      "key": "BST-152",
+      "title": "Export proxy rejects foreign-site download requests",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "description": "<p>Covers UC62 Access Analyst Workspace.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-527\">SCRUM-527</a>.</p><p>Steps:</p><ol><li><p>Call the same-origin export route with a foreign Origin header.</p></li><li><p>Repeat with Sec-Fetch-Site set to cross-site.</p></li><li><p>Check status and whether an upstream request starts.</p></li></ol><p>Expected result: Both calls return 403 without contacting the backend.</p>",
+      "created": "2026-10-11T16:37:26.464-0400"
+    },
+    {
+      "key": "BST-153",
+      "title": "Export proxy rejects redirects and wrong file content",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "description": "<p>Covers UC62 Access Analyst Workspace.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-527\">SCRUM-527</a>.</p><p>Steps:</p><ol><li><p>Have the upstream endpoint return a 302 redirect to another site.</p></li><li><p>Have it return HTTP 200 JSON for a CSV request.</p></li><li><p>Check the route response and download headers.</p></li></ol><p>Expected result: The proxy follows neither redirect and returns 502 without a download attachment for invalid file content.</p>",
+      "created": "2026-10-11T16:37:30.777-0400"
+    },
+    {
+      "key": "BST-154",
+      "title": "Export proxy keeps denied responses out of downloaded files",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-exports",
+        "fall-2026",
+        "uc62"
+      ],
+      "description": "<p>Covers UC62 Access Analyst Workspace.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-527\">SCRUM-527</a>.</p><p>Steps:</p><ol><li><p>Return upstream 401, 403 and 422 responses to a permitted export path.</p></li><li><p>Check response status, content type, attachment header and body.</p></li></ol><p>Expected result: The status stays accurate, the body is an error response rather than an attachment, and tokens do not appear.</p>",
+      "created": "2026-10-11T16:37:34.975-0400"
+    },
+    {
+      "key": "BST-155",
+      "title": "NLP rejects empty and overlength coaching prompts",
+      "parent": "BST-137",
+      "parent_title": "Fall 2026 elaboration regression tests",
+      "status": "Pass",
+      "hierarchy_level": 0,
+      "assignee": "Gurkaranjit Asahan",
+      "labels": [
+        "assignment-1-revision",
+        "fa-context-ranking",
+        "fall-2026",
+        "uc45",
+        "uc50"
+      ],
+      "description": "<p>Covers UC50 Build Context Features; UC45 Generate Context-Aware Top-K Play Types and Shot Types.</p><p>Related work: <a href=\"https://basketball-strategy.atlassian.net/browse/SCRUM-502\">SCRUM-502</a>.</p><p>Steps:</p><ol><li><p>Send a whitespace-only coaching prompt.</p></li><li><p>Send a 2,001-character prompt.</p></li><li><p>Send a normal bounded coaching prompt and compare parsed numeric context.</p></li></ol><p>Expected result: The two invalid prompts return 422; the valid prompt returns the intended margin and remaining time.</p>",
+      "created": "2026-10-11T16:37:39.429-0400"
+    }
+  ],
+  "suites": [
+    {
+      "key": "BST-13",
+      "title": "Legacy Analyst Workspace suite (unused)",
+      "status": "Verify",
+      "hierarchy_level": 1,
+      "cases": []
+    },
+    {
+      "key": "BST-18",
+      "title": "Unused legacy test suite",
+      "status": "Verify",
+      "hierarchy_level": 1,
+      "cases": []
+    },
+    {
+      "key": "BST-27",
+      "title": "Access Analyst Workspace",
+      "status": "Pass",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-1",
+        "BST-2",
+        "BST-3",
+        "BST-32",
+        "BST-33",
+        "BST-34",
+        "BST-35",
+        "BST-36",
+        "BST-37",
+        "BST-38",
+        "BST-39",
+        "BST-40",
+        "BST-41"
+      ]
+    },
+    {
+      "key": "BST-28",
+      "title": "Authenticate Analyst Access",
+      "status": "Pass",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-42",
+        "BST-43",
+        "BST-44",
+        "BST-45",
+        "BST-46",
+        "BST-47",
+        "BST-48",
+        "BST-49",
+        "BST-50",
+        "BST-51",
+        "BST-52",
+        "BST-53",
+        "BST-54",
+        "BST-55"
+      ]
+    },
+    {
+      "key": "BST-29",
+      "title": "Ranked list via API",
+      "status": "Testing In Progress",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-4",
+        "BST-5",
+        "BST-6",
+        "BST-56",
+        "BST-57",
+        "BST-58",
+        "BST-59",
+        "BST-60",
+        "BST-61",
+        "BST-62",
+        "BST-63",
+        "BST-64"
+      ]
+    },
+    {
+      "key": "BST-30",
+      "title": "Validate Coach Access",
+      "status": "Pass",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-65",
+        "BST-66",
+        "BST-67",
+        "BST-68",
+        "BST-69",
+        "BST-70",
+        "BST-71",
+        "BST-72",
+        "BST-73"
+      ]
+    },
+    {
+      "key": "BST-31",
+      "title": "Rank Plays with Game Context",
+      "status": "Pass",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-74",
+        "BST-75",
+        "BST-76",
+        "BST-77",
+        "BST-78",
+        "BST-79",
+        "BST-80",
+        "BST-81",
+        "BST-82",
+        "BST-83",
+        "BST-84",
+        "BST-85",
+        "BST-86",
+        "BST-87",
+        "BST-88",
+        "BST-89",
+        "BST-90",
+        "BST-91",
+        "BST-92",
+        "BST-93",
+        "BST-94",
+        "BST-95"
+      ]
+    },
+    {
+      "key": "BST-96",
+      "title": "Generate Play Explanations",
+      "status": "Testing In Progress",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-97",
+        "BST-98",
+        "BST-99",
+        "BST-100",
+        "BST-101",
+        "BST-102",
+        "BST-103",
+        "BST-136"
+      ]
+    },
+    {
+      "key": "BST-104",
+      "title": "Access Stored Datasets",
+      "status": "Testing In Progress",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-105",
+        "BST-106",
+        "BST-107"
+      ]
+    },
+    {
+      "key": "BST-108",
+      "title": "API Stability and Deployment",
+      "status": "Testing In Progress",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-109",
+        "BST-110",
+        "BST-111",
+        "BST-112",
+        "BST-113"
+      ]
+    },
+    {
+      "key": "BST-114",
+      "title": "Validate Second Dataset and Models",
+      "status": "Testing In Progress",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-115",
+        "BST-116",
+        "BST-117",
+        "BST-118",
+        "BST-119"
+      ]
+    },
+    {
+      "key": "BST-120",
+      "title": "Iteration 14 elaboration verification",
+      "status": "Pass",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-121",
+        "BST-122",
+        "BST-123",
+        "BST-124",
+        "BST-125",
+        "BST-126",
+        "BST-127",
+        "BST-128",
+        "BST-129"
+      ]
+    },
+    {
+      "key": "BST-130",
+      "title": "Compute & Export Top-K Uplift",
+      "status": "Pass",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-131"
+      ]
+    },
+    {
+      "key": "BST-132",
+      "title": "Run Data Quality Checks",
+      "status": "Pass",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-133"
+      ]
+    },
+    {
+      "key": "BST-134",
+      "title": "Export Results (CSV/PDF)",
+      "status": "Pass",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-135"
+      ]
+    },
+    {
+      "key": "BST-137",
+      "title": "Fall 2026 elaboration regression tests",
+      "status": "Testing In Progress",
+      "hierarchy_level": 1,
+      "cases": [
+        "BST-138",
+        "BST-139",
+        "BST-140",
+        "BST-141",
+        "BST-142",
+        "BST-143",
+        "BST-144",
+        "BST-145",
+        "BST-146",
+        "BST-147",
+        "BST-148",
+        "BST-149",
+        "BST-150",
+        "BST-151",
+        "BST-152",
+        "BST-153",
+        "BST-154",
+        "BST-155"
+      ]
+    }
+  ],
+  "test_execution_changed": false,
+  "application_changed": false
+}

@@ -1,0 +1,22 @@
+{
+  "spec": {
+    "template": {
+      "spec": {
+        "containers": [
+          {
+            "ports": [
+              {
+                "containerPort": 8080,
+                "name": "http1"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "status": {
+    "latestReadyRevisionName": "nba-playranker-api-00005-hrn",
+    "url": "https://nba-playranker-api-bbv5uwlpba-nn.a.run.app"
+  }
+}

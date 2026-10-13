@@ -7,27 +7,27 @@ Project Planning with JIRA, pages 15-16 and 26-28
 Use clear task titles, an assignee and acceptance criteria. Each Dev Subtask
 needs an Effort Estimate of no more than four hours. Log actual hours separately.
 
-SCRUM-551 through SCRUM-565 break down the interaction, risk and test revisions
-under SCRUM-528, SCRUM-529 and SCRUM-530. Their estimates range from 0.5 to 3
-hours. See tracking/ for the tasks and acceptance criteria.
+SCRUM-566 and SCRUM-567 track the deployment feedback under SCRUM-440.
+SCRUM-555 through SCRUM-558 track risks; SCRUM-559 through SCRUM-565 track tests.
+See tracking/current-scope.json for the current work and earlier records.
 
 Test Planning, pages 8-23
 Each test needs a functional area, use case, inputs, steps and expected result.
 Record the observed result and link failures to fix tickets. Rerun those tests
 after the fixes. Unfinished checks stay Verify.
 
-Page 15 requires Epic-level Test Suites and Task-level Test Cases. The 115
-cases and 14 suites now use that structure. Each case is back under its
-original suite, with its key, results, links and owner kept. See hierarchy/.
+Page 15 requires Epic-level Test Suites and Task-level Test Cases. All 121
+cases now have valid parents across 14 active suites. Two unused older suites
+are kept for history. Keys, results, links and owners were preserved.
+See hierarchy/ for the original migration and the later six-case grouping.
 
-Interaction and Detailed Design, pages 4-16
-The five complete use-case collaborations keep their realization links,
-overview diagrams and Design Model classifiers. This revision fixes sequence
-lifelines, parameters and replies. The interaction guide lists the diagram
-locations and model-organization work still needed for later features.
+Deployment feedback
+Fix crossing communication lines and show each network protocol and port.
+Keep the devices, execution environments, artifacts and relationships clear.
+Only the deployment model is included in Gurk's current VP revision.
 
 Before submission
-Combine these changes with the other group member's architecture, deployment
-and timeline revisions. Include the native model and shared Jira and Visual
+Combine these changes with the other group member's revisions. Include the
+native model and shared Jira and Visual
 Paradigm links. Confirm the deadline and professor access. No SLATE upload
 has been made.

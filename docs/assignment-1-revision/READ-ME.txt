@@ -1,23 +1,27 @@
 Assignment 1 revision
 
-This revision covers the interaction model, risk plan and test plan. Combine
-it with the other group member's architecture, deployment and timeline work
-before submitting.
+Gurk's revision covers the deployment model, risk plan and test plan. Combine
+it with the other group member's work before submitting.
 
 Start with START-HERE.pdf. It is here in the repository and at the top of the
 handoff ZIP.
 
-interaction/ contains the Visual Paradigm project and 17 sequence previews.
-The lifelines, parameters and return labels are corrected. The file is saved;
-the shared Teamwork commit still needs confirmation in SCRUM-554.
+deployment/ contains the current Visual Paradigm project, deployment preview
+and preservation checks. The shared Teamwork publication status is recorded
+there. SCRUM-440 tracks the deployment feedback.
+
+Repository-only history: interaction/ keeps the earlier revision record.
+Those local interaction-diagram edits and that folder are excluded from the
+current model and handoff ZIP.
 
 risks/ contains all 84 reviewed risks and their linked work items.
 
-hierarchy/ shows the 115 cases and 14 suites moved to the course structure,
-with every case kept under its original suite.
+hierarchy/ shows all 121 Task-level cases under 14 active Epic-level suites.
+Two unused older suites are kept for history. The earlier 115-case migration
+and the follow-up grouping of six older cases are both recorded.
 
-tracking/ lists the 15 revision Dev Subtasks, acceptance criteria and estimates.
-The test hierarchy is fixed. VP publication is still open.
+tracking/ keeps the task breakdown and the change of scope. Estimates and
+actual worklogs remain separate.
 
 test-execution.txt explains what passed, what failed and which tickets track
 the fixes. tests/ contains the results and use-case coverage.

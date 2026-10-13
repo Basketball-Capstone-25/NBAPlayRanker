@@ -1,46 +1,34 @@
-Test hierarchy migration
+Current test hierarchy
 
-Moved 115 cases to Task-level Test Case and 14 suites to Epic-level Test Suite.
-All 115 cases are back under their original suites. The existing issue keys
-and test results were preserved. This matches the course hierarchy.
+All 121 Test Cases now belong to an existing Test Suite. Cases are Task-level;
+suites are Epic-level. The board shows all cases, grouped by Test Suite, with
+the backlog disabled. Create new tests directly on the board.
 
-Results: 97 Pass, 14 Fail and 4 Verify.
-Suites: 9 Pass and 5 Testing In Progress.
+Cases: 101 Pass, 14 Fail and 6 Verify.
+Suites: 8 Pass, 6 Testing In Progress and 2 Verify.
 
-The full-project browser export was compared with the saved pre-migration
-snapshot: all 137 issues, 181 comments and 5 attachments were present.
-All 4,051 available-field checks passed, including parents, statuses, owners,
-descriptions, comment content, labels and formal-link endpoints.
+The six older cases are now grouped with the matching coverage:
+- BST-1, BST-2 and BST-3 belong to BST-27, Access Analyst Workspace.
+- BST-4, BST-5 and BST-6 belong to BST-29, Ranked list via API.
 
-A follow-up REST comparison passed all 4,650 checks. It also verified the six
-individual worklogs, attachment authors, link IDs and full comment metadata.
-Three comments and one suite description were deliberately simplified; the
-report checks their exact replacement text and lists those four changes.
+BST-27 has 13 passing cases. BST-29 has 10 Pass and two Verify, so its status
+is Testing In Progress. BST-4/5 now use the current baseline API parameters
+and UC10/18/55. They remain Verify until executed. Case results, owners and
+comments were kept. No application tests were rerun for this cleanup.
 
-Suite map:
-BST-27: Access Analyst Workspace - 10 cases
-BST-28: Authenticate Analyst Access - 14 cases
-BST-29: Ranked list via API - 9 cases
-BST-30: Validate Coach Access - 9 cases
-BST-31: Rank Plays with Game Context - 22 cases
-BST-96: Generate Play Explanations - 8 cases
-BST-104: Access Stored Datasets - 3 cases
-BST-108: API Stability and Deployment - 5 cases
-BST-114: Validate Second Dataset and Models - 5 cases
-BST-120: Iteration 14 elaboration verification - 9 cases
-BST-130: Compute & Export Top-K Uplift - 1 case
-BST-132: Run Data Quality Checks - 1 case
-BST-134: Export Results (CSV/PDF) - 1 case
-BST-137: Fall 2026 elaboration regression tests - 18 cases
+BST-13 and BST-18 are clearly marked as unused older suites. They have no cases
+and remain Verify, with their history preserved.
 
-case-map.csv lists each case and its verified suite and result.
-suite-map.csv groups the same cases by suite.
-hierarchy-map.json contains the complete mapping.
-browser-export-verification.json records the first comparison.
-rest-preservation-verification.json contains the later, fuller check.
+Current files
+- current-case-map.csv: all 121 cases, parents and results.
+- current-suite-map.csv: all 16 suites and their children.
+- current-hierarchy.json: the live readback, definitions and change checks.
+- board-verification.json: saved board settings and visible case totals.
 
-Six older standard cases and two older Epic items remain separate. Including
-them, the project contains 121 Test Cases and 16 Test Suites.
-
-The browser export was checked before the wording edits. The REST check was
-completed afterward; all other compared content and records were unchanged.
+Earlier migration records
+The initial move covered 115 cases and 14 suites, keeping their original
+parents and results. The browser comparison passed 4,051 checks; the later
+REST comparison passed 4,650 checks, including individual worklogs, attachment
+authors and full comment metadata. The original case-map.csv, suite-map.csv,
+hierarchy-map.json and verification reports preserve that stage. Use the
+current files above for the latest grouping and suite totals.

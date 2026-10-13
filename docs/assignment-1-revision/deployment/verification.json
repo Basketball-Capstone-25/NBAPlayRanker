@@ -1,0 +1,115 @@
+{
+  "verified": true,
+  "base_teamwork_revision": 54,
+  "checks": {
+    "DIAGRAM_original_ids_retained": true,
+    "MODEL_ELEMENT_original_ids_retained": true,
+    "DIAGRAM_ELEMENT_original_ids_retained": true,
+    "PROJECT_FILE_original_ids_retained": true,
+    "exactly_one_deployment_diagram_changed": true,
+    "all_191_other_diagrams_byte_identical": true,
+    "diagram_names_and_parents_unchanged": true,
+    "all_non_deployment_views_byte_identical": true,
+    "all_original_view_model_references_unchanged": true,
+    "all_original_deployment_artifacts_and_runtimes_retained": true,
+    "all_original_model_ids_types_parents_creators_and_creation_times_unchanged": true,
+    "all_other_model_rows_byte_identical": true,
+    "all_model_labels_match_revision": true,
+    "only_one_new_network_relationship": true,
+    "renamed_models_not_displayed_in_other_diagrams": true,
+    "all_17_interaction_diagrams_equal_shared_revision_54": true,
+    "all_interaction_views_equal_shared_revision_54": true,
+    "all_six_network_paths_label_https_and_tcp_443": true,
+    "internal_uvicorn_port_is_distinguished": true,
+    "six_network_paths_have_zero_crossings": true
+  },
+  "counts": {
+    "DIAGRAM": {
+      "before": 192,
+      "after": 192,
+      "changed": 1,
+      "added": 0,
+      "removed": 0
+    },
+    "MODEL_ELEMENT": {
+      "before": 2157,
+      "after": 2158,
+      "changed": 11,
+      "added": 1,
+      "removed": 0
+    },
+    "DIAGRAM_ELEMENT": {
+      "before": 1725,
+      "after": 1726,
+      "changed": 62,
+      "added": 1,
+      "removed": 0
+    },
+    "PROJECT_FILE": {
+      "before": 526,
+      "after": 526,
+      "changed": 1,
+      "added": 0,
+      "removed": 0
+    },
+    "interaction_diagrams_preserved": 17,
+    "visible_artifact_shapes": 15,
+    "device_and_runtime_shapes": 11,
+    "network_paths": 6,
+    "redundant_relationship_views_suppressed": 31,
+    "pending_local_history_entries": 118
+  },
+  "changed_diagram_id": "8W4D.wWAUAAADc8a",
+  "native_sha256": "b5fb0f566d1ebfde711ecdf7de087a8a0467dbb2d10b540907034ffd939b1c64",
+  "baseline_sha256": "3eba4a4e1437a99984e06a45793d984fb1c7533f1870ecc221146649f8b0a9a4",
+  "changed_existing_model_ids": [
+    "8zHsqVmAUUE.bzvI",
+    "kGecuLmAUAAADX.L",
+    "aYz6uLmAUAAADYbr",
+    "BYz6uLmAUAAADYbu",
+    "OX42uLmAUAAADYkD",
+    "BZ69.wWAUAAADcpO",
+    "os4D.wWAUAAADc62",
+    "Ks4D.wWAUAAADc67",
+    "Rs4D.wWAUAAADc7A",
+    "9s4D.wWAUAAADc7F",
+    "vs4D.wWAUAAADc7K"
+  ],
+  "new_model_ids": [
+    "Dep65361b1353507"
+  ],
+  "publication": "Saved locally; Teamwork publication is pending.",
+  "supporting_model_changes": {
+    "8zHsqVmAUUE.bzvI": "The relationship container gained the new Vercel-to-Cloud Run association reference and modification timestamps.",
+    "kGecuLmAUAAADX.L": "The deployment model container received modification timestamps only.",
+    "aYz6uLmAUAAADYbr": "The Vercel node gained the new association endpoint reference and modification timestamps.",
+    "BYz6uLmAUAAADYbu": "The Cloud Run node gained the new association endpoint reference and modification timestamps.",
+    "OX42uLmAUAAADYkD": "The Docker container received modification timestamps after its Uvicorn child label changed."
+  },
+  "changed_embedded_resource": "HTMLStringProperties/8W4D.wWAUAAADc8a_documentation",
+  "changed_embedded_resource_purpose": "Deployment diagram description: grouped artifacts, protocol and port notes, existing localStorage limitation.",
+  "live_cloud_run_port": {
+    "container_port": 8080,
+    "name": "http1",
+    "ready_revision": "nba-playranker-api-00005-hrn"
+  },
+  "render_review": {
+    "renderer": "Visual Paradigm ExportDiagramImage",
+    "all_15_artifacts_visible": true,
+    "all_11_device_and_runtime_shapes_visible": true,
+    "all_six_network_labels_legible": true,
+    "no_orphan_labels": true,
+    "evaluation_watermarks_retained": true,
+    "image_width": 2486,
+    "image_height": 1446
+  },
+  "semantic_export_review": {
+    "all_original_model_and_composite_ids_retained": true,
+    "before": 6883,
+    "after": 6888,
+    "five_new_ids_belong_to_one_association_and_its_ends": true,
+    "all_labels_roundtripped": true,
+    "export_link_from": "aYz6uLmAUAAADYbr",
+    "export_link_to": "BYz6uLmAUAAADYbu"
+  }
+}
