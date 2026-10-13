@@ -1,0 +1,288 @@
+{
+  "started_at": "2026-10-13T04:16:42.663727+00:00",
+  "api": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app",
+  "source_commit": "3a8b00b",
+  "checks": [
+    {
+      "name": "analyst_session",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "coach_session",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "signed_out_rejected",
+      "passed": true,
+      "status": 401,
+      "seconds": 0.297
+    },
+    {
+      "name": "coach_rejected",
+      "passed": true,
+      "status": 403,
+      "seconds": 1.421
+    },
+    {
+      "name": "analyst_report",
+      "passed": true,
+      "status": 200,
+      "seconds": 0.748
+    },
+    {
+      "name": "source_checks",
+      "passed": true,
+      "results": {
+        "schema": "pass",
+        "completeness": "pass",
+        "duplicates": "pass",
+        "coverage": "pass"
+      }
+    },
+    {
+      "name": "source_metadata",
+      "passed": true,
+      "rows": 47982,
+      "seasons": [
+        "2019-20",
+        "2020-21",
+        "2021-22",
+        "2022-23",
+        "2023-24",
+        "2024-25"
+      ],
+      "teams": [
+        "ATL",
+        "BKN",
+        "BOS",
+        "CHA",
+        "CHI",
+        "CLE",
+        "DAL",
+        "DEN",
+        "DET",
+        "GSW",
+        "HOU",
+        "IND",
+        "LAC",
+        "LAL",
+        "MEM",
+        "MIA",
+        "MIL",
+        "MIN",
+        "NOP",
+        "NYK",
+        "OKC",
+        "ORL",
+        "PHI",
+        "PHX",
+        "POR",
+        "SAC",
+        "SAS",
+        "TOR",
+        "UTA",
+        "WAS"
+      ]
+    },
+    {
+      "name": "source_version",
+      "passed": true
+    },
+    {
+      "name": "no_cached_report",
+      "passed": true,
+      "cache_control": "no-store"
+    },
+    {
+      "name": "refresh_rechecks_same_source",
+      "passed": true,
+      "status": 200,
+      "seconds": 0.623,
+      "first_generated_at": "2026-10-13T04:16:46.822391Z",
+      "refreshed_generated_at": "2026-10-13T04:16:47.477654Z",
+      "same_version": true
+    },
+    {
+      "name": "production_cors",
+      "passed": true,
+      "status": 200,
+      "allowed_origin": "https://nbaplayranker-seven.vercel.app"
+    },
+    {
+      "name": "existing_preview",
+      "passed": true,
+      "status": 200,
+      "seconds": 0.5,
+      "returned_rows": 11,
+      "total_rows": 11
+    },
+    {
+      "name": "cloud_run_limits_preserved",
+      "passed": true,
+      "expected": {
+        "cpu": "1",
+        "memory": "2Gi",
+        "concurrency": 2,
+        "timeout_seconds": 300,
+        "service_max": "2",
+        "service_min": "0",
+        "revision_max": "2",
+        "revision_min": "0",
+        "cpu_throttling": "true",
+        "port": 8080,
+        "strict_auth": true,
+        "production_origin": true,
+        "numerical_threads_one": true
+      }
+    },
+    {
+      "name": "reviewed_release_ready",
+      "passed": true
+    },
+    {
+      "name": "analyst_test_session_closed",
+      "passed": true,
+      "status": 204
+    },
+    {
+      "name": "coach_test_session_closed",
+      "passed": true,
+      "status": 204
+    }
+  ],
+  "quality_report": {
+    "status": "pass",
+    "safe_for_use": true,
+    "checks": [
+      {
+        "name": "schema",
+        "status": "pass",
+        "details": {
+          "required_columns": [
+            "SEASON",
+            "TEAM_ABBREVIATION",
+            "PLAY_TYPE",
+            "TYPE_GROUPING",
+            "POSS",
+            "PPP",
+            "PTS"
+          ],
+          "missing_columns": []
+        }
+      },
+      {
+        "name": "completeness",
+        "status": "pass",
+        "details": {
+          "rows": 47982,
+          "null_counts": {}
+        }
+      },
+      {
+        "name": "duplicates",
+        "status": "pass",
+        "details": {
+          "key_fields": [
+            "SEASON_ID",
+            "PLAYER_ID",
+            "TEAM_ABBREVIATION",
+            "PLAY_TYPE",
+            "TYPE_GROUPING"
+          ],
+          "duplicate_rows": 0
+        }
+      },
+      {
+        "name": "coverage",
+        "status": "pass",
+        "details": {
+          "expected_seasons": 6,
+          "expected_teams": 30,
+          "missing_season_team_pairs": []
+        }
+      }
+    ],
+    "dataset": {
+      "name": "Synergy play-type source",
+      "scope": "All source rows; independent of preview filters",
+      "rows": 47982,
+      "seasons": [
+        "2019-20",
+        "2020-21",
+        "2021-22",
+        "2022-23",
+        "2023-24",
+        "2024-25"
+      ],
+      "teams": [
+        "ATL",
+        "BKN",
+        "BOS",
+        "CHA",
+        "CHI",
+        "CLE",
+        "DAL",
+        "DEN",
+        "DET",
+        "GSW",
+        "HOU",
+        "IND",
+        "LAC",
+        "LAL",
+        "MEM",
+        "MIA",
+        "MIL",
+        "MIN",
+        "NOP",
+        "NYK",
+        "OKC",
+        "ORL",
+        "PHI",
+        "PHX",
+        "POR",
+        "SAC",
+        "SAS",
+        "TOR",
+        "UTA",
+        "WAS"
+      ],
+      "version": "frame-sha256:360fa0ac79fe4d545a99d4b5c0a4163b32cb85208fbe5be237f3d7ec74096b4a"
+    },
+    "generated_at": "2026-10-13T04:16:46.822391Z"
+  },
+  "cloud_run": {
+    "project": "nba-playranker",
+    "region": "northamerica-northeast1",
+    "service": "nba-playranker-api",
+    "ready_revision": "nba-playranker-api-00006-lnd",
+    "commit_label": "3a8b00b",
+    "traffic": [
+      {
+        "latestRevision": true,
+        "percent": 100,
+        "revisionName": "nba-playranker-api-00006-lnd"
+      }
+    ],
+    "cpu": "1",
+    "memory": "2Gi",
+    "concurrency": 2,
+    "timeout_seconds": 300,
+    "service_max": "2",
+    "service_min": "0",
+    "revision_max": "2",
+    "revision_min": "0",
+    "cpu_throttling": "true",
+    "port": 8080,
+    "strict_auth": true,
+    "production_origin": true,
+    "numerical_threads_one": true
+  },
+  "completed_at": "2026-10-13T04:16:50.669415+00:00",
+  "passed": true,
+  "summary": {
+    "passed": 16,
+    "total": 16
+  }
+}

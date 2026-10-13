@@ -1,0 +1,188 @@
+{
+  "frontend": {
+    "id": "dpl_MnefQmYng7YrdW8p2kavTzKvDFu5",
+    "url": "nbaplayranker-bxg9zds45-pearson-manufacturing.vercel.app",
+    "production_url": "https://nbaplayranker-seven.vercel.app",
+    "state": "READY",
+    "source_commit": "a3bba3a8db107b1ec32ddb7904b2dda55ce2493b",
+    "branch": "main"
+  },
+  "ci": {
+    "id": 38345252833,
+    "sha": "3a8b00b3d1114172285df668cb5a0c91553dcb58",
+    "conclusion": "success",
+    "url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38345252833",
+    "jobs": [
+      {
+        "id": 115125046054,
+        "name": "Backend tests",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38345252833,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Check out source",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Install backend dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Install NLP model",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run all backend tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Check out source",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 115125046225,
+        "name": "Frontend tests and build",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38345252833,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Check out source",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Set up Node.js",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Install frontend dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run all frontend tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Build frontend",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Set up Node.js",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Check out source",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      }
+    ]
+  },
+  "initial_frontend": {
+    "id": "dpl_2N7bc85xkfC3W7B7Gv1N8mdUpsws",
+    "url": "nbaplayranker-83v38bwwm-pearson-manufacturing.vercel.app",
+    "production_url": "https://nbaplayranker-seven.vercel.app",
+    "state": "READY",
+    "source_commit": "3a8b00b3d1114172285df668cb5a0c91553dcb58",
+    "branch": "main"
+  },
+  "backend": {
+    "project": "nba-playranker",
+    "region": "northamerica-northeast1",
+    "service": "nba-playranker-api",
+    "ready_revision": "nba-playranker-api-00006-lnd",
+    "commit_label": "3a8b00b",
+    "traffic": [
+      {
+        "latestRevision": true,
+        "percent": 100,
+        "revisionName": "nba-playranker-api-00006-lnd"
+      }
+    ],
+    "cpu": "1",
+    "memory": "2Gi",
+    "concurrency": 2,
+    "timeout_seconds": 300,
+    "service_max": "2",
+    "service_min": "0",
+    "revision_max": "2",
+    "revision_min": "0",
+    "cpu_throttling": "true",
+    "port": 8080,
+    "strict_auth": true,
+    "production_origin": true,
+    "numerical_threads_one": true
+  },
+  "contrast_fix_ci": {
+    "id": 38345875804,
+    "head_sha": "a3bba3a8db107b1ec32ddb7904b2dda55ce2493b",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38345875804"
+  }
+}

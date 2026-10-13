@@ -1,0 +1,5 @@
+Command: backend/.venv/bin/python -m pytest tests -q (from backend)
+Result: 222 passed, 4 xfailed, 1 warning in 48.23s
+The four expected failures cover existing shot-data issues; they are not new sprint failures.
+Warning: FastAPI TestClient reports the existing httpx/Starlette deprecation.
+

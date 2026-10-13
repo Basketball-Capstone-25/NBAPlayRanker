@@ -1,0 +1,496 @@
+{
+  "checked_at": "2026-10-13 04:24:08 UTC",
+  "scope": "Iteration 15 data-quality report and season-ahead forecast evaluation",
+  "story_count": 2,
+  "dev_subtask_count": 6,
+  "defect_count": 1,
+  "test_suite_count": 2,
+  "test_case_count": 11,
+  "test_results": {
+    "Pass": 11
+  },
+  "test_suite_results": {
+    "Pass": 2
+  },
+  "board": {
+    "id": 4,
+    "returned_keys": [
+      "BST-156",
+      "BST-157",
+      "BST-158",
+      "BST-159",
+      "BST-160",
+      "BST-161",
+      "BST-162",
+      "BST-163",
+      "BST-164",
+      "BST-165",
+      "BST-166",
+      "BST-167",
+      "BST-168"
+    ],
+    "method": "Active-board connector read; all eleven cases also confirmed in browser columns."
+  },
+  "checks": {
+    "all_22_expected_issues_returned": true,
+    "all_stories_subtasks_and_bug_done": true,
+    "all_11_cases_and_two_suites_pass": true,
+    "all_test_issues_returned_by_board": true,
+    "all_cases_have_correct_parent": true,
+    "standard_case_and_epic_suite_levels": true,
+    "no_worklogs": true,
+    "initial_failure_preserved": true,
+    "separate_passing_retest_present": true,
+    "all_development_in_sprint183": true,
+    "parent_points_preserved": true,
+    "all_owned_by_gurk": true
+  },
+  "all_checks_passed": true,
+  "issues": [
+    {
+      "key": "BST-156",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-156",
+      "title": "Data-quality report and analyst panel",
+      "type": "Test Suite",
+      "status": "Pass",
+      "parent": null,
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-480"
+      ],
+      "comment_ids": [
+        "11156"
+      ]
+    },
+    {
+      "key": "BST-157",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-157",
+      "title": "Season-ahead PPP forecast evaluation",
+      "type": "Test Suite",
+      "status": "Pass",
+      "parent": null,
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-526"
+      ],
+      "comment_ids": []
+    },
+    {
+      "key": "BST-158",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-158",
+      "title": "Quality report identifies its source and completed checks",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-156",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-480"
+      ],
+      "comment_ids": [
+        "11135"
+      ]
+    },
+    {
+      "key": "BST-159",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-159",
+      "title": "Failed or incomplete data checks never appear as a pass",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-156",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-480"
+      ],
+      "comment_ids": [
+        "11136"
+      ]
+    },
+    {
+      "key": "BST-160",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-160",
+      "title": "Unavailable quality checks show an error and retry state",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-156",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-480"
+      ],
+      "comment_ids": [
+        "11137"
+      ]
+    },
+    {
+      "key": "BST-161",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-161",
+      "title": "Quality report accepts analysts and rejects unauthorized requests",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-156",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-480"
+      ],
+      "comment_ids": [
+        "11138"
+      ]
+    },
+    {
+      "key": "BST-162",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-162",
+      "title": "Live Data Explorer quality panel loads, refreshes and enforces access",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-156",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-480"
+      ],
+      "comment_ids": [
+        "11154"
+      ]
+    },
+    {
+      "key": "BST-163",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-163",
+      "title": "Season-ahead inputs use only the immediately prior regular season",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-157",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-526"
+      ],
+      "comment_ids": [
+        "11139"
+      ]
+    },
+    {
+      "key": "BST-164",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-164",
+      "title": "Changing the final season cannot change forecast fitting or predictions",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-157",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-526"
+      ],
+      "comment_ids": [
+        "11140"
+      ]
+    },
+    {
+      "key": "BST-165",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-165",
+      "title": "Forecast selection and scaling keep the final season untouched",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-157",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-526"
+      ],
+      "comment_ids": [
+        "11141"
+      ]
+    },
+    {
+      "key": "BST-166",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-166",
+      "title": "Forecast and timed baselines use the same evaluation rows",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-157",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-526"
+      ],
+      "comment_ids": [
+        "11142"
+      ]
+    },
+    {
+      "key": "BST-167",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-167",
+      "title": "Forecast evaluation reproduces the same report and predictions",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-157",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-526"
+      ],
+      "comment_ids": [
+        "11143"
+      ]
+    },
+    {
+      "key": "BST-168",
+      "url": "https://basketball-strategy.atlassian.net/browse/BST-168",
+      "title": "Data-quality status labels remain readable on the light panel",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-156",
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-574",
+        "SCRUM-480"
+      ],
+      "comment_ids": [
+        "11144",
+        "11155"
+      ]
+    },
+    {
+      "key": "SCRUM-480",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-480",
+      "title": "Surface data quality status in Data Explorer",
+      "type": "Story",
+      "status": "Done",
+      "parent": "SCRUM-1",
+      "effort_estimate": null,
+      "story_points": 2,
+      "worklog_count": 0,
+      "related_work": [
+        "BST-138",
+        "BSR-48",
+        "BSR-50",
+        "BSR-79",
+        "BST-156",
+        "BST-158",
+        "BST-159",
+        "BST-160",
+        "BST-161",
+        "BST-162",
+        "SCRUM-574",
+        "BST-168"
+      ],
+      "comment_ids": [
+        "11161"
+      ]
+    },
+    {
+      "key": "SCRUM-526",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-526",
+      "title": "Evaluate PPP forecasts with strictly lagged predictors and untouched time holdouts",
+      "type": "Story",
+      "status": "Done",
+      "parent": "SCRUM-5",
+      "effort_estimate": null,
+      "story_points": 3,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-476",
+        "BSR-41",
+        "BSR-42",
+        "BSR-43",
+        "BSR-44",
+        "BSR-45",
+        "BSR-46",
+        "BSR-56",
+        "BSR-80",
+        "BSR-82",
+        "BSR-83",
+        "BSR-102",
+        "BSR-105",
+        "BST-157",
+        "BST-163",
+        "BST-164",
+        "BST-165",
+        "BST-166",
+        "BST-167"
+      ],
+      "comment_ids": [
+        "10888",
+        "11148"
+      ]
+    },
+    {
+      "key": "SCRUM-568",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-568",
+      "title": "Connect the data-quality report API",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-480",
+      "effort_estimate": 1,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [],
+      "comment_ids": [
+        "11157"
+      ]
+    },
+    {
+      "key": "SCRUM-569",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-569",
+      "title": "Show data-check results and retry states",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-480",
+      "effort_estimate": 1.5,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [],
+      "comment_ids": [
+        "11158"
+      ]
+    },
+    {
+      "key": "SCRUM-570",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-570",
+      "title": "Verify the quality panel and analyst access",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-480",
+      "effort_estimate": 1,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [],
+      "comment_ids": [
+        "11159"
+      ]
+    },
+    {
+      "key": "SCRUM-571",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-571",
+      "title": "Build prior-season forecast inputs",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-526",
+      "effort_estimate": 2,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [],
+      "comment_ids": [
+        "11145"
+      ]
+    },
+    {
+      "key": "SCRUM-572",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-572",
+      "title": "Compare forecasts with a timed baseline",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-526",
+      "effort_estimate": 2,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [],
+      "comment_ids": [
+        "11146"
+      ]
+    },
+    {
+      "key": "SCRUM-573",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-573",
+      "title": "Verify leakage checks and publish evaluation",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-526",
+      "effort_estimate": 1,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [],
+      "comment_ids": [
+        "11147"
+      ]
+    },
+    {
+      "key": "SCRUM-574",
+      "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-574",
+      "title": "Make data-quality status text readable on the light background",
+      "type": "Task",
+      "status": "Done",
+      "parent": null,
+      "effort_estimate": null,
+      "story_points": null,
+      "worklog_count": 0,
+      "related_work": [
+        "SCRUM-480",
+        "BST-168"
+      ],
+      "comment_ids": [
+        "11160"
+      ]
+    }
+  ],
+  "risk_updates": [
+    {
+      "key": "BSR-41",
+      "status": "Monitoring",
+      "new_comment_id": "11149"
+    },
+    {
+      "key": "BSR-43",
+      "status": "Monitoring",
+      "new_comment_id": "11150"
+    },
+    {
+      "key": "BSR-44",
+      "status": "Monitoring",
+      "new_comment_id": "11151"
+    },
+    {
+      "key": "BSR-45",
+      "status": "Monitoring",
+      "new_comment_id": "11152"
+    },
+    {
+      "key": "BSR-46",
+      "status": "Monitoring",
+      "new_comment_id": null,
+      "note": "Unchanged: description concerns XGBoost; the new result evaluates Ridge."
+    },
+    {
+      "key": "BSR-56",
+      "status": "Monitoring",
+      "new_comment_id": "11153"
+    }
+  ],
+  "evidence": {
+    "feature_commit": "7536934",
+    "forecast_commit": "3a8b00b3d1114172285df668cb5a0c91553dcb58",
+    "contrast_fix_commit": "a3bba3a8db107b1ec32ddb7904b2dda55ce2493b",
+    "forecast_ci": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38345252833",
+    "final_ci": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38345875804",
+    "verification_directory": "docs/iteration-15/verification",
+    "forecast_directory": "docs/iteration-15/forecast"
+  },
+  "contrast_execution": {
+    "test": "BST-168",
+    "bug": "SCRUM-574",
+    "failed_comment_id": "11144",
+    "passed_retest_comment_id": "11155"
+  },
+  "notes": [
+    "Existing assignment test records were preserved; this adds a separate Iteration 15 campaign.",
+    "Actual worklogs remain zero for this sprint."
+  ]
+}

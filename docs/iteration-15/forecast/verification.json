@@ -1,0 +1,25 @@
+{
+  "command": "backend/.venv/bin/python -m pytest backend/tests/test_forecast_evaluation.py backend/tests/test_calibration.py -q",
+  "result": {
+    "passed": 32,
+    "failed": 0,
+    "forecast_tests": 16,
+    "existing_calibration_tests": 16
+  },
+  "repeat_run": {
+    "command": "backend/.venv/bin/python backend/data/etl/run_forecast_evaluation.py --output-dir /tmp/nbapr-forecast-3a8b00b-repeat",
+    "report_byte_identical": true,
+    "predictions_byte_identical": true
+  },
+  "source_sha256": {
+    "backend/domain/statistical_analysis/forecast_evaluation.py": "abeda9c282a24a312d7c146bd0c56035c45757d1cd47dd2ae0ec01a00ef22e35",
+    "backend/data/etl/run_forecast_evaluation.py": "179911155fae3e222f07d493bf54deda267aafa6f135fbed37cd7251cdafeaa3",
+    "backend/tests/test_forecast_evaluation.py": "367f1ec5ed9ebe95dcfbaa4a60f2de910fad4acdfa4bb76379f56e3d45d28e1b"
+  },
+  "report_sha256": "a7e0fd54b80201383c36888db8ceae68391efdda72442ade3ad5a91577e024de",
+  "predictions_sha256": "66c54f0a6bb2f3e0bbafdb41ff94ccf0f9a76d2d40ae50688cdc01a949335fc2",
+  "committed_source": {
+    "git_revision": "3a8b00b3d1114172285df668cb5a0c91553dcb58",
+    "evaluation_sources_uncommitted_at_run": false
+  }
+}

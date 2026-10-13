@@ -1,0 +1,32 @@
+									1089 heading Test Suite BST-156 Data-quality report and analyst panel Pass Gurkaranjit Asahan, Value: 3
+										1091 link Description: BST-156, Value: basketball-strategy.atlassian.net/browse/BST-156
+											1114 button Create work item after work item BST-158
+												1116 link Value: basketball-strategy.atlassian.net/browse/BST-158, Description: BST-158 Quality report identifies its source and completed checks. Use the enter key to load the work item.
+													1120 button Edit summary for BST-158 Quality report identifies its source and completed checks
+												1121 pop up button (collapsed) Card actions on Test Case BST-158 of the Pass column, Secondary Actions: Expand
+												1128 link Description: BST-158, Value: basketball-strategy.atlassian.net/browse/BST-158
+											1132 button Create work item after work item BST-159
+												1134 link Value: basketball-strategy.atlassian.net/browse/BST-159, Description: BST-159 Failed or incomplete data checks never appear as a pass. Use the enter key to load the work item.
+													1137 button Edit summary for BST-159 Failed or incomplete data checks never appear as a pass
+												1138 pop up button (collapsed) Card actions on Test Case BST-159 of the Pass column, Secondary Actions: Expand
+												1145 link Description: BST-159, Value: basketball-strategy.atlassian.net/browse/BST-159
+											1149 button Create work item after work item BST-160
+												1151 link Value: basketball-strategy.atlassian.net/browse/BST-160, Description: BST-160 Unavailable quality checks show an error and retry state. Use the enter key to load the work item.
+													1156 button Edit summary for BST-160 Unavailable quality checks show an error and retry state
+												1157 pop up button (collapsed) Card actions on Test Case BST-160 of the Pass column, Secondary Actions: Expand
+												1164 link Description: BST-160, Value: basketball-strategy.atlassian.net/browse/BST-160
+											1168 button Create work item after work item BST-161
+												1170 link Value: basketball-strategy.atlassian.net/browse/BST-161, Description: BST-161 Quality report accepts analysts and rejects unauthorized requests. Use the enter key to load the work item.
+													1174 button Edit summary for BST-161 Quality report accepts analysts and rejects unauthorized requests
+												1175 pop up button (collapsed) Card actions on Test Case BST-161 of the Pass column, Secondary Actions: Expand
+												1182 link Description: BST-161, Value: basketball-strategy.atlassian.net/browse/BST-161
+											1186 button Create work item after work item BST-162
+												1188 link Value: basketball-strategy.atlassian.net/browse/BST-162, Description: BST-162 Live Data Explorer quality panel loads, refreshes and enforces access. Use the enter key to load the work item.
+													1193 button Edit summary for BST-162 Live Data Explorer quality panel loads, refreshes and enforces access
+												1194 pop up button (collapsed) Card actions on Test Case BST-162 of the Pass column, Secondary Actions: Expand
+												1201 link Description: BST-162, Value: basketball-strategy.atlassian.net/browse/BST-162
+											1205 button Create work item after work item BST-168
+												1207 link Value: basketball-strategy.atlassian.net/browse/BST-168, Description: BST-168 Data-quality status labels remain readable on the light panel. Use the enter key to load the work item.
+													1212 button Edit summary for BST-168 Data-quality status labels remain readable on the light panel
+												1213 pop up button (collapsed) Card actions on Test Case BST-168 of the Pass column, Secondary Actions: Expand
+												1220 link Description: BST-168, Value: basketball-strategy.atlassian.net/browse/BST-168

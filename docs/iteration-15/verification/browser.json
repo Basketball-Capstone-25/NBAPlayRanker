@@ -1,0 +1,17 @@
+{
+  "url": "https://nbaplayranker-seven.vercel.app/data-explorer",
+  "role": "analyst",
+  "final_frontend_commit": "a3bba3a8db107b1ec32ddb7904b2dda55ce2493b",
+  "backend_commit": "3a8b00b3d1114172285df668cb5a0c91553dcb58",
+  "checks": [
+    {"name": "loading", "result": "pass", "observed": "Checking source data; Refresh disabled."},
+    {"name": "unavailable", "result": "pass", "observed": "Before the backend rollout, the missing route showed Data checks unavailable and Retry. The TOR table still had 11 rows."},
+    {"name": "retry", "result": "pass", "observed": "After backend rollout, Retry loaded all four checks as Passed for 47,982 rows, 6 seasons and 30 teams."},
+    {"name": "refresh", "result": "pass", "observed": "Refresh cleared the old result, showed loading, then changed the check time from 12:16:50 AM to 12:17:13 AM Toronto time."},
+    {"name": "filter_scope", "result": "pass", "observed": "Changing TOR to BOS loaded 11 BOS rows while the source report remained 47,982 rows with the same check time."},
+    {"name": "status_contrast_initial", "result": "fail", "issue": "SCRUM-574", "test": "BST-168", "observed": "Status text was too pale against the light background."},
+    {"name": "status_contrast_retest", "result": "pass", "issue": "SCRUM-574", "test": "BST-168", "observed": "After the fix, the production report loaded again and all four Passed labels were clearly readable. Status text still gives meaning without color."}
+  ],
+  "screenshots": ["quality-unavailable.png", "status-contrast-before.png", "quality-live.png"],
+  "result": "pass_after_contrast_fix"
+}

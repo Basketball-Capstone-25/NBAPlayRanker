@@ -1,0 +1,27 @@
+									1391 heading Test Suite BST-157 Season-ahead PPP forecast evaluation Pass Gurkaranjit Asahan, Value: 3
+										1393 link Description: BST-157, Value: basketball-strategy.atlassian.net/browse/BST-157
+											1416 button Create work item after work item BST-163
+												1418 link Value: basketball-strategy.atlassian.net/browse/BST-163, Description: BST-163 Season-ahead inputs use only the immediately prior regular season. Use the enter key to load the work item.
+													1421 button Edit summary for BST-163 Season-ahead inputs use only the immediately prior regular season
+												1422 pop up button (collapsed) Card actions on Test Case BST-163 of the Pass column, Secondary Actions: Expand
+												1429 link Description: BST-163, Value: basketball-strategy.atlassian.net/browse/BST-163
+											1433 button Create work item after work item BST-164
+												1435 link Value: basketball-strategy.atlassian.net/browse/BST-164, Description: BST-164 Changing the final season cannot change forecast fitting or predictions. Use the enter key to load the work item.
+													1440 button Edit summary for BST-164 Changing the final season cannot change forecast fitting or predictions
+												1441 pop up button (collapsed) Card actions on Test Case BST-164 of the Pass column, Secondary Actions: Expand
+												1448 link Description: BST-164, Value: basketball-strategy.atlassian.net/browse/BST-164
+											1452 button Create work item after work item BST-165
+												1454 link Value: basketball-strategy.atlassian.net/browse/BST-165, Description: BST-165 Forecast selection and scaling keep the final season untouched. Use the enter key to load the work item.
+													1458 button Edit summary for BST-165 Forecast selection and scaling keep the final season untouched
+												1459 pop up button (collapsed) Card actions on Test Case BST-165 of the Pass column, Secondary Actions: Expand
+												1466 link Description: BST-165, Value: basketball-strategy.atlassian.net/browse/BST-165
+											1470 button Create work item after work item BST-166
+												1472 link Value: basketball-strategy.atlassian.net/browse/BST-166, Description: BST-166 Forecast and timed baselines use the same evaluation rows. Use the enter key to load the work item.
+													1476 button Edit summary for BST-166 Forecast and timed baselines use the same evaluation rows
+												1477 pop up button (collapsed) Card actions on Test Case BST-166 of the Pass column, Secondary Actions: Expand
+												1484 link Description: BST-166, Value: basketball-strategy.atlassian.net/browse/BST-166
+											1488 button Create work item after work item BST-167
+												1490 link Value: basketball-strategy.atlassian.net/browse/BST-167, Description: BST-167 Forecast evaluation reproduces the same report and predictions. Use the enter key to load the work item.
+													1494 button Edit summary for BST-167 Forecast evaluation reproduces the same report and predictions
+												1495 pop up button (collapsed) Card actions on Test Case BST-167 of the Pass column, Secondary Actions: Expand
+												1502 link Description: BST-167, Value: basketball-strategy.atlassian.net/browse/BST-167

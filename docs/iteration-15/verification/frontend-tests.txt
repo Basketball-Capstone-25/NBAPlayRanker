@@ -1,0 +1,16 @@
+
+ RUN  v3.2.7 /Users/gurkasahan/Developer/NBAPlayRanker
+
+ ✓ tests/export-route.test.ts (17 tests) 25ms
+ ✓ tests/data-quality.test.tsx (25 tests) 206ms
+ ✓ tests/authenticated-download.test.ts (5 tests) 10ms
+ ✓ tests/auth.profile-role.test.ts (3 tests) 8ms
+ ✓ tests/middleware.auth-analyst.test.ts (3 tests) 10ms
+ ✓ tests/middleware.auth-coach.test.ts (6 tests) 15ms
+
+ Test Files  6 passed (6)
+      Tests  59 passed (59)
+   Start at  00:06:20
+   Duration  3.32s (transform 322ms, setup 0ms, collect 649ms, tests 275ms, environment 1ms, prepare 530ms)
+
+

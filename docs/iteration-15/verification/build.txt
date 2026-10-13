@@ -1,0 +1,4 @@
+Command: npm run build
+Result: exit 0. Next.js 15.5.27 compiled successfully, passed lint/type checks, generated 21 pages and completed build traces.
+Separate TypeScript check: node node_modules/typescript/bin/tsc --noEmit — exit 0.
+
