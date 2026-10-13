@@ -40,6 +40,7 @@ from infrastructure.model_management import paired_t_test_rmse, run_cv_evaluatio
 from application.api_coordination.export_endpoints import create_pdf_router
 from application.api_coordination.topk_uplift_endpoints import create_topk_uplift_router
 from application.api_coordination.calibration_endpoints import create_calibration_router
+from application.api_coordination.data_quality_endpoints import create_data_quality_router
 app = FastAPI(
     title="Basketball Strategy API",
     description=(
@@ -127,6 +128,7 @@ def _normalize_team_abbr(abbr: str) -> str:
 rec = BaselineRecommender(str(SYNERGY_CSV))
 app.include_router(create_topk_uplift_router(rec, SYNERGY_CSV))
 app.include_router(create_calibration_router(rec.team_df, rec.league_df))
+app.include_router(create_data_quality_router(lambda: rec.raw_df))
 
 # Cache ML predictions ONCE (if file exists).
 ML_PRED_DF: Optional[pd.DataFrame] = None

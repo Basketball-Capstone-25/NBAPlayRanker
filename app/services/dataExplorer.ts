@@ -4,8 +4,10 @@ export {
   authenticatedDownload,
   fetchMetaOptions,
   fetchPipelineInfo,
+  fetchDataQualityReport,
   fetchTeamPlaytypesPreview,
   getTeamPlaytypesCsvUrl,
   type MetaOptions,
   type TeamPlaytypesPreviewResponse,
 } from "../infrastructure/api-client";
+export type { DataQualityReport, QualityCheck, QualityStatus } from "../infrastructure/data-quality";

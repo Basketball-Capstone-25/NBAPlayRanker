@@ -29,6 +29,7 @@ export const FALLBACK_TEAMS = [
 
 import { createClient } from "../../lib/supabase/client";
 import { localExportUrl } from "./export-contract";
+import { parseDataQualityReport, type DataQualityReport } from "./data-quality";
 
 /** Get Authorization headers for the current Supabase session. */
 async function getAuthHeaders(): Promise<Record<string, string>> {
@@ -82,9 +83,9 @@ class ApiError extends Error {
   }
 }
 
-async function fetchJsonWithStatus<T>(url: string): Promise<T> {
+async function fetchJsonWithStatus<T>(url: string, signal?: AbortSignal): Promise<T> {
   const headers = await getAuthHeaders();
-  const res = await fetch(url, { cache: "no-store", headers });
+  const res = await fetch(url, { cache: "no-store", headers, ...(signal ? { signal } : {}) });
   const text = await res.text();
 
   if (!res.ok) {
@@ -96,6 +97,21 @@ async function fetchJsonWithStatus<T>(url: string): Promise<T> {
   } catch {
     // If backend accidentally returned non-JSON, surface it clearly.
     throw new ApiError(res.status, url, text);
+  }
+}
+
+export async function fetchDataQualityReport(signal?: AbortSignal): Promise<DataQualityReport> {
+  try {
+    return parseDataQualityReport(await fetchJsonWithStatus<unknown>(`${API_BASE}/data/quality-report`, signal));
+  } catch (error) {
+    if (error instanceof ApiError) {
+      if (error.status === 401) throw new Error("Sign in again to check data quality.");
+      if (error.status === 403) throw new Error("An analyst account is required to view data checks.");
+      if (error.status === 404) throw new Error("The data-check service is not available yet.");
+      throw new Error("The data-check service is unavailable. Please try again.");
+    }
+    if (error instanceof TypeError) throw new Error("Could not reach the data-check service. Please try again.");
+    throw error;
   }
 }
 
