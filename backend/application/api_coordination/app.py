@@ -40,7 +40,12 @@ from infrastructure.model_management import paired_t_test_rmse, run_cv_evaluatio
 from application.api_coordination.export_endpoints import create_pdf_router
 from application.api_coordination.topk_uplift_endpoints import create_topk_uplift_router
 from application.api_coordination.calibration_endpoints import create_calibration_router
-from application.api_coordination.data_quality_endpoints import create_data_quality_router
+from application.api_coordination.data_quality_endpoints import (
+    DataQualityGate,
+    QUALITY_HEADER,
+    create_data_quality_router,
+    install_data_quality_header,
+)
 from application.api_coordination.export_report_endpoints import create_export_report_router
 app = FastAPI(
     title="Basketball Strategy API",
@@ -108,6 +113,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["X-Data-Quality"],
 )
 
 DATA_DIR = Path(__file__).parent.parent.parent / "data"
@@ -130,6 +136,9 @@ rec = BaselineRecommender(str(SYNERGY_CSV))
 app.include_router(create_topk_uplift_router(rec, SYNERGY_CSV))
 app.include_router(create_calibration_router(rec.team_df, rec.league_df))
 app.include_router(create_data_quality_router(lambda: rec.raw_df))
+# SCRUM-479: rankings are blocked (or flagged) when the loaded source fails its checks.
+data_quality_gate = DataQualityGate(lambda: rec.raw_df)
+install_data_quality_header(app, data_quality_gate, ("/rank-plays/",))
 
 # Cache ML predictions ONCE (if file exists).
 ML_PRED_DF: Optional[pd.DataFrame] = None
@@ -348,7 +357,7 @@ def team_playtypes_csv(
 
 # Baseline endpoint (transparent + explainable)
 
-@app.get("/rank-plays/baseline", dependencies=[Depends(require_role("recommendation"))])
+@app.get("/rank-plays/baseline", dependencies=[Depends(require_role("recommendation")), Depends(data_quality_gate)])
 def rank_baseline(
     season: str = Query(...),
     our: str = Query(..., description="Our team abbreviation."),
@@ -391,7 +400,7 @@ def rank_baseline(
         }
     )
 
-@app.get("/rank-plays/baseline.csv", dependencies=[Depends(require_role("recommendation"))])
+@app.get("/rank-plays/baseline.csv", dependencies=[Depends(require_role("recommendation")), Depends(data_quality_gate)])
 def rank_baseline_csv(
     season: str = Query(...),
     our: str = Query(...),
@@ -430,7 +439,7 @@ def rank_baseline_csv(
 
 # AI endpoint: ML + context
 
-@app.get("/rank-plays/context-ml", dependencies=[Depends(require_role("recommendation"))])
+@app.get("/rank-plays/context-ml", dependencies=[Depends(require_role("recommendation")), Depends(data_quality_gate)])
 def rank_context_ml(
     season: str = Query(...),
     our: str = Query(...),

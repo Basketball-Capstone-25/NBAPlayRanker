@@ -4,10 +4,11 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import logging
-from typing import Any, Callable, Dict
+import os
+from typing import Any, Callable, Dict, Iterable, Optional
 
 import pandas as pd
-from fastapi import APIRouter, Depends, HTTPException, Response
+from fastapi import APIRouter, Depends, FastAPI, HTTPException, Request, Response
 
 from application.api_coordination.auth_dependency import require_role
 from infrastructure.data_access.data_quality import run_data_quality_checks
@@ -72,3 +73,78 @@ def create_data_quality_router(source: Callable[[], pd.DataFrame]) -> APIRouter:
             ) from error
 
     return router
+
+
+# ---------------------------------------------------------------------------
+# SCRUM-479: block or flag recommendations when the source fails its checks
+# ---------------------------------------------------------------------------
+QUALITY_HEADER = "X-Data-Quality"
+ENFORCEMENT_ENV = "DATA_QUALITY_ENFORCEMENT"  # "block" (default) or "flag"
+
+
+class DataQualityGate:
+    """Run the checks once per loaded frame and guard the ranking endpoints."""
+
+    def __init__(
+        self,
+        source: Callable[[], pd.DataFrame],
+        seasons: Iterable[str] = EXPECTED_SEASONS,
+        teams: Iterable[str] = EXPECTED_TEAMS,
+    ) -> None:
+        self._source = source
+        self._seasons = tuple(seasons)
+        self._teams = tuple(teams)
+        self._frame_id: Optional[int] = None
+        self._report: Optional[Dict[str, Any]] = None
+        self.runs = 0
+
+    def refresh(self) -> None:
+        self._frame_id = None
+        self._report = None
+
+    def report(self) -> Dict[str, Any]:
+        try:
+            frame = self._source()
+        except Exception as error:  # source unavailable: checks could not run
+            logger.warning("Data quality gate could not read the source: %s", type(error).__name__)
+            return {"status": "not_run", "safe_for_use": False, "checks": []}
+        if self._report is None or self._frame_id != id(frame):
+            self._report = run_data_quality_checks(
+                frame, seasons=self._seasons, teams=self._teams,
+            ).to_dict()
+            self._frame_id = id(frame)
+            self.runs += 1
+        return self._report
+
+    def status(self) -> str:
+        return str(self.report().get("status", "not_run"))
+
+    @staticmethod
+    def blocking() -> bool:
+        return os.getenv(ENFORCEMENT_ENV, "block").strip().lower() != "flag"
+
+    def __call__(self) -> None:
+        """FastAPI dependency: 503 when the source fails and enforcement is on."""
+        report = self.report()
+        if report.get("status") == "fail" and self.blocking():
+            failed = [c["name"] for c in report.get("checks", []) if c.get("status") == "fail"]
+            raise HTTPException(
+                status_code=503,
+                detail=(
+                    "Recommendations are paused because the source data failed "
+                    f"quality checks: {', '.join(failed)}. See /data/quality-report."
+                ),
+                headers={QUALITY_HEADER: "fail"},
+            )
+
+
+def install_data_quality_header(app: FastAPI, gate: DataQualityGate, prefixes: Iterable[str]) -> None:
+    """Add X-Data-Quality to every response under the given path prefixes."""
+    prefixes = tuple(prefixes)
+
+    @app.middleware("http")
+    async def _data_quality_header(request: Request, call_next):
+        response = await call_next(request)
+        if request.url.path.startswith(prefixes) and QUALITY_HEADER not in response.headers:
+            response.headers[QUALITY_HEADER] = gate.status()
+        return response
