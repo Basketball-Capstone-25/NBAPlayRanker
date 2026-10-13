@@ -41,6 +41,7 @@ from application.api_coordination.export_endpoints import create_pdf_router
 from application.api_coordination.topk_uplift_endpoints import create_topk_uplift_router
 from application.api_coordination.calibration_endpoints import create_calibration_router
 from application.api_coordination.data_quality_endpoints import create_data_quality_router
+from application.api_coordination.export_report_endpoints import create_export_report_router
 app = FastAPI(
     title="Basketball Strategy API",
     description=(
@@ -742,3 +743,4 @@ def export_shotplan_pdf(
 # Routers (must be registered AFTER app/rec/meta are defined)
 
 app.include_router(create_pdf_router(rec, VALID_SEASONS, VALID_TEAMS, TEAM_NAMES))
+app.include_router(create_export_report_router(rec, VALID_SEASONS, VALID_TEAMS, SYNERGY_CSV))
