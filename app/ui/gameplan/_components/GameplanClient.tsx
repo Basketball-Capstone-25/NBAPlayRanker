@@ -27,6 +27,16 @@ import {
   type NormalizedPlay,
   type TeamOption,
 } from "../../../services/gameplan";
+import {
+  EMPTY_ROLES,
+  SYNC_LABELS,
+  loadGameplan,
+  readLegacyLocal,
+  saveGameplan,
+  supabaseGameplanBackend,
+  type GameplanState,
+  type SyncStatus,
+} from "../../../infrastructure/gameplan-sync";
 
 type PlanItem = { id: string; label: string };
 
@@ -204,6 +214,15 @@ export default function GameplanClient() {
 
   const [statusHint, setStatusHint] = useState<string>("");
 
+  // SCRUM-483: Supabase sync with loading/saving states and a local fallback.
+  const syncBackend = useMemo(() => supabaseGameplanBackend(), []);
+  const [syncStatus, setSyncStatus] = useState<SyncStatus>("loading");
+  const [syncNote, setSyncNote] = useState<string>("");
+  const [offerDraft, setOfferDraft] = useState<{ state: GameplanState; label: string } | null>(null);
+  const revisionRef = useRef<number | null>(null);
+  const loadedKeyRef = useRef<string>("");
+  const lastSyncedRef = useRef<string>("");
+
   // Used to ignore stale async responses when the user rebuilds quickly.
   const latestBuildRef = useRef<number>(0);
 
@@ -238,30 +257,88 @@ export default function GameplanClient() {
     };
   }, []);
 
-  // Load saved plan/notes/roles
+  const matchup = useMemo(() => ({ season, ourTeam: our, oppTeam: opp }), [season, our, opp]);
+  const matchupKey = `${season}|${our}|${opp}`;
+
+  function applyState(next: GameplanState) {
+    setNotesByPlay(next.notes);
+    setPlan(next.plan);
+    setRoles(next.roles);
+  }
+
+  // Load the coach's saved plan for this matchup; fall back to this device.
   useEffect(() => {
-    const rawNotes = safeLocalGet("nbaPlayRanker_gameplan_notes_v2");
-    if (rawNotes) {
-      try {
-        setNotesByPlay(JSON.parse(rawNotes));
-      } catch {}
-    }
+    let alive = true;
+    loadedKeyRef.current = "";
+    setSyncStatus("loading");
+    setSyncNote("");
+    setOfferDraft(null);
+    (async () => {
+      const result = await loadGameplan(syncBackend, matchup);
+      if (!alive) return;
+      const legacy = readLegacyLocal(typeof window === "undefined" ? null : window.localStorage);
+      if (result.status === "saved") {
+        const loaded = result.state ?? { notes: {}, plan: [], roles: EMPTY_ROLES };
+        revisionRef.current = result.revision;
+        applyState(loaded);
+        lastSyncedRef.current = JSON.stringify(loaded);
+        // Never upload old device notes silently: offer an explicit import.
+        if (!result.state && legacy) setOfferDraft({ state: legacy, label: "Import notes saved on this device" });
+        setSyncStatus("saved");
+      } else {
+        revisionRef.current = null;
+        if (legacy) applyState(legacy);
+        setSyncNote(result.reason);
+        setSyncStatus("local");
+      }
+      loadedKeyRef.current = matchupKey;
+    })();
+    return () => {
+      alive = false;
+    };
+  }, [syncBackend, matchup, matchupKey]);
 
-    const rawPlan = safeLocalGet("nbaPlayRanker_gameplan_plan_v2");
-    if (rawPlan) {
-      try {
-        setPlan(JSON.parse(rawPlan));
-      } catch {}
+  async function syncNow() {
+    const key = matchupKey;
+    if (loadedKeyRef.current !== key) return; // never write one matchup's draft into another
+    const draft: GameplanState = { notes: notesByPlay, plan, roles };
+    const json = JSON.stringify(draft);
+    setSyncStatus("saving");
+    const result = await saveGameplan(syncBackend, matchup, draft, revisionRef.current);
+    if (loadedKeyRef.current !== key) return;
+    if (result.status === "saved") {
+      revisionRef.current = result.revision;
+      lastSyncedRef.current = json;
+      setSyncNote("");
+      setSyncStatus("saved");
+    } else if (result.status === "conflict") {
+      revisionRef.current = result.revision;
+      if (result.state) {
+        applyState(result.state);
+        lastSyncedRef.current = JSON.stringify(result.state);
+      }
+      setOfferDraft({ state: draft, label: "Restore my unsaved edits" });
+      setSyncStatus("conflict");
+    } else if (result.status === "local") {
+      setSyncNote(result.reason);
+      setSyncStatus("local");
+    } else {
+      setSyncNote(result.message);
+      setSyncStatus("error");
     }
+  }
 
-    const rawRoles = safeLocalGet("nbaPlayRanker_gameplan_roles_v2");
-    if (rawRoles) {
-      try {
-        setRoles(JSON.parse(rawRoles));
-      } catch {}
-    }
-  }, []);
+  // Debounced save after edits once the matchup has loaded.
+  useEffect(() => {
+    if (loadedKeyRef.current !== matchupKey) return;
+    if (syncStatus === "loading" || syncStatus === "local") return;
+    if (JSON.stringify({ notes: notesByPlay, plan, roles }) === lastSyncedRef.current) return;
+    const timer = setTimeout(() => void syncNow(), 800);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [notesByPlay, plan, roles]);
 
+  // The localStorage copy below stays as this device's fallback.
   useEffect(() => {
     safeLocalSet("nbaPlayRanker_gameplan_notes_v2", JSON.stringify(notesByPlay));
   }, [notesByPlay]);
@@ -1274,27 +1351,27 @@ export default function GameplanClient() {
             <div className={styles.roles}>
               <div className={styles.roleRow}>
                 <div className={styles.roleLabel}>Ball Handler</div>
-                <input className={styles.input} placeholder="Name" value={roles.ballHandler} onChange={(e) => setRoles({ ...roles, ballHandler: e.target.value })} />
+                <input className={styles.input} placeholder="Name" value={roles.ballHandler} disabled={syncStatus === "loading"} onChange={(e) => setRoles({ ...roles, ballHandler: e.target.value })} />
               </div>
 
               <div className={styles.roleRow}>
                 <div className={styles.roleLabel}>Screener / Roller</div>
-                <input className={styles.input} placeholder="Name" value={roles.screener} onChange={(e) => setRoles({ ...roles, screener: e.target.value })} />
+                <input className={styles.input} placeholder="Name" value={roles.screener} disabled={syncStatus === "loading"} onChange={(e) => setRoles({ ...roles, screener: e.target.value })} />
               </div>
 
               <div className={styles.roleRow}>
                 <div className={styles.roleLabel}>Corner Spacer</div>
-                <input className={styles.input} placeholder="Name" value={roles.cornerSpacer} onChange={(e) => setRoles({ ...roles, cornerSpacer: e.target.value })} />
+                <input className={styles.input} placeholder="Name" value={roles.cornerSpacer} disabled={syncStatus === "loading"} onChange={(e) => setRoles({ ...roles, cornerSpacer: e.target.value })} />
               </div>
 
               <div className={styles.roleRow}>
                 <div className={styles.roleLabel}>Weak-side Cutter</div>
-                <input className={styles.input} placeholder="Name" value={roles.cutter} onChange={(e) => setRoles({ ...roles, cutter: e.target.value })} />
+                <input className={styles.input} placeholder="Name" value={roles.cutter} disabled={syncStatus === "loading"} onChange={(e) => setRoles({ ...roles, cutter: e.target.value })} />
               </div>
 
               <div className={styles.roleRow}>
                 <div className={styles.roleLabel}>Safety Outlet</div>
-                <input className={styles.input} placeholder="Name" value={roles.safety} onChange={(e) => setRoles({ ...roles, safety: e.target.value })} />
+                <input className={styles.input} placeholder="Name" value={roles.safety} disabled={syncStatus === "loading"} onChange={(e) => setRoles({ ...roles, safety: e.target.value })} />
               </div>
 
               <div className={styles.smallMuted}>
@@ -1309,6 +1386,34 @@ export default function GameplanClient() {
               <span className={styles.smallMuted}>Keep it simple: reminders for the huddle.</span>
             </div>
 
+            <div className={styles.smallMuted} role="status" aria-live="polite" data-sync-status={syncStatus}>
+              {SYNC_LABELS[syncStatus]}
+              {syncNote ? ` (${syncNote})` : ""}
+              {syncStatus === "error" ? (
+                <>
+                  {" "}
+                  <button type="button" className={styles.chip} onClick={() => void syncNow()}>
+                    Retry
+                  </button>
+                </>
+              ) : null}
+              {offerDraft && syncStatus !== "loading" ? (
+                <>
+                  {" "}
+                  <button
+                    type="button"
+                    className={styles.chip}
+                    onClick={() => {
+                      applyState(offerDraft.state);
+                      setOfferDraft(null);
+                    }}
+                  >
+                    {offerDraft.label}
+                  </button>
+                </>
+              ) : null}
+            </div>
+
             {!selectedPlay ? (
               <div className={styles.empty}>Select a play to add notes.</div>
             ) : (
@@ -1321,6 +1426,7 @@ export default function GameplanClient() {
                   className={styles.textarea}
                   placeholder="Example: ‘If they switch, slip it. Corners stay lifted. First look: roll.’"
                   value={notesByPlay[selectedPlay.id] ?? ""}
+                  disabled={syncStatus === "loading"}
                   onChange={(e) =>
                     setNotesByPlay((prev) => ({
                       ...prev,
