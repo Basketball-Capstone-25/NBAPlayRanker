@@ -1,0 +1,23 @@
+{
+  "pass": {
+    "before": "#86efac",
+    "after": "#166534",
+    "before_on_white": 1.4,
+    "after_on_white": 7.13,
+    "after_on_light_background": 6.66
+  },
+  "fail": {
+    "before": "#fca5a5",
+    "after": "#b91c1c",
+    "before_on_white": 1.9,
+    "after_on_white": 6.47,
+    "after_on_light_background": 6.04
+  },
+  "not_run": {
+    "before": "#fcd34d",
+    "after": "#854d0e",
+    "before_on_white": 1.44,
+    "after_on_white": 6.85,
+    "after_on_light_background": 6.4
+  }
+}

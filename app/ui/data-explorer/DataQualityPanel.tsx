@@ -13,7 +13,7 @@ const labels: Record<string, string> = {
   duplicates: "Duplicate rows", coverage: "Team and season coverage",
 };
 const statusLabels: Record<QualityStatus, string> = { pass: "Passed", fail: "Failed", not_run: "Not checked" };
-const colors: Record<QualityStatus, string> = { pass: "#86efac", fail: "#fca5a5", not_run: "#fcd34d" };
+const colors: Record<QualityStatus, string> = { pass: "#166534", fail: "#b91c1c", not_run: "#854d0e" };
 const list = (value: unknown): string[] => Array.isArray(value) ? value.filter((v): v is string => typeof v === "string") : [];
 const shortList = (values: string[]) => values.slice(0, 5).join(", ") + (values.length > 5 ? ` and ${values.length - 5} more` : "");
 
@@ -63,7 +63,7 @@ export function DataQualityReportView({ state, onRefresh }: { state: QualityStat
         </p>
         <p className="muted" style={{ fontSize: 13 }}>{report.dataset.scope}. Checked <time dateTime={report.generated_at}>{new Date(report.generated_at).toLocaleString()}</time>.</p>
         <ul style={{ listStyle: "none", padding: 0, display: "grid", gap: 10 }}>
-          {report.checks.map(check => <li key={check.name} style={{ borderTop: "1px solid rgba(255,255,255,0.12)", paddingTop: 10 }}>
+          {report.checks.map(check => <li key={check.name} style={{ borderTop: "1px solid var(--border)", paddingTop: 10 }}>
             <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
               <strong>{labels[check.name] ?? check.name.replaceAll("_", " ")}</strong>
               <strong style={{ color: colors[check.status] }}>{statusLabels[check.status]}</strong>
