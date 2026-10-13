@@ -4,7 +4,7 @@
   "source": "Jira connector: all BSR issues and 12 linked demonstration tasks",
   "counts": {
     "risks": 84,
-    "formalWorkItemLinks": 196,
+    "formalWorkItemLinks": 198,
     "recentReviewComments": 89,
     "allHistoricalComments": 157,
     "cardsWithoutFormalLinks": 0,
@@ -15,8 +15,8 @@
     "uniqueRecentReviewTexts": 89
   },
   "statusCounts": {
-    "Monitoring": 40,
-    "Active": 24,
+    "Monitoring": 41,
+    "Active": 23,
     "Planning": 7,
     "Analysis": 6,
     "Identification": 7
@@ -106,7 +106,7 @@
     "This verifies Jira risk documentation and links, not successful completion of every mitigation.",
     "Current hosting charges were not inspected; SCRUM-534 remains To Do.",
     "Shot-data repair, context disclosure, prospective evaluation and stakeholder review remain To Do.",
-    "Only the 12 demonstration-linked SCRUM task statuses were refreshed; all 196 formal link endpoints were verified present on the risk cards."
+    "The original audit checked 196 formal link endpoints and 12 demonstration task statuses. A focused BSR-111 publication readback added two verified deployment links, bringing the current total to 198."
   ],
   "demonstrationCards": [
     {
@@ -1479,18 +1479,20 @@
     {
       "key": "BSR-111",
       "title": "Visual Paradigm compatibility may block shared model updates",
-      "status": "Active",
+      "status": "Monitoring",
       "probability": "High",
       "impact": "Serious",
-      "mitigation": "Back up the saved native project and use compatible teamwork versions. Publish the prepared changes through Desktop Team Commit, then retrieve and verify the shared revision before treating publication as complete.",
+      "mitigation": "Back up the native project before updating Visual Paradigm. Check that team members use compatible versions. Use Desktop Team Commit and check the shared revision after publishing.",
       "reviews": [
         "The current shared Visual Paradigm project synchronized successfully at revision 54. Shared access is working, and the interaction-model corrections are tracked separately in SCRUM-528; keep compatibility checks on future updates.",
-        "The project synchronized, but the commit tool failed. The saved changes still need a Desktop Team commit before the shared revision is confirmed."
+        "Desktop Team Commit published the deployment diagram in VP revision 55. I checked that the shared copy includes the corrected layout and port labels. The publication issue is cleared; version compatibility still needs checking before future updates."
       ],
       "linkedWorkItems": [
         "SCRUM-528",
         "SCRUM-503",
-        "SCRUM-509"
+        "SCRUM-509",
+        "SCRUM-440",
+        "SCRUM-567"
       ],
       "url": "https://basketball-strategy.atlassian.net/browse/BSR-111"
     },
@@ -1512,5 +1514,18 @@
       ],
       "url": "https://basketball-strategy.atlassian.net/browse/BSR-112"
     }
-  ]
+  ],
+  "publicationFollowup": {
+    "verifiedAt": "2026-10-13T03:38:24.441Z",
+    "issue": "BSR-111",
+    "status": "Monitoring",
+    "sharedRevision": 55,
+    "addedLinkedWorkItems": [
+      "SCRUM-440",
+      "SCRUM-567"
+    ],
+    "currentLinkedWorkItemCount": 198,
+    "initialChangeSummaryPreserved": true,
+    "jiraEvidence": "../deployment/jira-publication-closeout.json"
+  }
 }

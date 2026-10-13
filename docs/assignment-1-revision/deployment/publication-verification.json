@@ -1,0 +1,56 @@
+{
+  "verified_at_utc": "2026-10-13T03:33:31.124199+00:00",
+  "publication_confirmed": true,
+  "publication_evidence": "Official pristine Teamwork copy (.vpp.orig) after the user completed Team Commit. No network/CLI operation was run while Desktop was open.",
+  "committed_metadata": {
+    "revision": 55,
+    "comment": "Clarify deployment connections and protocol ports (SCRUM-440)",
+    "commit_timestamp_utc": "2026-10-13T03:14:29.316000+00:00"
+  },
+  "checks": {
+    "committed_all_original_ids_retained": true,
+    "committed_diagram_elements_equal_verified_candidate": true,
+    "committed_all_191_other_diagrams_equal_revision_54": true,
+    "committed_non_deployment_views_equal_revision_54": true,
+    "committed_deployment_diagram_equals_candidate_except_commit_metadata": true,
+    "committed_model_semantics_equal_candidate": true,
+    "current_model_rows_equal_committed": true,
+    "current_changed_views_are_caption_bounds_only": true,
+    "pending_history_only_deployment_connector_updates": true,
+    "committed_pending_history_zero": true,
+    "committed_revision_is_55": true,
+    "committed_comment_matches_deployment_work": true,
+    "committed_model_ids_types_names_parents_and_creation_metadata_equal_candidate": true
+  },
+  "committed_counts": {
+    "DIAGRAM": 192,
+    "MODEL_ELEMENT": 2158,
+    "DIAGRAM_ELEMENT": 1726,
+    "PROJECT_FILE": 526
+  },
+  "candidate_sha256": "b5fb0f566d1ebfde711ecdf7de087a8a0467dbb2d10b540907034ffd939b1c64",
+  "committed_native_sha256": "0bae04e67b71bd9a49d64373cf23a8620dcd56728dd5c2fbfff3ffdbd225ee18",
+  "current_native_sha256_at_observation": "bdbd700ea57b0d7d597590769f28f791c951518c291a16acb6ed00a411f57e92",
+  "local_after_commit": {
+    "pending_connector_updates": 36,
+    "changed_connector_rows": 19,
+    "caption_bounds_only_rows": 19,
+    "unchanged_model_rows": true,
+    "remaining_pending_entries_without_row_difference": 17,
+    "diagram_difference": "Deployment diagram Child list order differs; membership is unchanged.",
+    "resource_differences": "Local UI/configuration defaults and empty sibling diagram details; no model rows changed."
+  },
+  "committed_resource_changes_from_candidate": [
+    "projectPropertiesFiles/OptionCodeGeneration",
+    "projectPropertiesFiles/OptionReport",
+    "projectPropertiesFiles/OptionImporter",
+    "projectPropertiesFiles/VPUMLTreeOptions",
+    "projectPropertiesFiles/DiagramGenerator",
+    "persistentModelFiles/PrintingFramework",
+    "DiagramStateLazy.txt",
+    "HTMLStringProperties/8W4D.wWAUAAADc8a_documentation"
+  ],
+  "safe_completion_statement": "The deployment diagram was published to the shared Teamwork project as revision 55. All planned layout and protocol/port changes are present. The open working copy has subsequent connector caption formatting entries; it is not a clean zero-pending workspace.",
+  "qualified_reference_serialization_note": "The relationship container stores some existing child references as short IDs after Team Commit. Their final IDs, order and membership match the prepared candidate. All other model differences are commit/modification metadata.",
+  "verification_limit": "The committed pristine file is revision 55. No fresh remote query was made while the Desktop application was running. The cached lastServerRevision value can remain 54 until a later update query."
+}

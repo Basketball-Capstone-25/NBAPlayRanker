@@ -4,12 +4,12 @@
     {
       "path": "Basketball Playtype Ranker.vpp",
       "bytes": 15609856,
-      "sha256": "b5fb0f566d1ebfde711ecdf7de087a8a0467dbb2d10b540907034ffd939b1c64"
+      "sha256": "0bae04e67b71bd9a49d64373cf23a8620dcd56728dd5c2fbfff3ffdbd225ee18"
     },
     {
       "path": "README.md",
-      "bytes": 2063,
-      "sha256": "751431604f3da1e10d5b7691b9547926bc0e2228faa9ae1b879d460779d45b32"
+      "bytes": 2478,
+      "sha256": "4ca62fbd7ddca33c4d25e60c9ffd2a651247e668c7607432a99bdc60962f8c61"
     },
     {
       "path": "cloud-run-port-check.json",
@@ -22,9 +22,19 @@
       "sha256": "989d4678a5d28159a2fab845d735c66920c092524f33e4d486b65ba3bb0ef76f"
     },
     {
+      "path": "jira-publication-closeout.json",
+      "bytes": 8329,
+      "sha256": "759f9357ac99cea9d2a632f02813f14610b8885862595f5b37fd04129b0e27ab"
+    },
+    {
+      "path": "publication-verification.json",
+      "bytes": 3334,
+      "sha256": "f7cdf532759479c2ff1108049a7c7946940457a0f63a3e9ba0d1789dc70f60c0"
+    },
+    {
       "path": "teamwork-status.json",
-      "bytes": 814,
-      "sha256": "aa517f70b4af48d147ed2d1201b4d489d8526b77570951d8894ee883c323e929"
+      "bytes": 1431,
+      "sha256": "5ba15b6a3b43d52837f74f8066e59648ea2af9eb057551336e693ff156f5abe7"
     },
     {
       "path": "verification.json",

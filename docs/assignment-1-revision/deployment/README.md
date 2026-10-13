@@ -17,6 +17,8 @@ Artifacts are grouped inside their runtimes. The duplicate internal arrows are s
 
 The [verification](verification.json) confirms that all 192 diagrams remain. Only this deployment diagram changed. All 191 other diagrams, including the 17 interaction diagrams, match shared revision 54. Original model identities and creation records are preserved.
 
-The native file is saved. Shared Teamwork publication is still pending; see [publication status](teamwork-status.json).
+The deployment diagram is published in shared Teamwork revision 55. The native file here is the committed pristine copy; see [publication status](teamwork-status.json) and [publication verification](publication-verification.json).
+
+The original verification above records the prepared candidate before publication. The publication check confirms that revision 55 contains those changes and preserves the other 191 diagrams. Later connector-caption formatting entries in the open working copy are excluded from this native deliverable.
 
 Sources: [export route](../../../app/api/exports/route.ts), [API client](../../../app/infrastructure/api-client.ts), [Dockerfile](../../../backend/Dockerfile), [Supabase profile lookup](../../../backend/infrastructure/external_integrations/supabase_profiles.py), [JWT key lookup](../../../backend/infrastructure/external_integrations/supabase_jwt.py), [live container port](cloud-run-port-check.json), and [Cloud Run's TLS/port contract](https://docs.cloud.google.com/run/docs/container-contract).

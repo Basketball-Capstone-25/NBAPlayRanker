@@ -16,8 +16,8 @@
     "filledMissingDescriptions": 4
   },
   "statusCounts": {
-    "Monitoring": 40,
-    "Active": 24,
+    "Monitoring": 41,
+    "Active": 23,
     "Planning": 7,
     "Analysis": 6,
     "Identification": 7
@@ -2803,13 +2803,19 @@
       "key": "BSR-111",
       "title": "Visual Paradigm compatibility may block shared model updates",
       "owner": "Gurkaranjit Asahan",
-      "status": "Active",
+      "status": "Monitoring",
       "probability": "High",
       "impact": "Serious",
-      "review": "The project synchronized, but the commit tool failed. The saved changes still need a Desktop Team commit before the shared revision is confirmed.",
+      "review": "Desktop Team Commit published the deployment diagram in VP revision 55. I checked that the shared copy includes the corrected layout and port labels. The publication issue is cleared; version compatibility still needs checking before future updates.",
       "reviewUrl": "https://basketball-strategy.atlassian.net/browse/BSR-111?focusedCommentId=11125",
-      "mitigation": "Back up the saved native project and use compatible teamwork versions. Publish the prepared changes through Desktop Team Commit, then retrieve and verify the shared revision before treating publication as complete.",
+      "mitigation": "Back up the native project before updating Visual Paradigm. Check that team members use compatible versions. Use Desktop Team Commit and check the shared revision after publishing.",
       "linkedWorkItems": [
+        {
+          "key": "SCRUM-440",
+          "title": "Deployment Model Revision",
+          "status": "Done",
+          "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-440"
+        },
         {
           "key": "SCRUM-503",
           "title": "Sync desktop and online Visual Paradigm diagrams",
@@ -2827,6 +2833,12 @@
           "title": "Fix sequence lifelines and message signatures",
           "status": "In Progress",
           "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-528"
+        },
+        {
+          "key": "SCRUM-567",
+          "title": "Verify and publish the deployment diagram revision",
+          "status": "Done",
+          "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-567"
         }
       ],
       "url": "https://basketball-strategy.atlassian.net/browse/BSR-111",
@@ -2881,5 +2893,18 @@
       },
       "evidenceLinks": []
     }
-  ]
+  ],
+  "publicationFollowup": {
+    "verifiedAt": "2026-10-13T03:38:24.441Z",
+    "issue": "BSR-111",
+    "status": "Monitoring",
+    "sharedRevision": 55,
+    "addedLinkedWorkItems": [
+      "SCRUM-440",
+      "SCRUM-567"
+    ],
+    "currentLinkedWorkItemCount": 198,
+    "initialChangeSummaryPreserved": true,
+    "jiraEvidence": "../deployment/jira-publication-closeout.json"
+  }
 }

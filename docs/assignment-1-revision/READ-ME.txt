@@ -7,8 +7,9 @@ Start with START-HERE.pdf. It is here in the repository and at the top of the
 handoff ZIP.
 
 deployment/ contains the current Visual Paradigm project, deployment preview
-and preservation checks. The shared Teamwork publication status is recorded
-there. SCRUM-440 tracks the deployment feedback.
+and preservation checks. The deployment diagram is published in shared Teamwork
+revision 55; the included native file is the verified committed copy. SCRUM-440
+tracks the deployment feedback.
 
 Repository-only history: interaction/ keeps the earlier revision record.
 Those local interaction-diagram edits and that folder are excluded from the
@@ -27,7 +28,7 @@ test-execution.txt explains what passed, what failed and which tickets track
 the fixes. tests/ contains the results and use-case coverage.
 
 course-standards.txt lists the course requirements and submission checks.
-Actual hours still need to be entered.
+Actual hours are awaiting allocation before worklogs are entered.
 
 The source snapshot is commit 9804b32ca45ce9f21763cc027cf75e8f30d397aa.
 It adds regression tests. App fixes and deployment are still separate work.

@@ -1,19 +1,20 @@
 Risk plan revision
 
-All 84 risks were reviewed and now have linked work items. The revision adds
-196 links, a short review on each card and five follow-up comments. It also
+All 84 risks were reviewed and now have 198 linked work items. The initial review
+recorded 196 links, a short review on each card and five follow-up comments. It also
 corrects 80 titles, fills four missing descriptions, updates mitigation steps
 and changes 27 ratings and 34 statuses.
 
-Current status: 40 Monitoring, 24 Active, 7 Planning, 6 Analysis and
+Current status: 41 Monitoring, 23 Active, 7 Planning, 6 Analysis and
 7 Identification. No risks are marked Resolved.
 
 Key updates
 
 - BSR-110 links to SCRUM-506 and SCRUM-524 for completed hosting work, and
   SCRUM-534 for the remaining cost review and affordable hosting fallback.
-- BSR-111 is Active. The project synced to revision 54, but the commit tool
-  failed. The saved model still needs a confirmed Desktop Team commit.
+- BSR-111 is Monitoring. The deployment diagram is published in revision 55,
+  with new links to the completed SCRUM-440 and SCRUM-567. The older interaction
+  work remains separate and unpublished.
 - BSR-39 links to SCRUM-546 for the missing baseline context notice.
 - BSR-108 links to SCRUM-547 for clear startup and readiness errors when
   required data or configuration is missing.
@@ -33,3 +34,7 @@ To review the changes, open a risk in Jira and check Linked work items and the
 latest comment. The CSV has one row per risk. The JSON includes linked task
 titles and statuses, plus previous ratings and statuses. Existing owners,
 comments, logged effort, priorities and attachments were kept.
+
+risk-verification.json records the initial review before deployment publication.
+The current BSR-111 follow-up and totals are in latest-review.json; publication
+and the focused Jira readback are in ../deployment/.

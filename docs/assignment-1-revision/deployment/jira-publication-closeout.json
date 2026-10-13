@@ -1,0 +1,156 @@
+{
+  "verified_at_utc": "2026-10-13T03:38:24.441Z",
+  "deployment_shared_revision": 55,
+  "actual_worklogs_added": 0,
+  "issues": [
+    {
+      "key": "SCRUM-567",
+      "summary": "Verify and publish the deployment diagram revision",
+      "status": "Done",
+      "description": "<p>Check and publish the deployment-only changes to the shared Visual Paradigm project.</p><p>Acceptance criteria:</p><ul><li><p>Compare the saved model with the shared baseline and confirm that only the deployment diagram changed.</p></li><li><p>Check the exported preview for readable labels, protocol-port details and clear connections.</p></li><li><p>Publish the revision to Teamwork and verify the new shared revision.</p></li><li><p>Commit the native model, preview and verification evidence to the shared repository.</p></li></ul>",
+      "comments": [
+        {
+          "id": "11134",
+          "body": "<p>Checked the published copy in VP revision 55. It contains the corrected deployment layout and protocol-port labels, and the other 191 diagrams are unchanged. The deployment diagram is ready to show.</p><p><a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/deployment\">Deployment model and preview</a></p>"
+        }
+      ],
+      "linked_work_items": [
+        "BSR-111"
+      ],
+      "subtasks": [],
+      "time_tracking": {}
+    },
+    {
+      "key": "SCRUM-566",
+      "summary": "Clarify deployment layout and protocol-port labels",
+      "status": "Done",
+      "description": "<p>Fix the deployment diagram layout and communication labels from the Assignment 1 feedback.</p><p>Acceptance criteria:</p><ul><li><p>Place devices, execution environments and artifacts so labels and connections are readable without overlap.</p></li><li><p>Label each communication path with the verified protocol and port used by the deployed app.</p></li><li><p>Preserve existing model identities and leave all other diagrams unchanged.</p></li><li><p>Save the revised native model and a readable deployment preview.</p></li></ul>",
+      "comments": [
+        {
+          "id": "11133",
+          "body": "<p>Rearranged the deployment diagram so the connections do not cross. Added HTTPS/TCP 443 labels to the six network paths and HTTP/TCP 8080 to the internal API server. The other 191 diagrams are unchanged. These changes are published in VP revision 55.</p><p><a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/deployment\">Deployment diagram and checks</a></p>"
+        }
+      ],
+      "linked_work_items": [],
+      "subtasks": [],
+      "time_tracking": {}
+    },
+    {
+      "key": "SCRUM-565",
+      "summary": "Publish the test evidence and revision handoff",
+      "status": "Done",
+      "description": "<p>Published the test results, source, native model and review guide in a handoff ZIP below 20 MB. The deployment diagram is published in VP revision 55. The guide covers the three revised sections and the remaining submission steps.</p><p>Acceptance criteria:</p><ul><li><p>Verify the evidence files and their hashes.</p></li><li><p>Keep the archive below 20 MB and exclude credentials.</p></li><li><p>Clearly list unfinished work.</p></li></ul><p><a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/tests/evidence-verification.json\">evidence-verification.json</a> · <a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/READ-ME.txt\">READ-ME.txt</a></p>",
+      "comments": [],
+      "linked_work_items": [],
+      "subtasks": [],
+      "time_tracking": {}
+    },
+    {
+      "key": "SCRUM-529",
+      "summary": "Review risk ratings and link mitigation tasks",
+      "status": "Done",
+      "description": "<p>Review all risk cards and link each one to the work needed to manage it.</p><p>Acceptance criteria:</p><ul><li><p>Every risk has a relevant Linked work item.</p></li><li><p>Probability, impact and status reflect the current findings.</p></li><li><p>Active risks name the next action and the task responsible for it.</p></li><li><p>Keep comments short and save the updated register in the shared repository.</p></li></ul>",
+      "comments": [
+        {
+          "id": "11127",
+          "body": "<p>Linked the startup, data-column and explanation fixes to the related risks. The deployment diagram is now published in VP revision 55, so BSR-111 is back in Monitoring and links to the completed deployment tasks.</p><p><a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/risks\">Updated risk register</a></p>"
+        }
+      ],
+      "linked_work_items": [
+        "BSR-31",
+        "BSR-72",
+        "BSR-76"
+      ],
+      "subtasks": [
+        {
+          "key": "SCRUM-555",
+          "status": "Done"
+        },
+        {
+          "key": "SCRUM-556",
+          "status": "Done"
+        },
+        {
+          "key": "SCRUM-557",
+          "status": "Done"
+        },
+        {
+          "key": "SCRUM-558",
+          "status": "Done"
+        }
+      ],
+      "time_tracking": {}
+    },
+    {
+      "key": "SCRUM-440",
+      "summary": "Deployment Model Revision",
+      "status": "Done",
+      "comments": [
+        {
+          "id": "10797",
+          "body": "<p>Deployment model is finished.<br><br>However due to the visual paradigm update, i am unable to connect to the workspace. Cant commit it to the workspace or make revision comments.<br><br>Have it saved on the online workspace for now until i figure out the problem</p><figure data-type=\"media-single\" data-layout=\"align-start\" data-width=\"401\" data-width-type=\"pixel\"><div data-type=\"media\" data-media-type=\"file\" data-id=\"bd112c58-8f00-4d00-af59-56fcbd6600ad\" data-alt=\"Screenshot 2026-09-22 at 1.08.17 PM.png\" data-width=\"534\" data-height=\"339\"></div></figure><p>The workspace issue is now resolved. The revised deployment diagram is published in VP revision 55.</p>"
+        },
+        {
+          "id": "11132",
+          "body": "<p>I fixed the deployment diagram layout and added the protocol and port labels. The changes are published in VP revision 55. SCRUM-566 and SCRUM-567 are complete.</p>"
+        }
+      ],
+      "linked_work_items": [
+        "BSR-111"
+      ],
+      "subtasks": [
+        {
+          "key": "SCRUM-459",
+          "status": "Done"
+        },
+        {
+          "key": "SCRUM-460",
+          "status": "Done"
+        },
+        {
+          "key": "SCRUM-461",
+          "status": "Done"
+        },
+        {
+          "key": "SCRUM-462",
+          "status": "Done"
+        },
+        {
+          "key": "SCRUM-463",
+          "status": "Done"
+        },
+        {
+          "key": "SCRUM-566",
+          "status": "Done"
+        },
+        {
+          "key": "SCRUM-567",
+          "status": "Done"
+        }
+      ],
+      "time_tracking": {}
+    },
+    {
+      "key": "BSR-111",
+      "summary": "Visual Paradigm compatibility may block shared model updates",
+      "status": "Monitoring",
+      "description": "<p>The corrected deployment diagram is published in VP revision 55. The shared copy contains the new layout and protocol-port labels.</p><p>A version mismatch previously blocked an import, and the command-line commit tool later failed. Desktop Team Commit worked. Future version mismatches could still interrupt imports or sharing, so this risk stays under monitoring.</p>",
+      "comments": [
+        {
+          "id": "11125",
+          "body": "<p>Desktop Team Commit published the deployment diagram in VP revision 55. I checked that the shared copy includes the corrected layout and port labels. The publication issue is cleared; version compatibility still needs checking before future updates.</p>"
+        }
+      ],
+      "linked_work_items": [
+        "SCRUM-528",
+        "SCRUM-503",
+        "SCRUM-509",
+        "SCRUM-440",
+        "SCRUM-567"
+      ],
+      "subtasks": [],
+      "time_tracking": {}
+    }
+  ],
+  "risk_mitigation": "<p>Back up the native project before updating Visual Paradigm. Check that team members use compatible versions. Use Desktop Team Commit and check the shared revision after publishing.</p>"
+}

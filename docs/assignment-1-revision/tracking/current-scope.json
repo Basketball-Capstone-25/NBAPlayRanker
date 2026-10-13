@@ -1,13 +1,13 @@
 {
-  "prepared_at": "2026-10-13T02:58:15.730880+00:00",
-  "source": "Live Jira readback after deployment layout completion and the pending publication update",
+  "prepared_at": "2026-10-13T03:41:35.635323+00:00",
+  "source": "Focused live Jira closeout and verified committed Teamwork revision55",
   "responsibilities": [
     "Deployment Model Revision",
     "Risk Management Plan",
     "Test Plan"
   ],
   "parent_statuses": {
-    "SCRUM-440": "In Progress",
+    "SCRUM-440": "Done",
     "SCRUM-529": "Done",
     "SCRUM-530": "Done"
   },
@@ -17,9 +17,19 @@
       "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-440",
       "summary": "Deployment Model Revision",
       "type": "Story",
-      "status": "In Progress",
+      "status": "Done",
       "assignee": "Gurkaranjit Asahan",
-      "parent": "SCRUM-8"
+      "parent": "SCRUM-8",
+      "comments": [
+        {
+          "id": "10797",
+          "body": "<p>Deployment model is finished.<br><br>However due to the visual paradigm update, i am unable to connect to the workspace. Cant commit it to the workspace or make revision comments.<br><br>Have it saved on the online workspace for now until i figure out the problem</p><figure data-type=\"media-single\" data-layout=\"align-start\" data-width=\"401\" data-width-type=\"pixel\"><div data-type=\"media\" data-media-type=\"file\" data-id=\"bd112c58-8f00-4d00-af59-56fcbd6600ad\" data-alt=\"Screenshot 2026-09-22 at 1.08.17 PM.png\" data-width=\"534\" data-height=\"339\"></div></figure><p>The workspace issue is now resolved. The revised deployment diagram is published in VP revision 55.</p>"
+        },
+        {
+          "id": "11132",
+          "body": "<p>I fixed the deployment diagram layout and added the protocol and port labels. The changes are published in VP revision 55. SCRUM-566 and SCRUM-567 are complete.</p>"
+        }
+      ]
     },
     "subtasks": [
       {
@@ -35,7 +45,7 @@
         "comments": [
           {
             "id": "11133",
-            "body": "Rearranged the deployment diagram so the connections do not cross. Added HTTPS/TCP 443 labels to the six network paths and HTTP/TCP 8080 to the internal API server. The other 191 diagrams are unchanged.\n\n[Deployment diagram and checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/deployment)"
+            "body": "<p>Rearranged the deployment diagram so the connections do not cross. Added HTTPS/TCP 443 labels to the six network paths and HTTP/TCP 8080 to the internal API server. The other 191 diagrams are unchanged. These changes are published in VP revision 55.</p><p><a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/deployment\">Deployment diagram and checks</a></p>"
           }
         ]
       },
@@ -44,7 +54,7 @@
         "url": "https://basketball-strategy.atlassian.net/browse/SCRUM-567",
         "summary": "Verify and publish the deployment diagram revision",
         "type": "Dev Subtask",
-        "status": "In Progress",
+        "status": "Done",
         "assignee": "Gurkaranjit Asahan",
         "parent": "SCRUM-440",
         "description": "Check and publish the deployment-only changes to the shared Visual Paradigm project.\n\nAcceptance criteria:\n\n* Compare the saved model with the shared baseline and confirm that only the deployment diagram changed.\n* Check the exported preview for readable labels, protocol-port details and clear connections.\n* Publish the revision to Teamwork and verify the new shared revision.\n* Commit the native model, preview and verification evidence to the shared repository.\n\n",
@@ -52,7 +62,7 @@
         "comments": [
           {
             "id": "11134",
-            "body": "The deployment-only model and preview are checked. The desktop Teamwork commit is still needed to publish the revision."
+            "body": "<p>Checked the published copy in VP revision 55. It contains the corrected deployment layout and protocol-port labels, and the other 191 diagrams are unchanged. The deployment diagram is ready to show.</p><p><a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/deployment\">Deployment model and preview</a></p>"
           }
         ]
       }
@@ -66,9 +76,14 @@
     ],
     "scope_comment_id": "11132",
     "publication": {
-      "status": "Pending desktop Teamwork commit",
-      "shared_revision_confirmed": false,
-      "comment_id": "11134"
+      "status": "Published",
+      "shared_revision_confirmed": true,
+      "shared_revision": 55,
+      "verified_at_utc": "2026-10-13T03:33:31.124199+00:00",
+      "native_sha256": "0bae04e67b71bd9a49d64373cf23a8620dcd56728dd5c2fbfff3ffdbd225ee18",
+      "evidence": "../deployment/publication-verification.json",
+      "comment_id": "11134",
+      "deliverable": "Committed pristine Teamwork copy; later working-copy caption formatting entries are excluded."
     },
     "layout_verification": {
       "verified": true,
@@ -77,9 +92,10 @@
       "network_paths": 6,
       "external_protocol_port": "HTTPS/TCP 443",
       "internal_api_protocol_port": "HTTP/TCP 8080",
-      "native_sha256": "b5fb0f566d1ebfde711ecdf7de087a8a0467dbb2d10b540907034ffd939b1c64",
       "evidence": "../deployment/verification.json",
-      "completion_comment_id": "11133"
+      "completion_comment_id": "11133",
+      "prepared_candidate_sha256": "b5fb0f566d1ebfde711ecdf7de087a8a0467dbb2d10b540907034ffd939b1c64",
+      "published_native_sha256": "0bae04e67b71bd9a49d64373cf23a8620dcd56728dd5c2fbfff3ffdbd225ee18"
     }
   },
   "risk_and_test": {
@@ -103,8 +119,8 @@
   },
   "current_revision_subtask_counts": {
     "total": 13,
-    "done": 12,
-    "in_progress": 1,
+    "done": 13,
+    "in_progress": 0,
     "to_do": 0
   },
   "interaction_work_retained_separately": {
@@ -143,12 +159,11 @@
   },
   "effort": {
     "new_deployment_estimate_hours": 2.5,
-    "actual_personal_hours": "Pending",
+    "actual_personal_hours": "Awaiting clarification and allocation",
     "worklogs_added": 0
   },
   "verification": {
     "checks": {
-      "olderDeploymentCommentAndInlineScreenshotPreserved": true,
       "previousFiveDeploymentChildrenPreserved": true,
       "newChildrenLinkedTo440": true,
       "newChildrenGurkOwned": true,
@@ -156,11 +171,13 @@
       "interactionStatusesPreserved": true,
       "interactionDescriptionsStateExcludedScope": true,
       "noWorklogsOnChangedIssues": true,
-      "deploymentParentInProgress": true,
       "layoutSubtaskDone": true,
-      "publicationSubtaskInProgress": true,
       "newCommentsReadBack": true,
-      "noDeploymentWorklogs": true
+      "noDeploymentWorklogs": true,
+      "olderDeploymentCommentAndScreenshotRetainedWithResolutionNote": true,
+      "deploymentParentDone": true,
+      "publicationSubtaskDone": true,
+      "publishedRevision55Verified": true
     },
     "all_checks_passed": true
   },
@@ -173,5 +190,18 @@
       "verification.json"
     ],
     "note": "The earlier 15-subtask snapshot records the previous interaction/risk/test scope. Its 14 Done and one open result is retained as historical evidence."
+  },
+  "latest_jira_closeout": {
+    "verified_at_utc": "2026-10-13T03:38:24.441Z",
+    "evidence": "../deployment/jira-publication-closeout.json",
+    "updated_issues": [
+      "SCRUM-440",
+      "SCRUM-566",
+      "SCRUM-567",
+      "SCRUM-529",
+      "SCRUM-565",
+      "BSR-111"
+    ],
+    "worklogs_added": 0
   }
 }
