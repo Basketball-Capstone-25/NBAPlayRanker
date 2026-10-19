@@ -6,6 +6,9 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { fetchModelMetrics, fetchPipelineInfo, fetchMlAnalysis } from "../../../services/analytics";
 import CalibrationPanel from "./CalibrationPanel";
+import ReportExport from "../../_shared/components/ReportExport";
+import { metricsReport } from "../../../infrastructure/report-export";
+import { LatestRequest } from "../../../infrastructure/latest-request";
 
 type MetricsRow = {
   model: string;
@@ -110,11 +113,14 @@ export default function ModelMetricsPage() {
   const [loadingHoldout, setLoadingHoldout] = useState<boolean>(false);
   const [loadingTuning, setLoadingTuning] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [pipelineError, setPipelineError] = useState<string | null>(null);
 
   const loading = loadingPipeline || loadingHoldout || loadingTuning;
 
   // Guards against Strict Mode duplicate calls + stale results
-  const activeReqIdRef = useRef<number>(0);
+  const pipelineRequest = useRef(new LatestRequest());
+  const holdoutRequest = useRef(new LatestRequest());
+  const tuningRequest = useRef(new LatestRequest());
   const lastPipelineKeyRef = useRef<string>("");
   const lastHoldoutKeyRef = useRef<string>("");
   const lastTuningKeyRef = useRef<string>("");
@@ -124,19 +130,12 @@ export default function ModelMetricsPage() {
     if (!opts?.force && lastPipelineKeyRef.current === key && pipeline) return;
     lastPipelineKeyRef.current = key;
 
-    const reqId = ++activeReqIdRef.current;
-
-    try {
-      setLoadingPipeline(true);
-      const p = await fetchPipelineInfo();
-      if (reqId !== activeReqIdRef.current) return;
-      setPipeline(p);
-    } catch (e) {
-      // Pipeline not critical — don’t hard fail the page
-      console.warn("[model-metrics] pipeline load failed:", e);
-    } finally {
-      if (reqId === activeReqIdRef.current) setLoadingPipeline(false);
-    }
+    await pipelineRequest.current.run(key, fetchPipelineInfo, {
+      start: () => { setLoadingPipeline(true); setPipelineError(null); },
+      success: setPipeline,
+      error: () => { setPipeline(null); setPipelineError("Pipeline summary unavailable. Refresh to try again."); },
+      settled: () => setLoadingPipeline(false),
+    }, opts?.force);
   }
 
   async function loadHoldout(opts?: { force?: boolean }) {
@@ -144,60 +143,36 @@ export default function ModelMetricsPage() {
     if (!opts?.force && lastHoldoutKeyRef.current === key && data) return;
     lastHoldoutKeyRef.current = key;
 
-    const reqId = ++activeReqIdRef.current;
-
-    try {
-      setError(null);
-      setLoadingHoldout(true);
-      const m = await fetchModelMetrics(nSplits);
-      if (reqId !== activeReqIdRef.current) return;
-      setData(m);
-    } catch (e: any) {
-      if (reqId !== activeReqIdRef.current) return;
-      console.error(e);
-      setError(e?.message ?? "Failed to load holdout model metrics.");
-      setData(null);
-    } finally {
-      if (reqId === activeReqIdRef.current) setLoadingHoldout(false);
-    }
+    await holdoutRequest.current.run(key, () => fetchModelMetrics(nSplits), {
+      start: () => { setError(null); setLoadingHoldout(true); setData(null); },
+      success: setData,
+      error: (error) => { setError(error instanceof Error ? error.message : "Failed to load holdout model metrics."); setData(null); },
+      settled: () => setLoadingHoldout(false),
+    }, opts?.force);
   }
 
   async function loadTuning(opts?: { force?: boolean }) {
-    if (!tuningRequested && !opts?.force) return;
-
     const key = `tuning:nSplits=${nSplits}:minPoss=25:refresh=false`;
     if (!opts?.force && lastTuningKeyRef.current === key && ml) return;
     lastTuningKeyRef.current = key;
 
-    const reqId = ++activeReqIdRef.current;
-
-    try {
-      setError(null);
-      setLoadingTuning(true);
-      const a = await fetchMlAnalysis({ nSplits, minPoss: 25, refresh: false });
-      if (reqId !== activeReqIdRef.current) return;
-      setMl(a);
-    } catch (e: any) {
-      if (reqId !== activeReqIdRef.current) return;
-      console.error(e);
-      setError(e?.message ?? "Failed to load tuning evidence.");
-      setMl(null);
-    } finally {
-      if (reqId === activeReqIdRef.current) setLoadingTuning(false);
-    }
+    await tuningRequest.current.run(key, () => fetchMlAnalysis({ nSplits, minPoss: 25, refresh: false }), {
+      start: () => { setError(null); setLoadingTuning(true); setMl(null); },
+      success: setMl,
+      error: (error) => { setError(error instanceof Error ? error.message : "Failed to load tuning evidence."); setMl(null); },
+      settled: () => setLoadingTuning(false),
+    }, opts?.force);
   }
 
   async function refreshAll() {
     // Force reload everything. Tuning only reloads if it’s been requested (or already present).
-    await loadPipeline({ force: true });
-    await loadHoldout({ force: true });
+    await Promise.all([loadPipeline({ force: true }), loadHoldout({ force: true })]);
     if (tuningRequested || ml) await loadTuning({ force: true });
   }
 
   // Initial + changes: keep page snappy (pipeline + holdout first)
   useEffect(() => {
     loadPipeline();
-    loadHoldout();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -218,6 +193,8 @@ export default function ModelMetricsPage() {
   const rows = useMemo(() => {
     return Array.isArray(data?.metrics) ? data!.metrics : [];
   }, [data]);
+
+  const exportPayload = data && rows.length && !loadingHoldout && !error && data.n_splits === nSplits ? metricsReport(data) : null;
 
   const modelNames = useMemo(() => {
     return rows.map((r) => r.model);
@@ -466,6 +443,10 @@ export default function ModelMetricsPage() {
               {loading ? "Refreshing…" : "Refresh"}
             </button>
 
+            <ReportExport payload={exportPayload}
+              disabledReason={loadingHoldout ? "Wait for the holdout results to finish." : data && data.n_splits !== nSplits ? "Refresh the selected season folds before exporting." : undefined}
+              description="Export the loaded holdout metrics table. Tuning and calibration are separate reports." />
+
             {statusLine ? (
               <span className="muted" style={{ fontSize: 12 }}>
                 {statusLine}
@@ -491,6 +472,8 @@ export default function ModelMetricsPage() {
             </div>
           </div>
         </div>
+
+        {pipelineError ? <p role="status" style={{ marginTop: 12, color: "#92400e", fontSize: 13 }}>{pipelineError}</p> : null}
 
         {error ? (
           <div

@@ -11,9 +11,10 @@ import {
   fetchBaselineInfo,
   fetchMetaOptions,
   fetchPlaytypeViz,
-  getBaselineCsvUrl,
 } from "../../../services/recommendation";
 import { normalizeWeights } from "../../../domain/weight-calculation";
+import ReportExport from "../../_shared/components/ReportExport";
+import { baselineReport, resultKey } from "../../../infrastructure/report-export";
 
 type MetaOptions = {
   seasons: string[];
@@ -166,6 +167,7 @@ export default function MatchupPage() {
   const [rows, setRows] = useState<BaselineRow[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [loadedKey, setLoadedKey] = useState("");
 
   // Optional: show extra math fields in the details section.
   const [showMath, setShowMath] = useState(false);
@@ -230,10 +232,10 @@ export default function MatchupPage() {
     return true;
   }, [metaReady, season, our, opp]);
 
-  const csvUrl = useMemo(() => {
-    if (!season || !our || !opp) return "#";
-    return getBaselineCsvUrl({ season, our, opp, k, wOff: norm.wOff, wDef: norm.wDef });
-  }, [season, our, opp, k, norm.wOff, norm.wDef]);
+  const exportFilters = { season, our, opp, k, w_off: norm.wOff, w_def: norm.wDef };
+  const currentKey = resultKey(exportFilters);
+  const resultsCurrent = loadedKey === currentKey && rows.length > 0 && !loading && !error;
+  const exportPayload = resultsCurrent ? baselineReport(exportFilters, rows) : null;
 
   const runContextHref = useMemo(() => {
     const qs = new URLSearchParams({ season, our, opp, k: String(k) });
@@ -282,6 +284,7 @@ export default function MatchupPage() {
       setLoading(true);
       setError(null);
       setRows([]);
+      setLoadedKey("");
 
       const out = await baselineRank({
         season,
@@ -293,6 +296,7 @@ export default function MatchupPage() {
       });
 
       setRows(Array.isArray(out) ? out : []);
+      setLoadedKey(currentKey);
     } catch (e: any) {
       console.error(e);
       setError(e?.message ?? "Failed to generate baseline recommendations.");
@@ -821,9 +825,9 @@ export default function MatchupPage() {
                 <Icon name="play" /> {loading ? "Running…" : "Run Baseline"}
               </button>
 
-              <button className="btn" type="button" disabled={!canRun} onClick={() => authenticatedDownload(csvUrl).catch(e => setError(String(e)))}>
-                <Icon name="download" /> Export CSV
-              </button>
+              <ReportExport payload={exportPayload}
+                disabledReason={loading ? "Wait for the rankings to finish." : !resultsCurrent && rows.length ? "Inputs changed. Run Baseline again before exporting." : undefined}
+                description="Export the displayed rankings and matchup settings." />
             </div>
 
             <div className="badge">{season && our && opp ? matchupLabel : "Select teams"}</div>
@@ -874,8 +878,8 @@ export default function MatchupPage() {
                     <Icon name="map" /> {vizLoading ? "Generating…" : "Generate map"}
                   </button>
 
-                  <button className="btn" type="button" onClick={() => authenticatedDownload(getPdfUrlForPlayType(bestRow.playType)).catch(e => setError(String(e)))}>
-                    <Icon name="pdf" /> Export 1-page PDF
+                  <button className="btn" type="button" disabled={!resultsCurrent} onClick={() => authenticatedDownload(getPdfUrlForPlayType(bestRow.playType)).catch(e => setError(String(e)))}>
+                    <Icon name="pdf" /> Download court diagram
                   </button>
                 </div>
               </div>
@@ -944,10 +948,10 @@ export default function MatchupPage() {
                     <button
                       className="btn"
                       type="button"
-                      disabled={!vizReady}
+                      disabled={!vizReady || !resultsCurrent}
                       onClick={() => authenticatedDownload(getPdfUrlForPlayType(vizPlayType)).catch(e => setError(String(e)))}
                     >
-                      <Icon name="pdf" /> Export PDF
+                      <Icon name="pdf" /> Download court diagram
                     </button>
                   </div>
 
