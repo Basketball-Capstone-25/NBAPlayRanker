@@ -378,8 +378,8 @@ export default function ModelMetricsPage() {
             </h1>
 
             <p className="muted" style={{ fontSize: 14, margin: "6px 0 0" }}>
-              Think of this like a <strong>scouting report</strong> for the model. We test generalization across
-              seasons (holdout) and show tuning evidence (how we searched features + hyperparameters).
+              Compare baseline and ML models on held-out seasons, then review the features and
+              settings used for tuning.
             </p>
 
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
@@ -495,6 +495,10 @@ export default function ModelMetricsPage() {
 
       {/* BODY */}
       <div style={{ padding: 18 }}>
+        <p className="muted" style={{ fontSize: 13, margin: "0 0 14px" }}>
+          These retrospective results use statistics from the season being evaluated. Separating
+          seasons does not remove that timing limitation; this is not a pre-game or future forecast test.
+        </p>
         {/* SCOREBOARD TAB */}
         {tab === "scoreboard" ? (
           <>
@@ -516,7 +520,7 @@ export default function ModelMetricsPage() {
                   Season splits
                 </div>
                 <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                  Grouped by season to prevent leakage.
+                  Training and test rows use separate season groups.
                 </div>
               </div>
 
@@ -833,7 +837,7 @@ export default function ModelMetricsPage() {
               <div>
                 <h2 style={{ margin: "2px 0 6px", fontSize: 18, fontWeight: 900 }}>Holdout metrics table</h2>
                 <p className="muted" style={{ fontSize: 13, margin: 0 }}>
-                  This is the “generalizes to unseen seasons” scoreboard. Lower RMSE/MAE is better.
+                  Retrospective results using observed season statistics. Lower RMSE/MAE is better.
                 </p>
               </div>
               <button className="btn" type="button" onClick={() => setTab("scoreboard")}>
@@ -937,7 +941,7 @@ export default function ModelMetricsPage() {
                       {tuning.cv}
                     </div>
                     <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                      CV is grouped to avoid season leakage.
+                      Season groups stay together within each CV fold.
                     </div>
                   </div>
 
@@ -1020,8 +1024,8 @@ export default function ModelMetricsPage() {
                 </details>
 
                 <div className="muted" style={{ marginTop: 10, fontSize: 12 }}>
-                  <strong>Coach translation:</strong> tuning is the “practice reps” where we try lots of settings; holdout
-                  is the “real game” test on unseen seasons.
+                  Tuning compares training settings. Holdout measures error on seasons excluded from
+                  that training fold.
                 </div>
               </div>
             ) : tuningRequested && loadingTuning ? (
@@ -1103,7 +1107,7 @@ export default function ModelMetricsPage() {
               <h3 style={{ margin: "8px 0 6px", fontSize: 16, fontWeight: 900 }}>Defense </h3>
               <ol className="muted" style={{ fontSize: 13, paddingLeft: 18, margin: 0 }}>
                 <li>We compared baseline vs ML — not one default model.</li>
-                <li>We used season holdout so results generalize to unseen seasons.</li>
+                <li>Season holdout compares models retrospectively; it does not prove future accuracy.</li>
                 <li>We show tuning evidence (features + params) for transparency.</li>
                 <li>We explain improvements in basketball terms (PPP error → points per possessions).</li>
               </ol>
