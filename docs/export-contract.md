@@ -31,6 +31,10 @@ CSV and JSON always carry the same rows and columns. An unknown format, or
 - `Content-Disposition: attachment; filename="<report>_<filter values>.<format>"`
 - File names are deterministic: the report id followed by the filter values in
   order, with unsafe characters replaced by `-`.
+- Negative numeric filters keep their minus sign. A context margin of `-2`
+  therefore produces `..._-2...`, while a margin of `2` produces `..._2...`,
+  in CSV, JSON and PDF filenames. Text sanitization and the report prefix stay
+  the same; quotes, path separators and line breaks cannot enter the header.
 - A failed export returns an error the page can show with a retry action; it
   never returns a partial file.
 

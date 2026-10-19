@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import io
 import json
+import re
 
 import pytest
 
@@ -53,6 +54,21 @@ def test_media_type_filename_and_download_header_follow_the_contract():
     assert file.headers == {
         "Content-Disposition": 'attachment; filename="baseline-rankings_2023-24_TOR_BOS_2.csv"'
     }
+
+
+def test_negative_filter_sign_does_not_relax_filename_sanitization():
+    payload = ExportPayload(
+        report="\r\ncontext_rankings\"; X-Report: bad",
+        filters={"margin": -2, "label": '\r\n"/..\\\tX-Injected: yes;'},
+        columns=["PPP"], rows=[{"PPP": -0.02}],
+    )
+    file = ExportContract().build_export(payload, "csv")
+
+    assert file.filename.startswith("context-rankings-X-Report-bad_-2_")
+    assert re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*\.csv", file.filename)
+    assert file.headers["Content-Disposition"] == f'attachment; filename="{file.filename}"'
+    assert file.headers["Content-Disposition"].count('"') == 2
+    assert list(csv.DictReader(io.StringIO(file.content.decode())))[0]["PPP"] == "-0.02"
 
 
 def test_pdf_uses_the_renderer_registered_for_the_report():

@@ -51,8 +51,11 @@ class ExportFile:
         return {"Content-Disposition": f'attachment; filename="{self.filename}"'}
 
 
-def _slug(value: Any) -> str:
-    return re.sub(r"[^A-Za-z0-9.-]+", "-", str(value)).strip("-") or "na"
+def _slug(value: Any, *, preserve_numeric_sign: bool = False) -> str:
+    slug = re.sub(r"[^A-Za-z0-9.-]+", "-", str(value)).strip("-") or "na"
+    if preserve_numeric_sign and isinstance(value, (int, float)) and value < 0:
+        return "-" + slug
+    return slug
 
 
 def _normalise_format(format: str) -> str:
@@ -74,7 +77,10 @@ class ExportContract:
     def build_export_filename(self, report: str, filters: Mapping[str, Any], format: str) -> str:
         """Deterministic name: report, then filter values in the order given."""
         fmt = _normalise_format(format)
-        parts = [_slug(report)] + [_slug(value) for value in filters.values() if value is not None]
+        parts = [_slug(report)] + [
+            _slug(value, preserve_numeric_sign=True)
+            for value in filters.values() if value is not None
+        ]
         return "_".join(parts)[:180].rstrip("-_") + f".{fmt}"
 
     def build_export(self, payload: ExportPayload, format: str) -> ExportFile:

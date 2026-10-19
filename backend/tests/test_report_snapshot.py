@@ -137,6 +137,31 @@ def test_csv_formula_strings_are_escaped_but_numbers_keep_their_values():
     assert rows[0]["Overlay PPP"] == "-0.02"
 
 
+@pytest.mark.parametrize("fmt", ["csv", "json", "pdf"])
+def test_context_filenames_distinguish_trailing_and_leading_margins(fmt):
+    body = _body(fmt=fmt)
+    body["payload"]["filters"]["margin"] = -2
+    behind = _post(body)
+    body["payload"]["filters"]["margin"] = 2
+    ahead = _post(body)
+
+    assert behind.status_code == ahead.status_code == 200
+    assert behind.headers["content-disposition"] == (
+        f'attachment; filename="context-rankings_2024-25_TOR_BOS_4_-2.{fmt}"'
+    )
+    assert ahead.headers["content-disposition"] == (
+        f'attachment; filename="context-rankings_2024-25_TOR_BOS_4_2.{fmt}"'
+    )
+    if fmt == "csv":
+        rows = list(csv.DictReader(io.StringIO(behind.text)))
+        assert rows[0]["Overlay PPP"] == "-0.02"
+    elif fmt == "json":
+        assert behind.json()["filters"]["margin"] == -2
+        assert ahead.json()["filters"]["margin"] == 2
+    else:
+        assert behind.content.startswith(b"%PDF") and ahead.content.startswith(b"%PDF")
+
+
 def test_pdf_handles_wide_columns_and_literal_markup():
     body = _body(fmt="pdf")
     body["payload"]["metadata"]["title"] = "Literal <tag> & report"
