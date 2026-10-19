@@ -1,0 +1,573 @@
+{
+  "verified_at_utc": "2026-10-19T01:22:47.485Z",
+  "verified": true,
+  "scope": "Reconcile repeated Assignment 1 feedback cards with existing completion evidence.",
+  "actual_worklogs_added": 0,
+  "original_actual_hours": {
+    "deployment": 1,
+    "risks": 4,
+    "tests": 4
+  },
+  "new_development_claimed_for_duplicates": false,
+  "checks": [
+    {
+      "key": "SCRUM-589",
+      "original": "SCRUM-566",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-590",
+      "original": "SCRUM-566",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-588",
+      "original": "SCRUM-440",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-592",
+      "original": "SCRUM-556",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-593",
+      "original": "SCRUM-555",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-591",
+      "original": "SCRUM-529",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-595",
+      "original": "SCRUM-564",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-596",
+      "original": "SCRUM-559",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-597",
+      "original": "SCRUM-560",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-598",
+      "original": "SCRUM-562",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-599",
+      "original": "SCRUM-563",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    },
+    {
+      "key": "SCRUM-594",
+      "original": "SCRUM-530",
+      "status": "Done",
+      "checks": [
+        {
+          "field": "created",
+          "same": true
+        },
+        {
+          "field": "description",
+          "same": true
+        },
+        {
+          "field": "assignee",
+          "same": true
+        },
+        {
+          "field": "reporter",
+          "same": true
+        },
+        {
+          "field": "parent key and ID",
+          "same": true
+        },
+        {
+          "field": "labels",
+          "same": true
+        },
+        {
+          "field": "attachment",
+          "same": true
+        },
+        {
+          "field": "worklog",
+          "same": true
+        },
+        {
+          "field": "timetracking",
+          "same": true
+        }
+      ],
+      "existingCommentsPreserved": true,
+      "duplicateLinked": true,
+      "newComments": 1
+    }
+  ],
+  "allowed_changes": [
+    "Shorter summaries",
+    "Formal Duplicate links",
+    "One evidence comment per card",
+    "Current status set to Done"
+  ],
+  "note": "Parent preview titles and statuses changed with the parent cards. Parent keys and IDs did not change."
+}

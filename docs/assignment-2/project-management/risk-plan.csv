@@ -1,0 +1,854 @@
+﻿Key,Title,Type,Status,Assignee,Parent,Sprint,Story points,Effort estimate (hours),Actual logged hours,Priority,Probability,Impact,Mitigation,Linked work,Description,Comments,URL
+BSR-29,One-person ownership leaves critical work without backup,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"List primary and backup owners for the data pipeline, API, interface and deployment. Have the backup follow the clean-checkout steps and record what still depends on the primary owner.",Relates: SCRUM-531; Relates: SCRUM-532; Relates: SCRUM-517,Only one person knows pulls/model/UI; bus factor = 1.,"Actions:
+* Shared the Jupyter notebooks, ML scripts and backend/UI code between both team members using the Git repo.
+* Documented how to run the backend and front-end (requirements, commands, sample data) so either person can demo.
+Result:
+* Dependency on a single person is reduced; either team member can start the app and walk through the key flows.
+Assessment:
+* Probability reduced (but risk still present).
+* Impact remains significant if it happens, so we keep this risk under monitoring.
+
+The shared repository contains setup instructions, but this card has no current evidence that a second person can run the full stack. Keep a named backup and record a successful handoff before treating the dependency as reduced.",https://basketball-strategy.atlassian.net/browse/BSR-29
+BSR-30,Extra features delay required release work,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,Prioritize the failing core workflows and required submission corrections. Put optional features in the backlog and agree which existing task moves out when a new task moves in.,Relates: SCRUM-465; Relates: SCRUM-531,Fancy visuals or features added without time budget.,"Actions:
+* Explicitly de-scoped several “nice to have” items (advanced coach UI, SHAP explanations, extra visualizations).
+* Focused this iteration on making the baseline ranking, Data Explorer, and Top-K tactics board stable and demoable.
+Result:
+* Core features for the defence are implemented; extra items are moved into future PBIs and later sprints.
+Assessment:
+* Probability reduced, but scope creep remains a  risk.
+* We will keep parking new ideas into the backlog
+
+The backlog already includes data repair, exports and cloud Gameplan work. Adding more features before the failed workflows are addressed would put the remaining release work at risk.",https://basketball-strategy.atlassian.net/browse/BSR-30
+BSR-31,Late requirement changes force rework,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Record each new requirement against its affected story, model or test. Estimate its effect on the remaining schedule and confirm scope changes in the shared plan.",Relates: SCRUM-528; Relates: SCRUM-529; Relates: SCRUM-530; Relates: SCRUM-465,Supervisor requests live data or extra models close to deadline.,"Actions:
+* Reviewed professor feedback and rubric again before planning this iteration.
+* Aligned Jira backlog and sprints with the Elaboration Release requirements (ML comparison, Jira boards, Validation model).
+Result:
+* No major requirement changes arrived late in the iteration; any new suggestions were treated as future backlog items.
+Assessment:
+* Probability now low for this release.
+* Impact would be high if it happened, but current iteration was stable.
+
+The supervisor has requested further model, risk and test-plan corrections. These changes need explicit tasks and acceptance criteria so they do not silently displace the planned feature work.",https://basketball-strategy.atlassian.net/browse/BSR-31
+BSR-32,Coaches may not use or trust the recommendations,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Observe scouting, matchup and late-game scenarios with a coach or identified proxy. Record confusing steps and whether the result supports a concrete decision.",Relates: SCRUM-536; Relates: SCRUM-510,Tool isn’t used due to complexity or lack of trust.,"Actions:
+* Simplified the UI so that Data Explorer shows raw, understandable stats instead of confusing ML columns.
+* Designed the Top-K cards and one-page tactics board specifically for quick coach use (clear labels, PPP_baseline).
+Result:
+* The product is easier to explain and demo to non-technical users (coaches, analysts).
+Assessment:
+* Probability reduced to low–medium.
+* Impact is moderate; we will watch feedback from demo sessions.
+
+The app has coaching workflows, but there is no current coach acceptance result on this card. Working controls and readable labels alone do not establish that coaches would use the recommendations.",https://basketball-strategy.atlassian.net/browse/BSR-32
+BSR-33,Protected APIs may allow unauthorized access,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Low,Serious,"Maintain a route and role matrix. Repeat missing-session, invalid-token and wrong-role checks after access changes, and restrict any route that accepts an unauthorized request.",Relates: SCRUM-533; Relates: SCRUM-523,"Risk: Application or API operations intended for authenticated or authorized users may remain accessible without the required session or role.
+Trigger: An unauthenticated, expired-session, or wrong-role request succeeds where the approved access policy requires rejection.
+Assessment: Low probability is retained provisionally; propose Serious impact because the current model includes authenticated coach/analyst access. Endpoint reduction alone does not establish authorization.","Actions:
+* Reviewed the baseline API endpoints and limited them to only what is required for the UI.
+* Ensured we are not exposing raw admin or internal operations endpoints in the demo app.
+Result:
+* Surface area of the API is smaller; endpoints are more focused on read-only data for the demo.
+Assessment:
+* Probability now low for this academic deployment.
+* Impact would be high in production, but acceptable for the controlled capstone environment.
+
+Elaboration review: probability Low; impact Serious. Reviewed the assessment and updated the mitigation plan.
+Next action: Run the model’s relevant session, role, and permission checks against the current deployment, including invalid tokens and development-bypass configuration.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+The recorded session and role checks rejected unauthorized requests. That supports the current access controls, but new routes still need the same checks; a resolved label would hide that ongoing exposure.",https://basketball-strategy.atlassian.net/browse/BSR-33
+BSR-34,Private tokens may be exposed in source or logs,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Low,Serious,Scan tracked changes and client output before sharing a release. Store server keys only in private configuration and rotate any key whose exposure is confirmed.,Relates: SCRUM-533,Auth token or keys committed to Git or exposed in logs.,"Actions:
+* Confirmed that any secrets (API keys, tokens) are kept in local configuration and NOT committed to the Git repo.
+* Checked the repository history for accidental commits of secrets.
+Result:
+* No known secret leaks in the project repository.
+Assessment:
+* Probability currently low.
+* Impact remains high if a leak ever happens, so we keep verifying before sharing code or doing public demos.
+
+Private runtime settings are kept outside the tracked source, but the earlier comment does not prove the current client build and repository history are free of secrets. Keep the risk under monitoring until the release checks are recorded.",https://basketball-strategy.atlassian.net/browse/BSR-34
+BSR-35,Exported values may differ from API results,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Low,Tolerable,"Use the same calculation and filters for each output format. Compare JSON, CSV and PDF values on a fixed dataset and record the dataset version with the export test.",Relates: SCRUM-484; Relates: SCRUM-485; Relates: SCRUM-519; Relates: SCRUM-486; Relates: SCRUM-616,JSON responses differ from CSV/Parquet due to version drift or rounding.,"Actions:
+* Compared sample outputs from the /rank-plays/baseline endpoint with the original baseline notebook outputs.
+* Ran spot checks on PPP_baseline values for a few teams and seasons.
+Result:
+* Numbers between the API and underlying files are consistent on sampled checks.
+Assessment:
+* Probability reduced to medium.
+* Impact remains high; we will re-check if we update the dataset or baseline logic.
+
+The recorded uplift checks compare JSON and CSV values successfully. The later unified export endpoint is still planned, so its rounding, filters and totals need separate checks when implemented.
+
+The new exports must match the results already shown on Matchup, Context and Model Metrics. BST-171 through BST-178 now cover the three formats, selected context, stale results and file contents. These checks are still waiting for the deployed export change.
+
+The Matchup, Context and Model Metrics exports matched the displayed rows. Testing found a negative-margin filename issue; SCRUM-616 fixed it and BST-178 passed the retest. The export checks now cover CSV, JSON and PDF.",https://basketball-strategy.atlassian.net/browse/BSR-35
+BSR-36,Missing models may break the baseline fallback,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Low,Serious,Test a controlled missing-model case outside production. Confirm the supported baseline fallback and show a clear error for workflows that cannot safely fall back.,Relates: SCRUM-532; Relates: SCRUM-525,"If ML fails, baseline isn’t used automatically, causing outages.","Actions:
+* Implemented and manually tested the behaviour where the UI and ranking logic can use baseline PPP if ML predictions are unavailable.
+* Ensured Data Explorer and Top-K cards can still run purely on baseline data.
+Result:
+* System remains usable even without the ML model, so baseline fallback works for demo purposes.
+Assessment:
+* Probability now low that the app becomes unusable due to missing ML.
+* Impact reduced to medium because the baseline-only experience is acceptable for the defence.
+
+Baseline recommendations passed the recorded live checks. A successful normal request does not show how every model-dependent page behaves when an artifact is missing.",https://basketball-strategy.atlassian.net/browse/BSR-36
+BSR-37,Core pages may fail on supported browsers or screen sizes,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Tolerable,"Choose supported browser and viewport combinations, then repeat login, explorer, ranking and export flows. Fix clipped controls and unreadable results before expanding the supported set.",Relates: SCRUM-536; Relates: SCRUM-510,"Risk: New interface changes may cause clipping, inaccessible controls, or broken workflows on supported browsers and screen sizes.
+Trigger: A supported browser or viewport cannot complete a core task or displays unreadable/overlapping content.
+Assessment: historical UI testing does not cover later changes.","Actions:
+* Simplified the layout for the main pages (Home, Data Explorer, Baseline/Top-K, Glossary).
+* Tested the UI in at least two browsers and on different resolutions (laptop + external monitor).
+Result:
+* No major layout breaks found for the target demo environment.
+Assessment:
+* Probability now low.
+* Impact is moderate; minor cosmetic issues are acceptable as long as flows work.
+
+Elaboration review: probability Moderate; impact Tolerable. Reviewed the assessment and updated the mitigation plan.
+Next action: Retest the current login, explorer, ranking, and export views at the agreed screen sizes.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+The recent audit exercised browser workflows but did not certify all supported browsers or screen sizes. Keep layout compatibility open until the release has a defined browser and viewport checklist.",https://basketball-strategy.atlassian.net/browse/BSR-37
+BSR-38,Gameplan inputs may be ignored or incorrectly validated,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Use one validated parsed context for every downstream request. Add first-click, boundary, overtime and unsupported-input cases and keep the failing case linked to its repair.",Relates: SCRUM-539; Relates: SCRUM-540; Relates: SCRUM-541,"Risk: Unsupported seasons, team selections, context values, or limits may pass validation and cause errors or misleading rankings.
+Trigger: An invalid or unsupported input is accepted silently, causes an unhandled exception, or returns misleading output.
+Assessment: one invalid request should not produce unsupported analytics.","Actions:
+* Added validation on the backend for required fields (season, team, opponent, k) on the baseline endpoints.
+* Tightened the UI to only allow valid season ranges and known teams/opponents.
+Result:
+* Fewer chances of crashing the app or sending invalid queries from the front-end.
+Assessment:
+* Probability reduced from high to medium.
+* Impact is medium; we will revisit if we add more complex filters.
+
+Elaboration review: probability Low; impact Serious. Reviewed the assessment and updated the mitigation plan.
+Next action: Execute the existing invalid-team, same-team, invalid-K, missing-input, and context-boundary cases appropriate to the current requirements.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+The Gameplan audit found that the first Build can use the previous numeric context and that overtime is clamped to quarter 4. Those are concrete input-handling failures, so this risk should be active.",https://basketball-strategy.atlassian.net/browse/BSR-38
+BSR-39,Recommendation explanations may be unclear,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Tolerable,"State when a recommendation uses baseline data without game context. Keep each explanation tied to displayed values, repeat BST-97–99 after the change and ask a reviewer to explain the recommendation and its limits.",Relates: SCRUM-536; Relates: SCRUM-497; Relates: SCRUM-498; Relates: SCRUM-546,Rationale text is too technical or long; causes confusion.,"Actions:
+* Updated the UI wording and Glossary to focus on simple concepts (PPP_baseline, play-type ranking) instead of ML jargon.
+* Deferred advanced explanation/SHAP features to future PBIs to avoid overwhelming users now.
+Result:
+* Current explanations for baseline and Top-K recommendations are more coach-friendly.
+Assessment:
+* Probability reduced to medium.
+* Impact is medium; explanation quality still depends on how we present it in the live demo.
+
+The current rationale uses deterministic templates, and the glossary explains the metrics. There is still no recorded coach review showing that the wording makes the recommendation clear.
+
+The five baseline explanations returned for TOR against BOS did not say that score, period and clock were not applied. Their numbers matched the ranking output, but the missing-context notice required by BST-99 is absent. Add that notice and repeat the explanation checks; coach comprehension still needs the planned stakeholder review.",https://basketball-strategy.atlassian.net/browse/BSR-39
+BSR-40,Deployed analysis requests exceed usable response times,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Serve saved evaluation results for ordinary page visits. Profile slow requests, set bounded loading and error states, and rerun the recorded timeout case after the fix.",Relates: SCRUM-543; Relates: SCRUM-542,Baseline >2s or ML >5s harms usability during short breaks.,"Actions:
+* Measured response times for the baseline ranking endpoint with typical season/team/opponent filters.
+* Kept data size reasonable by focusing on a limited number of seasons for the demo.
+Result:
+* Response times are acceptable for the interactive demo (well under several seconds on local dev).
+Assessment:
+* Probability now low for the current dataset size.
+* Impact is medium if we scale up; for this release, latency is not a blocker.
+
+The default Shot Model Metrics request reached the server's 300-second limit and returned 504. The earlier local latency result does not cover this deployed workflow.",https://basketball-strategy.atlassian.net/browse/BSR-40
+BSR-41,Metric labels may imply unsupported accuracy,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Low,Tolerable,"Use consistent units and definitions in the API, page and report. Show the prediction target, baseline and evaluation period alongside each result.",Relates: SCRUM-476; Relates: SCRUM-498; Relates: SCRUM-526,"Risk: PPP, MAE, RMSE, uplift, accuracy, or probability may be conflated, causing incorrect interpretation of results.
+Trigger: The report, API, or UI gives different meanings or units for the same metric, or labels a regression metric as classification accuracy.
+Assessment: definitions must match the actual prediction target and evaluation task.","Actions:
+* Clarified in the report and notes that RMSE/uplift are used for technical evaluation, while PPP_baseline is the main metric shown to coaches.
+* Ensured the UI does not mix MAE/uplift with coach-facing screens.
+Result:
+* Better separation between “coach metrics” and “data science metrics”.
+Assessment:
+* Probability now low.
+* Impact low–medium; confusion risk is minimized for the demo audience.
+
+Elaboration review: probability Low; impact Tolerable. Reviewed the assessment and updated the mitigation plan.
+Next action: Check one evaluation table and its corresponding UI/API output against the metric dictionary.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+The calibration page reports PPP bias, MAE and RMSE with its retrospective-data limitation. The report and glossary must preserve that meaning rather than describing these numbers as future-game accuracy.
+
+The new [forecast report](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/README.md) labels MAE, RMSE and bias in PPP and states that it predicts a season ahead. It does not present these as classification accuracy or predictions before individual games. Keep Monitoring as these results are reused in the app or presentation.",https://basketball-strategy.atlassian.net/browse/BSR-41
+BSR-42,Parsed context may not reach the ranking model,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"List each context field and its availability, validation and use in ranking. Pass supported fields consistently and label unsupported conditions rather than implying they affect the result.",Relates: SCRUM-539; Relates: SCRUM-540; Relates: SCRUM-526,"Risk: Situational variables may be incomplete, noisy, or inappropriate for the target, weakening contextual recommendations.
+Trigger: Features have poor coverage, unstable definitions, or no defensible contribution on held-out evaluation.
+Assessment: the historical comment explicitly retained this concern.","Actions:
+* Reviewed available context features (score margin, time, recent events) when planning feature engineering.
+* Kept context features limited for this iteration and treated ML uplift results cautiously.
+Result:
+* We are aware that context signal may be weak; this is reflected in how we explain limitations in the report.
+Assessment:
+* Probability remains medium.
+* Impact medium; we will revisit if we extend feature engineering in later sprints.
+
+Elaboration review: probability Moderate; impact Tolerable. Reviewed the assessment and updated the mitigation plan.
+Next action: Create a feature inventory with definitions, availability, timing, and a held-out comparison for the proposed feature set.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+The parser can recognize tactical conditions that never reach the ranking API. That makes the displayed situation look richer than the inputs actually used to rank plays.",https://basketball-strategy.atlassian.net/browse/BSR-42
+BSR-43,Poor calibration of predicted PPP,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,Track PPP bias and error by season and play type. Evaluate lagged predictors on untouched chronological holdouts before making forecasting claims; report small groups and unsupported results.,Relates: SCRUM-476; Relates: SCRUM-526,Predicted PPP is systematically higher/lower than realized PPP.,"Actions:
+* Ran quick checks comparing predicted PPP vs baseline PPP across sample plays.
+* Looked at high-level distributions to verify predictions are in a reasonable range (no extreme unrealistic PPP values).
+Result:
+* No obvious calibration disasters detected, but we have not fully tuned calibration yet.
+Assessment:
+* Probability medium.
+* Impact high; we explicitly call this out as a limitation when discussing ML vs baseline in the defence.
+
+I added checks for whether predicted points per possession (PPP) are too high or too low, plus a comparison chart in SCRUM-476 ([b9f145d](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d15189dd7f6be6854166bce0aef3f58f01)). The calculation tests passed as part of the 176 backend tests, but I still need to check the analyst page in the browser. The model trains on earlier seasons and tests on later ones, but it still uses statistics from the season being tested, so this does not prove it can predict future games. The risk status is unchanged for now; [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526) will test predictions using only information available beforehand.
+
+I compared the calibration API results with the analyst page in SCRUM-476 and checked the calculations in BST-123/124. The report covers 1,650 test rows from five seasons, and its design is saved in Visual Paradigm revision 51.
+I moved the risk back to Monitoring because the report still uses same-season statistics and does not prove how well this model or the other recommendation models will predict future games. I will keep checking whether predictions are too high or too low and whether each group has enough results; SCRUM-526 covers testing with information available before the prediction.
+
+The calibration calculation passed its recorded checks, but it uses rates from the season being evaluated. The remaining work is to test predictions with information available before the prediction time.
+
+The season-ahead model overpredicted by 0.02227 PPP on average, compared with 0.01845 for the prior-league baseline. Lower RMSE did not remove this bias. Keep Monitoring and check a separate later season before claiming good calibration. [Results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/README.md).",https://basketball-strategy.atlassian.net/browse/BSR-43
+BSR-44,Models may overfit the available data,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Compare training and untouched time-holdout error with strictly available predictors. Record model settings, sample size and baseline performance before changing model complexity.",Relates: SCRUM-526,"Model learns noise due to many features vs samples, hurting generalization.","Actions:
+* Used a season-wise time split for evaluation to reduce leakage from future to past.
+* Compared training vs validation performance to look for large gaps.
+Result:
+* Early checks show some risk of overfitting but not catastrophic; we are not claiming production-grade generalization.
+Assessment:
+* Probability medium.
+* Impact high; this remains an important limitation of the prototype model.
+
+The earlier note acknowledged overfitting as a limitation, so Resolved is too strong. A season split alone does not establish generalization when the predictors include information from the evaluated season.
+
+SCRUM-526 fixed eight features, chose Ridge alpha on an earlier tuning season and kept the final season outside selection. The 330 team/play-type rows are related observations from one season, so this does not establish generalization. Keep Monitoring until a separate later season is evaluated. [Split and limits](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/README.md).",https://basketball-strategy.atlassian.net/browse/BSR-44
+BSR-45,Data leakage inflates results,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Define the prediction moment and whether each feature is observed, lagged or supplied as a planned action. Fit preprocessing on training data only and use an untouched time holdout. Do not present conditional or retrospective estimates as prospective accuracy.",Relates: SCRUM-526; Relates: SCRUM-549; Relates: SCRUM-538,"Not using strict time splits leaks future info into training, inflating metrics.","Actions:
+* Reviewed feature engineering to avoid including direct outcome-like fields in the inputs.
+* Used time-based splits to make sure future information does not leak into training.
+Result:
+* No obvious direct leakage features remain in the current feature set.
+Assessment:
+* Probability reduced to medium.
+* Impact high if leakage is discovered later, so we continue to treat evaluation results as approximate.
+
+I changed the calibration code so it calculates scaling and reliability values from the training seasons only ([b9f145d](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d15189dd7f6be6854166bce0aef3f58f01)). BST-123 passed the checks for keeping later-season results out of those calculations. The model still uses some statistics from the season being tested, which may not be available before a game. I am keeping this risk under Monitoring, with [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526) covering tests that use only earlier information.
+
+BST-123 passed the checks that keep training seasons separate from test seasons and prepare the data using training rows only. I checked that the analyst page explains these splits and limitations, with the design saved in Visual Paradigm revision 51.
+The inputs still include statistics from the season being tested, so the earlier broad claims about preventing all data leakage are not proof of future-game accuracy. This risk stays under Monitoring, and SCRUM-526 remains To Do to check which inputs are available before a prediction.
+
+Training and test seasons are separated, but the current diagnostic still uses same-season rate features. Keep the timing of every predictor in the next evaluation so future information cannot enter a forecasting claim.
+
+The shot model uses the location and type of the shot actually taken, while BST-117 expects information available before the possession. Those inputs can describe conditional shot quality, but they do not establish a pre-possession forecast. Document the prediction moment and feature availability before the repaired dataset is used for holdout or cross-validation claims.
+
+Changing the final season's points, possessions and rates left the selected model, fitted scaling and predictions unchanged in the new forecast tests. Inputs now come from the prior regular season. Monitoring remains because the CSV has no publication timestamps and the shot-model timing issue is separate. [Timing checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/README.md).",https://basketball-strategy.atlassian.net/browse/BSR-45
+BSR-46,ML model underperforms the baseline,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Evaluate baseline and model on identical untouched examples. Report error and uncertainty, and retain the better-supported method when model gains are absent.",Relates: SCRUM-474; Relates: SCRUM-526,XGBoost shows no uplift over the transparent scoring rule.,"Actions:
+* Implemented deterministic PPP_pred and compared its RMSE to PPP_baseline on a hold-out set.
+* Prepared visual/summary comparison to show the difference in performance during the defence.
+Result:
+* Current ML model is at least competitive with baseline on the tested split; we still emphasize limitations.
+Assessment:
+* Probability reduced but still medium.
+* Impact medium; if ML underperforms we still have a strong baseline and can use the comparison as a learning point.
+
+Uplift and calibration are implemented, but they do not settle whether the model improves future-game predictions over a baseline. Keep the baseline comparison open for the stricter evaluation.",https://basketball-strategy.atlassian.net/browse/BSR-46
+BSR-47,Shot events may be assigned to the wrong team,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Recover authoritative raw events, map game participants explicitly and check team/opponent consistency. Rebuild derived shot data and verify samples against their raw events before trusting shot rankings.",Relates: SCRUM-538; Relates: SCRUM-479,Timestamps/events don’t align cleanly with team/play-type rows; context features become noisy.,"Actions:
+* Spot-checked several possessions across the raw Synergy export and the engineered dataset used by the model.
+* Validated that play-type and PPP fields stay aligned for those samples.
+Result:
+* No major alignment errors found in the sampled rows.
+Assessment:
+* Probability now low.
+* Impact high if present at scale, so we will re-check if we perform large data transformations later.
+
+The shot-data audit found 18,746 rows with the same team and opponent and only one shooting-team label in every game group. The earlier sampled alignment result cannot support the current shot dataset.",https://basketball-strategy.atlassian.net/browse/BSR-47
+BSR-48,Small-sample play types distort rankings,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Tolerable,Define a minimum possession threshold and test low-count groups. Show sample size or suppress unsupported rankings; do not treat extreme small-sample PPP as a strong recommendation.,Relates: SCRUM-474; Relates: SCRUM-479; Relates: SCRUM-480,Rare play types have few possessions and appear misleadingly strong/weak.,"Actions:
+* Added a minimum sample size check when reviewing Top-K rankings (internally).
+* Considered play types with extremely low counts as “noisy” and interpret them cautiously.
+Result:
+* Rankings used in the demo are not dominated by extreme small-sample outliers.
+Assessment:
+* Probability medium.
+* Impact medium; documented as a limitation when we discuss interpretation of rankings.
+
+Rare play types still need explicit sample checks even when the ranking calculation passes. Keep the minimum sample rule and warning visible instead of relying on an informal review of the demo teams.",https://basketball-strategy.atlassian.net/browse/BSR-48
+BSR-49,Player-to-team aggregation may calculate incorrect totals,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,Use known player rows to verify team possession totals and weighted PPP. Check duplicate player/team keys and compare the computed aggregate with the expected team result.,Relates: SCRUM-478; Relates: SCRUM-479,"Possession-weighted aggregation implemented incorrectly, skewing team stats.","Actions:
+* Confirmed that the main views in this iteration operate at team level, not individual player aggregation.
+* For any roll-up examples, we manually verified that counts sum correctly for a small sample.
+Result:
+* No critical roll-up issues identified for the team-level views used in the demo.
+Assessment:
+* Probability now low for current scope.
+* Impact medium if we add detailed player analytics later.
+
+The Synergy pipeline already aggregates player rows into team and play-type results. Verify that current aggregation with a known possession-weighted fixture; displaying team-level outputs does not remove the risk of a bad roll-up.",https://basketball-strategy.atlassian.net/browse/BSR-49
+BSR-50,Invalid source data may produce misleading results,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Validate game participants, team/opponent differences and expected shooting-team coverage as well as types and missing values. Block or visibly flag reports using failed data.",Relates: SCRUM-538; Relates: SCRUM-479; Relates: SCRUM-480,"Non-numeric fields, NAs, or duplicates lead to wrong PPP or frequency values.","Actions:
+* Ran basic data quality checks (null counts, basic ranges) on the imported Synergy dataset.
+* Ensured that obviously broken rows are excluded or handled safely by the preprocessing.
+Result:
+* Some missing values exist but do not break the pipeline; they are either dropped or defaulted safely.
+Assessment:
+* Probability medium.
+* Impact medium; we treat data quality as a limitation and keep checks in place for future imports.
+
+The current shot data contains invalid team/opponent pairs. Passing null and type checks did not catch that semantic error, so this risk is active again.",https://basketball-strategy.atlassian.net/browse/BSR-50
+BSR-51,Source changes may prevent dataset recovery,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Keep raw extracts with source and schema versions. Validate required fields before replacing a working dataset, and retain the previous release for rollback.",Relates: SCRUM-487; Relates: SCRUM-490; Relates: SCRUM-491; Relates: SCRUM-532,"hoopR/NBA tables or columns change (schema/rate limits), causing pulls or processing to fail.","Actions:
+* Captured the current dataset extract and froze it for the demo, instead of depending on live/uncontrolled updates.
+* Documented the R/Notebook steps used to regenerate data if needed.
+Result:
+* Demo is stable against short-term data source changes.
+Assessment:
+* Probability now low for this release.
+* Impact medium; if the upstream format changes, we would need to update preprocessing in a later sprint.
+
+The frozen extract reduces dependency on live endpoints, but the original raw shot events were unavailable during diagnosis. That limits recovery if the source format or pull process changes.",https://basketball-strategy.atlassian.net/browse/BSR-51
+BSR-52,Limited expert feedback leaves coaching assumptions untested,Risk,Planning,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Tolerable,"Prepare three realistic coaching scenarios and specific questions. Record the reviewer, feedback and resulting changes, or clearly record that feedback is still pending.",Relates: SCRUM-536,The project may miss practical coaching requirements when domain feedback is unavailable or not recorded.,"Actions:
+* When designing the Top-K cards and tactics board, we based decisions on typical coach workflows (quick glance at best options, PPP_baseline).
+* Adjusted terminology (e.g., “points per possession” and “play-type ranking”) to be understandable to basketball staff.
+Result:
+* Even without a full-time domain expert, we are aligning the UI with how coaches think.
+Assessment:
+* Probability remains medium (limited expert time).
+* Impact medium; this is noted as a constraint in the project write-up.
+
+The card has no description and no recorded expert review of the current app. Coach-friendly wording is useful, but it is not evidence that a domain expert validated the workflow.",https://basketball-strategy.atlassian.net/browse/BSR-52
+BSR-53,UI and API contracts may disagree,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Keep the failed browser cases linked to their bugs. Verify parameters, access roles and response fields from the real page through the deployed API after each repair.",Relates: SCRUM-544; Relates: SCRUM-545; Relates: SCRUM-539,"A page may send parameters, expect fields or allow roles that disagree with the backend contract.","Actions:
+* Tested the full flow from UI → baseline API → UI for Data Explorer and Top-K cards.
+* Fixed mismatches in parameter names (season/team/opponent) where they were inconsistent.
+Result:
+* The main demo flows now run end-to-end without manual intervention.
+Assessment:
+* Probability reduced from high to medium.
+* Impact high if new endpoints are added; for current scope, risk is acceptable.
+
+The broader app audit found role mismatches, a response-shape crash and stale Gameplan inputs across the UI/API boundary. The earlier success on core pages does not cover these failing routes.",https://basketball-strategy.atlassian.net/browse/BSR-53
+BSR-54,Preprocessing may assign incorrect shot participants,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Replace ambiguous column matching with explicit documented mappings. Preserve raw events, validate participants and row counts after each transform, and rebuild dependent artifacts only from verified input.",Relates: SCRUM-538; Relates: SCRUM-479,Incorrect data mappings or cleaning rules may produce misleading features and recommendations.,"Actions:
+* Reviewed preprocessing steps (filtering, feature engineering) to ensure they match the Synergy definitions.
+* Kept the Data Explorer page close to raw data so we can visually verify the processed fields.
+Result:
+* Preprocessing for the baseline and current ML pipeline appears consistent and understandable.
+Assessment:
+* Probability now low.
+* Impact medium; still a key area to revisit if the pipeline becomes more complex.
+
+The shot dataset's team attribution is inconsistent at game level. This is a preprocessing concern even though the exact historical source-mapping mistake cannot be confirmed without the raw events.",https://basketball-strategy.atlassian.net/browse/BSR-54
+BSR-55,Unplanned features compete with the agreed scope,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Tolerable,Track required work in the release plan and keep enhancements separate. Review additions against capacity and the remaining defects before promising a release date.,Relates: SCRUM-465; Relates: SCRUM-531,New features may consume the time reserved for agreed release requirements and defect fixes.,"Actions:
+* Aligned this risk with BSR-30 and treated it as an ongoing scope-control concern.
+* Only committed PBIs that directly support: baseline ranking, ML comparison, Data Explorer, and tactics board.
+Result:
+* Scope for the Elaboration Release is clearly defined and tracked in Jira; extra ideas are parked in the backlog.
+Assessment:
+* Probability reduced from high to medium.
+* Impact medium; we will continue to enforce “park it in backlog” for new ideas.
+
+This overlaps the scope-control risk in BSR-30. Keep the existing card for its history, but use the same prioritized release plan so optional work is not counted as an extra commitment.",https://basketball-strategy.atlassian.net/browse/BSR-55
+BSR-56,The model may not improve on the baseline,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Compare model and baseline on the same prediction task and held-out period. Diagnose feature and data problems before tuning, and report a lack of improvement when that is the result.",Relates: SCRUM-474; Relates: SCRUM-526,"The ML model may not improve on the baseline for the intended prediction task.
+Trigger: held-out results show no useful improvement or unacceptable errors.
+Assessment: High probability and Serious impact are retained pending the current evaluation.
+Inception lesson: the existing review compares PPP predictions with the baseline using RMSE.","Actions:
+* Implemented PPP_pred and ran evaluation against PPP_baseline using RMSE.
+* Prepared to present ML vs baseline accuracy honestly in the defence, including any limitations.
+Result:
+* Model accuracy is acceptable for a prototype but not guaranteed production-level; we treat the ML model as an enhancement over a solid baseline.
+Assessment:
+* Probability medium.
+* Impact high; clearly communicated as a technical risk and limitation rather than hidden.
+
+Elaboration review: probability High; impact Serious. Reviewed the assessment and updated the mitigation plan.
+Next action: Run and record one reproducible baseline-versus-ML comparison.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+The existing evaluation reports retrospective PPP error and uplift. A meaningful baseline comparison with strictly lagged inputs is still To Do, so model improvement remains an open risk.
+
+The timed baseline comparison is complete: Ridge RMSE was 0.06712 versus 0.06817 for the prior-league baseline on the same 330 rows. That small one-season improvement, with higher bias, is not enough to claim a reliable benefit. Keep Monitoring; the next check needs a separately collected later season. [Comparison](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/README.md).",https://basketball-strategy.atlassian.net/browse/BSR-56
+BSR-57,Upstream schema changes may break dataset reloads,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Pin the source tooling and validate columns, types and participant keys on a staged pull. Publish only a passing dataset version and retain the previous version for rollback.",Relates: SCRUM-487; Relates: SCRUM-490; Relates: SCRUM-491,"This would trigger: columns missing, API failures",Dataset reload endpoints are planned but not complete. They need schema validation and a preserved working dataset before a changed upstream source can replace current inputs.,https://basketball-strategy.atlassian.net/browse/BSR-57
+BSR-58,Seasonal data changes may distort comparisons,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Record row counts, coverage and metric ranges by season. Investigate changes before training or comparing seasons, and include the dataset version and exclusions in the report.",Relates: SCRUM-478; Relates: SCRUM-479; Relates: SCRUM-488,"This would trigger: PPP ranges shift, sudden distribution changes","The data-quality module is Done, while the report API and audit metadata are still planned. Seasonal drift checks should expose coverage and distribution changes instead of assuming all seasons are comparable.",https://basketball-strategy.atlassian.net/browse/BSR-58
+BSR-59,Rare play types may produce unstable rankings,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Tolerable,Test rare play types with low possession counts and ties. Apply the agreed threshold or weighting consistently and show the sample limitation with the result.,Relates: SCRUM-474; Relates: SCRUM-479,This will trigger: very low possessions for a play type,This covers the same rare-play sampling concern as BSR-48. Both cards should point to the ranking and quality checks rather than imply that reliability is established for every play type.,https://basketball-strategy.atlassian.net/browse/BSR-59
+BSR-60,An absence may leave critical tasks without coverage,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,Record weekly availability and the critical dependencies affected by an absence. Agree any reassignment and reduce optional work when capacity drops.,Relates: SCRUM-531,"Trigger / Early Warning Signs:
+* Team member reports illness, reduced availability, or misses a planned work session
+* Tasks start slipping or are left unassigned for 24–48 hours
+* No progress updates on assigned stories/subtasks
+Impact on project:
+* Reduced sprint capacity and missed sprint goals
+* Rework or rushed work leading to defects
+* Delays to dependent tasks and integration","Missed majority of last week due to being outside of the country
+
+The old absence comment does not establish anyone's current availability. The plan still needs confirmed backup coverage for tasks that would block integration if an owner is away.",https://basketball-strategy.atlassian.net/browse/BSR-60
+BSR-61,Exam weeks may reduce planned capacity,Risk,Planning,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,Record known exam and workload constraints before assigning the week. Split large tasks and defer lower-priority work when confirmed capacity is insufficient.,Relates: SCRUM-531; Relates: SCRUM-465,"Trigger / Early Warning Signs:
+* Exam schedule overlaps sprint timeline
+* Reduced commits/updates or delayed responses
+* Teammate flags limited hours for the week
+Impact on project:
+* Lower throughput and incomplete sprint scope
+* Increased load on other members and burnout risk
+* Delays to deliverables tied to iteration deadlines",No current exam-week capacity plan is attached to this card. Keep the risk in Planning until the remaining weekly commitments have been checked with each owner.,https://basketball-strategy.atlassian.net/browse/BSR-61
+BSR-62,Cancelled meetings may leave decisions unresolved,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Tolerable,"Record the agenda and unanswered decisions in the shared plan. Agree a response time and alternative meeting or written decision process, then update the dependent tasks.",Relates: SCRUM-531,"Trigger / Early Warning Signs:
+* A scheduled meeting is cancelled or multiple members cannot attend
+* Decisions are blocked (scope, priorities, technical approach)
+* No shared sprint check-in occurs
+Impact on project:
+* Misalignment on priorities and duplicated work
+* Blocked tasks and delayed decisions
+* Higher risk of sprint failure due to lack of coordination","Missed meeting last week due to a wedding
+
+The card records a past cancelled meeting, but the needed control is how pending decisions are handled when a meeting cannot happen. Tie each unresolved decision to its affected task.",https://basketball-strategy.atlassian.net/browse/BSR-62
+BSR-63,Missing stakeholder feedback may delay validation,Risk,Active,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,"Prepare a short scenario review with clear questions and an agreed response date. If a proxy reviews it, identify that limitation and keep unanswered stakeholder questions open.",Relates: SCRUM-536,"Trigger / Early Warning Signs:
+* Stakeholder does not respond to messages or can’t attend planned feedback session
+* Feedback is delayed beyond the sprint timeline
+* Uncertainty remains about expected UX/output
+Impact on project:
+* Risk of building the wrong thing or missing expectations
+* Slower iteration cycles and delayed validation
+* Increased rework close to demo/defense time","Elaboration review: probability Moderate; impact Serious. Reviewed the assessment and updated the mitigation plan.
+Next action: Send the feedback request and record the requested response date.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+The card does not contain a completed stakeholder response for the current workflows. Keep the feedback gap visible and separate it from technical test results.",https://basketball-strategy.atlassian.net/browse/BSR-63
+BSR-64,New features may exceed the release scope,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,Require a clear outcome and acceptance criteria before adding work to the current iteration. Agree a displaced item whenever an urgent addition exceeds available capacity.,Relates: SCRUM-465; Relates: SCRUM-531,"Trigger / Early Warning Signs:
+* New features keep being added without removing/deferring others
+* Sprint backlog expands after sprint start
+* “Nice-to-have” items replace core deliverables
+Impact on project:
+* Missed sprint goals and late releases
+* Reduced quality due to rushing
+* Harder to deliver a stable demo and complete documentation",The remaining backlog contains optional features as well as defects and submission corrections. Scope needs an explicit priority order so new ideas do not interrupt the release work.,https://basketball-strategy.atlassian.net/browse/BSR-64
+BSR-65,Sprint commitments may exceed available capacity,Risk,Monitoring,Abdulrahman Mousa,,,,,0.0,Medium,High,Serious,"Review unfinished tasks, dependencies and capacity at the start of each week. Split large items and leave room for integration failures instead of assuming every planned item will finish.",Relates: SCRUM-465; Relates: SCRUM-531,"Trigger / Early Warning Signs:
+* Sprint has too many high-point stories or large unknowns
+* Multiple stories remain “In Progress” late in the sprint
+* Work spills over sprint-to-sprint regularly
+Impact on project:
+* Lower completion rate and morale
+* Increased unfinished work and messy backlog
+* Rushed implementation and more defects",The iteration dates and active-board state were out of step in the last audit. Reconcile the plan and use actual owner availability before committing more work.,https://basketball-strategy.atlassian.net/browse/BSR-65
+BSR-66,Uncertain tasks may take longer than estimated,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Break uncertain work into a bounded investigation and a repair task. Re-estimate after the investigation, and record actual effort without adding guessed hours.",Relates: SCRUM-531; Relates: SCRUM-465,"Trigger / Early Warning Signs:
+* Tasks take significantly longer than estimated
+* Frequent “unknown unknowns” during implementation
+* Many subtasks added mid-work to finish a story
+Impact on project:
+* Sprint goals missed due to inaccurate planning
+* Increased overtime/rushing and quality issues
+* Unreliable release forecasting","Implementation of the NLP and visualization aspects took longer than I expacted
+
+Implementing the 2nd dataset caused more problems when recreating data explorer pages, model metrics, etc. to resemble play type data set pages
+
+The card already records that the second dataset took longer than expected. The new shot-data repair also has an unknown raw-source recovery step that should be estimated separately.",https://basketball-strategy.atlassian.net/browse/BSR-66
+BSR-67,Project work may be unevenly distributed,Risk,Monitoring,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,"Review task ownership, completed changes and actual worklogs with both members. Arrange backup coverage without claiming or reassigning another member's work.",Relates: SCRUM-531; Relates: SCRUM-516,"Trigger / Early Warning Signs:
+* One member consistently has more assigned/closed issues than others
+* PR history shows one person doing most key work
+* Some members are repeatedly unassigned or doing only minor tasks
+Impact on project:
+* Academic evaluation risk (team contribution concerns)
+* Knowledge siloing and bus-factor risk increases
+* Burnout for one member and lower team morale",Jira identifies different owners for the assigned evidence APIs and the later Gameplan UI migration. Keep those contributions separate and verify each member's substantive work in the shared repository.,https://basketball-strategy.atlassian.net/browse/BSR-67
+BSR-68,Shared-main integration may break working features,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Fetch and inspect shared changes before integrating. Run relevant tests and a build for substantive changes, push to the shared repository and keep a known deployment rollback point.",Relates: SCRUM-532; Relates: SCRUM-525,"Trigger / Early Warning Signs:
+* Frequent merge conflicts or failed merges
+* Main branch build/tests fail after merges
+* Features break after integration (regressions)
+Impact on project:
+* Development slows due to rework and debugging
+* Risk of unstable demo build
+* Lost time during sprint end when integration matters most","The shared main branch contains teammate changes, and the previous PR-only mitigation does not match the team's current direct-main workflow. Integration checks must follow the actual workflow.",https://basketball-strategy.atlassian.net/browse/BSR-68
+BSR-69,GitHub or Jira outages may interrupt project work,Risk,Planning,Abdulrahman Mousa,,,,,0.0,Medium,Low,Serious,"Keep a usable shared-repository clone and dated Jira exports. During an outage, record actual work locally and reconcile it once access returns without inventing historical timestamps.",Relates: SCRUM-532,"Trigger / Early Warning Signs:
+* GitHub or Jira is temporarily unavailable
+* PR merges blocked or Jira updates cannot be logged
+* Team cannot access boards or repositories
+Impact on project:
+* Short-term productivity loss and delayed merges
+* Missing tracking information for the day
+* Risk of losing sprint visibility temporarily","The repository and Jira exports provide an offline starting point, but no current outage recovery exercise is recorded. Local notes must be reconciled when the service returns.",https://basketball-strategy.atlassian.net/browse/BSR-69
+BSR-70,Low disk space may block builds and recovery,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Check free disk space before builds and preserve uncommitted work. Remove only confirmed disposable files, then verify a clean build and keep setup instructions usable on another machine.",Relates: SCRUM-532,"Trigger / Early Warning Signs:
+* Device errors, low storage warnings, or frequent crashes
+* Build tools fail due to insufficient disk space
+* Slow performance prevents testing or running workloads
+Impact on project:
+* Development delays and inability to contribute
+* Risk of losing local work if not committed
+* Missed deadlines due to blocked environment","The shared tests and frontend build passed in [GitHub CI](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38173001625). Local storage is still tight at 2.3 GiB available and 98% usage, so I am keeping capacity under Monitoring; no fresh local build failure was observed.
+
+The active checkout is outside iCloud and the current disk check shows about 12 GiB free. That is enough to continue the release build, but free space still needs checking before large datasets or model exports are copied.",https://basketball-strategy.atlassian.net/browse/BSR-70
+BSR-71,Missing credentials may block service recovery,Risk,Planning,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,List service owners and recovery contacts without recording secrets. Verify required access and document key rotation or environment-update steps for an expired credential.,Relates: SCRUM-533,"Trigger / Early Warning Signs:
+* Environment variables missing/incorrect
+* Locked out of cloud services or hosting accounts
+* API calls fail due to expired/revoked keys
+Impact on project:
+* Deployment blocked or system non-functional
+* Risk of downtime during demo period
+* Potential security incident if keys are mishandled","The current setup relies on several separately owned cloud accounts. Private configuration exists, but this card has no confirmed recovery route for every service owner.",https://basketball-strategy.atlassian.net/browse/BSR-71
+BSR-72,Unclear acceptance criteria may cause rework,Risk,Analysis,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Add clear inputs, expected outcomes and failure behavior to each story. Link the implementation and tests, and record scope changes when requirements differ from the existing work.",Relates: SCRUM-528; Relates: SCRUM-529; Relates: SCRUM-530; Relates: SCRUM-464,"Trigger / Early Warning Signs:
+* Conflicting instructions or changing expectations
+* Stories lack acceptance criteria or success definition
+* Team debates what “done” means late in sprint
+Impact on project:
+* Rework and wasted development time
+* Misaligned deliverables relative to rubric/expectations
+* Lower quality due to frequent changes",The supervisor specifically found stories without testable acceptance criteria. The correction needs to define observable completion for each affected story before its status is used as evidence.,https://basketball-strategy.atlassian.net/browse/BSR-72
+BSR-73,Unrecorded team decisions may block integration,Risk,Planning,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,"Agree a response window and record blockers on the affected task. Confirm decisions and ownership changes explicitly, then update the shared plan.",Relates: SCRUM-531,"Trigger / Early Warning Signs:
+* Teammates unsure what others are working on
+* Duplicate work or conflicting implementations
+* Delays in responding to blockers or questions
+Impact on project:
+* Reduced velocity and wasted effort
+* Integration conflicts and inconsistent design decisions
+* Higher stress and risk of missed deadlines","Provided multiple mediums to communicate through. Microsoft teams, discord, cell phone #
+
+Teams, Discord and phone contact options are recorded, but channels alone do not resolve a blocked task. Keep decisions and dependencies in the shared work item so both members see the outcome.",https://basketball-strategy.atlassian.net/browse/BSR-73
+BSR-74,Critical areas may depend on one team member,Risk,Analysis,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,Document the pipeline and deployment steps and have the backup owner run them. Record unanswered questions and the next handoff needed for each critical area.,Relates: SCRUM-531; Relates: SCRUM-532; Relates: SCRUM-517,"Trigger / Early Warning Signs:
+* One person owns most complex modules (ML/FE/frontend/deploy)
+* Documentation is missing for critical setup or pipelines
+* Others cannot run or modify key parts confidently
+Impact on project:
+* High risk if that member becomes unavailable
+* Slower progress due to dependency on one person
+* Harder to debug issues under time pressure","Code and model artifacts are in the shared repository, but a current walkthrough by the backup owner is not recorded. Shared files do not by themselves remove a knowledge dependency.",https://basketball-strategy.atlassian.net/browse/BSR-74
+BSR-75,Setup and tooling failures may delay development,Risk,Monitoring,Abdulrahman Mousa,,,,,0.0,Medium,High,Serious,"Use the active shared checkout and pinned dependency instructions. Record reproducible setup failures, address disk constraints and verify the environment before planning a release build.",Relates: SCRUM-532,"Trigger / Early Warning Signs:
+* Frequent build/install failures or dependency issues
+* Environment differences cause “works on my machine” problems
+* Significant time spent on setup rather than feature work
+Impact on project:
+* Lower output and delayed milestones
+* Increased frustration and rushed implementation
+* Demo instability if environments are inconsistent","The project previously hit iCloud offloading and low-storage problems, which is why the active checkout is outside iCloud. Keep the setup and disk requirements explicit so those failures do not return.",https://basketball-strategy.atlassian.net/browse/BSR-75
+BSR-76,Missing submission artifacts may put the deadline at risk,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Maintain a checklist of required artifacts, owners and due dates. Verify live links, native model files and individual evidence before the team submits the package.",Relates: SCRUM-528; Relates: SCRUM-529; Relates: SCRUM-530; Relates: SCRUM-516; Relates: SCRUM-531; Relates: SCRUM-603,"Trigger / Early Warning Signs:
+* Deadlines not tracked or unclear ownership for admin work
+* Deliverables (reports, boards, links) not updated weekly
+* Sprint completion tasks get skipped
+Impact on project:
+* Grade penalties and missed evaluation requirements
+* Incomplete documentation for defense
+* Last-minute scramble increases error risk","The feedback identifies missing risk links, test-board setup and contribution evidence. These are concrete submission-preparation gaps rather than a hypothetical admin risk.
+
+The Assignment 1 feedback cards now link to the completed deployment, risk and test records. Assignment 2 still needs the new export results, feature model publication and final package checks. Those are tracked separately so the older work is not counted again.",https://basketball-strategy.atlassian.net/browse/BSR-76
+BSR-77,Shot-data mapping may produce invalid game participants,Risk,Active,Abdulrahman Mousa,,,,,0.0,Medium,High,Serious,"Document the raw-to-processed field mapping and validate participant IDs, opponent IDs and row counts. Reject a staged dataset that fails these checks and retain the unaffected play-type workflow.",Relates: SCRUM-538; Relates: SCRUM-479,"Trigger / Early Warning Signs:
+* Dataset2 columns do not match expected names/types
+* Ingestion/ETL script fails or produces many nulls after mapping
+* Joins/keys don’t align with dataset1 or unified schema
+Impact on project:
+* Dataset2 cannot be used for training/analysis
+* Delays ML pipeline updates and dashboard integration
+* Increased rework to redesign the schema mapping layer","The second dataset loads, but its shooting-team attribution is inconsistent. Successful ingestion is not enough when the mapped fields cannot represent both game participants correctly.",https://basketball-strategy.atlassian.net/browse/BSR-77
+BSR-78,Missing raw fields may prevent reliable shot features,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Recover authoritative raw events and verify required game, participant, clock and margin fields. Report missing or unmapped columns, preserve missingness instead of presenting fabricated ties and disable any feature that cannot be calculated reliably.",Relates: SCRUM-538; Relates: SCRUM-488; Relates: SCRUM-548; Relates: SCRUM-549,"Trigger / Early Warning Signs:
+* Required fields for your features are absent (e.g., context variables, matchup identifiers)
+* You cannot compute existing feature set consistently for dataset2
+* Dashboard views or model inputs become incomplete
+Impact on project:
+* Reduced feature set and weaker model/explanations
+* Inconsistent outputs between dataset1 and dataset2
+* Extra work required to redesign features or UI expectations","Elaboration review: probability Moderate; impact Serious. Reviewed the assessment and updated the mitigation plan.
+Next action: Make a required-field checklist for Dataset 2 and record each missing field and the decision for its affected feature.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+The original raw shot events were unavailable in the audit, so required source fields and their mappings could not be fully verified. Move this out of Resolved until the feature-availability check is supported.
+
+Every retained shot row has a missing score margin: 1,332,515 rows in total. The model loader replaces the entire column with zero, so a finite input check cannot establish valid game context. Recover the source fields, report missing and unmapped inputs and rebuild the features before repeating model evaluation.",https://basketball-strategy.atlassian.net/browse/BSR-78
+BSR-79,Shot-data quality failures may reach users,Risk,Active,Abdulrahman Mousa,,,,,0.0,Medium,High,Serious,Add semantic participant checks to the quality report and show failed status in the explorer. Keep raw and processed data separate and record all exclusions or replacements.,Relates: SCRUM-538; Relates: SCRUM-479; Relates: SCRUM-480,"Trigger / Early Warning Signs:
+* High missingness in critical columns
+* Duplicate records or non-unique keys
+* IDs/labels inconsistent across tables (team IDs, player IDs, game IDs)
+Impact on project:
+* Incorrect aggregations and misleading analytics
+* Model performance drops due to noisy inputs
+* Time loss debugging issues that look like “model bugs” but are data issues","The shot export exposed invalid self-opponent rows, and the full dataset showed a broader team-label problem. Quality status needs to expose these failures where users view the data.
+
+The Data Explorer quality panel checks the Synergy play-type data. It does not clear the separate shot-team attribution failure. SCRUM-538 remains Highest priority in Iteration 17, with BST-138 and BST-139 still failed until the source is repaired.",https://basketball-strategy.atlassian.net/browse/BSR-79
+BSR-80,Model results may drift between seasons,Risk,Analysis,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Tolerable,Track feature distributions and error by season using fixed definitions. Investigate meaningful shifts before retraining and state which periods support each result.,Relates: SCRUM-476; Relates: SCRUM-526,"Trigger / Early Warning Signs:
+* Metric distributions shift across seasons (pace, efficiency, play-type frequency)
+* Model accuracy changes significantly when evaluating different seasons
+* Dashboards show inconsistent baselines between time ranges
+Impact on project:
+* Less stable performance and harder-to-compare results
+* Explanations may change meaning across seasons
+* Confusing results for users when switching time windows","Calibration results are grouped by season, but no new drift evaluation is recorded here. Compare periods using the same definitions and keep retrospective diagnostics separate from forecast validation.",https://basketball-strategy.atlassian.net/browse/BSR-80
+BSR-81,Missing source provenance may prevent reproducible features,Risk,Active,Abdulrahman Mousa,,,,,0.0,Medium,High,Serious,"Keep raw input, transformation code and configuration together under a dataset version. Record hashes and expected counts, then rebuild and compare derived features from that version.",Relates: SCRUM-538; Relates: SCRUM-487; Relates: SCRUM-488,"Trigger / Early Warning Signs:
+* Re-running pipeline produces different features/results unexpectedly
+* Feature code depends on manual steps or local-only conditions
+* Feature generation lacks versioning or saved artifacts
+Impact on project:
+* Hard to justify results and model choice
+* Debugging becomes very time-consuming
+* Risk of demo/report mismatch (“numbers changed”)","The raw shot source could not be recovered from the audit workspace, so the processed artifact alone is not enough to reproduce its team mapping. Dataset version and provenance work is still planned.",https://basketball-strategy.atlassian.net/browse/BSR-81
+BSR-82,The second dataset may reduce model performance,Risk,Analysis,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Evaluate the original, second-dataset and combined methods on matched held-out cases after data repair. Report where added data helps or harms the result and retain the supported baseline.",Relates: SCRUM-538; Relates: SCRUM-526,"Trigger / Early Warning Signs:
+* Evaluation metrics worsen compared to dataset1 baseline
+* Model becomes unstable across folds/splits
+* Feature importance shifts dramatically with dataset2
+Impact on project:
+* Harder to justify adding dataset2
+* Reduced recommendation quality and weaker demo credibility
+* Extra time needed for tuning and feature adjustments",The current shot-data defect prevents a trustworthy claim that adding the second dataset improves the model. Repair and validate that input before comparing model performance.,https://basketball-strategy.atlassian.net/browse/BSR-82
+BSR-83,Models may fail on new games or seasons,Risk,Analysis,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,"Use untouched chronological holdouts and fit preprocessing on training rows only. Compare train and test error, sample counts and variation across periods before choosing model complexity.",Relates: SCRUM-526,"Trigger / Early Warning Signs:
+* Training performance is high but validation/test performance is poor
+* Large gap between train and test metrics
+* Model predictions unstable across different splits
+Impact on project:
+* Recommendations not reliable in new scenarios
+* Explanations may be misleading if model is not generalizing
+* Risk of poor demo outcomes depending on sample",The current diagnostic does not provide a strictly prospective test of generalization. Keep the risk open while the lagged-feature evaluation is pending.,https://basketball-strategy.atlassian.net/browse/BSR-83
+BSR-84,Model explanations may be difficult to justify,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Show the selected play, supporting metric and relevant limitation. Compare alternative recommendations and collect feedback on whether the explanation matches the displayed evidence.",Relates: SCRUM-502; Relates: SCRUM-497; Relates: SCRUM-536,"Trigger / Early Warning Signs:
+* Model metrics are acceptable but explanations are unclear or inconsistent
+* Stakeholders ask “why?” and response relies on vague reasoning
+* Feature importance results are unstable or hard to translate to coaching language
+Impact on project:
+* Low trust and adoption of recommendations
+* Defence risk: weak justification of model choice
+* Harder to connect outputs to decision-making",The repository documents deterministic explanations tied to computed metrics. Whether those reasons help a coach understand the model still needs a recorded scenario review.,https://basketball-strategy.atlassian.net/browse/BSR-84
+BSR-85,Training during page loads may cause timeouts,Risk,Active,Abdulrahman Mousa,,,,,0.0,Medium,High,Serious,Precompute and store evaluation artifacts instead of training on an ordinary page visit. Bound expensive work and verify the page can display saved results or a clear unavailable state.,Relates: SCRUM-543,"Slow processing, training, or recommendation requests may delay work or cause timeouts.
+Trigger: the workflow exceeds its agreed timing target or times out.
+Assessment: Moderate probability; Serious impact because delays can make the application unusable.","Elaboration review: probability Moderate; impact Serious. Reviewed the assessment and updated the mitigation plan.
+Next action: Time the slow workflow, make one justified improvement, and repeat the same test.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+Current problem or observation: Latency was not too unbearable. The delay was not bad
+Action performed: Had preloaded data upon using platform. update only when needed
+Result: worked a lot faster
+Status: Working fine
+
+The default shot evaluation timed out after 300 seconds on the deployed service. The older comment about acceptable delay does not resolve this training path.",https://basketball-strategy.atlassian.net/browse/BSR-85
+BSR-86,Dashboard requests may stall or repeat expensive work,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Separate request state by resource, remove duplicate initial evaluation and serve cached metrics. Test loading, success and error states with the actual page requests.",Relates: SCRUM-542; Relates: SCRUM-543,"Trigger / Early Warning Signs:
+* Charts take several seconds to load or time out
+* Queries run repeatedly on the same data
+* Frontend shows loading spinners frequently
+Impact on project:
+* Poor user experience and demo risk
+* Stakeholders perceive the system as incomplete
+* Harder to explore insights interactively","Model Metrics can keep its pipeline summary loading after a successful response, and Shot Model Metrics times out. Both failures affect normal dashboard use.
+
+The Model Metrics loading fix is now part of Iteration 16. BST-145 keeps its earlier failure until the deployed page is retested. The separate Shot Model Metrics timeout remains open under SCRUM-543 in Iteration 17.
+
+The Model Metrics loading problem is fixed and BST-145 passed on the deployed app. The pipeline summary and evaluation now finish independently. This risk stays Active because the separate Shot Model Metrics timeout is still open under SCRUM-543.",https://basketball-strategy.atlassian.net/browse/BSR-86
+BSR-87,Charts may fail to render or misrepresent their context,Risk,Analysis,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,"Render the actual response through the page before reviewing the chart. Show metric units, filters, period and sample size, then record what decision the chart helps the user make.",Relates: SCRUM-545; Relates: SCRUM-536,"Trigger / Early Warning Signs:
+* Users misinterpret results or draw wrong conclusions
+* Charts hide important context (sample size, variance)
+* Too many metrics shown without explanation
+Impact on project:
+* Incorrect decision-making support
+* Lower trust in the system
+* Defence risk if visuals are not defensible","The shot analysis page cannot currently render its API response, so its visual presentation cannot be accepted yet. After the contract fix, review whether each chart's units and context support its intended comparison.",https://basketball-strategy.atlassian.net/browse/BSR-87
+BSR-88,Displayed results may disagree with API data,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Use a shared typed request and response contract. Test displayed values and context against the exact successful API response, including missing sections and error cases.",Relates: SCRUM-545; Relates: SCRUM-539; Relates: SCRUM-484,"Trigger / Early Warning Signs:
+* UI values don’t match backend logs or expected calculations
+* Different filters produce inconsistent totals
+* “Same query” returns different numbers across endpoints
+Impact on project:
+* Loss of credibility and debugging time
+* Incorrect explanations and rankings
+* Demo risk due to inconsistent outputs","The shot analysis adapter and page expect different fields, and Gameplan can display new inputs while ranking old ones. These are concrete mismatches between displayed context and backend results.",https://basketball-strategy.atlassian.net/browse/BSR-88
+BSR-89,Dataset mapping errors may corrupt team statistics,Risk,Active,Abdulrahman Mousa,,,,,0.0,Medium,High,Serious,"Validate joins using explicit game and participant keys. Check row-count changes, both participants and team/opponent consistency against raw events before publishing derived data.",Relates: SCRUM-538; Relates: SCRUM-479,"Trigger / Early Warning Signs:
+* Join keys mismatch (game/team/player IDs not aligned)
+* Row counts explode or collapse unexpectedly after joining
+* Derived outputs look unrealistic (extreme metrics, missing teams)
+Impact on project:
+* Incorrect dashboards and model training data
+* High debugging time and reduced trust
+* Potentially invalid conclusions in the report",Every audited shot game group had only one shooting-team label. That is a mapping failure to investigate before relying on joined team and opponent statistics.,https://basketball-strategy.atlassian.net/browse/BSR-89
+BSR-90,Missing runtime features may break inference,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,Validate required feature fields at the API boundary and check artifact compatibility at startup. Test missing inputs and artifacts with a clear rejection or documented fallback.,Relates: SCRUM-525; Relates: SCRUM-532,"Missing or incompatible runtime inputs may cause recommendation requests to fail.
+Trigger: required fields are missing, inputs have the wrong format, or model/prediction data is unavailable.
+Assessment: Moderate probability; Serious impact because core requests can fail.","Elaboration review: probability Moderate; impact Serious. Reviewed the assessment and updated the mitigation plan.
+Next action: Run the four input cases and record what the API and interface actually do.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+Current problem or observation: Mismatched inputs to what model expects
+Action performed: drop downs for most inputs so there is no mismatch.
+Result: worked just as effeciently
+Status: Resolved for now unless major changes are made to product
+
+Recorded baseline and contextual requests loaded their runtime data successfully. Dropdowns alone do not protect every API caller or prove behavior when an artifact is missing.",https://basketball-strategy.atlassian.net/browse/BSR-90
+BSR-91,Future generated explanations may invent unsupported facts,Risk,Identification,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,Supply only validated ranked plays and evidence. Reject invented references or contradictory claims and retain the template response whenever the generated output cannot be validated.,Relates: SCRUM-537; Relates: SCRUM-502,"Trigger / Early Warning Signs:
+* Explanations mention stats not present in the computed payload
+* Explanation contradicts displayed values
+* Different runs produce inconsistent “reasons” for same input
+Impact on project:
+* Trust damage and adoption risk
+* Incorrect coaching guidance
+* Defence risk: explanation system appears unreliable","Current explanations are deterministic templates, so a generated-text hallucination has not been observed in the deployed app. Keep this as a future-feature risk with evidence checks defined before activation.",https://basketball-strategy.atlassian.net/browse/BSR-91
+BSR-92,Future explanation API costs may exceed an agreed budget,Risk,Planning,Gurkaranjit Asahan,,,,,0.0,Medium,Low,Serious,"Obtain a separate provider budget before activation. Limit requests and output size, cache repeated scenarios, set an application cutoff and keep templates available when the provider fails.",Relates: SCRUM-537,"Trigger / Early Warning Signs:
+* Requests fail due to rate limits
+* LLM responses are slow or time out
+* Costs exceed budget or usage limits
+Impact on project:
+* Explanation feature unavailable during demo
+* UI appears incomplete or broken
+* Increased stress close to deadlines","3 month free trial for google cloud
+
+The earlier Google Cloud trial comment does not establish a language-model cost or rate-limit problem. No paid explanation provider is enabled, and hosting approval does not authorize separate model API spending.",https://basketball-strategy.atlassian.net/browse/BSR-92
+BSR-93,Future generated explanations may be vague or inconsistent,Risk,Identification,Abdulrahman Mousa,,,,,0.0,Medium,High,Tolerable,"Evaluate repeated and contrasting scenarios against reference facts. Require a concrete reason and limitation, reject unsupported detail and keep the wording aligned with the glossary.",Relates: SCRUM-537; Relates: SCRUM-536,"Trigger / Early Warning Signs:
+* Explanations repeat generic phrases without referencing specifics
+* Two similar inputs get very different explanations
+* Stakeholders say explanations are not helpful
+Impact on project:
+* Reduced perceived value of explanation feature
+* Lower trust and adoption
+* Harder to justify “advanced CS” value in defence",The current templates are deterministic; a future generated explanation still needs a specificity and consistency test. Repeating a plausible sentence is not enough unless it refers to the selected play and evidence.,https://basketball-strategy.atlassian.net/browse/BSR-93
+BSR-94,Server credentials may leak into client output,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Low,Catastrophic,"Inspect tracked changes and generated client output for private credentials. Keep server secrets server-side, restrict their permissions and rotate any confirmed exposure.",Relates: SCRUM-533,"Trigger / Early Warning Signs:
+* Keys appear in frontend code, console logs, or client network responses
+* Secrets are committed to repo or included in build artifacts
+* Unauthorized access attempts or suspicious usage appears
+Impact on project:
+* Credential compromise and potential service misuse
+* Forced rotation of keys and possible downtime
+* Serious compliance/security concern in demo/report",Server credentials must stay private even when the client needs a public service URL or public project key. A new release should verify that private keys do not enter the client bundle or shared evidence.,https://basketball-strategy.atlassian.net/browse/BSR-94
+BSR-95,Deployment settings may not match the tested release,Risk,Monitoring,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,"Keep a variable-name checklist and deployment manifest. Verify endpoint URLs, auth settings and startup data on the selected release, then run smoke checks before changing traffic.",Relates: SCRUM-506; Relates: SCRUM-524; Relates: SCRUM-532,"Trigger / Early Warning Signs:
+* App works locally but fails after deployment
+* Missing environment variables or wrong URLs
+* CORS/auth settings differ between local and deployed env
+Impact on project:
+* Deployment downtime and demo risk
+* Debugging time lost late in sprint
+* Inconsistent behavior across environments","The recorded deployment passed its configured service checks, but shared main has later code that is not part of that deployed release. Configuration evidence must identify the actual code and deployment being tested.",https://basketball-strategy.atlassian.net/browse/BSR-95
+BSR-96,Changed API contracts may break existing pages,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Link each failing page/API contract to a bug and test. Verify parameter names, response fields and roles together before closing the failure.",Relates: SCRUM-544; Relates: SCRUM-545; Relates: SCRUM-540,"Trigger / Early Warning Signs:
+* Frontend expects fields that backend no longer returns
+* Endpoint parameters change without coordinated update
+* Frequent 4xx/5xx responses after merges
+Impact on project:
+* Features break unexpectedly
+* Increased debugging and rework
+* Demo reliability decreases","I added the Top-K comparison API and documented its JSON and CSV results in [5092bf1](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/5092bf1d93ed7c30f2e2b7b34eddd613f4ece474). The tests in `backend/tests/test_topk_uplift.py` passed checks for matching export values, correct headers, invalid inputs, empty results and user permissions (BST-122). The local checks passed: 176 backend tests, 12 frontend tests, TypeScript and the production build. I still need to check the deployed API and real accounts in BST-127/128 before calling the live version verified.
+
+I moved this risk to Active because the API tests passed but the browser downloads still failed. SCRUM-527 fixed the missing sign-in information, but the download entries then showed Stopped, so BST-129 remains Fail. I added a new download route in c3044da that serves files through the website, and all 33 frontend tests, TypeScript and the build passed. I still need to deploy it and confirm that a downloaded file actually saves and opens.
+
+I moved this risk back to Monitoring after deploying c3044da and confirming that the Data Explorer CSV finishes downloading and opens. The 12 signed-in download and permission checks passed, along with all 33 frontend tests and GitHub CI. The other file types passed HTTP response checks at this stage; the actual browser save was confirmed for the Data Explorer CSV. I kept the earlier failures in BST-129 and will repeat the download and permission checks after future deployments.
+
+I found that the coach Matchup PDF route, `/export/playtype-viz.pdf`, was missing from the new download route's allowed list. I moved this risk back to Active and reopened BST-129 as Fail while I add and deploy that route under SCRUM-527. The earlier analyst CSV, shot CSV and shot-plan PDF results still stand. I need to test the coach PDF after deployment before returning this risk to Monitoring.
+
+I added the missing coach Matchup PDF route in [18baffc](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/18baffc0cc6f99273f60e797a499804029b8b84f) and deployed it to https://nbaplayranker-seven.vercel.app. The coach ranking CSV and play-type PDF, analyst Data Explorer and Shot Explorer CSVs, and shot-plan PDF all saved with readable content.
+The 34 frontend tests, TypeScript, build, [GitHub checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/37157802665) and 14 signed-in download checks passed. BST-129 is now Pass and the risk is back to Monitoring, with these downloads to be checked again after future releases.
+
+The export fixes passed, but the wider audit found shot-page role mismatches and an incompatible analysis response. Those separate contracts remain broken and should keep this risk active.",https://basketball-strategy.atlassian.net/browse/BSR-96
+BSR-97,Insufficient workflow tests may miss regressions,Risk,Active,Abdulrahman Mousa,,,,,0.0,Medium,High,Serious,"Add feature-linked Fall 2026 cases, put them on the board and execute them against a named release. Preserve failures, create specific bugs and rerun the failing case after a fix.",Relates: SCRUM-530; Relates: SCRUM-471; Relates: SCRUM-473; Relates: SCRUM-602,"Trigger / Early Warning Signs:
+* Bugs reappear after changes
+* No consistent regression checklist at sprint end
+* New features break old ones without detection
+Impact on project:
+* Unstable demo and user experience
+* Increased time spent firefighting instead of building
+* Lower confidence in final release quality","The broader browser audit found failures despite passing unit and scoped API checks. Expand coverage to the affected user workflows and keep each failed execution linked to its repair.
+
+Added eight export cases under BST-170 with inputs and expected results. They are on the board in Verify until execution. The 14 existing failures still link to their fixes, and those repairs now have planned iterations.
+
+All eight new export cases passed, and the Model Metrics loading regression passed its retest. The filename failure remains in BST-178 with its linked fix and passing retest. The other 13 failed cases still have planned repairs; their failures were preserved.",https://basketball-strategy.atlassian.net/browse/BSR-97
+BSR-98,The deployed demo may fail despite local tests,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Run the intended demo path against the deployed release, including sign-in, actual downloads and analysis pages. Keep a fallback path and record any feature that is unavailable.",Relates: SCRUM-525; Relates: SCRUM-543; Relates: SCRUM-545,"Trigger / Early Warning Signs:
+* Differences between local and demo environment (data paths, env vars, ports)
+* Demo machine lacks dependencies or uses different versions
+* Performance issues only appear in deployed environment
+Impact on project:
+* High demo/defense risk
+* Last-minute debugging and reduced confidence
+* Stakeholders perceive project as incomplete","I tested the deployed app with real coach and analyst accounts: the coach recommendations and Gameplan worked, and the analyst data and calibration pages loaded. The backend, account/database and download-response checks passed, but the browser CSV download still needed a fix. After I deployed c3044da, the Data Explorer CSV was confirmed to finish downloading and open. I am keeping this risk under Monitoring and will repeat a short sign-in and demo check before presenting.
+
+The assigned evidence and export flows passed, but the later full-app audit found deployed timeouts and a browser crash. The whole demo cannot be described as ready until those routes are fixed or excluded clearly.",https://basketball-strategy.atlassian.net/browse/BSR-98
+BSR-99,Recommendations may lack convincing evidence,Risk,Monitoring,Abdulrahman Mousa,,,,,0.0,Medium,High,Serious,Show the evidence behind the selected play and the limits of the comparison. Ask a reviewer to explain why it ranks highly and record any unsupported or unclear claim.,Relates: SCRUM-536; Relates: SCRUM-497,"Trigger / Early Warning Signs:
+* Stakeholders ask “Why is this recommended?” and the system cannot answer clearly
+* Feedback indicates explanations are unclear, generic, or inconsistent
+* Users ignore or distrust ranked outputs even if they look correct
+Impact on project:
+* Low adoption and reduced perceived value of the solution
+* Defence risk: unclear justification of decision-support capability
+* Higher rework to retrofit explanations late in the project","The app provides metric-based explanations, but this card has no current stakeholder result showing that they build trust. Check whether users can connect the reason to the visible ranking.",https://basketball-strategy.atlassian.net/browse/BSR-99
+BSR-100,The workflow may not support practical coaching tasks,Risk,Identification,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Walk through scouting, matchup preparation and a late-game choice. Record extra steps, missing context and whether the user can turn the result into a useful plan.",Relates: SCRUM-536; Relates: SCRUM-482; Relates: SCRUM-510,"Trigger / Early Warning Signs:
+* Stakeholders say outputs are interesting but not actionable for game prep
+* The system requires too many steps to get to a useful conclusion
+* Filters/labels don’t match how coaches think (time, lineup, opponent, situation)
+Impact on project:
+* Lower adoption and weaker stakeholder satisfaction
+* Extra time needed to redesign UI and outputs
+* Defence risk if the solution appears “academic” rather than practical","Gameplan supports a local workflow, while cross-device storage in the UI is still planned. A coaching review should distinguish the working local behavior from the future synchronization feature.",https://basketball-strategy.atlassian.net/browse/BSR-100
+BSR-101,Charts may not support a clear coaching decision,Risk,Active,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,"Give each chart one clear comparison and show its period, filters and sample size. Record reviewer feedback and link any resulting visualization changes.",Relates: SCRUM-536; Relates: SCRUM-510,"Charts may show statistics without helping users decide what to run or defend.
+Trigger: users cannot explain the decision supported by a chart.
+Assessment: Moderate probability; Serious impact because unclear charts reduce the system's usefulness.","Elaboration review: probability Moderate; impact Serious. Reviewed the assessment and updated the mitigation plan.
+Next action: Review one implemented chart, improve its context, and obtain feedback on the decision it supports.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+This card is already Active and has no completed chart review attached. Keep it open until the reviewer can identify the question and decision supported by each selected chart.",https://basketball-strategy.atlassian.net/browse/BSR-101
+BSR-102,The defence may overstate unmeasured project impact,Risk,Identification,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Use concrete scenarios and measured outcomes where available. Explain the baseline, evaluation limits and user task without inventing time saved or performance gains.",Relates: SCRUM-513; Relates: SCRUM-526; Relates: SCRUM-536,"Trigger / Early Warning Signs:
+* Difficulty explaining “why this matters” beyond technical implementation
+* Demo shows features but not outcomes or measurable benefits
+* Report lacks clear success metrics, scenarios, or evaluation evidence
+Impact on project:
+* Lower evaluation scores due to unclear impact
+* Weak narrative in defence/presentation
+* Stakeholders do not understand the value proposition","Retrospective uplift and calibration can support a limited evaluation, but they do not establish real coaching impact or future-game gains. The defence should distinguish measured results from proposed benefits.",https://basketball-strategy.atlassian.net/browse/BSR-102
+BSR-103,The project may lack a supported comparison with existing tools,Risk,Identification,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Tolerable,Compare the current supported features and evaluation approach with relevant tools. Cite the comparison and describe specific differences without claiming novelty that has not been established.,Relates: SCRUM-511; Relates: SCRUM-513,"Trigger / Early Warning Signs:
+* Review of existing tools shows similar dashboards/reports
+* Stakeholders ask “How is this different from X?”
+* Project description sounds generic (stats dashboard only)
+Impact on project:
+* Reduced perceived novelty and lower stakeholder interest
+* Defence risk if differentiation is not articulated
+* Harder to justify “advanced CS” component","The project combines rankings, situation parsing and a Gameplan workflow. Any claim of uniqueness still needs a cited comparison with existing tools rather than a feature list alone.",https://basketball-strategy.atlassian.net/browse/BSR-103
+BSR-104,Technical language may confuse coaches,Risk,Identification,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Use short labels and definitions, keep the main task simple and place detail behind optional views. Ask the reviewer to interpret the result and record terms that need rewriting.",Relates: SCRUM-536; Relates: SCRUM-498; Relates: SCRUM-510,"Trigger / Early Warning Signs:
+* UI includes ML/stat terms without translation
+* Stakeholders struggle to understand metric meaning or navigation
+* Feedback indicates the tool feels complex or “engineering-focused”
+Impact on project:
+* Lower adoption and less trust in outputs
+* Increased training/support required to use the tool
+* Defence risk if the solution isn’t accessible to the target user","The glossary and simple rationale reduce jargon, but no current coach usability result is attached. Test comprehension before assuming that the technical metrics are self-explanatory.",https://basketball-strategy.atlassian.net/browse/BSR-104
+BSR-105,Statistics may be interpreted as unsupported personal judgments,Risk,Identification,Abdulrahman Mousa,,,,,0.0,Medium,Low,Serious,"Use evidence-based wording, sample sizes and evaluation limits. Remove unsupported personal judgments and make clear where an output is only decision support.",Relates: SCRUM-511; Relates: SCRUM-526; Relates: SCRUM-536,"Trigger / Early Warning Signs:
+* Stakeholders worry about fairness/bias in interpreting player/team performance
+* Explanations sound too definitive (“this player is bad”) without uncertainty
+* Outputs may be misused as “truth” rather than decision support
+Impact on project:
+* Reduced trust and stakeholder concerns in defence
+* Risk of misinterpretation causing reputational harm (even in academic context)
+* Requirement to add disclaimers/limitations late in project","Team and play-type statistics support comparisons, not absolute judgments about a player or guaranteed outcomes. The report must keep uncertainty and data-quality limitations visible.",https://basketball-strategy.atlassian.net/browse/BSR-105
+BSR-106,Incomplete model and test evidence may weaken the defence,Risk,Active,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Keep the report, native model and Jira links aligned with actual changes. Demonstrate the tested release, preserve failed results and include each member's real contribution evidence.",Relates: SCRUM-509; Relates: SCRUM-511; Relates: SCRUM-515; Relates: SCRUM-516,"Trigger / Early Warning Signs:
+* Documentation lags behind implementation
+* Demo steps are unclear or not rehearsed
+* Report misses required sections or lacks evidence/screenshots
+Impact on project:
+* Lower defence score even if the product works
+* Increased last-minute work and errors
+* Harder for evaluators to understand and verify the solution","The supervisor identified unclear Jira records and missing traceability across risks and tests. The correction needs substantive model changes and verifiable evidence, not extra revisions of unchanged files.",https://basketball-strategy.atlassian.net/browse/BSR-106
+BSR-107,Delayed responses may leave task dependencies unresolved,Risk,Monitoring,Abdulrahman Mousa,,,,,0.0,Medium,Moderate,Serious,Agree a response window and backup contact. Record the affected task when a response is overdue and seek explicit agreement before changing ownership.,Relates: SCRUM-531,"Risk: An extended lack of response may leave task ownership, dependencies, or project decisions unresolved.
+Trigger: A teammate does not respond within the agreed response window and a recorded project decision or dependency is blocked.
+Assessment: response expectations and escalation should be agreed rather than treating silence as consent.","Elaboration review: probability Moderate; impact Serious. Reviewed the assessment and updated the mitigation plan.
+Next action: Agree the response and escalation procedure, then check any currently blocked tasks.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+The card contains an escalation plan but no current blocked dependency or agreed response record. Do not infer consent or current unavailability from an old comment.",https://basketball-strategy.atlassian.net/browse/BSR-107
+BSR-108,Missing runtime artifacts may break a new deployment,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Version runtime data, model files and configuration together. Validate production prerequisites with clear diagnostics, distinguish liveness from readiness and verify recovery from a clean checkout before replacing the release.",Relates: SCRUM-506; Relates: SCRUM-487; Relates: SCRUM-532; Relates: SCRUM-547,"After a restart or deployment, the app may be unable to find the data, model predictions or saved state it needs. This could stop recommendations from loading. The proposed rating is Moderate probability and Serious impact. This describes a possible failure; the original review did not find that an outage had occurred.","I added this risk because a restart could leave the app without the data or model files it needs, with Moderate probability and Serious impact. My next step is to record the file locations, test a clean start safely and request a recommendation. I have not completed that check yet. I will review it within seven days, or sooner if the app cannot load its files.
+
+I deployed backend commit e950869 as Cloud Run revision nba-playranker-api-00005-hrn and checked it after startup. Coach recommendations and analyst data/calibration requests worked, confirming that the new deployment could load the required data and model files. I recorded the deployment and rollback details and kept the existing resource and sign-in settings. This risk is now Monitoring, and I will repeat the data-loading and recommendation checks after future deployments.
+
+The recorded backend deployment loaded the data and model files needed for its smoke checks. Later releases still need a versioned artifact set and a recovery check, especially while the shot-data repair is pending.
+
+The isolated missing-data check stopped startup with a traceback naming the Synergy file. A separate process without Supabase configuration still returned a healthy liveness response. Define the production startup and readiness checks and provide clear recovery errors; the deployed service passed its health checks.",https://basketball-strategy.atlassian.net/browse/BSR-108
+BSR-109,Dataset reuse terms may restrict sharing,Risk,Planning,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,Record each source and its applicable terms. Resolve unclear reuse or sharing permissions and use a permitted replacement or narrower distribution when necessary.,Relates: SCRUM-535,"Dataset reuse or sharing conditions may not permit the project's intended use.
+Trigger: permission for acquisition, hosting, outputs, or redistribution is unclear or unsuitable.
+Proposed assessment: Low probability; Serious impact because the affected data or output may need to be replaced. No violation is established by this review.","Elaboration review: probability Low; impact Serious. Added this risk and its response plan.
+Next action: Create a source-and-permission record for each dataset used by the project.
+Current mitigation result: not established by this planning update; record the actual observation after the check.
+Next review: within seven days, or sooner if the trigger occurs.
+
+The card has no source-and-permission record attached. Keep acquisition, hosted use, derived outputs and redistribution as separate questions before assuming the assignment dataset can be shared freely.",https://basketball-strategy.atlassian.net/browse/BSR-109
+BSR-110,Hosting costs or billing interruptions may stop the backend,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,"Review project charges by service against the CAD10 budget. Keep scale-to-zero and the existing controls, and plan a backed-up migration or reduced-cost fallback if the forecast exceeds the agreed budget.",Relates: SCRUM-506; Relates: SCRUM-524; Relates: SCRUM-534,"Billing was reactivated and the backend passed its live checks. The project has a CAD$10 monthly budget and a CAD$7 Cloud Run spending control, but delayed billing data and other service costs mean these are not a guarantee of the total bill.
+Originally, the free trial had expired and a hosting plan still needed to be agreed. The risk was rated Very High probability and Serious impact because hosting costs or a billing interruption could delay development, testing and demos. Actual charges and backend availability had not yet been checked at that point.
+Continue monitoring for rising costs, expired credits or billing problems that could interrupt the backend.","I added this as an Active risk because the Google Cloud free trial has expired.
+I rated it Very High probability and Serious impact because hosting may become unavailable or cost more than we can afford.
+I will check billing and backend availability, then agree an affordable hosting plan with Abdul.
+Actual charges and any outage still need to be checked, with a review planned within 48 hours.
+
+I moved this risk to Monitoring after billing was reactivated on October 2 and the deployed backend passed its checks. I kept the CAD$10 monthly budget alerts, the CAD$7 Cloud Run spending control and the small server limits, allowing the backend to scale down to zero when idle. The alerts do not stop charges, the spending control uses delayed billing data, and builds or storage can add costs, so these settings do not guarantee a total below CAD$10. I will check actual costs before demos and after larger builds or test runs; Supabase is still on Free and Vercel on Hobby.
+
+The recorded deployment restored the backend after the trial ended, actual current charges still need a billing review.",https://basketball-strategy.atlassian.net/browse/BSR-110
+BSR-111,Visual Paradigm compatibility may block shared model updates,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,High,Serious,Back up the native project before updating Visual Paradigm. Check that team members use compatible versions. Use Desktop Team Commit and check the shared revision after publishing.,Relates: SCRUM-528; Relates: SCRUM-503; Relates: SCRUM-509; Relates: SCRUM-440; Relates: SCRUM-567; Relates: SCRUM-606,"The corrected deployment diagram is published in VP revision 55. The shared copy contains the new layout and protocol-port labels.
+A version mismatch previously blocked an import, and the command-line commit tool later failed. Desktop Team Commit worked. Future version mismatches could still interrupt imports or sharing, so this risk stays under monitoring.","I added this as an Active risk after Visual Paradigm showed a desktop/online version mismatch and blocked the Pipeline import into the Mousaa workspace.
+I rated it Very High probability and Serious impact because it could delay sharing and submitting the updated model.
+I will back up the project and check compatible versions with Abdul and the workspace administrator.
+The upgrade and import still need to be checked, with a review planned within 48 hours.
+
+I committed the updated Visual Paradigm project as shared revision 51 and checked that the saved file matches its synchronized copy. The project now has 186 diagrams: the original 182 plus four new editable UML diagrams for the analyst features and Gameplan storage; the deployment design was also updated.
+I marked this risk Resolved because sharing and committing the model worked. The exact cause of the earlier version warning was not confirmed.
+
+The current shared Visual Paradigm project synchronized successfully at revision 54. Shared access is working, and the interaction-model corrections are tracked separately in SCRUM-528; keep compatibility checks on future updates.
+
+Desktop Team Commit published the deployment diagram in VP revision 55. I checked that the shared copy includes the corrected layout and port labels. The publication issue is cleared; version compatibility still needs checking before future updates.
+
+The Desktop commit published all three feature collaborations in revision 56. The shared copy contains the nine new diagrams, and the publication checks passed. Compatibility will still be checked before future model updates.",https://basketball-strategy.atlassian.net/browse/BSR-111
+BSR-112,Free-plan limits or inactivity may pause Supabase,Risk,Monitoring,Gurkaranjit Asahan,,,,,0.0,Medium,Moderate,Serious,"Check project status and sign-in before the demo, preserve backups and identify the service owner. Do not upgrade a plan or pause another owner's project without the required agreement.",Relates: SCRUM-481; Relates: SCRUM-523; Relates: SCRUM-534; Relates: SCRUM-532,"After Basketball Playtype Ranker resumed on the Free plan, the sign-in, profile-permission and Gameplan database checks passed.
+Originally, the project was paused and could not resume because an owner or administrator had reached the limit of two active free projects. The reason for the original pause was not confirmed. The risk was rated Very High probability and Serious impact because unavailable database and sign-in services could delay testing and demos, and restoring access might require an agreed paid plan.
+The dashboard reported that data and backups were safe, with June 1, 2027 shown as the deadline to resume that paused project. It said the project could not resume after that date, but the data would still be available to download. No data loss was reported.
+Continue checking project availability and free-project capacity before demonstrations and after inactivity.","I found that Basketball Playtype Ranker was paused in Supabase and could not resume because an owner had reached the limit of two active free projects.
+I recorded this as Active, with Very High probability and Serious impact.
+The dashboard said the data and backups were safe and the project could resume until June 1, 2027.
+Before testing the app, I need to save the available backups, review unused projects with Abdul and either free capacity with the owner's approval or agree a paid plan.
+Next review: within 48 hours; resuming the project and testing the app are still pending.
+
+I confirmed that Supabase was restored on the Free plan and applied the Gameplan database change from SCRUM-481 ([e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da)). The live database tests in `supabase/tests/gameplan_state_verification.sql` passed the ownership, permission and data-validation checks in BST-125/126, and I removed the temporary test data by rolling back the test transactions. I still need to test coach and analyst sign-in through the browser in BST-128. I will check availability again before the next demo because a free project can pause again.
+
+Supabase is running on the Free plan again, and the earlier problem resuming the project is cleared. I tested real coach and analyst sign-in, profile permissions and Gameplan database access; all 49 live API/database checks passed and the relevant browser pages worked.
+I removed the temporary test data and moved this risk from Active to Monitoring. I will check availability before demos and after periods of inactivity.
+
+The recorded sign-in and database checks passed after the project resumed on Free. That resolves the earlier pause, but availability after inactivity and free-project capacity still need checking before a demo.",https://basketball-strategy.atlassian.net/browse/BSR-112

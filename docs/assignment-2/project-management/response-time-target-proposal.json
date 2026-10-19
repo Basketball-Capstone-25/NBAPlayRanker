@@ -1,0 +1,23 @@
+{
+  "recorded_at_utc": "2026-10-19T01:24:19.870Z",
+  "status": "Proposed for team review",
+  "approval_recorded": false,
+  "targets": {
+    "warm_sequential_p95_seconds": 5,
+    "two_concurrent_p95_seconds": 10,
+    "startup_inclusive_seconds": 45
+  },
+  "planned_measurement": {
+    "maximum_requests": 16,
+    "sequential_requests": 10,
+    "maximum_concurrency": 2,
+    "concurrent_requests": 6,
+    "forced_cold_start": false
+  },
+  "measurement_limits": [
+    "A short sample is a baseline, not a production load test.",
+    "The startup-inclusive target needs a separate startup observation; warm responses cannot establish it.",
+    "BST-111 remains Verify until the target is accepted and the required scenarios are executed."
+  ],
+  "related_work": "SCRUM-550"
+}

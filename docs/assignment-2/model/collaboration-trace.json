@@ -1,0 +1,35 @@
+{
+  "lesson": "Interaction and Detailed Design, pages 6\u20138: one realization per use case; overview, structural and behavioral design in each collaboration.",
+  "items": [
+    {
+      "jira": "SCRUM-480",
+      "use_case_id": "dfl3vjmEEhz2rQBu",
+      "use_case_name": "Run Data Quality Checks",
+      "collaboration_id": "A23e3c5e8769146c",
+      "realization_id": "A2de75646e2f0815",
+      "overview_id": "A2a6e559ca1de02a",
+      "structural_id": "A24672919fb03b0c",
+      "sequence_id": "A2ec7436ba779216"
+    },
+    {
+      "jira": "SCRUM-486",
+      "use_case_id": "dfl3vjmEEhz2rQBw",
+      "use_case_name": "Export KPIs / Reports",
+      "collaboration_id": "A2f637506212f701",
+      "realization_id": "A2a5290c46f858ee",
+      "overview_id": "A2271d30211208e1",
+      "structural_id": "A286349d6dc149e4",
+      "sequence_id": "A257dd5cc61e2c68"
+    },
+    {
+      "jira": "SCRUM-526",
+      "use_case_id": "A235a0ec6ec301ea",
+      "use_case_name": "Evaluate Next-Season PPP (offline)",
+      "collaboration_id": "A201783b2eeea751",
+      "realization_id": "A24d7089258e876e",
+      "overview_id": "A2a4c53e03dcea0f",
+      "structural_id": "A265c00592ba2418",
+      "sequence_id": "A27d914a6c6fcf29"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "updated_at_utc": "2026-10-19T01:25:01.601Z",
+  "current": "SCRUM-550",
+  "future": "SCRUM-609",
+  "current_status": "Done",
+  "future_status": "To Do",
+  "future_sprint": "Iteration-17",
+  "original_acceptance_requirements_preserved": true,
+  "target_agreement_claimed": false,
+  "final_test_case": "BST-111",
+  "final_test_status": "Verify",
+  "subtasks": [
+    {
+      "key": "SCRUM-610",
+      "parent": "SCRUM-550",
+      "sprint": "184",
+      "hours": 1,
+      "summary": "Measure a bounded sample of deployed Top-K requests"
+    },
+    {
+      "key": "SCRUM-611",
+      "parent": "SCRUM-550",
+      "sprint": "184",
+      "hours": 0.5,
+      "summary": "Compare response times with the proposed targets"
+    },
+    {
+      "key": "SCRUM-612",
+      "parent": "SCRUM-609",
+      "sprint": "185",
+      "hours": 0.5,
+      "summary": "Review and record the agreed timing targets"
+    },
+    {
+      "key": "SCRUM-613",
+      "parent": "SCRUM-609",
+      "sprint": "185",
+      "hours": 1.5,
+      "summary": "Run the Top-K response-time acceptance cases"
+    }
+  ],
+  "actual_worklogs_added": 0,
+  "measured_route": "/metrics/topk-uplift",
+  "acceptance_route": "/rank-plays/baseline",
+  "warm_p95_ms": 558.53,
+  "concurrency_2_p95_ms": 366.62,
+  "cold_start_confirmed": false,
+  "measurement_count": 16,
+  "original_baseline_delay_retested": false
+}

@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "bug": "SCRUM-616",
+  "test": "BST-178",
+  "backend_revision": "nba-playranker-api-00008-g5z",
+  "backend_source": "db7abfb763b7890d624fbe1969ffc48163948412",
+  "result": "All three actual browser downloads preserve the negative margin in the filename. Rows and JSON filters are unchanged from the previously verified screen.",
+  "files": [
+    {
+      "file": "downloads/context-final.csv",
+      "original_filename": "context-rankings_2024-25_TOR_BOS_5_-2_4_120_True_1.csv",
+      "bytes": 620,
+      "sha256": "df4e0caa81da3357049b2d7abfc762ca2832c5a97658f2e2df994535cdac7429",
+      "saved_at_utc": "2026-10-19T01:49:03.333388+00:00"
+    },
+    {
+      "file": "downloads/context-final.json",
+      "original_filename": "context-rankings_2024-25_TOR_BOS_5_-2_4_120_True_1.json",
+      "bytes": 1586,
+      "sha256": "a32db78a1d35c71672e0360c84b8b1598c0903a3e3a511290f1d1010b5fc0dad",
+      "saved_at_utc": "2026-10-19T01:48:35.150720+00:00"
+    },
+    {
+      "file": "downloads/context-final.pdf",
+      "original_filename": "context-rankings_2024-25_TOR_BOS_5_-2_4_120_True_1.pdf",
+      "bytes": 2453,
+      "sha256": "c6b78c2cd804b4acd6e96a7ec4e5f1de8a074c7982a082d3e848acdfcbe0454f",
+      "saved_at_utc": "2026-10-19T01:49:51.555536+00:00"
+    }
+  ]
+}

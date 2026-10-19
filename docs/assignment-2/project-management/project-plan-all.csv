@@ -1,0 +1,608 @@
+﻿Key,Title,Type,Status,Assignee,Parent,Sprint,Story points,Linked work,URL
+SCRUM-1,Data & Ingestion Foundation,Feature,Done,Abdulrahman Mousa,,Iteration-4; Iteration-7; Iteration-5; Iteration-6; Iteration-14; Iteration-5; Iteration-6; Iteration-7; Iteration-8; Iteration-9; Iteration-10; Iteration-12; Iteration-1; Iteration-2; Iteration-4; Iteration-8; Iteration-9; Iteration-10; Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-1
+SCRUM-2,Baseline Top-K Play-Type Ranking,Feature,Done,Gurkaranjit Asahan,,Iteration-4; Iteration-7; Iteration-5; Iteration-6; Iteration-14; Iteration-5; Iteration-6; Iteration-7; Iteration-8; Iteration-9; Iteration-10; Iteration-12; Iteration-1; Iteration-2; Iteration-4; Iteration-8; Iteration-9; Iteration-10; Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-2
+SCRUM-3,Context-Aware Re-Ranking (Score/Time/Recent Events),Feature,Done,Gurkaranjit Asahan,,Iteration-3; Iteration-4; Iteration-7; Iteration-5; Iteration-6; Iteration-14; Iteration-5; Iteration-6; Iteration-7; Iteration-8; Iteration-9; Iteration-10; Iteration-12; Iteration-1; Iteration-2; Iteration-4; Iteration-8; Iteration-9; Iteration-10; Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-3
+SCRUM-4,Coach UI & Tactics Board,Feature,Done,Gurkaranjit Asahan,,Iteration-3; Iteration-4; Iteration-7; Iteration-5; Iteration-6; Iteration-14; Iteration-5; Iteration-6; Iteration-7; Iteration-8; Iteration-9; Iteration-10; Iteration-12; Iteration-1; Iteration-2; Iteration-4; Iteration-8; Iteration-9; Iteration-10; Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-4
+SCRUM-5,Evaluation & Verification (Uplift/MAE/Calibration),Feature,Done,Abdulrahman Mousa,,Iteration-3; Iteration-4; Iteration-7; Iteration-5; Iteration-6; Iteration-14; Iteration-5; Iteration-6; Iteration-7; Iteration-8; Iteration-9; Iteration-10; Iteration-12; Iteration-1; Iteration-2; Iteration-4; Iteration-8; Iteration-9; Iteration-10; Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-5
+SCRUM-6,Deployment & Ops,Feature,Done,Abdulrahman Mousa,,Iteration-4; Iteration-7; Iteration-5; Iteration-6; Iteration-14; Iteration-5; Iteration-6; Iteration-7; Iteration-8; Iteration-9; Iteration-10; Iteration-12; Iteration-1; Iteration-2; Iteration-4; Iteration-8; Iteration-9; Iteration-10; Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-6
+SCRUM-7,"Governance, Security & Compliance",Feature,Done,Abdulrahman Mousa,,Iteration-4; Iteration-7; Iteration-5; Iteration-6; Iteration-14; Iteration-5; Iteration-6; Iteration-7; Iteration-8; Iteration-9; Iteration-10; Iteration-12; Iteration-1; Iteration-2; Iteration-4; Iteration-8; Iteration-9; Iteration-10; Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-7
+SCRUM-8,Project Management & Support,Feature,Done,Gurkaranjit Asahan,,Iteration-3; Iteration-4; Iteration-7; Iteration-5; Iteration-6; Iteration-14; Iteration-5; Iteration-6; Iteration-7; Iteration-8; Iteration-9; Iteration-10; Iteration-12; Iteration-1; Iteration-2; Iteration-4; Iteration-8; Iteration-9; Iteration-10; Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-8
+SCRUM-9,Research & Prototyping,Feature,Done,Abdulrahman Mousa,,Iteration-3; Iteration-4; Iteration-7; Iteration-5; Iteration-6; Iteration-14; Iteration-5; Iteration-6; Iteration-7; Iteration-8; Iteration-9; Iteration-10; Iteration-12; Iteration-1; Iteration-2; Iteration-4; Iteration-8; Iteration-9; Iteration-10; Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-9
+SCRUM-10,Implement deterministic PPP_pred and unit tests,Story,Done,Abdulrahman Mousa,SCRUM-2,Iteration-5,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-10
+SCRUM-11,"API GET /rank-plays/baseline (season, team, opponent, k) with validation",Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-3,,,https://basketball-strategy.atlassian.net/browse/SCRUM-11
+SCRUM-12,Top-K cards + one-page tactics board (printable),Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-4,,Cloners: SCRUM-44,https://basketball-strategy.atlassian.net/browse/SCRUM-12
+SCRUM-13,"Feature engineering (score margin, clock, last-N events, lineup flags)",Story,Done,Gurkaranjit Asahan,SCRUM-3,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-13
+SCRUM-14,Train/evaluate gradient-boosted model with season-wise time split,Story,Done,Abdulrahman Mousa,SCRUM-3,Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-14
+SCRUM-15,SHAP/feature importance export + rationale strings,Story,Done,Abdulrahman Mousa,SCRUM-3,Iteration-8,,,https://basketball-strategy.atlassian.net/browse/SCRUM-15
+SCRUM-17,Testing - Smoke/regression pack + evidence (baseline),Task,Done,Abdulrahman Mousa,SCRUM-7,Iteration-7,,,https://basketball-strategy.atlassian.net/browse/SCRUM-17
+SCRUM-19,Data Explorer UI,Task,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-4,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-19
+SCRUM-20,Story 2 — Baseline Top-K (UI),Task,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-5,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-20
+SCRUM-21,Story 3 — Context Simulator (UI mock),Task,Done,Gurkaranjit Asahan,SCRUM-6,Sprint 1 — Inception,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-21
+SCRUM-22,Story 4 — Wireframes + Wireflow (VP),Task,Done,Abdulrahman Mousa,SCRUM-4,Iteration-3,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-22
+SCRUM-23,Story 5 — VP glossary + domain tidy,Task,Done,Abdulrahman Mousa,SCRUM-4,Sprint 1 — Inception,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-23
+SCRUM-24,SCRUM-19.1 – Create Data Explorer route + navbar link,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-19,Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-24
+SCRUM-25,SCRUM-19.2 – Implement season/team selectors & table layout,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-19,Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-25
+SCRUM-26,SCRUM-19.3 – Wire sample dataset + manual testing,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-19,Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-26
+SCRUM-27,"SCRUM-20.1 – Design Top-K layout (columns, sorting)",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-20,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-27
+SCRUM-28,SCRUM-20.2 – Hook UI to baselineRank mock function,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-20,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-28
+SCRUM-29,SCRUM-20.3 – Add rationale text + error states,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-20,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-29
+SCRUM-30,SCRUM-20.4 – Split backend/API work into SCRUM-11,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-20,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-30
+SCRUM-31,"SCRUM-21.1 – Build context inputs (margin, period, time)",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-21,Sprint 1 — Inception,,,https://basketball-strategy.atlassian.net/browse/SCRUM-31
+SCRUM-32,SCRUM-21.2 – Mock output panel reusing Top-K shape,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-21,Sprint 1 — Inception,,,https://basketball-strategy.atlassian.net/browse/SCRUM-32
+SCRUM-33,SCRUM-21.2 – Mock output panel reusing Top-K shape,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-21,Sprint 1 — Inception,,,https://basketball-strategy.atlassian.net/browse/SCRUM-33
+SCRUM-34,SCRUM-21.3 – Wire navigation + responsive tweaks,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-21,Sprint 1 — Inception,,,https://basketball-strategy.atlassian.net/browse/SCRUM-34
+SCRUM-35,SCRUM-10.1 – Design PPP_pred formula & edge cases,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-21,Sprint 1 — Inception,,,https://basketball-strategy.atlassian.net/browse/SCRUM-35
+SCRUM-36,SCRUM-10.1 – Design PPP_pred formula & edge cases,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-10,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-36
+SCRUM-37,SCRUM-10.2 – Implement PPP_pred function,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-10,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-37
+SCRUM-38,SCRUM-10.3 – Write unit tests for PPP_pred,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-10,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-38
+SCRUM-39,SCRUM-22.1 – Wireframes for key screens,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-22,Iteration-3,,,https://basketball-strategy.atlassian.net/browse/SCRUM-39
+SCRUM-40,SCRUM-22.2 – Wireflow diagram for main navigation,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-22,Iteration-3,,,https://basketball-strategy.atlassian.net/browse/SCRUM-40
+SCRUM-41,SCRUM-22.3 – Export diagrams for CR,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-22,Iteration-3,,,https://basketball-strategy.atlassian.net/browse/SCRUM-41
+SCRUM-42,SCRUM-23.1 – Define glossary entries for key metrics/entities,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-23,Sprint 1 — Inception,,,https://basketball-strategy.atlassian.net/browse/SCRUM-42
+SCRUM-43,SCRUM-23.2 – Clean up domain model names & relationships,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-23,Sprint 1 — Inception,,,https://basketball-strategy.atlassian.net/browse/SCRUM-43
+SCRUM-44,Top-K cards + one-page tactics board – remaining enhancements,Story,Done,Abdulrahman Mousa,,,,Cloners: SCRUM-12,https://basketball-strategy.atlassian.net/browse/SCRUM-44
+SCRUM-45,DEV – Wire Top-K cards to baseline API,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-12,Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-45
+SCRUM-46,DEV – Build Top-K cards layout,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-12,Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-46
+SCRUM-47,DEV – Prototype one-page tactics board,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-12,Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-47
+SCRUM-48,Capstone Defence Feedback,Task,Done,Gurkaranjit Asahan,,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-48
+SCRUM-49,NBA Play Ranker - Post Defence Reflection & Improvement Plan,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-49
+SCRUM-50,Create a plan to address concerns,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-49,Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-50
+SCRUM-51,Improvement plan to Machine Learning,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-49,Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-51
+SCRUM-52,Improvement Plan to Jira,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-49,Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-52
+SCRUM-53,Define real-world problem and stakeholders for NBA Play Ranker,Story,Done,Gurkaranjit Asahan,SCRUM-9,Sprint 1 — Inception; Iteration-1,,,https://basketball-strategy.atlassian.net/browse/SCRUM-53
+SCRUM-54,Research existing play-calling / basketball analytics tools and identify gaps,Story,Done,Gurkaranjit Asahan,SCRUM-9,Sprint 1 — Inception; Iteration-1,,,https://basketball-strategy.atlassian.net/browse/SCRUM-54
+SCRUM-55,Identify data sources (Synergy via hoopR) and evaluate feasibility,Story,Done,Abdulrahman Mousa,SCRUM-9,Sprint 1 — Inception; Iteration-1,,,https://basketball-strategy.atlassian.net/browse/SCRUM-55
+SCRUM-56,"Define initial system scope, main use cases, and success criteria",Story,Done,Abdulrahman Mousa,SCRUM-9,Sprint 1 — Inception; Iteration-1,,,https://basketball-strategy.atlassian.net/browse/SCRUM-56
+SCRUM-57,"Define team roles, responsibilities, and ownership for NBA Play Ranker",Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-2,,,https://basketball-strategy.atlassian.net/browse/SCRUM-57
+SCRUM-58,Break project into product backlog,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-2,,,https://basketball-strategy.atlassian.net/browse/SCRUM-58
+SCRUM-59,Draft initial system architecture for NBA Play Ranker,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-2,,,https://basketball-strategy.atlassian.net/browse/SCRUM-59
+SCRUM-60,Define AI/ML scope,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-2,,,https://basketball-strategy.atlassian.net/browse/SCRUM-60
+SCRUM-61,Create a plan to address concerns,Task,Done,Abdulrahman Mousa,SCRUM-5,Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-61
+SCRUM-62,Improvement plan to Machine Learning,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-62
+SCRUM-63,Improvement Plan to Jira,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-63
+SCRUM-64,SCRUM-10.1 – Design PPP_pred formula & edge cases,Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-3,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-64
+SCRUM-65,SCRUM-10.2 – Implement PPP_pred function,Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-3,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-65
+SCRUM-66,SCRUM-10.3 – Write unit tests for PPP_pred,Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-3,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-66
+SCRUM-67,Create Data Explorer route + navbar link,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-4,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-67
+SCRUM-68,Implement season/team selectors & table layout,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-68
+SCRUM-69,Wire sample dataset + manual testing,Story,Done,Gurkaranjit Asahan,SCRUM-1,Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-69
+SCRUM-70,Wireframes for key screens,Story,Done,Abdulrahman Mousa,SCRUM-9,Iteration-3,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-70
+SCRUM-71,Wireflow diagram for main navigation,Story,Done,Abdulrahman Mousa,SCRUM-9,Iteration-3,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-71
+SCRUM-72,Export diagrams for CR,Story,Done,Abdulrahman Mousa,SCRUM-9,Iteration-3,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-72
+SCRUM-73,Baseline Top-K Play-Type Ranking,Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-73
+SCRUM-74,"Deployment & Ops (environments, pipelines, monitoring)",Story,Done,Abdulrahman Mousa,SCRUM-6,Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-74
+SCRUM-75,"Governance, Security & Compliance (data access, roles, logging)",Story,Done,Abdulrahman Mousa,SCRUM-7,Iteration-4,,Relates: BST-149; Relates: BST-50; Relates: BST-51; Relates: BST-32; Relates: BST-34; Relates: BST-37; Relates: BST-38; Relates: BST-39; Relates: BST-40; Relates: BST-41; Relates: BST-45; Relates: BST-46; Relates: BST-47; Relates: BST-48; Relates: BST-49; Relates: BST-52; Relates: BST-53; Relates: BST-54; Relates: BST-55; Relates: BST-67; Relates: BST-68; Relates: BST-69; Relates: BST-70; Relates: BST-71; Relates: BST-72; Relates: BST-73,https://basketball-strategy.atlassian.net/browse/SCRUM-75
+SCRUM-76,Implement deterministic PPP_pred and unit tests,Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-76
+SCRUM-77,"API GET /rank-plays/baseline (season, team, opponent, k) with validation",Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-77
+SCRUM-78,Top-K cards + one-page tactics board,Story,Done,Abdulrahman Mousa,SCRUM-4,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-78
+SCRUM-79,Design Top-K layout,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-79
+SCRUM-80,Wire Top-K cards to baseline API,Story,Done,Gurkaranjit Asahan,SCRUM-6,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-80
+SCRUM-81,Hardening – basic health/logging for service,Story,Done,Abdulrahman Mousa,SCRUM-7,Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-81
+SCRUM-82,Add matchup filters and CSV export to Data Explorer,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-82
+SCRUM-83,Wire sample dataset + manual testing,Story,Done,Abdulrahman Mousa,SCRUM-5,Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-83
+SCRUM-84,Data Explorer view: show filtered team/season/play-type table,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-84
+SCRUM-85,"Feature engineering (score margin, clock, last-N events, lineup flags)",Story,Done,Abdulrahman Mousa,SCRUM-5,Iteration-7,,,https://basketball-strategy.atlassian.net/browse/SCRUM-85
+SCRUM-86,Train/evaluate gradient-boosted model with season-wise time split,Story,Done,Gurkaranjit Asahan,SCRUM-3,Iteration-7,,,https://basketball-strategy.atlassian.net/browse/SCRUM-86
+SCRUM-87,Build ML feature table & labels,Story,Done,Gurkaranjit Asahan,SCRUM-3,Iteration-7,,,https://basketball-strategy.atlassian.net/browse/SCRUM-87
+SCRUM-88,ML context-aware ranking,Story,Done,Gurkaranjit Asahan,SCRUM-3,Iteration-8,,,https://basketball-strategy.atlassian.net/browse/SCRUM-88
+SCRUM-89,Train/test baseline,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-8,,,https://basketball-strategy.atlassian.net/browse/SCRUM-89
+SCRUM-90,Create glossary of key metrics and play types for coaches,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-8,,,https://basketball-strategy.atlassian.net/browse/SCRUM-90
+SCRUM-91,Wireframes for key screen,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-9,,,https://basketball-strategy.atlassian.net/browse/SCRUM-91
+SCRUM-92,Wireflow diagram for main navigation,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-9,,,https://basketball-strategy.atlassian.net/browse/SCRUM-92
+SCRUM-93,Clean up domain model names and relationships,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-9,,,https://basketball-strategy.atlassian.net/browse/SCRUM-93
+SCRUM-94,Glossary & domain model cleanup,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-9,,,https://basketball-strategy.atlassian.net/browse/SCRUM-94
+SCRUM-95,Training ML Models,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-95
+SCRUM-96,Updating Visual Paradigm to reflect all pages,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-10; Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-96
+SCRUM-97,Update system architecture in VP,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-97
+SCRUM-98,Make UI Cleaner,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-98
+SCRUM-99,Write ML evaluation summary,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-99
+SCRUM-100,Defence Preparation,Story,Done,Abdulrahman Mousa,,Iteration-9,,,https://basketball-strategy.atlassian.net/browse/SCRUM-100
+SCRUM-101,Testing PSPI,Story,Done,Gurkaranjit Asahan,SCRUM-6,Iteration-11,,,https://basketball-strategy.atlassian.net/browse/SCRUM-101
+SCRUM-102,"Meet With Supervisor, talk about project and concerns",Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-12,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-102
+SCRUM-103,Update Risk Plan,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-12,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-103
+SCRUM-104,"Re-evaluating ML models, see if any other models are better suited based on feature selection",Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-12,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-104
+SCRUM-105,Implement another advanced area of computer science (Visualization/simulation),Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-12; Iteration-1,6,,https://basketball-strategy.atlassian.net/browse/SCRUM-105
+SCRUM-106,Implement possibly another advanced area of computer science (NLP/LLM) for coach friendly context generation,Story,Done,Gurkaranjit Asahan,SCRUM-9,Iteration-12,4,,https://basketball-strategy.atlassian.net/browse/SCRUM-106
+SCRUM-107,Finish Missing Visual Paradigm WireFrames,Story,Done,Abdulrahman Mousa,SCRUM-1,Iteration-12; Iteration-1; Iteration-2,2.5,,https://basketball-strategy.atlassian.net/browse/SCRUM-107
+SCRUM-108,Finish Missing Visual Paradigm Use Cases,Story,Done,Abdulrahman Mousa,SCRUM-1,Iteration-12; Iteration-4,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-108
+SCRUM-109,Finish Missing Visual Paradigm Models,Story,Done,Abdulrahman Mousa,SCRUM-1,Iteration-12; Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-109
+SCRUM-110,Clean Up UI,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-12,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-110
+SCRUM-111,Re-Evaluate ML - Feature Selection,Story,Done,Gurkaranjit Asahan,SCRUM-9,Iteration-12,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-111
+SCRUM-113,Finish Capstone Report,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-12,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-113
+SCRUM-114,Set up Visual Paradigm Project,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-12,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-114
+SCRUM-115,"Set Up Jira boards (Plan, Risk)",Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-12,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-115
+SCRUM-116,Finish Mindomo Map,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-12,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-116
+SCRUM-117,CS Capstone Project Management Plan - Assignment,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-1,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-117
+SCRUM-118,Sprint Planning and Execution - Assignment,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-1,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-118
+SCRUM-119,Update Capstone Report,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-1,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-119
+SCRUM-120,Explanation System (User-Facing Insights),Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-13,12,Relates: BST-96; Relates: BST-97; Relates: BST-98; Relates: BST-99; Relates: BST-100; Relates: BST-101; Relates: BST-102; Relates: BST-103,https://basketball-strategy.atlassian.net/browse/SCRUM-120
+SCRUM-121,Dataset Storage + Access Layer,Story,Done,Gurkaranjit Asahan,SCRUM-1,Iteration-14,12,Relates: BST-104; Relates: BST-105; Relates: BST-106; Relates: BST-107,https://basketball-strategy.atlassian.net/browse/SCRUM-121
+SCRUM-122,Backend API Stability/Performance,Story,Done,Abdulrahman Mousa,SCRUM-7,Iteration-15,13,Relates: BST-108; Relates: BST-109; Relates: BST-110; Relates: BST-111; Relates: BST-112; Relates: BST-113,https://basketball-strategy.atlassian.net/browse/SCRUM-122
+SCRUM-123,Deployment Pipeline / Environment Config,Story,Done,Abdulrahman Mousa,SCRUM-7,Iteration-16,10,Relates: BST-108; Relates: BST-109; Relates: BST-110; Relates: BST-111; Relates: BST-112; Relates: BST-113,https://basketball-strategy.atlassian.net/browse/SCRUM-123
+SCRUM-124,Second Dataset Feasibility + Schema Mapping,Story,Done,Abdulrahman Mousa,SCRUM-9,Iteration-17,12,Relates: BST-114; Relates: BST-115; Relates: BST-116; Relates: BST-117; Relates: BST-118; Relates: BST-119,https://basketball-strategy.atlassian.net/browse/SCRUM-124
+SCRUM-125,Feature Engineering Experiments,Story,Done,Gurkaranjit Asahan,SCRUM-3,Iteration-18,12,Relates: BST-114; Relates: BST-115; Relates: BST-116; Relates: BST-117; Relates: BST-118; Relates: BST-119,https://basketball-strategy.atlassian.net/browse/SCRUM-125
+SCRUM-126,Model Selection + Statistical Validation for 2nd Dataset,Story,Done,Abdulrahman Mousa,SCRUM-5,Iteration-19,12,Relates: BST-114; Relates: BST-115; Relates: BST-116; Relates: BST-117; Relates: BST-118; Relates: BST-119; Relates: BST-143; Relates: BST-144; Relates: BST-146; Relates: BST-147,https://basketball-strategy.atlassian.net/browse/SCRUM-126
+SCRUM-127,LLM/NLP Explanation Approach + Evaluation,Story,Done,Gurkaranjit Asahan,SCRUM-9,Iteration-21,8,Relates: BST-96; Relates: BST-97; Relates: BST-98; Relates: BST-99; Relates: BST-100; Relates: BST-101; Relates: BST-102; Relates: BST-103,https://basketball-strategy.atlassian.net/browse/SCRUM-127
+SCRUM-128,Documentation + Demo Script,Story,Done,Abdulrahman Mousa,SCRUM-6,Iteration-22,7,,https://basketball-strategy.atlassian.net/browse/SCRUM-128
+SCRUM-129,Test Plan + Regression Checks,Story,Done,Abdulrahman Mousa,SCRUM-7,Iteration-8,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-129
+SCRUM-130,Stakeholder Feedback Sessions,Story,Done,Abdulrahman Mousa,SCRUM-9,Iteration-22,6,,https://basketball-strategy.atlassian.net/browse/SCRUM-130
+SCRUM-131,Setting up Front End deployment and Deploying successfully,Story,Done,Gurkaranjit Asahan,SCRUM-6,Iteration-21,2,Relates: BST-108; Relates: BST-109; Relates: BST-110; Relates: BST-111; Relates: BST-112; Relates: BST-113,https://basketball-strategy.atlassian.net/browse/SCRUM-131
+SCRUM-132,Setting Up Backend Deployment and Deploying successfully,Story,Done,Gurkaranjit Asahan,SCRUM-6,Iteration-21,2,Relates: BST-108; Relates: BST-109; Relates: BST-110; Relates: BST-111; Relates: BST-112; Relates: BST-113,https://basketball-strategy.atlassian.net/browse/SCRUM-132
+SCRUM-133,Define explanation output schema (JSON fields),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-120,Iteration-13,,,https://basketball-strategy.atlassian.net/browse/SCRUM-133
+SCRUM-134,Build backend endpoint to return explanation payload,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-120,Iteration-13,,,https://basketball-strategy.atlassian.net/browse/SCRUM-134
+SCRUM-135,Implement UI component (panel/modal) to display explanation,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-120,Iteration-13,,,https://basketball-strategy.atlassian.net/browse/SCRUM-135
+SCRUM-136,"Add fallback + error handling (empty state, timeout)",Dev Subtask,Done,Abdulrahman Mousa,SCRUM-120,Iteration-13,,,https://basketball-strategy.atlassian.net/browse/SCRUM-136
+SCRUM-137,Add test cases + sample fixtures for explanations,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-120,Iteration-13,,,https://basketball-strategy.atlassian.net/browse/SCRUM-137
+SCRUM-138,Add request validation + standardized error format,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-122,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-138
+SCRUM-139,Add caching/pre-aggregation for heavy endpoints,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-122,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-139
+SCRUM-140,Add logging (timings + errors),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-122,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-140
+SCRUM-141,Add pagination/limits for large queries,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-122,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-141
+SCRUM-142,Create API smoke test script + run results note,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-122,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-142
+SCRUM-143,Future Features / Implications / Assignments based on Needs to Come and Feedback,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-6; Iteration-7,,,https://basketball-strategy.atlassian.net/browse/SCRUM-143
+SCRUM-144,Define storage convention + folder structure (raw/processed),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-121,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-144
+SCRUM-145,Implement data loader module + config,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-121,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-145
+SCRUM-146,Implement common query helpers (filters + aggregations),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-121,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-146
+SCRUM-147,Add data validation checks (schema + missingness + duplicates),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-121,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-147
+SCRUM-148,Document “how to refresh dataset” steps,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-121,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-148
+SCRUM-149,Create .env.example + env variable documentation,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-123,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-149
+SCRUM-150,Add CI build step (or documented build process),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-123,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-150
+SCRUM-151,Deploy frontend and verify key routes,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-123,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-151
+SCRUM-152,Deploy backend + health check endpoint,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-123,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-152
+SCRUM-153,Write deployment runbook + smoke test checklist,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-123,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-153
+SCRUM-154,"Profile dataset2 (columns, types, missingness, duplicates)",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-124,Iteration-17,,,https://basketball-strategy.atlassian.net/browse/SCRUM-154
+SCRUM-155,Create schema mapping table (dataset2 → unified schema),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-124,Iteration-17,,,https://basketball-strategy.atlassian.net/browse/SCRUM-155
+SCRUM-156,Implement transform script (clean + rename + type fix),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-124,Iteration-17,,,https://basketball-strategy.atlassian.net/browse/SCRUM-156
+SCRUM-157,Validate mapping using sample queries/checks,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-124,Iteration-17,,,https://basketball-strategy.atlassian.net/browse/SCRUM-157
+SCRUM-158,Write feasibility summary (1 page),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-124,Iteration-17,,,https://basketball-strategy.atlassian.net/browse/SCRUM-158
+SCRUM-159,Define engineered feature list + definitions,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-125,Iteration-18,,,https://basketball-strategy.atlassian.net/browse/SCRUM-159
+SCRUM-160,Implement feature generation functions,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-125,Iteration-18,,,https://basketball-strategy.atlassian.net/browse/SCRUM-160
+SCRUM-161,Run baseline vs engineered comparison (quick model),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-125,Iteration-18,,,https://basketball-strategy.atlassian.net/browse/SCRUM-161
+SCRUM-162,Produce feature importance/selection notes (top features),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-125,Iteration-18,,,https://basketball-strategy.atlassian.net/browse/SCRUM-162
+SCRUM-163,Save artifacts (processed dataset + logs + metrics),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-125,Iteration-18,,,https://basketball-strategy.atlassian.net/browse/SCRUM-163
+SCRUM-164,Define evaluation protocol (split/CV + baseline),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-126,Iteration-19,,,https://basketball-strategy.atlassian.net/browse/SCRUM-164
+SCRUM-165,Train baseline + candidate models,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-126,Iteration-19,,,https://basketball-strategy.atlassian.net/browse/SCRUM-165
+SCRUM-166,Compare metrics + produce summary table/plots,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-126,Iteration-19,,,https://basketball-strategy.atlassian.net/browse/SCRUM-166
+SCRUM-167,Run validation reasoning (CI/variance/consistency notes),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-126,Iteration-19,,,https://basketball-strategy.atlassian.net/browse/SCRUM-167
+SCRUM-168,Document final choice + rationale,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-126,Iteration-19,,,https://basketball-strategy.atlassian.net/browse/SCRUM-168
+SCRUM-169,Decide approach (template vs LLM vs hybrid) + note why,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-127,Iteration-21,,,https://basketball-strategy.atlassian.net/browse/SCRUM-169
+SCRUM-170,Implement prompt/template using computed metrics only,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-127,Iteration-21,,,https://basketball-strategy.atlassian.net/browse/SCRUM-170
+SCRUM-171,Create evaluation rubric + 10 test cases,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-127,Iteration-21,,,https://basketball-strategy.atlassian.net/browse/SCRUM-171
+SCRUM-172,Run evaluation and summarize results,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-127,Iteration-21,,,https://basketball-strategy.atlassian.net/browse/SCRUM-172
+SCRUM-173,Implement fallback explanations (no LLM),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-127,Iteration-21,,,https://basketball-strategy.atlassian.net/browse/SCRUM-173
+SCRUM-174,Update README (setup/run/requirements),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-128,Iteration-22,,,https://basketball-strategy.atlassian.net/browse/SCRUM-174
+SCRUM-175,Write demo script (step-by-step walkthrough),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-128,Iteration-22,,,https://basketball-strategy.atlassian.net/browse/SCRUM-175
+SCRUM-176,Add architecture overview section (1 page equivalent),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-128,Iteration-22,,,https://basketball-strategy.atlassian.net/browse/SCRUM-176
+SCRUM-177,Add dataset notes + refresh steps,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-128,Iteration-22,,,https://basketball-strategy.atlassian.net/browse/SCRUM-177
+SCRUM-178,Add FAQ/troubleshooting section,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-128,Iteration-22,,,https://basketball-strategy.atlassian.net/browse/SCRUM-178
+SCRUM-179,Write test plan document (sections + scope),Dev Subtask,Done,,SCRUM-129,Iteration-8,,,https://basketball-strategy.atlassian.net/browse/SCRUM-179
+SCRUM-180,Create regression checklist template (per sprint),Dev Subtask,Done,,SCRUM-129,Iteration-8,,,https://basketball-strategy.atlassian.net/browse/SCRUM-180
+SCRUM-181,Add automated API smoke tests,Dev Subtask,Done,,SCRUM-129,Iteration-8,,,https://basketball-strategy.atlassian.net/browse/SCRUM-181
+SCRUM-182,Create UI manual test checklist (5–10 checks),Dev Subtask,Done,,SCRUM-129,Iteration-8,,,https://basketball-strategy.atlassian.net/browse/SCRUM-182
+SCRUM-183,Create pre-demo “go/no-go” checklist,Dev Subtask,Done,,SCRUM-129,Iteration-8,,,https://basketball-strategy.atlassian.net/browse/SCRUM-183
+SCRUM-184,Prepare feedback questions + scoring rubric,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-130,Iteration-22,,,https://basketball-strategy.atlassian.net/browse/SCRUM-184
+SCRUM-185,Schedule session + confirm attendees,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-130,Iteration-22,,,https://basketball-strategy.atlassian.net/browse/SCRUM-185
+SCRUM-186,Run session + capture notes,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-130,Iteration-22,,,https://basketball-strategy.atlassian.net/browse/SCRUM-186
+SCRUM-187,Convert feedback into Jira issues + prioritize,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-130,Iteration-22,,,https://basketball-strategy.atlassian.net/browse/SCRUM-187
+SCRUM-188,Write feedback summary for report,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-130,Iteration-22,,,https://basketball-strategy.atlassian.net/browse/SCRUM-188
+SCRUM-189,"Revise: API GET /rank-plays/baseline (season, team, opponent, k) with validation",Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-10,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-189
+SCRUM-190,Revise: Implement deterministic PPP_pred and unit tests,Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-10,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-190
+SCRUM-191,Revise: Top-K cards + one-page tactics board (printable),Story,Done,Abdulrahman Mousa,SCRUM-2,Iteration-7,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-191
+SCRUM-192,Revise: Train/evaluate gradient-boosted model with season-wise time split,Story,Done,Gurkaranjit Asahan,SCRUM-3,Iteration-6,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-192
+SCRUM-193,"Revise: Feature engineering (score margin, clock, last-N events, lineup flags)",Story,Done,Gurkaranjit Asahan,SCRUM-3,Iteration-6,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-193
+SCRUM-194,Revise: SHAP/feature importance export + rationale strings,Story,Done,Abdulrahman Mousa,SCRUM-3,Iteration-1,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-194
+SCRUM-195,Revise: Testing - Smoke/regression pack + evidence (baseline),Task,Done,Abdulrahman Mousa,SCRUM-7,Iteration-1,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-195
+SCRUM-196,Revise: Data Explorer UI,Task,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-1,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-196
+SCRUM-197,Revise: Story 2 — Baseline Top-K (UI),Task,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-2,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-197
+SCRUM-198,Revise: Story 3 — Context Simulator (UI mock),Task,Done,Gurkaranjit Asahan,SCRUM-6,Iteration-2,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-198
+SCRUM-199,Revise: Story 4 — Wireframes + Wireflow (VP),Task,Done,Abdulrahman Mousa,SCRUM-4,Iteration-2,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-199
+SCRUM-200,Revise: Story 5 — VP glossary + domain tidy,Task,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-2,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-200
+SCRUM-201,Revise: Top-K cards + one-page tactics board – remaining enhancements,Story,Done,Gurkaranjit Asahan,,Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-201
+SCRUM-202,Revise: Capstone Defence Feedback,Task,Done,Gurkaranjit Asahan,,Iteration-4,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-202
+SCRUM-203,Revise: NBA Play Ranker - Post Defence Reflection & Improvement Plan,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-5,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-203
+SCRUM-204,Revise: Define real-world problem and stakeholders for NBA Play Ranker,Story,Done,Abdulrahman Mousa,SCRUM-9,Iteration-5; Iteration-6,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-204
+SCRUM-205,Revise: Research existing play-calling / basketball analytics tools and identify gaps,Story,Done,Gurkaranjit Asahan,SCRUM-9,Iteration-6,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-205
+SCRUM-206,Revise: Identify data sources (Synergy via hoopR) and evaluate feasibility,Story,Done,Gurkaranjit Asahan,SCRUM-9,Iteration-4,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-206
+SCRUM-207,"Revise: Define initial system scope, main use cases, and success criteria",Story,Done,Gurkaranjit Asahan,SCRUM-9,Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-207
+SCRUM-208,"Revise: Define team roles, responsibilities, and ownership for NBA Play Ranker",Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-6,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-208
+SCRUM-209,Revise: Break project into product backlog,Story,Done,,SCRUM-8,Iteration-10,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-209
+SCRUM-210,Revise: Draft initial system architecture for NBA Play Ranker,Story,Done,Gurkaranjit Asahan,SCRUM-8,,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-210
+SCRUM-211,Revise: Define AI/ML scope,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-6; Iteration-7,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-211
+SCRUM-212,Revise: Create a plan to address concerns,Task,Done,Abdulrahman Mousa,SCRUM-5,Iteration-6; Iteration-7,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-212
+SCRUM-213,Revise: Improvement plan to Machine Learning,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-6,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-213
+SCRUM-214,Revise: Improvement Plan to Jira,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-5,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-214
+SCRUM-215,Revise: SCRUM-10.1 – Design PPP_pred formula & edge cases,Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-215
+SCRUM-216,Revise: SCRUM-10.2 – Implement PPP_pred function,Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-216
+SCRUM-217,Revise: SCRUM-10.3 – Write unit tests for PPP_pred,Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-217
+SCRUM-218,Revise: Create Data Explorer route + navbar link,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-2,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-218
+SCRUM-219,Revise: Implement season/team selectors & table layout,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-2,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-219
+SCRUM-220,Revise: Wire sample dataset + manual testing,Story,Done,Gurkaranjit Asahan,SCRUM-1,Iteration-2,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-220
+SCRUM-221,Revise: Wireframes for key screens,Story,Done,,SCRUM-9,Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-221
+SCRUM-222,Revise: Export diagrams for Capstone Report,Story,Done,Abdulrahman Mousa,SCRUM-9,Iteration-5; Iteration-6,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-222
+SCRUM-223,Revise: Wireflow diagram for main navigation,Story,Done,,SCRUM-9,Iteration-4,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-223
+SCRUM-224,Revise: Baseline Top-K Play-Type Ranking,Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-7,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-224
+SCRUM-225,"Revise: Deployment & Ops (environments, pipelines, monitoring)",Story,Done,Gurkaranjit Asahan,SCRUM-6,Iteration-7,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-225
+SCRUM-226,Revise: Implement deterministic PPP_pred and unit tests,Story,Done,Abdulrahman Mousa,SCRUM-2,Iteration-1,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-226
+SCRUM-227,"Revise: Governance, Security & Compliance (data access, roles, logging)",Story,Done,Abdulrahman Mousa,SCRUM-7,Iteration-7,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-227
+SCRUM-228,"Revise: API GET /rank-plays/baseline (season, team, opponent, k) with validation",Story,Done,Gurkaranjit Asahan,SCRUM-2,Iteration-2,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-228
+SCRUM-229,Revise: Design Top-K layout,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-7,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-229
+SCRUM-230,Revise: Top-K cards + one-page tactics board,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-1,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-230
+SCRUM-231,Revise: Add matchup filters and CSV export to Data Explorer,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-7,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-231
+SCRUM-232,Revise: Wire Top-K cards to baseline API,Story,Done,Gurkaranjit Asahan,SCRUM-6,Iteration-4,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-232
+SCRUM-233,Revise: Wire sample dataset + manual testing,Story,Done,Abdulrahman Mousa,SCRUM-5,Iteration-6,13,,https://basketball-strategy.atlassian.net/browse/SCRUM-233
+SCRUM-234,Revise: Hardening – basic health/logging for service,Story,Done,,SCRUM-7,Iteration-8; Iteration-9,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-234
+SCRUM-235,Revise: Data Explorer view: show filtered team/season/play-type table,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-8,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-235
+SCRUM-236,Revise: Build ML feature table & labels,Story,Done,Gurkaranjit Asahan,SCRUM-3,Iteration-8,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-236
+SCRUM-237,Revise: Train/evaluate gradient-boosted model with season-wise time split,Story,Done,Gurkaranjit Asahan,SCRUM-3,Iteration-1,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-237
+SCRUM-238,"Revise: Feature engineering (score margin, clock, last-N events, lineup flags)",Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-1,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-238
+SCRUM-239,Revise: ML context-aware ranking,Story,Done,,SCRUM-3,Iteration-8; Iteration-9; Iteration-10,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-239
+SCRUM-240,Revise: Train/test baseline,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-8,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-240
+SCRUM-241,Revise: Create glossary of key metrics and play types for coaches,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-8,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-241
+SCRUM-242,Revise: Clean up domain model names and relationships,Story,Done,,SCRUM-5,Iteration-4,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-242
+SCRUM-243,Revise: Wireflow diagram for main navigation,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-7,13,,https://basketball-strategy.atlassian.net/browse/SCRUM-243
+SCRUM-244,Revise: Wireframes for key screen,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-6,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-244
+SCRUM-245,Revise: Glossary & domain model cleanup,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-9,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-245
+SCRUM-246,Revise: Training ML Models,Story,Done,,SCRUM-5,Iteration-9; Iteration-10,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-246
+SCRUM-247,Revise: Updating Visual Paradigm to reflect all pages,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-9; Iteration-10,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-247
+SCRUM-248,Revise: Update system architecture in VP,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-9; Iteration-10,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-248
+SCRUM-249,Revise: Make UI Cleaner,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-9,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-249
+SCRUM-250,Revise: Testing PSPI,Story,Done,Gurkaranjit Asahan,SCRUM-6,Iteration-9,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-250
+SCRUM-251,Revise: Write ML evaluation summary,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-9,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-251
+SCRUM-252,Revise: Defence Preparation,Story,Done,,SCRUM-8,Iteration-10,13,,https://basketball-strategy.atlassian.net/browse/SCRUM-252
+SCRUM-257,Revise: Clean Up UI,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-10,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-257
+SCRUM-260,Revise: Finish Capstone Report,Story,Done,,SCRUM-8,Iteration-9; Iteration-10,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-260
+SCRUM-265,Revise: SCRUM-19.1 – Create Data Explorer route + navbar link,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-19,Iteration-4,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-265
+SCRUM-266,Revise: SCRUM-19.2 – Implement season/team selectors & table layout,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-19,Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-266
+SCRUM-267,Revise: SCRUM-19.3 – Wire sample dataset + manual testing,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-19,Iteration-4,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-267
+SCRUM-268,"Revise: SCRUM-20.1 – Design Top-K layout (columns, sorting)",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-20,Iteration-5,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-268
+SCRUM-269,Revise: SCRUM-20.2 – Hook UI to baselineRank mock function,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-20,Iteration-5,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-269
+SCRUM-270,Revise: SCRUM-20.3 – Add rationale text + error states,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-20,Iteration-5,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-270
+SCRUM-271,Revise: SCRUM-20.4 – Split backend/API work into SCRUM-11,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-20,Iteration-5,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-271
+SCRUM-272,"Revise: SCRUM-21.1 – Build context inputs (margin, period, time)",Dev Subtask,Done,Abdulrahman Mousa,SCRUM-21,Sprint 1 — Inception,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-272
+SCRUM-273,Revise: SCRUM-21.2 – Mock output panel reusing Top-K shape,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-21,Sprint 1 — Inception,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-273
+SCRUM-274,Revise: SCRUM-21.3 – Wire navigation + responsive tweaks,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-21,Sprint 1 — Inception,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-274
+SCRUM-275,Revise: SCRUM-21.2 – Mock output panel reusing Top-K shape,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-21,Sprint 1 — Inception,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-275
+SCRUM-276,Revise: SCRUM-10.1 – Design PPP_pred formula & edge cases,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-21,Sprint 1 — Inception,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-276
+SCRUM-277,Revise: SCRUM-10.1 – Design PPP_pred formula & edge cases,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-10,Iteration-5,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-277
+SCRUM-278,Revise: SCRUM-10.2 – Implement PPP_pred function,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-10,Iteration-5,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-278
+SCRUM-279,Revise: SCRUM-10.3 – Write unit tests for PPP_pred,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-10,Iteration-5,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-279
+SCRUM-280,Revise: SCRUM-22.1 – Wireframes for key screens,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-22,Iteration-3,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-280
+SCRUM-281,Revise: SCRUM-22.2 – Wireflow diagram for main navigation,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-22,Iteration-3,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-281
+SCRUM-282,Revise: SCRUM-22.3 – Export diagrams for CR,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-22,Iteration-3,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-282
+SCRUM-283,Revise: SCRUM-23.2 – Clean up domain model names & relationships,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-23,Sprint 1 — Inception,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-283
+SCRUM-284,Revise: SCRUM-23.1 – Define glossary entries for key metrics/entities,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-23,Sprint 1 — Inception,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-284
+SCRUM-285,Revise: DEV – Wire Top-K cards to baseline API,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-12,Iteration-4,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-285
+SCRUM-286,Revise: DEV – Build Top-K cards layout,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-12,Iteration-4,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-286
+SCRUM-287,Revise: DEV – Prototype one-page tactics board,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-12,Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-287
+SCRUM-288,Revise: Improvement Plan to Jira,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-49,Iteration-11,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-288
+SCRUM-289,Revise: Improvement plan to Machine Learning,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-49,Iteration-11,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-289
+SCRUM-290,Revise: Create a plan to address concerns,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-49,Iteration-11,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-290
+SCRUM-291,Update risk plan with recently discussed communication risks,Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-1,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-291
+SCRUM-292,Create issues for project inception release tasks across iterations 3,Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-1; Iteration-4,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-292
+SCRUM-293,Reach out to domain expert to set up meeting,Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-1,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-293
+SCRUM-294,Update Capstone Report - Based on Feedback,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-2,,,https://basketball-strategy.atlassian.net/browse/SCRUM-294
+SCRUM-295,Complete Requirements Model,Task,Done,,,Iteration-2; Iteration-4,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-295
+SCRUM-296,System Context Diagram,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-296
+SCRUM-297,System Overview Diagram,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-297
+SCRUM-298,"Business requirements and business rules: Analyst, Team Execs/Managers ",Dev Subtask,Done,Abdulrahman Mousa,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-298
+SCRUM-299,"Business requirements and business rules: Coach, Players ",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-299
+SCRUM-300,Functional area overview diagram: Data foundations and explorer,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-300
+SCRUM-301,"Functional area overview diagram: Baseline recommender, Context ML recommender",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-301
+SCRUM-302,Project summary use case definition,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-302
+SCRUM-303,Functional area summary use case: Data foundations and explorer,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-303
+SCRUM-304,"Functional area summary use case: Baseline recommender, Context ML recommender",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-304
+SCRUM-305,Feature packages: Data foundations and explorer,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-305
+SCRUM-306,"Feature packages: Baseline recommender, Context ML recommender ",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-295,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-306
+SCRUM-307,Complete Domain model,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-2; Iteration-4,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-307
+SCRUM-308,Complete Wireframes,Task,Done,Abdulrahman Mousa,,Iteration-2; Iteration-4,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-308
+SCRUM-309,Complete Wireflow diagram,Task,Done,Abdulrahman Mousa,,Iteration-2; Iteration-4,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-309
+SCRUM-310,Complete product increment (UI focused) for project inception release,Task,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-2; Iteration-4,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-310
+SCRUM-311,Data foundations and explorer,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-310,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-311
+SCRUM-312,"Baseline recommender, Context ML recommender",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-310,Iteration-2; Iteration-4,,,https://basketball-strategy.atlassian.net/browse/SCRUM-312
+SCRUM-313,Update project plan for project inception release,Task,Done,Gurkaranjit Asahan,,Iteration-2; Iteration-4,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-313
+SCRUM-314,FA1 — Data Foundations & Explorer,Epic,Done,Gurkaranjit Asahan,SCRUM-1,Iteration-4,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-314
+SCRUM-315,FA2 — Baseline Playtype Recommender,Epic,Done,Gurkaranjit Asahan,SCRUM-329,Iteration-4,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-315
+SCRUM-316,FA3 — Contextual ML Recommender (Train/Evaluate/Explain/Visualize),Epic,Done,Gurkaranjit Asahan,SCRUM-330,Iteration-4,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-316
+SCRUM-317,Browse dataset in Data Explorer,Story,Done,Abdulrahman Mousa,SCRUM-1,Iteration-5,2,Relates: BST-33; Relates: BST-35; Relates: BST-36,https://basketball-strategy.atlassian.net/browse/SCRUM-317
+SCRUM-318,Export filtered Data Explorer results,Story,Done,Abdulrahman Mousa,SCRUM-1,Iteration-5,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-318
+SCRUM-319,Visualize team tendencies in Explorer (court graphic),Story,Done,Abdulrahman Mousa,SCRUM-1,Iteration-5,4,,https://basketball-strategy.atlassian.net/browse/SCRUM-319
+SCRUM-320,FA1 — Data Foundations & Explorer,Epic,Done,Gurkaranjit Asahan,,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-320
+SCRUM-321,Generate Baseline Top-K recommendations (matchup),Story,Done,Gurkaranjit Asahan,SCRUM-329,Iteration-5,3,Relates: BST-58; Relates: BST-59; Relates: BST-60; Relates: BST-61; Relates: BST-62; Relates: BST-63; Relates: BST-64,https://basketball-strategy.atlassian.net/browse/SCRUM-321
+SCRUM-322,Explain Baseline recommendations (plain-English rationale),Story,Done,Gurkaranjit Asahan,SCRUM-329,Iteration-5,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-322
+SCRUM-323,Export Baseline matchup report (PSPI-ready),Story,Done,Gurkaranjit Asahan,SCRUM-330,Iteration-5,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-323
+SCRUM-324,Train Model (contextual ML),Story,Done,Gurkaranjit Asahan,SCRUM-330,Iteration-5,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-324
+SCRUM-325,Evaluate Model (metrics),Story,Done,Gurkaranjit Asahan,SCRUM-330,Iteration-5,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-325
+SCRUM-326,Generate Recommendation (context-aware Top-K),Story,Done,Gurkaranjit Asahan,SCRUM-330,Iteration-5,2,Relates: BST-140; Relates: BST-77; Relates: BST-78; Relates: BST-79; Relates: BST-80; Relates: BST-81; Relates: BST-82; Relates: BST-83; Relates: BST-84; Relates: BST-85; Relates: BST-86; Relates: BST-87,https://basketball-strategy.atlassian.net/browse/SCRUM-326
+SCRUM-327,Explain Recommendation (ML),Story,Done,Gurkaranjit Asahan,SCRUM-330,Iteration-6; Iteration-7,,,https://basketball-strategy.atlassian.net/browse/SCRUM-327
+SCRUM-328,Visualize Play (court view tied to recommendation),Story,Done,Abdulrahman Mousa,SCRUM-4,Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-328
+SCRUM-329,Baseline Playtype Recommender,Feature,Done,Gurkaranjit Asahan,,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-329
+SCRUM-330,Contextual ML Recommender (Train/Evaluate/Explain/Visualize),Feature,Done,Gurkaranjit Asahan,,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-330
+SCRUM-331,Implementation (backend or logic),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-317,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-331
+SCRUM-332,UI / integration (frontend wiring),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-317,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-332
+SCRUM-333,Validation + error states + edge cases,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-317,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-333
+SCRUM-334,Testing + evidence (screenshots for submission),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-317,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-334
+SCRUM-335,Implementation (backend or logic),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-318,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-335
+SCRUM-336,UI / integration (frontend wiring),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-318,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-336
+SCRUM-337,Validation + error states + edge cases,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-318,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-337
+SCRUM-338,Testing + evidence (screenshots for submission),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-318,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-338
+SCRUM-339,Implementation (backend or logic),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-321,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-339
+SCRUM-340,UI / integration (frontend wiring),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-321,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-340
+SCRUM-341,Validation + error states + edge cases,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-321,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-341
+SCRUM-342,Testing + evidence (screenshots for submission),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-321,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-342
+SCRUM-343,Implementation (backend or logic),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-326,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-343
+SCRUM-344,UI / integration (frontend wiring),Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-326,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-344
+SCRUM-345,Validation + error states + edge cases,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-326,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-345
+SCRUM-346,Testing + evidence (screenshots for submission),Dev Subtask,Done,Abdulrahman Mousa,SCRUM-326,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-346
+SCRUM-347,Add complete responsibility allocation table to Capstone Report,Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-4,0.5,,https://basketball-strategy.atlassian.net/browse/SCRUM-347
+SCRUM-348,"Add communication plan (cadence, channels, escalation) to Capstone Report",Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-4,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-348
+SCRUM-349,Add change control process for scope changes to Capstone Report,Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-4,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-349
+SCRUM-350,Document project assumptions and constraints in Capstone Report,Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-4,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-350
+SCRUM-351,"Add high-level schedule with phases, milestones, and timelines",Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-4,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-351
+SCRUM-352,Add concise risk summary to Capstone Report (separate from full RMP board),Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-4,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-352
+SCRUM-353,Insert any diagrams or tables referenced in the PID into Capstone Report,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-4,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-353
+SCRUM-354,Complete remaining incomplete text under the Project Plan section,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-4,0.5,,https://basketball-strategy.atlassian.net/browse/SCRUM-354
+SCRUM-355,Update Table of Contents to auto-update and hyperlink sections in Word,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-4,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-355
+SCRUM-356,Update UI based off Feedback from Domain Expert,Task,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-4; Iteration-6; Iteration-7,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-356
+SCRUM-357,Architectural Release,Feature,Done,Abdulrahman Mousa,,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-357
+SCRUM-358,Shared architecture setup and subsystem alignment,Story,Done,Abdulrahman Mousa,SCRUM-357,Iteration-5; Iteration-6,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-358
+SCRUM-359,Create design model for architectural release,Story,Done,Abdulrahman Mousa,SCRUM-357,,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-359
+SCRUM-360,Create deployment model for architectural release,Story,Done,Abdulrahman Mousa,SCRUM-357,Iteration-5; Iteration-6; Iteration-7,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-360
+SCRUM-361,Create interaction model for architectural release,Story,Done,Gurkaranjit Asahan,SCRUM-357,Iteration-5,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-361
+SCRUM-362,Update capstone architecture report and final QA,Story,Done,Abdulrahman Mousa,SCRUM-357,,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-362
+SCRUM-363,"Update PSPI, backlog, and risk tracking for architectural release",Story,Done,Gurkaranjit Asahan,SCRUM-357,,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-363
+SCRUM-364,Confirm final system type and architecture wording,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-358,Iteration-5; Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-364
+SCRUM-365,Agree on subsystem breakdown and boundaries,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-358,Iteration-5; Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-365
+SCRUM-366,Select architecturally significant use cases,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-358,Iteration-5; Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-366
+SCRUM-367,Standardize Visual Paradigm naming and package structure,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-358,Iteration-5; Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-367
+SCRUM-368,Create software system architecture diagram,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-359,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-368
+SCRUM-369,Document subsystem responsibilities and interfaces,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-359,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-369
+SCRUM-370,Create UI subsystem structural class diagram,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-359,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-370
+SCRUM-371,Create application logic structural class diagram,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-359,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-371
+SCRUM-372,Create domain subsystem structural class diagram,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-359,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-372
+SCRUM-373,Create infrastructure subsystem structural class diagram,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-359,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-373
+SCRUM-374,Identify deployed nodes and software artifacts,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-360,Iteration-5; Iteration-6; Iteration-7,,,https://basketball-strategy.atlassian.net/browse/SCRUM-374
+SCRUM-375,Create deployment diagram,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-360,Iteration-5; Iteration-6; Iteration-7,,,https://basketball-strategy.atlassian.net/browse/SCRUM-375
+SCRUM-376,Write deployment model description,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-360,Iteration-5; Iteration-6; Iteration-7,,,https://basketball-strategy.atlassian.net/browse/SCRUM-376
+SCRUM-377,Finalize assigned use cases for interaction modeling,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-361,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-377
+SCRUM-378,Create collaboration overviews,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-361,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-378
+SCRUM-379,Create structural overview diagrams,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-361,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-379
+SCRUM-380,Create behavioural overview sequence diagrams,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-361,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-380
+SCRUM-381,Hand off discovered classes and relationships to design model,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-361,Iteration-5,,,https://basketball-strategy.atlassian.net/browse/SCRUM-381
+SCRUM-382,Write architecture section of capstone report,Dev Subtask,Done,,SCRUM-362,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-382
+SCRUM-383,Write deployment section of capstone report,Dev Subtask,Done,,SCRUM-362,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-383
+SCRUM-384,Write interaction model section of capstone report,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-362,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-384
+SCRUM-385,Perform final cross-model QA,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-362,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-385
+SCRUM-386,Implement architecturally significant stories,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-363,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-386
+SCRUM-387,Update PBIs and development subtasks,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-363,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-387
+SCRUM-388,Track estimates and actual effort,Dev Subtask,To Do,Abdulrahman Mousa,SCRUM-363,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-388
+SCRUM-389,Update risk monitoring and carryover items,Dev Subtask,To Do,Gurkaranjit Asahan,SCRUM-363,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-389
+SCRUM-390,UI Feedback Remediation from Supervisor Meeting (Mar 3),Feature,To Do,,,Iteration-14; Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-390
+SCRUM-391,Redesign homepage tiles with hover descriptions and cleaner navigation,Story,To Do,,SCRUM-390,,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-391
+SCRUM-392,Simplify Data Explorer layout to reduce scrolling and fit key content on one screen,Story,To Do,,SCRUM-390,,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-392
+SCRUM-393,Clarify Data Explorer export actions and remove ambiguous duplicate labels,Story,To Do,,SCRUM-390,,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-393
+SCRUM-394,Remove redundant Data Explorer controls and simplify filtering flow,Story,To Do,,SCRUM-390,,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-394
+SCRUM-395,Hide advanced details by default and support coach-friendly progressive disclosure,Story,To Do,,SCRUM-390,,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-395
+SCRUM-396,Remove non-essential UI elements and improve informational hierarchy,Story,To Do,,SCRUM-390,,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-396
+SCRUM-397,Improve homepage/Data Explorer visual emphasis with selective color and imagery,Story,To Do,,SCRUM-390,,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-397
+SCRUM-398,Add login entry point and role-based coach/analyst access flow,Story,To Do,,SCRUM-390,,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-398
+SCRUM-399,Implementation (homepage tile redesign and hover states),Dev Subtask,To Do,,SCRUM-391,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-399
+SCRUM-400,UI polish + navigation consistency review,Dev Subtask,To Do,,SCRUM-391,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-400
+SCRUM-401,Validation + screenshots for supervisor review,Dev Subtask,To Do,,SCRUM-391,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-401
+SCRUM-402,Implementation (layout restructuring and responsive spacing),Dev Subtask,To Do,,SCRUM-392,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-402
+SCRUM-403,Validation on desktop viewport + no-cram check,Dev Subtask,To Do,,SCRUM-392,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-403
+SCRUM-404,Screenshots/evidence for revised one-page flow,Dev Subtask,To Do,,SCRUM-392,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-404
+SCRUM-405,Implementation (rename and reposition export controls),Dev Subtask,To Do,,SCRUM-393,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-405
+SCRUM-406,Validation of export behavior and labels,Dev Subtask,To Do,,SCRUM-393,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-406
+SCRUM-407,QA screenshots + wording review,Dev Subtask,To Do,,SCRUM-393,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-407
+SCRUM-408,Implementation (remove extra filters/search/quick-input clutter),Dev Subtask,To Do,,SCRUM-394,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-408
+SCRUM-409,Validation of simplified filter workflow,Dev Subtask,To Do,,SCRUM-394,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-409
+SCRUM-410,Regression check for data output after control removal,Dev Subtask,To Do,,SCRUM-394,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-410
+SCRUM-411,Implementation (collapse advanced sections by default),Dev Subtask,To Do,,SCRUM-395,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-411
+SCRUM-412,Validation of show/hide behavior and saved space,Dev Subtask,To Do,,SCRUM-395,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-412
+SCRUM-413,Coach-view usability check + screenshots,Dev Subtask,To Do,,SCRUM-395,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-413
+SCRUM-414,Implementation (remove non-essential controls and helper text),Dev Subtask,To Do,,SCRUM-396,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-414
+SCRUM-415,Validation of task flow after cleanup,Dev Subtask,To Do,,SCRUM-396,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-415
+SCRUM-416,Final visual pass + screenshots,Dev Subtask,To Do,,SCRUM-396,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-416
+SCRUM-417,Implementation (imagery and selective visual emphasis),Dev Subtask,To Do,,SCRUM-397,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-417
+SCRUM-418,Domain-expert alignment on what deserves emphasis,Dev Subtask,To Do,,SCRUM-397,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-418
+SCRUM-419,Visual QA for consistency,Dev Subtask,To Do,,SCRUM-397,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-419
+SCRUM-420,Implementation (auth entry point and role-based gating),Dev Subtask,To Do,,SCRUM-398,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-420
+SCRUM-421,Validation of coach vs analyst visibility rules,Dev Subtask,To Do,,SCRUM-398,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-421
+SCRUM-422,Demo prep/screenshots for committee-facing flow,Dev Subtask,To Do,,SCRUM-398,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-422
+SCRUM-423,Implement Login / Sign up Auth System,Task,Done,Gurkaranjit Asahan,SCRUM-6,Iteration-6,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-423
+SCRUM-424,Create Supabase Database,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-423,Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-424
+SCRUM-425,Create Tables within the database,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-423,Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-425
+SCRUM-426,Implement RLS policies,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-423,Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-426
+SCRUM-427,Connect Backend to Project through API,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-423,Iteration-6,,,https://basketball-strategy.atlassian.net/browse/SCRUM-427
+SCRUM-428,Update Project Report Based on Feedback,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-6,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-428
+SCRUM-429,Make Slideshow/PowerPoint,Dev Subtask,Done,Abdulrahman Mousa,SCRUM-252,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-429
+SCRUM-430,Create Demo of PSPI,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-252,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-430
+SCRUM-431,Practicing Q/A Questions,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-252,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-431
+SCRUM-432,Explaining VPP artifacts,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-252,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-432
+SCRUM-433,Clean HomePage,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-257,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-433
+SCRUM-434,Clean Glossary Page,Dev Subtask,Done,,SCRUM-257,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-434
+SCRUM-435,Clean Data Explorer Page,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-257,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-435
+SCRUM-436,Clean Contextual Page,Dev Subtask,Done,,SCRUM-257,Iteration-10,,,https://basketball-strategy.atlassian.net/browse/SCRUM-436
+SCRUM-437,Requirements Model Revision,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-12,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-437
+SCRUM-438,Software Design Model Revision,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-12,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-438
+SCRUM-439,Interaction Model Revision,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-12,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-439
+SCRUM-440,Deployment Model Revision,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-12,5,Relates: BSR-111; Duplicate: SCRUM-588,https://basketball-strategy.atlassian.net/browse/SCRUM-440
+SCRUM-441,Project Plan Revision,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-12,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-441
+SCRUM-442,Risk Management Plan Revision,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-12,4,,https://basketball-strategy.atlassian.net/browse/SCRUM-442
+SCRUM-443,Test Plan Revision,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-12,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-443
+SCRUM-444,Submit Project Elaboration Revision Assignment,Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-13,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-444
+SCRUM-445,Main Success Scenario clearly defines a success path in which the user meets the goal of the use case,Dev Subtask,Done,,SCRUM-437,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-445
+SCRUM-446,Extensions are identified for each step where consitions exist for following alternative paths to the success of the use case or its failure,Dev Subtask,Done,,SCRUM-437,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-446
+SCRUM-447,All use cases are planned for the Alpha Release (all architecturally significant use cases) must be fully defined and include extensions with steps that define the systems's behaviour uner the extension condition,Dev Subtask,Done,,SCRUM-437,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-447
+SCRUM-448,All comments provided by prof in the use-case details or use-case diagrams in the requirements model are addressed,Dev Subtask,Done,,SCRUM-437,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-448
+SCRUM-449,Review the software system architecture diagram in Visual Paradigm and adress any feedback on it,Dev Subtask,Done,,SCRUM-438,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-449
+SCRUM-450,Review Software System Architecture Screenshots and descrption in Capstone Report,Dev Subtask,Done,,SCRUM-438,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-450
+SCRUM-451,Review Subsystem breakdown of the Design Model according to the application architecture,Dev Subtask,Done,,SCRUM-438,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-451
+SCRUM-452,Review the modules in each subsystem and verify no subsystems are empty,Dev Subtask,Done,,SCRUM-438,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-452
+SCRUM-453,Revise (or create) a class diagram that describes each subsystem's high level structural design. Ensure it shows interfaces and implementation classes,Dev Subtask,Done,,SCRUM-438,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-453
+SCRUM-454,Ensure interaction model contains collaborations for every use case that was implemented in the inception release,Dev Subtask,Done,,SCRUM-439,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-454
+SCRUM-455,Address Cristina's and Committee's Comments on Interaction Model,Dev Subtask,Done,,SCRUM-439,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-455
+SCRUM-456,Each collaboration overview diagram accurately identifies the use case it realizes and the design model subsystems involved in realizing it,Dev Subtask,Done,,SCRUM-439,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-456
+SCRUM-457,"Each structural overview diagram accurately shows the classes that participate in carrying out the use case along with the relevant methods, field variables and relationships and is consistent with the code",Dev Subtask,Done,,SCRUM-439,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-457
+SCRUM-458,Each behavioural overview diagram and any associated detailed sequence diagrams describe how the design elements pariticipating in the realization carry out the use-case stories,Dev Subtask,Done,,SCRUM-439,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-458
+SCRUM-459,Ensure deployment model identfies and visualizes all devices,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-440,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-459
+SCRUM-460,Ensure deployment identifies and visualizes all Execution environments,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-440,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-460
+SCRUM-461,Ensure deployment model identifies and visualizes all communication paths between devices and execution environments via associations,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-440,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-461
+SCRUM-462,"Ensure deployment model identifies and visualizes all artifacts generated by the system (executables, libraries, databses, config files and cookies)",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-440,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-462
+SCRUM-463,Ensure related artifacts are connected to each other trhough composition relationships,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-440,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-463
+SCRUM-464,Revise the work breakdown structure (WBS) to ensure all use cases and their stories areaccurately represented in the project plan by JIRA work items.,Dev Subtask,Done,,SCRUM-441,Iteration-12,,Relates: BSR-72,https://basketball-strategy.atlassian.net/browse/SCRUM-464
+SCRUM-465,"Revise the release plan to ensure the elaboration phase is divided into weekly iterations and allocate remaining features, use cases and stories to each iteration to create a feasible plan of completion.",Dev Subtask,Done,,SCRUM-441,Iteration-12,,Relates: BSR-30; Relates: BSR-31; Relates: BSR-55; Relates: BSR-61; Relates: BSR-64; Relates: BSR-65; Relates: BSR-66,https://basketball-strategy.atlassian.net/browse/SCRUM-465
+SCRUM-466,"Add the three releases Release, and Final Release. Prioritize work items effectively and identify future work that will not be completed in the project’s backlog.in the elaboration phase: Alpha Release, Beta",Dev Subtask,Done,,SCRUM-441,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-466
+SCRUM-467,Probability and impact are analyzed and identified.,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-442,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-467
+SCRUM-468,Mitigation strategies are defined and put into action for active risks.,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-442,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-468
+SCRUM-469,"Risks are monitored, updated, and placed on risk management in their appropriate status.",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-442,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-469
+SCRUM-470,All test cases defined by the test model are represented in the test plan.,Dev Subtask,Done,,SCRUM-443,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-470
+SCRUM-471,Test cases are refined to provide full coverage of the functionality implemented thus far.,Dev Subtask,Done,,SCRUM-443,Iteration-12,,Relates: BSR-97,https://basketball-strategy.atlassian.net/browse/SCRUM-471
+SCRUM-472,Test cases are executed to determine the state of the project.,Dev Subtask,Done,,SCRUM-443,Iteration-12,,,https://basketball-strategy.atlassian.net/browse/SCRUM-472
+SCRUM-473,Failed tests have one or more work items linked that are planned to ensure bugs are investigated and fixed.,Dev Subtask,Done,,SCRUM-443,Iteration-12,,Relates: BSR-97,https://basketball-strategy.atlassian.net/browse/SCRUM-473
+SCRUM-474,Implement Top-K PPP uplift calculation vs. team seasonal average,Story,Done,Abdulrahman Mousa,SCRUM-5,Iteration-14,5,Relates: BST-130; Relates: BST-131; Relates: BSR-46; Relates: BSR-48; Relates: BSR-56; Relates: BSR-59,https://basketball-strategy.atlassian.net/browse/SCRUM-474
+SCRUM-475,Add /metrics/topk-uplift API endpoint with CSV/JSON export,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-14,3,Relates: BST-131; Relates: BST-120; Relates: BST-121; Relates: BST-122,https://basketball-strategy.atlassian.net/browse/SCRUM-475
+SCRUM-476,Implement calibration check (predicted vs. realized PPP),Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-14,5,Relates: SCRUM-526; Relates: BSR-41; Relates: BSR-43; Relates: BST-120; Relates: BSR-80; Relates: BST-123; Relates: BST-124,https://basketball-strategy.atlassian.net/browse/SCRUM-476
+SCRUM-477,Display uplift + calibration results on Model Metrics page,Story,To Do,Abdulrahman Mousa,SCRUM-5,Iteration-16,3,Relates: BST-145; Relates: BST-88; Relates: BST-89; Relates: BST-90; Relates: BST-91; Relates: BST-92; Relates: BST-93; Relates: BST-94; Relates: BST-95,https://basketball-strategy.atlassian.net/browse/SCRUM-477
+SCRUM-478,"Build data quality check module (schema, completeness, coverage validation)",Story,Done,Abdulrahman Mousa,SCRUM-1,Iteration-14,5,Relates: BST-132; Relates: BST-133; Relates: BSR-49; Relates: BSR-58,https://basketball-strategy.atlassian.net/browse/SCRUM-478
+SCRUM-479,Add data-quality report endpoint and block/flag failed checks,Story,Done,Abdulrahman Mousa,SCRUM-1,Iteration-15,3,Relates: BST-138; Relates: BST-139; Relates: BSR-47; Relates: BSR-48; Relates: BSR-49; Relates: BSR-50; Relates: BSR-54; Relates: BSR-58; Relates: BSR-59; Relates: BSR-77; Relates: BSR-79; Relates: BSR-89,https://basketball-strategy.atlassian.net/browse/SCRUM-479
+SCRUM-480,Show data quality results in Data Explorer,Story,Done,Gurkaranjit Asahan,SCRUM-1,Iteration-15,2,Relates: BST-138; Relates: BSR-48; Relates: BSR-50; Relates: BSR-79; Relates: BST-156; Relates: BST-158; Relates: BST-159; Relates: BST-160; Relates: BST-161; Relates: BST-162; Relates: SCRUM-574; Relates: BST-168; Relates: SCRUM-575; Relates: BST-169; Relates: SCRUM-603,https://basketball-strategy.atlassian.net/browse/SCRUM-480
+SCRUM-481,Design Supabase schema for Gameplan notes / tactics board state,Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-14,3,Relates: BST-148; Relates: BST-120; Relates: BST-125; Relates: BST-126; Relates: BSR-112,https://basketball-strategy.atlassian.net/browse/SCRUM-481
+SCRUM-482,Migrate Tactics Board notes from localStorage to Supabase,Story,To Do,Abdulrahman Mousa,SCRUM-4,Iteration-16,5,Relates: BSR-100,https://basketball-strategy.atlassian.net/browse/SCRUM-482
+SCRUM-483,Add sync/loading states and local-notes migration fallback,Story,In Progress,Abdulrahman Mousa,SCRUM-4,Iteration-15,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-483
+SCRUM-484,Design a unified export contract (CSV/PDF/JSON) across pages,Story,Done,Abdulrahman Mousa,SCRUM-4,Iteration-14,3,Relates: BST-134; Relates: BST-135; Relates: BSR-35; Relates: BSR-88,https://basketball-strategy.atlassian.net/browse/SCRUM-484
+SCRUM-485,Implement generic /export/report endpoint on the unified contract,Story,Done,Abdulrahman Mousa,SCRUM-4,Iteration-15,5,Relates: BSR-35; Relates: SCRUM-486,https://basketball-strategy.atlassian.net/browse/SCRUM-485
+SCRUM-486,"Export the current Matchup, Context and Model Metrics results",Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-16,3,Relates: SCRUM-485; Relates: BST-170; Relates: BST-171; Relates: BST-172; Relates: BST-173; Relates: BST-174; Relates: BST-175; Relates: BST-176; Relates: BST-177; Relates: BST-178; Relates: SCRUM-542; Relates: SCRUM-603; Relates: BSR-35; Blocks: SCRUM-616,https://basketball-strategy.atlassian.net/browse/SCRUM-486
+SCRUM-487,Add dataset version identifier to loaded CSV/Parquet files,Story,To Do,Gurkaranjit Asahan,SCRUM-1,Iteration-17,3,Relates: BSR-51; Relates: BSR-57; Relates: BSR-81; Relates: BSR-108,https://basketball-strategy.atlassian.net/browse/SCRUM-487
+SCRUM-488,"Expose audit metadata (pull date, season coverage, row counts) via API",Story,To Do,Gurkaranjit Asahan,SCRUM-1,Iteration-17,2,Relates: BSR-58; Relates: BSR-78; Relates: BSR-81,https://basketball-strategy.atlassian.net/browse/SCRUM-488
+SCRUM-489,Display audit metadata panel in Data Explorer,Story,To Do,Gurkaranjit Asahan,SCRUM-1,Iteration-18,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-489
+SCRUM-490,Add authenticated endpoint to trigger Synergy CSV reload,Story,To Do,,SCRUM-1,Iteration-20,3,Relates: BSR-51; Relates: BSR-57,https://basketball-strategy.atlassian.net/browse/SCRUM-490
+SCRUM-491,Add authenticated endpoint to trigger PBP Parquet reload,Story,To Do,,SCRUM-1,Iteration-20,3,Relates: BSR-51; Relates: BSR-57,https://basketball-strategy.atlassian.net/browse/SCRUM-491
+SCRUM-492,Add Analyst Workspace UI controls for on-demand dataset reload,Story,To Do,,SCRUM-1,Iteration-20,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-492
+SCRUM-493,Persist endpoint activity log per request,Story,To Do,Abdulrahman Mousa,SCRUM-7,Iteration-18,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-493
+SCRUM-494,Add analyst-only activity log query endpoint,Story,To Do,Abdulrahman Mousa,SCRUM-7,Iteration-17,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-494
+SCRUM-495,Build on-demand KPI block (uplift + usage over selectable period),Story,To Do,,SCRUM-5,Iteration-19,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-495
+SCRUM-496,Add visual highlight styling for #1 ranked play type,Story,To Do,Abdulrahman Mousa,SCRUM-4,Iteration-18,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-496
+SCRUM-497,Generate imperative instructional label for top pick,Story,To Do,,SCRUM-4,Iteration-19,2,Relates: BSR-39; Relates: BSR-84; Relates: BSR-99,https://basketball-strategy.atlassian.net/browse/SCRUM-497
+SCRUM-498,Extract a standalone Data Dictionary view from Glossary content,Story,To Do,Gurkaranjit Asahan,SCRUM-1,Iteration-17,2,Relates: BSR-39; Relates: BSR-41; Relates: BSR-104,https://basketball-strategy.atlassian.net/browse/SCRUM-498
+SCRUM-499,Prototype association-rule mining (Apriori) on play-by-play shot data,Story,To Do,,SCRUM-3,Iteration-20,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-499
+SCRUM-500,Surface top association rule as supporting evidence on Shot Plan page,Story,To Do,,SCRUM-3,Iteration-19,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-500
+SCRUM-501,Submit Project Elaboration Iteration Assignment,Story,Done,Abdulrahman Mousa,SCRUM-8,Iteration-14,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-501
+SCRUM-502,"Address defence committee feedback on NLP (fallbacks, extraction accuracy, performance, rationale generation)",Story,Done,Abdulrahman Mousa,SCRUM-3,Iteration-14,5,Relates: BST-136; Relates: BST-141; Relates: BST-142; Relates: BST-155; Relates: BSR-84; Relates: BSR-91; Relates: BST-100; Relates: BST-101; Relates: BST-102; Relates: BST-103,https://basketball-strategy.atlassian.net/browse/SCRUM-502
+SCRUM-503,Sync desktop and online Visual Paradigm diagrams,Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-14,2,Relates: BSR-111,https://basketball-strategy.atlassian.net/browse/SCRUM-503
+SCRUM-504,Submit Assignment 1,Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-13,1,,https://basketball-strategy.atlassian.net/browse/SCRUM-504
+SCRUM-505,Complete Interaction Model Revision,Task,Done,Abdulrahman Mousa,SCRUM-8,Iteration-13,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-505
+SCRUM-506,Redeploy Website,Task,Done,Gurkaranjit Asahan,SCRUM-6,Iteration-14,2,Relates: BSR-110; Relates: BST-120; Relates: BST-127; Relates: BSR-95; Relates: BSR-108,https://basketball-strategy.atlassian.net/browse/SCRUM-506
+SCRUM-507,Implement remaining high-impact features,Story,To Do,,SCRUM-3,Iteration-21,8,,https://basketball-strategy.atlassian.net/browse/SCRUM-507
+SCRUM-508,Fix all high and medium priority bugs,Story,To Do,,SCRUM-5,Iteration-21,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-508
+SCRUM-509,Synchronize software model,Story,To Do,,SCRUM-8,Iteration-21,3,Relates: BSR-106; Relates: BSR-111,https://basketball-strategy.atlassian.net/browse/SCRUM-509
+SCRUM-510,Polish user interface to enhance usability and professionalism,Story,To Do,,SCRUM-4,Iteration-21,5,Relates: BSR-32; Relates: BSR-37; Relates: BSR-100; Relates: BSR-101; Relates: BSR-104,https://basketball-strategy.atlassian.net/browse/SCRUM-510
+SCRUM-511,Finalize edits to Capstone Project Report,Story,To Do,,SCRUM-8,Iteration-21,3,Relates: BSR-103; Relates: BSR-105; Relates: BSR-106,https://basketball-strategy.atlassian.net/browse/SCRUM-511
+SCRUM-512,Practice Project demonstration,Story,To Do,,SCRUM-8,Iteration-22,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-512
+SCRUM-513,Practice defending suitability and impact and feasibility,Story,To Do,,SCRUM-8,Iteration-22,2,Relates: BSR-102; Relates: BSR-103,https://basketball-strategy.atlassian.net/browse/SCRUM-513
+SCRUM-514,Practice describing the software engineering process that was followed throughout the project,Story,To Do,,SCRUM-8,Iteration-22,2,,https://basketball-strategy.atlassian.net/browse/SCRUM-514
+SCRUM-515,Practice defending the project's correctness using the test plan and testing results,Story,To Do,,SCRUM-8,Iteration-22,2,Relates: BSR-106,https://basketball-strategy.atlassian.net/browse/SCRUM-515
+SCRUM-516,"Practice defending individual contribution to the project code, software engineering artefacts, reports and presentation",Story,To Do,,SCRUM-8,Iteration-22,2,Relates: BSR-67; Relates: BSR-76; Relates: BSR-106,https://basketball-strategy.atlassian.net/browse/SCRUM-516
+SCRUM-517,Create demonstration video presentation,Story,To Do,,SCRUM-8,Iteration-22,5,Relates: BSR-29; Relates: BSR-74,https://basketball-strategy.atlassian.net/browse/SCRUM-517
+SCRUM-518,Implement analyst Top-K uplift JSON and CSV contract,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-475,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-518
+SCRUM-519,"Verify uplift arithmetic, export parity, validation and role checks",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-475,Iteration-14,,Relates: BSR-35,https://basketball-strategy.atlassian.net/browse/SCRUM-519
+SCRUM-520,Implement held-out PPP calibration analysis and analyst presentation,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-476,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-520
+SCRUM-521,"Validate calibration calculations, sparse data and analyst workflow",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-476,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-521
+SCRUM-522,"Design Gameplan storage migration, constraints and ownership policies",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-481,Iteration-14,,,https://basketball-strategy.atlassian.net/browse/SCRUM-522
+SCRUM-523,Verify Gameplan schema constraints and cross-user isolation,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-481,Iteration-14,,Relates: BSR-33; Relates: BSR-112,https://basketball-strategy.atlassian.net/browse/SCRUM-523
+SCRUM-524,Deploy the reviewed capstone release within approved hosting limits,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-506,Iteration-14,,Relates: BSR-110; Relates: BSR-95,https://basketball-strategy.atlassian.net/browse/SCRUM-524
+SCRUM-525,Verify deployed smoke checks and coach/analyst application journeys,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-506,Iteration-14,,Relates: BSR-36; Relates: BSR-68; Relates: BSR-90; Relates: BSR-98,https://basketball-strategy.atlassian.net/browse/SCRUM-525
+SCRUM-526,Test next-season PPP forecasts using previous-season data,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-15,3,Relates: SCRUM-476; Relates: BSR-41; Relates: BSR-42; Relates: BSR-43; Relates: BSR-44; Relates: BSR-45; Relates: BSR-46; Relates: BSR-56; Relates: BSR-80; Relates: BSR-82; Relates: BSR-83; Relates: BSR-102; Relates: BSR-105; Relates: BST-157; Relates: BST-163; Relates: BST-164; Relates: BST-165; Relates: BST-166; Relates: BST-167; Relates: SCRUM-603,https://basketball-strategy.atlassian.net/browse/SCRUM-526
+SCRUM-527,Fix authenticated browser export downloads,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-506,Iteration-14,,Relates: BST-150; Relates: BST-151; Relates: BST-152; Relates: BST-153; Relates: BST-154,https://basketball-strategy.atlassian.net/browse/SCRUM-527
+SCRUM-528,Fix sequence lifelines and message signatures,Task,In Progress,Gurkaranjit Asahan,SCRUM-8,Iteration-15,,Relates: BSR-31; Relates: BSR-72; Relates: BSR-76; Relates: BSR-111,https://basketball-strategy.atlassian.net/browse/SCRUM-528
+SCRUM-529,Review risk ratings and link mitigation tasks,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-15,4,Relates: BSR-31; Relates: BSR-72; Relates: BSR-76; Duplicate: SCRUM-591,https://basketball-strategy.atlassian.net/browse/SCRUM-529
+SCRUM-530,Expand and run Fall 2026 test coverage,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-15,4,Relates: BSR-31; Relates: BSR-72; Relates: BSR-76; Relates: BSR-97; Duplicate: SCRUM-594,https://basketball-strategy.atlassian.net/browse/SCRUM-530
+SCRUM-531,"Record weekly capacity, backup owners and blocked work",Task,To Do,Gurkaranjit Asahan,,,,Relates: BSR-29; Relates: BSR-30; Relates: BSR-55; Relates: BSR-60; Relates: BSR-61; Relates: BSR-62; Relates: BSR-64; Relates: BSR-65; Relates: BSR-66; Relates: BSR-67; Relates: BSR-73; Relates: BSR-74; Relates: BSR-76; Relates: BSR-107,https://basketball-strategy.atlassian.net/browse/SCRUM-531
+SCRUM-532,Verify clean-checkout setup and service recovery,Task,To Do,Gurkaranjit Asahan,,,,Relates: BSR-29; Relates: BSR-36; Relates: BSR-51; Relates: BSR-68; Relates: BSR-69; Relates: BSR-70; Relates: BSR-74; Relates: BSR-75; Relates: BSR-90; Relates: BSR-95; Relates: BSR-108; Relates: BSR-112,https://basketball-strategy.atlassian.net/browse/SCRUM-532
+SCRUM-533,Check deployment secrets and recovery access,Task,To Do,Gurkaranjit Asahan,,,,Relates: BSR-33; Relates: BSR-34; Relates: BSR-71; Relates: BSR-94,https://basketball-strategy.atlassian.net/browse/SCRUM-533
+SCRUM-534,Check hosting costs and prepare an affordable fallback,Task,To Do,Gurkaranjit Asahan,,,,Relates: BSR-110; Relates: BSR-112,https://basketball-strategy.atlassian.net/browse/SCRUM-534
+SCRUM-535,Document dataset sources and sharing permissions,Task,To Do,Gurkaranjit Asahan,,,,Relates: BSR-109,https://basketball-strategy.atlassian.net/browse/SCRUM-535
+SCRUM-536,Review three coaching scenarios with a stakeholder,Task,To Do,Gurkaranjit Asahan,,,,Relates: BSR-32; Relates: BSR-37; Relates: BSR-39; Relates: BSR-52; Relates: BSR-63; Relates: BSR-84; Relates: BSR-87; Relates: BSR-93; Relates: BSR-99; Relates: BSR-100; Relates: BSR-101; Relates: BSR-102; Relates: BSR-104; Relates: BSR-105,https://basketball-strategy.atlassian.net/browse/SCRUM-536
+SCRUM-537,Define evidence and cost checks for generated explanations,Task,To Do,Gurkaranjit Asahan,,,,Relates: BSR-91; Relates: BSR-92; Relates: BSR-93,https://basketball-strategy.atlassian.net/browse/SCRUM-537
+SCRUM-538,Fix shot-team attribution and rebuild the shot dataset,Task,To Do,Gurkaranjit Asahan,SCRUM-1,Iteration-17,,Relates: BST-138; Relates: BST-139; Relates: BSR-47; Relates: BSR-50; Relates: BSR-54; Relates: BSR-77; Relates: BSR-78; Relates: BSR-79; Relates: BSR-81; Relates: BSR-82; Relates: BSR-89; Relates: BSR-45; Relates: BST-115; Relates: BST-117; Relates: BST-118; Relates: BST-119,https://basketball-strategy.atlassian.net/browse/SCRUM-538
+SCRUM-539,Use the new Gameplan situation on the first Build,Task,To Do,Gurkaranjit Asahan,SCRUM-4,Iteration-17,,Relates: BSR-38; Relates: BSR-42; Relates: BST-140; Relates: BSR-53; Relates: BSR-88,https://basketball-strategy.atlassian.net/browse/SCRUM-539
+SCRUM-540,Pass supported coaching conditions into Gameplan ranking,Task,To Do,Gurkaranjit Asahan,SCRUM-3,Iteration-17,,Relates: BSR-38; Relates: BSR-42; Relates: BST-141; Relates: BSR-96,https://basketball-strategy.atlassian.net/browse/SCRUM-540
+SCRUM-541,Preserve overtime in the Gameplan context,Task,To Do,Gurkaranjit Asahan,SCRUM-3,Iteration-17,,Relates: BSR-38; Relates: BST-142,https://basketball-strategy.atlassian.net/browse/SCRUM-541
+SCRUM-542,Clear Model Metrics loading state when requests finish,Task,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-16,2,Relates: BSR-40; Relates: BST-145; Relates: BSR-86; Relates: SCRUM-486; Relates: BST-173; Relates: BST-174,https://basketball-strategy.atlassian.net/browse/SCRUM-542
+SCRUM-543,Load saved shot metrics without training during page requests,Task,To Do,Gurkaranjit Asahan,SCRUM-5,Iteration-17,,Relates: BSR-40; Relates: BST-146; Relates: BSR-85; Relates: BSR-86; Relates: BSR-98,https://basketball-strategy.atlassian.net/browse/SCRUM-543
+SCRUM-544,Align analyst shot pages with their API permissions,Task,To Do,Gurkaranjit Asahan,SCRUM-4,Iteration-17,,Relates: BST-143; Relates: BST-144; Relates: BSR-53; Relates: BSR-96,https://basketball-strategy.atlassian.net/browse/SCRUM-544
+SCRUM-545,Render Shot Statistical Analysis using the current API fields,Task,To Do,Gurkaranjit Asahan,SCRUM-5,Iteration-17,,Relates: BSR-53; Relates: BST-147; Relates: BSR-87; Relates: BSR-88; Relates: BSR-96; Relates: BSR-98,https://basketball-strategy.atlassian.net/browse/SCRUM-545
+SCRUM-546,State when baseline explanations do not use game context,Task,To Do,Gurkaranjit Asahan,SCRUM-1,Iteration-18,,Relates: BSR-39; Relates: BST-99,https://basketball-strategy.atlassian.net/browse/SCRUM-546
+SCRUM-547,Define backend readiness and explain missing prerequisites,Task,To Do,Gurkaranjit Asahan,SCRUM-8,Iteration-18,,Relates: BSR-108; Relates: BST-107; Relates: BST-113,https://basketball-strategy.atlassian.net/browse/SCRUM-547
+SCRUM-548,Report unmapped shot-data columns during schema validation,Task,To Do,Gurkaranjit Asahan,SCRUM-5,Iteration-18,,Relates: BSR-78; Relates: BST-116,https://basketball-strategy.atlassian.net/browse/SCRUM-548
+SCRUM-549,Validate shot margins and define when prediction inputs are available,Task,To Do,Gurkaranjit Asahan,SCRUM-5,Iteration-17,,Relates: BSR-78; Relates: BSR-45; Relates: BST-117; Relates: BST-118; Relates: BST-119,https://basketball-strategy.atlassian.net/browse/SCRUM-549
+SCRUM-550,Measure Top-K uplift response times and propose a target,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-16,2,Relates: BST-111; Relates: SCRUM-609,https://basketball-strategy.atlassian.net/browse/SCRUM-550
+SCRUM-551,Use consistent names for sequence lifelines,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-528,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-551
+SCRUM-552,Define sequence inputs and return values,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-528,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-552
+SCRUM-553,Verify sequence renders and preserve the shared model,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-528,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-553
+SCRUM-554,Publish the revised sequences to Visual Paradigm Teamwork,Dev Subtask,In Progress,Gurkaranjit Asahan,SCRUM-528,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-554
+SCRUM-555,"Review the probability, impact and status of every risk",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-529,Iteration-15,,Duplicate: SCRUM-593,https://basketball-strategy.atlassian.net/browse/SCRUM-555
+SCRUM-556,Link risks to mitigation and monitoring work,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-529,Iteration-15,,Duplicate: SCRUM-592,https://basketball-strategy.atlassian.net/browse/SCRUM-556
+SCRUM-557,"Clarify risk titles, findings and next actions",Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-529,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-557
+SCRUM-558,Verify and publish the revised risk register,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-529,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-558
+SCRUM-559,Add Fall 2026 cases for Elaboration features,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-530,Iteration-15,,Duplicate: SCRUM-596,https://basketball-strategy.atlassian.net/browse/SCRUM-559
+SCRUM-560,Refresh legacy test coverage and trace it to features,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-530,Iteration-15,,Duplicate: SCRUM-597,https://basketball-strategy.atlassian.net/browse/SCRUM-560
+SCRUM-561,Run regression suites and reproduce shot-data failures,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-530,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-561
+SCRUM-562,Check live feature flows and record their actual results,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-530,Iteration-15,,Duplicate: SCRUM-598,https://basketball-strategy.atlassian.net/browse/SCRUM-562
+SCRUM-563,Link failed tests to planned bug fixes,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-530,Iteration-15,,Duplicate: SCRUM-599,https://basketball-strategy.atlassian.net/browse/SCRUM-563
+SCRUM-564,Align test-suite and test-case hierarchy with the course,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-530,Iteration-15,,Duplicate: SCRUM-595,https://basketball-strategy.atlassian.net/browse/SCRUM-564
+SCRUM-565,Publish the test evidence and revision handoff,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-530,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-565
+SCRUM-566,Clarify deployment layout and protocol-port labels,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-440,Iteration-12,,Duplicate: SCRUM-589; Duplicate: SCRUM-590,https://basketball-strategy.atlassian.net/browse/SCRUM-566
+SCRUM-567,Verify and publish the deployment diagram revision,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-440,Iteration-12,,Relates: BSR-111,https://basketball-strategy.atlassian.net/browse/SCRUM-567
+SCRUM-568,Connect the data-quality report API,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-480,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-568
+SCRUM-569,Show data-check results and retry states,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-480,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-569
+SCRUM-570,Verify the quality panel and analyst access,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-480,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-570
+SCRUM-571,Build prior-season forecast inputs,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-526,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-571
+SCRUM-572,Compare forecasts with a timed baseline,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-526,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-572
+SCRUM-573,Verify leakage checks and publish evaluation,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-526,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-573
+SCRUM-574,Make data-quality status text readable on the light background,Task,Done,Gurkaranjit Asahan,,Iteration-15,3,Relates: SCRUM-480; Relates: BST-168,https://basketball-strategy.atlassian.net/browse/SCRUM-574
+SCRUM-575,Keep production links on the public app address,Task,Done,Gurkaranjit Asahan,,Iteration-15,1,Relates: SCRUM-480; Relates: BST-169,https://basketball-strategy.atlassian.net/browse/SCRUM-575
+SCRUM-576,Feedback,Feature,To Do,,,,,,https://basketball-strategy.atlassian.net/browse/SCRUM-576
+SCRUM-577,Apply Assignment 1 feedback: Software Design Model,Story,To Do,Abdulrahman Mousa,SCRUM-576,Iteration-16,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-577
+SCRUM-578,"Architecture packaging: Several subsystem dependencies show dense, crossing couplings without explicit interface boundaries.",Dev Subtask,To Do,Abdulrahman Mousa,SCRUM-577,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-578
+SCRUM-579,Traceability: Align subsystem service contracts directly to the corresponding functional requirements.,Dev Subtask,To Do,Abdulrahman Mousa,SCRUM-577,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-579
+SCRUM-580,Apply Assignment 1 feedback: Interaction Model,Story,To Do,Abdulrahman Mousa,SCRUM-576,Iteration-16,3,,https://basketball-strategy.atlassian.net/browse/SCRUM-580
+SCRUM-581,Lifeline notation: Sequence diagrams show mixed naming conventions for lifelines across subsystems.,Dev Subtask,To Do,Abdulrahman Mousa,SCRUM-580,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-581
+SCRUM-582,Message syntax: Several async return paths lack explicit message labels and parameter definitions.,Dev Subtask,To Do,Abdulrahman Mousa,SCRUM-580,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-582
+SCRUM-583,Apply Assignment 1 feedback: Project Plan,Story,To Do,Abdulrahman Mousa,SCRUM-576,Iteration-16,5,,https://basketball-strategy.atlassian.net/browse/SCRUM-583
+SCRUM-584,Reconfigure the Jira Timeline view to display your active sprint tasks and correct dates.,Dev Subtask,To Do,Abdulrahman Mousa,SCRUM-583,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-584
+SCRUM-585,Post a confirmation message in our Teams channel once you complete the update.,Dev Subtask,To Do,Abdulrahman Mousa,SCRUM-583,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-585
+SCRUM-586,The timeline stops at November 29. The schedule omits the final three weeks of the semester (November 30 to December 18). Add this.,Dev Subtask,To Do,Abdulrahman Mousa,SCRUM-583,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-586
+SCRUM-587,"Story SCRUM-474 shows a user story narrative and technical notes, but contains zero acceptance criteria and zero subtasks. You cannot verify when the work is done without testable acceptance criteria. Add this to all stories in Jira.",Dev Subtask,To Do,Abdulrahman Mousa,SCRUM-583,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-587
+SCRUM-588,Deployment diagram feedback,Story,Done,Gurkaranjit Asahan,SCRUM-576,Iteration-16,2,Duplicate: SCRUM-440,https://basketball-strategy.atlassian.net/browse/SCRUM-588
+SCRUM-589,Remove crossing deployment connections,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-588,Iteration-16,,Duplicate: SCRUM-566,https://basketball-strategy.atlassian.net/browse/SCRUM-589
+SCRUM-590,Label deployment protocols and ports,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-588,Iteration-16,,Duplicate: SCRUM-566,https://basketball-strategy.atlassian.net/browse/SCRUM-590
+SCRUM-591,Risk plan feedback,Story,Done,Gurkaranjit Asahan,SCRUM-576,Iteration-16,3,Duplicate: SCRUM-529,https://basketball-strategy.atlassian.net/browse/SCRUM-591
+SCRUM-592,Link every risk to its mitigation work,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-591,Iteration-16,,Duplicate: SCRUM-556,https://basketball-strategy.atlassian.net/browse/SCRUM-592
+SCRUM-593,Review every risk rating and next action,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-591,Iteration-16,,Duplicate: SCRUM-555,https://basketball-strategy.atlassian.net/browse/SCRUM-593
+SCRUM-594,Test plan feedback,Story,Done,Gurkaranjit Asahan,SCRUM-576,Iteration-16,8,Duplicate: SCRUM-530,https://basketball-strategy.atlassian.net/browse/SCRUM-594
+SCRUM-595,Show test cases on the Kanban board,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-594,Iteration-16,,Duplicate: SCRUM-564,https://basketball-strategy.atlassian.net/browse/SCRUM-595
+SCRUM-596,Add Fall 2026 test cases,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-594,Iteration-16,,Duplicate: SCRUM-559,https://basketball-strategy.atlassian.net/browse/SCRUM-596
+SCRUM-597,Map test coverage to Elaboration features,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-594,Iteration-16,,Duplicate: SCRUM-560,https://basketball-strategy.atlassian.net/browse/SCRUM-597
+SCRUM-598,Record test executions and current results,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-594,Iteration-16,,Duplicate: SCRUM-562,https://basketball-strategy.atlassian.net/browse/SCRUM-598
+SCRUM-599,Link each failed test to a planned fix,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-594,Iteration-16,,Duplicate: SCRUM-563,https://basketball-strategy.atlassian.net/browse/SCRUM-599
+SCRUM-600,Add shared export controls to the three results pages,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-486,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-600
+SCRUM-601,Validate and deliver signed-in report downloads,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-486,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-601
+SCRUM-602,Test and deploy the shared export flow,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-486,Iteration-16,,Relates: BSR-97,https://basketball-strategy.atlassian.net/browse/SCRUM-602
+SCRUM-603,"Model the data checks, forecast evaluation and report exports",Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-16,3,Relates: SCRUM-480; Relates: SCRUM-526; Relates: SCRUM-486; Relates: BSR-76,https://basketball-strategy.atlassian.net/browse/SCRUM-603
+SCRUM-604,Add the feature design and interaction diagrams,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-603,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-604
+SCRUM-605,Check the native model and diagram previews,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-603,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-605
+SCRUM-606,Publish the approved feature diagrams to Teamwork,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-603,Iteration-16,,Relates: BSR-111,https://basketball-strategy.atlassian.net/browse/SCRUM-606
+SCRUM-607,Separate Model Metrics request and refresh state,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-542,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-607
+SCRUM-608,Retest Model Metrics loading and exports,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-542,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-608
+SCRUM-609,Confirm the Top-K response-time target and acceptance test,Task,To Do,Gurkaranjit Asahan,SCRUM-8,Iteration-17,2,Relates: SCRUM-550; Relates: BST-111,https://basketball-strategy.atlassian.net/browse/SCRUM-609
+SCRUM-610,Measure a bounded sample of deployed Top-K uplift requests,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-550,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-610
+SCRUM-611,Compare response times with the proposed targets,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-550,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-611
+SCRUM-612,Review and record the agreed timing targets,Dev Subtask,To Do,Gurkaranjit Asahan,SCRUM-609,Iteration-17,,,https://basketball-strategy.atlassian.net/browse/SCRUM-612
+SCRUM-613,Run the Top-K response-time acceptance cases,Dev Subtask,To Do,Gurkaranjit Asahan,SCRUM-609,Iteration-17,,,https://basketball-strategy.atlassian.net/browse/SCRUM-613
+SCRUM-614,Add the production redirect to the public app address,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-575,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-614
+SCRUM-615,Verify the deployed public address and data request,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-575,Iteration-15,,,https://basketball-strategy.atlassian.net/browse/SCRUM-615
+SCRUM-616,Keep negative context values in export filenames,Task,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-16,1,Relates: BST-178; Blocks: SCRUM-486; Relates: BSR-35,https://basketball-strategy.atlassian.net/browse/SCRUM-616
+SCRUM-617,Preserve negative filters in report filenames,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-616,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-617
+SCRUM-618,Retest signed context filenames on the deployed app,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-616,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-618
+SCRUM-619,Clarify what the Model Metrics results measure,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-526,Iteration-15,,Relates: BST-173,https://basketball-strategy.atlassian.net/browse/SCRUM-619
+SCRUM-620,Connect the use cases to their design and sequence diagrams,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-603,Iteration-16,,,https://basketball-strategy.atlassian.net/browse/SCRUM-620

@@ -1,0 +1,71 @@
+{
+  "finished_at_utc": "2026-10-19T01:54:30.036273+00:00",
+  "site": "https://nbaplayranker-seven.vercel.app",
+  "frontend_initial": "b53413a710b76a7b3d6e2a0a7d1eef8dce5bc3a6",
+  "frontend_final": "80d968be11b13ddefc6897bd0e9b63a27d6e90c1",
+  "backend_initial": "nba-playranker-api-00007-gvd",
+  "backend_final": "nba-playranker-api-00008-g5z",
+  "checks": [
+    {
+      "name": "Analyst Data Explorer",
+      "result": "Pass",
+      "details": "All four source checks pass; TOR 2024-25 offense displays 11 rows. Verified again on final frontend/backend."
+    },
+    {
+      "name": "Model Metrics loading",
+      "result": "Pass",
+      "details": "Holdout and pipeline finish loading independently. Four model rows are displayed and Export is enabled."
+    },
+    {
+      "name": "Model Metrics interpretation",
+      "result": "Pass",
+      "details": "Final deployed page labels evaluation retrospective and explains observed-season inputs and forecast limitation."
+    },
+    {
+      "name": "Three-format browser downloads",
+      "result": "Pass",
+      "details": "CSV, JSON and PDF files actually saved for baseline, context and holdout metrics; 14 displayed rows match downloaded values at displayed precision."
+    },
+    {
+      "name": "Stale filter guard",
+      "result": "Pass",
+      "details": "Changing Top-K from 5 to 3 disables Export and explains that rankings must be rerun on both coach pages. Restoring matching inputs re-enables it."
+    },
+    {
+      "name": "Context filename",
+      "initial_result": "Fail",
+      "result": "Pass",
+      "bug": "SCRUM-616",
+      "test": "BST-178",
+      "details": "Initial numeric minus sign was missing. Three fresh browser files on revision 00008 preserve -2; source failure and passing retest retained."
+    },
+    {
+      "name": "Export failure and retry",
+      "result": "Pass",
+      "scope": "Isolated browser fixture using the actual component",
+      "details": "First preflight503 clears busy state. Retry returns200 and saves the exact two-row CSV; no production outage."
+    },
+    {
+      "name": "Role sign-in and sign-out",
+      "result": "Pass",
+      "details": "Existing analyst and coach accounts reach their workspaces; both sign-outs return to public home. The final tab is signed in as analyst."
+    }
+  ],
+  "evidence": [
+    "data-quality-final-state.txt",
+    "metrics-final-state.txt",
+    "baseline-state.txt",
+    "context-state.txt",
+    "stale-export-state.txt",
+    "context-stale-state.txt",
+    "screen-to-file-comparison.json",
+    "initial-download-verification.json",
+    "filename-retest.json",
+    "../export-retry-fixture/verification.json"
+  ],
+  "limits": [
+    "This is the assigned feature demonstration, not a claim that every app feature is defect-free.",
+    "The remaining shot-data and Gameplan defects are listed in Jira.",
+    "The earlier Metrics pipeline screenshot was captured before the wording-only frontend update; final table screenshot uses the final frontend."
+  ]
+}

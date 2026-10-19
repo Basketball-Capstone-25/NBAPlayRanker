@@ -1,0 +1,29 @@
+{
+  "recorded_at_utc": "2026-10-19T01:40:03.369Z",
+  "test": "BST-178",
+  "initial_result": "Fail",
+  "bug": "SCRUM-616",
+  "subtasks": [
+    {
+      "key": "SCRUM-617",
+      "summary": "Preserve negative filters in report filenames",
+      "status": "Done"
+    },
+    {
+      "key": "SCRUM-618",
+      "summary": "Retest signed context filenames on the deployed app",
+      "status": "Done"
+    }
+  ],
+  "parent_feature": "SCRUM-486",
+  "scope": "Context export filenames lose the minus sign from numeric filters; report values remain correct.",
+  "status": "Done",
+  "sprint": "Iteration-16",
+  "actual_worklogs_added": 0,
+  "final_result": "Pass",
+  "fix_commit": "db7abfb763b7890d624fbe1969ffc48163948412",
+  "backend_revision": "nba-playranker-api-00008-g5z",
+  "failure_comment_id": "11212",
+  "retest_comment_id": "11222",
+  "retest_evidence": "docs/assignment-2/verification/browser/filename-retest.json"
+}

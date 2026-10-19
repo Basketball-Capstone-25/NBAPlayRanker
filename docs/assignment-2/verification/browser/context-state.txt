@@ -1,0 +1,406 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/context?season=2024-25&our=TOR&opp=BOS&k=5".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/context?season=2024-25&our=TOR&opp=BOS&k=5
+	106 container
+		107 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		108 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		109 image
+		110 text Context / ML • Coach view
+		111 link Description: Compare Baseline, Value: nbaplayranker-seven.vercel.app/matchup?season=2024-25&our=TOR&opp=BOS&k=5
+		112 link Description: Gameplan, Value: nbaplayranker-seven.vercel.app/gameplan
+		113 heading Context / ML, Value: 1
+			114 text Context / ML
+		115 text Set the situation, then run to re-rank Top-K play types under score/time context.
+		116 button Down 2 • 3:00 • Q4
+		117 button Down 6 • 2:00 • Q4
+		118 button Up 4 • 1:30 • Q4
+		119 button Tie • 2:00 • OT
+		120 container
+			121 heading Matchup + context inputs, Value: 2
+				122 text Matchup + context inputs
+			123 text Ready Season
+			124 pop up button (collapsed, settable) Season, Value: 2024-25, Secondary Actions: Expand
+				125 menu
+					126 2019-20
+					127 2020-21
+					128 2021-22
+					129 2022-23
+					130 2023-24
+					131 (selected) 2024-25
+			132 text Top-K
+			133 pop up button (collapsed, settable) Top-K, Value: 5, Secondary Actions: Expand
+				134 menu
+					135 3
+					136 (selected) 5
+					137 7
+					138 10
+			139 text Our Team
+			140 pop up button (collapsed, settable) Our Team, Value: TOR, Secondary Actions: Expand
+				141 menu
+					142 ATL
+					143 BKN
+					144 BOS
+					145 CHA
+					146 CHI
+					147 CLE
+					148 DAL
+					149 DEN
+					150 DET
+					151 GSW
+					152 HOU
+					153 IND
+					154 LAC
+					155 LAL
+					156 MEM
+					157 MIA
+					158 MIL
+					159 MIN
+					160 NOP
+					161 NYK
+					162 OKC
+					163 ORL
+					164 PHI
+					165 PHX
+					166 POR
+					167 SAC
+					168 SAS
+					169 (selected) TOR
+					170 UTA
+					171 WAS
+			172 text Opponent
+			173 pop up button (collapsed, settable) Opponent, Value: BOS, Secondary Actions: Expand
+				174 menu
+					175 ATL
+					176 BKN
+					177 (selected) BOS
+					178 CHA
+					179 CHI
+					180 CLE
+					181 DAL
+					182 DEN
+					183 DET
+					184 GSW
+					185 HOU
+					186 IND
+					187 LAC
+					188 LAL
+					189 MEM
+					190 MIA
+					191 MIL
+					192 MIN
+					193 NOP
+					194 NYK
+					195 OKC
+					196 ORL
+					197 PHI
+					198 PHX
+					199 POR
+					200 SAC
+					201 SAS
+					202 (disabled) TOR
+					203 UTA
+					204 WAS
+			205 text Margin (our − opponent) Negative = trailing, Positive = leading
+			206 stepper (settable, integer) -2
+			207 slider (settable, integer) -2
+			208 text trailing 
+			209 text 0.13
+			210 text  • leading
+			211 text 0.00
+			212 text Time pressure Set period + time remaining
+			213 pop up button (collapsed, settable) Value: P4, Secondary Actions: Expand
+				214 menu
+					215 P1
+					216 P2
+					217 P3
+					218 (selected) P4
+					219 OT
+			220 slider (settable, integer) 120
+			221 image
+			222 text 2:00
+			223 text late 
+			224 text 0.50
+			225 container late factor meter
+			226 text Describe the situation Coach notes for this scenario (saved in the share link later if you want)
+			227 text entry area (settable) Down 2 with 3:00 left in the 4th. We need a good look. After timeout.
+			228 text Overlay controls Small context nudges (on by default)
+			229 image
+			230 text strength  1.0
+			231 checkbox (settable, integer) Description: Apply overlay, Value: 1
+			232 text Strength
+			233 stepper (settable, integer) Strength, Value: 1
+			234 checkbox (settable, integer) Description: Live mode, Value: 0
+			235 button Run Context + ML
+				236 image
+				237 text Run Context + ML
+			238 text Export format
+			239 pop up button (collapsed, settable) Export format, Value: JSON, Secondary Actions: Expand
+				240 menu
+					241 CSV
+					242 PDF
+					243 (selected) JSON
+			244 button Export
+			245 text Export these rankings, including the selected context overlay. Download requested. Check your browser’s Downloads folder.
+			246 button Copy share link
+				247 image
+				248 text Copy share link
+			249 button Hide breakdown
+				250 image
+				251 text Hide breakdown
+			252 text TOR (Toronto Raptors) vs BOS (Boston Celtics)  • P 4  •  2:00  • margin  -2
+			253 link Description: Compare Baseline, Value: nbaplayranker-seven.vercel.app/matchup?season=2024-25&our=TOR&opp=BOS&k=5
+		254 heading Top recommendations, Value: 2
+			255 text Top recommendations
+		256 text TOR vs BOS • 2024-25
+		257 container
+			258 text # 1 PRRollMan
+		259 text PPP 1.160
+		260 text PRRollMan [other]: ML base 1.158, legacy +0.001, NLP +0.000, total +0.001 (Normal context). Blend off/def=0.70/0.30. no extra NLP family adjustments. Late=0.33, trailing=0.20, leading=0.00.
+		261 text ML 1.158 Baseline 1.154 Overlay 0.001
+		262 container
+			263 text # 1 PRRollMan
+		264 container
+			265 text Δ  + 0.007 • overlay  0.001
+		266 container PPP bar for PRRollMan
+		267 text 1.160
+		268 container
+			269 text # 2 Spotup
+		270 container
+			271 text Δ  + 0.005 • overlay  0.000
+		272 container PPP bar for Spotup
+		273 text 1.071
+		274 container
+			275 text # 3 OffScreen
+		276 container
+			277 text Δ  + 0.004 • overlay  -0.000
+		278 container PPP bar for OffScreen
+		279 text 0.998
+		280 container
+			281 text # 4 Postup
+		282 container
+			283 text Δ  -0.026 • overlay  -0.000
+		284 container PPP bar for Postup
+		285 text 0.941
+		286 container
+			287 text # 5 Isolation
+		288 container
+			289 text Δ  + 0.009 • overlay  -0.001
+		290 container PPP bar for Isolation
+		291 text 0.911
+		294 table
+			295 row
+				296 cell
+					297 text #
+				298 cell
+					299 text Play Type
+				300 cell
+					301 text PPP_display
+				302 cell
+					303 text Backend Final
+				304 cell
+					305 text ML
+				306 cell
+					307 text Baseline
+				308 cell
+					309 text Δ_display
+				310 cell
+					311 text Overlay
+				312 cell
+					313 text Eff
+				314 cell
+					315 text Quick
+				316 cell
+					317 text Protect
+				318 cell
+					319 text Type
+				320 cell
+					321 text Late
+				322 cell
+					323 text Trail
+				324 cell
+					325 text Lead
+				326 cell
+					327 text Var
+			328 row
+				329 cell
+					330 text 1
+				331 cell
+					332 text PRRollMan
+				333 cell
+					334 text 1.160
+				335 cell
+					336 text 1.160
+				337 cell
+					338 text 1.158
+				339 cell
+					340 text 1.154
+				341 cell
+					342 text + 0.007
+				343 cell
+					344 text 0.001
+				345 cell
+					346 text 0.001
+				347 cell
+					348 text 0.000
+				349 cell
+					350 text 0.000
+				351 cell
+					352 text 0.000
+				353 cell
+					354 text 0.50
+				355 cell
+					356 text 0.13
+				357 cell
+					358 text 0.00
+				359 cell
+					360 text 0.004
+			361 row
+				362 cell
+					363 text 2
+				364 cell
+					365 text Spotup
+				366 cell
+					367 text 1.071
+				368 cell
+					369 text 1.070
+				370 cell
+					371 text 1.063
+				372 cell
+					373 text 1.065
+				374 cell
+					375 text + 0.005
+				376 cell
+					377 text 0.000
+				378 cell
+					379 text 0.000
+				380 cell
+					381 text 0.000
+				382 cell
+					383 text 0.000
+				384 cell
+					385 text 0.000
+				386 cell
+					387 text 0.50
+				388 cell
+					389 text 0.13
+				390 cell
+					391 text 0.00
+				392 cell
+					393 text 0.002
+			394 row
+				395 cell
+					396 text 3
+				397 cell
+					398 text OffScreen
+				399 cell
+					400 text 0.998
+				401 cell
+					402 text 0.998
+				403 cell
+					404 text 0.992
+				405 cell
+					406 text 0.993
+				407 cell
+					408 text + 0.004
+				409 cell
+					410 text -0.000
+				411 cell
+					412 text -0.000
+				413 cell
+					414 text 0.000
+				415 cell
+					416 text 0.000
+				417 cell
+					418 text 0.000
+				419 cell
+					420 text 0.50
+				421 cell
+					422 text 0.13
+				423 cell
+					424 text 0.00
+				425 cell
+					426 text 0.001
+			427 row
+				428 cell
+					429 text 4
+				430 cell
+					431 text Postup
+				432 cell
+					433 text 0.941
+				434 cell
+					435 text 0.941
+				436 cell
+					437 text 0.939
+				438 cell
+					439 text 0.967
+				440 cell
+					441 text -0.026
+				442 cell
+					443 text -0.000
+				444 cell
+					445 text -0.000
+				446 cell
+					447 text 0.000
+				448 cell
+					449 text 0.000
+				450 cell
+					451 text 0.000
+				452 cell
+					453 text 0.50
+				454 cell
+					455 text 0.13
+				456 cell
+					457 text 0.00
+				458 cell
+					459 text 0.028
+			460 row
+				461 cell
+					462 text 5
+				463 cell
+					464 text Isolation
+				465 cell
+					466 text 0.911
+				467 cell
+					468 text 0.911
+				469 cell
+					470 text 0.909
+				471 cell
+					472 text 0.902
+				473 cell
+					474 text + 0.009
+				475 cell
+					476 text -0.001
+				477 cell
+					478 text -0.001
+				479 cell
+					480 text 0.000
+				481 cell
+					482 text 0.000
+				483 cell
+					484 text 0.000
+				485 cell
+					486 text 0.50
+				487 cell
+					488 text 0.13
+				489 cell
+					490 text 0.00
+				491 cell
+					492 text 0.007
+		292 button (collapsed) More info, Secondary Actions: Expand
+			293 text More info
+		92 container
+			93 text Built with  Next.js  (UI) +  FastAPI  (services).
+		94 container
+			95 text Tip for reviewers: start at 
+			96 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			97 text  to see the dataset, then compare 
+			98 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			99 text  vs 
+			100 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			101 text , and verify evidence in 
+			102 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			103 text  and
+			104 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			105 text .
+
+The focused UI element is 249 button Hide breakdown

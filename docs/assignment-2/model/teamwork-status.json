@@ -1,0 +1,27 @@
+{
+  "verified_at_utc": "2026-10-19T02:13:29.316684+00:00",
+  "state": "published",
+  "publication_confirmed": true,
+  "base_shared_revision": 55,
+  "shared_revision": 56,
+  "local_revision": 56,
+  "workspace_current_revision": 56,
+  "workspace_last_server_revision_cache": 55,
+  "independent_network_query_performed": false,
+  "pending_history_entries": 0,
+  "working_copy_pending_history_entries": 36,
+  "native_sha256": "1bbb624e9b38a4a149ab0719e204a4ec249029f5e917e4c4616d4eddedb46697",
+  "native_source": "Committed pristine snapshot",
+  "working_copy_preserved_untouched": true,
+  "native_diagram_count": 201,
+  "committed_diagram_count": 201,
+  "commit": {
+    "revision": 56,
+    "project_id": "8kPzyVmAUUE.bxEP",
+    "author": "asahang@sheridancollege.ca",
+    "comment": "Add export, data-check and next-season evaluation collaborations (SCRUM-486/480/526)",
+    "timestamp_utc": "2026-10-19T02:09:28.327000+00:00"
+  },
+  "scope": "Nine new diagrams in three collaborations for SCRUM-480, SCRUM-486 and SCRUM-526. All 192 original diagrams are retained. Original model identities and all 1,726 original diagram-element rows are preserved. Vendor publication metadata and presentation defaults are documented separately.",
+  "post_commit_working_copy_note": "Nineteen caption position/size records and one child drawing-order list changed. All model definitions, IDs, messages, protocol labels and endpoint paths match the published snapshot. These are presentation/layout changes, not feature or model semantics."
+}

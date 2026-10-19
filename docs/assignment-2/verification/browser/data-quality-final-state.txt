@@ -1,0 +1,390 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/data-explorer".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/data-explorer
+	111 container
+		112 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		113 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		114 container
+			115 heading Data Explorer, Value: 1
+				116 text Data Explorer
+			117 text Preview the 
+			118 text cleaned, team-level dataset
+			119 text  used by the recommenders. This page contains
+			120 text no predictions
+			121 text —only filterable data you can export for analysis.
+			122 button Export CSV
+			123 link Description: Next: Baseline Matchup, Value: nbaplayranker-seven.vercel.app/matchup
+			124 text Season 
+			125 text 2024-25
+			126 text  • 
+			127 text TOR (Toronto Raptors)
+			128 text  • Side
+			129 text offense
+			130 text  • Showing 
+			131 text 11
+			132 text  / 
+			133 text 11
+			134 text rows
+			135 button Reset UI, Help: Resets UI filters (does not change backend behavior)
+		136 container Data quality
+			137 heading Data quality, Value: 2, ID: quality-heading
+				138 text Data quality
+			139 button Refresh data checks
+			140 text Listed checks passed
+			141 container
+				142 text Synergy play-type source  ·  47,982  source rows ·  6  seasons ·  30  teams
+			143 container
+				144 text All source rows; independent of preview filters . Checked  10/18/2026, 9:51:13 PM .
+			145 content list
+				146 container
+					147 text Required columns Passed All required columns are present.
+				148 container
+					149 text Missing values Passed No missing values in the checked fields.
+				150 container
+					151 text Duplicate rows Passed 0 duplicate rows.
+				152 container
+					153 text Team and season coverage Passed 30 expected teams covered across 6 seasons.
+			154 button (collapsed) Dataset version, Secondary Actions: Expand
+				155 text Dataset version
+			156 text These checks cover the play-type source data, including rows outside the preview filters. They do not measure prediction accuracy or validate the separate shot dataset.
+		157 container
+			158 heading Filters, Value: 2
+				159 text Filters
+			160 text Filter the dataset preview. Export uses the same filters (with a higher row cap). Search (UI)
+			161 text field (settable) Search (UI)
+			162 text Sort
+			163 pop up button (collapsed, settable) Sort, Value: PPP, Secondary Actions: Expand
+				164 menu
+					165 (disabled) Play Type
+					166 (disabled) Side
+					167 (disabled) Possessions
+					168 (disabled) Usage %
+					169 (disabled) PPP
+					170 (disabled) eFG%
+					171 (disabled) TOV%
+			172 button Desc ↓, Help: Toggle sort direction (UI only)
+			173 container
+				174 text Season
+				175 pop up button (collapsed, settable) Season, Value: 2024-25, Secondary Actions: Expand
+					176 menu
+						177 2019-20
+						178 2020-21
+						179 2021-22
+						180 2022-23
+						181 2023-24
+						182 (selected) 2024-25
+			183 container
+				184 text Team (optional)
+				185 pop up button (collapsed, settable) Team (optional), Value: TOR, Secondary Actions: Expand
+					186 menu
+						187 All teams
+						188 ATL
+						189 BKN
+						190 BOS
+						191 CHA
+						192 CHI
+						193 CLE
+						194 DAL
+						195 DEN
+						196 DET
+						197 GSW
+						198 HOU
+						199 IND
+						200 LAC
+						201 LAL
+						202 MEM
+						203 MIA
+						204 MIL
+						205 MIN
+						206 NOP
+						207 NYK
+						208 OKC
+						209 ORL
+						210 PHI
+						211 PHX
+						212 POR
+						213 SAC
+						214 SAS
+						215 (selected) TOR
+						216 UTA
+						217 WAS
+			218 container
+				219 text Side
+				220 pop up button (collapsed, settable) Side, Value: offense, Secondary Actions: Expand
+					221 menu
+						222 (selected) offense
+						223 defense
+			224 container
+				225 text Play Type (optional)
+				226 pop up button (collapsed, settable) Play Type (optional), Value: All play types, Secondary Actions: Expand
+					227 menu
+						228 (selected) All play types
+						229 Cut
+						230 Handoff
+						231 Isolation
+						232 Misc
+						233 OffRebound
+						234 OffScreen
+						235 PRBallHandler
+						236 PRRollMan
+						237 Postup
+						238 Spotup
+						239 Transition
+			240 container
+				241 text Min possessions
+				242 stepper (settable, integer) Min possessions, Value: 0
+			243 container
+				244 text Rows to show
+				245 stepper (settable, integer) Rows to show, Value: 200
+			246 text Visible rows 11 After UI search + sort. Total possessions 8517 Sum over visible rows. Avg PPP 0.934
+			247 text Typical range ~0.7–1.3 PPP. PPP range 0.377  – 1.197 Min/Max within visible rows.
+		248 container
+			249 heading Preview table, Value: 2
+				250 text Preview table
+			251 text Committee-friendly subset of columns. (UI search/sort does not change the exported CSV.) Export rows cap:  1000
+			252 button Export CSV
+			253 table
+				254 row
+					255 cell
+						256 text #
+					257 cell Click to sort (UI)
+						258 text Play Type
+					259 cell Click to sort (UI)
+						260 text Side
+					261 cell Click to sort (UI)
+						262 text Possessions
+					263 cell Click to sort (UI)
+						264 text Usage %
+					265 cell Click to sort (UI)
+						266 text PPP ↓
+					267 cell Click to sort (UI)
+						268 text eFG%
+					269 cell Click to sort (UI)
+						270 text TOV%
+				271 row
+					272 cell
+						273 text 1
+					274 cell
+						275 text Cut
+					276 cell
+						277 text offense
+					278 cell
+						279 text 745
+					280 cell 0.08747211459434073
+						281 text 8.7%
+					282 cell
+						283 text 1.197
+					284 cell 0.6158496644295302
+						285 text 61.6%
+					286 cell 0.06987114093959731
+						287 text 7.0%
+				288 row
+					289 cell
+						290 text 2
+					291 cell
+						292 text PRRollMan
+					293 cell
+						294 text offense
+					295 cell
+						296 text 482
+					297 cell 0.05659269695902313
+						298 text 5.7%
+					299 cell
+						300 text 1.135
+					301 cell 0.5825311203319503
+						302 text 58.3%
+					303 cell 0.0643091286307054
+						304 text 6.4%
+				305 row
+					306 cell
+						307 text 3
+					308 cell
+						309 text OffRebound
+					310 cell
+						311 text offense
+					312 cell
+						313 text 437
+					314 cell 0.05130914641305624
+						315 text 5.1%
+					316 cell
+						317 text 1.060
+					318 cell 0.5353135011441648
+						319 text 53.5%
+					320 cell 0.07764530892448512
+						321 text 7.8%
+				322 row
+					323 cell
+						324 text 4
+					325 cell
+						326 text Transition
+					327 cell
+						328 text offense
+					329 cell
+						330 text 1886
+					331 cell 0.22143947399319008
+						332 text 22.1%
+					333 cell
+						334 text 1.055
+					335 cell 0.5657354188759278
+						336 text 56.6%
+					337 cell 0.1129199363732768
+						338 text 11.3%
+				339 row
+					340 cell
+						341 text 5
+					342 cell
+						343 text Spotup
+					344 cell
+						345 text offense
+					346 cell
+						347 text 1828
+					348 cell 0.21462956440061054
+						349 text 21.5%
+					350 cell
+						351 text 1.032
+					352 cell 0.5313490153172866
+						353 text 53.1%
+					354 cell 0.049350656455142236
+						355 text 4.9%
+				356 row
+					357 cell
+						358 text 6
+					359 cell
+						360 text OffScreen
+					361 cell
+						362 text offense
+					363 cell
+						364 text 360
+					365 cell 0.042268404367735116
+						366 text 4.2%
+					367 cell
+						368 text 0.975
+					369 cell 0.5060583333333334
+						370 text 50.6%
+					371 cell 0.08631388888888888
+						372 text 8.6%
+				373 row
+					374 cell
+						375 text 7
+					376 cell
+						377 text Postup
+					378 cell
+						379 text offense
+					380 cell
+						381 text 261
+					382 cell 0.03064459316660796
+						383 text 3.1%
+					384 cell
+						385 text 0.927
+					386 cell 0.4916858237547892
+						387 text 49.2%
+					388 cell 0.1341647509578544
+						389 text 13.4%
+				390 row
+					391 cell
+						392 text 8
+					393 cell
+						394 text Isolation
+					395 cell
+						396 text offense
+					397 cell
+						398 text 334
+					399 cell 0.0392156862745098
+						400 text 3.9%
+					401 cell
+						402 text 0.883
+					403 cell 0.4420808383233534
+						404 text 44.2%
+					405 cell 0.0899880239520958
+						406 text 9.0%
+				407 row
+					408 cell
+						409 text 9
+					410 cell
+						411 text Handoff
+					412 cell
+						413 text offense
+					414 cell
+						415 text 506
+					416 cell 0.05941059058353881
+						417 text 5.9%
+					418 cell
+						419 text 0.826
+					420 cell 0.43117786561264826
+						421 text 43.1%
+					422 cell 0.10869762845849802
+						423 text 10.9%
+				424 row
+					425 cell
+						426 text 10
+					427 cell
+						428 text PRBallHandler
+					429 cell
+						430 text offense
+					431 cell
+						432 text 1240
+					433 cell 0.1455911705999765
+						434 text 14.6%
+					435 cell
+						436 text 0.811
+					437 cell 0.46627822580645156
+						438 text 46.6%
+					439 cell 0.19502096774193547
+						440 text 19.5%
+				441 row
+					442 cell
+						443 text 11
+					444 cell
+						445 text Misc
+					446 cell
+						447 text offense
+					448 cell
+						449 text 438
+					450 cell 0.05142655864741106
+						451 text 5.1%
+					452 cell
+						453 text 0.377
+					454 cell 0.35397716894977177
+						455 text 35.4%
+					456 cell 0.5982671232876712
+						457 text 59.8%
+		458 container
+			459 heading Pipeline summary (what this data represents), Value: 2
+				460 text Pipeline summary (what this data represents)
+			461 text Evidence for the defense: cleaning + aggregation pipeline (player rows → team rows) with export parity.
+			462 button Hide details
+			463 text No predictions on this page Filter + export only Team-level aggregation Synergy play-type snapshot (player rows) aggregated into team-level play-type tables (offense/defense). Explainability
+			464 content list
+				465 container
+					466 AXListMarker • 
+					467 text Map Synergy TYPE_GROUPING to SIDE = offense/defense.
+				468 container
+					469 AXListMarker • 
+					470 text Group player rows into team-level rows by (SEASON, TEAM, PLAY_TYPE, SIDE).
+				471 container
+					472 AXListMarker • 
+					473 text Compute possession-weighted averages for efficiency stats (PPP, eFG%, TOV%, etc.).
+				474 container
+					475 AXListMarker • 
+					476 text Compute RELIABILITY_WEIGHT from log1p(POSS) to reduce noise from small samples (used for shrinkage).
+				477 container
+					478 AXListMarker • 
+					479 text Build league baselines per (SEASON, PLAY_TYPE, SIDE) for shrinkage anchors.
+			480 text API call:
+			481 text https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/data/team-playtypes?season=2024-25&team=TOR&side=offense&limit=200
+		97 container
+			98 text Built with  Next.js  (UI) +  FastAPI  (services).
+		99 container
+			100 text Tip for reviewers: start at 
+			101 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			102 text  to see the dataset, then compare 
+			103 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			104 text  vs 
+			105 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			106 text , and verify evidence in 
+			107 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			108 text  and
+			109 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			110 text .
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/data-explorer

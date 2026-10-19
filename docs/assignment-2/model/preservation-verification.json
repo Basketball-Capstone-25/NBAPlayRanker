@@ -1,0 +1,179 @@
+{
+  "verified_at_utc": "2026-10-19T02:12:25.500550+00:00",
+  "verified": true,
+  "published": true,
+  "shared_revision": 56,
+  "publication_evidence": "User completed Desktop Team > Commit. Matching revision56 commit markers are present in the committed pristine and working copy; the pristine has no pending history. No independent fresh network query was performed.",
+  "commit": {
+    "revision": 56,
+    "project_id": "8kPzyVmAUUE.bxEP",
+    "author": "asahang@sheridancollege.ca",
+    "comment": "Add export, data-check and next-season evaluation collaborations (SCRUM-486/480/526)",
+    "timestamp_utc": "2026-10-19T02:09:28.327000+00:00"
+  },
+  "native_sha256": "1bbb624e9b38a4a149ab0719e204a4ec249029f5e917e4c4616d4eddedb46697",
+  "native_source": "Committed pristine snapshot; post-commit working-copy layout changes excluded.",
+  "prepared_native_sha256": "5031afc501101b6aafd60ff01e2c5aff84cabfcc1c22b34ec93c751285754703",
+  "working_copy_sha256": "9b02a661b6d3c9635441678b6c6b291b80ca1b1bac355c7bbb555cfae255e79d",
+  "pending_history_entries": 0,
+  "working_copy_pending_history_entries": 36,
+  "workspace_revision": 56,
+  "workspace_last_server_revision_cache": 55,
+  "checks": {
+    "DIAGRAM_prepared_ids_match_published": true,
+    "DIAGRAM_all_baseline_ids_retained": true,
+    "DIAGRAM_prepared_content_retained_after_documented_vendor_changes": true,
+    "MODEL_ELEMENT_prepared_ids_match_published": true,
+    "MODEL_ELEMENT_all_baseline_ids_retained": true,
+    "MODEL_ELEMENT_prepared_content_retained_after_documented_vendor_changes": true,
+    "all_original_model_ids_types_parents_authors_created_retained": true,
+    "DIAGRAM_ELEMENT_prepared_ids_match_published": true,
+    "DIAGRAM_ELEMENT_all_baseline_ids_retained": true,
+    "all_1817_prepared_diagram_elements_byte_identical": true,
+    "all_1726_original_diagram_elements_byte_identical": true,
+    "PROJECT_FILE_prepared_ids_match_published": true,
+    "PROJECT_FILE_all_baseline_ids_retained": true,
+    "all_526_original_embedded_resources_byte_identical": true,
+    "project_identity_unchanged": true,
+    "working_and_pristine_revision56_markers_match": true,
+    "commit_author_and_comment_match": true,
+    "committed_pristine_zero_pending_history": true,
+    "nine_additive_diagrams_published": true,
+    "workspace_current_revision56": true,
+    "postcommit_diagram_changes_only_child_draw_order": true,
+    "postcommit_view_changes_only_deployment_caption_layout": true,
+    "postcommit_no_model_changes": true
+  },
+  "counts": {
+    "DIAGRAM": {
+      "baseline": 192,
+      "published": 201,
+      "added": 9
+    },
+    "MODEL_ELEMENT": {
+      "baseline": 2158,
+      "published": 2239,
+      "added": 81
+    },
+    "DIAGRAM_ELEMENT": {
+      "baseline": 1726,
+      "published": 1817,
+      "added": 91
+    },
+    "PROJECT_FILE": {
+      "baseline": 526,
+      "published": 535,
+      "added": 9
+    }
+  },
+  "vendor_changes_during_publication": [
+    "Commit timestamps and commit-author fields were added or refreshed.",
+    "Qualified model references and ModelView wrapper IDs were normalized; view targets are unchanged.",
+    "The old Data Foundations and Explorer Overview 2.0 has showClassOwner=2 and showPackageOwner=2 presentation defaults added.",
+    "Two entries in the new export sequence customized draw-order list moved; every diagram-element row remains byte-identical."
+  ],
+  "working_copy_after_commit": {
+    "preserved_untouched": true,
+    "pending_history_entries": 36,
+    "affected_diagram": "Deployment - Basketball Playtype Ranker",
+    "affected_diagram_id": "8W4D.wWAUAAADc8a",
+    "differences": "Nineteen caption position/size records and one child drawing-order list changed. All model definitions, IDs, messages, protocol labels and endpoint paths match the published snapshot. These are presentation/layout changes, not feature or model semantics.",
+    "diagram_rows_changed": [
+      "8W4D.wWAUAAADc8a"
+    ],
+    "diagram_element_rows_changed": [
+      "BW4D.wWAUAAADc9O",
+      "hW4D.wWAUAAADc9Q",
+      "hW4D.wWAUAAADc9S",
+      "hW4D.wWAUAAADc9U",
+      "hW4D.wWAUAAADc9W",
+      "RW4D.wWAUAAADc9Y",
+      "RW4D.wWAUAAADc9a",
+      "RW4D.wWAUAAADc9c",
+      "xW4D.wWAUAAADc9e",
+      "xW4D.wWAUAAADc9g",
+      "xW4D.wWAUAAADc9i",
+      "xW4D.wWAUAAADc9k",
+      "xW4D.wWAUAAADc9m",
+      "JW4D.wWAUAAADc9o",
+      "JW4D.wWAUAAADc9q",
+      "ZW4D.wWAUAAADc98",
+      "5W4D.wWAUAAADc9.",
+      "VW4D.wWAUAAADc.S",
+      "Dep52bba4b07e94b"
+    ]
+  },
+  "new_diagrams": [
+    {
+      "id": "A2271d30211208e1",
+      "name": "Collaboration Overview - Export KPIs / Reports (486)"
+    },
+    {
+      "id": "A24672919fb03b0c",
+      "name": "Structural Design - Run Data Quality Checks (480)"
+    },
+    {
+      "id": "A257dd5cc61e2c68",
+      "name": "Detailed Sequence - Export Displayed Results (486)"
+    },
+    {
+      "id": "A265c00592ba2418",
+      "name": "Structural Design - Evaluate Next-Season PPP (offline) (526)"
+    },
+    {
+      "id": "A27d914a6c6fcf29",
+      "name": "Detailed Sequence - Evaluate Next-Season PPP (526)"
+    },
+    {
+      "id": "A286349d6dc149e4",
+      "name": "Elaboration - Shared Export Controls (486)"
+    },
+    {
+      "id": "A2a4c53e03dcea0f",
+      "name": "Collaboration Overview - Evaluate Next-Season PPP (offline) (526)"
+    },
+    {
+      "id": "A2a6e559ca1de02a",
+      "name": "Collaboration Overview - Run Data Quality Checks (480)"
+    },
+    {
+      "id": "A2ec7436ba779216",
+      "name": "Detailed Sequence - Review Source Data Status (480)"
+    }
+  ],
+  "collaborations": {
+    "lesson": "Interaction and Detailed Design, pages 6\u20138: one realization per use case; overview, structural and behavioral design in each collaboration.",
+    "items": [
+      {
+        "jira": "SCRUM-480",
+        "use_case_id": "dfl3vjmEEhz2rQBu",
+        "use_case_name": "Run Data Quality Checks",
+        "collaboration_id": "A23e3c5e8769146c",
+        "realization_id": "A2de75646e2f0815",
+        "overview_id": "A2a6e559ca1de02a",
+        "structural_id": "A24672919fb03b0c",
+        "sequence_id": "A2ec7436ba779216"
+      },
+      {
+        "jira": "SCRUM-486",
+        "use_case_id": "dfl3vjmEEhz2rQBw",
+        "use_case_name": "Export KPIs / Reports",
+        "collaboration_id": "A2f637506212f701",
+        "realization_id": "A2a5290c46f858ee",
+        "overview_id": "A2271d30211208e1",
+        "structural_id": "A286349d6dc149e4",
+        "sequence_id": "A257dd5cc61e2c68"
+      },
+      {
+        "jira": "SCRUM-526",
+        "use_case_id": "A235a0ec6ec301ea",
+        "use_case_name": "Evaluate Next-Season PPP (offline)",
+        "collaboration_id": "A201783b2eeea751",
+        "realization_id": "A24d7089258e876e",
+        "overview_id": "A2a4c53e03dcea0f",
+        "structural_id": "A265c00592ba2418",
+        "sequence_id": "A27d914a6c6fcf29"
+      }
+    ]
+  }
+}

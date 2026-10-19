@@ -1,0 +1,184 @@
+{
+  "thresholds_recorded_at_utc": "2026-10-19T01:27:11.284Z",
+  "proposed_thresholds": {
+    "warm_p95_ms": 5000,
+    "concurrency_2_p95_ms": 10000,
+    "startup_ms": 45000,
+    "agreed": false
+  },
+  "method": "Client elapsed time through complete response body. First request has unknown warm state. Nine subsequent sequential requests, then six requests in three pairs with concurrency two. Nearest-rank p95. No service reset or forced cold start.",
+  "route": "/metrics/topk-uplift",
+  "filters": {
+    "season": "2024-25",
+    "our": "TOR",
+    "opp": "BOS",
+    "k": 5,
+    "w_off": 0.7
+  },
+  "measurements": [
+    {
+      "group": "initial_warm_state_unknown",
+      "index": 1,
+      "started_at_utc": "2026-10-19T01:27:11.284Z",
+      "finished_at_utc": "2026-10-19T01:27:12.523Z",
+      "elapsed_ms": 1239.17,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "warm_sequential",
+      "index": 1,
+      "started_at_utc": "2026-10-19T01:27:12.523Z",
+      "finished_at_utc": "2026-10-19T01:27:13.082Z",
+      "elapsed_ms": 558.53,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "warm_sequential",
+      "index": 2,
+      "started_at_utc": "2026-10-19T01:27:13.082Z",
+      "finished_at_utc": "2026-10-19T01:27:13.364Z",
+      "elapsed_ms": 281.91,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "warm_sequential",
+      "index": 3,
+      "started_at_utc": "2026-10-19T01:27:13.364Z",
+      "finished_at_utc": "2026-10-19T01:27:13.751Z",
+      "elapsed_ms": 387.64,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "warm_sequential",
+      "index": 4,
+      "started_at_utc": "2026-10-19T01:27:13.751Z",
+      "finished_at_utc": "2026-10-19T01:27:13.987Z",
+      "elapsed_ms": 235.69,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "warm_sequential",
+      "index": 5,
+      "started_at_utc": "2026-10-19T01:27:13.987Z",
+      "finished_at_utc": "2026-10-19T01:27:14.366Z",
+      "elapsed_ms": 379.23,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "warm_sequential",
+      "index": 6,
+      "started_at_utc": "2026-10-19T01:27:14.366Z",
+      "finished_at_utc": "2026-10-19T01:27:14.625Z",
+      "elapsed_ms": 258.35,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "warm_sequential",
+      "index": 7,
+      "started_at_utc": "2026-10-19T01:27:14.625Z",
+      "finished_at_utc": "2026-10-19T01:27:14.950Z",
+      "elapsed_ms": 325.61,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "warm_sequential",
+      "index": 8,
+      "started_at_utc": "2026-10-19T01:27:14.950Z",
+      "finished_at_utc": "2026-10-19T01:27:15.175Z",
+      "elapsed_ms": 224.51,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "warm_sequential",
+      "index": 9,
+      "started_at_utc": "2026-10-19T01:27:15.175Z",
+      "finished_at_utc": "2026-10-19T01:27:15.411Z",
+      "elapsed_ms": 236,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "concurrency_2",
+      "index": 1,
+      "started_at_utc": "2026-10-19T01:27:15.411Z",
+      "finished_at_utc": "2026-10-19T01:27:15.663Z",
+      "elapsed_ms": 251.7,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "concurrency_2",
+      "index": 2,
+      "started_at_utc": "2026-10-19T01:27:15.411Z",
+      "finished_at_utc": "2026-10-19T01:27:15.715Z",
+      "elapsed_ms": 303.92,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "concurrency_2",
+      "index": 3,
+      "started_at_utc": "2026-10-19T01:27:15.715Z",
+      "finished_at_utc": "2026-10-19T01:27:15.993Z",
+      "elapsed_ms": 277.36,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "concurrency_2",
+      "index": 4,
+      "started_at_utc": "2026-10-19T01:27:15.716Z",
+      "finished_at_utc": "2026-10-19T01:27:16.016Z",
+      "elapsed_ms": 300.03,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "concurrency_2",
+      "index": 6,
+      "started_at_utc": "2026-10-19T01:27:16.016Z",
+      "finished_at_utc": "2026-10-19T01:27:16.329Z",
+      "elapsed_ms": 313.16,
+      "status": 200,
+      "valid": true
+    },
+    {
+      "group": "concurrency_2",
+      "index": 5,
+      "started_at_utc": "2026-10-19T01:27:16.016Z",
+      "finished_at_utc": "2026-10-19T01:27:16.382Z",
+      "elapsed_ms": 366.62,
+      "status": 200,
+      "valid": true
+    }
+  ],
+  "warm_sequential": {
+    "samples": 9,
+    "successful_responses": 9,
+    "p95_ms": 558.53,
+    "min_ms": 224.51,
+    "max_ms": 558.53
+  },
+  "concurrency_2": {
+    "samples": 6,
+    "successful_responses": 6,
+    "p95_ms": 366.62,
+    "min_ms": 251.7,
+    "max_ms": 366.62
+  },
+  "proposal_comparison": {
+    "warm_meets_proposal": true,
+    "concurrency_2_meets_proposal": true,
+    "startup": "Not assessed: no confirmed cold start. The proposed target still needs agreement."
+  },
+  "finished_at_utc": "2026-10-19T01:27:16.383Z"
+}

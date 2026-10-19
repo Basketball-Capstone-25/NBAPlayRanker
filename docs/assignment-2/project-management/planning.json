@@ -1,0 +1,145 @@
+{
+  "scope": {
+    "story": "SCRUM-486",
+    "story_points": 3,
+    "sprint": "Iteration-16",
+    "sprint_id": 184,
+    "status": "Done",
+    "depends_on": "SCRUM-485",
+    "actual_logged_hours": 2
+  },
+  "development": [
+    {
+      "key": "SCRUM-600",
+      "summary": "Add shared export controls to the three results pages",
+      "description": "Add the CSV, JSON and PDF choices to Matchup, Context and Model Metrics. Build each report from the displayed result and its filters.\n\nAcceptance criteria:\n- The three pages use one export control.\n- Exports include the current result, context and limitations.\n- Loading, empty and changed inputs prevent stale exports.",
+      "hours": 2,
+      "effort_unit": "estimated hours",
+      "actual_worklogs_added": 0,
+      "status": "Done",
+      "actual_logged_hours": 0
+    },
+    {
+      "key": "SCRUM-601",
+      "summary": "Validate and deliver signed-in report downloads",
+      "description": "Add the bounded report formatter and same-origin download route for page snapshots.\n\nAcceptance criteria:\n- Validate the report kind, payload size and allowed role.\n- Forward the signed-in session without putting tokens in download URLs.\n- Return the correct filename and content type for CSV, JSON and PDF.\n- Failed requests return an error, not a downloaded report.",
+      "hours": 1.5,
+      "effort_unit": "estimated hours",
+      "actual_worklogs_added": 0,
+      "status": "Done",
+      "actual_logged_hours": 0
+    },
+    {
+      "key": "SCRUM-602",
+      "summary": "Test and deploy the shared export flow",
+      "description": "Run the export regression tests, deploy the change and download reports from all three pages.\n\nAcceptance criteria:\n- Compare exported values with the displayed results.\n- Check stale results, retry, signed-out access and wrong roles.\n- Record each test result and link any failure to its fix.\n- Add screenshots of the working controls and readable downloads.",
+      "hours": 1.5,
+      "effort_unit": "estimated hours",
+      "actual_worklogs_added": 1,
+      "status": "Done",
+      "actual_logged_hours": 2
+    }
+  ],
+  "test_suite": {
+    "key": "BST-170",
+    "issue_type": "Test Suite",
+    "hierarchy_level": 1,
+    "status": "Pass",
+    "board": 4
+  },
+  "test_cases": [
+    {
+      "key": "BST-171",
+      "summary": "Matchup exports the displayed ranking in all three formats",
+      "steps": "Sign in as a coach. Select TOR against BOS, season 2024-25, and load a Matchup ranking. Export CSV, JSON and PDF. Open each file and compare its play types, scores, selected filters and ordering with the page.",
+      "expected": "All three files open and match the displayed ranking and selection. The report states its result scope.",
+      "issue_type": "Test Case",
+      "hierarchy_level": 0,
+      "parent": "BST-170",
+      "status": "Pass",
+      "result": "Pass; current execution and preserved failure history are in the Jira comments."
+    },
+    {
+      "key": "BST-172",
+      "summary": "Context exports the selected situation and adjusted results",
+      "steps": "Sign in as a coach. Load Context with a supported matchup, change score margin and clock, then apply the context. Export CSV, JSON and PDF. Compare the result rows and context values with the page.",
+      "expected": "Each report contains the displayed adjusted results, the applied situation and its limitations. It does not replace them with a newly fetched baseline ranking.",
+      "issue_type": "Test Case",
+      "hierarchy_level": 0,
+      "parent": "BST-170",
+      "status": "Pass",
+      "result": "Pass; current execution and preserved failure history are in the Jira comments."
+    },
+    {
+      "key": "BST-173",
+      "summary": "Model Metrics exports the visible evaluation results",
+      "steps": "Sign in as an analyst. Load Model Metrics with a supported season and evaluation settings. Export CSV, JSON and PDF after results appear. Compare the metric names, values, selected settings and limitations with the page.",
+      "expected": "The reports match the available evaluation results. Exporting does not start a new training or evaluation run.",
+      "issue_type": "Test Case",
+      "hierarchy_level": 0,
+      "parent": "BST-170",
+      "status": "Pass",
+      "result": "Pass; current execution and preserved failure history are in the Jira comments."
+    },
+    {
+      "key": "BST-174",
+      "summary": "Export stays unavailable for empty, loading or stale results",
+      "steps": "On each export page, check the control before results load and while a request is pending. Load results, change a relevant input, then check the control before and after applying the change.",
+      "expected": "No report can be generated from empty, loading or stale results. Export becomes available when the displayed result matches the selection.",
+      "issue_type": "Test Case",
+      "hierarchy_level": 0,
+      "parent": "BST-170",
+      "status": "Pass",
+      "result": "Pass; current execution and preserved failure history are in the Jira comments."
+    },
+    {
+      "key": "BST-175",
+      "summary": "Report downloads require the correct signed-in role",
+      "steps": "Request each report without a session. Repeat coach reports with an analyst account and the analyst metrics report with a coach account. Then repeat with the allowed account.",
+      "expected": "Signed-out requests return 401 and wrong-role requests return 403. Allowed requests return the report. Rejected requests do not return attachment headers or expose session tokens.",
+      "issue_type": "Test Case",
+      "hierarchy_level": 0,
+      "parent": "BST-170",
+      "status": "Pass",
+      "result": "Pass; current execution and preserved failure history are in the Jira comments."
+    },
+    {
+      "key": "BST-176",
+      "summary": "Report validation rejects invalid and oversized snapshots",
+      "steps": "Send an unsupported report kind or format, malformed rows and a payload above the supported size limit. Send a valid small snapshot as a comparison.",
+      "expected": "Invalid requests return a clear client error and no attachment. The valid snapshot still downloads. There is no arbitrary backend URL or export path in the request contract.",
+      "issue_type": "Test Case",
+      "hierarchy_level": 0,
+      "parent": "BST-170",
+      "status": "Pass",
+      "result": "Pass; current execution and preserved failure history are in the Jira comments."
+    },
+    {
+      "key": "BST-177",
+      "summary": "A failed report request shows an error and can be retried",
+      "steps": "Simulate a failed or unavailable report service after loading valid results. Click Export, inspect the message and file behavior, then restore the service and retry.",
+      "expected": "The control shows an understandable error, does not save the error body as a report, clears its busy state and permits a successful retry.",
+      "issue_type": "Test Case",
+      "hierarchy_level": 0,
+      "parent": "BST-170",
+      "status": "Pass",
+      "result": "Pass; current execution and preserved failure history are in the Jira comments."
+    },
+    {
+      "key": "BST-178",
+      "summary": "Downloaded reports have readable filenames and content",
+      "steps": "Download CSV, JSON and PDF from each page. Inspect the filename, content type and actual file contents. Use a fixture with commas, quotes, line breaks and special characters in text values.",
+      "expected": "Each filename identifies the report and format. The content type matches a valid readable file. Text characters do not break CSV columns, JSON parsing or PDF rendering.",
+      "issue_type": "Test Case",
+      "hierarchy_level": 0,
+      "parent": "BST-170",
+      "status": "Pass",
+      "result": "Pass; current execution and preserved failure history are in the Jira comments.",
+      "initial_failure_comment": "11212",
+      "passing_retest_comment": "11222",
+      "linked_fix": "SCRUM-616"
+    }
+  ],
+  "actual_worklogs_added": 2,
+  "updated_at_utc": "2026-10-19T02:17:56.234Z"
+}

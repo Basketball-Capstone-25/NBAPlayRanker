@@ -1,0 +1,29 @@
+{
+  "checked_at_utc": "2026-10-19T01:50:26.780Z",
+  "run_id": 39186958422,
+  "source_commit": "80d968be11b13ddefc6897bd0e9b63a27d6e90c1",
+  "url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/39186958422",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 117851292276,
+      "name": "Backend tests",
+      "conclusion": "success"
+    },
+    {
+      "id": 117851292403,
+      "name": "Frontend tests and build",
+      "conclusion": "success"
+    }
+  ],
+  "counts_verified_from_job_logs": {
+    "backend_passed": 293,
+    "backend_expected_failures": 4,
+    "frontend_passed": 110,
+    "production_build": "passed",
+    "type_check": "passed"
+  },
+  "known_expected_failures": "Four existing shot-attribution regressions remain expected failures; this release does not repair the shot dataset.",
+  "earlier_evidence": "github-ci.json records the earlier b53413a release. Four filename regression cases were added afterwards."
+}

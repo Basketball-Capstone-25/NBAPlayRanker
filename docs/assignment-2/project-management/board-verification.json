@@ -1,0 +1,249 @@
+{
+  "checked_at_utc": "2026-10-19T02:08:21.645Z",
+  "board_config": {
+    "id": 4,
+    "name": "BST board",
+    "type": "simple",
+    "filter": {
+      "id": "10003"
+    },
+    "location": {
+      "type": "project",
+      "id": "10003",
+      "key": "BST",
+      "name": "Basketball Strategy – Tests"
+    },
+    "columnConfig": {
+      "constraintType": "none",
+      "columns": [
+        {
+          "name": "Verify",
+          "statuses": [
+            {
+              "id": "10010",
+              "name": "Verify",
+              "category": "new"
+            }
+          ]
+        },
+        {
+          "name": "Testing In Progress",
+          "statuses": [
+            {
+              "id": "10011",
+              "name": "Testing In Progress",
+              "category": "indeterminate"
+            }
+          ]
+        },
+        {
+          "name": "Pass",
+          "statuses": [
+            {
+              "id": "10012",
+              "name": "Pass",
+              "category": "done"
+            }
+          ]
+        },
+        {
+          "name": "Fail",
+          "statuses": [
+            {
+              "id": "10066",
+              "name": "Fail",
+              "category": "indeterminate"
+            }
+          ]
+        }
+      ]
+    },
+    "ranking": {
+      "rankCustomFieldId": 10019
+    }
+  },
+  "new_suite_and_cases": [
+    {
+      "id": "12212",
+      "key": "BST-170",
+      "fields": {
+        "summary": "Export current Matchup, Context and Model Metrics results",
+        "status": {
+          "name": "Pass"
+        },
+        "assignee": {
+          "displayName": "Gurkaranjit Asahan"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "issuetype": {
+          "name": "Test Suite"
+        },
+        "created": "2026-10-18T21:14:26.886-0400"
+      }
+    },
+    {
+      "id": "12213",
+      "key": "BST-171",
+      "fields": {
+        "summary": "Matchup exports the displayed ranking in all three formats",
+        "status": {
+          "name": "Pass"
+        },
+        "assignee": {
+          "displayName": "Gurkaranjit Asahan"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "issuetype": {
+          "name": "Test Case"
+        },
+        "created": "2026-10-18T21:14:59.376-0400"
+      }
+    },
+    {
+      "id": "12214",
+      "key": "BST-172",
+      "fields": {
+        "summary": "Context exports the selected situation and adjusted results",
+        "status": {
+          "name": "Pass"
+        },
+        "assignee": {
+          "displayName": "Gurkaranjit Asahan"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "issuetype": {
+          "name": "Test Case"
+        },
+        "created": "2026-10-18T21:15:01.448-0400"
+      }
+    },
+    {
+      "id": "12215",
+      "key": "BST-173",
+      "fields": {
+        "summary": "Model Metrics exports the visible evaluation results",
+        "status": {
+          "name": "Pass"
+        },
+        "assignee": {
+          "displayName": "Gurkaranjit Asahan"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "issuetype": {
+          "name": "Test Case"
+        },
+        "created": "2026-10-18T21:15:04.576-0400"
+      }
+    },
+    {
+      "id": "12216",
+      "key": "BST-174",
+      "fields": {
+        "summary": "Export stays unavailable for empty, loading or stale results",
+        "status": {
+          "name": "Pass"
+        },
+        "assignee": {
+          "displayName": "Gurkaranjit Asahan"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "issuetype": {
+          "name": "Test Case"
+        },
+        "created": "2026-10-18T21:15:08.560-0400"
+      }
+    },
+    {
+      "id": "12217",
+      "key": "BST-175",
+      "fields": {
+        "summary": "Report downloads require the correct signed-in role",
+        "status": {
+          "name": "Pass"
+        },
+        "assignee": {
+          "displayName": "Gurkaranjit Asahan"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "issuetype": {
+          "name": "Test Case"
+        },
+        "created": "2026-10-18T21:15:11.776-0400"
+      }
+    },
+    {
+      "id": "12218",
+      "key": "BST-176",
+      "fields": {
+        "summary": "Report validation rejects invalid and oversized snapshots",
+        "status": {
+          "name": "Pass"
+        },
+        "assignee": {
+          "displayName": "Gurkaranjit Asahan"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "issuetype": {
+          "name": "Test Case"
+        },
+        "created": "2026-10-18T21:15:15.341-0400"
+      }
+    },
+    {
+      "id": "12219",
+      "key": "BST-177",
+      "fields": {
+        "summary": "A failed report request shows an error and can be retried",
+        "status": {
+          "name": "Pass"
+        },
+        "assignee": {
+          "displayName": "Gurkaranjit Asahan"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "issuetype": {
+          "name": "Test Case"
+        },
+        "created": "2026-10-18T21:15:17.760-0400"
+      }
+    },
+    {
+      "id": "12220",
+      "key": "BST-178",
+      "fields": {
+        "summary": "Downloaded reports have readable filenames and content",
+        "status": {
+          "name": "Pass"
+        },
+        "assignee": {
+          "displayName": "Gurkaranjit Asahan"
+        },
+        "priority": {
+          "name": "Medium"
+        },
+        "issuetype": {
+          "name": "Test Case"
+        },
+        "created": "2026-10-18T21:15:19.942-0400"
+      }
+    }
+  ],
+  "all_new_items_on_board": true,
+  "all_new_items_pass": true
+}

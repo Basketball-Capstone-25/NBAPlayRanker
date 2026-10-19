@@ -1,0 +1,25 @@
+{
+  "captured_start_utc": "2026-10-19T01:58:44.194Z",
+  "captured_end_utc": "2026-10-19T01:59:01.357Z",
+  "jql": "project = SCRUM ORDER BY key",
+  "items": 607,
+  "columns": [
+    "Key",
+    "Title",
+    "Type",
+    "Status",
+    "Assignee",
+    "Parent",
+    "Sprint",
+    "Story points",
+    "Linked work",
+    "URL"
+  ],
+  "scope": "Full shared SCRUM project; read-only export. Detailed release evidence is in project-plan.csv.",
+  "comments_included": false,
+  "teammate_issues_changed": false,
+  "sprint_lifecycle_changed": false,
+  "scoped_items_refreshed_at_utc": "2026-10-19T02:17:56.234Z",
+  "scoped_items_refreshed": 59,
+  "csv_rows_verified": 607
+}

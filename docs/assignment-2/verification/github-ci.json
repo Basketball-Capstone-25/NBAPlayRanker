@@ -1,0 +1,92 @@
+{
+  "http_status": 200,
+  "verification_source": "GitHub workflow job status and complete job logs",
+  "runs": [
+    {
+      "id": 39185054136,
+      "name": "CI",
+      "head_sha": "b53413a710b76a7b3d6e2a0a7d1eef8dce5bc3a6",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/39185054136",
+      "jobs": [
+        {
+          "id": 117845680095,
+          "name": "Backend tests",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/39185054136/job/117845680095",
+          "verified_steps": [
+            {
+              "name": "Run all backend tests",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            }
+          ]
+        },
+        {
+          "id": 117845680409,
+          "name": "Frontend tests and build",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/39185054136/job/117845680409",
+          "verified_steps": [
+            {
+              "name": "Run all frontend tests",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Build frontend",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            }
+          ]
+        }
+      ],
+      "results": {
+        "backend": {
+          "passed": 289,
+          "expected_failures": 4,
+          "warnings": 1,
+          "duration_seconds": 46.11,
+          "expected_failure_scope": "Known shot-data attribution defects. These four expected failures are not passing tests or repaired defects.",
+          "log_excerpts": [
+            "2026-10-19T01:22:51.3880554Z b53413a710b76a7b3d6e2a0a7d1eef8dce5bc3a6",
+            "2026-10-19T01:22:51.7014358Z b53413a710b76a7b3d6e2a0a7d1eef8dce5bc3a6",
+            "2026-10-19T01:24:13.7963281Z backend/tests/test_shot_attribution_regression.py::test_shooting_team_and_opponent_follow_event_team_id[0] XFAIL [ 86%]",
+            "2026-10-19T01:24:13.8190469Z backend/tests/test_shot_attribution_regression.py::test_shooting_team_and_opponent_follow_event_team_id[42] XFAIL [ 86%]",
+            "2026-10-19T01:24:13.9590674Z backend/tests/test_shot_attribution_regression.py::test_clean_shots_never_list_the_shooting_team_as_its_opponent XFAIL [ 86%]",
+            "2026-10-19T01:24:14.0664658Z backend/tests/test_shot_attribution_regression.py::test_complete_game_groups_include_both_shooting_teams XFAIL [ 87%]",
+            "2026-10-19T01:24:14.9010224Z ================== 289 passed, 4 xfailed, 1 warning in 46.11s =================="
+          ]
+        },
+        "frontend": {
+          "passed": 110,
+          "test_files_passed": 10,
+          "log_excerpts": [
+            "2026-10-19T01:22:52.0867698Z b53413a710b76a7b3d6e2a0a7d1eef8dce5bc3a6",
+            "2026-10-19T01:22:52.3958899Z b53413a710b76a7b3d6e2a0a7d1eef8dce5bc3a6",
+            "2026-10-19T01:23:06.8015622Z  Test Files  10 passed (10)",
+            "2026-10-19T01:23:06.8017025Z       Tests  110 passed (110)"
+          ]
+        },
+        "production_build": {
+          "status": "passed",
+          "typescript_validation": "passed as part of next build",
+          "static_pages_generated": 21,
+          "log_excerpts": [
+            "2026-10-19T01:23:20.5540208Z  ✓ Compiled successfully in 10.5s",
+            "2026-10-19T01:23:20.5564180Z    Linting and checking validity of types ...",
+            "2026-10-19T01:23:29.8905378Z  ✓ Generating static pages (21/21)"
+          ]
+        }
+      },
+      "scope_note": "Counts apply to this source commit. The earlier local backend-tests.txt result of 286 passed and 4 expected failures predates three additional validation tests; it is retained as earlier evidence."
+    }
+  ]
+}

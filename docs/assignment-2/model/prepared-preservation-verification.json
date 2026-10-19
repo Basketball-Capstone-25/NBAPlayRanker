@@ -1,0 +1,214 @@
+{
+  "verified_at_utc": "2026-10-19T02:03:54.935386+00:00",
+  "verified": true,
+  "base_shared_revision": 55,
+  "publication": "Saved locally; not yet published to VPository.",
+  "checks": {
+    "DIAGRAM_all_original_ids_retained": true,
+    "DIAGRAM_all_initial_addition_ids_retained": true,
+    "all_192_original_diagrams_byte_identical": true,
+    "nine_additive_diagrams": true,
+    "MODEL_ELEMENT_all_original_ids_retained": true,
+    "MODEL_ELEMENT_all_initial_addition_ids_retained": true,
+    "original_model_identity_names_parents_authors_created_retained": true,
+    "initial_new_model_ids_types_authors_created_retained": true,
+    "new_model_ids_declared": true,
+    "DIAGRAM_ELEMENT_all_original_ids_retained": true,
+    "DIAGRAM_ELEMENT_all_initial_addition_ids_retained": true,
+    "all_1726_original_views_byte_identical": true,
+    "new_views_only_in_nine_additions": true,
+    "PROJECT_FILE_all_original_ids_retained": true,
+    "PROJECT_FILE_all_initial_addition_ids_retained": true,
+    "original_embedded_resources_unchanged_except_vendor_settings": true,
+    "original_model_changes_only_new_children_relations_views": true,
+    "teamwork_project_identity_unchanged": true,
+    "shared_revision55_block_unchanged": true,
+    "all_initial_inline_model_ids_and_creator_metadata_preserved": true,
+    "prepare_signature_matches_source": true,
+    "submit_signature_matches_source": true,
+    "backend_post_signature_matches_source": true,
+    "SCRUM-480_one_to_one_realization": true,
+    "SCRUM-480_three_design_views_owned": true,
+    "SCRUM-486_one_to_one_realization": true,
+    "SCRUM-486_three_design_views_owned": true,
+    "SCRUM-526_one_to_one_realization": true,
+    "SCRUM-526_three_design_views_owned": true
+  },
+  "counts": {
+    "DIAGRAM": {
+      "before": 192,
+      "after": 201,
+      "added": 9,
+      "removed": 0,
+      "changed_existing": 0
+    },
+    "MODEL_ELEMENT": {
+      "before": 2158,
+      "after": 2239,
+      "added": 81,
+      "removed": 0,
+      "changed_existing": 21
+    },
+    "DIAGRAM_ELEMENT": {
+      "before": 1726,
+      "after": 1817,
+      "added": 91,
+      "removed": 0,
+      "changed_existing": 0
+    },
+    "PROJECT_FILE": {
+      "before": 526,
+      "after": 535,
+      "added": 9,
+      "removed": 0,
+      "changed_existing": 6
+    }
+  },
+  "native_sha256": "5031afc501101b6aafd60ff01e2c5aff84cabfcc1c22b34ec93c751285754703",
+  "baseline_sha256": "196eaf111f99a04810328420a5a3a49375fc26dcca989ae28ce5fb1c2f097342",
+  "new_diagrams": [
+    {
+      "id": "A2271d30211208e1",
+      "name": "Collaboration Overview - Export KPIs / Reports (486)"
+    },
+    {
+      "id": "A24672919fb03b0c",
+      "name": "Structural Design - Run Data Quality Checks (480)"
+    },
+    {
+      "id": "A257dd5cc61e2c68",
+      "name": "Detailed Sequence - Export Displayed Results (486)"
+    },
+    {
+      "id": "A265c00592ba2418",
+      "name": "Structural Design - Evaluate Next-Season PPP (offline) (526)"
+    },
+    {
+      "id": "A27d914a6c6fcf29",
+      "name": "Detailed Sequence - Evaluate Next-Season PPP (526)"
+    },
+    {
+      "id": "A286349d6dc149e4",
+      "name": "Elaboration - Shared Export Controls (486)"
+    },
+    {
+      "id": "A2a4c53e03dcea0f",
+      "name": "Collaboration Overview - Evaluate Next-Season PPP (offline) (526)"
+    },
+    {
+      "id": "A2a6e559ca1de02a",
+      "name": "Collaboration Overview - Run Data Quality Checks (480)"
+    },
+    {
+      "id": "A2ec7436ba779216",
+      "name": "Detailed Sequence - Review Source Data Status (480)"
+    }
+  ],
+  "pending_history_entries": 982,
+  "changed_existing_model_ids": [
+    "J_YLyVmAUUE.byfZ",
+    "kOHnKVmAUUE.bzDc",
+    "WlLCa1mGAqAALh.o",
+    "BwYKwNmGAqAALne6",
+    "dfl3vjmEEhz2rQBg",
+    "dfl3vjmEEhz2rQBu",
+    "dfl3vjmEEhz2rQBw",
+    "7sZ6GLmAUAAADRP1",
+    "uG9GGLmAUAAADRQg",
+    "bb3GGLmAUAAADRQp",
+    "KPwmGLmAUAAADRRC",
+    "RyZmGLmAUAAADRSN",
+    "ln1mGLmAUAAADRSY",
+    "7gDmGLmAUAAADRSj",
+    "Pq3mGLmAUAAADRS5",
+    "NIGWGLmAUAAADRT7",
+    "Ul.WGLmAUAAADRUR",
+    "p0ZWGLmAUAAADRUn",
+    "Q0q54bmAUAAADWMo",
+    "kb4nwIWAUAAADV2r",
+    "DUf3wIWAUAAADYEB"
+  ],
+  "signature_contracts": {
+    "prepareReportExport": {
+      "parameters": [
+        [
+          "payload",
+          "ReportPayload"
+        ],
+        [
+          "format",
+          "ExportFormat"
+        ],
+        [
+          "signal",
+          "AbortSignal | undefined"
+        ]
+      ],
+      "return_type": "Promise<string>"
+    },
+    "submitReportExport": {
+      "parameters": [
+        [
+          "body",
+          "string"
+        ]
+      ],
+      "return_type": "void"
+    },
+    "POST": {
+      "parameters": [
+        [
+          "request",
+          "Request"
+        ]
+      ],
+      "return_type": "Promise<Response>"
+    },
+    "export_displayed_report": {
+      "parameters": [
+        [
+          "request",
+          "Request"
+        ],
+        [
+          "user",
+          "dict"
+        ]
+      ],
+      "return_type": "Response"
+    }
+  },
+  "collaborations": [
+    {
+      "jira": "SCRUM-480",
+      "use_case_id": "dfl3vjmEEhz2rQBu",
+      "use_case_name": "Run Data Quality Checks",
+      "collaboration_id": "A23e3c5e8769146c",
+      "realization_id": "A2de75646e2f0815",
+      "overview_id": "A2a6e559ca1de02a",
+      "structural_id": "A24672919fb03b0c",
+      "sequence_id": "A2ec7436ba779216"
+    },
+    {
+      "jira": "SCRUM-486",
+      "use_case_id": "dfl3vjmEEhz2rQBw",
+      "use_case_name": "Export KPIs / Reports",
+      "collaboration_id": "A2f637506212f701",
+      "realization_id": "A2a5290c46f858ee",
+      "overview_id": "A2271d30211208e1",
+      "structural_id": "A286349d6dc149e4",
+      "sequence_id": "A257dd5cc61e2c68"
+    },
+    {
+      "jira": "SCRUM-526",
+      "use_case_id": "A235a0ec6ec301ea",
+      "use_case_name": "Evaluate Next-Season PPP (offline)",
+      "collaboration_id": "A201783b2eeea751",
+      "realization_id": "A24d7089258e876e",
+      "overview_id": "A2a4c53e03dcea0f",
+      "structural_id": "A265c00592ba2418",
+      "sequence_id": "A27d914a6c6fcf29"
+    }
+  ],
+  "scope_note": "Only nine assigned-feature diagrams were added. Three new sequence frames and the new design were organized into their collaborations. One extra new parameter was retained by ID as the optional signal parameter. All original diagrams and views are unchanged; original model rows gain only children, relationships or views."
+}

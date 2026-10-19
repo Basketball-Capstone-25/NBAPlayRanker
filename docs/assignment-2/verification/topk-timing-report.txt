@@ -1,0 +1,38 @@
+Top-K uplift response times
+
+SCRUM-550 measures /metrics/topk-uplift for TOR vs BOS, season 2024-25,
+K=5 and offense weight 0.7. This is separate from the older coach-baseline
+tests; the routes and concurrency settings differ, so the results are not
+a before-and-after comparison.
+
+The bounded run made 16 requests from 01:27:11.284 to 01:27:16.383 UTC on
+19 October 2026. All returned HTTP 200 with valid responses. Client timing
+includes the complete response body:
+
+- First request: 1,239.17 ms. Its startup state was unknown.
+- Nine following sequential requests: p95 558.53 ms; range 224.51-558.53 ms.
+- Six requests in three pairs: p95 366.62 ms; range 251.70-366.62 ms.
+
+The proposed limits were recorded before the run: 5 seconds for warm p95,
+10 seconds for p95 at two concurrent requests, and 45 seconds including
+startup. The warm sample met the first two proposals. No service reset or
+confirmed cold start occurred, so startup was not assessed. With these
+small samples, nearest-rank p95 equals each group's slowest request.
+
+The 16 matching Cloud Run log entries all show HTTP 200 on revision
+nba-playranker-api-00007-gvd. Server latency was 1.071 seconds for the first
+request and 0.188-0.403 seconds afterwards. These are the same requests,
+not additional tests, and server latency excludes some client overhead.
+
+The targets still need agreement. SCRUM-609 retains coach-baseline timing
+with two concurrent requests, target agreement and cold
+startup acceptance. BST-111 remains Verify. This short sample does not
+establish sustained-load capacity or complete those acceptance checks.
+
+Evidence:
+report-downloads/topk-timing.json
+topk-server-timing.json
+../project-management/response-time-target-proposal.json
+https://basketball-strategy.atlassian.net/browse/SCRUM-550
+https://basketball-strategy.atlassian.net/browse/SCRUM-609
+https://basketball-strategy.atlassian.net/browse/BST-111

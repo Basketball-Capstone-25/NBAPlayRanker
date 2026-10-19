@@ -1,0 +1,129 @@
+{
+  "started_at_utc": "2026-10-19T01:46:01.493Z",
+  "scope": "Isolated localhost fixture using the actual ReportExport component and download helper.",
+  "production_requests": 0,
+  "credentials_used": false,
+  "sources": [
+    {
+      "file": "app/ui/_shared/components/ReportExport.tsx",
+      "sha256": "f89a6571ffeb8c9e08946f4daddd70ee6756682eca999d87a62ca43d48bc565f"
+    },
+    {
+      "file": "app/infrastructure/report-export.ts",
+      "sha256": "841ba23d54984a5203b00a5ab5cfa587026318a43729f4c4f18f5812b29cb960"
+    }
+  ],
+  "fixture": {
+    "report": "baseline_rankings",
+    "filters": {
+      "season": "fixture",
+      "our": "TOR",
+      "opp": "BOS",
+      "k": 2
+    },
+    "columns": [
+      "Play type",
+      "Predicted PPP"
+    ],
+    "rows": [
+      {
+        "Play type": "Fixture Spotup",
+        "Predicted PPP": 1.08
+      },
+      {
+        "Play type": "Fixture Transition",
+        "Predicted PPP": 1.12
+      }
+    ],
+    "metadata": {
+      "title": "Isolated retry fixture",
+      "source": "Synthetic test data; not a production report."
+    }
+  },
+  "file": {
+    "filename": "isolated-retry-fixture.csv",
+    "bytes": 71,
+    "sha256": "bda85931d6544c06263d8d9af128b3bab304dd972ef4f4acd8d763896df52b62"
+  },
+  "events": [
+    {
+      "at_utc": "2026-10-19T01:46:01.758Z",
+      "kind": "fixture_started",
+      "origin": "http://127.0.0.1:53275"
+    },
+    {
+      "at_utc": "2026-10-19T01:46:21.850Z",
+      "kind": "component_state",
+      "button": "Export",
+      "disabled": false,
+      "format_disabled": false,
+      "status": ""
+    },
+    {
+      "at_utc": "2026-10-19T01:46:30.567Z",
+      "kind": "preflight_received",
+      "attempt": 1,
+      "planned_status": 503
+    },
+    {
+      "at_utc": "2026-10-19T01:46:30.569Z",
+      "kind": "component_state",
+      "button": "Preparing…",
+      "disabled": true,
+      "format_disabled": true,
+      "status": "Preparing your file…"
+    },
+    {
+      "at_utc": "2026-10-19T01:46:32.369Z",
+      "kind": "preflight_response",
+      "attempt": 1,
+      "status": 503
+    },
+    {
+      "at_utc": "2026-10-19T01:46:32.434Z",
+      "kind": "component_state",
+      "button": "Retry export",
+      "disabled": false,
+      "format_disabled": false,
+      "status": "The report service is temporarily unavailable. Please try again."
+    },
+    {
+      "at_utc": "2026-10-19T01:46:56.478Z",
+      "kind": "preflight_received",
+      "attempt": 2,
+      "planned_status": 200
+    },
+    {
+      "at_utc": "2026-10-19T01:46:56.479Z",
+      "kind": "component_state",
+      "button": "Preparing…",
+      "disabled": true,
+      "format_disabled": true,
+      "status": "Preparing your file…"
+    },
+    {
+      "at_utc": "2026-10-19T01:46:58.280Z",
+      "kind": "preflight_response",
+      "attempt": 2,
+      "status": 200
+    },
+    {
+      "at_utc": "2026-10-19T01:46:58.509Z",
+      "kind": "component_state",
+      "button": "Export",
+      "disabled": false,
+      "format_disabled": false,
+      "status": "Download requested. Check your browser’s Downloads folder."
+    },
+    {
+      "at_utc": "2026-10-19T01:46:59.127Z",
+      "kind": "native_form_download",
+      "status": 200,
+      "preflights": 2
+    },
+    {
+      "at_utc": "2026-10-19T01:47:43.874Z",
+      "kind": "fixture_stopped"
+    }
+  ]
+}
