@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
 import numpy as np
 import pandas as pd
-from fastapi import APIRouter, Depends, HTTPException, Query, Response
+from fastapi import APIRouter, Depends, HTTPException, Query, Request, Response
+from starlette.concurrency import run_in_threadpool
 
 from application.access_control_services.access_control_service import check_user_access
 from application.api_coordination.auth_dependency import require_auth
@@ -20,6 +22,9 @@ from application.api_coordination.export_contract import (
 from domain.baseline_recommendation import BaselineRecommender, rank_playtypes_baseline
 from domain.statistical_analysis.topk_uplift import UpliftDataUnavailable, compute_topk_uplift
 from infrastructure.visualization_and_export.table_pdf import render_table_pdf
+from application.api_coordination.report_snapshot import (
+    MAX_SNAPSHOT_BYTES, SNAPSHOT_ROLES, validate_snapshot,
+)
 
 # Each report keeps the role check of the page endpoint that shows the same data.
 REPORT_ROLES: Dict[str, str] = {
@@ -50,7 +55,7 @@ def create_export_report_router(
         digest = hashlib.file_digest(source, "sha256").hexdigest()
 
     contract = ExportContract()
-    for report in REPORT_ROLES:
+    for report in set(REPORT_ROLES) | set(SNAPSHOT_ROLES):
         contract.register_pdf_renderer(report, render_table_pdf)
 
     router = APIRouter(tags=["export"])
@@ -149,5 +154,27 @@ def create_export_report_router(
         except ExportFormatUnavailable as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc
         return Response(content=file.content, media_type=file.media_type, headers=file.headers)
+
+    @router.post("/export/report")
+    async def export_displayed_report(request: Request, user: dict = Depends(require_auth)) -> Response:
+        if request.headers.get("content-type", "").split(";")[0].strip().lower() != "application/json":
+            raise HTTPException(status_code=415, detail="Send the report as JSON.")
+        chunks = bytearray()
+        async for chunk in request.stream():
+            if len(chunks) + len(chunk) > MAX_SNAPSHOT_BYTES:
+                raise HTTPException(status_code=413, detail="The report is too large.")
+            chunks.extend(chunk)
+        try:
+            payload, fmt = validate_snapshot(json.loads(chunks))
+        except (ValueError, TypeError, RecursionError, OverflowError) as exc:
+            raise HTTPException(status_code=400, detail="Invalid report: " + str(exc)[:180]) from exc
+        if not check_user_access(user.get("role"), SNAPSHOT_ROLES[payload.report]):
+            raise HTTPException(status_code=403, detail="Your account cannot export this report.")
+        file = await run_in_threadpool(contract.build_export, payload, fmt)
+        return Response(content=file.content, media_type=file.media_type, headers={
+            **file.headers,
+            "Cache-Control": "private, no-store",
+            "X-Content-Type-Options": "nosniff",
+        })
 
     return router
