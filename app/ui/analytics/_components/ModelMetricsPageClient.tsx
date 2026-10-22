@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { fetchModelMetrics, fetchPipelineInfo, fetchMlAnalysis } from "../../../services/analytics";
 import CalibrationPanel from "./CalibrationPanel";
+import TopKUpliftPanel from "./TopKUpliftPanel";
 
 type MetricsRow = {
   model: string;
@@ -89,7 +90,7 @@ function prettyModelName(m: string) {
   return s;
 }
 
-type TabKey = "scoreboard" | "holdout" | "calibration" | "tuning" | "trace";
+type TabKey = "scoreboard" | "holdout" | "calibration" | "uplift" | "tuning" | "trace";
 
 export default function ModelMetricsPage() {
   // Data
@@ -483,6 +484,9 @@ export default function ModelMetricsPage() {
             <button type="button" style={pillStyle(tab === "calibration")} onClick={() => setTab("calibration")} aria-pressed={tab === "calibration"}>
               Calibration
             </button>
+            <button type="button" style={pillStyle(tab === "uplift")} onClick={() => setTab("uplift")} aria-pressed={tab === "uplift"}>
+              Top-K uplift
+            </button>
             <div style={pillStyle(tab === "tuning")} onClick={() => setTab("tuning")}>
               Tuning
             </div>
@@ -842,6 +846,7 @@ export default function ModelMetricsPage() {
         ) : null}
 
         {tab === "calibration" ? <CalibrationPanel nSplits={nSplits} /> : null}
+        {tab === "uplift" ? <TopKUpliftPanel /> : null}
 
         {/* HOLDOUT TAB */}
         {tab === "holdout" ? (
