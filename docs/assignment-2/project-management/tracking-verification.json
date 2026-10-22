@@ -1,0 +1,2380 @@
+{
+  "verified_at_utc": "2026-10-19T02:17:57.127909+00:00",
+  "snapshot_captured_at_utc": "2026-10-19T02:17:56.234Z",
+  "passed": true,
+  "checks_passed": 465,
+  "checks_total": 465,
+  "test_cases": 141,
+  "case_statuses": {
+    "Pass": 122,
+    "Verify": 6,
+    "Fail": 13
+  },
+  "test_suites": 19,
+  "suite_statuses": {
+    "Verify": 2,
+    "Pass": 11,
+    "Testing In Progress": 6
+  },
+  "risk_statuses": {
+    "Monitoring": 41,
+    "Active": 23,
+    "Planning": 7,
+    "Analysis": 6,
+    "Identification": 7
+  },
+  "checks": [
+    {
+      "check": "Every test item uses the course's Task or Epic type",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-1 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-2 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-3 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-4 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-5 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-6 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-32 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-33 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-34 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-35 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-36 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-37 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-38 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-39 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-40 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-41 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-27"
+    },
+    {
+      "check": "BST-42 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-43 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-44 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-45 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-46 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-47 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-48 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-49 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-50 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-51 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-52 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-53 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-54 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-55 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-28"
+    },
+    {
+      "check": "BST-56 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-57 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-58 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-59 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-60 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-61 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-62 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-63 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-64 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-29"
+    },
+    {
+      "check": "BST-65 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-30"
+    },
+    {
+      "check": "BST-66 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-30"
+    },
+    {
+      "check": "BST-67 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-30"
+    },
+    {
+      "check": "BST-68 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-30"
+    },
+    {
+      "check": "BST-69 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-30"
+    },
+    {
+      "check": "BST-70 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-30"
+    },
+    {
+      "check": "BST-71 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-30"
+    },
+    {
+      "check": "BST-72 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-30"
+    },
+    {
+      "check": "BST-73 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-30"
+    },
+    {
+      "check": "BST-74 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-75 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-76 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-77 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-78 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-79 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-80 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-81 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-82 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-83 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-84 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-85 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-86 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-87 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-88 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-89 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-90 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-91 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-92 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-93 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-94 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-95 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-31"
+    },
+    {
+      "check": "BST-97 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-96"
+    },
+    {
+      "check": "BST-98 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-96"
+    },
+    {
+      "check": "BST-99 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-96"
+    },
+    {
+      "check": "BST-100 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-96"
+    },
+    {
+      "check": "BST-101 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-96"
+    },
+    {
+      "check": "BST-102 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-96"
+    },
+    {
+      "check": "BST-103 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-96"
+    },
+    {
+      "check": "BST-105 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-104"
+    },
+    {
+      "check": "BST-106 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-104"
+    },
+    {
+      "check": "BST-107 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-104"
+    },
+    {
+      "check": "BST-109 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-108"
+    },
+    {
+      "check": "BST-110 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-108"
+    },
+    {
+      "check": "BST-111 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-108"
+    },
+    {
+      "check": "BST-112 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-108"
+    },
+    {
+      "check": "BST-113 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-108"
+    },
+    {
+      "check": "BST-115 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-114"
+    },
+    {
+      "check": "BST-116 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-114"
+    },
+    {
+      "check": "BST-117 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-114"
+    },
+    {
+      "check": "BST-118 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-114"
+    },
+    {
+      "check": "BST-119 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-114"
+    },
+    {
+      "check": "BST-121 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-120"
+    },
+    {
+      "check": "BST-122 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-120"
+    },
+    {
+      "check": "BST-123 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-120"
+    },
+    {
+      "check": "BST-124 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-120"
+    },
+    {
+      "check": "BST-125 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-120"
+    },
+    {
+      "check": "BST-126 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-120"
+    },
+    {
+      "check": "BST-127 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-120"
+    },
+    {
+      "check": "BST-128 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-120"
+    },
+    {
+      "check": "BST-129 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-120"
+    },
+    {
+      "check": "BST-131 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-130"
+    },
+    {
+      "check": "BST-133 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-132"
+    },
+    {
+      "check": "BST-135 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-134"
+    },
+    {
+      "check": "BST-136 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-96"
+    },
+    {
+      "check": "BST-138 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-139 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-140 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-141 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-142 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-143 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-144 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-145 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-146 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-147 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-148 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-149 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-150 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-151 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-152 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-153 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-154 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-155 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-137"
+    },
+    {
+      "check": "BST-158 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-156"
+    },
+    {
+      "check": "BST-159 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-156"
+    },
+    {
+      "check": "BST-160 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-156"
+    },
+    {
+      "check": "BST-161 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-156"
+    },
+    {
+      "check": "BST-162 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-156"
+    },
+    {
+      "check": "BST-163 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-157"
+    },
+    {
+      "check": "BST-164 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-157"
+    },
+    {
+      "check": "BST-165 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-157"
+    },
+    {
+      "check": "BST-166 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-157"
+    },
+    {
+      "check": "BST-167 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-157"
+    },
+    {
+      "check": "BST-168 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-156"
+    },
+    {
+      "check": "BST-169 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-156"
+    },
+    {
+      "check": "BST-171 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-170"
+    },
+    {
+      "check": "BST-172 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-170"
+    },
+    {
+      "check": "BST-173 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-170"
+    },
+    {
+      "check": "BST-174 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-170"
+    },
+    {
+      "check": "BST-175 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-170"
+    },
+    {
+      "check": "BST-176 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-170"
+    },
+    {
+      "check": "BST-177 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-170"
+    },
+    {
+      "check": "BST-178 belongs to an Epic test suite",
+      "passed": true,
+      "detail": "BST-170"
+    },
+    {
+      "check": "BST-13 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-18 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-27 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-28 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-29 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-30 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-31 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-96 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-104 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-108 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-114 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-120 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-130 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-132 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-134 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-137 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-156 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-157 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-170 uses Epic hierarchy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "All 84 risks are present",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-29 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-29 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-30 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-30 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-31 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-31 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-32 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-32 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-33 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-33 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-34 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-34 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-35 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-35 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-36 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-36 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-37 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-37 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-38 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-38 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-39 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-39 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-40 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-40 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-41 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-41 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-42 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-42 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-43 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-43 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-44 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-44 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-45 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-45 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-46 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-46 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-47 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-47 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-48 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-48 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-49 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-49 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-50 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-50 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-51 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-51 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-52 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-52 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-53 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-53 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-54 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-54 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-55 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-55 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-56 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-56 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-57 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-57 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-58 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-58 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-59 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-59 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-60 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-60 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-61 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-61 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-62 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-62 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-63 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-63 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-64 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-64 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-65 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-65 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-66 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-66 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-67 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-67 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-68 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-68 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-69 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-69 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-70 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-70 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-71 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-71 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-72 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-72 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-73 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-73 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-74 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-74 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-75 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-75 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-76 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-76 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-77 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-77 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-78 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-78 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-79 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-79 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-80 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-80 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-81 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-81 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-82 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-82 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-83 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-83 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-84 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-84 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-85 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-85 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-86 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-86 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-87 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-87 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-88 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-88 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-89 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-89 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-90 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-90 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-91 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-91 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-92 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-92 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-93 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-93 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-94 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-94 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-95 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-95 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-96 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-96 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-97 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-97 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-98 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-98 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-99 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-99 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-100 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-100 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-101 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-101 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-102 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-102 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-103 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-103 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-104 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-104 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-105 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-105 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-106 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-106 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-107 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-107 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-108 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-108 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-109 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-109 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-110 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-110 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-111 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-111 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-112 links to tracked work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BSR-112 comment history is complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-99 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-546"
+      ]
+    },
+    {
+      "check": "BST-107 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-547"
+      ]
+    },
+    {
+      "check": "BST-113 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-547"
+      ]
+    },
+    {
+      "check": "BST-116 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-548"
+      ]
+    },
+    {
+      "check": "BST-117 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-549",
+        "SCRUM-538"
+      ]
+    },
+    {
+      "check": "BST-138 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-538"
+      ]
+    },
+    {
+      "check": "BST-139 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-538"
+      ]
+    },
+    {
+      "check": "BST-140 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-539"
+      ]
+    },
+    {
+      "check": "BST-141 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-540"
+      ]
+    },
+    {
+      "check": "BST-142 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-541"
+      ]
+    },
+    {
+      "check": "BST-143 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-544"
+      ]
+    },
+    {
+      "check": "BST-144 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-544"
+      ]
+    },
+    {
+      "check": "BST-147 has a linked repair with a planned sprint",
+      "passed": true,
+      "detail": [
+        "SCRUM-545"
+      ]
+    },
+    {
+      "check": "BST-171 is in the new export suite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-171 links to the implemented story",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-171 has a current executed result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-171 does not retain a not-run description",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-172 is in the new export suite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-172 links to the implemented story",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-172 has a current executed result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-172 does not retain a not-run description",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-173 is in the new export suite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-173 links to the implemented story",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-173 has a current executed result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-173 does not retain a not-run description",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-174 is in the new export suite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-174 links to the implemented story",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-174 has a current executed result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-174 does not retain a not-run description",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-175 is in the new export suite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-175 links to the implemented story",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-175 has a current executed result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-175 does not retain a not-run description",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-176 is in the new export suite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-176 links to the implemented story",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-176 has a current executed result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-176 does not retain a not-run description",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-177 is in the new export suite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-177 links to the implemented story",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-177 has a current executed result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-177 does not retain a not-run description",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-178 is in the new export suite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-178 links to the implemented story",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-178 has a current executed result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "BST-178 does not retain a not-run description",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Model Metrics regression passed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "The filename failure remains in the history",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "The filename regression links to its actual repair",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-486 implementation is completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-542 implementation is completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-550 implementation is completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-616 implementation is completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-619 implementation is completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-604 implementation is completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-605 implementation is completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-620 implementation is completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "The model publication is completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Latency acceptance remains open",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-480 has a point estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-526 has a point estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-575 has a point estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-486 has a point estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-542 has a point estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-550 has a point estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-603 has a point estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-609 has a point estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-616 has a point estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-440 retains its supplied Assignment 1 hours",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-529 retains its supplied Assignment 1 hours",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-530 retains its supplied Assignment 1 hours",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-480 has exactly its confirmed worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-480 matches the supplied hours",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-480 uses the allocated work date",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-526 has exactly its confirmed worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-526 matches the supplied hours",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-526 uses the allocated work date",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-486 has exactly its confirmed worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-486 matches the supplied hours",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-486 uses the allocated work date",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-603 has exactly its confirmed worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-603 matches the supplied hours",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-603 uses the allocated work date",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-602 has exactly its confirmed worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-602 matches the supplied hours",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-602 uses the allocated work date",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Assignment 2 totals 13 hours without counting parent rollups twice",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-600 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-600 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-601 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-601 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-602 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-604 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-604 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-605 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-605 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-606 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-606 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-607 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-607 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-608 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-608 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-609 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-610 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-610 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-611 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-611 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-612 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-612 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-613 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-613 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-614 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-614 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-615 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-615 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-616 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-617 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-617 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-618 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-618 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-619 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-619 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-620 has no additional actual worklog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-620 has a separate effort estimate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-588 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-589 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-590 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-591 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-592 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-593 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-594 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-595 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-596 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-597 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-598 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "SCRUM-599 duplicate is closed and linked",
+      "passed": true,
+      "detail": null
+    }
+  ]
+}

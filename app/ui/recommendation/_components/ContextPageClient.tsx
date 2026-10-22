@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { contextRank, fetchMetaOptions } from "../../../services/recommendation";
+import ReportExport from "../../_shared/components/ReportExport";
+import { contextReport, resultKey } from "../../../infrastructure/report-export";
 import {
   clamp01,
   computeLateFactor,
@@ -181,6 +183,9 @@ function ContextInner() {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loadedKey, setLoadedKey] = useState("");
+  const requestFilters = { season, our, opp, k, margin, period, time_remaining: timeRemaining };
+  const currentKey = resultKey(requestFilters);
 
   const didAutoRunRef = useRef(false);
   const liveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -298,6 +303,7 @@ function ContextInner() {
       setLoading(true);
       setError(null);
       setRows([]);
+      setLoadedKey("");
 
       const out = await contextRank({
         season,
@@ -310,6 +316,7 @@ function ContextInner() {
       });
 
       setRows(Array.isArray(out) ? out : []);
+      setLoadedKey(currentKey);
     } catch (e: any) {
       console.error(e);
       setError(e?.message ?? "Failed to generate context+ML recommendations.");
@@ -379,6 +386,11 @@ function ContextInner() {
     const sorted = [...mapped].sort((a, b) => b.finalPPP_display - a.finalPPP_display);
     return sorted.slice(0, Math.min(10, Math.max(1, k)));
   }, [rows, applyOverlay, meanMlPPP, period, timeRemaining, margin, overlayStrength, k]);
+
+  const resultsCurrent = loadedKey === currentKey && displayRows.length > 0 && !loading && !error;
+  const exportPayload = resultsCurrent ? contextReport(
+    { ...requestFilters, overlay: applyOverlay, overlay_strength: overlayStrength }, displayRows,
+  ) : null;
 
   const bestRow = useMemo(() => (displayRows.length ? displayRows[0] : null), [displayRows]);
 
@@ -1004,6 +1016,10 @@ function ContextInner() {
               <button className="btn btnPrimary" type="button" onClick={runContext} disabled={!canRun || loading}>
                 <Icon name="play" /> {loading ? "Running…" : "Run Context + ML"}
               </button>
+
+              <ReportExport payload={exportPayload}
+                disabledReason={loading ? "Wait for the rankings to finish." : !resultsCurrent && rows.length ? "Inputs changed. Run Context + ML again before exporting." : undefined}
+                description="Export these rankings, including the selected context overlay." />
 
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 <button className="btn" type="button" onClick={copyShareLink}>

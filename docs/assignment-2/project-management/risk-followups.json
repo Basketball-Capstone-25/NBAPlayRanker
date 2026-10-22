@@ -1,0 +1,60 @@
+{
+  "updated_at_utc": "2026-10-19T02:17:56.234Z",
+  "reviewed_risk_count": 84,
+  "all_84_have_formal_links": true,
+  "all_current_comment_pages_complete": true,
+  "new_comments": [
+    {
+      "key": "BSR-35",
+      "commentId": "11187",
+      "body": "The new exports must match the results already shown on Matchup, Context and Model Metrics. BST-171 through BST-178 now cover the three formats, selected context, stale results and file contents. These checks are still waiting for the deployed export change."
+    },
+    {
+      "key": "BSR-86",
+      "commentId": "11188",
+      "body": "The Model Metrics loading fix is now part of Iteration 16. BST-145 keeps its earlier failure until the deployed page is retested. The separate Shot Model Metrics timeout remains open under SCRUM-543 in Iteration 17."
+    },
+    {
+      "key": "BSR-97",
+      "commentId": "11189",
+      "body": "Added eight export cases under BST-170 with inputs and expected results. They are on the board in Verify until execution. The 14 existing failures still link to their fixes, and those repairs now have planned iterations."
+    },
+    {
+      "key": "BSR-76",
+      "commentId": "11190",
+      "body": "The Assignment 1 feedback cards now link to the completed deployment, risk and test records. Assignment 2 still needs the new export results, feature model publication and final package checks. Those are tracked separately so the older work is not counted again."
+    },
+    {
+      "key": "BSR-70",
+      "commentId": "11191",
+      "body": "The active checkout is outside iCloud and the current disk check shows about 12 GiB free. That is enough to continue the release build, but free space still needs checking before large datasets or model exports are copied."
+    },
+    {
+      "key": "BSR-79",
+      "commentId": "11192",
+      "body": "The Data Explorer quality panel checks the Synergy play-type data. It does not clear the separate shot-team attribution failure. SCRUM-538 remains Highest priority in Iteration 17, with BST-138 and BST-139 still failed until the source is repaired."
+    },
+    {
+      "key": "BSR-86",
+      "commentId": "11206",
+      "body": "The Model Metrics loading problem is fixed and BST-145 passed on the deployed app. The pipeline summary and evaluation now finish independently. This risk stays Active because the separate Shot Model Metrics timeout is still open under SCRUM-543."
+    },
+    {
+      "key": "BSR-111",
+      "commentId": "11214",
+      "body": "The Desktop commit published all three feature collaborations in revision 56. The shared copy contains the nine new diagrams, and the publication checks passed. Compatibility will still be checked before future model updates."
+    },
+    {
+      "key": "BSR-35",
+      "commentId": "11231",
+      "body": "The Matchup, Context and Model Metrics exports matched the displayed rows. Testing found a negative-margin filename issue; SCRUM-616 fixed it and BST-178 passed the retest. The export checks now cover CSV, JSON and PDF."
+    },
+    {
+      "key": "BSR-97",
+      "commentId": "11232",
+      "body": "All eight new export cases passed, and the Model Metrics loading regression passed its retest. The filename failure remains in BST-178 with its linked fix and passing retest. The other 13 failed cases still have planned repairs; their failures were preserved."
+    }
+  ],
+  "risk_statuses_changed": false,
+  "formal_work_links": 203
+}

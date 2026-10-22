@@ -1,0 +1,19 @@
+
+ RUN  v3.2.7 <repository>
+
+ ✓ tests/data-quality.test.tsx (25 tests) 110ms
+ ✓ tests/export-route.test.ts (17 tests) 27ms
+ ✓ tests/authenticated-download.test.ts (5 tests) 12ms
+ ✓ tests/report-export-route.test.ts (23 tests) 45ms
+ ✓ tests/report-export.test.tsx (15 tests) 29ms
+ ✓ tests/middleware.auth-coach.test.ts (6 tests) 12ms
+ ✓ tests/middleware.auth-analyst.test.ts (3 tests) 9ms
+ ✓ tests/deployment-routing.test.mjs (9 tests) 18ms
+ ✓ tests/auth.profile-role.test.ts (3 tests) 8ms
+ ✓ tests/model-metrics-loading.test.ts (4 tests) 6ms
+
+ Test Files  10 passed (10)
+      Tests  110 passed (110)
+   Start at  21:21:47
+   Duration  4.07s (transform 334ms, setup 0ms, collect 1.01s, tests 277ms, environment 2ms, prepare 730ms)
+

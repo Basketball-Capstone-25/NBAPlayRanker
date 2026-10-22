@@ -1,0 +1,194 @@
+[
+  {
+    "httpRequest": {
+      "latency": "0.266534383s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:16.101351Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.329955648s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:16.092761Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.256432874s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:15.792486Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.230590750s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:15.792220Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.188027266s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:15.563873Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.207448494s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:15.491644Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.195452922s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:15.250653Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.188925846s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:15.023598Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.282026089s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:14.701439Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.223070765s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:14.440180Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.336033546s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:14.068135Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.197178260s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:13.824281Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.347327049s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:13.438656Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.241956743s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:13.159296Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "0.402733926s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:12.680610Z"
+  },
+  {
+    "httpRequest": {
+      "latency": "1.070794427s",
+      "status": 200
+    },
+    "resource": {
+      "labels": {
+        "revision_name": "nba-playranker-api-00007-gvd"
+      }
+    },
+    "timestamp": "2026-10-19T01:27:11.482366Z"
+  }
+]

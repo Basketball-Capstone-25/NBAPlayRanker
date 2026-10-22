@@ -1,0 +1,32 @@
+{
+  "recorded_at_utc": "2026-10-19T01:38:28.482046+00:00",
+  "purpose": "Remove the local checkout path from submission copies.",
+  "transformation": "Replace the absolute repository directory with <repository>. All other bytes, including warnings and test outcomes, are unchanged.",
+  "raw_copies": "Original logs are preserved outside the shared repository and handoff package in verification/raw-test-logs.",
+  "files": [
+    {
+      "file": "backend-tests.txt",
+      "raw_sha256": "29ab329a08c44b77e99fbbacc8e1b6df01353c1f27e97bb609a3e1ae5d5283c0",
+      "curated_sha256": "1e2bbf6588b34409fb3799b6cfe80c92fcaed7f7627bef086ba58b6e4f318f05",
+      "replacement_count": 1
+    },
+    {
+      "file": "frontend-tests.txt",
+      "raw_sha256": "0a9460ad9af0e232d58d54d841f940499a984d83e947168cf17db687f4a8fce6",
+      "curated_sha256": "1a845e76da69a2c5b1cd558364c3c37896cc08fa048f9848733655766abf03c6",
+      "replacement_count": 1
+    },
+    {
+      "file": "export-backend-tests.txt",
+      "raw_sha256": "bf140ad4ca49e29943d29fcbde9a8a291498cb1945b917491945d9f2c3355ed2",
+      "curated_sha256": "562f92c8676e3ed37dc2007d76ef9621d99532f3c88c0a007f2fc59a6d7877ec",
+      "replacement_count": 1
+    },
+    {
+      "file": "export-filename-fix-tests.txt",
+      "raw_sha256": "e90cbf07e64edf0790fe67eafc69234df50d811a3403c5bad606bf40a33b1194",
+      "curated_sha256": "221413736478cbe1dc9e357daa7ef995190df53416a5b6ba1ce7c73e2e389c10",
+      "replacement_count": 1
+    }
+  ]
+}

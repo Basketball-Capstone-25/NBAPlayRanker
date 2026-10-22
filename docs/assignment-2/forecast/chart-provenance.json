@@ -1,0 +1,21 @@
+{
+  "source": "report.json",
+  "source_sha256": "d350b7de24fcce636cde166385231b61e0137a6845eec2aa5b062b0d428be4fa",
+  "output": "results.png",
+  "output_sha256": "48f06b1092b27c0314196d012e0bdbb9fe93233dc843e34ee55c1e1a4478c4f1",
+  "metrics": {
+    "ridge": {
+      "mae_ppp": 0.05230821522630513,
+      "rmse_ppp": 0.0671226737221033
+    },
+    "prior_league": {
+      "mae_ppp": 0.05345446240364739,
+      "rmse_ppp": 0.06816927297929853
+    },
+    "prior_team": {
+      "mae_ppp": 0.06339613541711127,
+      "rmse_ppp": 0.08135302279810318
+    }
+  },
+  "note": "Chart only; the evaluation was not rerun or modified."
+}

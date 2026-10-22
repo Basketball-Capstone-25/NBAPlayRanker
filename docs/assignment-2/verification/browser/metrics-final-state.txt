@@ -1,0 +1,105 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/model-metrics".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/model-metrics
+	111 container
+		112 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		113 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		114 heading Model Performance — Baseline vs ML, Value: 1
+			115 text Model Performance  — Baseline vs ML
+		116 text Compare baseline and ML models on held-out seasons, then review the features and settings used for tuning.
+		117 text PPP target Season holdout Coach-friendly interpretation Best holdout: Ridge (RMSE 0.011 PPP)
+		118 link Description: Back: Context Simulator, Value: nbaplayranker-seven.vercel.app/context
+		119 link Description: Next: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+		120 container
+			121 text Season folds (n_splits)
+			122 pop up button (collapsed, settable) Season folds (n_splits), Value: 5, Secondary Actions: Expand
+				123 menu
+					124 (disabled) 3
+					125 (disabled) 4
+					126 (disabled) 5
+					127 (disabled) 6
+		128 button Refresh
+		129 text Export format
+		130 pop up button (collapsed, settable) Export format, Value: CSV, Secondary Actions: Expand
+			131 menu
+				132 (selected) CSV
+				133 PDF
+				134 JSON
+		135 button Export
+		136 text Export the loaded holdout metrics table. Tuning and calibration are separate reports.
+		139 text Scoreboard
+		140 text Holdout
+		141 checkbox Calibration, Value: 0
+		142 text Tuning
+		143 text Traceability
+		144 text These retrospective results use statistics from the season being evaluated. Separating seasons does not remove that timing limitation; this is not a pre-game or future forecast test.
+		145 heading Holdout metrics table, Value: 2
+			146 text Holdout metrics table
+		147 text Retrospective results using observed season statistics. Lower RMSE/MAE is better.
+		148 button Back to Scoreboard
+		149 container
+			150 table
+				151 row
+					152 cell
+						153 text Model
+					154 cell
+						155 text RMSE (mean ± std)
+					156 cell
+						157 text MAE (mean ± std)
+					158 cell
+						159 text R² (mean ± std)
+				160 row
+					161 cell
+						162 text Ridge
+						163 text best
+					164 cell
+						165 text 0.011  ±  0.001
+					166 cell
+						167 text 0.008  ±  0.000
+					168 cell
+						169 text 0.997  ±  0.001
+				170 row
+					171 cell
+						172 text Gradient Boosting
+					173 cell
+						174 text 0.020  ±  0.008
+					175 cell
+						176 text 0.014  ±  0.002
+					177 cell
+						178 text 0.988  ±  0.012
+				179 row
+					180 cell
+						181 text Random Forest
+					182 cell
+						183 text 0.023  ±  0.012
+					184 cell
+						185 text 0.015  ±  0.004
+					186 cell
+						187 text 0.982  ±  0.021
+				188 row
+					189 cell
+						190 text Baseline (league mean)
+					191 cell
+						192 text 0.064  ±  0.002
+					193 cell
+						194 text 0.050  ±  0.002
+					195 cell
+						196 text 0.892  ±  0.010
+			197 text Quick read:
+			198 text  RMSE/MAE = prediction error on PPP. R² = how much variation the model explains.
+		97 container
+			98 text Built with  Next.js  (UI) +  FastAPI  (services).
+		99 container
+			100 text Tip for reviewers: start at 
+			101 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			102 text  to see the dataset, then compare 
+			103 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			104 text  vs 
+			105 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			106 text , and verify evidence in 
+			107 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			108 text  and
+			109 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			110 text .
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/model-metrics

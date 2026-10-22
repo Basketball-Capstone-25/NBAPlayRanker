@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "file": "backend-baseline_rankings.pdf",
+      "pages": 1,
+      "all_column_labels_present": true,
+      "all_row_labels_present": true,
+      "passed": true
+    },
+    {
+      "file": "backend-context_rankings.pdf",
+      "pages": 1,
+      "all_column_labels_present": true,
+      "all_row_labels_present": true,
+      "passed": true
+    },
+    {
+      "file": "backend-model_metrics.pdf",
+      "pages": 1,
+      "all_column_labels_present": true,
+      "all_row_labels_present": true,
+      "passed": true
+    },
+    {
+      "file": "frontend-baseline_rankings.pdf",
+      "pages": 1,
+      "all_column_labels_present": true,
+      "all_row_labels_present": true,
+      "passed": true
+    },
+    {
+      "file": "frontend-context_rankings.pdf",
+      "pages": 1,
+      "all_column_labels_present": true,
+      "all_row_labels_present": true,
+      "passed": true
+    },
+    {
+      "file": "frontend-model_metrics.pdf",
+      "pages": 1,
+      "all_column_labels_present": true,
+      "all_row_labels_present": true,
+      "passed": true
+    }
+  ]
+}

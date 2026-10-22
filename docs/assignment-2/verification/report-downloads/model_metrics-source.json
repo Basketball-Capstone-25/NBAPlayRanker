@@ -1,0 +1,60 @@
+{
+  "report": "model_metrics",
+  "filters": {
+    "n_splits": 5
+  },
+  "columns": [
+    "Model",
+    "RMSE mean",
+    "RMSE SD",
+    "MAE mean",
+    "MAE SD",
+    "R2 mean",
+    "R2 SD"
+  ],
+  "rows": [
+    {
+      "Model": "Ridge",
+      "RMSE mean": 0.011309977403243045,
+      "RMSE SD": 0.0007685050863623221,
+      "MAE mean": 0.008479109572528296,
+      "MAE SD": 0.0004300027435451345,
+      "R2 mean": 0.9966332712305315,
+      "R2 SD": 0.0006509144742232911
+    },
+    {
+      "Model": "GradientBoosting",
+      "RMSE mean": 0.020310565978418578,
+      "RMSE SD": 0.00790526493708927,
+      "MAE mean": 0.01365580348145298,
+      "MAE SD": 0.0023646925671721303,
+      "R2 mean": 0.9875654998675042,
+      "R2 SD": 0.011659562639711891
+    },
+    {
+      "Model": "RandomForest",
+      "RMSE mean": 0.02328705642785294,
+      "RMSE SD": 0.01198537450012145,
+      "MAE mean": 0.01495642094108721,
+      "MAE SD": 0.003923632606420597,
+      "R2 mean": 0.9821668174216939,
+      "R2 SD": 0.021287128148613388
+    },
+    {
+      "Model": "Baseline (league mean)",
+      "RMSE mean": 0.06429786185819206,
+      "RMSE SD": 0.0022011423074091026,
+      "MAE mean": 0.050083726526914375,
+      "MAE SD": 0.001739989748530674,
+      "R2 mean": 0.8919535993624421,
+      "R2 SD": 0.01008360025866039
+    }
+  ],
+  "metadata": {
+    "title": "Holdout model metrics",
+    "source": "displayed result snapshot",
+    "rf_vs_baseline_t": 7.676100056568006,
+    "rf_vs_baseline_p": 0.001548753039431474,
+    "limitations": "Retrospective holdout evaluation; this table does not establish pre-game forecast accuracy."
+  }
+}

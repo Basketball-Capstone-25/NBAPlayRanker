@@ -1,0 +1,37 @@
+{
+  "checked_at_utc": "2026-10-19T01:41:48.288551+00:00",
+  "base_commit": "b53413a710b76a7b3d6e2a0a7d1eef8dce5bc3a6",
+  "change": "Keep the minus sign on negative numeric filters in export filenames.",
+  "reproduction": {
+    "tests": 4,
+    "failed_before_fix": 4,
+    "observed": "Both margins -2 and 2 previously produced the same filename in CSV, JSON and PDF."
+  },
+  "verification": {
+    "command": "backend/.venv/bin/python -m pytest backend/tests/test_export_contract.py backend/tests/test_export_report_api.py backend/tests/test_report_snapshot.py -q",
+    "passed": 69,
+    "failed": 0,
+    "warnings": 1,
+    "duration_seconds": 2.15,
+    "log": "export-filename-fix-tests.txt",
+    "log_sha256": "221413736478cbe1dc9e357daa7ef995190df53416a5b6ba1ce7c73e2e389c10"
+  },
+  "checks": [
+    "Margins -2 and 2 have distinct CSV, JSON and PDF filenames.",
+    "JSON retains the signed filter value.",
+    "CSV negative numeric cells remain numeric, without a spreadsheet text prefix.",
+    "Filename text still excludes quotes, path separators and line breaks."
+  ],
+  "live_retest": {
+    "passed": true,
+    "checks": 47,
+    "backend_revision": "nba-playranker-api-00008-g5z",
+    "backend_commit": "db7abfb",
+    "started_at_utc": "2026-10-19T01:47:20.544Z",
+    "finished_at_utc": "2026-10-19T01:48:03.753Z",
+    "evidence": "report-downloads-final/verification.json",
+    "signed_context_filenames_verified": 6,
+    "sessions_closed_locally": 2,
+    "timing_campaign_repeated": false
+  }
+}

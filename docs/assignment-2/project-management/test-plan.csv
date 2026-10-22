@@ -1,0 +1,1524 @@
+﻿Key,Title,Type,Status,Assignee,Parent,Sprint,Story points,Effort estimate (hours),Actual logged hours,Priority,Probability,Impact,Mitigation,Linked work,Description,Comments,URL
+BST-1,Data Explorer displays the current raw dataset,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,,"Use cases: UC62, UC63.
+Sign in as analyst and open Data Explorer. Use season 2024-25, TOR, offense and Spotup. Expect one raw-data row, no prediction column and no error. Then select 2023-24, TOR, offense, All play types; expect eleven rows. Evidence: analyst-role-redirect.txt and data-explorer-filter-browser.txt.","Environment:
+* Local dev environment.
+* Backend: baseline API and dataset for 2019–2025 loaded.
+* Frontend: latest UI build with Data Explorer page.
+Actual result:
+* Opened the app and navigated to the ""Data Explorer"" page.
+* Left the default season/team/opponent selections and triggered the load.
+* Table appeared with a preview of the raw baseline data (play-type, possessions, PPP_baseline, etc.).
+* Only baseline/raw columns were shown; no ML prediction fields appeared.
+* No error messages or crashes.
+Verdict: PASS.
+
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=40b3ed37-152b-4d9e-854c-30f620fbe3b2&&collection=&height=994&occurrenceKey=null&width=2144&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+
+Data Explorer displayed the raw team data without an error or prediction columns. The 2023-24 TOR offense filter returned 11 play types.",https://basketball-strategy.atlassian.net/browse/BST-1
+BST-2,"Data Explorer filters rows by season, team and side",Test Case,Pass,Abdulrahman Mousa,BST-27,,,,0.0,Medium,,,,,"Use cases: UC62, UC63.
+Sign in as analyst. Select 2023-24, TOR, offense and All play types. Export the loaded data and compare each SEASON, TEAM_ABBREVIATION and SIDE field. Expect eleven matching rows and no values from another filter. Evidence: data-explorer-filter-browser.txt and data-explorer-download-verification.json.","Environment:
+* Local dev environment.
+* Backend: same baseline dataset as TEST-1.
+* Frontend: Data Explorer page with filters enabled.
+Actual result:
+* Navigated to the ""Data Explorer"" page.
+* Changed the season filter to a specific season (e.g., 2023–2024).
+* Selected a specific team from the team dropdown.
+* Triggered the load and inspected several rows.
+* All rows were from the selected season and team.
+* Columns remained raw/baseline only, and the page stayed responsive.
+Verdict: PASS.
+
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=d8fb315e-2fd0-4762-a62f-66626426e22a&&collection=&height=275&occurrenceKey=null&width=954&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+
+All 11 downloaded rows matched 2023-24, TOR and offense. The page showed the same 11 play types.",https://basketball-strategy.atlassian.net/browse/BST-2
+BST-3,Data Explorer CSV matches the visible raw data,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,Relates: BST-135,"Use cases: UC62, UC63.
+Load 2023-24, TOR, offense, All play types with no UI search. Click Export CSV, open the saved file and compare every visible play-type, side, possessions, usage, PPP, eFG and TOV value using the displayed rounding. Expect eleven rows and every visible value to match. Extra raw CSV columns are allowed; prediction columns are not. Evidence: data-explorer-download-verification.json, data-explorer-table.json and team_playtypes_2023-24_TOR_offense.csv.","Environment:
+* Local dev environment.
+* Backend: baseline API running.
+* Frontend: Data Explorer table already loaded with data.
+Actual result:
+* With the table populated, clicked the ""Export CSV"" control.
+* CSV file downloaded successfully without errors.
+* Opened the CSV in a spreadsheet and compared sample rows against what was shown in the UI.
+* Rows and columns in the CSV matched the Data Explorer table (raw/baseline fields only).
+Verdict: PASS.
+
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=e78eab9e-7cf5-4c43-a3e9-930526772631&&collection=&height=994&occurrenceKey=null&width=2144&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+
+The CSV downloaded and opened successfully. All 11 rows and all 7 visible data columns matched the table; the file also includes additional raw fields.",https://basketball-strategy.atlassian.net/browse/BST-3
+BST-4,Baseline API returns the requested Top-K rankings,Test Case,Verify,Abdulrahman Mousa,BST-29,,,,0.0,Medium,,,,,"Use cases: UC10/UC55 Generate Baseline Top-K Plays; UC18 Ranked List via API.
+Related work: [SCRUM-321](https://basketball-strategy.atlassian.net/browse/SCRUM-321).
+Precondition: the backend has loaded its play-type data and the request uses a valid coach session.
+1. Send GET /rank-plays/baseline?season=2024-25&our=TOR&opp=BOS&k=5&w_off=0.7.
+2. Check the response metadata and each ranking.
+Expected result: HTTP 200; season=2024-25, our_team=TOR, opp_team=BOS, k=5, w_off=0.7 and w_def=0.3 (allow normal floating-point rounding). The rankings array contains five items, each with PLAY_TYPE, PPP_PRED and PPP_GAP.
+This revised definition remains Verify until executed.","Environment:
+* Local dev environment.
+* Backend: /rank-plays/baseline endpoint deployed.
+Actual result:
+* Used a REST client to call GET /rank-plays/baseline with:
+* season = 2023-2024
+* team = valid team from dataset
+* opponent = ""All Teams""
+* k = 5
+* Received HTTP 200.
+* JSON response contained up to 5 plays with expected fields (play-type name, PPP_baseline, counts, etc.).
+* No error messages were returned.
+Verdict: PASS.
+
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=497b7324-9efd-4a6a-bf33-172184c906ed&&collection=&height=622&occurrenceKey=null&width=1244&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/BST-4
+BST-5,Baseline API rejects missing or invalid parameters,Test Case,Verify,Gurkaranjit Asahan,BST-29,,,,0.0,Medium,,,,,"Use cases: UC10/UC55 Generate Baseline Top-K Plays; UC18 Ranked List via API.
+Related work: [SCRUM-321](https://basketball-strategy.atlassian.net/browse/SCRUM-321).
+Precondition: the backend has loaded its play-type data and the request uses a valid coach session.
+1. Start with GET /rank-plays/baseline?season=2024-25&our=TOR&opp=BOS&k=5&w_off=0.7.
+2. In separate requests, omit our; set k=-1; use season=invalid-season; then set our to an empty string. Keep the other parameters valid each time.
+3. Check the status and JSON error body.
+Expected result: missing our and k=-1 return HTTP 422. The unknown season and empty our value return HTTP 400. Each response contains a detail field and no rankings result.
+This revised definition remains Verify until executed.","Environment:
+* Local dev environment.
+* Backend: /rank-plays/baseline endpoint deployed.
+Actual result:
+* Sent GET /rank-plays/baseline with clearly invalid parameters (invalid season string, empty team/opponent, k = -1).
+* Received an HTTP 4xx client error (not 200).
+* Response body contained a validation error message explaining which parameters were invalid.
+* Error structure was consistent with the standard API error format.
+Verdict: PASS.",https://basketball-strategy.atlassian.net/browse/BST-5
+BST-6,Coach Matchup displays the Top-K baseline cards,Test Case,Pass,Abdulrahman Mousa,BST-29,,,,0.0,Medium,,,,,"Use cases: UC18, UC71.
+Sign in as coach and open Matchup. Select 2024-25, TOR against BOS, K=5. Expect five cards with play-type names and predicted PPP, without raw errors. Evidence: matchup-browser.txt. Initial client navigation stayed Loading; a reload completed successfully, so this result does not establish navigation performance.","Environment:
+* Local dev environment.
+* Backend: baseline API /rank-plays/baseline running.
+* Frontend: Top-K / tactics page implemented.
+Actual result:
+* Opened the app and navigated to the Top-K / tactics page.
+* Selected a valid season, team and opponent.
+* Triggered the Top-K query.
+* Top-K cards appeared and displayed play-type names and PPP_baseline values taken from the baseline API.
+* No raw error messages or blank state; UI stayed responsive.
+Verdict: PASS.
+
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=ddcef74f-74ad-44ac-a588-4d1420bd8761&&collection=&height=611&occurrenceKey=null&width=1349&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+
+After reloading Matchup, five baseline plays appeared for TOR against BOS. PRRollMan ranked first at 1.154 PPP; all five cards had play names and values.",https://basketball-strategy.atlassian.net/browse/BST-6
+BST-13,Legacy Analyst Workspace suite (unused),Test Suite,Verify,,,,,,0.0,Medium,,,,,"This older suite has no test cases. Current Analyst Workspace tests are in [BST-27](https://basketball-strategy.atlassian.net/browse/BST-27).
+Kept for project history. Its Verify status is unchanged.",,https://basketball-strategy.atlassian.net/browse/BST-13
+BST-18,Unused legacy test suite,Test Suite,Verify,,,,,,0.0,Medium,,,,,"No test cases, feature links or use-case coverage are defined for this older suite.
+Kept for project history. Current Fall 2026 regression cases are in [BST-137](https://basketball-strategy.atlassian.net/browse/BST-137). Its Verify status is unchanged.",,https://basketball-strategy.atlassian.net/browse/BST-18
+BST-27,Access Analyst Workspace,Test Suite,Pass,Gurkaranjit Asahan,,,,,2.0,Medium,,,,,,"Tested all of the assigned tests. After testing, they have passed.
+will log time effort that this took as well
+
+All ten workspace cases passed, covering analyst access, filters, row counts and API/middleware permission checks.",https://basketball-strategy.atlassian.net/browse/BST-27
+BST-28,Authenticate Analyst Access,Test Suite,Pass,Abdulrahman Mousa,,,,,0.0,Medium,,,,,,"All fourteen session and role checks passed. Access follows the protected profile role, including pending and invalid-profile cases.",https://basketball-strategy.atlassian.net/browse/BST-28
+BST-29,Ranked list via API,Test Suite,Testing In Progress,Gurkaranjit Asahan,,,,,2.0,Medium,,,,,,"From the ones tested so far, they have been passing the tests. I have commented on some of the test tasks and logged time accordingly
+
+All nine baseline ranking cases passed, including Top-K values, matchup metadata and rejected inputs.",https://basketball-strategy.atlassian.net/browse/BST-29
+BST-30,Validate Coach Access,Test Suite,Pass,Abdulrahman Mousa,,,,,0.0,Medium,,,,,,All nine coach-access cases passed across the middleware routes and protected ranking APIs.,https://basketball-strategy.atlassian.net/browse/BST-30
+BST-31,Rank Plays with Game Context,Test Suite,Pass,Abdulrahman Mousa,,,,,0.0,Medium,,,,,,"All twenty-two context-helper and historical model checks passed. The separate first-build, flag and overtime browser failures remain in BST-140–142.",https://basketball-strategy.atlassian.net/browse/BST-31
+BST-32,Analyst middleware allows the Data Explorer route,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC62, UC69.
+Scope: Frontend middleware unit test with stubbed session/profile.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `npx vitest run tests/middleware.auth-analyst.test.ts -t 'allows analyst to access /data-explorer'`.
+2. Use an analyst profile and GET /data-explorer.
+3. Compare the returned values with the expected result.
+Expected result: The response is 200 and has no redirect location.
+Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.","The middleware test allowed an analyst profile to open Data Explorer without redirecting.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-32
+BST-33,Workspace API returns rows and matching counts,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.5,Medium,,,,Relates: SCRUM-317,"Use-case coverage: UC62, UC63.
+Scope: Local API data-flow test with explicit development authentication bypass.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_analyst_workspace_api.py::test_access_workspace_returns_table_with_meta.
+2. Use GET /data/team-playtypes for 2019-20.
+3. Compare the returned values with the expected result.
+Expected result: The response is 200, includes season, total_rows, returned_rows and rows, and returned_rows matches the list length.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","the data returned is role dependent and working as intended
+
+The 2019-20 workspace response included its rows and summary counts. The returned-row count matched the list length.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-33
+BST-34,Analyst profile can read the workspace API,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC62, UC69.
+Scope: Local backend API test with stubbed verified session/profile and strict role checks.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_can_access_data_explorer -q`.
+2. Use a current analyst role and GET /data/team-playtypes for 2019-20.
+3. Compare the returned values with the expected result.
+Expected result: The API accepts the analyst role and returns 200.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The API role check accepted the analyst profile and returned the 2019-20 workspace data.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-34
+BST-35,Workspace filters preserve the requested team and side,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,Relates: SCRUM-317,"Use-case coverage: UC62, UC63.
+Scope: Local API data-flow test with explicit development authentication bypass.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_analyst_workspace_api.py::test_access_workspace_applies_team_and_side_filters.
+2. Use season 2019-20, team TOR, side offense and limit 100.
+3. Compare the returned values with the expected result.
+Expected result: The API returns 200 and each returned row matches the requested season, team and side.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The workspace filter check kept every returned row within TOR offense for 2019-20.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-35
+BST-36,Workspace row limits agree with response counts,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,Relates: SCRUM-317,"Use-case coverage: UC62, UC63.
+Scope: Local API data-flow test with explicit development authentication bypass.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_analyst_workspace_api.py::test_access_workspace_respects_limit_and_reports_counts.
+2. Use GET /data/team-playtypes for 2019-20 with limit 7.
+3. Compare the returned values with the expected result.
+Expected result: The response has at most seven rows, returned_rows equals the list length and total_rows is at least returned_rows.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","With the row limit set to seven, the workspace returned no more than seven rows. Both response counts agreed with the returned list.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-36
+BST-37,Coach profile cannot read the analyst workspace API,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC62, UC69.
+Scope: Local backend API test with stubbed verified session/profile and strict role checks.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_coach_blocked_from_data_explorer -q`.
+2. Use a coach role and GET /data/team-playtypes for 2019-20.
+3. Compare the returned values with the expected result.
+Expected result: The API returns 403.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The API role check rejected a coach profile trying to read the analyst workspace with 403.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-37
+BST-38,Coach profile cannot export analyst workspace CSV,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC62, UC69.
+Scope: Local backend API test with stubbed verified session/profile and strict role checks.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_coach_blocked_from_data_csv_export -q`.
+2. Use a coach role and GET /data/team-playtypes.csv for 2019-20.
+3. Compare the returned values with the expected result.
+Expected result: The API returns 403.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The coach profile was rejected from the analyst workspace CSV endpoint with 403.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-38
+BST-39,Workspace API rejects a missing session,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC62, UC69.
+Scope: Local backend API test with stubbed verified session/profile and strict role checks.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_no_token_data_explorer -q`.
+2. Use GET /data/team-playtypes for 2019-20 without Authorization.
+3. Compare the returned values with the expected result.
+Expected result: The API returns 401.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The workspace API rejected a request without an Authorization header with 401.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-39
+BST-40,Coach middleware redirects the analyst workspace route,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC62, UC71.
+Scope: Frontend middleware unit test with stubbed session/profile.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `npx vitest run tests/middleware.auth-analyst.test.ts -t 'redirects coach away from /data-explorer'`.
+2. Use a coach profile and GET /data-explorer.
+3. Compare the returned values with the expected result.
+Expected result: The middleware returns a redirect to /matchup.
+Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.","A coach profile requesting Data Explorer was redirected to Matchup in the middleware test.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-40
+BST-41,Signed-out workspace request keeps its return path,Test Case,Pass,Gurkaranjit Asahan,BST-27,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC62, UC69.
+Scope: Frontend middleware unit test with stubbed session/profile.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `npx vitest run tests/middleware.auth-analyst.test.ts -t 'redirects unauthenticated user to /login with next'`.
+2. Use no session and GET /data-explorer?x=1.
+3. Compare the returned values with the expected result.
+Expected result: The middleware redirects to /login with the encoded original path and query in next.
+Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.","A signed-out Data Explorer request was redirected to login. The original path and query were preserved in the return link.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-41
+BST-42,Session validation accepts verified tokens and rejects missing or invalid tokens,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,,"Use cases: UC69.
+Scope: The listed local component/API checks; production observations are identified separately.
+Preconditions: install the pinned development dependencies and use the repository fixtures.
+Run:
+python -m pytest backend/tests/test_access_control.py -q
+Check these inputs and results:
+1. With the development-auth switch enabled and validate_session(None). Expected: Session validation returns True.
+2. With development bypass disabled and validate_session(None). Expected: Session validation returns False.
+3. With development bypass disabled and the JWT verifier returning no claims. Expected: Session validation returns False.
+4. With development bypass disabled and verified claims with a subject and valid expiry. Expected: Session validation returns True.
+Related cases: BST-45, BST-46, BST-47, BST-48.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.
+Browser steps: load Matchup as coach; sign out; open /matchup; sign in as analyst with next=/matchup. Expect rankings for the coach, a login redirect after sign-out and Data Explorer for the analyst. Evidence: matchup-browser.txt, session-signout-browser.txt and analyst-role-redirect.txt.",Session validation returned the expected result for all four local configurations. Signing out also returned the browser to the public page and blocked the coach route.,https://basketball-strategy.atlassian.net/browse/BST-42
+BST-43,Role lookup uses protected profiles and rejects invalid profile data,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,,"Use cases: UC69.
+Scope: The listed local component/API checks; production observations are identified separately.
+Preconditions: install the pinned development dependencies and use the repository fixtures.
+Run:
+python -m pytest backend/tests/test_access_control.py -q
+python -m pytest backend/tests/test_supabase_profiles.py -q
+Check these inputs and results:
+1. With the JWT verifier returning no claims. Expected: Role lookup returns None.
+2. With empty, pending, unsupported admin-role, incorrectly shaped and null profile responses. Expected: All five profile responses produce no authorized role.
+Related cases: BST-49, BST-50, BST-51, BST-52.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.
+Also run backend/tests/test_supabase_profiles.py and the transactional protected-profile SQL suite. A protected coach/analyst role overrides conflicting user metadata; self-updates cannot change the role. Evidence: sql-verification.json and the BST-50/51 execution records.",Role checks used the protected profile and rejected invalid or unsupported profile responses. The SQL checks also prevented users from changing their own role.,https://basketball-strategy.atlassian.net/browse/BST-43
+BST-44,Analytics permission checks distinguish analyst and coach roles,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,,"Use cases: UC69.
+Scope: The listed local component/API checks; production observations are identified separately.
+Preconditions: install the pinned development dependencies and use the repository fixtures.
+Run:
+python -m pytest backend/tests/test_access_control.py -q
+Check these inputs and results:
+1. With the development-auth switch enabled and check_user_access(None, analytics). Expected: The analytics permission check returns True.
+2. With development bypass disabled and check_user_access(coach, analytics). Expected: The analytics permission check returns False.
+3. With development bypass disabled and check_user_access(analyst, analytics). Expected: The analytics permission check returns True.
+Related cases: BST-53, BST-54, BST-55.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.",The analytics permission helper allowed analysts and denied coaches with development access disabled. The local development bypass passed its separate check.,https://basketball-strategy.atlassian.net/browse/BST-44
+BST-45,Explicit local development mode permits a missing session,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC69.
+Scope: Local backend unit test. This bypass is a local test configuration; it is not enabled for production access.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_control.py::test_validate_session_dev_mode_allows.
+2. Use the development-auth switch enabled and validate_session(None).
+3. Compare the returned values with the expected result.
+Expected result: Session validation returns True.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","With development access enabled, the local session check accepted a missing token. This setting is limited to the test environment.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-45
+BST-46,Session validation rejects a missing token,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC69.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_control.py::test_validate_session_rejects_none_token.
+2. Use development bypass disabled and validate_session(None).
+3. Compare the returned values with the expected result.
+Expected result: Session validation returns False.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Missing tokens were rejected with development access disabled.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-46
+BST-47,Session validation rejects a failed JWT verification,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC69.
+Scope: Local backend unit test. JWT decoding is stubbed in this unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_control.py::test_validate_session_rejects_invalid_jwt.
+2. Use development bypass disabled and the JWT verifier returning no claims.
+3. Compare the returned values with the expected result.
+Expected result: Session validation returns False.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The session check rejected the token when JWT verification returned no claims.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-47
+BST-48,Session validation accepts verified subject claims,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC69.
+Scope: Local backend unit test. JWT decoding is stubbed in this unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_control.py::test_validate_session_accepts_valid_jwt.
+2. Use development bypass disabled and verified claims with a subject and valid expiry.
+3. Compare the returned values with the expected result.
+Expected result: Session validation returns True.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The session check accepted the verified subject and expiry claims supplied by the test fixture.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-48
+BST-49,A failed token verification cannot produce a role,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC69.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_control.py::test_get_user_role_returns_none_on_invalid_token.
+2. Use the JWT verifier returning no claims.
+3. Compare the returned values with the expected result.
+Expected result: Role lookup returns None.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","A token that failed verification produced no user role.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-49
+BST-50,Coach access uses the protected profile role,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Covers UC69 Authenticate Analyst Access and UC71 Validate Coach Access.
+Steps:
+1. Give a fixture user conflicting or stale coach claims in signup/token metadata.
+2. Set the current protected profile role independently.
+3. Check backend role lookup and frontend access decisions.
+Expected result: Authorization follows the current protected profile. User-editable metadata cannot grant coach access; missing, pending and unavailable profiles fail closed.","Coach access followed the protected profile even when signup or token metadata claimed another role. Missing and pending profiles were rejected.
+The local authorization tests and live transaction checks passed. [Test evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/tests).",https://basketball-strategy.atlassian.net/browse/BST-50
+BST-51,Analyst access uses the current protected profile role,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Covers UC69 Authenticate Analyst Access and UC71 Validate Coach Access.
+Steps:
+1. Use a fixture with an analyst profile and a conflicting metadata role.
+2. Check the returned role and analyst authorization.
+3. Change or remove the trusted fixture role and repeat.
+Expected result: The current protected profile controls analyst access. An earlier metadata claim does not preserve access after the protected role changes.","Analyst access followed the current protected profile. Conflicting metadata did not override it, and removing the trusted role denied access.
+The local authorization tests and live transaction checks passed. [Test evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/tests).",https://basketball-strategy.atlassian.net/browse/BST-51
+BST-52,Unsupported and malformed profiles cannot grant a role,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC69, UC71.
+Scope: Local backend unit test. The profile HTTP response is stubbed.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_supabase_profiles.py::test_missing_pending_and_malformed_profiles_deny_access.
+2. Use empty, pending, unsupported admin-role, incorrectly shaped and null profile responses.
+3. Compare the returned values with the expected result.
+Expected result: All five profile responses produce no authorized role.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Empty, pending, unsupported and malformed profile responses all returned no authorized role. All five input cases passed.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-52
+BST-53,Explicit local development mode permits the analytics guard,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC69.
+Scope: Local backend unit test. This bypass is a local test configuration; it is not enabled for production access.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_control.py::test_check_user_access_dev_mode_allows.
+2. Use the development-auth switch enabled and check_user_access(None, analytics).
+3. Compare the returned values with the expected result.
+Expected result: The analytics permission check returns True.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The local analytics guard allowed access without a role only when development access was enabled.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-53
+BST-54,Analytics permission rejects the coach role,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC69.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_control.py::test_check_user_access_rejects_wrong_role.
+2. Use development bypass disabled and check_user_access(coach, analytics).
+3. Compare the returned values with the expected result.
+Expected result: The analytics permission check returns False.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","With development access disabled, a coach role could not pass the analytics permission check.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-54
+BST-55,Analytics permission accepts the analyst role,Test Case,Pass,Abdulrahman Mousa,BST-28,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC69.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_access_control.py::test_check_user_access_accepts_correct_role.
+2. Use development bypass disabled and check_user_access(analyst, analytics).
+3. Compare the returned values with the expected result.
+Expected result: The analytics permission check returns True.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The analyst role passed the analytics permission check with development access disabled.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-55
+BST-56,Baseline ranking returns bounded matchup-specific results,Test Case,Pass,Gurkaranjit Asahan,BST-29,,,,0.3333333333333333,Medium,,,,,"Use cases: UC10, UC18.
+Scope: The listed local component/API checks; production observations are identified separately.
+Preconditions: install the pinned development dependencies and use the repository fixtures.
+Run:
+python -m pytest backend/tests/test_baseline.py -q
+Check these inputs and results:
+1. With 2019-20 TOR against BOS with K=5. Expected: Exactly five rows are returned with PLAY_TYPE, PPP_PRED and PPP_GAP columns.
+2. With 2019-20 TOR against BOS with K=5. Expected: Every returned PPP_PRED value is at least zero.
+3. With 2019-20 TOR against BOS with K=10. Expected: The result contains between one and ten rows.
+4. With 2019-20 LAL against BOS and MIA against BOS, both K=5. Expected: The two PPP_PRED lists differ.
+Related cases: BST-58, BST-59, BST-60, BST-61.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.","The baseline ranking is working as intended. logic seems correct
+
+The baseline checks returned the requested number of plays, nonnegative PPP values and different predictions for different matchups.",https://basketball-strategy.atlassian.net/browse/BST-56
+BST-57,Baseline API validates matchup and result count,Test Case,Pass,Gurkaranjit Asahan,BST-29,,,,1.0,Medium,,,,,"Use cases: UC18.
+Scope: The listed local component/API checks; production observations are identified separately.
+Preconditions: install the pinned development dependencies and use the repository fixtures.
+Run:
+python -m pytest backend/tests/test_baseline_api.py -q
+Check these inputs and results:
+1. With 2019-20 TOR against BOS with K=3. Expected: The API returns 200, three rows, matching matchup metadata and the expected ranking columns.
+2. With 2019-20 TOR against TOR with K=5. Expected: The API returns 400 and explains that the teams must differ.
+3. With 2019-20 TOR against BOS with K=0. Expected: Query validation returns 422.
+Related cases: BST-62, BST-63, BST-64.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.","Baseline api is working and retrieving the data from the backend/datasets
+
+The baseline API returned three rows for the valid matchup, rejected identical teams with 400 and rejected K=0 with 422.",https://basketball-strategy.atlassian.net/browse/BST-57
+BST-58,Baseline returns five plays with ranking values,Test Case,Pass,Gurkaranjit Asahan,BST-29,,,,0.0,Medium,,,,Relates: SCRUM-321,"Use-case coverage: UC10, UC55.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_baseline.py::test_rank_returns_k_rows.
+2. Use 2019-20 TOR against BOS with K=5.
+3. Compare the returned values with the expected result.
+Expected result: Exactly five rows are returned with PLAY_TYPE, PPP_PRED and PPP_GAP columns.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","TOR against BOS in 2019-20 returned exactly five baseline plays, including each play type, predicted PPP and PPP gap.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-58
+BST-59,Baseline predictions are nonnegative for the test matchup,Test Case,Pass,Gurkaranjit Asahan,BST-29,,,,0.0,Medium,,,,Relates: SCRUM-321,"Use-case coverage: UC10, UC55.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_baseline.py::test_rank_ppp_pred_non_negative.
+2. Use 2019-20 TOR against BOS with K=5.
+3. Compare the returned values with the expected result.
+Expected result: Every returned PPP_PRED value is at least zero.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","All five baseline PPP predictions for TOR against BOS in 2019-20 were nonnegative.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-59
+BST-60,Baseline K=10 returns a nonempty bounded list,Test Case,Pass,Gurkaranjit Asahan,BST-29,,,,0.3333333333333333,Medium,,,,Relates: SCRUM-321,"Use-case coverage: UC10, UC55.
+Scope: Local backend unit test. This assertion checks the returned bound, not the availability of every possible play type.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_baseline.py::test_rank_k_exceeds_available.
+2. Use 2019-20 TOR against BOS with K=10.
+3. Compare the returned values with the expected result.
+Expected result: The result contains between one and ten rows.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","if K exceeds available plays handled, it simply showcases all that are available
+
+Requesting ten baseline plays returned a nonempty list with no more than ten rows. This check covers the row limit.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-60
+BST-61,Changing the team changes baseline predictions,Test Case,Pass,Gurkaranjit Asahan,BST-29,,,,0.0,Medium,,,,Relates: SCRUM-321,"Use-case coverage: UC10, UC55.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_baseline.py::test_different_teams_produce_different_rankings.
+2. Use 2019-20 LAL against BOS and MIA against BOS, both K=5.
+3. Compare the returned values with the expected result.
+Expected result: The two PPP_PRED lists differ.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Changing the team from LAL to MIA against BOS changed the predicted PPP list for 2019-20.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-61
+BST-62,Baseline API returns the requested Top-K and matchup metadata,Test Case,Pass,Gurkaranjit Asahan,BST-29,,,,0.0,Medium,,,,Relates: SCRUM-321,"Use-case coverage: UC18.
+Scope: Local API data-flow test with explicit development authentication bypass.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_baseline_api.py::test_rank_baseline_api_returns_top_k_rows.
+2. Use 2019-20 TOR against BOS with K=3.
+3. Compare the returned values with the expected result.
+Expected result: The API returns 200, three rows, matching matchup metadata and the expected ranking columns.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The baseline API returned three plays for TOR against BOS and kept the requested 2019-20 matchup details in its response.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-62
+BST-63,Baseline API rejects the same team on both sides,Test Case,Pass,Gurkaranjit Asahan,BST-29,,,,0.0,Medium,,,,Relates: SCRUM-321,"Use-case coverage: UC18.
+Scope: Local API data-flow test with explicit development authentication bypass.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_baseline_api.py::test_rank_baseline_api_rejects_same_team_matchup.
+2. Use 2019-20 TOR against TOR with K=5.
+3. Compare the returned values with the expected result.
+Expected result: The API returns 400 and explains that the teams must differ.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The baseline API rejected TOR against TOR with 400 and explained that the two teams must differ.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-63
+BST-64,Baseline API rejects K=0,Test Case,Pass,Gurkaranjit Asahan,BST-29,,,,0.0,Medium,,,,Relates: SCRUM-321,"Use-case coverage: UC18.
+Scope: Local API data-flow test with explicit development authentication bypass.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_baseline_api.py::test_rank_baseline_api_rejects_invalid_k.
+2. Use 2019-20 TOR against BOS with K=0.
+3. Compare the returned values with the expected result.
+Expected result: Query validation returns 422.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The baseline API rejected K=0 with a 422 validation response.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-64
+BST-65,Coach workspace routes enforce the signed-in role,Test Case,Pass,Abdulrahman Mousa,BST-30,,,,0.0,Medium,,,,,"Use cases: UC71.
+Scope: Local middleware checks plus production browser role routing.
+Preconditions: install the pinned development dependencies and use the repository fixtures.
+Run:
+npx vitest run tests/middleware.auth-coach.test.ts
+Check these inputs and results:
+1. With a coach profile and GET /matchup. Expected: The response is 200 and has no redirect location.
+2. With a coach profile and GET /data-explorer. Expected: The middleware redirects to /matchup.
+3. With a coach profile and GET /login. Expected: The middleware redirects to /matchup.
+Related cases: BST-67, BST-68, BST-69.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.
+Browser steps: load Matchup as coach; sign out; open /matchup; sign in as analyst with next=/matchup. Expect rankings for the coach, a login redirect after sign-out and Data Explorer for the analyst. Evidence: matchup-browser.txt, session-signout-browser.txt and analyst-role-redirect.txt.","The coach workspace loaded rankings. Signing out blocked the route, and an analyst signing in with the coach return path was sent to Data Explorer. The middleware redirect checks also passed.",https://basketball-strategy.atlassian.net/browse/BST-65
+BST-66,Ranking APIs enforce coach access,Test Case,Pass,Abdulrahman Mousa,BST-30,,,,0.0,Medium,,,,,"Use cases: UC71.
+Scope: The listed local component/API checks; production observations are identified separately.
+Preconditions: install the pinned development dependencies and use the repository fixtures.
+Run:
+python -m pytest backend/tests/test_access_control_api_bypass.py -q
+Check these inputs and results:
+1. With a coach role and 2019-20 TOR against BOS. Expected: The baseline endpoint returns 200.
+2. With an analyst role and 2019-20 TOR against BOS. Expected: The baseline endpoint returns 403.
+3. With an analyst role and 2019-20 TOR against BOS. Expected: The context ranking endpoint returns 403.
+4. With an analyst role and GET /viz/playtype-zones for 2019-20 TOR against BOS. Expected: The visualization endpoint returns 403.
+Related cases: BST-70, BST-71, BST-72, BST-73.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.","The coach baseline request succeeded. Analyst requests to coach baseline, context ranking and play-zone routes were rejected.",https://basketball-strategy.atlassian.net/browse/BST-66
+BST-67,Coach middleware allows the matchup route,Test Case,Pass,Abdulrahman Mousa,BST-30,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC71.
+Scope: Frontend middleware unit test with stubbed session/profile.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `npx vitest run tests/middleware.auth-coach.test.ts -t 'allows coach to access /matchup'`.
+2. Use a coach profile and GET /matchup.
+3. Compare the returned values with the expected result.
+Expected result: The response is 200 and has no redirect location.
+Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.","The coach profile could access the Matchup route without a redirect in the middleware test.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-67
+BST-68,Coach middleware redirects analyst-only pages,Test Case,Pass,Abdulrahman Mousa,BST-30,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC71.
+Scope: Frontend middleware unit test with stubbed session/profile.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `npx vitest run tests/middleware.auth-coach.test.ts -t 'redirects coach away from analyst-only /data-explorer'`.
+2. Use a coach profile and GET /data-explorer.
+3. Compare the returned values with the expected result.
+Expected result: The middleware redirects to /matchup.
+Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.","The middleware sent a coach profile away from the analyst-only Data Explorer route and back to Matchup.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-68
+BST-69,Signed-in coach is redirected away from login,Test Case,Pass,Abdulrahman Mousa,BST-30,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC71.
+Scope: Frontend middleware unit test with stubbed session/profile.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `npx vitest run tests/middleware.auth-coach.test.ts -t 'redirects signed-in coach from auth page to /matchup'`.
+2. Use a coach profile and GET /login.
+3. Compare the returned values with the expected result.
+Expected result: The middleware redirects to /matchup.
+Execution evidence: docs/assignment-1-revision/tests/frontend-vitest.json.","A signed-in coach visiting login was redirected to Matchup in the middleware test.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-69
+BST-70,Coach profile can call the baseline API,Test Case,Pass,Abdulrahman Mousa,BST-30,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC71, UC18.
+Scope: Local backend API test with stubbed verified session/profile and strict role checks.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_coach_can_access_baseline -q`.
+2. Use a coach role and 2019-20 TOR against BOS.
+3. Compare the returned values with the expected result.
+Expected result: The baseline endpoint returns 200.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The API role check let the coach profile request baseline rankings for TOR against BOS.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-70
+BST-71,Analyst profile cannot call the coach baseline API,Test Case,Pass,Abdulrahman Mousa,BST-30,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC71, UC18.
+Scope: Local backend API test with stubbed verified session/profile and strict role checks.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_blocked_from_baseline_ranking -q`.
+2. Use an analyst role and 2019-20 TOR against BOS.
+3. Compare the returned values with the expected result.
+Expected result: The baseline endpoint returns 403.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The API role check rejected an analyst profile calling the coach baseline endpoint with 403.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-71
+BST-72,Analyst profile cannot call the coach context API,Test Case,Pass,Abdulrahman Mousa,BST-30,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC71, UC59.
+Scope: Local backend API test with stubbed verified session/profile and strict role checks.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_blocked_from_context_ml -q`.
+2. Use an analyst role and 2019-20 TOR against BOS.
+3. Compare the returned values with the expected result.
+Expected result: The context ranking endpoint returns 403.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The analyst profile was rejected from the coach context-ranking endpoint with 403.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-72
+BST-73,Analyst profile cannot call the coach visualization API,Test Case,Pass,Abdulrahman Mousa,BST-30,,,,0.0,Medium,,,,Relates: SCRUM-75,"Use-case coverage: UC71.
+Scope: Local backend API test with stubbed verified session/profile and strict role checks. The separate analyst-page/API permission mismatch is a failing regression in BST-143 and BST-144.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. From the repository root, run `backend/.venv/bin/python -m pytest backend/tests/test_access_control_api_bypass.py -k test_analyst_blocked_from_viz -q`.
+2. Use an analyst role and GET /viz/playtype-zones for 2019-20 TOR against BOS.
+3. Compare the returned values with the expected result.
+Expected result: The visualization endpoint returns 403.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The analyst profile was rejected from the coach visualization endpoint with 403. The analyst-page mismatch is tracked separately in BST-143 and BST-144.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-73
+BST-74,Context helpers handle regulation clocks and score factors,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,,"Use cases: UC50, UC59.
+Scope: The listed local component/API checks; production observations are identified separately.
+Preconditions: install the pinned development dependencies and use the repository fixtures.
+Run:
+python -m pytest backend/tests/test_context_ml.py -q
+Check these inputs and results:
+1. With period 1 and 720 seconds left in the period. Expected: The helper returns 2,880 seconds.
+2. With period 4 and zero seconds left. Expected: The helper returns zero seconds.
+3. With period 5 and 120 seconds left in overtime. Expected: The regulation-clock helper returns zero.
+4. With period 3 and 360 seconds left. Expected: The helper returns 1,080 seconds within a one-second tolerance.
+5. With margin 0, period 1 and 720 seconds left. Expected: Late-game, trailing and leading factors are all zero.
+6. With margin -8, period 4 and 60 seconds left. Expected: The late-game factor exceeds 0.5, trailing is positive and leading is zero.
+7. With margin +20, period 4 and 30 seconds left. Expected: The leading factor is positive and trailing is zero.
+8. With margin -2, period 5 and 60 seconds left. Expected: The late-game factor is 1.0 and the trailing factor is positive.
+Related cases: BST-77, BST-78, BST-79, BST-80, BST-81, BST-82, BST-83, BST-84.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.
+The regulation-clock helper does not implement overtime display. BST-142 separately records the current Gameplan overtime failure.","The clock and context-factor checks passed for regulation, trailing, leading and overtime inputs. Gameplan still drops overtime in its display; that failure is recorded in BST-142.",https://basketball-strategy.atlassian.net/browse/BST-74
+BST-75,"Context labels describe normal, trailing and leading situations",Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,,"Use cases: UC59.
+Scope: The listed local component/API checks; production observations are identified separately.
+Preconditions: install the pinned development dependencies and use the repository fixtures.
+Run:
+python -m pytest backend/tests/test_context_ml.py -q
+Check these inputs and results:
+1. With late, trailing and leading factors of 0, 0 and 0. Expected: The label is Normal context.
+2. With late, trailing and leading factors of 0.8, 0.5 and 0. Expected: The label is Late & trailing.
+3. With late, trailing and leading factors of 0.8, 0 and 0.5. Expected: The label is Late & leading.
+Related cases: BST-85, BST-86, BST-87.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.","The helper returned Normal context, Late & trailing and Late & leading for their matching factor inputs.",https://basketball-strategy.atlassian.net/browse/BST-75
+BST-76,Ridge model meets the documented historical evaluation checks,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,,"Use cases: UC65.
+Scope: The listed local component/API checks; production observations are identified separately.
+Preconditions: install the pinned development dependencies and use the repository fixtures.
+Run:
+python -m pytest backend/tests/test_ridge_model.py -q
+Check these inputs and results:
+1. With the configured Ridge pipeline. Expected: The two steps are StandardScaler followed by Ridge with RIDGE_ALPHA.
+2. With 200 seeded synthetic rows with the declared feature count. Expected: All 200 predictions are finite and have the expected one-dimensional shape.
+3. With 200 seeded synthetic rows. Expected: Every coefficient is finite and their L2 norm is below 50.
+4. With five-fold evaluation of the retained historical play-type dataset. Expected: Ridge mean RMSE is below the league-mean baseline RMSE.
+5. With the earlier 80% of seasons for training and the remaining seasons for prediction. Expected: All predicted PPP values are between 0 and 2.5.
+6. With five-fold evaluation of the retained historical dataset. Expected: Ridge RMSE is below 0.50 in each fold.
+7. With the retained offense dataset and declared feature columns. Expected: X is two-dimensional with the declared feature count; y is one-dimensional; row counts match and all values are finite.
+8. With the same 300 seeded synthetic rows with alpha 0.001, RIDGE_ALPHA and 10.0. Expected: Coefficient norms decrease strictly from the low alpha through the configured alpha to the high alpha.
+Related cases: BST-88, BST-89, BST-90, BST-91, BST-92, BST-93, BST-94, BST-95.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml and frontend-vitest.json.
+This is a historical diagnostic using contemporaneous features. It does not establish future-game forecast accuracy; SCRUM-526 covers that work.","The Ridge checks passed for pipeline structure, finite predictions, regularization and historical error thresholds. Prospective evaluation remains separate work in SCRUM-526.",https://basketball-strategy.atlassian.net/browse/BST-76
+BST-77,"Regulation clock starts with 2,880 seconds",Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_total_time_remaining_start_of_game.
+2. Use period 1 and 720 seconds left in the period.
+3. Compare the returned values with the expected result.
+Expected result: The helper returns 2,880 seconds.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The regulation clock returned 2,880 seconds at the start of the first quarter.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-77
+BST-78,Regulation clock reaches zero at the fourth-quarter end,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_total_time_remaining_end_of_regulation.
+2. Use period 4 and zero seconds left.
+3. Compare the returned values with the expected result.
+Expected result: The helper returns zero seconds.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The regulation clock returned zero at the end of the fourth quarter.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-78
+BST-79,Regulation-clock helper returns zero during overtime,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test. This helper result does not validate the Gameplan overtime display; that flow fails in BST-142.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_total_time_remaining_overtime_returns_zero.
+2. Use period 5 and 120 seconds left in overtime.
+3. Compare the returned values with the expected result.
+Expected result: The regulation-clock helper returns zero.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Period five returned zero remaining regulation time, as expected for this helper. The Gameplan overtime display still needs the fix in BST-142.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-79
+BST-80,Third-quarter clock includes the remaining regulation periods,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_total_time_remaining_mid_third_quarter.
+2. Use period 3 and 360 seconds left.
+3. Compare the returned values with the expected result.
+Expected result: The helper returns 1,080 seconds within a one-second tolerance.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","With six minutes left in the third quarter, the helper returned 1,080 seconds of regulation time.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-80
+BST-81,Opening tied-game context has zero urgency factors,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_compute_context_factors_normal.
+2. Use margin 0, period 1 and 720 seconds left.
+3. Compare the returned values with the expected result.
+Expected result: Late-game, trailing and leading factors are all zero.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","A tied game at the start of the first quarter produced zero late-game, trailing and leading factors.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-81
+BST-82,Late trailing context raises late-game and trailing factors,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_compute_context_factors_late_trailing.
+2. Use margin -8, period 4 and 60 seconds left.
+3. Compare the returned values with the expected result.
+Expected result: The late-game factor exceeds 0.5, trailing is positive and leading is zero.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Down eight with one minute left in the fourth quarter produced a late-game factor above 0.5 and a positive trailing factor. The leading factor stayed zero.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-82
+BST-83,Late large lead raises only the leading factor,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_compute_context_factors_blowout_leading.
+2. Use margin +20, period 4 and 30 seconds left.
+3. Compare the returned values with the expected result.
+Expected result: The leading factor is positive and trailing is zero.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Up twenty with thirty seconds left produced a positive leading factor and no trailing factor.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-83
+BST-84,Overtime context has maximum late-game weighting,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test. This helper result does not validate the Gameplan overtime display; that flow fails in BST-142.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_compute_context_factors_overtime.
+2. Use margin -2, period 5 and 60 seconds left.
+3. Compare the returned values with the expected result.
+Expected result: The late-game factor is 1.0 and the trailing factor is positive.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Period five with sixty seconds left produced maximum late-game weighting and a positive trailing factor. The separate Gameplan display issue remains in BST-142.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-84
+BST-85,Zero context factors use the normal label,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_label_context_normal.
+2. Use late, trailing and leading factors of 0, 0 and 0.
+3. Compare the returned values with the expected result.
+Expected result: The label is Normal context.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Zero context factors produced the Normal context label.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-85
+BST-86,Late trailing factors use the trailing label,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_label_context_late_trailing.
+2. Use late, trailing and leading factors of 0.8, 0.5 and 0.
+3. Compare the returned values with the expected result.
+Expected result: The label is Late & trailing.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Late-game and trailing factors of 0.8 and 0.5 produced the Late & trailing label.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-86
+BST-87,Late leading factors use the leading label,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-326,"Use-case coverage: UC50, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_context_ml.py::test_label_context_late_leading.
+2. Use late, trailing and leading factors of 0.8, 0 and 0.5.
+3. Compare the returned values with the expected result.
+Expected result: The label is Late & leading.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Late-game and leading factors of 0.8 and 0.5 produced the Late & leading label.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-87
+BST-88,Ridge pipeline scales features before fitting,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-477,"Use-case coverage: UC65, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_ridge_model.py::test_ridge_pipeline_structure.
+2. Use the configured Ridge pipeline.
+3. Compare the returned values with the expected result.
+Expected result: The two steps are StandardScaler followed by Ridge with RIDGE_ALPHA.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The model pipeline contains StandardScaler followed by Ridge, using the configured regularization value.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-88
+BST-89,Ridge fits 200 synthetic rows without invalid predictions,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-477,"Use-case coverage: UC65, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_ridge_model.py::test_ridge_fits_synthetic_data.
+2. Use 200 seeded synthetic rows with the declared feature count.
+3. Compare the returned values with the expected result.
+Expected result: All 200 predictions are finite and have the expected one-dimensional shape.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Ridge fitted the 200 synthetic rows and returned 200 finite predictions.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-89
+BST-90,Synthetic Ridge coefficients stay finite and bounded,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-477,"Use-case coverage: UC65, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_ridge_model.py::test_ridge_coefficients_bounded.
+2. Use 200 seeded synthetic rows.
+3. Compare the returned values with the expected result.
+Expected result: Every coefficient is finite and their L2 norm is below 50.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The synthetic fit produced finite coefficients with an L2 norm below 50.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-90
+BST-91,Historical Ridge cross-validation beats the league-mean baseline,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-477,"Use-case coverage: UC65, UC59.
+Scope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_ridge_model.py::test_ridge_outperforms_baseline.
+2. Use five-fold evaluation of the retained historical play-type dataset.
+3. Compare the returned values with the expected result.
+Expected result: Ridge mean RMSE is below the league-mean baseline RMSE.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Ridge had lower mean RMSE than the league-mean baseline in the historical five-fold evaluation. This does not measure future-game accuracy.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-91
+BST-92,Historical held-out Ridge predictions stay within the PPP bounds,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-477,"Use-case coverage: UC65, UC59.
+Scope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_ridge_model.py::test_ridge_predictions_in_valid_range.
+2. Use the earlier 80% of seasons for training and the remaining seasons for prediction.
+3. Compare the returned values with the expected result.
+Expected result: All predicted PPP values are between 0 and 2.5.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","All predictions for the held-out historical seasons stayed between 0 and 2.5 PPP. This uses contemporaneous features, not a pre-game forecast.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-92
+BST-93,Every historical Ridge fold meets the RMSE threshold,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-477,"Use-case coverage: UC65, UC59.
+Scope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_ridge_model.py::test_ridge_per_fold_rmse_acceptable.
+2. Use five-fold evaluation of the retained historical dataset.
+3. Compare the returned values with the expected result.
+Expected result: Ridge RMSE is below 0.50 in each fold.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Each of the five historical Ridge folds had RMSE below 0.50.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-93
+BST-94,Model feature and target arrays are aligned and finite,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-477,"Use-case coverage: UC65, UC59.
+Scope: Local model evaluation on the retained historical play-type data. This is a historical diagnostic using contemporaneous rate features, not a pre-game forecast validation.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_ridge_model.py::test_feature_dataset_shape.
+2. Use the retained offense dataset and declared feature columns.
+3. Compare the returned values with the expected result.
+Expected result: X is two-dimensional with the declared feature count; y is one-dimensional; row counts match and all values are finite.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","The feature and target arrays had matching row counts, the expected dimensions and no NaN or infinite values.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-94
+BST-95,Increasing Ridge alpha reduces synthetic coefficient norms,Test Case,Pass,Abdulrahman Mousa,BST-31,,,,0.0,Medium,,,,Relates: SCRUM-477,"Use-case coverage: UC65, UC59.
+Scope: Local backend unit test.
+Preconditions: install the pinned development dependencies and use the shared repository's test fixtures.
+Steps:
+1. Run backend/tests/test_ridge_model.py::test_ridge_regularization_effect.
+2. Use the same 300 seeded synthetic rows with alpha 0.001, RIDGE_ALPHA and 10.0.
+3. Compare the returned values with the expected result.
+Expected result: Coefficient norms decrease strictly from the low alpha through the configured alpha to the high alpha.
+Execution evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Using the same synthetic data, increasing Ridge alpha from 0.001 through the configured value to 10 reduced the coefficient norm each time.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-95
+BST-96,Generate Play Explanations,Test Suite,Testing In Progress,,,,,,0.0,Medium,,,,Relates: SCRUM-120; Relates: SCRUM-127,,The explanation and NLP checks passed except BST-99: baseline explanations still need a notice that game context was not applied.,https://basketball-strategy.atlassian.net/browse/BST-96
+BST-97,Rationale generated for each Top-K play,Test Case,Pass,,BST-96,,,,0.0,Medium,,,,Relates: SCRUM-120; Relates: SCRUM-127,"Use-case coverage: UC67, UC60.
+Steps:
+1. Sign in as the existing coach test account.
+2. Request TOR vs BOS, 2024-25, K=5 from baseline and context APIs; context is margin -2, Q4, 72 seconds.
+3. Inspect each returned RATIONALE.
+Expected result: Every returned play has a non-empty rationale.
+Current result: Pass. All 10 returned plays had non-empty explanations.
+Evidence: docs/assignment-1-revision/tests/additional-live-api.json, docs/assignment-1-revision/tests/additional-rationale-checks.json.","All ten baseline and context recommendations for TOR against BOS had an explanation.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-97
+BST-98,Rationale values match ranking output,Test Case,Pass,,BST-96,,,,0.0,Medium,,,,Relates: SCRUM-120; Relates: SCRUM-127,"Use-case coverage: UC67, UC60.
+Steps:
+1. Parse every numeric token in the same 10 rationales.
+2. Compare displayed numbers with response values rounded to the displayed precision.
+3. Recompute context PPP and delta from the returned fields.
+Expected result: Every cited number agrees with the returned metrics; no unsupported numerical claim.
+Current result: Pass. All 75 cited numeric values matched. Context PPP equalled ML blend plus adjustment, and delta equalled context PPP minus baseline for all five context plays.
+Scope: The templates do not cite an uplift number. Legacy and NLP adjustments were derived from the returned component fields; the endpoint does not expose those two standalone fields.
+Evidence: docs/assignment-1-revision/tests/additional-rationale-checks.json.","All 75 numbers quoted in the explanations matched the returned ranking values. The context PPP and delta calculations also matched for all five plays.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-98
+BST-99,Baseline rationale states when context is missing,Test Case,Fail,,BST-96,,,,0.0,Medium,,,,Relates: SCRUM-120; Relates: SCRUM-127; Relates: SCRUM-546,"Use-case coverage: UC67.
+Steps:
+1. Request baseline Top-K with season=2024-25, our=TOR, opp=BOS, k=5.
+2. Supply no margin, period or clock.
+3. Inspect all five rationale strings.
+Expected result: A baseline explanation explicitly indicates that game context was not applied.
+Current result: Fail. HTTP 200 and five baseline explanations were returned, but none said that game context was not applied.
+Evidence: docs/assignment-1-revision/tests/additional-live-api.json, docs/assignment-1-revision/tests/additional-rationale-checks.json.","All five baseline explanations were returned, but none said that game context had not been applied. The missing notice is tracked in SCRUM-546.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-99
+BST-100,NLP parses a trailing fourth-quarter context,Test Case,Pass,,BST-96,,,,0.0,Medium,,,,Relates: SCRUM-120; Relates: SCRUM-127; Relates: SCRUM-502,"Use-case coverage: UC45, UC50.
+Scope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.
+Steps:
+1. Run the pinned backend test environment.
+2. POST /nlp/parse with ""Down 5 with 2:00 left in the 4th"".
+3. Inspect test_fully_parsed_prompt_reports_no_defaulted_fields and compare the result.
+Expected result: The parser returns margin -5, period 4 and 120 seconds, with no defaulted or rejected fields.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Executed 2026-10-03: pytest backend/tests/test_nlp_parser.py on main (commit 2060473) - 35 passed, 0 failed. Covered by test_margin_extraction_accuracy, test_period_extraction_accuracy, test_time_extraction_accuracy and test_fully_parsed_prompt_reports_no_defaulted_fields. Result: Pass.
+
+The parser read the prompt as down five in Q4 with 120 seconds left. No fields were defaulted or rejected.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-100
+BST-101,NLP parses a leading score margin,Test Case,Pass,,BST-96,,,,0.0,Medium,,,,Relates: SCRUM-120; Relates: SCRUM-127; Relates: SCRUM-502,"Use-case coverage: UC45, UC50.
+Scope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.
+Steps:
+1. Run the pinned backend test environment.
+2. POST /nlp/parse with ""leading by 3"".
+3. Inspect test_margin_extraction_accuracy\[leading by 3\] and compare the result.
+Expected result: HTTP 200 is returned and context.margin is 3.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Executed 2026-10-03: pytest backend/tests/test_nlp_parser.py on main (commit 2060473) - 35 passed, 0 failed. Covered by test_margin_extraction_accuracy\[leading by 3\] -> margin 3.0. Result: Pass.
+
+The leading-by-three prompt returned a margin of +3.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-101
+BST-102,Unparseable NLP text produces neutral context defaults,Test Case,Pass,,BST-96,,,,0.0,Medium,,,,Relates: SCRUM-120; Relates: SCRUM-127; Relates: SCRUM-502,"Use-case coverage: UC45, UC50.
+Scope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.
+Steps:
+1. Run the pinned backend test environment.
+2. POST /nlp/parse with ""Just win the game"".
+3. Inspect test_unparseable_prompt_passes_neutral_defaults_to_recommender and compare the result.
+Expected result: HTTP 200 contains period 1, margin 0 and 720 seconds in context_ml_params. All three fields are marked defaulted, with none rejected. This checks parser output; it does not call the ranker.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Executed 2026-10-03: pytest backend/tests/test_nlp_parser.py on main (commit 2060473) - 35 passed, 0 failed. Covered by test_unparseable_prompt_passes_neutral_defaults_to_recommender: defaults margin 0, period 1, time_remaining 720 with defaulted_fields flagged. Result: Pass.
+
+The unparseable prompt returned neutral defaults: Q1, a tied score and 720 seconds. All three fields were marked as defaults; this test stops at the parser output.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-102
+BST-103,NLP rejects out-of-range values before ranking,Test Case,Pass,,BST-96,,,,0.0,Medium,,,,Relates: SCRUM-120; Relates: SCRUM-127; Relates: SCRUM-502,"Use-case coverage: UC45, UC50.
+Scope: local parser/API tests in backend/tests/test_nlp_parser.py; no browser or ranking result is claimed.
+Steps:
+1. Run the pinned backend test environment.
+2. Pass period 9, margin 250, time -30 and NaN margin to the context resolver in separate fixtures.
+3. Inspect test_out_of_range_values_are_rejected_before_ranking and compare the result.
+Expected result: Each invalid field is both rejected and defaulted to its neutral value.
+Evidence: docs/assignment-1-revision/tests/backend-junit.xml.","Executed 2026-10-03: pytest backend/tests/test_nlp_parser.py on main (commit 2060473) - 35 passed, 0 failed. Covered by test_out_of_range_values_are_rejected_before_ranking (period 9, margin 250, negative time, NaN). Result: Pass.
+
+Period nine, margin 250, negative time and NaN were each rejected and replaced with the documented neutral value.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-103
+BST-104,Access Stored Datasets,Test Suite,Testing In Progress,,,,,,0.0,Medium,,,,Relates: SCRUM-121,,Dataset loading and filtering passed. BST-107 still needs a controlled error when the dataset is missing.,https://basketball-strategy.atlassian.net/browse/BST-104
+BST-105,Play-type dataset loads from storage,Test Case,Pass,,BST-104,,,,0.0,Medium,,,,Relates: SCRUM-121,"Use-case coverage: UC62.
+Steps:
+1. Start the current backend in a child process.
+2. Open its FastAPI lifespan and call /health.
+3. Inspect the loaded recommender tables and required columns.
+Expected result: Backend starts and a non-empty dataset with the required schema loads.
+Current result: Pass. Startup succeeded; /health returned 200. The loader read 47,982 player rows and produced 3,240 team rows and 108 league rows across six seasons. Required season, team, play-type, possessions and PPP columns were present.
+Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.","The local backend loaded 47,982 player rows into 3,240 team rows and 108 league rows across six seasons. The required columns were present and health returned 200.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-105
+BST-106,Season and team query returns matching rows,Test Case,Pass,,BST-104,,,,0.0,Medium,,,,Relates: SCRUM-121,"Use-case coverage: UC62, UC63.
+Steps:
+1. Sign in as the existing analyst test account.
+2. GET /data/team-playtypes?season=2024-25&team=TOR&side=offense&limit=500.
+3. Check every returned row.
+Expected result: Only the selected season and team are returned.
+Current result: Pass. HTTP 200 returned 11 rows. Every row was TOR, 2024-25, offense.
+Evidence: docs/assignment-1-revision/tests/additional-live-api.json.","Filtering the live workspace to TOR offense in 2024-25 returned 11 rows, all matching the selected team, season and side.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-106
+BST-107,Missing play-type dataset has a controlled error,Test Case,Fail,,BST-104,,,,0.0,Medium,,,,Relates: SCRUM-121; Relates: SCRUM-547,"Use-case coverage: UC62.
+This is a startup/readiness contract gap. Missing auth configuration still fails closed at protected endpoints; the result does not demonstrate a security bypass.
+Steps:
+1. In an isolated child process, suppress dotenv file loading.
+2. Make Path.exists return false only for synergy_playtypes_2019_2025_players.csv.
+3. Import the backend startup module and capture exit status and error output.
+Expected result: A clear controlled error is returned or logged without an unhandled exception.
+Current result: Fail. Startup exited 1 with an unhandled FileNotFoundError while importing the context recommender. The traceback identified the dataset path, but there was no controlled startup diagnostic.
+Scope: Only the child process saw the simulated missing file; the real dataset and production service were unchanged.
+Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.","The isolated missing-dataset check ended with an unhandled FileNotFoundError. SCRUM-547 tracks a controlled startup/readiness diagnostic; the real dataset was unchanged.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-107
+BST-108,API Stability and Deployment,Test Suite,Testing In Progress,,,,,,0.0,Medium,,,,Relates: SCRUM-122; Relates: SCRUM-123; Relates: SCRUM-131; Relates: SCRUM-132,,"Health, concurrent requests and the page/API connection passed. The response-time target in BST-111 and startup/readiness behavior in BST-113 are still open.",https://basketball-strategy.atlassian.net/browse/BST-108
+BST-109,Deployed health endpoint responds,Test Case,Pass,,BST-108,,,,0.0,Medium,,,,Relates: SCRUM-122; Relates: SCRUM-123; Relates: SCRUM-131; Relates: SCRUM-132,"Use-case coverage: UC62, UC71.
+Steps:
+1. GET the Cloud Run /health endpoint before and after the bounded concurrent requests.
+Expected result: HTTP 200 with healthy status.
+Current result: Pass. Both calls returned 200 with status ok; durations were 258.883 ms and 151.392 ms.
+Evidence: docs/assignment-1-revision/tests/additional-live-api.json.","The deployed health endpoint returned 200 before and after the request sample.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-109
+BST-110,Concurrent Top-K requests complete,Test Case,Pass,,BST-108,,,,0.0,Medium,,,,Relates: SCRUM-122; Relates: SCRUM-123; Relates: SCRUM-131; Relates: SCRUM-132,"Use-case coverage: UC18.
+Steps:
+1. Use four concurrent workers to issue eight read-only baseline Top-K requests.
+2. Use TOR/BOS and LAL/GSW in both directions, with K=3 or 5.
+3. Inspect status and returned count for each request; call health afterward.
+Expected result: All requests complete with no 5xx errors or crash.
+Current result: Pass. All eight requests returned 200 with the requested ranking count. The following health request also returned 200. Two requests took about 33 seconds.
+Scope: A small bounded run of independent HTTP requests using the existing coach test account; this is not a multi-account permission test or capacity benchmark.
+Evidence: docs/assignment-1-revision/tests/additional-live-api.json.","All eight requests from four concurrent workers returned the requested ranking count without errors. Two took about 33 seconds, so this does not establish acceptable response time.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-110
+BST-111,Top-K response time meets an agreed threshold,Test Case,Verify,,BST-108,,,,0.0,Medium,,,,Relates: SCRUM-122; Relates: SCRUM-123; Relates: SCRUM-131; Relates: SCRUM-132; Relates: SCRUM-550; Relates: SCRUM-609,"Use-case coverage: UC18.
+Steps:
+1. Measure client-observed duration of the eight requests in BST-110.
+2. Calculate the nearest-rank p95.
+3. Look for an agreed deployed Top-K latency limit in the case and available project requirements.
+Expected result: The measured p95 is below the agreed threshold.
+Current result: Verify. The eight-request sample had median 705.493 ms and p95 33,859.822 ms. No agreed deployed Top-K threshold was found, so no Pass/Fail decision was made.
+Scope: The existing local NLP parser threshold covers a different operation. One small sample cannot establish service capacity or a stable latency distribution; the source of the two slow requests is unconfirmed.
+Evidence: docs/assignment-1-revision/tests/additional-live-api.json.","The eight-request sample had a p95 of 33.86 seconds. This remains Verify until SCRUM-550 defines the deployed Top-K timing target and a repeatable measurement.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).
+
+The first timing run and proposed targets are tracked in SCRUM-550. Team agreement and the startup-inclusive acceptance check are tracked in SCRUM-609. This case stays Verify until those requirements are met.
+
+The new sample in SCRUM-550 measures the analyst uplift route, not this case’s coach baseline route. This case stays Verify. SCRUM-609 covers the baseline run, team-agreed target and startup scenario.",https://basketball-strategy.atlassian.net/browse/BST-111
+BST-112,Deployed Matchup page loads data from the API,Test Case,Pass,,BST-108,,,,0.0,Medium,,,,Relates: SCRUM-122; Relates: SCRUM-123; Relates: SCRUM-131; Relates: SCRUM-132,"Use cases: UC18, UC71.
+Sign in as coach on the deployed frontend and open Matchup. Use 2024-25, TOR against BOS, K=5. Expect the season/team choices and five baseline rankings to load. Evidence: matchup-browser.txt and matchup-initial-loading.txt. The first client navigation remained Loading; reloading completed, so that delay remains an observation rather than a successful timing test.","The deployed Matchup page loaded five rankings after a reload. The initial navigation delay is kept in the evidence; this pass covers successful data retrieval, not response-time performance.",https://basketball-strategy.atlassian.net/browse/BST-112
+BST-113,Missing required configuration stops backend startup,Test Case,Fail,,BST-108,,,,0.0,Medium,,,,Relates: SCRUM-122; Relates: SCRUM-123; Relates: SCRUM-131; Relates: SCRUM-132; Relates: SCRUM-547,"Use-case coverage: UC62, UC64.
+This is a startup/readiness contract gap. Missing auth configuration still fails closed at protected endpoints; the result does not demonstrate a security bypass.
+Steps:
+1. Start an isolated child process with Supabase environment values absent and insecure development auth disabled.
+2. Disable dotenv loading in that child so private files cannot refill the removed value.
+3. Import the backend, open lifespan and call /health.
+Expected result: Startup fails with a clear missing-configuration error.
+Current result: Fail. Without SUPABASE_URL, startup still completed and /health returned 200 with status ok. No configuration error was logged at startup.
+Scope: This did not bypass authentication or change production configuration. Auth dependencies still fail closed on protected requests.
+Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.","With auth configuration removed in an isolated process, startup still reported healthy. Protected requests still fail closed; SCRUM-547 will define the startup/readiness contract.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-113
+BST-114,Validate Second Dataset and Models,Test Suite,Testing In Progress,,,,,,0.0,Medium,,,,Relates: SCRUM-124; Relates: SCRUM-125; Relates: SCRUM-126,,The saved dataset has the required columns. Missing-column warnings and shot margin values still need fixes (BST-116/117). BST-118/119 cannot run until the source data is repaired.,https://basketball-strategy.atlassian.net/browse/BST-114
+BST-115,Retained second-dataset schema maps required model columns,Test Case,Pass,,BST-114,,,,0.0,Medium,,,,Relates: SCRUM-124; Relates: SCRUM-125; Relates: SCRUM-126; Relates: SCRUM-538,"Use-case coverage: UC64, UC62.
+Steps:
+1. Read the retained shots_clean.parquet.
+2. Run the current schema normalizer and canonical mapper in memory.
+3. Compare columns against get_feature_spec and CANONICAL_COLUMNS.
+Expected result: All required model columns are present after schema mapping.
+Current result: Pass. All 16 required model columns were present, and canonical mapping produced the expected 18 columns for all 1,332,515 retained rows.
+Scope: This verifies retained clean-to-model/canonical mapping only. The original raw event file is absent, and column presence does not resolve the known team-attribution defects.
+Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.","The retained shot dataset mapped to all 16 required model columns and 18 canonical columns. This checks column coverage; the attribution defect in SCRUM-538 remains.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-115
+BST-116,Schema mapping reports missing and unmapped columns,Test Case,Fail,,BST-114,,,,0.0,Medium,,,,Relates: SCRUM-124; Relates: SCRUM-125; Relates: SCRUM-126; Relates: SCRUM-548,"Use-case coverage: UC64, UC62.
+The fix should provide useful diagnostics for unmapped columns, not reject valid extra metadata.
+Steps:
+1. Use a five-row retained shot fixture in memory.
+2. Remove TEAM_ABBR and run the model loader.
+3. Separately add UNMAPPED_FIXTURE and repeat while capturing warnings and output.
+Expected result: Missing or unmapped input columns are reported.
+Current result: Fail. Missing TEAM_ABBR produced a clear KeyError. The extra UNMAPPED_FIXTURE column was silently retained with no warning or diagnostic, so the unmapped-column check failed.
+Scope: Both fixtures were local copies; no dataset file was edited.
+Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.","Removing TEAM_ABBR produced an error, but adding an unmapped column produced no diagnostic. SCRUM-548 tracks that warning without rejecting valid extra metadata.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-116
+BST-117,Shot features are complete and available before possession,Test Case,Fail,,BST-114,,,,0.0,Medium,,,,Relates: SCRUM-124; Relates: SCRUM-125; Relates: SCRUM-126; Relates: SCRUM-538; Relates: SCRUM-549,"Use-case coverage: UC70.
+Steps:
+1. Inspect null values in the retained generated shot dataset.
+2. Run the existing ML loader on a reproducible 20,000-row sample with seed 42 and check finite inputs.
+3. Compare the feature specification with the stated pre-possession requirement.
+Expected result: No NaN/inf values and every feature is available before the possession.
+Current result: Fail. All 1,332,515 retained MARGIN values were missing; the ML loader replaced them with zero. The 20,000-row model sample was finite, but actual shot type, location and related fields have no pre-possession input contract. This does not establish the required leakage-free feature set.
+Scope: This records the mismatch with the existing test requirement; it does not assert that conditional shot-quality modelling itself is invalid.
+Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.","Every retained shot margin was missing and became zero in the loader. SCRUM-538 and SCRUM-549 cover the data repair and the inputs that must be available before possession.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-117
+BST-118,Selected shot model beats baseline on a holdout season,Test Case,Verify,,BST-114,,,,0.0,Medium,,,,Relates: SCRUM-124; Relates: SCRUM-125; Relates: SCRUM-126; Relates: SCRUM-538; Relates: SCRUM-549,"Use-case coverage: UC70, UC65.
+Steps:
+1. Check whether the source and derived second dataset are ready for trustworthy evaluation.
+2. Verify retained attribution and feature diagnostics before training.
+Expected result: The selected model has lower MAE and RMSE than the baseline on a time-based holdout.
+Current result: Blocked. Training was not run. The retained data still has 18,746 self-opponent rows and all 7,527 game groups have one shooting-team label; raw events needed for repair are absent. Missing margins and the pre-possession feature contract also need resolution.
+Scope: No fresh shot-model accuracy or cross-validation claim is made. Re-run on repaired data with a documented split and feature contract; avoid repeating expensive production training.
+Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.","Holdout training is blocked until the shot attribution and feature inputs are repaired in SCRUM-538 and SCRUM-549. No new model-accuracy result is claimed.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-118
+BST-119,Selected shot model reports cross-validation statistics,Test Case,Verify,,BST-114,,,,0.0,Medium,,,,Relates: SCRUM-124; Relates: SCRUM-125; Relates: SCRUM-126; Relates: SCRUM-538; Relates: SCRUM-549,"Use-case coverage: UC70, UC65.
+Steps:
+1. Check whether the source and derived second dataset are ready for trustworthy evaluation.
+2. Verify retained attribution and feature diagnostics before training.
+Expected result: Per-fold metrics and summary statistics are produced and saved.
+Current result: Blocked. Training was not run. The retained data still has 18,746 self-opponent rows and all 7,527 game groups have one shooting-team label; raw events needed for repair are absent. Missing margins and the pre-possession feature contract also need resolution.
+Scope: No fresh shot-model accuracy or cross-validation claim is made. Re-run on repaired data with a documented split and feature contract; avoid repeating expensive production training.
+Evidence: docs/assignment-1-revision/tests/additional-local-checks.json.","Cross-validation is blocked by the same shot-data and feature issues in SCRUM-538 and SCRUM-549. The model was not trained again on the invalid data.
+[Result](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/additional-legacy-execution.json).",https://basketball-strategy.atlassian.net/browse/BST-119
+BST-120,Iteration 14 elaboration verification,Test Suite,Pass,Gurkaranjit Asahan,,,,,0.0,Medium,,,,Relates: SCRUM-475; Relates: SCRUM-476; Relates: SCRUM-481; Relates: SCRUM-506,"Use-case coverage: UC29, UC28, UC42, UC48.
+This suite tests my work in SCRUM-475, SCRUM-476, SCRUM-481 and SCRUM-506: the Top-K uplift API and exports, calibration, Gameplan database storage and permissions, deployment, real coach and analyst sign-in, and authenticated CSV/PDF downloads.
+BST-121 through BST-129 contain the individual steps and results, including the versions tested, failures, fixes and retests.
+Future-game prediction testing in SCRUM-526 and the Gameplan screen-to-cloud saving work in SCRUM-482 are separate tasks; the calibration tests here evaluate historical data.","All nine cases passed for uplift, calibration, Gameplan database rules, deployment, coach/analyst sign-in and downloads.
+I checked [release 18baffc](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/18baffc0cc6f99273f60e797a499804029b8b84f) on the [live app](https://nbaplayranker-seven.vercel.app), and the [GitHub checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/37157802665) passed; saved CSVs and both PDF types opened correctly.
+Results are in browser-verification-final.json and downloaded-file-verification.json, with [Visual Paradigm revision 51 evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ee01a18302bd3082a4e75cc1fd22bb618636b00d/docs/model) saved separately.
+This suite covers the workflows tested here: calibration evaluates historical data, future-game prediction testing remains SCRUM-526, and Gameplan screen-to-cloud saving remains SCRUM-482.",https://basketball-strategy.atlassian.net/browse/BST-120
+BST-121,Top-K uplift matches possession-weighted calculations,Test Case,Pass,Gurkaranjit Asahan,BST-120,,,,0.0,Medium,,,,Relates: SCRUM-475,"Use-case coverage: UC29.
+Covers [SCRUM-475](https://basketball-strategy.atlassian.net/browse/SCRUM-475) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+Before testing: Use a small dataset with multiple teams, seasons and play types, unequal possession counts, and a documented calculation.
+Steps:
+1. Calculate the team-season average PPP and selected Top-K PPP by hand, using the documented possession weighting.
+2. Compare the calculation and API results with those values, including the PPP difference and any percentage difference.
+3. Change another team or season and check that it does not affect the selected team-season average.
+4. Test zero or invalid denominators and too little usable data.
+Expected: The values match the independent calculation within the stated tolerance, and the reference includes only the intended team and season. Invalid denominators produce a documented safe result or error. The result is clearly described as a historical modeled comparison, without claiming held-out accuracy or a proven improvement caused by the recommendations.","I checked the uplift calculation with a worked example: a team average of 1.75 points per possession and 2.05 for the selected plays should give a +0.30 difference. The tests in [5092bf1](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/5092bf1d93ed7c30f2e2b7b34eddd613f4ece474) returned that result and still used the full team-season average when only one play was selected.
+The tests also kept teams and seasons separate and handled negative differences, zero averages and unusable data correctly. BST-127/128 still need live testing; this historical comparison does not prove the plays will improve future results.
+
+The uplift calculation passed on the live backend from [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da).
+The independent example matched +0.30 PPP, with team/season separation and invalid-data checks passing.
+For TOR vs BOS in 2024-25 with three plays, JSON and CSV both showed 0.969238 team-average PPP, 1.071696 modeled PPP and a 0.102458 difference.
+Results are in live-verification.json; these are historical comparisons, not proof of actual or future improvement.
+
+The Top-K tests passed again, including independently calculated possession-weighted PPP, the team-season reference, negative uplift, zero denominators and invalid input. Changes to other teams and seasons do not enter the selected reference.
+Evidence: [backend-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml), [backend.log](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend.log).",https://basketball-strategy.atlassian.net/browse/BST-121
+BST-122,Top-K JSON and CSV match and enforce analyst access,Test Case,Pass,Gurkaranjit Asahan,BST-120,,,,0.0,Medium,,,,Relates: SCRUM-475,"Use-case coverage: UC29, UC69.
+Covers [SCRUM-475](https://basketball-strategy.atlassian.net/browse/SCRUM-475) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+Before testing: Record the API version and use valid dataset choices plus analyst, coach, pending and signed-out requests.
+Steps:
+1. Request JSON and CSV with the same filters and compare every exported metric and its supporting details.
+2. Check the CSV file type and name, and the JSON fields and structure.
+3. Test missing or invalid seasons and teams, opponent values if supported, K limits, and unsupported formats if supported.
+4. Repeat the access checks as an analyst, coach, pending account and signed-out user.
+Expected: An authorized analyst gets matching JSON and CSV results. Invalid inputs return the documented client error without crashing the server. Signed-out users, pending accounts and disallowed roles cannot read the protected metrics, and responses contain no secrets.","I checked that the Top-K JSON and CSV contained the same values, source-file checksums and download details. The tests also rejected invalid filters, empty results, missing sessions and simulated coach access.
+These checks passed in [5092bf1](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/5092bf1d93ed7c30f2e2b7b34eddd613f4ece474). They used simulated account roles, so I still need to test real sign-in and access on the deployed app in BST-127/128.
+
+The live uplift API and export checks passed on [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da).
+An analyst received matching JSON and CSV results for the same filters, while coach access and requests without a session were blocked.
+Invalid season, team, K and weight inputs were rejected, with pending-account checks covered locally.
+I saved topk-uplift-live.json and topk-uplift-live.csv; browser file saving was still pending in BST-129.
+
+The Top-K API and export tests passed. Fresh analyst JSON and CSV responses matched, while signed-out and coach requests were blocked. Invalid K and same-team matchups were rejected. Pending-role and malformed-input coverage also passed in the local tests.
+Evidence: [backend-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml), [live-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-core/live-verification.json).",https://basketball-strategy.atlassian.net/browse/BST-122
+BST-123,Calibration trains on earlier seasons only,Test Case,Pass,Gurkaranjit Asahan,BST-120,,,,0.0,Medium,,,,Relates: SCRUM-476,"Use-case coverage: UC28, UC65.
+Covers [SCRUM-476](https://basketball-strategy.atlassian.net/browse/SCRUM-476) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+Before testing: Use several seasons of identifiable test rows, with later-season values that differ from the training data.
+Steps:
+1. Inspect the reported training/test splits and record the rows used to fit the model.
+2. Check that every training season is earlier than the test season and no held-out row is used for training.
+3. Check that raw PPP is excluded from FEATURE_COLS and that the report explains that some other inputs are same-season rates tied to the outcome.
+4. Change the held-out target values and feature scale, then check that the training-only inputs and fitted preprocessing settings stay unchanged.
+Expected: Training and test rows stay separate and in time order. Scaling and reliability adjustments use only training data, and raw PPP is not an input. Changing the test data does not change fitted training settings, while the evaluation results respond as expected. The report explains that same-season inputs make this a historical evaluation; it does not prove future-game accuracy or rule out every outcome-related input. Using only earlier information and an untouched forecasting test set remains SCRUM-526.","I checked that the calibration model trains and prepares its data using only the earlier seasons. Changing the actual PPP values in the test set changed the measured error, but did not change the predictions or the groups used in the report.
+Those local checks passed in [b9f145d](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d15189dd7f6be6854166bce0aef3f58f01); live testing is still pending. Some inputs are statistics from the season being tested, so [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526) will check predictions using only information available beforehand.
+
+The calibration training checks passed on [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da).
+I confirmed separate earlier-season training and later-season evaluation, training-only scaling and reliability calculations, and unchanged predictions when held-out targets changed.
+The live report matched 1,650 held-out rows across five seasons in live-verification.json.
+The model excludes held-out PPP from training but still uses same-season shooting/scoring rates, so pre-game accuracy remains separate work in SCRUM-526.
+
+I clarified the test description to say exactly what passed: earlier-season training, separate later-season test rows, training-only scaling and reliability calculations, and no raw PPP target used as an input.
+I also checked that the report explains its limitation: some other inputs come from the season being evaluated, so this does not prove future-game prediction accuracy.
+SCRUM-526 still covers using earlier information and a separate forecasting test set.
+
+Training used earlier seasons, and changing the test-season outcomes did not change the training process or predictions. The live report kept that season order. These are historical results using same-season rates, so they do not prove future-game accuracy.
+Evidence: [backend-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml), [calibration-live.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-core/calibration-live.json).",https://basketball-strategy.atlassian.net/browse/BST-123
+BST-124,Calibration values and limits match the analyst page,Test Case,Pass,Gurkaranjit Asahan,BST-120,,,,0.0,Medium,,,,Relates: SCRUM-476,"Use-case coverage: UC65, UC62.
+Covers [SCRUM-476](https://basketball-strategy.atlassian.net/browse/SCRUM-476) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+Before testing: Use known predicted/actual PPP pairs, ordinary data and small or constant datasets, with the analyst page and API on the same version.
+Steps:
+1. Calculate the bias and grouped calibration results independently from the known PPP pairs.
+2. Compare the API values and row counts with those calculations.
+3. Test empty, small and constant datasets, plus unsupported train/test splits.
+4. Open the analyst Calibration page and compare its values, split labels and unavailable-result messages with the API.
+Expected: Metrics and counts match within the documented tolerance. Missing or unreliable results are labelled clearly instead of showing misleading values or invalid JSON numbers. The page shows the API values, explains the test split and limitations, and blocks unauthorized access.","The local calibration calculations passed in [b9f145d](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d15189dd7f6be6854166bce0aef3f58f01), but the signed-in analyst screen was still untested.
+I checked bias, average error, RMSE and prediction groups with known values, including empty, small, constant and invalid datasets.
+Role checks used simulated sessions; the next step was to compare the actual screen with the API.
+Same-season inputs limit this to historical evaluation, with future-game accuracy testing left to [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526).
+
+The calculation checks and signed-in analyst Calibration page passed on [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da).
+I checked the page against calibration-live.json: it showed 1,650 rows across five held-out seasons, MAE 0.0085 and RMSE 0.0113, with matching prediction-group and season tables.
+The page explained small-sample limits and the use of same-season inputs, and coach access was blocked at both the API and page.
+The local tests also covered empty, small and constant datasets; this verifies the historical report, not future-game prediction accuracy.
+
+The calibration calculations and API checks passed. The analyst page also showed 1,650 held-out rows across five seasons, MAE 0.0085, RMSE 0.0113 and signed bias -0.000034. Its bins, sparse 19-row warning and training-only provenance matched the report.
+Evidence: [backend-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml), [live-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-core/live-verification.json).",https://basketball-strategy.atlassian.net/browse/BST-124
+BST-125,"Gameplan storage validates notes, matchups and revisions",Test Case,Pass,Gurkaranjit Asahan,BST-120,,,,0.0,Medium,,,,Relates: SCRUM-481,"Use-case coverage: UC42, UC48.
+Covers [SCRUM-481](https://basketball-strategy.atlassian.net/browse/SCRUM-481) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+Before testing: Use the documented Gameplan data format, migration and valid test identities in a database transaction that will be rolled back.
+Steps:
+1. Save valid notes and tactics for an owner and matchup, then read them back.
+2. Try saving a duplicate record for the same owner and matchup.
+3. Try invalid data shapes, types, required values and matchup details.
+4. Check timestamps and repeated updates.
+5. Roll back every test record.
+Expected: Valid data saves and reads back correctly. Duplicate records and invalid data are rejected according to the documented rules, and timestamps update as intended. No test records remain. This checks database storage without requiring the future screen-to-cloud saving work.","The Gameplan database tests passed locally and in Supabase using [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da).
+I saved and read back notes, ordered plays and roles, checked owner/season/matchup uniqueness, and rejected invalid or oversized data.
+Required fields, timestamps, revisions and outdated-update rejection also worked, and all test data was rolled back.
+The steps are in gameplan_state_verification.sql; connecting the screen to cloud storage remains SCRUM-482.
+
+Using a real signed-in account, I created a Gameplan record, updated its revision from 1 to 2 and confirmed that an outdated save could not overwrite it. Invalid data was rejected, and I deleted the record after testing.
+The local and Supabase checks on [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da) also passed for data limits, unique matchups and protected ownership fields. The results are saved in live-verification.json; connecting the screen to this database remains SCRUM-482.
+
+The live transaction test passed for Gameplan JSON, unique owner/matchup records, timestamps and server revisions. Duplicate matchups, invalid seasons and malformed or oversized state were rejected. All test records were rolled back and the fixture check found none left.
+Evidence: [sql-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/sql-verification.json), [live-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-core/live-verification.json).",https://basketball-strategy.atlassian.net/browse/BST-125
+BST-126,Gameplan ownership and role restrictions hold,Test Case,Pass,Gurkaranjit Asahan,BST-120,,,,0.0,Medium,,,,Relates: SCRUM-481,"Use-case coverage: UC42, UC48, UC71.
+Covers [SCRUM-481](https://basketball-strategy.atlassian.net/browse/SCRUM-481) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+Before testing: Use two different test users plus signed-out, pending and other disallowed roles in a transaction that will be rolled back.
+Steps:
+1. As an authorized coach, create, read, update and delete a Gameplan owned by that coach.
+2. As another user, try reading, changing and deleting the same plan.
+3. Try creating a plan for another owner or changing ownership through an update or upsert.
+4. Check signed-out, pending and disallowed-role requests.
+5. Check that protected profile rules still work, then roll back the test data.
+Expected: Only an allowed role can access its own plans. Other users cannot read the data, write to it or change its owner. Signed-out, pending and disallowed roles are blocked according to the database rules, and existing profile protections remain intact.","Gameplan database permission checks passed locally and in Supabase using [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da).
+Coaches could manage their own plans, while other users could not read, change or take ownership of them.
+Analyst, pending and signed-out access was blocked; changing signup information could not grant coach access, and removing the coach role removed access.
+I rolled back the test data; browser sign-in and SCRUM-482 cloud saving were separate checks.
+
+The local and database tests confirmed that coaches can manage their own Gameplans while other users cannot access them or take ownership. I also signed in with real coach and analyst accounts: the coach could save and update a plan, and the analyst was blocked.
+The checks passed on [e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da) using the protected profile role, and I removed the test records afterward. The results are in live-verification.json; the screen-to-cloud connection is still separate work in SCRUM-482.
+
+The live database test confirmed owner-only Gameplan access. A second coach could not change or delete another coach's row; analyst, pending and signed-out access was rejected. Role demotion removed access, owner forgery failed, and all transaction fixtures were rolled back. Separate real-session checks also passed.
+Evidence: [sql-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/sql-verification.json), [live-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-core/live-verification.json).",https://basketball-strategy.atlassian.net/browse/BST-126
+BST-127,"Production health, access rules and deployment checks",Test Case,Pass,Gurkaranjit Asahan,BST-120,,,,0.0,Medium,,,,Relates: SCRUM-506,"Use-case coverage: UC62, UC71.
+Covers [SCRUM-506](https://basketball-strategy.atlassian.net/browse/SCRUM-506) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+Before testing: Deploy the reviewed source to the existing Cloud Run service and Vercel production site, and record the deployment and rollback versions.
+Steps:
+1. Record the source commit, backend version, frontend deployment and live URLs.
+2. Check backend health and protected endpoints without signing in.
+3. Check requests from the approved website origin and a foreign origin.
+4. Check the public home/login pages and redirects from protected pages.
+5. Check that required data files are available after startup and existing resource limits, hosting plans and cost controls remain in place.
+Expected: Health and public pages work, signed-out protected requests are blocked, origin rules work as configured, and frontend pages load or redirect correctly. Required runtime files are present, and the deployment matches the reviewed source and approved hosting limits. Budget alerts and delayed spending controls do not guarantee the final bill.","The [Top-K API](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/5092bf1d93ed7c30f2e2b7b34eddd613f4ece474), [calibration report](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b9f145d15189dd7f6be6854166bce0aef3f58f01) and [Gameplan database](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da) passed 176 backend tests, 12 frontend tests, TypeScript and the production build locally.
+I still need to deploy this version and check that the services start, the required data loads, and sign-in and access restrictions work within the existing hosting limits. I will record the deployed versions and rollback option during that check; the earlier service-restoration tests did not cover these new changes.
+
+Deployment checks passed for [backend e950869](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/e950869cb318c6b44220d3c06be4ba2aa16521da) and the [live frontend](https://nbaplayranker-seven.vercel.app), including health, sign-in, protected access and website-origin rules.
+Cloud Run kept its existing resource limits, CAD $10 budget and CAD $7 spending control; enforcement can be delayed, so this does not guarantee the bill.
+The live backend was nba-playranker-api-00005-hrn, with nba-playranker-api-00005-muh available for rollback, and no hosting plans were upgraded.
+The export fix passed local checks, but browser file saving was still pending in BST-128/129.
+
+The first download fix, 1068ef2, deployed successfully and its [GitHub checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/37155825368) passed.
+The browser retest still failed: the download appeared in Downloads but showed Stopped.
+I recorded that failure in BST-129 and continued the delivery fix in SCRUM-527.
+
+The current backend health check passed. Protected endpoints rejected signed-out requests, and the approved website origin passed preflight while a foreign origin was rejected. This retest did not deploy a new release or recheck every billing and resource setting.
+Evidence: [live-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-core/live-verification.json), [live-additional.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-additional.json).",https://basketball-strategy.atlassian.net/browse/BST-127
+BST-128,TC-I14-DEPLOY-02 — Authenticated coach and analyst production journeys,Test Case,Pass,Gurkaranjit Asahan,BST-120,,,,0.0,Medium,,,,,"Covers [SCRUM-506](https://basketball-strategy.atlassian.net/browse/SCRUM-506) under [BST-120](https://basketball-strategy.atlassian.net/browse/BST-120).
+Before testing: Use the live app and authorized coach and analyst accounts, recording the environment and source version without putting passwords in Jira or chat.
+Steps:
+1. Sign in as a coach, run a supported matchup/context ranking and inspect the result.
+2. Check that the coach cannot use analyst-only pages or API functions.
+3. Sign in as an analyst, load and filter Data Explorer, export a supported file, and inspect the metrics and calibration results.
+4. Check navigation and role restrictions for both accounts, then sign out.
+5. Record each failure with the steps and exact error observed.
+Expected: Both accounts complete the listed browser steps for their permitted role, and forbidden routes stay blocked. The recorded results must show real browser sign-in and observed results for each role without exposing credentials. Mock sessions and synthetic tokens alone do not satisfy this test.","The coach and analyst browser tests were still pending.
+The local tests passed, but I still needed working test accounts and the new deployment before checking real sign-in, allowed pages, blocked pages and the main workflows.
+The next update would record what actually worked or failed in the browser.
+
+Analyst sign-in worked and Data Explorer showed 11 TOR offense rows.
+Export CSV failed with “Invalid or missing session token.”
+I recorded the problem in BST-129 and SCRUM-527, so this browser test was still incomplete.
+
+The listed browser tests passed on the [live app](https://nbaplayranker-seven.vercel.app) after c3044da deployed.
+As a coach, I signed in, generated baseline/context recommendations and a Gameplan, and confirmed analyst pages were blocked.
+As an analyst, I checked Data Explorer and Calibration against the API, saved the CSV and shot-plan PDF, then verified sign-out and protected-page redirects.
+Results are in browser-verification-final.json and downloaded-file-verification.json; Gameplan still saved in the browser, with cloud saving left to SCRUM-482, and this case did not separately check a coach CSV browser save.",https://basketball-strategy.atlassian.net/browse/BST-128
+BST-129,Signed-in browser downloads preserve authorization,Test Case,Pass,Gurkaranjit Asahan,BST-120,,,,0.0,Medium,,,,,"Covers [SCRUM-527](https://basketball-strategy.atlassian.net/browse/SCRUM-527) under SCRUM-506.
+Before testing: Use the deployed frontend/backend, a signed-in account with the required role, and a loaded dataset.
+Steps:
+1. As an analyst, export the main and filtered Data Explorer CSVs, then check the saved filenames, headers and rows.
+2. Export a CSV from Shot Explorer.
+3. Check that protected download requests use the current session’s authorization token.
+4. Test a denied or expired session: the page should show a useful error, stop its busy indicator and avoid saving the error response as a file.
+5. Check the existing baseline CSV and shot PDF with the appropriate role and record what happens.
+Expected: Allowed exports save with the correct content, filenames and authorization. Unauthorized requests show an error and do not create a downloaded file.
+The first export test failed. A signed-in analyst saw 11 TOR offense rows, but Export CSV opened Cloud Run with “Invalid or missing session token.” The comments show the fixes, later failures and final saved-file retest.","The live Data Explorer export test failed.
+I signed in as an analyst and loaded 11 TOR offense rows, but Export CSV opened the backend page with “Invalid or missing session token” because the download link did not send the login token.
+I started the fix in SCRUM-527 and added baseline CSV and shot PDF to the review list; those two exports had not yet been confirmed as failures.
+
+Five local download tests passed, covering the login token, exact CSV content and filename, PDF filenames, a CSV filename fallback, cleanup after a click error, and a rejected 403 response without a downloaded file.
+All 17 frontend tests and TypeScript also passed, using mocked sessions and responses.
+The fix still needed deployment and a signed-in browser retest.
+A coach baseline export click timed out while waiting for a download, so that result was inconclusive and this case stayed open.
+
+The browser retest failed after 1068ef2 deployed.
+Export CSV now created a Downloads entry, but it showed Stopped, which I confirmed in the browser.
+The 17 local tests and API checks passed, but the file still was not saving, so SCRUM-527 stayed In Progress.
+I planned to route downloads through the app so the browser could save an authenticated file normally.
+
+The download retest passed on the [live app](https://nbaplayranker-seven.vercel.app) after c3044da routed downloads through the app.
+I checked newly saved Data Explorer and Shot Explorer CSVs and a readable TOR/BOS shot-plan PDF; the Data Explorer CSV finished and opened.
+Live checks confirmed correct files and blocked unauthorized requests without downloading errors as files.
+Results are in downloaded-file-verification.json and export-proxy-live-verification.json; local tests and the build passed, but a separate coach file saving through a browser click was not confirmed here.
+
+I found one missed download route: the coach Matchup PDF at /export/playtype-viz.pdf was not allowed through the new download route.
+I reopened this case as Fail until that PDF route was added and retested, keeping SCRUM-527 and SCRUM-506 In Progress.
+The Data Explorer CSV, Shot Explorer CSV and shot-plan PDF saves above still passed, but they did not test this separate coach PDF.
+
+The final download retest passed after [18baffc](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/18baffc0cc6f99273f60e797a499804029b8b84f) added the missing coach PDF route to the [live app](https://nbaplayranker-seven.vercel.app), and [GitHub checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/37157802665) passed.
+I checked newly saved analyst CSVs, the coach baseline CSV, and both shot-plan and coach play-type PDFs for correct content.
+Live checks also confirmed that unauthorized downloads were blocked.
+Results are in downloaded-file-verification.json and export-proxy-live-verification.json; this resolved the missed coach PDF route and the earlier missing-token and Stopped-download problems.",https://basketball-strategy.atlassian.net/browse/BST-129
+BST-130,Compute & Export Top-K Uplift,Test Suite,Pass,,,,,,0.0,Medium,,,,Relates: SCRUM-474,,"The current Top-K uplift checks passed for weighted calculations, filtering, access and matching exports.",https://basketball-strategy.atlassian.net/browse/BST-130
+BST-131,Top-K uplift matches the team-season reference,Test Case,Pass,,BST-130,,,,0.0,Medium,,,,Relates: SCRUM-474; Relates: SCRUM-475,"Use-case coverage: UC29.
+Preconditions: Synergy team-season data loaded; baseline ranking available.
+Steps: Run pytest backend/tests/test_topk_uplift.py.
+Expected result: Uplift equals Top-K modeled PPP minus team season PPP; invalid or unusable inputs are rejected; CSV/JSON exports match.","Executed 2026-10-03: pytest backend/tests/test_topk_uplift.py on main (commit 6886865) - 23 passed, 0 failed. Result: Pass.
+
+All 23 Top-K tests passed, covering weighted calculations, source scope, missing or unusable inputs, authorization and matching CSV/JSON output. The live analyst export parity check passed too.
+Evidence: [backend-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml), [live-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-core/live-verification.json).",https://basketball-strategy.atlassian.net/browse/BST-131
+BST-132,Run Data Quality Checks,Test Suite,Pass,,,,,,0.0,Medium,,,,Relates: SCRUM-478,,"The Synergy data-quality checks passed for schema, required values, duplicates and coverage. Shot-data attribution remains a separate failure in BST-138/139.",https://basketball-strategy.atlassian.net/browse/BST-132
+BST-133,"Synergy data quality flags schema, missing data and coverage",Test Case,Pass,,BST-132,,,,0.0,Medium,,,,Relates: SCRUM-478,"Use-case coverage: UC63.
+Preconditions: Synergy play-type CSV available in backend/data.
+Steps: Run pytest backend/tests/test_data_quality.py.
+Expected result: Clean data passes; missing columns, nulls in key fields, duplicate rows and missing season/team pairs are flagged; checks that cannot run are reported as not_run; the loaded Synergy dataset passes all checks.","Executed 2026-10-03: pytest backend/tests/test_data_quality.py on main (commit 9ffb9d3) - 7 passed, 0 failed, including the check against the real Synergy dataset (47,982 rows, 6 seasons, 30 teams). Result: Pass.
+
+All seven Synergy data-quality tests passed for schema, required values, duplicates, coverage and checks that cannot run. This result covers the play-type dataset. The separate shot-data attribution checks failed and are tracked in the new shot-data cases.
+Evidence: [backend-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml), [shot-data-current.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/shot-data-current.json).",https://basketball-strategy.atlassian.net/browse/BST-133
+BST-134,Export Results (CSV/PDF),Test Suite,Pass,,,,,,0.0,Medium,,,,Relates: SCRUM-484,,"The export contract checks passed for CSV/JSON values, filenames, content types, PDF rendering and invalid inputs.",https://basketball-strategy.atlassian.net/browse/BST-134
+BST-135,Exports keep values and headers consistent across formats,Test Case,Pass,,BST-134,,,,0.0,Medium,,,,Relates: SCRUM-484; Relates: BST-3,"Use-case coverage: UC62.
+Preconditions: Export contract module available.
+Steps: Run pytest backend/tests/test_export_contract.py.
+Expected result: CSV and JSON carry the same rows and columns; media type, filename and download header follow the contract; PDF uses the registered renderer; unknown formats and incomplete rows are rejected.","Executed 2026-10-03: pytest backend/tests/test_export_contract.py on main (commit 10c38dc) - 5 passed, 0 failed. Result: Pass.
+
+All five export-contract tests passed. CSV and JSON preserved the same declared columns and values, file headers and names matched the contract, the registered PDF renderer was used, and unsupported formats or incomplete rows were rejected.
+Evidence: [backend-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-135
+BST-136,NLP handles concurrent requests within local memory limits,Test Case,Pass,,BST-96,,,,0.0,Medium,,,,Relates: SCRUM-502,"Use-case coverage: UC45, UC50.
+Preconditions: backend dependencies and psutil installed locally.
+Steps: run pytest backend/tests/test_nlp_load.py (8 concurrent users, 400 /nlp/parse and /nlp/explain requests against the full FastAPI app).
+Expected result: no failed requests, peak process memory below the 2048 MB Cloud Run limit, memory growth under 200 MB, p95 latency under 2 s.","Executed 2026-10-03 on main (commit 120a5d3), Windows 11, Python 3.14: 1 passed. 400 requests from 8 concurrent users, 0 errors, 138 requests/s, latency p50 61 ms / p95 77 ms / max 84 ms, process memory 306 MB before and 308 MB peak. Result: Pass. Caveat: en_core_web_sm was not installed locally, so the pipeline used its spacy.blank fallback; the trained model footprint and the deployed Cloud Run service are not covered by this run.
+
+The local NLP load test completed 400 requests from eight concurrent users with no errors. Its p95 latency was 333.1 ms and peak process memory was 299.3 MiB, both within the test limits. This result covers the local process.
+Evidence: [nlp-load-current.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/nlp-load-current.json), [backend-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/backend-junit.xml).",https://basketball-strategy.atlassian.net/browse/BST-136
+BST-137,Fall 2026 elaboration regression tests,Test Suite,Testing In Progress,Gurkaranjit Asahan,,,,,0.0,High,,,,,"Fall 2026 tests for Gameplan context and storage, shot-data attribution, analyst pages, export security and NLP input validation.
+Each case lists its feature, use cases, steps and expected result. Record the result and evidence on the case. Link failures to their planned fixes and rerun them after the fixes. Leave cases that were not run in Verify.
+The existing use-case suites keep their separate test plans.",Eight cases passed and nine failed. BST-146 was not rerun and remains Verify. Each failed case is linked to its planned fix.,https://basketball-strategy.atlassian.net/browse/BST-137
+BST-138,Shot data uses different shooting and opposing teams,Test Case,Fail,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-479; Relates: SCRUM-480; Relates: SCRUM-538,"Covers UC63 Compute Aggregates; UC70 Get accurate shot type predictions using an appropriate model.
+Related work: [SCRUM-479](https://basketball-strategy.atlassian.net/browse/SCRUM-479), [SCRUM-480](https://basketball-strategy.atlassian.net/browse/SCRUM-480).
+Steps:
+1. Read shooting team, opponent, season and game ID from the retained clean shot dataset.
+2. Check that team and opponent differ on every row and both shooting teams appear in complete game groups.
+3. As an analyst, export TOR 2025-26 shots with a 5000-row limit and repeat the identity check.
+Expected result: No shot lists its own team as the opponent; complete game groups contain both shooting teams.","Fresh checks found 18,746 of 1,332,515 rows with the same team and opponent; all 7,520 game groups with at least 100 shots contained only one shooting-team label. The fresh live CSV contained 51 invalid rows out of 5,000.
+Fix: [SCRUM-538](https://basketball-strategy.atlassian.net/browse/SCRUM-538).
+Evidence: [shot-attribution-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/shot-attribution-junit.xml), [shot-data-current.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/shot-data-current.json).",https://basketball-strategy.atlassian.net/browse/BST-138
+BST-139,Shot import keeps the event team separate from home team and score,Test Case,Fail,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-479; Relates: SCRUM-538,"Covers UC63 Compute Aggregates; UC70 Get accurate shot type predictions using an appropriate model.
+Related work: [SCRUM-479](https://basketball-strategy.atlassian.net/browse/SCRUM-479).
+Steps:
+1. Create two synthetic shot events in one TOR/BOS game, one from each shooting-team ID.
+2. Include home-team and away-team abbreviations and a numeric home score, but no shooting-team abbreviation or home flag.
+3. Run build_shots_clean once with home_score 0 and once with home_score 42.
+4. Compare team, opponent and home/away flag against the independently specified shooter IDs.
+Expected result: The TOR event maps to TOR/BOS/home and the BOS event to BOS/TOR/away, regardless of the home score.","Both score variants misattribute the shooting teams. This proves a current ETL defect on a representative schema; it does not prove the historical raw schema.
+Fix: [SCRUM-538](https://basketball-strategy.atlassian.net/browse/SCRUM-538).
+Evidence: [shot-attribution-junit.xml](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/shot-attribution-junit.xml), [shot-attribution.log](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/shot-attribution.log).",https://basketball-strategy.atlassian.net/browse/BST-139
+BST-140,Gameplan uses the new situation on the first Build,Test Case,Fail,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-326; Relates: SCRUM-539,"Covers UC45 Generate Context-Aware Top-K Play Types and Shot Types; UC50 Build Context Features.
+Related work: [SCRUM-326](https://basketball-strategy.atlassian.net/browse/SCRUM-326).
+Steps:
+1. Sign in as a coach and choose TOR/BOS 2024-25.
+2. Start with Q4, 180 seconds, margin -2.
+3. Enter: Q4 down 5 with 0:28 left. Need a three. They are switching.
+4. Build once, record the parsed context and rankings, then build again without changing inputs.
+Expected result: Both requests use Q4, 28 seconds, margin -5, and identical unchanged inputs produce identical ranks and values.","The first Build showed Q4, 28 seconds and a five-point deficit, but its top PPPs were 1.162, 1.068 and 0.994. Building again without changing the prompt gave 1.163, 1.089 and 1.013. The first request also used the previous focus setting.
+Fix: [SCRUM-539](https://basketball-strategy.atlassian.net/browse/SCRUM-539).
+Evidence: [gameplan-first-build.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/gameplan-first-build.txt), [gameplan-second-build.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/gameplan-second-build.txt).",https://basketball-strategy.atlassian.net/browse/BST-140
+BST-141,Gameplan forwards supported coaching conditions to ranking,Test Case,Fail,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-502; Relates: SCRUM-540,"Covers UC45 Generate Context-Aware Top-K Play Types and Shot Types; UC50 Build Context Features.
+Related work: [SCRUM-502](https://basketball-strategy.atlassian.net/browse/SCRUM-502).
+Steps:
+1. Enter a situation containing Need a three and They are switching.
+2. Compare the parsed conditions with the current frontend request construction and backend contract.
+3. Check the ranking input contract for the supported qualitative conditions.
+Expected result: Supported conditions reach the ranking service, or the screen clearly marks unsupported conditions without claiming they influenced the result.","The page shows the parsed need-three and switching conditions, but the code that builds the ranking request leaves those flags out. Fix: [SCRUM-540](https://basketball-strategy.atlassian.net/browse/SCRUM-540).
+Evidence: [gameplan-first-build.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/gameplan-first-build.txt), [gameplan-context-source.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/gameplan-context-source.txt).",https://basketball-strategy.atlassian.net/browse/BST-141
+BST-142,Gameplan preserves overtime from the parsed situation,Test Case,Fail,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-502; Relates: SCRUM-541,"Covers UC11 Rank Plays with Game Context; UC50 Build Context Features.
+Related work: [SCRUM-502](https://basketball-strategy.atlassian.net/browse/SCRUM-502).
+Steps:
+1. Enter: Overtime, down 2 with 1:00 left.
+2. Choose Understand and compare the parsed period with the displayed quarter and context summary.
+3. Inspect the frontend period normalization. Stop at the first mismatch.
+Expected result: Overtime remains overtime throughout parsing, display and ranking; it is not silently changed to quarter 4.","The parser returned overtime as period 5 with 60 seconds and a two-point deficit. After Understand, the page still showed quarter 4 and Q4 in its summary. The check stopped at that mismatch.
+Fix: [SCRUM-541](https://basketball-strategy.atlassian.net/browse/SCRUM-541).
+Evidence: [gameplan-overtime.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/gameplan-overtime.txt), [nlp-overtime-current.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/nlp-overtime-current.json).",https://basketball-strategy.atlassian.net/browse/BST-142
+BST-143,Analyst Shot Plan page can use its required API,Test Case,Fail,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-126; Relates: SCRUM-544,"Covers UC62 Access Analyst Workspace; UC70 Get accurate shot type predictions using an appropriate model.
+Related work: [SCRUM-126](https://basketball-strategy.atlassian.net/browse/SCRUM-126).
+Steps:
+1. Sign in as an analyst and open the analyst Shot Plan page.
+2. Choose TOR/BOS 2021-22 with a 1,000-shot limit and run the page action.
+3. Inspect the request status and visible result.
+Expected result: The page role matches its API policy and an allowed analyst can complete the advertised workflow.","The analyst Shot Plan page returned 403: this role is not allowed to access shotplan.
+Fix: [SCRUM-544](https://basketball-strategy.atlassian.net/browse/SCRUM-544).
+Evidence: [shot-plan-browser.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/shot-plan-browser.txt), [live-additional.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-additional.json).",https://basketball-strategy.atlassian.net/browse/BST-143
+BST-144,Analyst Shot Heatmap page can use its required API,Test Case,Fail,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-126; Relates: SCRUM-544,"Covers UC62 Access Analyst Workspace; UC70 Get accurate shot type predictions using an appropriate model.
+Related work: [SCRUM-126](https://basketball-strategy.atlassian.net/browse/SCRUM-126).
+Steps:
+1. Sign in as an analyst and open Shot Heatmap.
+2. Select TOR/BOS 2025-26 with a 1,000-shot limit and generate the heatmap.
+3. Inspect the API status and image or error shown.
+Expected result: The page role matches the heatmap API policy and the permitted user receives an image.","The analyst Shot Heatmap page returned 403: this role is not allowed to access visualization.
+Fix: [SCRUM-544](https://basketball-strategy.atlassian.net/browse/SCRUM-544).
+Evidence: [shot-heatmap-browser.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/shot-heatmap-browser.txt), [live-additional.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-additional.json).",https://basketball-strategy.atlassian.net/browse/BST-144
+BST-145,Model Metrics finishes loading after successful metadata,Test Case,Pass,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-477; Relates: SCRUM-542,"Covers UC65 Evaluate Model; UC62 Access Analyst Workspace.
+Related work: [SCRUM-477](https://basketball-strategy.atlassian.net/browse/SCRUM-477).
+Steps:
+1. Sign in as an analyst and open Model Metrics.
+2. Record successful metadata responses and wait for the metadata loading indicator to finish.
+3. Inspect holdout requests and navigate between metric panels.
+Expected result: The loading indicator clears when its request completes and unrelated panel state does not trigger duplicate holdout work.","Fresh browser observation: the holdout results appeared, but Loading pipeline summary remained and Refreshing stayed disabled. Duplicate calls were not established by this browser observation.
+Fix: [SCRUM-542](https://basketball-strategy.atlassian.net/browse/SCRUM-542).
+Evidence: [model-metrics-browser.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/model-metrics-browser.txt).
+
+Pass. The deployed Model Metrics page loaded its pipeline summary and holdout table, and Refresh became available. CSV, JSON and PDF files downloaded successfully. The stuck-loading problem from the earlier run is fixed.
+[Browser evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-2/verification/browser) · [Regression tests](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/39185054136)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=6b18f247-35e7-4a11-9c95-4bed08c7ed54&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/BST-145
+BST-146,Shot Model Metrics completes within its request limit,Test Case,Verify,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-126; Relates: SCRUM-543,"Covers UC65 Evaluate Model; UC70 Get accurate shot type predictions using an appropriate model.
+Related work: [SCRUM-126](https://basketball-strategy.atlassian.net/browse/SCRUM-126).
+Steps:
+1. Run the documented default Shot Model Metrics action once under approved resource limits.
+2. Record duration, response status and the rendered metrics or error.
+3. Check that opening the page does not repeatedly launch training.
+Expected result: The supported metric request completes before the platform timeout, or returns an explicit bounded job/cached-result workflow.","The October 6 production run timed out after 300 seconds. No expensive repeat was triggered during this revision; retain that original failure evidence and rerun after the planned fix.
+Fix: [SCRUM-543](https://basketball-strategy.atlassian.net/browse/SCRUM-543).
+Evidence: [shot-metrics-runtime-diagnostics.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/historical/shot-metrics-runtime-diagnostics.json).",https://basketball-strategy.atlassian.net/browse/BST-146
+BST-147,Shot Statistical Analysis renders the returned response,Test Case,Fail,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-126; Relates: SCRUM-545,"Covers UC65 Evaluate Model; UC62 Access Analyst Workspace.
+Related work: [SCRUM-126](https://basketball-strategy.atlassian.net/browse/SCRUM-126).
+Steps:
+1. Sign in as an analyst and open Shot Statistical Analysis.
+2. Run the supported analysis and inspect the page and browser console.
+3. Check the dataset, correlation and feature-selection sections for valid values or explicit unavailable states.
+Expected result: A successful current response renders without a client exception; the page does not claim methods that were not computed.","Shot Statistical Analysis showed an application error. The browser console recorded a TypeError while reading length.
+Fix: [SCRUM-545](https://basketball-strategy.atlassian.net/browse/SCRUM-545).
+Evidence: [shot-analysis-browser.txt](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/shot-analysis-browser.txt), [shot-analysis-console.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/shot-analysis-console.json).",https://basketball-strategy.atlassian.net/browse/BST-147
+BST-148,A stale Gameplan update cannot overwrite a newer revision,Test Case,Pass,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-481,"Covers UC42 Save Notes to Tactics Board / Plan; UC48 Save Notes to Tactics Board / Plan.
+Related work: [SCRUM-481](https://basketball-strategy.atlassian.net/browse/SCRUM-481).
+Steps:
+1. Create a disposable Gameplan with the authorized coach session.
+2. Update revision 1 and confirm the server returns revision 2.
+3. Try another update conditional on stale revision 1.
+4. Read the row and delete the disposable fixture.
+Expected result: The stale update changes zero rows, the newer state survives, and cleanup removes the fixture.","The live update advanced revision 1 to 2; the stale revision 1 request changed zero rows; fixture cleanup passed.
+Evidence: [live-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-core/live-verification.json).",https://basketball-strategy.atlassian.net/browse/BST-148
+BST-149,One account cannot read another account profile,Test Case,Pass,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-75,"Covers UC69 Authenticate Analyst Access; UC71 Validate Coach Access.
+Related work: [SCRUM-75](https://basketball-strategy.atlassian.net/browse/SCRUM-75).
+Steps:
+1. Sign in with the controlled coach and analyst accounts.
+2. As each role, query profiles filtered to the other account ID.
+3. Do not change any profile or role.
+Expected result: Both requests return no other-account row; the caller can still retrieve its own trusted role.","Both other-account profile queries returned HTTP 200 with empty lists; own-role checks passed.
+Evidence: [live-additional.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-additional.json), [live-verification.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-core/live-verification.json).",https://basketball-strategy.atlassian.net/browse/BST-149
+BST-150,Export proxy rejects a cookie session for the wrong verified user,Test Case,Pass,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-527,"Covers UC62 Access Analyst Workspace.
+Related work: [SCRUM-527](https://basketball-strategy.atlassian.net/browse/SCRUM-527).
+Steps:
+1. Run the export route test with a verified user and a session belonging to another user.
+2. Record the status and whether any upstream fetch starts.
+Expected result: The route returns 401 and never calls the backend with the mismatched session.","The mismatched-session regression passed using isolated request fixtures. This is a local route check, not a new browser execution.
+Evidence: [frontend-vitest.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-150
+BST-151,Export proxy rejects arbitrary backend targets,Test Case,Pass,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-527,"Covers UC62 Access Analyst Workspace.
+Related work: [SCRUM-527](https://basketball-strategy.atlassian.net/browse/SCRUM-527).
+Steps:
+1. Request absolute external URLs, protocol-relative URLs, unsupported paths and traversal-style paths.
+2. Also supply an arbitrary url parameter or duplicate path selector.
+3. Check that rejection happens before authentication or an upstream fetch.
+Expected result: Unsupported targets return 400 and cannot turn the export route into an arbitrary proxy.","All target allowlist and duplicate-selector cases passed locally.
+Evidence: [frontend-vitest.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-151
+BST-152,Export proxy rejects foreign-site download requests,Test Case,Pass,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-527,"Covers UC62 Access Analyst Workspace.
+Related work: [SCRUM-527](https://basketball-strategy.atlassian.net/browse/SCRUM-527).
+Steps:
+1. Call the same-origin export route with a foreign Origin header.
+2. Repeat with Sec-Fetch-Site set to cross-site.
+3. Check status and whether an upstream request starts.
+Expected result: Both calls return 403 without contacting the backend.","Both foreign-site request fixtures returned 403 and no upstream request.
+Evidence: [frontend-vitest.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-152
+BST-153,Export proxy rejects redirects and wrong file content,Test Case,Pass,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-527,"Covers UC62 Access Analyst Workspace.
+Related work: [SCRUM-527](https://basketball-strategy.atlassian.net/browse/SCRUM-527).
+Steps:
+1. Have the upstream endpoint return a 302 redirect to another site.
+2. Have it return HTTP 200 JSON for a CSV request.
+3. Check the route response and download headers.
+Expected result: The proxy follows neither redirect and returns 502 without a download attachment for invalid file content.","Redirect and wrong-content-type cases both passed locally; neither created an attachment.
+Evidence: [frontend-vitest.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-153
+BST-154,Export proxy keeps denied responses out of downloaded files,Test Case,Pass,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-527,"Covers UC62 Access Analyst Workspace.
+Related work: [SCRUM-527](https://basketball-strategy.atlassian.net/browse/SCRUM-527).
+Steps:
+1. Return upstream 401, 403 and 422 responses to a permitted export path.
+2. Check response status, content type, attachment header and body.
+Expected result: The status stays accurate, the body is an error response rather than an attachment, and tokens do not appear.","All three upstream rejection cases passed locally.
+Evidence: [frontend-vitest.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/frontend-vitest.json).",https://basketball-strategy.atlassian.net/browse/BST-154
+BST-155,NLP rejects empty and overlength coaching prompts,Test Case,Pass,Gurkaranjit Asahan,BST-137,,,,0.0,Medium,,,,Relates: SCRUM-502,"Covers UC50 Build Context Features; UC45 Generate Context-Aware Top-K Play Types and Shot Types.
+Related work: [SCRUM-502](https://basketball-strategy.atlassian.net/browse/SCRUM-502).
+Steps:
+1. Send a whitespace-only coaching prompt.
+2. Send a 2,001-character prompt.
+3. Send a normal bounded coaching prompt and compare parsed numeric context.
+Expected result: The two invalid prompts return 422; the valid prompt returns the intended margin and remaining time.","Fresh live requests rejected both invalid prompts and parsed down 3 with 28 seconds correctly.
+Evidence: [live-additional.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/live-additional.json), [nlp-live-parse.json](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-1-revision/tests/nlp-live-parse.json).",https://basketball-strategy.atlassian.net/browse/BST-155
+BST-156,Data-quality report and analyst panel,Test Suite,Pass,Gurkaranjit Asahan,,,,,0.0,Medium,,,,Relates: SCRUM-480,"Use cases: Run Data Quality Checks, UC62 Access Analyst Workspace and UC69 Authenticate Analyst Access.
+Check the new data-quality report API and Data Explorer panel: source metadata, individual results, failures, unavailable states and access. Includes local regression cases and a separate live browser case. Existing BST-132/BST-133 cover the underlying check engine.","All six cases passed after the status-text fix. The suite covers local report/error/access checks and the deployed panel's retry, refresh, source scope and readable status labels. BST-168 keeps the original contrast failure and its separate passing retest.
+
+All seven cases now pass. BST-169 adds the production-address regression check to the existing report, access, retry and contrast coverage. Older deployment links still need to be replaced with the [public app address](https://nbaplayranker-seven.vercel.app).",https://basketball-strategy.atlassian.net/browse/BST-156
+BST-157,Season-ahead PPP forecast evaluation,Test Suite,Pass,Gurkaranjit Asahan,,,,,0.0,Medium,,,,Relates: SCRUM-526,"Use case: UC65 Evaluate Model.
+Check prior-season inputs, chronological model selection, final-season isolation, timed baselines and reproducible evaluation files. This tests the new season-ahead forecast evaluation; the existing retrospective Calibration cases remain separate.",,https://basketball-strategy.atlassian.net/browse/BST-157
+BST-158,Quality report identifies its source and completed checks,Test Case,Pass,Gurkaranjit Asahan,BST-156,,,,0.0,Medium,,,,Relates: SCRUM-480,"Use cases: Run Data Quality Checks; UC62 Access Analyst Workspace.
+Input: the complete 180-row Synergy fixture and the loaded source table.
+Steps: Request GET /data/quality-report with an analyst fixture session, repeat it, then change one source value. Render the successful report.
+Expected: Four check results, source rows/seasons/teams, a valid checked time and no-store response. The source fingerprint is stable until the data changes. The panel states its scope and does not imply the separate shot dataset was checked.
+Local coverage: backend/tests/test_data_quality_api.py and tests/data-quality.test.tsx.","The local API and component checks passed. The response includes all four checks and the source details; its fingerprint stays stable until the data changes. The panel explains that it covers Synergy data, not the separate shot dataset.
+Results: [frontend and backend test results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/verification).",https://basketball-strategy.atlassian.net/browse/BST-158
+BST-159,Failed or incomplete data checks never appear as a pass,Test Case,Pass,Gurkaranjit Asahan,BST-156,,,,0.0,Medium,,,,Relates: SCRUM-480,"Use cases: Run Data Quality Checks; UC62 Access Analyst Workspace.
+Input: fixtures with missing columns, rows, teams or seasons; a duplicate row; malformed or conflicting report fields.
+Steps: Run the report API fixtures, parse the returned reports and render failed/not-run checks.
+Expected: Missing data and duplicates are reported. Dependent checks show not_run when they cannot run. Invalid or contradictory successful responses are rejected; the panel never labels them as passed.
+Local coverage: backend/tests/test_data_quality_api.py and tests/data-quality.test.tsx. Existing BST-133 separately covers the check engine.","The fixture checks passed. Missing source data and duplicates produce a failed report; dependent checks show not_run. Incomplete or conflicting reports are rejected instead of displayed as a pass.
+Results: [frontend and backend test results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/verification).",https://basketball-strategy.atlassian.net/browse/BST-159
+BST-160,Unavailable quality checks show an error and retry state,Test Case,Pass,Gurkaranjit Asahan,BST-156,,,,0.0,Medium,,,,Relates: SCRUM-480,"Use cases: Run Data Quality Checks; UC62 Access Analyst Workspace.
+Input: a source-loading exception; HTTP 404/503; a connection failure; malformed JSON; loading and error component states.
+Steps: Request the report with each fixture, including a success followed by a failed refresh. Render loading and error states.
+Expected: No server paths or private details leak. No previous pass or dataset version remains visible while loading or after an error. The error view offers Retry data checks.
+Local coverage: backend/tests/test_data_quality_api.py and tests/data-quality.test.tsx. This component check does not replace the live retry-button test.","The local error-state checks passed. Failed refreshes clear the old result, loading and error views show no pass, and the error view includes Retry data checks. Private server details are hidden. The live retry click is covered separately by BST-162.
+Results: [frontend and backend test results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/verification).
+Deployed example of the unavailable state and Retry button.
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=6e59232a-6ff2-4bb4-827f-2ae1f9d87868&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/BST-160
+BST-161,Quality report accepts analysts and rejects unauthorized requests,Test Case,Pass,Gurkaranjit Asahan,BST-156,,,,0.0,Medium,,,,Relates: SCRUM-480,"Use cases: UC69 Authenticate Analyst Access; Run Data Quality Checks.
+Input: analyst, coach and missing-profile fixture roles, plus a request without a bearer token.
+Steps: Call GET /data/quality-report for each case and inspect the frontend request options.
+Expected: Analyst returns 200; coach and missing profile return 403; no token returns 401. Requests use Authorization and no-store without tokens in URLs. Error text explains sign-in or analyst access without exposing the response body.
+Local coverage: backend/tests/test_data_quality_api.py and tests/data-quality.test.tsx. Real-session access remains in the live case.","The local access checks passed: analyst returned 200, coach and missing-profile fixtures returned 403, and requests without a token returned 401. The frontend sends the bearer token in the header with no-store caching. Real accounts are checked separately in BST-162.
+Results: [frontend and backend test results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/verification).",https://basketball-strategy.atlassian.net/browse/BST-161
+BST-162,"Live Data Explorer quality panel loads, refreshes and enforces access",Test Case,Pass,Gurkaranjit Asahan,BST-156,,,,0.0,Medium,,,,Relates: SCRUM-480,"Use cases: UC62 Access Analyst Workspace; Run Data Quality Checks; UC69 Authenticate Analyst Access.
+Precondition: the new frontend and report API are deployed.
+Steps: Sign in as analyst, open Data Explorer, compare the panel with the current report API and refresh it. Exercise an unavailable request and Retry. Check that coach and signed-out requests cannot read the report.
+Expected: Source, scope, checked time and all check results agree with the API. Refresh and retry finish without stale pass results. Unauthorized access is rejected.","Pass. On the deployed analyst page, Retry recovered from the unavailable route, then loaded four passing checks for 47,982 rows, six seasons and 30 teams. Refresh cleared the old result while loading and updated the check time. Changing TOR to BOS changed the preview rows while the report kept its full-source scope. Real coach and signed-out API requests returned 403 and 401.
+Evidence: [browser and API results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/verification). Frontend [a3bba3a](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/a3bba3a8db107b1ec32ddb7904b2dda55ce2493b); backend 3a8b00b.
+The unavailable report shows a Retry button while the preview still has rows.
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=bfe9e824-2e7f-44ab-acba-b96084c28d22&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+The report loads all four results after the service becomes available.
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=0b8ec775-247d-4c8c-98fe-6ae4578a933c&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/BST-162
+BST-163,Season-ahead inputs use only the immediately prior regular season,Test Case,Pass,Gurkaranjit Asahan,BST-157,,,,0.0,Medium,,,,Relates: SCRUM-526,"Use case: UC65 Evaluate Model.
+Input: six identifiable seasons plus missing-history, playoff and defensive rows.
+Steps: Build forecast rows, compare their values with the prior season, perturb future values and remove one required prior-season row.
+Expected: Each forecast uses exactly the preceding regular season. Future changes do not alter earlier inputs; playoffs and defensive rows cannot change the result. Missing history is excluded and counted instead of filled from another season.
+Local coverage: backend/tests/test_forecast_evaluation.py.","The prior-season checks passed. Forecast inputs use the immediately preceding regular season; future changes, playoff rows and defensive rows cannot alter earlier forecasts. Missing prior history is excluded and counted.
+Results: [verification record](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/verification.json).",https://basketball-strategy.atlassian.net/browse/BST-163
+BST-164,Changing the final season cannot change forecast fitting or predictions,Test Case,Pass,Gurkaranjit Asahan,BST-157,,,,0.0,Medium,,,,Relates: SCRUM-526,"Use case: UC65 Evaluate Model.
+Input: synthetic fixtures and the bundled Synergy dataset, with 2024-25 reserved as the final target season.
+Steps: Evaluate once, then change only final-season points, possessions and rate values and repeat.
+Expected: Model selection, fitted preprocessing and model/baseline predictions remain identical. The evaluated errors can change because the held-out outcomes changed.
+Local coverage: backend/tests/test_forecast_evaluation.py.","The synthetic and bundled-data leakage checks passed. Changing final-season outcomes and rates left model selection, fitted scaling and predictions unchanged, while the evaluated errors changed as expected.
+Results: [verification record](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/verification.json).",https://basketball-strategy.atlassian.net/browse/BST-164
+BST-165,Forecast selection and scaling keep the final season untouched,Test Case,Pass,Gurkaranjit Asahan,BST-157,,,,0.0,Medium,,,,Relates: SCRUM-526,"Use case: UC65 Evaluate Model.
+Input: regular-season Synergy rows from 2019-20 through 2024-25.
+Steps: Observe candidate training rows, tuning rows and final refit rows. Compare scaler values with the training inputs.
+Expected: Candidate models train on target seasons 2020-21 through 2022-23 and tune on 2023-24. Refit may include 2023-24 but never the final 2024-25 target rows. Scaling uses only the applicable training rows.
+Local coverage: backend/tests/test_forecast_evaluation.py and docs/iteration-15/forecast/report.json.","The split checks passed. Candidate training used 990 rows from 2020-21 through 2022-23, tuning used 330 rows from 2023-24, and the final 330 rows from 2024-25 stayed outside selection and fitting. Scaling matched the training data.
+Results: [verification and evaluation report](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast).",https://basketball-strategy.atlassian.net/browse/BST-165
+BST-166,Forecast and timed baselines use the same evaluation rows,Test Case,Pass,Gurkaranjit Asahan,BST-157,,,,0.0,Medium,,,,Relates: SCRUM-526,"Use case: UC65 Evaluate Model.
+Input: the final 2024-25 rows with 2023-24 predictors.
+Steps: Compare Ridge, prior-team and prior-league predictions. Recalculate MAE and check calibration and play-type sample totals.
+Expected: All methods use the same target rows and timing rules. Error calculations agree with the saved predictions and counts cover every evaluated row. Report whether the model improves on each baseline without assuming it must win.
+Local coverage: backend/tests/test_forecast_evaluation.py and docs/iteration-15/forecast/report.json.","The metric checks passed. Ridge and both prior-season baselines used the same final rows, MAE matched the saved predictions, and calibration and play-type counts covered the evaluation rows. The report records the comparison without assuming the model wins.
+Results: [verification and evaluation report](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast).",https://basketball-strategy.atlassian.net/browse/BST-166
+BST-167,Forecast evaluation reproduces the same report and predictions,Test Case,Pass,Gurkaranjit Asahan,BST-157,,,,0.0,Medium,,,,Relates: SCRUM-526,"Use case: UC65 Evaluate Model.
+Input: the same source dataset and evaluation settings.
+Steps: Run the evaluation CLI twice in separate output folders and compare file hashes. Shuffle input row order and repeat the fixture evaluation.
+Expected: report.json and predictions.csv are byte-identical between CLI runs; row order cannot change results. The saved evidence records source hashes, split seasons and evaluation limitations.
+Evidence: docs/iteration-15/forecast/verification.json; backend/tests/test_forecast_evaluation.py.",Both evaluation runs produced identical report.json and predictions.csv files. Shuffling input row order also left the results unchanged. Source and output hashes are recorded in [verification record](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/verification.json).,https://basketball-strategy.atlassian.net/browse/BST-167
+BST-168,Data-quality status labels remain readable on the light panel,Test Case,Pass,Gurkaranjit Asahan,BST-156,,,,0.0,Medium,,,,Relates: SCRUM-574; Relates: SCRUM-480,"Use cases: UC62 Access Analyst Workspace; Run Data Quality Checks.
+Steps: Sign in as analyst and open Data Explorer. Inspect the Passed status on the light panel. Check the failed and not-checked presentation with the supported test fixtures.
+Expected: Each status label is easy to read against its background and has a clear text meaning without relying on color.","Fail. The browser showed pale Passed text (#86efac) on the existing light panel, making the label difficult to read. The failed and not-checked styles also used pale colors intended for a dark background. SCRUM-574 tracks darker status text and a check that labels remain understandable without color.
+
+Retest passed after [a3bba3a](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/a3bba3a8db107b1ec32ddb7904b2dda55ce2493b). All four Passed labels are readable on the deployed light panel, and status wording still gives the meaning without color. The updated pass, fail and not-checked text contrast ratios on the light background are 6.66, 6.04 and 6.40. The original failed execution remains in the earlier comment.
+Evidence: [contrast, browser and screenshot evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/verification).
+Original failure: pale summary text on the light panel.
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=681d5ec6-154b-4976-9d99-d07dcd00aa43&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+Passing retest: the summary and individual Passed labels are readable.
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=dd92be06-9c8b-46d8-860d-1c0704c14cae&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/BST-168
+BST-169,Production deployment links open the public app address,Test Case,Pass,Gurkaranjit Asahan,BST-156,,,,0.0,Medium,,,,Relates: SCRUM-575; Relates: SCRUM-480,"Use cases: UC62 Access Analyst Workspace; Run Data Quality Checks.
+Input: the current production deployment address, the public app address, a preview deployment and localhost.
+Steps:
+1. Open the current production deployment URL with a page path and query string.
+2. Follow the redirect, sign in as analyst if needed and load the data-quality report.
+3. Check requests to the public address, preview deployments and localhost.
+Expected: The current production deployment redirects once with HTTP 307 to nbaplayranker-seven.vercel.app, keeping the path and query. The report loads without the deployment-origin CORS failure. Public, preview and local URLs are unchanged.
+Older immutable deployments are outside this redirect update; open the public app address instead.","Pass. The new production deployment returned 307 to the [public app](https://nbaplayranker-seven.vercel.app/data-explorer?season=2024-25&team=TOR), preserving /data-explorer?season=2024-25&team=TOR. The public homepage returned 200 without a Vercel sign-in screen, and all 14 authenticated export checks passed. All 68 frontend tests passed, including nine routing checks for production, preview and local behavior.
+[Routing change](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/7c446f3d75287ef7f420ff4447263f1abcfa1825) · [Test run](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38417549467). Older immutable URLs remain unchanged; use the public address.",https://basketball-strategy.atlassian.net/browse/BST-169
+BST-170,"Export current Matchup, Context and Model Metrics results",Test Suite,Pass,Gurkaranjit Asahan,,,,,0.0,Medium,,,,Relates: SCRUM-486,"Use cases: UC16 Export KPIs / Reports; UC49 Export Results (CSV/PDF).
+Check the shared export control, report contents, signed-in delivery and failures for SCRUM-486. Each case records its own result and evidence. These tests cover the current page snapshot; exporting does not run model training.","Pass. All eight export cases passed. The saved files matched the three pages, and access, validation, stale-result and retry checks passed. The negative-margin filename failure was recorded in BST-178, fixed in SCRUM-616 and retested. [Final live checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/report-downloads-final/verification.json).",https://basketball-strategy.atlassian.net/browse/BST-170
+BST-171,Matchup exports the displayed ranking in all three formats,Test Case,Pass,Gurkaranjit Asahan,BST-170,,,,0.0,Medium,,,,Relates: SCRUM-486,"Use cases: UC16 Export KPIs / Reports; UC49 Export Results (CSV/PDF).
+Feature: SCRUM-486.
+Steps: Sign in as a coach. Select TOR against BOS, season 2024-25, and load a Matchup ranking. Export CSV, JSON and PDF. Open each file and compare its play types, scores, selected filters and ordering with the page.
+Expected: All three files open and match the displayed ranking and selection. The report states its result scope.
+Execution results are recorded in the comments.","Pass. Matchup exported CSV, JSON and PDF for TOR against BOS in 2024-25. All five rows, their order and values matched the page. The saved files opened correctly.
+[Page-to-file comparison](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/browser/screen-to-file-comparison.json)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=0b4afa4f-d470-4898-9686-d80d10b58761&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/BST-171
+BST-172,Context exports the selected situation and adjusted results,Test Case,Pass,Gurkaranjit Asahan,BST-170,,,,0.0,Medium,,,,Relates: SCRUM-486,"Use cases: UC16 Export KPIs / Reports; UC49 Export Results (CSV/PDF).
+Feature: SCRUM-486.
+Steps: Sign in as a coach. Load Context with a supported matchup, change score margin and clock, then apply the context. Export CSV, JSON and PDF. Compare the result rows and context values with the page.
+Expected: Each report contains the displayed adjusted results, the applied situation and its limitations. It does not replace them with a newly fetched baseline ranking.
+Execution results are recorded in the comments.","Pass. Context exported the five displayed adjusted rankings with margin -2, period 4 and 120 seconds remaining. The report kept the applied overlay and context, and all three files matched the page.
+[Page-to-file comparison](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/browser/screen-to-file-comparison.json) · [Final saved files](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/browser/filename-retest.json)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=d20cb8b7-0624-41c2-b55e-3e4e72a793e7&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/BST-172
+BST-173,Model Metrics exports the visible evaluation results,Test Case,Pass,Gurkaranjit Asahan,BST-170,,,,0.0,Medium,,,,Relates: SCRUM-486; Relates: SCRUM-542; Relates: SCRUM-619,"Use cases: UC16 Export KPIs / Reports; UC49 Export Results (CSV/PDF).
+Feature: SCRUM-486.
+Steps: Sign in as an analyst. Load Model Metrics with a supported season and evaluation settings. Export CSV, JSON and PDF after results appear. Compare the metric names, values, selected settings and limitations with the page.
+Expected: The reports match the available evaluation results. Exporting does not start a new training or evaluation run.
+Execution results are recorded in the comments.","Pass. Model Metrics exported the four loaded model rows as CSV, JSON and PDF. Values and evaluation settings matched the page. The reports describe the results as retrospective; exporting did not request a new evaluation.
+[Page-to-file comparison](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/browser/screen-to-file-comparison.json) · [Download checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/report-downloads-final/verification.json)",https://basketball-strategy.atlassian.net/browse/BST-173
+BST-174,"Export stays unavailable for empty, loading or stale results",Test Case,Pass,Gurkaranjit Asahan,BST-170,,,,0.0,Medium,,,,Relates: SCRUM-486; Relates: SCRUM-542,"Use cases: UC16 Export KPIs / Reports; UC49 Export Results (CSV/PDF).
+Feature: SCRUM-486.
+Steps: On each export page, check the control before results load and while a request is pending. Load results, change a relevant input, then check the control before and after applying the change.
+Expected: No report can be generated from empty, loading or stale results. Export becomes available when the displayed result matches the selection.
+Execution results are recorded in the comments.","Pass. The shared export control blocks missing, loading and stale results. In the browser, changing Matchup K or Context inputs disabled Export until the results were updated. The focused tests also covered snapshot matching and the disabled control.
+[Matchup check](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/browser/stale-export-state.txt) · [Context check](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/browser/context-stale-state.txt) · [Focused tests](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/frontend-tests.txt)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=7c52d831-b4af-41db-aafc-41b8397aa24b&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/BST-174
+BST-175,Report downloads require the correct signed-in role,Test Case,Pass,Gurkaranjit Asahan,BST-170,,,,0.0,Medium,,,,Relates: SCRUM-486,"Use cases: UC16 Export KPIs / Reports; UC49 Export Results (CSV/PDF).
+Feature: SCRUM-486.
+Steps: Request each report without a session. Repeat coach reports with an analyst account and the analyst metrics report with a coach account. Then repeat with the allowed account.
+Expected: Signed-out requests return 401 and wrong-role requests return 403. Allowed requests return the report. Rejected requests do not return attachment headers or expose session tokens.
+Execution results are recorded in the comments.","Pass. Signed-out requests returned 401 and the wrong role returned 403. Both the backend and same-origin download route rejected them without attachment headers. Allowed analyst and coach sessions downloaded their reports.
+[Live access checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/report-downloads-final/verification.json)",https://basketball-strategy.atlassian.net/browse/BST-175
+BST-176,Report validation rejects invalid and oversized snapshots,Test Case,Pass,Gurkaranjit Asahan,BST-170,,,,0.0,Medium,,,,Relates: SCRUM-486,"Use cases: UC16 Export KPIs / Reports; UC49 Export Results (CSV/PDF).
+Feature: SCRUM-486.
+Steps: Send an unsupported report kind or format, malformed rows and a payload above the supported size limit. Send a valid small snapshot as a comparison.
+Expected: Invalid requests return a clear client error and no attachment. The valid snapshot still downloads. There is no arbitrary backend URL or export path in the request contract.
+Execution results are recorded in the comments.","Pass. Unsupported formats, malformed text and oversized bodies were rejected without creating a download. The formatter tests also rejected invalid report kinds and rows. Valid snapshots still downloaded in all three formats.
+[Live validation checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/report-downloads-final/verification.json) · [Formatter tests](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/export-backend-tests.txt)",https://basketball-strategy.atlassian.net/browse/BST-176
+BST-177,A failed report request shows an error and can be retried,Test Case,Pass,Gurkaranjit Asahan,BST-170,,,,0.0,Medium,,,,Relates: SCRUM-486,"Use cases: UC16 Export KPIs / Reports; UC49 Export Results (CSV/PDF).
+Feature: SCRUM-486.
+Steps: Simulate a failed or unavailable report service after loading valid results. Click Export, inspect the message and file behavior, then restore the service and retry.
+Expected: The control shows an understandable error, does not save the error body as a report, clears its busy state and permits a successful retry.
+Execution results are recorded in the comments.","Pass. In the local export check, a simulated 503 response showed an error and enabled Retry export. Retrying cleared the error and downloaded a readable CSV with two rows.
+[Browser check and saved file](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/export-retry-fixture/verification.json)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=b42575bd-e110-4d01-85c0-f20e614acafb&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=8fb221b8-7e2f-48c1-8bf8-e95de2a9ad8c&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/BST-177
+BST-178,Downloaded reports have readable filenames and content,Test Case,Pass,Gurkaranjit Asahan,BST-170,,,,0.0,Medium,,,,Relates: SCRUM-486; Relates: SCRUM-616,"Use cases: UC16 Export KPIs / Reports; UC49 Export Results (CSV/PDF).
+Feature: SCRUM-486.
+Steps: Download CSV, JSON and PDF from each page. Inspect the filename, content type and actual file contents. Use a fixture with commas, quotes, line breaks and special characters in text values.
+Expected: Each filename identifies the report and format. The content type matches a valid readable file. Text characters do not break CSV columns, JSON parsing or PDF rendering.
+Execution results are recorded in the comments.","Fail. A Context download for margin -2 used _2_ in the filename, so it could not be distinguished from a +2 report by name. The JSON contents kept margin -2 correctly. The filename formatter needs to preserve the minus sign. Fix: SCRUM-616.
+
+Pass on retest. The filename fix now keeps margin -2 in all three Context downloads. CSV and JSON values match, and the PDFs open with the expected rows. The formatter tests cover quotes, commas, line breaks and special characters. The earlier failure remains above and links to SCRUM-616.
+[Saved filename retest](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/browser/filename-retest.json) · [Final file checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/report-downloads-final/verification.json)",https://basketball-strategy.atlassian.net/browse/BST-178

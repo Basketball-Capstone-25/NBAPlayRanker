@@ -7,6 +7,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { fetchModelMetrics, fetchPipelineInfo, fetchMlAnalysis } from "../../../services/analytics";
 import CalibrationPanel from "./CalibrationPanel";
 import TopKUpliftPanel from "./TopKUpliftPanel";
+import ReportExport from "../../_shared/components/ReportExport";
+import { metricsReport } from "../../../infrastructure/report-export";
+import { LatestRequest } from "../../../infrastructure/latest-request";
 
 type MetricsRow = {
   model: string;
@@ -111,11 +114,14 @@ export default function ModelMetricsPage() {
   const [loadingHoldout, setLoadingHoldout] = useState<boolean>(false);
   const [loadingTuning, setLoadingTuning] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [pipelineError, setPipelineError] = useState<string | null>(null);
 
   const loading = loadingPipeline || loadingHoldout || loadingTuning;
 
   // Guards against Strict Mode duplicate calls + stale results
-  const activeReqIdRef = useRef<number>(0);
+  const pipelineRequest = useRef(new LatestRequest());
+  const holdoutRequest = useRef(new LatestRequest());
+  const tuningRequest = useRef(new LatestRequest());
   const lastPipelineKeyRef = useRef<string>("");
   const lastHoldoutKeyRef = useRef<string>("");
   const lastTuningKeyRef = useRef<string>("");
@@ -125,19 +131,12 @@ export default function ModelMetricsPage() {
     if (!opts?.force && lastPipelineKeyRef.current === key && pipeline) return;
     lastPipelineKeyRef.current = key;
 
-    const reqId = ++activeReqIdRef.current;
-
-    try {
-      setLoadingPipeline(true);
-      const p = await fetchPipelineInfo();
-      if (reqId !== activeReqIdRef.current) return;
-      setPipeline(p);
-    } catch (e) {
-      // Pipeline not critical — don’t hard fail the page
-      console.warn("[model-metrics] pipeline load failed:", e);
-    } finally {
-      if (reqId === activeReqIdRef.current) setLoadingPipeline(false);
-    }
+    await pipelineRequest.current.run(key, fetchPipelineInfo, {
+      start: () => { setLoadingPipeline(true); setPipelineError(null); },
+      success: setPipeline,
+      error: () => { setPipeline(null); setPipelineError("Pipeline summary unavailable. Refresh to try again."); },
+      settled: () => setLoadingPipeline(false),
+    }, opts?.force);
   }
 
   async function loadHoldout(opts?: { force?: boolean }) {
@@ -145,60 +144,36 @@ export default function ModelMetricsPage() {
     if (!opts?.force && lastHoldoutKeyRef.current === key && data) return;
     lastHoldoutKeyRef.current = key;
 
-    const reqId = ++activeReqIdRef.current;
-
-    try {
-      setError(null);
-      setLoadingHoldout(true);
-      const m = await fetchModelMetrics(nSplits);
-      if (reqId !== activeReqIdRef.current) return;
-      setData(m);
-    } catch (e: any) {
-      if (reqId !== activeReqIdRef.current) return;
-      console.error(e);
-      setError(e?.message ?? "Failed to load holdout model metrics.");
-      setData(null);
-    } finally {
-      if (reqId === activeReqIdRef.current) setLoadingHoldout(false);
-    }
+    await holdoutRequest.current.run(key, () => fetchModelMetrics(nSplits), {
+      start: () => { setError(null); setLoadingHoldout(true); setData(null); },
+      success: setData,
+      error: (error) => { setError(error instanceof Error ? error.message : "Failed to load holdout model metrics."); setData(null); },
+      settled: () => setLoadingHoldout(false),
+    }, opts?.force);
   }
 
   async function loadTuning(opts?: { force?: boolean }) {
-    if (!tuningRequested && !opts?.force) return;
-
     const key = `tuning:nSplits=${nSplits}:minPoss=25:refresh=false`;
     if (!opts?.force && lastTuningKeyRef.current === key && ml) return;
     lastTuningKeyRef.current = key;
 
-    const reqId = ++activeReqIdRef.current;
-
-    try {
-      setError(null);
-      setLoadingTuning(true);
-      const a = await fetchMlAnalysis({ nSplits, minPoss: 25, refresh: false });
-      if (reqId !== activeReqIdRef.current) return;
-      setMl(a);
-    } catch (e: any) {
-      if (reqId !== activeReqIdRef.current) return;
-      console.error(e);
-      setError(e?.message ?? "Failed to load tuning evidence.");
-      setMl(null);
-    } finally {
-      if (reqId === activeReqIdRef.current) setLoadingTuning(false);
-    }
+    await tuningRequest.current.run(key, () => fetchMlAnalysis({ nSplits, minPoss: 25, refresh: false }), {
+      start: () => { setError(null); setLoadingTuning(true); setMl(null); },
+      success: setMl,
+      error: (error) => { setError(error instanceof Error ? error.message : "Failed to load tuning evidence."); setMl(null); },
+      settled: () => setLoadingTuning(false),
+    }, opts?.force);
   }
 
   async function refreshAll() {
     // Force reload everything. Tuning only reloads if it’s been requested (or already present).
-    await loadPipeline({ force: true });
-    await loadHoldout({ force: true });
+    await Promise.all([loadPipeline({ force: true }), loadHoldout({ force: true })]);
     if (tuningRequested || ml) await loadTuning({ force: true });
   }
 
   // Initial + changes: keep page snappy (pipeline + holdout first)
   useEffect(() => {
     loadPipeline();
-    loadHoldout();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -219,6 +194,8 @@ export default function ModelMetricsPage() {
   const rows = useMemo(() => {
     return Array.isArray(data?.metrics) ? data!.metrics : [];
   }, [data]);
+
+  const exportPayload = data && rows.length && !loadingHoldout && !error && data.n_splits === nSplits ? metricsReport(data) : null;
 
   const modelNames = useMemo(() => {
     return rows.map((r) => r.model);
@@ -402,8 +379,8 @@ export default function ModelMetricsPage() {
             </h1>
 
             <p className="muted" style={{ fontSize: 14, margin: "6px 0 0" }}>
-              Think of this like a <strong>scouting report</strong> for the model. We test generalization across
-              seasons (holdout) and show tuning evidence (how we searched features + hyperparameters).
+              Compare baseline and ML models on held-out seasons, then review the features and
+              settings used for tuning.
             </p>
 
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
@@ -467,6 +444,10 @@ export default function ModelMetricsPage() {
               {loading ? "Refreshing…" : "Refresh"}
             </button>
 
+            <ReportExport payload={exportPayload}
+              disabledReason={loadingHoldout ? "Wait for the holdout results to finish." : data && data.n_splits !== nSplits ? "Refresh the selected season folds before exporting." : undefined}
+              description="Export the loaded holdout metrics table. Tuning and calibration are separate reports." />
+
             {statusLine ? (
               <span className="muted" style={{ fontSize: 12 }}>
                 {statusLine}
@@ -496,6 +477,8 @@ export default function ModelMetricsPage() {
           </div>
         </div>
 
+        {pipelineError ? <p role="status" style={{ marginTop: 12, color: "#92400e", fontSize: 13 }}>{pipelineError}</p> : null}
+
         {error ? (
           <div
             style={{
@@ -516,6 +499,10 @@ export default function ModelMetricsPage() {
 
       {/* BODY */}
       <div style={{ padding: 18 }}>
+        <p className="muted" style={{ fontSize: 13, margin: "0 0 14px" }}>
+          These retrospective results use statistics from the season being evaluated. Separating
+          seasons does not remove that timing limitation; this is not a pre-game or future forecast test.
+        </p>
         {/* SCOREBOARD TAB */}
         {tab === "scoreboard" ? (
           <>
@@ -537,7 +524,7 @@ export default function ModelMetricsPage() {
                   Season splits
                 </div>
                 <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                  Grouped by season to prevent leakage.
+                  Training and test rows use separate season groups.
                 </div>
               </div>
 
@@ -855,7 +842,7 @@ export default function ModelMetricsPage() {
               <div>
                 <h2 style={{ margin: "2px 0 6px", fontSize: 18, fontWeight: 900 }}>Holdout metrics table</h2>
                 <p className="muted" style={{ fontSize: 13, margin: 0 }}>
-                  This is the “generalizes to unseen seasons” scoreboard. Lower RMSE/MAE is better.
+                  Retrospective results using observed season statistics. Lower RMSE/MAE is better.
                 </p>
               </div>
               <button className="btn" type="button" onClick={() => setTab("scoreboard")}>
@@ -959,7 +946,7 @@ export default function ModelMetricsPage() {
                       {tuning.cv}
                     </div>
                     <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                      CV is grouped to avoid season leakage.
+                      Season groups stay together within each CV fold.
                     </div>
                   </div>
 
@@ -1042,8 +1029,8 @@ export default function ModelMetricsPage() {
                 </details>
 
                 <div className="muted" style={{ marginTop: 10, fontSize: 12 }}>
-                  <strong>Coach translation:</strong> tuning is the “practice reps” where we try lots of settings; holdout
-                  is the “real game” test on unseen seasons.
+                  Tuning compares training settings. Holdout measures error on seasons excluded from
+                  that training fold.
                 </div>
               </div>
             ) : tuningRequested && loadingTuning ? (
@@ -1125,7 +1112,7 @@ export default function ModelMetricsPage() {
               <h3 style={{ margin: "8px 0 6px", fontSize: 16, fontWeight: 900 }}>Defense </h3>
               <ol className="muted" style={{ fontSize: 13, paddingLeft: 18, margin: 0 }}>
                 <li>We compared baseline vs ML — not one default model.</li>
-                <li>We used season holdout so results generalize to unseen seasons.</li>
+                <li>Season holdout compares models retrospectively; it does not prove future accuracy.</li>
                 <li>We show tuning evidence (features + params) for transparency.</li>
                 <li>We explain improvements in basketball terms (PPP error → points per possessions).</li>
               </ol>

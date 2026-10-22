@@ -1,0 +1,60 @@
+{
+  "recorded_at_utc": "2026-10-19T02:16:52.785Z",
+  "status": "recorded",
+  "source": "User-confirmed Assignment 2 actual totals and requested distribution across October 16–18, 2026.",
+  "timezone": "America/Toronto",
+  "date_allocation": "Friday: data checks 3h and forecasting 2h. Saturday: exports 2h and VP 4h. Sunday: testing/Jira 2h.",
+  "timestamp_convention": "Jira requires a timestamp. Each entry uses local midnight as a date-only marker; it does not claim a measured session start or end.",
+  "existing_assignment_2_worklogs_before": 0,
+  "total_hours": 13,
+  "total_seconds": 46800,
+  "prior_assignment_1_hours_preserved": 9,
+  "entries": [
+    {
+      "key": "SCRUM-480",
+      "worklog_id": "10121",
+      "work_date": "2026-10-16",
+      "hours": 3,
+      "seconds": 10800,
+      "started": "2026-10-16T00:00:00.000-0400",
+      "comment": "Reviewed the data checks and checked the refresh and error states."
+    },
+    {
+      "key": "SCRUM-526",
+      "worklog_id": "10122",
+      "work_date": "2026-10-16",
+      "hours": 2,
+      "seconds": 7200,
+      "started": "2026-10-16T00:00:00.000-0400",
+      "comment": "Reviewed the lagged season split and compared the forecast with both baselines."
+    },
+    {
+      "key": "SCRUM-486",
+      "worklog_id": "10123",
+      "work_date": "2026-10-17",
+      "hours": 2,
+      "seconds": 7200,
+      "started": "2026-10-17T00:00:00.000-0400",
+      "comment": "Worked on CSV, JSON and PDF exports and checked the displayed results and filters."
+    },
+    {
+      "key": "SCRUM-603",
+      "worklog_id": "10124",
+      "work_date": "2026-10-17",
+      "hours": 4,
+      "seconds": 14400,
+      "started": "2026-10-17T00:00:00.000-0400",
+      "comment": "Revised the feature collaborations and checked their design and sequence links."
+    },
+    {
+      "key": "SCRUM-602",
+      "worklog_id": "10125",
+      "work_date": "2026-10-18",
+      "hours": 2,
+      "seconds": 7200,
+      "started": "2026-10-18T00:00:00.000-0400",
+      "comment": "Ran release checks, recorded test results and updated Jira links and evidence."
+    }
+  ],
+  "rollup_note": "SCRUM-486 has 2h directly and SCRUM-602 has 2h separately. Count each worklog once; a parent rollup is not additional effort."
+}

@@ -1,0 +1,23 @@
+{
+  "updated_at_utc": "2026-10-19T01:26:15.590Z",
+  "parent": "SCRUM-575",
+  "story_points": 1,
+  "subtasks": [
+    {
+      "key": "SCRUM-614",
+      "summary": "Add the production redirect to the public app address",
+      "status": "Done",
+      "estimate_hours": 0.5
+    },
+    {
+      "key": "SCRUM-615",
+      "summary": "Verify the deployed public address and data request",
+      "status": "Done",
+      "estimate_hours": 0.5
+    }
+  ],
+  "implementation_commit": "7c446f3d75287ef7f420ff4447263f1abcfa1825",
+  "existing_test_case": "BST-169",
+  "new_implementation_claimed": false,
+  "actual_worklogs_added": 0
+}

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "comparisons": [
+    {
+      "report": "baseline",
+      "rows_compared": 5,
+      "visible_values_match_export_precision": true,
+      "state_file": "baseline-state.txt",
+      "export_file": "downloads/baseline.json"
+    },
+    {
+      "report": "context-initial",
+      "rows_compared": 5,
+      "visible_values_match_export_precision": true,
+      "state_file": "context-state.txt",
+      "export_file": "downloads/context-initial.json"
+    },
+    {
+      "report": "metrics",
+      "rows_compared": 4,
+      "visible_values_match_export_precision": true,
+      "state_file": "metrics-state.txt",
+      "export_file": "downloads/metrics.json"
+    }
+  ],
+  "method": "Compared captured visible table cells with the downloaded JSON values rounded to the displayed precision. CSV/JSON exact equality is checked separately."
+}

@@ -1,0 +1,302 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/matchup".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/matchup
+	106 container
+		107 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		108 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		109 image
+		110 text Baseline • Coach view
+		111 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+		112 link Description: Next: Context / ML, Value: nbaplayranker-seven.vercel.app/context?season=2024-25&our=TOR&opp=BOS&k=5
+		113 heading Matchup / Baseline, Value: 1
+			114 text Matchup / Baseline
+		115 text Pick a matchup and get the Top-K play types. This is the transparent “trust anchor” before Context / ML.
+		116 heading Matchup + context inputs, Value: 2
+			117 text Matchup + context inputs
+		118 text Ready
+		119 container
+			120 text Season
+			121 pop up button (collapsed, settable) Season, Value: 2024-25, Secondary Actions: Expand
+				122 menu
+					123 2019-20
+					124 2020-21
+					125 2021-22
+					126 2022-23
+					127 2023-24
+					128 (selected) 2024-25
+		129 container
+			130 text Top-K
+			131 pop up button (collapsed, settable) Top-K, Value: 5, Secondary Actions: Expand
+				132 menu
+					133 3
+					134 (selected) 5
+					135 7
+					136 10
+		137 container
+			138 text Our Team
+			139 pop up button (collapsed, settable) Our Team, Value: TOR, Secondary Actions: Expand
+				140 menu
+					141 ATL
+					142 BKN
+					143 BOS
+					144 CHA
+					145 CHI
+					146 CLE
+					147 DAL
+					148 DEN
+					149 DET
+					150 GSW
+					151 HOU
+					152 IND
+					153 LAC
+					154 LAL
+					155 MEM
+					156 MIA
+					157 MIL
+					158 MIN
+					159 NOP
+					160 NYK
+					161 OKC
+					162 ORL
+					163 PHI
+					164 PHX
+					165 POR
+					166 SAC
+					167 SAS
+					168 (selected) TOR
+					169 UTA
+					170 WAS
+		171 container
+			172 text Opponent
+			173 pop up button (collapsed, settable) Opponent, Value: BOS, Secondary Actions: Expand
+				174 menu
+					175 ATL
+					176 BKN
+					177 (selected) BOS
+					178 CHA
+					179 CHI
+					180 CLE
+					181 DAL
+					182 DEN
+					183 DET
+					184 GSW
+					185 HOU
+					186 IND
+					187 LAC
+					188 LAL
+					189 MEM
+					190 MIA
+					191 MIL
+					192 MIN
+					193 NOP
+					194 NYK
+					195 OKC
+					196 ORL
+					197 PHI
+					198 PHX
+					199 POR
+					200 SAC
+					201 SAS
+					202 (disabled) TOR
+					203 UTA
+					204 WAS
+		205 heading Weights (auto-normalized), Value: 2
+			206 text Weights (auto-normalized)
+		207 text off= 0.70  • def= 0.30
+		208 text Offense weight
+		209 text Controls how much our offense drives the ranking.
+		210 stepper (settable, float) Value: 0.699999988079071, Details: 0.7
+		211 slider (settable, float) Value: 0.699999988079071, Details: 0.7
+		212 text Defense weight
+		213 text Controls how much opponent defense drives the ranking.
+		214 stepper (settable, float) Value: 0.30000001192092896, Details: 0.3
+		215 slider (settable, float) Value: 0.30000001192092896, Details: 0.3
+		216 button Run Baseline
+			217 image
+			218 text Run Baseline
+		219 text Export format
+		220 pop up button (collapsed, settable) Export format, Value: JSON, Secondary Actions: Expand
+			221 menu
+				222 CSV
+				223 PDF
+				224 (selected) JSON
+		225 button Export
+		226 text Export the displayed rankings and matchup settings.
+		295 text Download requested. Check your browser’s Downloads folder.
+		227 text TOR (Toronto Raptors) vs BOS (Boston Celtics)
+		228 heading Top recommendations, Value: 2
+			229 text Top recommendations
+		230 text TOR vs BOS • 2024-25
+		231 container
+			232 text # 1 PRRollMan
+		233 text Pred PPP 1.154
+		234 text PRRollMan: Pred 1.154 PPP. Our(off) 1.127 vs Opp(def) 0.991 (+0.136). Reliability off=0.74, def=0.66.
+		235 button Generate map
+			236 image
+			237 text Generate map
+		238 button Download court diagram
+			239 image
+			240 text Download court diagram
+		241 container
+			242 text # 1 PRRollMan
+		243 container
+			244 text gap  0.136
+		245 container Predicted PPP bar for PRRollMan
+		246 text 1.154
+		247 container
+			248 text # 2 Spotup
+		249 container
+			250 text gap  0.055
+		251 container Predicted PPP bar for Spotup
+		252 text 1.065
+		253 container
+			254 text # 3 OffScreen
+		255 container
+			256 text gap  0.009
+		257 container Predicted PPP bar for OffScreen
+		258 text 0.993
+		259 container
+			260 text # 4 Postup
+		261 container
+			262 text gap  -0.044
+		263 container Predicted PPP bar for Postup
+		264 text 0.967
+		265 container
+			266 text # 5 Isolation
+		267 container
+			268 text gap  -0.024
+		269 container Predicted PPP bar for Isolation
+		270 text 0.902
+		271 heading Court map, Value: 2
+			272 text Court map
+		273 text SportyPy
+		274 container
+			275 text Play type
+			276 pop up button (collapsed, settable) Play type, Value: PRRollMan, Secondary Actions: Expand
+				277 menu
+					278 (selected) PRRollMan
+					279 Spotup
+					280 OffScreen
+					281 Postup
+					282 Isolation
+		283 button Generate map
+			284 image
+			285 text Generate map
+		286 button Download court diagram
+			287 image
+			288 text Download court diagram
+		289 text Generate a map to attach a clean visual to your recommendation.
+		290 text No map yet. Generate a map for the selected play type.
+		296 container
+			297 button (expanded) Show details table, Secondary Actions: Collapse
+				298 text Show details table
+			299 button Show raw fields
+			300 table
+				301 row
+					302 cell
+						303 text #
+					304 cell
+						305 text Play Type
+					306 cell
+						307 text Pred PPP
+					308 cell
+						309 text Our PPP (shrunk)
+					310 cell
+						311 text Opp Allowed (shrunk)
+					312 cell
+						313 text Gap
+					314 cell
+						315 text Rationale
+				316 row
+					317 cell
+						318 text 1
+					319 cell
+						320 text PRRollMan
+					321 cell
+						322 text 1.154
+					323 cell
+						324 text 1.127
+					325 cell
+						326 text 0.991
+					327 cell
+						328 text 0.136
+					329 cell
+						330 text PRRollMan: Pred 1.154 PPP. Our(off) 1.127 vs Opp(def) 0.991 (+0.136). Reliability off=0.74, def=0.66.
+				331 row
+					332 cell
+						333 text 2
+					334 cell
+						335 text Spotup
+					336 cell
+						337 text 1.065
+					338 cell
+						339 text 1.034
+					340 cell
+						341 text 0.979
+					342 cell
+						343 text 0.055
+					344 cell
+						345 text Spotup: Pred 1.065 PPP. Our(off) 1.034 vs Opp(def) 0.979 (+0.055). Reliability off=0.90, def=0.92.
+				346 row
+					347 cell
+						348 text 3
+					349 cell
+						350 text OffScreen
+					351 cell
+						352 text 0.993
+					353 cell
+						354 text 0.981
+					355 cell
+						356 text 0.973
+					357 cell
+						358 text 0.009
+					359 cell
+						360 text OffScreen: Pred 0.993 PPP. Our(off) 0.981 vs Opp(def) 0.973 (+0.009). Reliability off=0.70, def=0.64.
+				361 row
+					362 cell
+						363 text 4
+					364 cell
+						365 text Postup
+					366 cell
+						367 text 0.967
+					368 cell
+						369 text 0.952
+					370 cell
+						371 text 0.996
+					372 cell
+						373 text -0.044
+					374 cell
+						375 text Postup: Pred 0.967 PPP. Our(off) 0.952 vs Opp(def) 0.996 (-0.044). Reliability off=0.67, def=0.71.
+				376 row
+					377 cell
+						378 text 5
+					379 cell
+						380 text Isolation
+					381 cell
+						382 text 0.902
+					383 cell
+						384 text 0.894
+					385 cell
+						386 text 0.918
+					387 cell
+						388 text -0.024
+					389 cell
+						390 text Isolation: Pred 0.902 PPP. Our(off) 0.894 vs Opp(def) 0.918 (-0.024). Reliability off=0.70, def=0.79.
+		293 button (collapsed) More info, Secondary Actions: Expand
+			294 text More info
+		92 container
+			93 text Built with  Next.js  (UI) +  FastAPI  (services).
+		94 container
+			95 text Tip for reviewers: start at 
+			96 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			97 text  to see the dataset, then compare 
+			98 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			99 text  vs 
+			100 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			101 text , and verify evidence in 
+			102 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			103 text  and
+			104 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			105 text .
+
+The focused UI element is 297 button (expanded) Show details table, Secondary Actions: Collapse

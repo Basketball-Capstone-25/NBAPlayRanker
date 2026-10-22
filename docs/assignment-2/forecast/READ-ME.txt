@@ -1,0 +1,38 @@
+Next-season PPP evaluation — SCRUM-526
+
+This tests whether last season's play-type statistics can estimate the next
+regular season's points per possession (PPP). It is an offline backtest.
+
+What to show
+Open results.png for the side-by-side error comparison, then use these files
+to explain how the result was produced:
+1. Open report.json. The selection section trains on target seasons 2020-21
+   through 2022-23 and chooses the Ridge setting using 2023-24.
+2. Open final_test. The held-out target is 2024-25; every input comes from
+   2023-24. There are 330 rows: 30 teams and 11 play types.
+3. Open predictions.csv to compare the predicted and observed PPP for each row.
+
+Final-season results (lower error is better)
+                         MAE       RMSE
+Ridge                    0.0523    0.0671
+Previous team PPP        0.0634    0.0814
+Previous league PPP      0.0535    0.0682
+
+Ridge did better overall in this season, but its advantage over the league
+baseline is small. It also overpredicted by 0.0223 PPP on average. It did not
+win for every play type. One held-out season does not prove future accuracy.
+
+Simple explanation
+"I used the previous season as input and kept the final season out of model
+selection. I compared Ridge with two simple baselines so I could check whether
+the added model helped. The report saves the errors and each prediction."
+
+The app's regular Model Metrics table is a different, retrospective analysis
+using statistics from the season being scored. Its results should not be used
+as proof of next-season or pre-game prediction accuracy.
+
+Reproduce from the repository root with the backend environment activated:
+python backend/data/etl/run_forecast_evaluation.py --output-dir docs/assignment-2/forecast
+
+The saved report retains the actual source revision and input provenance from
+its run. See verification/forecast-run.txt in the parent Assignment 2 folder.

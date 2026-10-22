@@ -1,0 +1,373 @@
+﻿Key,Title,Type,Status,Assignee,Parent,Sprint,Story points,Effort estimate (hours),Actual logged hours,Priority,Probability,Impact,Mitigation,Linked work,Description,Comments,URL
+SCRUM-440,Deployment Model Revision,Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-12,5,,1.0,Medium,,,,Relates: BSR-111; Duplicate: SCRUM-588,,"Deployment model is finished.
+However due to the visual paradigm update, i am unable to connect to the workspace. Cant commit it to the workspace or make revision comments.
+Have it saved on the online workspace for now until i figure out the problem
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=bd112c58-8f00-4d00-af59-56fcbd6600ad&&collection=&height=339&occurrenceKey=null&width=534&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+The workspace issue is now resolved. The revised deployment diagram is published in VP revision 55.
+
+I fixed the deployment diagram layout and added the protocol and port labels. The changes are published in VP revision 55. SCRUM-566 and SCRUM-567 are complete.",https://basketball-strategy.atlassian.net/browse/SCRUM-440
+SCRUM-480,Show data quality results in Data Explorer,Story,Done,Gurkaranjit Asahan,SCRUM-1,Iteration-15,2,,3.0,Medium,,,,Relates: BST-138; Relates: BSR-48; Relates: BSR-50; Relates: BSR-79; Relates: BST-156; Relates: BST-158; Relates: BST-159; Relates: BST-160; Relates: BST-161; Relates: BST-162; Relates: SCRUM-574; Relates: BST-168; Relates: SCRUM-575; Relates: BST-169; Relates: SCRUM-603,"Show the current Synergy data-quality report in the analyst Data Explorer so the dataset checks are visible before using its rankings.
+Acceptance criteria:
+* Show a result for each check, with the source, scope and checked time.
+* Provide loading, empty, error and retry states.
+* Keep failed, missing and unsupported checks distinct from passing checks.
+* Require authenticated analyst access to the report and panel.
+Recommendation warning flags remain under SCRUM-479.","Added four source-data checks to Data Explorer with Refresh and Retry ([code](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/7536934)). The live analyst check passed for loading, unavailable states, refresh and access restrictions. Fixed the pale status text in SCRUM-574; all six cases in BST-156 now pass.
+All four source-data checks are shown in Data Explorer.
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=cef2d769-c717-4a42-b9be-20e1c5a4739d&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/SCRUM-480
+SCRUM-486,"Export the current Matchup, Context and Model Metrics results",Story,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-16,3,,2.0,Medium,,,,Relates: SCRUM-485; Relates: BST-170; Relates: BST-171; Relates: BST-172; Relates: BST-173; Relates: BST-174; Relates: BST-175; Relates: BST-176; Relates: BST-177; Relates: BST-178; Relates: SCRUM-542; Relates: SCRUM-603; Relates: BSR-35; Blocks: SCRUM-616,"Add the same Export control to Matchup, Context and Model Metrics. Coaches and analysts can save the results they are viewing as CSV, JSON or PDF.
+Acceptance criteria:
+* Use one control with the same format choices and download states on all three pages.
+* Export the displayed rows and metrics. CSV keeps the table and selected filters in its filename; JSON and PDF also include the context, settings and result limitations.
+* Disable export until results are ready, and after inputs change until new results load.
+* Send reports through the signed-in session. Check the role, report type and payload before returning a file.
+* Show a useful error and allow retry. Errors must not download as reports.
+* Open each format and compare its values with the page. Check signed-out, wrong-role and invalid requests.
+Builds on the export service in SCRUM-485. This work adds the page controls and reports for the current result snapshot; it does not retrain models during export.","I split the export work into the shared controls, signed-in report delivery and end-to-end checks. The reports will save the results and filters currently shown on each page, with CSV, JSON and PDF options.
+
+Matchup, Context and Model Metrics now export the displayed results as CSV, JSON and PDF. The saved rows matched the page, access checks passed, and changing inputs prevents stale exports. BST-170 and its eight cases passed. The filename issue found during testing was fixed and retested. [Open the app](https://nbaplayranker-seven.vercel.app/) · [Browser evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-2/verification/browser).",https://basketball-strategy.atlassian.net/browse/SCRUM-486
+SCRUM-526,Test next-season PPP forecasts using previous-season data,Story,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-15,3,,2.0,Medium,,,,Relates: SCRUM-476; Relates: BSR-41; Relates: BSR-42; Relates: BSR-43; Relates: BSR-44; Relates: BSR-45; Relates: BSR-46; Relates: BSR-56; Relates: BSR-80; Relates: BSR-82; Relates: BSR-83; Relates: BSR-102; Relates: BSR-105; Relates: BST-157; Relates: BST-163; Relates: BST-164; Relates: BST-165; Relates: BST-166; Relates: BST-167; Relates: SCRUM-603,"Test PPP forecasts using only information available before each prediction, then compare them with later results that were not used to build the model.
+This follows [SCRUM-476](https://basketball-strategy.atlassian.net/browse/SCRUM-476). The current calibration report uses a fixed Ridge model, trains on earlier seasons, and evaluates a later season. However, it also uses statistics from the season being evaluated, so it does not prove pre-game forecasting accuracy. This task adds a separate forecasting evaluation.
+To complete this task:
+* Define when the prediction is made and how far ahead it predicts. Record when every input would have been available.
+* Build the inputs from earlier information only. Do not use future games, future seasons, or the results being predicted.
+* Reserve later data for the final test. Use only earlier data to choose features and model settings and to fit scaling or other data preparation steps.
+* Compare the forecast model with a baseline that follows the same timing rules, using the same untouched test rows. Report prediction errors, calibration, sample counts, and limitations.
+* Add tests showing that changing future data cannot change earlier prediction inputs or data preparation fitted on earlier training data.
+* Document the test procedure and code and dataset versions so someone else can reproduce the results.","I scheduled this for Iteration 15, October 6–12, with the existing 3-point estimate. It is still To Do.
+The current calibration report checks historical results using some same-season statistics. This task will use only information available before each prediction and a separate later dataset to evaluate future forecasting.
+
+Finished the separate season-ahead PPP evaluation using prior-season inputs and a final season kept out of model selection. The model's improvement over the league baseline is small and its bias is higher, so this does not establish reliable pre-game accuracy. [Results and limits](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/README.md), [code](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/3a8b00b3d1114172285df668cb5a0c91553dcb58) and [passing CI](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38345252833).
+
+This chart compares the held-out season with the two baselines. Ridge improved slightly over the league baseline. The report keeps the season split, row-level predictions and limitations.
+[Results used for this chart](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/forecast/report.json)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=f26f5129-cbae-4e7d-83e9-edbf904635e9&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/SCRUM-526
+SCRUM-529,Review risk ratings and link mitigation tasks,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-15,4,,4.0,High,,,,Relates: BSR-31; Relates: BSR-72; Relates: BSR-76; Duplicate: SCRUM-591,"Review all risk cards and link each one to the work needed to manage it.
+Acceptance criteria:
+* Every risk has a relevant Linked work item.
+* Probability, impact and status reflect the current findings.
+* Active risks name the next action and the task responsible for it.
+* Keep comments short and save the updated register in the shared repository.","Reviewed all 84 risks and linked each one to its mitigation work, including BSR-110. Updated ratings and statuses based on the findings and kept unresolved risks open. The [revised register is on GitHub](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/41bd91c/docs/assignment-1-revision/risks).
+
+Linked the startup, data-column and explanation fixes to the related risks. The deployment diagram is now published in VP revision 55, so BSR-111 is back in Monitoring and links to the completed deployment tasks.
+[Updated risk register](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/risks)
+
+Added four completed subtasks for reviewing risks, linking mitigation work, clarifying the wording and checking the exports. Each links to the relevant files on main.",https://basketball-strategy.atlassian.net/browse/SCRUM-529
+SCRUM-530,Expand and run Fall 2026 test coverage,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-15,4,,4.0,High,,,,Relates: BSR-31; Relates: BSR-72; Relates: BSR-76; Relates: BSR-97; Duplicate: SCRUM-594,"Update the test plan with Fall 2026 cases, current results and links to planned bug fixes.
+Acceptance criteria:
+* Show the relevant tests on the Kanban board.
+* Use Epic-level Test Suites and Task-level Test Cases.
+* Give each new case steps, inputs, expected results and a related feature or use case.
+* Record where each test ran and what happened. Leave unrun cases in Verify.
+* Link every failed case to a repair task and publish the results and review guide.","Put the test suites on the board, added 18 Fall cases and recorded the test results. Every failed case links to a planned fix. Tests waiting on repaired data, a retest or a response-time target remain in Verify. The [report and results are on main](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision).
+
+Split the test work into seven subtasks covering new and older cases, local and live checks, bug links, the Jira hierarchy and the handoff. All seven are complete. The cases are now Task-level Test Cases under Epic-level Test Suites, with their original results and links preserved.",https://basketball-strategy.atlassian.net/browse/SCRUM-530
+SCRUM-538,Fix shot-team attribution and rebuild the shot dataset,Task,To Do,Gurkaranjit Asahan,SCRUM-1,Iteration-17,,,0.0,Highest,,,,Relates: BST-138; Relates: BST-139; Relates: BSR-47; Relates: BSR-50; Relates: BSR-54; Relates: BSR-77; Relates: BSR-78; Relates: BSR-79; Relates: BSR-81; Relates: BSR-82; Relates: BSR-89; Relates: BSR-45; Relates: BST-115; Relates: BST-117; Relates: BST-118; Relates: BST-119,"The shot data has incorrect team labels: 18,746 rows list the same team and opponent, and all 7,520 games with at least 100 shots show only one shooting team. A TOR 2025-26 export also had 51 invalid rows out of 5,000.
+To reproduce, run backend/tests/test_shot_attribution_regression.py with --runxfail and compare the TOR/BOS input events with the output team, opponent and home flag.
+Acceptance criteria:
+* Use explicit participant IDs to identify the shooting team. Changing a score must not change the team.
+* Recover the original event data and rebuild the cleaned dataset and derived files.
+* Pass the row and game checks and compare samples with the original events before relying on shot results.","Added four tests for incorrect shot-team labels: two small TOR/BOS examples and two checks of the saved dataset. All four still fail when run with `--runxfail`, so the data repair is still needed. The [tests are on main](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/9804b32ca45ce9f21763cc027cf75e8f30d397aa), and [CI passed with these marked as known failures](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38173001625).",https://basketball-strategy.atlassian.net/browse/SCRUM-538
+SCRUM-539,Use the new Gameplan situation on the first Build,Task,To Do,Gurkaranjit Asahan,SCRUM-4,Iteration-17,,,0.0,High,,,,Relates: BSR-38; Relates: BSR-42; Relates: BST-140; Relates: BSR-53; Relates: BSR-88,"The first Gameplan Build uses the previous game situation. Clicking Build again uses the new values and changes the rankings.
+To reproduce, start with TOR/BOS 2024-25, Q4, 180 seconds and margin -2. Enter ""Q4 down 5 with 0:28 left"", then click Build twice without changing anything.
+Acceptance criteria:
+* The first request and the page both use period 4, 28 seconds and margin -5.
+* Pass the parsed situation directly into the ranking request.
+* Add a test showing that unchanged inputs give the first and second builds the same context.",,https://basketball-strategy.atlassian.net/browse/SCRUM-539
+SCRUM-540,Pass supported coaching conditions into Gameplan ranking,Task,To Do,Gurkaranjit Asahan,SCRUM-3,Iteration-17,,,0.0,High,,,,Relates: BSR-38; Relates: BSR-42; Relates: BST-141; Relates: BSR-96,"Gameplan recognizes phrases such as ""Need a three"" and ""They are switching"", but only sends numeric context to the ranking API.
+To reproduce, enter those conditions and compare the parsed values with the request built by GameplanClient.
+Acceptance criteria:
+* Define which coaching conditions the ranker supports.
+* Send supported conditions to the API and test their effect.
+* Clearly show when a condition is unsupported and does not affect the ranking.",,https://basketball-strategy.atlassian.net/browse/SCRUM-540
+SCRUM-541,Preserve overtime in the Gameplan context,Task,To Do,Gurkaranjit Asahan,SCRUM-3,Iteration-17,,,0.0,High,,,,Relates: BSR-38; Relates: BST-142,"Gameplan changes overtime to quarter 4 before ranking.
+To reproduce, enter an overtime situation, build the plan and compare the parser result with the displayed period and ranking request.
+Acceptance criteria:
+* Keep the overtime period through parsing, display and ranking.
+* Validate the overtime clock without changing the period.
+* Add a test covering the complete parser-to-ranker path.",,https://basketball-strategy.atlassian.net/browse/SCRUM-541
+SCRUM-542,Clear Model Metrics loading state when requests finish,Task,Done,Gurkaranjit Asahan,SCRUM-5,Iteration-16,2,,0.0,High,,,,Relates: BSR-40; Relates: BST-145; Relates: BSR-86; Relates: SCRUM-486; Relates: BST-173; Relates: BST-174,"Model Metrics keeps showing ""Loading pipeline summary"" and disables Refresh even after the holdout results appear.
+To reproduce, sign in as an analyst, open Model Metrics and wait for the results table. The recorded run displayed Ridge RMSE 0.011 while the loading message remained.
+Acceptance criteria:
+* Track the summary and evaluation requests separately.
+* Clear loading on success or error and allow a retry.
+* Avoid duplicate initial requests and test loading, success and failure states.","I’m separating the pipeline and evaluation request states so the page can finish loading and export its current results. I’ll check success, errors and retries, then rerun BST-145.
+
+I separated the pipeline and evaluation request states. The deployed page now finishes loading both sections, enables Refresh and exports the current metrics. The loading, error and retry tests passed.
+[Code change](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b53413a) · [Passing tests](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/39185054136)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=d8f42077-7bb1-4de5-b791-023b69b0dbac&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/SCRUM-542
+SCRUM-543,Load saved shot metrics without training during page requests,Task,To Do,Gurkaranjit Asahan,SCRUM-5,Iteration-17,,,0.0,High,,,,Relates: BSR-40; Relates: BST-146; Relates: BSR-85; Relates: BSR-86; Relates: BSR-98,"The default Shot Model Metrics request timed out after 300 seconds with HTTP 504 in the October 6 run. It has not been repeated during this revision.
+Use the saved request and runtime results to investigate. After the fix, open the page once and record its result and response time.
+Acceptance criteria:
+* Load saved or precomputed metrics during normal page visits.
+* Run expensive evaluation in a separate bounded job or preparation step.
+* Show useful loading and error messages, and complete supported requests before the platform timeout.",,https://basketball-strategy.atlassian.net/browse/SCRUM-543
+SCRUM-544,Align analyst shot pages with their API permissions,Task,To Do,Gurkaranjit Asahan,SCRUM-4,Iteration-17,,,0.0,High,,,,Relates: BST-143; Relates: BST-144; Relates: BSR-53; Relates: BSR-96,"Analysts can open Shot Plan and Shot Heatmap, but their requests use coach-only APIs and return HTTP 403.
+To reproduce, sign in as an analyst and run either page with a supported season and matchup.
+Acceptance criteria:
+* Decide which roles should use each page.
+* Make navigation, page access and API permissions agree.
+* Test allowed, wrong-role and signed-out access without opening unrelated coach-only routes.",,https://basketball-strategy.atlassian.net/browse/SCRUM-544
+SCRUM-545,Render Shot Statistical Analysis using the current API fields,Task,To Do,Gurkaranjit Asahan,SCRUM-5,Iteration-17,,,0.0,High,,,,Relates: BSR-53; Relates: BST-147; Relates: BSR-87; Relates: BSR-88; Relates: BSR-96; Relates: BSR-98,"Shot Statistical Analysis receives a successful API response, then crashes while reading dropped.length. The response uses removed, and other page sections also expect older fields.
+To reproduce, run the analysis as an analyst and compare the response with the fields used by the page.
+Acceptance criteria:
+* Update the types, response adapter and page components to match the API.
+* Handle missing optional sections with an accurate unavailable message.
+* Add a render test using a current response. Do not show results the API did not calculate.",,https://basketball-strategy.atlassian.net/browse/SCRUM-545
+SCRUM-546,State when baseline explanations do not use game context,Task,To Do,Gurkaranjit Asahan,SCRUM-1,Iteration-18,,,0.0,Medium,,,,Relates: BSR-39; Relates: BST-99,"Baseline explanations do not say that score, period and clock were left out. BST-99 found this in all five returned explanations.
+To reproduce, request baseline Top-K for 2024-25, TOR against BOS, K=5 without game context.
+Acceptance criteria:
+* Say when game context was not used.
+* Keep context-based explanations tied to the values actually used.
+* Rerun BST-97, BST-98 and BST-99 against the corrected code and deployment.",,https://basketball-strategy.atlassian.net/browse/SCRUM-546
+SCRUM-547,Define backend readiness and explain missing prerequisites,Task,To Do,Gurkaranjit Asahan,SCRUM-8,Iteration-18,,,0.0,Medium,,,,Relates: BSR-108; Relates: BST-107; Relates: BST-113,"A missing Synergy file produces a traceback. Missing Supabase settings still allow startup and /health 200, although protected requests remain blocked. The tests and app need a clear agreement on what ""ready"" means.
+Acceptance criteria:
+* Define startup requirements and separate running from ready to serve requests.
+* Report missing data or auth settings clearly without exposing secrets.
+* Do not report production readiness when required settings or data are absent.
+* Keep development and isolated tests supported, then update and rerun BST-107 and BST-113.",,https://basketball-strategy.atlassian.net/browse/SCRUM-547
+SCRUM-548,Report unmapped shot-data columns during schema validation,Task,To Do,Gurkaranjit Asahan,SCRUM-5,Iteration-18,,,0.0,Medium,,,,Relates: BSR-78; Relates: BST-116,"BST-116 reports the missing TEAM_ABBR column but says nothing about an unused UNMAPPED_FIXTURE column. Extra metadata is allowed and is already excluded from model features.
+Acceptance criteria:
+* Report mapped, optional, ignored or unmapped, and missing required columns.
+* Identify unused metadata without treating every extra column as an error.
+* Keep missing-column errors clear and rerun both BST-116 examples.",,https://basketball-strategy.atlassian.net/browse/SCRUM-548
+SCRUM-549,Validate shot margins and define when prediction inputs are available,Task,To Do,Gurkaranjit Asahan,SCRUM-5,Iteration-17,,,0.0,High,,,,Relates: BSR-78; Relates: BSR-45; Relates: BST-117; Relates: BST-118; Relates: BST-119,"All 1,332,515 retained shot rows have no MARGIN value, but model loading replaces it with zero. The app also needs to explain whether it predicts before a possession or evaluates a proposed shot.
+Acceptance criteria:
+* Recover real margins or show them as unavailable instead of treating missing values as tied scores.
+* State when each prediction input becomes available.
+* Use only prior information for pre-possession predictions. Define a separate input contract for a proposed-shot evaluation.
+* After SCRUM-538 repairs the source data, rerun BST-117, BST-118 and BST-119 with finite-feature checks and later-season, per-fold results.
+Related work: SCRUM-526.",,https://basketball-strategy.atlassian.net/browse/SCRUM-549
+SCRUM-550,Measure Top-K uplift response times and propose a target,Task,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-16,2,,0.0,Medium,,,,Relates: BST-111; Relates: SCRUM-609,"Measure the deployed analyst Top-K uplift endpoint with a small bounded run, review the observations and propose targets for team review.
+Acceptance criteria:
+* Record the deployment, /metrics/topk-uplift request inputs, sample sizes and response times.
+* Run at most 16 requests: ten sequential and six with at most two concurrent requests. Do not force a cold start.
+* Report warm and concurrent p95 values and compare requests with service logs.
+* Record proposed targets before the measurement: 5 seconds warm p95, 10 seconds p95 with two concurrent requests and 45 seconds including startup.
+* Keep the current hosting limits and budget.
+Target agreement, the coach baseline endpoint, startup testing and the final BST-111 result remain in SCRUM-609. This uplift sample does not measure the coach baseline endpoint or confirm its earlier slow calls.","I split the timing work into a bounded measurement and a separate acceptance step. This task records the proposed targets and the current response times. SCRUM-609 keeps team agreement, startup testing and the final BST-111 result open for Iteration 17.
+
+Measured the analyst Top-K uplift endpoint with 16 valid responses. Warm p95 was 0.56 seconds and p95 with two concurrent requests was 0.37 seconds. No cold start was forced. These results apply to /metrics/topk-uplift; they do not explain the older coach baseline delays. SCRUM-609 keeps the agreed target and coach baseline acceptance work open. [Timing results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/report-downloads/topk-timing.json).",https://basketball-strategy.atlassian.net/browse/SCRUM-550
+SCRUM-568,Connect the data-quality report API,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-480,Iteration-15,,1,0.0,Medium,,,,,"Expose the existing Synergy data checks through an authenticated API for the Data Explorer.
+Acceptance criteria:
+* Return each check's result, dataset source, coverage and checked time.
+* Keep failed, unavailable and unsupported checks distinct from passing checks.
+* Keep recommendation warning flags under SCRUM-479 separate from this report.","Connected the existing Synergy checks to the analyst-only report API. It returns each result, source metadata, a source fingerprint and checked time without caching. Production checks confirmed analyst access and rejected coach and signed-out requests. [Code](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/7536934); results in [production API results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/verification/production-api.json).",https://basketball-strategy.atlassian.net/browse/SCRUM-568
+SCRUM-569,Show data-check results and retry states,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-480,Iteration-15,,1.5,0.0,Medium,,,,,"Add the data-quality panel to the analyst Data Explorer.
+Acceptance criteria:
+* Show a clear result for each check and identify the dataset and scope checked.
+* Show loading, empty and error states with a retry action.
+* Never show a pass when the report is missing or the request failed.","Added the Data Explorer panel with individual check results, source scope, loading, error and retry states. Refresh clears the previous result; changing preview filters leaves the full-source report unchanged. The deployed labels are readable after the contrast fix. [Panel code](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/7536934) and [status fix](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/a3bba3a8db107b1ec32ddb7904b2dda55ce2493b).
+The panel lists the result of each source-data check.
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=3c6d73a4-9913-457a-98b8-c370d92609bc&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+If the report cannot load, the panel shows an error and Retry.
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=a6b8630c-c38d-4512-94c9-8f606924a043&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/SCRUM-569
+SCRUM-570,Verify the quality panel and analyst access,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-480,Iteration-15,,1,0.0,Medium,,,,,"Check the report API and Data Explorer panel together.
+Acceptance criteria:
+* Verify passing, failing and unavailable checks render correctly.
+* Verify loading, error and retry behavior.
+* Confirm authenticated analyst access and rejected unauthorized requests.
+* Save the test results and any unresolved defects.","Verified the panel in production: unavailable state, Retry, refresh, source scope and access restrictions passed. All 16 production API checks passed. The browser check found a contrast problem; SCRUM-574 fixed it and BST-168 passed its retest. Results are in [browser and API results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/verification).
+The deployed panel shows four passed checks for 47,982 source rows.
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=6eca96b1-58e3-4a26-b244-d1f2bc89f55c&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/SCRUM-570
+SCRUM-571,Build prior-season forecast inputs,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-526,Iteration-15,,2,0.0,Medium,,,,,"Build regular-season-ahead PPP inputs using only completed earlier seasons.
+Acceptance criteria:
+* Define the forecast date, target season and when each input becomes available.
+* Keep target-season statistics and outcomes out of the prediction inputs.
+* Record row coverage and exclusions for each season.",Built eight inputs from the immediately previous regular season. Missing history is counted and excluded; playoff and defensive rows cannot enter the forecast. The timing and coverage limits are in the [evaluation notes](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/README.md). [Code](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/3a8b00b3d1114172285df668cb5a0c91553dcb58).,https://basketball-strategy.atlassian.net/browse/SCRUM-571
+SCRUM-572,Compare forecasts with a timed baseline,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-526,Iteration-15,,2,0.0,Medium,,,,,"Compare the forecast model with a baseline using the same chronological evaluation rows.
+Acceptance criteria:
+* Choose features and model settings with earlier seasons only.
+* Fit preprocessing on training data only and keep the final season untouched until evaluation.
+* Report model and baseline errors, calibration and sample counts on the same test rows.","Compared Ridge with prior-team and prior-league PPP on the same 330 final-season rows. Training and tuning use earlier seasons only. Ridge RMSE was 0.06712 versus 0.06817 for the league baseline, with more average overprediction. [Results and split](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/README.md); [code](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/3a8b00b3d1114172285df668cb5a0c91553dcb58).",https://basketball-strategy.atlassian.net/browse/SCRUM-572
+SCRUM-573,Verify leakage checks and publish evaluation,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-526,Iteration-15,,1,0.0,Medium,,,,,"Test the forecast timing rules and document reproducible evaluation results.
+Acceptance criteria:
+* Prove future-data changes cannot alter earlier input features or fitted preprocessing.
+* Record code and dataset versions, split seasons, metrics and limitations.
+* Keep this season-ahead evaluation separate from the existing retrospective calibration report.","All 32 forecast and Calibration checks passed. Changing final-season values left fitting and predictions unchanged, and two runs from committed source produced identical report and prediction files. [Evaluation notes](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ba814406a69c6de23f14af06a28f153eaa436fdc/docs/iteration-15/forecast/README.md), [code](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/3a8b00b3d1114172285df668cb5a0c91553dcb58) and [CI](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38345252833).",https://basketball-strategy.atlassian.net/browse/SCRUM-573
+SCRUM-575,Keep production links on the public app address,Task,Done,Gurkaranjit Asahan,,Iteration-15,1,,0.0,Medium,,,,Relates: SCRUM-480; Relates: BST-169,"Opening the production deployment address nbaplayranker-bxg9zds45-pearson-manufacturing.vercel.app causes API fetches to fail. Its CORS preflight returns 400 Disallowed CORS; the public address nbaplayranker-seven.vercel.app returns 200 and the backend is healthy.
+Acceptance criteria:
+* New production deployments redirect to https://nbaplayranker-seven.vercel.app with a temporary 307.
+* Preserve the requested path and query string without a redirect loop.
+* Keep the public address, preview deployments and local development unchanged.
+* Verify the deployed routing and the analyst data-quality request.
+Older immutable deployments keep their previous code. Use the public app address when sharing or opening the app.","New production deployment links now redirect to the [public app](https://nbaplayranker-seven.vercel.app), keeping the page path and query. The live redirect returned 307; the public homepage returned 200 and all 14 authenticated export checks passed. Older immutable links keep their old code, so use the public address.
+[Redirect change](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/7c446f3d75287ef7f420ff4447263f1abcfa1825) · [Passing CI](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38417549467)
+Data Explorer loads the source checks on the public app address.
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=ffe8d13b-6cae-4c05-ae83-3d87ade50f88&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+
+Added the task breakdown for the redirect change and its deployment check. The implementation is in [7c446f3](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/7c446f3d75287ef7f420ff4447263f1abcfa1825).",https://basketball-strategy.atlassian.net/browse/SCRUM-575
+SCRUM-588,Deployment diagram feedback,Story,Done,Gurkaranjit Asahan,SCRUM-576,Iteration-16,2,,0.0,Medium,,,,Duplicate: SCRUM-440,"As the team, we want a readable deployment model with fully specified connections, so the runtime setup is unambiguous.
+### Acceptance criteria
+* The deployment diagram has no crossing communication lines.
+* Every network communication line is labelled with its protocol and port number.","Both deployment concerns were already completed under SCRUM-440, with the layout and port labels in shared VP revision 55. Linked this duplicate to the original work and evidence. The existing deployment work log stays on SCRUM-440.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/deployment)",https://basketball-strategy.atlassian.net/browse/SCRUM-588
+SCRUM-589,Remove crossing deployment connections,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-588,Iteration-16,,,0.0,Medium,,,,Duplicate: SCRUM-566,The layout contains crossing communication lines.,"The deployment layout was already corrected in SCRUM-566 and published in VP revision 55. The six network paths do not cross. This card repeats that completed feedback item.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/deployment)",https://basketball-strategy.atlassian.net/browse/SCRUM-589
+SCRUM-590,Label deployment protocols and ports,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-588,Iteration-16,,,0.0,Medium,,,,Duplicate: SCRUM-566,Network communication lines lack explicit protocol labels and port numbers.,"SCRUM-566 already added HTTPS/TCP 443 to the six network paths and HTTP/TCP 8080 to the internal API server. The labels are published in VP revision 55. This card repeats that completed feedback item.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/deployment)",https://basketball-strategy.atlassian.net/browse/SCRUM-590
+SCRUM-591,Risk plan feedback,Story,Done,Gurkaranjit Asahan,SCRUM-576,Iteration-16,3,,0.0,Medium,,,,Duplicate: SCRUM-529,"As the team, we want every risk card linked to the work that mitigates it and kept current, so risk tracking reflects the real project.
+### Acceptance criteria
+* Every risk card, including BSR-110, has linked Jira work items for its mitigation or migration tasks.
+* All risks are reviewed and their updates are justified, not only the 17 updated so far.","The risk review and mitigation links were already completed under SCRUM-529. I checked that all 84 cards still have linked work. This duplicate points to the original review and its existing work log; ongoing risk monitoring continues on the risk cards.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/risks)",https://basketball-strategy.atlassian.net/browse/SCRUM-591
+SCRUM-592,Link every risk to its mitigation work,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-591,Iteration-16,,,0.0,Medium,,,,Duplicate: SCRUM-556,BSR-110 card does not have linked Jira work items under Linked work items to track migration tasks. Add this to all cards in Jira.,"All 84 risk cards have formal Linked work items. BSR-110 links to SCRUM-506, SCRUM-524 and SCRUM-534 for deployment and hosting follow-up. This was completed under SCRUM-556; this duplicate now points to that work.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/risks)",https://basketball-strategy.atlassian.net/browse/SCRUM-592
+SCRUM-593,Review every risk rating and next action,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-591,Iteration-16,,,0.0,Medium,,,,Duplicate: SCRUM-555,Only 17 risks were updated and the updates are questionable.,"SCRUM-555 reviewed all 84 risks, including their probability, impact, status and next actions. The register keeps known failures Active and planned checks open. This card repeats that completed review.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/risks)",https://basketball-strategy.atlassian.net/browse/SCRUM-593
+SCRUM-594,Test plan feedback,Story,Done,Gurkaranjit Asahan,SCRUM-576,Iteration-16,8,,0.0,Medium,,,,Duplicate: SCRUM-530,"As the team, we want a current, executed test plan mapped to the Elaboration features, so the board shows the real state of the system.
+### Acceptance criteria
+* Test cards are on the Kanban board columns, not left in the backlog.
+* New Fall 2026 test cases are added.
+* Coverage goes beyond 13 items and maps to the Elaboration phase features and use cases.
+* Test cases are executed and their results recorded.
+* Each failed test is logged and linked to a planned bug-fix ticket.","The board, Fall 2026 coverage, execution results and defect links were completed under SCRUM-530. This duplicate now links to those records. The original test work log stays on SCRUM-530, and new export tests are tracked separately in BST-170.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision)",https://basketball-strategy.atlassian.net/browse/SCRUM-594
+SCRUM-595,Show test cases on the Kanban board,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-594,Iteration-16,,,0.0,Medium,,,,Duplicate: SCRUM-564,Board setup. You did not pull the test cards from the backlog onto the Kanban board columns. Fix this.,"SCRUM-564 already aligned the board with Epic-level Test Suites and Task-level Test Cases. The Verify, Testing In Progress, Pass and Fail columns show the cases, and the backlog is disabled. This duplicate points to the existing board correction.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/hierarchy)",https://basketball-strategy.atlassian.net/browse/SCRUM-595
+SCRUM-596,Add Fall 2026 test cases,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-594,Iteration-16,,,0.0,Medium,,,,Duplicate: SCRUM-559,Zero new test cases. Add new test cases for Fall 2026. The current 13 tests show dates from December 2025 and April 2026.,"SCRUM-559 already added 18 Fall 2026 cases, BST-138 through BST-155. Their steps, expected results and execution comments are preserved. This card repeats that completed test-plan addition.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/tests)",https://basketball-strategy.atlassian.net/browse/SCRUM-596
+SCRUM-597,Map test coverage to Elaboration features,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-594,Iteration-16,,,0.0,Medium,,,,Duplicate: SCRUM-560,Coverage. Expand test coverage beyond 13 total items. Map tests directly to your new Elaboration phase features and use cases.,"SCRUM-560 already expanded the plan beyond 13 items and mapped the cases to features and use cases. The Assignment 1 plan contains 121 cases with suite parents; later features add their own cases. This duplicate links to the original coverage work.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/hierarchy)",https://basketball-strategy.atlassian.net/browse/SCRUM-597
+SCRUM-598,Record test executions and current results,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-594,Iteration-16,,,0.0,Medium,,,,Duplicate: SCRUM-562,Execution. Execute your test cases to show the current system status.,"The Assignment 1 execution is recorded under SCRUM-561 and SCRUM-562: 101 Pass, 14 Fail and 6 Verify across 121 cases. Unrun checks were left in Verify and failed checks were kept visible. This duplicate points to that execution, not a new test run.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/tests)",https://basketball-strategy.atlassian.net/browse/SCRUM-598
+SCRUM-599,Link each failed test to a planned fix,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-594,Iteration-16,,,0.0,Medium,,,,Duplicate: SCRUM-563,Bug tracking. Log failed tests and link each failure to a planned bug-fix ticket. Zero failed tests or bug links appear in this submission.,"All 14 failed cases have formal links to repair tickets. Their earlier failure comments remain intact. The remaining Highest/High repairs are scheduled in Iteration 17 and Medium bug fixes in Iteration 18; Model Metrics is being handled in Iteration 16. The response-time target task SCRUM-550 also stays in Iteration 16. This duplicate points to the original bug-tracking work.
+[Existing evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-1-revision/tests)",https://basketball-strategy.atlassian.net/browse/SCRUM-599
+SCRUM-600,Add shared export controls to the three results pages,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-486,Iteration-16,,2,0.0,Medium,,,,,"Add the CSV, JSON and PDF choices to Matchup, Context and Model Metrics. Build each report from the displayed result and its filters.
+Acceptance criteria:
+* The three pages use one export control.
+* Exports include the current result, context and limitations.
+* Loading, empty and changed inputs prevent stale exports.","Added the same CSV, JSON and PDF control to Matchup, Context and Model Metrics. It exports the displayed results and prevents downloads while results are missing, loading or out of date. [Frontend change](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b53413a).",https://basketball-strategy.atlassian.net/browse/SCRUM-600
+SCRUM-601,Validate and deliver signed-in report downloads,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-486,Iteration-16,,1.5,0.0,Medium,,,,,"Add the bounded report formatter and same-origin download route for page snapshots.
+Acceptance criteria:
+* Validate the report kind, payload size and allowed role.
+* Forward the signed-in session without putting tokens in download URLs.
+* Return the correct filename and content type for CSV, JSON and PDF.
+* Failed requests return an error, not a downloaded report.","Added the signed-in report route and validated snapshot formatter. The backend checks roles and bounded payloads, and rejected requests cannot become attachments. [Backend change](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/daf1959) · [Live checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/report-downloads-final/verification.json).",https://basketball-strategy.atlassian.net/browse/SCRUM-601
+SCRUM-602,Test and deploy the shared export flow,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-486,Iteration-16,,1.5,2.0,Medium,,,,Relates: BSR-97,"Run the export regression tests, deploy the change and download reports from all three pages.
+Acceptance criteria:
+* Compare exported values with the displayed results.
+* Check stale results, retry, signed-out access and wrong roles.
+* Record each test result and link any failure to its fix.
+* Add screenshots of the working controls and readable downloads.","Deployed the reports and checked the saved CSV, JSON and PDF files against all three pages. The 47 live download and access checks passed, and BST-171 through BST-178 are Pass. The filename failure found during testing was fixed in SCRUM-616. [Final CI](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/39186958422).",https://basketball-strategy.atlassian.net/browse/SCRUM-602
+SCRUM-603,"Model the data checks, forecast evaluation and report exports",Story,Done,Gurkaranjit Asahan,SCRUM-8,Iteration-16,3,,4.0,Medium,,,,Relates: SCRUM-480; Relates: SCRUM-526; Relates: SCRUM-486; Relates: BSR-76,"Add a complete collaboration for each Assignment 2 feature: report exports, data-quality refresh and previous-season forecast evaluation.
+Acceptance criteria:
+* Each feature has a collaboration overview, structural design and sequence diagram: nine new diagrams in total.
+* The overviews connect each use case to its design and sequence.
+* The export design includes the page control, same-origin route, role check and report formatter.
+* The data-quality design shows its service, report and loading/error flow.
+* The forecast design shows prior-season inputs, model selection and final-season evaluation.
+* Use consistent lifelines and labelled messages with parameters and returns.
+* Preserve all existing diagrams and model identities.
+* Verify the native file and previews, then publish the approved changes to Teamwork.
+These are new feature diagrams. The earlier sequence revision in SCRUM-528 remains separate.","The three feature collaborations are published in VP revision 56. Report exports, data-quality refresh and previous-season forecast evaluation each have an overview, structural design and sequence. All nine new diagrams are in the shared copy, and the 192 existing diagrams are unchanged. [Model files and previews](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-2/model).
+
+The export design shows how the three pages send their displayed results through the signed-in route to the formatter. Its overview connects the use case to the participating subsystems.
+The model now has three complete collaborations with nine diagrams. All 29 checks passed, and the 192 existing diagrams are unchanged. The shared model is published in revision 56.
+[All diagram previews](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-2/model/renders)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=323cee52-2eff-4fa3-96ad-ada6ac06fea3&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=cc2ce36b-f4c3-46a8-b1c3-9d1457a7650e&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/SCRUM-603
+SCRUM-604,Add the feature design and interaction diagrams,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-603,Iteration-16,,1.5,0.0,Medium,,,,,"Prepare the export design and sequence, data-quality refresh sequence and offline forecast sequence.
+Acceptance criteria:
+* Match the implemented calls and result flow.
+* Label request parameters and return values.
+* Keep the existing diagrams unchanged.","Added the export design and sequence, data-quality refresh sequence and season-ahead evaluation sequence. The request and return messages include their values and types. The four new diagrams are saved in the native project. [Model files and previews](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-2/model).
+
+Aligned the export design and three sequences with the implemented calls, parameters and return values. The final diagrams cover data checks, displayed report exports and previous-season forecast evaluation.",https://basketball-strategy.atlassian.net/browse/SCRUM-604
+SCRUM-605,Check the native model and diagram previews,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-603,Iteration-16,,1,0.0,Medium,,,,,"Compare the revised project with its shared baseline and inspect all nine diagram previews.
+Acceptance criteria:
+* Preserve original model and diagram IDs.
+* Keep labels readable and message paths clear.
+* Check each collaboration links its use case, design and sequence.
+* Save the native file, previews and preservation checks in the shared repository.","Checked the four previews and the native file. All 15 preservation checks passed: the 192 existing diagrams and 1,726 existing views are unchanged. [Preservation checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/model/preservation-verification.json).
+
+All 29 final model checks passed. The 192 existing diagrams and 1,726 existing views are unchanged. The native file and all nine previews are saved. [Preservation checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/model/preservation-verification.json).",https://basketball-strategy.atlassian.net/browse/SCRUM-605
+SCRUM-606,Publish the approved feature diagrams to Teamwork,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-603,Iteration-16,,0.5,0.0,Medium,,,,Relates: BSR-111,"Publish the approved Assignment 2 model changes and verify the shared revision.
+Acceptance criteria:
+* Save and commit the intended diagrams through Visual Paradigm.
+* Verify the shared revision contains the prepared model.
+* Record the publication evidence and link it to the model story.","The Desktop commit published the nine diagrams in shared revision 56. The committed copy contains all three collaborations with no pending changes, and all 23 publication checks passed. [Publication evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-2/model).",https://basketball-strategy.atlassian.net/browse/SCRUM-606
+SCRUM-607,Separate Model Metrics request and refresh state,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-542,Iteration-16,,1,0.0,Medium,,,,,"Give pipeline metadata and evaluation results separate request states.
+Acceptance criteria:
+* Each request clears its own loading state on success or error.
+* Refresh remains usable after a failed request.
+* Initial page loading does not duplicate evaluation requests.","Separated pipeline loading from holdout evaluation and stopped the duplicate initial evaluation request. Success, failure and retry states are covered by the focused tests. [Change](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/b53413a).",https://basketball-strategy.atlassian.net/browse/SCRUM-607
+SCRUM-608,Retest Model Metrics loading and exports,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-542,Iteration-16,,0.5,0.0,Medium,,,,,"Add focused loading, error and retry tests, then open the deployed analyst page.
+Acceptance criteria:
+* Results and pipeline metadata finish independently.
+* Refresh recovers after a failure.
+* Current results remain exportable when ready.
+* Update BST-145 with the new result while preserving its earlier failure.","The deployed analyst page now loads its pipeline summary and holdout table. Refresh is available, and all three report formats downloaded. BST-145 passed its retest. [Browser evidence](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-2/verification/browser).",https://basketball-strategy.atlassian.net/browse/SCRUM-608
+SCRUM-609,Confirm the Top-K response-time target and acceptance test,Task,To Do,Gurkaranjit Asahan,SCRUM-8,Iteration-17,2,,0.0,Medium,,,,Relates: SCRUM-550; Relates: BST-111,"Complete the target agreement and coach baseline acceptance work after the analyst uplift measurement in SCRUM-550.
+Acceptance criteria:
+* Review the proposed targets with the team and record accepted values for warm requests, two concurrent requests and startup-inclusive requests.
+* Test the coach baseline route /rank-plays/baseline using the accepted target and required scenarios. Keep its results separate from /metrics/topk-uplift.
+* Record the deployment, inputs, sample sizes, response times and p95. Compare slow responses with service logs.
+* Rerun BST-111 against the agreed coach baseline target and record Pass or Fail.
+* Keep the current hosting limits and approved budget.
+The proposed targets are 5 seconds warm p95, 10 seconds p95 with two concurrent requests and 45 seconds including startup. They are not yet accepted. The short uplift sample neither establishes a cold start nor explains the earlier coach baseline delays.",,https://basketball-strategy.atlassian.net/browse/SCRUM-609
+SCRUM-610,Measure a bounded sample of deployed Top-K uplift requests,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-550,Iteration-16,,1,0.0,Medium,,,,,"Run up to ten sequential requests and six requests with at most two running together.
+Acceptance criteria:
+* Record the deployed revision, inputs, status and elapsed time for each request.
+* Keep the existing service limits and do not force a cold start.
+* Save the sample and summary.",All 16 analyst uplift requests returned valid results. The first request had unknown warm state; the next nine were sequential and the last six ran in pairs. [Measurements](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/report-downloads/topk-timing.json).,https://basketball-strategy.atlassian.net/browse/SCRUM-610
+SCRUM-611,Compare response times with the proposed targets,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-550,Iteration-16,,0.5,0.0,Medium,,,,,"Summarize the measured response times and inspect relevant service logs.
+Acceptance criteria:
+* Report p95 separately for the measured sequential and concurrent samples.
+* Compare with the recorded proposal without calling it an accepted target.
+* State any startup or sample-size limits and link the remaining acceptance work.","Warm p95 was 0.56 seconds and p95 with two concurrent requests was 0.37 seconds. The service logs also show successful responses. These are below the proposed limits for this small uplift sample. Team agreement, startup testing and coach baseline timing remain in SCRUM-609. [Results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/report-downloads/topk-timing.json) · [Service timing](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/topk-server-timing.json).",https://basketball-strategy.atlassian.net/browse/SCRUM-611
+SCRUM-612,Review and record the agreed timing targets,Dev Subtask,To Do,Gurkaranjit Asahan,SCRUM-609,Iteration-17,,0.5,0.0,Medium,,,,,"Review the proposed warm, concurrent and startup-inclusive targets with the team.
+Acceptance criteria:
+* Record the accepted values and test conditions.
+* Keep disagreement or missing approval visible.
+* Update BST-111 to use the accepted criteria.",,https://basketball-strategy.atlassian.net/browse/SCRUM-612
+SCRUM-613,Run the Top-K response-time acceptance cases,Dev Subtask,To Do,Gurkaranjit Asahan,SCRUM-609,Iteration-17,,1.5,0.0,Medium,,,,,"Run the agreed response-time scenarios against the deployed release.
+Acceptance criteria:
+* Record warm, concurrent and startup-inclusive observations with sample sizes.
+* Compare p95 with the accepted targets and investigate slow calls.
+* Record BST-111 Pass or Fail with evidence and a linked fix for any failure.
+* Stay within the hosting budget.",,https://basketball-strategy.atlassian.net/browse/SCRUM-613
+SCRUM-614,Add the production redirect to the public app address,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-575,Iteration-15,,0.5,0.0,Medium,,,,,"Keep new production deployments on the stable public app address.
+Acceptance criteria:
+* Return a temporary 307 from the production deployment host.
+* Preserve the path and query without a redirect loop.
+* Leave the public address, previews and localhost unchanged.",The redirect and nine routing checks are in [7c446f3](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/7c446f3d75287ef7f420ff4447263f1abcfa1825). This records the breakdown of the existing change.,https://basketball-strategy.atlassian.net/browse/SCRUM-614
+SCRUM-615,Verify the deployed public address and data request,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-575,Iteration-15,,0.5,0.0,Medium,,,,,"Check the deployed redirect and signed-in Data Explorer request.
+Acceptance criteria:
+* Verify the redirect keeps the requested page and query.
+* Open the public app and load its data-quality report without the old deployment-origin fetch failure.
+* Keep the result and screenshot on the related test case.","BST-169 contains the deployed redirect result, and SCRUM-575 has the app screenshot. The [existing test run](https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/38417549467) passed all 68 frontend checks. This task records that completed verification.",https://basketball-strategy.atlassian.net/browse/SCRUM-615
+SCRUM-616,Keep negative context values in export filenames,Task,Done,Gurkaranjit Asahan,SCRUM-4,Iteration-16,1,,0.0,Medium,,,,Relates: BST-178; Blocks: SCRUM-486; Relates: BSR-35,"A Context report for margin -2 downloads with _2_ in its filename. Margin +2 produces the same filename because the filename formatter removes the minus sign. The report contents retain the correct margin.
+Acceptance criteria:
+* Preserve the sign of negative filter values when creating filenames.
+* Give margin -2 and +2 different, understandable filenames in CSV, JSON and PDF.
+* Keep filenames safe for downloads.
+* Add a regression test and retest the deployed Context download.
+Found while running BST-178. Example: context-rankings_2024-25_TOR_BOS_5_2_4_120_True_1.json contained margin -2.","The filename now distinguishes margin -2 from +2. The fix is deployed, and the three saved Context reports passed the retest. BST-178 keeps the original failure and the passing result. [Fix](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/db7abfb) · [Retest](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/browser/filename-retest.json).",https://basketball-strategy.atlassian.net/browse/SCRUM-616
+SCRUM-617,Preserve negative filters in report filenames,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-616,Iteration-16,,0.5,0.0,Medium,,,,,"Fix the filename formatting without allowing unsafe path characters.
+Acceptance criteria:
+* Negative and positive filter values stay distinct.
+* Add regression examples for -2 and +2 in every supported report format.",Fixed the filename formatter so negative filter values keep their sign. Four regression checks failed before the change and passed after it. [Fix](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/db7abfb).,https://basketball-strategy.atlassian.net/browse/SCRUM-617
+SCRUM-618,Retest signed context filenames on the deployed app,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-616,Iteration-16,,0.5,0.0,Medium,,,,,"Download the updated Context reports and compare their filenames with the report contents.
+Acceptance criteria:
+* The -2 and +2 reports have different readable filenames.
+* CSV, JSON and PDF still open correctly.
+* Record the BST-178 retest and keep its earlier failure.","Downloaded Context CSV, JSON and PDF from the deployed app again. All three filenames now keep margin -2, and the values still match the displayed results. [Saved-file check](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/browser/filename-retest.json).",https://basketball-strategy.atlassian.net/browse/SCRUM-618
+SCRUM-619,Clarify what the Model Metrics results measure,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-526,Iteration-15,,0.25,0.0,Medium,,,,Relates: BST-173,"Update the Model Metrics explanation to match the evaluation inputs. The displayed results use observed season statistics; the separate SCRUM-526 evaluation uses previous-season inputs.
+Acceptance criteria:
+* Describe the displayed metrics as retrospective.
+* Remove claims that these metrics establish pre-game forecasting accuracy or eliminate timing leakage.
+* Keep the separate season-ahead evaluation and its limitations clear.
+* Check the explanation on the deployed page.
+Related work: [SCRUM-526](https://basketball-strategy.atlassian.net/browse/SCRUM-526).","The Model Metrics wording is being updated to explain that its displayed results use observed season statistics. The separate previous-season forecast evaluation remains under SCRUM-526. [Evaluation files](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-2/forecast).
+
+The deployed Model Metrics page now explains that its results use observed season statistics and do not establish pre-game forecast accuracy. The four model rows still load and Export is available.
+[Change](https://github.com/Basketball-Capstone-25/NBAPlayRanker/commit/80d968b) · [Deployed page check](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/assignment-2/verification/browser/metrics-final-state.txt)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=null&id=d4aca12f-6320-487e-8cdd-2e528443b719&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)",https://basketball-strategy.atlassian.net/browse/SCRUM-619
+SCRUM-620,Connect the use cases to their design and sequence diagrams,Dev Subtask,Done,Gurkaranjit Asahan,SCRUM-603,Iteration-16,,1,0.0,Medium,,,,,"Complete the collaboration links for report exports, data-quality refresh and previous-season forecast evaluation. Add three overview diagrams and the data-quality and forecast structural designs.
+Acceptance criteria:
+* Each overview links its use case, structural design and sequence.
+* The new data-quality design represents the implemented API and report shape.
+* The forecast design represents the offline previous-season evaluation.
+* The links and names agree with the implemented feature diagrams.
+* Preserve every existing diagram.","Added three collaboration overviews and the data-quality and forecast structural designs. Each feature now has an overview, structural design and sequence connected to its use case. [Diagram previews](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/main/docs/assignment-2/model/renders).",https://basketball-strategy.atlassian.net/browse/SCRUM-620

@@ -1,0 +1,82 @@
+{
+  "checked_at_utc": "2026-10-19T01:39:29.674151+00:00",
+  "frontend_commit": "b53413a",
+  "backend_revision": "nba-playranker-api-00007-gvd",
+  "files": [
+    {
+      "file": "browser/downloads/baseline.csv",
+      "original_filename": "baseline-rankings_2024-25_TOR_BOS_5_0.7_0.3.csv",
+      "bytes": 493,
+      "saved_at_utc": "2026-10-19T01:36:25.215069+00:00",
+      "sha256": "66e8df36b86c7c6138643177f0348ed1fd30b3254e9e46ae8da297743039ae76"
+    },
+    {
+      "file": "browser/downloads/baseline.json",
+      "original_filename": "baseline-rankings_2024-25_TOR_BOS_5_0.7_0.3.json",
+      "bytes": 1192,
+      "saved_at_utc": "2026-10-19T01:37:00.568110+00:00",
+      "sha256": "d9352e877af7a5a219426001d6ee9ec9ae49efcb6f86ff96179a0ab19ce36b73"
+    },
+    {
+      "file": "browser/downloads/baseline.pdf",
+      "original_filename": "baseline-rankings_2024-25_TOR_BOS_5_0.7_0.3.pdf",
+      "bytes": 2277,
+      "saved_at_utc": "2026-10-19T01:36:49.425075+00:00",
+      "sha256": "475c6bc35b717a6fca1a3b8cd6f34c060a1851b65e4d5f5b78b1d9df9f1e648e",
+      "pages": 1
+    },
+    {
+      "file": "browser/downloads/context-initial.csv",
+      "original_filename": "context-rankings_2024-25_TOR_BOS_5_2_4_120_True_1.csv",
+      "bytes": 620,
+      "saved_at_utc": "2026-10-19T01:37:46.373319+00:00",
+      "sha256": "df4e0caa81da3357049b2d7abfc762ca2832c5a97658f2e2df994535cdac7429"
+    },
+    {
+      "file": "browser/downloads/context-initial.json",
+      "original_filename": "context-rankings_2024-25_TOR_BOS_5_2_4_120_True_1.json",
+      "bytes": 1586,
+      "saved_at_utc": "2026-10-19T01:38:07.572600+00:00",
+      "sha256": "a32db78a1d35c71672e0360c84b8b1598c0903a3e3a511290f1d1010b5fc0dad"
+    },
+    {
+      "file": "browser/downloads/context-initial.pdf",
+      "original_filename": "context-rankings_2024-25_TOR_BOS_5_2_4_120_True_1.pdf",
+      "bytes": 2453,
+      "saved_at_utc": "2026-10-19T01:37:53.539629+00:00",
+      "sha256": "845f9f24f648c22a7ab7db073292c63c4b11db42f9864645157fcfe495aa14c2",
+      "pages": 1
+    },
+    {
+      "file": "browser/downloads/metrics.csv",
+      "original_filename": "model-metrics_5.csv",
+      "bytes": 612,
+      "saved_at_utc": "2026-10-19T01:28:59.382127+00:00",
+      "sha256": "18cb32ab80e0a6fb800109202def9cd687ca6930a47847d21b4d37e2f045ede3"
+    },
+    {
+      "file": "browser/downloads/metrics.json",
+      "original_filename": "model-metrics_5.json",
+      "bytes": 1399,
+      "saved_at_utc": "2026-10-19T01:30:08.446412+00:00",
+      "sha256": "b66777c4c8942e91798cc9540fb956db959d82bd5a045eec5309c13c9f241232"
+    },
+    {
+      "file": "browser/downloads/metrics.pdf",
+      "original_filename": "model-metrics_5.pdf",
+      "bytes": 2512,
+      "saved_at_utc": "2026-10-19T01:29:39.925185+00:00",
+      "sha256": "d7ef474b253e5bd2a339904f892470753282bf024db94eb4b50297c117245e13",
+      "pages": 1
+    }
+  ],
+  "table_rows_match_across_formats": true,
+  "filename_failure": {
+    "report": "context_rankings",
+    "filter_margin": -2,
+    "observed_filename_fragment": "_5_2_4_120_True_1",
+    "expected_fragment": "_5_-2_4_120_True_1",
+    "result": "Fail",
+    "note": "The numeric sign was stripped from the filename. JSON and PDF filter values remained correct."
+  }
+}

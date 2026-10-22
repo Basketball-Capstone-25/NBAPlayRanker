@@ -1,0 +1,5 @@
+Final test: 2024-25, 330 rows
+ridge: MAE 0.052308, RMSE 0.067123, bias +0.022268 PPP
+prior_team: MAE 0.063396, RMSE 0.081353, bias +0.015164 PPP
+prior_league: MAE 0.053454, RMSE 0.068169, bias +0.018455 PPP
+Saved report.json and predictions.csv to docs/assignment-2/forecast

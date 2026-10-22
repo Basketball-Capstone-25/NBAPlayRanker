@@ -1,0 +1,27 @@
+{
+  "captured_at_utc": "2026-10-19T02:17:56.234Z",
+  "story": "SCRUM-603",
+  "status": "Done",
+  "diagram_count": 201,
+  "added_diagrams": 9,
+  "complete_collaborations": 3,
+  "original_diagrams_unchanged": 192,
+  "original_views_unchanged": 1726,
+  "preservation_checks_passed": 29,
+  "native_sha256": "1bbb624e9b38a4a149ab0719e204a4ec249029f5e917e4c4616d4eddedb46697",
+  "prepared_subtasks": {
+    "SCRUM-604": "Done",
+    "SCRUM-605": "Done",
+    "SCRUM-620": "Done"
+  },
+  "publication_subtask": {
+    "key": "SCRUM-606",
+    "status": "Done",
+    "shared_revision": 56,
+    "committed_pending_history_entries": 0,
+    "working_copy_layout_changes_excluded": true
+  },
+  "actual_worklogs_added": 1,
+  "publication_checks_passed": 23,
+  "actual_logged_hours": 4
+}

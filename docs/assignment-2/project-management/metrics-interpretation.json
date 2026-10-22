@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-619",
+  "parent": "SCRUM-526",
+  "summary": "Clarify what the Model Metrics results measure",
+  "status": "Done",
+  "estimate_hours": 0.25,
+  "sprint": "Iteration-15",
+  "sprint_id": 183,
+  "sprint_note": "The subtask inherits the completed forecast parent's sprint.",
+  "actual_worklogs_added": 0,
+  "evidence": "docs/assignment-2/forecast",
+  "commit": "80d968b",
+  "verification": "docs/assignment-2/verification/browser/metrics-final-state.txt",
+  "comment_id": "11233"
+}

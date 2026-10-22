@@ -1,0 +1,123 @@
+{
+  "checked_at_utc": "2026-10-19T01:40:48.963409+00:00",
+  "scope": "Visual layout of three actual browser-downloaded PDFs and nine official diagram renders. This is not a new deployment, browser download or VPository publication check.",
+  "pdfs_passed": 3,
+  "pdfs": [
+    {
+      "file": "docs/assignment-2/verification/browser/downloads/baseline.pdf",
+      "sha256": "475c6bc35b717a6fca1a3b8cd6f34c060a1851b65e4d5f5b78b1d9df9f1e648e",
+      "preview": "docs/assignment-2/verification/browser/pdf-preview/baseline-1.png",
+      "preview_sha256": "82f9634f871bde9501dbb57db86b2200e7fcbfbf156388262c656b107c1a2a01",
+      "visible_data_rows": 5,
+      "checks": {
+        "one_page": true,
+        "title_present": true,
+        "all_column_labels_present": true,
+        "expected_filters_present": true,
+        "caveats_present": true,
+        "all_columns_visually_readable": true,
+        "rows_and_headers_not_clipped": true,
+        "filters_and_caveats_visually_readable": true,
+        "no_overlapping_text": true
+      },
+      "passed": true
+    },
+    {
+      "file": "docs/assignment-2/verification/browser/downloads/context-initial.pdf",
+      "sha256": "845f9f24f648c22a7ab7db073292c63c4b11db42f9864645157fcfe495aa14c2",
+      "preview": "docs/assignment-2/verification/browser/pdf-preview/context-initial-1.png",
+      "preview_sha256": "5816001eea6f4e3cb96de1d74a6ab76dc5f462464e7ab6792851c674953af1c1",
+      "visible_data_rows": 5,
+      "checks": {
+        "one_page": true,
+        "title_present": true,
+        "all_column_labels_present": true,
+        "expected_filters_present": true,
+        "caveats_present": true,
+        "all_columns_visually_readable": true,
+        "rows_and_headers_not_clipped": true,
+        "filters_and_caveats_visually_readable": true,
+        "no_overlapping_text": true
+      },
+      "passed": true
+    },
+    {
+      "file": "docs/assignment-2/verification/browser/downloads/metrics.pdf",
+      "sha256": "d7ef474b253e5bd2a339904f892470753282bf024db94eb4b50297c117245e13",
+      "preview": "docs/assignment-2/verification/browser/pdf-preview/metrics-1.png",
+      "preview_sha256": "a073142740488694579643449604dc31bad53c69e4b08dcade7570d1988df840",
+      "visible_data_rows": 4,
+      "checks": {
+        "one_page": true,
+        "title_present": true,
+        "all_column_labels_present": true,
+        "expected_filters_present": true,
+        "caveats_present": true,
+        "all_columns_visually_readable": true,
+        "rows_and_headers_not_clipped": true,
+        "filters_and_caveats_visually_readable": true,
+        "no_overlapping_text": true
+      },
+      "passed": true
+    }
+  ],
+  "diagrams_previously_visually_reviewed": [
+    {
+      "file": "docs/assignment-2/model/renders/Collaboration Overview - Evaluate Next-Season PPP (offline) (526).jpg",
+      "sha256": "cd5f1698308820108dbac949fe012d8bf335decf307bdde33f16d60e24232ef0",
+      "layout_readable": true,
+      "vendor_watermark_retained": true
+    },
+    {
+      "file": "docs/assignment-2/model/renders/Collaboration Overview - Export KPIs _ Reports (486).jpg",
+      "sha256": "88b18c62ea33a66129ffab170ddc60e11de48fa60f75064b88b79f3fa226dce7",
+      "layout_readable": true,
+      "vendor_watermark_retained": true
+    },
+    {
+      "file": "docs/assignment-2/model/renders/Collaboration Overview - Run Data Quality Checks (480).jpg",
+      "sha256": "3a9cbb514d3df1f0f1c22baf1b2519b299b627c4cda1fafe51f5f9094ddce2a5",
+      "layout_readable": true,
+      "vendor_watermark_retained": true
+    },
+    {
+      "file": "docs/assignment-2/model/renders/Detailed Sequence - Evaluate Next-Season PPP (526).jpg",
+      "sha256": "412037eb6eaa487991d1d2249729d0d6256fe0aa4616ae9660fc6d919a9c71ff",
+      "layout_readable": true,
+      "vendor_watermark_retained": true
+    },
+    {
+      "file": "docs/assignment-2/model/renders/Detailed Sequence - Export Displayed Results (486).jpg",
+      "sha256": "12298efb2d459d4d35c2d2fd31541c56c85d7cca25ced374cd6b75c70f340c4c",
+      "layout_readable": true,
+      "vendor_watermark_retained": true
+    },
+    {
+      "file": "docs/assignment-2/model/renders/Detailed Sequence - Review Source Data Status (480).jpg",
+      "sha256": "76ff728571f6bba1ee3694e15679e4bdbaf2e64e5950005691c5da4bfdef370c",
+      "layout_readable": true,
+      "vendor_watermark_retained": true
+    },
+    {
+      "file": "docs/assignment-2/model/renders/Elaboration - Shared Export Controls (486).jpg",
+      "sha256": "0801bd045fe895133f750b6002cfdd280dd6e4f949ac30b22395e0d49708f8e6",
+      "layout_readable": true,
+      "vendor_watermark_retained": true
+    },
+    {
+      "file": "docs/assignment-2/model/renders/Structural Design - Evaluate Next-Season PPP (offline) (526).jpg",
+      "sha256": "8d9048c03d466edbedd0caab480065a427edaf5620aa78d1774103e0c04bd891",
+      "layout_readable": true,
+      "vendor_watermark_retained": true
+    },
+    {
+      "file": "docs/assignment-2/model/renders/Structural Design - Run Data Quality Checks (480).jpg",
+      "sha256": "076a6c335f2de1b142bd7f5fd6764bb56e010ecc958155bf2296da642803a778",
+      "layout_readable": true,
+      "vendor_watermark_retained": true
+    }
+  ],
+  "model_signature_note": "The nine diagrams use signatures verified against the implementation. The model is published in shared revision 56; all prepared diagram-element rows match the committed snapshot. See model/publication-verification.json.",
+  "passed": true,
+  "model_reviewed_at_utc": "2026-10-19T02:06:40.386328+00:00"
+}

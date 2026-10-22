@@ -1,0 +1,87 @@
+{
+  "updated_at_utc": "2026-10-19T02:17:56.234Z",
+  "issues": [
+    {
+      "key": "SCRUM-538",
+      "sprintId": 185,
+      "sprint": "Iteration-17",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-539",
+      "sprintId": 185,
+      "sprint": "Iteration-17",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-540",
+      "sprintId": 185,
+      "sprint": "Iteration-17",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-541",
+      "sprintId": 185,
+      "sprint": "Iteration-17",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-542",
+      "sprintId": 184,
+      "sprint": "Iteration-16",
+      "status": "Done"
+    },
+    {
+      "key": "SCRUM-543",
+      "sprintId": 185,
+      "sprint": "Iteration-17",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-544",
+      "sprintId": 185,
+      "sprint": "Iteration-17",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-545",
+      "sprintId": 185,
+      "sprint": "Iteration-17",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-546",
+      "sprintId": 186,
+      "sprint": "Iteration-18",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-547",
+      "sprintId": 186,
+      "sprint": "Iteration-18",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-548",
+      "sprintId": 186,
+      "sprint": "Iteration-18",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-549",
+      "sprintId": 185,
+      "sprint": "Iteration-17",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-550",
+      "sprintId": 184,
+      "sprint": "Iteration-16",
+      "status": "Done"
+    }
+  ],
+  "reason": "Handle the Model Metrics loading repair with the new exports. Schedule the remaining Highest and High repairs before Medium repairs. Keep the response-time target in Iteration 16.",
+  "assignees_changed": false,
+  "sprint_lifecycle_changed": false,
+  "scope_note": "SCRUM-550 now covers measured analyst uplift timing. Acceptance and coach baseline timing remain under SCRUM-609 in Iteration 17."
+}

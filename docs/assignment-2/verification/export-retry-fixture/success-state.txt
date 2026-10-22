@@ -1,0 +1,35 @@
+Browser tab: 4, Title: "Isolated export retry fixture", URL: "http://127.0.0.1:53275/".
+0 AXWebArea Isolated export retry fixture, URL: 127.0.0.1:53275/
+	1 container
+		2 text ISOLATED TEST FIXTURE — BST-177
+		3 heading Export error and retry, Value: 1
+			4 text Export error and retry
+		5 text This page uses the app's actual Export control with synthetic data. It makes no production requests. The first Export request returns a temporary error. Retry export should finish preparation and request a CSV download.
+		6 table
+			7 row
+				8 cell
+					9 text Play type
+				10 cell
+					11 text Predicted PPP
+			12 row
+				13 cell
+					14 text Fixture Spotup
+				15 cell
+					16 text 1.08
+			17 row
+				18 cell
+					19 text Fixture Transition
+				20 cell
+					21 text 1.12
+		22 container actual-export
+			23 text Export format
+			24 pop up button (collapsed, settable) Export format, Value: CSV, Secondary Actions: Expand
+				25 menu
+					26 (selected) CSV
+					27 PDF
+					28 JSON
+			29 button Export
+			30 text Sample fixture — not a production report.
+			31 text Download requested. Check your browser’s Downloads folder.
+
+The focused UI element is 0 AXWebArea Isolated export retry fixture, URL: 127.0.0.1:53275/

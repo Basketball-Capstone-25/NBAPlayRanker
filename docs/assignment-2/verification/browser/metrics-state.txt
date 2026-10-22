@@ -1,0 +1,106 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/model-metrics".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/model-metrics
+	2 container
+		3 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		4 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		6 heading Model Performance — Baseline vs ML, Value: 1
+			7 text Model Performance  — Baseline vs ML
+		8 container
+			9 text Think of this like a  scouting report  for the model. We test generalization across seasons (holdout) and show tuning evidence (how we searched features + hyperparameters).
+		10 text PPP target Season holdout Coach-friendly interpretation Best holdout: Ridge (RMSE 0.011 PPP)
+		11 link Description: Back: Context Simulator, Value: nbaplayranker-seven.vercel.app/context
+		12 link Description: Next: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+		13 container
+			14 text Season folds (n_splits)
+			15 pop up button (collapsed, settable) Season folds (n_splits), Value: 5, Secondary Actions: Expand
+				16 menu
+					17 3
+					18 4
+					19 (selected) 5
+					20 6
+		21 button Refresh
+		22 text Export format
+		23 pop up button (collapsed, settable) Export format, Value: JSON, Secondary Actions: Expand
+			24 menu
+				25 CSV
+				26 PDF
+				27 (selected) JSON
+		28 button Export
+		29 text Export the loaded holdout metrics table. Tuning and calibration are separate reports.
+		205 text Download requested. Check your browser’s Downloads folder.
+		32 text Scoreboard
+		33 text Holdout
+		34 checkbox Calibration, Value: 0
+		35 text Tuning
+		36 text Traceability
+		206 heading Holdout metrics table, Value: 2
+			207 text Holdout metrics table
+		208 text This is the “generalizes to unseen seasons” scoreboard. Lower RMSE/MAE is better.
+		209 button Back to Scoreboard
+		210 container
+			211 table
+				212 row
+					213 cell
+						214 text Model
+					215 cell
+						216 text RMSE (mean ± std)
+					217 cell
+						218 text MAE (mean ± std)
+					219 cell
+						220 text R² (mean ± std)
+				221 row
+					222 cell
+						223 text Ridge
+						224 text best
+					225 cell
+						226 text 0.011  ±  0.001
+					227 cell
+						228 text 0.008  ±  0.000
+					229 cell
+						230 text 0.997  ±  0.001
+				231 row
+					232 cell
+						233 text Gradient Boosting
+					234 cell
+						235 text 0.020  ±  0.008
+					236 cell
+						237 text 0.014  ±  0.002
+					238 cell
+						239 text 0.988  ±  0.012
+				240 row
+					241 cell
+						242 text Random Forest
+					243 cell
+						244 text 0.023  ±  0.012
+					245 cell
+						246 text 0.015  ±  0.004
+					247 cell
+						248 text 0.982  ±  0.021
+				249 row
+					250 cell
+						251 text Baseline (league mean)
+					252 cell
+						253 text 0.064  ±  0.002
+					254 cell
+						255 text 0.050  ±  0.002
+					256 cell
+						257 text 0.892  ±  0.010
+			258 text Quick read:
+			259 text  RMSE/MAE = prediction error on PPP. R² = how much variation the model explains.
+		77 container
+			78 text Built with  Next.js  (UI) +  FastAPI  (services).
+		79 container
+			80 text Tip for reviewers: start at 
+			81 link Description: Data Explorer, Value: nbaplayranker-seven.vercel.app/data-explorer
+			82 text  to see the dataset, then compare 
+			83 link Description: Baseline, Value: nbaplayranker-seven.vercel.app/matchup
+			84 text  vs 
+			85 link Description: AI Context, Value: nbaplayranker-seven.vercel.app/context
+			86 text , and verify evidence in 
+			87 link Description: Model Performance, Value: nbaplayranker-seven.vercel.app/model-metrics
+			88 text  and
+			89 link Description: Statistical Analysis, Value: nbaplayranker-seven.vercel.app/statistical-analysis
+			90 text .
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/model-metrics

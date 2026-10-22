@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "scope": "Isolated browser fixture running the actual component; no production outage was caused.",
+  "observed_sequence": [
+    "Preparing (disabled)",
+    "503 and Retry export (enabled)",
+    "Preparing (disabled)",
+    "Download requested and Export (enabled)",
+    "CSV saved and parsed"
+  ],
+  "download": {
+    "file": "isolated-retry-fixture.csv",
+    "bytes": 71,
+    "sha256": "bda85931d6544c06263d8d9af128b3bab304dd972ef4f4acd8d763896df52b62",
+    "rows": 2,
+    "saved_at_utc": "2026-10-19T01:46:59.157749+00:00"
+  },
+  "source_hashes": [
+    {
+      "file": "app/ui/_shared/components/ReportExport.tsx",
+      "sha256": "f89a6571ffeb8c9e08946f4daddd70ee6756682eca999d87a62ca43d48bc565f"
+    },
+    {
+      "file": "app/infrastructure/report-export.ts",
+      "sha256": "841ba23d54984a5203b00a5ab5cfa587026318a43729f4c4f18f5812b29cb960"
+    }
+  ],
+  "production_requests": 0,
+  "credentials_used": false
+}
