@@ -12,36 +12,14 @@ from matplotlib.patches import Rectangle, Circle, Wedge
 
 from sportypy.surfaces.basketball import NBACourt
 
+from domain.baseline_recommendation.playtype_zones import PLAYTYPE_ZONES, zones_for_playtype
 from infrastructure.visualization_and_export.viz_shot_heatmap import (
     _patch_sportypy_circle,
     png_bytes_to_base64,
 )
 
 
-PLAYTYPE_ZONES: Dict[str, Dict[str, float]] = {
-    "Spotup": {"corner3": 1.0, "arc3": 0.8},
-    "Cut": {"rim": 1.0},
-    "Transition": {"rim": 0.9, "corner3": 0.6},
-    "Isolation": {"mid": 0.8, "rim": 0.4},
-    "OffScreen": {"arc3": 0.9, "mid": 0.4},
-    "HandOff": {"arc3": 0.7, "mid": 0.4},
-    "PostUp": {"paint": 1.0},
-    "P&R Ball Handler": {"rim": 0.7, "mid": 0.5, "arc3": 0.4},
-    "P&R Roll Man": {"rim": 1.0, "paint": 0.6},
-}
-
-
-def zones_for_playtype(play_type: str) -> Dict[str, float]:
-    # Robust matching: Synergy labels vary ("Spot Up" vs "Spotup" vs "Spot-Up")
-    def _norm(s: str) -> str:
-        return "".join(ch for ch in (s or "").lower() if ch.isalnum())
-
-    pt = _norm(play_type)
-
-    for key, zones in PLAYTYPE_ZONES.items():
-        if _norm(key) in pt:
-            return zones
-    return {"rim": 0.6, "arc3": 0.4}  # fallback
+__all__ = ["PLAYTYPE_ZONES", "zones_for_playtype", "render_playtype_zone_png", "png_bytes_to_base64"]
 
 
 def render_playtype_zone_png(play_type: str, title: str) -> bytes:
