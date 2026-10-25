@@ -1,8 +1,8 @@
 {
-  "checked_at_utc": "2026-10-25T18:53:59.147807+00:00",
+  "checked_at_utc": "2026-10-25T19:06:11.000746+00:00",
   "scope": "Only curated docs/iteration-17 files present at scan time; no private workspace, credentials directory or historical Git scan. Known private values are read only for in-memory comparison; no values are retained.",
-  "files_scanned": 183,
-  "bytes_scanned": 24480829,
+  "files_scanned": 191,
+  "bytes_scanned": 24540300,
   "known_private_values_checked": 3,
   "public_anon_jwts_excluded": 0,
   "findings": [],
@@ -16,8 +16,8 @@
   "manifest": [
     {
       "path": "docs/iteration-17/README.md",
-      "bytes": 10590,
-      "sha256": "e8a9736b79a7f7bec3572378e21d0b2fbebab3d8996d8febc92d12f10a333553"
+      "bytes": 11537,
+      "sha256": "a67f52d58f5d81db93bfe66b50938bfb0db011f27ac3d19f963ffde18a45c72c"
     },
     {
       "path": "docs/iteration-17/model/Basketball Playtype Ranker.vpp",
@@ -300,6 +300,16 @@
       "sha256": "3ca220e80875fb9b4e7d87419997ee944d75bd638ae16831bf53449c15c15fd5"
     },
     {
+      "path": "docs/iteration-17/tracking/final-jira-status.json",
+      "bytes": 39216,
+      "sha256": "90a053978f4e8a94aeb69695c998e511e0107801e80348fc7d76eb087609e266"
+    },
+    {
+      "path": "docs/iteration-17/tracking/risk-closeout.json",
+      "bytes": 9531,
+      "sha256": "5a3a63f0f83cfe27c275e19682320938fc65e07236180b9294b11a2f96584a2a"
+    },
+    {
       "path": "docs/iteration-17/tracking/screenshots.json",
       "bytes": 1271,
       "sha256": "472356fa30f510e5a6ce9af9786b8f2b18ce568b70cde0e04f548d59624793bd"
@@ -543,6 +553,36 @@
       "path": "docs/iteration-17/verification/frontend-ux/tests.txt",
       "bytes": 402,
       "sha256": "104da68e73425ae955288e62deb6cdee9ed48fde217fb6181b9c855fbe34c89c"
+    },
+    {
+      "path": "docs/iteration-17/verification/legacy-baseline/empty-our.json",
+      "bytes": 44,
+      "sha256": "f78f0f9fb66b1c953f80717b5ecddf129d33b9158bbb27d708200f66d4250728"
+    },
+    {
+      "path": "docs/iteration-17/verification/legacy-baseline/missing-our.json",
+      "bytes": 165,
+      "sha256": "b43709ab85b64f1f80214af894bcf6b671fcdd70babce3da1d51bd4260211b14"
+    },
+    {
+      "path": "docs/iteration-17/verification/legacy-baseline/negative-k.json",
+      "bytes": 242,
+      "sha256": "bb62faf9c1a6315d36aa88514882cdc3dce78a917dc2dec66bb341f876027dab"
+    },
+    {
+      "path": "docs/iteration-17/verification/legacy-baseline/results.json",
+      "bytes": 3719,
+      "sha256": "fb81c5b0e8b11d589795b373663134a274876c4ae547ecb10024d63bfa1fcbd3"
+    },
+    {
+      "path": "docs/iteration-17/verification/legacy-baseline/unknown-season.json",
+      "bytes": 127,
+      "sha256": "94db79fc90d03555fdbd3764cf6725b920e440fb116e8e5ad3c83e9b2e48d10e"
+    },
+    {
+      "path": "docs/iteration-17/verification/legacy-baseline/valid.json",
+      "bytes": 5480,
+      "sha256": "55a0d74d7a214c58dfdfb5ae43befa1615a72da46a75935320edf39e5bf9fd67"
     },
     {
       "path": "docs/iteration-17/verification/live-api/analyst-shot-plan.pdf",

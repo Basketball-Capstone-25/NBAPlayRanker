@@ -1,0 +1,1388 @@
+{
+  "checked_at_utc": "2026-10-25T19:05:47.351Z",
+  "scope": "Final repair closeout. Whole-board status totals retain historical results; they are not all new executions.",
+  "owned_open_development": [
+    {
+      "key": "SCRUM-3",
+      "summary": "Context-Aware Re-Ranking (Score/Time/Recent Events)",
+      "type": "Feature",
+      "status": "In Progress",
+      "assignee": "Gurkaranjit Asahan"
+    },
+    {
+      "key": "SCRUM-4",
+      "summary": "Coach UI & Tactics Board",
+      "type": "Feature",
+      "status": "In Progress",
+      "assignee": "Gurkaranjit Asahan"
+    },
+    {
+      "key": "SCRUM-8",
+      "summary": "Project Management & Support",
+      "type": "Feature",
+      "status": "In Progress",
+      "assignee": "Gurkaranjit Asahan"
+    }
+  ],
+  "owned_unpassed_tests": [],
+  "owned_open_mitigation_actions": [
+    {
+      "key": "BSR-113",
+      "summary": "Mitigation: Update the Visual Paradigm models so they match the final code",
+      "type": "Subtask",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-114",
+      "summary": "Mitigation: Finalize edits to Capstone Project Report",
+      "type": "Subtask",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-115",
+      "summary": "Mitigation: Rehearse showing the project works, using the test plan and test results",
+      "type": "Subtask",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-116",
+      "summary": "Mitigation: Rehearse explaining each member’s own contribution (code, models, reports, presentation)",
+      "type": "Subtask",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-117",
+      "summary": "Review three coaching scenarios with a stakeholder",
+      "type": "Subtask",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-139",
+      "summary": "Mitigation: Rehearse explaining each member’s own contribution (code, models, reports, presentation)",
+      "type": "Subtask",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-140",
+      "summary": "Record weekly capacity, backup owners and blocked work",
+      "type": "Subtask",
+      "status": "Planning"
+    },
+    {
+      "key": "BSR-141",
+      "summary": "Review three coaching scenarios with a stakeholder",
+      "type": "Subtask",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-151",
+      "summary": "Review three coaching scenarios with a stakeholder",
+      "type": "Subtask",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-159",
+      "summary": "Document dataset sources and sharing permissions",
+      "type": "Subtask",
+      "status": "Planning"
+    },
+    {
+      "key": "BSR-161",
+      "summary": "Check deployment secrets and recovery access",
+      "type": "Subtask",
+      "status": "Planning"
+    }
+  ],
+  "test_counts": {
+    "Test Case": {
+      "Pass": 154,
+      "Fail": 1,
+      "Verify": 8
+    },
+    "Test Suite": {
+      "Verify": 3,
+      "Pass": 16,
+      "Testing In Progress": 1
+    }
+  },
+  "tests": [
+    {
+      "key": "BST-1",
+      "summary": "Data Explorer displays the current raw dataset",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-2",
+      "summary": "Data Explorer filters rows by season, team and side",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-3",
+      "summary": "Data Explorer CSV matches the visible raw data",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-4",
+      "summary": "Baseline API returns the requested Top-K rankings",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-5",
+      "summary": "Baseline API rejects missing or invalid parameters",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-6",
+      "summary": "Coach Matchup displays the Top-K baseline cards",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-13",
+      "summary": "Legacy Analyst Workspace suite (unused)",
+      "type": "Test Suite",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-18",
+      "summary": "Unused legacy test suite",
+      "type": "Test Suite",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-27",
+      "summary": "Access Analyst Workspace",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-28",
+      "summary": "Authenticate Analyst Access",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-29",
+      "summary": "Ranked list via API",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-30",
+      "summary": "Validate Coach Access",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-31",
+      "summary": "Rank Plays with Game Context",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-32",
+      "summary": "Analyst middleware allows the Data Explorer route",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-33",
+      "summary": "Workspace API returns rows and matching counts",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-34",
+      "summary": "Analyst profile can read the workspace API",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-35",
+      "summary": "Workspace filters preserve the requested team and side",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-36",
+      "summary": "Workspace row limits agree with response counts",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-37",
+      "summary": "Coach profile cannot read the analyst workspace API",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-38",
+      "summary": "Coach profile cannot export analyst workspace CSV",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-39",
+      "summary": "Workspace API rejects a missing session",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-40",
+      "summary": "Coach middleware redirects the analyst workspace route",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-41",
+      "summary": "Signed-out workspace request keeps its return path",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-42",
+      "summary": "Session validation accepts verified tokens and rejects missing or invalid tokens",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-43",
+      "summary": "Role lookup uses protected profiles and rejects invalid profile data",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-44",
+      "summary": "Analytics permission checks distinguish analyst and coach roles",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-45",
+      "summary": "Explicit local development mode permits a missing session",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-46",
+      "summary": "Session validation rejects a missing token",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-47",
+      "summary": "Session validation rejects a failed JWT verification",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-48",
+      "summary": "Session validation accepts verified subject claims",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-49",
+      "summary": "A failed token verification cannot produce a role",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-50",
+      "summary": "Coach access uses the protected profile role",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-51",
+      "summary": "Analyst access uses the current protected profile role",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-52",
+      "summary": "Unsupported and malformed profiles cannot grant a role",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-53",
+      "summary": "Explicit local development mode permits the analytics guard",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-54",
+      "summary": "Analytics permission rejects the coach role",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-55",
+      "summary": "Analytics permission accepts the analyst role",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-56",
+      "summary": "Baseline ranking returns bounded matchup-specific results",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-57",
+      "summary": "Baseline API validates matchup and result count",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-58",
+      "summary": "Baseline returns five plays with ranking values",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-59",
+      "summary": "Baseline predictions are nonnegative for the test matchup",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-60",
+      "summary": "Baseline K=10 returns a nonempty bounded list",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-61",
+      "summary": "Changing the team changes baseline predictions",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-62",
+      "summary": "Baseline API returns the requested Top-K and matchup metadata",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-63",
+      "summary": "Baseline API rejects the same team on both sides",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-64",
+      "summary": "Baseline API rejects K=0",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-65",
+      "summary": "Coach workspace routes enforce the signed-in role",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-66",
+      "summary": "Ranking APIs enforce coach access",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-67",
+      "summary": "Coach middleware allows the matchup route",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-68",
+      "summary": "Coach middleware redirects analyst-only pages",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-69",
+      "summary": "Signed-in coach is redirected away from login",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-70",
+      "summary": "Coach profile can call the baseline API",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-71",
+      "summary": "Analyst profile cannot call the coach baseline API",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-72",
+      "summary": "Analyst profile cannot call the coach context API",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-73",
+      "summary": "Analyst profile cannot call the coach visualization API",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-74",
+      "summary": "Context helpers handle regulation clocks and score factors",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-75",
+      "summary": "Context labels describe normal, trailing and leading situations",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-76",
+      "summary": "Ridge model meets the documented historical evaluation checks",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-77",
+      "summary": "Regulation clock starts with 2,880 seconds",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-78",
+      "summary": "Regulation clock reaches zero at the fourth-quarter end",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-79",
+      "summary": "Regulation-clock helper returns zero during overtime",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-80",
+      "summary": "Third-quarter clock includes the remaining regulation periods",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-81",
+      "summary": "Opening tied-game context has zero urgency factors",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-82",
+      "summary": "Late trailing context raises late-game and trailing factors",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-83",
+      "summary": "Late large lead raises only the leading factor",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-84",
+      "summary": "Overtime context has maximum late-game weighting",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-85",
+      "summary": "Zero context factors use the normal label",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-86",
+      "summary": "Late trailing factors use the trailing label",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-87",
+      "summary": "Late leading factors use the leading label",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-88",
+      "summary": "Ridge pipeline scales features before fitting",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-89",
+      "summary": "Ridge fits 200 synthetic rows without invalid predictions",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-90",
+      "summary": "Synthetic Ridge coefficients stay finite and bounded",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-91",
+      "summary": "Historical Ridge cross-validation beats the league-mean baseline",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-92",
+      "summary": "Historical held-out Ridge predictions stay within the PPP bounds",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-93",
+      "summary": "Every historical Ridge fold meets the RMSE threshold",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-94",
+      "summary": "Model feature and target arrays are aligned and finite",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-95",
+      "summary": "Increasing Ridge alpha reduces synthetic coefficient norms",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-96",
+      "summary": "Generate Play Explanations",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-97",
+      "summary": "Rationale generated for each Top-K play",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-98",
+      "summary": "Rationale values match ranking output",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-99",
+      "summary": "Baseline rationale states when context is missing",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-100",
+      "summary": "NLP parses a trailing fourth-quarter context",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-101",
+      "summary": "NLP parses a leading score margin",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-102",
+      "summary": "Unparseable NLP text produces neutral context defaults",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-103",
+      "summary": "NLP rejects out-of-range values before ranking",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-104",
+      "summary": "Access Stored Datasets",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-105",
+      "summary": "Play-type dataset loads from storage",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-106",
+      "summary": "Season and team query returns matching rows",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-107",
+      "summary": "Missing play-type dataset has a controlled error",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-108",
+      "summary": "API Stability and Deployment",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-109",
+      "summary": "Deployed health endpoint responds",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-110",
+      "summary": "Concurrent Top-K requests complete",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-111",
+      "summary": "Top-K response time meets an agreed threshold",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-112",
+      "summary": "Deployed Matchup page loads data from the API",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-113",
+      "summary": "Missing required settings make the backend report not ready",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-114",
+      "summary": "Validate Second Dataset and Models",
+      "type": "Test Suite",
+      "status": "Testing In Progress"
+    },
+    {
+      "key": "BST-115",
+      "summary": "Retained second-dataset schema maps required model columns",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-116",
+      "summary": "Schema mapping reports missing and unmapped columns",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-117",
+      "summary": "Shot features are complete and available before possession",
+      "type": "Test Case",
+      "status": "Fail"
+    },
+    {
+      "key": "BST-118",
+      "summary": "Selected shot model beats baseline on a holdout season",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-119",
+      "summary": "Selected shot model reports cross-validation statistics",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-120",
+      "summary": "Iteration 14 elaboration verification",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-121",
+      "summary": "Top-K uplift matches possession-weighted calculations",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-122",
+      "summary": "Top-K JSON and CSV match and enforce analyst access",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-123",
+      "summary": "Calibration trains on earlier seasons only",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-124",
+      "summary": "Calibration values and limits match the analyst page",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-125",
+      "summary": "Gameplan storage validates notes, matchups and revisions",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-126",
+      "summary": "Gameplan ownership and role restrictions hold",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-127",
+      "summary": "Production health, access rules and deployment checks",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-128",
+      "summary": "TC-I14-DEPLOY-02 — Authenticated coach and analyst production journeys",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-129",
+      "summary": "Signed-in browser downloads preserve authorization",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-130",
+      "summary": "Compute & Export Top-K Uplift",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-131",
+      "summary": "Top-K uplift matches the team-season reference",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-132",
+      "summary": "Run Data Quality Checks",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-133",
+      "summary": "Synergy data quality flags schema, missing data and coverage",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-134",
+      "summary": "Export Results (CSV/PDF)",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-135",
+      "summary": "Exports keep values and headers consistent across formats",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-136",
+      "summary": "NLP handles concurrent requests within local memory limits",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-137",
+      "summary": "Fall 2026 elaboration regression tests",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-138",
+      "summary": "Shot data uses different shooting and opposing teams",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-139",
+      "summary": "Shot import keeps the event team separate from home team and score",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-140",
+      "summary": "Gameplan uses the new situation on the first Build",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-141",
+      "summary": "Gameplan forwards supported coaching conditions to ranking",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-142",
+      "summary": "Gameplan preserves overtime from the parsed situation",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-143",
+      "summary": "Analyst Shot Plan page can use its required API",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-144",
+      "summary": "Analyst Shot Heatmap page can use its required API",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-145",
+      "summary": "Model Metrics finishes loading after successful metadata",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-146",
+      "summary": "Shot Model Metrics completes within its request limit",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-147",
+      "summary": "Shot Statistical Analysis renders the returned response",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-148",
+      "summary": "A stale Gameplan update cannot overwrite a newer revision",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-149",
+      "summary": "One account cannot read another account profile",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-150",
+      "summary": "Export proxy rejects a cookie session for the wrong verified user",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-151",
+      "summary": "Export proxy rejects arbitrary backend targets",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-152",
+      "summary": "Export proxy rejects foreign-site download requests",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-153",
+      "summary": "Export proxy rejects redirects and wrong file content",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-154",
+      "summary": "Export proxy keeps denied responses out of downloaded files",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-155",
+      "summary": "NLP rejects empty and overlength coaching prompts",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-156",
+      "summary": "Data-quality report and analyst panel",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-157",
+      "summary": "Season-ahead PPP forecast evaluation",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-158",
+      "summary": "Quality report identifies its source and completed checks",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-159",
+      "summary": "Failed or incomplete data checks never appear as a pass",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-160",
+      "summary": "Unavailable quality checks show an error and retry state",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-161",
+      "summary": "Quality report accepts analysts and rejects unauthorized requests",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-162",
+      "summary": "Live Data Explorer quality panel loads, refreshes and enforces access",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-163",
+      "summary": "Season-ahead inputs use only the immediately prior regular season",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-164",
+      "summary": "Changing the final season cannot change forecast fitting or predictions",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-165",
+      "summary": "Forecast selection and scaling keep the final season untouched",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-166",
+      "summary": "Forecast and timed baselines use the same evaluation rows",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-167",
+      "summary": "Forecast evaluation reproduces the same report and predictions",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-168",
+      "summary": "Data-quality status labels remain readable on the light panel",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-169",
+      "summary": "Production deployment links open the public app address",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-170",
+      "summary": "Export current Matchup, Context and Model Metrics results",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-171",
+      "summary": "Matchup exports the displayed ranking in all three formats",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-172",
+      "summary": "Context exports the selected situation and adjusted results",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-173",
+      "summary": "Model Metrics exports the visible evaluation results",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-174",
+      "summary": "Export stays unavailable for empty, loading or stale results",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-175",
+      "summary": "Report downloads require the correct signed-in role",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-176",
+      "summary": "Report validation rejects invalid and oversized snapshots",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-177",
+      "summary": "A failed report request shows an error and can be retried",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-178",
+      "summary": "Downloaded reports have readable filenames and content",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-179",
+      "summary": "UI feedback fixes from the March 3 supervisor meeting",
+      "type": "Test Suite",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-180",
+      "summary": "Homepage tiles show hover descriptions and lead to the right pages",
+      "type": "Test Case",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-181",
+      "summary": "Data Explorer key workflow fits on one desktop screen",
+      "type": "Test Case",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-182",
+      "summary": "Each Data Explorer export button says what it exports",
+      "type": "Test Case",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-183",
+      "summary": "Simplified Data Explorer filters still return correct data",
+      "type": "Test Case",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-184",
+      "summary": "Advanced details stay hidden until the user opens them",
+      "type": "Test Case",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-185",
+      "summary": "Removed debug items do not break the main tasks",
+      "type": "Test Case",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-186",
+      "summary": "Colour and imagery are used consistently across pages",
+      "type": "Test Case",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-187",
+      "summary": "Coach and analyst accounts only see the pages for their role",
+      "type": "Test Case",
+      "status": "Verify"
+    },
+    {
+      "key": "BST-188",
+      "summary": "A clean checkout and saved backups restore a working setup",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-189",
+      "summary": "Gameplan notes save to Supabase and load back after reload",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-190",
+      "summary": "Model Metrics shows Top-K uplift and calibration with plain explanations",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-191",
+      "summary": "Dataset versions follow file contents",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-192",
+      "summary": "API results and downloads keep the source version",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-193",
+      "summary": "Dataset metadata matches the loaded files",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-194",
+      "summary": "Missing metadata stays visible and does not hide valid sources",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-195",
+      "summary": "Data Dictionary explains the current columns",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-196",
+      "summary": "Unknown columns are marked as undocumented",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-197",
+      "summary": "Dataset metadata and dictionary require a valid session",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-198",
+      "summary": "Saved shot results must match the source and fold selection",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-199",
+      "summary": "Overtime accepts a five-minute clock and rejects longer input",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-200",
+      "summary": "Unsupported coaching inputs cannot silently alter rankings",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-201",
+      "summary": "The call label uses the first displayed ranked play",
+      "type": "Test Case",
+      "status": "Pass"
+    }
+  ],
+  "final_readback": [
+    {
+      "key": "BST-4",
+      "summary": "Baseline API returns the requested Top-K rankings",
+      "type": "Test Case",
+      "status": "Pass",
+      "assignee": "Abdulrahman Mousa"
+    },
+    {
+      "key": "BST-5",
+      "summary": "Baseline API rejects missing or invalid parameters",
+      "type": "Test Case",
+      "status": "Pass",
+      "assignee": "Gurkaranjit Asahan"
+    },
+    {
+      "key": "BST-29",
+      "summary": "Ranked list via API",
+      "type": "Test Suite",
+      "status": "Pass",
+      "assignee": "Gurkaranjit Asahan"
+    },
+    {
+      "key": "BST-96",
+      "summary": "Generate Play Explanations",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-108",
+      "summary": "API Stability and Deployment",
+      "type": "Test Suite",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-111",
+      "summary": "Top-K response time meets an agreed threshold",
+      "type": "Test Case",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-117",
+      "summary": "Shot features are complete and available before possession",
+      "type": "Test Case",
+      "status": "Fail"
+    },
+    {
+      "key": "SCRUM-389",
+      "summary": "Update risk monitoring and carryover items",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "assignee": "Gurkaranjit Asahan"
+    },
+    {
+      "key": "SCRUM-609",
+      "summary": "Agree how fast Top-K recommendations must load, and confirm the app meets it",
+      "type": "Task",
+      "status": "Done",
+      "assignee": "Gurkaranjit Asahan"
+    },
+    {
+      "key": "SCRUM-612",
+      "summary": "Review and record the agreed timing targets",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "assignee": "Gurkaranjit Asahan"
+    },
+    {
+      "key": "SCRUM-613",
+      "summary": "Run the Top-K response-time acceptance cases",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "assignee": "Gurkaranjit Asahan"
+    },
+    {
+      "key": "SCRUM-641",
+      "summary": "Evaluate shot forecasts using only pre-possession inputs",
+      "type": "Task",
+      "status": "To Do"
+    }
+  ],
+  "timing_updates": [
+    {
+      "key": "BST-111",
+      "commentId": "11423",
+      "body": "Coach baseline met the agreed limits: warm p95 0.46 s, two-concurrent p95 0.42 s and the first request after idle 21.05 s. Cloud Run logs confirm that the idle request started a new instance. These were bounded checks, not a sustained-load test.\n\n[Timing results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/45b0633/docs/iteration-17/verification/timing/acceptance-summary.json)",
+      "transition": {
+        "message": "Issue BST-111 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "SCRUM-613",
+      "commentId": "11424",
+      "body": "Waited until Cloud Run reported zero active and zero idle instances, then sent one coach-baseline request. It returned five valid rankings in 21.05 s, below the 45 s limit. The request and AUTOSCALING startup logs identify the same new instance.\n\n[Timing results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/45b0633/docs/iteration-17/verification/timing/acceptance-summary.json)",
+      "transition": {
+        "message": "Issue SCRUM-613 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-609",
+      "commentId": "11425",
+      "body": "All three agreed coach-baseline limits passed on the current deployment: warm p95 0.46 s, two-concurrent p95 0.42 s and first request after idle 21.05 s. The limits were 5 s, 10 s and 45 s. The startup result is one measured cold request, not a percentile.\n\n[Timing results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/45b0633/docs/iteration-17/verification/timing/acceptance-summary.json)",
+      "transition": {
+        "message": "Issue SCRUM-609 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    }
+  ],
+  "suite_updates": [
+    {
+      "key": "BST-108",
+      "commentId": "11426",
+      "body": "The six cases now pass, including readiness, recovery and the three agreed response-time checks. The first request after idle returned five rankings in 21.05 seconds.\n\n[Timing results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/45b0633/docs/iteration-17/verification/timing/acceptance-summary.json) · [Recovery check](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/45b0633/docs/iteration-17/operations/evidence/database-restore-check.json)",
+      "transition": {
+        "message": "Issue BST-108 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-96",
+      "commentId": "11427",
+      "body": "All eight cases are Pass. Baseline explanations now state when context was not used, and the displayed values match the ranking.\n\n[Results and screenshots](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/45b0633/docs/iteration-17/verification/browser/browser-checks.json)",
+      "transition": {
+        "message": "Issue BST-96 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-29",
+      "commentId": "11430",
+      "body": "All twelve baseline-ranking cases are now Pass. The final two cases checked the requested Top-K result and the missing or invalid parameter errors.\n\n[Final case execution](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/legacy-baseline/results.json)",
+      "transition": {
+        "message": "Issue BST-29 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    }
+  ],
+  "legacy_case_updates": [
+    {
+      "key": "BST-4",
+      "commentId": "11428",
+      "body": "Toronto against Boston in 2024–25 returned five rankings with the requested season, teams and weights. Every row had a play type and valid PPP prediction and gap values.\n\n[Executed requests](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/legacy-baseline/results.json)",
+      "transition": {
+        "message": "Issue BST-4 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      },
+      "ownershipPreserved": true
+    },
+    {
+      "key": "BST-5",
+      "commentId": "11429",
+      "body": "Missing our and k=-1 returned HTTP 422. The unknown season and empty our value returned HTTP 400. Each error included a JSON detail and no rankings.\n\n[Executed requests](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/legacy-baseline/results.json)",
+      "transition": {
+        "message": "Issue BST-5 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      },
+      "ownershipPreserved": true
+    }
+  ],
+  "project_summary_comment": {
+    "issue": "SCRUM-8",
+    "id": "11431"
+  },
+  "checks": {
+    "no_owned_open_development_tasks": true,
+    "no_owned_unpassed_test_cases": true,
+    "forecasting_failure_retained": true,
+    "future_forecasting_task_open": true,
+    "teammate_case_ownership_preserved": true
+  }
+}

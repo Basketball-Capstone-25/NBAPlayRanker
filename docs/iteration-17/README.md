@@ -31,11 +31,15 @@ For [BSR-152](https://basketball-strategy.atlassian.net/browse/BSR-152), show th
 - **Model publication:** [all 28 checks passed](model/publication-checks.json), with 201 diagrams retained and no pending changes. The [native project](model/Basketball%20Playtype%20Ranker.vpp) is the published copy.
 - **Recovery:** [isolated restore results](operations/evidence/database-restore-check.json). All 36 backed-up tables matched, and the role and saved-note checks passed. The private backup is encrypted; it is not part of the repository.
 - **Jira updates:** [verified closeout](tests/jira-closeout.json) records 24 completed development items and 15 passed cases in this final batch. [Screenshots](tracking/screenshots.json) were added to the existing comments for Gameplan, source details, baseline explanations, simpler shot results and the VP sequence changes.
+- **Final tracking check:** [Jira status](tracking/final-jira-status.json) shows no open development tasks or unpassed test cases assigned to Gurk. The three ongoing feature cards remain open. Across the shared test board, 154 cases are Pass, one is Fail and eight remain Verify; these totals include earlier executions.
+- **Risk follow-up:** [35 mitigation cards were resolved](tracking/risk-closeout.json), 17 parent risks moved to Monitoring and three remained Active with specific follow-ups. Existing comments, links, ownership and work logs were preserved.
+- **Older API cases:** [five requests and 31 assertions passed](verification/legacy-baseline/results.json), covering the exact Top-K response and missing or invalid parameters. BST-4 and BST-5 now Pass, and their suite is complete.
 - **Personal time:** [six hours](tracking/worklogs.json), recorded once on SCRUM-8: two hours on October 21, two on October 22 and two on October 25. Earlier assignment hours were not counted again.
 
 ## Work that remains open
 
 - [BST-117](https://basketball-strategy.atlassian.net/browse/BST-117) / [SCRUM-641](https://basketball-strategy.atlassian.net/browse/SCRUM-641): a true before-possession feature contract and evaluation. A supplied shot type and location are still required by the current model.
+- [BST-179](https://basketball-strategy.atlassian.net/browse/BST-179): eight unassigned UI review cases still await execution on the shared test board.
 - [BSR-117](https://basketball-strategy.atlassian.net/browse/BSR-117), [141](https://basketball-strategy.atlassian.net/browse/BSR-141), [151](https://basketball-strategy.atlassian.net/browse/BSR-151): observe the [three coaching scenarios](operations/stakeholder-review.md). Navreet’s general feedback led to simpler screens; it is not a completed scenario test.
 - [BSR-140](https://basketball-strategy.atlassian.net/browse/BSR-140): agree Abdul’s availability and the team’s backup owners. [The weekly plan](operations/weekly-plan.md) records what is known.
 - [BSR-159](https://basketball-strategy.atlassian.net/browse/BSR-159): confirm source-data sharing permissions. [Source documentation](operations/data-sources.md) is available, but public download access does not settle every redistribution question.

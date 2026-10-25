@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "evidence_commit": "d161f42a8a10dd2d3d31ac312cdb1e12fe1c5c21",
+  "scope": "Gurk-owned technical risk mitigations and parent risk monitoring",
+  "counts": {
+    "mitigations_resolved": 35,
+    "parents_to_monitoring": 17,
+    "parents_kept_active_with_comment": 3,
+    "risk_updates": 55,
+    "development_tasks_closed": 1
+  },
+  "checks": {
+    "assertionCount": 748,
+    "failures": [],
+    "passed": true
+  },
+  "development_task_checks": {
+    "status": true,
+    "comment": true,
+    "oldComments": true,
+    "summary": true,
+    "description": true,
+    "assignee": true,
+    "parent": true,
+    "worklogs": true,
+    "links": true,
+    "priority": true
+  },
+  "preserved": [
+    "issue keys and titles",
+    "descriptions and acceptance criteria",
+    "owners and parents",
+    "priorities and formal links",
+    "historical comments and worklogs"
+  ],
+  "receipts": [
+    {
+      "key": "BSR-119",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11367"
+    },
+    {
+      "key": "BSR-120",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11368"
+    },
+    {
+      "key": "BSR-121",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11369"
+    },
+    {
+      "key": "BSR-122",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11370"
+    },
+    {
+      "key": "BSR-123",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11371"
+    },
+    {
+      "key": "BSR-124",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11372"
+    },
+    {
+      "key": "BSR-125",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11373"
+    },
+    {
+      "key": "BSR-126",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11374"
+    },
+    {
+      "key": "BSR-127",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11375"
+    },
+    {
+      "key": "BSR-128",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11376"
+    },
+    {
+      "key": "BSR-129",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11377"
+    },
+    {
+      "key": "BSR-130",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11378"
+    },
+    {
+      "key": "BSR-131",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11379"
+    },
+    {
+      "key": "BSR-132",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11380"
+    },
+    {
+      "key": "BSR-133",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11381"
+    },
+    {
+      "key": "BSR-134",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11382"
+    },
+    {
+      "key": "BSR-135",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11383"
+    },
+    {
+      "key": "BSR-136",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11384"
+    },
+    {
+      "key": "BSR-137",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11385"
+    },
+    {
+      "key": "BSR-142",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11386"
+    },
+    {
+      "key": "BSR-143",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11387"
+    },
+    {
+      "key": "BSR-144",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11388"
+    },
+    {
+      "key": "BSR-145",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11389"
+    },
+    {
+      "key": "BSR-146",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11390"
+    },
+    {
+      "key": "BSR-147",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11391"
+    },
+    {
+      "key": "BSR-148",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11392"
+    },
+    {
+      "key": "BSR-149",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11393"
+    },
+    {
+      "key": "BSR-150",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11394"
+    },
+    {
+      "key": "BSR-152",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11395"
+    },
+    {
+      "key": "BSR-153",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11396"
+    },
+    {
+      "key": "BSR-154",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11397"
+    },
+    {
+      "key": "BSR-155",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11398"
+    },
+    {
+      "key": "BSR-156",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11399"
+    },
+    {
+      "key": "BSR-157",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11400"
+    },
+    {
+      "key": "BSR-38",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11401"
+    },
+    {
+      "key": "BSR-39",
+      "from_status": "Active",
+      "to_status": "Active",
+      "comment_id": "11402"
+    },
+    {
+      "key": "BSR-40",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11403"
+    },
+    {
+      "key": "BSR-42",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11404"
+    },
+    {
+      "key": "BSR-47",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11405"
+    },
+    {
+      "key": "BSR-50",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11406"
+    },
+    {
+      "key": "BSR-53",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11407"
+    },
+    {
+      "key": "BSR-54",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11408"
+    },
+    {
+      "key": "BSR-63",
+      "from_status": "Active",
+      "to_status": "Active",
+      "comment_id": "11409"
+    },
+    {
+      "key": "BSR-76",
+      "from_status": "Active",
+      "to_status": "Active",
+      "comment_id": "11410"
+    },
+    {
+      "key": "BSR-77",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11411"
+    },
+    {
+      "key": "BSR-78",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11412"
+    },
+    {
+      "key": "BSR-79",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11413"
+    },
+    {
+      "key": "BSR-81",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11414"
+    },
+    {
+      "key": "BSR-85",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11415"
+    },
+    {
+      "key": "BSR-86",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11416"
+    },
+    {
+      "key": "BSR-88",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11417"
+    },
+    {
+      "key": "BSR-89",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11418"
+    },
+    {
+      "key": "BSR-96",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11419"
+    },
+    {
+      "key": "BSR-98",
+      "from_status": "Active",
+      "to_status": "Monitoring",
+      "comment_id": "11420"
+    },
+    {
+      "key": "BSR-160",
+      "from_status": "Identification",
+      "to_status": "Resolved",
+      "comment_id": "11421"
+    }
+  ],
+  "review_task": {
+    "key": "SCRUM-389",
+    "from_status": "To Do",
+    "to_status": "Done",
+    "comment_id": "11422"
+  },
+  "unchanged_followups": [
+    {
+      "key": "BSR-139",
+      "title": "Mitigation: Rehearse explaining each member’s own contribution (code, models, reports, presentation)",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-140",
+      "title": "Record weekly capacity, backup owners and blocked work",
+      "status": "Planning"
+    },
+    {
+      "key": "BSR-141",
+      "title": "Review three coaching scenarios with a stakeholder",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-151",
+      "title": "Review three coaching scenarios with a stakeholder",
+      "status": "Identification"
+    },
+    {
+      "key": "BSR-159",
+      "title": "Document dataset sources and sharing permissions",
+      "status": "Planning"
+    },
+    {
+      "key": "BSR-161",
+      "title": "Check deployment secrets and recovery access",
+      "status": "Planning"
+    }
+  ],
+  "excluded_already_completed": [
+    "BSR-111",
+    "BSR-138"
+  ],
+  "worklogs_added": 0,
+  "note": "Resolved technical controls do not mean every project risk is resolved. Stakeholder scenarios, team capacity, permissions, recovery contacts and rehearsal remain open.",
+  "verified_at_utc": "2026-10-25T19:00:13.500062+00:00"
+}
