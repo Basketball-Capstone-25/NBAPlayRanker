@@ -1,8 +1,8 @@
 {
-  "checked_at_utc": "2026-10-25T18:34:35.989580+00:00",
+  "checked_at_utc": "2026-10-25T18:53:59.147807+00:00",
   "scope": "Only curated docs/iteration-17 files present at scan time; no private workspace, credentials directory or historical Git scan. Known private values are read only for in-memory comparison; no values are retained.",
-  "files_scanned": 172,
-  "bytes_scanned": 24410849,
+  "files_scanned": 183,
+  "bytes_scanned": 24480829,
   "known_private_values_checked": 3,
   "public_anon_jwts_excluded": 0,
   "findings": [],
@@ -16,8 +16,8 @@
   "manifest": [
     {
       "path": "docs/iteration-17/README.md",
-      "bytes": 9615,
-      "sha256": "db283c4d217523cf0e8cefa407e08f912a91167ed136298e6385935d4b98d830"
+      "bytes": 10590,
+      "sha256": "e8a9736b79a7f7bec3572378e21d0b2fbebab3d8996d8febc92d12f10a333553"
     },
     {
       "path": "docs/iteration-17/model/Basketball Playtype Ranker.vpp",
@@ -220,6 +220,11 @@
       "sha256": "1d275654bac16db2e78ccdf663234f2ac68a0618e3d08dc96b178468293e5234"
     },
     {
+      "path": "docs/iteration-17/operations/next-milestones.md",
+      "bytes": 4833,
+      "sha256": "e89b91306c2573a438a866488621b4609f075390795f114626a4b88bec63584e"
+    },
+    {
       "path": "docs/iteration-17/operations/recovery.md",
       "bytes": 7475,
       "sha256": "e6b7dc4301ef51f88bc8411c638e967299c3e0c6932ef2efe4c8db07fd04c840"
@@ -280,6 +285,11 @@
       "sha256": "f1e643c13df48cb33328bd36f04419047ec563b9a559e7591adb23fe4ffdb4a1"
     },
     {
+      "path": "docs/iteration-17/tests/jira-closeout.json",
+      "bytes": 43137,
+      "sha256": "647ce9de9c10c819742df5fc8deaae8fc26effd7d0eb45c132da368d06cfd487"
+    },
+    {
       "path": "docs/iteration-17/tests/metadata-retry-check.md",
       "bytes": 1678,
       "sha256": "422732ddb521f083c83839f5a396f649a7b6feaaf5744fd751629744a187d07d"
@@ -288,6 +298,16 @@
       "path": "docs/iteration-17/tests/new-cases.json",
       "bytes": 4002,
       "sha256": "3ca220e80875fb9b4e7d87419997ee944d75bd638ae16831bf53449c15c15fd5"
+    },
+    {
+      "path": "docs/iteration-17/tracking/screenshots.json",
+      "bytes": 1271,
+      "sha256": "472356fa30f510e5a6ce9af9786b8f2b18ce568b70cde0e04f548d59624793bd"
+    },
+    {
+      "path": "docs/iteration-17/tracking/worklogs.json",
+      "bytes": 864,
+      "sha256": "fabf5b9fae4ebe65940eedc869289cd7339c23f430a1d61ec76aec9766c6234f"
     },
     {
       "path": "docs/iteration-17/verification/backend-deploy-final.txt",
@@ -363,6 +383,11 @@
       "path": "docs/iteration-17/verification/browser/data-source-details.jpg",
       "bytes": 30874,
       "sha256": "bdd2c8f8795a53e9819bb98bab83a19e5d4b16b7449185f2ae97c82ef75e128c"
+    },
+    {
+      "path": "docs/iteration-17/verification/browser/download-parity.json",
+      "bytes": 965,
+      "sha256": "6978c623a43e83d777bc9d814e4ae599c22eeb74ae4e743ac43d18f4c024bbf0"
     },
     {
       "path": "docs/iteration-17/verification/browser/gameplan-context.jpg",
@@ -816,8 +841,8 @@
     },
     {
       "path": "docs/iteration-17/verification/shot-metrics-download/browser-follow-up.json",
-      "bytes": 855,
-      "sha256": "4feaead17877f9c036fd5af8524127b1a5d2b1c711763ea5d7d523aa1f11b5cd"
+      "bytes": 1051,
+      "sha256": "66eb34e9f41d394c270bcf62900255045fd0843dddf76867ba7f776870c0f3c3"
     },
     {
       "path": "docs/iteration-17/verification/shot-metrics-download/results.json",
@@ -828,6 +853,21 @@
       "path": "docs/iteration-17/verification/shot-metrics-download/shot_model_metrics_splits_5.csv",
       "bytes": 699,
       "sha256": "bd00ab9e1fc5c3cdbc911ee0af2f9d98442371baf01d63c5ecc26898da7663ba"
+    },
+    {
+      "path": "docs/iteration-17/verification/timing/acceptance-summary.json",
+      "bytes": 2100,
+      "sha256": "5559daf96331165f11af0aa0ab28eed5ad8a93197e54843037f6a52b94e300b1"
+    },
+    {
+      "path": "docs/iteration-17/verification/timing/baseline-first-after-idle-final-session-cleanup.json",
+      "bytes": 162,
+      "sha256": "e4b700c0ed28b72137c30b55d83520deb48489168827ae680a22506fafcc937a"
+    },
+    {
+      "path": "docs/iteration-17/verification/timing/baseline-first-after-idle-final.json",
+      "bytes": 1350,
+      "sha256": "2d29f08db207fa291e5d0823e151ced3b0c3eb3f5df44564ce3e31f133f922f9"
     },
     {
       "path": "docs/iteration-17/verification/timing/baseline-warm-concurrent-final-session-cleanup.json",
@@ -845,9 +885,24 @@
       "sha256": "57fe03f69424dcb7f9e1f78c65ce066d87bba033b674653457acd12edaf46732"
     },
     {
+      "path": "docs/iteration-17/verification/timing/cold-request-log-verification-final.json",
+      "bytes": 1142,
+      "sha256": "451cd269ae94d1f174f398d3dc28ef45d5d54344720d6c3d80f86bdee6c15a9b"
+    },
+    {
+      "path": "docs/iteration-17/verification/timing/idle-before-request.json",
+      "bytes": 6865,
+      "sha256": "39bb8eea1cd1ba2e696c0257b7ee378da9e8eb6183dee6360081ee69bdda3ab3"
+    },
+    {
       "path": "docs/iteration-17/verification/timing/idle-start.json",
       "bytes": 4015,
       "sha256": "4b03c4b0b7c8101df45f01304cd0a782fc038327579b9655d9e6cc503ffff96f"
+    },
+    {
+      "path": "docs/iteration-17/verification/timing/idle-timeline.json",
+      "bytes": 6120,
+      "sha256": "9b8dd9c3e993a7715e3fb434318fcc6b1324c92ab16eeaa571f5ddbd4d8b6d19"
     },
     {
       "path": "docs/iteration-17/verification/timing/warm-request-log-verification-final.json",

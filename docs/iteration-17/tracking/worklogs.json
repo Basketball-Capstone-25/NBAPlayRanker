@@ -1,0 +1,26 @@
+{
+  "scope": "User-reported personal repair and review time across Iteration 17",
+  "issue": "SCRUM-8",
+  "hours": 6,
+  "records": [
+    {
+      "id": "10126",
+      "date": "2026-10-21",
+      "seconds": 7200,
+      "description": "Iteration 17 repairs and review across the app, model and test results."
+    },
+    {
+      "id": "10127",
+      "date": "2026-10-22",
+      "seconds": 7200,
+      "description": "Iteration 17 repairs and review across the app, model and test results."
+    },
+    {
+      "id": "10128",
+      "date": "2026-10-25",
+      "seconds": 7200,
+      "description": "Iteration 17 repairs and review across the app, model and test results."
+    }
+  ],
+  "allocation": "Recorded once on the shared project-support item because no per-story split was supplied. Dates are user reported; Jira start-time values are date-entry placeholders."
+}

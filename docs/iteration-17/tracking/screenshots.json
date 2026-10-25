@@ -1,0 +1,61 @@
+{
+  "added": [
+    {
+      "key": "SCRUM-539",
+      "commentId": "11340",
+      "file": "gameplan-context.jpg",
+      "inlineMediaEmbedded": true
+    },
+    {
+      "key": "SCRUM-489",
+      "commentId": "11337",
+      "file": "data-source-details.jpg",
+      "inlineMediaEmbedded": true
+    },
+    {
+      "key": "SCRUM-546",
+      "commentId": "11345",
+      "file": "coach-baseline.jpg",
+      "inlineMediaEmbedded": true
+    },
+    {
+      "key": "SCRUM-640",
+      "commentId": "11364",
+      "file": "shot-metrics-training.jpg",
+      "inlineMediaEmbedded": true
+    },
+    {
+      "key": "SCRUM-528",
+      "commentId": "11323",
+      "file": "Detailed Sequence - Analyst Top-K Uplift (475).png",
+      "inlineMediaEmbedded": true
+    }
+  ],
+  "readback": [
+    {
+      "key": "SCRUM-539",
+      "commentId": "11340",
+      "inlineMediaPresent": true
+    },
+    {
+      "key": "SCRUM-489",
+      "commentId": "11337",
+      "inlineMediaPresent": true
+    },
+    {
+      "key": "SCRUM-546",
+      "commentId": "11345",
+      "inlineMediaPresent": true
+    },
+    {
+      "key": "SCRUM-640",
+      "commentId": "11364",
+      "inlineMediaPresent": true
+    },
+    {
+      "key": "SCRUM-528",
+      "commentId": "11323",
+      "inlineMediaPresent": true
+    }
+  ]
+}

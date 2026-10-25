@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-25T18:50:53.825146+00:00",
+  "revision": "nba-playranker-api-00010-jp4",
+  "request_window": {
+    "start": "2026-10-25T18:50:12.895111+00:00",
+    "end": "2026-10-25T18:50:37.944733+00:00",
+    "clock_tolerance_seconds": 2
+  },
+  "request_logs": [
+    {
+      "timestamp": "2026-10-25T18:50:15.227513Z",
+      "revision": "nba-playranker-api-00010-jp4",
+      "instance_hash": "57a646879ce873d7338489cbe3c52ffa26c32f55720a95b09570aac600d91923",
+      "status": 200,
+      "server_latency": "20.202080987s"
+    }
+  ],
+  "instance_start_logs": [
+    {
+      "timestamp": "2026-10-25T18:50:15.237952Z",
+      "revision": "nba-playranker-api-00010-jp4",
+      "instance_hash": "57a646879ce873d7338489cbe3c52ffa26c32f55720a95b09570aac600d91923",
+      "message": "Starting new instance. Reason: AUTOSCALING - Instance started due to configured scaling factors (e.g. CPU utilization, request throughput, etc.) or no existing capacity for current traffic."
+    }
+  ],
+  "one_measured_request": true,
+  "request_http_200": true,
+  "new_autoscaled_instance_correlated": true,
+  "timing_limit_met": true,
+  "passed": true
+}

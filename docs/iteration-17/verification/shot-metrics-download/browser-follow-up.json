@@ -2,11 +2,16 @@
   "recorded_at": "2026-10-25T18:25:48.913424+00:00",
   "reported_observation": "Two export-link clicks in the in-app browser did not produce a download entry.",
   "http_result": "The real SSR request returned HTTP200 with a valid three-row CSV; twelve HTTP and access assertions passed.",
-  "diagnosis": "The link forced the HTML download attribute, unlike the existing working export navigation. The trigger is a suspected browser-compatibility cause; it is not yet confirmed by a successful browser retest.",
+  "diagnosis": "The original trigger failed in the in-app browser despite a valid HTTP attachment response. Changing it to normal new-tab attachment navigation was followed by a successful browser download.",
   "change": "Use a normal same-origin link in a new tab with noopener noreferrer. The server attachment response selects the filename. No download attribute or Blob is used.",
   "checks": {
     "focused_tests_passed": 39,
     "typescript_passed": true
   },
-  "browser_retest": "Pending final frontend deployment and an observed file save."
+  "browser_retest": {
+    "result": "Pass",
+    "frontend_commit": "78ed99c",
+    "observed": "The revised link saved a 699-byte CSV with three models matching the displayed values and source version.",
+    "evidence": "docs/iteration-17/verification/browser/shot-metrics-csv-check.json"
+  }
 }

@@ -1,0 +1,45 @@
+{
+  "endpoint": "/rank-plays/baseline",
+  "base_url": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app",
+  "revision_under_test": "nba-playranker-api-00010-jp4",
+  "matchup": {
+    "season": "2024-25",
+    "our": "TOR",
+    "opp": "BOS",
+    "k": 5,
+    "w_off": 0.7
+  },
+  "started_at": "2026-10-25T18:50:14.894952+00:00",
+  "timing_scope": "Client elapsed time through complete response body and validation",
+  "percentile_method": "Nearest rank; ceil(0.95*n)",
+  "thresholds_ms": {
+    "warm": 5000,
+    "two_concurrent": 10000,
+    "first_after_idle": 45000
+  },
+  "samples": [
+    {
+      "sample": "first_after_idle",
+      "started_at": "2026-10-25T18:50:14.895111+00:00",
+      "finished_at": "2026-10-25T18:50:35.944733+00:00",
+      "elapsed_ms": 21049.024,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    }
+  ],
+  "results": {
+    "first_after_idle": {
+      "elapsed_ms": 21049.024,
+      "threshold_ms": 45000,
+      "pass": true
+    }
+  },
+  "limitations": [
+    "Bounded functional timing sample; not a sustained-load capacity test.",
+    "Confirm the supplied revision and idle/startup state against service request logs."
+  ],
+  "idle_evidence": "docs/iteration-17/verification/timing/idle-before-request.json",
+  "finished_at": "2026-10-25T18:50:35.944794+00:00",
+  "pass": true
+}
