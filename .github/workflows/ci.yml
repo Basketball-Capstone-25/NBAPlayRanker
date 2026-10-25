@@ -68,7 +68,7 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci --no-audit --no-fund
       - name: Run all frontend tests
-        run: npx vitest run --maxWorkers=1 --minWorkers=1
+        run: npx vitest run --maxWorkers=1
       - name: Build frontend
         env:
           # Next.js derives one static build worker from this value (2 - 1).
