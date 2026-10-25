@@ -41,6 +41,8 @@ CANONICAL_COLUMNS: List[str] = [
     # shot attributes
     "shot_type",
     "zone",
+    "zone_method",
+    "location_valid",
     "shot_value",
     "is_make",
     "points",
@@ -90,6 +92,8 @@ def build_canonical_from_clean(clean_df: pd.DataFrame) -> pd.DataFrame:
         "MARGIN": "margin",
         "SHOT_TYPE": "shot_type",
         "ZONE": "zone",
+        "ZONE_METHOD": "zone_method",
+        "LOCATION_VALID": "location_valid",
         "SHOT_VALUE": "shot_value",
         "MADE": "is_make",
         "POINTS": "points",

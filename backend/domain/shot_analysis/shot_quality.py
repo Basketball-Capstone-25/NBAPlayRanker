@@ -3,6 +3,7 @@ from functools import lru_cache
 from pathlib import Path
 
 import pandas as pd
+import pyarrow.parquet as pq
 
 from domain.shot_analysis.shot_etl import CLEAN_PARQUET, TEAM_ID_TO_ABBR
 
@@ -28,13 +29,17 @@ def inspect_shot_rows(df: pd.DataFrame) -> dict:
         "unsupported_team_rows": int(unknown.sum()),
         "incomplete_game_groups": incomplete,
         "missing_margin_rows": int(df.MARGIN.isna().sum()) if "MARGIN" in df else len(df),
+        "location_conflict_rows": int(df.LOCATION_VALID.eq(False).sum()) if "LOCATION_VALID" in df else None,
+        "geometry_only_zone_rows": int(df.ZONE_METHOD.eq("geometry_only").sum()) if "ZONE_METHOD" in df else None,
         "valid_attribution": bool(len(df) and not invalid.any() and not incomplete),
     }
 
 
 @lru_cache(maxsize=2)
 def _inspect_file(path: str, size: int, modified: int) -> dict:
-    return inspect_shot_rows(pd.read_parquet(path, columns=["SEASON_STR", "GAME_ID", "TEAM_ABBR", "OPP_ABBR", "MARGIN"]))
+    columns = ["SEASON_STR", "GAME_ID", "TEAM_ABBR", "OPP_ABBR", "MARGIN", "LOCATION_VALID", "ZONE_METHOD"]
+    present = pq.read_schema(path).names
+    return inspect_shot_rows(pd.read_parquet(path, columns=[column for column in columns if column in present]))
 
 
 def shot_data_quality(path: Path = CLEAN_PARQUET) -> dict:

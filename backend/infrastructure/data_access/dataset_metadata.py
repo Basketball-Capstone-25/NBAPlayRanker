@@ -87,6 +87,7 @@ def describe_dataset(dataset_id: str, root: Path = DATA_DIR, frame: pd.DataFrame
         logger.warning("Loaded dataset has no version ID: %s", path.name)
     # A timestamp is accepted only when its sidecar names these exact bytes.
     pulled_at = None
+    quality_exclusions = None
     sidecar = path.with_suffix(path.suffix + ".source.json")
     if sidecar.exists():
         try:
@@ -99,14 +100,22 @@ def describe_dataset(dataset_id: str, root: Path = DATA_DIR, frame: pd.DataFrame
                     raise ValueError("Pull date must be an ISO date or timestamp.")
                 datetime.fromisoformat(value.replace("Z", "+00:00"))
                 pulled_at = value
+                quality = recorded.get("quality_exclusions")
+                allowed_quality = {"score_inconsistent_games", "score_inconsistent_shots", "location_conflict_rows", "geometry_only_zone_rows", "unknown_attempt_values"}
+                if isinstance(quality, dict) and all(isinstance(quality.get(name), int) and quality[name] >= 0 for name in allowed_quality):
+                    quality_exclusions = {name: quality[name] for name in sorted(allowed_quality)}
         except (OSError, ValueError, TypeError):
             logger.warning("Unreadable source metadata for %s", path.name)
     warnings = [] if pulled_at else ["Original pull date was not recorded for this snapshot."]
     if dataset_id.startswith("shot"):
         warnings.append("A version ID identifies the source snapshot; it does not establish prediction accuracy.")
+        if quality_exclusions:
+            warnings.append(f"{quality_exclusions['score_inconsistent_games']} games were excluded because their source scores are inconsistent. {quality_exclusions['location_conflict_rows']} shot locations are excluded from charts and spatial models.")
+            warnings.append(f"{quality_exclusions['geometry_only_zone_rows']} shot zones use approximate geometry because the source attempt value is unknown.")
     return {**base, "status": "available" if version else "unversioned", "version": version,
             "pulled_at": pulled_at, "seasons": seasons,
-            "row_count": row_count, "columns": columns, "warnings": warnings}
+            "row_count": row_count, "columns": columns, "warnings": warnings,
+            "quality_exclusions": quality_exclusions}
 
 
 @lru_cache(maxsize=16)

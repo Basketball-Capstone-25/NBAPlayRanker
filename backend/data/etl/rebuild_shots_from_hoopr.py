@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 from domain.shot_analysis.shot_etl import build_shots_clean, TEAM_ID_TO_ABBR, TEAM_ABBR_ALIASES
 from domain.shot_analysis.shot_quality import inspect_shot_rows
+from domain.shot_analysis.shot_source_quality import quarantine_score_discontinuities
 from domain.shot_analysis.shot_ml_models import get_feature_spec
 from domain.shot_analysis.shot_aggregates import build_and_save_aggregates
 from infrastructure.data_access.pbp_clean import build_canonical_from_clean
@@ -23,7 +24,7 @@ from infrastructure.data_access.pbp_clean import build_canonical_from_clean
 def rebuild(raw_dir: Path, output: Path):
     output.mkdir(parents=True, exist_ok=True)
     manifest = json.loads((raw_dir / "download-manifest.json").read_text())
-    frames, summaries, samples = [], [], []
+    frames, summaries, samples, quarantines = [], [], [], []
     for asset in sorted(manifest, key=lambda item: item["name"]):
         source = raw_dir / asset["name"]
         if hashlib.sha256(source.read_bytes()).hexdigest() != asset["sha256"]:
@@ -34,6 +35,8 @@ def rebuild(raw_dir: Path, output: Path):
         away = raw.away_team_abbrev.replace(TEAM_ABBR_ALIASES)
         keep = raw.season_type.isin([2, 3]) & home.isin(TEAM_ID_TO_ABBR.values()) & away.isin(TEAM_ID_TO_ABBR.values())
         eligible = raw[keep].copy()
+        eligible, quarantine = quarantine_score_discontinuities(eligible)
+        quarantines.append({"source": source.name, **quarantine})
         clean = build_shots_clean(eligible)
         if clean.EVENT_ID.duplicated().any():
             raise ValueError(f"Duplicate event IDs: {source.name}")
@@ -57,7 +60,7 @@ def rebuild(raw_dir: Path, output: Path):
             assert shot.MARGIN == pre_margin and shot.POINTS == event.score_value
             samples.append({"event_id": shot.EVENT_ID, "game_id": shot.GAME_ID, "season": shot.SEASON_STR, "team": team, "opponent": opponent, "home": bool(is_home), "margin_before_shot": float(pre_margin), "awarded_points": float(event.score_value), "source_text": event.text})
         frames.append(clean)
-        summaries.append({"source": source.name, "raw_events": len(raw), "excluded_non_regular_playoff_events": int((~keep).sum()), "shot_rows": len(clean), "unknown_attempt_value_rows": int(clean.SHOT_VALUE.isna().sum()), "quality": quality, "sample_checks": len(sample)})
+        summaries.append({"source": source.name, "raw_events": len(raw), "excluded_non_regular_playoff_events": int((~keep).sum()), "shot_rows": len(clean), "unknown_attempt_value_rows": int(clean.SHOT_VALUE.isna().sum()), "quality": quality, "sample_checks": len(sample), "source_quarantine": quarantine})
         print(json.dumps(summaries[-1]), flush=True)
     clean = pd.concat(frames, ignore_index=True)
     clean.to_parquet(output / "shots_clean.parquet", index=False)
@@ -68,14 +71,16 @@ def rebuild(raw_dir: Path, output: Path):
     quality = inspect_shot_rows(clean)
     assert quality["valid_attribution"] and quality["missing_margin_rows"] == 0
     now = datetime.now(timezone.utc).isoformat()
+    exclusions = {"score_inconsistent_games": sum(q["excluded_games"] for q in quarantines), "score_inconsistent_shots": sum(q["excluded_shots"] for q in quarantines), "location_conflict_rows": int((~clean.LOCATION_VALID).sum()), "geometry_only_zone_rows": int(clean.ZONE_METHOD.eq("geometry_only").sum()), "unknown_attempt_values": int(clean.SHOT_VALUE.isna().sum())}
     artifacts = []
     for path in sorted(output.rglob("*.parquet")):
         version = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
-        metadata = {"version": version, "pulled_at": max(a["downloaded_at"] for a in manifest), "source": "ESPN NBA play-by-play via hoopR / sportsdataverse-data", "source_urls": [a["url"] for a in manifest], "raw_source_hashes": {a["name"]: a["sha256"] for a in manifest}, "coverage": "2020-21 through 2025-26; regular season and playoffs", "generator": "backend/data/etl/rebuild_shots_from_hoopr.py", "created_at": now, "notes": "Margin is before this shot; unknown attempt values remain null and are excluded from model features."}
+        metadata = {"version": version, "pulled_at": max(a["downloaded_at"] for a in manifest), "source": "ESPN NBA play-by-play via hoopR / sportsdataverse-data", "source_urls": [a["url"] for a in manifest], "raw_source_hashes": {a["name"]: a["sha256"] for a in manifest}, "coverage": "2020-21 through 2025-26; regular season and playoffs, with quarantined games excluded", "generator": "backend/data/etl/rebuild_shots_from_hoopr.py", "created_at": now, "quality_exclusions": exclusions, "notes": "Whole games with inconsistent field-goal score changes are quarantined. Margin is before this shot. Unknown attempt values remain null. Approximate geometry is used only when attempt value is unknown; serious value/location conflicts are excluded from charts and models."}
         path.with_suffix(path.suffix + ".source.json").write_text(json.dumps(metadata, indent=2))
         artifacts.append({"file": str(path.relative_to(output)), "bytes": path.stat().st_size, "version": version})
-    report = {"generated_at": now, "seasons": summaries, "quality": quality, "artifacts": artifacts, "spot_checks": samples, "numeric_features": get_feature_spec()["numeric_features"], "excluded_feature": "SHOT_VALUE: older sources leave some missed attempt values unknown"}
+    report = {"generated_at": now, "seasons": summaries, "quality": quality, "artifacts": artifacts, "spot_checks": samples, "numeric_features": get_feature_spec()["numeric_features"], "excluded_feature": "SHOT_VALUE: older sources leave some missed attempt values unknown", "quality_exclusions": exclusions}
     (output / "validation.json").write_text(json.dumps(report, indent=2))
+    (output / "source-quarantine.json").write_text(json.dumps({"generated_at": now, "totals": exclusions, "seasons": quarantines}, indent=2))
     print(json.dumps({"quality": quality, "artifacts": artifacts, "spot_checks": len(samples)}, indent=2))
 
 

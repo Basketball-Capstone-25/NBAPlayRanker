@@ -5,7 +5,7 @@ from .dataset_metadata import read_versioned_parquet, source_version
 
 _FRAME = None
 _LOCK = RLock()
-COLUMNS = ["SEASON_STR", "TEAM_ABBR", "OPP_ABBR", "SHOT_TYPE", "ZONE", "X", "Y", "HOME_FLAG"]
+COLUMNS = ["SEASON_STR", "TEAM_ABBR", "OPP_ABBR", "SHOT_TYPE", "ZONE", "X", "Y", "HOME_FLAG", "LOCATION_VALID", "ZONE_METHOD"]
 
 def get_shot_plot_df():
     global _FRAME

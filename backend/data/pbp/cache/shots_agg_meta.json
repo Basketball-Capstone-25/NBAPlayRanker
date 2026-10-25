@@ -1,10 +1,10 @@
 {
   "fingerprint": {
-    "schema_version": "agg_v1",
-    "source_mtime_ns": 1792949403055382271,
+    "schema_version": "agg_v2_nba_zone_geometry",
+    "source_mtime_ns": 1792956477654775867,
     "source_path": "/Users/gurkasahan/Developer/NBAPlayRanker/backend/data/pbp/shots_clean.parquet",
-    "source_sha256": "sha256:d2f647a048959ce14b798a3fe3f0b47e9eba860d7ecb35bec7b67d9968d657a4",
-    "source_size": 21561041
+    "source_sha256": "sha256:15078408bfaa84b6cc1a45cc7e10edd822e22b25166a3ab3f4931a0323f640cf",
+    "source_size": 21685858
   },
-  "notes": "Rebuilt from verified hoopR source events; provenance in *.parquet.source.json."
+  "notes": "NBA zone geometry and provider taxonomy; quarantined source games; unknown locations remain explicit."
 }

@@ -1,7 +1,4 @@
 {
-  "schema_version": "clean_v3_participants",
-  "version": "sha256:d2f647a048959ce14b798a3fe3f0b47e9eba860d7ecb35bec7b67d9968d657a4",
-  "rows": 1370434,
   "columns": [
     "SEASON_STR",
     "TEAM_ABBR",
@@ -16,6 +13,8 @@
     "DIST",
     "ANGLE",
     "ZONE",
+    "ZONE_METHOD",
+    "LOCATION_VALID",
     "PERIOD",
     "CLOCK_SEC",
     "MARGIN",
@@ -23,15 +22,15 @@
     "SHOOTER_ID",
     "EVENT_ID"
   ],
-  "created_at": "2026-10-25T17:30:04.096245+00:00",
-  "source_urls": [
-    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2021.parquet",
-    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2022.parquet",
-    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2023.parquet",
-    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2024.parquet",
-    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2025.parquet",
-    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2026.parquet"
-  ],
+  "created_at": "2026-10-25T19:27:58.880234+00:00",
+  "notes": "Whole games with inconsistent field-goal score changes are quarantined. Margin is before this shot. Unknown attempt values remain null. Approximate geometry is used only when attempt value is unknown; serious value/location conflicts are excluded from charts and models.",
+  "quality_exclusions": {
+    "geometry_only_zone_rows": 110206,
+    "location_conflict_rows": 10,
+    "score_inconsistent_games": 14,
+    "score_inconsistent_shots": 2506,
+    "unknown_attempt_values": 110206
+  },
   "raw_source_hashes": {
     "play_by_play_2021.parquet": "ed5e89e6acc90e4c4e88dbe54d57477e1abb7f6e0380ebbbf94fa72c805fd51a",
     "play_by_play_2022.parquet": "0fe5435bdd30187b8d8c5eb27bdf187821274a231f04608f15a46b5b59035f82",
@@ -40,5 +39,15 @@
     "play_by_play_2025.parquet": "71d7d02671268f793f13a13d1a8a271cba1241cd9ba28c3a363a3f16ad56acc7",
     "play_by_play_2026.parquet": "f7051c5c0c5b605419fcc0e0c13dd90df7803f96dab290554c1ef737433a98b2"
   },
-  "notes": "Explicit event-team IDs; NBA regular season/playoffs; margin before shot; ambiguous attempt values remain null."
+  "rows": 1367928,
+  "schema_version": "clean_v4_nba_zones_quarantine",
+  "source_urls": [
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2021.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2022.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2023.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2024.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2025.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2026.parquet"
+  ],
+  "version": "sha256:15078408bfaa84b6cc1a45cc7e10edd822e22b25166a3ab3f4931a0323f640cf"
 }

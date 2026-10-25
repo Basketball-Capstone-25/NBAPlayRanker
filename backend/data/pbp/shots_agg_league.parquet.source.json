@@ -1,5 +1,5 @@
 {
-  "version": "sha256:15bf17bac665415c54c931aad6edc77e667f4f10cc0d3c838985ea558aac0ff1",
+  "version": "sha256:b34603259d6465eceea6c59fcd05377898ec12d0a9c6e0f2019a078a72d649ab",
   "pulled_at": "2026-10-25T17:25:32.000138+00:00",
   "source": "ESPN NBA play-by-play via hoopR / sportsdataverse-data",
   "source_urls": [
@@ -18,8 +18,15 @@
     "play_by_play_2025.parquet": "71d7d02671268f793f13a13d1a8a271cba1241cd9ba28c3a363a3f16ad56acc7",
     "play_by_play_2026.parquet": "f7051c5c0c5b605419fcc0e0c13dd90df7803f96dab290554c1ef737433a98b2"
   },
-  "coverage": "2020-21 through 2025-26; regular season and playoffs",
+  "coverage": "2020-21 through 2025-26; regular season and playoffs, with quarantined games excluded",
   "generator": "backend/data/etl/rebuild_shots_from_hoopr.py",
-  "created_at": "2026-10-25T17:30:04.096245+00:00",
-  "notes": "Margin is before this shot; unknown attempt values remain null and are excluded from model features."
+  "created_at": "2026-10-25T19:27:58.880234+00:00",
+  "quality_exclusions": {
+    "score_inconsistent_games": 14,
+    "score_inconsistent_shots": 2506,
+    "location_conflict_rows": 10,
+    "geometry_only_zone_rows": 110206,
+    "unknown_attempt_values": 110206
+  },
+  "notes": "Whole games with inconsistent field-goal score changes are quarantined. Margin is before this shot. Unknown attempt values remain null. Approximate geometry is used only when attempt value is unknown; serious value/location conflicts are excluded from charts and models."
 }

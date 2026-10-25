@@ -114,16 +114,16 @@ DATA_DIR = Path(__file__).parent.parent.parent / "data"
 SYNERGY_CSV = Path(os.environ.get("SYNERGY_CSV_PATH", DATA_DIR / "synergy_playtypes_2019_2025_players.csv"))
 ML_PRED_CSV = DATA_DIR / "ml_offense_ppp_predictions.csv"
 
-# Dataset 1 → Dataset 2 team‑abbreviation aliases.
-_TEAM_ALIAS: Dict[str, str] = {
-    "GSW": "GS", "SAS": "SA", "NOP": "NO", "NYK": "NY",
-    "UTA": "UTAH", "WAS": "WSH", "BKN": "BKN",
-    "PHO": "PHX", "CHA": "CHA",
+# Older provider codes → the canonical abbreviations in the shot data.
+_SHOT_TEAM_ALIAS: Dict[str, str] = {
+    "GS": "GSW", "SA": "SAS", "NO": "NOP", "NY": "NYK",
+    "UTAH": "UTA", "WSH": "WAS", "PHO": "PHX",
 }
 
-def _normalize_team_abbr(abbr: str) -> str:
-    """Map common Dataset-1 abbreviations to the Dataset-2 form used by the shot recommender."""
-    return _TEAM_ALIAS.get(abbr, abbr)
+def _normalize_shot_team_abbr(abbr: str) -> str:
+    """Keep canonical shot codes intact and accept older provider aliases."""
+    normalized = abbr.strip().upper()
+    return _SHOT_TEAM_ALIAS.get(normalized, normalized)
 
 # Load baseline tables ONCE and reuse (fast for multi-user requests).
 try:
@@ -674,8 +674,8 @@ def rank_shotplan(
     require_valid_shot_data()
     w_def = float(1.0 - w_off)
     rec_shot = _get_shot_rec()
-    our_n = _normalize_team_abbr(our)
-    opp_n = _normalize_team_abbr(opp)
+    our_n = _normalize_shot_team_abbr(our)
+    opp_n = _normalize_shot_team_abbr(opp)
     try:
         result = rec_shot.rank(season=season, our_team=our_n, opp_team=opp_n, k=int(k), w_off=float(w_off))
     except ValueError as e:
@@ -684,15 +684,22 @@ def rank_shotplan(
     return jsonable_encoder(
         {
             "season": season,
-            "our_team": our,
-            "opp_team": opp,
+            "our_team": our_n,
+            "opp_team": opp_n,
             "k": int(k),
             "w_off": float(w_off),
             "w_def": float(w_def),
             "best_shooter": None,
             "top_shot_types": result.get("top_shot_types", []),
             "top_zones": result.get("top_zones", []),
-            "metadata": {"data_source": "nba_pbp_2021_present.parquet"},
+            "metadata": {
+                "data_source": rec_shot.agg_df.attrs.get("source_file"),
+                "league_source": rec_shot.league_df.attrs.get("source_file"),
+                "dataset_versions": {
+                    "shot_aggregates": rec_shot.agg_df.attrs.get("dataset_version"),
+                    "shot_league": rec_shot.league_df.attrs.get("dataset_version"),
+                },
+            },
         }
     )
 
@@ -742,6 +749,7 @@ def export_shotplan_pdf(
     w_off: float = Query(0.7, ge=0, le=1),
     shot_type: Optional[str] = Query(None),
     zone: Optional[str] = Query(None),
+    max_shots: int = Query(35000, ge=1000, le=250000),
 ) -> StreamingResponse:
     from application.api_coordination.shot_data_guard import require_valid_shot_data
     require_valid_shot_data()
@@ -753,8 +761,8 @@ def export_shotplan_pdf(
             detail=f"export_shotplan_pdf.py missing or failed to import. Error: {e}",
         )
 
-    our_n = _normalize_team_abbr(our)
-    opp_n = _normalize_team_abbr(opp)
+    our_n = _normalize_shot_team_abbr(our)
+    opp_n = _normalize_shot_team_abbr(opp)
 
     try:
         pdf_bytes, filename = build_shotplan_pdf(
@@ -765,6 +773,7 @@ def export_shotplan_pdf(
             w_off=float(w_off),
             shot_type=shot_type,
             zone=zone,
+            max_shots=max_shots,
         )
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))

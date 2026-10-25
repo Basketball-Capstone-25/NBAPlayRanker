@@ -139,7 +139,7 @@ def shot_schema_report(df: pd.DataFrame) -> dict:
     normalized = _normalize_columns(df)
     spec = get_feature_spec()
     required = set(spec["categorical_features"] + spec["numeric_features"] + [spec["target"], spec["group_col"]])
-    optional = {"SEASON_STR", "SHOOTER_ID", "MADE", "SHOT_VALUE", "EVENT_ID"}
+    optional = {"SEASON_STR", "SHOOTER_ID", "MADE", "SHOT_VALUE", "EVENT_ID", "ZONE_METHOD", "LOCATION_VALID"}
     cols = set(normalized.columns)
     return {
         "mapped": sorted(cols & required),
@@ -173,6 +173,11 @@ def load_shots_for_ml(
     quality = inspect_shot_rows(df)
     if not quality["valid_attribution"]:
         raise ValueError("Shot team attribution is invalid; rebuild from original source events.")
+
+    # Keep the source event for counts, but do not fit a spatial model using a
+    # location that contradicts its declared attempt value.
+    if "LOCATION_VALID" in df.columns:
+        df = df.loc[df.LOCATION_VALID.eq(True)].copy()
 
     for c in spec["numeric_features"]:
         df[c] = pd.to_numeric(df[c], errors="coerce")

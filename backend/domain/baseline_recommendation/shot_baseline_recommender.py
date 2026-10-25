@@ -37,6 +37,9 @@ def _rank_level(
 ) -> pd.DataFrame:
     level_df = agg_df[agg_df["LEVEL"] == level].copy()
     league_level = league_df[league_df["LEVEL"] == level].copy()
+    if level in {"zone", "shot_type_zone"}:
+        level_df = level_df.loc[level_df.ZONE.ne("unknown")]
+        league_level = league_level.loc[league_level.ZONE.ne("unknown")]
 
     off = level_df.query("SEASON_STR == @season and TEAM_ABBR == @our_team and ROLE == 'offense'").copy()
     deff = level_df.query("SEASON_STR == @season and TEAM_ABBR == @opp_team and ROLE == 'defense_allowed'").copy()

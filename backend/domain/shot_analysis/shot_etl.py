@@ -7,7 +7,7 @@ import re
 import numpy as np
 import pandas as pd
 
-from domain.shot_analysis.shot_config import normalize_shot_type, season_int_to_str, zone_from_xy
+from domain.shot_analysis.shot_config import classify_zone, normalize_shot_type, season_int_to_str
 
 # Paths (relative to backend/)
 
@@ -379,10 +379,10 @@ def build_shots_clean(raw_df: pd.DataFrame) -> pd.DataFrame:
     )
     df["SHOOTER_ID"] = df[shooter_col].astype(str).str.strip() if shooter_col else None
     # Zone
-    df["ZONE"] = [
-        zone_from_xy(x, y, d) if np.isfinite(x) and np.isfinite(y) else "unknown"
-        for x, y, d in zip(zone_x, zone_y, df["DIST"])
-    ]
+    classified = [classify_zone(x, y, d, value) for x, y, d, value in zip(zone_x, zone_y, df["DIST"], df["SHOT_VALUE"])]
+    df["ZONE"] = [value[0] for value in classified]
+    df["ZONE_METHOD"] = [value[1] for value in classified]
+    df["LOCATION_VALID"] = [value[2] for value in classified]
 
     keep_cols = [
         "SEASON_STR",
@@ -398,6 +398,8 @@ def build_shots_clean(raw_df: pd.DataFrame) -> pd.DataFrame:
         "DIST",
         "ANGLE",
         "ZONE",
+        "ZONE_METHOD",
+        "LOCATION_VALID",
         "PERIOD",
         "CLOCK_SEC",
         "MARGIN",

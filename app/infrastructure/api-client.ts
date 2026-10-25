@@ -288,9 +288,7 @@ export type ShotPlanRankResponse = {
   _endpoint_used?: string;
 };
 
-// Heatmap responses can come from:
-// - Dataset1/root endpoint:     GET /viz/shot-heatmap      -> { caption, image_base64 }
-// - Dataset2/PBP endpoint:      GET /pbp/viz/shot-heatmap  -> { season, team, opp, shot_type, zone, max_shots, image_base64 }
+// Current PBP heatmap contract, including the submitted filters and sample counts.
 export type ShotHeatmapResponse = {
   image_base64: string;
   caption?: string;
@@ -300,6 +298,12 @@ export type ShotHeatmapResponse = {
   shot_type?: string | null;
   zone?: string | null;
   max_shots?: number;
+  n_shots?: number;
+  n_shots_total?: number;
+  n_shots_rendered?: number;
+  n_shots_excluded_location?: number;
+  n_shots_outside_halfcourt?: number;
+  n_shots_omitted_by_cap?: number;
 
   // Optional debug: which endpoint actually served this response.
   _endpoint_used?: string;
@@ -758,51 +762,32 @@ export async function fetchShotHeatmap(opts: {
     throw new Error("fetchShotHeatmap requires either `team` or `our`.");
   }
 
-  // Dataset2 query style (team/opp) + max_shots
   const pPbp = new URLSearchParams({
     season: opts.season,
-    team,
+    our: team,
     opp: opts.opp,
   });
   if (opts.shotType) pPbp.set("shot_type", opts.shotType);
   if (opts.zone) pPbp.set("zone", opts.zone);
   if (opts.maxShots != null) pPbp.set("max_shots", String(opts.maxShots));
 
-  // Legacy/root query style (our/opp)
-  const pRoot = new URLSearchParams({
-    season: opts.season,
-    our: team,
-    opp: opts.opp,
-  });
-  if (opts.shotType) pRoot.set("shot_type", opts.shotType);
-  if (opts.zone) pRoot.set("zone", opts.zone);
-
-  const candidates = [
-    // Preferred Dataset2 name
-    `${API_BASE}/pbp/viz/shot-heatmap?${pPbp.toString()}`,
-
-    // Some people accidentally name it /pbp/viz/heatmap ( earlier URL)
-    `${API_BASE}/pbp/viz/heatmap?${pPbp.toString()}`,
-
-    // Legacy/root endpoint
-    `${API_BASE}/viz/shot-heatmap?${pRoot.toString()}`,
-  ];
-
-  const { data, usedUrl } = await tryJsonCandidates<ShotHeatmapResponse>(candidates, {
-    keepTryingOnClientError: true,
-  });
-
-  // Normalize so UI always gets image_base64
-  if (!(data as any)?.image_base64) {
-    throw new Error(
-      `Heatmap response missing image_base64. Endpoint used: ${usedUrl}`
-    );
+  const usedUrl = `${API_BASE}/pbp/viz/shot-heatmap?${pPbp.toString()}`;
+  let data: ShotHeatmapResponse;
+  try {
+    data = await fetchJsonWithStatus<ShotHeatmapResponse>(usedUrl);
+  } catch (reason) {
+    if (reason instanceof ApiError) {
+      if (reason.status === 401) throw new Error("Sign in again to view shot heatmaps.");
+      if (reason.status === 403) throw new Error("An analyst or coach account is required to view shot heatmaps.");
+      if (reason.status === 404) throw new Error("No shots match these filters. Try a different matchup or clear the shot type and zone.");
+      if (reason.status === 400 || reason.status === 422) throw new Error("Check the season, teams and heatmap filters, then try again.");
+      throw new Error("The heatmap service is unavailable. Please try again.");
+    }
+    if (reason instanceof TypeError) throw new Error("Could not reach the heatmap service. Please try again.");
+    throw reason;
   }
-
-  return {
-    ...data,
-    _endpoint_used: usedUrl,
-  };
+  if (typeof data?.image_base64 !== "string" || !data.image_base64) throw new Error("The heatmap service did not return an image. Please try again.");
+  return { ...data, _endpoint_used: usedUrl };
 }
 
 export function getShotPlanPdfUrl(opts: {
@@ -815,9 +800,7 @@ export function getShotPlanPdfUrl(opts: {
   zone?: string;
   maxShots?: number;
 }): string {
-  // Keep PDF export on the legacy root endpoint unless backend explicitly adds /pbp/export.
-  // This keeps existing exports stable.
-  const { season, our, opp, k = 5, wOff = 0.7, shotType, zone } = opts;
+  const { season, our, opp, k = 5, wOff = 0.7, shotType, zone, maxShots = 35000 } = opts;
 
   const params = new URLSearchParams({
     season,
@@ -825,6 +808,7 @@ export function getShotPlanPdfUrl(opts: {
     opp,
     k: String(k),
     w_off: String(wOff),
+    max_shots: String(maxShots),
   });
 
   if (shotType) params.set("shot_type", shotType);

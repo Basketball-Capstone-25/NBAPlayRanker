@@ -46,6 +46,7 @@ def _load_canonical_shots_df() -> pd.DataFrame:
         "game_id": "GAME_ID", "shooter_id": "SHOOTER_ID", "home": "HOME_FLAG",
         "period": "PERIOD", "clock_sec": "CLOCK_SEC", "margin": "MARGIN",
         "shot_value": "SHOT_VALUE", "x": "X", "y": "Y", "dist": "DIST", "angle": "ANGLE",
+        "zone_method": "ZONE_METHOD", "location_valid": "LOCATION_VALID",
     }
 
     if "SEASON" in df.columns and "SEASON_STR" not in df.columns:
@@ -205,6 +206,8 @@ def _select_output_cols(df: pd.DataFrame) -> pd.DataFrame:
         "CLOCK_SEC",
         "SHOT_TYPE",
         "ZONE",
+        "ZONE_METHOD",
+        "LOCATION_VALID",
         "IS_MAKE",
         "POINTS",
         "X",
