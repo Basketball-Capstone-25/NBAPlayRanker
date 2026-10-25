@@ -62,7 +62,7 @@ export function ShotMetricsContent({ data, loading, error, onReload }: {
           </table></div>
           <div style={{ display: "flex", gap: 12, marginTop: 16, flexWrap: "wrap" }}>
             {data?.n_splits === 5 && /^[a-f0-9]{64}$/.test(data.source_sha256 ?? "") &&
-              <a className="btn btn--secondary" href={`/api/exports/shot-metrics?version=${data.source_sha256}`} download="shot_model_metrics_splits_5.csv">Export training results (CSV)</a>}
+              <a className="btn btn--secondary" href={`/api/exports/shot-metrics?version=${data.source_sha256}`} target="_blank" rel="noopener noreferrer">Export training results (CSV)</a>}
             <button className="btn btn--secondary" disabled={!best} onClick={copySummary}>Copy training summary</button>
           </div>
           <p role="status">{copyStatus}</p>

@@ -59,7 +59,8 @@ describe("saved shot metrics presentation", () => {
     expect(html).toContain("Training-season cross-validation");
     expect(html).toContain("Export training results (CSV)");
     expect(html).toContain(`href="/api/exports/shot-metrics?version=${savedMetrics.source_sha256}"`);
-    expect(html).toContain('download="shot_model_metrics_splits_5.csv"');
+    expect(html).toContain('target="_blank" rel="noopener noreferrer"');
+    expect(html).not.toContain(' download=');
     expect(html).not.toContain("Holdout comparison");
     expect(html).not.toContain("<select");
     expect(html).not.toContain("Auto-refresh");
