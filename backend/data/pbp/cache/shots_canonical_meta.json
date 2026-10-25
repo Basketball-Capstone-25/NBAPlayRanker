@@ -20,11 +20,12 @@
     "angle"
   ],
   "fingerprint": {
-    "schema_version": "canonical_v1",
-    "source_mtime_ns": 1775565541218928200,
-    "source_path": "C:\\Users\\amous\\NBAPlayRanker-1\\backend\\data\\pbp\\nba_pbp_2021_present.parquet",
-    "source_size": 154249970
+    "schema_version": "canonical_v2_nullable_value",
+    "source_mtime_ns": 1792949403055382271,
+    "source_path": "/Users/gurkasahan/Developer/NBAPlayRanker/backend/data/pbp/shots_clean.parquet",
+    "source_sha256": "sha256:d2f647a048959ce14b798a3fe3f0b47e9eba860d7ecb35bec7b67d9968d657a4",
+    "source_size": 21561041
   },
   "notes": "Derived from shot_etl CLEAN_PARQUET; snake_case canonical for /pbp/*.",
-  "rows": 1332515
+  "rows": 1370434
 }

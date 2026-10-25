@@ -8,6 +8,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import DataQualityPanel from "./DataQualityPanel";
+import DatasetMetadataPanel from "./DatasetMetadataPanel";
 import {
   API_BASE,
   authenticatedDownload,
@@ -448,6 +449,7 @@ export default function DataExplorerClient() {
       {exportError && <p role="alert" className="card">{exportError}</p>}
 
       <DataQualityPanel />
+      <DatasetMetadataPanel />
 
       {/* FILTERS */}
       <section className="card" style={{ marginTop: 14 }}>

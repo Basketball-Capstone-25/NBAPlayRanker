@@ -23,6 +23,6 @@ CANONICAL_META_JSON = CACHE_DIR / "shots_canonical_meta.json"
 AGG_META_JSON = CACHE_DIR / "shots_agg_meta.json"
 
 # new features), bump this string to invalidate cached canonical files.
-CANONICAL_SCHEMA_VERSION = "canonical_v1"
+CANONICAL_SCHEMA_VERSION = "canonical_v2_nullable_value"
 
 AGG_SCHEMA_VERSION = "agg_v1"

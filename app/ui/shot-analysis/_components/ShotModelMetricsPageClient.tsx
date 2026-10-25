@@ -4,6 +4,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { ShotLaterSeasonResults } from "./ShotLaterSeasonResults";
 import { fetchShotModelMetrics } from "../../../services/shotAnalysis";
 
 type MetricsRow = {
@@ -17,11 +18,15 @@ type MetricsRow = {
 };
 
 type MetricsResponse = {
+  source_sha256?: string;
+  best_model?: string;
+  later_season?: import("../../../domain/shot-analysis").ShotLaterSeason;
   n_splits: number;
   metrics: MetricsRow[];
 };
 
 function fmt(n: any, digits = 3) {
+  if (n == null) return "—";
   const x = Number(n);
   if (!Number.isFinite(x)) return "—";
   return x.toFixed(digits);
@@ -119,6 +124,7 @@ export default function ShotModelMetricsPage() {
       setLoading(true);
       if (!silent) setStatusHint("Loading metrics…");
       setError(null);
+      setData(null);
 
       const res = await fetchShotModelMetrics(nSplits);
 
@@ -219,11 +225,12 @@ export default function ShotModelMetricsPage() {
           }}
         >
           <div>
+            <p>Saved evaluation only. This page does not train a model. Shot location and type describe a proposed shot, not a pre-possession forecast.</p>
             <h1 className="h1" style={{ margin: 0 }}>
               Shot Model Metrics
             </h1>
             <p className="muted" style={{ fontSize: 14, marginTop: 6, marginBottom: 0 }}>
-              Holdout performance for shot-level expected points models (GroupKFold by GAME_ID).
+              Saved cross-validation results grouped by game. This does not establish accuracy on a later season.
             </p>
           </div>
 
@@ -462,7 +469,7 @@ export default function ShotModelMetricsPage() {
               flexWrap: "wrap",
             }}
           >
-            <h2 style={{ margin: "8px 0 6px", fontSize: 16 }}>Holdout metrics table</h2>
+            <h2 style={{ margin: "8px 0 6px", fontSize: 16 }}>Training-season cross-validation</h2>
             <div className="muted" style={{ fontSize: 13 }}>
               Tip: RMSE/MAE lower is better; R² higher is better.
             </div>
@@ -515,6 +522,8 @@ export default function ShotModelMetricsPage() {
           </div>
         </section>
       ) : null}
+      {data?.later_season && !loading && <ShotLaterSeasonResults result={data.later_season} selectedModel={data.best_model} />}
+      {data?.source_sha256 && <p className="muted" style={{ overflowWrap: "anywhere" }}>Shot data version: sha256:{data.source_sha256}</p>}
     </main>
   );
 }

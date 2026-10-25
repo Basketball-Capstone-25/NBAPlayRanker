@@ -1,143 +1,135 @@
 {
-  "computed_at_unix": 1775067624,
+  "computed_at_unix": 1792949699,
   "fingerprint": {
-    "schema_version": "shot_ml_analysis_v2",
-    "source_mtime_ns": 1775067433606105960,
-    "source_path": "/Users/gurkasahan/Downloads/bgs-pspi 2/backend/data/pbp/shots_clean.parquet",
-    "source_size": 14339926
+    "schema_version": "shot_ml_analysis_v1",
+    "source_mtime_ns": 1792949403055382271,
+    "source_path": "/Users/gurkasahan/Developer/NBAPlayRanker/backend/data/pbp/shots_clean.parquet",
+    "source_size": 21561041
   },
   "payload": {
     "breakdowns": {
       "by_shot_type": [
         {
           "SHOT_TYPE": "Jump Shot",
-          "attempts": 37452,
-          "make_rate": 0.3714354373598206,
-          "makes": 13911,
-          "points": 39454,
-          "pps": 1.053455089180818
-        },
-        {
-          "SHOT_TYPE": "Free Throw",
-          "attempts": 24065,
-          "make_rate": 0.7800540203615208,
-          "makes": 18772,
-          "points": 18772,
-          "pps": 0.7800540203615208
+          "attempts": 77581,
+          "make_rate": 0.36792513630914786,
+          "makes": 28544,
+          "points": 81044,
+          "pps": 1.0446372178755108
         },
         {
           "SHOT_TYPE": "Layup",
-          "attempts": 23653,
-          "make_rate": 0.5722318521963388,
-          "makes": 13535,
-          "points": 27070,
-          "pps": 1.1444637043926775
+          "attempts": 49101,
+          "make_rate": 0.5736950367609621,
+          "makes": 28169,
+          "points": 56338,
+          "pps": 1.1473900735219242
         },
         {
           "SHOT_TYPE": "Pullup",
-          "attempts": 12388,
-          "make_rate": 0.3944139489828867,
-          "makes": 4886,
-          "points": 11880,
-          "pps": 0.9589925734581853
+          "attempts": 26289,
+          "make_rate": 0.393548632507893,
+          "makes": 10346,
+          "points": 25275,
+          "pps": 0.9614287344516718
         },
         {
           "SHOT_TYPE": "Floater",
-          "attempts": 6754,
-          "make_rate": 0.43115190997927155,
-          "makes": 2912,
-          "points": 5830,
-          "pps": 0.8631921824104235
+          "attempts": 14353,
+          "make_rate": 0.4357973942729743,
+          "makes": 6255,
+          "points": 12519,
+          "pps": 0.8722218351564133
         },
         {
           "SHOT_TYPE": "Dunk",
-          "attempts": 5604,
-          "make_rate": 0.8850820842255531,
-          "makes": 4960,
-          "points": 9920,
-          "pps": 1.7701641684511062
+          "attempts": 11599,
+          "make_rate": 0.8862833002845073,
+          "makes": 10280,
+          "points": 20560,
+          "pps": 1.7725666005690146
         },
         {
           "SHOT_TYPE": "Fadeaway",
-          "attempts": 3199,
-          "make_rate": 0.40887777430447014,
-          "makes": 1308,
-          "points": 2639,
-          "pps": 0.824945295404814
+          "attempts": 6761,
+          "make_rate": 0.41458364147315485,
+          "makes": 2803,
+          "points": 5671,
+          "pps": 0.8387812453779027
         },
         {
           "SHOT_TYPE": "Hook Shot",
-          "attempts": 2725,
-          "make_rate": 0.4972477064220184,
-          "makes": 1355,
-          "points": 2710,
-          "pps": 0.9944954128440368
+          "attempts": 5707,
+          "make_rate": 0.4923777816716313,
+          "makes": 2810,
+          "points": 5620,
+          "pps": 0.9847555633432626
         },
         {
           "SHOT_TYPE": "Bank Shot",
-          "attempts": 2107,
-          "make_rate": 0.5078310393925012,
-          "makes": 1070,
-          "points": 2207,
-          "pps": 1.0474608448030376
+          "attempts": 4328,
+          "make_rate": 0.5198706099815157,
+          "makes": 2250,
+          "points": 4652,
+          "pps": 1.0748613678373382
         },
         {
           "SHOT_TYPE": "Tip Shot",
-          "attempts": 2050,
-          "make_rate": 0.4790243902439024,
-          "makes": 982,
-          "points": 1964,
-          "pps": 0.9580487804878048
+          "attempts": 4279,
+          "make_rate": 0.48913297499415753,
+          "makes": 2093,
+          "points": 4186,
+          "pps": 0.9782659499883151
         },
         {
           "SHOT_TYPE": "Other",
-          "attempts": 3,
-          "make_rate": 0.3333333333333333,
-          "makes": 1,
-          "points": 2,
-          "pps": 0.6666666666666666
+          "attempts": 2,
+          "make_rate": 1.0,
+          "makes": 2,
+          "points": 4,
+          "pps": 2.0
         }
       ],
       "by_zone": [
         {
           "ZONE": "arc3",
-          "attempts": 106945,
-          "make_rate": 0.5532469961195007,
-          "makes": 59167,
-          "points": 109056,
-          "pps": 1.0197391182383468
-        },
-        {
-          "ZONE": "mid",
-          "attempts": 12775,
-          "make_rate": 0.34974559686888457,
-          "makes": 4468,
-          "points": 13221,
-          "pps": 1.0349119373776907
-        },
-        {
-          "ZONE": "paint",
-          "attempts": 250,
-          "make_rate": 0.22,
-          "makes": 55,
-          "points": 165,
-          "pps": 0.66
+          "attempts": 57530,
+          "make_rate": 0.3473492091082913,
+          "makes": 19983,
+          "points": 59613,
+          "pps": 1.0362071962454371
         },
         {
           "ZONE": "rim",
-          "attempts": 24,
-          "make_rate": 0.08333333333333333,
-          "makes": 2,
-          "points": 6,
-          "pps": 0.25
+          "attempts": 55125,
+          "make_rate": 0.6684081632653062,
+          "makes": 36846,
+          "points": 73692,
+          "pps": 1.3368163265306123
+        },
+        {
+          "ZONE": "paint",
+          "attempts": 36530,
+          "make_rate": 0.442102381604161,
+          "makes": 16150,
+          "points": 32300,
+          "pps": 0.884204763208322
+        },
+        {
+          "ZONE": "mid",
+          "attempts": 27256,
+          "make_rate": 0.4244936894628706,
+          "makes": 11570,
+          "points": 23262,
+          "pps": 0.8534634575873202
         },
         {
           "ZONE": "corner3",
-          "attempts": 6,
-          "make_rate": 0.0,
-          "makes": 0,
-          "points": 0,
-          "pps": 0.0
+          "attempts": 23559,
+          "make_rate": 0.3821469502101108,
+          "makes": 9003,
+          "points": 27002,
+          "pps": 1.1461437242667345
         }
       ]
     },
@@ -145,7 +137,6 @@
       "labels": [
         "CLOCK_SEC",
         "MARGIN",
-        "SHOT_VALUE",
         "DIST",
         "ANGLE",
         "X",
@@ -155,114 +146,155 @@
       "matrix": [
         [
           1.0,
-          -0.0035671516416972524,
-          0.04391617374159446,
-          0.010290209448156938,
-          -0.018976437298095967,
-          0.006438221251933607,
-          -0.005270832529155631,
-          0.0065525658989106506
+          0.004406997967464778,
+          -0.030754807777676862,
+          0.0006643076422939941,
+          0.0023335185970823,
+          -0.003657448348928326,
+          0.019658558584518197
         ],
         [
-          -0.0035671516416972524,
+          0.004406997967464778,
           1.0,
-          -0.0026924438562044932,
-          -0.002245464159863016,
-          -0.007109363808980404,
-          0.033834550629674914,
-          0.0010877153757225422,
-          0.006292465572556665
+          0.009156048122161298,
+          -0.0005842242408603259,
+          0.08439718302418238,
+          0.0006881057149775526,
+          0.005111072465354806
         ],
         [
-          0.04391617374159446,
-          -0.0026924438562044932,
+          -0.030754807777676862,
+          0.009156048122161298,
           1.0,
-          -0.01024184800765858,
-          -0.26341000560986966,
-          -0.004842678817375679,
-          -0.009044956719200619,
-          0.009426262789543671
+          -0.044411639399371226,
+          -0.004892805083722976,
+          -0.006552630690532314,
+          -0.06944849221884972
         ],
         [
-          0.010290209448156938,
-          -0.002245464159863016,
-          -0.01024184800765858,
+          0.0006643076422939941,
+          -0.0005842242408603259,
+          -0.044411639399371226,
           1.0,
-          -0.03690626683506955,
-          0.003609729927333737,
-          -0.005423244965758776,
-          0.09096588699170668
+          0.00612215509908512,
+          0.00627669081365576,
+          0.00541510348417901
         ],
         [
-          -0.018976437298095967,
-          -0.007109363808980404,
-          -0.26341000560986966,
-          -0.03690626683506955,
+          0.0023335185970823,
+          0.08439718302418238,
+          -0.004892805083722976,
+          0.00612215509908512,
           1.0,
-          -0.23800299069116046,
-          0.49893655790243124,
-          -0.007427328402672316
+          0.01337641084635285,
+          0.004111448909893374
         ],
         [
-          0.006438221251933607,
-          0.033834550629674914,
-          -0.004842678817375679,
-          0.003609729927333737,
-          -0.23800299069116046,
+          -0.003657448348928326,
+          0.0006881057149775526,
+          -0.006552630690532314,
+          0.00627669081365576,
+          0.01337641084635285,
           1.0,
-          0.0137317234372487,
-          0.003659112184052908
+          0.0009953618822754278
         ],
         [
-          -0.005270832529155631,
-          0.0010877153757225422,
-          -0.009044956719200619,
-          -0.005423244965758776,
-          0.49893655790243124,
-          0.0137317234372487,
-          1.0,
-          -0.00023279169537407355
-        ],
-        [
-          0.0065525658989106506,
-          0.006292465572556665,
-          0.009426262789543671,
-          0.09096588699170668,
-          -0.007427328402672316,
-          0.003659112184052908,
-          -0.00023279169537407355,
+          0.019658558584518197,
+          0.005111072465354806,
+          -0.06944849221884972,
+          0.00541510348417901,
+          0.004111448909893374,
+          0.0009953618822754278,
           1.0
         ]
       ]
     },
     "dataset": {
-      "feature_cols_categorical": [
-        "SEASON_STR",
-        "TEAM_ABBR",
-        "OPP_ABBR",
-        "HOME_FLAG",
-        "PERIOD",
-        "SHOT_TYPE",
-        "ZONE"
-      ],
-      "feature_cols_numeric": [
-        "CLOCK_SEC",
-        "MARGIN",
-        "SHOT_VALUE",
-        "DIST",
-        "ANGLE",
-        "X",
-        "Y"
-      ],
-      "group_col": "GAME_ID",
-      "max_rows": 120000,
-      "n_games": 6913,
+      "feature_spec": {
+        "categorical": [
+          "TEAM_ABBR",
+          "OPP_ABBR",
+          "HOME_FLAG",
+          "PERIOD",
+          "SHOT_TYPE",
+          "ZONE"
+        ],
+        "group_col": "GAME_ID",
+        "numeric": [
+          "CLOCK_SEC",
+          "MARGIN",
+          "DIST",
+          "ANGLE",
+          "X",
+          "Y"
+        ],
+        "target": "POINTS"
+      },
+      "max_rows": 200000,
+      "n_games": 7739,
       "n_seasons": 6,
-      "n_shot_types": 11,
-      "n_teams": 35,
+      "n_shot_types": 10,
+      "n_teams": 30,
       "n_zones": 5,
-      "rows": 120000,
-      "rows_used": 120000,
+      "notes": [
+        "Rows are sampled for speed (see max_rows).",
+        "Model evaluation is exposed separately at /metrics/shot-models (GroupKFold by GAME_ID)."
+      ],
+      "prediction_contract": {
+        "input_timing": {
+          "chosen_shot": [
+            "SHOT_TYPE",
+            "ZONE",
+            "DIST",
+            "ANGLE",
+            "X",
+            "Y"
+          ],
+          "context_at_prediction": [
+            "SEASON_STR",
+            "TEAM_ABBR",
+            "OPP_ABBR",
+            "HOME_FLAG",
+            "PERIOD",
+            "CLOCK_SEC",
+            "MARGIN"
+          ],
+          "outcome_only": [
+            "MADE",
+            "POINTS"
+          ]
+        },
+        "limitations": "Shot location and type describe a proposed shot, not information known before a possession. Clock and margin must describe the prediction instant; later event values cannot be used for a pre-possession claim. SHOT_VALUE is excluded because older sources do not identify every missed attempt as two or three points.",
+        "prediction_kind": "proposed_shot"
+      },
+      "rows_used": 200000,
+      "schema": {
+        "ignored": [],
+        "mapped": [
+          "ANGLE",
+          "CLOCK_SEC",
+          "DIST",
+          "GAME_ID",
+          "HOME_FLAG",
+          "MARGIN",
+          "OPP_ABBR",
+          "PERIOD",
+          "POINTS",
+          "SHOT_TYPE",
+          "TEAM_ABBR",
+          "X",
+          "Y",
+          "ZONE"
+        ],
+        "missing_required": [],
+        "optional": [
+          "MADE",
+          "SEASON_STR",
+          "SHOOTER_ID",
+          "SHOT_VALUE"
+        ],
+        "renamed": {}
+      },
       "seasons": [
         "2020-21",
         "2021-22",
@@ -276,7 +308,6 @@
         "Dunk",
         "Fadeaway",
         "Floater",
-        "Free Throw",
         "Hook Shot",
         "Jump Shot",
         "Layup",
@@ -284,43 +315,37 @@
         "Pullup",
         "Tip Shot"
       ],
-      "target_col": "POINTS",
       "teams": [
         "ATL",
         "BKN",
         "BOS",
         "CHA",
         "CHI",
-        "CHK",
         "CLE",
         "DAL",
         "DEN",
         "DET",
-        "DUR",
-        "EAST",
-        "GS",
+        "GSW",
         "HOU",
         "IND",
         "LAC",
         "LAL",
-        "LEB",
         "MEM",
         "MIA",
         "MIL",
         "MIN",
-        "NO",
-        "NY",
+        "NOP",
+        "NYK",
         "OKC",
         "ORL",
         "PHI",
         "PHX",
         "POR",
-        "SA",
         "SAC",
-        "SHQ",
+        "SAS",
         "TOR",
-        "UTAH",
-        "WSH"
+        "UTA",
+        "WAS"
       ],
       "zones": [
         "arc3",
@@ -331,37 +356,121 @@
       ]
     },
     "eda": {
-      "dist": {
-        "max": 53.014738516755884,
-        "mean": 32.796701455393126,
-        "median": 32.74236552236261,
-        "min": 0.25,
-        "p25": 28.0,
-        "p75": 39.86304679775493,
-        "std": 8.334159242343159
+      "clock_sec": {
+        "hist": {
+          "bins": [
+            0.0,
+            36.0,
+            72.0,
+            108.0,
+            144.0,
+            180.0,
+            216.0,
+            252.0,
+            288.0,
+            324.0,
+            360.0,
+            396.0,
+            432.0,
+            468.0,
+            504.0,
+            540.0,
+            576.0,
+            612.0,
+            648.0,
+            684.0,
+            720.0
+          ],
+          "counts": [
+            12442,
+            10363,
+            10074,
+            9770,
+            9555,
+            9718,
+            9899,
+            9960,
+            9952,
+            9769,
+            9969,
+            10025,
+            10114,
+            10106,
+            10310,
+            10324,
+            10274,
+            10185,
+            10158,
+            7033
+          ]
+        },
+        "summary": {
+          "max": 720.0,
+          "mean": 351.8549259999999,
+          "median": 354.0,
+          "min": 0.0,
+          "p25": 171.0,
+          "p75": 532.0,
+          "std": 207.76595047886315
+        }
       },
-      "hist_points": {
-        "bins": [
-          0.0,
-          0.375,
-          0.75,
-          1.125,
-          1.5,
-          1.875,
-          2.25,
-          2.625,
-          3.0
-        ],
-        "counts": [
-          56308,
-          0,
-          18772,
-          0,
-          0,
-          31084,
-          0,
-          13836
-        ]
+      "dist": {
+        "hist": {
+          "bins": [
+            0.0,
+            4.463462781294362,
+            8.926925562588725,
+            13.390388343883087,
+            17.85385112517745,
+            22.31731390647181,
+            26.780776687766174,
+            31.24423946906054,
+            35.7077022503549,
+            40.17116503164926,
+            44.63462781294362,
+            49.09809059423799,
+            53.56155337553235,
+            58.02501615682671,
+            62.48847893812108,
+            66.95194171941543,
+            71.4154045007098,
+            75.87886728200417,
+            80.34233006329852,
+            84.80579284459289,
+            89.26925562588724
+          ],
+          "counts": [
+            59012,
+            23879,
+            16851,
+            11812,
+            8859,
+            57447,
+            20677,
+            763,
+            153,
+            97,
+            97,
+            102,
+            58,
+            47,
+            35,
+            44,
+            25,
+            28,
+            8,
+            6
+          ]
+        },
+        "summary": {
+          "max": 89.26925562588724,
+          "mean": 14.452666031475925,
+          "median": 13.416407864998739,
+          "min": 0.0,
+          "p25": 3.605551275463989,
+          "p75": 25.317977802344327,
+          "std": 10.662958926868624
+        }
       },
       "missing_counts": {
         "ANGLE": 0,
@@ -369,227 +478,111 @@
         "DIST": 0,
         "MARGIN": 0,
         "SHOT_TYPE": 0,
-        "SHOT_VALUE": 0,
         "X": 0,
         "Y": 0,
         "ZONE": 0
       },
       "overall": {
-        "attempts": 120000,
-        "make_rate": 0.5307666666666667,
-        "makes": 63692,
-        "points": 122448,
-        "points_per_shot": 1.0204
+        "attempts": 200000,
+        "make_rate": 0.46776,
+        "makes": 93552,
+        "points": 215869,
+        "points_per_shot": 1.079345
       },
       "points": {
-        "max": 3.0,
-        "mean": 1.0204,
-        "median": 1.0,
-        "min": 0.0,
-        "p25": 0.0,
-        "p75": 2.0,
-        "std": 1.0904404685738065
-      }
-    },
-    "feature_selection": {
-      "correlation_filter": {
-        "dropped": [],
-        "kept": [
-          "CLOCK_SEC",
-          "MARGIN",
-          "SHOT_VALUE",
-          "DIST",
-          "ANGLE",
-          "X",
-          "Y"
-        ],
-        "removed": [],
-        "threshold": 0.9
-      },
-      "rfe": {
-        "ranking": [
-          {
-            "feature": "DIST",
-            "rank": 1
-          },
-          {
-            "feature": "MARGIN",
-            "rank": 1
-          },
-          {
-            "feature": "SHOT_VALUE",
-            "rank": 1
-          },
-          {
-            "feature": "X",
-            "rank": 1
-          },
-          {
-            "feature": "Y",
-            "rank": 1
-          },
-          {
-            "feature": "CLOCK_SEC",
-            "rank": 2
-          },
-          {
-            "feature": "ANGLE",
-            "rank": 3
-          }
-        ],
-        "selected": [
-          "MARGIN",
-          "SHOT_VALUE",
-          "DIST",
-          "X",
-          "Y"
-        ]
-      },
-      "select_k_best": {
-        "k": 5,
-        "scores": [
-          {
-            "feature": "DIST",
-            "score": 1001.2436454618631
-          },
-          {
-            "feature": "SHOT_VALUE",
-            "score": 10.663301394013118
-          },
-          {
-            "feature": "ANGLE",
-            "score": 6.620079731793008
-          },
-          {
-            "feature": "CLOCK_SEC",
-            "score": 5.152469737966813
-          },
-          {
-            "feature": "MARGIN",
-            "score": 4.751523704736888
-          },
-          {
-            "feature": "X",
-            "score": 1.6066869709498863
-          },
-          {
-            "feature": "Y",
-            "score": 0.006502928780676013
-          }
-        ],
-        "selected": [
-          "CLOCK_SEC",
-          "MARGIN",
-          "SHOT_VALUE",
-          "DIST",
-          "ANGLE"
-        ]
-      }
-    },
-    "feature_target_corr": [
-      {
-        "abs": 0.09096588699170778,
-        "corr": 0.09096588699170778,
-        "feature": "DIST"
-      },
-      {
-        "abs": 0.009426262789543524,
-        "corr": 0.009426262789543524,
-        "feature": "SHOT_VALUE"
-      },
-      {
-        "abs": 0.007427328402672238,
-        "corr": -0.007427328402672238,
-        "feature": "ANGLE"
-      },
-      {
-        "abs": 0.006552565898910744,
-        "corr": 0.006552565898910744,
-        "feature": "CLOCK_SEC"
-      },
-      {
-        "abs": 0.006292465572556685,
-        "corr": 0.006292465572556685,
-        "feature": "MARGIN"
-      },
-      {
-        "abs": 0.0036591121840528953,
-        "corr": 0.0036591121840528953,
-        "feature": "X"
-      },
-      {
-        "abs": 0.00023279169537406574,
-        "corr": -0.00023279169537406574,
-        "feature": "Y"
-      }
-    ],
-    "model_selection": {
-      "tuning": {
-        "cv": "GroupKFold(n_splits=5, group=GAME_ID)",
-        "features_used": [
-          "MARGIN",
-          "SHOT_VALUE",
-          "DIST",
-          "X",
-          "Y"
-        ],
-        "gradient_boosting": {
-          "best_params": {
-            "learning_rate": 0.05,
-            "max_depth": 3,
-            "n_estimators": 150
-          },
-          "best_rmse": 1.038105843100737
+        "hist": {
+          "bins": [
+            0.0,
+            0.375,
+            0.75,
+            1.125,
+            1.5,
+            1.875,
+            2.25,
+            2.625,
+            3.0
+          ],
+          "counts": [
+            106448,
+            0,
+            0,
+            0,
+            0,
+            64787,
+            0,
+            28765
+          ]
         },
-        "random_forest": {
-          "best_params": {
-            "max_depth": 10,
-            "n_estimators": 100
-          },
-          "best_rmse": 1.0272716967222428
-        },
-        "ridge": {
-          "best_params": {
-            "alpha": 50.0
-          },
-          "best_rmse": 1.0859560089855669
+        "summary": {
+          "max": 3.0,
+          "mean": 1.079345,
+          "median": 0.0,
+          "min": 0.0,
+          "p25": 0.0,
+          "p75": 2.0,
+          "std": 1.1938117510342594
         }
       }
     },
-    "target_feature_corr": [
+    "feature_selection": {
+      "k": 5,
+      "method": "SelectKBest(f_regression) on numeric features",
+      "scores": [
+        {
+          "feature": "DIST",
+          "score": 969.2839146411618
+        },
+        {
+          "feature": "CLOCK_SEC",
+          "score": 77.32089355578373
+        },
+        {
+          "feature": "ANGLE",
+          "score": 5.864782477225628
+        },
+        {
+          "feature": "MARGIN",
+          "score": 5.224696588169486
+        },
+        {
+          "feature": "X",
+          "score": 3.3808257692282644
+        },
+        {
+          "feature": "Y",
+          "score": 0.19814727016028064
+        }
+      ]
+    },
+    "feature_target_corr": [
       {
-        "abs": 0.09096588699170778,
-        "corr": 0.09096588699170778,
+        "abs": 0.06944849221884912,
+        "corr": -0.06944849221884912,
         "feature": "DIST"
       },
       {
-        "abs": 0.009426262789543524,
-        "corr": 0.009426262789543524,
-        "feature": "SHOT_VALUE"
-      },
-      {
-        "abs": 0.007427328402672238,
-        "corr": -0.007427328402672238,
-        "feature": "ANGLE"
-      },
-      {
-        "abs": 0.006552565898910744,
-        "corr": 0.006552565898910744,
+        "abs": 0.019658558584517576,
+        "corr": 0.019658558584517576,
         "feature": "CLOCK_SEC"
       },
       {
-        "abs": 0.006292465572556685,
-        "corr": 0.006292465572556685,
+        "abs": 0.005415103484178956,
+        "corr": 0.005415103484178956,
+        "feature": "ANGLE"
+      },
+      {
+        "abs": 0.0051110724653546805,
+        "corr": 0.0051110724653546805,
         "feature": "MARGIN"
       },
       {
-        "abs": 0.0036591121840528953,
-        "corr": 0.0036591121840528953,
+        "abs": 0.004111448909893379,
+        "corr": 0.004111448909893379,
         "feature": "X"
       },
       {
-        "abs": 0.00023279169537406574,
-        "corr": -0.00023279169537406574,
+        "abs": 0.0009953618822753977,
+        "corr": 0.0009953618822753977,
         "feature": "Y"
       }
     ]

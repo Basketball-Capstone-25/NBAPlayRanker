@@ -13,6 +13,8 @@ if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
 from domain.shot_analysis import run_shot_model_cv, compute_shot_ml_analysis
+from domain.shot_analysis.shot_artifacts import ARTIFACT_VERSION, source_hash
+from domain.shot_analysis.shot_ml_models import evaluate_shot_later_season
 
 CACHE_DIR = BACKEND_DIR / "data" / "pbp" / "cache"
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -23,6 +25,17 @@ CV_CACHE = CACHE_DIR / "pbp_phase2_shot_model_cv.json"
 def main() -> None:
     import json
     import math
+    import signal
+    from domain.shot_analysis.shot_quality import shot_data_quality
+
+    if not shot_data_quality().get("valid_attribution"):
+        raise ValueError("Repair shot team labels from source events before preparing results.")
+
+    def deadline(_signum, _frame):
+        raise TimeoutError("Shot preparation exceeded the 10-minute limit.")
+
+    signal.signal(signal.SIGALRM, deadline)
+    signal.alarm(600)
 
     def sanitize(obj):
         if obj is None:
@@ -40,6 +53,9 @@ def main() -> None:
     t0 = time.time()
     analysis = compute_shot_ml_analysis(n_splits=5, force_refresh=True)
     analysis_out = {
+        "artifact_version": ARTIFACT_VERSION,
+        "source_sha256": source_hash(),
+        "n_splits": 5,
         "cached": False,
         "computed_at_unix": int(time.time()),
         "compute_seconds": float(time.time() - t0),
@@ -70,18 +86,27 @@ def main() -> None:
     except Exception:
         best_model = None
 
+    cv_seconds = time.time() - t1
+    holdout = evaluate_shot_later_season()
+
     cv_out = {
+        "artifact_version": ARTIFACT_VERSION,
+        "source_sha256": source_hash(),
+        "n_splits": 5,
         "cached": False,
         "computed_at_unix": int(time.time()),
         "compute_seconds": float(time.time() - t1),
-        "n_splits": 5,
+        "cv_compute_seconds": float(cv_seconds),
         "best_model": best_model,
+        "sample": {"max_rows": 75000, "random_state": 42, "grouping": "GAME_ID", "prediction_kind": "proposed_shot", "train_seasons": holdout["train_seasons"], "train_rows": holdout["train_rows"]},
+        "later_season": sanitize(holdout),
         "metrics": sanitize(metrics),
         "fold_summary": sanitize(fold_df.to_dict(orient="records")),
     }
     CV_CACHE.write_text(json.dumps(cv_out, indent=2), encoding="utf-8")
     print(f"Wrote: {CV_CACHE}")
 
+    signal.alarm(0)
     print("Done.")
 
 if __name__ == "__main__":

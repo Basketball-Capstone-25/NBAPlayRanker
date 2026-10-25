@@ -4,6 +4,8 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Gameplan.module.css";
+import TopPickCall from "../../_shared/components/TopPickCall";
+import { periodLabel, periodSeconds, resolveBuildSituation, resolveGameSituation, type ParsedSituation, type ResolvedSituation } from "../../../domain/gameplan-context";
 
 import {
   baselineRank,
@@ -167,6 +169,10 @@ export default function GameplanClient() {
   const [nlConfidence, setNlConfidence] = useState<number | null>(null);
   const [nlQuestions, setNlQuestions] = useState<string[]>([]);
   const [nlWarnings, setNlWarnings] = useState<string[]>([]);
+  const [parsedConditions, setParsedConditions] = useState<ParsedSituation>({});
+  const lastParsedTextRef = useRef("");
+  const [rankingNote, setRankingNote] = useState("");
+  const [parsing, setParsing] = useState(false);
 
   // Controls
   const [showPlays, setShowPlays] = useState(5);
@@ -375,7 +381,7 @@ export default function GameplanClient() {
     const upDown =
       margin === 0 ? "Tied" : margin > 0 ? `Up ${margin}` : `Down ${Math.abs(margin)}`;
     const t = prettyTime(timeLeft);
-    return `Q${quarter} • ${t} left • ${upDown}`;
+    return `${periodLabel(quarter)} • ${t} left • ${upDown}`;
   }, [quarter, timeLeft, margin]);
 
   function addToPlan(play: NormalizedPlay) {
@@ -404,77 +410,83 @@ export default function GameplanClient() {
     });
   }
 
-  async function runNlpParse() {
+  function currentSituation(): ResolvedSituation {
+    return resolveGameSituation({
+      ...parsedConditions,
+      period: quarter, time_remaining: timeLeft, margin,
+      after_timeout: ctxAfterTimeout, late_clock: ctxLateClock, need3: ctxNeed3,
+      protect_lead: ctxProtectLead, end_of_quarter: ctxEndQ, vs_switching: ctxVsSwitching,
+      need: ctxNeed3 ? "need3" : parsedConditions.need === "need3" ? undefined : parsedConditions.need,
+      defense_style: ctxVsSwitching ? "switch" : parsedConditions.defense_style === "switch" ? undefined : parsedConditions.defense_style,
+    }, { period: quarter, time_remaining: timeLeft, margin });
+  }
+
+  async function runNlpParse(): Promise<ResolvedSituation> {
     if (!nlText.trim()) {
       setNlConfidence(null);
       setNlQuestions([]);
       setNlWarnings([]);
-      return;
+      return currentSituation();
     }
 
     try {
+      setParsing(true);
       setStatusHint("Understanding situation…");
-      const res = await postJson<NlpParseResponse>(`${API_BASE}/nlp/parse`, {
-        text: nlText,
-        defaults: {
-          period: quarter,
-          time_remaining: timeLeft,
-          margin,
-        },
+      const resolved = await resolveBuildSituation(nlText, currentSituation(), async (text, defaults) => {
+        const res = await postJson<NlpParseResponse>(`${API_BASE}/nlp/parse`, {
+          text,
+          defaults: { period: defaults.period, time_remaining: defaults.time_remaining, margin: defaults.margin },
+        });
+        setNlConfidence(res.confidence ?? null);
+        setNlQuestions(res.clarifying_questions ?? []);
+        const c = res.context ?? {};
+        setParsedConditions(c);
+        const normalized = resolveGameSituation(c, defaults);
+        setNlWarnings([...normalized.warnings, ...(res.warnings ?? [])]);
+        return c;
       });
-
-      setNlConfidence(res.confidence ?? null);
-      setNlQuestions(res.clarifying_questions ?? []);
-      setNlWarnings(res.warnings ?? []);
-
-      const c = res.context ?? {};
-
-      if (c.period !== undefined && c.period !== null) {
-        setQuarter(clamp(Number(c.period), 1, 4));
-      }
-      if (c.time_remaining !== undefined && c.time_remaining !== null) {
-        setTimeLeft(clamp(Number(c.time_remaining), 0, 720));
-      }
-      if (c.margin !== undefined && c.margin !== null) {
-        setMargin(clamp(Number(c.margin), -30, 30));
-      }
-
+      lastParsedTextRef.current = nlText;
+      setQuarter(resolved.period);
+      setTimeLeft(resolved.time_remaining);
+      setMargin(resolved.margin);
+      const c = resolved.coaching;
       setCtxAfterTimeout(Boolean(c.after_timeout));
       setCtxLateClock(Boolean(c.late_clock));
       setCtxNeed3(Boolean(c.need3));
       setCtxProtectLead(Boolean(c.protect_lead));
-      setCtxEndQ(Boolean(c.end_of_quarter));
+      setCtxEndQ(resolved.end_of_quarter);
       setCtxVsSwitching(Boolean(c.vs_switching));
-
-      if (c.must_stop) setFocus(70);
-      if (c.need3 || c.quick2) setFocus(25);
 
       setStatusHint("Situation parsed ✅");
       setTimeout(() => setStatusHint(""), 900);
+      return resolved;
     } catch (e: any) {
       setStatusHint(e?.message || "Couldn’t parse the situation.");
+      throw e;
+    } finally {
+      setParsing(false);
     }
   }
 
   async function buildGameplan() {
-    const myBuildId = Date.now();
-    latestBuildRef.current = myBuildId;
+    const myBuildId = ++latestBuildRef.current;
 
     setLoading(true);
     setStatusHint("");
     setExplainMap({});
+    setRankingNote("");
 
     try {
-      if (nlText.trim()) {
-        await runNlpParse();
-      }
+      const situation = nlText.trim() && nlText !== lastParsedTextRef.current
+        ? await runNlpParse()
+        : currentSituation();
 
       // Baseline recommendations (Dataset1)
       const baseRankRaw = await baselineRank({
         season,
         our,
         opp,
-        k: clamp(showPlays, 1, 12),
+        k: clamp(showPlays, 1, 10),
         wOff,
         wDef,
       });
@@ -494,10 +506,11 @@ export default function GameplanClient() {
           season,
           our,
           opp,
-          margin,
-          period: quarter,
-          timeRemaining: timeLeft,
-          k: clamp(showPlays, 1, 12),
+          margin: situation.margin,
+          period: situation.period,
+          timeRemaining: situation.time_remaining,
+          coaching: situation.coaching,
+          k: clamp(showPlays, 1, 10),
           wOff,
         });
 
@@ -511,6 +524,7 @@ export default function GameplanClient() {
         smartRaw = [];
         if (latestBuildRef.current !== myBuildId) return;
         setSmartPlays([]);
+        setRankingNote("Context ranking could not load. These baseline results do not use score, period, clock or coaching conditions. Try Build again.");
       }
 
       const nextActive =
@@ -524,26 +538,21 @@ export default function GameplanClient() {
 
       // NLP explanations (optional)
       try {
-        const mode: "baseline" | "context-ml" =
-          recommendationStyle === "baseline" || !smartRaw.length ? "baseline" : "context-ml";
+        const mode: "baseline" | "context-ml" = smartRaw.length ? "context-ml" : "baseline";
 
         const rankings = (mode === "context-ml" ? smartRaw : baseRank).slice(
           0,
-          clamp(showPlays, 1, 12)
+          clamp(showPlays, 1, 10)
         );
 
+        if (!smartRaw.length) throw new Error("Baseline uses its own context-free explanation.");
         const explain = await postJson<NlpExplainResponse>(`${API_BASE}/nlp/explain`, {
           mode,
           context: {
-            period: quarter,
-            time_remaining: timeLeft,
-            margin,
-            after_timeout: ctxAfterTimeout,
-            late_clock: ctxLateClock,
-            need3: ctxNeed3,
-            protect_lead: ctxProtectLead,
-            end_of_quarter: ctxEndQ,
-            vs_switching: ctxVsSwitching,
+            period: situation.period,
+            time_remaining: situation.time_remaining,
+            margin: situation.margin,
+            ...situation.coaching,
           },
           rankings,
           top_n: 6,
@@ -711,6 +720,7 @@ export default function GameplanClient() {
   }, [topZones]);
 
   const coachExplainFor = (playType: string): ExplainItem | null => {
+    if (recommendationStyle === "baseline" || !smartPlays.length) return null;
     const item = explainMap[playType];
     return item ?? null;
   };
@@ -741,7 +751,7 @@ export default function GameplanClient() {
               className={styles.primaryBtn}
               type="button"
               onClick={buildGameplan}
-              disabled={loading}
+              disabled={loading || parsing}
             >
               {loading ? "Building…" : "Build Gameplan"}
             </button>
@@ -765,8 +775,8 @@ export default function GameplanClient() {
           />
 
           <div className={styles.cardBtns}>
-            <button className={styles.btnSoft} type="button" onClick={runNlpParse}>
-              Understand
+            <button className={styles.btnSoft} type="button" disabled={loading || parsing} onClick={() => { void runNlpParse().catch(() => {}); }}>
+              {parsing ? "Understanding…" : "Understand"}
             </button>
             <button
               className={styles.btnSoft}
@@ -794,7 +804,7 @@ export default function GameplanClient() {
 
           {nlWarnings.length ? (
             <div className={styles.warn}>
-              {nlWarnings.slice(0, 2).map((w, i) => (
+              {nlWarnings.map((w, i) => (
                 <div key={i} className={styles.warnSmall}>
                   {w}
                 </div>
@@ -908,22 +918,27 @@ export default function GameplanClient() {
               <Chip active={ctxLateClock} label="Late clock" onClick={() => setCtxLateClock((v) => !v)} />
               <Chip active={ctxNeed3} label="Need a 3" onClick={() => setCtxNeed3((v) => !v)} />
               <Chip active={ctxProtectLead} label="Protect lead" onClick={() => setCtxProtectLead((v) => !v)} />
-              <Chip active={ctxEndQ} label="End of quarter" onClick={() => setCtxEndQ((v) => !v)} />
+              <Chip active={ctxEndQ} label="End of period (note)" onClick={() => setCtxEndQ((v) => !v)} />
               <Chip active={ctxVsSwitching} label="Vs switching" onClick={() => setCtxVsSwitching((v) => !v)} />
             </div>
+            <p className={styles.smallMuted}>End of period is a note only. Other selected conditions adjust smart rankings; baseline ignores them.</p>
           </div>
 
           <div className={styles.contextRight}>
             <div className={styles.miniInputs}>
               <div className={styles.miniBlock}>
-                <div className={styles.sitLabel}>Quarter</div>
+                <div className={styles.sitLabel}>Period (5 = OT)</div>
                 <input
                   className={styles.input}
                   type="number"
                   min={1}
-                  max={4}
+                  max={5}
                   value={quarter}
-                  onChange={(e) => setQuarter(clamp(Number(e.target.value || 4), 1, 4))}
+                  onChange={(e) => {
+                    const nextPeriod = clamp(Math.round(Number(e.target.value || 4)), 1, 5);
+                    setQuarter(nextPeriod);
+                    setTimeLeft((seconds) => Math.min(seconds, periodSeconds(nextPeriod)));
+                  }}
                 />
               </div>
 
@@ -933,9 +948,9 @@ export default function GameplanClient() {
                   className={styles.input}
                   type="number"
                   min={0}
-                  max={720}
+                  max={periodSeconds(quarter)}
                   value={timeLeft}
-                  onChange={(e) => setTimeLeft(clamp(Number(e.target.value || 180), 0, 720))}
+                  onChange={(e) => setTimeLeft(clamp(Number(e.target.value), 0, periodSeconds(quarter)))}
                 />
               </div>
 
@@ -944,10 +959,10 @@ export default function GameplanClient() {
                 <input
                   className={styles.input}
                   type="number"
-                  min={-30}
-                  max={30}
+                  min={-50}
+                  max={50}
                   value={margin}
-                  onChange={(e) => setMargin(clamp(Number(e.target.value || 0), -30, 30))}
+                  onChange={(e) => setMargin(clamp(Number(e.target.value || 0), -50, 50))}
                 />
               </div>
             </div>
@@ -976,6 +991,13 @@ export default function GameplanClient() {
               <span className={styles.smallMuted}>The “what to run next” board.</span>
             </div>
 
+            {rankingNote ? <p className={styles.warn} role="status">{rankingNote}</p> : null}
+            {top3.length && recommendationStyle === "baseline" ? (
+              <p className={styles.smallMuted}>Baseline uses season matchup data. Score, period, clock and coaching conditions do not change these results.</p>
+            ) : null}
+            {top3.length && recommendationStyle === "smart" && smartPlays.length ? (
+              <p className={styles.smallMuted}>Coaching conditions add rule-based adjustments to the matchup estimates. They are not measured situational success rates.</p>
+            ) : null}
             {!top3.length ? (
               <div className={styles.empty}>
                 Tap <b>Build Gameplan</b> to get your options.
@@ -1004,7 +1026,7 @@ export default function GameplanClient() {
                       <div className={styles.quickTop}>
                         <div className={styles.quickLeft}>
                           <div className={styles.quickLabel}>{headline}</div>
-                          <div className={styles.quickName}>{p.playType}</div>
+                          <div className={styles.quickName}>{idx === 0 ? <TopPickCall rows={activePlays} current={!loading} /> : p.playType}</div>
                         </div>
 
                         <div className={`${styles.grade} ${styles["grade" + grade]}`}>{grade}</div>

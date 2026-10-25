@@ -192,14 +192,22 @@ def render_pbp_heatmap_png(
     )
 
     cols = ["season", "team", "opp", "shot_type", "zone", "x", "y"]
-    raw = _load_canonical(columns=cols)
+    # The home flag identifies the attacking basket, including long heaves.
+    raw = _load_canonical()
     _validate_columns(raw)
+    if "home" in raw:
+        cols.append("home")
 
-    df = _prepare_df(raw)
+    # Canonical season/team codes are normalized by ETL. Filter before copying
+    # or normalizing text so each request touches only the selected team season.
+    subset = raw.loc[(raw["season"] == req.season) & (raw["team"] == req.team), cols]
+    df = _prepare_df(subset)
     matched = _filter_shots(df, req)
 
     if matched.empty:
         options = _build_available_options(df, req)
+        options["seasons"] = sorted(raw["season"].dropna().unique().tolist())
+        options["teams"] = sorted(raw.loc[raw["season"] == req.season, "team"].dropna().unique().tolist())
         raise HTTPException(
             status_code=404,
             detail={
@@ -228,6 +236,7 @@ def render_pbp_heatmap_png(
             "zone": "ZONE",
             "x": "X",
             "y": "Y",
+            "home": "HOME_FLAG",
         }
     )
 
@@ -279,14 +288,22 @@ def render_pbp_heatmap_json(
     )
 
     cols = ["season", "team", "opp", "shot_type", "zone", "x", "y"]
-    raw = _load_canonical(columns=cols)
+    # The home flag identifies the attacking basket, including long heaves.
+    raw = _load_canonical()
     _validate_columns(raw)
+    if "home" in raw:
+        cols.append("home")
 
-    df = _prepare_df(raw)
+    # Canonical season/team codes are normalized by ETL. Filter before copying
+    # or normalizing text so each request touches only the selected team season.
+    subset = raw.loc[(raw["season"] == req.season) & (raw["team"] == req.team), cols]
+    df = _prepare_df(subset)
     matched = _filter_shots(df, req)
 
     if matched.empty:
         options = _build_available_options(df, req)
+        options["seasons"] = sorted(raw["season"].dropna().unique().tolist())
+        options["teams"] = sorted(raw.loc[raw["season"] == req.season, "team"].dropna().unique().tolist())
         raise HTTPException(
             status_code=404,
             detail={

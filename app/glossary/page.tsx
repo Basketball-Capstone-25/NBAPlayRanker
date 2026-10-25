@@ -17,6 +17,7 @@ import type { CSSProperties } from "react";
 type WhereLink = { label: string; href: string };
 
 const PRODUCT_LINKS: WhereLink[] = [
+  { label: "Data Dictionary", href: "/data-dictionary" },
   { label: "Home", href: "/" },
   { label: "Data Explorer (Dataset1)", href: "/data-explorer" },
   { label: "Matchup (Baseline)", href: "/matchup" },

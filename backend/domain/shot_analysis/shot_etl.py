@@ -53,6 +53,8 @@ TEAM_ID_TO_ABBR = {
     1610612766: "CHA",
 }
 
+TEAM_ABBR_ALIASES = {"WSH": "WAS", "NY": "NYK", "SA": "SAS", "UTAH": "UTA", "NO": "NOP", "GS": "GSW"}
+
 def _norm_letters(s: str) -> str:
     # Lowercase and keep only letters (removes underscores, spaces, digits, etc.)
     return re.sub(r"[^a-z]+", "", str(s).lower())
@@ -106,25 +108,8 @@ def _pick_col(
         if k in letters_map:
             return letters_map[k]
 
-    # 5) substring match with scoring
-    prefer_lower = [p.lower() for p in prefer]
-
-    def score(colname: str, cand_norm: str) -> tuple[int, int]:
-        # Higher is better: prefer tokens, then shorter name
-        low = str(colname).lower()
-        bonus = sum(1 for p in prefer_lower if p and p in low)
-        # prefer shorter names to avoid accidentally selecting verbose unrelated fields
-        return (bonus, -len(low))
-
-    for cand in candidates:
-        cand_norm = _norm_letters(cand)
-        if not cand_norm:
-            continue
-        matches = [c for c in cols if cand_norm in _norm_letters(c)]
-        if matches:
-            matches_sorted = sorted(matches, key=lambda c: score(c, cand_norm), reverse=True)
-            return matches_sorted[0]
-
+    # Participant and score fields must never be selected by substring.
+    # For example, team must not match home_team and home must not match home_score.
     if required:
         tried = list(candidates)
         sample_cols = cols[:40]
@@ -164,7 +149,7 @@ def _parse_clock_to_sec(val: object) -> float:
     if ":" in s:
         try:
             mins, secs = s.split(":")
-            return float(int(mins) * 60 + int(secs))
+            return float(int(mins) * 60 + float(secs))
         except Exception:
             return float("nan")
     try:
@@ -178,7 +163,7 @@ def _parse_margin(val: object) -> float:
     if isinstance(val, (int, float)):
         return float(val)
     s = str(val).strip().upper()
-    if s in {"", "TIE", "TIED", "0"}:
+    if s in {"TIE", "TIED", "0"}:
         return 0.0
     try:
         return float(s)
@@ -243,119 +228,41 @@ def build_shots_clean(raw_df: pd.DataFrame) -> pd.DataFrame:
     # Season
     season_col = _pick_col(df, ["season", "season_year", "season_int", "seasonyear"], required=True)
     df["SEASON_STR"] = df[season_col].apply(season_int_to_str)
-    # Team abbreviation (robust)
-    team_col = _pick_col(
-        df,
-        [
-            "team_abbr",
-            "team_abbreviation",
-            "team",
-            "team_tricode",
-            "teamTricode",
-            "offense_team",
-            "offense_team_abbr",
-            "offense_team_abbreviation",
-            "possession_team",
-            "possession_team_abbr",
-            "possession_team_abbreviation",
-            "posteam",
-            "player1_team_abbreviation",
-            "player1_team_abbr",
-            "player1_team",
-            "player_team_abbreviation",
-        ],
-        required=False,
-        prefer=["player1", "shooter", "offense", "possession", "posteam"],
-    )
-
-    if team_col:
-        df["TEAM_ABBR"] = df[team_col].astype(str).str.strip()
+    # Prefer event participant IDs over any game-level team label.
+    team_id_col = _pick_col(df, ["team_id", "player1_team_id", "offense_team_id", "possession_team_id"])
+    home_id_col = _pick_col(df, ["home_team_id"])
+    away_id_col = _pick_col(df, ["away_team_id", "visitor_team_id"])
+    home_col = _pick_col(df, ["home_team_abbr", "home_team_abbrev", "home_team_abbreviation", "homeTeamTricode"])
+    away_col = _pick_col(df, ["away_team_abbr", "away_team_abbrev", "away_team_abbreviation", "visitor_team_abbreviation", "awayTeamTricode"])
+    if team_id_col and home_id_col and away_id_col and home_col and away_col:
+        event_id = pd.to_numeric(df[team_id_col], errors="coerce")
+        is_home = event_id.eq(pd.to_numeric(df[home_id_col], errors="coerce"))
+        is_away = event_id.eq(pd.to_numeric(df[away_id_col], errors="coerce"))
+        if not (is_home ^ is_away).all():
+            raise ValueError("A shooting team ID does not match exactly one game participant.")
+        df["HOME_FLAG"] = is_home
+        df["TEAM_ABBR"] = np.where(is_home, df[home_col], df[away_col])
+        df["OPP_ABBR"] = np.where(is_home, df[away_col], df[home_col])
     else:
-        team_id_col = _pick_col(
-            df,
-            [
-                "team_id",
-                "teamid",
-                "offense_team_id",
-                "offenseTeamId",
-                "possession_team_id",
-                "possessionTeamId",
-                "player1_team_id",
-                "player_team_id",
-            ],
-            required=True,
-            prefer=["player1", "offense", "possession"],
-        )
-        df["TEAM_ABBR"] = _map_team_id_to_abbr(df[team_id_col])
-    # Home flag
-    home_flag_col = _pick_col(df, ["home_flag", "is_home", "team_is_home", "home"], required=False)
-    if home_flag_col:
-        df["HOME_FLAG"] = _coerce_bool(df[home_flag_col])
-    else:
-        home_team_col = _pick_col(
-            df,
-            ["home_team_abbr", "home_team_abbreviation", "home_team_tricode", "homeTeamTricode", "homeTeamAbbreviation"],
-            required=False,
-        )
-        if home_team_col:
-            df["HOME_FLAG"] = df[home_team_col].astype(str).str.strip().eq(df["TEAM_ABBR"])
+        team_col = _pick_col(df, ["team_abbr", "team_abbreviation", "team", "offense_team_abbr", "player1_team_abbreviation"])
+        if team_id_col:
+            df["TEAM_ABBR"] = _map_team_id_to_abbr(df[team_id_col])
+        elif team_col:
+            df["TEAM_ABBR"] = df[team_col]
         else:
-            df["HOME_FLAG"] = False
-    # Opponent abbreviation
-    opp_col = _pick_col(
-        df,
-        [
-            "opp_abbr",
-            "opponent_team_abbr",
-            "opponent_team_abbreviation",
-            "opponent",
-            "defense_team_abbr",
-            "defense_team_abbreviation",
-            "def_team",
-        ],
-        required=False,
-        prefer=["defense", "opponent", "visitor", "away"],
-    )
-
-    if opp_col:
-        df["OPP_ABBR"] = df[opp_col].astype(str).str.strip()
-    else:
-        home_team_col = _pick_col(
-            df,
-            ["home_team_abbr", "home_team_abbreviation", "home_team_tricode", "homeTeamTricode", "homeTeamAbbreviation"],
-            required=False,
-        )
-        away_team_col = _pick_col(
-            df,
-            [
-                "away_team_abbr",
-                "away_team_abbreviation",
-                "visitor_team_abbr",
-                "visitor_team_abbreviation",
-                "visiting_team_abbr",
-                "visitorTeamAbbreviation",
-                "awayTeamTricode",
-                "visitorTeamTricode",
-            ],
-            required=False,
-        )
-
-        if home_team_col and away_team_col:
-            home_abbr = df[home_team_col].astype(str).str.strip()
-            away_abbr = df[away_team_col].astype(str).str.strip()
-            df["OPP_ABBR"] = np.where(df["HOME_FLAG"], away_abbr, home_abbr)
+            raise ValueError("A shooting-team participant ID or explicit event team is required.")
+        if home_col and away_col:
+            df["HOME_FLAG"] = df["TEAM_ABBR"].eq(df[home_col])
+            if not (df["TEAM_ABBR"].eq(df[home_col]) | df["TEAM_ABBR"].eq(df[away_col])).all():
+                raise ValueError("The shooting team is not a game participant.")
+            df["OPP_ABBR"] = np.where(df["HOME_FLAG"], df[away_col], df[home_col])
         else:
-            # Try opponent team id mapping
-            opp_id_col = _pick_col(
-                df,
-                ["opponent_team_id", "opp_team_id", "defense_team_id", "opponentTeamId"],
-                required=False,
-                prefer=["defense", "opponent"],
-            )
-            if opp_id_col:
-                df["OPP_ABBR"] = _map_team_id_to_abbr(df[opp_id_col])
-            else:
-                df["OPP_ABBR"] = None
+            home_flag_col = _pick_col(df, ["home_flag", "is_home", "team_is_home"])
+            opp_col = _pick_col(df, ["opp_abbr", "opponent_team_abbreviation", "opponent"])
+            df["HOME_FLAG"] = _coerce_bool(df[home_flag_col]) if home_flag_col else None
+            df["OPP_ABBR"] = df[opp_col] if opp_col else None
+    for name in ["TEAM_ABBR", "OPP_ABBR"]:
+        df[name] = df[name].astype("string").str.strip().str.upper().replace(TEAM_ABBR_ALIASES)
     # Shot type normalization
     type_text_col = _pick_col(df, ["type_text", "shot_type", "event_subtype", "eventsubtype"], required=False)
     type_abbrev_col = _pick_col(df, ["type_abbreviation", "type_abbrev", "shot_type_abbr"], required=False)
@@ -378,42 +285,31 @@ def build_shots_clean(raw_df: pd.DataFrame) -> pd.DataFrame:
     )
     df["X"] = pd.to_numeric(df[x_col], errors="coerce")
     df["Y"] = pd.to_numeric(df[y_col], errors="coerce")
-    # Shot distance
-    dist_col = _pick_col(df, ["shot_distance", "dist", "distance"], required=False)
-    if dist_col:
-        df["DIST"] = pd.to_numeric(df[dist_col], errors="coerce")
+    raw_x = _pick_col(df, ["coordinate_x_raw"])
+    raw_y = _pick_col(df, ["coordinate_y_raw"])
+    if raw_x and raw_y:
+        lateral = pd.to_numeric(df[raw_x], errors="coerce") - 25.0
+        depth = pd.to_numeric(df[raw_y], errors="coerce")
+        df["DIST"] = np.hypot(lateral, depth)
+        df["ANGLE"] = np.degrees(np.arctan2(lateral, depth))
+        zone_x, zone_y = depth, lateral
     else:
-        # Detect full-court coordinates (hoopR): X spans both halves of court.
-        # Basket is at (±41.75, 0).  Compute distance from nearest basket.
-        x_range = df["X"].max() - df["X"].min()
-        if x_range > 60:  # full-court (94-ft court → range ~90+)
-            _BASKET_X = 41.75
-            x_abs = df["X"].abs()
-            df["DIST"] = np.sqrt((x_abs - _BASKET_X) ** 2 + df["Y"] ** 2)
-        else:
-            df["DIST"] = _compute_distance(df["X"], df["Y"])
+        dist_col = _pick_col(df, ["shot_distance", "dist", "distance"])
+        df["DIST"] = pd.to_numeric(df[dist_col], errors="coerce") if dist_col else _compute_distance(df["X"], df["Y"])
+        df["ANGLE"] = _compute_angle_deg(df["X"], df["Y"])
+        zone_x, zone_y = df["X"], df["Y"]
 
-    df["ANGLE"] = _compute_angle_deg(df["X"], df["Y"])
-    # Shot value (2 or 3) — avoid generic "value" which substring-matches hoopR's score_value
-    shot_value_col = _pick_col(df, ["shot_value", "shot_pts", "shot_value_pts"], required=False)
-    is_three_col = _pick_col(df, ["is_three", "is_three_shot", "three_point_attempt"], required=False)
-
-    # hoopR score_value: 0 for misses, 2/3 for makes
-    score_value_col = _pick_col(df, ["score_value"], required=False)
-
-    if shot_value_col:
-        df["SHOT_VALUE"] = pd.to_numeric(df[shot_value_col], errors="coerce")
-    elif is_three_col:
-        df["SHOT_VALUE"] = np.where(_coerce_bool(df[is_three_col]), 3, 2)
-    elif score_value_col is not None:
-        sv = pd.to_numeric(df[score_value_col], errors="coerce").fillna(0).astype(int)
-        # For makes (score_value 2 or 3) trust the value; for misses use distance
-        df["SHOT_VALUE"] = np.where(
-            sv.isin([2, 3]), sv,
-            np.where(df["DIST"].fillna(0) >= 22.0, 3, 2)
-        )
-    else:
-        df["SHOT_VALUE"] = np.where(df["DIST"].fillna(0) >= 22.0, 3, 2)
+    # Keep the actual attempt value where supplied. A missing miss value is
+    # unknown, not a distance-based guess about which side of the line it took.
+    value_col = _pick_col(df, ["points_attempted", "shot_value", "shot_pts", "shot_value_pts"])
+    attempt_value = pd.to_numeric(df[value_col], errors="coerce") if value_col else pd.Series(np.nan, index=df.index)
+    score_value_col = _pick_col(df, ["score_value"])
+    scored = pd.to_numeric(df[score_value_col], errors="coerce") if score_value_col else pd.Series(np.nan, index=df.index)
+    description = df["text"].fillna("").astype(str)
+    explicit_three = description.str.contains(r"three[ -]point|3[ -]point", case=False, regex=True)
+    explicit_two = description.str.contains(r"two[ -]point|2[ -]point|layup|dunk|tip shot", case=False, regex=True)
+    fallback = pd.Series(np.where(explicit_three, 3.0, np.where(explicit_two, 2.0, np.nan)), index=df.index)
+    df["SHOT_VALUE"] = attempt_value.where(attempt_value.isin([2, 3]), scored.where(scored.isin([2, 3]), fallback))
     # Made / Points
     # "scoring_play" is the hoopR column (boolean: TRUE if made)
     made_col = _pick_col(df, ["shot_made", "shot_made_flag", "made", "is_made", "shot_result", "scoring_play"], required=False)
@@ -432,23 +328,32 @@ def build_shots_clean(raw_df: pd.DataFrame) -> pd.DataFrame:
         else:
             df["MADE"] = 0
 
-    df["POINTS"] = df["SHOT_VALUE"].fillna(0).astype(int) * df["MADE"].fillna(0).astype(int)
+    df["POINTS"] = scored.where(scored.isin([0, 2, 3]), df["SHOT_VALUE"] * df["MADE"]).where(df["MADE"].ne(0), 0)
     # Period + clock
     period_col = _pick_col(df, ["period", "period_number"], required=False)
     df["PERIOD"] = pd.to_numeric(df[period_col], errors="coerce") if period_col else np.nan
 
     clock_col = _pick_col(
         df,
-        ["clock_sec", "seconds_remaining", "period_time_seconds", "game_clock", "pctimestring", "clock"],
+        ["clock_sec", "seconds_remaining", "period_time_seconds", "game_clock", "pctimestring", "clock_display_value", "clock"],
         required=False,
     )
     if clock_col:
         df["CLOCK_SEC"] = df[clock_col].apply(_parse_clock_to_sec)
     else:
         df["CLOCK_SEC"] = np.nan
-    # Margin
-    margin_col = _pick_col(df, ["score_margin", "margin", "score_diff", "scoremargin"], required=False)
-    if margin_col:
+    # ESPN event scores are after the play. Remove this shot's awarded
+    # points before computing the shooting team's score margin.
+    home_score = _pick_col(df, ["home_score"])
+    away_score = _pick_col(df, ["away_score"])
+    margin_col = _pick_col(df, ["score_margin", "margin", "score_diff", "scoremargin"])
+    if home_score and away_score and score_value_col:
+        home_after = pd.to_numeric(df[home_score], errors="coerce")
+        away_after = pd.to_numeric(df[away_score], errors="coerce")
+        home_before = home_after - scored.where(df["HOME_FLAG"], 0)
+        away_before = away_after - scored.where(~df["HOME_FLAG"], 0)
+        df["MARGIN"] = np.where(df["HOME_FLAG"], home_before - away_before, away_before - home_before)
+    elif margin_col:
         df["MARGIN"] = df[margin_col].apply(_parse_margin)
     else:
         df["MARGIN"] = np.nan
@@ -476,7 +381,7 @@ def build_shots_clean(raw_df: pd.DataFrame) -> pd.DataFrame:
     # Zone
     df["ZONE"] = [
         zone_from_xy(x, y, d) if np.isfinite(x) and np.isfinite(y) else "unknown"
-        for x, y, d in zip(df["X"], df["Y"], df["DIST"])
+        for x, y, d in zip(zone_x, zone_y, df["DIST"])
     ]
 
     keep_cols = [
@@ -500,6 +405,10 @@ def build_shots_clean(raw_df: pd.DataFrame) -> pd.DataFrame:
         "SHOOTER_ID",
     ]
 
+    event_id_col = _pick_col(df, ["id", "event_id"])
+    if event_id_col:
+        df["EVENT_ID"] = df[event_id_col].astype(str)
+        keep_cols.append("EVENT_ID")
     clean = df[keep_cols].copy()
 
     # Drop rows missing core fields

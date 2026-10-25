@@ -1,11 +1,10 @@
 {
-  "agg_parquet": "/Users/gurkasahan/Downloads/bgs-pspi 2/backend/data/pbp/shots_agg.parquet",
   "fingerprint": {
     "schema_version": "agg_v1",
-    "source_mtime_ns": 1770111729033430299,
-    "source_path": "/Users/gurkasahan/Downloads/bgs-pspi 2/backend/data/pbp/shots_clean.parquet",
-    "source_size": 12430637
+    "source_mtime_ns": 1792949403055382271,
+    "source_path": "/Users/gurkasahan/Developer/NBAPlayRanker/backend/data/pbp/shots_clean.parquet",
+    "source_sha256": "sha256:d2f647a048959ce14b798a3fe3f0b47e9eba860d7ecb35bec7b67d9968d657a4",
+    "source_size": 21561041
   },
-  "league_parquet": "/Users/gurkasahan/Downloads/bgs-pspi 2/backend/data/pbp/shots_agg_league.parquet",
-  "notes": "Aggregates derived from shots_clean.parquet (shot_aggregates.py)."
+  "notes": "Rebuilt from verified hoopR source events; provenance in *.parquet.source.json."
 }

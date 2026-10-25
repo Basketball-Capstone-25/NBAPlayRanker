@@ -1,3 +1,4 @@
+import { normalizeShotAnalysis, type ShotAnalysis } from "../domain/shot-analysis";
 /** API client: all fetch helpers for the FastAPI backend. */
 
 export const API_BASE =
@@ -30,6 +31,8 @@ export const FALLBACK_TEAMS = [
 import { createClient } from "../../lib/supabase/client";
 import { localExportUrl } from "./export-contract";
 import { parseDataQualityReport, type DataQualityReport } from "./data-quality";
+import { parseDatasetCatalog, type DatasetMetadata, type DictionaryColumn } from "./dataset-catalog";
+import type { CoachingConditions } from "../domain/gameplan-context";
 
 /** Get Authorization headers for the current Supabase session. */
 async function getAuthHeaders(): Promise<Record<string, string>> {
@@ -53,7 +56,13 @@ async function fetchJson<T>(url: string): Promise<T> {
     const text = await res.text();
     throw new Error(`API error ${res.status}: ${text}`);
   }
-  return (await res.json()) as T;
+  const body = await res.json();
+  if (body && typeof body === "object" && !Array.isArray(body)) {
+    body.dataset_version = res.headers.get("X-Dataset-Version") || body.dataset_version;
+    const versions = res.headers.get("X-Dataset-Versions");
+    if (versions) body.dataset_versions = JSON.parse(versions);
+  }
+  return body as T;
 }
 
 export async function postJson<T>(url: string, body: unknown): Promise<T> {
@@ -113,6 +122,16 @@ export async function fetchDataQualityReport(signal?: AbortSignal): Promise<Data
     if (error instanceof TypeError) throw new Error("Could not reach the data-check service. Please try again.");
     throw error;
   }
+}
+
+export async function fetchDatasetCatalog(signal?: AbortSignal): Promise<DatasetMetadata[]> {
+  return parseDatasetCatalog(await fetchJsonWithStatus<unknown>(`${API_BASE}/meta/datasets`, signal));
+}
+
+export async function fetchDataDictionary(signal?: AbortSignal): Promise<{ columns: DictionaryColumn[] }> {
+  const data = await fetchJsonWithStatus<{ columns: DictionaryColumn[] }>(`${API_BASE}/meta/data-dictionary`, signal);
+  if (!Array.isArray(data?.columns)) throw new Error("Data Dictionary unavailable.");
+  return data;
 }
 
 /**
@@ -193,6 +212,8 @@ export type TeamPlaytypesPreviewResponse = {
 };
 
 export type BaselineRankResponse = {
+  dataset_versions?: Record<string, string>;
+  dataset_version?: string;
   season: string;
   our_team: string;
   opp_team: string;
@@ -203,6 +224,8 @@ export type BaselineRankResponse = {
 };
 
 export type ContextRankResponse = {
+  dataset_versions?: Record<string, string>;
+  dataset_version?: string;
   season: string;
   our_team: string;
   opp_team: string;
@@ -216,6 +239,8 @@ export type ContextRankResponse = {
 };
 
 export type ModelMetricsResponse = {
+  dataset_versions?: Record<string, string>;
+  dataset_version?: string;
   n_splits: number;
   metrics: Array<{
     model: string;
@@ -281,6 +306,9 @@ export type ShotHeatmapResponse = {
 };
 
 export type ShotModelMetricsResponse = {
+  source_sha256?: string;
+  best_model?: string;
+  later_season?: import("../domain/shot-analysis").ShotLaterSeason;
   n_splits: number;
   metrics: Array<{
     model: string;
@@ -293,14 +321,7 @@ export type ShotModelMetricsResponse = {
   }>;
 };
 
-export type ShotMlAnalysisResponse = {
-  dataset: any;
-  eda: any;
-  correlations: { labels: string[]; matrix: number[][] };
-  target_feature_corr: Array<{ feature: string; corr: number; abs: number }>;
-  feature_selection: any;
-  model_selection: any;
-};
+export type ShotMlAnalysisResponse = ShotAnalysis;
 
 // Dataset2: PBP meta options for dropdowns
 export type PbpMetaOptions = {
@@ -501,7 +522,7 @@ export async function baselineRank(opts: {
     pppDef: Number(r.PPP_DEF_SHRUNK),
     pppGap: Number(r.PPP_GAP),
     rationale: r.RATIONALE || "",
-    raw: r,
+    raw: { ...r, dataset_versions: data.dataset_versions },
   }));
 }
 
@@ -538,6 +559,7 @@ export async function contextRank(opts: {
   timeRemaining: number; // seconds remaining in current period
   k?: number;
   wOff?: number;
+  coaching?: CoachingConditions;
 }): Promise<
   Array<{
     playType: string;
@@ -572,6 +594,8 @@ export async function contextRank(opts: {
     w_off: String(wOff),
   });
 
+  if (opts.coaching) params.set("coaching", JSON.stringify(opts.coaching));
+
   const data = await fetchJson<ContextRankResponse>(
     `${API_BASE}/rank-plays/context-ml?${params.toString()}`
   );
@@ -586,7 +610,7 @@ export async function contextRank(opts: {
     deltaPPP: Number(r.DELTA_VS_BASELINE),
     contextLabel: r.CONTEXT_LABEL || "",
     rationale: r.RATIONALE || "",
-    raw: r,
+    raw: { ...r, dataset_versions: data.dataset_versions },
   }));
 }
 
@@ -823,7 +847,7 @@ export async function fetchShotMlAnalysis(opts?: {
   );
 
   // Normalize so pages can safely access correlation_filter.threshold, kept, etc.
-  return normalizeAnalysisResponse<ShotMlAnalysisResponse>(raw);
+  return normalizeShotAnalysis(raw);
 }
 
 export async function fetchShotModelMetrics(

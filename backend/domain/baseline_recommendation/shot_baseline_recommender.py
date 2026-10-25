@@ -5,6 +5,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
+from infrastructure.data_access.dataset_metadata import read_versioned_parquet
 
 from domain.baseline_recommendation.interfaces import IShotBaselineRecommender
 from domain.shot_analysis.shot_aggregates import AGG_PARQUET
@@ -159,8 +160,8 @@ class ShotBaselineRecommender(IShotBaselineRecommender):
         if not league_path.exists():
             raise FileNotFoundError(league_path)
 
-        self.agg_df = pd.read_parquet(agg_path)
-        self.league_df = pd.read_parquet(league_path)
+        self.agg_df = read_versioned_parquet(agg_path)
+        self.league_df = read_versioned_parquet(league_path)
         # ADDED: lightweight meta caches for dropdowns (no parquet scans later)
         # Used by /pbp/meta/options (and any other UI dropdown needs)
         self.available_seasons: List[str] = (

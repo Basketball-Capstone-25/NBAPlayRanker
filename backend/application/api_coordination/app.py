@@ -27,7 +27,10 @@ import pandas as pd
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, JSONResponse
+from application.api_coordination.readiness import readiness_report
+from application.api_coordination.dataset_endpoints import create_dataset_router
+from infrastructure.data_access.dataset_metadata import read_versioned_csv, read_versioned_parquet, source_version
 
 from application.api_coordination.auth_dependency import require_auth, require_role
 
@@ -107,17 +110,8 @@ def _cors_origins() -> List[str]:
     return origins
 
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=_cors_origins(),
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-    expose_headers=["X-Data-Quality"],
-)
-
 DATA_DIR = Path(__file__).parent.parent.parent / "data"
-SYNERGY_CSV = DATA_DIR / "synergy_playtypes_2019_2025_players.csv"
+SYNERGY_CSV = Path(os.environ.get("SYNERGY_CSV_PATH", DATA_DIR / "synergy_playtypes_2019_2025_players.csv"))
 ML_PRED_CSV = DATA_DIR / "ml_offense_ppp_predictions.csv"
 
 # Dataset 1 → Dataset 2 team‑abbreviation aliases.
@@ -132,10 +126,16 @@ def _normalize_team_abbr(abbr: str) -> str:
     return _TEAM_ALIAS.get(abbr, abbr)
 
 # Load baseline tables ONCE and reuse (fast for multi-user requests).
-rec = BaselineRecommender(str(SYNERGY_CSV))
-app.include_router(create_topk_uplift_router(rec, SYNERGY_CSV))
-app.include_router(create_calibration_router(rec.team_df, rec.league_df))
-app.include_router(create_data_quality_router(lambda: rec.raw_df))
+try:
+    rec = BaselineRecommender(str(SYNERGY_CSV))
+except (OSError, ValueError, KeyError) as exc:
+    rec = None
+    logger.error("Play-type data unavailable: %s (%s). Check /ready.", SYNERGY_CSV.name, type(exc).__name__)
+if rec is not None:
+    app.include_router(create_topk_uplift_router(rec, SYNERGY_CSV))
+    app.include_router(create_calibration_router(rec.team_df, rec.league_df))
+    app.include_router(create_data_quality_router(lambda: rec.raw_df))
+app.include_router(create_dataset_router(lambda: rec.raw_df if rec is not None else None))
 # SCRUM-479: rankings are blocked (or flagged) when the loaded source fails its checks.
 data_quality_gate = DataQualityGate(lambda: rec.raw_df)
 install_data_quality_header(app, data_quality_gate, ("/rank-plays/",))
@@ -143,15 +143,18 @@ install_data_quality_header(app, data_quality_gate, ("/rank-plays/",))
 # Cache ML predictions ONCE (if file exists).
 ML_PRED_DF: Optional[pd.DataFrame] = None
 if ML_PRED_CSV.exists():
-    ML_PRED_DF = pd.read_csv(ML_PRED_CSV)
+    try:
+        ML_PRED_DF = read_versioned_csv(ML_PRED_CSV)
+    except (OSError, ValueError):
+        logger.error("Saved play-type predictions are unreadable.")
 
 SHOT_REC: Optional[ShotBaselineRecommender] = None
 SHOT_CLEAN_DF: Optional[pd.DataFrame] = None
 
 # Precompute meta options from the dataset so we don’t hardcode team/season lists.
-VALID_SEASONS = sorted(rec.team_df["SEASON"].dropna().unique().tolist())
-VALID_TEAMS = sorted(rec.team_df["TEAM_ABBREVIATION"].dropna().unique().tolist())
-VALID_PLAYTYPES = sorted(rec.team_df["PLAY_TYPE"].dropna().unique().tolist())
+VALID_SEASONS = sorted(rec.team_df["SEASON"].dropna().unique().tolist()) if rec is not None else []
+VALID_TEAMS = sorted(rec.team_df["TEAM_ABBREVIATION"].dropna().unique().tolist()) if rec is not None else []
+VALID_PLAYTYPES = sorted(rec.team_df["PLAY_TYPE"].dropna().unique().tolist()) if rec is not None else []
 VALID_SIDES = ["offense", "defense"]
 
 TEAM_NAMES: Dict[str, str] = {}
@@ -194,18 +197,11 @@ def _get_shot_rec() -> ShotBaselineRecommender:
     return SHOT_REC
 
 def _get_shots_clean_df() -> pd.DataFrame:
-    global SHOT_CLEAN_DF
-    if SHOT_CLEAN_DF is None:
-        if not CLEAN_PARQUET.exists():
-            raise HTTPException(
-                status_code=400,
-                detail=(
-                    "shots_clean.parquet not found. Run:\n"
-                    "  python backend/data/etl/build_pbp_pipeline.py"
-                ),
-            )
-        SHOT_CLEAN_DF = pd.read_parquet(CLEAN_PARQUET)
-    return SHOT_CLEAN_DF
+    from infrastructure.data_access.shot_plot_data import get_shot_plot_df
+    try:
+        return get_shot_plot_df()
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=400, detail="Shot data is unavailable. Run the shot data pipeline.") from exc
 
 # Health
 
@@ -213,12 +209,31 @@ def _get_shots_clean_df() -> pd.DataFrame:
 def health() -> Dict[str, str]:
     return {"status": "ok"}
 
+@app.get("/ready")
+def ready():
+    report = readiness_report(os.environ, source_loaded=rec is not None, predictions_loaded=ML_PRED_DF is not None)
+    return JSONResponse(report, status_code=200 if report["ready"] else 503)
+
+@app.middleware("http")
+async def dataset_state(request, call_next):
+    if rec is None and request.url.path not in {"/health", "/ready", "/openapi.json", "/docs", "/docs/oauth2-redirect", "/meta/datasets", "/meta/data-dictionary"}:
+        return JSONResponse({"detail": "Play-type data is unavailable. Check /ready."}, status_code=503)
+    response = await call_next(request)
+    path = request.url.path
+    if rec is not None and response.status_code < 400 and path.startswith(("/data/", "/rank-plays/", "/metrics/", "/analysis/", "/export/")) and "shot" not in path and path not in {"/export/report", "/rank-plays/context-ml"}:
+        import json
+        versions = {"synergy": rec.raw_df.attrs.get("dataset_version", "unavailable")}
+        response.headers["X-Dataset-Version"] = versions["synergy"]
+        response.headers["X-Dataset-Versions"] = json.dumps(versions)
+    return response
+
 # Meta endpoints (used by frontend dropdowns + defense explanations)
 
 @app.get("/meta/options", dependencies=[Depends(require_auth)])
 def meta_options() -> Dict[str, Any]:
     """Dropdown options for the frontend."""
     return {
+        "dataset_version": rec.raw_df.attrs.get("dataset_version"),
         "seasons": VALID_SEASONS,
         "teams": VALID_TEAMS,
         "teamNames": TEAM_NAMES,
@@ -312,6 +327,7 @@ def team_playtypes(
             "total_rows": total,
             "returned_rows": len(records),
             "rows": records,
+            "dataset_version": rec.raw_df.attrs.get("dataset_version"),
         }
     )
 
@@ -341,6 +357,7 @@ def team_playtypes_csv(
         df = df[df["POSS"] >= float(min_poss)]
 
     df = df.replace({np.nan: None})
+    df["DATASET_VERSION"] = rec.raw_df.attrs.get("dataset_version")
 
     import io
 
@@ -427,6 +444,7 @@ def rank_baseline_csv(
     import io
 
     buffer = io.StringIO()
+    df["DATASET_VERSION"] = rec.raw_df.attrs.get("dataset_version", "unavailable")
     df.to_csv(buffer, index=False)
     buffer.seek(0)
 
@@ -449,8 +467,18 @@ def rank_context_ml(
     time_remaining: float = Query(..., ge=0, le=720),
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.7, ge=0, le=1),
+    coaching: Optional[str] = Query(None, max_length=2000, description="JSON object of supported coaching conditions."),
 ) -> Dict[str, Any]:
-    """AI use case:"""
+    """Rank play types using the numeric situation and supported coaching conditions."""
+    from pydantic import ValidationError
+    from application.api_coordination.coaching_conditions import CoachingConditions
+
+    try:
+        conditions = CoachingConditions.model_validate_json(coaching) if coaching is not None else CoachingConditions()
+    except ValidationError:
+        raise HTTPException(status_code=422, detail="Unsupported or invalid coaching conditions.")
+    if period == 5 and time_remaining > 300:
+        raise HTTPException(status_code=422, detail="Overtime clock must be between 0 and 300 seconds.")
     _require_season(season)
     _require_team(our, "our")
     _require_team(opp, "opponent")
@@ -470,6 +498,7 @@ def rank_context_ml(
             k=k,
             w_off=float(w_off),
             w_def=w_def,
+            context=conditions.model_dump(exclude_none=True),
         )
     except (ValueError, FileNotFoundError) as e:
         raise HTTPException(status_code=400, detail=str(e))
@@ -493,7 +522,9 @@ def rank_context_ml(
     out_cols = [c for c in out_cols if c in df.columns]
     rankings = _df_to_records(df[out_cols])
 
-    return jsonable_encoder(
+    versions = df.attrs.get("dataset_versions", {})
+    import json
+    return JSONResponse(content=jsonable_encoder(
         {
             "season": season,
             "our_team": our,
@@ -502,11 +533,13 @@ def rank_context_ml(
             "margin": float(margin),
             "period": int(period),
             "time_remaining_period_sec": float(time_remaining),
+            "coaching_conditions": conditions.model_dump(exclude_none=True),
+            "dataset_versions": versions,
             "w_off": float(w_off),
             "w_def": float(w_def),
             "rankings": rankings,
         }
-    )
+    ), headers={"X-Dataset-Versions": json.dumps(versions)})
 
 # Model evaluation endpoint (defense evidence)
 
@@ -545,21 +578,8 @@ def baseline_vs_ml(
 def shot_models_metrics(
     n_splits: int = Query(5, ge=2, le=10, description="GroupKFold splits by GAME_ID."),
 ) -> Dict[str, Any]:
-    summary_df, _ = run_shot_model_cv(n_splits=int(n_splits), random_state=42)
-    metrics: List[Dict[str, Any]] = []
-    for model_name, row in summary_df.iterrows():
-        metrics.append(
-            {
-                "model": model_name,
-                "RMSE_mean": float(row["RMSE_mean"]),
-                "RMSE_std": float(row["RMSE_std"]),
-                "MAE_mean": float(row["MAE_mean"]),
-                "MAE_std": float(row["MAE_std"]),
-                "R2_mean": float(row["R2_mean"]),
-                "R2_std": float(row["R2_std"]),
-            }
-        )
-    return jsonable_encoder({"n_splits": int(n_splits), "metrics": metrics})
+    from application.api_coordination.pbp_phase2_endpoints import saved_shot_result
+    return saved_shot_result("metrics", n_splits)
 
 @app.get("/analysis/ml", dependencies=[Depends(require_role("analytics"))])
 def ml_statistical_analysis(
@@ -581,8 +601,8 @@ def shot_statistical_analysis(
     n_splits: int = Query(5, ge=2, le=10),
     refresh: bool = Query(False),
 ) -> Dict[str, Any]:
-    payload = compute_shot_ml_analysis(n_splits=int(n_splits), force_refresh=bool(refresh))
-    return jsonable_encoder(payload)
+    from application.api_coordination.pbp_phase2_endpoints import saved_shot_result
+    return saved_shot_result("analysis", n_splits, refresh)
 
 # SportyPy visualization endpoint
 
@@ -642,7 +662,7 @@ def viz_playtype_zones(
 
     return {"caption": caption, "image_base64": png_bytes_to_base64(png)}
 
-@app.get("/shotplan/rank", dependencies=[Depends(require_role("shotplan"))])
+@app.get("/shotplan/rank", dependencies=[Depends(require_role("shot_tools"))])
 def rank_shotplan(
     season: str = Query(...),
     our: str = Query(..., description="Our team abbreviation."),
@@ -650,6 +670,8 @@ def rank_shotplan(
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.7, ge=0, le=1),
 ) -> Dict[str, Any]:
+    from application.api_coordination.shot_data_guard import require_valid_shot_data
+    require_valid_shot_data()
     w_def = float(1.0 - w_off)
     rec_shot = _get_shot_rec()
     our_n = _normalize_team_abbr(our)
@@ -674,7 +696,7 @@ def rank_shotplan(
         }
     )
 
-@app.get("/viz/shot-heatmap", dependencies=[Depends(require_role("viz"))])
+@app.get("/viz/shot-heatmap", dependencies=[Depends(require_role("shot_tools"))])
 def viz_shot_heatmap(
     season: str = Query(...),
     our: str = Query(...),
@@ -682,6 +704,8 @@ def viz_shot_heatmap(
     shot_type: Optional[str] = Query(None),
     zone: Optional[str] = Query(None),
 ) -> Dict[str, Any]:
+    from application.api_coordination.shot_data_guard import require_valid_shot_data
+    require_valid_shot_data()
     # Lazy import to avoid SportyPy import issues at startup
     try:
         from infrastructure.visualization_and_export.viz_shot_heatmap import render_shot_heatmap_png, png_bytes_to_base64
@@ -719,6 +743,8 @@ def export_shotplan_pdf(
     shot_type: Optional[str] = Query(None),
     zone: Optional[str] = Query(None),
 ) -> StreamingResponse:
+    from application.api_coordination.shot_data_guard import require_valid_shot_data
+    require_valid_shot_data()
     try:
         from application.recommendation_services.export_shotplan_pdf import build_shotplan_pdf
     except Exception as e:
@@ -752,4 +778,16 @@ def export_shotplan_pdf(
 # Routers (must be registered AFTER app/rec/meta are defined)
 
 app.include_router(create_pdf_router(rec, VALID_SEASONS, VALID_TEAMS, TEAM_NAMES))
-app.include_router(create_export_report_router(rec, VALID_SEASONS, VALID_TEAMS, SYNERGY_CSV))
+if rec is not None:
+    app.include_router(create_export_report_router(rec, VALID_SEASONS, VALID_TEAMS, SYNERGY_CSV))
+
+# Install last so preflight and early readiness/auth errors keep their CORS
+# headers. Browser clients can then read the actual service error.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=_cors_origins(),
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["X-Data-Quality", "X-Dataset-Version", "X-Dataset-Versions"],
+)

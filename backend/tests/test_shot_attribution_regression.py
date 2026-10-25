@@ -1,4 +1,4 @@
-"""Shot-team regression checks; run with --runxfail to inspect open defects.
+"""Shot-team regression checks against event participants and rebuilt data.
 
 The synthetic events state the shooting-team identity independently of the
 game's home team and score. Dataset checks read only the retained clean file.
@@ -12,14 +12,6 @@ import pytest
 from domain.shot_analysis.shot_etl import build_shots_clean
 
 
-KNOWN_ATTRIBUTION_DEFECT = pytest.mark.xfail(
-    strict=True,
-    raises=AssertionError,
-    reason="SCRUM-538: shot attribution repair is pending in the dataset and ETL.",
-)
-
-
-@KNOWN_ATTRIBUTION_DEFECT
 @pytest.mark.parametrize("home_score", [0, 42])
 def test_shooting_team_and_opponent_follow_event_team_id(home_score):
     raw = pd.DataFrame(
@@ -58,14 +50,12 @@ def clean_shot_identities():
 
 
 @pytest.mark.integration
-@KNOWN_ATTRIBUTION_DEFECT
 def test_clean_shots_never_list_the_shooting_team_as_its_opponent(clean_shot_identities):
     invalid = clean_shot_identities["TEAM_ABBR"].eq(clean_shot_identities["OPP_ABBR"])
     assert not invalid.any(), f"{int(invalid.sum())} of {len(invalid)} shots have identical team and opponent"
 
 
 @pytest.mark.integration
-@KNOWN_ATTRIBUTION_DEFECT
 def test_complete_game_groups_include_both_shooting_teams(clean_shot_identities):
     # A complete NBA game with at least 100 recorded shots must contain both
     # shooting teams. Tiny/partial samples are deliberately excluded.

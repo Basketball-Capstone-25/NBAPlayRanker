@@ -7,6 +7,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import StreamingResponse
 
 from application.api_coordination.auth_dependency import require_auth, require_role
+from application.api_coordination.shot_data_guard import require_valid_shot_data
 
 from infrastructure.data_access import get_shots_csv_response, get_shots_json, render_pbp_heatmap_base64
 from application.recommendation_services.pbp_shotplan import get_shotplan_json, get_shotplan_meta_options
@@ -122,7 +123,7 @@ def pbp_shots_csv(
     )
 
 
-@router.get("/shotplan", dependencies=[Depends(require_role("shotplan"))])
+@router.get("/shotplan", dependencies=[Depends(require_role("shot_tools")), Depends(require_valid_shot_data)])
 def pbp_shotplan(
     season: str = Query(...),
     our: str = Query(..., description="Our team abbreviation"),
@@ -135,7 +136,7 @@ def pbp_shotplan(
 
 
 # Compatibility alias: some callers expect /pbp/shotplan/rank
-@router.get("/shotplan/rank", dependencies=[Depends(require_role("shotplan"))])
+@router.get("/shotplan/rank", dependencies=[Depends(require_role("shot_tools")), Depends(require_valid_shot_data)])
 def pbp_shotplan_rank(
     season: str = Query(...),
     our: str = Query(..., description="Our team abbreviation"),
@@ -147,7 +148,7 @@ def pbp_shotplan_rank(
     return jsonable_encoder(payload)
 
 
-@router.get("/viz/shot-heatmap", dependencies=[Depends(require_role("viz"))])
+@router.get("/viz/shot-heatmap", dependencies=[Depends(require_role("shot_tools")), Depends(require_valid_shot_data)])
 def pbp_viz_shot_heatmap(
     season: str = Query(...),
     our: str = Query(...),
@@ -174,7 +175,7 @@ def pbp_viz_shot_heatmap(
 
 
 # Compatibility alias: some callers expect /pbp/viz/heatmap and send `team=`
-@router.get("/viz/heatmap", dependencies=[Depends(require_role("viz"))])
+@router.get("/viz/heatmap", dependencies=[Depends(require_role("shot_tools")), Depends(require_valid_shot_data)])
 def pbp_viz_heatmap(
     season: str = Query(...),
     team: str = Query(..., description="Team abbreviation (our team)"),

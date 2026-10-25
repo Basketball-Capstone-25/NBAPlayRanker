@@ -19,6 +19,7 @@ _ROLE_PERMISSIONS: Dict[str, set] = {
     "recommendation": {"coach"},
     "viz": {"coach"},
     "shotplan": {"coach"},
+    "shot_tools": {"coach", "analyst"},
     "analytics": {"analyst"},
     "data": {"analyst"},
     "shot_analysis": {"analyst"},

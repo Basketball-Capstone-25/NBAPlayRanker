@@ -36,7 +36,8 @@ def test_baseline_csv_matches_the_ranking_page():
     )
     rows = list(csv.DictReader(io.StringIO(res.text)))
     assert [row["PLAY_TYPE"] for row in rows] == [row["PLAY_TYPE"] for row in page]
-    assert list(rows[0]) == list(page[0])
+    assert list(rows[0]) == [*list(page[0]), "Dataset versions"]
+    assert "sha256:" in rows[0]["Dataset versions"]
 
 
 def test_json_carries_the_same_rows_as_csv():

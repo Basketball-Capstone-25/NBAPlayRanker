@@ -3,6 +3,19 @@ from __future__ import annotations
 import base64
 from io import BytesIO
 from typing import Optional, Tuple
+from threading import RLock
+from functools import wraps
+
+_RENDER_LOCK = RLock()
+
+def _serialized_render(function):
+    @wraps(function)
+    def render(*args, **kwargs):
+        # Matplotlib has process-wide drawing state. Keep concurrent requests
+        # from changing that state while another image is being rendered.
+        with _RENDER_LOCK:
+            return function(*args, **kwargs)
+    return render
 
 import numpy as np
 import pandas as pd
@@ -38,9 +51,7 @@ def _filter_shots(
     shot_type: Optional[str],
     zone: Optional[str],
 ) -> pd.DataFrame:
-    df = shots_df.copy()
-    df = df[df["SEASON_STR"] == season]
-    df = df[df["TEAM_ABBR"] == our_team]
+    df = shots_df.loc[(shots_df["SEASON_STR"] == season) & (shots_df["TEAM_ABBR"] == our_team)]
     if "OPP_ABBR" in df.columns and opp_team:
         df = df[df["OPP_ABBR"] == opp_team]
     if shot_type:
@@ -104,9 +115,14 @@ def _coords_to_sportypy_halfcourt(
         x = x_raw.copy()
         y = y_raw.copy()
 
-        # Ensure everything lands on the displayed half (rotate opposite end 180°)
-        mask = (x * side_sign) < 0
-        if mask.any():
+        if "HOME_FLAG" in df:
+            # hoopR home shots attack +X and away shots -X. Rotate by the
+            # attacking basket so a heave keeps its actual distance/direction.
+            orientation = np.where(df["HOME_FLAG"].to_numpy(dtype=bool)[ok], 1.0, -1.0) * side_sign
+            x *= orientation
+            y *= orientation
+        else:
+            mask = (x * side_sign) < 0
             x[mask] = -x[mask]
             y[mask] = -y[mask]
         return x, y
@@ -145,6 +161,7 @@ def _coords_to_sportypy_halfcourt(
     return x.astype(float), y.astype(float)
 
 
+@_serialized_render
 def render_shot_heatmap_png(
     *,
     shots_df: pd.DataFrame,
@@ -213,8 +230,11 @@ def render_shot_heatmap_png(
     x0, x1 = ax.get_xlim()
     xmin, xmax = (min(x0, x1) - 2.0), (max(x0, x1) + 2.0)
     on = (x >= xmin) & (x <= xmax) & (np.abs(y) <= 30.0)
+    outside_half_court = int((~on).sum())
     x = x[on]
     y = y[on]
+    if outside_half_court:
+        fig.text(0.5, 0.01, f"{outside_half_court} attempts outside the displayed half court", ha="center", fontsize=8)
 
     if x.size == 0:
         ax.set_title(title or "Shot Heatmap", fontsize=14, weight="bold")

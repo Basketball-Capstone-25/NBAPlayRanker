@@ -1,0 +1,50 @@
+[
+  {
+    "name": "play_by_play_2021.parquet",
+    "bytes": 18649937,
+    "sha256": "ed5e89e6acc90e4c4e88dbe54d57477e1abb7f6e0380ebbbf94fa72c805fd51a",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2021.parquet",
+    "asset_updated_at": "2026-10-18T11:15:14Z",
+    "downloaded_at": "2026-10-25T17:25:22.939955+00:00"
+  },
+  {
+    "name": "play_by_play_2022.parquet",
+    "bytes": 21189481,
+    "sha256": "0fe5435bdd30187b8d8c5eb27bdf187821274a231f04608f15a46b5b59035f82",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2022.parquet",
+    "asset_updated_at": "2026-10-18T11:18:46Z",
+    "downloaded_at": "2026-10-25T17:25:26.242354+00:00"
+  },
+  {
+    "name": "play_by_play_2023.parquet",
+    "bytes": 20987371,
+    "sha256": "f3fac3a58cf1be8813f1f4332edb7fc8d83936df703892a700095d62f71da886",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2023.parquet",
+    "asset_updated_at": "2026-10-18T11:22:04Z",
+    "downloaded_at": "2026-10-25T17:25:23.651947+00:00"
+  },
+  {
+    "name": "play_by_play_2024.parquet",
+    "bytes": 20598361,
+    "sha256": "bda57bcb4f8aae57428979ac4a0f766f67c52c770d85b0e7fcf7237a333704b0",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2024.parquet",
+    "asset_updated_at": "2026-10-18T11:26:01Z",
+    "downloaded_at": "2026-10-25T17:25:27.921624+00:00"
+  },
+  {
+    "name": "play_by_play_2025.parquet",
+    "bytes": 21409425,
+    "sha256": "71d7d02671268f793f13a13d1a8a271cba1241cd9ba28c3a363a3f16ad56acc7",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2025.parquet",
+    "asset_updated_at": "2026-10-18T11:29:40Z",
+    "downloaded_at": "2026-10-25T17:25:30.844705+00:00"
+  },
+  {
+    "name": "play_by_play_2026.parquet",
+    "bytes": 22274408,
+    "sha256": "f7051c5c0c5b605419fcc0e0c13dd90df7803f96dab290554c1ef737433a98b2",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2026.parquet",
+    "asset_updated_at": "2026-10-18T11:33:36Z",
+    "downloaded_at": "2026-10-25T17:25:32.000138+00:00"
+  }
+]

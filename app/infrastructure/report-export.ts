@@ -16,9 +16,17 @@ export function resultKey(filters: Record<string, ExportScalar>): string {
 
 const numberOrNull = (value: number): number | null => Number.isFinite(value) ? value : null;
 
+function capturedVersions(value: unknown): Record<string, string> | "Unavailable" {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return "Unavailable";
+  const entries = Object.entries(value);
+  if (!entries.length || !entries.every(([key, version]) => /^[a-z][a-z0-9_]{0,63}$/.test(key)
+    && typeof version === "string" && /^(sha256:[a-f0-9]{64}|unavailable)$/.test(version))) return "Unavailable";
+  return Object.fromEntries(entries);
+}
+
 export function baselineReport(
   filters: ReportPayload["filters"],
-  rows: { playType: string; pppPred: number; pppOff: number; pppDef: number; pppGap: number }[],
+  rows: { playType: string; pppPred: number; pppOff: number; pppDef: number; pppGap: number; raw?: Record<string, unknown> }[],
 ): ReportPayload {
   return {
     report: "baseline_rankings", filters: { ...filters },
@@ -28,14 +36,15 @@ export function baselineReport(
       "Our PPP": numberOrNull(row.pppOff), "Opponent PPP": numberOrNull(row.pppDef),
       "PPP gap": numberOrNull(row.pppGap),
     })),
-    metadata: { title: "Matchup rankings", source: "displayed result snapshot" },
+    metadata: { title: "Matchup rankings", source: "displayed result snapshot",
+      dataset_versions: capturedVersions(rows[0]?.raw?.dataset_versions) },
   };
 }
 
 export function contextReport(
   filters: ReportPayload["filters"],
   rows: { playType: string; finalPPP_display: number; mlPPP: number; baselinePPP: number;
-    deltaPPP_display: number; overlay: { overlayPPP: number } }[],
+    deltaPPP_display: number; overlay: { overlayPPP: number }; raw?: Record<string, unknown> }[],
 ): ReportPayload {
   return {
     report: "context_rankings", filters: { ...filters },
@@ -46,11 +55,13 @@ export function contextReport(
       "Change in PPP": numberOrNull(row.deltaPPP_display), "Overlay PPP": numberOrNull(row.overlay.overlayPPP),
     })),
     metadata: { title: "Context rankings", source: "displayed result snapshot",
+      dataset_versions: capturedVersions(rows[0]?.raw?.dataset_versions),
       limitations: "Final PPP includes the selected context overlay. These are modeled rankings, not observed outcomes." },
   };
 }
 
 export function metricsReport(data: {
+  dataset_versions?: Record<string, string>;
   n_splits: number;
   metrics: { model: string; RMSE_mean: number; RMSE_std: number; MAE_mean: number; MAE_std: number; R2_mean: number; R2_std: number }[];
   rf_vs_baseline_t: number | null;
@@ -65,6 +76,7 @@ export function metricsReport(data: {
       "R2 mean": numberOrNull(row.R2_mean), "R2 SD": numberOrNull(row.R2_std),
     })),
     metadata: { title: "Holdout model metrics", source: "displayed result snapshot",
+      dataset_versions: capturedVersions(data.dataset_versions),
       rf_vs_baseline_t: data.rf_vs_baseline_t, rf_vs_baseline_p: data.rf_vs_baseline_p,
       limitations: "Retrospective holdout evaluation; this table does not establish pre-game forecast accuracy." },
   };
