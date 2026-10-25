@@ -1,0 +1,17 @@
+{
+  "finished_at_utc": "2026-10-25T17:59:40.641905+00:00",
+  "revision_under_test": "nba-playranker-api-00009-cqm",
+  "sessions_opened": 2,
+  "sessions": [
+    {
+      "status": 204,
+      "passed": true
+    },
+    {
+      "status": 204,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "campaign_error_type": null
+}

@@ -1,0 +1,15 @@
+{
+  "result": "Pass",
+  "downloaded_at": "2026-10-25T18:31:54.108990+00:00",
+  "bytes": 699,
+  "rows": 3,
+  "source_version": "sha256:d2f647a048959ce14b798a3fe3f0b47e9eba860d7ecb35bec7b67d9968d657a4",
+  "sha256": "bd00ab9e1fc5c3cdbc911ee0af2f9d98442371baf01d63c5ecc26898da7663ba",
+  "frontend_commit": "78ed99c",
+  "models": {
+    "gbr": 1.1659827389651474,
+    "ridge": 1.1705626054254767,
+    "rf": 1.171580239869161
+  },
+  "initial_failure": "The prior link with a download attribute created no file; the new navigation link saved this CSV."
+}

@@ -1,0 +1,12 @@
+{
+  "checked_at_utc": "2026-10-25T17:27:51.629016+00:00",
+  "source_commit": "45973ed5bb0a8fdadbf8e314d0f34adad4ddfc9b",
+  "build_source_commit": "45973ed5bb0a8fdadbf8e314d0f34adad4ddfc9b",
+  "tracked_paths_scanned": 636,
+  "browser_build_files_scanned": 38,
+  "known_private_values_compared": 3,
+  "findings": [],
+  "tracked_private_filenames": [],
+  "passed": true,
+  "limits": "Scans tracked file bytes, known local private values and browser static bundles. It does not prove absence of every possible secret, inspect inaccessible credentials, or replace account recovery tests."
+}

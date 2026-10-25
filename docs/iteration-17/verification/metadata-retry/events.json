@@ -1,0 +1,572 @@
+{
+  "started_at_utc": "2026-10-25T18:28:25.944Z",
+  "scope": "Local synthetic source files through the actual backend catalog and browser metadata panel/API parser.",
+  "production_requests": 0,
+  "credentials_used": false,
+  "substitutions": [
+    "Supabase session returns null; authentication is not under test.",
+    "Next Link renders an ordinary anchor."
+  ],
+  "sources": [
+    {
+      "file": "app/ui/data-explorer/DatasetMetadataPanel.tsx",
+      "sha256": "201f4f4478cf39650613bea0cf68c1196a02f7403a35cab8dbf5f102ab3f2cb6"
+    },
+    {
+      "file": "app/infrastructure/api-client.ts",
+      "sha256": "fc181971f3b1523c915ccadc135ff7159ac3f2f84145dce1c27c30fc9119108d"
+    },
+    {
+      "file": "app/infrastructure/dataset-catalog.ts",
+      "sha256": "898c99be33cee80a9d3bcc6345257c54a5e0ed0f36bbf6b2e7268af1b2c51593"
+    },
+    {
+      "file": "backend/infrastructure/data_access/dataset_metadata.py",
+      "sha256": "ff36982fc94294228f4f3eca7c6d30170f5fcde3bb9692493df708f0eabde524"
+    }
+  ],
+  "fixture_checks": {
+    "valid_source_rows": true,
+    "missing_source_named": true,
+    "corrupt_source_named": true,
+    "valid_source_survives_corrupt_source": true,
+    "malformed_sidecar_keeps_source_and_unknown_date": true
+  },
+  "fixtures": {
+    "valid": [
+      {
+        "id": "synergy",
+        "name": "Play-type source rows",
+        "file": "synergy_playtypes_2019_2025_players.csv",
+        "source": "NBA Stats / Synergy via hoopR",
+        "status": "available",
+        "version": "sha256:fed45ab816e04c2e11c466d835f8cf9fdf5497ce9a304800c6bebd52e952c269",
+        "pulled_at": null,
+        "seasons": [
+          "2023-24",
+          "2024-25"
+        ],
+        "row_count": 3,
+        "columns": [
+          "SEASON",
+          "POSS",
+          "PPP"
+        ],
+        "warnings": [
+          "Original pull date was not recorded for this snapshot."
+        ]
+      },
+      {
+        "id": "ml_predictions",
+        "name": "Saved play-type predictions",
+        "file": "ml_offense_ppp_predictions.csv",
+        "source": "Project play-type model",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shots",
+        "name": "Cleaned shot events",
+        "file": "pbp/shots_clean.parquet",
+        "source": "ESPN play-by-play via hoopR / sportsdataverse; project ETL",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shots_canonical",
+        "name": "Shot explorer events",
+        "file": "pbp/cache/shots_canonical.parquet",
+        "source": "Project shot ETL",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shot_aggregates",
+        "name": "Team shot aggregates",
+        "file": "pbp/shots_agg.parquet",
+        "source": "Project shot ETL",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shot_league",
+        "name": "League shot aggregates",
+        "file": "pbp/shots_agg_league.parquet",
+        "source": "Project shot ETL",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      }
+    ],
+    "corrupt_source": [
+      {
+        "id": "synergy",
+        "name": "Play-type source rows",
+        "file": "synergy_playtypes_2019_2025_players.csv",
+        "source": "NBA Stats / Synergy via hoopR",
+        "status": "available",
+        "version": "sha256:fed45ab816e04c2e11c466d835f8cf9fdf5497ce9a304800c6bebd52e952c269",
+        "pulled_at": null,
+        "seasons": [
+          "2023-24",
+          "2024-25"
+        ],
+        "row_count": 3,
+        "columns": [
+          "SEASON",
+          "POSS",
+          "PPP"
+        ],
+        "warnings": [
+          "Original pull date was not recorded for this snapshot."
+        ]
+      },
+      {
+        "id": "ml_predictions",
+        "name": "Saved play-type predictions",
+        "file": "ml_offense_ppp_predictions.csv",
+        "source": "Project play-type model",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shots",
+        "name": "Cleaned shot events",
+        "file": "pbp/shots_clean.parquet",
+        "source": "ESPN play-by-play via hoopR / sportsdataverse; project ETL",
+        "status": "unavailable",
+        "error": "Dataset file could not be read.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shots_canonical",
+        "name": "Shot explorer events",
+        "file": "pbp/cache/shots_canonical.parquet",
+        "source": "Project shot ETL",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shot_aggregates",
+        "name": "Team shot aggregates",
+        "file": "pbp/shots_agg.parquet",
+        "source": "Project shot ETL",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shot_league",
+        "name": "League shot aggregates",
+        "file": "pbp/shots_agg_league.parquet",
+        "source": "Project shot ETL",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      }
+    ],
+    "malformed_sidecar": [
+      {
+        "id": "synergy",
+        "name": "Play-type source rows",
+        "file": "synergy_playtypes_2019_2025_players.csv",
+        "source": "NBA Stats / Synergy via hoopR",
+        "status": "available",
+        "version": "sha256:fed45ab816e04c2e11c466d835f8cf9fdf5497ce9a304800c6bebd52e952c269",
+        "pulled_at": null,
+        "seasons": [
+          "2023-24",
+          "2024-25"
+        ],
+        "row_count": 3,
+        "columns": [
+          "SEASON",
+          "POSS",
+          "PPP"
+        ],
+        "warnings": [
+          "Original pull date was not recorded for this snapshot."
+        ]
+      },
+      {
+        "id": "ml_predictions",
+        "name": "Saved play-type predictions",
+        "file": "ml_offense_ppp_predictions.csv",
+        "source": "Project play-type model",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shots",
+        "name": "Cleaned shot events",
+        "file": "pbp/shots_clean.parquet",
+        "source": "ESPN play-by-play via hoopR / sportsdataverse; project ETL",
+        "status": "unavailable",
+        "error": "Dataset file could not be read.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shots_canonical",
+        "name": "Shot explorer events",
+        "file": "pbp/cache/shots_canonical.parquet",
+        "source": "Project shot ETL",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shot_aggregates",
+        "name": "Team shot aggregates",
+        "file": "pbp/shots_agg.parquet",
+        "source": "Project shot ETL",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      },
+      {
+        "id": "shot_league",
+        "name": "League shot aggregates",
+        "file": "pbp/shots_agg_league.parquet",
+        "source": "Project shot ETL",
+        "status": "unavailable",
+        "error": "Dataset file is missing.",
+        "version": null,
+        "pulled_at": null,
+        "seasons": [],
+        "row_count": null,
+        "columns": []
+      }
+    ],
+    "checks": {
+      "valid_source_rows": true,
+      "missing_source_named": true,
+      "corrupt_source_named": true,
+      "valid_source_survives_corrupt_source": true,
+      "malformed_sidecar_keeps_source_and_unknown_date": true
+    }
+  },
+  "events": [
+    {
+      "at_utc": "2026-10-25T18:28:25.969Z",
+      "kind": "fixture_started",
+      "origin": "http://127.0.0.1:52778"
+    },
+    {
+      "at_utc": "2026-10-25T18:30:13.563Z",
+      "kind": "component_state",
+      "scenario": "service-error",
+      "text": "Data source\n\nLoading dataset details…\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "Loading dataset details…",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:30:14.266Z",
+      "kind": "catalog_response",
+      "scenario": "service-error",
+      "attempt": 1,
+      "status": 503
+    },
+    {
+      "at_utc": "2026-10-25T18:30:14.276Z",
+      "kind": "component_state",
+      "scenario": "service-error",
+      "text": "Data source\n\nDataset metadata unavailable. Try again. Retry\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "Dataset metadata unavailable. Try again. Retry",
+      "status": "",
+      "retry_visible": true,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:30:19.730Z",
+      "kind": "component_state",
+      "scenario": "service-error",
+      "text": "Data source\n\nLoading dataset details…\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "Loading dataset details…",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:30:20.426Z",
+      "kind": "catalog_response",
+      "scenario": "service-error",
+      "attempt": 2,
+      "status": 200,
+      "fixture": "valid"
+    },
+    {
+      "at_utc": "2026-10-25T18:30:20.436Z",
+      "kind": "component_state",
+      "scenario": "service-error",
+      "text": "Data source\nSource\nNBA Stats / Synergy via hoopR\nSeasons covered\n2023-24, 2024-25\nSource rows\n3\nSource details\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:30:32.964Z",
+      "kind": "component_state",
+      "scenario": "invalid-json",
+      "text": "Data source\n\nLoading dataset details…\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "Loading dataset details…",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:30:33.666Z",
+      "kind": "catalog_response",
+      "scenario": "invalid-json",
+      "attempt": 1,
+      "status": 200,
+      "body_kind": "invalid_json"
+    },
+    {
+      "at_utc": "2026-10-25T18:30:33.671Z",
+      "kind": "component_state",
+      "scenario": "invalid-json",
+      "text": "Data source\n\nDataset metadata unavailable. Try again. Retry\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "Dataset metadata unavailable. Try again. Retry",
+      "status": "",
+      "retry_visible": true,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:30:47.880Z",
+      "kind": "component_state",
+      "scenario": "invalid-json",
+      "text": "Data source\n\nLoading dataset details…\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "Loading dataset details…",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:30:48.581Z",
+      "kind": "catalog_response",
+      "scenario": "invalid-json",
+      "attempt": 2,
+      "status": 200,
+      "fixture": "valid"
+    },
+    {
+      "at_utc": "2026-10-25T18:30:48.586Z",
+      "kind": "component_state",
+      "scenario": "invalid-json",
+      "text": "Data source\nSource\nNBA Stats / Synergy via hoopR\nSeasons covered\n2023-24, 2024-25\nSource rows\n3\nSource details\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:30:56.516Z",
+      "kind": "component_state",
+      "scenario": "invalid-schema",
+      "text": "Data source\n\nLoading dataset details…\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "Loading dataset details…",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:30:57.217Z",
+      "kind": "catalog_response",
+      "scenario": "invalid-schema",
+      "attempt": 1,
+      "status": 200,
+      "body_kind": "invalid_schema"
+    },
+    {
+      "at_utc": "2026-10-25T18:30:57.223Z",
+      "kind": "component_state",
+      "scenario": "invalid-schema",
+      "text": "Data source\n\nDataset metadata unavailable. Try again. Retry\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "Dataset metadata unavailable. Try again. Retry",
+      "status": "",
+      "retry_visible": true,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:31:31.621Z",
+      "kind": "component_state",
+      "scenario": "invalid-schema",
+      "text": "Data source\n\nLoading dataset details…\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "Loading dataset details…",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:31:32.314Z",
+      "kind": "catalog_response",
+      "scenario": "invalid-schema",
+      "attempt": 2,
+      "status": 200,
+      "fixture": "valid"
+    },
+    {
+      "at_utc": "2026-10-25T18:31:32.317Z",
+      "kind": "component_state",
+      "scenario": "invalid-schema",
+      "text": "Data source\nSource\nNBA Stats / Synergy via hoopR\nSeasons covered\n2023-24, 2024-25\nSource rows\n3\nSource details\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:31:41.520Z",
+      "kind": "component_state",
+      "scenario": "corrupt-source",
+      "text": "Data source\n\nLoading dataset details…\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "Loading dataset details…",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:31:42.221Z",
+      "kind": "catalog_response",
+      "scenario": "corrupt-source",
+      "attempt": 1,
+      "status": 200,
+      "fixture": "corrupt_source"
+    },
+    {
+      "at_utc": "2026-10-25T18:31:42.229Z",
+      "kind": "component_state",
+      "scenario": "corrupt-source",
+      "text": "Data source\nSource\nNBA Stats / Synergy via hoopR\nSeasons covered\n2023-24, 2024-25\nSource rows\n3\nSource details\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:31:52.600Z",
+      "kind": "component_state",
+      "scenario": "malformed-sidecar",
+      "text": "Data source\n\nLoading dataset details…\n\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "Loading dataset details…",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:31:53.301Z",
+      "kind": "catalog_response",
+      "scenario": "malformed-sidecar",
+      "attempt": 1,
+      "status": 200,
+      "fixture": "malformed_sidecar"
+    },
+    {
+      "at_utc": "2026-10-25T18:31:53.306Z",
+      "kind": "component_state",
+      "scenario": "malformed-sidecar",
+      "text": "Data source\nSource\nNBA Stats / Synergy via hoopR\nSeasons covered\n2023-24, 2024-25\nSource rows\n3\nSource details\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:32:10.893Z",
+      "kind": "component_state",
+      "scenario": "malformed-sidecar",
+      "text": "Data source\nSource\nNBA Stats / Synergy via hoopR\nSeasons covered\n2023-24, 2024-25\nSource rows\n3\nSource details\n\nThe preview combines player rows into team totals.\n\nOriginal pull date\nNot recorded for this snapshot\nFile version\nsha256:fed45ab816e04c2e11c466d835f8cf9fdf5497ce9a304800c6bebd52e952c269\nOpen Data Dictionary",
+      "heading": "Data source",
+      "alert": "",
+      "status": "",
+      "retry_visible": false,
+      "retry_disabled": false
+    },
+    {
+      "at_utc": "2026-10-25T18:33:40.770Z",
+      "kind": "fixture_stopped"
+    }
+  ]
+}

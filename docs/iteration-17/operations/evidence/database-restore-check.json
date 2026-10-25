@@ -1,0 +1,316 @@
+{
+  "checked_at": "2026-10-25T18:10:45.046809+00:00",
+  "scope": "Logical restore into a disposable local Supabase database; production was not restored or modified.",
+  "postgres_version": "17.11",
+  "target": "supabase_db_capstone-recovery-oct25",
+  "network_listening_enabled": false,
+  "backup_files": [
+    {
+      "file": "roles.sql",
+      "bytes": 297,
+      "sha256": "25873cec56a2cc6514e204f420231777f85c03da818caa7090cdcdfa89776ecd",
+      "completed_at": "2026-10-25T18:01:08.284593+00:00"
+    },
+    {
+      "file": "schema.sql",
+      "bytes": 11763,
+      "sha256": "3f1cfc01718818e3d393127e198a41f6831195a69d6308b25aacaac2d70edd69",
+      "completed_at": "2026-10-25T18:00:40.969142+00:00"
+    },
+    {
+      "file": "data.sql",
+      "bytes": 29262,
+      "sha256": "b585b9bb596ee53667be1848adced68b28fca593398bb2889ac68ad352fa54f0",
+      "completed_at": "2026-10-25T18:01:23.053658+00:00"
+    },
+    {
+      "file": "history-schema.sql",
+      "bytes": 1116,
+      "sha256": "ae56295c7e66a8b46ab50df6f00cf57f7866f2478a17fbe3910d9def39e836ab",
+      "completed_at": "2026-10-25T18:06:31.152590+00:00"
+    },
+    {
+      "file": "history-data.sql",
+      "bytes": 9023,
+      "sha256": "7882e0f38122a1dc9e3a9f70a6f124d213d2662b650406c7f9e5195d960eb98c",
+      "completed_at": "2026-10-25T18:06:42.436494+00:00"
+    }
+  ],
+  "table_comparisons": [
+    {
+      "table": "auth.audit_log_entries",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.custom_oauth_providers",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.flow_state",
+      "backup_rows": 6,
+      "restored_rows": 6,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.users",
+      "backup_rows": 11,
+      "restored_rows": 11,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.identities",
+      "backup_rows": 11,
+      "restored_rows": 11,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.instances",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.oauth_clients",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.sessions",
+      "backup_rows": 6,
+      "restored_rows": 6,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.mfa_amr_claims",
+      "backup_rows": 6,
+      "restored_rows": 6,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.mfa_factors",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.mfa_challenges",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.mfa_recovery_code_sets",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.mfa_recovery_codes",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.oauth_authorizations",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.oauth_client_states",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.oauth_consents",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.one_time_tokens",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.refresh_tokens",
+      "backup_rows": 13,
+      "restored_rows": 13,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.sso_providers",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.saml_providers",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.saml_relay_states",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.scim_tokens",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.scim_users",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.sso_domains",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.webauthn_challenges",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "auth.webauthn_credentials",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "public.gameplan_notes",
+      "backup_rows": 1,
+      "restored_rows": 1,
+      "exact_values_match": true
+    },
+    {
+      "table": "public.profiles",
+      "backup_rows": 11,
+      "restored_rows": 11,
+      "exact_values_match": true
+    },
+    {
+      "table": "storage.buckets",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "storage.buckets_analytics",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "storage.buckets_vectors",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "storage.objects",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "storage.s3_multipart_uploads",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "storage.s3_multipart_uploads_parts",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "storage.vector_indexes",
+      "backup_rows": 0,
+      "restored_rows": 0,
+      "exact_values_match": true
+    },
+    {
+      "table": "supabase_migrations.schema_migrations",
+      "backup_rows": 3,
+      "restored_rows": 3,
+      "exact_values_match": true
+    }
+  ],
+  "all_copy_tables_match": true,
+  "rls": [
+    {
+      "table": "gameplan_notes",
+      "rls": true
+    },
+    {
+      "table": "profiles",
+      "rls": true
+    }
+  ],
+  "permissions": {
+    "anonymous_gameplan_select": "f",
+    "authenticated_gameplan_revision_update": "f",
+    "authenticated_gameplan_notes_update": "t",
+    "anonymous_profile_select": "f",
+    "authenticated_role_update": "f"
+  },
+  "transaction_suites": {
+    "profile_roles_verification": {
+      "passed": true,
+      "rolled_back": true
+    },
+    "gameplan_state_verification": {
+      "passed": true,
+      "rolled_back": true
+    }
+  },
+  "remaining_test_users": 0,
+  "initial_failure": {
+    "check": "Gameplan revision-column update rejected",
+    "observed": "The isolated target accepted the statement.",
+    "cause": "New target default grants added table-level privileges before the schema dump applied its narrower grants.",
+    "fix": "Reapplied the existing Gameplan migration permission block in the isolated target, then reran both transactional suites."
+  },
+  "production_restore_performed": false,
+  "deployment_rollback_performed": false,
+  "backup_encryption": {
+    "format": "Fernet authenticated encryption over a gzip tar archive",
+    "created_at": "2026-10-25T18:10:45.129390+00:00",
+    "file_count": 20,
+    "encrypted_bytes": 28108,
+    "ciphertext_sha256": "0c6d606204f62aa940682989e160be7254607991a415c5585174e33462f83f57",
+    "decryption_and_all_file_hashes_verified": true,
+    "separate_private_key_file": true,
+    "backup_and_key_mode": "0600",
+    "private_directory_mode": "0700",
+    "plaintext_scratch_files_removed": 20,
+    "backup_location": "Private project recovery workspace, outside Git and submission packages",
+    "key_location": "Separate private configuration directory, outside the backup bundle"
+  },
+  "cleanup": {
+    "completed_at": "2026-10-25T18:11:14.725262+00:00",
+    "scoped_project": "capstone-recovery-oct25",
+    "disposable_container_removed": true,
+    "disposable_volume_removed": true,
+    "other_running_containers_preserved": true,
+    "other_running_container_count": 5
+  }
+}

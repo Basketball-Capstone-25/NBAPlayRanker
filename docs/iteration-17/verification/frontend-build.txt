@@ -1,0 +1,53 @@
+
+> bgs-pspi@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.28
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 1189ms
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/22) ...
+   Generating static pages (5/22) 
+   Generating static pages (10/22) 
+   Generating static pages (16/22) 
+ ✓ Generating static pages (22/22)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                      162 B         106 kB
+├ ○ /_not-found                            994 B         104 kB
+├ ƒ /api/exports                           130 B         103 kB
+├ ƒ /api/exports/report                    130 B         103 kB
+├ ƒ /auth/callback                         130 B         103 kB
+├ ○ /context                             12.5 kB         179 kB
+├ ○ /data-dictionary                     1.12 kB         167 kB
+├ ○ /data-explorer                       6.91 kB         173 kB
+├ ○ /forgot-password                     1.24 kB         162 kB
+├ ○ /gameplan                              13 kB         176 kB
+├ ○ /glossary                            10.6 kB         117 kB
+├ ○ /login                               2.12 kB         163 kB
+├ ○ /matchup                               11 kB         177 kB
+├ ○ /model-metrics                         12 kB         178 kB
+├ ○ /reset-password                      1.53 kB         162 kB
+├ ○ /shot-explorer                       2.75 kB         169 kB
+├ ○ /shot-heatmap                        3.72 kB         170 kB
+├ ○ /shot-model-metrics                  3.77 kB         170 kB
+├ ○ /shot-plan                           3.49 kB         170 kB
+├ ○ /shot-statistical-analysis            1.8 kB         168 kB
+├ ○ /signup                               2.1 kB         163 kB
+└ ○ /statistical-analysis                7.43 kB         173 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/255-b1e2483a7e02feee.js       46.6 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.94 kB
+
+
+ƒ Middleware                             82.8 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

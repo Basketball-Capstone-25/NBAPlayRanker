@@ -1,0 +1,26 @@
+{
+  "recorded_at_utc": "2026-10-25T17:50:12.386657+00:00",
+  "base_commit": "5fac9deafab1d73df911fbd05831d2c2eb363f97",
+  "working_tree_changes_present": true,
+  "component": "app/ui/gameplan/_components/GameplanClient.tsx",
+  "sections": [
+    {
+      "section": "// SCRUM-483:",
+      "unchanged": true,
+      "sha256": "04f5caf9669b9281f23bd61d277271fb4d3befb81e9b331197944d947f6711b5"
+    },
+    {
+      "section": "const matchup = useMemo",
+      "unchanged": true,
+      "sha256": "3e304753aa7c8707c192edac31706a00489c16d84b3dec1ff826c3fc58d624ad"
+    }
+  ],
+  "sync_module_unchanged": true,
+  "sync_module_sha256": "e5b4a9afac142e6c7bd0b70510ad2c1440f1d8c6c2c14be2e2f527d526a56f1c",
+  "command": "npx vitest run tests/gameplan-sync.test.ts tests/gameplan-context.test.ts --maxWorkers=1",
+  "result": {
+    "passed": 13,
+    "failed": 0
+  },
+  "scope": "Preservation of the shared Gameplan sync implementation and passing sync/context unit tests. Live cross-device saving is a separate check."
+}

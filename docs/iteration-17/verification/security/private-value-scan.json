@@ -1,0 +1,13 @@
+{
+  "scope": "Tracked and nonignored new worktree files; .next output excluding cache; known private environment values and test account passwords only. Public publishable values excluded.",
+  "credential_values_checked": 2,
+  "files_scanned": 930,
+  "bytes_scanned": 133569195,
+  "matches": [],
+  "read_errors": [],
+  "passed": true,
+  "recorded_at_utc": "2026-10-25T17:50:12.386657+00:00",
+  "scope_note": "Working source and existing local build output at review time. This is not a scan of every historical commit or a later deployment.",
+  "base_commit": "5fac9deafab1d73df911fbd05831d2c2eb363f97",
+  "working_tree_changes_present": true
+}

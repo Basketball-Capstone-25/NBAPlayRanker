@@ -1,0 +1,152 @@
+{
+  "created_at": "2026-10-25T17:49:24.770Z",
+  "board_id": 4,
+  "source": "getJiraBoardIssueData dataset=board",
+  "cases": [
+    {
+      "key": "BST-191",
+      "summary": "Dataset versions follow file contents",
+      "status": "Verify",
+      "parent": "BST-104",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-487"
+      ]
+    },
+    {
+      "key": "BST-192",
+      "summary": "API results and downloads keep the source version",
+      "status": "Verify",
+      "parent": "BST-104",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-487",
+        "SCRUM-486"
+      ]
+    },
+    {
+      "key": "BST-193",
+      "summary": "Dataset metadata matches the loaded files",
+      "status": "Verify",
+      "parent": "BST-104",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-488",
+        "SCRUM-489"
+      ]
+    },
+    {
+      "key": "BST-194",
+      "summary": "Missing metadata stays visible and does not hide valid sources",
+      "status": "Verify",
+      "parent": "BST-104",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-488",
+        "SCRUM-489"
+      ]
+    },
+    {
+      "key": "BST-195",
+      "summary": "Data Dictionary explains the current columns",
+      "status": "Verify",
+      "parent": "BST-104",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-498"
+      ]
+    },
+    {
+      "key": "BST-196",
+      "summary": "Unknown columns are marked as undocumented",
+      "status": "Verify",
+      "parent": "BST-104",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-498"
+      ]
+    },
+    {
+      "key": "BST-197",
+      "summary": "Dataset metadata and dictionary require a valid session",
+      "status": "Verify",
+      "parent": "BST-104",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-488",
+        "SCRUM-498"
+      ]
+    },
+    {
+      "key": "BST-198",
+      "summary": "Saved shot results must match the source and fold selection",
+      "status": "Verify",
+      "parent": "BST-114",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-543",
+        "SCRUM-538"
+      ]
+    },
+    {
+      "key": "BST-199",
+      "summary": "Overtime accepts a five-minute clock and rejects longer input",
+      "status": "Verify",
+      "parent": "BST-137",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-541"
+      ]
+    },
+    {
+      "key": "BST-200",
+      "summary": "Unsupported coaching inputs cannot silently alter rankings",
+      "status": "Verify",
+      "parent": "BST-137",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-540"
+      ]
+    },
+    {
+      "key": "BST-201",
+      "summary": "The call label uses the first displayed ranked play",
+      "status": "Verify",
+      "parent": "BST-137",
+      "type_id": "10012",
+      "hierarchy_level": 0,
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        "SCRUM-497",
+        "BSR-152"
+      ]
+    }
+  ],
+  "checks": {
+    "all_11_on_board": true,
+    "all_verify": true,
+    "all_task_level": true,
+    "all_gurk": true,
+    "parents_and_links_preserved": true
+  }
+}

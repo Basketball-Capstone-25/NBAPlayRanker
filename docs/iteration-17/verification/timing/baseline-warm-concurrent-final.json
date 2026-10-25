@@ -1,0 +1,326 @@
+{
+  "endpoint": "/rank-plays/baseline",
+  "base_url": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app",
+  "revision_under_test": "nba-playranker-api-00010-jp4",
+  "matchup": {
+    "season": "2024-25",
+    "our": "TOR",
+    "opp": "BOS",
+    "k": 5,
+    "w_off": 0.7
+  },
+  "started_at": "2026-10-25T18:23:36.694929+00:00",
+  "timing_scope": "Client elapsed time through complete response body and validation",
+  "percentile_method": "Nearest rank; ceil(0.95*n)",
+  "thresholds_ms": {
+    "warm": 5000,
+    "two_concurrent": 10000,
+    "first_after_idle": 45000
+  },
+  "samples": [
+    {
+      "sample": "priming",
+      "started_at": "2026-10-25T18:23:36.695071+00:00",
+      "finished_at": "2026-10-25T18:23:37.295601+00:00",
+      "elapsed_ms": 600.569,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_1",
+      "started_at": "2026-10-25T18:23:37.295669+00:00",
+      "finished_at": "2026-10-25T18:23:37.699488+00:00",
+      "elapsed_ms": 403.848,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_2",
+      "started_at": "2026-10-25T18:23:37.699535+00:00",
+      "finished_at": "2026-10-25T18:23:38.270240+00:00",
+      "elapsed_ms": 570.73,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_3",
+      "started_at": "2026-10-25T18:23:38.270276+00:00",
+      "finished_at": "2026-10-25T18:23:38.730094+00:00",
+      "elapsed_ms": 459.847,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_4",
+      "started_at": "2026-10-25T18:23:38.730139+00:00",
+      "finished_at": "2026-10-25T18:23:39.056675+00:00",
+      "elapsed_ms": 326.569,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_5",
+      "started_at": "2026-10-25T18:23:39.056732+00:00",
+      "finished_at": "2026-10-25T18:23:39.363582+00:00",
+      "elapsed_ms": 306.862,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_6",
+      "started_at": "2026-10-25T18:23:39.363604+00:00",
+      "finished_at": "2026-10-25T18:23:39.670950+00:00",
+      "elapsed_ms": 307.383,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_7",
+      "started_at": "2026-10-25T18:23:39.671013+00:00",
+      "finished_at": "2026-10-25T18:23:39.991277+00:00",
+      "elapsed_ms": 320.288,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_8",
+      "started_at": "2026-10-25T18:23:39.991324+00:00",
+      "finished_at": "2026-10-25T18:23:40.387213+00:00",
+      "elapsed_ms": 395.904,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_9",
+      "started_at": "2026-10-25T18:23:40.387234+00:00",
+      "finished_at": "2026-10-25T18:23:40.669616+00:00",
+      "elapsed_ms": 282.396,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_10",
+      "started_at": "2026-10-25T18:23:40.669635+00:00",
+      "finished_at": "2026-10-25T18:23:41.054069+00:00",
+      "elapsed_ms": 384.456,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_11",
+      "started_at": "2026-10-25T18:23:41.054101+00:00",
+      "finished_at": "2026-10-25T18:23:41.376175+00:00",
+      "elapsed_ms": 322.099,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_12",
+      "started_at": "2026-10-25T18:23:41.376216+00:00",
+      "finished_at": "2026-10-25T18:23:41.709583+00:00",
+      "elapsed_ms": 333.395,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_13",
+      "started_at": "2026-10-25T18:23:41.709630+00:00",
+      "finished_at": "2026-10-25T18:23:42.113742+00:00",
+      "elapsed_ms": 404.147,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_14",
+      "started_at": "2026-10-25T18:23:42.113800+00:00",
+      "finished_at": "2026-10-25T18:23:42.417993+00:00",
+      "elapsed_ms": 304.218,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_15",
+      "started_at": "2026-10-25T18:23:42.418040+00:00",
+      "finished_at": "2026-10-25T18:23:42.740976+00:00",
+      "elapsed_ms": 322.948,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_16",
+      "started_at": "2026-10-25T18:23:42.740996+00:00",
+      "finished_at": "2026-10-25T18:23:43.051175+00:00",
+      "elapsed_ms": 310.207,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_17",
+      "started_at": "2026-10-25T18:23:43.051225+00:00",
+      "finished_at": "2026-10-25T18:23:43.353326+00:00",
+      "elapsed_ms": 302.128,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_18",
+      "started_at": "2026-10-25T18:23:43.353373+00:00",
+      "finished_at": "2026-10-25T18:23:43.769422+00:00",
+      "elapsed_ms": 416.084,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_19",
+      "started_at": "2026-10-25T18:23:43.769480+00:00",
+      "finished_at": "2026-10-25T18:23:44.221865+00:00",
+      "elapsed_ms": 452.424,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "warm_20",
+      "started_at": "2026-10-25T18:23:44.221924+00:00",
+      "finished_at": "2026-10-25T18:23:44.544698+00:00",
+      "elapsed_ms": 322.801,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "pair_1_1",
+      "started_at": "2026-10-25T18:23:44.545174+00:00",
+      "finished_at": "2026-10-25T18:23:44.916105+00:00",
+      "elapsed_ms": 370.953,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "pair_1_2",
+      "started_at": "2026-10-25T18:23:44.545573+00:00",
+      "finished_at": "2026-10-25T18:23:44.900685+00:00",
+      "elapsed_ms": 355.139,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "pair_2_1",
+      "started_at": "2026-10-25T18:23:44.916324+00:00",
+      "finished_at": "2026-10-25T18:23:45.327140+00:00",
+      "elapsed_ms": 410.844,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "pair_2_2",
+      "started_at": "2026-10-25T18:23:44.916599+00:00",
+      "finished_at": "2026-10-25T18:23:45.336908+00:00",
+      "elapsed_ms": 420.338,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "pair_3_1",
+      "started_at": "2026-10-25T18:23:45.337140+00:00",
+      "finished_at": "2026-10-25T18:23:45.691995+00:00",
+      "elapsed_ms": 354.872,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "pair_3_2",
+      "started_at": "2026-10-25T18:23:45.337446+00:00",
+      "finished_at": "2026-10-25T18:23:45.673679+00:00",
+      "elapsed_ms": 336.253,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "pair_4_1",
+      "started_at": "2026-10-25T18:23:45.692206+00:00",
+      "finished_at": "2026-10-25T18:23:46.071096+00:00",
+      "elapsed_ms": 378.895,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "pair_4_2",
+      "started_at": "2026-10-25T18:23:45.692509+00:00",
+      "finished_at": "2026-10-25T18:23:46.070234+00:00",
+      "elapsed_ms": 377.748,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "pair_5_1",
+      "started_at": "2026-10-25T18:23:46.071208+00:00",
+      "finished_at": "2026-10-25T18:23:46.407286+00:00",
+      "elapsed_ms": 336.106,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    },
+    {
+      "sample": "pair_5_2",
+      "started_at": "2026-10-25T18:23:46.071391+00:00",
+      "finished_at": "2026-10-25T18:23:46.420689+00:00",
+      "elapsed_ms": 349.321,
+      "status": 200,
+      "valid_response": true,
+      "error": null
+    }
+  ],
+  "results": {
+    "warm": {
+      "requests": 20,
+      "p95_ms": 459.847,
+      "min_ms": 282.396,
+      "max_ms": 570.73,
+      "threshold_ms": 5000,
+      "pass": true
+    },
+    "two_concurrent": {
+      "requests": 10,
+      "p95_ms": 420.338,
+      "min_ms": 336.106,
+      "max_ms": 420.338,
+      "threshold_ms": 10000,
+      "pass": true
+    }
+  },
+  "limitations": [
+    "Bounded functional timing sample; not a sustained-load capacity test.",
+    "Confirm the supplied revision and idle/startup state against service request logs."
+  ],
+  "startup_state": "Not assessed by this phase; priming request is not a cold-start measurement.",
+  "finished_at": "2026-10-25T18:23:46.420989+00:00",
+  "pass": true
+}

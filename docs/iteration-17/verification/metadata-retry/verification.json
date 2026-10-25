@@ -1,0 +1,103 @@
+{
+  "checked_at_utc": "2026-10-25T18:34:04.145059+00:00",
+  "scope": "Local synthetic source files through the actual backend catalog and browser metadata panel/API parser.",
+  "passed": true,
+  "check_count": 22,
+  "checks": [
+    {
+      "name": "five backend source fixture assertions passed",
+      "passed": true
+    },
+    {
+      "name": "no production credentials used",
+      "passed": true
+    },
+    {
+      "name": "service-error: unavailable panel retained",
+      "passed": true
+    },
+    {
+      "name": "service-error: Retry shown and enabled",
+      "passed": true
+    },
+    {
+      "name": "service-error: valid source recovered after error",
+      "passed": true
+    },
+    {
+      "name": "service-error: two catalog responses",
+      "passed": true
+    },
+    {
+      "name": "invalid-json: unavailable panel retained",
+      "passed": true
+    },
+    {
+      "name": "invalid-json: Retry shown and enabled",
+      "passed": true
+    },
+    {
+      "name": "invalid-json: valid source recovered after error",
+      "passed": true
+    },
+    {
+      "name": "invalid-json: two catalog responses",
+      "passed": true
+    },
+    {
+      "name": "invalid-schema: unavailable panel retained",
+      "passed": true
+    },
+    {
+      "name": "invalid-schema: Retry shown and enabled",
+      "passed": true
+    },
+    {
+      "name": "invalid-schema: valid source recovered after error",
+      "passed": true
+    },
+    {
+      "name": "invalid-schema: two catalog responses",
+      "passed": true
+    },
+    {
+      "name": "corrupt-source: valid source remains visible",
+      "passed": true
+    },
+    {
+      "name": "malformed-sidecar: valid source remains visible",
+      "passed": true
+    },
+    {
+      "name": "malformed source date stays unknown in expanded panel",
+      "passed": true
+    },
+    {
+      "name": "fixture server stopped",
+      "passed": true
+    },
+    {
+      "name": "source unchanged: app/ui/data-explorer/DatasetMetadataPanel.tsx",
+      "passed": true
+    },
+    {
+      "name": "source unchanged: app/infrastructure/api-client.ts",
+      "passed": true
+    },
+    {
+      "name": "source unchanged: app/infrastructure/dataset-catalog.ts",
+      "passed": true
+    },
+    {
+      "name": "source unchanged: backend/infrastructure/data_access/dataset_metadata.py",
+      "passed": true
+    }
+  ],
+  "events_sha256": "d0c07853c9254c49adb70fb75f3bc56e2ec793f7b5763afec84d81c71e65b72b",
+  "source_file": "events.json",
+  "auth_scope": [
+    "Supabase session returns null; authentication is not under test.",
+    "Next Link renders an ordinary anchor."
+  ],
+  "production_requests": 0
+}

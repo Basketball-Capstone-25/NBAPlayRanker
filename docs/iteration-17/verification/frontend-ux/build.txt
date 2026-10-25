@@ -1,0 +1,16 @@
+Command: npm run build
+Captured excerpts from the completed run; no second run was performed for this record.
+
+> bgs-pspi@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.28
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 1171ms
+   Linting and checking validity of types ...
+   Collecting page data ...
+ ✓ Generating static pages (22/22)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Exit code: 0

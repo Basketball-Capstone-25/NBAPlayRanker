@@ -1,0 +1,9 @@
+
+ RUN  v4.1.12 /Users/gurkasahan/Developer/NBAPlayRanker
+
+
+ Test Files  17 passed (17)
+      Tests  168 passed (168)
+   Start at  14:13:49
+   Duration  345ms (transform 2.06s, setup 0ms, import 2.73s, tests 263ms, environment 1ms)
+

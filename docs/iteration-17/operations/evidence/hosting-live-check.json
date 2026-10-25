@@ -1,0 +1,156 @@
+{
+  "checked_at_utc": "2026-10-25T17:26:27.939695+00:00",
+  "budgets": [
+    {
+      "name": "NBA Play Ranker Cloud Run monthly cap",
+      "amount": {
+        "specifiedAmount": {
+          "currencyCode": "CAD",
+          "units": "7"
+        }
+      },
+      "filter": {
+        "calendarPeriod": "MONTH",
+        "creditTypesTreatment": "EXCLUDE_ALL_CREDITS",
+        "projects": [
+          "projects/937082897804"
+        ],
+        "services": [
+          "services/152E-C115-5142"
+        ]
+      },
+      "thresholds": [
+        {
+          "spendBasis": "CURRENT_SPEND",
+          "thresholdPercent": 0.5
+        },
+        {
+          "spendBasis": "CURRENT_SPEND",
+          "thresholdPercent": 0.8
+        },
+        {
+          "spendBasis": "CURRENT_SPEND",
+          "thresholdPercent": 1.0
+        }
+      ],
+      "cap_state": "CONFIGURED"
+    },
+    {
+      "name": "NBA Play Ranker monthly hosting",
+      "amount": {
+        "specifiedAmount": {
+          "currencyCode": "CAD",
+          "units": "10"
+        }
+      },
+      "filter": {
+        "calendarPeriod": "MONTH",
+        "creditTypesTreatment": "INCLUDE_ALL_CREDITS",
+        "projects": [
+          "projects/937082897804"
+        ]
+      },
+      "thresholds": [
+        {
+          "spendBasis": "CURRENT_SPEND",
+          "thresholdPercent": 0.5
+        },
+        {
+          "spendBasis": "CURRENT_SPEND",
+          "thresholdPercent": 0.8
+        },
+        {
+          "spendBasis": "CURRENT_SPEND",
+          "thresholdPercent": 1.0
+        }
+      ],
+      "cap_state": null
+    }
+  ],
+  "cloud_run": {
+    "service": "nba-playranker-api",
+    "revision": "nba-playranker-api-00008-g5z",
+    "traffic": [
+      {
+        "latestRevision": true,
+        "percent": 100,
+        "revisionName": "nba-playranker-api-00008-g5z"
+      }
+    ],
+    "resources": {
+      "limits": {
+        "cpu": "1",
+        "memory": "2Gi"
+      }
+    },
+    "concurrency": 2,
+    "timeout_seconds": 300,
+    "minimum_instances": 0,
+    "maximum_instances": 2,
+    "request_cpu": true,
+    "auth_bypass_disabled": true,
+    "numeric_thread_limits": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "LOKY_MAX_CPU_COUNT": "1"
+    },
+    "environment_variable_names": [
+      "ALLOW_INSECURE_DEV_AUTH",
+      "FRONTEND_ORIGIN",
+      "LOKY_MAX_CPU_COUNT",
+      "MKL_NUM_THREADS",
+      "MPLBACKEND",
+      "NUMEXPR_NUM_THREADS",
+      "OMP_NUM_THREADS",
+      "OPENBLAS_NUM_THREADS",
+      "SUPABASE_PUBLISHABLE_KEY",
+      "SUPABASE_URL"
+    ]
+  },
+  "billing_enabled": true,
+  "current_charges_by_service": {
+    "source": "Google Cloud Billing Reports, browser; account and project-filtered views",
+    "observed_date": "2026-10-25",
+    "period_start": "2026-10-01",
+    "period_end": "2026-10-25",
+    "project": "nba-playranker",
+    "currency": "CAD",
+    "gross": 0.36,
+    "credits": -0.17,
+    "net": 0.19,
+    "services": [
+      {
+        "service": "Artifact Registry",
+        "gross": 0.17,
+        "credits": 0.0,
+        "net": 0.17
+      },
+      {
+        "service": "Cloud Storage",
+        "gross": 0.02,
+        "credits": 0.0,
+        "net": 0.02
+      },
+      {
+        "service": "Cloud Run",
+        "gross": 0.17,
+        "credits": -0.17,
+        "net": 0.0
+      }
+    ],
+    "tax": "not displayed",
+    "invoice_charges": "None displayed"
+  },
+  "forecast": {
+    "source": "Google Cloud Billing Reports, browser",
+    "period_start": "2026-10-01",
+    "period_end": "2026-10-31",
+    "currency": "CAD",
+    "net": 0.19,
+    "forecast_credits": -0.22
+  },
+  "cost_data_limit": "Reporting is delayed. This snapshot precedes the new release and its verification campaign; it does not guarantee the final invoice or future usage.",
+  "spend_or_setting_changes": false
+}

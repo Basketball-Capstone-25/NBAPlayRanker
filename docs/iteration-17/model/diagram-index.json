@@ -1,0 +1,109 @@
+{
+  "count": 17,
+  "shared_revision": 60,
+  "source": "Visual Paradigm Professional official ExportXML from committed pristine",
+  "diagrams": [
+    {
+      "diagram_id": "U37owNmGAqAALl6O",
+      "name": "Behavioural Overview - Glossary Access (UC15)",
+      "image": "diagrams/Behavioural Overview - Glossary Access (UC15).png",
+      "sha256": "bf86315f19d79f419884e54f4275dcd21fd2bf6a235f11893d331832447a2373"
+    },
+    {
+      "diagram_id": "rMy0wNmHC6keOwB1",
+      "name": "Detailed Sequence - Glossary Search and Tag Filters (UC15)",
+      "image": "diagrams/Detailed Sequence - Glossary Search and Tag Filters (UC15).png",
+      "sha256": "6347c1ca34a648ffb8d00680736d8dba37f796bb0d684dfbc479865709b08021"
+    },
+    {
+      "diagram_id": "qZVcwNmHsyjA9QB9",
+      "name": "Detailed Sequence - Glossary Access Denied (UC15)",
+      "image": "diagrams/Detailed Sequence - Glossary Access Denied (UC15).png",
+      "sha256": "7233e7eaf22f48fd8abd425ce18b531b268716dcc405ae7e32a9b1abb9c75988"
+    },
+    {
+      "diagram_id": "FAPN.wWAUAAADbeQ",
+      "name": "Behavioural Overview - Access Analyst Workspace",
+      "image": "diagrams/Behavioural Overview - Access Analyst Workspace.png",
+      "sha256": "0994400672070fcc36e5704f2f6965f3ecd9630e55ce569b654d30f28753563d"
+    },
+    {
+      "diagram_id": "uUPN.wWAUAAADbj1",
+      "name": "Behavioural Overview - Ranked List via API (Baseline)",
+      "image": "diagrams/Behavioural Overview - Ranked List via API (Baseline).png",
+      "sha256": "9097951ad5d4acdc3b1977710869af839ab7e51c0316c500b233770cacf09bde"
+    },
+    {
+      "diagram_id": "WuPN.wWAUAAADbuO",
+      "name": "Behavioural Overview - Authenticate Analyst Access",
+      "image": "diagrams/Behavioural Overview - Authenticate Analyst Access.png",
+      "sha256": "08d8ff0776f93835a700d5f980e6f63ecbdf7fa18eb30964d1166f615cec18b6"
+    },
+    {
+      "diagram_id": "j5PN.wWAUAAADbyp",
+      "name": "Detailed Sequence - Authenticate Analyst Access - Invalid or Missing Token",
+      "image": "diagrams/Detailed Sequence - Authenticate Analyst Access - Invalid or Missing Token.png",
+      "sha256": "f1191b5183998d7b76f78ae2fe22ad0aa0524f41e84d35c1edaee62a1514e784"
+    },
+    {
+      "diagram_id": "DtPN.wWAUAAADb1Q",
+      "name": "Detailed Sequence - Authenticate Analyst Access - Role Lacks Permission",
+      "image": "diagrams/Detailed Sequence - Authenticate Analyst Access - Role Lacks Permission.png",
+      "sha256": "c628dae8b35947adaed4032d243bd9efc731382f537dd5dcb3efb5b84e5b77f8"
+    },
+    {
+      "diagram_id": "4rPN.wWAUAAADb5X",
+      "name": "Behavioural Overview - Validate Coach Access",
+      "image": "diagrams/Behavioural Overview - Validate Coach Access.png",
+      "sha256": "c20c02f435475c58faab0966853f5a5fddb2ecf100a5fe6a406f3b36dd2d6c1c"
+    },
+    {
+      "diagram_id": "7vPN.wWAUAAADb82",
+      "name": "Detailed Sequence - Validate Coach Access - No Valid Session",
+      "image": "diagrams/Detailed Sequence - Validate Coach Access - No Valid Session.png",
+      "sha256": "20fd6d7adcae5035802cc99af7a214940cfff254e9bb5ae36ffa4e05832c7b5b"
+    },
+    {
+      "diagram_id": "OQvN.wWAUAAADb.6",
+      "name": "Detailed Sequence - Validate Coach Access - Role Lacks Permission",
+      "image": "diagrams/Detailed Sequence - Validate Coach Access - Role Lacks Permission.png",
+      "sha256": "79284b97c0f8fad283058de2a77f0d96ea49698d8c23b0fd210d64833d228698"
+    },
+    {
+      "diagram_id": "wSPN.wWAUAAADboU",
+      "name": "Behavioural Overview - Rank Plays with Game Context",
+      "image": "diagrams/Behavioural Overview - Rank Plays with Game Context.png",
+      "sha256": "50c7f7610dc4bceb7fc596f1c1aa378effefb540d66b5d78fddb76ea948f161a"
+    },
+    {
+      "diagram_id": "Elabcccf12e8a8ce",
+      "name": "Detailed Sequence - Analyst Top-K Uplift (475)",
+      "image": "diagrams/Detailed Sequence - Analyst Top-K Uplift (475).png",
+      "sha256": "3bf0f455f74928614284f04eb1ed92041a119159a2d8519789c7263b89cd02cd"
+    },
+    {
+      "diagram_id": "Elab86fdd4b13a52",
+      "name": "Detailed Sequence - Inspect PPP Calibration (476)",
+      "image": "diagrams/Detailed Sequence - Inspect PPP Calibration (476).png",
+      "sha256": "77933ef5ec4e1452db6afc55feb958cb586ae637ef0442c1bb68733aa1970fb4"
+    },
+    {
+      "diagram_id": "lvbrwIWAUAAADT6c",
+      "name": "Detailed Sequence - NLP Context Fallback (502)",
+      "image": "diagrams/Detailed Sequence - NLP Context Fallback (502).png",
+      "sha256": "3377ce989926739e8bc23efe6ad7f6a455841935080db7e48f0b0e52ad2aa65b"
+    },
+    {
+      "diagram_id": "cBlnwIWAUAAADWHW",
+      "name": "Detailed Sequence - Run Data Quality Checks (478)",
+      "image": "diagrams/Detailed Sequence - Run Data Quality Checks (478).png",
+      "sha256": "a8085718dfa1fd5ff792ea7c0cfeba46f605cf8d0b0c53cab95d26856d43fa91"
+    },
+    {
+      "diagram_id": "ayu3wIWAUAAADXxt",
+      "name": "Detailed Sequence - Unified Export Contract (484)",
+      "image": "diagrams/Detailed Sequence - Unified Export Contract (484).png",
+      "sha256": "2bde542dfe2ee6ce441fc26141c846ebce03a7f5fc8047d17cf08ea142b52211"
+    }
+  ]
+}

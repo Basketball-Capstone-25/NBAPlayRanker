@@ -1,0 +1,88 @@
+{
+  "started_at": "2026-10-25T18:18:41.381Z",
+  "site": "https://nbaplayranker-seven.vercel.app",
+  "frontend_commit": "fb3e7ab",
+  "checks": [
+    {
+      "name": "saved metrics source",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "source is the saved five-fold release",
+      "passed": true
+    },
+    {
+      "name": "analyst receives CSV attachment",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "CSV has private response headers",
+      "passed": true
+    },
+    {
+      "name": "CSV has expected columns",
+      "passed": true
+    },
+    {
+      "name": "CSV rows match saved numerical results",
+      "passed": true
+    },
+    {
+      "name": "CSV header matches the data version",
+      "passed": true
+    },
+    {
+      "name": "signed out rejected",
+      "passed": true,
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "name": "coach rejected",
+      "passed": true,
+      "status": 403,
+      "expected": 403
+    },
+    {
+      "name": "foreign origin rejected",
+      "passed": true,
+      "status": 403,
+      "expected": 403
+    },
+    {
+      "name": "arbitrary upstream selector rejected",
+      "passed": true,
+      "status": 400,
+      "expected": 400
+    },
+    {
+      "name": "changed source requires reload",
+      "passed": true,
+      "status": 409,
+      "expected": 409
+    }
+  ],
+  "sessions_closed": [
+    {
+      "role": "analyst",
+      "passed": true
+    },
+    {
+      "role": "coach",
+      "passed": true
+    }
+  ],
+  "files": [
+    {
+      "file": "shot_model_metrics_splits_5.csv",
+      "bytes": 699,
+      "sha256": "bd00ab9e1fc5c3cdbc911ee0af2f9d98442371baf01d63c5ecc26898da7663ba",
+      "rows": 3
+    }
+  ],
+  "completed": true,
+  "finished_at": "2026-10-25T18:18:47.664Z",
+  "passed": true
+}

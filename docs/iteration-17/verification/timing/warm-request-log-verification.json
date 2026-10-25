@@ -1,0 +1,233 @@
+{
+  "checked_at": "2026-10-25T18:04:15.143499+00:00",
+  "source": "Cloud Run request logs",
+  "request_window": {
+    "start": "2026-10-25T18:00:26.865538+00:00",
+    "end": "2026-10-25T18:00:41.167075+00:00",
+    "clock_tolerance_seconds": 2
+  },
+  "request_count": 31,
+  "expected_count": 31,
+  "requests": [
+    {
+      "timestamp": "2026-10-25T18:00:29.352523Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.590173869s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:30.070379Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.231595074s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:30.441449Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.186477397s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:30.748097Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.201048714s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:31.058620Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.216685481s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:31.584909Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.215240130s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:31.989631Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.246880562s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:32.421261Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.202557811s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:32.745726Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.204970491s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:33.065854Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.446670227s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:33.649531Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.187118550s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:33.994343Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.210958524s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:34.338001Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.197320968s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:34.663668Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.202740235s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:35.039463Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.193789246s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:35.358021Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.188479980s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:35.672662Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.195123128s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:36.090079Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.185337272s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:36.427203Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.197203535s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:36.746864Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.181191462s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:37.054565Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.184118648s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:37.523452Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.183144458s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:37.523844Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.320319541s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:37.984381Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.233730480s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:37.984575Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.199071663s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:38.366359Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.220164079s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:38.367088Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.239276520s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:38.793077Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.241940356s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:38.793449Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.253541793s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:39.239991Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.168809330s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    },
+    {
+      "timestamp": "2026-10-25T18:00:39.240554Z",
+      "revision": "nba-playranker-api-00009-cqm",
+      "status": 200,
+      "server_latency": "0.292017597s",
+      "instance_hash": "06d6b565c1a300c14ad20bd7323c376298f9c2a74ccb25811781d3cdec1dd0c4"
+    }
+  ],
+  "all_match_revision": true,
+  "all_http_200": true,
+  "passed": true
+}

@@ -1,0 +1,15 @@
+{
+  "scope": "SCRUM-640 Data Explorer and shot pages, plus the login/signup/footer wording in the shared working tree",
+  "test_command": "npx vitest run",
+  "test_files_passed": 16,
+  "tests_passed": 141,
+  "test_exit_code": 0,
+  "typescript_command": "npx tsc --noEmit",
+  "typescript_exit_code": 0,
+  "build_command": "npm run build",
+  "build_exit_code": 0,
+  "build_static_pages": 22,
+  "diff_check_exit_code": 0,
+  "logs": "Captured completed tool output; build.txt retains excerpts. These commands were not rerun to create the records.",
+  "browser_usability_test_claimed": false
+}

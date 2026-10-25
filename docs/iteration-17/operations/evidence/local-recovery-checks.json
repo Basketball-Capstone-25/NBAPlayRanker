@@ -1,0 +1,47 @@
+{
+  "checked_at_utc": "2026-10-25T17:27:04.481Z",
+  "source_commit": "45973ed5bb0a8fdadbf8e314d0f34adad4ddfc9b",
+  "checks": [
+    {
+      "name": "homepage",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "login",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "backend health",
+      "pass": true,
+      "status": 200
+    },
+    {
+      "name": "signed-out baseline",
+      "pass": true,
+      "status": 401
+    },
+    {
+      "name": "existing coach sign-in",
+      "pass": true
+    },
+    {
+      "name": "local coach recommendation",
+      "pass": true,
+      "status": 200,
+      "rows": 5,
+      "response_keys": [
+        "season",
+        "our_team",
+        "opp_team",
+        "k",
+        "w_off",
+        "w_def",
+        "rankings"
+      ]
+    }
+  ],
+  "temporary_auth_session_closed": true,
+  "passed": true
+}

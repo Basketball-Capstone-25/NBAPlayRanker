@@ -1,0 +1,39 @@
+{
+  "checked_at_utc": "2026-10-25T17:29:39.414677+00:00",
+  "supabase": {
+    "project_ref": "qdodginqubodugfeyiwi",
+    "status": "ACTIVE_HEALTHY",
+    "postgres_version": "17.6.1.084",
+    "security_advisors": [
+      {
+        "name": "auth_leaked_password_protection",
+        "severity": "WARN",
+        "title": "Leaked Password Protection Disabled",
+        "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+      }
+    ]
+  },
+  "vercel": {
+    "cli_version": "65.0.0",
+    "project": "nba_play_ranker",
+    "scope": "pearson-manufacturing",
+    "project_id": "prj_qn5meAcMT2pMIF1Y6XXInNBe96c8",
+    "production_deployment": "dpl_2AwDSgGG7k5bUQBdeUf5WcjNgdZf",
+    "production_status": "Ready",
+    "production_alias": "https://nbaplayranker-seven.vercel.app",
+    "dashboard_node_setting": "24.x",
+    "source_package_engine": "22.x"
+  },
+  "github": {
+    "authentication_verified": true,
+    "repository_read_verified": true,
+    "remote": "git@github.com:Basketball-Capstone-25/NBAPlayRanker.git"
+  },
+  "database_restore": {
+    "docker_daemon_available": false,
+    "performed": false,
+    "reason": "Docker is installed but its daemon is not running. No production database reset, restore, migration or credentials rotation was performed."
+  },
+  "recovery_contacts_confirmed_by_team": false,
+  "changes_to_access_billing_credentials": false
+}

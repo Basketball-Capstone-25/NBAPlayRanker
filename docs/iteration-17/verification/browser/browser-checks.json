@@ -1,0 +1,118 @@
+{
+  "frontend": "fb3e7ab, final download retest78ed99c",
+  "backend": "nba-playranker-api-00010-jp4",
+  "checks": [
+    {
+      "case": "BST-143",
+      "result": "Pass",
+      "role": "analyst",
+      "season": "2021-22",
+      "teams": "TOR/BOS",
+      "maxShots": 1000,
+      "observed": "Five shot types and five zones rendered; Dunk first at1.766. Heatmap rendered with376matched shots.",
+      "screenshot": "analyst-shot-plan.jpg"
+    },
+    {
+      "case": "BST-144",
+      "result": "Pass",
+      "role": "analyst",
+      "season": "2025-26",
+      "teams": "TOR/BOS",
+      "maxShots": 1000,
+      "observed": "Court heatmap rendered with352matched shots.",
+      "screenshot": "analyst-heatmap.jpg"
+    },
+    {
+      "case": "BST-146",
+      "result": "Pass",
+      "observed": "Saved five-fold results and the separate2025-26test rendered. No training controls or unsupported fold selector.",
+      "screenshot": "shot-metrics.jpg"
+    },
+    {
+      "case": "BST-147",
+      "result": "Pass",
+      "observed": "Analysis rendered200000sampled shots,7739games,6seasons and pointdistribution; methoddetails expandable; no clientcrash.",
+      "screenshot": "shot-analysis.jpg"
+    },
+    {
+      "case": "BST-195",
+      "result": "Pass",
+      "observed": "Dictionary searchMARGIN returned2documented columns with pre-shotdefinition,pointsunitandsource.",
+      "screenshot": "data-dictionary.jpg"
+    },
+    {
+      "case": "BST-193",
+      "result": "Pass",
+      "observed": "Data Explorer loaded 11 Toronto offense rows. Source panel shows 47,982 source rows, six seasons, an explicit unrecorded original pull date and the loaded SHA256 version.",
+      "screenshot": "data-source-details.jpg",
+      "at": "2026-10-25T18:23:30.641Z"
+    },
+    {
+      "case": "SCRUM-640-export",
+      "result": "Fail",
+      "observed": "Clicking the visible training CSV link did not create a file in Downloads. API validation passes separately; browser download needs correction.",
+      "at": "2026-10-25T18:25:12.700Z"
+    },
+    {
+      "case": "BST-138/BST-192",
+      "result": "Pass",
+      "observed": "A fresh browser shot CSV saved 5,000 Toronto 2025-26 rows, no self-opponents, all rows carry the canonical dataset hash verified against the deployed catalog.",
+      "evidence": "shot-csv-final-check.json",
+      "at": "2026-10-25T18:25:52.952Z"
+    },
+    {
+      "case": "BST-201-baseline/BST-99",
+      "result": "Pass",
+      "observed": "Matchup Run Pick-and-Roll (Roll Man) matches first PRRollMan result at 1.154 PPP. Explanation explicitly excludes score, period and clock.",
+      "at": "2026-10-25T18:26:46.492Z"
+    },
+    {
+      "case": "BST-201-context",
+      "result": "Pass",
+      "observed": "Context call label matches PRRollMan first row at1.164 PPP. Explanation uses margin-2,period4,120seconds.",
+      "at": "2026-10-25T18:27:29.939Z"
+    },
+    {
+      "case": "BST-140/BST-141/BST-201-gameplan",
+      "result": "Pass",
+      "observed": "First Build parsed margin-5/period4/28seconds with need3, switch and ATO. PRRollMan1.273,Spotup1.200,OffScreen1.147 were unchanged on second Build. Primary Run Pick-and-Roll (Roll Man) matches first row. Call label disappeared while Building.",
+      "at": "2026-10-25T18:28:41.078Z"
+    },
+    {
+      "case": "BST-142/BST-199",
+      "result": "Pass",
+      "observed": "Overtime down2 at1:00 displays period5,60seconds,-2 after Build. The new ranking is PRRollMan1.202. API limits verified separately.",
+      "at": "2026-10-25T18:29:11.853Z"
+    },
+    {
+      "case": "BST-200",
+      "result": "Pass",
+      "observed": "Take the foul parses as foul game and is explicitly shown as note only, does not change ranking. Need3 and switching affected scores in preceding first-build test; invalid API flags rejected separately.",
+      "at": "2026-10-25T18:29:47.212Z"
+    },
+    {
+      "case": "BST-194",
+      "result": "Pass",
+      "observed": "Actual metadata panel in isolated local fixtures:503,invalidJSON,invalidschema each showUnavailable thenRetry restores3rows/twoseasons. Corruptshot source leaves validSynergy visible; malformedmetadata keeps pull date explicitly unknown.",
+      "evidence": [
+        "metadata-unavailable.jpg",
+        "metadata-retry-success.jpg"
+      ],
+      "at": "2026-10-25T18:32:21.351Z"
+    },
+    {
+      "case": "BST-195-navigation",
+      "result": "Pass",
+      "observed": "Followed Data Dictionary to Glossary, then the Glossary Data Dictionary link back. Both pages loaded distinct content; dictionary search and column source/unit checks recorded earlier.",
+      "at": "2026-10-25T18:32:33.263Z"
+    },
+    {
+      "case": "SCRUM-640-export-retest",
+      "result": "Pass",
+      "observed": "Updated link saved shot_model_metrics_splits_5.csv,699bytes,3models matching displayed values and source hash. Initial failure remains recorded.",
+      "frontend": "78ed99c",
+      "evidence": "shot-metrics-csv-check.json",
+      "at": "2026-10-25T18:33:03.091Z"
+    }
+  ]
+}
