@@ -62,8 +62,9 @@ def main():
         for path in ('/meta/datasets', '/meta/data-dictionary', '/metrics/shot-models', '/analysis/shot-ml', '/pbp/shotplan/rank'):
             call('anonymous denied ' + path, path, expected=401,
                  params={'season':'2024-25','our':'TOR','opp':'BOS'})
-        sessions['invalid'] = {'Authorization': 'Bearer expired-or-invalid-session'}
+        sessions['invalid'] = {'Authorization': 'Bearer deliberately-invalid-session'}
         call('invalid session denied', '/meta/datasets', 'invalid', expected=401)
+        call('invalid dictionary session denied', '/meta/data-dictionary', 'invalid', expected=401)
         catalog_response = call('dataset catalog', '/meta/datasets', 'analyst')
         catalog = {d['id']: d for d in catalog_response.json()['datasets']}
         check('six available versioned datasets', len(catalog) == 6 and all(d['status']=='available' and d['version'].startswith('sha256:') for d in catalog.values()))
@@ -85,6 +86,11 @@ def main():
         baseline_csv = call('coach baseline CSV', '/rank-plays/baseline.csv', 'coach', filters)
         baseline_rows = list(csv.DictReader(io.StringIO(baseline_csv.text)))
         check('baseline CSV includes actual source version', len(baseline_rows)==5 and all(r.get('DATASET_VERSION') == catalog['synergy']['version'] for r in baseline_rows))
+        uplift_csv = call('Top-K uplift CSV', '/metrics/topk-uplift.csv', 'analyst', filters)
+        uplift_rows = list(csv.DictReader(io.StringIO(uplift_csv.text)))
+        check('Top-K CSV includes actual source version', len(uplift_rows)==5 and uplift_csv.headers.get('X-Dataset-Version') == catalog['synergy']['version'] and
+              all(r.get('DATASET_VERSION') == catalog['synergy']['version'] and r.get('data_provenance_source_sha256') == catalog['synergy']['version'].removeprefix('sha256:') for r in uplift_rows))
+        save('topk-uplift.csv', uplift_csv)
         call('analyst cannot call coaching route', '/rank-plays/baseline', 'analyst', filters, expected=403)
         parsed = call('parse overtime situation', '/nlp/parse', 'coach', method='POST', payload={'text':'OT down 3 with 0:28 left, need a three'}).json()
         ctx = parsed['context']
@@ -113,6 +119,12 @@ def main():
         rows = shot_body.get('rows', shot_body.get('data', []))
         check('preview contains valid opposing teams', len(rows)>0 and all(r.get('team',r.get('TEAM_ABBR')) != r.get('opp',r.get('OPP_ABBR')) for r in rows))
         save('shot-preview.json', shots)
+        for path, filename in [('/pbp/shots.csv','shot-explorer.csv'),('/pbp/data/shots.csv','shot-data-alias.csv')]:
+            shot_csv = call('shot CSV ' + path, path, 'analyst', {'season':'2025-26','team':'TOR','limit':5000})
+            exported_rows = list(csv.DictReader(io.StringIO(shot_csv.text)))
+            check('shot CSV keeps loaded version ' + path, len(exported_rows)==5000 and shot_csv.headers.get('X-Dataset-Version') == catalog['shots_canonical']['version'] and
+                  all(r.get('TEAM_ABBR')=='TOR' and r.get('OPP_ABBR')!='TOR' and r.get('DATASET_VERSION')==catalog['shots_canonical']['version'] for r in exported_rows))
+            save(filename, shot_csv)
         metrics = call('saved shot metrics', '/metrics/shot-models', 'analyst').json()
         check('shot metrics use saved results', metrics.get('cached') is True and bool(metrics.get('metrics')))
         analysis_response = call('saved shot analysis', '/analysis/shot-ml', 'analyst')

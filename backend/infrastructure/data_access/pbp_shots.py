@@ -269,6 +269,7 @@ def get_shots_csv_response(
     out_df = _select_output_cols(filtered).head(int(limit)).copy()
 
     buf = io.StringIO()
+    out_df["DATASET_VERSION"] = df.attrs.get("dataset_version", "unavailable")
     out_df.to_csv(buf, index=False)
     buf.seek(0)
 

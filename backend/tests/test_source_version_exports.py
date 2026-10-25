@@ -36,6 +36,58 @@ def test_ordinary_baseline_csv_uses_the_loaded_source_version():
     assert response.headers["X-Dataset-Version"] == rows[0]["DATASET_VERSION"]
 
 
+@pytest.mark.parametrize("route", ["/pbp/shots.csv", "/pbp/data/shots.csv"])
+def test_shot_csv_aliases_keep_the_loaded_canonical_version(route, tmp_path, monkeypatch):
+    from application.api_coordination.pbp_endpoints import router
+    from infrastructure.data_access import pbp_shots
+    path = tmp_path / "shots_canonical.parquet"
+    original = pd.DataFrame({"SEASON_STR": ["2025-26", "2025-26"], "TEAM_ABBR": ["TOR", "TOR"],
+                             "OPP_ABBR": ["BOS", "NYK"], "POINTS": [2, 0]})
+    original.to_parquet(path)
+    from infrastructure.data_access.dataset_metadata import read_versioned_parquet
+    loaded = read_versioned_parquet(path)
+    version = loaded.attrs["dataset_version"]
+    original.assign(POINTS=[3, 0]).to_parquet(path)
+    assert source_version(path) != version
+    monkeypatch.setattr(pbp_shots, "_load_canonical_shots_df", lambda: loaded)
+    app = FastAPI()
+    app.include_router(router)
+    app.dependency_overrides[require_auth] = lambda: {"role": "analyst"}
+    response = TestClient(app).get(route, params={"season": "2025-26", "team": "TOR", "limit": 1})
+    assert response.status_code == 200
+    rows = list(csv.DictReader(io.StringIO(response.text)))
+    assert len(rows) == 1
+    assert rows[0]["POINTS"] == "2"
+    assert rows[0]["DATASET_VERSION"] == version
+    assert response.headers["X-Dataset-Version"] == version
+    assert "DATASET_VERSION" not in loaded.columns
+
+
+def test_topk_downloads_identify_loaded_data_when_disk_source_is_replaced(tmp_path):
+    from application.api_coordination.topk_uplift_endpoints import create_topk_uplift_router
+    replacement = tmp_path / "different-source.csv"
+    replacement.write_text("different,data\n1,2\n")
+    expected = app_module.rec.raw_df.attrs["dataset_version"]
+    assert source_version(replacement) != expected
+    app = FastAPI()
+    app.include_router(create_topk_uplift_router(app_module.rec, replacement))
+    app.dependency_overrides[require_auth] = lambda: {"role": "analyst"}
+    client = TestClient(app)
+    params = {"season": "2024-25", "our": "TOR", "opp": "BOS", "k": 3}
+    payload = client.get("/metrics/topk-uplift.json", params=params)
+    provenance = payload.json()["data_provenance"]
+    assert provenance["dataset_version"] == expected
+    assert provenance["source_sha256"] == expected.removeprefix("sha256:")
+    assert provenance["source_file"] == app_module.rec.raw_df.attrs["source_file"]
+    assert payload.headers["X-Dataset-Version"] == expected
+    response = client.get("/metrics/topk-uplift.csv", params=params)
+    rows = list(csv.DictReader(io.StringIO(response.text)))
+    assert response.status_code == 200 and len(rows) == 3
+    assert {row["DATASET_VERSION"] for row in rows} == {expected}
+    assert {row["data_provenance_source_sha256"] for row in rows} == {expected.removeprefix("sha256:")}
+    assert response.headers["X-Dataset-Version"] == expected
+
+
 def test_context_response_versions_come_from_the_ranker_sources(monkeypatch):
     from domain.context_ml_recommendation import ml_context_recommender as ranker
     unrelated_cache = pd.DataFrame()

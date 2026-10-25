@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import csv
-import hashlib
 import io
 import json
 from pathlib import Path
@@ -28,6 +27,7 @@ def _csv_evidence(payload: dict) -> str:
             flat[key] = json.dumps(value, ensure_ascii=False)
         else:
             flat[key] = value
+    flat["DATASET_VERSION"] = payload["data_provenance"].get("dataset_version", "unavailable")
     rows = [{**flat, **row} for row in payload["rankings"]]
     output = io.StringIO()
     writer = csv.DictWriter(output, fieldnames=list(rows[0]))
@@ -37,13 +37,13 @@ def _csv_evidence(payload: dict) -> str:
 
 
 def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> APIRouter:
-    """Reuse the loaded baseline tables; fingerprint their source at startup."""
+    """Reuse the baseline tables and the version captured when they were loaded."""
     source_path = Path(source_path)
-    with source_path.open("rb") as source:
-        digest = hashlib.file_digest(source, "sha256").hexdigest()
+    version = rec.raw_df.attrs.get("dataset_version", "unavailable")
     provenance = {
-        "source_file": source_path.name,
-        "source_sha256": digest,
+        "source_file": rec.raw_df.attrs.get("source_file", source_path.name),
+        "source_sha256": version.removeprefix("sha256:") if version.startswith("sha256:") else None,
+        "dataset_version": version,
         "aggregation": "player rows aggregated by season, team, play type and side",
         "baseline_points_source": "PTS (no fallback to rounded PPP)",
         "recommendation_source": "/rank-plays/baseline with identical filters",
@@ -89,14 +89,14 @@ def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> AP
     def topk_uplift_json(payload: dict = Depends(evidence)) -> JSONResponse:
         return JSONResponse(
             content=payload,
-            headers={"Content-Disposition": f'attachment; filename="{filename(payload, "json")}"'},
+            headers={"Content-Disposition": f'attachment; filename="{filename(payload, "json")}"', "X-Dataset-Version": version},
         )
 
     @router.get("/metrics/topk-uplift.csv")
     def topk_uplift_csv(payload: dict = Depends(evidence)) -> StreamingResponse:
         return StreamingResponse(
             iter([_csv_evidence(payload)]), media_type="text/csv",
-            headers={"Content-Disposition": f'attachment; filename="{filename(payload, "csv")}"'},
+            headers={"Content-Disposition": f'attachment; filename="{filename(payload, "csv")}"', "X-Dataset-Version": version},
         )
 
     return router
