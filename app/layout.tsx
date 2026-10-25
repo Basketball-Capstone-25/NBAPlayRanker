@@ -1,12 +1,3 @@
-// app/layout.tsx
-//
-// Root layout + global navigation.
-//
-// Updated goals:
-// - Stronger branding ("NBA Play Ranker")
-// - Dynamic navbar (active link highlight + mobile menu)
-// - Keep reviewer-friendly flow + clean footer
-
 import "./globals.css";
 import type { ReactNode } from "react";
 import Link from "next/link";
@@ -29,15 +20,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
 
           <footer className="footer">
-            <div>
-              Built with <strong>Next.js</strong> (UI) + <strong>FastAPI</strong> (services).
-            </div>
-            <div>
-              Tip for reviewers: start at <Link href="/data-explorer">Data Explorer</Link> to see the dataset,
-              then compare <Link href="/matchup">Baseline</Link> vs <Link href="/context">AI Context</Link>,
-              and verify evidence in <Link href="/model-metrics">Model Performance</Link> and{" "}
-              <Link href="/statistical-analysis">Statistical Analysis</Link>.
-            </div>
+            <div>NBA Play Ranker · Basketball decision support</div>
+            <div><Link href="/glossary">Glossary</Link> · <Link href="/data-dictionary">Data Dictionary</Link></div>
           </footer>
         </main>
       </body>

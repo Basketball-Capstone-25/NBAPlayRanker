@@ -112,11 +112,13 @@ describe("data-quality presentation", () => {
     renderToStaticMarkup(<DataQualityReportView state={state} onRefresh={() => {}} />);
   it("shows the dataset scope, four individual checks and version", () => {
     const html = render({ kind: "ready", report: report() });
-    expect(html).toContain("Listed checks passed");
+    expect(html).toContain("Data checks passed");
     expect(html.match(/>Passed</g)).toHaveLength(4);
     expect(html).toContain("independent of preview filters");
     expect(html).toContain("frame-sha256:");
     expect(html).toContain("separate shot dataset");
+    expect(html).toContain("<details><summary>View checks</summary>");
+    expect(html).not.toContain("<details open");
   });
   it("shows failure details and not-checked results without an overall pass", () => {
     const value = report();
@@ -127,7 +129,8 @@ describe("data-quality presentation", () => {
     expect(html).toContain("Data checks found problems");
     expect(html).toContain("Missing columns: PPP");
     expect(html).toContain("Not checked");
-    expect(html).not.toContain("Listed checks passed");
+    expect(html).toContain('<details open=""><summary>View checks</summary>');
+    expect(html).not.toContain("Data checks passed");
   });
   it("does not display a previous pass while loading or after an error", () => {
     expect(render({ kind: "loading" })).toContain("Checking source data");

@@ -37,41 +37,27 @@ export default function SignupPageClient() {
         <div className="auth-stage">
           <div className="auth-badge">NBA Play Ranker • Account setup</div>
 
-          <h1 className="auth-title">Create your role-based account.</h1>
+          <h1 className="auth-title">Choose your workspace.</h1>
 
           <p className="auth-copy">
-            Request the workspace that matches how you use the platform. Coaches get decision-ready
-            recommendations. Analysts get the deeper evidence, metrics, and exploratory views.
+            Coaches compare plays and plan for a matchup. Analysts explore the data and check model results.
           </p>
 
           <div className="auth-point-grid">
             <div className="auth-point">
               <div className="auth-point-title">Coach access</div>
               <div className="auth-point-copy">
-                Built for fast possession decisions, context-aware ranking, and polished game planning.
+                Compare recommendations and save gameplans.
               </div>
             </div>
 
             <div className="auth-point">
               <div className="auth-point-title">Analyst access</div>
               <div className="auth-point-copy">
-                Built for exploration, traceability, evaluation, heatmaps, and deeper statistical views.
+                Explore datasets, heatmaps and model results.
               </div>
             </div>
 
-            <div className="auth-point">
-              <div className="auth-point-title">Same product language</div>
-              <div className="auth-point-copy">
-                Everything stays on-theme with explainability, evidence, and basketball workflow in mind.
-              </div>
-            </div>
-
-            <div className="auth-point">
-              <div className="auth-point-title">Clean navigation</div>
-              <div className="auth-point-copy">
-                Once signed in, the navbar expands into the correct workspace instead of looking cluttered.
-              </div>
-            </div>
           </div>
         </div>
 

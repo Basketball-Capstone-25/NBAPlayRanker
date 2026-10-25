@@ -52,7 +52,7 @@ export function DataQualityReportView({ state, onRefresh }: { state: QualityStat
         {state.kind === "error" && <div role="alert"><p><strong>Data checks unavailable</strong></p><p>{state.message}</p></div>}
         {report && <>
           <p style={{ color: colors[report.status] }}><strong>
-            {report.status === "pass" ? "Listed checks passed" : report.status === "fail" ? "Data checks found problems" : "Some data checks were not run"}
+            {report.status === "pass" ? "Data checks passed" : report.status === "fail" ? "Data checks found problems" : "Some data checks were not run"}
           </strong></p>
           {report.status !== "pass" && <p>Review the results below before relying on this data.</p>}
         </>}
@@ -61,6 +61,8 @@ export function DataQualityReportView({ state, onRefresh }: { state: QualityStat
         <p className="muted" style={{ fontSize: 13 }}>
           {report.dataset.name} · {report.dataset.rows.toLocaleString("en-US")} source rows · {report.dataset.seasons.length} seasons · {report.dataset.teams.length} teams
         </p>
+        <details open={report.status !== "pass"}>
+        <summary>View checks</summary>
         <p className="muted" style={{ fontSize: 13 }}>{report.dataset.scope}. Checked <time dateTime={report.generated_at}>{new Date(report.generated_at).toLocaleString()}</time>.</p>
         <ul style={{ listStyle: "none", padding: 0, display: "grid", gap: 10 }}>
           {report.checks.map(check => <li key={check.name} style={{ borderTop: "1px solid var(--border)", paddingTop: 10 }}>
@@ -71,10 +73,11 @@ export function DataQualityReportView({ state, onRefresh }: { state: QualityStat
             <p className="muted" style={{ margin: "4px 0", fontSize: 13 }}>{details(check)}</p>
           </li>)}
         </ul>
-        <details style={{ fontSize: 12 }}><summary>Dataset version</summary><code style={{ overflowWrap: "anywhere" }}>{report.dataset.version}</code></details>
+        <p style={{ fontSize: 12, overflowWrap: "anywhere" }}>Dataset version: <code>{report.dataset.version}</code></p>
+        </details>
       </>}
       <p className="muted" style={{ fontSize: 12, marginBottom: 0 }}>
-        These checks cover the play-type source data, including rows outside the preview filters. They do not measure prediction accuracy or validate the separate shot dataset.
+        Checks cover all play-type source rows, regardless of the filters below. They do not measure prediction accuracy or validate the separate shot dataset.
       </p>
     </section>
   );
