@@ -16,6 +16,7 @@ const analystOnly = [
   "/shot-model-metrics",
   "/shot-statistical-analysis",
   "/shot-plan",
+  "/request-log",
 ];
 
 function matchesRoute(pathname: string, routes: string[]) {

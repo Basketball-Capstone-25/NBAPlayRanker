@@ -48,6 +48,7 @@ export default function NavBar() {
       { href: "/data-explorer", label: "Data Explorer" },
       { href: "/model-metrics", label: "Model Metrics" },
       { href: "/statistical-analysis", label: "Statistical Analysis" },
+      { href: "/request-log", label: "Request Log" },
       //{ href: "/shot-explorer", label: "Shot Explorer" },
       //{ href: "/shot-heatmap", label: "Shot Heatmap" },
       //{ href: "/shot-plan", label: "Shot Plan" },
