@@ -1,0 +1,1513 @@
+{
+  "started_at": "2026-10-26T15:18:28.697705+00:00",
+  "backend_revision": "nba-playranker-api-00011-rp7",
+  "source_versions": {
+    "shots": "sha256:15078408bfaa84b6cc1a45cc7e10edd822e22b25166a3ab3f4931a0323f640cf",
+    "shots_canonical": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+    "shot_aggregates": "sha256:0649554dd4f3efdbebc19b0f80f1d7d9ef03aca576964fc281c59a97dc6aff99",
+    "shot_league": "sha256:b34603259d6465eceea6c59fcd05377898ec12d0a9c6e0f2019a078a72d649ab"
+  },
+  "requests": [
+    {
+      "name": "catalog",
+      "role": "analyst",
+      "path": "/meta/datasets",
+      "params": null,
+      "started_at": "2026-10-26T15:18:29.531462+00:00",
+      "elapsed_ms": 1678.416,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-1",
+      "role": "analyst",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2021-22",
+        "our": "TOR",
+        "opp": "BOS",
+        "k": 10,
+        "w_off": 0.0
+      },
+      "started_at": "2026-10-26T15:18:31.211269+00:00",
+      "elapsed_ms": 1057.219,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-2",
+      "role": "analyst",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2021-22",
+        "our": "TOR",
+        "opp": "BOS",
+        "k": 10,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-26T15:18:32.270795+00:00",
+      "elapsed_ms": 531.964,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-3",
+      "role": "analyst",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2021-22",
+        "our": "TOR",
+        "opp": "BOS",
+        "k": 10,
+        "w_off": 1.0
+      },
+      "started_at": "2026-10-26T15:18:32.805600+00:00",
+      "elapsed_ms": 391.722,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-4",
+      "role": "analyst",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2021-22",
+        "our": "BOS",
+        "opp": "TOR",
+        "k": 10,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-26T15:18:33.198343+00:00",
+      "elapsed_ms": 1572.558,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-5",
+      "role": "analyst",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2025-26",
+        "our": "TOR",
+        "opp": "BOS",
+        "k": 10,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-26T15:18:34.773519+00:00",
+      "elapsed_ms": 599.713,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-6",
+      "role": "analyst",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2025-26",
+        "our": "BOS",
+        "opp": "TOR",
+        "k": 10,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-26T15:18:35.375947+00:00",
+      "elapsed_ms": 440.701,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-7",
+      "role": "analyst",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2024-25",
+        "our": "LAL",
+        "opp": "GSW",
+        "k": 10,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-26T15:18:35.819410+00:00",
+      "elapsed_ms": 442.602,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-8",
+      "role": "analyst",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2025-26",
+        "our": "OKC",
+        "opp": "SAS",
+        "k": 10,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-26T15:18:36.262938+00:00",
+      "elapsed_ms": 524.536,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "root-canonical-rank",
+      "role": "analyst",
+      "path": "/shotplan/rank",
+      "params": {
+        "season": "2024-25",
+        "our": "LAL",
+        "opp": "GSW",
+        "k": 10,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-26T15:18:36.789797+00:00",
+      "elapsed_ms": 517.252,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "canonical-team-pdf",
+      "role": "analyst",
+      "path": "/export/shotplan.pdf",
+      "params": {
+        "season": "2024-25",
+        "our": "LAL",
+        "opp": "GSW",
+        "k": 10,
+        "w_off": 0.7,
+        "max_shots": 1000
+      },
+      "started_at": "2026-10-26T15:18:37.308815+00:00",
+      "elapsed_ms": 6777.106,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "coach-rank",
+      "role": "coach",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2021-22",
+        "our": "TOR",
+        "opp": "BOS",
+        "k": 10,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-26T15:18:44.141035+00:00",
+      "elapsed_ms": 475.142,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-1",
+      "role": "analyst",
+      "path": "/pbp/viz/shot-heatmap",
+      "params": {
+        "season": "2021-22",
+        "our": "TOR",
+        "opp": "BOS",
+        "max_shots": 1000
+      },
+      "started_at": "2026-10-26T15:18:44.617126+00:00",
+      "elapsed_ms": 2987.563,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview-1",
+      "role": "analyst",
+      "path": "/pbp/shots/preview",
+      "params": {
+        "season": "2021-22",
+        "team": "TOR",
+        "opp": "BOS",
+        "limit": 5000
+      },
+      "started_at": "2026-10-26T15:18:47.606634+00:00",
+      "elapsed_ms": 549.259,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-2",
+      "role": "analyst",
+      "path": "/pbp/viz/shot-heatmap",
+      "params": {
+        "season": "2021-22",
+        "our": "BOS",
+        "opp": "TOR",
+        "max_shots": 1000
+      },
+      "started_at": "2026-10-26T15:18:48.161806+00:00",
+      "elapsed_ms": 2510.262,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview-2",
+      "role": "analyst",
+      "path": "/pbp/shots/preview",
+      "params": {
+        "season": "2021-22",
+        "team": "BOS",
+        "opp": "TOR",
+        "limit": 5000
+      },
+      "started_at": "2026-10-26T15:18:50.674959+00:00",
+      "elapsed_ms": 603.427,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-3",
+      "role": "analyst",
+      "path": "/pbp/viz/shot-heatmap",
+      "params": {
+        "season": "2025-26",
+        "our": "TOR",
+        "opp": "BOS",
+        "max_shots": 1000
+      },
+      "started_at": "2026-10-26T15:18:51.285273+00:00",
+      "elapsed_ms": 2350.962,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview-3",
+      "role": "analyst",
+      "path": "/pbp/shots/preview",
+      "params": {
+        "season": "2025-26",
+        "team": "TOR",
+        "opp": "BOS",
+        "limit": 5000
+      },
+      "started_at": "2026-10-26T15:18:53.638804+00:00",
+      "elapsed_ms": 659.697,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-4",
+      "role": "analyst",
+      "path": "/pbp/viz/shot-heatmap",
+      "params": {
+        "season": "2025-26",
+        "our": "BOS",
+        "opp": "TOR",
+        "max_shots": 1000
+      },
+      "started_at": "2026-10-26T15:18:54.304306+00:00",
+      "elapsed_ms": 2442.03,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview-4",
+      "role": "analyst",
+      "path": "/pbp/shots/preview",
+      "params": {
+        "season": "2025-26",
+        "team": "BOS",
+        "opp": "TOR",
+        "limit": 5000
+      },
+      "started_at": "2026-10-26T15:18:56.748824+00:00",
+      "elapsed_ms": 708.971,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-5",
+      "role": "analyst",
+      "path": "/pbp/viz/shot-heatmap",
+      "params": {
+        "season": "2024-25",
+        "our": "LAL",
+        "opp": "GSW",
+        "max_shots": 1000
+      },
+      "started_at": "2026-10-26T15:18:57.462555+00:00",
+      "elapsed_ms": 2589.116,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview-5",
+      "role": "analyst",
+      "path": "/pbp/shots/preview",
+      "params": {
+        "season": "2024-25",
+        "team": "LAL",
+        "opp": "GSW",
+        "limit": 5000
+      },
+      "started_at": "2026-10-26T15:19:00.053818+00:00",
+      "elapsed_ms": 534.02,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-6",
+      "role": "analyst",
+      "path": "/pbp/viz/shot-heatmap",
+      "params": {
+        "season": "2025-26",
+        "our": "OKC",
+        "opp": "SAS",
+        "max_shots": 1000
+      },
+      "started_at": "2026-10-26T15:19:00.596255+00:00",
+      "elapsed_ms": 2369.163,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview-6",
+      "role": "analyst",
+      "path": "/pbp/shots/preview",
+      "params": {
+        "season": "2025-26",
+        "team": "OKC",
+        "opp": "SAS",
+        "limit": 5000
+      },
+      "started_at": "2026-10-26T15:19:02.967841+00:00",
+      "elapsed_ms": 763.06,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "shot-matchup-csv",
+      "role": "analyst",
+      "path": "/pbp/shots.csv",
+      "params": {
+        "season": "2021-22",
+        "team": "TOR",
+        "opp": "BOS",
+        "limit": 5000
+      },
+      "started_at": "2026-10-26T15:19:03.739580+00:00",
+      "elapsed_ms": 557.292,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "coach-shot-data-denied",
+      "role": "coach",
+      "path": "/pbp/shots.csv",
+      "params": {
+        "season": "2021-22",
+        "team": "TOR",
+        "opp": "BOS",
+        "limit": 5000
+      },
+      "started_at": "2026-10-26T15:19:04.300779+00:00",
+      "elapsed_ms": 283.627,
+      "status": 403,
+      "expected_status": 403
+    },
+    {
+      "name": "unsigned-shot-rank-denied",
+      "role": "unsigned",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2025-26",
+        "our": "TOR",
+        "opp": "BOS"
+      },
+      "started_at": "2026-10-26T15:19:04.585995+00:00",
+      "elapsed_ms": 145.62,
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "name": "small-sample-heatmap",
+      "role": "analyst",
+      "path": "/pbp/viz/shot-heatmap",
+      "params": {
+        "season": "2021-22",
+        "our": "TOR",
+        "opp": "BOS",
+        "max_shots": 1000,
+        "shot_type": "Pullup",
+        "zone": "paint"
+      },
+      "started_at": "2026-10-26T15:19:04.733582+00:00",
+      "elapsed_ms": 2187.386,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "empty-heatmap",
+      "role": "analyst",
+      "path": "/pbp/viz/shot-heatmap",
+      "params": {
+        "season": "2021-22",
+        "our": "TOR",
+        "opp": "BOS",
+        "max_shots": 1000,
+        "shot_type": "NoSuchShotType"
+      },
+      "started_at": "2026-10-26T15:19:06.923376+00:00",
+      "elapsed_ms": 489.047,
+      "status": 404,
+      "expected_status": 404
+    },
+    {
+      "name": "same-team-rank",
+      "role": "analyst",
+      "path": "/pbp/shotplan/rank",
+      "params": {
+        "season": "2025-26",
+        "our": "TOR",
+        "opp": "TOR"
+      },
+      "started_at": "2026-10-26T15:19:07.414672+00:00",
+      "elapsed_ms": 510.495,
+      "status": 400,
+      "expected_status": 400
+    }
+  ],
+  "checks": [
+    {
+      "name": "catalog HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "live catalog version shots",
+      "passed": true
+    },
+    {
+      "name": "live catalog version shots_canonical",
+      "passed": true
+    },
+    {
+      "name": "live catalog version shot_aggregates",
+      "passed": true
+    },
+    {
+      "name": "live catalog version shot_league",
+      "passed": true
+    },
+    {
+      "name": "rank-1 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-1 metadata season",
+      "passed": true
+    },
+    {
+      "name": "rank-1 metadata our_team",
+      "passed": true
+    },
+    {
+      "name": "rank-1 metadata opp_team",
+      "passed": true
+    },
+    {
+      "name": "rank-1 metadata k",
+      "passed": true
+    },
+    {
+      "name": "rank-1 metadata w_off",
+      "passed": true
+    },
+    {
+      "name": "rank-1 metadata w_def",
+      "passed": true
+    },
+    {
+      "name": "rank-1 top_shot_types order",
+      "passed": true
+    },
+    {
+      "name": "rank-1 top_shot_types all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-1 top_zones order",
+      "passed": true
+    },
+    {
+      "name": "rank-1 top_zones all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-2 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-2 metadata season",
+      "passed": true
+    },
+    {
+      "name": "rank-2 metadata our_team",
+      "passed": true
+    },
+    {
+      "name": "rank-2 metadata opp_team",
+      "passed": true
+    },
+    {
+      "name": "rank-2 metadata k",
+      "passed": true
+    },
+    {
+      "name": "rank-2 metadata w_off",
+      "passed": true
+    },
+    {
+      "name": "rank-2 metadata w_def",
+      "passed": true
+    },
+    {
+      "name": "rank-2 top_shot_types order",
+      "passed": true
+    },
+    {
+      "name": "rank-2 top_shot_types all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-2 top_zones order",
+      "passed": true
+    },
+    {
+      "name": "rank-2 top_zones all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-3 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-3 metadata season",
+      "passed": true
+    },
+    {
+      "name": "rank-3 metadata our_team",
+      "passed": true
+    },
+    {
+      "name": "rank-3 metadata opp_team",
+      "passed": true
+    },
+    {
+      "name": "rank-3 metadata k",
+      "passed": true
+    },
+    {
+      "name": "rank-3 metadata w_off",
+      "passed": true
+    },
+    {
+      "name": "rank-3 metadata w_def",
+      "passed": true
+    },
+    {
+      "name": "rank-3 top_shot_types order",
+      "passed": true
+    },
+    {
+      "name": "rank-3 top_shot_types all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-3 top_zones order",
+      "passed": true
+    },
+    {
+      "name": "rank-3 top_zones all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-4 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-4 metadata season",
+      "passed": true
+    },
+    {
+      "name": "rank-4 metadata our_team",
+      "passed": true
+    },
+    {
+      "name": "rank-4 metadata opp_team",
+      "passed": true
+    },
+    {
+      "name": "rank-4 metadata k",
+      "passed": true
+    },
+    {
+      "name": "rank-4 metadata w_off",
+      "passed": true
+    },
+    {
+      "name": "rank-4 metadata w_def",
+      "passed": true
+    },
+    {
+      "name": "rank-4 top_shot_types order",
+      "passed": true
+    },
+    {
+      "name": "rank-4 top_shot_types all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-4 top_zones order",
+      "passed": true
+    },
+    {
+      "name": "rank-4 top_zones all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-5 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-5 metadata season",
+      "passed": true
+    },
+    {
+      "name": "rank-5 metadata our_team",
+      "passed": true
+    },
+    {
+      "name": "rank-5 metadata opp_team",
+      "passed": true
+    },
+    {
+      "name": "rank-5 metadata k",
+      "passed": true
+    },
+    {
+      "name": "rank-5 metadata w_off",
+      "passed": true
+    },
+    {
+      "name": "rank-5 metadata w_def",
+      "passed": true
+    },
+    {
+      "name": "rank-5 top_shot_types order",
+      "passed": true
+    },
+    {
+      "name": "rank-5 top_shot_types all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-5 top_zones order",
+      "passed": true
+    },
+    {
+      "name": "rank-5 top_zones all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-6 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-6 metadata season",
+      "passed": true
+    },
+    {
+      "name": "rank-6 metadata our_team",
+      "passed": true
+    },
+    {
+      "name": "rank-6 metadata opp_team",
+      "passed": true
+    },
+    {
+      "name": "rank-6 metadata k",
+      "passed": true
+    },
+    {
+      "name": "rank-6 metadata w_off",
+      "passed": true
+    },
+    {
+      "name": "rank-6 metadata w_def",
+      "passed": true
+    },
+    {
+      "name": "rank-6 top_shot_types order",
+      "passed": true
+    },
+    {
+      "name": "rank-6 top_shot_types all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-6 top_zones order",
+      "passed": true
+    },
+    {
+      "name": "rank-6 top_zones all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-7 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-7 metadata season",
+      "passed": true
+    },
+    {
+      "name": "rank-7 metadata our_team",
+      "passed": true
+    },
+    {
+      "name": "rank-7 metadata opp_team",
+      "passed": true
+    },
+    {
+      "name": "rank-7 metadata k",
+      "passed": true
+    },
+    {
+      "name": "rank-7 metadata w_off",
+      "passed": true
+    },
+    {
+      "name": "rank-7 metadata w_def",
+      "passed": true
+    },
+    {
+      "name": "rank-7 top_shot_types order",
+      "passed": true
+    },
+    {
+      "name": "rank-7 top_shot_types all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-7 top_zones order",
+      "passed": true
+    },
+    {
+      "name": "rank-7 top_zones all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-8 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "rank-8 metadata season",
+      "passed": true
+    },
+    {
+      "name": "rank-8 metadata our_team",
+      "passed": true
+    },
+    {
+      "name": "rank-8 metadata opp_team",
+      "passed": true
+    },
+    {
+      "name": "rank-8 metadata k",
+      "passed": true
+    },
+    {
+      "name": "rank-8 metadata w_off",
+      "passed": true
+    },
+    {
+      "name": "rank-8 metadata w_def",
+      "passed": true
+    },
+    {
+      "name": "rank-8 top_shot_types order",
+      "passed": true
+    },
+    {
+      "name": "rank-8 top_shot_types all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "rank-8 top_zones order",
+      "passed": true
+    },
+    {
+      "name": "rank-8 top_zones all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "root-canonical-rank HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "root-canonical-rank metadata season",
+      "passed": true
+    },
+    {
+      "name": "root-canonical-rank metadata our_team",
+      "passed": true
+    },
+    {
+      "name": "root-canonical-rank metadata opp_team",
+      "passed": true
+    },
+    {
+      "name": "root-canonical-rank metadata k",
+      "passed": true
+    },
+    {
+      "name": "root-canonical-rank metadata w_off",
+      "passed": true
+    },
+    {
+      "name": "root-canonical-rank metadata w_def",
+      "passed": true
+    },
+    {
+      "name": "root-canonical-rank top_shot_types order",
+      "passed": true
+    },
+    {
+      "name": "root-canonical-rank top_shot_types all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "root-canonical-rank top_zones order",
+      "passed": true
+    },
+    {
+      "name": "root-canonical-rank top_zones all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "root rank loaded source versions",
+      "passed": true
+    },
+    {
+      "name": "canonical-team-pdf HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "canonical PDF team labels",
+      "passed": true
+    },
+    {
+      "name": "canonical PDF actual source versions",
+      "passed": true
+    },
+    {
+      "name": "canonical PDF visible source versions",
+      "passed": true
+    },
+    {
+      "name": "coach-rank HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "coach-rank metadata season",
+      "passed": true
+    },
+    {
+      "name": "coach-rank metadata our_team",
+      "passed": true
+    },
+    {
+      "name": "coach-rank metadata opp_team",
+      "passed": true
+    },
+    {
+      "name": "coach-rank metadata k",
+      "passed": true
+    },
+    {
+      "name": "coach-rank metadata w_off",
+      "passed": true
+    },
+    {
+      "name": "coach-rank metadata w_def",
+      "passed": true
+    },
+    {
+      "name": "coach-rank top_shot_types order",
+      "passed": true
+    },
+    {
+      "name": "coach-rank top_shot_types all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "coach-rank top_zones order",
+      "passed": true
+    },
+    {
+      "name": "coach-rank top_zones all values",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "name": "heatmap-1 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-1 PNG signature",
+      "passed": true
+    },
+    {
+      "name": "heatmap-1 matched count",
+      "passed": true,
+      "expected": 376,
+      "actual": 376
+    },
+    {
+      "name": "heatmap-1 actual canonical source version",
+      "passed": true
+    },
+    {
+      "name": "heatmap-1 labels",
+      "passed": true
+    },
+    {
+      "name": "heatmap-1 n_shots_total",
+      "passed": true,
+      "expected": 376,
+      "actual": 376
+    },
+    {
+      "name": "heatmap-1 n_shots_excluded_location",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-1 n_shots_outside_halfcourt",
+      "passed": true,
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "heatmap-1 n_shots_rendered",
+      "passed": true,
+      "expected": 375,
+      "actual": 375
+    },
+    {
+      "name": "heatmap-1 n_shots_omitted_by_cap",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-1 count conservation",
+      "passed": true
+    },
+    {
+      "name": "preview-1 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview 1 all matchup rows",
+      "passed": true
+    },
+    {
+      "name": "preview 1 makes and points",
+      "passed": true
+    },
+    {
+      "name": "heatmap-2 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-2 PNG signature",
+      "passed": true
+    },
+    {
+      "name": "heatmap-2 matched count",
+      "passed": true,
+      "expected": 352,
+      "actual": 352
+    },
+    {
+      "name": "heatmap-2 actual canonical source version",
+      "passed": true
+    },
+    {
+      "name": "heatmap-2 labels",
+      "passed": true
+    },
+    {
+      "name": "heatmap-2 n_shots_total",
+      "passed": true,
+      "expected": 352,
+      "actual": 352
+    },
+    {
+      "name": "heatmap-2 n_shots_excluded_location",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-2 n_shots_outside_halfcourt",
+      "passed": true,
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "heatmap-2 n_shots_rendered",
+      "passed": true,
+      "expected": 351,
+      "actual": 351
+    },
+    {
+      "name": "heatmap-2 n_shots_omitted_by_cap",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-2 count conservation",
+      "passed": true
+    },
+    {
+      "name": "preview-2 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview 2 all matchup rows",
+      "passed": true
+    },
+    {
+      "name": "preview 2 makes and points",
+      "passed": true
+    },
+    {
+      "name": "heatmap-3 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-3 PNG signature",
+      "passed": true
+    },
+    {
+      "name": "heatmap-3 matched count",
+      "passed": true,
+      "expected": 352,
+      "actual": 352
+    },
+    {
+      "name": "heatmap-3 actual canonical source version",
+      "passed": true
+    },
+    {
+      "name": "heatmap-3 labels",
+      "passed": true
+    },
+    {
+      "name": "heatmap-3 n_shots_total",
+      "passed": true,
+      "expected": 352,
+      "actual": 352
+    },
+    {
+      "name": "heatmap-3 n_shots_excluded_location",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-3 n_shots_outside_halfcourt",
+      "passed": true,
+      "expected": 2,
+      "actual": 2
+    },
+    {
+      "name": "heatmap-3 n_shots_rendered",
+      "passed": true,
+      "expected": 350,
+      "actual": 350
+    },
+    {
+      "name": "heatmap-3 n_shots_omitted_by_cap",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-3 count conservation",
+      "passed": true
+    },
+    {
+      "name": "preview-3 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview 3 all matchup rows",
+      "passed": true
+    },
+    {
+      "name": "preview 3 makes and points",
+      "passed": true
+    },
+    {
+      "name": "heatmap-4 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-4 PNG signature",
+      "passed": true
+    },
+    {
+      "name": "heatmap-4 matched count",
+      "passed": true,
+      "expected": 362,
+      "actual": 362
+    },
+    {
+      "name": "heatmap-4 actual canonical source version",
+      "passed": true
+    },
+    {
+      "name": "heatmap-4 labels",
+      "passed": true
+    },
+    {
+      "name": "heatmap-4 n_shots_total",
+      "passed": true,
+      "expected": 362,
+      "actual": 362
+    },
+    {
+      "name": "heatmap-4 n_shots_excluded_location",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-4 n_shots_outside_halfcourt",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-4 n_shots_rendered",
+      "passed": true,
+      "expected": 362,
+      "actual": 362
+    },
+    {
+      "name": "heatmap-4 n_shots_omitted_by_cap",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-4 count conservation",
+      "passed": true
+    },
+    {
+      "name": "preview-4 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview 4 all matchup rows",
+      "passed": true
+    },
+    {
+      "name": "preview 4 makes and points",
+      "passed": true
+    },
+    {
+      "name": "heatmap-5 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-5 PNG signature",
+      "passed": true
+    },
+    {
+      "name": "heatmap-5 matched count",
+      "passed": true,
+      "expected": 341,
+      "actual": 341
+    },
+    {
+      "name": "heatmap-5 actual canonical source version",
+      "passed": true
+    },
+    {
+      "name": "heatmap-5 labels",
+      "passed": true
+    },
+    {
+      "name": "heatmap-5 n_shots_total",
+      "passed": true,
+      "expected": 341,
+      "actual": 341
+    },
+    {
+      "name": "heatmap-5 n_shots_excluded_location",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-5 n_shots_outside_halfcourt",
+      "passed": true,
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "heatmap-5 n_shots_rendered",
+      "passed": true,
+      "expected": 340,
+      "actual": 340
+    },
+    {
+      "name": "heatmap-5 n_shots_omitted_by_cap",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-5 count conservation",
+      "passed": true
+    },
+    {
+      "name": "preview-5 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview 5 all matchup rows",
+      "passed": true
+    },
+    {
+      "name": "preview 5 makes and points",
+      "passed": true
+    },
+    {
+      "name": "heatmap-6 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "heatmap-6 PNG signature",
+      "passed": true
+    },
+    {
+      "name": "heatmap-6 matched count",
+      "passed": true,
+      "expected": 1080,
+      "actual": 1080
+    },
+    {
+      "name": "heatmap-6 actual canonical source version",
+      "passed": true
+    },
+    {
+      "name": "heatmap-6 labels",
+      "passed": true
+    },
+    {
+      "name": "heatmap-6 n_shots_total",
+      "passed": true,
+      "expected": 1080,
+      "actual": 1080
+    },
+    {
+      "name": "heatmap-6 n_shots_excluded_location",
+      "passed": true,
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "heatmap-6 n_shots_outside_halfcourt",
+      "passed": true,
+      "expected": 6,
+      "actual": 6
+    },
+    {
+      "name": "heatmap-6 n_shots_rendered",
+      "passed": true,
+      "expected": 1000,
+      "actual": 1000
+    },
+    {
+      "name": "heatmap-6 n_shots_omitted_by_cap",
+      "passed": true,
+      "expected": 74,
+      "actual": 74
+    },
+    {
+      "name": "heatmap-6 count conservation",
+      "passed": true
+    },
+    {
+      "name": "preview-6 HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "preview 6 all matchup rows",
+      "passed": true
+    },
+    {
+      "name": "preview 6 makes and points",
+      "passed": true
+    },
+    {
+      "name": "shot-matchup-csv HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "CSV every matchup row",
+      "passed": true
+    },
+    {
+      "name": "CSV labels match context",
+      "passed": true
+    },
+    {
+      "name": "CSV every row has actual source version",
+      "passed": true
+    },
+    {
+      "name": "CSV makes and points match events",
+      "passed": true
+    },
+    {
+      "name": "coach-shot-data-denied HTTP status",
+      "passed": true,
+      "status": 403,
+      "expected_status": 403
+    },
+    {
+      "name": "unsigned-shot-rank-denied HTTP status",
+      "passed": true,
+      "status": 401,
+      "expected_status": 401
+    },
+    {
+      "name": "small-sample-heatmap HTTP status",
+      "passed": true,
+      "status": 200,
+      "expected_status": 200
+    },
+    {
+      "name": "small-sample-heatmap PNG signature",
+      "passed": true
+    },
+    {
+      "name": "small sample exact count",
+      "passed": true,
+      "expected": 1
+    },
+    {
+      "name": "empty-heatmap HTTP status",
+      "passed": true,
+      "status": 404,
+      "expected_status": 404
+    },
+    {
+      "name": "empty filter is explicit",
+      "passed": true
+    },
+    {
+      "name": "same-team-rank HTTP status",
+      "passed": true,
+      "status": 400,
+      "expected_status": 400
+    },
+    {
+      "name": "same team has detail",
+      "passed": true
+    }
+  ],
+  "sessions_closed": [
+    {
+      "role": "analyst",
+      "status": 204,
+      "passed": true
+    },
+    {
+      "role": "coach",
+      "status": 204,
+      "passed": true
+    }
+  ],
+  "scope": "Bounded read-only shot-flow requests, compared with independent event-level calculations. No training or data mutation.",
+  "complete": true,
+  "finished_at": "2026-10-26T15:19:08.427798+00:00",
+  "passed": true
+}

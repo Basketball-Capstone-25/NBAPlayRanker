@@ -1,0 +1,56 @@
+{
+  "receipts": [
+    {
+      "key": "BST-202",
+      "commentId": "11438",
+      "body": "The zones now use the correct court dimensions and preserve declared two- and three-point attempts. The retained events match the pinned source files. Fourteen games with inconsistent scoring events are excluded and listed in the quarantine record.\n\n[Source checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/data/README.md) · [Live test results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/live/results.json)",
+      "media": null,
+      "transitionCompleted": true,
+      "status": "Pass"
+    },
+    {
+      "key": "BST-203",
+      "commentId": "11439",
+      "body": "Changing the season, teams or shot filters clears the old result and prevents stale downloads on all three shot pages. The browser checks passed. The request tests also passed loading, failure/retry and late-response cases.\n\n[Browser checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/browser/checks.json) · [Request and download tests](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/display/png-focused-tests.txt)",
+      "media": null,
+      "transitionCompleted": true,
+      "status": "Pass"
+    },
+    {
+      "key": "BST-204",
+      "commentId": "11440",
+      "body": "<p>The saved GSW–BOS PDF matches the page. The OKC–SAS check also confirms that the page and PDF use the same 1,000 selected attempts, with identical heatmap pixels. The canonical team-code checks passed.</p><p><a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/browser/downloads-verification.json\">Saved-file checks</a> · <a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/live/capped-pdf-image-parity.json\">Capped PDF comparison</a></p>",
+      "media": "84e2715d-4f1f-429c-aad9-c9bc78432d3d",
+      "transitionCompleted": true,
+      "status": "Pass"
+    },
+    {
+      "key": "BST-205",
+      "commentId": "11441",
+      "body": "<p>The heatmap separates matched, shown and excluded attempts, with a numeric count legend. Empty filters show a clear message and recover after a valid selection. The PNG now saves correctly; all pixels match the displayed OKC–SAS heatmap with the 1,000-shot cap.</p><p><a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/browser/png-download-final.json\">Saved PNG comparison</a> · <a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/browser/checks.json\">Browser checks</a></p>",
+      "media": "2641a1dd-3343-4277-88e7-649181e7068f",
+      "transitionCompleted": true,
+      "status": "Pass"
+    },
+    {
+      "key": "SCRUM-642",
+      "commentId": "11442",
+      "body": "Fixed the arc, corner and paint zones and the Step Back Jump Shot label. Excluded score-inconsistent games and flagged uncertain locations, then rebuilt the shot data and saved results. The source audit and live checks passed.\n\n[Data changes and checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/data/README.md) · [Live results](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/live/results.json)",
+      "media": null,
+      "transitionCompleted": true,
+      "status": "Done"
+    },
+    {
+      "key": "SCRUM-643",
+      "commentId": "11443",
+      "body": "Fixed stale results and downloads across the three shot pages. PDF and PNG downloads use the displayed filters and cap, and PNG checks the data version. Corrected the heatmap request, team aliases and count labels, then checked the saved files.\n\n[Browser checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/browser/checks.json) · [PNG comparison](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/browser/png-download-final.json) · [PDF and CSV checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/browser/downloads-verification.json)",
+      "media": null,
+      "transitionCompleted": true,
+      "status": "Done"
+    }
+  ],
+  "historyPreserved": true,
+  "newWorklogs": 0,
+  "proofBackend": "nba-playranker-api-00011-rp7",
+  "proofFrontend": "0ba37bb117bb4703d0c6ac707071d3a4d2fe78ae"
+}

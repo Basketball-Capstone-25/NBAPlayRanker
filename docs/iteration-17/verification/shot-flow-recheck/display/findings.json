@@ -1,0 +1,97 @@
+{
+  "scope": "Source and isolated frontend tests only; no production requests or Jira/VP edits in this display review.",
+  "base_git_head": "ddee406c51a21dc5c91687e24f9ef3acee922d50",
+  "findings": [
+    {
+      "id": "D1",
+      "page": "Shot Plan",
+      "finding": "Editing controls left the old rankings and heatmap visible while PDF used the new controls. Old results also survived failed refreshes.",
+      "reproduction": [
+        "Run one matchup.",
+        "Change the season or zone without running again.",
+        "The old result stayed visible while the PDF used the changed inputs."
+      ],
+      "repair": "Results and export inputs are now tied to the successful request. Changed, loading and failed states hide results and disable PDF. Old requests cannot replace newer results.",
+      "status": "Source fixed; deployment/browser retest pending",
+      "failed_browser_evidence": [
+        "../browser/before-stale-plan.jpg",
+        "../browser/before-stale-plan.txt"
+      ],
+      "failed_browser_observation": "The production check reproduced the issue: TOR/BOS 2021-22 tables and a 376-shot image stayed visible with Export PDF enabled after selecting 2024-25 without Run."
+    },
+    {
+      "id": "D2",
+      "page": "Shot Heatmap",
+      "finding": "The caption summary, copied text and PNG filename used unsent filters while the old image remained visible.",
+      "repair": "Only a successful matching request provides the visible image, summary and PNG filename. Pending, changed and failed states do not offer downloads.",
+      "status": "Source fixed; deployment/browser retest pending"
+    },
+    {
+      "id": "D3",
+      "page": "Shots Explorer",
+      "finding": "Preview labels followed edited controls while table rows remained from the earlier query; CSV used the edited inputs.",
+      "repair": "Preview rows and labels now use the successful result. CSV uses its captured filters and stays disabled until the current inputs succeed. Empty results are explained.",
+      "status": "Source fixed; deployment/browser retest pending"
+    },
+    {
+      "id": "D4",
+      "page": "Shot heatmap API client",
+      "finding": "The preferred route required our but the client sent team. It then retried real validation/no-data responses against a legacy route that could return a blank image as success.",
+      "repair": "The client uses the current route with our and preserves failures. No legacy fallback replaces an empty matchup with a successful blank court.",
+      "status": "Source fixed; deployment/browser retest pending"
+    },
+    {
+      "id": "D5",
+      "page": "Shot Plan PDF",
+      "finding": "The PDF URL omitted the heatmap sampling cap, so the PDF could use more attempts than the displayed image.",
+      "repair": "The successful maxShots input is now sent as max_shots. Root is aligning the backend PDF sampling and renderer.",
+      "status": "Client fixed; backend integration and PDF-image parity pending"
+    },
+    {
+      "id": "D6",
+      "page": "Heatmap interpretation",
+      "finding": "The image used automatic per-image color scaling, switched between linear and log counts, and had no numeric legend. The Shot Plan tip described opponent weaknesses even though the plot only counts attempts.",
+      "repair": "Frontend copy now says attempt counts including makes and misses, with attacking-basket orientation. Root is adding explicit renderer scale and sample counts.",
+      "status": "Frontend copy fixed; renderer integration pending"
+    },
+    {
+      "id": "D7",
+      "page": "Shot Plan labels/defaults",
+      "finding": "EPA was shown as an unexplained column code, and the initial hardcoded 2021-22 prevented the intended newest-season default.",
+      "repair": "Tables identify estimated points per attempt and season-long offense/opponent-defense scope. The default season comes from current shot metadata. Missing numbers show Unavailable.",
+      "status": "Source fixed; deployment/browser retest pending"
+    }
+  ],
+  "reviewed_without_new_issue": [
+    "Top K maps to k=1..10 and returns up to that many shot-type/zone rows. No minimum-attempt control is offered or claimed; backend shrinks small samples and reports attempts.",
+    "Offense weight maps to w_off; defense weight is 1-w_off. Ranking blends season-long offensive and opponent defensive points per attempt.",
+    "Heatmap filters are matchup-only and separate from season-long ranking inputs. Current preset labels resolve against arc3/corner3/mid/paint/rim.",
+    "Saved Shot Model Metrics fetches five-fold saved results; loading/error states remove old results and exports. Training and later-season results are separated, and the page states that proposed location/type are inputs rather than pre-possession forecasts."
+  ],
+  "limitations": [
+    "The independent source-data review found a zone boundary error. Rebuild and new metrics are required before claiming current shot results are correct.",
+    "No live-browser download or final production verification was performed by this display audit."
+  ],
+  "new_tracking": {
+    "defects": [
+      "SCRUM-642",
+      "SCRUM-643"
+    ],
+    "failed_cases": [
+      "BST-202",
+      "BST-203"
+    ],
+    "cases_awaiting_execution": [
+      "BST-204",
+      "BST-205"
+    ],
+    "suite": "BST-114",
+    "receipt": "jira-setup.json"
+  },
+  "frontend_validation": {
+    "focused_test_count": 21,
+    "focused_tests": "focused-tests.txt",
+    "typescript": "Passed before count-display addition; root running the full final typecheck/build.",
+    "release_status": "Not deployed by this audit."
+  }
+}

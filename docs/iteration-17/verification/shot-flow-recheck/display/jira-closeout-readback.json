@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "key": "BST-202",
+      "newCommentPresent": true,
+      "oldFailurePresent": true,
+      "inlineScreenshotPresent": null,
+      "commentCount": 2
+    },
+    {
+      "key": "BST-203",
+      "newCommentPresent": true,
+      "oldFailurePresent": true,
+      "inlineScreenshotPresent": null,
+      "commentCount": 2
+    },
+    {
+      "key": "BST-204",
+      "newCommentPresent": true,
+      "oldFailurePresent": null,
+      "inlineScreenshotPresent": true,
+      "commentCount": 1
+    },
+    {
+      "key": "BST-205",
+      "newCommentPresent": true,
+      "oldFailurePresent": true,
+      "inlineScreenshotPresent": true,
+      "commentCount": 2
+    },
+    {
+      "key": "SCRUM-642",
+      "newCommentPresent": true,
+      "oldFailurePresent": true,
+      "inlineScreenshotPresent": null,
+      "commentCount": 2
+    },
+    {
+      "key": "SCRUM-643",
+      "newCommentPresent": true,
+      "oldFailurePresent": true,
+      "inlineScreenshotPresent": null,
+      "commentCount": 2
+    }
+  ],
+  "excluded": [
+    {
+      "key": "BST-114",
+      "status": "Testing In Progress",
+      "error": false
+    },
+    {
+      "key": "BST-117",
+      "status": "Fail",
+      "error": false
+    },
+    {
+      "key": "SCRUM-641",
+      "status": "To Do",
+      "error": false
+    }
+  ],
+  "allCommentChecksPassed": true,
+  "noExcludedMutations": true
+}

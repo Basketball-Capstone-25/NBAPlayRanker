@@ -1,0 +1,303 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/shot-plan".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-plan
+	2 container
+		3 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		4 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		6 container
+			7 heading Shot Plan, Value: 1
+				8 text Shot Plan
+			9 text Dataset2 • PBP Shots Baseline Offense vs Defense Rank the best  shot types  and  zones  for  TOR (Toronto Raptors)  vs BOS (Boston Celtics) , then render a real heatmap for the selected filters. Want raw shots? Try 
+			10 link Description: Shots Explorer, Value: nbaplayranker-seven.vercel.app/shot-explorer
+			11 text .
+		12 container
+			13 heading Inputs, Value: 2
+				14 text Inputs
+			15 text wOff= 0.70 wDef= 0.30
+			16 checkbox (settable, integer) Description: Show “Why” explanations, Value: 0
+			17 text Show “Why” explanations Season
+			18 pop up button (collapsed, settable) Value: 2024-25, Secondary Actions: Expand
+				53 menu
+					54 2020-21
+					55 2021-22
+					56 2022-23
+					57 2023-24
+					58 (selected) 2024-25
+					59 2025-26
+			19 text Our team
+			20 pop up button (collapsed, settable) Value: TOR (Toronto Raptors), Secondary Actions: Expand
+				60 menu
+					61 ATL (Atlanta Hawks)
+					62 BKN (Brooklyn Nets)
+					63 BOS (Boston Celtics)
+					64 CHA (Charlotte Hornets)
+					65 CHI (Chicago Bulls)
+					66 CLE (Cleveland Cavaliers)
+					67 DAL (Dallas Mavericks)
+					68 DEN (Denver Nuggets)
+					69 DET (Detroit Pistons)
+					70 GSW (Golden State Warriors)
+					71 HOU (Houston Rockets)
+					72 IND (Indiana Pacers)
+					73 LAC (LA Clippers)
+					74 LAL (Los Angeles Lakers)
+					75 MEM (Memphis Grizzlies)
+					76 MIA (Miami Heat)
+					77 MIL (Milwaukee Bucks)
+					78 MIN (Minnesota Timberwolves)
+					79 NOP (New Orleans Pelicans)
+					80 NYK (New York Knicks)
+					81 OKC (Oklahoma City Thunder)
+					82 ORL (Orlando Magic)
+					83 PHI (Philadelphia 76ers)
+					84 PHX (Phoenix Suns)
+					85 POR (Portland Trail Blazers)
+					86 SAC (Sacramento Kings)
+					87 SAS (San Antonio Spurs)
+					88 (selected) TOR (Toronto Raptors)
+					89 UTA (Utah Jazz)
+					90 WAS (Washington Wizards)
+			21 text Opponent
+			22 pop up button (collapsed, settable) Value: BOS (Boston Celtics), Secondary Actions: Expand
+				91 menu
+					92 ATL (Atlanta Hawks)
+					93 BKN (Brooklyn Nets)
+					94 (selected) BOS (Boston Celtics)
+					95 CHA (Charlotte Hornets)
+					96 CHI (Chicago Bulls)
+					97 CLE (Cleveland Cavaliers)
+					98 DAL (Dallas Mavericks)
+					99 DEN (Denver Nuggets)
+					100 DET (Detroit Pistons)
+					101 GSW (Golden State Warriors)
+					102 HOU (Houston Rockets)
+					103 IND (Indiana Pacers)
+					104 LAC (LA Clippers)
+					105 LAL (Los Angeles Lakers)
+					106 MEM (Memphis Grizzlies)
+					107 MIA (Miami Heat)
+					108 MIL (Milwaukee Bucks)
+					109 MIN (Minnesota Timberwolves)
+					110 NOP (New Orleans Pelicans)
+					111 NYK (New York Knicks)
+					112 OKC (Oklahoma City Thunder)
+					113 ORL (Orlando Magic)
+					114 PHI (Philadelphia 76ers)
+					115 PHX (Phoenix Suns)
+					116 POR (Portland Trail Blazers)
+					117 SAC (Sacramento Kings)
+					118 SAS (San Antonio Spurs)
+					119 TOR (Toronto Raptors)
+					120 UTA (Utah Jazz)
+					121 WAS (Washington Wizards)
+			23 text Top K results (k)
+			24 stepper (settable, integer) 5
+			25 text Backend validation:  1–10 . Offense weight (wOff)
+			26 stepper (settable, float) Value: 0.699999988079071, Details: 0.7
+			27 text Higher = trust our offense more. Lower = trust opponent defense more. Heatmap max shots
+			28 stepper (settable, integer) 35000
+			29 text Downsamples for speed (Dataset2 endpoint supports this). Heatmap shot type (optional)
+			30 pop up button (collapsed, settable) Value: (All shot types), Secondary Actions: Expand
+				31 menu
+					32 (selected) (All shot types)
+					122 Bank Shot
+					123 Dunk
+					124 Fadeaway
+					125 Floater
+					126 Hook Shot
+					127 Jump Shot
+					128 Layup
+					129 Other
+					130 Pullup
+					131 Tip Shot
+			33 text Heatmap zone (optional)
+			34 pop up button (collapsed, settable) Value: (All zones), Secondary Actions: Expand
+				35 menu
+					36 (selected) (All zones)
+					132 arc3
+					133 corner3
+					134 mid
+					135 paint
+					136 rim
+			37 button Run
+			38 button Export PDF
+			39 link Description: Open Heatmap Page, Value: nbaplayranker-seven.vercel.app/shot-heatmap
+		40 container
+			41 heading Shot Plan Results, Value: 2
+				42 text Shot Plan Results
+			137 text Season  2021-22  •  TOR (Toronto Raptors)  vs BOS (Boston Celtics)  • k= 5  • wOff= 0.70  • wDef= 0.30 Best shot type Dunk EPA_PRED  1.766  • attempts_OFF 449 Best zone rim EPA_PRED  1.309  • attempts_OFF 2041 Best shooter (optional) - —
+			138 heading Top Shot Types, Value: 3
+				139 text Top Shot Types
+			140 table
+				141 row
+					142 cell
+						143 text SHOT_TYPE
+					144 cell
+						145 text EPA_PRED
+					146 cell
+						147 text EPA_OFF_SHRUNK
+					148 cell
+						149 text EPA_DEF_SHRUNK
+					150 cell
+						151 text ATT_OFF
+					152 cell
+						153 text ATT_DEF
+				154 row
+					155 cell
+						156 text Dunk
+					157 cell
+						158 text 1.766
+					159 cell
+						160 text 1.741
+					161 cell
+						162 text 1.825
+					163 cell
+						164 text 449
+					165 cell
+						166 text 444
+				167 row
+					168 cell
+						169 text Layup
+					170 cell
+						171 text 1.082
+					172 cell
+						173 text 1.100
+					174 cell
+						175 text 1.041
+					176 cell
+						177 text 1728
+					178 cell
+						179 text 2162
+				180 row
+					181 cell
+						182 text Bank Shot
+					183 cell
+						184 text 1.040
+					185 cell
+						186 text 1.025
+					187 cell
+						188 text 1.074
+					189 cell
+						190 text 158
+					191 cell
+						192 text 177
+				193 row
+					194 cell
+						195 text Jump Shot
+					196 cell
+						197 text 0.988
+					198 cell
+						199 text 0.991
+					200 cell
+						201 text 0.980
+					202 cell
+						203 text 3177
+					204 cell
+						205 text 3642
+				206 row
+					207 cell
+						208 text Hook Shot
+					209 cell
+						210 text 0.970
+					211 cell
+						212 text 0.989
+					213 cell
+						214 text 0.924
+					215 cell
+						216 text 341
+					217 cell
+						218 text 284
+			219 heading Top Zones, Value: 3
+				220 text Top Zones
+			221 table
+				222 row
+					223 cell
+						224 text ZONE
+					225 cell
+						226 text EPA_PRED
+					227 cell
+						228 text EPA_OFF_SHRUNK
+					229 cell
+						230 text EPA_DEF_SHRUNK
+					231 cell
+						232 text ATT_OFF
+					233 cell
+						234 text ATT_DEF
+				235 row
+					236 cell
+						237 text rim
+					238 cell
+						239 text 1.309
+					240 cell
+						241 text 1.296
+					242 cell
+						243 text 1.338
+					244 cell
+						245 text 2041
+					246 cell
+						247 text 2086
+				248 row
+					249 cell
+						250 text corner3
+					251 cell
+						252 text 1.148
+					253 cell
+						254 text 1.173
+					255 cell
+						256 text 1.090
+					257 cell
+						258 text 861
+					259 cell
+						260 text 983
+				261 row
+					262 cell
+						263 text arc3
+					264 cell
+						265 text 0.980
+					266 cell
+						267 text 0.980
+					268 cell
+						269 text 0.981
+					270 cell
+						271 text 2161
+					272 cell
+						273 text 2745
+				274 row
+					275 cell
+						276 text paint
+					277 cell
+						278 text 0.817
+					279 cell
+						280 text 0.830
+					281 cell
+						282 text 0.785
+					283 cell
+						284 text 1571
+					285 cell
+						286 text 1859
+				287 row
+					288 cell
+						289 text mid
+					290 cell
+						291 text 0.807
+					292 cell
+						293 text 0.801
+					294 cell
+						295 text 0.820
+					296 cell
+						297 text 1370
+					298 cell
+						299 text 1615
+		44 container
+			45 heading Heatmap, Value: 2
+				46 text Heatmap
+			300 text Shot Heatmap • TOR vs BOS • 2021-22 • Type: All • Zone: All • Matched: 376
+			301 image Shot heatmap
+			302 text Tip: try narrowing by a  zone  (e.g. corner 3) to see opponent-specific weaknesses.
+		48 text NBA Play Ranker · Basketball decision support
+		49 container
+			50 link Description: Glossary, Value: nbaplayranker-seven.vercel.app/glossary
+			51 text  · 
+			52 link Description: Data Dictionary, Value: nbaplayranker-seven.vercel.app/data-dictionary
+
+The focused UI element is 18 pop up button (collapsed, settable) Value: 2024-25, Secondary Actions: Expand

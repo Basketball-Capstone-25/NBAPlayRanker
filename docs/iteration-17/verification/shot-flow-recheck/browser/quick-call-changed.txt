@@ -1,0 +1,6 @@
+Browser tab: 3, Title: "Quick-Call | NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/context/quick-call?season=2024-25&our=TOR&opp=BOS&margin=-3&period=4&time=25".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 38-44
+~				14 text Down 2
+~			37 text Loading the top 3 plays…
+The focused UI element is 15 button Score up

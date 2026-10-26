@@ -1,0 +1,270 @@
+{
+  "policy": "Single-category normalization preserves the existing priority: dunk, layup, alley-oop, hook, tip, bank, fadeaway, stepback, pullup, floater, jump shot, other. This makes a bank-stepback Bank Shot and an alley-oop dunk Dunk; modifiers remain available only in raw source descriptions. Generic/contradictory source labels remain Other.",
+  "types": [
+    {
+      "source_label": "Alley Oop Dunk Shot",
+      "raw_rows": 10774,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Alley Oop Layup Shot",
+      "raw_rows": 5198,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Cutting Dunk Shot",
+      "raw_rows": 19670,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Cutting Finger Roll Layup Shot",
+      "raw_rows": 4255,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Cutting Layup Shot",
+      "raw_rows": 33733,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Double Personal Foul",
+      "raw_rows": 1,
+      "category": "Other"
+    },
+    {
+      "source_label": "Driving Dunk Shot",
+      "raw_rows": 12412,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Driving Finger Roll Layup",
+      "raw_rows": 35006,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Driving Floating Bank Jump Shot",
+      "raw_rows": 16918,
+      "category": "Bank Shot"
+    },
+    {
+      "source_label": "Driving Floating Jump Shot",
+      "raw_rows": 71299,
+      "category": "Floater"
+    },
+    {
+      "source_label": "Driving Hook Shot",
+      "raw_rows": 9321,
+      "category": "Hook Shot"
+    },
+    {
+      "source_label": "Driving Jump Shot Bank",
+      "raw_rows": 2792,
+      "category": "Bank Shot"
+    },
+    {
+      "source_label": "Driving Layup Shot",
+      "raw_rows": 121730,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Driving Reverse Dunk Shot",
+      "raw_rows": 246,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Dunk Shot",
+      "raw_rows": 9189,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Fade Away Bank Jump Shot",
+      "raw_rows": 1051,
+      "category": "Bank Shot"
+    },
+    {
+      "source_label": "Fade Away Jump Shot",
+      "raw_rows": 25408,
+      "category": "Fadeaway"
+    },
+    {
+      "source_label": "Finger Roll Layup",
+      "raw_rows": 2285,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Floating Jump Shot",
+      "raw_rows": 26165,
+      "category": "Floater"
+    },
+    {
+      "source_label": "Heave Jump Shot",
+      "raw_rows": 1151,
+      "category": "Jump Shot"
+    },
+    {
+      "source_label": "Hook Driving Bank",
+      "raw_rows": 1898,
+      "category": "Hook Shot"
+    },
+    {
+      "source_label": "Hook Shot",
+      "raw_rows": 10623,
+      "category": "Hook Shot"
+    },
+    {
+      "source_label": "Hook Shot Bank",
+      "raw_rows": 754,
+      "category": "Hook Shot"
+    },
+    {
+      "source_label": "Hook Turnaround Bank",
+      "raw_rows": 1252,
+      "category": "Hook Shot"
+    },
+    {
+      "source_label": "Jump Shot",
+      "raw_rows": 415880,
+      "category": "Jump Shot"
+    },
+    {
+      "source_label": "Jump Shot Bank",
+      "raw_rows": 2948,
+      "category": "Bank Shot"
+    },
+    {
+      "source_label": "Layup Driving Reverse",
+      "raw_rows": 13674,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Layup Running Reverse",
+      "raw_rows": 3537,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Layup Shot",
+      "raw_rows": 35094,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Layup Shot Putback",
+      "raw_rows": 22307,
+      "category": "Layup"
+    },
+    {
+      "source_label": "No Shot (Default Shot)",
+      "raw_rows": 20,
+      "category": "Other"
+    },
+    {
+      "source_label": "Pullup Bank Jump Shot",
+      "raw_rows": 3405,
+      "category": "Bank Shot"
+    },
+    {
+      "source_label": "Pullup Jump Shot",
+      "raw_rows": 162292,
+      "category": "Pullup"
+    },
+    {
+      "source_label": "Putback Dunk Shot",
+      "raw_rows": 3232,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Reverse Dunk Shot",
+      "raw_rows": 644,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Reverse Layup Shot",
+      "raw_rows": 7908,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Running Alley Oop Dunk Shot",
+      "raw_rows": 3076,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Running Alley Oop Layup Shot",
+      "raw_rows": 1087,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Running Dunk Shot",
+      "raw_rows": 16241,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Running Finger Roll Layup",
+      "raw_rows": 9170,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Running Jump Shot",
+      "raw_rows": 30106,
+      "category": "Jump Shot"
+    },
+    {
+      "source_label": "Running Layup Shot",
+      "raw_rows": 41252,
+      "category": "Layup"
+    },
+    {
+      "source_label": "Running Pullup Jump Shot",
+      "raw_rows": 16579,
+      "category": "Pullup"
+    },
+    {
+      "source_label": "Running Reverse Dunk Shot",
+      "raw_rows": 194,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Step Back Bank Jump Shot",
+      "raw_rows": 497,
+      "category": "Bank Shot"
+    },
+    {
+      "source_label": "Step Back Jump Shot",
+      "raw_rows": 69507,
+      "category": "Stepback"
+    },
+    {
+      "source_label": "Tip Dunk Shot",
+      "raw_rows": 4928,
+      "category": "Dunk"
+    },
+    {
+      "source_label": "Tip Shot",
+      "raw_rows": 29087,
+      "category": "Tip Shot"
+    },
+    {
+      "source_label": "Turnaround Bank Jump Shot",
+      "raw_rows": 1980,
+      "category": "Bank Shot"
+    },
+    {
+      "source_label": "Turnaround Fade Away Jump Shot",
+      "raw_rows": 20617,
+      "category": "Fadeaway"
+    },
+    {
+      "source_label": "Turnaround Fadeaway Bank Jump Shot",
+      "raw_rows": 638,
+      "category": "Bank Shot"
+    },
+    {
+      "source_label": "Turnaround Hook Shot",
+      "raw_rows": 14799,
+      "category": "Hook Shot"
+    },
+    {
+      "source_label": "Turnaround Jump Shot",
+      "raw_rows": 18041,
+      "category": "Jump Shot"
+    }
+  ]
+}

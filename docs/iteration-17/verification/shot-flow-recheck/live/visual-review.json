@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-26T15:20:05.842972+00:00",
+  "backend_revision": "nba-playranker-api-00011-rp7",
+  "pdf": {
+    "file": "canonical-team-pdf.pdf",
+    "rendered_page": "canonical-team-pdf-page.png",
+    "pages": 1,
+    "sha256": "a3bf10a839510daa2cef59b7bb8c6a58b868ab1e73b8122c00391327b10ee6ee",
+    "checks": [
+      "LAL/GSW 2024-25, offense weight 70%, defense weight 30%, and top-K 10 are visible.",
+      "All ten shot types and five zones fit within their tables.",
+      "The court caption reports 341 matched attempts, 340 shown and one outside half court.",
+      "The attempt-count legend, per-attempt interpretation, sample-weight explanation and three source hashes are visible without clipping."
+    ]
+  },
+  "heatmap": {
+    "file": "heatmap-6.png",
+    "checks": [
+      "OKC/SAS 2025-26 and All type/zone filters are visible.",
+      "The title reports 1,080 matched, 1,000 shown, six outside half court and 74 omitted by the display cap.",
+      "The numeric legend says Attempts per hexagon and the footer states that color scale varies by chart."
+    ]
+  },
+  "passed": true
+}

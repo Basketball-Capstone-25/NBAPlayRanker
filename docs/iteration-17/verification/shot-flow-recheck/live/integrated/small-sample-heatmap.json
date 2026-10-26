@@ -1,0 +1,19 @@
+{
+  "season": "2021-22",
+  "team": "TOR",
+  "opp": "BOS",
+  "shot_type": "Pullup",
+  "zone": "paint",
+  "max_shots": 1000,
+  "n_shots_excluded_location": 0,
+  "n_shots_outside_halfcourt": 0,
+  "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+  "n_shots_total": 1,
+  "n_shots_rendered": 1,
+  "n_shots_omitted_by_cap": 0,
+  "caption": "TOR vs BOS \u00b7 2021-22\nType: Pullup \u00b7 Zone: paint\nMatched: 1 \u00b7 Shown: 1",
+  "n_shots": 1,
+  "image_file": "small-sample-heatmap.png",
+  "image_bytes": 56111,
+  "image_sha256": "6692930341d406a6937e6a7af213a72f6b68f58c5de316ada79036ae76209a97"
+}

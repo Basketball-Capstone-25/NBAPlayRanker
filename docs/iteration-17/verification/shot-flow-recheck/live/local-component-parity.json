@@ -1,0 +1,383 @@
+{
+  "checked_at": "2026-10-25T19:32:33.982725+00:00",
+  "scope": "Actual local rank and heatmap components compared with independently computed event-level expectations; no HTTP requests or model fitting.",
+  "source_versions": {
+    "shots": "sha256:15078408bfaa84b6cc1a45cc7e10edd822e22b25166a3ab3f4931a0323f640cf",
+    "shots_canonical": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+    "shot_aggregates": "sha256:0649554dd4f3efdbebc19b0f80f1d7d9ef03aca576964fc281c59a97dc6aff99",
+    "shot_league": "sha256:b34603259d6465eceea6c59fcd05377898ec12d0a9c6e0f2019a078a72d649ab"
+  },
+  "checks": [
+    {
+      "name": "rank input versions match checked files",
+      "passed": true
+    },
+    {
+      "name": "context1 top_shot_types rank order",
+      "passed": true
+    },
+    {
+      "name": "context1 top_shot_types values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context1 top_zones rank order",
+      "passed": true
+    },
+    {
+      "name": "context1 top_zones values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context1 no unknown recommended zone",
+      "passed": true
+    },
+    {
+      "name": "context2 top_shot_types rank order",
+      "passed": true
+    },
+    {
+      "name": "context2 top_shot_types values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context2 top_zones rank order",
+      "passed": true
+    },
+    {
+      "name": "context2 top_zones values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context2 no unknown recommended zone",
+      "passed": true
+    },
+    {
+      "name": "context3 top_shot_types rank order",
+      "passed": true
+    },
+    {
+      "name": "context3 top_shot_types values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context3 top_zones rank order",
+      "passed": true
+    },
+    {
+      "name": "context3 top_zones values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context3 no unknown recommended zone",
+      "passed": true
+    },
+    {
+      "name": "context4 top_shot_types rank order",
+      "passed": true
+    },
+    {
+      "name": "context4 top_shot_types values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context4 top_zones rank order",
+      "passed": true
+    },
+    {
+      "name": "context4 top_zones values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context4 no unknown recommended zone",
+      "passed": true
+    },
+    {
+      "name": "context5 top_shot_types rank order",
+      "passed": true
+    },
+    {
+      "name": "context5 top_shot_types values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context5 top_zones rank order",
+      "passed": true
+    },
+    {
+      "name": "context5 top_zones values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context5 no unknown recommended zone",
+      "passed": true
+    },
+    {
+      "name": "context6 top_shot_types rank order",
+      "passed": true
+    },
+    {
+      "name": "context6 top_shot_types values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context6 top_zones rank order",
+      "passed": true
+    },
+    {
+      "name": "context6 top_zones values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context6 no unknown recommended zone",
+      "passed": true
+    },
+    {
+      "name": "context7 top_shot_types rank order",
+      "passed": true
+    },
+    {
+      "name": "context7 top_shot_types values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context7 top_zones rank order",
+      "passed": true
+    },
+    {
+      "name": "context7 top_zones values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context7 no unknown recommended zone",
+      "passed": true
+    },
+    {
+      "name": "context8 top_shot_types rank order",
+      "passed": true
+    },
+    {
+      "name": "context8 top_shot_types values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context8 top_zones rank order",
+      "passed": true
+    },
+    {
+      "name": "context8 top_zones values",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "context8 no unknown recommended zone",
+      "passed": true
+    },
+    {
+      "name": "heatmap1 every count matches source",
+      "passed": true,
+      "expected": {
+        "n_shots_total": 376,
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 1,
+        "n_shots_rendered": 375,
+        "n_shots_omitted_by_cap": 0
+      },
+      "actual": {
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 1,
+        "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+        "n_shots_total": 376,
+        "n_shots_rendered": 375,
+        "n_shots_omitted_by_cap": 0
+      }
+    },
+    {
+      "name": "heatmap1 counts conserved",
+      "passed": true
+    },
+    {
+      "name": "heatmap1 exact loaded canonical version",
+      "passed": true
+    },
+    {
+      "name": "heatmap1 renderer drops no sampled rows",
+      "passed": true
+    },
+    {
+      "name": "heatmap2 every count matches source",
+      "passed": true,
+      "expected": {
+        "n_shots_total": 352,
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 1,
+        "n_shots_rendered": 351,
+        "n_shots_omitted_by_cap": 0
+      },
+      "actual": {
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 1,
+        "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+        "n_shots_total": 352,
+        "n_shots_rendered": 351,
+        "n_shots_omitted_by_cap": 0
+      }
+    },
+    {
+      "name": "heatmap2 counts conserved",
+      "passed": true
+    },
+    {
+      "name": "heatmap2 exact loaded canonical version",
+      "passed": true
+    },
+    {
+      "name": "heatmap2 renderer drops no sampled rows",
+      "passed": true
+    },
+    {
+      "name": "heatmap3 every count matches source",
+      "passed": true,
+      "expected": {
+        "n_shots_total": 352,
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 2,
+        "n_shots_rendered": 350,
+        "n_shots_omitted_by_cap": 0
+      },
+      "actual": {
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 2,
+        "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+        "n_shots_total": 352,
+        "n_shots_rendered": 350,
+        "n_shots_omitted_by_cap": 0
+      }
+    },
+    {
+      "name": "heatmap3 counts conserved",
+      "passed": true
+    },
+    {
+      "name": "heatmap3 exact loaded canonical version",
+      "passed": true
+    },
+    {
+      "name": "heatmap3 renderer drops no sampled rows",
+      "passed": true
+    },
+    {
+      "name": "heatmap4 every count matches source",
+      "passed": true,
+      "expected": {
+        "n_shots_total": 362,
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 0,
+        "n_shots_rendered": 362,
+        "n_shots_omitted_by_cap": 0
+      },
+      "actual": {
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 0,
+        "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+        "n_shots_total": 362,
+        "n_shots_rendered": 362,
+        "n_shots_omitted_by_cap": 0
+      }
+    },
+    {
+      "name": "heatmap4 counts conserved",
+      "passed": true
+    },
+    {
+      "name": "heatmap4 exact loaded canonical version",
+      "passed": true
+    },
+    {
+      "name": "heatmap4 renderer drops no sampled rows",
+      "passed": true
+    },
+    {
+      "name": "heatmap5 every count matches source",
+      "passed": true,
+      "expected": {
+        "n_shots_total": 341,
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 1,
+        "n_shots_rendered": 340,
+        "n_shots_omitted_by_cap": 0
+      },
+      "actual": {
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 1,
+        "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+        "n_shots_total": 341,
+        "n_shots_rendered": 340,
+        "n_shots_omitted_by_cap": 0
+      }
+    },
+    {
+      "name": "heatmap5 counts conserved",
+      "passed": true
+    },
+    {
+      "name": "heatmap5 exact loaded canonical version",
+      "passed": true
+    },
+    {
+      "name": "heatmap5 renderer drops no sampled rows",
+      "passed": true
+    },
+    {
+      "name": "heatmap6 every count matches source",
+      "passed": true,
+      "expected": {
+        "n_shots_total": 1080,
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 6,
+        "n_shots_rendered": 1000,
+        "n_shots_omitted_by_cap": 74
+      },
+      "actual": {
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 6,
+        "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+        "n_shots_total": 1080,
+        "n_shots_rendered": 1000,
+        "n_shots_omitted_by_cap": 74
+      }
+    },
+    {
+      "name": "heatmap6 counts conserved",
+      "passed": true
+    },
+    {
+      "name": "heatmap6 exact loaded canonical version",
+      "passed": true
+    },
+    {
+      "name": "heatmap6 renderer drops no sampled rows",
+      "passed": true
+    },
+    {
+      "name": "capped image returns exact counts",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

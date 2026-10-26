@@ -1,0 +1,3 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/shot-heatmap".
+There has been no change in the accessibility tree.
+The focused UI element is 163 link Description: Download PNG, Help: Downloads the displayed filters and data version. Any download error opens in a new tab., URL: nbaplayranker-seven.vercel.app/api/exports/shot-heatmap?season=2025-26&team=OKC&opp=SAS&max_shots=1000&version=sha256%3A80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5

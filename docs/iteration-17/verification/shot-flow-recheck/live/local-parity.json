@@ -1,0 +1,244 @@
+{
+  "started_at": "2026-10-25T19:29:27.745332+00:00",
+  "calculation": "Independent pandas grouping and arithmetic; no application aggregation or ranking function imported.",
+  "source_versions": {
+    "shots": "sha256:15078408bfaa84b6cc1a45cc7e10edd822e22b25166a3ab3f4931a0323f640cf",
+    "shots_canonical": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+    "shot_aggregates": "sha256:0649554dd4f3efdbebc19b0f80f1d7d9ef03aca576964fc281c59a97dc6aff99",
+    "shot_league": "sha256:b34603259d6465eceea6c59fcd05377898ec12d0a9c6e0f2019a078a72d649ab"
+  },
+  "checks": [
+    {
+      "name": "canonical mirrors cleaned SEASON_STR",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned TEAM_ABBR",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned OPP_ABBR",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned SHOT_TYPE",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned ZONE",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned MADE",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned POINTS",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned X",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned Y",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned HOME_FLAG",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned MARGIN",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned LOCATION_VALID",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "canonical mirrors cleaned ZONE_METHOD",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "no self-opponents",
+      "passed": true,
+      "rows": 1367928
+    },
+    {
+      "name": "made values are binary",
+      "passed": true
+    },
+    {
+      "name": "misses have zero points",
+      "passed": true
+    },
+    {
+      "name": "made points are two or three",
+      "passed": true
+    },
+    {
+      "name": "shot_type aggregate categories",
+      "passed": true,
+      "expected_rows": 3636,
+      "actual_rows": 3636
+    },
+    {
+      "name": "shot_type aggregate attempts",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "shot_type aggregate makes",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "shot_type aggregate points",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "shot_type aggregate EPA",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "shot_type aggregate RELIABILITY_WEIGHT",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "shot_type reliability is bounded",
+      "passed": true
+    },
+    {
+      "name": "shot_type offense league rates",
+      "passed": true,
+      "rows": 66
+    },
+    {
+      "name": "shot_type defense_allowed league rates",
+      "passed": true,
+      "rows": 66
+    },
+    {
+      "name": "zone aggregate categories",
+      "passed": true,
+      "expected_rows": 1819,
+      "actual_rows": 1819
+    },
+    {
+      "name": "zone aggregate attempts",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "zone aggregate makes",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "zone aggregate points",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "zone aggregate EPA",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "zone aggregate RELIABILITY_WEIGHT",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "zone reliability is bounded",
+      "passed": true
+    },
+    {
+      "name": "zone offense league rates",
+      "passed": true,
+      "rows": 34
+    },
+    {
+      "name": "zone defense_allowed league rates",
+      "passed": true,
+      "rows": 34
+    },
+    {
+      "name": "shot_type_zone aggregate categories",
+      "passed": true,
+      "expected_rows": 13402,
+      "actual_rows": 13402
+    },
+    {
+      "name": "shot_type_zone aggregate attempts",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "shot_type_zone aggregate makes",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "shot_type_zone aggregate points",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "shot_type_zone aggregate EPA",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "shot_type_zone aggregate RELIABILITY_WEIGHT",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "shot_type_zone reliability is bounded",
+      "passed": true
+    },
+    {
+      "name": "shot_type_zone offense league rates",
+      "passed": true,
+      "rows": 271
+    },
+    {
+      "name": "shot_type_zone defense_allowed league rates",
+      "passed": true,
+      "rows": 271
+    },
+    {
+      "name": "files remained stable through audit",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "EPA is points per recorded shot attempt, not points per possession.",
+    "Reliability weights are log-scaled sample weights, not calibrated confidence probabilities or intervals.",
+    "FG% is computed here as makes/attempts; the shot rank API does not return it.",
+    "The current shot rank/heatmap routes have no minimum-attempt threshold parameter.",
+    "Matching derived data does not by itself validate event classification; the separate raw-source zone audit is required."
+  ],
+  "finished_at": "2026-10-25T19:29:28.396503+00:00",
+  "passed": true,
+  "expected_rank_contexts": 8,
+  "matchups": 6
+}

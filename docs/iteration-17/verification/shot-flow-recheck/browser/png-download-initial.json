@@ -1,0 +1,14 @@
+{
+  "context": {
+    "season": "2025-26",
+    "team": "OKC",
+    "opponent": "SAS",
+    "max_shots": 1000
+  },
+  "action": "Clicked Download PNG on the displayed heatmap; link received focus.",
+  "observed": "No matching new PNG appeared in the Downloads folder; the browser PDF from the same session did save.",
+  "limitations": "The embedded download-manager status could not be inspected. No claim that it showed Stopped.",
+  "result": "needs_repair",
+  "source_commit": "3a701c6d0ca388657ddfe83d0bdaa2d5d124ac5c",
+  "recorded_at": "2026-10-26T15:25:51.317255+00:00"
+}

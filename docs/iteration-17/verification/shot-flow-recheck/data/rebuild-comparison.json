@@ -1,0 +1,234 @@
+{
+  "all_retained_non_zone_columns_unchanged": true,
+  "rows_before": 1370434,
+  "rows_after": 1367928,
+  "rows_quarantined": 2506,
+  "games_after": 7725,
+  "zone_changed_rows": 68118,
+  "checks": {
+    "team_mismatches": 0,
+    "opponent_mismatches": 0,
+    "home_flag_mismatches": 0,
+    "point_mismatches": 0,
+    "made_mismatches": 0,
+    "supplied_attempt_value_mismatches": 0,
+    "post_event_adjusted_margin_mismatches": 0,
+    "preceding_score_margin_disagreements": 0,
+    "x_transform_mismatches": 0,
+    "y_transform_mismatches": 0,
+    "distance_feet_mismatches": 0,
+    "angle_degrees_mismatches": 0,
+    "known_twos_in_three_point_zones": 0,
+    "known_threes_in_two_point_zones": 0,
+    "current_corner_beyond_corner_join": 0
+  },
+  "zone_transitions": [
+    {
+      "before": "arc3",
+      "after": "arc3",
+      "shots": 388740
+    },
+    {
+      "before": "arc3",
+      "after": "mid",
+      "shots": 6299
+    },
+    {
+      "before": "arc3",
+      "after": "unknown",
+      "shots": 2
+    },
+    {
+      "before": "corner3",
+      "after": "arc3",
+      "shots": 25619
+    },
+    {
+      "before": "corner3",
+      "after": "corner3",
+      "shots": 133883
+    },
+    {
+      "before": "corner3",
+      "after": "mid",
+      "shots": 446
+    },
+    {
+      "before": "mid",
+      "after": "corner3",
+      "shots": 2047
+    },
+    {
+      "before": "mid",
+      "after": "mid",
+      "shots": 151535
+    },
+    {
+      "before": "mid",
+      "after": "paint",
+      "shots": 33697
+    },
+    {
+      "before": "mid",
+      "after": "unknown",
+      "shots": 5
+    },
+    {
+      "before": "paint",
+      "after": "paint",
+      "shots": 248941
+    },
+    {
+      "before": "paint",
+      "after": "unknown",
+      "shots": 3
+    },
+    {
+      "before": "rim",
+      "after": "rim",
+      "shots": 376711
+    }
+  ],
+  "locations_flagged": [
+    {
+      "EVENT_ID": "401360410147",
+      "SEASON_STR": "2021-22",
+      "GAME_ID": "401360410",
+      "TEAM_ABBR": "LAC",
+      "OPP_ABBR": "MEM",
+      "SHOT_VALUE": 3.0,
+      "POINTS": 0,
+      "X": 22.75,
+      "Y": 0.0,
+      "DIST": 19.0,
+      "ZONE": "unknown",
+      "ZONE_METHOD": "value_location_conflict"
+    },
+    {
+      "EVENT_ID": "401468229214",
+      "SEASON_STR": "2022-23",
+      "GAME_ID": "401468229",
+      "TEAM_ABBR": "IND",
+      "OPP_ABBR": "WAS",
+      "SHOT_VALUE": 3.0,
+      "POINTS": 0,
+      "X": -36.75,
+      "Y": 0.0,
+      "DIST": 5.0,
+      "ZONE": "unknown",
+      "ZONE_METHOD": "value_location_conflict"
+    },
+    {
+      "EVENT_ID": "401469023254",
+      "SEASON_STR": "2022-23",
+      "GAME_ID": "401469023",
+      "TEAM_ABBR": "ORL",
+      "OPP_ABBR": "TOR",
+      "SHOT_VALUE": 3.0,
+      "POINTS": 0,
+      "X": -35.75,
+      "Y": 0.0,
+      "DIST": 6.0,
+      "ZONE": "unknown",
+      "ZONE_METHOD": "value_location_conflict"
+    },
+    {
+      "EVENT_ID": "401469063584",
+      "SEASON_STR": "2022-23",
+      "GAME_ID": "401469063",
+      "TEAM_ABBR": "BOS",
+      "OPP_ABBR": "PHI",
+      "SHOT_VALUE": 2.0,
+      "POINTS": 0,
+      "X": -16.75,
+      "Y": 7.0,
+      "DIST": 25.9615099715,
+      "ZONE": "unknown",
+      "ZONE_METHOD": "value_location_conflict"
+    },
+    {
+      "EVENT_ID": "401469227285",
+      "SEASON_STR": "2022-23",
+      "GAME_ID": "401469227",
+      "TEAM_ABBR": "CHI",
+      "OPP_ABBR": "PHI",
+      "SHOT_VALUE": 3.0,
+      "POINTS": 0,
+      "X": -26.75,
+      "Y": 0.0,
+      "DIST": 15.0,
+      "ZONE": "unknown",
+      "ZONE_METHOD": "value_location_conflict"
+    },
+    {
+      "EVENT_ID": "401704662526",
+      "SEASON_STR": "2024-25",
+      "GAME_ID": "401704662",
+      "TEAM_ABBR": "LAL",
+      "OPP_ABBR": "SAC",
+      "SHOT_VALUE": 3.0,
+      "POINTS": 0,
+      "X": 24.75,
+      "Y": -11.0,
+      "DIST": 20.2484567313,
+      "ZONE": "unknown",
+      "ZONE_METHOD": "value_location_conflict"
+    },
+    {
+      "EVENT_ID": "401705174481",
+      "SEASON_STR": "2024-25",
+      "GAME_ID": "401705174",
+      "TEAM_ABBR": "ORL",
+      "OPP_ABBR": "TOR",
+      "SHOT_VALUE": 3.0,
+      "POINTS": 0,
+      "X": -20.75,
+      "Y": 1.0,
+      "DIST": 21.0237960416,
+      "ZONE": "unknown",
+      "ZONE_METHOD": "value_location_conflict"
+    },
+    {
+      "EVENT_ID": "401705260144",
+      "SEASON_STR": "2024-25",
+      "GAME_ID": "401705260",
+      "TEAM_ABBR": "PHX",
+      "OPP_ABBR": "POR",
+      "SHOT_VALUE": 3.0,
+      "POINTS": 0,
+      "X": -19.75,
+      "Y": 3.0,
+      "DIST": 22.2036033112,
+      "ZONE": "unknown",
+      "ZONE_METHOD": "value_location_conflict"
+    },
+    {
+      "EVENT_ID": "401809973519",
+      "SEASON_STR": "2025-26",
+      "GAME_ID": "401809973",
+      "TEAM_ABBR": "SAS",
+      "OPP_ABBR": "TOR",
+      "SHOT_VALUE": 3.0,
+      "POINTS": 0,
+      "X": 40.75,
+      "Y": 6.0,
+      "DIST": 6.0827625303,
+      "ZONE": "unknown",
+      "ZONE_METHOD": "value_location_conflict"
+    },
+    {
+      "EVENT_ID": "401810549328",
+      "SEASON_STR": "2025-26",
+      "GAME_ID": "401810549",
+      "TEAM_ABBR": "UTA",
+      "OPP_ABBR": "BKN",
+      "SHOT_VALUE": 3.0,
+      "POINTS": 0,
+      "X": 40.75,
+      "Y": 14.0,
+      "DIST": 14.0356688476,
+      "ZONE": "unknown",
+      "ZONE_METHOD": "value_location_conflict"
+    }
+  ]
+}

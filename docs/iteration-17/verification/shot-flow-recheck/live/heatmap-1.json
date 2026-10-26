@@ -1,0 +1,19 @@
+{
+  "season": "2021-22",
+  "team": "TOR",
+  "opp": "BOS",
+  "shot_type": null,
+  "zone": null,
+  "max_shots": 1000,
+  "n_shots_excluded_location": 0,
+  "n_shots_outside_halfcourt": 1,
+  "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+  "n_shots_total": 376,
+  "n_shots_rendered": 375,
+  "n_shots_omitted_by_cap": 0,
+  "caption": "TOR vs BOS \u00b7 2021-22\nType: All \u00b7 Zone: All\nMatched: 376 \u00b7 Shown: 375\n1 outside half court",
+  "n_shots": 375,
+  "image_file": "heatmap-1.png",
+  "image_bytes": 107031,
+  "image_sha256": "6e9c91c1f79ba58ec049acb6b87786072778131a511942550625306bb7b89264"
+}

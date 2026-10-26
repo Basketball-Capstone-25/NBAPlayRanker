@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-10-26T15:47:03.109339+00:00",
+  "backend_source": "0ba37bb117bb4703d0c6ac707071d3a4d2fe78ae",
+  "frontend_source": "99a31e0dd1a629cbf105dabac89d171f87915a02",
+  "revision": "nba-playranker-api-00012-nrd",
+  "traffic": [
+    {
+      "latestRevision": true,
+      "percent": 100,
+      "revisionName": "nba-playranker-api-00012-nrd"
+    }
+  ],
+  "build_id": "7272e176-7217-402e-ac16-2f15ebccb296",
+  "concurrency": 2,
+  "resources": {
+    "limits": {
+      "cpu": "1",
+      "memory": "2Gi"
+    }
+  },
+  "annotations": {
+    "autoscaling.knative.dev/maxScale": "2",
+    "run.googleapis.com/cpu-throttling": "true",
+    "run.googleapis.com/startup-cpu-boost": "true"
+  },
+  "thread_limits": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "frontend_deployment": "dpl_DknqC3yLsJp2f7ytQNwjUAMYG4MA",
+  "frontend_url": "https://nbaplayranker-seven.vercel.app",
+  "teammate_integrated_commit": "1c283c5b5d22f2257f99581c68178120179a2ac5"
+}

@@ -1,0 +1,19 @@
+{
+  "season": "2025-26",
+  "team": "OKC",
+  "opp": "SAS",
+  "shot_type": null,
+  "zone": null,
+  "max_shots": 1000,
+  "n_shots_excluded_location": 0,
+  "n_shots_outside_halfcourt": 6,
+  "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+  "n_shots_total": 1080,
+  "n_shots_rendered": 1000,
+  "n_shots_omitted_by_cap": 74,
+  "caption": "OKC vs SAS \u00b7 2025-26\nType: All \u00b7 Zone: All\nMatched: 1,080 \u00b7 Shown: 1,000\n6 outside half court \u00b7 74 omitted by sample cap",
+  "n_shots": 1000,
+  "image_file": "heatmap-6.png",
+  "image_bytes": 134676,
+  "image_sha256": "e9f7550b0430b779331020f09c8960ce4b864c09a974dc01f3017e1eb2ee7566"
+}

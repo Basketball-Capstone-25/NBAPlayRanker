@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-10-26T15:47:41.329805+00:00",
+  "frontend_source": "99a31e0dd1a629cbf105dabac89d171f87915a02",
+  "backend": "nba-playranker-api-00012-nrd",
+  "role": "coach",
+  "context": {
+    "season": "2024-25",
+    "our": "TOR",
+    "opp": "BOS"
+  },
+  "checks": [
+    {
+      "name": "Initial three calls load for down3 Q4 25seconds",
+      "passed": true,
+      "observed_refresh_ms": 8096
+    },
+    {
+      "name": "Score change to down2 removes old list during loading",
+      "passed": true
+    },
+    {
+      "name": "Updated down2 calls return",
+      "passed": true,
+      "observed_refresh_ms": 365
+    },
+    {
+      "name": "OT scenario changes score/period/clock and removes old list",
+      "passed": true
+    },
+    {
+      "name": "Down3 OT20seconds shows updated three calls",
+      "passed": true,
+      "observed_refresh_ms": 740
+    }
+  ],
+  "timing_scope": "Single observed UI requests, not a percentile benchmark or proof of a two-second service guarantee.",
+  "failure_race_scope": "Failed refreshes and late completion races are covered by focused automated tests, not a production network interruption.",
+  "passed": true
+}

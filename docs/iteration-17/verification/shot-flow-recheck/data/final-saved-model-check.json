@@ -1,0 +1,115 @@
+{
+  "source_sha256": "15078408bfaa84b6cc1a45cc7e10edd822e22b25166a3ab3f4931a0323f640cf",
+  "both_saved_artifacts_match_source": true,
+  "folds": 5,
+  "model_count": 3,
+  "fold_result_count": 15,
+  "sample": {
+    "max_rows": 75000,
+    "random_state": 42,
+    "grouping": "GAME_ID",
+    "prediction_kind": "proposed_shot",
+    "train_seasons": [
+      "2020-21",
+      "2021-22",
+      "2022-23",
+      "2023-24",
+      "2024-25"
+    ],
+    "train_rows": 62020
+  },
+  "later_season": {
+    "train_seasons": [
+      "2020-21",
+      "2021-22",
+      "2022-23",
+      "2023-24",
+      "2024-25"
+    ],
+    "test_season": "2025-26",
+    "train_rows": 62020,
+    "test_rows": 12980,
+    "max_rows": 75000,
+    "random_state": 42,
+    "features": [
+      "TEAM_ABBR",
+      "OPP_ABBR",
+      "HOME_FLAG",
+      "PERIOD",
+      "SHOT_TYPE",
+      "ZONE",
+      "CLOCK_SEC",
+      "MARGIN",
+      "DIST",
+      "ANGLE",
+      "X",
+      "Y"
+    ],
+    "metrics": [
+      {
+        "model": "training_mean",
+        "RMSE": 1.2053339495871567,
+        "MAE": 1.1588708026487802,
+        "R2": -4.858911307059621e-05
+      },
+      {
+        "model": "ridge",
+        "RMSE": 1.1816124473374623,
+        "MAE": 1.102806933374259,
+        "R2": 0.038926864492859314
+      },
+      {
+        "model": "gbr",
+        "RMSE": 1.177771636391546,
+        "MAE": 1.097452956791454,
+        "R2": 0.045164613550151
+      },
+      {
+        "model": "rf",
+        "RMSE": 1.182236464597437,
+        "MAE": 1.0912973153033978,
+        "R2": 0.0379114984383182
+      }
+    ],
+    "prediction_kind": "proposed_shot",
+    "limitation": "Observed location and shot type are supplied. This does not measure pre-possession forecasts."
+  },
+  "best_model": "gbr",
+  "metrics": [
+    {
+      "model": "gbr",
+      "RMSE_mean": 1.1682716137189662,
+      "RMSE_std": 0.005820785855026006,
+      "MAE_mean": 1.0903416148815466,
+      "MAE_std": 0.004845757263607695,
+      "R2_mean": 0.04395856110363672,
+      "R2_std": 0.0025177785498224307
+    },
+    {
+      "model": "ridge",
+      "RMSE_mean": 1.1722878008594766,
+      "RMSE_std": 0.005486994055969118,
+      "MAE_mean": 1.0962412667613428,
+      "MAE_std": 0.004733103924989007,
+      "R2_mean": 0.03736982455017997,
+      "R2_std": 0.003017938959856256
+    },
+    {
+      "model": "rf",
+      "RMSE_mean": 1.1739200572161255,
+      "RMSE_std": 0.0056222315088983385,
+      "MAE_mean": 1.0845337953301386,
+      "MAE_std": 0.005170961123324903,
+      "R2_mean": 0.03468721965593,
+      "R2_std": 0.003348056744594048
+    }
+  ],
+  "compute_seconds": 142.59636092185974,
+  "analysis_compute_seconds": 0.3186969757080078,
+  "analysis_rows": 200000,
+  "artifact_hashes": {
+    "pbp_phase2_shot_model_cv.json": "af999592e046e2552b16638fcee753194ad0b7a9a3c58facb515548c4cbe302f",
+    "pbp_phase2_shot_ml_analysis.json": "89acf427db72fed6709183b0ecd5f1268bad0bf27f4c98a9cf4be57d1f863c6e",
+    "shot_ml_analysis_cache.json": "8f44c57e9dfeda8907563ccaef03aa354637bed59c3a491655336222ba1df083"
+  }
+}

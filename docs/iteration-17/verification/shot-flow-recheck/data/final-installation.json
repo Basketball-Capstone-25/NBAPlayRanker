@@ -1,0 +1,60 @@
+{
+  "rows": 1367928,
+  "games": 7725,
+  "preserved_retained_columns": [
+    "SEASON_STR",
+    "TEAM_ABBR",
+    "OPP_ABBR",
+    "HOME_FLAG",
+    "SHOT_VALUE",
+    "MADE",
+    "POINTS",
+    "X",
+    "Y",
+    "DIST",
+    "ANGLE",
+    "PERIOD",
+    "CLOCK_SEC",
+    "MARGIN",
+    "GAME_ID",
+    "SHOOTER_ID"
+  ],
+  "zone_changed_rows": 68118,
+  "type_changed_rows": 69274,
+  "source_checks_zero_disagreements": [
+    "team_mismatches",
+    "opponent_mismatches",
+    "home_flag_mismatches",
+    "point_mismatches",
+    "made_mismatches",
+    "supplied_attempt_value_mismatches",
+    "post_event_adjusted_margin_mismatches",
+    "preceding_score_margin_disagreements",
+    "either_scoreboard_transition_disagreements",
+    "x_transform_mismatches",
+    "y_transform_mismatches",
+    "distance_feet_mismatches",
+    "angle_degrees_mismatches",
+    "known_twos_in_three_point_zones",
+    "known_threes_in_two_point_zones",
+    "current_corner_beyond_corner_join"
+  ],
+  "files": [
+    {
+      "path": "cache/shots_canonical.parquet",
+      "sha256": "80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5"
+    },
+    {
+      "path": "shots_agg.parquet",
+      "sha256": "0649554dd4f3efdbebc19b0f80f1d7d9ef03aca576964fc281c59a97dc6aff99"
+    },
+    {
+      "path": "shots_agg_league.parquet",
+      "sha256": "b34603259d6465eceea6c59fcd05377898ec12d0a9c6e0f2019a078a72d649ab"
+    },
+    {
+      "path": "shots_clean.parquet",
+      "sha256": "15078408bfaa84b6cc1a45cc7e10edd822e22b25166a3ab3f4931a0323f640cf"
+    }
+  ]
+}

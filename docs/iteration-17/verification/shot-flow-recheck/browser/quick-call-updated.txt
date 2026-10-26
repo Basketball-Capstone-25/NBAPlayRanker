@@ -1,0 +1,11 @@
+Browser tab: 3, Title: "Quick-Call | NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/context/quick-call?season=2024-25&our=TOR&opp=BOS&margin=-3&period=4&time=25".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~			37 text Context-aware plays • updated in 365 ms
++			38 content list Top 3 plays
++				39 container
++					40 text 1 PRRollMan Shot zone:  At the rim +0.02 PPP vs season baseline (late & trailing) 1.17 expected PPP
++				41 container
++					42 text 2 Spotup Shot zone:  Corner 3 +0.02 PPP vs season baseline (late & trailing) 1.08 expected PPP
++				43 container
++					44 text 3 OffScreen Shot zone:  Above-the-break 3 +0.01 PPP vs season baseline (late & trailing) 1.01 expected PPP
+The focused UI element is 15 button Score up

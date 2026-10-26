@@ -1,0 +1,19 @@
+{
+  "season": "2024-25",
+  "team": "LAL",
+  "opp": "GSW",
+  "shot_type": null,
+  "zone": null,
+  "max_shots": 1000,
+  "n_shots_excluded_location": 0,
+  "n_shots_outside_halfcourt": 1,
+  "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+  "n_shots_total": 341,
+  "n_shots_rendered": 340,
+  "n_shots_omitted_by_cap": 0,
+  "caption": "LAL vs GSW \u00b7 2024-25\nType: All \u00b7 Zone: All\nMatched: 341 \u00b7 Shown: 340\n1 outside half court",
+  "n_shots": 340,
+  "image_file": "heatmap-5.png",
+  "image_bytes": 104820,
+  "image_sha256": "373773feeb66bb5ecfdc61cdb40618bfae04e80f5d4479005af0dd6c7fc9d1dd"
+}

@@ -1,0 +1,13 @@
+Shot display follow-up
+
+The review found stale results and exports on all three interactive shot pages, a heatmap fallback that hid empty-data errors, and a PDF that did not receive the chosen sample cap. The first checks used frontend 3a701c6 and backend nba-playranker-api-00011-rp7. The final integrated release is frontend 99a31e0 and backend nba-playranker-api-00012-nrd; see ../release/final-integrated-release.json.
+
+The result guard keeps data, captions and exports tied to the successful inputs. Changing inputs clears the old result, and superseded requests cannot replace the current result. Shot Plan explains estimated points per attempt and season-long ranking scope. The heatmap explains matchup-only attempt counts and attacking-basket orientation. Saved model metrics describe the proposed-shot input limitation.
+
+Recorded browser checks cover visible results, changed inputs, empty filters and recovery. Actual CSV and PDF files were downloaded and inspected. A separate API check confirms that the capped PDF court image exactly matches the corresponding heatmap PNG. See ../browser/checks.json, ../browser/downloads-verification.json and ../live/capped-pdf-image-parity.json.
+
+The PNG button did not produce a downloaded file during the browser check. The old failure remains in ../browser/png-download-initial.json. The same-origin route was released as frontend 0ba37bb, deployment dpl_9p6SyPTV6RCncXMWLHgQn8YmsFGR. Its actual browser retest saved a 134,676-byte, 1050 by 900 PNG that matches the corresponding API image byte for byte. See ../browser/png-download-final.json, ../browser/downloaded-shot-heatmap.png and ../browser/heatmap-png-verified.jpg. png-download-repair.json now records Pass and the successful retest, with the original failure still included. The final frontend 99a31e0/backend00012 browser check also saved an identical PNG; see ../browser/final-release-smoke.json.
+
+findings.json records the original display defects. focused-tests.txt covers the first display repairs; png-focused-tests.txt covers the later PNG route repair. The browser retest is separate from those source tests. The integrated backend 00012-nrd has since passed the repeated 218-check shot campaign with unchanged results. The final frontend also passed five Quick Call browser refresh checks; see ../browser/quick-call-checks.json. This covers the stale-result guard, not the teammate feature as a whole or a two-second response guarantee.
+
+Jira closeout is confirmed in jira-closeout.json and jira-closeout-readback.json: SCRUM-642/643 Done, BST-202–205 Pass. BST-114 stays Testing In Progress, BST-117 stays Fail and SCRUM-641 stays To Do. Earlier failures remain available.

@@ -1,0 +1,223 @@
+{
+  "checked_at": "2026-10-25T19:28:00.264095+00:00",
+  "scope": "Synthetic coordinate fixtures against the actual renderer conversion; no live request or dataset read.",
+  "renderer_sha256": "1fbe82591eb1ba9e8734f55904a93ce011438d13dcab82a7affe90136db4c9dc",
+  "coordinate_contract": "Cleaned hoopR coordinates are feet from midcourt. Home attacks positive X; away attacks negative X. Rotate both coordinates for away attempts.",
+  "court_parameters": {
+    "court_length": 94.0,
+    "court_width": 50.0,
+    "basket_center_to_baseline": 5.25
+  },
+  "axes_limits": {
+    "x": [
+      0.0,
+      55.0
+    ],
+    "y": [
+      -30.0,
+      30.0
+    ]
+  },
+  "checks": [
+    {
+      "name": "home rim",
+      "input": {
+        "x": 41.75,
+        "y": 0.0,
+        "home": true
+      },
+      "expected": {
+        "x": 41.75,
+        "y": 0.0
+      },
+      "actual": {
+        "x": 41.75,
+        "y": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "away rim",
+      "input": {
+        "x": -41.75,
+        "y": 0.0,
+        "home": false
+      },
+      "expected": {
+        "x": 41.75,
+        "y": 0.0
+      },
+      "actual": {
+        "x": 41.75,
+        "y": -0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "home corner",
+      "input": {
+        "x": 41.75,
+        "y": 22.0,
+        "home": true
+      },
+      "expected": {
+        "x": 41.75,
+        "y": 22.0
+      },
+      "actual": {
+        "x": 41.75,
+        "y": 22.0
+      },
+      "passed": true
+    },
+    {
+      "name": "away corner",
+      "input": {
+        "x": -41.75,
+        "y": -22.0,
+        "home": false
+      },
+      "expected": {
+        "x": 41.75,
+        "y": 22.0
+      },
+      "actual": {
+        "x": 41.75,
+        "y": 22.0
+      },
+      "passed": true
+    },
+    {
+      "name": "home midrange",
+      "input": {
+        "x": 20.0,
+        "y": 5.0,
+        "home": true
+      },
+      "expected": {
+        "x": 20.0,
+        "y": 5.0
+      },
+      "actual": {
+        "x": 20.0,
+        "y": 5.0
+      },
+      "passed": true
+    },
+    {
+      "name": "away midrange",
+      "input": {
+        "x": -20.0,
+        "y": -5.0,
+        "home": false
+      },
+      "expected": {
+        "x": 20.0,
+        "y": 5.0
+      },
+      "actual": {
+        "x": 20.0,
+        "y": 5.0
+      },
+      "passed": true
+    },
+    {
+      "name": "home backcourt heave",
+      "input": {
+        "x": -20.0,
+        "y": 3.0,
+        "home": true
+      },
+      "expected": {
+        "x": -20.0,
+        "y": 3.0
+      },
+      "actual": {
+        "x": -20.0,
+        "y": 3.0
+      },
+      "passed": true
+    },
+    {
+      "name": "away backcourt heave",
+      "input": {
+        "x": 20.0,
+        "y": -3.0,
+        "home": false
+      },
+      "expected": {
+        "x": -20.0,
+        "y": 3.0
+      },
+      "actual": {
+        "x": -20.0,
+        "y": 3.0
+      },
+      "passed": true
+    },
+    {
+      "name": "home halfcourt",
+      "input": {
+        "x": 0.0,
+        "y": 0.0,
+        "home": true
+      },
+      "expected": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "actual": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "away halfcourt",
+      "input": {
+        "x": 0.0,
+        "y": 0.0,
+        "home": false
+      },
+      "expected": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "actual": {
+        "x": -0.0,
+        "y": -0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "rim distance to true basket unchanged",
+      "passed": true
+    },
+    {
+      "name": "home and away heaves remain backcourt",
+      "passed": true
+    },
+    {
+      "name": "invalid locations and physical outside-court points excluded before plotting",
+      "passed": true,
+      "input_rows": 14,
+      "eligible_rows": 8,
+      "counts": {
+        "n_shots_excluded_location": 2,
+        "n_shots_outside_halfcourt": 4
+      }
+    },
+    {
+      "name": "plotted coordinates stay inside physical half court",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "observations": [
+    "Case A uses the existing feet coordinates directly. Plot-axis padding does not move the basket or alter distance.",
+    "Backcourt heaves retain negative X and are not folded into the frontcourt.",
+    "The fallback inches conversion is not used for the current cleaned hoopR files.",
+    "The current renderer excludes invalid locations and points outside the physical half court before sampling: X from0to47feet and |Y|<=25feet.",
+    "Matched, excluded-location, outside-halfcourt, cap-omitted and shown counts are separate; the fixture verifies their physical filtering boundary."
+  ]
+}

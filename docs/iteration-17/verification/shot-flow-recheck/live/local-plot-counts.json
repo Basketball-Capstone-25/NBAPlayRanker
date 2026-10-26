@@ -1,0 +1,80 @@
+[
+  {
+    "season": "2021-22",
+    "team": "TOR",
+    "opp": "BOS",
+    "counts": {
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 1,
+      "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+      "n_shots_total": 376,
+      "n_shots_rendered": 375,
+      "n_shots_omitted_by_cap": 0
+    }
+  },
+  {
+    "season": "2021-22",
+    "team": "BOS",
+    "opp": "TOR",
+    "counts": {
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 1,
+      "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+      "n_shots_total": 352,
+      "n_shots_rendered": 351,
+      "n_shots_omitted_by_cap": 0
+    }
+  },
+  {
+    "season": "2025-26",
+    "team": "TOR",
+    "opp": "BOS",
+    "counts": {
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 2,
+      "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+      "n_shots_total": 352,
+      "n_shots_rendered": 350,
+      "n_shots_omitted_by_cap": 0
+    }
+  },
+  {
+    "season": "2025-26",
+    "team": "BOS",
+    "opp": "TOR",
+    "counts": {
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 0,
+      "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+      "n_shots_total": 362,
+      "n_shots_rendered": 362,
+      "n_shots_omitted_by_cap": 0
+    }
+  },
+  {
+    "season": "2024-25",
+    "team": "LAL",
+    "opp": "GSW",
+    "counts": {
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 1,
+      "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+      "n_shots_total": 341,
+      "n_shots_rendered": 340,
+      "n_shots_omitted_by_cap": 0
+    }
+  },
+  {
+    "season": "2025-26",
+    "team": "OKC",
+    "opp": "SAS",
+    "counts": {
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 6,
+      "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+      "n_shots_total": 1080,
+      "n_shots_rendered": 1000,
+      "n_shots_omitted_by_cap": 74
+    }
+  }
+]

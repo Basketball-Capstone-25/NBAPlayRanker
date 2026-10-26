@@ -1,0 +1,142 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/shot-plan".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-plan
+	157 container
+		158 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		159 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	11 container
+		12 container
+			13 heading Shot Plan, Value: 1
+				14 text Shot Plan
+			15 text Dataset2 • PBP Shots Baseline Offense vs Defense Rank the best  shot types  and  zones  for  GSW (Golden State Warriors)  vs BOS (Boston Celtics) . Rankings blend our season-long offense with the opponent’s season-long defense. Scores are estimated points per shot attempt, not points per possession. The heatmap shows only shots taken against the selected opponent; its filters do not change the rankings. Want raw shots? Try 
+			16 link Description: Shots Explorer, Value: nbaplayranker-seven.vercel.app/shot-explorer
+			17 text .
+		18 container
+			19 heading Inputs, Value: 2
+				20 text Inputs
+			21 text wOff= 0.70 wDef= 0.30
+			22 checkbox (settable, integer) Description: Show “Why” explanations, Value: 0
+			23 text Show “Why” explanations Season
+			24 pop up button (collapsed, settable) Value: 2024-25, Secondary Actions: Expand
+				71 menu
+					72 2020-21
+					73 2021-22
+					74 2022-23
+					75 2023-24
+					76 (selected) 2024-25
+					77 2025-26
+			25 text Our team
+			26 pop up button (collapsed, settable) Value: GSW (Golden State Warriors), Secondary Actions: Expand
+				78 menu
+					79 ATL (Atlanta Hawks)
+					80 BKN (Brooklyn Nets)
+					81 BOS (Boston Celtics)
+					82 CHA (Charlotte Hornets)
+					83 CHI (Chicago Bulls)
+					84 CLE (Cleveland Cavaliers)
+					85 DAL (Dallas Mavericks)
+					86 DEN (Denver Nuggets)
+					87 DET (Detroit Pistons)
+					88 (selected) GSW (Golden State Warriors)
+					89 HOU (Houston Rockets)
+					90 IND (Indiana Pacers)
+					91 LAC (LA Clippers)
+					92 LAL (Los Angeles Lakers)
+					93 MEM (Memphis Grizzlies)
+					94 MIA (Miami Heat)
+					95 MIL (Milwaukee Bucks)
+					96 MIN (Minnesota Timberwolves)
+					97 NOP (New Orleans Pelicans)
+					98 NYK (New York Knicks)
+					99 OKC (Oklahoma City Thunder)
+					100 ORL (Orlando Magic)
+					101 PHI (Philadelphia 76ers)
+					102 PHX (Phoenix Suns)
+					103 POR (Portland Trail Blazers)
+					104 SAC (Sacramento Kings)
+					105 SAS (San Antonio Spurs)
+					106 TOR (Toronto Raptors)
+					107 UTA (Utah Jazz)
+					108 WAS (Washington Wizards)
+			27 text Opponent
+			28 pop up button (collapsed, settable) Value: BOS (Boston Celtics), Secondary Actions: Expand
+				109 menu
+					110 ATL (Atlanta Hawks)
+					111 BKN (Brooklyn Nets)
+					112 (selected) BOS (Boston Celtics)
+					113 CHA (Charlotte Hornets)
+					114 CHI (Chicago Bulls)
+					115 CLE (Cleveland Cavaliers)
+					116 DAL (Dallas Mavericks)
+					117 DEN (Denver Nuggets)
+					118 DET (Detroit Pistons)
+					119 GSW (Golden State Warriors)
+					120 HOU (Houston Rockets)
+					121 IND (Indiana Pacers)
+					122 LAC (LA Clippers)
+					123 LAL (Los Angeles Lakers)
+					124 MEM (Memphis Grizzlies)
+					125 MIA (Miami Heat)
+					126 MIL (Milwaukee Bucks)
+					127 MIN (Minnesota Timberwolves)
+					128 NOP (New Orleans Pelicans)
+					129 NYK (New York Knicks)
+					130 OKC (Oklahoma City Thunder)
+					131 ORL (Orlando Magic)
+					132 PHI (Philadelphia 76ers)
+					133 PHX (Phoenix Suns)
+					134 POR (Portland Trail Blazers)
+					135 SAC (Sacramento Kings)
+					136 SAS (San Antonio Spurs)
+					137 TOR (Toronto Raptors)
+					138 UTA (Utah Jazz)
+					139 WAS (Washington Wizards)
+			29 text Top K results (k)
+			30 stepper (settable, integer) 5
+			31 text Show up to  10  results in each table. Offense weight (wOff)
+			32 stepper (settable, float) Value: 0.699999988079071, Details: 0.7
+			33 text Higher = trust our offense more. Lower = trust opponent defense more. Heatmap max shots
+			34 stepper (settable, integer) 1000
+			35 text Samples the heatmap when more attempts match. Heatmap shot type (optional)
+			36 pop up button (collapsed, settable) Value: (All shot types), Secondary Actions: Expand
+				37 menu
+					38 (selected) (All shot types)
+					140 Bank Shot
+					141 Dunk
+					142 Fadeaway
+					143 Floater
+					144 Hook Shot
+					145 Jump Shot
+					146 Layup
+					147 Other
+					148 Pullup
+					149 Stepback
+					150 Tip Shot
+			39 text Heatmap zone (optional)
+			40 pop up button (collapsed, settable) Value: unknown, Secondary Actions: Expand
+				41 menu
+					42 (All zones)
+					151 arc3
+					152 corner3
+					153 mid
+					154 paint
+					155 rim
+					156 (selected) unknown
+			43 button Run
+			44 button (disabled) Export PDF
+			45 link Description: Open Heatmap Page, Value: nbaplayranker-seven.vercel.app/shot-heatmap
+			162 text No shots match these filters. Try a different matchup or clear the shot type and zone.
+		46 container
+			47 heading Shot Plan Results, Value: 2
+				48 text Shot Plan Results
+			160 text Run to see recommended shot types and zones.
+		50 container
+			51 heading Heatmap, Value: 2
+				52 text Heatmap
+			161 text Run to display shot attempts for this matchup.
+		54 text NBA Play Ranker · Basketball decision support
+		55 container
+			56 link Description: Glossary, Value: nbaplayranker-seven.vercel.app/glossary
+			57 text  · 
+			58 link Description: Data Dictionary, Value: nbaplayranker-seven.vercel.app/data-dictionary
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-plan

@@ -1,0 +1,47 @@
+Vercel CLI 65.0.0
+> Fetched deployment "nbaplayranker-lfhmzjtnk-pearson-manufacturing.vercel.app" in pearson-manufacturing [629ms]
+
+  General
+
+    id		dpl_CUT1dWbrrfMHayddhPnP16aUXmTG
+    name	nba_play_ranker
+    target	production
+    status	● Ready
+    url		https://nbaplayranker-lfhmzjtnk-pearson-manufacturing.vercel.app
+    created	Sun Oct 25 2026 15:32:26 GMT-0400 (Eastern Daylight Time) [47s ago]
+
+
+  Build Machine
+
+    requested build machine basic
+    actual assigned cores   2 vCPU (actual assignment)
+    memory                  8192 MiB
+    selection type          fixed
+    selection source        plan-default
+
+
+  Duration
+
+    build duration	35s
+    post-build duration	unavailable
+    billable duration	unavailable
+    CPU Minutes Usage	unavailable
+
+
+  Aliases
+
+    ╶ https://nbaplayranker-seven.vercel.app
+    ╶ https://nbaplayranker-pearson-manufacturing.vercel.app
+    
+
+  Builds
+
+    ┌ .        [0ms]
+    ├── λ index (1.33MB) [iad1]
+    ├── λ _not-found (1.33MB) [iad1]
+    ├── λ _not-found.rsc (1.33MB) [iad1]
+    ├── λ context (1.33MB) [iad1]
+    ├── λ context.rsc (1.33MB) [iad1]
+    └── 42 output items hidden
+    
+

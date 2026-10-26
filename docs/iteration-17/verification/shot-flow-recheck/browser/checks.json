@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-10-26T15:27:47.674Z",
+  "frontend": "3a701c6",
+  "backend": "nba-playranker-api-00011-rp7",
+  "checks": [
+    {
+      "name": "GSW/BOS 2024-25 plan and heatmap",
+      "passed": true,
+      "displayed": {
+        "shotType": "Dunk",
+        "pointsPerAttempt": 1.741,
+        "zone": "rim",
+        "zonePointsPerAttempt": 1.338,
+        "matched": 183,
+        "shown": 182,
+        "outside": 1
+      },
+      "checkedAt": "2026-10-26T15:19:35.147Z"
+    },
+    {
+      "name": "Shot Plan changed season clears results and disables PDF",
+      "passed": true,
+      "checkedAt": "2026-10-26T15:20:08.181Z"
+    },
+    {
+      "name": "Empty shot zone displays no-data message and disables PDF",
+      "passed": true,
+      "checkedAt": "2026-10-26T15:20:55.139Z"
+    },
+    {
+      "name": "Shot Plan recovers after no-data filter is cleared",
+      "passed": true,
+      "checkedAt": "2026-10-26T15:21:18.329Z"
+    },
+    {
+      "name": "OKC/SAS heatmap reconciles cap and half-court counts",
+      "passed": true,
+      "matched": 1080,
+      "shown": 1000,
+      "outside": 6,
+      "omittedByCap": 74,
+      "checkedAt": "2026-10-26T15:23:01.839Z"
+    },
+    {
+      "name": "Heatmap changed inputs clear image and download link",
+      "passed": true,
+      "checkedAt": "2026-10-26T15:25:18.251Z"
+    },
+    {
+      "name": "Explorer displays ten GSW/BOS rows with 183 total matches and location provenance",
+      "passed": true,
+      "checkedAt": "2026-10-26T15:26:48.089Z"
+    },
+    {
+      "name": "Explorer changed opponent clears rows and disables CSV",
+      "passed": true,
+      "checkedAt": "2026-10-26T15:27:47.623Z"
+    }
+  ],
+  "followup": {
+    "frontend": "0ba37bb117bb4703d0c6ac707071d3a4d2fe78ae",
+    "download_result": "png-download-final.json",
+    "screenshot": "heatmap-png-verified.jpg",
+    "changed_filter_guard": "heatmap-png-stale-guard.txt",
+    "passed": true,
+    "recorded_at": "2026-10-26T15:41:37.807146+00:00"
+  }
+}

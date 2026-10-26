@@ -1,0 +1,7 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/shot-heatmap".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 138-141
+~			26 pop up button (collapsed, settable) Season, Value: 2024-25, Secondary Actions: Expand
++			138 text Filters changed. Render again to see and download the updated heatmap.
+~			46 text Render a heatmap to see the selected matchup. Click “Render” to display an image.
+The focused UI element is 26 pop up button (collapsed, settable) Season, Value: 2024-25, Secondary Actions: Expand

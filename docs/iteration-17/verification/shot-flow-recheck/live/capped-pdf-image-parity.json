@@ -1,0 +1,88 @@
+{
+  "checked_at": "2026-10-26T15:23:36.718775+00:00",
+  "backend_revision": "nba-playranker-api-00011-rp7",
+  "scope": "One bounded PDF request; embedded image pixels compared with the previously captured matching capped heatmap.",
+  "checks": [
+    {
+      "name": "PDF status and media type",
+      "passed": true
+    },
+    {
+      "name": "PDF matchup and cap labels",
+      "passed": true
+    },
+    {
+      "name": "PDF loaded source hashes",
+      "passed": true,
+      "actual": {
+        "heatmap_canonical": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+        "shot_aggregates": "sha256:0649554dd4f3efdbebc19b0f80f1d7d9ef03aca576964fc281c59a97dc6aff99",
+        "shot_league": "sha256:b34603259d6465eceea6c59fcd05377898ec12d0a9c6e0f2019a078a72d649ab"
+      }
+    },
+    {
+      "name": "PDF hashes visibly printed",
+      "passed": true
+    },
+    {
+      "name": "reference heatmap genuinely exceeds the cap",
+      "passed": true,
+      "counts": {
+        "n_shots_total": 1080,
+        "n_shots_rendered": 1000,
+        "n_shots_excluded_location": 0,
+        "n_shots_outside_halfcourt": 6,
+        "n_shots_omitted_by_cap": 74
+      }
+    },
+    {
+      "name": "reference heatmap exact context and source",
+      "passed": true
+    },
+    {
+      "name": "PDF embedded court image is pixel-identical to capped heatmap PNG",
+      "passed": true
+    }
+  ],
+  "request": {
+    "path": "/export/shotplan.pdf",
+    "params": {
+      "season": "2025-26",
+      "our": "OKC",
+      "opp": "SAS",
+      "k": 5,
+      "w_off": 0.7,
+      "max_shots": 1000
+    },
+    "status": 200,
+    "elapsed_ms": 2886.248
+  },
+  "pdf": {
+    "file": "capped-okc-sas-shotplan.pdf",
+    "pages": 1,
+    "bytes": 129031,
+    "sha256": "958ad69a93a9036caeca8212e25eb60dadbc7cd07a69a2d3155edb2d8931c059"
+  },
+  "embedded_images": [
+    {
+      "page": 1,
+      "index": 0,
+      "width": 1050,
+      "height": 900,
+      "rgb_sha256": "e4362b9a126eff02617b1bdd7bc55676f787d6a0123dddd2a7bdeff666bbd0f0",
+      "pixel_identical_to_heatmap_png": true
+    }
+  ],
+  "reference_png": {
+    "file": "heatmap-6.png",
+    "rgb_sha256": "e4362b9a126eff02617b1bdd7bc55676f787d6a0123dddd2a7bdeff666bbd0f0",
+    "width": 1050,
+    "height": 900
+  },
+  "complete": true,
+  "session_cleanup": {
+    "status": 204,
+    "passed": true
+  },
+  "passed": true
+}

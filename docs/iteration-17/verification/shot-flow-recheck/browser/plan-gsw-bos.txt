@@ -1,0 +1,305 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/shot-plan".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-plan
+	157 container
+		158 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		159 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	11 container
+		12 container
+			13 heading Shot Plan, Value: 1
+				14 text Shot Plan
+			15 text Dataset2 • PBP Shots Baseline Offense vs Defense Rank the best  shot types  and  zones  for  GSW (Golden State Warriors)  vs BOS (Boston Celtics) . Rankings blend our season-long offense with the opponent’s season-long defense. Scores are estimated points per shot attempt, not points per possession. The heatmap shows only shots taken against the selected opponent; its filters do not change the rankings. Want raw shots? Try 
+			16 link Description: Shots Explorer, Value: nbaplayranker-seven.vercel.app/shot-explorer
+			17 text .
+		18 container
+			19 heading Inputs, Value: 2
+				20 text Inputs
+			21 text wOff= 0.70 wDef= 0.30
+			22 checkbox (settable, integer) Description: Show “Why” explanations, Value: 0
+			23 text Show “Why” explanations Season
+			24 pop up button (collapsed, settable) Value: 2024-25, Secondary Actions: Expand
+				71 menu
+					72 2020-21
+					73 2021-22
+					74 2022-23
+					75 2023-24
+					76 (selected) 2024-25
+					77 2025-26
+			25 text Our team
+			26 pop up button (collapsed, settable) Value: GSW (Golden State Warriors), Secondary Actions: Expand
+				78 menu
+					79 ATL (Atlanta Hawks)
+					80 BKN (Brooklyn Nets)
+					81 BOS (Boston Celtics)
+					82 CHA (Charlotte Hornets)
+					83 CHI (Chicago Bulls)
+					84 CLE (Cleveland Cavaliers)
+					85 DAL (Dallas Mavericks)
+					86 DEN (Denver Nuggets)
+					87 DET (Detroit Pistons)
+					88 (selected) GSW (Golden State Warriors)
+					89 HOU (Houston Rockets)
+					90 IND (Indiana Pacers)
+					91 LAC (LA Clippers)
+					92 LAL (Los Angeles Lakers)
+					93 MEM (Memphis Grizzlies)
+					94 MIA (Miami Heat)
+					95 MIL (Milwaukee Bucks)
+					96 MIN (Minnesota Timberwolves)
+					97 NOP (New Orleans Pelicans)
+					98 NYK (New York Knicks)
+					99 OKC (Oklahoma City Thunder)
+					100 ORL (Orlando Magic)
+					101 PHI (Philadelphia 76ers)
+					102 PHX (Phoenix Suns)
+					103 POR (Portland Trail Blazers)
+					104 SAC (Sacramento Kings)
+					105 SAS (San Antonio Spurs)
+					106 TOR (Toronto Raptors)
+					107 UTA (Utah Jazz)
+					108 WAS (Washington Wizards)
+			27 text Opponent
+			28 pop up button (collapsed, settable) Value: BOS (Boston Celtics), Secondary Actions: Expand
+				109 menu
+					110 ATL (Atlanta Hawks)
+					111 BKN (Brooklyn Nets)
+					112 (selected) BOS (Boston Celtics)
+					113 CHA (Charlotte Hornets)
+					114 CHI (Chicago Bulls)
+					115 CLE (Cleveland Cavaliers)
+					116 DAL (Dallas Mavericks)
+					117 DEN (Denver Nuggets)
+					118 DET (Detroit Pistons)
+					119 GSW (Golden State Warriors)
+					120 HOU (Houston Rockets)
+					121 IND (Indiana Pacers)
+					122 LAC (LA Clippers)
+					123 LAL (Los Angeles Lakers)
+					124 MEM (Memphis Grizzlies)
+					125 MIA (Miami Heat)
+					126 MIL (Milwaukee Bucks)
+					127 MIN (Minnesota Timberwolves)
+					128 NOP (New Orleans Pelicans)
+					129 NYK (New York Knicks)
+					130 OKC (Oklahoma City Thunder)
+					131 ORL (Orlando Magic)
+					132 PHI (Philadelphia 76ers)
+					133 PHX (Phoenix Suns)
+					134 POR (Portland Trail Blazers)
+					135 SAC (Sacramento Kings)
+					136 SAS (San Antonio Spurs)
+					137 TOR (Toronto Raptors)
+					138 UTA (Utah Jazz)
+					139 WAS (Washington Wizards)
+			29 text Top K results (k)
+			30 stepper (settable, integer) 5
+			31 text Show up to  10  results in each table. Offense weight (wOff)
+			32 stepper (settable, float) Value: 0.699999988079071, Details: 0.7
+			33 text Higher = trust our offense more. Lower = trust opponent defense more. Heatmap max shots
+			34 stepper (settable, integer) 1000
+			35 text Samples the heatmap when more attempts match. Heatmap shot type (optional)
+			36 pop up button (collapsed, settable) Value: (All shot types), Secondary Actions: Expand
+				37 menu
+					38 (selected) (All shot types)
+					140 Bank Shot
+					141 Dunk
+					142 Fadeaway
+					143 Floater
+					144 Hook Shot
+					145 Jump Shot
+					146 Layup
+					147 Other
+					148 Pullup
+					149 Stepback
+					150 Tip Shot
+			39 text Heatmap zone (optional)
+			40 pop up button (collapsed, settable) Value: (All zones), Secondary Actions: Expand
+				41 menu
+					42 (selected) (All zones)
+					151 arc3
+					152 corner3
+					153 mid
+					154 paint
+					155 rim
+					156 unknown
+			43 button Run
+			44 button Export PDF
+			45 link Description: Open Heatmap Page, Value: nbaplayranker-seven.vercel.app/shot-heatmap
+		46 container
+			47 heading Shot Plan Results, Value: 2
+				48 text Shot Plan Results
+			160 text Season  2024-25  •  GSW (Golden State Warriors)  vs BOS (Boston Celtics)  • k= 5  • wOff= 0.70  • wDef= 0.30 Best shot type Dunk Estimated points/attempt  1.741  • Our attempts 432 Best zone rim Estimated points/attempt  1.338  • Our attempts 1884 Best shooter (optional) - —
+			161 heading Top Shot Types, Value: 3
+				162 text Top Shot Types
+			163 table
+				164 row
+					165 cell
+						166 text Shot type
+					167 cell
+						168 text Estimated points/attempt
+					169 cell
+						170 text Our adjusted points/attempt
+					171 cell
+						172 text Opponent allowed points/attempt
+					173 cell
+						174 text Our attempts
+					175 cell
+						176 text Opponent defended attempts
+				177 row
+					178 cell
+						179 text Dunk
+					180 cell
+						181 text 1.741
+					182 cell
+						183 text 1.753
+					184 cell
+						185 text 1.712
+					186 cell
+						187 text 432
+					188 cell
+						189 text 404
+				190 row
+					191 cell
+						192 text Layup
+					193 cell
+						194 text 1.111
+					195 cell
+						196 text 1.125
+					197 cell
+						198 text 1.080
+					199 cell
+						200 text 2207
+					201 cell
+						202 text 2041
+				203 row
+					204 cell
+						205 text Jump Shot
+					206 cell
+						207 text 1.063
+					208 cell
+						209 text 1.079
+					210 cell
+						211 text 1.026
+					212 cell
+						213 text 3063
+					214 cell
+						215 text 2564
+				216 row
+					217 cell
+						218 text Stepback
+					219 cell
+						220 text 1.028
+					221 cell
+						222 text 1.008
+					223 cell
+						224 text 1.073
+					225 cell
+						226 text 442
+					227 cell
+						228 text 530
+				229 row
+					230 cell
+						231 text Bank Shot
+					232 cell
+						233 text 0.996
+					234 cell
+						235 text 0.966
+					236 cell
+						237 text 1.067
+					238 cell
+						239 text 201
+					240 cell
+						241 text 173
+			242 heading Top Zones, Value: 3
+				243 text Top Zones
+			244 table
+				245 row
+					246 cell
+						247 text Zone
+					248 cell
+						249 text Estimated points/attempt
+					250 cell
+						251 text Our adjusted points/attempt
+					252 cell
+						253 text Opponent allowed points/attempt
+					254 cell
+						255 text Our attempts
+					256 cell
+						257 text Opponent defended attempts
+				258 row
+					259 cell
+						260 text rim
+					261 cell
+						262 text 1.338
+					263 cell
+						264 text 1.348
+					265 cell
+						266 text 1.316
+					267 cell
+						268 text 1884
+					269 cell
+						270 text 1966
+				271 row
+					272 cell
+						273 text corner3
+					274 cell
+						275 text 1.145
+					276 cell
+						277 text 1.146
+					278 cell
+						279 text 1.145
+					280 cell
+						281 text 987
+					282 cell
+						283 text 749
+				284 row
+					285 cell
+						286 text arc3
+					287 cell
+						288 text 1.048
+					289 cell
+						290 text 1.068
+					291 cell
+						292 text 0.999
+					293 cell
+						294 text 2953
+					295 cell
+						296 text 2653
+				297 row
+					298 cell
+						299 text paint
+					300 cell
+						301 text 0.865
+					302 cell
+						303 text 0.865
+					304 cell
+						305 text 0.867
+					306 cell
+						307 text 1869
+					308 cell
+						309 text 1916
+				310 row
+					311 cell
+						312 text mid
+					313 cell
+						314 text 0.792
+					315 cell
+						316 text 0.768
+					317 cell
+						318 text 0.850
+					319 cell
+						320 text 745
+					321 cell
+						322 text 987
+		50 container
+			51 heading Heatmap, Value: 2
+				52 text Heatmap
+			323 text GSW vs BOS · 2024-25 Type: All · Zone: All Matched: 183 · Shown: 182 1 outside half court Matching attempts: 183 • Attempts shown: 182 • Outside the half court: 1
+			324 image Shot heatmap
+			325 text The colors show where attempts occurred, including makes and misses. They do not measure shooting percentage or defensive weakness.
+		54 text NBA Play Ranker · Basketball decision support
+		55 container
+			56 link Description: Glossary, Value: nbaplayranker-seven.vercel.app/glossary
+			57 text  · 
+			58 link Description: Data Dictionary, Value: nbaplayranker-seven.vercel.app/data-dictionary
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-plan

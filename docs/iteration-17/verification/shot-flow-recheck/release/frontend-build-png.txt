@@ -1,0 +1,56 @@
+
+> bgs-pspi@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.28
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 1489ms
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/23) ...
+   Generating static pages (5/23) 
+   Generating static pages (11/23) 
+   Generating static pages (17/23) 
+ ✓ Generating static pages (23/23)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                      162 B         106 kB
+├ ○ /_not-found                            994 B         104 kB
+├ ƒ /api/exports                           135 B         103 kB
+├ ƒ /api/exports/report                    135 B         103 kB
+├ ƒ /api/exports/shot-heatmap              135 B         103 kB
+├ ƒ /api/exports/shot-metrics              135 B         103 kB
+├ ƒ /auth/callback                         135 B         103 kB
+├ ○ /context                             13.1 kB         179 kB
+├ ○ /context/quick-call                   3.1 kB         169 kB
+├ ○ /data-dictionary                     1.12 kB         167 kB
+├ ○ /data-explorer                       6.58 kB         173 kB
+├ ○ /forgot-password                     1.24 kB         162 kB
+├ ○ /gameplan                              13 kB         176 kB
+├ ○ /glossary                            10.6 kB         117 kB
+├ ○ /login                               1.86 kB         163 kB
+├ ○ /matchup                               11 kB         177 kB
+├ ○ /model-metrics                         12 kB         178 kB
+├ ○ /reset-password                      1.53 kB         162 kB
+├ ○ /shot-explorer                       3.35 kB         170 kB
+├ ○ /shot-heatmap                        5.22 kB         171 kB
+├ ○ /shot-model-metrics                  2.35 kB         169 kB
+├ ○ /shot-plan                           4.65 kB         171 kB
+├ ○ /shot-statistical-analysis           1.84 kB         168 kB
+├ ○ /signup                              1.88 kB         163 kB
+└ ○ /statistical-analysis                7.43 kB         174 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/255-b1e2483a7e02feee.js       46.6 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.94 kB
+
+
+ƒ Middleware                             82.8 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

@@ -1,0 +1,4 @@
+Vercel CLI 65.0.0
+  Inspect         https://vercel.com/pearson-manufacturing/nba_play_ranker/DknqC3yLsJp2f7ytQNwjUAMYG4MA
+  Production      https://nbaplayranker-coosvkf3f-pearson-manufacturing.vercel.app
+▲ Aliased         https://nbaplayranker-seven.vercel.app

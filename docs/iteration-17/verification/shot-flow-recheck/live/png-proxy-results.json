@@ -1,0 +1,244 @@
+{
+  "started_at": "2026-10-26T15:43:09.588Z",
+  "scope": "Six bounded GET requests using newly authenticated SSR cookie sessions. No browser storage or existing session extraction.",
+  "frontend_source": "0ba37bb117bb4703d0c6ac707071d3a4d2fe78ae",
+  "frontend_deployment": "dpl_9p6SyPTV6RCncXMWLHgQn8YmsFGR",
+  "query": {
+    "season": "2025-26",
+    "team": "OKC",
+    "opp": "SAS",
+    "max_shots": "1000",
+    "version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5"
+  },
+  "requests": [
+    {
+      "name": "analyst-image",
+      "role": "analyst",
+      "status": 200,
+      "expected_status": 200,
+      "elapsed_ms": 5131.921,
+      "content_type": "image/png",
+      "cache_control": "private, no-store",
+      "pragma": "no-cache",
+      "nosniff": "nosniff",
+      "has_attachment": true,
+      "bytes": 134676,
+      "sha256": "e9f7550b0430b779331020f09c8960ce4b864c09a974dc01f3017e1eb2ee7566",
+      "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+      "matched": "1080",
+      "shown": "1000"
+    },
+    {
+      "name": "coach-image",
+      "role": "coach",
+      "status": 200,
+      "expected_status": 200,
+      "elapsed_ms": 4146.518,
+      "content_type": "image/png",
+      "cache_control": "private, no-store",
+      "pragma": "no-cache",
+      "nosniff": "nosniff",
+      "has_attachment": true,
+      "bytes": 134676,
+      "sha256": "e9f7550b0430b779331020f09c8960ce4b864c09a974dc01f3017e1eb2ee7566",
+      "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+      "matched": "1080",
+      "shown": "1000"
+    },
+    {
+      "name": "unsigned-denied",
+      "role": "unsigned",
+      "status": 401,
+      "expected_status": 401,
+      "elapsed_ms": 166.396,
+      "content_type": "application/json",
+      "cache_control": "private, no-store",
+      "pragma": "no-cache",
+      "nosniff": "nosniff",
+      "has_attachment": false,
+      "error_message": "Sign in to download this image."
+    },
+    {
+      "name": "wrong-displayed-version",
+      "role": "analyst",
+      "status": 409,
+      "expected_status": 409,
+      "elapsed_ms": 3867.847,
+      "content_type": "application/json",
+      "cache_control": "private, no-store",
+      "pragma": "no-cache",
+      "nosniff": "nosniff",
+      "has_attachment": false,
+      "error_message": "The shot data changed. Render the heatmap again before downloading."
+    },
+    {
+      "name": "invalid-cap",
+      "role": "analyst",
+      "status": 400,
+      "expected_status": 400,
+      "elapsed_ms": 926.811,
+      "content_type": "application/json",
+      "cache_control": "private, no-store",
+      "pragma": "no-cache",
+      "nosniff": "nosniff",
+      "has_attachment": false,
+      "error_message": "Render the heatmap again before downloading."
+    },
+    {
+      "name": "foreign-origin",
+      "role": "analyst",
+      "status": 403,
+      "expected_status": 403,
+      "elapsed_ms": 432.335,
+      "content_type": "application/json",
+      "cache_control": "private, no-store",
+      "pragma": "no-cache",
+      "nosniff": "nosniff",
+      "has_attachment": false,
+      "error_message": "Cross-origin export requests are not allowed."
+    }
+  ],
+  "checks": [
+    {
+      "name": "analyst-image status",
+      "passed": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "name": "analyst-image private no-store",
+      "passed": true
+    },
+    {
+      "name": "analyst-image PNG attachment",
+      "passed": true
+    },
+    {
+      "name": "analyst-image source and count headers",
+      "passed": true
+    },
+    {
+      "name": "analyst-image exact PNG bytes",
+      "passed": true,
+      "reference_sha256": "e9f7550b0430b779331020f09c8960ce4b864c09a974dc01f3017e1eb2ee7566",
+      "actual_sha256": "e9f7550b0430b779331020f09c8960ce4b864c09a974dc01f3017e1eb2ee7566"
+    },
+    {
+      "name": "analyst-image decodes at expected dimensions",
+      "passed": true,
+      "image": {
+        "format": "PNG",
+        "dimensions": [
+          1050,
+          900
+        ]
+      }
+    },
+    {
+      "name": "coach-image status",
+      "passed": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "name": "coach-image private no-store",
+      "passed": true
+    },
+    {
+      "name": "coach-image PNG attachment",
+      "passed": true
+    },
+    {
+      "name": "coach-image source and count headers",
+      "passed": true
+    },
+    {
+      "name": "coach-image exact PNG bytes",
+      "passed": true,
+      "reference_sha256": "e9f7550b0430b779331020f09c8960ce4b864c09a974dc01f3017e1eb2ee7566",
+      "actual_sha256": "e9f7550b0430b779331020f09c8960ce4b864c09a974dc01f3017e1eb2ee7566"
+    },
+    {
+      "name": "coach-image decodes at expected dimensions",
+      "passed": true,
+      "image": {
+        "format": "PNG",
+        "dimensions": [
+          1050,
+          900
+        ]
+      }
+    },
+    {
+      "name": "unsigned-denied status",
+      "passed": true,
+      "actual": 401,
+      "expected": 401
+    },
+    {
+      "name": "unsigned-denied private no-store",
+      "passed": true
+    },
+    {
+      "name": "unsigned-denied error is JSON without attachment",
+      "passed": true
+    },
+    {
+      "name": "wrong-displayed-version status",
+      "passed": true,
+      "actual": 409,
+      "expected": 409
+    },
+    {
+      "name": "wrong-displayed-version private no-store",
+      "passed": true
+    },
+    {
+      "name": "wrong-displayed-version error is JSON without attachment",
+      "passed": true
+    },
+    {
+      "name": "invalid-cap status",
+      "passed": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "name": "invalid-cap private no-store",
+      "passed": true
+    },
+    {
+      "name": "invalid-cap error is JSON without attachment",
+      "passed": true
+    },
+    {
+      "name": "foreign-origin status",
+      "passed": true,
+      "actual": 403,
+      "expected": 403
+    },
+    {
+      "name": "foreign-origin private no-store",
+      "passed": true
+    },
+    {
+      "name": "foreign-origin error is JSON without attachment",
+      "passed": true
+    }
+  ],
+  "session_cleanup": [
+    {
+      "role": "analyst",
+      "scope": "local",
+      "passed": true
+    },
+    {
+      "role": "coach",
+      "scope": "local",
+      "passed": true
+    }
+  ],
+  "complete": true,
+  "finished_at": "2026-10-26T15:43:26.828Z",
+  "passed": true
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "season": 2022,
+    "game_id": "401359840",
+    "shot_rows": 184,
+    "discordant_shot_events": 5
+  },
+  {
+    "season": 2022,
+    "game_id": "401360543",
+    "shot_rows": 164,
+    "discordant_shot_events": 1
+  },
+  {
+    "season": 2023,
+    "game_id": "401468281",
+    "shot_rows": 164,
+    "discordant_shot_events": 3
+  },
+  {
+    "season": 2023,
+    "game_id": "401468511",
+    "shot_rows": 181,
+    "discordant_shot_events": 1
+  },
+  {
+    "season": 2023,
+    "game_id": "401469149",
+    "shot_rows": 174,
+    "discordant_shot_events": 6
+  },
+  {
+    "season": 2023,
+    "game_id": "401469200",
+    "shot_rows": 185,
+    "discordant_shot_events": 17
+  },
+  {
+    "season": 2024,
+    "game_id": "401584717",
+    "shot_rows": 186,
+    "discordant_shot_events": 5
+  },
+  {
+    "season": 2024,
+    "game_id": "401585387",
+    "shot_rows": 177,
+    "discordant_shot_events": 1
+  },
+  {
+    "season": 2024,
+    "game_id": "401585411",
+    "shot_rows": 180,
+    "discordant_shot_events": 6
+  },
+  {
+    "season": 2024,
+    "game_id": "401585412",
+    "shot_rows": 180,
+    "discordant_shot_events": 2
+  },
+  {
+    "season": 2024,
+    "game_id": "401585413",
+    "shot_rows": 189,
+    "discordant_shot_events": 6
+  },
+  {
+    "season": 2024,
+    "game_id": "401616465",
+    "shot_rows": 184,
+    "discordant_shot_events": 9
+  },
+  {
+    "season": 2025,
+    "game_id": "401704805",
+    "shot_rows": 181,
+    "discordant_shot_events": 9
+  },
+  {
+    "season": 2026,
+    "game_id": "401810087",
+    "shot_rows": 177,
+    "discordant_shot_events": 30
+  }
+]

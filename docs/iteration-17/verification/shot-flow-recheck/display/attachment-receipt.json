@@ -1,0 +1,13 @@
+{
+  "issue": "BST-203",
+  "comment_id": "11432",
+  "filename": "before-stale-plan.jpg",
+  "media_file_id": "a836d3ce-d7e7-4a94-8a28-c7284f8fa2b2",
+  "bytes": 35195,
+  "inline_media_count": 1,
+  "comment_count": 1,
+  "history_preserved": true,
+  "description": "Existing failure comment updated with the screenshot and a link to full page-state evidence.",
+  "evidence_link": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/iteration-17/verification/shot-flow-recheck/browser/before-stale-plan.txt",
+  "evidence_publication_pending": true
+}

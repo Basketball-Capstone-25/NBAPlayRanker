@@ -1,0 +1,38 @@
+{
+  "observed_failure": {
+    "matchup": "OKC vs SAS",
+    "season": "2025-26",
+    "max_shots": 1000,
+    "result": "Clicking Download PNG did not produce a file in Downloads; the PDF saved correctly.",
+    "outer_download_ui_inspected": false
+  },
+  "jira": {
+    "case": "BST-205",
+    "failure_comment": "11437",
+    "current_status": "Pass",
+    "fix": "SCRUM-643",
+    "retest_comment": "11441"
+  },
+  "repair": {
+    "route": "GET /api/exports/shot-heatmap",
+    "backend_target": "/pbp/viz/shot-heatmap",
+    "auth": "Verified cookie user, matching session and current analyst/coach profile role.",
+    "snapshot": "Successful filters, sample cap and displayed sha256 dataset version.",
+    "validation": [
+      "Exact echoed filters and cap",
+      "Matching canonical data version",
+      "Reconciled shown/excluded/capped counts",
+      "Bounded JSON and decoded PNG",
+      "PNG signature, dimensions and chunk boundaries",
+      "Zero shown attempts allowed when all matched attempts are explained by exclusions"
+    ],
+    "download": "Same-origin attachment, private no-store; error responses have no attachment header."
+  },
+  "verification": {
+    "focused_tests": 76,
+    "test_files": 4,
+    "typescript_exit_code": 0,
+    "browser_download_retest": "Passed: browser/png-download-final.json; saved PNG is pixel-identical to live/heatmap-6.png."
+  },
+  "new_worklogs": 0
+}

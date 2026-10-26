@@ -1,0 +1,67 @@
+{
+  "fix": {
+    "key": "SCRUM-644",
+    "status": "Done",
+    "commentId": "11445",
+    "parent": "SCRUM-3",
+    "sprintId": 185,
+    "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36"
+  },
+  "test": {
+    "key": "BST-206",
+    "status": "Pass",
+    "commentId": "11444",
+    "parent": "BST-31",
+    "screenshot": "quick-call-verified.jpg",
+    "mediaId": "e37d968f-678c-41b2-b169-3b5b4217a1cb"
+  },
+  "links": [
+    {
+      "from": "SCRUM-644",
+      "to": "SCRUM-628",
+      "error": false,
+      "response": {
+        "message": "Issue link created",
+        "linkType": "Relates",
+        "inwardIssue": "SCRUM-644",
+        "outwardIssue": "SCRUM-628"
+      }
+    },
+    {
+      "from": "BST-206",
+      "to": "SCRUM-644",
+      "error": false,
+      "response": {
+        "message": "Issue link created",
+        "linkType": "Relates",
+        "inwardIssue": "BST-206",
+        "outwardIssue": "SCRUM-644"
+      }
+    },
+    {
+      "from": "BST-206",
+      "to": "SCRUM-628",
+      "error": false,
+      "response": {
+        "message": "Issue link created",
+        "linkType": "Relates",
+        "inwardIssue": "BST-206",
+        "outwardIssue": "SCRUM-628"
+      }
+    }
+  ],
+  "feature": {
+    "key": "SCRUM-628",
+    "statusUnchanged": "To Do",
+    "assigneeUnchanged": "639a8938f134138b5a513b32"
+  },
+  "verification": {
+    "source": "99a31e0dd1a629cbf105dabac89d171f87915a02",
+    "backend": "nba-playranker-api-00012-nrd",
+    "browser": "../browser/quick-call-checks.json",
+    "focusedTests": 13,
+    "failureAndRace": "Automated tests only; no production network interruption.",
+    "latencyGuarantee": false
+  },
+  "worklogsAdded": 0
+}

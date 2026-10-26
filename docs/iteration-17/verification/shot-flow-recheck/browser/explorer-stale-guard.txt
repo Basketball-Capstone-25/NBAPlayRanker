@@ -1,0 +1,131 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/shot-explorer".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-explorer
+	2 container
+		3 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		4 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		6 container
+			7 heading Shots Explorer, Value: 1
+				8 text Shots Explorer
+			9 text Dataset2 • Raw PBP One row per shot Browse raw shots from the play-by-play dataset. Filter, preview quickly, then export CSV for deeper analysis in Excel / R / Python. Want recommendations? See 
+			10 link Description: Shot Plan, Value: nbaplayranker-seven.vercel.app/shot-plan
+			11 text .
+		12 container
+			13 heading Filters, Value: 2
+				14 text Filters
+			15 button Run
+			16 button (disabled) Export CSV (up to 5,000 rows)
+			17 text Season
+			18 pop up button (collapsed, settable) Value: 2024-25, Secondary Actions: Expand
+				45 menu
+					46 2020-21
+					47 2021-22
+					48 2022-23
+					49 2023-24
+					50 (selected) 2024-25
+					51 2025-26
+			19 text Team
+			20 pop up button (collapsed, settable) Value: GSW (Golden State Warriors), Secondary Actions: Expand
+				52 menu
+					53 ATL (Atlanta Hawks)
+					54 BKN (Brooklyn Nets)
+					55 BOS (Boston Celtics)
+					56 CHA (Charlotte Hornets)
+					57 CHI (Chicago Bulls)
+					58 CLE (Cleveland Cavaliers)
+					59 DAL (Dallas Mavericks)
+					60 DEN (Denver Nuggets)
+					61 DET (Detroit Pistons)
+					62 (selected) GSW (Golden State Warriors)
+					63 HOU (Houston Rockets)
+					64 IND (Indiana Pacers)
+					65 LAC (LA Clippers)
+					66 LAL (Los Angeles Lakers)
+					67 MEM (Memphis Grizzlies)
+					68 MIA (Miami Heat)
+					69 MIL (Milwaukee Bucks)
+					70 MIN (Minnesota Timberwolves)
+					71 NOP (New Orleans Pelicans)
+					72 NYK (New York Knicks)
+					73 OKC (Oklahoma City Thunder)
+					74 ORL (Orlando Magic)
+					75 PHI (Philadelphia 76ers)
+					76 PHX (Phoenix Suns)
+					77 POR (Portland Trail Blazers)
+					78 SAC (Sacramento Kings)
+					79 SAS (San Antonio Spurs)
+					80 TOR (Toronto Raptors)
+					81 UTA (Utah Jazz)
+					82 WAS (Washington Wizards)
+			21 text Opponent (optional)
+			22 pop up button (collapsed, settable) Value: TOR (Toronto Raptors), Secondary Actions: Expand
+				23 menu
+					24 All
+					83 ATL (Atlanta Hawks)
+					84 BKN (Brooklyn Nets)
+					85 BOS (Boston Celtics)
+					86 CHA (Charlotte Hornets)
+					87 CHI (Chicago Bulls)
+					88 CLE (Cleveland Cavaliers)
+					89 DAL (Dallas Mavericks)
+					90 DEN (Denver Nuggets)
+					91 DET (Detroit Pistons)
+					93 HOU (Houston Rockets)
+					94 IND (Indiana Pacers)
+					95 LAC (LA Clippers)
+					96 LAL (Los Angeles Lakers)
+					97 MEM (Memphis Grizzlies)
+					98 MIA (Miami Heat)
+					99 MIL (Milwaukee Bucks)
+					100 MIN (Minnesota Timberwolves)
+					101 NOP (New Orleans Pelicans)
+					102 NYK (New York Knicks)
+					103 OKC (Oklahoma City Thunder)
+					104 ORL (Orlando Magic)
+					105 PHI (Philadelphia 76ers)
+					106 PHX (Phoenix Suns)
+					107 POR (Portland Trail Blazers)
+					108 SAC (Sacramento Kings)
+					109 SAS (San Antonio Spurs)
+					129 (selected) TOR (Toronto Raptors)
+					110 UTA (Utah Jazz)
+					111 WAS (Washington Wizards)
+			25 text Shot type (optional)
+			26 pop up button (collapsed, settable) Value: All, Secondary Actions: Expand
+				27 menu
+					28 (selected) All
+					112 Bank Shot
+					113 Dunk
+					114 Fadeaway
+					115 Floater
+					116 Hook Shot
+					117 Jump Shot
+					118 Layup
+					119 Other
+					120 Pullup
+					121 Stepback
+					122 Tip Shot
+			29 text Zone (optional)
+			30 pop up button (collapsed, settable) Value: All, Secondary Actions: Expand
+				31 menu
+					32 (selected) All
+					123 arc3
+					124 corner3
+					125 mid
+					126 paint
+					127 rim
+					128 unknown
+			33 text Preview limit
+			34 stepper (settable, integer) 10
+			35 text Preview only. Use CSV export for more rows. Season: 2024-25 Team: GSW Opp: TOR Preview: 10 rows Filters changed. Run again to see and export the updated rows.
+		36 container
+			37 heading Preview, Value: 2
+				38 text Preview
+			130 text Run a query to see rows. This preview is intentionally small for speed.
+		40 text NBA Play Ranker · Basketball decision support
+		41 container
+			42 link Description: Glossary, Value: nbaplayranker-seven.vercel.app/glossary
+			43 text  · 
+			44 link Description: Data Dictionary, Value: nbaplayranker-seven.vercel.app/data-dictionary
+
+The focused UI element is 22 pop up button (collapsed, settable) Value: TOR (Toronto Raptors), Secondary Actions: Expand

@@ -1,0 +1,452 @@
+Browser tab: 3, Title: "NBA Play Ranker", URL: "https://nbaplayranker-seven.vercel.app/shot-explorer".
+1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-explorer
+	2 container
+		3 link Description: NBA Play Ranker Decision Support • Explainable + AI, Value: nbaplayranker-seven.vercel.app/
+		4 button (collapsed) Description: Toggle menu, Secondary Actions: Expand
+	5 container
+		6 container
+			7 heading Shots Explorer, Value: 1
+				8 text Shots Explorer
+			9 text Dataset2 • Raw PBP One row per shot Browse raw shots from the play-by-play dataset. Filter, preview quickly, then export CSV for deeper analysis in Excel / R / Python. Want recommendations? See 
+			10 link Description: Shot Plan, Value: nbaplayranker-seven.vercel.app/shot-plan
+			11 text .
+		12 container
+			13 heading Filters, Value: 2
+				14 text Filters
+			15 button Run
+			16 button Export CSV (up to 5,000 rows)
+			17 text Season
+			18 pop up button (collapsed, settable) Value: 2024-25, Secondary Actions: Expand
+				45 menu
+					46 2020-21
+					47 2021-22
+					48 2022-23
+					49 2023-24
+					50 (selected) 2024-25
+					51 2025-26
+			19 text Team
+			20 pop up button (collapsed, settable) Value: GSW (Golden State Warriors), Secondary Actions: Expand
+				52 menu
+					53 ATL (Atlanta Hawks)
+					54 BKN (Brooklyn Nets)
+					55 BOS (Boston Celtics)
+					56 CHA (Charlotte Hornets)
+					57 CHI (Chicago Bulls)
+					58 CLE (Cleveland Cavaliers)
+					59 DAL (Dallas Mavericks)
+					60 DEN (Denver Nuggets)
+					61 DET (Detroit Pistons)
+					62 (selected) GSW (Golden State Warriors)
+					63 HOU (Houston Rockets)
+					64 IND (Indiana Pacers)
+					65 LAC (LA Clippers)
+					66 LAL (Los Angeles Lakers)
+					67 MEM (Memphis Grizzlies)
+					68 MIA (Miami Heat)
+					69 MIL (Milwaukee Bucks)
+					70 MIN (Minnesota Timberwolves)
+					71 NOP (New Orleans Pelicans)
+					72 NYK (New York Knicks)
+					73 OKC (Oklahoma City Thunder)
+					74 ORL (Orlando Magic)
+					75 PHI (Philadelphia 76ers)
+					76 PHX (Phoenix Suns)
+					77 POR (Portland Trail Blazers)
+					78 SAC (Sacramento Kings)
+					79 SAS (San Antonio Spurs)
+					80 TOR (Toronto Raptors)
+					81 UTA (Utah Jazz)
+					82 WAS (Washington Wizards)
+			21 text Opponent (optional)
+			22 pop up button (collapsed, settable) Value: BOS (Boston Celtics), Secondary Actions: Expand
+				23 menu
+					24 All
+					83 ATL (Atlanta Hawks)
+					84 BKN (Brooklyn Nets)
+					85 (selected) BOS (Boston Celtics)
+					86 CHA (Charlotte Hornets)
+					87 CHI (Chicago Bulls)
+					88 CLE (Cleveland Cavaliers)
+					89 DAL (Dallas Mavericks)
+					90 DEN (Denver Nuggets)
+					91 DET (Detroit Pistons)
+					93 HOU (Houston Rockets)
+					94 IND (Indiana Pacers)
+					95 LAC (LA Clippers)
+					96 LAL (Los Angeles Lakers)
+					97 MEM (Memphis Grizzlies)
+					98 MIA (Miami Heat)
+					99 MIL (Milwaukee Bucks)
+					100 MIN (Minnesota Timberwolves)
+					101 NOP (New Orleans Pelicans)
+					102 NYK (New York Knicks)
+					103 OKC (Oklahoma City Thunder)
+					104 ORL (Orlando Magic)
+					105 PHI (Philadelphia 76ers)
+					106 PHX (Phoenix Suns)
+					107 POR (Portland Trail Blazers)
+					108 SAC (Sacramento Kings)
+					109 SAS (San Antonio Spurs)
+					129 TOR (Toronto Raptors)
+					110 UTA (Utah Jazz)
+					111 WAS (Washington Wizards)
+			25 text Shot type (optional)
+			26 pop up button (collapsed, settable) Value: All, Secondary Actions: Expand
+				27 menu
+					28 (selected) All
+					112 Bank Shot
+					113 Dunk
+					114 Fadeaway
+					115 Floater
+					116 Hook Shot
+					117 Jump Shot
+					118 Layup
+					119 Other
+					120 Pullup
+					121 Stepback
+					122 Tip Shot
+			29 text Zone (optional)
+			30 pop up button (collapsed, settable) Value: All, Secondary Actions: Expand
+				31 menu
+					32 (selected) All
+					123 arc3
+					124 corner3
+					125 mid
+					126 paint
+					127 rim
+					128 unknown
+			33 text Preview limit
+			34 stepper (settable, integer) 10
+			35 text Preview only. Use CSV export for more rows. Season: 2024-25 Team: GSW Opp: BOS Preview: 10 rows
+		36 container
+			37 heading Preview, Value: 2
+				38 text Preview
+			130 text GSW 2024-25 vs BOS All shot types All zones Returned: 10 Total matched: 183
+			131 table
+				132 row
+					133 cell
+						134 text SEASON_STR
+					135 cell
+						136 text TEAM_ABBR
+					137 cell
+						138 text OPP_ABBR
+					139 cell
+						140 text GAME_ID
+					141 cell
+						142 text PERIOD
+					143 cell
+						144 text CLOCK_SEC
+					145 cell
+						146 text SHOT_TYPE
+					147 cell
+						148 text ZONE
+					149 cell
+						150 text ZONE_METHOD
+					151 cell
+						152 text LOCATION_VALID
+					153 cell
+						154 text IS_MAKE
+					155 cell
+						156 text POINTS
+					157 cell
+						158 text X
+					159 cell
+						160 text Y
+				161 row
+					162 cell
+						163 text 2024-25
+					164 cell
+						165 text GSW
+					166 cell
+						167 text BOS
+					168 cell
+						169 text 401704738
+					170 cell
+						171 text 1
+					172 cell
+						173 text 1.1
+					174 cell
+						175 text Jump Shot
+					176 cell
+						177 text corner3
+					178 cell
+						179 text attempt_value_and_location
+					180 cell
+						181 text true
+					182 cell
+						183 text 0
+					184 cell
+						185 text 0
+					186 cell
+						187 text -37.75
+					188 cell
+						189 text -23
+				190 row
+					191 cell
+						192 text 2024-25
+					193 cell
+						194 text GSW
+					195 cell
+						196 text BOS
+					197 cell
+						198 text 401704738
+					199 cell
+						200 text 1
+					201 cell
+						202 text 34.1
+					203 cell
+						204 text Pullup
+					205 cell
+						206 text mid
+					207 cell
+						208 text attempt_value_and_location
+					209 cell
+						210 text true
+					211 cell
+						212 text 0
+					213 cell
+						214 text 0
+					215 cell
+						216 text -25.75
+					217 cell
+						218 text 2
+				219 row
+					220 cell
+						221 text 2024-25
+					222 cell
+						223 text GSW
+					224 cell
+						225 text BOS
+					226 cell
+						227 text 401704738
+					228 cell
+						229 text 1
+					230 cell
+						231 text 58
+					232 cell
+						233 text Layup
+					234 cell
+						235 text rim
+					236 cell
+						237 text attempt_value_and_location
+					238 cell
+						239 text true
+					240 cell
+						241 text 1
+					242 cell
+						243 text 2
+					244 cell
+						245 text -38.75
+					246 cell
+						247 text 1
+				248 row
+					249 cell
+						250 text 2024-25
+					251 cell
+						252 text GSW
+					253 cell
+						254 text BOS
+					255 cell
+						256 text 401704738
+					257 cell
+						258 text 1
+					259 cell
+						260 text 76
+					261 cell
+						262 text Jump Shot
+					263 cell
+						264 text arc3
+					265 cell
+						266 text attempt_value_and_location
+					267 cell
+						268 text true
+					269 cell
+						270 text 1
+					271 cell
+						272 text 3
+					273 cell
+						274 text -13.75
+					275 cell
+						276 text 3
+				277 row
+					278 cell
+						279 text 2024-25
+					280 cell
+						281 text GSW
+					282 cell
+						283 text BOS
+					284 cell
+						285 text 401704738
+					286 cell
+						287 text 1
+					288 cell
+						289 text 106
+					290 cell
+						291 text Jump Shot
+					292 cell
+						293 text arc3
+					294 cell
+						295 text attempt_value_and_location
+					296 cell
+						297 text true
+					298 cell
+						299 text 1
+					300 cell
+						301 text 3
+					302 cell
+						303 text -15.75
+					304 cell
+						305 text -3
+				306 row
+					307 cell
+						308 text 2024-25
+					309 cell
+						310 text GSW
+					311 cell
+						312 text BOS
+					313 cell
+						314 text 401704738
+					315 cell
+						316 text 1
+					317 cell
+						318 text 131
+					319 cell
+						320 text Floater
+					321 cell
+						322 text paint
+					323 cell
+						324 text attempt_value_and_location
+					325 cell
+						326 text true
+					327 cell
+						328 text 0
+					329 cell
+						330 text 0
+					331 cell
+						332 text -34.75
+					333 cell
+						334 text -8
+				335 row
+					336 cell
+						337 text 2024-25
+					338 cell
+						339 text GSW
+					340 cell
+						341 text BOS
+					342 cell
+						343 text 401704738
+					344 cell
+						345 text 1
+					346 cell
+						347 text 169
+					348 cell
+						349 text Layup
+					350 cell
+						351 text paint
+					352 cell
+						353 text attempt_value_and_location
+					354 cell
+						355 text true
+					356 cell
+						357 text 0
+					358 cell
+						359 text 0
+					360 cell
+						361 text -38.75
+					362 cell
+						363 text -3
+				364 row
+					365 cell
+						366 text 2024-25
+					367 cell
+						368 text GSW
+					369 cell
+						370 text BOS
+					371 cell
+						372 text 401704738
+					373 cell
+						374 text 1
+					375 cell
+						376 text 170
+					377 cell
+						378 text Tip Shot
+					379 cell
+						380 text rim
+					381 cell
+						382 text attempt_value_and_location
+					383 cell
+						384 text true
+					385 cell
+						386 text 0
+					387 cell
+						388 text 0
+					389 cell
+						390 text -39.75
+					391 cell
+						392 text -1
+				393 row
+					394 cell
+						395 text 2024-25
+					396 cell
+						397 text GSW
+					398 cell
+						399 text BOS
+					400 cell
+						401 text 401704738
+					402 cell
+						403 text 1
+					404 cell
+						405 text 171
+					406 cell
+						407 text Pullup
+					408 cell
+						409 text mid
+					410 cell
+						411 text attempt_value_and_location
+					412 cell
+						413 text true
+					414 cell
+						415 text 0
+					416 cell
+						417 text 0
+					418 cell
+						419 text -37.75
+					420 cell
+						421 text 13
+				422 row
+					423 cell
+						424 text 2024-25
+					425 cell
+						426 text GSW
+					427 cell
+						428 text BOS
+					429 cell
+						430 text 401704738
+					431 cell
+						432 text 1
+					433 cell
+						434 text 180
+					435 cell
+						436 text Jump Shot
+					437 cell
+						438 text mid
+					439 cell
+						440 text attempt_value_and_location
+					441 cell
+						442 text true
+					443 cell
+						444 text 0
+					445 cell
+						446 text 0
+					447 cell
+						448 text -39.75
+					449 cell
+						450 text -11
+			451 text Showing  10  row(s). Columns follow the canonical Dataset2 shot schema.
+		40 text NBA Play Ranker · Basketball decision support
+		41 container
+			42 link Description: Glossary, Value: nbaplayranker-seven.vercel.app/glossary
+			43 text  · 
+			44 link Description: Data Dictionary, Value: nbaplayranker-seven.vercel.app/data-dictionary
+
+The focused UI element is 1 AXWebArea NBA Play Ranker, URL: nbaplayranker-seven.vercel.app/shot-explorer

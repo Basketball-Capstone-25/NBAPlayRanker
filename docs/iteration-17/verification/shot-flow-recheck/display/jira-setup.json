@@ -1,0 +1,234 @@
+{
+  "issues": [
+    {
+      "key": "SCRUM-643",
+      "summary": "Keep shot results, filters and downloads consistent",
+      "status": "In Progress",
+      "type": "Task",
+      "parent": "SCRUM-5",
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "BST-203"
+        },
+        {
+          "type": "Relates",
+          "key": "BST-204"
+        },
+        {
+          "type": "Relates",
+          "key": "BST-205"
+        }
+      ],
+      "customFields": {
+        "Sprint": {
+          "id": "customfield_10020",
+          "value": [
+            {
+              "id": 185,
+              "name": "Iteration 17",
+              "state": "future",
+              "boardId": 1,
+              "goal": "As a coach, I can call a play in one tap during a timeout, using player data the analyst prepared.",
+              "startDate": "2026-10-20T04:00:00.000Z",
+              "endDate": "2026-10-27T03:59:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "key": "SCRUM-642",
+      "summary": "Fix shot zones and quarantine inconsistent source data",
+      "status": "In Progress",
+      "type": "Task",
+      "parent": "SCRUM-5",
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "BST-202"
+        }
+      ],
+      "customFields": {
+        "Sprint": {
+          "id": "customfield_10020",
+          "value": [
+            {
+              "id": 185,
+              "name": "Iteration 17",
+              "state": "future",
+              "boardId": 1,
+              "goal": "As a coach, I can call a play in one tap during a timeout, using player data the analyst prepared.",
+              "startDate": "2026-10-20T04:00:00.000Z",
+              "endDate": "2026-10-27T03:59:00.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "key": "BST-205",
+      "summary": "Explain heatmap counts, exclusions and empty filters",
+      "status": "Verify",
+      "type": "Test Case",
+      "parent": "BST-114",
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-643"
+        }
+      ]
+    },
+    {
+      "key": "BST-204",
+      "summary": "Match shot PDF filters and support canonical team codes",
+      "status": "Verify",
+      "type": "Test Case",
+      "parent": "BST-114",
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-643"
+        }
+      ]
+    },
+    {
+      "key": "BST-203",
+      "summary": "Keep shot results and exports tied to the submitted filters",
+      "status": "Fail",
+      "type": "Test Case",
+      "parent": "BST-114",
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-643"
+        }
+      ]
+    },
+    {
+      "key": "BST-202",
+      "summary": "Check shot zones and source exclusions against raw events",
+      "status": "Fail",
+      "type": "Test Case",
+      "parent": "BST-114",
+      "assignee": "712020:1dbe2ccf-daa2-4081-ad78-9bc70b059e36",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-642"
+        }
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "key": "BST-203",
+      "message": "Comment added to BST-203 successfully",
+      "commentId": "11432",
+      "body": "Failed on the deployed app: I ran TOR vs BOS for 2021-22, then changed the season to 2024-25 without running again. The page still showed the 2021-22 tables and 376-shot heatmap, while Export PDF remained enabled. SCRUM-643 tracks the fix. Screenshot and page-state evidence are saved as before-stale-plan.jpg and before-stale-plan.txt.",
+      "appliedContentFormat": "markdown",
+      "jsmCommentType": "publicComment"
+    },
+    {
+      "key": "BST-202",
+      "message": "Comment added to BST-202 successfully",
+      "commentId": "11433",
+      "body": "The raw-event check failed: the old zone rules used the wrong arc boundary and assigned some known two- and three-point attempts to conflicting zones. It also found score discontinuities that make some pre-shot margins unreliable. SCRUM-642 tracks the corrected rules, source quarantine and rebuild. The original results are kept in raw-event-audit-before.json and score-discontinuities-before.json.",
+      "appliedContentFormat": "markdown",
+      "jsmCommentType": "publicComment"
+    },
+    {
+      "key": "SCRUM-643",
+      "message": "Comment added to SCRUM-643 successfully",
+      "commentId": "11434",
+      "body": "The deployed Shot Plan reproduced the stale-result bug: changing the season kept the old tables and heatmap visible with Export PDF enabled. The repair is in source, including matching filter snapshots, heatmap errors, PDF sampling and team codes. BST-203–205 cover the release checks.",
+      "appliedContentFormat": "markdown",
+      "jsmCommentType": "publicComment"
+    },
+    {
+      "key": "SCRUM-642",
+      "message": "Comment added to SCRUM-642 successfully",
+      "commentId": "11435",
+      "body": "The source audit found incorrect zones and score discontinuities. The rebuild quarantines the affected games instead of guessing corrected scores, keeps uncertain locations out of charts and location-based evaluation, and preserves unknown shot values. BST-202 tracks the source and release checks.",
+      "appliedContentFormat": "markdown",
+      "jsmCommentType": "publicComment"
+    },
+    {
+      "key": "BST-114",
+      "message": "Comment added to BST-114 successfully",
+      "commentId": "11436",
+      "body": "The closer shot review found two new failures: incorrect zones/source inconsistencies and stale Shot Plan results after changing filters. BST-202 and BST-203 are Fail; BST-204 and BST-205 await the corrected release. Their fixes are linked to SCRUM-642 and SCRUM-643. This suite stays in progress.",
+      "appliedContentFormat": "markdown",
+      "jsmCommentType": "publicComment"
+    }
+  ],
+  "board": {
+    "isLast": true,
+    "appliedContentFormat": "markdown",
+    "issues": [
+      {
+        "id": "12334",
+        "key": "BST-202",
+        "fields": {
+          "summary": "Check shot zones and source exclusions against raw events",
+          "status": {
+            "name": "Fail"
+          },
+          "issuetype": {
+            "name": "Test Case"
+          }
+        }
+      },
+      {
+        "id": "12335",
+        "key": "BST-203",
+        "fields": {
+          "summary": "Keep shot results and exports tied to the submitted filters",
+          "status": {
+            "name": "Fail"
+          },
+          "issuetype": {
+            "name": "Test Case"
+          }
+        }
+      },
+      {
+        "id": "12336",
+        "key": "BST-204",
+        "fields": {
+          "summary": "Match shot PDF filters and support canonical team codes",
+          "status": {
+            "name": "Verify"
+          },
+          "issuetype": {
+            "name": "Test Case"
+          }
+        }
+      },
+      {
+        "id": "12337",
+        "key": "BST-205",
+        "fields": {
+          "summary": "Explain heatmap counts, exclusions and empty filters",
+          "status": {
+            "name": "Verify"
+          },
+          "issuetype": {
+            "name": "Test Case"
+          }
+        }
+      }
+    ]
+  },
+  "backlog": {
+    "returnHint": "Board type is TMP kanban; no backlog exists.",
+    "issues": []
+  },
+  "worklogs_added": 0,
+  "retest_status": "Pending corrected release; no new defect marked Done and no new case marked Pass."
+}

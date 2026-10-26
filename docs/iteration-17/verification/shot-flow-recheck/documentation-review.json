@@ -1,0 +1,100 @@
+{
+  "checked_at": "2026-10-26T15:39:46.735111+00:00",
+  "scope": "Documentation and evidence review only; no new API requests, source changes or Jira writes.",
+  "files_reviewed": [
+    "docs/iteration-17/README.md",
+    "docs/iteration-17/verification/shot-flow-recheck/README.md",
+    "docs/iteration-17/verification/shot-flow-recheck/display/READ-ME.txt"
+  ],
+  "relative_links_checked": 75,
+  "missing_links": [],
+  "evidence_counts": {
+    "live/local-parity.json": {
+      "checks": 45,
+      "passed": true
+    },
+    "live/local-component-parity.json": {
+      "checks": 66,
+      "passed": true
+    },
+    "live/coordinate-transform.json": {
+      "checks": 14,
+      "passed": true
+    },
+    "live/results.json": {
+      "checks": 218,
+      "passed": true
+    },
+    "live/capped-pdf-image-parity.json": {
+      "checks": 7,
+      "passed": true
+    }
+  },
+  "corrections": [
+    "Marked the PNG browser download release and actual file-save retest pending.",
+    "Separated API image/PDF pixel parity from browser file-save evidence.",
+    "Marked the earlier 00010 release, shot rows, model metrics and tracking snapshot as historical.",
+    "Documented quarantine gaps, unknown attempted values, invalid locations, approximate provider coordinates and proposed-shot diagnostic limits.",
+    "Labeled initial Jira setup evidence as a historical snapshot, not the current Jira status."
+  ],
+  "passed": true,
+  "remaining_at_initial_review": [
+    "PNG download release and actual browser retest are pending; update the summaries only after that evidence is recorded."
+  ],
+  "confirmed_after_review": {
+    "checked_at": "2026-10-26T15:41:43.573686+00:00",
+    "evidence": "browser/png-download-final.json",
+    "frontend": "0ba37bb",
+    "download_bytes_identical_to_live_png": true,
+    "download_sha256": "e9f7550b0430b779331020f09c8960ce4b864c09a974dc01f3017e1eb2ee7566",
+    "png_route_evidence": "live/png-proxy-results.json",
+    "png_route_checks": 24,
+    "png_route_requests": 6,
+    "png_route_passed": true,
+    "integrated_backend": {
+      "revision": "nba-playranker-api-00012-nrd",
+      "source": "0ba37bb",
+      "evidence": "live/integrated/results.json",
+      "checks": 218,
+      "passed": true,
+      "unchanged_result_checks": 37
+    },
+    "final_release": {
+      "evidence": "release/final-integrated-release.json",
+      "frontend_source": "99a31e0",
+      "frontend_deployment": "dpl_DknqC3yLsJp2f7ytQNwjUAMYG4MA",
+      "backend_revision": "nba-playranker-api-00012-nrd",
+      "backend_tests": 478,
+      "frontend_tests": 257,
+      "typescript_passed": true,
+      "build_passed": true,
+      "quick_call_browser_checks": 5,
+      "timing_scope": "Observed UI refreshes only; no two-second response guarantee.",
+      "shot_browser_smoke": "browser/final-release-smoke.json",
+      "png_saved_and_identical": true
+    },
+    "jira_closeout": {
+      "evidence": "display/jira-closeout-readback.json",
+      "completed_tasks": [
+        "SCRUM-642",
+        "SCRUM-643"
+      ],
+      "passed_cases": [
+        "BST-202",
+        "BST-203",
+        "BST-204",
+        "BST-205"
+      ],
+      "unchanged_open": [
+        "BST-114",
+        "BST-117",
+        "SCRUM-641"
+      ]
+    }
+  },
+  "remaining": [
+    "Quick Call Jira tracking identifiers are handled separately; none are invented in these summaries.",
+    "Before-possession forecasting and broader team test review remain separate open work."
+  ],
+  "final_review_at": "2026-10-26T15:50:12.748544+00:00"
+}

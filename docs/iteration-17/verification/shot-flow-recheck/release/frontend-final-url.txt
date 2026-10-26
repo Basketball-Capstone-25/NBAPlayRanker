@@ -1,0 +1,41 @@
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_DknqC3yLsJp2f7ytQNwjUAMYG4MA",
+    "url": "https://nbaplayranker-coosvkf3f-pearson-manufacturing.vercel.app",
+    "productionUrl": "https://nbaplayranker-seven.vercel.app",
+    "inspectorUrl": "https://vercel.com/pearson-manufacturing/nba_play_ranker/DknqC3yLsJp2f7ytQNwjUAMYG4MA",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_DknqC3yLsJp2f7ytQNwjUAMYG4MA",
+    "buildMachine": {
+      "cores": 2,
+      "memory": 8192,
+      "machine": "basic",
+      "selectionType": "fixed",
+      "selectionSource": "plan-default"
+    },
+    "deploymentProtection": [
+      "vercel_authentication"
+    ]
+  },
+  "message": "Deployment nbaplayranker-coosvkf3f-pearson-manufacturing.vercel.app ready. Production URL: https://nbaplayranker-seven.vercel.app",
+  "next": [
+    {
+      "command": "vercel git connect --scope pearson-manufacturing",
+      "when": "Automatically deploy changes on every push"
+    },
+    {
+      "command": "vercel curl https://nbaplayranker-seven.vercel.app",
+      "when": "Verify deployment, including when Deployment Protection is enabled"
+    },
+    {
+      "command": "vercel inspect nbaplayranker-coosvkf3f-pearson-manufacturing.vercel.app --scope pearson-manufacturing",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod --scope pearson-manufacturing",
+      "when": "Promote to production"
+    }
+  ]
+}

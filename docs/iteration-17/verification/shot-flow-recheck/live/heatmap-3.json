@@ -1,0 +1,19 @@
+{
+  "season": "2025-26",
+  "team": "TOR",
+  "opp": "BOS",
+  "shot_type": null,
+  "zone": null,
+  "max_shots": 1000,
+  "n_shots_excluded_location": 0,
+  "n_shots_outside_halfcourt": 2,
+  "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+  "n_shots_total": 352,
+  "n_shots_rendered": 350,
+  "n_shots_omitted_by_cap": 0,
+  "caption": "TOR vs BOS \u00b7 2025-26\nType: All \u00b7 Zone: All\nMatched: 352 \u00b7 Shown: 350\n2 outside half court",
+  "n_shots": 350,
+  "image_file": "heatmap-3.png",
+  "image_bytes": 106553,
+  "image_sha256": "73040a59e7e2ff6f66fbe198c8886b06d14df1184a83ad36fbb4422f52bf2391"
+}

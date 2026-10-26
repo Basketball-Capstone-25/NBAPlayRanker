@@ -1,0 +1,248 @@
+[
+  {
+    "season": "2021-22",
+    "team": "TOR",
+    "opp": "BOS",
+    "attempts": 376,
+    "makes": 156,
+    "points": 351,
+    "fg_pct": 0.4148936170212766,
+    "points_per_attempt": 0.9335106382978723,
+    "small_sample": {
+      "shot_type": "Pullup",
+      "zone": "paint",
+      "attempts": 1
+    },
+    "heatmap_counts": {
+      "n_shots_total": 376,
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 1,
+      "n_shots_rendered": 375,
+      "n_shots_omitted_by_cap": 0
+    },
+    "zone_counts": {
+      "arc3": 110,
+      "corner3": 31,
+      "mid": 45,
+      "paint": 96,
+      "rim": 94
+    },
+    "type_counts": {
+      "Bank Shot": 8,
+      "Dunk": 24,
+      "Fadeaway": 11,
+      "Floater": 23,
+      "Hook Shot": 19,
+      "Jump Shot": 131,
+      "Layup": 95,
+      "Pullup": 36,
+      "Stepback": 17,
+      "Tip Shot": 12
+    }
+  },
+  {
+    "season": "2021-22",
+    "team": "BOS",
+    "opp": "TOR",
+    "attempts": 352,
+    "makes": 147,
+    "points": 339,
+    "fg_pct": 0.41761363636363635,
+    "points_per_attempt": 0.9630681818181818,
+    "small_sample": {
+      "shot_type": "Bank Shot",
+      "zone": "mid",
+      "attempts": 1
+    },
+    "heatmap_counts": {
+      "n_shots_total": 352,
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 1,
+      "n_shots_rendered": 351,
+      "n_shots_omitted_by_cap": 0
+    },
+    "zone_counts": {
+      "arc3": 93,
+      "corner3": 44,
+      "mid": 46,
+      "paint": 91,
+      "rim": 78
+    },
+    "type_counts": {
+      "Bank Shot": 5,
+      "Dunk": 15,
+      "Fadeaway": 15,
+      "Floater": 18,
+      "Hook Shot": 13,
+      "Jump Shot": 141,
+      "Layup": 89,
+      "Pullup": 33,
+      "Stepback": 12,
+      "Tip Shot": 11
+    }
+  },
+  {
+    "season": "2025-26",
+    "team": "TOR",
+    "opp": "BOS",
+    "attempts": 352,
+    "makes": 164,
+    "points": 379,
+    "fg_pct": 0.4659090909090909,
+    "points_per_attempt": 1.0767045454545454,
+    "small_sample": {
+      "shot_type": "Bank Shot",
+      "zone": "mid",
+      "attempts": 1
+    },
+    "heatmap_counts": {
+      "n_shots_total": 352,
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 2,
+      "n_shots_rendered": 350,
+      "n_shots_omitted_by_cap": 0
+    },
+    "zone_counts": {
+      "arc3": 105,
+      "corner3": 32,
+      "mid": 35,
+      "paint": 95,
+      "rim": 85
+    },
+    "type_counts": {
+      "Bank Shot": 7,
+      "Dunk": 17,
+      "Fadeaway": 14,
+      "Floater": 38,
+      "Hook Shot": 12,
+      "Jump Shot": 133,
+      "Layup": 88,
+      "Pullup": 34,
+      "Stepback": 2,
+      "Tip Shot": 7
+    }
+  },
+  {
+    "season": "2025-26",
+    "team": "BOS",
+    "opp": "TOR",
+    "attempts": 362,
+    "makes": 182,
+    "points": 418,
+    "fg_pct": 0.5027624309392266,
+    "points_per_attempt": 1.1546961325966851,
+    "small_sample": {
+      "shot_type": "Bank Shot",
+      "zone": "arc3",
+      "attempts": 1
+    },
+    "heatmap_counts": {
+      "n_shots_total": 362,
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 0,
+      "n_shots_rendered": 362,
+      "n_shots_omitted_by_cap": 0
+    },
+    "zone_counts": {
+      "arc3": 118,
+      "corner3": 24,
+      "mid": 38,
+      "paint": 88,
+      "rim": 94
+    },
+    "type_counts": {
+      "Bank Shot": 8,
+      "Dunk": 17,
+      "Fadeaway": 16,
+      "Floater": 21,
+      "Hook Shot": 5,
+      "Jump Shot": 87,
+      "Layup": 96,
+      "Pullup": 78,
+      "Stepback": 26,
+      "Tip Shot": 8
+    }
+  },
+  {
+    "season": "2024-25",
+    "team": "LAL",
+    "opp": "GSW",
+    "attempts": 341,
+    "makes": 166,
+    "points": 388,
+    "fg_pct": 0.4868035190615836,
+    "points_per_attempt": 1.1378299120234605,
+    "small_sample": {
+      "shot_type": "Floater",
+      "zone": "arc3",
+      "attempts": 1
+    },
+    "heatmap_counts": {
+      "n_shots_total": 341,
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 1,
+      "n_shots_rendered": 340,
+      "n_shots_omitted_by_cap": 0
+    },
+    "zone_counts": {
+      "arc3": 113,
+      "corner3": 40,
+      "mid": 36,
+      "paint": 91,
+      "rim": 61
+    },
+    "type_counts": {
+      "Bank Shot": 6,
+      "Dunk": 24,
+      "Fadeaway": 17,
+      "Floater": 24,
+      "Hook Shot": 9,
+      "Jump Shot": 132,
+      "Layup": 65,
+      "Pullup": 37,
+      "Stepback": 21,
+      "Tip Shot": 6
+    }
+  },
+  {
+    "season": "2025-26",
+    "team": "OKC",
+    "opp": "SAS",
+    "attempts": 1080,
+    "makes": 467,
+    "points": 1085,
+    "fg_pct": 0.4324074074074074,
+    "points_per_attempt": 1.0046296296296295,
+    "small_sample": {
+      "shot_type": "Bank Shot",
+      "zone": "arc3",
+      "attempts": 1
+    },
+    "heatmap_counts": {
+      "n_shots_total": 1080,
+      "n_shots_excluded_location": 0,
+      "n_shots_outside_halfcourt": 6,
+      "n_shots_rendered": 1000,
+      "n_shots_omitted_by_cap": 74
+    },
+    "zone_counts": {
+      "arc3": 317,
+      "corner3": 137,
+      "mid": 181,
+      "paint": 220,
+      "rim": 225
+    },
+    "type_counts": {
+      "Bank Shot": 25,
+      "Dunk": 48,
+      "Fadeaway": 39,
+      "Floater": 90,
+      "Hook Shot": 10,
+      "Jump Shot": 388,
+      "Layup": 193,
+      "Pullup": 156,
+      "Stepback": 115,
+      "Tip Shot": 16
+    }
+  }
+]

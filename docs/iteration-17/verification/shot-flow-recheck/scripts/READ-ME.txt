@@ -1,0 +1,19 @@
+Shot calculations and court checks
+
+Run these from the repository root using the installed backend dependencies:
+
+backend/.venv/bin/python docs/iteration-17/verification/shot-flow-recheck/scripts/independent_parity.py --output /tmp/shot-flow-check
+backend/.venv/bin/python docs/iteration-17/verification/shot-flow-recheck/scripts/compare_components.py --output /tmp/shot-flow-check
+backend/.venv/bin/python docs/iteration-17/verification/shot-flow-recheck/scripts/check_coordinates.py --output /tmp/shot-flow-check
+
+Run the first command before the second. All three return a nonzero exit code if a check fails. They use the repository's current local data files, record their hashes, and make no network requests. They do not fit a model or change source data.
+
+independent_parity.py calculates every aggregate table with pandas directly from the cleaned shot events. It checks counts, makes, points, rates and reliability weights against the saved aggregate and league tables. It also computes expected rankings for eight contexts and expected court counts for six matchups. It does not import application aggregation or ranking functions.
+
+compare_components.py compares those expected values with the actual recommendation and court preparation functions. It checks rank order, numeric values, source versions, physical court exclusions and the display cap. It saves a capped heatmap for visual review.
+
+check_coordinates.py uses known home/away coordinates to check rotation, basket placement, backcourt shots and invalid or outside-court exclusions.
+
+The checks compare the 2021-22 and 2025-26 TOR/BOS matchup in both directions, plus LAL/GSW in 2024-25 and OKC/SAS in 2025-26. They include offense weights of 0, 0.7 and 1.
+
+Limits: EPA is estimated points per shot attempt, not points per possession. Reliability weights describe sample size; they are not calibrated confidence probabilities. The current ranking and heatmap APIs have no minimum-attempt filter. Event classification is checked separately against the provider's raw events; agreement between derived tables alone cannot prove the raw events are correct.

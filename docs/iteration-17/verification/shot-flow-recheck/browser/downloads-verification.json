@@ -1,0 +1,38 @@
+{
+  "recorded_at": "2026-10-26T15:27:18.486476+00:00",
+  "pdf": {
+    "file": "downloaded-shot-plan.pdf",
+    "bytes": 91621,
+    "sha256": "1d5c09ca5c23cf7ce37ba2d0c09c7d87f7d980507f05013c5e11931edecfe509",
+    "pages": 1,
+    "context": "GSW/BOS 2024-25; 183 matched / 182 shown; cap1000",
+    "checked_text": true,
+    "visually_inspected": true
+  },
+  "csv": {
+    "file": "downloaded-shots.csv",
+    "rows": 183,
+    "columns": [
+      "SEASON_STR",
+      "TEAM_ABBR",
+      "OPP_ABBR",
+      "GAME_ID",
+      "PERIOD",
+      "CLOCK_SEC",
+      "SHOT_TYPE",
+      "ZONE",
+      "ZONE_METHOD",
+      "LOCATION_VALID",
+      "IS_MAKE",
+      "POINTS",
+      "X",
+      "Y",
+      "DATASET_VERSION"
+    ],
+    "sha256": "1f52cfa88b35376db17aeed3b4ae0aed1cf14617f1209987cb576760cb9c569a",
+    "context": "GSW/BOS 2024-25",
+    "checks_passed": true,
+    "visible_preview_cells_checked": 140,
+    "visible_preview_cells_match": true
+  }
+}

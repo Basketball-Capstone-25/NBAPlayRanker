@@ -1,0 +1,163 @@
+{
+  "checked_at": "2026-10-26T15:45:42.576999+00:00",
+  "previous_backend_revision": "nba-playranker-api-00011-rp7",
+  "current_backend_revision": "nba-playranker-api-00012-nrd",
+  "source_versions": {
+    "shots": "sha256:15078408bfaa84b6cc1a45cc7e10edd822e22b25166a3ab3f4931a0323f640cf",
+    "shots_canonical": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+    "shot_aggregates": "sha256:0649554dd4f3efdbebc19b0f80f1d7d9ef03aca576964fc281c59a97dc6aff99",
+    "shot_league": "sha256:b34603259d6465eceea6c59fcd05377898ec12d0a9c6e0f2019a078a72d649ab"
+  },
+  "checks": [
+    {
+      "name": "rank-1.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "rank-2.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "rank-3.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "rank-4.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "rank-5.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "rank-6.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "rank-7.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "rank-8.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "root-canonical-rank.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "coach-rank.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-1.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-2.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-3.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-4.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-5.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-6.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "preview-1.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "preview-2.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "preview-3.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "preview-4.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "preview-5.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "preview-6.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "small-sample-heatmap.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "empty-heatmap.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "same-team-rank.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "coach-shot-data-denied.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "unsigned-shot-rank-denied.json unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-1.png bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-2.png bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-3.png bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-4.png bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-5.png bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "heatmap-6.png bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "small-sample-heatmap.png bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "shot-matchup-csv.csv bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "canonical-team-pdf.txt bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "all four dataset versions unchanged",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "note": "PDF binary timestamps can change; extracted PDF text is compared, alongside JSON results and exact PNG/CSV bytes."
+}

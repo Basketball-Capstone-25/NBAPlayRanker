@@ -1,0 +1,250 @@
+{
+  "generated_at": "2026-10-25T19:27:58.880234+00:00",
+  "totals": {
+    "score_inconsistent_games": 14,
+    "score_inconsistent_shots": 2506,
+    "location_conflict_rows": 10,
+    "geometry_only_zone_rows": 110206,
+    "unknown_attempt_values": 110206
+  },
+  "seasons": [
+    {
+      "source": "play_by_play_2021.parquet",
+      "reason": "Field-goal event score does not match the preceding event plus its awarded points; whole game quarantined without guessing which event is correct.",
+      "games": [],
+      "excluded_games": 0,
+      "excluded_shots": 0,
+      "inconsistent_shot_events": 0
+    },
+    {
+      "source": "play_by_play_2022.parquet",
+      "reason": "Field-goal event score does not match the preceding event plus its awarded points; whole game quarantined without guessing which event is correct.",
+      "games": [
+        {
+          "game_id": "401359840",
+          "shot_rows": 184,
+          "inconsistent_event_ids": [
+            "40135984046",
+            "40135984048",
+            "401359840137",
+            "401359840147",
+            "401359840149"
+          ]
+        },
+        {
+          "game_id": "401360543",
+          "shot_rows": 164,
+          "inconsistent_event_ids": [
+            "401360543621"
+          ]
+        }
+      ],
+      "excluded_games": 2,
+      "excluded_shots": 348,
+      "inconsistent_shot_events": 6
+    },
+    {
+      "source": "play_by_play_2023.parquet",
+      "reason": "Field-goal event score does not match the preceding event plus its awarded points; whole game quarantined without guessing which event is correct.",
+      "games": [
+        {
+          "game_id": "401468281",
+          "shot_rows": 164,
+          "inconsistent_event_ids": [
+            "4014682819",
+            "40146828149",
+            "401468281647"
+          ]
+        },
+        {
+          "game_id": "401468511",
+          "shot_rows": 181,
+          "inconsistent_event_ids": [
+            "401468511538"
+          ]
+        },
+        {
+          "game_id": "401469149",
+          "shot_rows": 174,
+          "inconsistent_event_ids": [
+            "401469149121",
+            "401469149149",
+            "401469149156",
+            "401469149158",
+            "401469149160",
+            "401469149191"
+          ]
+        },
+        {
+          "game_id": "401469200",
+          "shot_rows": 185,
+          "inconsistent_event_ids": [
+            "40146920027",
+            "40146920096",
+            "401469200247",
+            "401469200292",
+            "401469200270",
+            "401469200249",
+            "401469200281",
+            "401469200254",
+            "401469200260",
+            "401469200263",
+            "401469200271",
+            "401469200369",
+            "401469200282",
+            "401469200286",
+            "401469200511",
+            "401469200545",
+            "401469200604"
+          ]
+        }
+      ],
+      "excluded_games": 4,
+      "excluded_shots": 704,
+      "inconsistent_shot_events": 27
+    },
+    {
+      "source": "play_by_play_2024.parquet",
+      "reason": "Field-goal event score does not match the preceding event plus its awarded points; whole game quarantined without guessing which event is correct.",
+      "games": [
+        {
+          "game_id": "401584717",
+          "shot_rows": 186,
+          "inconsistent_event_ids": [
+            "401584717208",
+            "401584717212",
+            "401584717362",
+            "401584717445",
+            "401584717467"
+          ]
+        },
+        {
+          "game_id": "401585387",
+          "shot_rows": 177,
+          "inconsistent_event_ids": [
+            "40158538722"
+          ]
+        },
+        {
+          "game_id": "401585411",
+          "shot_rows": 180,
+          "inconsistent_event_ids": [
+            "401585411152",
+            "401585411158",
+            "401585411159",
+            "401585411173",
+            "401585411620",
+            "401585411703"
+          ]
+        },
+        {
+          "game_id": "401585412",
+          "shot_rows": 180,
+          "inconsistent_event_ids": [
+            "401585412683",
+            "401585412690"
+          ]
+        },
+        {
+          "game_id": "401585413",
+          "shot_rows": 189,
+          "inconsistent_event_ids": [
+            "401585413524",
+            "401585413528",
+            "401585413532",
+            "401585413567",
+            "401585413586",
+            "401585413589"
+          ]
+        },
+        {
+          "game_id": "401616465",
+          "shot_rows": 184,
+          "inconsistent_event_ids": [
+            "40161646532",
+            "40161646567",
+            "40161646534",
+            "40161646569",
+            "40161646538",
+            "40161646573",
+            "40161646575",
+            "40161646543",
+            "40161646577"
+          ]
+        }
+      ],
+      "excluded_games": 6,
+      "excluded_shots": 1096,
+      "inconsistent_shot_events": 29
+    },
+    {
+      "source": "play_by_play_2025.parquet",
+      "reason": "Field-goal event score does not match the preceding event plus its awarded points; whole game quarantined without guessing which event is correct.",
+      "games": [
+        {
+          "game_id": "401704805",
+          "shot_rows": 181,
+          "inconsistent_event_ids": [
+            "401704805697",
+            "401704805454",
+            "401704805578",
+            "401704805580",
+            "401704805582",
+            "401704805758",
+            "401704805600",
+            "401704805710",
+            "401704805712"
+          ]
+        }
+      ],
+      "excluded_games": 1,
+      "excluded_shots": 181,
+      "inconsistent_shot_events": 9
+    },
+    {
+      "source": "play_by_play_2026.parquet",
+      "reason": "Field-goal event score does not match the preceding event plus its awarded points; whole game quarantined without guessing which event is correct.",
+      "games": [
+        {
+          "game_id": "401810087",
+          "shot_rows": 177,
+          "inconsistent_event_ids": [
+            "401810087370",
+            "401810087375",
+            "401810087380",
+            "401810087386",
+            "401810087408",
+            "401810087422",
+            "401810087417",
+            "401810087426",
+            "401810087428",
+            "401810087437",
+            "401810087439",
+            "401810087446",
+            "401810087470",
+            "401810087453",
+            "401810087455",
+            "401810087464",
+            "401810087479",
+            "401810087484",
+            "401810087487",
+            "401810087552",
+            "401810087573",
+            "401810087578",
+            "401810087582",
+            "401810087643",
+            "401810087647",
+            "401810087649",
+            "401810087652",
+            "401810087662",
+            "401810087684",
+            "401810087707"
+          ]
+        }
+      ],
+      "excluded_games": 1,
+      "excluded_shots": 177,
+      "inconsistent_shot_events": 30
+    }
+  ]
+}

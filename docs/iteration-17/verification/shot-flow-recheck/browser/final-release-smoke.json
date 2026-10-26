@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-10-26T15:49:42.319384+00:00",
+  "frontend_source": "99a31e0dd1a629cbf105dabac89d171f87915a02",
+  "backend_revision": "nba-playranker-api-00012-nrd",
+  "filename": "shot_heatmap_2025-26_OKC_vs_SAS_alltypes_allzones_max_1000 (1).png",
+  "saved_at": "2026-10-26T15:49:35.811868+00:00",
+  "sha256": "e9f7550b0430b779331020f09c8960ce4b864c09a974dc01f3017e1eb2ee7566",
+  "same_bytes_as": "downloaded-shot-heatmap.png",
+  "screenshot": "heatmap-final-release.jpg",
+  "passed": true
+}

@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-10-26T15:39:37.041703+00:00",
+  "frontend_source": "0ba37bb117bb4703d0c6ac707071d3a4d2fe78ae",
+  "frontend_deployment": "dpl_9p6SyPTV6RCncXMWLHgQn8YmsFGR",
+  "filename": "shot_heatmap_2025-26_OKC_vs_SAS_alltypes_allzones_max_1000.png",
+  "bytes": 134676,
+  "saved_at": "2026-10-26T15:39:24.663772+00:00",
+  "sha256": "e9f7550b0430b779331020f09c8960ce4b864c09a974dc01f3017e1eb2ee7566",
+  "dimensions": [
+    1050,
+    900
+  ],
+  "dataset_version": "sha256:80776b1dea23cbd5a088442bc60062653eb2424ebc4a14aef7b41d04dc516ae5",
+  "filters": {
+    "season": "2025-26",
+    "team": "OKC",
+    "opponent": "SAS",
+    "max_shots": 1000
+  },
+  "matched": 1080,
+  "shown": 1000,
+  "outside_halfcourt": 6,
+  "omitted_by_cap": 74,
+  "pixel_identical_to": "live/heatmap-6.png",
+  "passed": true
+}
