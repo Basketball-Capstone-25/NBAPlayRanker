@@ -5,7 +5,7 @@
 // Score, period and clock change with one tap; the list refreshes within 2 seconds.
 
 import Link from "next/link";
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import React, { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   LATE_GAME_SCENARIOS,
@@ -19,12 +19,9 @@ import {
   type QuickCallSituation,
   type SituationField,
 } from "../../../domain/quick-call";
-import { fetchQuickCall, QuickCallForbiddenError, type QuickCallResponse } from "../../../services/quick-call";
+import { QuickCallForbiddenError } from "../../../services/quick-call";
+import { useQuickCallResult } from "./useQuickCallResult";
 import styles from "./QuickCallMode.module.css";
-
-const REFRESH_DEBOUNCE_MS = 250;
-
-type Status = "loading" | "ready" | "error" | "forbidden";
 
 const CONTROLS: { field: SituationField; label: string; show: (s: QuickCallSituation) => string }[] = [
   { field: "margin", label: "Score", show: (s) => formatMargin(s.margin) },
@@ -36,46 +33,12 @@ function QuickCallInner() {
   const params = useSearchParams();
   const [situation, setSituation] = useState<QuickCallSituation>(() => situationFromParams(params));
   const [scenarioId, setScenarioId] = useState<string | null>(null);
-  const [result, setResult] = useState<QuickCallResponse | null>(null);
-  const [status, setStatus] = useState<Status>("loading");
-  const [message, setMessage] = useState("");
-  const [lastRefreshMs, setLastRefreshMs] = useState<number | null>(null);
-  const inFlight = useRef<AbortController | null>(null);
-
   const hasMatchup = Boolean(situation.season && situation.ourTeam && situation.oppTeam);
-
-  useEffect(() => {
-    if (!hasMatchup) {
-      setStatus("error");
-      setMessage("Open Quick-Call Mode from the Context ML page so it knows the matchup.");
-      return;
-    }
-    const timer = setTimeout(() => void refresh(situation), REFRESH_DEBOUNCE_MS);
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [situation, hasMatchup]);
-
-  useEffect(() => () => inFlight.current?.abort(), []);
-
-  async function refresh(s: QuickCallSituation) {
-    inFlight.current?.abort(); // a newer tap always wins
-    const controller = new AbortController();
-    inFlight.current = controller;
-    setStatus((prev) => (prev === "ready" ? "ready" : "loading"));
-    const started = performance.now();
-    try {
-      const response = await fetchQuickCall(s, controller.signal);
-      if (controller.signal.aborted) return;
-      setResult(response);
-      setStatus("ready");
-      setMessage("");
-      setLastRefreshMs(Math.round(performance.now() - started));
-    } catch (error) {
-      if (controller.signal.aborted) return;
-      setStatus(error instanceof QuickCallForbiddenError ? "forbidden" : "error");
-      setMessage(error instanceof Error ? error.message : "Could not load quick calls.");
-    }
-  }
+  const { result, loading, error, lastRefreshMs } = useQuickCallResult(situation, hasMatchup);
+  const status = !hasMatchup ? "error" : error instanceof QuickCallForbiddenError ? "forbidden"
+    : error ? "error" : loading ? "loading" : "ready";
+  const message = !hasMatchup ? "Open Quick-Call Mode from the Context ML page so it knows the matchup."
+    : error instanceof Error ? error.message : "Could not load quick calls.";
 
   function step(field: SituationField, direction: 1 | -1) {
     setScenarioId(null);
@@ -161,7 +124,7 @@ function QuickCallInner() {
       {status === "ready" && result?.source === "baseline" ? <div className={styles.notice}>{result.notice}</div> : null}
       {status === "error" || status === "forbidden" ? <div className={styles.error}>{message}</div> : null}
 
-      {result && status !== "forbidden" ? (
+      {result && status === "ready" ? (
         <ol className={styles.plays} aria-label="Top 3 plays">
           {result.plays.map((play) => (
             <li className={styles.play} key={play.play_type}>
