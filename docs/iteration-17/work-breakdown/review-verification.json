@@ -1,0 +1,11 @@
+{
+  "stage": "Prepared review; shared VP publication pending",
+  "curated_manifest_entries": 74,
+  "curated_hash_failures": [],
+  "markdown_local_links_checked": 189,
+  "missing_local_links": [],
+  "prepared_model_checks_passed": 43,
+  "jira_use_case_checks_passed": 102,
+  "application_retested_this_review": false,
+  "actual_hours_added": false
+}

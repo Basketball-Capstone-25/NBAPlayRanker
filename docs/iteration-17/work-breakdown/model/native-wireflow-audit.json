@@ -1,0 +1,1090 @@
+{
+  "status": "Candidate verified; shared publication pending",
+  "baseline_revision": 63,
+  "candidate_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
+  "spec_sha256": "e107736671bda195736e5899d75cbd56ed39ef35eb5e52a23a9ab72b7f2d5687",
+  "diagram_count": 267,
+  "original_diagrams_preserved": 207,
+  "old_native_models_checked": 61,
+  "old_native_model_definition_changes": [],
+  "native_models_unchanged_by_realization_import": 131,
+  "native_model_changes_after_realization_import": [],
+  "use_case_links": [
+    {
+      "useCase": "dfl3vjmEEhz2rQBu",
+      "name": "Run Data Quality Checks",
+      "diagram": "0FB0noWD.AAAAQjI",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "jv0JX1mGAqAALhjZ",
+      "name": "Audit Metadata",
+      "diagram": "0FB0noWD.AAAAQjI",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "jXQJX1mGAqAALhjF",
+      "name": "Data Dictionary",
+      "diagram": "0FB0noWD.AAAAQjI",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "IIdxX1mGAqAALhih",
+      "name": "Versioned CSV Tables",
+      "diagram": "0FB0noWD.AAAAQjI",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "oLOFX1mGAqAALhmy",
+      "name": "Plain Labels & Readability",
+      "diagram": "0FB0noWD.AAAAQjI",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "5V1jrLmAUAAADR1t",
+      "name": "Review Shot-Plan Recommendations",
+      "diagram": "kLh0noWD.AAAAQz2",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "Wbd8ae8a15dc28bc",
+      "name": "Explore Shot Attempts and Heatmaps",
+      "diagram": "kLh0noWD.AAAAQz2",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "4tK5X1mGAqAALhlh",
+      "name": "Reactive Updates on Input Changes",
+      "diagram": "kLh0noWD.AAAAQz2",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "Wbdc1d2b94f83b25",
+      "name": "Review Saved Shot-Model Evidence",
+      "diagram": "MyR0noWD.AAAAQ55",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "iK2lX1mGAqAALhof",
+      "name": "Seasonal Holdout",
+      "diagram": "MyR0noWD.AAAAQ55",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "Ub9lX1mGAqAALhoz",
+      "name": "Compute & Export Top-K Uplift (CSV/JSON)",
+      "diagram": "MyR0noWD.AAAAQ55",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "dfl3vjmEEhz2rQBw",
+      "name": "Export KPIs / Reports",
+      "diagram": "MyR0noWD.AAAAQ55",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "oLOFX1mGAqAALhmy",
+      "name": "Plain Labels & Readability",
+      "diagram": "MyR0noWD.AAAAQ55",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "sDahi1mGAqAALiDF",
+      "name": "Rank Plays with Game Context",
+      "diagram": "TtR0noWD.AAAARAh",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "z9E5X1mGAqAALhlN",
+      "name": "Ranked List via API (Baseline)",
+      "diagram": "TtR0noWD.AAAARAh",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "TPn5X1mGAqAALhmK",
+      "name": "Short Explanations per item",
+      "diagram": "TtR0noWD.AAAARAh",
+      "reciprocal": "true"
+    },
+    {
+      "useCase": "4tK5X1mGAqAALhlh",
+      "name": "Reactive Updates on Input Changes",
+      "diagram": "TtR0noWD.AAAARAh",
+      "reciprocal": "true"
+    }
+  ],
+  "flows": [
+    {
+      "key": "data",
+      "id": "0FB0noWD.AAAAQjI",
+      "name": "Wireflow - Data Explorer and Dictionary",
+      "reopen_pixels_identical": true,
+      "use_cases": [
+        {
+          "id": "dfl3vjmEEhz2rQBu",
+          "name": "Run Data Quality Checks"
+        },
+        {
+          "id": "jv0JX1mGAqAALhjZ",
+          "name": "Audit Metadata"
+        },
+        {
+          "id": "jXQJX1mGAqAALhjF",
+          "name": "Data Dictionary"
+        },
+        {
+          "id": "IIdxX1mGAqAALhih",
+          "name": "Versioned CSV Tables"
+        },
+        {
+          "id": "oLOFX1mGAqAALhmy",
+          "name": "Plain Labels & Readability"
+        }
+      ],
+      "scenes": [
+        {
+          "index": "0",
+          "node": "DVB0noWD.AAAAQmE",
+          "shape": "o1B0noWD.AAAAQmO",
+          "web": "GVB0noWD.AAAAQlx",
+          "state": "OVB0noWD.AAAAQl0",
+          "title": "Open Data Explorer",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Open Data Explorer | Season | Team | Side | Play type | /data-explorer: signed-in analyst. Preview, quality report and | source catalog have separate request states. | ",
+          "state_definition_sha256": "b5c472999a39602e835a5c715d9fe2b348cbe604cca32a456ff04f64c8ae2e69",
+          "widget_text_sha256": "b3ecfc38e6965b25a1a862c543c21b9b9cd9f4d584b0116a4f930fce4fa8a958",
+          "render_sha256": "7e57cc7565d48b309ef923d27574a6b0d8a6fd672316ba46aade82d568a0d151",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "1",
+          "node": "XPB0noWD.AAAAQs7",
+          "shape": "EvB0noWD.AAAAQs.",
+          "web": "pPB0noWD.AAAAQsu",
+          "state": "1PB0noWD.AAAAQsw",
+          "title": "Loading / Retry",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Loading / Retry | Preview: loading | Source checks: loading | Clear the previous report or catalog. Show progress or a safe error | with Retry. | ",
+          "state_definition_sha256": "82fefe5f5339ae17d77bd4d601eeec09cd34b4992e97963b14e42e0e4bc312a5",
+          "widget_text_sha256": "c1f82332fb4de5455ae5a7127f5b7ff50e95e2d4e47066226513a094d67b8f43",
+          "render_sha256": "5c56ead51465de6a6b917a50fad157e76083cfaf9227cd6e3e45c2a0dec9e3e5",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "2",
+          "node": "GAh0noWD.AAAAQtd",
+          "shape": ".Ah0noWD.AAAAQtg",
+          "web": "cAh0noWD.AAAAQtO",
+          "state": "CAh0noWD.AAAAQtQ",
+          "title": "Data and source status",
+          "widgets": "7",
+          "label_count": 5,
+          "text": "Data and source status | Visible rows | Possessions | Data checks | Show preview filters/rows, source-wide pass/fail/not-run checks, | source row count and seasons. Checks do not prove model accuracy or | shot quality. | ",
+          "state_definition_sha256": "f474288e34bdad006990d527b408bef03e5ebcab86e6e6f33e06183b61523a11",
+          "widget_text_sha256": "8915ffbeb38e7c3ecdfe2e6aae2b679b637e28a72de54c4188c03a7a5925059a",
+          "render_sha256": "b50b014ae34b72e1418a5fc906b1f6b33d3aa30d868ddba2f9aa4cfd13594ed2",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "3",
+          "node": "nQh0noWD.AAAAQt_",
+          "shape": "vQh0noWD.AAAAQuC",
+          "web": "lQh0noWD.AAAAQty",
+          "state": "NQh0noWD.AAAAQt0",
+          "title": "Source details",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Source details | Source details | Version | Pulled date | Expand to inspect the source SHA-256 and recorded pull date. A | missing pull date says Not recorded. | ",
+          "state_definition_sha256": "42696fa21419fcd7524943ef2cb80f076b9875454f05ef2491129e5546676d6a",
+          "widget_text_sha256": "bcafba20c8f678a3a14c131649e188ccbdfdbbf1c35b78365a848947ab509eff",
+          "render_sha256": "26559ac7b18b2ef162b724a6624e1d81039bbaa352aaf03410fde8dd0479980a",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "4",
+          "node": "zIh0noWD.AAAAQuf",
+          "shape": "nIh0noWD.AAAAQui",
+          "web": "1Ih0noWD.AAAAQuS",
+          "state": "dIh0noWD.AAAAQuU",
+          "title": "Data Dictionary",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Data Dictionary | Find column | Source filter | /data-dictionary: actual fields, meanings, units and source. Search | locally. | ",
+          "state_definition_sha256": "5404af581c63d3090c7874b0dac8cbe374ddff10894901fb344709ce7ce36ae9",
+          "widget_text_sha256": "134ffaa46877ba7d16074449011836b584c49a4d5d503b63bbf1e5f9533a0c63",
+          "render_sha256": "d9490b1506b6f4e9e32658f7ac19485c5197d4b33a16510cded8ed11fa04d4bc",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "5",
+          "node": "FYh0noWD.AAAAQu_",
+          "shape": "tYh0noWD.AAAAQvC",
+          "web": "JYh0noWD.AAAAQuy",
+          "state": "pYh0noWD.AAAAQu0",
+          "title": "Unknown or empty definitions",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Unknown or empty definitions | Undocumented columns | Matching fields | Show Undocumented column and counts, No matching columns, or Retry | for a failed request. Do not invent definitions. | ",
+          "state_definition_sha256": "5477e974b1d2a6ba4780b046ba6ba3ba79e44c0b001e9f4f9bd44095f448cace",
+          "widget_text_sha256": "b4f5830ae5b62774d5f2e5ebf2de010d3a1674827bf65ce398f847fc0fac9cba",
+          "render_sha256": "fbc1ebf1f2e83a341a6a7bd2bef45122eb655d77cb27dba97d8578eaf4f82ac6",
+          "reopen_pixels_identical": true
+        }
+      ],
+      "transitions": [
+        {
+          "id": "REh0noWD.AAAAQvT",
+          "from": "0",
+          "to": "1",
+          "label": "Load"
+        },
+        {
+          "id": "XEh0noWD.AAAAQxN",
+          "from": "1",
+          "to": "2",
+          "label": "Data received"
+        },
+        {
+          "id": "fEh0noWD.AAAAQxR",
+          "from": "2",
+          "to": "3",
+          "label": "Source details"
+        },
+        {
+          "id": "gkh0noWD.AAAAQxV",
+          "from": "3",
+          "to": "4",
+          "label": "Dictionary link"
+        },
+        {
+          "id": "Ikh0noWD.AAAAQxZ",
+          "from": "4",
+          "to": "5",
+          "label": "No match / missing definition"
+        }
+      ]
+    },
+    {
+      "key": "shots",
+      "id": "kLh0noWD.AAAAQz2",
+      "name": "Wireflow - Shot Plan, Explorer and Heatmap",
+      "reopen_pixels_identical": true,
+      "use_cases": [
+        {
+          "id": "5V1jrLmAUAAADR1t",
+          "name": "Review Shot-Plan Recommendations"
+        },
+        {
+          "id": "Wbd8ae8a15dc28bc",
+          "name": "Explore Shot Attempts and Heatmaps"
+        },
+        {
+          "id": "4tK5X1mGAqAALhlh",
+          "name": "Reactive Updates on Input Changes"
+        }
+      ],
+      "scenes": [
+        {
+          "index": "0",
+          "node": "3Lh0noWD.AAAAQ1g",
+          "shape": "Qrh0noWD.AAAAQ1j",
+          "web": "bLh0noWD.AAAAQ1T",
+          "state": "bLh0noWD.AAAAQ1V",
+          "title": "Choose inputs",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Choose inputs | Season | Our team | Opponent | Page filters | /shot-explorer (analyst), /shot-plan and /shot-heatmap | (analyst/coach). Select the page inputs. | ",
+          "state_definition_sha256": "9ebd0864169e8595bda42983a8892cc62d5d3dc999c1380203ee1424d957cbab",
+          "widget_text_sha256": "a15143009398d7c1abfdd9f3956a6604701264c9c05ec7fa180ceaf9f937d387",
+          "render_sha256": "d453b6e8b8651ef59bbe6b97f7b3e4bfc89add9696291cef271ea0b1b7b0fa93",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "1",
+          "node": "Q7h0noWD.AAAAQ2A",
+          "shape": "Y7h0noWD.AAAAQ2D",
+          "web": "3bh0noWD.AAAAQ1z",
+          "state": "Pbh0noWD.AAAAQ11",
+          "title": "Run / Render",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Run / Render | Run shot plan | Render heatmap | Capture the inputs. Hide old results and downloads immediately when | controls change. Ignore superseded responses. | ",
+          "state_definition_sha256": "27ac2cdeab25b5f446e07b834ff9946d03ff22b217ff6a8fdd1c3d99864dd4d2",
+          "widget_text_sha256": "cd9f20f5526ba5800e374f2b728eb44ae359c1b61bbbe1556393776ee3ea624a",
+          "render_sha256": "2d59af27cca6a2c5411382d86cc707dd46439441000d15ceb30737456437ee06",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "2",
+          "node": "GHh0noWD.AAAAQ2i",
+          "shape": "WHh0noWD.AAAAQ2l",
+          "web": "KHh0noWD.AAAAQ2T",
+          "state": "qHh0noWD.AAAAQ2V",
+          "title": "Current plan or preview",
+          "widgets": "7",
+          "label_count": 5,
+          "text": "Current plan or preview | Top zones / Shot types | Points per attempt | Shot Plan waits for rankings and the image. Explorer shows rows; | Heatmap shows the plot. Plan ranks use points per attempt and | full-season samples; plot filters do not change them. | ",
+          "state_definition_sha256": "2623fe0a65bcaf8ca12f39fc48e7b9239e729e9ed5fad7326fe81055a3d26967",
+          "widget_text_sha256": "76ac0803f85c19c728154a3f0e004ffe09c13f4e2d412c10aa1b3b45b0b087e4",
+          "render_sha256": "668ae117a3c7f06ba985b44df7198a52f4a50ae9806d747c7d886cc0a0f49e28",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "3",
+          "node": "Bnh0noWD.AAAAQ3E",
+          "shape": "xnh0noWD.AAAAQ3H",
+          "web": "Gnh0noWD.AAAAQ23",
+          "state": "mnh0noWD.AAAAQ25",
+          "title": "Heatmap counts",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Heatmap counts | Shot type | Zone | Max plotted shots | Show makes and misses as attempt counts. Reconcile matched, | plotted, invalid-location, outside-court and cap-omitted totals. | ",
+          "state_definition_sha256": "e8a4ca812ef629726e11e1034e567004e9d8a1de006c85d1977c2ad4763fb218",
+          "widget_text_sha256": "bc887bdf56d69916acdaa0bd67d53a6b05eb99b4084a608634ea52a0dacef52f",
+          "render_sha256": "91dd53a4614877a53f4df6e3c8478a3e58586cf1a4e289b6105a67e5589549a9",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "4",
+          "node": "dXh0noWD.AAAAQ3m",
+          "shape": "DXh0noWD.AAAAQ3p",
+          "web": "FXh0noWD.AAAAQ3X",
+          "state": "FXh0noWD.AAAAQ3Z",
+          "title": "Download current result",
+          "widgets": "7",
+          "label_count": 5,
+          "text": "Download current result | Export CSV | Plan PDF | Heatmap PNG | CSV/PDF use captured successful filters and current sources. PNG | additionally compares displayed source version and verifies echoed | inputs/counts. | ",
+          "state_definition_sha256": "a0dc7cc0844e4e025b40c29728c80b8c592e721dc32998431449c2bd116e13ef",
+          "widget_text_sha256": "994607eb815896f629e7b3f9f2e546f746483290a44198be618e165ddf02e9f0",
+          "render_sha256": "97b039189cae5ee2c660aee2abff909f412f87ac5f54c7edcfd1f2f7b79a3576",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "5",
+          "node": "j3h0noWD.AAAAQ4I",
+          "shape": "z3h0noWD.AAAAQ4L",
+          "web": "t3h0noWD.AAAAQ37",
+          "state": "d3h0noWD.AAAAQ39",
+          "title": "Failure / changed source",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Failure / changed source | No data | Request failed | Source changed | Show no-data or retry error and hide stale files. PNG changed | source returns409; never download an error body as an image. | ",
+          "state_definition_sha256": "c6cc37e894229bb310553af975a8fa2f734e9d07043273b872d37589bd188199",
+          "widget_text_sha256": "47abcd2617249d4b2858f011bf182033455004ddd4279ed8763fe465b21a247f",
+          "render_sha256": "bab3da11b4495266b908c9126a040643bfc5d31ac94dffd02cc1cf833bc1d37e",
+          "reopen_pixels_identical": true
+        }
+      ],
+      "transitions": [
+        {
+          "id": "NPh0noWD.AAAAQ4b",
+          "from": "0",
+          "to": "1",
+          "label": "Run / Render"
+        },
+        {
+          "id": "zPh0noWD.AAAAQ4f",
+          "from": "1",
+          "to": "2",
+          "label": "Requested results ready"
+        },
+        {
+          "id": "bPh0noWD.AAAAQ4j",
+          "from": "2",
+          "to": "3",
+          "label": "Review matched shots"
+        },
+        {
+          "id": "HPh0noWD.AAAAQ4n",
+          "from": "3",
+          "to": "4",
+          "label": "Download current filters"
+        },
+        {
+          "id": "XPh0noWD.AAAAQ4r",
+          "from": "1",
+          "to": "5",
+          "label": "Request fails / no data"
+        },
+        {
+          "id": "fPh0noWD.AAAAQ4v",
+          "from": "4",
+          "to": "5",
+          "label": "PNG source changed"
+        }
+      ]
+    },
+    {
+      "key": "evidence",
+      "id": "MyR0noWD.AAAAQ55",
+      "name": "Wireflow - Analyst Metrics and Reports",
+      "reopen_pixels_identical": true,
+      "use_cases": [
+        {
+          "id": "Wbdc1d2b94f83b25",
+          "name": "Review Saved Shot-Model Evidence"
+        },
+        {
+          "id": "iK2lX1mGAqAALhof",
+          "name": "Seasonal Holdout"
+        },
+        {
+          "id": "Ub9lX1mGAqAALhoz",
+          "name": "Compute & Export Top-K Uplift (CSV/JSON)"
+        },
+        {
+          "id": "dfl3vjmEEhz2rQBw",
+          "name": "Export KPIs / Reports"
+        },
+        {
+          "id": "oLOFX1mGAqAALhmy",
+          "name": "Plain Labels & Readability"
+        }
+      ],
+      "scenes": [
+        {
+          "index": "0",
+          "node": "8KR0noWD.AAAAQ77",
+          "shape": "qKR0noWD.AAAAQ7.",
+          "web": "LyR0noWD.AAAAQ7s",
+          "state": "ryR0noWD.AAAAQ7u",
+          "title": "Choose evidence page",
+          "widgets": "7",
+          "label_count": 5,
+          "text": "Choose evidence page | Model Metrics | Shot Model Metrics | Shot Analysis | /model-metrics (including calibration): regular evidence; | /shot-model-metrics and /shot-statistical-analysis: saved shot | evidence. | ",
+          "state_definition_sha256": "0002eadb56059f096b6b161bc8d8c8e6de30a3e8ca0a5fbc2ba52ef14bfa5b4a",
+          "widget_text_sha256": "1ba12112cd4e8bc9517721e996016eea841a40908c8ff4cf8e7a1ac98a535318",
+          "render_sha256": "b8c2323495d4cd892d99e6c7494e1d6986f19045d4d2ae0f60315119bf8859e1",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "1",
+          "node": "XaR0noWD.AAAAQ8f",
+          "shape": "vaR0noWD.AAAAQ8i",
+          "web": "9aR0noWD.AAAAQ8Q",
+          "state": "9aR0noWD.AAAAQ8S",
+          "title": "Load current evidence",
+          "widgets": "7",
+          "label_count": 5,
+          "text": "Load current evidence | Regular: computed diagnostics | Shot: saved five folds | Regular metrics compute diagnostics for the request. Shot pages | read validated saved five-fold artifacts without web training. Keep | metadata and result requests separate. | ",
+          "state_definition_sha256": "c46f0bca626def5c37c1b76f5eb130afd2052fab2006aa678795758b27cded29",
+          "widget_text_sha256": "376c6d7789200973e579c58c6b4f2aeb8a3cebd593dbe4274dafbf56e9d47c0b",
+          "render_sha256": "37402ff06d99a0dac2afd3ec57ac54992e9d8c401ce838cfc21343855e59e03b",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "2",
+          "node": "v6R0noWD.AAAAQ9D",
+          "shape": "gGR0noWD.AAAAQ9G",
+          "web": "H6R0noWD.AAAAQ80",
+          "state": "X6R0noWD.AAAAQ82",
+          "title": "Interpret current evidence",
+          "widgets": "7",
+          "label_count": 5,
+          "text": "Interpret current evidence | Training CV | Later-season holdout | Limitations | Show training versus later-season labels, missing values as | Unavailable, and visible retrospective or proposed-shot | limitations. | ",
+          "state_definition_sha256": "04c3ebf5ff3b3770a925e3908cf43d9796f1fccee15a629fe3f8bd08b61d3d5c",
+          "widget_text_sha256": "acd76290cb45fe6f9c52167f78a8279e86acef3da31a19d8ea513763f370b9eb",
+          "render_sha256": "5d4aeaff2f8cc186b119f9cfe97ae76ff5918533e5b1bee0a5883b6b0942671c",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "3",
+          "node": "cmR0noWD.AAAAQ9l",
+          "shape": "CmR0noWD.AAAAQ9o",
+          "web": "EmR0noWD.AAAAQ9Y",
+          "state": "kmR0noWD.AAAAQ9a",
+          "title": "Inspect technical details",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Inspect technical details | Source versions | Sample support | Technical details | Expand source/sample details as needed. Historical uplift is | weighted modeled comparison, not held-out causal gain. | ",
+          "state_definition_sha256": "260df93d717b247e8e36386df00bc61d76d5971d05409a0b1fa441c77a227c43",
+          "widget_text_sha256": "47925b452075c03f12e9d21d4328ba6d3907fa7348a2878e586c5653e7cde8f6",
+          "render_sha256": "2372a55819fa16ac3fa8dd82168b4ef8ca66040f324439fb4cfc66422e013025",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "4",
+          "node": "aWR0noWD.AAAAQ.H",
+          "shape": "GWR0noWD.AAAAQ.K",
+          "web": "CWR0noWD.AAAAQ94",
+          "state": "yWR0noWD.AAAAQ96",
+          "title": "Download permitted table",
+          "widgets": "7",
+          "label_count": 5,
+          "text": "Download permitted table | CSV | JSON | PDF | Saved shot metrics CSV | Regular Metrics shared report uses its displayed holdout table. | Shot metrics CSV uses its saved training-CV table and verifies | displayed source version. | ",
+          "state_definition_sha256": "0dbb16d6d0f7e2dc0b1bbf96992eafd9978d0ed9645761e560bfa3102b4edd1e",
+          "widget_text_sha256": "827590cdf9142ca7440451cbee2fef596d731b208980cc231360cf3f2029d3cd",
+          "render_sha256": "0df81553fa10f413a49e524ac9c5bbe47befb690a341ad3d36a1f17a3e3bb1ba",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "5",
+          "node": "q2R0noWD.AAAAQ.r",
+          "shape": "G2R0noWD.AAAAQ.u",
+          "web": "i2R0noWD.AAAAQ.c",
+          "state": "S2R0noWD.AAAAQ.e",
+          "title": "Unavailable / Retry",
+          "widgets": "7",
+          "label_count": 5,
+          "text": "Unavailable / Retry | Unavailable evidence | Source/version mismatch | Clear stale evidence and disable export on loading/error. | Missing/stale saved artifacts require offline regeneration; Reload | only reads again. | ",
+          "state_definition_sha256": "8086d3e39ea89361d1dd8eda98236c374a82755dfd09482b4ff337d05d612ba4",
+          "widget_text_sha256": "4271e5d4efbaad8f637c7a2a853efbd7e68db4f4c88a573968ad24f081602a86",
+          "render_sha256": "19fec13ac24e677e044c896fe443f45dc8488c2bb43c8748de9bae479c0f2131",
+          "reopen_pixels_identical": true
+        }
+      ],
+      "transitions": [
+        {
+          "id": "sOR0noWD.AAAAQ_A",
+          "from": "0",
+          "to": "1",
+          "label": "Open page"
+        },
+        {
+          "id": "yOR0noWD.AAAAQ_E",
+          "from": "1",
+          "to": "2",
+          "label": "Valid evidence"
+        },
+        {
+          "id": "6OR0noWD.AAAAQ_I",
+          "from": "2",
+          "to": "3",
+          "label": "Expand details"
+        },
+        {
+          "id": "WOR0noWD.AAAAQ_M",
+          "from": "3",
+          "to": "4",
+          "label": "Export permitted table"
+        },
+        {
+          "id": "uOR0noWD.AAAAQ_Q",
+          "from": "1",
+          "to": "5",
+          "label": "Missing / invalid artifact"
+        },
+        {
+          "id": "BOR0noWD.AAAAQ_U",
+          "from": "4",
+          "to": "5",
+          "label": "Source version changed"
+        }
+      ]
+    },
+    {
+      "key": "coach",
+      "id": "TtR0noWD.AAAARAh",
+      "name": "Wireflow - Coach Context and Current Calls",
+      "reopen_pixels_identical": true,
+      "use_cases": [
+        {
+          "id": "sDahi1mGAqAALiDF",
+          "name": "Rank Plays with Game Context"
+        },
+        {
+          "id": "z9E5X1mGAqAALhlN",
+          "name": "Ranked List via API (Baseline)"
+        },
+        {
+          "id": "TPn5X1mGAqAALhmK",
+          "name": "Short Explanations per item"
+        },
+        {
+          "id": "4tK5X1mGAqAALhlh",
+          "name": "Reactive Updates on Input Changes"
+        }
+      ],
+      "scenes": [
+        {
+          "index": "0",
+          "node": "cdR0noWD.AAAARCl",
+          "shape": "CdR0noWD.AAAARCo",
+          "web": "UdR0noWD.AAAARCY",
+          "state": "0dR0noWD.AAAARCa",
+          "title": "Select matchup and situation",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Select matchup and situation | Our team | Opponent | Season | Game situation | /matchup, /context, /gameplan and /context/quick-call: choose the | matchup and game situation. | ",
+          "state_definition_sha256": "31857822291a4bf6d0193ccdecd2e1417375e0004df1e5d1dc9efe6f464b5027",
+          "widget_text_sha256": "039e1a512b9f5354501090751bf1cf5a29e8a90210d3de9a7ef1accf6b0b740b",
+          "render_sha256": "5e1ea26aacc51806240f1a94400777b703797d692feeb3b8073db27b6166a029",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "1",
+          "node": "q9R0noWD.AAAARDF",
+          "shape": "W9R0noWD.AAAARDI",
+          "web": "S9R0noWD.AAAARC4",
+          "state": "y9R0noWD.AAAARC6",
+          "title": "Build one snapshot",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Build one snapshot | Score margin | Period | Clock | Coaching conditions | Use parsed numeric context and supported conditions on the first | Build. Overtime period5 accepts at most300 seconds. | ",
+          "state_definition_sha256": "b89461b5ae6382470f76d29b56cb1fd544569cb3e9af3d50b0acf87f12acf875",
+          "widget_text_sha256": "06456f808ca62184e8daeae486a196db98a3644774ee5e5a297ad159be544f1e",
+          "render_sha256": "ccf698da7adf1b599f4ae89529af6d42f5dae4670f0c87a285dd45ddfd5b399c",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "2",
+          "node": "SDR0noWD.AAAARDn",
+          "shape": "WDR0noWD.AAAARDq",
+          "web": "sDR0noWD.AAAARDY",
+          "state": "8DR0noWD.AAAARDa",
+          "title": "Show applicable result",
+          "widgets": "7",
+          "label_count": 5,
+          "text": "Show applicable result | Ranked plays | Applied and unused conditions | Context explains applied conditions and note-only inputs. Baseline | explicitly uses season aggregates without score/clock/period | effects. | ",
+          "state_definition_sha256": "94df5ae05c939f5ae7fa86203e3ae7d973495467c6dd4e1116b05c4a5ff4f2ea",
+          "widget_text_sha256": "1df155625a1f432a96838d999708620f07862a9106a217e425b2313aaa012d5c",
+          "render_sha256": "1fa1377724d7f651e95400daec3e4d7fac8a2c5fcb8e54adac813b431199157a",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "3",
+          "node": "0jR0noWD.AAAAREJ",
+          "shape": "sjR0noWD.AAAAREM",
+          "web": "YjR0noWD.AAAARD8",
+          "state": "YjR0noWD.AAAARD.",
+          "title": "Change controls or scenario",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Change controls or scenario | Scenario controls | Old calls cleared | Immediately clear the old QuickCall list before debounce. | Cancel/invalidate its old request and capture the new inputs. | ",
+          "state_definition_sha256": "82789564075ff5add9ad56be256a45817f3655fa2d4d318f8e783deed320e43c",
+          "widget_text_sha256": "fa246b9603a36e2015a3e029113681cb0c2536b1b46eb71888afab8f5bc8517a",
+          "render_sha256": "54864318beff6c556bea8fa15f0b02d175af210673d1be0f36b61875d83f124b",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "4",
+          "node": "kTR0noWD.AAAAREp",
+          "shape": "0TR0noWD.AAAAREs",
+          "web": "YTR0noWD.AAAAREc",
+          "state": "YTR0noWD.AAAAREe",
+          "title": "Latest request completes",
+          "widgets": "6",
+          "label_count": 4,
+          "text": "Latest request completes | Current ranked calls | Matching request snapshot | Publish only a success whose snapshot matches current controls. A | late older response cannot replace a newer result. | ",
+          "state_definition_sha256": "7f408795300f37338406fdff5bd4652139fd327b2ea9a183e10fcd47a4c5c648",
+          "widget_text_sha256": "6c07d86724eaefb6818df16b27691a4c8f6eec51f1f5bd40da095fcb0089c0c7",
+          "render_sha256": "ef55f8ed33a8ca581f995a63ba37e978ce01661b03dfd33b97c3e8fb6641c00a",
+          "reopen_pixels_identical": true
+        },
+        {
+          "index": "5",
+          "node": "IzR0noWD.AAAARFL",
+          "shape": "EzR0noWD.AAAARFO",
+          "web": "gzR0noWD.AAAARE8",
+          "state": "QzR0noWD.AAAARE.",
+          "title": "Error / unavailable",
+          "widgets": "7",
+          "label_count": 5,
+          "text": "Error / unavailable | Retry | No stale calls | Error message | Keep failed refresh empty and show a retryable error. Core | readiness is separate from optional shot artifacts; no | response-time guarantee is implied. | ",
+          "state_definition_sha256": "98db7c2c9ea8cc9013d6982dda867a92c38aa89684ec768b28dc732a03d5640e",
+          "widget_text_sha256": "05ad9218924e6eec95d5be83c56f99fe342320e0ef5a56b5003b090f8cb41b7e",
+          "render_sha256": "30204434ff07fb13e6f1eca6742172be9a7b8f13f67522c2ce3a46f7f2f284cb",
+          "reopen_pixels_identical": true
+        }
+      ],
+      "transitions": [
+        {
+          "id": "zzR0noWD.AAAARFg",
+          "from": "0",
+          "to": "1",
+          "label": "Build"
+        },
+        {
+          "id": "HzR0noWD.AAAARFk",
+          "from": "1",
+          "to": "2",
+          "label": "Current ranking"
+        },
+        {
+          "id": "3zR0noWD.AAAARFo",
+          "from": "2",
+          "to": "3",
+          "label": "Change situation"
+        },
+        {
+          "id": "vzR0noWD.AAAARFs",
+          "from": "3",
+          "to": "4",
+          "label": "Newest success"
+        },
+        {
+          "id": "_zR0noWD.AAAARFw",
+          "from": "3",
+          "to": "5",
+          "label": "Latest request fails"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "index": "0",
+      "node": "DVB0noWD.AAAAQmE",
+      "shape": "o1B0noWD.AAAAQmO",
+      "web": "GVB0noWD.AAAAQlx",
+      "state": "OVB0noWD.AAAAQl0",
+      "title": "Open Data Explorer",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Open Data Explorer | Season | Team | Side | Play type | /data-explorer: signed-in analyst. Preview, quality report and | source catalog have separate request states. | ",
+      "state_definition_sha256": "b5c472999a39602e835a5c715d9fe2b348cbe604cca32a456ff04f64c8ae2e69",
+      "widget_text_sha256": "b3ecfc38e6965b25a1a862c543c21b9b9cd9f4d584b0116a4f930fce4fa8a958",
+      "render_sha256": "7e57cc7565d48b309ef923d27574a6b0d8a6fd672316ba46aade82d568a0d151",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "1",
+      "node": "XPB0noWD.AAAAQs7",
+      "shape": "EvB0noWD.AAAAQs.",
+      "web": "pPB0noWD.AAAAQsu",
+      "state": "1PB0noWD.AAAAQsw",
+      "title": "Loading / Retry",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Loading / Retry | Preview: loading | Source checks: loading | Clear the previous report or catalog. Show progress or a safe error | with Retry. | ",
+      "state_definition_sha256": "82fefe5f5339ae17d77bd4d601eeec09cd34b4992e97963b14e42e0e4bc312a5",
+      "widget_text_sha256": "c1f82332fb4de5455ae5a7127f5b7ff50e95e2d4e47066226513a094d67b8f43",
+      "render_sha256": "5c56ead51465de6a6b917a50fad157e76083cfaf9227cd6e3e45c2a0dec9e3e5",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "2",
+      "node": "GAh0noWD.AAAAQtd",
+      "shape": ".Ah0noWD.AAAAQtg",
+      "web": "cAh0noWD.AAAAQtO",
+      "state": "CAh0noWD.AAAAQtQ",
+      "title": "Data and source status",
+      "widgets": "7",
+      "label_count": 5,
+      "text": "Data and source status | Visible rows | Possessions | Data checks | Show preview filters/rows, source-wide pass/fail/not-run checks, | source row count and seasons. Checks do not prove model accuracy or | shot quality. | ",
+      "state_definition_sha256": "f474288e34bdad006990d527b408bef03e5ebcab86e6e6f33e06183b61523a11",
+      "widget_text_sha256": "8915ffbeb38e7c3ecdfe2e6aae2b679b637e28a72de54c4188c03a7a5925059a",
+      "render_sha256": "b50b014ae34b72e1418a5fc906b1f6b33d3aa30d868ddba2f9aa4cfd13594ed2",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "3",
+      "node": "nQh0noWD.AAAAQt_",
+      "shape": "vQh0noWD.AAAAQuC",
+      "web": "lQh0noWD.AAAAQty",
+      "state": "NQh0noWD.AAAAQt0",
+      "title": "Source details",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Source details | Source details | Version | Pulled date | Expand to inspect the source SHA-256 and recorded pull date. A | missing pull date says Not recorded. | ",
+      "state_definition_sha256": "42696fa21419fcd7524943ef2cb80f076b9875454f05ef2491129e5546676d6a",
+      "widget_text_sha256": "bcafba20c8f678a3a14c131649e188ccbdfdbbf1c35b78365a848947ab509eff",
+      "render_sha256": "26559ac7b18b2ef162b724a6624e1d81039bbaa352aaf03410fde8dd0479980a",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "4",
+      "node": "zIh0noWD.AAAAQuf",
+      "shape": "nIh0noWD.AAAAQui",
+      "web": "1Ih0noWD.AAAAQuS",
+      "state": "dIh0noWD.AAAAQuU",
+      "title": "Data Dictionary",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Data Dictionary | Find column | Source filter | /data-dictionary: actual fields, meanings, units and source. Search | locally. | ",
+      "state_definition_sha256": "5404af581c63d3090c7874b0dac8cbe374ddff10894901fb344709ce7ce36ae9",
+      "widget_text_sha256": "134ffaa46877ba7d16074449011836b584c49a4d5d503b63bbf1e5f9533a0c63",
+      "render_sha256": "d9490b1506b6f4e9e32658f7ac19485c5197d4b33a16510cded8ed11fa04d4bc",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "5",
+      "node": "FYh0noWD.AAAAQu_",
+      "shape": "tYh0noWD.AAAAQvC",
+      "web": "JYh0noWD.AAAAQuy",
+      "state": "pYh0noWD.AAAAQu0",
+      "title": "Unknown or empty definitions",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Unknown or empty definitions | Undocumented columns | Matching fields | Show Undocumented column and counts, No matching columns, or Retry | for a failed request. Do not invent definitions. | ",
+      "state_definition_sha256": "5477e974b1d2a6ba4780b046ba6ba3ba79e44c0b001e9f4f9bd44095f448cace",
+      "widget_text_sha256": "b4f5830ae5b62774d5f2e5ebf2de010d3a1674827bf65ce398f847fc0fac9cba",
+      "render_sha256": "fbc1ebf1f2e83a341a6a7bd2bef45122eb655d77cb27dba97d8578eaf4f82ac6",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "0",
+      "node": "3Lh0noWD.AAAAQ1g",
+      "shape": "Qrh0noWD.AAAAQ1j",
+      "web": "bLh0noWD.AAAAQ1T",
+      "state": "bLh0noWD.AAAAQ1V",
+      "title": "Choose inputs",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Choose inputs | Season | Our team | Opponent | Page filters | /shot-explorer (analyst), /shot-plan and /shot-heatmap | (analyst/coach). Select the page inputs. | ",
+      "state_definition_sha256": "9ebd0864169e8595bda42983a8892cc62d5d3dc999c1380203ee1424d957cbab",
+      "widget_text_sha256": "a15143009398d7c1abfdd9f3956a6604701264c9c05ec7fa180ceaf9f937d387",
+      "render_sha256": "d453b6e8b8651ef59bbe6b97f7b3e4bfc89add9696291cef271ea0b1b7b0fa93",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "1",
+      "node": "Q7h0noWD.AAAAQ2A",
+      "shape": "Y7h0noWD.AAAAQ2D",
+      "web": "3bh0noWD.AAAAQ1z",
+      "state": "Pbh0noWD.AAAAQ11",
+      "title": "Run / Render",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Run / Render | Run shot plan | Render heatmap | Capture the inputs. Hide old results and downloads immediately when | controls change. Ignore superseded responses. | ",
+      "state_definition_sha256": "27ac2cdeab25b5f446e07b834ff9946d03ff22b217ff6a8fdd1c3d99864dd4d2",
+      "widget_text_sha256": "cd9f20f5526ba5800e374f2b728eb44ae359c1b61bbbe1556393776ee3ea624a",
+      "render_sha256": "2d59af27cca6a2c5411382d86cc707dd46439441000d15ceb30737456437ee06",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "2",
+      "node": "GHh0noWD.AAAAQ2i",
+      "shape": "WHh0noWD.AAAAQ2l",
+      "web": "KHh0noWD.AAAAQ2T",
+      "state": "qHh0noWD.AAAAQ2V",
+      "title": "Current plan or preview",
+      "widgets": "7",
+      "label_count": 5,
+      "text": "Current plan or preview | Top zones / Shot types | Points per attempt | Shot Plan waits for rankings and the image. Explorer shows rows; | Heatmap shows the plot. Plan ranks use points per attempt and | full-season samples; plot filters do not change them. | ",
+      "state_definition_sha256": "2623fe0a65bcaf8ca12f39fc48e7b9239e729e9ed5fad7326fe81055a3d26967",
+      "widget_text_sha256": "76ac0803f85c19c728154a3f0e004ffe09c13f4e2d412c10aa1b3b45b0b087e4",
+      "render_sha256": "668ae117a3c7f06ba985b44df7198a52f4a50ae9806d747c7d886cc0a0f49e28",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "3",
+      "node": "Bnh0noWD.AAAAQ3E",
+      "shape": "xnh0noWD.AAAAQ3H",
+      "web": "Gnh0noWD.AAAAQ23",
+      "state": "mnh0noWD.AAAAQ25",
+      "title": "Heatmap counts",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Heatmap counts | Shot type | Zone | Max plotted shots | Show makes and misses as attempt counts. Reconcile matched, | plotted, invalid-location, outside-court and cap-omitted totals. | ",
+      "state_definition_sha256": "e8a4ca812ef629726e11e1034e567004e9d8a1de006c85d1977c2ad4763fb218",
+      "widget_text_sha256": "bc887bdf56d69916acdaa0bd67d53a6b05eb99b4084a608634ea52a0dacef52f",
+      "render_sha256": "91dd53a4614877a53f4df6e3c8478a3e58586cf1a4e289b6105a67e5589549a9",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "4",
+      "node": "dXh0noWD.AAAAQ3m",
+      "shape": "DXh0noWD.AAAAQ3p",
+      "web": "FXh0noWD.AAAAQ3X",
+      "state": "FXh0noWD.AAAAQ3Z",
+      "title": "Download current result",
+      "widgets": "7",
+      "label_count": 5,
+      "text": "Download current result | Export CSV | Plan PDF | Heatmap PNG | CSV/PDF use captured successful filters and current sources. PNG | additionally compares displayed source version and verifies echoed | inputs/counts. | ",
+      "state_definition_sha256": "a0dc7cc0844e4e025b40c29728c80b8c592e721dc32998431449c2bd116e13ef",
+      "widget_text_sha256": "994607eb815896f629e7b3f9f2e546f746483290a44198be618e165ddf02e9f0",
+      "render_sha256": "97b039189cae5ee2c660aee2abff909f412f87ac5f54c7edcfd1f2f7b79a3576",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "5",
+      "node": "j3h0noWD.AAAAQ4I",
+      "shape": "z3h0noWD.AAAAQ4L",
+      "web": "t3h0noWD.AAAAQ37",
+      "state": "d3h0noWD.AAAAQ39",
+      "title": "Failure / changed source",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Failure / changed source | No data | Request failed | Source changed | Show no-data or retry error and hide stale files. PNG changed | source returns409; never download an error body as an image. | ",
+      "state_definition_sha256": "c6cc37e894229bb310553af975a8fa2f734e9d07043273b872d37589bd188199",
+      "widget_text_sha256": "47abcd2617249d4b2858f011bf182033455004ddd4279ed8763fe465b21a247f",
+      "render_sha256": "bab3da11b4495266b908c9126a040643bfc5d31ac94dffd02cc1cf833bc1d37e",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "0",
+      "node": "8KR0noWD.AAAAQ77",
+      "shape": "qKR0noWD.AAAAQ7.",
+      "web": "LyR0noWD.AAAAQ7s",
+      "state": "ryR0noWD.AAAAQ7u",
+      "title": "Choose evidence page",
+      "widgets": "7",
+      "label_count": 5,
+      "text": "Choose evidence page | Model Metrics | Shot Model Metrics | Shot Analysis | /model-metrics (including calibration): regular evidence; | /shot-model-metrics and /shot-statistical-analysis: saved shot | evidence. | ",
+      "state_definition_sha256": "0002eadb56059f096b6b161bc8d8c8e6de30a3e8ca0a5fbc2ba52ef14bfa5b4a",
+      "widget_text_sha256": "1ba12112cd4e8bc9517721e996016eea841a40908c8ff4cf8e7a1ac98a535318",
+      "render_sha256": "b8c2323495d4cd892d99e6c7494e1d6986f19045d4d2ae0f60315119bf8859e1",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "1",
+      "node": "XaR0noWD.AAAAQ8f",
+      "shape": "vaR0noWD.AAAAQ8i",
+      "web": "9aR0noWD.AAAAQ8Q",
+      "state": "9aR0noWD.AAAAQ8S",
+      "title": "Load current evidence",
+      "widgets": "7",
+      "label_count": 5,
+      "text": "Load current evidence | Regular: computed diagnostics | Shot: saved five folds | Regular metrics compute diagnostics for the request. Shot pages | read validated saved five-fold artifacts without web training. Keep | metadata and result requests separate. | ",
+      "state_definition_sha256": "c46f0bca626def5c37c1b76f5eb130afd2052fab2006aa678795758b27cded29",
+      "widget_text_sha256": "376c6d7789200973e579c58c6b4f2aeb8a3cebd593dbe4274dafbf56e9d47c0b",
+      "render_sha256": "37402ff06d99a0dac2afd3ec57ac54992e9d8c401ce838cfc21343855e59e03b",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "2",
+      "node": "v6R0noWD.AAAAQ9D",
+      "shape": "gGR0noWD.AAAAQ9G",
+      "web": "H6R0noWD.AAAAQ80",
+      "state": "X6R0noWD.AAAAQ82",
+      "title": "Interpret current evidence",
+      "widgets": "7",
+      "label_count": 5,
+      "text": "Interpret current evidence | Training CV | Later-season holdout | Limitations | Show training versus later-season labels, missing values as | Unavailable, and visible retrospective or proposed-shot | limitations. | ",
+      "state_definition_sha256": "04c3ebf5ff3b3770a925e3908cf43d9796f1fccee15a629fe3f8bd08b61d3d5c",
+      "widget_text_sha256": "acd76290cb45fe6f9c52167f78a8279e86acef3da31a19d8ea513763f370b9eb",
+      "render_sha256": "5d4aeaff2f8cc186b119f9cfe97ae76ff5918533e5b1bee0a5883b6b0942671c",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "3",
+      "node": "cmR0noWD.AAAAQ9l",
+      "shape": "CmR0noWD.AAAAQ9o",
+      "web": "EmR0noWD.AAAAQ9Y",
+      "state": "kmR0noWD.AAAAQ9a",
+      "title": "Inspect technical details",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Inspect technical details | Source versions | Sample support | Technical details | Expand source/sample details as needed. Historical uplift is | weighted modeled comparison, not held-out causal gain. | ",
+      "state_definition_sha256": "260df93d717b247e8e36386df00bc61d76d5971d05409a0b1fa441c77a227c43",
+      "widget_text_sha256": "47925b452075c03f12e9d21d4328ba6d3907fa7348a2878e586c5653e7cde8f6",
+      "render_sha256": "2372a55819fa16ac3fa8dd82168b4ef8ca66040f324439fb4cfc66422e013025",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "4",
+      "node": "aWR0noWD.AAAAQ.H",
+      "shape": "GWR0noWD.AAAAQ.K",
+      "web": "CWR0noWD.AAAAQ94",
+      "state": "yWR0noWD.AAAAQ96",
+      "title": "Download permitted table",
+      "widgets": "7",
+      "label_count": 5,
+      "text": "Download permitted table | CSV | JSON | PDF | Saved shot metrics CSV | Regular Metrics shared report uses its displayed holdout table. | Shot metrics CSV uses its saved training-CV table and verifies | displayed source version. | ",
+      "state_definition_sha256": "0dbb16d6d0f7e2dc0b1bbf96992eafd9978d0ed9645761e560bfa3102b4edd1e",
+      "widget_text_sha256": "827590cdf9142ca7440451cbee2fef596d731b208980cc231360cf3f2029d3cd",
+      "render_sha256": "0df81553fa10f413a49e524ac9c5bbe47befb690a341ad3d36a1f17a3e3bb1ba",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "5",
+      "node": "q2R0noWD.AAAAQ.r",
+      "shape": "G2R0noWD.AAAAQ.u",
+      "web": "i2R0noWD.AAAAQ.c",
+      "state": "S2R0noWD.AAAAQ.e",
+      "title": "Unavailable / Retry",
+      "widgets": "7",
+      "label_count": 5,
+      "text": "Unavailable / Retry | Unavailable evidence | Source/version mismatch | Clear stale evidence and disable export on loading/error. | Missing/stale saved artifacts require offline regeneration; Reload | only reads again. | ",
+      "state_definition_sha256": "8086d3e39ea89361d1dd8eda98236c374a82755dfd09482b4ff337d05d612ba4",
+      "widget_text_sha256": "4271e5d4efbaad8f637c7a2a853efbd7e68db4f4c88a573968ad24f081602a86",
+      "render_sha256": "19fec13ac24e677e044c896fe443f45dc8488c2bb43c8748de9bae479c0f2131",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "0",
+      "node": "cdR0noWD.AAAARCl",
+      "shape": "CdR0noWD.AAAARCo",
+      "web": "UdR0noWD.AAAARCY",
+      "state": "0dR0noWD.AAAARCa",
+      "title": "Select matchup and situation",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Select matchup and situation | Our team | Opponent | Season | Game situation | /matchup, /context, /gameplan and /context/quick-call: choose the | matchup and game situation. | ",
+      "state_definition_sha256": "31857822291a4bf6d0193ccdecd2e1417375e0004df1e5d1dc9efe6f464b5027",
+      "widget_text_sha256": "039e1a512b9f5354501090751bf1cf5a29e8a90210d3de9a7ef1accf6b0b740b",
+      "render_sha256": "5e1ea26aacc51806240f1a94400777b703797d692feeb3b8073db27b6166a029",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "1",
+      "node": "q9R0noWD.AAAARDF",
+      "shape": "W9R0noWD.AAAARDI",
+      "web": "S9R0noWD.AAAARC4",
+      "state": "y9R0noWD.AAAARC6",
+      "title": "Build one snapshot",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Build one snapshot | Score margin | Period | Clock | Coaching conditions | Use parsed numeric context and supported conditions on the first | Build. Overtime period5 accepts at most300 seconds. | ",
+      "state_definition_sha256": "b89461b5ae6382470f76d29b56cb1fd544569cb3e9af3d50b0acf87f12acf875",
+      "widget_text_sha256": "06456f808ca62184e8daeae486a196db98a3644774ee5e5a297ad159be544f1e",
+      "render_sha256": "ccf698da7adf1b599f4ae89529af6d42f5dae4670f0c87a285dd45ddfd5b399c",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "2",
+      "node": "SDR0noWD.AAAARDn",
+      "shape": "WDR0noWD.AAAARDq",
+      "web": "sDR0noWD.AAAARDY",
+      "state": "8DR0noWD.AAAARDa",
+      "title": "Show applicable result",
+      "widgets": "7",
+      "label_count": 5,
+      "text": "Show applicable result | Ranked plays | Applied and unused conditions | Context explains applied conditions and note-only inputs. Baseline | explicitly uses season aggregates without score/clock/period | effects. | ",
+      "state_definition_sha256": "94df5ae05c939f5ae7fa86203e3ae7d973495467c6dd4e1116b05c4a5ff4f2ea",
+      "widget_text_sha256": "1df155625a1f432a96838d999708620f07862a9106a217e425b2313aaa012d5c",
+      "render_sha256": "1fa1377724d7f651e95400daec3e4d7fac8a2c5fcb8e54adac813b431199157a",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "3",
+      "node": "0jR0noWD.AAAAREJ",
+      "shape": "sjR0noWD.AAAAREM",
+      "web": "YjR0noWD.AAAARD8",
+      "state": "YjR0noWD.AAAARD.",
+      "title": "Change controls or scenario",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Change controls or scenario | Scenario controls | Old calls cleared | Immediately clear the old QuickCall list before debounce. | Cancel/invalidate its old request and capture the new inputs. | ",
+      "state_definition_sha256": "82789564075ff5add9ad56be256a45817f3655fa2d4d318f8e783deed320e43c",
+      "widget_text_sha256": "fa246b9603a36e2015a3e029113681cb0c2536b1b46eb71888afab8f5bc8517a",
+      "render_sha256": "54864318beff6c556bea8fa15f0b02d175af210673d1be0f36b61875d83f124b",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "4",
+      "node": "kTR0noWD.AAAAREp",
+      "shape": "0TR0noWD.AAAAREs",
+      "web": "YTR0noWD.AAAAREc",
+      "state": "YTR0noWD.AAAAREe",
+      "title": "Latest request completes",
+      "widgets": "6",
+      "label_count": 4,
+      "text": "Latest request completes | Current ranked calls | Matching request snapshot | Publish only a success whose snapshot matches current controls. A | late older response cannot replace a newer result. | ",
+      "state_definition_sha256": "7f408795300f37338406fdff5bd4652139fd327b2ea9a183e10fcd47a4c5c648",
+      "widget_text_sha256": "6c07d86724eaefb6818df16b27691a4c8f6eec51f1f5bd40da095fcb0089c0c7",
+      "render_sha256": "ef55f8ed33a8ca581f995a63ba37e978ce01661b03dfd33b97c3e8fb6641c00a",
+      "reopen_pixels_identical": true
+    },
+    {
+      "index": "5",
+      "node": "IzR0noWD.AAAARFL",
+      "shape": "EzR0noWD.AAAARFO",
+      "web": "gzR0noWD.AAAARE8",
+      "state": "QzR0noWD.AAAARE.",
+      "title": "Error / unavailable",
+      "widgets": "7",
+      "label_count": 5,
+      "text": "Error / unavailable | Retry | No stale calls | Error message | Keep failed refresh empty and show a retryable error. Core | readiness is separate from optional shot artifacts; no | response-time guarantee is implied. | ",
+      "state_definition_sha256": "98db7c2c9ea8cc9013d6982dda867a92c38aa89684ec768b28dc732a03d5640e",
+      "widget_text_sha256": "05ad9218924e6eec95d5be83c56f99fe342320e0ef5a56b5003b090f8cb41b7e",
+      "render_sha256": "30204434ff07fb13e6f1eca6742172be9a7b8f13f67522c2ce3a46f7f2f284cb",
+      "reopen_pixels_identical": true
+    }
+  ],
+  "all_checks_passed": true,
+  "verification": "Official OpenAPI read-only reopen after the final scoped XML import. All 24 native states, widget text, pixels and reciprocal use-case references checked. Existing native models compared byte for byte to revision 63."
+}
