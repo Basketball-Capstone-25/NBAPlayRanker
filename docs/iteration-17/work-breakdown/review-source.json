@@ -1,0 +1,46 @@
+{
+  "source_document": "Work breakdown.docx",
+  "source_sha256": "2e537526caaafddfa8774d6f9bdb5a37529e676a327d9e3663744043d1db6f77",
+  "review_date": "2026-10-26",
+  "scope": "Gurk-owned work completed since September 2026 and current Iteration 17 work; future team items reviewed without taking ownership.",
+  "excluded_teammate_implementation": [
+    "SCRUM-494",
+    "SCRUM-628"
+  ],
+  "separate_gurk_integration_repair": "SCRUM-644",
+  "requirements": [
+    "Functional-overview use-case placement",
+    "Acceptance criteria and success/error flows in Use Case Details > Flow of Events",
+    "Collaboration and design traceability",
+    "UI wireflow or explicit offline entry/output",
+    "Implementation and executed test-plan links",
+    "Jira use-case field, estimates, Dev Subtasks and completion evidence",
+    "Specific risk monitoring and linked fixes",
+    "Substantive shared Git and VP publications"
+  ],
+  "future_checklist": "CONTRIBUTING.md",
+  "checklist_commit": "9831e6a36317c09d2b1292f83cc5fe19fff61d66",
+  "checklist_ci": {
+    "run": 40357018284,
+    "status": "success",
+    "url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/40357018284"
+  },
+  "application_release_unchanged": {
+    "frontend": "99a31e0",
+    "backend": "0ba37bb",
+    "backend_revision": "nba-playranker-api-00012-nrd"
+  },
+  "reference_only_source_document": true,
+  "historical_evidence_gap": {
+    "issue": "SCRUM-257",
+    "result": "User confirmed the original September screenshots, review notes and commit evidence are unavailable. Current checks are recorded separately."
+  },
+  "integrated_teammate_commit": "b844715db1b555e7ee9ba02f15a4192a8f459336",
+  "model_publication": {
+    "status": "pending Desktop Team commit",
+    "prepared_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
+    "shared_base_revision": 63,
+    "prepared_diagram_count": 267,
+    "prepared_model_checks": 43
+  }
+}

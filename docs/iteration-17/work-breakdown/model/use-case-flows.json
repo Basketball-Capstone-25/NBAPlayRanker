@@ -1,0 +1,1660 @@
+{
+  "status": "Prepared model verified; shared publication pending",
+  "native_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
+  "use_cases": [
+    {
+      "id": "4tK5X1mGAqAALhlh",
+      "name": "Reactive Updates on Input Changes",
+      "issues": [
+        "SCRUM-643",
+        "SCRUM-644"
+      ],
+      "preconditions": "A permitted recommendation or shot page with editable inputs.",
+      "postconditions": "The visible result always belongs to the displayed input snapshot.",
+      "scope": "SCRUM-643/644. ShotResultRequest/useShotResult guard shot pages; QuickCallRequest/useQuickCallResult guard QuickCall. This documents Gurk\u2019s integration guard only; SCRUM-628 QuickCall functionality remains Abdul\u2019s work.",
+      "scenarios": [
+        {
+          "id": "nubwmwWAUAAADSF2",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "nubwmwWAUAAADSF3",
+              "kind": "Step",
+              "text": "User changes a result-defining input or selects a preset scenario."
+            },
+            {
+              "id": "r0HwmwWAUAAADSF6",
+              "kind": "Step",
+              "text": "Immediately hide the old result and related download actions, and cancel or invalidate the previous request before the debounce completes."
+            },
+            {
+              "id": "v0HwmwWAUAAADSF7",
+              "kind": "Step",
+              "text": "After the debounce or explicit Run action, capture the inputs and request the corresponding result."
+            },
+            {
+              "id": "neykmwWAUAAADTUH",
+              "kind": "Extension",
+              "text": "User changes inputs again before the prior request returns."
+            },
+            {
+              "id": "8sKkmwWAUAAADTUJ",
+              "kind": "Step",
+              "text": "UI cancels/ignores the stale response."
+            },
+            {
+              "id": "85KkmwWAUAAADTUM",
+              "kind": "Step",
+              "text": "UI uses only the latest request."
+            },
+            {
+              "id": "qgqkmwWAUAAADTUP",
+              "kind": "Step",
+              "text": "Use case resumes at step 4."
+            },
+            {
+              "id": "YMHwmwWAUAAADSF8",
+              "kind": "Step",
+              "text": "Accept a completion only if it belongs to the latest active request. Store its successful input snapshot with the result."
+            },
+            {
+              "id": "UZqkmwWAUAAADTUS",
+              "kind": "Extension",
+              "text": "Update request fails."
+            },
+            {
+              "id": "NKakmwWAUAAADTUU",
+              "kind": "Step",
+              "text": "UI clears the failed result and hides its export action; it does not keep an old ranking under changed controls."
+            },
+            {
+              "id": "BdakmwWAUAAADTUX",
+              "kind": "Step",
+              "text": "UI displays the request error. The user can retry or change the inputs; a successful current result restores the list."
+            },
+            {
+              "id": "mE6kmwWAUAAADTUa",
+              "kind": "Step",
+              "text": "Use case ends."
+            },
+            {
+              "id": "UMHwmwWAUAAADSF9",
+              "kind": "Step",
+              "text": "Display only a success whose snapshot matches the current controls. An older success or failure cannot replace it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5V1jrLmAUAAADR1t",
+      "name": "Review Shot-Plan Recommendations",
+      "issues": [
+        "SCRUM-544",
+        "SCRUM-642",
+        "SCRUM-643"
+      ],
+      "preconditions": "Signed-in analyst or coach; validated derived shot data; valid distinct teams.",
+      "postconditions": "A current complete plan or an explicit unavailable/error state is visible.",
+      "scope": "SCRUM-544/642/643. Rankings blend our season-wide offense with opponent season-wide defense and league shrinkage. They are not head-to-head-only results, possession PPP, causal defensive weaknesses or individual future-shot guarantees.",
+      "scenarios": [
+        {
+          "id": "2AzzkwWAUAAADR49",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "2AzzkwWAUAAADR4.",
+              "kind": "Step",
+              "text": "Analyst or coach opens Shot Plan and selects season, two different teams, k and offense weight; heatmap filters and cap are selected separately."
+            },
+            {
+              "id": "AhrzkwWAUAAADR5B",
+              "kind": "Step",
+              "text": "Capture one input set and request season-wide shot-type/zone rankings plus the selected matchup heatmap. Show the plan only after both succeed."
+            },
+            {
+              "id": "wVS8mwWAUAAADUPl",
+              "kind": "Extension",
+              "text": "Required shot aggregates or the requested heatmap cannot load."
+            },
+            {
+              "id": "Spy8mwWAUAAADUPn",
+              "kind": "Step",
+              "text": "Keep the incomplete Shot Plan hidden and display its request error."
+            },
+            {
+              "id": "uCK8mwWAUAAADUPq",
+              "kind": "Step",
+              "text": "Other working play-type pages remain available; their results are independent of this failed shot request."
+            },
+            {
+              "id": "r3K8mwWAUAAADUPs",
+              "kind": "Step",
+              "text": "Use case ends."
+            },
+            {
+              "id": "O1q8mwWAUAAADUPw",
+              "kind": "Extension",
+              "text": "Play-by-play data for this matchup is sparse."
+            },
+            {
+              "id": "RZa8mwWAUAAADUPy",
+              "kind": "Step",
+              "text": "Show the actual sample counts and sample-size shrinkage; do not invent a confidence score."
+            },
+            {
+              "id": "Ni68mwWAUAAADUP1",
+              "kind": "Step",
+              "text": "Disclose sample sizes and league shrinkage; do not invent a confidence interval."
+            },
+            {
+              "id": "Av68mwWAUAAADUP4",
+              "kind": "Step",
+              "text": "Interpret the current plan using the displayed counts and limitations."
+            },
+            {
+              "id": "EhrzkwWAUAAADR5C",
+              "kind": "Step",
+              "text": "Display estimated points per shot attempt, adjusted offense/defense rates and sample sizes. Explain that heatmap type/zone filters do not alter the season-wide rankings."
+            },
+            {
+              "id": "chrzkwWAUAAADR5D",
+              "kind": "Step",
+              "text": "Show the attempt-count heatmap with matching, plotted, invalid-location, outside-half-court and cap-omitted counts."
+            },
+            {
+              "id": "ahrzkwWAUAAADR5E",
+              "kind": "Step",
+              "text": "Export PDF through the authenticated same-origin route using the successful filters and cap. The PDF recomputes from current loaded sources and records those versions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A235a0ec6ec301ea",
+      "name": "Evaluate Next-Season PPP (offline)",
+      "issues": [
+        "SCRUM-526"
+      ],
+      "preconditions": "At least four usable regular seasons with prior-season coverage; Python evaluation environment.",
+      "postconditions": "Versioned offline evidence files exist; no live forecast endpoint is added.",
+      "scope": "SCRUM-526. Analyst runs the offline evaluation script with the retained Synergy CSV. Preconditions: at least four regular seasons with usable immediately preceding-season rows. The script builds lagged features, tunes Ridge on the penultimate target season, refits earlier targets, scores the final season once, compares two prior-season baselines, then saves report.json and predictions.csv. Missing training/tuning/final coverage raises ValueError. Outcomes are a historical season-ahead backtest, not a live app or pre-game forecast. No deployment or extra API endpoint is implied.",
+      "scenarios": [
+        {
+          "id": "Wb438980fd5e3ed4",
+          "name": "Main flow",
+          "steps_and_alternatives": [
+            {
+              "id": "Wb2471c1884f6a68",
+              "kind": "Step",
+              "text": "Analyst runs run_forecast_evaluation.py with a retained Synergy CSV and an output directory."
+            },
+            {
+              "id": "Wbe731cb4de18a69",
+              "kind": "Step",
+              "text": "Build target rows using only the immediately preceding regular season as features; count excluded rows without that coverage."
+            },
+            {
+              "id": "Wb2bf875d9d98070",
+              "kind": "Step",
+              "text": "Train on earlier target seasons and tune Ridge alpha on the penultimate target season; fit scaling within each training fit."
+            },
+            {
+              "id": "Wb9d8f51a3d5a6ba",
+              "kind": "Step",
+              "text": "Refit the selected pipeline using targets earlier than the final season, then score the final target season once."
+            },
+            {
+              "id": "Wb8f0a38dcd3a647",
+              "kind": "Step",
+              "text": "Compare MAE, RMSE and signed bias with prior-team and prior-league baselines; report bins and coverage."
+            },
+            {
+              "id": "Wb0783de80f5ae69",
+              "kind": "Step",
+              "text": "Save report.json and predictions.csv with source and prediction hashes. Describe the result as a historical season-ahead backtest."
+            }
+          ]
+        },
+        {
+          "id": "Wb162c2b1f098314",
+          "name": "Invalid coverage",
+          "steps_and_alternatives": [
+            {
+              "id": "Wb98edc005d6a3db",
+              "kind": "Step",
+              "text": "If training, tuning or final prior-season coverage is missing, stop with ValueError; do not substitute same-season predictors."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IIdxX1mGAqAALhih",
+      "name": "Versioned CSV Tables",
+      "issues": [
+        "SCRUM-487"
+      ],
+      "preconditions": "A readable versioned source and access permitted for the requested feature.",
+      "postconditions": "Each result/export identifies its actual input bytes; no unrelated disk hash is substituted.",
+      "scope": "SCRUM-487. A content version establishes identity, not data correctness or prediction accuracy.",
+      "scenarios": [
+        {
+          "id": "yCWrkwWAUAAADSEy",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "yCWrkwWAUAAADSEz",
+              "kind": "Step",
+              "text": "System loads a CSV or Parquet source while capturing its SHA-256; reject a file that changes during the read."
+            },
+            {
+              "id": "YSTgmwWAUAAADRj5",
+              "kind": "Step",
+              "text": "Associate the version with the returned DataFrame and carry that loaded version through API results and supported response headers."
+            },
+            {
+              "id": "cSTgmwWAUAAADRj6",
+              "kind": "Step",
+              "text": "User can inspect the active version in source details and exported data. The current UI has no historical version selector."
+            },
+            {
+              "id": "ySTgmwWAUAAADRj7",
+              "kind": "Step",
+              "text": "Shared report exports keep the displayed result version. Specialized shot CSV/PDF exports identify the source used when the file is generated."
+            },
+            {
+              "id": "EhJUmwWAUAAADTlk",
+              "kind": "Extension",
+              "text": "Displayed source version no longer matches a guarded download."
+            },
+            {
+              "id": "UKpUmwWAUAAADTlm",
+              "kind": "Step",
+              "text": "Reject the guarded download with409 and keep its error visible; do not offer a historical version selector."
+            },
+            {
+              "id": "6_pUmwWAUAAADTlp",
+              "kind": "Step",
+              "text": "User reloads the current result before requesting that download again."
+            },
+            {
+              "id": "Wb65ac239e899210",
+              "kind": "Step",
+              "text": "Heatmap PNG and saved-metrics CSV compare the expected displayed version and reject a changed source with 409."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TPn5X1mGAqAALhmK",
+      "name": "Short Explanations per item",
+      "issues": [
+        "SCRUM-546"
+      ],
+      "preconditions": "A successful current ranking.",
+      "postconditions": "Each explanation describes its actual result and model scope.",
+      "scope": "1\u20132 sentences driven by PPP gap",
+      "scenarios": [
+        {
+          "id": "Ul_wmwWAUAAADSHF",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "Ul_wmwWAUAAADSHG",
+              "kind": "Step",
+              "text": "Coach opens a successful baseline or context ranking."
+            },
+            {
+              "id": "TygImwWAUAAADSHJ",
+              "kind": "Step",
+              "text": "Show a short evidence-based explanation for each ranked play type using the metrics returned with that result."
+            },
+            {
+              "id": "J.xkmwWAUAAADTVY",
+              "kind": "Extension",
+              "text": "Gap is near zero / ambiguous."
+            },
+            {
+              "id": "1SJkmwWAUAAADTVa",
+              "kind": "Step",
+              "text": "System selects a neutral template rather than overstating an advantage."
+            },
+            {
+              "id": "gbJkmwWAUAAADTVd",
+              "kind": "Step",
+              "text": "Display the explanation with the actual baseline or context scope."
+            },
+            {
+              "id": "nygImwWAUAAADSHK",
+              "kind": "Step",
+              "text": "For baseline results, state that season aggregates are used and score, period, clock and coaching conditions do not change the ranking."
+            },
+            {
+              "id": "vygImwWAUAAADSHL",
+              "kind": "Step",
+              "text": "For context results, identify applied conditions and disclose inputs that were only retained as notes."
+            },
+            {
+              "id": "Wbc68db2c1287c4c",
+              "kind": "Step",
+              "text": "Keep missing statistics unavailable and avoid unsupported causal claims, invented confidence intervals or guarantees."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Ub9lX1mGAqAALhoz",
+      "name": "Compute & Export Top-K Uplift (CSV/JSON)",
+      "issues": [
+        "SCRUM-475"
+      ],
+      "preconditions": "Signed-in analyst; valid filters and readable source data.",
+      "postconditions": "A versioned historical comparison or a clear request/data error is returned.",
+      "scope": "SCRUM-475. Historical modeled Top-K comparison, not causal or held-out performance. Team baseline uses SUM(PTS)/SUM(POSS) over all team-season offensive rows. Selected modeled PPP uses SUM(PPP_PRED*POSS_OFF)/SUM(POSS_OFF). JSON and CSV contain scope, numerators, denominators, K, units, formulas, source SHA-256 and row contributions. Missing PTS fails explicitly; zero baseline gives null relative uplift. SCRUM-474 remains a separate evaluation dependency. Analyst selects season, teams, K and offense weight, then reads or downloads equivalent JSON/CSV evidence. Invalid filters 400/422; no eligible observations 404. Authorization failures 401/403.",
+      "scenarios": [
+        {
+          "id": "P9ZImwWAUAAADSZE",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "P9ZImwWAUAAADSZF",
+              "kind": "Step",
+              "text": "Analyst selects a retained season, our team, opponent, K and offense weight for the historical matchup comparison."
+            },
+            {
+              "id": "0uFImwWAUAAADSZI",
+              "kind": "Step",
+              "text": "System loads the season-level modeled ranking and the observed source aggregates, with possession-weighted team/play-type rows."
+            },
+            {
+              "id": "auFImwWAUAAADSZJ",
+              "kind": "Step",
+              "text": "Compare the weighted modeled Top-K value with the weighted seasonal comparison and return the numerator, denominator, requested K and actual K."
+            },
+            {
+              "id": "sWdEmwWAUAAADTGk",
+              "kind": "Extension",
+              "text": "No eligible source observations or an unusable comparison denominator."
+            },
+            {
+              "id": "mvdEmwWAUAAADTGm",
+              "kind": "Step",
+              "text": "Return a clear data error for missing required values; a zero baseline yields null relative uplift."
+            },
+            {
+              "id": "TA9EmwWAUAAADTGp",
+              "kind": "Step",
+              "text": "Keep scope and available sample counts explicit; do not invent a confidence score."
+            },
+            {
+              "id": "2uFImwWAUAAADSZK",
+              "kind": "Step",
+              "text": "Return JSON or CSV with units and actual source versions so the weighted comparison can be reproduced."
+            },
+            {
+              "id": "BuFImwWAUAAADSZL",
+              "kind": "Step",
+              "text": "Describe the result as historical modeled uplift. It is not a held-out forecast, causal treatment effect or a promise that choosing a play will improve scoring."
+            },
+            {
+              "id": "Pm9EmwWAUAAADTGs",
+              "kind": "Extension",
+              "text": "Export fails."
+            },
+            {
+              "id": "S39EmwWAUAAADTGu",
+              "kind": "Step",
+              "text": "System shows an error."
+            },
+            {
+              "id": "Of9EmwWAUAAADTGx",
+              "kind": "Step",
+              "text": "System allows the Analyst to retry."
+            },
+            {
+              "id": "rgDEmwWAUAAADTG0",
+              "kind": "Step",
+              "text": "Retry the same valid export request or correct the filters before retrying."
+            }
+          ]
+        },
+        {
+          "id": "Wbd50bbd7f5ff9a1",
+          "name": "Uplift provenance",
+          "steps_and_alternatives": [
+            {
+              "id": "Wb09683693eb9f10",
+              "kind": "Step",
+              "text": "Return JSON or CSV with requested/actual K, weighted numerators, seasonal comparison, units and source version."
+            },
+            {
+              "id": "Wb355d2841db7f99",
+              "kind": "Step",
+              "text": "Describe modeled Top-K uplift as retrospective evidence, not causal gain or a guarantee from changing play choice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Wbd8ae8a15dc28bc",
+      "name": "Explore Shot Attempts and Heatmaps",
+      "issues": [
+        "SCRUM-643"
+      ],
+      "preconditions": "Analyst for shot rows/CSV; analyst or coach for heatmap; valid filters.",
+      "postconditions": "Current results are labeled with their actual filters and source; valid downloads contain no credentials.",
+      "scope": "Analysts browse shot attempts and export CSV. Analysts and coaches render matchup heatmaps and download PNG. Counts describe attempts, not accuracy or defensive weakness. SCRUM-643.",
+      "scenarios": [
+        {
+          "id": "Wbaa33104bdc9445",
+          "name": "Main flow",
+          "steps_and_alternatives": [
+            {
+              "id": "Wb6e2473ed108540",
+              "kind": "Step",
+              "text": "Analyst opens Shot Explorer, or analyst/coach opens Shot Heatmap, and selects the permitted season/team/opponent/type/zone filters."
+            },
+            {
+              "id": "Wb5c7f5c791cef73",
+              "kind": "Step",
+              "text": "Submit the captured inputs. Clear old table/image/download controls while loading; input changes or failure never relabel an older result."
+            },
+            {
+              "id": "Wb120801a89a7944",
+              "kind": "Step",
+              "text": "Explorer shows matching and returned row counts. CSV uses the same filters with the documented export cap and identifies the current canonical source."
+            },
+            {
+              "id": "Wbc3ab5c3e836b22",
+              "kind": "Step",
+              "text": "Heatmap excludes invalid locations and shots outside the physical half court, then applies deterministic sampling only above the selected cap."
+            },
+            {
+              "id": "Wb64b29bdc5e22bc",
+              "kind": "Step",
+              "text": "Display a linear attempt-count scale for makes and misses together. Matching attempts equal plotted plus each exclusion and cap omission."
+            },
+            {
+              "id": "Wb93efa6eb02b0e3",
+              "kind": "Step",
+              "text": "Download PNG through the same-origin proxy with the displayed filters, cap and source version. Verify current role, fixed upstream, echoed inputs/counts/version and PNG signature before returning a private attachment."
+            }
+          ]
+        },
+        {
+          "id": "Wb943ca876e85292",
+          "name": "No data or changed source",
+          "steps_and_alternatives": [
+            {
+              "id": "Wb2baed49f348e17",
+              "kind": "Step",
+              "text": "No matches returns a clear no-data message. Matches with no usable half-court locations retain exclusion counts."
+            },
+            {
+              "id": "Wbb6ac03459dc94c",
+              "kind": "Step",
+              "text": "Reject unauthorized requests and malformed inputs. PNG version mismatch returns409; mismatched/invalid upstream image returns502. Errors are not attachments."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Wbdc1d2b94f83b25",
+      "name": "Review Saved Shot-Model Evidence",
+      "issues": [
+        "SCRUM-543",
+        "SCRUM-545",
+        "SCRUM-549",
+        "SCRUM-640"
+      ],
+      "preconditions": "Signed-in analyst; saved artifacts matching the current cleaned-shot source.",
+      "postconditions": "Saved evidence is shown with limitations, or a clear unavailable/retry state without stale metrics.",
+      "scope": "Analysts retrieve saved, source-validated shot metrics and statistical analysis. The web request never trains a model. These are conditional proposed-shot diagnostics, not before-possession forecasts. SCRUM-543/545/549/640.",
+      "scenarios": [
+        {
+          "id": "Wb92fed2751cee55",
+          "name": "Main flow",
+          "steps_and_alternatives": [
+            {
+              "id": "Wb85ee9d739d0557",
+              "kind": "Step",
+              "text": "Analyst opens Shot Model Metrics or Shot Statistical Analysis."
+            },
+            {
+              "id": "Wb7c568cb9eda73b",
+              "kind": "Step",
+              "text": "Load the saved five-fold artifact and verify result kind, artifact version, source hash and fold count. Do not fit a model during the HTTP request."
+            },
+            {
+              "id": "Wbdb700fb62599b1",
+              "kind": "Step",
+              "text": "Show training-game cross-validation separately from the untouched later-season diagnostic, with the sample definition and model comparison."
+            },
+            {
+              "id": "Wbab53bc7e90abbf",
+              "kind": "Step",
+              "text": "State that the model estimates points for a proposed shot with supplied location/type; it is not a before-possession forecast."
+            },
+            {
+              "id": "Wbac31db1fc250a7",
+              "kind": "Step",
+              "text": "Metrics can export the training cross-validation table as CSV through the same-origin route after verifying the displayed clean-source hash. Include version and folds in every row."
+            }
+          ]
+        },
+        {
+          "id": "Wbff5796ee21de7b",
+          "name": "Unavailable saved result",
+          "steps_and_alternatives": [
+            {
+              "id": "Wbee2d89f0625b77",
+              "kind": "Step",
+              "text": "Missing, stale, corrupt or mismatched artifacts return503 and require a new offline evaluation. Reload only retries reading."
+            },
+            {
+              "id": "Wb1e79f3145c6957",
+              "kind": "Step",
+              "text": "refresh=true returns400 and never trains on the server. Unknown numerical values display Unavailable; absent results disable export."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b1qTbjmHwzQe9gB6",
+      "name": " Save Notes to Tactics Board / Plan",
+      "issues": [
+        "SCRUM-481"
+      ],
+      "preconditions": "Authenticated coach; a valid distinct-team matchup; reads and writes use the owning user ID.",
+      "postconditions": "Only the owner coach can access the state. The matchup identity and audit fields remain immutable to clients; accepted updates advance the revision.",
+      "scope": "SCRUM-481 covers the persisted schema contract only. Coach UI migration and synchronization are separate SCRUM-482/483 work. This collaboration reuses the existing Gameplan Storage structural design. The database does not itself emit an HTTP409 conflict: a conditional update can affect zero rows, which the caller must detect and resolve.",
+      "scenarios": [
+        {
+          "id": "qbETkwWAUAAADRri",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "GbETkwWAUAAADRrj",
+              "kind": "Step",
+              "text": "An authenticated coach prepares notes, plan and role values for one season and directed matchup. This flow specifies the storage contract, not completion of the separate UI integration."
+            },
+            {
+              "id": "je0TkwWAUAAADRrm",
+              "kind": "Step",
+              "text": "For new state, INSERT the composite key and allowed state fields. Row-level security requires auth.uid() ownership and the current protected profile role coach; constraints validate the payload."
+            },
+            {
+              "id": "be0TkwWAUAAADRrn",
+              "kind": "Step",
+              "text": "For existing state, read its revision and UPDATE only notes, plan and roles using the full owner/matchup key and revision = last_read_revision. Do not use an unconditional upsert."
+            },
+            {
+              "id": "TlUCmwWAUAAADUpb",
+              "kind": "Extension",
+              "text": "No persisted owner/matchup row exists."
+            },
+            {
+              "id": "DJ0CmwWAUAAADUpd",
+              "kind": "Step",
+              "text": "The authorized caller INSERTs a new row with allowed state fields; defaults initialize revision and audit timestamps."
+            },
+            {
+              "id": "a.MCmwWAUAAADUpg",
+              "kind": "Step",
+              "text": "Validate payload and coach ownership before accepting the inserted state."
+            },
+            {
+              "id": "2UsCmwWAUAAADUpj",
+              "kind": "Step",
+              "text": "On duplicate key, reload the existing row and use the conditional-update path instead of upsert."
+            },
+            {
+              "id": "n0cCmwWAUAAADUpn",
+              "kind": "Extension",
+              "text": "Write fails or no conditional update row is returned."
+            },
+            {
+              "id": "dY8CmwWAUAAADUpp",
+              "kind": "Step",
+              "text": "Do not confirm a successful save after a denied, invalid or failed write."
+            },
+            {
+              "id": "hgCCmwWAUAAADUps",
+              "kind": "Step",
+              "text": "The caller retains its unsaved edit until it can reload and reconcile with the authorized current revision."
+            },
+            {
+              "id": "XNCCmwWAUAAADUpv",
+              "kind": "Step",
+              "text": "Retry only after resolving the error and reading the revision used for a conditional update."
+            },
+            {
+              "id": "A.0TkwWAUAAADRro",
+              "kind": "Step",
+              "text": "On a successful update, the database increments revision and updated_at. The caller accepts the returned state and revision only after confirming a row was written."
+            }
+          ]
+        },
+        {
+          "id": "Wb803ddbacf61b60",
+          "name": "Storage acceptance and conflicts",
+          "steps_and_alternatives": [
+            {
+              "id": "Wbc87425dc80a32e",
+              "kind": "Step",
+              "text": "Anonymous, analyst, pending and other-coach sessions cannot read or change this owner state. Authorization uses the protected profile role, not editable signup metadata."
+            },
+            {
+              "id": "Wb3a90500b893c6f",
+              "kind": "Step",
+              "text": "If a conditional update writes zero rows, do not report a successful save. Reload the authorized current state and reconcile changes before retrying against its new revision."
+            },
+            {
+              "id": "Wb25dd2f60cbf3ac",
+              "kind": "Step",
+              "text": "A duplicate INSERT is a conflict; read the existing owner/matchup row before an explicitly conditional update. Changing owner, season or team keys requires a distinct new record, not an UPDATE."
+            },
+            {
+              "id": "Wbb5d0710807f51b",
+              "kind": "Step",
+              "text": "Reject invalid JSON shape, more than50 plan entries, more than100 notes, duplicate plan IDs or state above65536bytes. SQL constraints also require valid team/season formats and different teams."
+            },
+            {
+              "id": "Wb654c99ab76af41",
+              "kind": "Step",
+              "text": "Deleting an auth user removes its owned rows through the existing foreign key. No test here claims teammate client-sync behavior or an end-user recovery workflow."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dfl3vjmEEhz2rQBi",
+      "name": "Access Analyst Workspace",
+      "issues": [
+        "SCRUM-547",
+        "SCRUM-506",
+        "SCRUM-575"
+      ],
+      "preconditions": "Signed-in approved analyst.",
+      "postconditions": "The chosen analyst page shows its current result or an appropriate error.",
+      "scope": "",
+      "scenarios": [
+        {
+          "id": "mBMLkwWAUAAADR80",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "mBMLkwWAUAAADR81",
+              "kind": "Step",
+              "text": "System verifies the signed-in user and current analyst role before showing analyst pages."
+            },
+            {
+              "id": "BGG0mwWAUAAADT0n",
+              "kind": "Extension",
+              "text": "Authentication fails."
+            },
+            {
+              "id": "50m0mwWAUAAADT0p",
+              "kind": "Step",
+              "text": "System halts the flow."
+            },
+            {
+              "id": "Rbm0mwWAUAAADT0s",
+              "kind": "Step",
+              "text": "System redirects to sign-in."
+            },
+            {
+              "id": "ehW0mwWAUAAADT0v",
+              "kind": "Step",
+              "text": "Use case ends in failure."
+            },
+            {
+              "id": "FfcLkwWAUAAADR84",
+              "kind": "Step",
+              "text": "Analyst opens Data Explorer, Metrics, Calibration, Statistical Analysis or a permitted shot-analysis page."
+            },
+            {
+              "id": "LfcLkwWAUAAADR85",
+              "kind": "Step",
+              "text": "System requests available source metadata and the selected page data using separate loading and error states."
+            },
+            {
+              "id": "XfcLkwWAUAAADR86",
+              "kind": "Step",
+              "text": "Data is loaded from configured retained sources; this workflow does not offer a source-file upload selector."
+            },
+            {
+              "id": "oy20mwWAUAAADT0z",
+              "kind": "Extension",
+              "text": "A dataset fails to load (missing file, schema mismatch)."
+            },
+            {
+              "id": "MYO0mwWAUAAADT01",
+              "kind": "Step",
+              "text": "System shows an error identifying which dataset failed."
+            },
+            {
+              "id": "qjO0mwWAUAAADT04",
+              "kind": "Step",
+              "text": "Analyst retries or chooses a supported page/filter; a maintainer repairs the configured source offline."
+            },
+            {
+              "id": "uOu0mwWAUAAADT07",
+              "kind": "Step",
+              "text": "Reload the page data after the source becomes available."
+            },
+            {
+              "id": "g_cLkwWAUAAADR87",
+              "kind": "Step",
+              "text": "Analyst applies the page-specific filters and requests current results."
+            },
+            {
+              "id": "Y_cLkwWAUAAADR88",
+              "kind": "Step",
+              "text": "Show only results that match the successful inputs, with source identity and appropriate units."
+            },
+            {
+              "id": "M_cLkwWAUAAADR89",
+              "kind": "Step",
+              "text": "Data Explorer reports Synergy source-wide checks separately from filtered preview data and shot diagnostics."
+            },
+            {
+              "id": "Xse0mwWAUAAADT0_",
+              "kind": "Extension",
+              "text": "Data quality checks fail (e.g., missing seasons, duplicate rows)."
+            },
+            {
+              "id": "vA.0mwWAUAAADT1B",
+              "kind": "Step",
+              "text": "System flags the specific issue."
+            },
+            {
+              "id": "0N.0mwWAUAAADT1D",
+              "kind": "Step",
+              "text": "Show the failed checks; recommendation enforcement follows the configured block or flag policy, without a user override control."
+            },
+            {
+              "id": "G6B0mwWAUAAADT1G",
+              "kind": "Step",
+              "text": "Retry the source checks after the configured data is corrected."
+            },
+            {
+              "id": "y_cLkwWAUAAADR8.",
+              "kind": "Step",
+              "text": "Offer only exports supported by that page and its current result; errors remain clear and do not masquerade as downloads."
+            }
+          ]
+        },
+        {
+          "id": "Wb3c1a502d01a0df",
+          "name": "Readiness and unavailable services",
+          "steps_and_alternatives": [
+            {
+              "id": "Wb51220bdaa9136e",
+              "kind": "Step",
+              "text": "Required play-type inputs and model availability are checked separately from optional shot artifacts."
+            },
+            {
+              "id": "Wbcb950974d08275",
+              "kind": "Step",
+              "text": "If a required source cannot load, show a safe unavailable error. Do not expose filesystem paths, credentials or stack traces."
+            },
+            {
+              "id": "Wba7fd56a8695e64",
+              "kind": "Step",
+              "text": "A missing optional shot artifact does not block the working play-type pages; shot pages show their own unavailable state."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dfl3vjmEEhz2rQBo",
+      "name": "Load PBP Parquet",
+      "issues": [
+        "SCRUM-538",
+        "SCRUM-549",
+        "SCRUM-642"
+      ],
+      "preconditions": "Documented raw provider inputs and local rebuild environment; no public upload interface is implied.",
+      "postconditions": "Validated derived files and provenance exist; excluded or unknown records remain disclosed.",
+      "scope": "SCRUM-538/549/642. Current retained release has six seasons. Quarantine/count totals belong to versioned evidence, not immutable requirements. No claim of perfect provider coordinates or future forecast accuracy.",
+      "scenarios": [
+        {
+          "id": "JNpLkwWAUAAADSAG",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "JNpLkwWAUAAADSAH",
+              "kind": "Step",
+              "text": "Maintainer acquires pinned official provider play-by-play files for the documented seasons and records URLs, pull time and raw hashes outside the public source package."
+            },
+            {
+              "id": "j9tLkwWAUAAADSAK",
+              "kind": "Step",
+              "text": "Offline rebuild validates unique events, game participants and score continuity. Quarantine inconsistent games with an exclusion manifest; preserve raw input."
+            },
+            {
+              "id": "6IX0mwWAUAAADT20",
+              "kind": "Extension",
+              "text": "File missing or unreadable."
+            },
+            {
+              "id": "8_X0mwWAUAAADT22",
+              "kind": "Step",
+              "text": "Rebuild reports the unreadable source file and stops before replacing validated artifacts."
+            },
+            {
+              "id": "aV30mwWAUAAADT25",
+              "kind": "Step",
+              "text": "Use case resumes at step 1."
+            },
+            {
+              "id": "ADtLkwWAUAAADSAL",
+              "kind": "Step",
+              "text": "Derive the shooting team, opponent, pre-shot margin, shot outcome and known attempt value from explicit event evidence. Unknown missed-shot values remain missing."
+            },
+            {
+              "id": ".2P0mwWAUAAADT29",
+              "kind": "Extension",
+              "text": "Schema mismatch."
+            },
+            {
+              "id": "BKv0mwWAUAAADT2_",
+              "kind": "Step",
+              "text": "System flags the mismatch."
+            },
+            {
+              "id": "1_v0mwWAUAAADT3C",
+              "kind": "Step",
+              "text": "System blocks downstream use until resolved."
+            },
+            {
+              "id": "7Vf0mwWAUAAADT3F",
+              "kind": "Step",
+              "text": "Use case ends in failure."
+            },
+            {
+              "id": "YDtLkwWAUAAADSAM",
+              "kind": "Step",
+              "text": "Normalize provider shot types and basket-relative locations. Apply official court boundaries, known two/three-point evidence and explicit geometry-only fallback; flag implausible locations rather than invent coordinates."
+            },
+            {
+              "id": "8DtLkwWAUAAADSAN",
+              "kind": "Step",
+              "text": "Rebuild cleaned/canonical shots, team/opponent aggregates and league rates. Invalid spatial locations are excluded from charts/spatial models; unknown zones are excluded from zone rankings."
+            },
+            {
+              "id": "Wb2c6b1c92a587ad",
+              "kind": "Step",
+              "text": "Validate retained events and aggregate counts against pinned raw input. Write source sidecars and hashes, then regenerate saved diagnostics offline before deploying derived files."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dfl3vjmEEhz2rQBu",
+      "name": "Run Data Quality Checks",
+      "issues": [
+        "SCRUM-480",
+        "SCRUM-574"
+      ],
+      "preconditions": "Signed-in analyst; configured Synergy source.",
+      "postconditions": "Current source status or a clear retry error is visible.",
+      "scope": "SCRUM-480. Source data checks; scoped to the Synergy input. SCRUM-640 keeps technical details optional without hiding limitations.",
+      "scenarios": [
+        {
+          "id": "nNorkwWAUAAADSC8",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "3NorkwWAUAAADSC9",
+              "kind": "Step",
+              "text": "Analyst opens Data Explorer or selects Retry data checks. The previous report is cleared while checks load."
+            },
+            {
+              "id": "XkYrkwWAUAAADSDA",
+              "kind": "Step",
+              "text": "The API verifies the analyst role and checks required columns, missing keys, duplicate rows and expected team-season coverage against one loaded Synergy source."
+            },
+            {
+              "id": "AUYrkwWAUAAADSDB",
+              "kind": "Step",
+              "text": "The response identifies the checked source and generation time; each check is pass, fail or not run with a reason."
+            },
+            {
+              "id": "YUYrkwWAUAAADSDC",
+              "kind": "Step",
+              "text": "The panel shows the source-wide status independently of the preview filters. These checks do not measure model accuracy or validate shot data."
+            },
+            {
+              "id": "KAKMmwWAUAAADT41",
+              "kind": "Extension",
+              "text": "One or more checks fail."
+            },
+            {
+              "id": "m3KMmwWAUAAADT43",
+              "kind": "Step",
+              "text": "System clearly flags which check failed and why."
+            },
+            {
+              "id": "pZqMmwWAUAAADT46",
+              "kind": "Step",
+              "text": "System reports safe_for_use=false for failed source checks; it does not silently relabel the source as safe."
+            },
+            {
+              "id": "riaMmwWAUAAADT48",
+              "kind": "Step",
+              "text": "Use case resumes at step 5."
+            },
+            {
+              "id": "4w6MmwWAUAAADT5A",
+              "kind": "Extension",
+              "text": "A check cannot be run (e.g., a reference table is missing)."
+            },
+            {
+              "id": "gP6MmwWAUAAADT5C",
+              "kind": "Step",
+              "text": "System marks that check as not run and states the reason in the report."
+            },
+            {
+              "id": "S5GMmwWAUAAADT5F",
+              "kind": "Step",
+              "text": "Use case resumes at step 5."
+            },
+            {
+              "id": "cUYrkwWAUAAADSDD",
+              "kind": "Step",
+              "text": "Analyst can expand check details or retry. A failed, timed-out or superseded request never displays a previous pass as current."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dfl3vjmEEhz2rQBw",
+      "name": "Export KPIs / Reports",
+      "issues": [
+        "SCRUM-486",
+        "SCRUM-616"
+      ],
+      "preconditions": "A permitted signed-in user and a successful current displayed result.",
+      "postconditions": "The exported bounded snapshot matches its displayed rows and applied filters.",
+      "scope": "SCRUM-486/487. Shared displayed-result exports differ from specialized shot CSV/PDF generation, which reads current source files.",
+      "scenarios": [
+        {
+          "id": "3PErkwWAUAAADSD1",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "PPErkwWAUAAADSD2",
+              "kind": "Step",
+              "text": "Coach opens current Matchup or Context results, or analyst opens the displayed Model Metrics holdout table."
+            },
+            {
+              "id": "pvUrkwWAUAAADSD5",
+              "kind": "Step",
+              "text": "The shared export control captures the displayed rows, columns, applied filters and dataset versions without recalculating the result."
+            },
+            {
+              "id": "pJRMmwWAUAAADT5i",
+              "kind": "Extension",
+              "text": "Displayed snapshot is empty, stale or missing required fields."
+            },
+            {
+              "id": "B.xMmwWAUAAADT5k",
+              "kind": "Step",
+              "text": "System rejects missing or invalid snapshot fields with a clear error; no partial report is presented as complete."
+            },
+            {
+              "id": "NUJMmwWAUAAADT5n",
+              "kind": "Step",
+              "text": "Refresh the page result and retry export only once it is valid and current."
+            },
+            {
+              "id": "NvUrkwWAUAAADSD6",
+              "kind": "Step",
+              "text": "User selects CSV, JSON or PDF. Empty, loading or stale results disable export."
+            },
+            {
+              "id": "jvUrkwWAUAAADSD7",
+              "kind": "Step",
+              "text": "The same-origin proxy verifies the cookie identity and session and forwards only to the fixed report endpoint; the backend checks the current role and bounded scalar payload."
+            },
+            {
+              "id": "D3JMmwWAUAAADT5r",
+              "kind": "Extension",
+              "text": "Export generation fails."
+            },
+            {
+              "id": "5bpMmwWAUAAADT5t",
+              "kind": "Step",
+              "text": "System shows the preflight or upstream error without an attachment response."
+            },
+            {
+              "id": "PhZMmwWAUAAADT5w",
+              "kind": "Step",
+              "text": "User retries while the same successful result remains current; changed inputs require a new result first."
+            },
+            {
+              "id": "Us5MmwWAUAAADT5z",
+              "kind": "Step",
+              "text": "Retry export while the same successful result remains current."
+            },
+            {
+              "id": "Wb04c8ba0dc87254",
+              "kind": "Step",
+              "text": "The native browser download contains the selected format and source versions. JSON/PDF include filters and limitations; CSV preserves numerical negatives and neutralizes spreadsheet formulas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iK2lX1mGAqAALhof",
+      "name": "Seasonal Holdout",
+      "issues": [
+        "SCRUM-476",
+        "SCRUM-542",
+        "SCRUM-619"
+      ],
+      "preconditions": "Signed-in analyst and matching prepared model/evaluation inputs.",
+      "postconditions": "The selected diagnostics and limitations are visible; failed requests do not leave an endless loading state.",
+      "scope": "",
+      "scenarios": [
+        {
+          "id": "eqRImwWAUAAADSYe",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "eqRImwWAUAAADSYf",
+              "kind": "Step",
+              "text": "Analyst opens Model Metrics or Calibration and selects available model, season or diagnostic filters."
+            },
+            {
+              "id": "IQJImwWAUAAADSYi",
+              "kind": "Step",
+              "text": "Request current diagnostics independently from metadata requests. Regular metric routes may compute and cache evaluations; display each loading, error and ready state separately."
+            },
+            {
+              "id": "cQJImwWAUAAADSYj",
+              "kind": "Step",
+              "text": "Show earlier-season training diagnostics separately from the later-season evaluation; use the exact displayed table for shared metric reports."
+            },
+            {
+              "id": "c6BEmwWAUAAADTFW",
+              "kind": "Extension",
+              "text": "The diagnostic sample has different coverage or observed-season feature scope."
+            },
+            {
+              "id": "mXBEmwWAUAAADTFY",
+              "kind": "Step",
+              "text": "Show sample coverage and retrospective limitations beside the metrics."
+            },
+            {
+              "id": "RvBEmwWAUAAADTFb",
+              "kind": "Step",
+              "text": "Interpret the current result with those limitations; no future-accuracy claim is added."
+            },
+            {
+              "id": "KQJImwWAUAAADSYk",
+              "kind": "Step",
+              "text": "Calibration groups predicted and realized PPP into bins and reports bias, MAE, RMSE, sample counts and source provenance."
+            },
+            {
+              "id": "Wba57807a8b1bb31",
+              "kind": "Step",
+              "text": "Keep the limitation visible: observed-season rate features make these retrospective diagnostics, not pre-game or future-season predictions."
+            }
+          ]
+        },
+        {
+          "id": "Wb0f4dd2564becfa",
+          "name": "Retrospective diagnostic scope",
+          "steps_and_alternatives": [
+            {
+              "id": "Wb714442cfedeac3",
+              "kind": "Step",
+              "text": "Show predicted-versus-realized PPP bins, signed bias, MAE and RMSE for later-season diagnostic folds."
+            },
+            {
+              "id": "Wb6a7e1f17c2b1ba",
+              "kind": "Step",
+              "text": "Disclose that contemporaneous observed-season features make this a retrospective diagnostic; it does not establish future or pre-game accuracy."
+            },
+            {
+              "id": "Wb34bbec8a079047",
+              "kind": "Step",
+              "text": "Keep metadata, metrics and calibration request states separate so a successful metadata response cannot leave the metrics page stuck loading."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jXQJX1mGAqAALhjF",
+      "name": "Data Dictionary",
+      "issues": [
+        "SCRUM-498",
+        "SCRUM-548"
+      ],
+      "preconditions": "Authenticated session.",
+      "postconditions": "Actual fields and documented meanings are visible, including explicit unknown definitions.",
+      "scope": "SCRUM-498/548. Dictionary definitions follow the loaded schema and distinguish coordinate units, pre-shot margin, uncertain shot value and zone method.",
+      "scenarios": [
+        {
+          "id": "9GbgmwWAUAAADRka",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "9GbgmwWAUAAADRkb",
+              "kind": "Step",
+              "text": "User opens Data Dictionary with an authenticated session."
+            },
+            {
+              "id": "P37gmwWAUAAADRke",
+              "kind": "Step",
+              "text": "The API lists actual dataset columns with meaning, units and source."
+            },
+            {
+              "id": "gP7gmwWAUAAADRkf",
+              "kind": "Step",
+              "text": "User searches by dataset, column or meaning; the page shows matching and undocumented totals."
+            },
+            {
+              "id": "WZFUmwWAUAAADTmF",
+              "kind": "Extension",
+              "text": "A field has no dictionary entry."
+            },
+            {
+              "id": "VmlUmwWAUAAADTmH",
+              "kind": "Step",
+              "text": "System flags it as undocumented rather than showing a broken/empty definition."
+            },
+            {
+              "id": "ooVUmwWAUAAADTmK",
+              "kind": "Step",
+              "text": "Use case ends."
+            },
+            {
+              "id": "oP7gmwWAUAAADRkg",
+              "kind": "Step",
+              "text": "Unknown definitions are labeled Undocumented column; the page never invents a meaning."
+            },
+            {
+              "id": "Wb0bf4898547dfad",
+              "kind": "Step",
+              "text": "A failed request shows Retry; an empty search shows No matching columns."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jv0JX1mGAqAALhjZ",
+      "name": "Audit Metadata",
+      "issues": [
+        "SCRUM-488",
+        "SCRUM-489"
+      ],
+      "preconditions": "Authenticated session; Data Explorer itself requires analyst access.",
+      "postconditions": "Current source metadata or a clear unavailable state is visible.",
+      "scope": "SCRUM-488/489. Source row counts are input-file counts, not filtered preview counts; the catalog covers Synergy, ML predictions, cleaned/canonical shots and two aggregate datasets.",
+      "scenarios": [
+        {
+          "id": "9lXgmwWAUAAADRlA",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "9lXgmwWAUAAADRlB",
+              "kind": "Step",
+              "text": "Analyst opens Data Explorer and the source panel requests the authenticated dataset catalog."
+            },
+            {
+              "id": "54PgmwWAUAAADRlE",
+              "kind": "Step",
+              "text": "System returns active dataset IDs, availability, actual source row counts and season coverage from the loaded files."
+            },
+            {
+              "id": "CBNUmwWAUAAADTmm",
+              "kind": "Extension",
+              "text": "Metadata is missing for a dataset."
+            },
+            {
+              "id": "qytUmwWAUAAADTmo",
+              "kind": "Step",
+              "text": "System shows \"audit metadata unavailable\" rather than omitting the panel silently."
+            },
+            {
+              "id": "tftUmwWAUAAADTmr",
+              "kind": "Step",
+              "text": "Show Not recorded for a missing pull date or Retry for a failed catalog request."
+            },
+            {
+              "id": "d4PgmwWAUAAADRlF",
+              "kind": "Step",
+              "text": "The source panel shows the play-type source summary. Expanding Source details reveals the SHA-256 version and recorded pull date."
+            },
+            {
+              "id": "L4PgmwWAUAAADRlG",
+              "kind": "Step",
+              "text": "If a pull date is not recorded, display Not recorded; file modification time must not be substituted."
+            },
+            {
+              "id": "Wbc58e6c84c2ee15",
+              "kind": "Step",
+              "text": "On failure, show an error and Retry. Retry clears the previous catalog while loading; unavailable optional datasets do not invalidate other usable entries."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oLOFX1mGAqAALhmy",
+      "name": "Plain Labels & Readability",
+      "issues": [
+        "SCRUM-640"
+      ],
+      "preconditions": "A supported current page.",
+      "postconditions": "The user can identify the action, result and relevant limitation without expanding technical details.",
+      "scope": "SCRUM-640. This records implementation prompted by actual stakeholder feedback; it does not claim the later three-scenario acceptance exercise was completed.",
+      "scenarios": [
+        {
+          "id": "XMEImwWAUAAADSIR",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "XMEImwWAUAAADSIS",
+              "kind": "Step",
+              "text": "User opens an analyst or coach page and sees its main action, result and essential scope in plain language."
+            },
+            {
+              "id": "TnkImwWAUAAADSIV",
+              "kind": "Step",
+              "text": "Use familiar field labels and units: points per shot attempt for shot plans, attempts for heatmaps, and separate training/later-season labels for diagnostics."
+            },
+            {
+              "id": "vIDkmwWAUAAADTWc",
+              "kind": "Extension",
+              "text": "A numeric value or dictionary definition is unavailable."
+            },
+            {
+              "id": "j7DkmwWAUAAADTWe",
+              "kind": "Step",
+              "text": "Show Unavailable for a missing numeric value and Undocumented column for an unknown definition."
+            },
+            {
+              "id": "82jkmwWAUAAADTWh",
+              "kind": "Step",
+              "text": "Keep the missing-data state visible without inventing a value or meaning."
+            },
+            {
+              "id": "pfjkmwWAUAAADTWk",
+              "kind": "Step",
+              "text": "The user can inspect details or retry the request when appropriate."
+            },
+            {
+              "id": "HnkImwWAUAAADSIW",
+              "kind": "Step",
+              "text": "Keep essential dataset and proposed-shot limitations visible. Place full hashes, implementation details and repeated pipeline explanations in closed Details sections."
+            },
+            {
+              "id": "Wbc358e95ae82784",
+              "kind": "Step",
+              "text": "Loading, unavailable, no-data and error states provide an appropriate next action; missing values display Unavailable rather than a misleading zero."
+            },
+            {
+              "id": "Wbbb566712fa8155",
+              "kind": "Step",
+              "text": "Do not offer unsupported controls, such as changing folds or training via the saved shot-metrics page."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sDahi1mGAqAALiDF",
+      "name": "Rank Plays with Game Context",
+      "issues": [
+        "SCRUM-539",
+        "SCRUM-540",
+        "SCRUM-541"
+      ],
+      "preconditions": "Signed-in coach; valid matchup and available context model.",
+      "postconditions": "The displayed context result matches the applied snapshot; unsupported coaching inputs are disclosed.",
+      "scope": "",
+      "scenarios": [
+        {
+          "id": "quC9kwWAUAAADRcE",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "WuC9kwWAUAAADRcF",
+              "kind": "Step",
+              "text": "Coach selects a matchup and enters numeric context or supported coaching text."
+            },
+            {
+              "id": "oLq9kwWAUAAADRcI",
+              "kind": "Step",
+              "text": "On Build, parse the text once and combine parsed margin, period, clock and supported coaching conditions into one request snapshot."
+            },
+            {
+              "id": "6Lq9kwWAUAAADRcJ",
+              "kind": "Step",
+              "text": "Validate regulation versus overtime clock bounds. Period 5 uses a 300-second maximum; invalid conditions return a clear validation error."
+            },
+            {
+              "id": "uLq9kwWAUAAADRcK",
+              "kind": "Step",
+              "text": "Send the same complete snapshot to context ranking on the first and later Builds; the response identifies the applied context and conditions."
+            },
+            {
+              "id": "Y8yEmwWAUAAADTEZ",
+              "kind": "Extension",
+              "text": "Context inputs are incomplete."
+            },
+            {
+              "id": "ATyEmwWAUAAADTEb",
+              "kind": "Step",
+              "text": "System highlights the missing field."
+            },
+            {
+              "id": "6ryEmwWAUAAADTEe",
+              "kind": "Step",
+              "text": "System prompts the Coach to enter it before running the model."
+            },
+            {
+              "id": "9HyEmwWAUAAADTEh",
+              "kind": "Step",
+              "text": "Coach corrects the invalid inputs and starts a fresh Build snapshot."
+            },
+            {
+              "id": "xLq9kwWAUAAADRcL",
+              "kind": "Step",
+              "text": "Display ranked play types with predicted PPP, sample support and brief template explanations. Note-only conditions are not presented as applied model inputs."
+            },
+            {
+              "id": "lLq9kwWAUAAADRcM",
+              "kind": "Step",
+              "text": "Keep a clear distinction between the baseline shortlist and the context-adjusted ranking."
+            },
+            {
+              "id": "mQKEmwWAUAAADTEl",
+              "kind": "Extension",
+              "text": "Context model unavailable/fails."
+            },
+            {
+              "id": ".pKEmwWAUAAADTEn",
+              "kind": "Step",
+              "text": "Show the context request error and keep the failed result empty."
+            },
+            {
+              "id": "WlKEmwWAUAAADTEq",
+              "kind": "Step",
+              "text": "Do not present a baseline result as a successful context adjustment; QuickCall has a separate explicitly labeled fallback."
+            },
+            {
+              "id": "jNKEmwWAUAAADTEt",
+              "kind": "Step",
+              "text": "Coach can retry or open the Baseline page explicitly."
+            },
+            {
+              "id": "4bKEmwWAUAAADTEw",
+              "kind": "Extension",
+              "text": "A supported coaching condition is invalid or an entered condition is unsupported."
+            },
+            {
+              "id": "SmqEmwWAUAAADTEy",
+              "kind": "Step",
+              "text": "Reject invalid supported conditions; disclose recognized unsupported conditions as note-only."
+            },
+            {
+              "id": "VOqEmwWAUAAADTE1",
+              "kind": "Step",
+              "text": "Rebuild only after the applied numeric and coaching inputs are valid."
+            },
+            {
+              "id": "jLq9kwWAUAAADRcN",
+              "kind": "Step",
+              "text": "Identify the applied numeric context and supported coaching conditions beside the ranked result."
+            },
+            {
+              "id": "7Lq9kwWAUAAADRcO",
+              "kind": "Step",
+              "text": "If the request fails, show the error without presenting an older result as the new context."
+            }
+          ]
+        },
+        {
+          "id": "Wb149b6bdff73543",
+          "name": "Current context acceptance",
+          "steps_and_alternatives": [
+            {
+              "id": "Wb35a51be8e18387",
+              "kind": "Step",
+              "text": "Parse supported coaching conditions once and use the resulting numeric margin, period, clock and conditions on the first Build as well as repeated Build."
+            },
+            {
+              "id": "Wba29495fe988e1d",
+              "kind": "Step",
+              "text": "Period 5 is overtime with a maximum 300-second clock; supported coaching conditions reach the ranker and are echoed in the result."
+            },
+            {
+              "id": "Wb75cadbb51ee1e3",
+              "kind": "Step",
+              "text": "Unsupported conditions are identified as note-only, not presented as applied model inputs; invalid conditions return422."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wGVrbjmGmMmMJQCm",
+      "name": " Save Notes to Tactics Board / Plan",
+      "issues": [
+        "SCRUM-481"
+      ],
+      "preconditions": "Authenticated coach; a valid distinct-team matchup; reads and writes use the owning user ID.",
+      "postconditions": "Only the owner coach can access the state. The matchup identity and audit fields remain immutable to clients; accepted updates advance the revision.",
+      "scope": "SCRUM-481 covers the persisted schema contract only. Coach UI migration and synchronization are separate SCRUM-482/483 work. This collaboration reuses the existing Gameplan Storage structural design. The database does not itself emit an HTTP409 conflict: a conditional update can affect zero rows, which the caller must detect and resolve.",
+      "scenarios": [
+        {
+          "id": "sKwwmwWAUAAADRxW",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "sKwwmwWAUAAADRxX",
+              "kind": "Step",
+              "text": "An authenticated coach prepares notes, plan and role values for one season and directed matchup. This flow specifies the storage contract, not completion of the separate UI integration."
+            },
+            {
+              "id": "3XIwmwWAUAAADRxa",
+              "kind": "Step",
+              "text": "For new state, INSERT the composite key and allowed state fields. Row-level security requires auth.uid() ownership and the current protected profile role coach; constraints validate the payload."
+            },
+            {
+              "id": "g3IwmwWAUAAADRxb",
+              "kind": "Step",
+              "text": "For existing state, read its revision and UPDATE only notes, plan and roles using the full owner/matchup key and revision = last_read_revision. Do not use an unconditional upsert."
+            },
+            {
+              "id": "CnZsmwWAUAAADUJB",
+              "kind": "Extension",
+              "text": "No persisted owner/matchup row exists."
+            },
+            {
+              "id": "4L5smwWAUAAADUJD",
+              "kind": "Step",
+              "text": "The authorized caller INSERTs a new row with allowed state fields; defaults initialize revision and audit timestamps."
+            },
+            {
+              "id": "8.FsmwWAUAAADUJG",
+              "kind": "Step",
+              "text": "Validate payload and coach ownership before accepting the inserted state."
+            },
+            {
+              "id": "cUlsmwWAUAAADUJJ",
+              "kind": "Step",
+              "text": "On duplicate key, reload the existing row and use the conditional-update path instead of upsert."
+            },
+            {
+              "id": "d3lsmwWAUAAADUJN",
+              "kind": "Extension",
+              "text": "Write fails or no conditional update row is returned."
+            },
+            {
+              "id": ".bVsmwWAUAAADUJP",
+              "kind": "Step",
+              "text": "Do not confirm a successful save after a denied, invalid or failed write."
+            },
+            {
+              "id": "Ph1smwWAUAAADUJS",
+              "kind": "Step",
+              "text": "The caller retains its unsaved edit until it can reload and reconcile with the authorized current revision."
+            },
+            {
+              "id": "qsNsmwWAUAAADUJV",
+              "kind": "Step",
+              "text": "Retry only after resolving the error and reading the revision used for a conditional update."
+            },
+            {
+              "id": "Y3IwmwWAUAAADRxc",
+              "kind": "Step",
+              "text": "On a successful update, the database increments revision and updated_at. The caller accepts the returned state and revision only after confirming a row was written."
+            }
+          ]
+        },
+        {
+          "id": "Wb099852e6553011",
+          "name": "Storage acceptance and conflicts",
+          "steps_and_alternatives": [
+            {
+              "id": "Wbba1049778993a4",
+              "kind": "Step",
+              "text": "Anonymous, analyst, pending and other-coach sessions cannot read or change this owner state. Authorization uses the protected profile role, not editable signup metadata."
+            },
+            {
+              "id": "Wb8508dfbfdb06ce",
+              "kind": "Step",
+              "text": "If a conditional update writes zero rows, do not report a successful save. Reload the authorized current state and reconcile changes before retrying against its new revision."
+            },
+            {
+              "id": "Wb6cdc4257c5f5ab",
+              "kind": "Step",
+              "text": "A duplicate INSERT is a conflict; read the existing owner/matchup row before an explicitly conditional update. Changing owner, season or team keys requires a distinct new record, not an UPDATE."
+            },
+            {
+              "id": "Wbeeb20cb924a62a",
+              "kind": "Step",
+              "text": "Reject invalid JSON shape, more than50 plan entries, more than100 notes, duplicate plan IDs or state above65536bytes. SQL constraints also require valid team/season formats and different teams."
+            },
+            {
+              "id": "Wbf87121e3919480",
+              "kind": "Step",
+              "text": "Deleting an auth user removes its owned rows through the existing foreign key. No test here claims teammate client-sync behavior or an end-user recovery workflow."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "z9E5X1mGAqAALhlN",
+      "name": "Ranked List via API (Baseline)",
+      "issues": [
+        "SCRUM-546",
+        "SCRUM-609"
+      ],
+      "preconditions": "An approved coach is signed in and selects a season, team and different opponent.",
+      "postconditions": "Show the complete baseline ranking with source version and its season-only scope, or a clear validation/unavailable error; no partial ranking is presented.",
+      "scope": "Season-level play-type rankings use the selected matchup and offense weighting. Game score, clock and period do not change this baseline. Bounded timing checks are recorded separately and are not a guaranteed service-level agreement.",
+      "scenarios": [
+        {
+          "id": "S9jwmwWAUAAADSFL",
+          "name": "Scenario",
+          "steps_and_alternatives": [
+            {
+              "id": "S9jwmwWAUAAADSFM",
+              "kind": "Step",
+              "text": "Client calls the baseline ranking endpoint with season/team/opponent/filters."
+            },
+            {
+              "id": "kOzwmwWAUAAADSFR",
+              "kind": "Step",
+              "text": "System validates the request parameters."
+            },
+            {
+              "id": "EJUkmwWAUAAADTTd",
+              "kind": "Extension",
+              "text": "Invalid/missing parameters."
+            },
+            {
+              "id": "mS0kmwWAUAAADTTf",
+              "kind": "Step",
+              "text": "System returns a structured validation error."
+            },
+            {
+              "id": "aN0kmwWAUAAADTTi",
+              "kind": "Step",
+              "text": "Use case ends in failure."
+            },
+            {
+              "id": "COzwmwWAUAAADSFS",
+              "kind": "Step",
+              "text": "System computes or retrieves cached baseline rankings."
+            },
+            {
+              "id": "8iMkmwWAUAAADTTm",
+              "kind": "Extension",
+              "text": "The request is still waiting for the complete baseline ranking."
+            },
+            {
+              "id": "Z_MkmwWAUAAADTTo",
+              "kind": "Step",
+              "text": "Show loading until the complete response arrives; this endpoint does not stream partial rankings."
+            },
+            {
+              "id": "BmskmwWAUAAADTTr",
+              "kind": "Step",
+              "text": "Display the full result on success or a clear error when the request fails."
+            },
+            {
+              "id": "qOzwmwWAUAAADSFT",
+              "kind": "Step",
+              "text": "System returns the ranked list with metrics as a structured API response."
+            }
+          ]
+        },
+        {
+          "id": "Wbc9128747969162",
+          "name": "Baseline scope and availability",
+          "steps_and_alternatives": [
+            {
+              "id": "Wb048f11228bd6ff",
+              "kind": "Step",
+              "text": "Baseline uses season aggregates and ignores game context; show that scope beside the result rather than implying context adaptation."
+            },
+            {
+              "id": "Wb420e711aa38d73",
+              "kind": "Step",
+              "text": "Readiness distinguishes required play-type sources and model availability from optional shot artifacts. Unavailable core data produces a clear error."
+            },
+            {
+              "id": "Wb7734013f2eb800",
+              "kind": "Step",
+              "text": "Agreed bounded acceptance targets are warm p95 below 5 seconds, two-concurrent p95 below 10 seconds and first-after-idle below 45 seconds. These are test targets, not a guaranteed service-level agreement."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

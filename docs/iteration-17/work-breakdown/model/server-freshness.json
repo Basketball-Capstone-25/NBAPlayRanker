@@ -1,0 +1,1367 @@
+{
+  "before": {
+    "version": "60",
+    "checkinUserName": "asahang@sheridancollege.ca",
+    "commitComment": "Clarify sequence lifelines, request parameters and return values (SCRUM-528)",
+    "checkinDate": null
+  },
+  "after": {
+    "version": "63",
+    "checkinUserName": "mousaa@sheridancollege.ca",
+    "commitComment": "Model Quick-Call role check and baseline fallback sequence (SCRUM-628)",
+    "checkinDate": null
+  },
+  "changes": {
+    "MODEL_ELEMENT": {
+      "before": 2280,
+      "after": 2362,
+      "added": [
+        "aiLXLoWAUAAADY4F",
+        "kF.XLoWAUAAADYxD",
+        "sgdXLoWAUAAADY27",
+        "THKbLoWAUAAADT1y",
+        "OD9XLoWAUAAADY3j",
+        "j.4HLoWAUAAADWoH",
+        "KcrXLoWAUAAADY4Z",
+        "QsbXLoWAUAAADY4v",
+        "VR.bLoWAUAAADT3j",
+        "7kRHLoWAUAAADWpE",
+        "3R_LLoWAUAAADTnP",
+        "dHkLLoWAUAAADTSL",
+        "yizbLoWAUAAADT6D",
+        "VR_LLoWAUAAADTnN",
+        "r.LbLoWAUAAADT6X",
+        "ny_LLoWAUAAADTaf",
+        "H_inLoWAUAAADWww",
+        "A8.nLoWAUAAADWx2",
+        "Wx_LLoWAUAAADTnS",
+        "iB.7LoWAUAAADWcX",
+        "ThYHLoWAUAAADWn1",
+        "5xXnLoWAUAAADWzx",
+        "kiGnLoWAUAAADWxH",
+        "fe_LLoWAUAAADTk6",
+        "FjzbLoWAUAAADT6L",
+        "CRlXLoWAUAAADYyD",
+        "9ZVnLoWAUAAADWyo",
+        "hhzbLoWAUAAADT6H",
+        "DDMHLoWAUAAADWoi",
+        "TbLnLoWAUAAADWzJ",
+        "6vOrLoWAUAAADTvy",
+        "nLnXLoWAUAAADY5Z",
+        "ox_LLoWAUAAADTnQ",
+        "W8tHLoWAUAAADWvQ",
+        "BALbLoWAUAAADT6P",
+        "HStXLoWAUAAADY2q",
+        "w_4HLoWAUAAADWoQ",
+        "7iQHLoWAUAAADWnj",
+        "cZBbLoWAUAAADT4E",
+        "w_BXLoWAUAAADYxe",
+        "6.gLLoWAUAAADTRw",
+        "9YWbLoWAUAAADT2q",
+        "vNXXLoWAUAAADY5t",
+        "sDLbLoWAUAAADT6b",
+        "jHoLLoWAUAAADTR.",
+        "SeEHLoWAUAAADWoZ",
+        "VWtbLoWAUAAADT59",
+        "ScEbLoWAUAAADT0p",
+        "NCJbLoWAUAAADT4m",
+        "LAnXLoWAUAAADY5D",
+        "8x_LLoWAUAAADTnR",
+        "TopbLoWAUAAADT49",
+        "fmFHLoWAUAAADWt_",
+        "ey_LLoWAUAAADTae",
+        "kHLHLoWAUAAADWvn",
+        "zR_LLoWAUAAADTnO",
+        "YQ2bLoWAUAAADT3J",
+        "IKlHLoWAUAAADWuU",
+        "CVeXLoWAUAAADYwx",
+        "AUeXLoWAUAAADYwo",
+        "24pnLoWAUAAADWyP",
+        "VYBXLoWAUAAADYxM",
+        "OoVHLoWAUAAADWuo",
+        "_7VHLoWAUAAADWu8",
+        "EPFbLoWAUAAADT5c",
+        "eR_LLoWAUAAADTnM",
+        "2pBXLoWAUAAADYxV",
+        "awB3LoWAUAAADY5.",
+        "qODnLoWAUAAADWy7",
+        "YbdXLoWAUAAADY3P",
+        "T8LbLoWAUAAADT6T",
+        "7wB3LoWAUAAADY6D",
+        "40aHLoWAUAAADWor",
+        "SkmnLoWAUAAADWxb",
+        "mqzXLoWAUAAADY3x",
+        "ljrHLoWAUAAADWv7",
+        "Qk.XLoWAUAAADYw6",
+        "hA4HLoWAUAAADWn.",
+        "zdQHLoWAUAAADWns",
+        "SNFXLoWAUAAADYxx",
+        "xx_LLoWAUAAADTnT",
+        "Q77nLoWAUAAADWzd"
+      ],
+      "removed": [],
+      "changed": [
+        "8zHsqVmAUUE.bzvI",
+        "WlLCa1mGAqAALh.p",
+        "WlLCa1mGAqAALh.o",
+        "OwCaf1mGAqAALmna",
+        "qVHt_1mGAqAALlVO",
+        "BwYKwNmGAqAALne6",
+        "QGVrbjmGmMmMJQCe",
+        "wGVrbjmGmMmMJQC0",
+        "wGVrbjmGmMmMJQDU",
+        "7sZ6GLmAUAAADRP1",
+        "ln1mGLmAUAAADRSY",
+        "Pq3mGLmAUAAADRS5",
+        "AakWGLmAUAAADRTa",
+        "t58WGLmAUAAADRTl",
+        "ZzyWGLmAUAAADRTw",
+        "kGecuLmAUAAADX.L",
+        "LXtA4bmAUAAADRh4",
+        ".3tA4bmAUAAADRiF",
+        "MHxo4bmAUAAADR8V",
+        "T.g44bmAUAAADSCx",
+        "jBg44bmAUAAADSDJ",
+        "aTt44bmAUAAADSFB",
+        "hRE04bmAUAAADSTj",
+        "Q0q54bmAUAAADWMo",
+        "60KwWwWAUAAADRZX",
+        "rcKwWwWAUAAADRbs",
+        "ciKwWwWAUAAADRc_",
+        "7dMZ.wWAUAAADVhd",
+        "C9MZ.wWAUAAADVhe",
+        "NbKZ.wWAUAAADVtN",
+        "eyaZ.wWAUAAADWJ_",
+        "FyaZ.wWAUAAADWKA",
+        "OKaZ.wWAUAAADWKG",
+        "pKaZ.wWAUAAADWKH",
+        "fKaZ.wWAUAAADWKK",
+        "S6aZ.wWAUAAADWKb",
+        "P6aZ.wWAUAAADWKg",
+        "ZP3N.wWAUAAADbbK",
+        "PP3N.wWAUAAADbbZ",
+        "Yv3N.wWAUAAADbbe",
+        "sv3N.wWAUAAADbbj",
+        "5v3N.wWAUAAADbb3",
+        "dv3N.wWAUAAADbb8",
+        "Lv3N.wWAUAAADbcB",
+        "Xv3N.wWAUAAADbcG",
+        "Af3N.wWAUAAADbcL",
+        "4f3N.wWAUAAADbcQ",
+        "Kf3N.wWAUAAADbca",
+        "Wf3N.wWAUAAADbcf",
+        "hf3N.wWAUAAADbck"
+      ]
+    },
+    "DIAGRAM": {
+      "before": 201,
+      "after": 207,
+      "added": [
+        "MJ_LLoWAUAAADToL",
+        "yuobLoWAUAAADT0Z",
+        "zx_LLoWAUAAADTnU",
+        "bp_LLoWAUAAADTto",
+        "9J_LLoWAUAAADTq7",
+        "G_U0nCyAUAAADTRw"
+      ],
+      "removed": [],
+      "changed": [
+        "bawPbjmD.AAAAUbo",
+        "fE3N.wWAUAAADbJE",
+        "8U3N.wWAUAAADbJS",
+        "u03N.wWAUAAADbJ2",
+        "Ac3N.wWAUAAADbKQ",
+        "vc3N.wWAUAAADbK8",
+        "6C3N.wWAUAAADbLO",
+        "UK3N.wWAUAAADbL0",
+        "1a3N.wWAUAAADbNg",
+        "jG3N.wWAUAAADbOG",
+        "7m3N.wWAUAAADbOs",
+        "bO3N.wWAUAAADbPG",
+        "xe3N.wWAUAAADbP8",
+        "wB3N.wWAUAAADbQg",
+        "VR3N.wWAUAAADbRG",
+        "gp3N.wWAUAAADbRc",
+        "lZ3N.wWAUAAADbSg",
+        "2l3N.wWAUAAADbTK",
+        "J13N.wWAUAAADbU0",
+        "4t3N.wWAUAAADbVO",
+        "c93N.wWAUAAADbV2",
+        "yT3N.wWAUAAADbW6",
+        "Nr3N.wWAUAAADbYM",
+        "_33N.wWAUAAADbZO",
+        "7f3N.wWAUAAADbcq",
+        "EAPN.wWAUAAADbdi",
+        "ikPN.wWAUAAADbia",
+        "sUPN.wWAUAAADbjL",
+        "dCPN.wWAUAAADbml",
+        "biPN.wWAUAAADbnk",
+        "eOPN.wWAUAAADbs.",
+        "iuPN.wWAUAAADbto",
+        "3zPN.wWAUAAADb3t",
+        "3LPN.wWAUAAADb4l",
+        "8W4D.wWAUAAADc8a",
+        "Elab56198592e4c5",
+        "Elab8132fcbcc10d",
+        "A2a6e559ca1de02a",
+        "A2271d30211208e1"
+      ]
+    },
+    "DIAGRAM_ELEMENT": {
+      "before": 1856,
+      "after": 1999,
+      "added": [
+        "YJ_LLoWAUAAADTnv",
+        "wytXLoWAUAAADY2t",
+        "AUeXLoWAUAAADYwn",
+        "P7VHLoWAUAAADWu6",
+        "5ALbLoWAUAAADT6Q",
+        "1ZVnLoWAUAAADWym",
+        "SiLXLoWAUAAADY4D",
+        "oQ2bLoWAUAAADT3I",
+        "ArnXLoWAUAAADY5c",
+        "6HLHLoWAUAAADWvq",
+        "nx_LLoWAUAAADTnY",
+        "mD9XLoWAUAAADY3h",
+        "ljrHLoWAUAAADWv5",
+        "5J_LLoWAUAAADTqr",
+        "AJ_LLoWAUAAADTnb",
+        "9YWbLoWAUAAADT2p",
+        "4WFHLoWAUAAADWuC",
+        "2pBXLoWAUAAADYxU",
+        "g7LnLoWAUAAADWzM",
+        "J4pnLoWAUAAADWyS",
+        "bb7nLoWAUAAADWzb",
+        "awB3LoWAUAAADY59",
+        "NCJbLoWAUAAADT4l",
+        "YJ_LLoWAUAAADTnt",
+        "5J_LLoWAUAAADTql",
+        "NJ_LLoWAUAAADTq1",
+        "wbdXLoWAUAAADY3N",
+        "FvOrLoWAUAAADTvz",
+        "DLnXLoWAUAAADY5X",
+        "JJ_LLoWAUAAADTqZ",
+        "P.KrLoWAUAAADTvh",
+        "NJ_LLoWAUAAADTq3",
+        "hqzXLoWAUAAADY30",
+        "5J_LLoWAUAAADTqn",
+        "w_4HLoWAUAAADWoP",
+        "0tXXLoWAUAAADY5w",
+        "AJ_LLoWAUAAADTnh",
+        "EJ_LLoWAUAAADTn9",
+        "JJ_LLoWAUAAADTqh",
+        "LjzbLoWAUAAADT6M",
+        "nmFHLoWAUAAADWt9",
+        "cZBbLoWAUAAADT4D",
+        "kF.XLoWAUAAADYxC",
+        "ScEbLoWAUAAADT0o",
+        "40aHLoWAUAAADWoq",
+        "sKlHLoWAUAAADWuX",
+        "x8tHLoWAUAAADWvT",
+        "TopbLoWAUAAADT48",
+        "YJ_LLoWAUAAADTnx",
+        "Qk.XLoWAUAAADYw5",
+        "gURHLoWAUAAADWpH",
+        "YJ_LLoWAUAAADTnp",
+        "EJ_LLoWAUAAADToH",
+        "4HVHLoWAUAAADWu_",
+        "EJ_LLoWAUAAADToF",
+        "TdQHLoWAUAAADWnr",
+        "qgdXLoWAUAAADY2.",
+        "2crXLoWAUAAADY4c",
+        "NJ_LLoWAUAAADTqz",
+        "AJ_LLoWAUAAADTnd",
+        "JJ_LLoWAUAAADTqf",
+        "EPFbLoWAUAAADT5b",
+        "wNFXLoWAUAAADYxp",
+        "1J_LLoWAUAAADTqx",
+        "jhYHLoWAUAAADWn0",
+        "2kmnLoWAUAAADWxe",
+        "AsbXLoWAUAAADY4t",
+        "VR.bLoWAUAAADT3i",
+        "cRlXLoWAUAAADYyB",
+        "gKlHLoWAUAAADWuS",
+        ".iLXLoWAUAAADY4I",
+        "BJ_LLoWAUAAADTqR",
+        "hA4HLoWAUAAADWn9",
+        "w_BXLoWAUAAADYxd",
+        "j.4HLoWAUAAADWoG",
+        "mRlXLoWAUAAADYyG",
+        "JJ_LLoWAUAAADTqd",
+        "NoVHLoWAUAAADWur",
+        "5J_LLoWAUAAADTqt",
+        "YJ_LLoWAUAAADTn3",
+        "EJ_LLoWAUAAADTn7",
+        "SeEHLoWAUAAADWoY",
+        "9xXnLoWAUAAADWz0",
+        "VJ_LLoWAUAAADTqv",
+        "VYBXLoWAUAAADYxL",
+        "QJ_LLoWAUAAADTnn",
+        "bHkLLoWAUAAADTSM",
+        "IHLHLoWAUAAADWvl",
+        "VkRHLoWAUAAADWpC",
+        "NhzbLoWAUAAADT6I",
+        "GoVHLoWAUAAADWum",
+        "DDMHLoWAUAAADWoh",
+        "7iQHLoWAUAAADWni",
+        "EJ_LLoWAUAAADTn5",
+        "hxXnLoWAUAAADWzv",
+        "6.gLLoWAUAAADTRv",
+        "SNFXLoWAUAAADYxv",
+        "jHKbLoWAUAAADT1x",
+        "pD9XLoWAUAAADY3m",
+        "w77nLoWAUAAADWzg",
+        "X8LbLoWAUAAADT6U",
+        "5izbLoWAUAAADT6E",
+        "bc.nLoWAUAAADWx0",
+        "7wB3LoWAUAAADY6C",
+        "JJ_LLoWAUAAADTqb",
+        "EJ_LLoWAUAAADToD",
+        "HjrHLoWAUAAADWv.",
+        "5J_LLoWAUAAADTqp",
+        "vNXXLoWAUAAADY5r",
+        "PAnXLoWAUAAADY5G",
+        "QJ_LLoWAUAAADTnl",
+        "0sbXLoWAUAAADY4y",
+        "CbdXLoWAUAAADY3S",
+        "YJ_LLoWAUAAADTn1",
+        "tJ_LLoWAUAAADTq5",
+        "QJ_LLoWAUAAADTnj",
+        "xJ_LLoWAUAAADTqX",
+        "EJ_LLoWAUAAADTn_",
+        "EJ_LLoWAUAAADToJ",
+        "RJ_LLoWAUAAADTqV",
+        "EJ_LLoWAUAAADToB",
+        "iB.7LoWAUAAADWcW",
+        "YJ_LLoWAUAAADTnz",
+        "57bHLoWAUAAADWwG",
+        "68tHLoWAUAAADWvO",
+        "a4pnLoWAUAAADWyN",
+        "eJ_LLoWAUAAADTqN",
+        "eJ_LLoWAUAAADTqP",
+        "E8.nLoWAUAAADWx5",
+        "5J_LLoWAUAAADTqj",
+        "7ZVnLoWAUAAADWyr",
+        "VWtbLoWAUAAADT5.",
+        "CVeXLoWAUAAADYww",
+        "gnoLLoWAUAAADTSD",
+        "ONFXLoWAUAAADYx0",
+        "KiGnLoWAUAAADWxK",
+        "AJ_LLoWAUAAADTnf",
+        "6DLbLoWAUAAADT6c",
+        "gASnLoWAUAAADWwz",
+        "BJ_LLoWAUAAADTqT",
+        "_.LbLoWAUAAADT6Y",
+        "YiGnLoWAUAAADWxF",
+        "uODnLoWAUAAADWy."
+      ],
+      "removed": [],
+      "changed": [
+        "GEIPbjmD.AAAAUcf",
+        "yEIPbjmD.AAAAUcc",
+        "MEIPbjmD.AAAAUcZ",
+        "4EIPbjmD.AAAAUcW",
+        "QEIPbjmD.AAAAUcT",
+        "v4IPbjmD.AAAAUcQ",
+        "r4IPbjmD.AAAAUcN",
+        "l4IPbjmD.AAAAUcK",
+        "J4IPbjmD.AAAAUcH",
+        ".4IPbjmD.AAAAUcE",
+        "W4IPbjmD.AAAAUcB",
+        "a4IPbjmD.AAAAUb.",
+        "C4IPbjmD.AAAAUb7",
+        "k4IPbjmD.AAAAUb4",
+        "A4IPbjmD.AAAAUb1",
+        "5V1jrLmAUAAADR1s",
+        "JW4D.wWAUAAADc9u",
+        "pW4D.wWAUAAADc9w",
+        "pW4D.wWAUAAADc9y",
+        "pW4D.wWAUAAADc90",
+        "ZW4D.wWAUAAADc92",
+        "ZW4D.wWAUAAADc94",
+        "ZW4D.wWAUAAADc96",
+        "Elabb820b6c332a7",
+        "Elab73ef1a57b4d1",
+        "Elab594c7a673a41",
+        "Elabedbff8008986",
+        "Dep52bba4b07e94b"
+      ]
+    },
+    "PROJECT_FILE": {
+      "before": 558,
+      "after": 572,
+      "added": [
+        "HTMLStringProperties/yuobLoWAUAAADT0Z_documentation",
+        "vpdiagramshapes/zx_LLoWAUAAADTnU.vps/details.xml",
+        "vpdiagramshapes/Elab8132fcbcc10d.vps/details.xml",
+        "HTMLStringProperties/TX2HLoWAUAAADWo3_htmlText",
+        "HTMLStringProperties/57bHLoWAUAAADWwG_htmlText",
+        "diagramPreviewData/bp_LLoWAUAAADTtp",
+        "vpdiagramshapes/MJ_LLoWAUAAADToL.vps/details.xml",
+        "diagramPreviewData/jJ_LLoWAUAAADTq8",
+        "HTMLStringProperties/bp_LLoWAUAAADTto_documentation",
+        "HTMLStringProperties/9J_LLoWAUAAADTq7_documentation",
+        "diagramPreviewData/auobLoWAUAAADT0a",
+        "vpdiagramshapes/9J_LLoWAUAAADTq7.vps/details.xml",
+        "vpdiagramshapes/bp_LLoWAUAAADTto.vps/details.xml",
+        "vpdiagramshapes/yuobLoWAUAAADT0Z.vps/details.xml"
+      ],
+      "removed": [],
+      "changed": [
+        "projectPropertiesFiles/OptionCodeGeneration",
+        "projectPropertiesFiles/OptionReport",
+        "projectPropertiesFiles/OptionImporter",
+        "projectPropertiesFiles/VPUMLTreeOptions",
+        "projectPropertiesFiles/DiagramGenerator",
+        "persistentModelFiles/PrintingFramework",
+        "DiagramStateLazy.txt",
+        "diagramPreviewData/PawPbjmD.AAAAUbp",
+        "vpdiagramshapes/bawPbjmD.AAAAUbo.vps/details.xml",
+        "vpdiagramshapes/8W4D.wWAUAAADc8a.vps/details.xml",
+        "diagramPreviewData/CW4D.wWAUAAADc8b",
+        "vpdiagramshapes/dCPN.wWAUAAADbml.vps/details.xml",
+        "diagramPreviewData/9CPN.wWAUAAADbmm",
+        "diagramPreviewData/7f3N.wWAUAAADbcr",
+        "recentMessagesList"
+      ]
+    }
+  },
+  "incoming_sha256": "343f83bf7358c56fe6b809960dfa5a0670f72aedeb85b84723efeae71aa8fbd0",
+  "pending": 0,
+  "added_models": [
+    {
+      "id": "6.gLLoWAUAAADTRw",
+      "type": "UseCase",
+      "name": "Timeout Quick-Call Mode (top 3 plays, shot zone and reason in one screen)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "jHoLLoWAUAAADTR.",
+      "type": "Association",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "dHkLLoWAUAAADTSL",
+      "type": "Include",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "ey_LLoWAUAAADTae",
+      "type": "Collaboration",
+      "name": "Timeout Quick-Call Mode",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "ny_LLoWAUAAADTaf",
+      "type": "Frame",
+      "name": "Behavioural Overview - Timeout Quick-Call Mode",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "fe_LLoWAUAAADTk6",
+      "type": "Frame",
+      "name": "Detailed Sequence - Quick-Call Refresh and Fallback (628)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "eR_LLoWAUAAADTnM",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "VR_LLoWAUAAADTnN",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "zR_LLoWAUAAADTnO",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "3R_LLoWAUAAADTnP",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "ox_LLoWAUAAADTnQ",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "8x_LLoWAUAAADTnR",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "Wx_LLoWAUAAADTnS",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "xx_LLoWAUAAADTnT",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "6vOrLoWAUAAADTvy",
+      "type": "Realization",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "ScEbLoWAUAAADT0p",
+      "type": "Class",
+      "name": "QuickCallModeClient",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "THKbLoWAUAAADT1y",
+      "type": "Class",
+      "name": "QuickCallSituation",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "9YWbLoWAUAAADT2q",
+      "type": "Class",
+      "name": "LateGameScenario",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "YQ2bLoWAUAAADT3J",
+      "type": "Class",
+      "name": "QuickCallApi",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "VR.bLoWAUAAADT3j",
+      "type": "Class",
+      "name": "QuickCallResponse",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "cZBbLoWAUAAADT4E",
+      "type": "Class",
+      "name": "QuickCallPlay",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "NCJbLoWAUAAADT4m",
+      "type": "Class",
+      "name": "QuickCallEndpoint",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "TopbLoWAUAAADT49",
+      "type": "Class",
+      "name": "QuickCallService",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "EPFbLoWAUAAADT5c",
+      "type": "Class",
+      "name": "QuickCallBuilder",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "VWtbLoWAUAAADT59",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "yizbLoWAUAAADT6D",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "hhzbLoWAUAAADT6H",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "FjzbLoWAUAAADT6L",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "BALbLoWAUAAADT6P",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "T8LbLoWAUAAADT6T",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "r.LbLoWAUAAADT6X",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "sDLbLoWAUAAADT6b",
+      "type": "Dependency",
+      "name": null,
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "iB.7LoWAUAAADWcX",
+      "type": "NOTE",
+      "name": "",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "7iQHLoWAUAAADWnj",
+      "type": "InteractionActor",
+      "name": "Coach",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "zdQHLoWAUAAADWns",
+      "type": "InteractionLifeLine",
+      "name": "quickCall",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "ThYHLoWAUAAADWn1",
+      "type": "InteractionLifeLine",
+      "name": "rules",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "hA4HLoWAUAAADWn.",
+      "type": "InteractionLifeLine",
+      "name": "client",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "j.4HLoWAUAAADWoH",
+      "type": "InteractionLifeLine",
+      "name": "api",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "w_4HLoWAUAAADWoQ",
+      "type": "InteractionLifeLine",
+      "name": "guard",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "SeEHLoWAUAAADWoZ",
+      "type": "InteractionLifeLine",
+      "name": "service",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "DDMHLoWAUAAADWoi",
+      "type": "InteractionLifeLine",
+      "name": "builder",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "40aHLoWAUAAADWor",
+      "type": "InteractionLifeLine",
+      "name": "contextRanker",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "7kRHLoWAUAAADWpE",
+      "type": "Message",
+      "name": "openQuickCall(matchup, margin, period, timeRemaining)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "fmFHLoWAUAAADWt_",
+      "type": "Message",
+      "name": "clampSituation(fromSearchParams(params))",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "IKlHLoWAUAAADWuU",
+      "type": "Message",
+      "name": "fetchQuickCall(situation, signal)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "OoVHLoWAUAAADWuo",
+      "type": "Message",
+      "name": "GET /rank-plays/quick-call (Bearer JWT)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "_7VHLoWAUAAADWu8",
+      "type": "Message",
+      "name": "__call__(user)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "W8tHLoWAUAAADWvQ",
+      "type": "Message",
+      "name": "authorizedUser : AuthContext",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "kHLHLoWAUAAADWvn",
+      "type": "Message",
+      "name": "recommend(QuickCallRequest)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "ljrHLoWAUAAADWv7",
+      "type": "Message",
+      "name": "rank_ml_with_context(season, our, opp, margin, period, time_remaining, k=3)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "H_inLoWAUAAADWww",
+      "type": "Message",
+      "name": "rankings : DataFrame",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "kiGnLoWAUAAADWxH",
+      "type": "Message",
+      "name": "build_quick_call(rows, source='context')",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "SkmnLoWAUAAADWxb",
+      "type": "Message",
+      "name": "plays : top 3 with shot_zone and reason",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "A8.nLoWAUAAADWx2",
+      "type": "Message",
+      "name": "QuickCallResult(source, notice, plays)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "24pnLoWAUAAADWyP",
+      "type": "Message",
+      "name": "200 QuickCallResponse",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "9ZVnLoWAUAAADWyo",
+      "type": "Message",
+      "name": "QuickCallResponse",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "qODnLoWAUAAADWy7",
+      "type": "Message",
+      "name": "render(top 3 plays, shot zones, reasons, source notice)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "TbLnLoWAUAAADWzJ",
+      "type": "Message",
+      "name": "step('margin', -1) or applyScenario('down3-under30')",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "Q77nLoWAUAAADWzd",
+      "type": "Message",
+      "name": "stepSituation(s, field, delta)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "5xXnLoWAUAAADWzx",
+      "type": "Message",
+      "name": "fetchQuickCall(situation, signal) [debounced 250 ms, aborts previous; repeats 3-15 within 2 s]",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "AUeXLoWAUAAADYwo",
+      "type": "InteractionLifeLine",
+      "name": "client",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "CVeXLoWAUAAADYwx",
+      "type": "InteractionLifeLine",
+      "name": "api",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "Qk.XLoWAUAAADYw6",
+      "type": "InteractionLifeLine",
+      "name": "guard",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "kF.XLoWAUAAADYxD",
+      "type": "InteractionLifeLine",
+      "name": "service",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "VYBXLoWAUAAADYxM",
+      "type": "InteractionLifeLine",
+      "name": "contextRanker",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "2pBXLoWAUAAADYxV",
+      "type": "InteractionLifeLine",
+      "name": "baselineRanker",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "w_BXLoWAUAAADYxe",
+      "type": "InteractionLifeLine",
+      "name": "builder",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "SNFXLoWAUAAADYxx",
+      "type": "Message",
+      "name": "GET /rank-plays/quick-call?season&our&opp&margin&period&time_remaining",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "CRlXLoWAUAAADYyD",
+      "type": "Message",
+      "name": "__call__(user) [recommendation resource: coach only]",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "HStXLoWAUAAADY2q",
+      "type": "Message",
+      "name": "authorizedUser, or 403 Forbidden when role is not coach",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "sgdXLoWAUAAADY27",
+      "type": "Message",
+      "name": "validate ranges: 400 if margin, period or time_remaining is out of range",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "YbdXLoWAUAAADY3P",
+      "type": "Message",
+      "name": "recommend(QuickCallRequest)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "OD9XLoWAUAAADY3j",
+      "type": "Message",
+      "name": "rank_ml_with_context(..., k=3)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "mqzXLoWAUAAADY3x",
+      "type": "Message",
+      "name": "raises ValueError / FileNotFoundError (context model unavailable)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "aiLXLoWAUAAADY4F",
+      "type": "Message",
+      "name": "rank_playtypes_baseline(season, our, opp, k=3)",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "KcrXLoWAUAAADY4Z",
+      "type": "Message",
+      "name": "baseline rankings",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "QsbXLoWAUAAADY4v",
+      "type": "Message",
+      "name": "build_quick_call(rows, source='baseline')",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "LAnXLoWAUAAADY5D",
+      "type": "Message",
+      "name": "plays[3] with shot_zone and one-line reason",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "nLnXLoWAUAAADY5Z",
+      "type": "Message",
+      "name": "QuickCallResult(source='baseline', notice='Game context not applied')",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "vNXXLoWAUAAADY5t",
+      "type": "Message",
+      "name": "200 QuickCallResponse",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "awB3LoWAUAAADY5.",
+      "type": "CombinedFragment",
+      "name": "fallback [context model unavailable]",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "7wB3LoWAUAAADY6D",
+      "type": "InteractionOperand",
+      "name": "Operand",
+      "author": "mousaa@sheridancollege.ca"
+    }
+  ],
+  "changed_models": [
+    {
+      "id": "8zHsqVmAUUE.bzvI",
+      "type": "ModelRelationshipContainer",
+      "name": "Association"
+    },
+    {
+      "id": "WlLCa1mGAqAALh.p",
+      "type": "ModelRelationshipContainer",
+      "name": "Include"
+    },
+    {
+      "id": "WlLCa1mGAqAALh.o",
+      "type": "ModelRelationshipContainer",
+      "name": "Dependency"
+    },
+    {
+      "id": "OwCaf1mGAqAALmna",
+      "type": "AutoAttributeTypeModelContainer",
+      "name": "AutoAttributeTypeModelContainer"
+    },
+    {
+      "id": "qVHt_1mGAqAALlVO",
+      "type": "Package",
+      "name": "Contextual ML Recommender"
+    },
+    {
+      "id": "BwYKwNmGAqAALne6",
+      "type": "ModelRelationshipContainer",
+      "name": "Message"
+    },
+    {
+      "id": "QGVrbjmGmMmMJQCe",
+      "type": "System",
+      "name": " Basketball PlayType Ranker (Context ML Recommender)"
+    },
+    {
+      "id": "wGVrbjmGmMmMJQC0",
+      "type": "UseCase",
+      "name": "Run Context Model (predict adjusted PPP per play type)"
+    },
+    {
+      "id": "wGVrbjmGmMmMJQDU",
+      "type": "Actor",
+      "name": " Coach / Analyst\n(Primary)2"
+    },
+    {
+      "id": "7sZ6GLmAUAAADRP1",
+      "type": "Model",
+      "name": "Design Model 2.0"
+    },
+    {
+      "id": "ln1mGLmAUAAADRSY",
+      "type": "Subsystem",
+      "name": "Recommendation UI"
+    },
+    {
+      "id": "Pq3mGLmAUAAADRS5",
+      "type": "Subsystem",
+      "name": "API Coordination"
+    },
+    {
+      "id": "AakWGLmAUAAADRTa",
+      "type": "Subsystem",
+      "name": "Access Control Services"
+    },
+    {
+      "id": "t58WGLmAUAAADRTl",
+      "type": "Subsystem",
+      "name": "Baseline Recommendation"
+    },
+    {
+      "id": "ZzyWGLmAUAAADRTw",
+      "type": "Subsystem",
+      "name": "Context ML Recommendation"
+    },
+    {
+      "id": "kGecuLmAUAAADX.L",
+      "type": "Model",
+      "name": "Deployment Model 2.0"
+    },
+    {
+      "id": "LXtA4bmAUAAADRh4",
+      "type": "Class",
+      "name": "ContextPageClient"
+    },
+    {
+      "id": ".3tA4bmAUAAADRiF",
+      "type": "Class",
+      "name": "ContextRankResponse"
+    },
+    {
+      "id": "MHxo4bmAUAAADR8V",
+      "type": "Class",
+      "name": "SupabaseClient"
+    },
+    {
+      "id": "T.g44bmAUAAADSCx",
+      "type": "Class",
+      "name": "FastAPIApp"
+    },
+    {
+      "id": "jBg44bmAUAAADSDJ",
+      "type": "Class",
+      "name": "AuthDependency"
+    },
+    {
+      "id": "aTt44bmAUAAADSFB",
+      "type": "Class",
+      "name": "AccessControlService"
+    },
+    {
+      "id": "hRE04bmAUAAADSTj",
+      "type": "Class",
+      "name": "MLContextRecommender"
+    },
+    {
+      "id": "Q0q54bmAUAAADWMo",
+      "type": "ModelRelationshipContainer",
+      "name": "Realization"
+    },
+    {
+      "id": "60KwWwWAUAAADRZX",
+      "type": "Subsystem",
+      "name": "Frontend Infrastructure"
+    },
+    {
+      "id": "rcKwWwWAUAAADRbs",
+      "type": "Class",
+      "name": "ApiClient"
+    },
+    {
+      "id": "ciKwWwWAUAAADRc_",
+      "type": "Class",
+      "name": "_RequireRole"
+    },
+    {
+      "id": "7dMZ.wWAUAAADVhd",
+      "type": "Subsystem",
+      "name": "Frontend Services"
+    },
+    {
+      "id": "C9MZ.wWAUAAADVhe",
+      "type": "Subsystem",
+      "name": "Frontend Domain"
+    },
+    {
+      "id": "NbKZ.wWAUAAADVtN",
+      "type": "Class",
+      "name": "BaselineRecommender"
+    },
+    {
+      "id": "eyaZ.wWAUAAADWJ_",
+      "type": "Usage",
+      "name": null
+    },
+    {
+      "id": "FyaZ.wWAUAAADWKA",
+      "type": "Usage",
+      "name": null
+    },
+    {
+      "id": "OKaZ.wWAUAAADWKG",
+      "type": "Usage",
+      "name": null
+    },
+    {
+      "id": "pKaZ.wWAUAAADWKH",
+      "type": "Usage",
+      "name": null
+    },
+    {
+      "id": "fKaZ.wWAUAAADWKK",
+      "type": "Usage",
+      "name": null
+    },
+    {
+      "id": "S6aZ.wWAUAAADWKb",
+      "type": "Usage",
+      "name": null
+    },
+    {
+      "id": "P6aZ.wWAUAAADWKg",
+      "type": "Usage",
+      "name": "HTTP/JSON"
+    },
+    {
+      "id": "ZP3N.wWAUAAADbbK",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "PP3N.wWAUAAADbbZ",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "Yv3N.wWAUAAADbbe",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "sv3N.wWAUAAADbbj",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "5v3N.wWAUAAADbb3",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "dv3N.wWAUAAADbb8",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "Lv3N.wWAUAAADbcB",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "Xv3N.wWAUAAADbcG",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "Af3N.wWAUAAADbcL",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "4f3N.wWAUAAADbcQ",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "Kf3N.wWAUAAADbca",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "Wf3N.wWAUAAADbcf",
+      "type": "Association",
+      "name": null
+    },
+    {
+      "id": "hf3N.wWAUAAADbck",
+      "type": "Association",
+      "name": null
+    }
+  ],
+  "added_diagrams": [
+    {
+      "id": "G_U0nCyAUAAADTRw",
+      "type": "UseCaseDescriptionDiagram",
+      "name": "Timeout Quick-Call Mode (top 3 plays, shot zone and reason in one screen) Details"
+    },
+    {
+      "id": "zx_LLoWAUAAADTnU",
+      "type": "ClassDiagram",
+      "name": "Collaboration Overview - Timeout Quick-Call Mode"
+    },
+    {
+      "id": "MJ_LLoWAUAAADToL",
+      "type": "ClassDiagram",
+      "name": "Structural Overview - Timeout Quick-Call Mode"
+    },
+    {
+      "id": "yuobLoWAUAAADT0Z",
+      "type": "ClassDiagram",
+      "name": "Elaboration - Timeout Quick-Call Design (628)"
+    },
+    {
+      "id": "9J_LLoWAUAAADTq7",
+      "type": "InteractionDiagram",
+      "name": "Behavioural Overview - Timeout Quick-Call Mode"
+    },
+    {
+      "id": "bp_LLoWAUAAADTto",
+      "type": "InteractionDiagram",
+      "name": "Detailed Sequence - Quick-Call Refresh and Fallback (628)"
+    }
+  ],
+  "changed_diagrams": [
+    {
+      "id": "bawPbjmD.AAAAUbo",
+      "name": "Contextual ML Recommender Overview Diagram 2.0"
+    },
+    {
+      "id": "fE3N.wWAUAAADbJE",
+      "name": "Data Explorer UI Overview"
+    },
+    {
+      "id": "8U3N.wWAUAAADbJS",
+      "name": "Recommendation UI Overview"
+    },
+    {
+      "id": "u03N.wWAUAAADbJ2",
+      "name": "Analytics UI Overview"
+    },
+    {
+      "id": "Ac3N.wWAUAAADbKQ",
+      "name": "Authentication UI Overview"
+    },
+    {
+      "id": "vc3N.wWAUAAADbK8",
+      "name": "Gameplan UI Overview"
+    },
+    {
+      "id": "6C3N.wWAUAAADbLO",
+      "name": "Shot Analysis UI Overview"
+    },
+    {
+      "id": "UK3N.wWAUAAADbL0",
+      "name": "API Coordination Overview"
+    },
+    {
+      "id": "1a3N.wWAUAAADbNg",
+      "name": "Recommendation Services Overview"
+    },
+    {
+      "id": "jG3N.wWAUAAADbOG",
+      "name": "Analytics Services Overview"
+    },
+    {
+      "id": "7m3N.wWAUAAADbOs",
+      "name": "Access Control Services Overview"
+    },
+    {
+      "id": "bO3N.wWAUAAADbPG",
+      "name": "Frontend Services Overview"
+    },
+    {
+      "id": "xe3N.wWAUAAADbP8",
+      "name": "Baseline Recommendation Overview"
+    },
+    {
+      "id": "wB3N.wWAUAAADbQg",
+      "name": "Context ML Recommendation Overview"
+    },
+    {
+      "id": "VR3N.wWAUAAADbRG",
+      "name": "Statistical Analysis Overview"
+    },
+    {
+      "id": "gp3N.wWAUAAADbRc",
+      "name": "Shot Analysis Overview"
+    },
+    {
+      "id": "lZ3N.wWAUAAADbSg",
+      "name": "Frontend Domain Overview"
+    },
+    {
+      "id": "2l3N.wWAUAAADbTK",
+      "name": "Data Access Overview"
+    },
+    {
+      "id": "J13N.wWAUAAADbU0",
+      "name": "Model Management Overview"
+    },
+    {
+      "id": "4t3N.wWAUAAADbVO",
+      "name": "Visualization and Export Overview"
+    },
+    {
+      "id": "c93N.wWAUAAADbV2",
+      "name": "External Integrations Overview"
+    },
+    {
+      "id": "yT3N.wWAUAAADbW6",
+      "name": "Frontend Infrastructure Overview"
+    },
+    {
+      "id": "Nr3N.wWAUAAADbYM",
+      "name": "Software System Architecture"
+    },
+    {
+      "id": "_33N.wWAUAAADbZO",
+      "name": "Software System Architecture - Subsystem Dependencies"
+    },
+    {
+      "id": "7f3N.wWAUAAADbcq",
+      "name": "Collaboration Overview - Access Analyst Workspace"
+    },
+    {
+      "id": "EAPN.wWAUAAADbdi",
+      "name": "Structural Overview - Access Analyst Workspace"
+    },
+    {
+      "id": "ikPN.wWAUAAADbia",
+      "name": "Collaboration Overview - Ranked List via API (Baseline)"
+    },
+    {
+      "id": "sUPN.wWAUAAADbjL",
+      "name": "Structural Overview - Ranked List via API (Baseline)"
+    },
+    {
+      "id": "dCPN.wWAUAAADbml",
+      "name": "Collaboration Overview - Rank Plays with Game Context"
+    },
+    {
+      "id": "biPN.wWAUAAADbnk",
+      "name": "Structural Overview - Rank Plays with Game Context"
+    },
+    {
+      "id": "eOPN.wWAUAAADbs.",
+      "name": "Collaboration Overview - Authenticate Analyst Access"
+    },
+    {
+      "id": "iuPN.wWAUAAADbto",
+      "name": "Structural Overview - Authenticate Analyst Access"
+    },
+    {
+      "id": "3zPN.wWAUAAADb3t",
+      "name": "Collaboration Overview - Validate Coach Access"
+    },
+    {
+      "id": "3LPN.wWAUAAADb4l",
+      "name": "Structural Overview - Validate Coach Access"
+    },
+    {
+      "id": "8W4D.wWAUAAADc8a",
+      "name": "Deployment Diagram"
+    },
+    {
+      "id": "Elab56198592e4c5",
+      "name": "Elaboration - Analyst Evidence Design (475, 476, 477)"
+    },
+    {
+      "id": "Elab8132fcbcc10d",
+      "name": "Elaboration - Coach Gameplan Storage (481)"
+    },
+    {
+      "id": "A2a6e559ca1de02a",
+      "name": "Collaboration Overview - Run Data Quality Checks (480)"
+    },
+    {
+      "id": "A2271d30211208e1",
+      "name": "Collaboration Overview - Export KPIs / Reports (486)"
+    }
+  ]
+}

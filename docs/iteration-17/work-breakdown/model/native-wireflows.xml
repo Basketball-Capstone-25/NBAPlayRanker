@@ -1,0 +1,73 @@
+<nativeWireflows originalDiagramCount="237">
+<flow key="data" id="0FB0noWD.AAAAQjI" name="Wireflow - Data Explorer and Dictionary">
+<useCase id="dfl3vjmEEhz2rQBu" name="Run Data Quality Checks"/>
+<useCase id="jv0JX1mGAqAALhjZ" name="Audit Metadata"/>
+<useCase id="jXQJX1mGAqAALhjF" name="Data Dictionary"/>
+<useCase id="IIdxX1mGAqAALhih" name="Versioned CSV Tables"/>
+<useCase id="oLOFX1mGAqAALhmy" name="Plain Labels &amp; Readability"/>
+<scene index="0" node="DVB0noWD.AAAAQmE" shape="o1B0noWD.AAAAQmO" web="GVB0noWD.AAAAQlx" state="OVB0noWD.AAAAQl0" title="Open Data Explorer" widgets="6"/>
+<scene index="1" node="XPB0noWD.AAAAQs7" shape="EvB0noWD.AAAAQs." web="pPB0noWD.AAAAQsu" state="1PB0noWD.AAAAQsw" title="Loading / Retry" widgets="6"/>
+<scene index="2" node="GAh0noWD.AAAAQtd" shape=".Ah0noWD.AAAAQtg" web="cAh0noWD.AAAAQtO" state="CAh0noWD.AAAAQtQ" title="Data and source status" widgets="7"/>
+<scene index="3" node="nQh0noWD.AAAAQt_" shape="vQh0noWD.AAAAQuC" web="lQh0noWD.AAAAQty" state="NQh0noWD.AAAAQt0" title="Source details" widgets="6"/>
+<scene index="4" node="zIh0noWD.AAAAQuf" shape="nIh0noWD.AAAAQui" web="1Ih0noWD.AAAAQuS" state="dIh0noWD.AAAAQuU" title="Data Dictionary" widgets="6"/>
+<scene index="5" node="FYh0noWD.AAAAQu_" shape="tYh0noWD.AAAAQvC" web="JYh0noWD.AAAAQuy" state="pYh0noWD.AAAAQu0" title="Unknown or empty definitions" widgets="6"/>
+<edge id="REh0noWD.AAAAQvT" from="0" to="1" label="Load"/>
+<edge id="XEh0noWD.AAAAQxN" from="1" to="2" label="Data received"/>
+<edge id="fEh0noWD.AAAAQxR" from="2" to="3" label="Source details"/>
+<edge id="gkh0noWD.AAAAQxV" from="3" to="4" label="Dictionary link"/>
+<edge id="Ikh0noWD.AAAAQxZ" from="4" to="5" label="No match / missing definition"/>
+</flow>
+<flow key="shots" id="kLh0noWD.AAAAQz2" name="Wireflow - Shot Plan, Explorer and Heatmap">
+<useCase id="5V1jrLmAUAAADR1t" name="Review Shot-Plan Recommendations"/>
+<useCase id="Wbd8ae8a15dc28bc" name="Explore Shot Attempts and Heatmaps"/>
+<useCase id="4tK5X1mGAqAALhlh" name="Reactive Updates on Input Changes"/>
+<scene index="0" node="3Lh0noWD.AAAAQ1g" shape="Qrh0noWD.AAAAQ1j" web="bLh0noWD.AAAAQ1T" state="bLh0noWD.AAAAQ1V" title="Choose inputs" widgets="6"/>
+<scene index="1" node="Q7h0noWD.AAAAQ2A" shape="Y7h0noWD.AAAAQ2D" web="3bh0noWD.AAAAQ1z" state="Pbh0noWD.AAAAQ11" title="Run / Render" widgets="6"/>
+<scene index="2" node="GHh0noWD.AAAAQ2i" shape="WHh0noWD.AAAAQ2l" web="KHh0noWD.AAAAQ2T" state="qHh0noWD.AAAAQ2V" title="Current plan or preview" widgets="7"/>
+<scene index="3" node="Bnh0noWD.AAAAQ3E" shape="xnh0noWD.AAAAQ3H" web="Gnh0noWD.AAAAQ23" state="mnh0noWD.AAAAQ25" title="Heatmap counts" widgets="6"/>
+<scene index="4" node="dXh0noWD.AAAAQ3m" shape="DXh0noWD.AAAAQ3p" web="FXh0noWD.AAAAQ3X" state="FXh0noWD.AAAAQ3Z" title="Download current result" widgets="7"/>
+<scene index="5" node="j3h0noWD.AAAAQ4I" shape="z3h0noWD.AAAAQ4L" web="t3h0noWD.AAAAQ37" state="d3h0noWD.AAAAQ39" title="Failure / changed source" widgets="6"/>
+<edge id="NPh0noWD.AAAAQ4b" from="0" to="1" label="Run / Render"/>
+<edge id="zPh0noWD.AAAAQ4f" from="1" to="2" label="Requested results ready"/>
+<edge id="bPh0noWD.AAAAQ4j" from="2" to="3" label="Review matched shots"/>
+<edge id="HPh0noWD.AAAAQ4n" from="3" to="4" label="Download current filters"/>
+<edge id="XPh0noWD.AAAAQ4r" from="1" to="5" label="Request fails / no data"/>
+<edge id="fPh0noWD.AAAAQ4v" from="4" to="5" label="PNG source changed"/>
+</flow>
+<flow key="evidence" id="MyR0noWD.AAAAQ55" name="Wireflow - Analyst Metrics and Reports">
+<useCase id="Wbdc1d2b94f83b25" name="Review Saved Shot-Model Evidence"/>
+<useCase id="iK2lX1mGAqAALhof" name="Seasonal Holdout"/>
+<useCase id="Ub9lX1mGAqAALhoz" name="Compute &amp; Export Top-K Uplift (CSV/JSON)"/>
+<useCase id="dfl3vjmEEhz2rQBw" name="Export KPIs / Reports"/>
+<useCase id="oLOFX1mGAqAALhmy" name="Plain Labels &amp; Readability"/>
+<scene index="0" node="8KR0noWD.AAAAQ77" shape="qKR0noWD.AAAAQ7." web="LyR0noWD.AAAAQ7s" state="ryR0noWD.AAAAQ7u" title="Choose evidence page" widgets="7"/>
+<scene index="1" node="XaR0noWD.AAAAQ8f" shape="vaR0noWD.AAAAQ8i" web="9aR0noWD.AAAAQ8Q" state="9aR0noWD.AAAAQ8S" title="Load current evidence" widgets="7"/>
+<scene index="2" node="v6R0noWD.AAAAQ9D" shape="gGR0noWD.AAAAQ9G" web="H6R0noWD.AAAAQ80" state="X6R0noWD.AAAAQ82" title="Interpret current evidence" widgets="7"/>
+<scene index="3" node="cmR0noWD.AAAAQ9l" shape="CmR0noWD.AAAAQ9o" web="EmR0noWD.AAAAQ9Y" state="kmR0noWD.AAAAQ9a" title="Inspect technical details" widgets="6"/>
+<scene index="4" node="aWR0noWD.AAAAQ.H" shape="GWR0noWD.AAAAQ.K" web="CWR0noWD.AAAAQ94" state="yWR0noWD.AAAAQ96" title="Download permitted table" widgets="7"/>
+<scene index="5" node="q2R0noWD.AAAAQ.r" shape="G2R0noWD.AAAAQ.u" web="i2R0noWD.AAAAQ.c" state="S2R0noWD.AAAAQ.e" title="Unavailable / Retry" widgets="7"/>
+<edge id="sOR0noWD.AAAAQ_A" from="0" to="1" label="Open page"/>
+<edge id="yOR0noWD.AAAAQ_E" from="1" to="2" label="Valid evidence"/>
+<edge id="6OR0noWD.AAAAQ_I" from="2" to="3" label="Expand details"/>
+<edge id="WOR0noWD.AAAAQ_M" from="3" to="4" label="Export permitted table"/>
+<edge id="uOR0noWD.AAAAQ_Q" from="1" to="5" label="Missing / invalid artifact"/>
+<edge id="BOR0noWD.AAAAQ_U" from="4" to="5" label="Source version changed"/>
+</flow>
+<flow key="coach" id="TtR0noWD.AAAARAh" name="Wireflow - Coach Context and Current Calls">
+<useCase id="sDahi1mGAqAALiDF" name="Rank Plays with Game Context"/>
+<useCase id="z9E5X1mGAqAALhlN" name="Ranked List via API (Baseline)"/>
+<useCase id="TPn5X1mGAqAALhmK" name="Short Explanations per item"/>
+<useCase id="4tK5X1mGAqAALhlh" name="Reactive Updates on Input Changes"/>
+<scene index="0" node="cdR0noWD.AAAARCl" shape="CdR0noWD.AAAARCo" web="UdR0noWD.AAAARCY" state="0dR0noWD.AAAARCa" title="Select matchup and situation" widgets="6"/>
+<scene index="1" node="q9R0noWD.AAAARDF" shape="W9R0noWD.AAAARDI" web="S9R0noWD.AAAARC4" state="y9R0noWD.AAAARC6" title="Build one snapshot" widgets="6"/>
+<scene index="2" node="SDR0noWD.AAAARDn" shape="WDR0noWD.AAAARDq" web="sDR0noWD.AAAARDY" state="8DR0noWD.AAAARDa" title="Show applicable result" widgets="7"/>
+<scene index="3" node="0jR0noWD.AAAAREJ" shape="sjR0noWD.AAAAREM" web="YjR0noWD.AAAARD8" state="YjR0noWD.AAAARD." title="Change controls or scenario" widgets="6"/>
+<scene index="4" node="kTR0noWD.AAAAREp" shape="0TR0noWD.AAAAREs" web="YTR0noWD.AAAAREc" state="YTR0noWD.AAAAREe" title="Latest request completes" widgets="6"/>
+<scene index="5" node="IzR0noWD.AAAARFL" shape="EzR0noWD.AAAARFO" web="gzR0noWD.AAAARE8" state="QzR0noWD.AAAARE." title="Error / unavailable" widgets="7"/>
+<edge id="zzR0noWD.AAAARFg" from="0" to="1" label="Build"/>
+<edge id="HzR0noWD.AAAARFk" from="1" to="2" label="Current ranking"/>
+<edge id="3zR0noWD.AAAARFo" from="2" to="3" label="Change situation"/>
+<edge id="vzR0noWD.AAAARFs" from="3" to="4" label="Newest success"/>
+<edge id="_zR0noWD.AAAARFw" from="3" to="5" label="Latest request fails"/>
+</flow>
+<summary addedDiagrams="28" originalIdsPreserved="true" saved="true"/></nativeWireflows>

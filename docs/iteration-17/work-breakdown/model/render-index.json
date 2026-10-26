@@ -1,0 +1,605 @@
+[
+  {
+    "id": "0FB0noWD.AAAAQjI",
+    "name": "Wireflow - Data Explorer and Dictionary",
+    "type": "WireflowDiagram",
+    "path": "renders/Wireflow - Data Explorer and Dictionary.png",
+    "sha256": "fa2e60754063905f1de68b08165bb40ae736fceab784ce8ce20bf9af67dd4869",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "1Ih0noWD.AAAAQuS",
+    "name": "Screen - Data Explorer and Dictionary - 5 Data Dictionary",
+    "type": "WFWebDiagram",
+    "path": "renders/data-screen-5.png",
+    "sha256": "d9490b1506b6f4e9e32658f7ac19485c5197d4b33a16510cded8ed11fa04d4bc",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "3bh0noWD.AAAAQ1z",
+    "name": "Screen - Shot Plan, Explorer and Heatmap - 2 Run / Render",
+    "type": "WFWebDiagram",
+    "path": "renders/shots-screen-2.png",
+    "sha256": "2d59af27cca6a2c5411382d86cc707dd46439441000d15ceb30737456437ee06",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "9aR0noWD.AAAAQ8Q",
+    "name": "Screen - Analyst Metrics and Reports - 2 Load current evidence",
+    "type": "WFWebDiagram",
+    "path": "renders/evidence-screen-2.png",
+    "sha256": "37402ff06d99a0dac2afd3ec57ac54992e9d8c401ce838cfc21343855e59e03b",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "CWR0noWD.AAAAQ94",
+    "name": "Screen - Analyst Metrics and Reports - 5 Download permitted table",
+    "type": "WFWebDiagram",
+    "path": "renders/evidence-screen-5.png",
+    "sha256": "0df81553fa10f413a49e524ac9c5bbe47befb690a341ad3d36a1f17a3e3bb1ba",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "Elab56198592e4c5",
+    "name": "Elaboration - Analyst Evidence Design (475, 476, 477)",
+    "type": "ClassDiagram",
+    "path": "renders/Elaboration - Analyst Evidence Design (475, 476, 477).png",
+    "sha256": "db186a0de5c98e24b2d5c8ea59f979186bb853969a47b5ac2b5a569065243e85",
+    "new_diagram": false,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Elab8132fcbcc10d",
+    "name": "Elaboration - Coach Gameplan Storage (481)",
+    "type": "ClassDiagram",
+    "path": "renders/Elaboration - Coach Gameplan Storage (481).png",
+    "sha256": "da197601d14678d1cab4b168bc61fbda6f5e9d4900cfeb045a58cefba5af2bb8",
+    "new_diagram": false,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Elab86fdd4b13a52",
+    "name": "Detailed Sequence - Inspect PPP Calibration (476)",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Inspect PPP Calibration (476).png",
+    "sha256": "77933ef5ec4e1452db6afc55feb958cb586ae637ef0442c1bb68733aa1970fb4",
+    "new_diagram": false,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Elabcccf12e8a8ce",
+    "name": "Detailed Sequence - Analyst Top-K Uplift (475)",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Analyst Top-K Uplift (475).png",
+    "sha256": "3bf0f455f74928614284f04eb1ed92041a119159a2d8519789c7263b89cd02cd",
+    "new_diagram": false,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "EmR0noWD.AAAAQ9Y",
+    "name": "Screen - Analyst Metrics and Reports - 4 Inspect technical details",
+    "type": "WFWebDiagram",
+    "path": "renders/evidence-screen-4.png",
+    "sha256": "2372a55819fa16ac3fa8dd82168b4ef8ca66040f324439fb4cfc66422e013025",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "FXh0noWD.AAAAQ3X",
+    "name": "Screen - Shot Plan, Explorer and Heatmap - 5 Download current result",
+    "type": "WFWebDiagram",
+    "path": "renders/shots-screen-5.png",
+    "sha256": "97b039189cae5ee2c660aee2abff909f412f87ac5f54c7edcfd1f2f7b79a3576",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "GVB0noWD.AAAAQlx",
+    "name": "Screen - Data Explorer and Dictionary - 1 Open Data Explorer",
+    "type": "WFWebDiagram",
+    "path": "renders/data-screen-1.png",
+    "sha256": "7e57cc7565d48b309ef923d27574a6b0d8a6fd672316ba46aade82d568a0d151",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "Gnh0noWD.AAAAQ23",
+    "name": "Screen - Shot Plan, Explorer and Heatmap - 4 Heatmap counts",
+    "type": "WFWebDiagram",
+    "path": "renders/shots-screen-4.png",
+    "sha256": "91dd53a4614877a53f4df6e3c8478a3e58586cf1a4e289b6105a67e5589549a9",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "H6R0noWD.AAAAQ80",
+    "name": "Screen - Analyst Metrics and Reports - 3 Interpret current evidence",
+    "type": "WFWebDiagram",
+    "path": "renders/evidence-screen-3.png",
+    "sha256": "5d4aeaff2f8cc186b119f9cfe97ae76ff5918533e5b1bee0a5883b6b0942671c",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "JYh0noWD.AAAAQuy",
+    "name": "Screen - Data Explorer and Dictionary - 6 Unknown or empty definitions",
+    "type": "WFWebDiagram",
+    "path": "renders/data-screen-6.png",
+    "sha256": "fbc1ebf1f2e83a341a6a7bd2bef45122eb655d77cb27dba97d8578eaf4f82ac6",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "KHh0noWD.AAAAQ2T",
+    "name": "Screen - Shot Plan, Explorer and Heatmap - 3 Current plan or preview",
+    "type": "WFWebDiagram",
+    "path": "renders/shots-screen-3.png",
+    "sha256": "668ae117a3c7f06ba985b44df7198a52f4a50ae9806d747c7d886cc0a0f49e28",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "LyR0noWD.AAAAQ7s",
+    "name": "Screen - Analyst Metrics and Reports - 1 Choose evidence page",
+    "type": "WFWebDiagram",
+    "path": "renders/evidence-screen-1.png",
+    "sha256": "b8c2323495d4cd892d99e6c7494e1d6986f19045d4d2ae0f60315119bf8859e1",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "MyR0noWD.AAAAQ55",
+    "name": "Wireflow - Analyst Metrics and Reports",
+    "type": "WireflowDiagram",
+    "path": "renders/Wireflow - Analyst Metrics and Reports.png",
+    "sha256": "4d13c6138d20c18f7f2ceb7ded78674311f20eb48cd62f1c5de5b04f7f931f9f",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "S9R0noWD.AAAARC4",
+    "name": "Screen - Coach Context and Current Calls - 2 Build one snapshot",
+    "type": "WFWebDiagram",
+    "path": "renders/coach-screen-2.png",
+    "sha256": "ccf698da7adf1b599f4ae89529af6d42f5dae4670f0c87a285dd45ddfd5b399c",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "TtR0noWD.AAAARAh",
+    "name": "Wireflow - Coach Context and Current Calls",
+    "type": "WireflowDiagram",
+    "path": "renders/Wireflow - Coach Context and Current Calls.png",
+    "sha256": "a26471802e081345a8c88c190f28f07ec4966710690557880d3227e2b72420ce",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "UdR0noWD.AAAARCY",
+    "name": "Screen - Coach Context and Current Calls - 1 Select matchup and situation",
+    "type": "WFWebDiagram",
+    "path": "renders/coach-screen-1.png",
+    "sha256": "5e1ea26aacc51806240f1a94400777b703797d692feeb3b8073db27b6166a029",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "Wb0ccc23b10ed1c7",
+    "name": "Collaboration Overview - Present Clear Results and Limits",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Present Clear Results and Limits.png",
+    "sha256": "2733a2254fc981ba1c7c3b17cb983cc12ff71adfd6382c1a7dcbba411ebcfb4f",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb0cfd27772004c5",
+    "name": "Collaboration Overview - Review Shot-Plan Recommendations",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Review Shot-Plan Recommendations.png",
+    "sha256": "5295a90aa65ad51c29d587be670ca562c6925280b87e7ed2852693f6578118f6",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb1cea4146f7af7a",
+    "name": "Collaboration Overview - Validate and Rebuild Shot Sources",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Validate and Rebuild Shot Sources.png",
+    "sha256": "306ba5d77fad6df1d1ab811f2c4c1d245b77bbbab5b225b6fba0455dd85b3460",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb2738dacbdf4320",
+    "name": "Detailed Sequence - Review Saved Shot-Model Evidence",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Review Saved Shot-Model Evidence.png",
+    "sha256": "263d8f07b54e1575bebfbc98d5a50e061f4405f37a4fb141d60bd2f2c44d761e",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb2bd65971486c79",
+    "name": "Collaboration Overview - Identify Result Data Versions",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Identify Result Data Versions.png",
+    "sha256": "c302324ca2b160c0219759a04435f2996850cbea39d844fbcbaa19caef02d8e3",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb35c379282de6f4",
+    "name": "Detailed Sequence - Coach-Owned Gameplan Storage",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Coach-Owned Gameplan Storage.png",
+    "sha256": "e67de601ec81607fb5a6023854ce18fed0a5211093b73c06cba849a182e21038",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb4287fc031f9c33",
+    "name": "Detailed Sequence - Inspect Source Metadata",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Inspect Source Metadata.png",
+    "sha256": "9e812e8f9b4b9d4096deb51b480e8d8104de9e634b9d8fb3b75fd22dee775374",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb60f1360c38f347",
+    "name": "Collaboration Overview - Explore Shot Attempts and Heatmaps",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Explore Shot Attempts and Heatmaps.png",
+    "sha256": "17d49712e0ea681cd501c30a4a8bb2905e6b20520b19c48b436c1d8b38b32d5b",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb624ae3bbeb7114",
+    "name": "Structural Design - Inspect Source Metadata",
+    "type": "ClassDiagram",
+    "path": "renders/Structural Design - Inspect Source Metadata.png",
+    "sha256": "b6b72c191226eac26a05735c868b6cd77f7dc2507a27e4e59ecb430dc5c45a96",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb65c1f837d207f1",
+    "name": "Detailed Sequence - Validate and Rebuild Shot Sources",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Validate and Rebuild Shot Sources.png",
+    "sha256": "d909c3938dc4062f830772612cbf2630f625ff73a62d9153dc54d97c5896a65e",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb6c72841c6afe2b",
+    "name": "Collaboration Overview - Inspect Source Metadata",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Inspect Source Metadata.png",
+    "sha256": "77cec98219f5d102041298649696cc0734cb67258ab955f2de2afc4d8ea16a2a",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb702f4085ee0b68",
+    "name": "Collaboration Overview - Keep Results Matched to Inputs",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Keep Results Matched to Inputs.png",
+    "sha256": "406d411dfb55d2e25ff85899c050b46df21aa9861b65a83a882080023cd7d049",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb7d19b0e4cb6dad",
+    "name": "Collaboration Overview - Inspect Dataset Columns",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Inspect Dataset Columns.png",
+    "sha256": "6e362b04fc872eb06d7c7dfd7a566a95677f6bfb556779a5e9ae5e58b71061f3",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb87a1f415230853",
+    "name": "Detailed Sequence - Keep Results Matched to Inputs",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Keep Results Matched to Inputs.png",
+    "sha256": "bd652f926af002c696e68e9da4505a5d3888acbd441647307892a8fde7fd929c",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb92e6cc11905ce5",
+    "name": "Collaboration Overview - PPP Calibration Diagnostics",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - PPP Calibration Diagnostics.png",
+    "sha256": "ad8c363550766f543225e8ed704d00d3bfacec4c5ba7b6c4d24e0e9b235ef9fe",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wb93dfeee4d3cc9e",
+    "name": "Structural Design - Explore Shot Attempts and Heatmaps",
+    "type": "ClassDiagram",
+    "path": "renders/Structural Design - Explore Shot Attempts and Heatmaps.png",
+    "sha256": "e62dc8c7878919b2452e84ac1dec80b37e31ae914d8ea15e00c46184ff7142ab",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wba5cf63ba4d9e0c",
+    "name": "Detailed Sequence - Present Clear Results and Limits",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Present Clear Results and Limits.png",
+    "sha256": "93dec8bb3ae5c484f6b062ba6dfa9974c985782555a3c0926f1355fa52d44ecb",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wba6994d05cdc3b1",
+    "name": "Functional Overview - Current Analyst and Shot Evidence",
+    "type": "UseCaseDiagram",
+    "path": "renders/Functional Overview - Current Analyst and Shot Evidence.png",
+    "sha256": "2714b11f4dcf63095a0789c71b35dab3f426f58966f3b13458c8904a2a1f0478",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wba7597ad0d0469b",
+    "name": "Detailed Sequence - Inspect Dataset Columns",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Inspect Dataset Columns.png",
+    "sha256": "a6c3ddd198a06f5b71977aa1f36ef38e2b3db577482fefa7248b26d4ecab992d",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wba78fd2b4704e06",
+    "name": "Collaboration Overview - Historical Top-K Uplift",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Historical Top-K Uplift.png",
+    "sha256": "8bf48405e63adb3c2097ff1385785c3b9c127f673ca4509ef5a8c698ea4459eb",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbca030b9426b2b1",
+    "name": "Structural Design - Review Shot-Plan Recommendations",
+    "type": "ClassDiagram",
+    "path": "renders/Structural Design - Review Shot-Plan Recommendations.png",
+    "sha256": "64378b870553153fc13135f2fe02a5edf7a69a9642dfddd2df385a817f895aec",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbd177178dc56e92",
+    "name": "Structural Design - Keep Results Matched to Inputs",
+    "type": "ClassDiagram",
+    "path": "renders/Structural Design - Keep Results Matched to Inputs.png",
+    "sha256": "8407612f0ea97e7568baa352bf6b88704a372e852318cf6df97ef878edbd6757",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbd2838148f71b01",
+    "name": "Detailed Sequence - Explore Shot Attempts and Heatmaps",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Explore Shot Attempts and Heatmaps.png",
+    "sha256": "2314c93c836e5d6a2cdd78d1535bcf10701609a4a3ccdf5c372bad93fb0db381",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbd77c9edf94bde0",
+    "name": "Structural Design - Inspect Dataset Columns",
+    "type": "ClassDiagram",
+    "path": "renders/Structural Design - Inspect Dataset Columns.png",
+    "sha256": "c4404d3d6b5efc444586f2ba7414ebd934d4aa5cae1a93fe369f6713a122c1c7",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbde26834bf381e6",
+    "name": "Structural Design - Review Saved Shot-Model Evidence",
+    "type": "ClassDiagram",
+    "path": "renders/Structural Design - Review Saved Shot-Model Evidence.png",
+    "sha256": "5f36ad8f80b05d7df649b2047126af97fad3bf229ccdf2a43b6e260e47cacf26",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbdeeeb8690f418f",
+    "name": "Detailed Sequence - Review Shot-Plan Recommendations",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Review Shot-Plan Recommendations.png",
+    "sha256": "c4a31283da6dc02f8617ca3b73abc06fa498f3675bf4a53b880504162bc32a38",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbe14aa0ee458921",
+    "name": "Structural Design - Validate and Rebuild Shot Sources",
+    "type": "ClassDiagram",
+    "path": "renders/Structural Design - Validate and Rebuild Shot Sources.png",
+    "sha256": "4dcd177c800999047f323227c90457d7146669161e5264992c96d98e9195d93b",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbe3c7cf51c38af8",
+    "name": "Structural Design - Identify Result Data Versions",
+    "type": "ClassDiagram",
+    "path": "renders/Structural Design - Identify Result Data Versions.png",
+    "sha256": "010253836c97b975b2610ba855379a3b751fdf906c0dd473f87939cf7f219c65",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbea335a65d47c77",
+    "name": "Collaboration Overview - Review Saved Shot-Model Evidence",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Review Saved Shot-Model Evidence.png",
+    "sha256": "5b625f93fe98a953b8f8898e4a248ad27c4d5cb9e9fb8b5e615cfe7ded1e75d4",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbeedf1f130b096e",
+    "name": "Collaboration Overview - Coach-Owned Gameplan Storage",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Coach-Owned Gameplan Storage.png",
+    "sha256": "a8f9c095ed9b4bd5039fa83a2c9212882e22f07037acbc009c8fbb87279ed292",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbf4aac161ae722e",
+    "name": "Structural Design - Present Clear Results and Limits",
+    "type": "ClassDiagram",
+    "path": "renders/Structural Design - Present Clear Results and Limits.png",
+    "sha256": "85ade8af79d6239fc2280c32e2598074021a381ae04d33c43fd23f30ff01f738",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "Wbfdca427dda846a",
+    "name": "Detailed Sequence - Identify Result Data Versions",
+    "type": "InteractionDiagram",
+    "path": "renders/Detailed Sequence - Identify Result Data Versions.png",
+    "sha256": "6934cb1f788e00bc1b2c55a5ae61cde8da840f742bb13823b135939f3595edb8",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "YTR0noWD.AAAAREc",
+    "name": "Screen - Coach Context and Current Calls - 5 Latest request completes",
+    "type": "WFWebDiagram",
+    "path": "renders/coach-screen-5.png",
+    "sha256": "ef55f8ed33a8ca581f995a63ba37e978ce01661b03dfd33b97c3e8fb6641c00a",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "YjR0noWD.AAAARD8",
+    "name": "Screen - Coach Context and Current Calls - 4 Change controls or scenario",
+    "type": "WFWebDiagram",
+    "path": "renders/coach-screen-4.png",
+    "sha256": "54864318beff6c556bea8fa15f0b02d175af210673d1be0f36b61875d83f124b",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "bLh0noWD.AAAAQ1T",
+    "name": "Screen - Shot Plan, Explorer and Heatmap - 1 Choose inputs",
+    "type": "WFWebDiagram",
+    "path": "renders/shots-screen-1.png",
+    "sha256": "d453b6e8b8651ef59bbe6b97f7b3e4bfc89add9696291cef271ea0b1b7b0fa93",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "bawPbjmD.AAAAUbo",
+    "name": "Contextual ML Recommender Overview Diagram 2.0",
+    "type": "UseCaseDiagram",
+    "path": "renders/Contextual ML Recommender Overview Diagram 2.0.png",
+    "sha256": "bb0f094288c3e0f215249ed2aff83ede18ff6b9aee3b3542b931ca6b0a0be921",
+    "new_diagram": false,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "cAh0noWD.AAAAQtO",
+    "name": "Screen - Data Explorer and Dictionary - 3 Data and source status",
+    "type": "WFWebDiagram",
+    "path": "renders/data-screen-3.png",
+    "sha256": "b50b014ae34b72e1418a5fc906b1f6b33d3aa30d868ddba2f9aa4cfd13594ed2",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "dCPN.wWAUAAADbml",
+    "name": "Collaboration Overview - Rank Plays with Game Context",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Rank Plays with Game Context.png",
+    "sha256": "5b3937141e9d6da22b8a5c4d14a93e0528f3563d3796b2f7b24e6c949104d665",
+    "new_diagram": false,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "gzR0noWD.AAAARE8",
+    "name": "Screen - Coach Context and Current Calls - 6 Error / unavailable",
+    "type": "WFWebDiagram",
+    "path": "renders/coach-screen-6.png",
+    "sha256": "30204434ff07fb13e6f1eca6742172be9a7b8f13f67522c2ce3a46f7f2f284cb",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "i2R0noWD.AAAAQ.c",
+    "name": "Screen - Analyst Metrics and Reports - 6 Unavailable / Retry",
+    "type": "WFWebDiagram",
+    "path": "renders/evidence-screen-6.png",
+    "sha256": "19fec13ac24e677e044c896fe443f45dc8488c2bb43c8748de9bae479c0f2131",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "ikPN.wWAUAAADbia",
+    "name": "Collaboration Overview - Ranked List via API (Baseline)",
+    "type": "ClassDiagram",
+    "path": "renders/Collaboration Overview - Ranked List via API (Baseline).png",
+    "sha256": "f75deffb391ef67d5fa73b2ef80b61c05d9067148cd3a51162c168603fcf42d3",
+    "new_diagram": false,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "kLh0noWD.AAAAQz2",
+    "name": "Wireflow - Shot Plan, Explorer and Heatmap",
+    "type": "WireflowDiagram",
+    "path": "renders/Wireflow - Shot Plan, Explorer and Heatmap.png",
+    "sha256": "9c17b746d36993fa8ed0ede2da99a850ff9ab1ceba6fb9ad1d75ca44f8b66cc4",
+    "new_diagram": true,
+    "render_source": "Official ExportXML image"
+  },
+  {
+    "id": "lQh0noWD.AAAAQty",
+    "name": "Screen - Data Explorer and Dictionary - 4 Source details",
+    "type": "WFWebDiagram",
+    "path": "renders/data-screen-4.png",
+    "sha256": "26559ac7b18b2ef162b724a6624e1d81039bbaa352aaf03410fde8dd0479980a",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "pPB0noWD.AAAAQsu",
+    "name": "Screen - Data Explorer and Dictionary - 2 Loading / Retry",
+    "type": "WFWebDiagram",
+    "path": "renders/data-screen-2.png",
+    "sha256": "5c56ead51465de6a6b917a50fad157e76083cfaf9227cd6e3e45c2a0dec9e3e5",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "sDR0noWD.AAAARDY",
+    "name": "Screen - Coach Context and Current Calls - 3 Show applicable result",
+    "type": "WFWebDiagram",
+    "path": "renders/coach-screen-3.png",
+    "sha256": "1fa1377724d7f651e95400daec3e4d7fac8a2c5fcb8e54adac813b431199157a",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  },
+  {
+    "id": "t3h0noWD.AAAAQ37",
+    "name": "Screen - Shot Plan, Explorer and Heatmap - 6 Failure / changed source",
+    "type": "WFWebDiagram",
+    "path": "renders/shots-screen-6.png",
+    "sha256": "bab3da11b4495266b908c9126a040643bfc5d31ac94dffd02cc1cf833bc1d37e",
+    "new_diagram": true,
+    "render_source": "Official OpenAPI native screen renderer, verified after reopen"
+  }
+]

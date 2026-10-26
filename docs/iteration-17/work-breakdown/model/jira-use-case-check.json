@@ -1,0 +1,805 @@
+{
+  "checkedAt": "2026-10-26T17:47:29.254Z",
+  "status": "Jira fields match the verified prepared model; shared publication remains pending",
+  "modelBaselineRevision": 63,
+  "preparedNativeSha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
+  "checkedJiraFields": 30,
+  "candidateUseCases": 20,
+  "change": {
+    "key": "SCRUM-549",
+    "previous": "Review Shot-Plan Recommendations (5V1jrLmAUAAADR1t)",
+    "current": "Load PBP Parquet (dfl3vjmEEhz2rQBo); Review Saved Shot-Model Evidence (Wbdc1d2b94f83b25)",
+    "reason": "The final flows place margin reconstruction in Load PBP Parquet and the proposed-shot evaluation contract in Review Saved Shot-Model Evidence. The Shot Plan ranking screen is a different feature."
+  },
+  "fields": [
+    {
+      "key": "SCRUM-475",
+      "status": "Done",
+      "parentUseCase": "Compute & Export Top-K Uplift (CSV/JSON) (Ub9lX1mGAqAALhoz)",
+      "nativeUseCaseIds": [
+        "Ub9lX1mGAqAALhoz"
+      ],
+      "scopeMatch": [
+        "Ub9lX1mGAqAALhoz"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-476",
+      "status": "Done",
+      "parentUseCase": "Seasonal Holdout (iK2lX1mGAqAALhof)",
+      "nativeUseCaseIds": [
+        "iK2lX1mGAqAALhof"
+      ],
+      "scopeMatch": [
+        "iK2lX1mGAqAALhof"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-480",
+      "status": "Done",
+      "parentUseCase": "Run Data Quality Checks (dfl3vjmEEhz2rQBu)",
+      "nativeUseCaseIds": [
+        "dfl3vjmEEhz2rQBu"
+      ],
+      "scopeMatch": [
+        "dfl3vjmEEhz2rQBu"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-481",
+      "status": "Done",
+      "parentUseCase": "Save Notes to Tactics Board / Plan \u2014 baseline (b1qTbjmHwzQe9gB6), context (wGVrbjmGmMmMJQCm); storage schema only",
+      "nativeUseCaseIds": [
+        "b1qTbjmHwzQe9gB6",
+        "wGVrbjmGmMmMJQCm"
+      ],
+      "scopeMatch": [
+        "b1qTbjmHwzQe9gB6",
+        "wGVrbjmGmMmMJQCm"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-486",
+      "status": "Done",
+      "parentUseCase": "Export KPIs / Reports (dfl3vjmEEhz2rQBw)",
+      "nativeUseCaseIds": [
+        "dfl3vjmEEhz2rQBw"
+      ],
+      "scopeMatch": [
+        "dfl3vjmEEhz2rQBw"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-487",
+      "status": "Done",
+      "parentUseCase": "Versioned CSV Tables (IIdxX1mGAqAALhih)",
+      "nativeUseCaseIds": [
+        "IIdxX1mGAqAALhih"
+      ],
+      "scopeMatch": [
+        "IIdxX1mGAqAALhih"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-488",
+      "status": "Done",
+      "parentUseCase": "Audit Metadata (jv0JX1mGAqAALhjZ)",
+      "nativeUseCaseIds": [
+        "jv0JX1mGAqAALhjZ"
+      ],
+      "scopeMatch": [
+        "jv0JX1mGAqAALhjZ"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-489",
+      "status": "Done",
+      "parentUseCase": "Audit Metadata (jv0JX1mGAqAALhjZ)",
+      "nativeUseCaseIds": [
+        "jv0JX1mGAqAALhjZ"
+      ],
+      "scopeMatch": [
+        "jv0JX1mGAqAALhjZ"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-498",
+      "status": "Done",
+      "parentUseCase": "Data Dictionary (jXQJX1mGAqAALhjF)",
+      "nativeUseCaseIds": [
+        "jXQJX1mGAqAALhjF"
+      ],
+      "scopeMatch": [
+        "jXQJX1mGAqAALhjF"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-526",
+      "status": "Done",
+      "parentUseCase": "Evaluate Next-Season PPP (offline) (A235a0ec6ec301ea)",
+      "nativeUseCaseIds": [
+        "A235a0ec6ec301ea"
+      ],
+      "scopeMatch": [
+        "A235a0ec6ec301ea"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-538",
+      "status": "Done",
+      "parentUseCase": "Load PBP Parquet (dfl3vjmEEhz2rQBo)",
+      "nativeUseCaseIds": [
+        "dfl3vjmEEhz2rQBo"
+      ],
+      "scopeMatch": [
+        "dfl3vjmEEhz2rQBo"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-539",
+      "status": "Done",
+      "parentUseCase": "Rank Plays with Game Context (sDahi1mGAqAALiDF)",
+      "nativeUseCaseIds": [
+        "sDahi1mGAqAALiDF"
+      ],
+      "scopeMatch": [
+        "sDahi1mGAqAALiDF"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-540",
+      "status": "Done",
+      "parentUseCase": "Rank Plays with Game Context (sDahi1mGAqAALiDF)",
+      "nativeUseCaseIds": [
+        "sDahi1mGAqAALiDF"
+      ],
+      "scopeMatch": [
+        "sDahi1mGAqAALiDF"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-541",
+      "status": "Done",
+      "parentUseCase": "Rank Plays with Game Context (sDahi1mGAqAALiDF)",
+      "nativeUseCaseIds": [
+        "sDahi1mGAqAALiDF"
+      ],
+      "scopeMatch": [
+        "sDahi1mGAqAALiDF"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-542",
+      "status": "Done",
+      "parentUseCase": "Seasonal Holdout (iK2lX1mGAqAALhof)",
+      "nativeUseCaseIds": [
+        "iK2lX1mGAqAALhof"
+      ],
+      "scopeMatch": [
+        "iK2lX1mGAqAALhof"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-543",
+      "status": "Done",
+      "parentUseCase": "Review Saved Shot-Model Evidence (Wbdc1d2b94f83b25)",
+      "nativeUseCaseIds": [
+        "Wbdc1d2b94f83b25"
+      ],
+      "scopeMatch": [
+        "Wbdc1d2b94f83b25"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-544",
+      "status": "Done",
+      "parentUseCase": "Review Shot-Plan Recommendations (5V1jrLmAUAAADR1t); Explore Shot Attempts and Heatmaps (Wbd8ae8a15dc28bc)",
+      "nativeUseCaseIds": [
+        "5V1jrLmAUAAADR1t",
+        "Wbd8ae8a15dc28bc"
+      ],
+      "scopeMatch": [
+        "5V1jrLmAUAAADR1t"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-545",
+      "status": "Done",
+      "parentUseCase": "Review Saved Shot-Model Evidence (Wbdc1d2b94f83b25)",
+      "nativeUseCaseIds": [
+        "Wbdc1d2b94f83b25"
+      ],
+      "scopeMatch": [
+        "Wbdc1d2b94f83b25"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-546",
+      "status": "Done",
+      "parentUseCase": "Ranked List via API (Baseline) (z9E5X1mGAqAALhlN)",
+      "nativeUseCaseIds": [
+        "z9E5X1mGAqAALhlN"
+      ],
+      "scopeMatch": [
+        "z9E5X1mGAqAALhlN"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-547",
+      "status": "Done",
+      "parentUseCase": "Access Analyst Workspace (dfl3vjmEEhz2rQBi)",
+      "nativeUseCaseIds": [
+        "dfl3vjmEEhz2rQBi"
+      ],
+      "scopeMatch": [
+        "dfl3vjmEEhz2rQBi"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-548",
+      "status": "Done",
+      "parentUseCase": "Data Dictionary (jXQJX1mGAqAALhjF)",
+      "nativeUseCaseIds": [
+        "jXQJX1mGAqAALhjF"
+      ],
+      "scopeMatch": [
+        "jXQJX1mGAqAALhjF"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-549",
+      "status": "Done",
+      "parentUseCase": "Load PBP Parquet (dfl3vjmEEhz2rQBo); Review Saved Shot-Model Evidence (Wbdc1d2b94f83b25)",
+      "nativeUseCaseIds": [
+        "Wbdc1d2b94f83b25",
+        "dfl3vjmEEhz2rQBo"
+      ],
+      "scopeMatch": [
+        "Wbdc1d2b94f83b25",
+        "dfl3vjmEEhz2rQBo"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-550",
+      "status": "Done",
+      "parentUseCase": "Compute & Export Top-K Uplift (CSV/JSON) (Ub9lX1mGAqAALhoz)",
+      "nativeUseCaseIds": [
+        "Ub9lX1mGAqAALhoz"
+      ],
+      "scopeMatch": [],
+      "operationalSupportingScope": "Bounded timing of the Top-K uplift endpoint, separate from coach-baseline timing."
+    },
+    {
+      "key": "SCRUM-574",
+      "status": "Done",
+      "parentUseCase": "Run Data Quality Checks (dfl3vjmEEhz2rQBu)",
+      "nativeUseCaseIds": [
+        "dfl3vjmEEhz2rQBu"
+      ],
+      "scopeMatch": [
+        "dfl3vjmEEhz2rQBu"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-609",
+      "status": "Done",
+      "parentUseCase": "Ranked List via API (Baseline) (z9E5X1mGAqAALhlN)",
+      "nativeUseCaseIds": [
+        "z9E5X1mGAqAALhlN"
+      ],
+      "scopeMatch": [
+        "z9E5X1mGAqAALhlN"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-616",
+      "status": "Done",
+      "parentUseCase": "Export KPIs / Reports (dfl3vjmEEhz2rQBw)",
+      "nativeUseCaseIds": [
+        "dfl3vjmEEhz2rQBw"
+      ],
+      "scopeMatch": [
+        "dfl3vjmEEhz2rQBw"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-640",
+      "status": "Done",
+      "parentUseCase": "Plain Labels & Readability (oLOFX1mGAqAALhmy)",
+      "nativeUseCaseIds": [
+        "oLOFX1mGAqAALhmy"
+      ],
+      "scopeMatch": [
+        "oLOFX1mGAqAALhmy"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-642",
+      "status": "Done",
+      "parentUseCase": "Load PBP Parquet (dfl3vjmEEhz2rQBo)",
+      "nativeUseCaseIds": [
+        "dfl3vjmEEhz2rQBo"
+      ],
+      "scopeMatch": [
+        "dfl3vjmEEhz2rQBo"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-643",
+      "status": "Done",
+      "parentUseCase": "Explore Shot Attempts and Heatmaps (Wbd8ae8a15dc28bc); Review Shot-Plan Recommendations (5V1jrLmAUAAADR1t)",
+      "nativeUseCaseIds": [
+        "5V1jrLmAUAAADR1t",
+        "Wbd8ae8a15dc28bc"
+      ],
+      "scopeMatch": [
+        "5V1jrLmAUAAADR1t",
+        "Wbd8ae8a15dc28bc"
+      ],
+      "operationalSupportingScope": null
+    },
+    {
+      "key": "SCRUM-644",
+      "status": "Done",
+      "parentUseCase": "Reactive Updates on Input Changes (4tK5X1mGAqAALhlh)",
+      "nativeUseCaseIds": [
+        "4tK5X1mGAqAALhlh"
+      ],
+      "scopeMatch": [
+        "4tK5X1mGAqAALhlh"
+      ],
+      "operationalSupportingScope": null
+    }
+  ],
+  "checks": [
+    {
+      "name": "SCRUM-475 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-475 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-475 flow exists for Ub9lX1mGAqAALhoz",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-476 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-476 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-476 flow exists for iK2lX1mGAqAALhof",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-480 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-480 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-480 flow exists for dfl3vjmEEhz2rQBu",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-481 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-481 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-481 flow exists for b1qTbjmHwzQe9gB6",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-481 flow exists for wGVrbjmGmMmMJQCm",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-486 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-486 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-486 flow exists for dfl3vjmEEhz2rQBw",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-487 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-487 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-487 flow exists for IIdxX1mGAqAALhih",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-488 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-488 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-488 flow exists for jv0JX1mGAqAALhjZ",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-489 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-489 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-489 flow exists for jv0JX1mGAqAALhjZ",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-498 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-498 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-498 flow exists for jXQJX1mGAqAALhjF",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-526 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-526 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-526 flow exists for A235a0ec6ec301ea",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-538 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-538 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-538 flow exists for dfl3vjmEEhz2rQBo",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-539 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-539 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-539 flow exists for sDahi1mGAqAALiDF",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-540 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-540 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-540 flow exists for sDahi1mGAqAALiDF",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-541 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-541 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-541 flow exists for sDahi1mGAqAALiDF",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-542 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-542 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-542 flow exists for iK2lX1mGAqAALhof",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-543 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-543 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-543 flow exists for Wbdc1d2b94f83b25",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-544 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-544 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-544 flow exists for 5V1jrLmAUAAADR1t",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-544 flow exists for Wbd8ae8a15dc28bc",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-545 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-545 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-545 flow exists for Wbdc1d2b94f83b25",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-546 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-546 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-546 flow exists for z9E5X1mGAqAALhlN",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-547 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-547 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-547 flow exists for dfl3vjmEEhz2rQBi",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-548 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-548 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-548 flow exists for jXQJX1mGAqAALhjF",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 flow exists for Wbdc1d2b94f83b25",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 flow exists for dfl3vjmEEhz2rQBo",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-550 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-550 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-550 flow exists for Ub9lX1mGAqAALhoz",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-574 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-574 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-574 flow exists for dfl3vjmEEhz2rQBu",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-609 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-609 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-609 flow exists for z9E5X1mGAqAALhlN",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-616 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-616 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-616 flow exists for dfl3vjmEEhz2rQBw",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-640 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-640 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-640 flow exists for oLOFX1mGAqAALhmy",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-642 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-642 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-642 flow exists for dfl3vjmEEhz2rQBo",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-643 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-643 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-643 flow exists for 5V1jrLmAUAAADR1t",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-643 flow exists for Wbd8ae8a15dc28bc",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-644 references a verified native use case",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-644 maps to the implemented feature",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-644 flow exists for 4tK5X1mGAqAALhlh",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 owner preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 status preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 description preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 comments preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 worklogs preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 attachments preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 links preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-549 sprint preserved",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "passed": 102,
+    "total": 102
+  },
+  "limitations": [
+    "This checks the prepared model and existing Jira field scope; it does not confirm a shared Teamwork publication.",
+    "SCRUM-550 is an operational timing check of the existing Top-K uplift use case rather than a separate end-user flow."
+  ],
+  "preservedOpen": [
+    "SCRUM-645",
+    "SCRUM-675",
+    "SCRUM-676",
+    "SCRUM-677"
+  ]
+}

@@ -1,0 +1,3386 @@
+{
+  "capturedAt": "2026-10-26T16:39:56.474Z",
+  "source": "Live Jira readbacks and committed project evidence",
+  "scope": {
+    "assignee": "Gurk",
+    "currentSprint": 185,
+    "completedSince": "2026-09-01",
+    "originalIssueRecords": 125,
+    "originalTopLevelCards": 49,
+    "readBackChangedAndGuardedRecords": 85,
+    "scopeNote": "Current assigned work plus completed assigned work since September. Unassigned future team milestones and teammate work were not taken over."
+  },
+  "estimatePolicy": "Story points and effort estimates were added during this review as current sizing. They are not historical planning estimates or actual work hours. Existing worklogs were preserved; no worklogs were added.",
+  "changes": {
+    "missingStoryPointEstimatesAdded": 15,
+    "existingStoryPointEstimatesPreserved": [
+      "SCRUM-574"
+    ],
+    "repairParentsWithNewBreakdown": 16,
+    "newRepairDevSubtasks": 35,
+    "confirmedParentUseCaseFields": 30,
+    "affectedRiskFollowups": 6,
+    "newTestCases": 1,
+    "development": [
+      {
+        "key": "SCRUM-646",
+        "parent": "SCRUM-538",
+        "summary": "Pin replacement shot source files",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11446",
+        "evidence": "docs/iteration-17/shot-repair/source-manifest.json"
+      },
+      {
+        "key": "SCRUM-647",
+        "parent": "SCRUM-538",
+        "summary": "Rebuild shot participants and pre-shot margins",
+        "effortEstimateHours": 3,
+        "status": "Done",
+        "completionComment": "11447",
+        "evidence": "docs/iteration-17/shot-repair/rebuild-validation.json"
+      },
+      {
+        "key": "SCRUM-648",
+        "parent": "SCRUM-538",
+        "summary": "Compare rebuilt shots with the source events",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11448",
+        "evidence": "docs/iteration-17/verification/shot-flow-recheck/data/raw-event-audit-final.json"
+      },
+      {
+        "key": "SCRUM-649",
+        "parent": "SCRUM-539",
+        "summary": "Pass the parsed situation into the first Gameplan request",
+        "effortEstimateHours": 1,
+        "status": "Done",
+        "completionComment": "11449",
+        "evidence": "docs/iteration-17/verification/live-api-final/results.json"
+      },
+      {
+        "key": "SCRUM-650",
+        "parent": "SCRUM-539",
+        "summary": "Check first and repeated Gameplan builds",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11450",
+        "evidence": "docs/iteration-17/verification/browser/browser-checks.json"
+      },
+      {
+        "key": "SCRUM-651",
+        "parent": "SCRUM-540",
+        "summary": "Forward supported coaching conditions to the ranker",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11451",
+        "evidence": "docs/iteration-17/verification/live-api-final/results.json"
+      },
+      {
+        "key": "SCRUM-652",
+        "parent": "SCRUM-540",
+        "summary": "Verify coaching conditions change the expected ranking",
+        "effortEstimateHours": 1,
+        "status": "Done",
+        "completionComment": "11452",
+        "evidence": "docs/iteration-17/verification/live-api-final/results.json"
+      },
+      {
+        "key": "SCRUM-653",
+        "parent": "SCRUM-541",
+        "summary": "Preserve overtime through Gameplan parsing and ranking",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11453",
+        "evidence": "docs/iteration-17/verification/live-api-final/overtime-boundary-results.json"
+      },
+      {
+        "key": "SCRUM-654",
+        "parent": "SCRUM-541",
+        "summary": "Test the overtime clock boundary",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11454",
+        "evidence": "docs/iteration-17/verification/live-api-final/overtime-boundary-results.json"
+      },
+      {
+        "key": "SCRUM-655",
+        "parent": "SCRUM-543",
+        "summary": "Prepare and load saved shot evaluation results",
+        "effortEstimateHours": 2,
+        "status": "Done",
+        "completionComment": "11456",
+        "evidence": "docs/iteration-17/shot-repair/model-evaluation.json"
+      },
+      {
+        "key": "SCRUM-656",
+        "parent": "SCRUM-543",
+        "summary": "Verify shot-model requests do not retrain",
+        "effortEstimateHours": 1,
+        "status": "Done",
+        "completionComment": "11457",
+        "evidence": "docs/iteration-17/verification/live-api-final/results.json"
+      },
+      {
+        "key": "SCRUM-657",
+        "parent": "SCRUM-544",
+        "summary": "Align analyst access for Shot Plan and Heatmap",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11458",
+        "evidence": "docs/iteration-17/verification/live-api-final/results.json"
+      },
+      {
+        "key": "SCRUM-658",
+        "parent": "SCRUM-544",
+        "summary": "Check allowed and denied shot-tool sessions",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11459",
+        "evidence": "docs/iteration-17/verification/browser/browser-checks.json"
+      },
+      {
+        "key": "SCRUM-659",
+        "parent": "SCRUM-545",
+        "summary": "Match shot analysis adapters and components to the API",
+        "effortEstimateHours": 1,
+        "status": "Done",
+        "completionComment": "11460",
+        "evidence": "docs/iteration-17/verification/live-api-final/results.json"
+      },
+      {
+        "key": "SCRUM-660",
+        "parent": "SCRUM-545",
+        "summary": "Verify the current shot analysis response renders",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11461",
+        "evidence": "docs/iteration-17/verification/browser/browser-checks.json"
+      },
+      {
+        "key": "SCRUM-661",
+        "parent": "SCRUM-549",
+        "summary": "Restore margins and define the proposed-shot input contract",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11462",
+        "evidence": "docs/iteration-17/shot-repair/READ-ME.txt"
+      },
+      {
+        "key": "SCRUM-662",
+        "parent": "SCRUM-549",
+        "summary": "Verify finite shot features and evaluation limits",
+        "effortEstimateHours": 1,
+        "status": "Done",
+        "completionComment": "11463",
+        "evidence": "docs/iteration-17/shot-repair/model-evaluation.json"
+      },
+      {
+        "key": "SCRUM-663",
+        "parent": "SCRUM-640",
+        "summary": "Simplify data and shot result screens",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11471",
+        "evidence": "docs/iteration-17/verification/browser/browser-checks.json"
+      },
+      {
+        "key": "SCRUM-664",
+        "parent": "SCRUM-640",
+        "summary": "Verify saved shot-metrics CSV delivery",
+        "effortEstimateHours": 1,
+        "status": "Done",
+        "completionComment": "11472",
+        "evidence": "docs/iteration-17/verification/browser/shot-metrics-csv-check.json"
+      },
+      {
+        "key": "SCRUM-665",
+        "parent": "SCRUM-642",
+        "summary": "Correct court zones and shot-type labels",
+        "effortEstimateHours": 2,
+        "status": "Done",
+        "completionComment": "11473",
+        "evidence": "docs/iteration-17/verification/shot-flow-recheck/data/README.md"
+      },
+      {
+        "key": "SCRUM-666",
+        "parent": "SCRUM-642",
+        "summary": "Quarantine inconsistent source games and flag unusable locations",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11474",
+        "evidence": "docs/iteration-17/verification/shot-flow-recheck/data/final-source-quarantine.json"
+      },
+      {
+        "key": "SCRUM-667",
+        "parent": "SCRUM-642",
+        "summary": "Rebuild and compare shot artifacts and saved results",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11475",
+        "evidence": "docs/iteration-17/verification/shot-flow-recheck/data/final-installation.json"
+      },
+      {
+        "key": "SCRUM-668",
+        "parent": "SCRUM-643",
+        "summary": "Bind shot page results to the submitted filters",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11476",
+        "evidence": "docs/iteration-17/verification/shot-flow-recheck/browser/checks.json"
+      },
+      {
+        "key": "SCRUM-669",
+        "parent": "SCRUM-643",
+        "summary": "Align heatmap requests, counts and PDF sampling",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11477",
+        "evidence": "docs/iteration-17/verification/shot-flow-recheck/live/capped-pdf-image-parity.json"
+      },
+      {
+        "key": "SCRUM-670",
+        "parent": "SCRUM-643",
+        "summary": "Deliver and verify the saved shot exports",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11478",
+        "evidence": "docs/iteration-17/verification/shot-flow-recheck/browser/png-download-final.json"
+      },
+      {
+        "key": "SCRUM-671",
+        "parent": "SCRUM-644",
+        "summary": "Clear outdated Quick Call suggestions",
+        "effortEstimateHours": 1,
+        "status": "Done",
+        "completionComment": "11479",
+        "evidence": "docs/iteration-17/verification/shot-flow-recheck/browser/quick-call-checks.json"
+      },
+      {
+        "key": "SCRUM-672",
+        "parent": "SCRUM-644",
+        "summary": "Check Quick Call changes, recovery and request ordering",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11480",
+        "evidence": "docs/iteration-17/verification/shot-flow-recheck/browser/quick-call-checks.json"
+      },
+      {
+        "key": "SCRUM-678",
+        "parent": "SCRUM-574",
+        "summary": "Improve quality-status text contrast",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11489",
+        "evidence": "docs/iteration-15/verification/status-contrast.json"
+      },
+      {
+        "key": "SCRUM-679",
+        "parent": "SCRUM-546",
+        "summary": "State which context the baseline explanation uses",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11483",
+        "evidence": "docs/iteration-17/verification/live-api-final/results.json"
+      },
+      {
+        "key": "SCRUM-680",
+        "parent": "SCRUM-546",
+        "summary": "Verify baseline and context explanations",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11484",
+        "evidence": "docs/iteration-17/verification/browser/browser-checks.json"
+      },
+      {
+        "key": "SCRUM-681",
+        "parent": "SCRUM-547",
+        "summary": "Add explicit data and configuration readiness checks",
+        "effortEstimateHours": 1.5,
+        "status": "Done",
+        "completionComment": "11485",
+        "evidence": "docs/iteration-17/verification/security/readiness-isolated-processes.json"
+      },
+      {
+        "key": "SCRUM-682",
+        "parent": "SCRUM-547",
+        "summary": "Verify isolated failures and deployed readiness",
+        "effortEstimateHours": 1,
+        "status": "Done",
+        "completionComment": "11486",
+        "evidence": "docs/iteration-17/verification/live-api-final/results.json"
+      },
+      {
+        "key": "SCRUM-683",
+        "parent": "SCRUM-548",
+        "summary": "Classify mapped, optional and unused shot columns",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11487",
+        "evidence": "docs/iteration-17/shot-repair/column-checks.json"
+      },
+      {
+        "key": "SCRUM-684",
+        "parent": "SCRUM-548",
+        "summary": "Test missing and extra shot columns",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11488",
+        "evidence": "docs/iteration-17/shot-repair/column-checks.json"
+      },
+      {
+        "key": "SCRUM-685",
+        "parent": "SCRUM-574",
+        "summary": "Verify the deployed quality-status labels",
+        "effortEstimateHours": 0.5,
+        "status": "Done",
+        "completionComment": "11490",
+        "evidence": "docs/iteration-15/verification/browser.json"
+      }
+    ],
+    "useCaseFields": {
+      "SCRUM-538": "Load PBP Parquet (dfl3vjmEEhz2rQBo)",
+      "SCRUM-539": "Rank Plays with Game Context (sDahi1mGAqAALiDF)",
+      "SCRUM-540": "Rank Plays with Game Context (sDahi1mGAqAALiDF)",
+      "SCRUM-541": "Rank Plays with Game Context (sDahi1mGAqAALiDF)",
+      "SCRUM-642": "Load PBP Parquet (dfl3vjmEEhz2rQBo)",
+      "SCRUM-640": "Plain Labels & Readability (oLOFX1mGAqAALhmy)",
+      "SCRUM-644": "Reactive Updates on Input Changes (4tK5X1mGAqAALhlh)",
+      "SCRUM-609": "Ranked List via API (Baseline) (z9E5X1mGAqAALhlN)",
+      "SCRUM-476": "Seasonal Holdout (iK2lX1mGAqAALhof)",
+      "SCRUM-526": "Evaluate Next-Season PPP (offline) (A235a0ec6ec301ea)",
+      "SCRUM-489": "Audit Metadata (jv0JX1mGAqAALhjZ)",
+      "SCRUM-480": "Run Data Quality Checks (dfl3vjmEEhz2rQBu)",
+      "SCRUM-486": "Export KPIs / Reports (dfl3vjmEEhz2rQBw)",
+      "SCRUM-487": "Versioned CSV Tables (IIdxX1mGAqAALhih)",
+      "SCRUM-488": "Audit Metadata (jv0JX1mGAqAALhjZ)",
+      "SCRUM-498": "Data Dictionary (jXQJX1mGAqAALhjF)",
+      "SCRUM-546": "Ranked List via API (Baseline) (z9E5X1mGAqAALhlN)",
+      "SCRUM-547": "Access Analyst Workspace (dfl3vjmEEhz2rQBi)",
+      "SCRUM-548": "Data Dictionary (jXQJX1mGAqAALhjF)",
+      "SCRUM-574": "Run Data Quality Checks (dfl3vjmEEhz2rQBu)",
+      "SCRUM-616": "Export KPIs / Reports (dfl3vjmEEhz2rQBw)",
+      "SCRUM-475": "Compute & Export Top-K Uplift (CSV/JSON) (Ub9lX1mGAqAALhoz)",
+      "SCRUM-481": "Save Notes to Tactics Board / Plan \u2014 baseline (b1qTbjmHwzQe9gB6), context (wGVrbjmGmMmMJQCm); storage schema only",
+      "SCRUM-542": "Seasonal Holdout (iK2lX1mGAqAALhof)",
+      "SCRUM-543": "Review Saved Shot-Model Evidence (Wbdc1d2b94f83b25)",
+      "SCRUM-544": "Review Shot-Plan Recommendations (5V1jrLmAUAAADR1t); Explore Shot Attempts and Heatmaps (Wbd8ae8a15dc28bc)",
+      "SCRUM-545": "Review Saved Shot-Model Evidence (Wbdc1d2b94f83b25)",
+      "SCRUM-549": "Load PBP Parquet (dfl3vjmEEhz2rQBo); Review Saved Shot-Model Evidence (Wbdc1d2b94f83b25)",
+      "SCRUM-550": "Compute & Export Top-K Uplift (CSV/JSON) (Ub9lX1mGAqAALhoz)",
+      "SCRUM-643": "Explore Shot Attempts and Heatmaps (Wbd8ae8a15dc28bc); Review Shot-Plan Recommendations (5V1jrLmAUAAADR1t)"
+    },
+    "modelPublicationNote": "New shot use-case IDs passed an official model import/export roundtrip. Their shared publication is still tracked by SCRUM-677; setting Jira references does not claim the model is published."
+  },
+  "currentAlignment": {
+    "parent": "SCRUM-645",
+    "status": "In Progress",
+    "subtasks": [
+      {
+        "key": "SCRUM-673",
+        "summary": "Review assigned Jira work against the work-breakdown requirements",
+        "status": "Done",
+        "effortEstimateHours": 1
+      },
+      {
+        "key": "SCRUM-674",
+        "summary": "Complete Jira estimates, development steps and test links",
+        "status": "Done",
+        "effortEstimateHours": 1.5
+      },
+      {
+        "key": "SCRUM-675",
+        "summary": "Update use-case flows and collaboration diagrams",
+        "status": "In Progress",
+        "effortEstimateHours": 3
+      },
+      {
+        "key": "SCRUM-676",
+        "summary": "Verify model rendering and preserved project content",
+        "status": "To Do",
+        "effortEstimateHours": 1
+      },
+      {
+        "key": "SCRUM-677",
+        "summary": "Publish and verify the shared Visual Paradigm revision",
+        "status": "To Do",
+        "effortEstimateHours": 0.5
+      }
+    ],
+    "checklist": "CONTRIBUTING.md"
+  },
+  "acceptanceClarifications": [
+    {
+      "key": "SCRUM-538",
+      "scope": "Rebuilt from pinned replacement ESPN/SportsDataverse events. The original historical raw file remains unavailable."
+    },
+    {
+      "key": "SCRUM-549",
+      "scope": "Real pre-shot margins and a proposed-shot input contract. Before-possession forecasting remains SCRUM-641/BST-117."
+    }
+  ],
+  "risks": [
+    {
+      "key": "BSR-51",
+      "commentId": "11464",
+      "status": "Monitoring",
+      "comment": "The shot dataset can now be rebuilt from six pinned ESPN/SportsDataverse files with recorded hashes. The original historical raw file is still unavailable, so this is a replacement source. Keep the pinned files and recovery instructions with each release.\n\n[Source record](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/b2076f2/docs/iteration-17/shot-repair/source-manifest.json)"
+    },
+    {
+      "key": "BSR-58",
+      "commentId": "11465",
+      "status": "Monitoring",
+      "comment": "The data-check report and dataset metadata are now available. They show each source's version, seasons and row count; the old Synergy pull date stays unrecorded. This makes coverage changes visible, but it does not establish that seasons have the same distribution.\n\n[Dataset checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/b2076f2/docs/iteration-17/verification/live-api-final/dataset-catalog.json)"
+    },
+    {
+      "key": "BSR-82",
+      "commentId": "11466",
+      "status": "Analysis",
+      "comment": "The rebuilt shot data now has saved fold results and a separate later-season comparison. Those results evaluate a supplied shot type and location. Forecasting before a possession is still open in SCRUM-641, with BST-117 still failed.\n\n[Evaluation](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/b2076f2/docs/iteration-17/shot-repair/model-evaluation.json) \u00b7 [SCRUM-641](https://basketball-strategy.atlassian.net/browse/SCRUM-641)"
+    },
+    {
+      "key": "BSR-87",
+      "commentId": "11467",
+      "status": "Analysis",
+      "comment": "Shot Statistical Analysis now renders the current response. The shot pages also clear old results when filters change, and the heatmap shows attempt counts and exclusions. Keep the stakeholder review open to check whether the presentation is easy to use.\n\n[Browser checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/b2076f2/docs/iteration-17/verification/shot-flow-recheck/browser/checks.json)"
+    },
+    {
+      "key": "BSR-108",
+      "commentId": "11468",
+      "status": "Monitoring",
+      "comment": "Readiness now checks required data and configuration separately from liveness. Missing components return 503 with a clear reason, and the deployed configured service passed /ready. Keep the clean-checkout and recovery checks in the release process.\n\n[Readiness checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/b2076f2/docs/iteration-17/verification/live-api-final/results.json)"
+    },
+    {
+      "key": "BSR-117",
+      "commentId": "11469",
+      "status": "Identification",
+      "comment": "SCRUM-640 is finished: the main results appear first and the extra detail is expandable. The saved shot-metrics CSV was also verified. The three-scenario follow-up with Navreet is still needed before this review is complete.\n\n[Screen checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/b2076f2/docs/iteration-17/verification/browser/browser-checks.json) \u00b7 [CSV check](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/b2076f2/docs/iteration-17/verification/browser/shot-metrics-csv-check.json)"
+    }
+  ],
+  "tests": {
+    "case": "BST-207",
+    "summary": "Saved shot-metrics CSV matches the displayed model results",
+    "type": "Test Case",
+    "hierarchyLevel": 0,
+    "parentEpic": "BST-114",
+    "status": "Pass",
+    "board": 4,
+    "visibleOnBoard": true,
+    "executionDate": "2026-10-25",
+    "frontendCommit": "78ed99c",
+    "result": "Saved 699-byte CSV with three displayed model rows and matching values/source version.",
+    "evidence": "docs/iteration-17/verification/browser/shot-metrics-csv-check.json",
+    "commentId": "11482",
+    "scopeNote": "This records an existing real browser execution, not a new current release test. BST-198 remains a separate cache/source/fold case.",
+    "additionalRenderingLinks": [
+      "SCRUM-640 \u2192 BST-146",
+      "SCRUM-640 \u2192 BST-147"
+    ],
+    "preservedOpenFailure": {
+      "case": "BST-117",
+      "status": "Fail",
+      "plannedFix": "SCRUM-641",
+      "fixStatus": "To Do",
+      "suite": "BST-114",
+      "suiteStatus": "Testing In Progress"
+    }
+  },
+  "historicalFollowups": [
+    {
+      "key": "SCRUM-442",
+      "commentId": "11455",
+      "result": "Linked the later verified SCRUM-529 risk review. No claim that the later artifacts are September evidence.",
+      "priorEvidence": "September children467\u2013469 retain their original broad completion notes."
+    },
+    {
+      "key": "SCRUM-257",
+      "commentId": "11470",
+      "result": "User confirmed original screenshots, review notes and commit proof are unavailable. The original contribution/team review cannot be independently confirmed; status/history preserved."
+    }
+  ],
+  "futureTeamPlanning": [
+    {
+      "key": "SCRUM-641",
+      "summary": "Evaluate shot forecasts using only pre-possession inputs",
+      "status": "To Do",
+      "assigned": false,
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "storyPoints": null,
+      "acceptanceCriteriaPresent": true,
+      "developmentSubtasks": 0,
+      "useCaseField": null,
+      "action": "Leave open and unassigned. Apply the shared checklist when the team schedules and assigns this work."
+    },
+    {
+      "key": "SCRUM-516",
+      "summary": "Rehearse explaining each member\u2019s own contribution (code, models, reports, presentation)",
+      "status": "To Do",
+      "assigned": false,
+      "sprint": [
+        {
+          "id": 192,
+          "name": "Iteration 24"
+        }
+      ],
+      "storyPoints": 2,
+      "acceptanceCriteriaPresent": true,
+      "developmentSubtasks": 0,
+      "useCaseField": null,
+      "action": "Leave open and unassigned. Apply the shared checklist when the team schedules and assigns this work."
+    },
+    {
+      "key": "SCRUM-515",
+      "summary": "Rehearse showing the project works, using the test plan and test results",
+      "status": "To Do",
+      "assigned": false,
+      "sprint": [
+        {
+          "id": 192,
+          "name": "Iteration 24"
+        }
+      ],
+      "storyPoints": 2,
+      "acceptanceCriteriaPresent": true,
+      "developmentSubtasks": 0,
+      "useCaseField": null,
+      "action": "Leave open and unassigned. Apply the shared checklist when the team schedules and assigns this work."
+    },
+    {
+      "key": "SCRUM-511",
+      "summary": "Finalize edits to Capstone Project Report",
+      "status": "To Do",
+      "assigned": false,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23"
+        }
+      ],
+      "storyPoints": 3,
+      "acceptanceCriteriaPresent": true,
+      "developmentSubtasks": 0,
+      "useCaseField": null,
+      "action": "Leave open and unassigned. Apply the shared checklist when the team schedules and assigns this work."
+    },
+    {
+      "key": "SCRUM-509",
+      "summary": "Update the Visual Paradigm models so they match the final code",
+      "status": "To Do",
+      "assigned": false,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23"
+        }
+      ],
+      "storyPoints": 3,
+      "acceptanceCriteriaPresent": true,
+      "developmentSubtasks": 0,
+      "useCaseField": null,
+      "action": "Leave open and unassigned. Apply the shared checklist when the team schedules and assigns this work."
+    }
+  ],
+  "preservation": {
+    "checks": 682,
+    "passed": 682,
+    "failed": [],
+    "originalCommentsBodiesAuthorsAndTimesPreserved": true,
+    "originalWorklogsPreserved": true,
+    "originalAttachmentRecordsPreserved": true,
+    "originalFormalLinksPreserved": true,
+    "ownersStatusesSprintsPreserved": true,
+    "newSubtaskParentsOwnersSprintsAndEstimatesVerified": true,
+    "formalRelatedLinksAdded": [
+      {
+        "from": "SCRUM-640",
+        "to": "BST-207"
+      },
+      {
+        "from": "SCRUM-640",
+        "to": "BST-146"
+      },
+      {
+        "from": "SCRUM-640",
+        "to": "BST-147"
+      },
+      {
+        "from": "BSR-51",
+        "to": "SCRUM-538"
+      },
+      {
+        "from": "BSR-82",
+        "to": "SCRUM-641"
+      },
+      {
+        "from": "BSR-87",
+        "to": "SCRUM-643"
+      }
+    ],
+    "checkDetails": [
+      {
+        "name": "BSR-51 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-51 status preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-51 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-51 comment 10023 preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-51 comment 10932 preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-51 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-51 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-51 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-51 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "BSR-58 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-58 status preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-58 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-58 comment 10948 preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-58 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-58 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-58 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-58 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "BSR-82 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-82 status preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-82 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-82 comment 10977 preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-82 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-82 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-82 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-82 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "BSR-87 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-87 status preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-87 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-87 comment 10982 preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-87 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-87 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-87 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-87 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 status preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 comment 10790 preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 comment 10867 preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 comment 11025 preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 comment 11089 preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-108 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "BSR-117 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-117 status preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-117 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-117 comment 11302 preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-117 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-117 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-117 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "BSR-117 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "BST-117 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-117 status preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-117 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-117 comment 11105 preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-117 comment 11313 preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-117 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-117 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-117 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-117 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "BST-146 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-146 status preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-146 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-146 comment 10939 preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-146 comment 11355 preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-146 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-146 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-146 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-146 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "BST-147 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-147 status preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-147 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-147 comment 10941 preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-147 comment 11356 preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-147 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-147 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-147 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "BST-147 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-257 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-257 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-257 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-257 comment 10658 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-257 comment 10726 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-257 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-257 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-257 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-257 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-442 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-442 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-442 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-442 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-442 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-442 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-442 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 comment 10804 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 comment 10816 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 comment 10844 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 comment 10856 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 comment 10805 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 comment 10817 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 comment 10845 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 comment 10857 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-480 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-480 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-480 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-480 comment 11161 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-480 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-480 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-480 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-480 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 comment 10806 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 comment 10818 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 comment 10846 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 comment 10858 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-486 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-486 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-486 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-486 comment 11173 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-486 comment 11229 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-486 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-486 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-486 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-486 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-487 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-487 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-487 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-487 comment 11335 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-487 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-487 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-487 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-487 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-488 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-488 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-488 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-488 comment 11336 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-488 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-488 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-488 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-488 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-489 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-489 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-489 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-489 comment 11337 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-489 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-489 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-489 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-489 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-498 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-498 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-498 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-498 comment 11338 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-498 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-498 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-498 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-498 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 comment 10888 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 comment 11148 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 comment 11234 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 comment 10943 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 comment 11339 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-539 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-539 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-539 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-539 comment 11340 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-539 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-539 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-539 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-539 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-540 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-540 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-540 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-540 comment 11341 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-540 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-540 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-540 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-540 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-541 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-541 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-541 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-541 comment 11342 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-541 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-541 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-541 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-541 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-542 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-542 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-542 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-542 comment 11174 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-542 comment 11198 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-542 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-542 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-542 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-542 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-543 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-543 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-543 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-543 comment 11343 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-543 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-543 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-543 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-543 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-544 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-544 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-544 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-544 comment 11321 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-544 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-544 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-544 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-544 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-545 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-545 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-545 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-545 comment 11344 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-545 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-545 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-545 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-545 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-546 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-546 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-546 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-546 comment 11345 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-546 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-546 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-546 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-546 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-547 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-547 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-547 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-547 comment 11346 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-547 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-547 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-547 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-547 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-548 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-548 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-548 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-548 comment 11347 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-548 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-548 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-548 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-548 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 comment 11348 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-550 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-550 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-550 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-550 comment 11193 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-550 comment 11209 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-550 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-550 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-550 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-550 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-574 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-574 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-574 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-574 comment 11160 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-574 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-574 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-574 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-574 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-609 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-609 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-609 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-609 comment 11425 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-609 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-609 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-609 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-609 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-616 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-616 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-616 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-616 comment 11228 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-616 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-616 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-616 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-616 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 comment 11364 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 comment 11435 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 comment 11442 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 comment 11434 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 comment 11443 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-644 owner preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-644 status preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-644 sprint preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-644 comment 11445 preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-644 old worklogs preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-644 old attachment records preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-644 old links preserved",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-644 comments fully read",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-646 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-646 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-646 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-646 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-646 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-646 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-646 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-647 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-647 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-647 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-647 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-647 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-647 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-647 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-648 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-648 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-648 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-648 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-648 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-648 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-648 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-649 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-649 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-649 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-649 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-649 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-649 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-649 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-650 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-650 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-650 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-650 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-650 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-650 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-650 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-651 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-651 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-651 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-651 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-651 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-651 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-651 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-652 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-652 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-652 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-652 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-652 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-652 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-652 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-653 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-653 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-653 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-653 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-653 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-653 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-653 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-654 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-654 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-654 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-654 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-654 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-654 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-654 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-655 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-655 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-655 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-655 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-655 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-655 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-655 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-656 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-656 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-656 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-656 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-656 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-656 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-656 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-657 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-657 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-657 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-657 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-657 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-657 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-657 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-658 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-658 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-658 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-658 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-658 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-658 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-658 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-659 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-659 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-659 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-659 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-659 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-659 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-659 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-660 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-660 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-660 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-660 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-660 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-660 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-660 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-661 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-661 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-661 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-661 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-661 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-661 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-661 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-662 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-662 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-662 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-662 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-662 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-662 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-662 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-663 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-663 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-663 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-663 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-663 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-663 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-663 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-664 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-664 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-664 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-664 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-664 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-664 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-664 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-665 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-665 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-665 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-665 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-665 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-665 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-665 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-666 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-666 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-666 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-666 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-666 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-666 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-666 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-667 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-667 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-667 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-667 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-667 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-667 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-667 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-668 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-668 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-668 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-668 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-668 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-668 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-668 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-669 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-669 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-669 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-669 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-669 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-669 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-669 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-670 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-670 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-670 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-670 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-670 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-670 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-670 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-671 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-671 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-671 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-671 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-671 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-671 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-671 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-672 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-672 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-672 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-672 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-672 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-672 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-672 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-673 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-673 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-673 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-673 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-673 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-674 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-674 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-674 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-674 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-674 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-675 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-675 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-675 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-675 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-675 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-676 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-676 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-676 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-676 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-676 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-677 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-677 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-677 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-677 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-677 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-678 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-678 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-678 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-678 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-678 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-678 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-678 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-679 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-679 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-679 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-679 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-679 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-679 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-679 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-680 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-680 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-680 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-680 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-680 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-680 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-680 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-681 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-681 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-681 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-681 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-681 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-681 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-681 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-682 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-682 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-682 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-682 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-682 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-682 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-682 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-683 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-683 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-683 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-683 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-683 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-683 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-683 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-684 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-684 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-684 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-684 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-684 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-684 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-684 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-685 parent",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-685 owner",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-685 effort estimate",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-685 inherits parent sprint",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-685 no worklogs",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-685 verified completed",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-685 completion note",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-539 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-540 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-541 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-644 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-609 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-476 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-526 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-489 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-480 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-486 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-487 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-488 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-498 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-546 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-547 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-548 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-574 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-616 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-475 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-481 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-542 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-543 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-544 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-545 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-550 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 Parent Use Case",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-539 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-540 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-541 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-543 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-544 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-545 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-642 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-643 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-644 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-546 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-547 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-548 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-574 current points",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-538 scoped acceptance criteria",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-549 scoped acceptance criteria",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 relates to BST-207",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 relates to BST-146",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-640 relates to BST-147",
+        "pass": true
+      },
+      {
+        "name": "BSR-51 relates to SCRUM-538",
+        "pass": true
+      },
+      {
+        "name": "BSR-82 relates to SCRUM-641",
+        "pass": true
+      },
+      {
+        "name": "BSR-87 relates to SCRUM-643",
+        "pass": true
+      },
+      {
+        "name": "BST-207 remains Task-level Test Case",
+        "pass": true
+      },
+      {
+        "name": "BST-207 belongs to BST-114 Epic",
+        "pass": true
+      },
+      {
+        "name": "BST-207 visible in Board4 Pass",
+        "pass": true
+      },
+      {
+        "name": "BST-117 remains Fail",
+        "pass": true
+      },
+      {
+        "name": "SCRUM-641 remains To Do and unassigned",
+        "pass": true
+      },
+      {
+        "name": "BST-114 remains in progress",
+        "pass": true
+      }
+    ]
+  },
+  "remaining": [
+    {
+      "key": "SCRUM-675",
+      "work": "Finish and verify the model changes."
+    },
+    {
+      "key": "SCRUM-676",
+      "work": "Verify native rendering and preservation."
+    },
+    {
+      "key": "SCRUM-677",
+      "work": "Publish and read back the shared model revision."
+    },
+    {
+      "key": "SCRUM-257",
+      "work": "Historical contribution and team-review evidence is unavailable."
+    },
+    {
+      "key": "SCRUM-641",
+      "work": "Future unassigned before-possession forecast work; BST-117 remains failed."
+    }
+  ],
+  "otherOwnership": "SCRUM-494 and SCRUM-628 remain teammate work. Feature lifecycle for SCRUM-3/4/8 is unchanged.",
+  "result": "Jira tracking corrections complete; shared model publication and the explicit historical/future limitations remain open.",
+  "finalModelFieldCheck": {
+    "artifact": "model/jira-use-case-check.json",
+    "checkedFields": 30,
+    "checks": 102,
+    "passed": 102,
+    "publication": "pending"
+  }
+}

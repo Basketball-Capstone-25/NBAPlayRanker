@@ -1,0 +1,372 @@
+[
+  {
+    "path": "model-traceability.json",
+    "bytes": 35617,
+    "sha256": "edbf922cdd5a874a9698b21a71e27406418bac4450c918a9169e2308a6b5c743"
+  },
+  {
+    "path": "native-wireflow-audit.json",
+    "bytes": 49103,
+    "sha256": "b9bb0cc80957b92aa8a9b477fa1af0975ebf75caebded419f69b22128ab756a5"
+  },
+  {
+    "path": "native-wireflows.xml",
+    "bytes": 7048,
+    "sha256": "03269364f0118f2a03ef92aa2513ec67da2b849f45e1ced2c5bd9f911ca781e1"
+  },
+  {
+    "path": "preservation-check.json",
+    "bytes": 26782,
+    "sha256": "dd929a740ed47f13e5c0048adf0a266be2820ea870ce09fbcff5c3e0eb436caf"
+  },
+  {
+    "path": "render-index.json",
+    "bytes": 25012,
+    "sha256": "258eb74749a2371b4b11e30e17ee8fcdf2ef7432db4dca9f5653388c2368e3c2"
+  },
+  {
+    "path": "renders/Collaboration Overview - Coach-Owned Gameplan Storage.png",
+    "bytes": 60645,
+    "sha256": "a8f9c095ed9b4bd5039fa83a2c9212882e22f07037acbc009c8fbb87279ed292"
+  },
+  {
+    "path": "renders/Collaboration Overview - Explore Shot Attempts and Heatmaps.png",
+    "bytes": 30768,
+    "sha256": "17d49712e0ea681cd501c30a4a8bb2905e6b20520b19c48b436c1d8b38b32d5b"
+  },
+  {
+    "path": "renders/Collaboration Overview - Historical Top-K Uplift.png",
+    "bytes": 39626,
+    "sha256": "8bf48405e63adb3c2097ff1385785c3b9c127f673ca4509ef5a8c698ea4459eb"
+  },
+  {
+    "path": "renders/Collaboration Overview - Identify Result Data Versions.png",
+    "bytes": 31095,
+    "sha256": "c302324ca2b160c0219759a04435f2996850cbea39d844fbcbaa19caef02d8e3"
+  },
+  {
+    "path": "renders/Collaboration Overview - Inspect Dataset Columns.png",
+    "bytes": 30146,
+    "sha256": "6e362b04fc872eb06d7c7dfd7a566a95677f6bfb556779a5e9ae5e58b71061f3"
+  },
+  {
+    "path": "renders/Collaboration Overview - Inspect Source Metadata.png",
+    "bytes": 30068,
+    "sha256": "77cec98219f5d102041298649696cc0734cb67258ab955f2de2afc4d8ea16a2a"
+  },
+  {
+    "path": "renders/Collaboration Overview - Keep Results Matched to Inputs.png",
+    "bytes": 31424,
+    "sha256": "406d411dfb55d2e25ff85899c050b46df21aa9861b65a83a882080023cd7d049"
+  },
+  {
+    "path": "renders/Collaboration Overview - PPP Calibration Diagnostics.png",
+    "bytes": 40316,
+    "sha256": "ad8c363550766f543225e8ed704d00d3bfacec4c5ba7b6c4d24e0e9b235ef9fe"
+  },
+  {
+    "path": "renders/Collaboration Overview - Present Clear Results and Limits.png",
+    "bytes": 30579,
+    "sha256": "2733a2254fc981ba1c7c3b17cb983cc12ff71adfd6382c1a7dcbba411ebcfb4f"
+  },
+  {
+    "path": "renders/Collaboration Overview - Rank Plays with Game Context.png",
+    "bytes": 63999,
+    "sha256": "5b3937141e9d6da22b8a5c4d14a93e0528f3563d3796b2f7b24e6c949104d665"
+  },
+  {
+    "path": "renders/Collaboration Overview - Ranked List via API (Baseline).png",
+    "bytes": 52035,
+    "sha256": "f75deffb391ef67d5fa73b2ef80b61c05d9067148cd3a51162c168603fcf42d3"
+  },
+  {
+    "path": "renders/Collaboration Overview - Review Saved Shot-Model Evidence.png",
+    "bytes": 29764,
+    "sha256": "5b625f93fe98a953b8f8898e4a248ad27c4d5cb9e9fb8b5e615cfe7ded1e75d4"
+  },
+  {
+    "path": "renders/Collaboration Overview - Review Shot-Plan Recommendations.png",
+    "bytes": 30561,
+    "sha256": "5295a90aa65ad51c29d587be670ca562c6925280b87e7ed2852693f6578118f6"
+  },
+  {
+    "path": "renders/Collaboration Overview - Validate and Rebuild Shot Sources.png",
+    "bytes": 26246,
+    "sha256": "306ba5d77fad6df1d1ab811f2c4c1d245b77bbbab5b225b6fba0455dd85b3460"
+  },
+  {
+    "path": "renders/Contextual ML Recommender Overview Diagram 2.0.png",
+    "bytes": 319613,
+    "sha256": "bb0f094288c3e0f215249ed2aff83ede18ff6b9aee3b3542b931ca6b0a0be921"
+  },
+  {
+    "path": "renders/Detailed Sequence - Analyst Top-K Uplift (475).png",
+    "bytes": 43124,
+    "sha256": "3bf0f455f74928614284f04eb1ed92041a119159a2d8519789c7263b89cd02cd"
+  },
+  {
+    "path": "renders/Detailed Sequence - Coach-Owned Gameplan Storage.png",
+    "bytes": 55942,
+    "sha256": "e67de601ec81607fb5a6023854ce18fed0a5211093b73c06cba849a182e21038"
+  },
+  {
+    "path": "renders/Detailed Sequence - Explore Shot Attempts and Heatmaps.png",
+    "bytes": 33837,
+    "sha256": "2314c93c836e5d6a2cdd78d1535bcf10701609a4a3ccdf5c372bad93fb0db381"
+  },
+  {
+    "path": "renders/Detailed Sequence - Identify Result Data Versions.png",
+    "bytes": 21553,
+    "sha256": "6934cb1f788e00bc1b2c55a5ae61cde8da840f742bb13823b135939f3595edb8"
+  },
+  {
+    "path": "renders/Detailed Sequence - Inspect Dataset Columns.png",
+    "bytes": 28945,
+    "sha256": "a6c3ddd198a06f5b71977aa1f36ef38e2b3db577482fefa7248b26d4ecab992d"
+  },
+  {
+    "path": "renders/Detailed Sequence - Inspect PPP Calibration (476).png",
+    "bytes": 46386,
+    "sha256": "77933ef5ec4e1452db6afc55feb958cb586ae637ef0442c1bb68733aa1970fb4"
+  },
+  {
+    "path": "renders/Detailed Sequence - Inspect Source Metadata.png",
+    "bytes": 27705,
+    "sha256": "9e812e8f9b4b9d4096deb51b480e8d8104de9e634b9d8fb3b75fd22dee775374"
+  },
+  {
+    "path": "renders/Detailed Sequence - Keep Results Matched to Inputs.png",
+    "bytes": 31495,
+    "sha256": "bd652f926af002c696e68e9da4505a5d3888acbd441647307892a8fde7fd929c"
+  },
+  {
+    "path": "renders/Detailed Sequence - Present Clear Results and Limits.png",
+    "bytes": 23348,
+    "sha256": "93dec8bb3ae5c484f6b062ba6dfa9974c985782555a3c0926f1355fa52d44ecb"
+  },
+  {
+    "path": "renders/Detailed Sequence - Review Saved Shot-Model Evidence.png",
+    "bytes": 28812,
+    "sha256": "263d8f07b54e1575bebfbc98d5a50e061f4405f37a4fb141d60bd2f2c44d761e"
+  },
+  {
+    "path": "renders/Detailed Sequence - Review Shot-Plan Recommendations.png",
+    "bytes": 35593,
+    "sha256": "c4a31283da6dc02f8617ca3b73abc06fa498f3675bf4a53b880504162bc32a38"
+  },
+  {
+    "path": "renders/Detailed Sequence - Validate and Rebuild Shot Sources.png",
+    "bytes": 27182,
+    "sha256": "d909c3938dc4062f830772612cbf2630f625ff73a62d9153dc54d97c5896a65e"
+  },
+  {
+    "path": "renders/Elaboration - Analyst Evidence Design (475, 476, 477).png",
+    "bytes": 70648,
+    "sha256": "db186a0de5c98e24b2d5c8ea59f979186bb853969a47b5ac2b5a569065243e85"
+  },
+  {
+    "path": "renders/Elaboration - Coach Gameplan Storage (481).png",
+    "bytes": 34539,
+    "sha256": "da197601d14678d1cab4b168bc61fbda6f5e9d4900cfeb045a58cefba5af2bb8"
+  },
+  {
+    "path": "renders/Functional Overview - Current Analyst and Shot Evidence.png",
+    "bytes": 248791,
+    "sha256": "2714b11f4dcf63095a0789c71b35dab3f426f58966f3b13458c8904a2a1f0478"
+  },
+  {
+    "path": "renders/Structural Design - Explore Shot Attempts and Heatmaps.png",
+    "bytes": 76160,
+    "sha256": "e62dc8c7878919b2452e84ac1dec80b37e31ae914d8ea15e00c46184ff7142ab"
+  },
+  {
+    "path": "renders/Structural Design - Identify Result Data Versions.png",
+    "bytes": 39011,
+    "sha256": "010253836c97b975b2610ba855379a3b751fdf906c0dd473f87939cf7f219c65"
+  },
+  {
+    "path": "renders/Structural Design - Inspect Dataset Columns.png",
+    "bytes": 31456,
+    "sha256": "c4404d3d6b5efc444586f2ba7414ebd934d4aa5cae1a93fe369f6713a122c1c7"
+  },
+  {
+    "path": "renders/Structural Design - Inspect Source Metadata.png",
+    "bytes": 38887,
+    "sha256": "b6b72c191226eac26a05735c868b6cd77f7dc2507a27e4e59ecb430dc5c45a96"
+  },
+  {
+    "path": "renders/Structural Design - Keep Results Matched to Inputs.png",
+    "bytes": 27324,
+    "sha256": "8407612f0ea97e7568baa352bf6b88704a372e852318cf6df97ef878edbd6757"
+  },
+  {
+    "path": "renders/Structural Design - Present Clear Results and Limits.png",
+    "bytes": 29431,
+    "sha256": "85ade8af79d6239fc2280c32e2598074021a381ae04d33c43fd23f30ff01f738"
+  },
+  {
+    "path": "renders/Structural Design - Review Saved Shot-Model Evidence.png",
+    "bytes": 41195,
+    "sha256": "5f36ad8f80b05d7df649b2047126af97fad3bf229ccdf2a43b6e260e47cacf26"
+  },
+  {
+    "path": "renders/Structural Design - Review Shot-Plan Recommendations.png",
+    "bytes": 82359,
+    "sha256": "64378b870553153fc13135f2fe02a5edf7a69a9642dfddd2df385a817f895aec"
+  },
+  {
+    "path": "renders/Structural Design - Validate and Rebuild Shot Sources.png",
+    "bytes": 47398,
+    "sha256": "4dcd177c800999047f323227c90457d7146669161e5264992c96d98e9195d93b"
+  },
+  {
+    "path": "renders/Wireflow - Analyst Metrics and Reports.png",
+    "bytes": 120949,
+    "sha256": "4d13c6138d20c18f7f2ceb7ded78674311f20eb48cd62f1c5de5b04f7f931f9f"
+  },
+  {
+    "path": "renders/Wireflow - Coach Context and Current Calls.png",
+    "bytes": 111126,
+    "sha256": "a26471802e081345a8c88c190f28f07ec4966710690557880d3227e2b72420ce"
+  },
+  {
+    "path": "renders/Wireflow - Data Explorer and Dictionary.png",
+    "bytes": 100512,
+    "sha256": "fa2e60754063905f1de68b08165bb40ae736fceab784ce8ce20bf9af67dd4869"
+  },
+  {
+    "path": "renders/Wireflow - Shot Plan, Explorer and Heatmap.png",
+    "bytes": 110478,
+    "sha256": "9c17b746d36993fa8ed0ede2da99a850ff9ab1ceba6fb9ad1d75ca44f8b66cc4"
+  },
+  {
+    "path": "renders/coach-screen-1.png",
+    "bytes": 26953,
+    "sha256": "5e1ea26aacc51806240f1a94400777b703797d692feeb3b8073db27b6166a029"
+  },
+  {
+    "path": "renders/coach-screen-2.png",
+    "bytes": 26902,
+    "sha256": "ccf698da7adf1b599f4ae89529af6d42f5dae4670f0c87a285dd45ddfd5b399c"
+  },
+  {
+    "path": "renders/coach-screen-3.png",
+    "bytes": 28484,
+    "sha256": "1fa1377724d7f651e95400daec3e4d7fac8a2c5fcb8e54adac813b431199157a"
+  },
+  {
+    "path": "renders/coach-screen-4.png",
+    "bytes": 28312,
+    "sha256": "54864318beff6c556bea8fa15f0b02d175af210673d1be0f36b61875d83f124b"
+  },
+  {
+    "path": "renders/coach-screen-5.png",
+    "bytes": 27223,
+    "sha256": "ef55f8ed33a8ca581f995a63ba37e978ce01661b03dfd33b97c3e8fb6641c00a"
+  },
+  {
+    "path": "renders/coach-screen-6.png",
+    "bytes": 29452,
+    "sha256": "30204434ff07fb13e6f1eca6742172be9a7b8f13f67522c2ce3a46f7f2f284cb"
+  },
+  {
+    "path": "renders/data-screen-1.png",
+    "bytes": 25899,
+    "sha256": "7e57cc7565d48b309ef923d27574a6b0d8a6fd672316ba46aade82d568a0d151"
+  },
+  {
+    "path": "renders/data-screen-2.png",
+    "bytes": 25291,
+    "sha256": "5c56ead51465de6a6b917a50fad157e76083cfaf9227cd6e3e45c2a0dec9e3e5"
+  },
+  {
+    "path": "renders/data-screen-3.png",
+    "bytes": 29472,
+    "sha256": "b50b014ae34b72e1418a5fc906b1f6b33d3aa30d868ddba2f9aa4cfd13594ed2"
+  },
+  {
+    "path": "renders/data-screen-4.png",
+    "bytes": 26674,
+    "sha256": "26559ac7b18b2ef162b724a6624e1d81039bbaa352aaf03410fde8dd0479980a"
+  },
+  {
+    "path": "renders/data-screen-5.png",
+    "bytes": 22882,
+    "sha256": "d9490b1506b6f4e9e32658f7ac19485c5197d4b33a16510cded8ed11fa04d4bc"
+  },
+  {
+    "path": "renders/data-screen-6.png",
+    "bytes": 28134,
+    "sha256": "fbc1ebf1f2e83a341a6a7bd2bef45122eb655d77cb27dba97d8578eaf4f82ac6"
+  },
+  {
+    "path": "renders/evidence-screen-1.png",
+    "bytes": 28324,
+    "sha256": "b8c2323495d4cd892d99e6c7494e1d6986f19045d4d2ae0f60315119bf8859e1"
+  },
+  {
+    "path": "renders/evidence-screen-2.png",
+    "bytes": 31262,
+    "sha256": "37402ff06d99a0dac2afd3ec57ac54992e9d8c401ce838cfc21343855e59e03b"
+  },
+  {
+    "path": "renders/evidence-screen-3.png",
+    "bytes": 28475,
+    "sha256": "5d4aeaff2f8cc186b119f9cfe97ae76ff5918533e5b1bee0a5883b6b0942671c"
+  },
+  {
+    "path": "renders/evidence-screen-4.png",
+    "bytes": 28315,
+    "sha256": "2372a55819fa16ac3fa8dd82168b4ef8ca66040f324439fb4cfc66422e013025"
+  },
+  {
+    "path": "renders/evidence-screen-5.png",
+    "bytes": 32201,
+    "sha256": "0df81553fa10f413a49e524ac9c5bbe47befb690a341ad3d36a1f17a3e3bb1ba"
+  },
+  {
+    "path": "renders/evidence-screen-6.png",
+    "bytes": 29898,
+    "sha256": "19fec13ac24e677e044c896fe443f45dc8488c2bb43c8748de9bae479c0f2131"
+  },
+  {
+    "path": "renders/shots-screen-1.png",
+    "bytes": 25460,
+    "sha256": "d453b6e8b8651ef59bbe6b97f7b3e4bfc89add9696291cef271ea0b1b7b0fa93"
+  },
+  {
+    "path": "renders/shots-screen-2.png",
+    "bytes": 23996,
+    "sha256": "2d59af27cca6a2c5411382d86cc707dd46439441000d15ceb30737456437ee06"
+  },
+  {
+    "path": "renders/shots-screen-3.png",
+    "bytes": 31133,
+    "sha256": "668ae117a3c7f06ba985b44df7198a52f4a50ae9806d747c7d886cc0a0f49e28"
+  },
+  {
+    "path": "renders/shots-screen-4.png",
+    "bytes": 26670,
+    "sha256": "91dd53a4614877a53f4df6e3c8478a3e58586cf1a4e289b6105a67e5589549a9"
+  },
+  {
+    "path": "renders/shots-screen-5.png",
+    "bytes": 30523,
+    "sha256": "97b039189cae5ee2c660aee2abff909f412f87ac5f54c7edcfd1f2f7b79a3576"
+  },
+  {
+    "path": "renders/shots-screen-6.png",
+    "bytes": 28337,
+    "sha256": "bab3da11b4495266b908c9126a040643bfc5d31ac94dffd02cc1cf833bc1d37e"
+  },
+  {
+    "path": "server-freshness.json",
+    "bytes": 35297,
+    "sha256": "eb13f220de21462f2d8b91e75aff679e20c2ab6187ee2fc53074a968d59e08a7"
+  },
+  {
+    "path": "use-case-flows.json",
+    "bytes": 71634,
+    "sha256": "112ad8bfe7cfbf7d03e4cfc01c5a8cd061a91e65e427ffccfb40b7cc1951d16c"
+  }
+]

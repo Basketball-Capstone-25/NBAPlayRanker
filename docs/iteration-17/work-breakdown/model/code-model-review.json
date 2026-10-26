@@ -1,0 +1,451 @@
+{
+  "review_type": "Source and model contract comparison; no new application test execution",
+  "source_release": {
+    "frontend": "99a31e0",
+    "backend": "0ba37bb",
+    "cloud_run_revision": "nba-playranker-api-00012-nrd"
+  },
+  "baseline_model_revision": 63,
+  "candidate_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
+  "publication": "Pending shared Teamwork publication",
+  "checks": [
+    {
+      "area": "Top-K uplift",
+      "use_case_ids": [
+        "Ub9lX1mGAqAALhoz"
+      ],
+      "source_files": [
+        "backend/domain/statistical_analysis/topk_uplift.py",
+        "backend/application/api_coordination/topk_uplift_endpoints.py"
+      ],
+      "result": "Pass",
+      "finding": "The flow uses possession-weighted historical modeled values, requested/actual K, numeric support and source versions. It does not claim causal gain or untouched holdout performance."
+    },
+    {
+      "area": "Calibration and regular metrics",
+      "use_case_ids": [
+        "iK2lX1mGAqAALhof"
+      ],
+      "source_files": [
+        "backend/domain/statistical_analysis/calibration.py",
+        "app/ui/analytics/_components/ModelMetricsPageClient.tsx",
+        "app/ui/analytics/_components/CalibrationPanel.tsx"
+      ],
+      "result": "Pass",
+      "finding": "Regular diagnostics may compute and cache on request. Separate request states and contemporaneous-feature limitations are retained; calibration is not modeled as the saved shot-artifact reader."
+    },
+    {
+      "area": "Offline next-season evaluation",
+      "use_case_ids": [
+        "A235a0ec6ec301ea"
+      ],
+      "source_files": [
+        "backend/domain/statistical_analysis/forecast_evaluation.py",
+        "backend/data/etl/run_forecast_evaluation.py"
+      ],
+      "result": "Pass",
+      "finding": "Flow of Events separates earlier-season predictors, validation and untouched final season, with written outputs and the one-held-out-season limitation. It has an offline entry/output flow rather than a fictional application screen."
+    },
+    {
+      "area": "Shared report snapshots",
+      "use_case_ids": [
+        "dfl3vjmEEhz2rQBw"
+      ],
+      "source_files": [
+        "backend/application/api_coordination/report_snapshot.py",
+        "app/ui/_shared/components/ReportExport.tsx",
+        "app/api/exports/report/route.ts"
+      ],
+      "result": "Pass",
+      "finding": "Shared CSV/JSON/PDF reports validate and export captured displayed rows, filters and source versions. Metrics exports its displayed holdout table. This contract is distinguished from regenerated specialized shot files."
+    },
+    {
+      "area": "Loaded source metadata and dictionary",
+      "use_case_ids": [
+        "jv0JX1mGAqAALhjZ",
+        "IIdxX1mGAqAALhih",
+        "jXQJX1mGAqAALhjF",
+        "dfl3vjmEEhz2rQBu"
+      ],
+      "source_files": [
+        "backend/infrastructure/data_access/dataset_metadata.py",
+        "backend/application/api_coordination/dataset_endpoints.py",
+        "app/ui/data-explorer/DatasetMetadataPanel.tsx",
+        "app/ui/data-explorer/DataQualityPanel.tsx"
+      ],
+      "result": "Pass",
+      "finding": "Source versions identify loaded bytes, not accuracy. Missing dates/definitions remain unknown. Source-wide play-type checks are distinct from filtered preview rows and shot-data validity."
+    },
+    {
+      "area": "Shot rebuild and uncertain source values",
+      "use_case_ids": [
+        "dfl3vjmEEhz2rQBo"
+      ],
+      "source_files": [
+        "backend/domain/shot_analysis/shot_etl.py",
+        "backend/domain/shot_analysis/shot_source_quality.py",
+        "backend/domain/shot_analysis/shot_aggregates.py"
+      ],
+      "result": "Pass",
+      "finding": "The rebuild keeps verified event/team mapping, quarantines inconsistent games, preserves unknown missed-attempt values, and excludes uncertain locations from spatial outputs. Rebuild and model fitting remain offline."
+    },
+    {
+      "area": "Shot plan and counted heatmap",
+      "use_case_ids": [
+        "5V1jrLmAUAAADR1t",
+        "Wbd8ae8a15dc28bc"
+      ],
+      "source_files": [
+        "backend/domain/baseline_recommendation/shot_baseline_recommender.py",
+        "backend/infrastructure/data_access/pbp_viz.py",
+        "app/ui/shot-analysis/_components/ShotPlanPageClient.tsx"
+      ],
+      "result": "Pass",
+      "finding": "Season-wide offense/opponent-defense rankings estimate points per attempt. Shot-type/zone/cap controls affect the plot, not the ranking. Matched counts reconcile plotted, invalid-location, outside-court and cap-omitted attempts."
+    },
+    {
+      "area": "Special shot downloads",
+      "use_case_ids": [
+        "Wbd8ae8a15dc28bc",
+        "5V1jrLmAUAAADR1t"
+      ],
+      "source_files": [
+        "backend/infrastructure/data_access/pbp_shots.py",
+        "backend/application/api_coordination/app.py",
+        "app/api/exports/shot-heatmap/route.ts"
+      ],
+      "result": "Pass",
+      "finding": "Shot CSV/PDF regenerate from captured successful filters and current loaded sources. PNG additionally validates expected source, echoed inputs/counts and image bytes. Error responses are not attachments."
+    },
+    {
+      "area": "Saved shot diagnostics and roles",
+      "use_case_ids": [
+        "Wbdc1d2b94f83b25"
+      ],
+      "source_files": [
+        "backend/application/api_coordination/pbp_phase2_endpoints.py",
+        "backend/domain/shot_analysis/shot_artifacts.py",
+        "app/api/exports/shot-metrics/route.ts",
+        "backend/application/access_control_services/access_control_service.py"
+      ],
+      "result": "Pass",
+      "finding": "Saved five-fold artifacts are validated against the current source; loading does not train. Training CV and later-season diagnostic outputs are distinct. Explorer/diagnostics remain analyst-only; both approved roles can view plans/heatmaps. CSV verifies the displayed clean-source version."
+    },
+    {
+      "area": "Context snapshot and baseline disclosure",
+      "use_case_ids": [
+        "sDahi1mGAqAALiDF",
+        "z9E5X1mGAqAALhlN",
+        "TPn5X1mGAqAALhmK"
+      ],
+      "source_files": [
+        "app/domain/gameplan-context.ts",
+        "app/gameplan/page.tsx",
+        "backend/domain/baseline_recommendation/baseline_recommender.py",
+        "backend/tests/test_gameplan_context_flow.py"
+      ],
+      "result": "Pass",
+      "finding": "First Build uses one parsed numeric/condition snapshot; overtime period 5 accepts at most 300 seconds. Unsupported conditions are note-only. Baseline explicitly ignores score, clock and period rather than implying context adjustment."
+    },
+    {
+      "area": "Current-result guards and ownership",
+      "use_case_ids": [
+        "4tK5X1mGAqAALhlh"
+      ],
+      "source_files": [
+        "app/infrastructure/shot-result-state.ts",
+        "app/ui/recommendation/_components/useQuickCallResult.ts"
+      ],
+      "result": "Pass",
+      "finding": "Changed inputs immediately invalidate old results/downloads; only the current request can publish success. A failed latest request stays empty. Gurk owns the integration guard; Abdul retains Quick Call feature ownership and incoming revision 63 diagrams."
+    },
+    {
+      "area": "Coach-owned Gameplan storage",
+      "use_case_ids": [
+        "b1qTbjmHwzQe9gB6",
+        "wGVrbjmGmMmMJQCm"
+      ],
+      "source_files": [
+        "supabase/migrations/20261003211500_gameplan_state_schema.sql",
+        "supabase/tests/gameplan_state_verification.sql",
+        "app/infrastructure/gameplan-sync.ts"
+      ],
+      "result": "Pass",
+      "finding": "Both Save Notes variants model current coach/owner RLS, immutable matchup identity, constrained state, INSERT for new rows and caller-conditional revision updates. Zero matching rows require reload/reconciliation; the database does not itself emit HTTP 409. The client revision predicate is a protocol obligation. Browser synchronization belongs to 482/483."
+    },
+    {
+      "area": "Native screen correspondence",
+      "use_case_ids": [
+        "oLOFX1mGAqAALhmy",
+        "4tK5X1mGAqAALhlh"
+      ],
+      "source_files": [
+        "app/data-explorer/page.tsx",
+        "app/data-dictionary/page.tsx",
+        "app/ui/shot-analysis/_components/ShotHeatmapPageClient.tsx",
+        "app/ui/shot-analysis/_components/ShotModelMetricsPageClient.tsx"
+      ],
+      "result": "Pass",
+      "finding": "Four native wireflows cover actual Data Explorer/dictionary, shot, evidence and coach screen states with 24 editable native web screens. Transition labels are conceptual; the diagrams are not presented as screenshots or exact copies of every UI control."
+    },
+    {
+      "area": "Readiness and distinct timing scopes",
+      "use_case_ids": [
+        "dfl3vjmEEhz2rQBi",
+        "Ub9lX1mGAqAALhoz",
+        "z9E5X1mGAqAALhlN"
+      ],
+      "source_files": [
+        "backend/application/api_coordination/readiness.py",
+        "backend/application/access_control_services/access_control_service.py",
+        "scripts/verify_iteration17_live.py"
+      ],
+      "result": "Pass",
+      "finding": "Workspace readiness, analyst Top-K timing and coach baseline timing retain separate requirements. Production configuration is strict; the explicit insecure local override is not reported ready. The 5-second warm, 10-second two-concurrent and 45-second first-after-idle targets describe bounded coach-baseline acceptance, not a Quick Call SLA."
+    }
+  ],
+  "native_evidence": "native-wireflow-audit.json",
+  "model_evidence": "model-traceability.json",
+  "flow_evidence": "use-case-flows.json",
+  "remaining_limits": [
+    "SCRUM-257 original cleanup release/feedback/team review is unavailable; current behavior checks do not replace that history.",
+    "Proposed-shot diagnostics do not satisfy pre-possession forecasting. BST-117 remains Fail with planned SCRUM-641; BST-114 remains in progress.",
+    "The accepted baseline timing campaign is distinct from Quick Call browser observations; no two-second Quick Call guarantee is claimed.",
+    "Model publication is pending; this receipt verifies the candidate."
+  ],
+  "final_model_readback": {
+    "xml_sha256": "07bc10a450ec8e230f81e9d2db31627c609049f93048ed2c7ae46cd2d3ff5f2d",
+    "use_cases_checked": 20,
+    "flow_entries_compared": 243,
+    "render_hashes_checked": 67,
+    "source_paths_checked": 42,
+    "native_diagram_count": 267,
+    "xml_diagram_count": 225,
+    "native_screen_count": 24,
+    "native_use_case_links_checked": 17,
+    "note": "The vendor XML omits embedded native web-screen definitions; those IDs, contents and renders are checked by the native reopen audit.",
+    "all_checks_passed": true,
+    "use_cases": [
+      {
+        "use_case_id": "4tK5X1mGAqAALhlh",
+        "name": "Reactive Updates on Input Changes",
+        "flow_entries_checked": 13,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 2,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "5V1jrLmAUAAADR1t",
+        "name": "Review Shot-Plan Recommendations",
+        "flow_entries_checked": 13,
+        "functional_overview_count": 2,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "A235a0ec6ec301ea",
+        "name": "Evaluate Next-Season PPP (offline)",
+        "flow_entries_checked": 7,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 0,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "IIdxX1mGAqAALhih",
+        "name": "Versioned CSV Tables",
+        "flow_entries_checked": 8,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "TPn5X1mGAqAALhmK",
+        "name": "Short Explanations per item",
+        "flow_entries_checked": 8,
+        "functional_overview_count": 1,
+        "realization_count": 2,
+        "structural_design_count": 2,
+        "sequence_count": 3,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "Ub9lX1mGAqAALhoz",
+        "name": "Compute & Export Top-K Uplift (CSV/JSON)",
+        "flow_entries_checked": 14,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "Wbd8ae8a15dc28bc",
+        "name": "Explore Shot Attempts and Heatmaps",
+        "flow_entries_checked": 8,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "Wbdc1d2b94f83b25",
+        "name": "Review Saved Shot-Model Evidence",
+        "flow_entries_checked": 7,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "b1qTbjmHwzQe9gB6",
+        "name": " Save Notes to Tactics Board / Plan",
+        "flow_entries_checked": 17,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 0,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "dfl3vjmEEhz2rQBi",
+        "name": "Access Analyst Workspace",
+        "flow_entries_checked": 23,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 2,
+        "wireflow_count": 0,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "dfl3vjmEEhz2rQBo",
+        "name": "Load PBP Parquet",
+        "flow_entries_checked": 13,
+        "functional_overview_count": 2,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 0,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "dfl3vjmEEhz2rQBu",
+        "name": "Run Data Quality Checks",
+        "flow_entries_checked": 12,
+        "functional_overview_count": 2,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "dfl3vjmEEhz2rQBw",
+        "name": "Export KPIs / Reports",
+        "flow_entries_checked": 12,
+        "functional_overview_count": 2,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "iK2lX1mGAqAALhof",
+        "name": "Seasonal Holdout",
+        "flow_entries_checked": 11,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "jXQJX1mGAqAALhjF",
+        "name": "Data Dictionary",
+        "flow_entries_checked": 8,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "jv0JX1mGAqAALhjZ",
+        "name": "Audit Metadata",
+        "flow_entries_checked": 8,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "oLOFX1mGAqAALhmy",
+        "name": "Plain Labels & Readability",
+        "flow_entries_checked": 9,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 2,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "sDahi1mGAqAALiDF",
+        "name": "Rank Plays with Game Context",
+        "flow_entries_checked": 22,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 2,
+        "wireflow_count": 1,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "wGVrbjmGmMmMJQCm",
+        "name": " Save Notes to Tactics Board / Plan",
+        "flow_entries_checked": 17,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 0,
+        "result": "Pass"
+      },
+      {
+        "use_case_id": "z9E5X1mGAqAALhlN",
+        "name": "Ranked List via API (Baseline)",
+        "flow_entries_checked": 13,
+        "functional_overview_count": 1,
+        "realization_count": 1,
+        "structural_design_count": 1,
+        "sequence_count": 1,
+        "wireflow_count": 1,
+        "result": "Pass"
+      }
+    ]
+  }
+}

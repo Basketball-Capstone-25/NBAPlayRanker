@@ -1,0 +1,1145 @@
+{
+  "status": "Prepared model verified; shared publication pending",
+  "baseline_revision": 63,
+  "native_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
+  "functional_overview_id": "Wba6994d05cdc3b1",
+  "edited_use_cases": [
+    {
+      "use_case_id": "4tK5X1mGAqAALhlh",
+      "name": "Reactive Updates on Input Changes",
+      "issues": [
+        "SCRUM-643",
+        "SCRUM-644"
+      ],
+      "flow_details_id": "EseffbSGAqAALhlh",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb0cb634cb9e814c",
+          "collaboration_id": "Wbda933331c16473",
+          "name": "Keep Results Matched to Inputs",
+          "owned_diagrams": [
+            {
+              "id": "Wb702f4085ee0b68",
+              "name": "Collaboration Overview - Keep Results Matched to Inputs",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wbd177178dc56e92",
+              "name": "Structural Design - Keep Results Matched to Inputs",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wb87a1f415230853",
+              "name": "Detailed Sequence - Keep Results Matched to Inputs",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "kLh0noWD.AAAAQz2",
+          "name": "Wireflow - Shot Plan, Explorer and Heatmap"
+        },
+        {
+          "id": "TtR0noWD.AAAARAh",
+          "name": "Wireflow - Coach Context and Current Calls"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "5V1jrLmAUAAADR1t",
+      "name": "Review Shot-Plan Recommendations",
+      "issues": [
+        "SCRUM-544",
+        "SCRUM-642",
+        "SCRUM-643"
+      ],
+      "flow_details_id": "FUrEX_SAUAAADR1t",
+      "functional_overviews": [
+        {
+          "id": "bawPbjmD.AAAAUbo",
+          "name": "Contextual ML Recommender Overview Diagram 2.0"
+        },
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb3ac6826c73d610",
+          "collaboration_id": "Wb757b244e73d0bb",
+          "name": "Review Shot-Plan Recommendations",
+          "owned_diagrams": [
+            {
+              "id": "Wb0cfd27772004c5",
+              "name": "Collaboration Overview - Review Shot-Plan Recommendations",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wbca030b9426b2b1",
+              "name": "Structural Design - Review Shot-Plan Recommendations",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wbdeeeb8690f418f",
+              "name": "Detailed Sequence - Review Shot-Plan Recommendations",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "kLh0noWD.AAAAQz2",
+          "name": "Wireflow - Shot Plan, Explorer and Heatmap"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "A235a0ec6ec301ea",
+      "name": "Evaluate Next-Season PPP (offline)",
+      "issues": [
+        "SCRUM-526"
+      ],
+      "flow_details_id": "9ezSQvSEEhz2rQBu",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "A24d7089258e876e",
+          "collaboration_id": "A201783b2eeea751",
+          "name": "Evaluate Next-Season PPP (offline)",
+          "owned_diagrams": [
+            {
+              "id": "A2a4c53e03dcea0f",
+              "name": "Collaboration Overview - Evaluate Next-Season PPP (offline) (526)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "A265c00592ba2418",
+              "name": "Structural Design - Evaluate Next-Season PPP (offline) (526)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "A27d914a6c6fcf29",
+              "name": "Detailed Sequence - Evaluate Next-Season PPP (526)",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [],
+      "wireflow_scope_note": "Offline data/evaluation workflow; no end-user screen is claimed."
+    },
+    {
+      "use_case_id": "IIdxX1mGAqAALhih",
+      "name": "Versioned CSV Tables",
+      "issues": [
+        "SCRUM-487"
+      ],
+      "flow_details_id": "oJ7XfbSGAqAALhih",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wbcf11651642e531",
+          "collaboration_id": "Wbb15d4312b3e0ab",
+          "name": "Identify Result Data Versions",
+          "owned_diagrams": [
+            {
+              "id": "Wb2bd65971486c79",
+              "name": "Collaboration Overview - Identify Result Data Versions",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wbe3c7cf51c38af8",
+              "name": "Structural Design - Identify Result Data Versions",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wbfdca427dda846a",
+              "name": "Detailed Sequence - Identify Result Data Versions",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "0FB0noWD.AAAAQjI",
+          "name": "Wireflow - Data Explorer and Dictionary"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "TPn5X1mGAqAALhmK",
+      "name": "Short Explanations per item",
+      "issues": [
+        "SCRUM-546"
+      ],
+      "flow_details_id": "zOw_fbSGAqAALhmK",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb540fcb3656aded",
+          "collaboration_id": "4kPN.wWAUAAADbiZ",
+          "name": "Ranked List via API (Baseline)",
+          "owned_diagrams": [
+            {
+              "id": "ikPN.wWAUAAADbia",
+              "name": "Collaboration Overview - Ranked List via API (Baseline)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "sUPN.wWAUAAADbjL",
+              "name": "Structural Overview - Ranked List via API (Baseline)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "uUPN.wWAUAAADbj1",
+              "name": "Behavioural Overview - Ranked List via API (Baseline)",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        },
+        {
+          "id": "Wbc637762aff41f9",
+          "collaboration_id": "RCPN.wWAUAAADbmk",
+          "name": "Rank Plays with Game Context",
+          "owned_diagrams": [
+            {
+              "id": "biPN.wWAUAAADbnk",
+              "name": "Structural Overview - Rank Plays with Game Context",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "dCPN.wWAUAAADbml",
+              "name": "Collaboration Overview - Rank Plays with Game Context",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "wSPN.wWAUAAADboU",
+              "name": "Behavioural Overview - Rank Plays with Game Context",
+              "type": "InteractionDiagram"
+            },
+            {
+              "id": "lvbrwIWAUAAADT6c",
+              "name": "Detailed Sequence - NLP Context Fallback (502)",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "TtR0noWD.AAAARAh",
+          "name": "Wireflow - Coach Context and Current Calls"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "Ub9lX1mGAqAALhoz",
+      "name": "Compute & Export Top-K Uplift (CSV/JSON)",
+      "issues": [
+        "SCRUM-475"
+      ],
+      "flow_details_id": "0anA_bSGAqAALhoz",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb7b636af350543e",
+          "collaboration_id": "Wb3ab5e3b8379f8c",
+          "name": "Historical Top-K Uplift",
+          "owned_diagrams": [
+            {
+              "id": "Wba78fd2b4704e06",
+              "name": "Collaboration Overview - Historical Top-K Uplift",
+              "type": "ClassDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": [
+            {
+              "id": "Elab56198592e4c5",
+              "name": "Elaboration - Analyst Evidence Design (475, 476, 477)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Elabcccf12e8a8ce",
+              "name": "Detailed Sequence - Analyst Top-K Uplift (475)",
+              "type": "InteractionDiagram"
+            }
+          ]
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "MyR0noWD.AAAAQ55",
+          "name": "Wireflow - Analyst Metrics and Reports"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "Wbd8ae8a15dc28bc",
+      "name": "Explore Shot Attempts and Heatmaps",
+      "issues": [
+        "SCRUM-643"
+      ],
+      "flow_details_id": "",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb931a284210a1a3",
+          "collaboration_id": "Wbd196a076351949",
+          "name": "Explore Shot Attempts and Heatmaps",
+          "owned_diagrams": [
+            {
+              "id": "Wb60f1360c38f347",
+              "name": "Collaboration Overview - Explore Shot Attempts and Heatmaps",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wb93dfeee4d3cc9e",
+              "name": "Structural Design - Explore Shot Attempts and Heatmaps",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wbd2838148f71b01",
+              "name": "Detailed Sequence - Explore Shot Attempts and Heatmaps",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "kLh0noWD.AAAAQz2",
+          "name": "Wireflow - Shot Plan, Explorer and Heatmap"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "Wbdc1d2b94f83b25",
+      "name": "Review Saved Shot-Model Evidence",
+      "issues": [
+        "SCRUM-543",
+        "SCRUM-545",
+        "SCRUM-549",
+        "SCRUM-640"
+      ],
+      "flow_details_id": "",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb4ab2a625e80901",
+          "collaboration_id": "Wb80dfa03767848d",
+          "name": "Review Saved Shot-Model Evidence",
+          "owned_diagrams": [
+            {
+              "id": "Wbea335a65d47c77",
+              "name": "Collaboration Overview - Review Saved Shot-Model Evidence",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wbde26834bf381e6",
+              "name": "Structural Design - Review Saved Shot-Model Evidence",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wb2738dacbdf4320",
+              "name": "Detailed Sequence - Review Saved Shot-Model Evidence",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "MyR0noWD.AAAAQ55",
+          "name": "Wireflow - Analyst Metrics and Reports"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "b1qTbjmHwzQe9gB6",
+      "name": " Save Notes to Tactics Board / Plan",
+      "issues": [
+        "SCRUM-481"
+      ],
+      "flow_details_id": "70.k3PSHwzQe9gB6",
+      "functional_overviews": [
+        {
+          "id": "Cp9TbjmD.AAAAQyb",
+          "name": "Baseline Playtype Recommender Overview 2.0"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb83b8261d243ea5",
+          "collaboration_id": "Wb5b67df6b7f2c22",
+          "name": "Persist Coach-Owned Gameplan State",
+          "owned_diagrams": [
+            {
+              "id": "Wbeedf1f130b096e",
+              "name": "Collaboration Overview - Coach-Owned Gameplan Storage",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wb35c379282de6f4",
+              "name": "Detailed Sequence - Coach-Owned Gameplan Storage",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": [
+            {
+              "id": "Elab8132fcbcc10d",
+              "name": "Elaboration - Coach Gameplan Storage (481)",
+              "type": "ClassDiagram"
+            }
+          ]
+        }
+      ],
+      "native_wireflows": [],
+      "wireflow_scope_note": "Schema contract only; teammate client integration has separate ownership."
+    },
+    {
+      "use_case_id": "dfl3vjmEEhz2rQBi",
+      "name": "Access Analyst Workspace",
+      "issues": [
+        "SCRUM-547",
+        "SCRUM-506",
+        "SCRUM-575"
+      ],
+      "flow_details_id": "9ezSQvSEEhz2rQBi",
+      "functional_overviews": [
+        {
+          "id": "xM4jX1mGAqAALhws",
+          "name": "Data Foundations and Explorer Overview"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "3f3N.wWAUAAADbcw",
+          "collaboration_id": "1f3N.wWAUAAADbcp",
+          "name": "Access Analyst Workspace",
+          "owned_diagrams": [
+            {
+              "id": "7f3N.wWAUAAADbcq",
+              "name": "Collaboration Overview - Access Analyst Workspace",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "EAPN.wWAUAAADbdi",
+              "name": "Structural Overview - Access Analyst Workspace",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "FAPN.wWAUAAADbeQ",
+              "name": "Behavioural Overview - Access Analyst Workspace",
+              "type": "InteractionDiagram"
+            },
+            {
+              "id": "cBlnwIWAUAAADWHW",
+              "name": "Detailed Sequence - Run Data Quality Checks (478)",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [],
+      "wireflow_scope_note": "Operational readiness change; no new authentication screen. The existing access collaboration documents entry, and current data/evidence wireflows start after sign-in."
+    },
+    {
+      "use_case_id": "dfl3vjmEEhz2rQBo",
+      "name": "Load PBP Parquet",
+      "issues": [
+        "SCRUM-538",
+        "SCRUM-549",
+        "SCRUM-642"
+      ],
+      "flow_details_id": "9ezSQvSEEhz2rQBo",
+      "functional_overviews": [
+        {
+          "id": "xM4jX1mGAqAALhws",
+          "name": "Data Foundations and Explorer Overview"
+        },
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb18fe2d6c2d5c1d",
+          "collaboration_id": "Wb7af907ae3444d5",
+          "name": "Validate and Rebuild Shot Sources",
+          "owned_diagrams": [
+            {
+              "id": "Wb1cea4146f7af7a",
+              "name": "Collaboration Overview - Validate and Rebuild Shot Sources",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wbe14aa0ee458921",
+              "name": "Structural Design - Validate and Rebuild Shot Sources",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wb65c1f837d207f1",
+              "name": "Detailed Sequence - Validate and Rebuild Shot Sources",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [],
+      "wireflow_scope_note": "Offline data/evaluation workflow; no end-user screen is claimed."
+    },
+    {
+      "use_case_id": "dfl3vjmEEhz2rQBu",
+      "name": "Run Data Quality Checks",
+      "issues": [
+        "SCRUM-480",
+        "SCRUM-574"
+      ],
+      "flow_details_id": "9ezSQvSEEhz2rQBu",
+      "functional_overviews": [
+        {
+          "id": "xM4jX1mGAqAALhws",
+          "name": "Data Foundations and Explorer Overview"
+        },
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "A2de75646e2f0815",
+          "collaboration_id": "A23e3c5e8769146c",
+          "name": "Run Data Quality Checks",
+          "owned_diagrams": [
+            {
+              "id": "A2a6e559ca1de02a",
+              "name": "Collaboration Overview - Run Data Quality Checks (480)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "A24672919fb03b0c",
+              "name": "Structural Design - Run Data Quality Checks (480)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "A2ec7436ba779216",
+              "name": "Detailed Sequence - Review Source Data Status (480)",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "0FB0noWD.AAAAQjI",
+          "name": "Wireflow - Data Explorer and Dictionary"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "dfl3vjmEEhz2rQBw",
+      "name": "Export KPIs / Reports",
+      "issues": [
+        "SCRUM-486",
+        "SCRUM-616"
+      ],
+      "flow_details_id": "9ezSQvSEEhz2rQBw",
+      "functional_overviews": [
+        {
+          "id": "xM4jX1mGAqAALhws",
+          "name": "Data Foundations and Explorer Overview"
+        },
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "A2a5290c46f858ee",
+          "collaboration_id": "A2f637506212f701",
+          "name": "Export KPIs / Reports",
+          "owned_diagrams": [
+            {
+              "id": "A286349d6dc149e4",
+              "name": "Elaboration - Shared Export Controls (486)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "A2271d30211208e1",
+              "name": "Collaboration Overview - Export KPIs / Reports (486)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "A257dd5cc61e2c68",
+              "name": "Detailed Sequence - Export Displayed Results (486)",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "MyR0noWD.AAAAQ55",
+          "name": "Wireflow - Analyst Metrics and Reports"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "iK2lX1mGAqAALhof",
+      "name": "Seasonal Holdout",
+      "issues": [
+        "SCRUM-476",
+        "SCRUM-542",
+        "SCRUM-619"
+      ],
+      "flow_details_id": "SLJA_bSGAqAALhof",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb41c8a5352735d4",
+          "collaboration_id": "Wbef13d6d49301a1",
+          "name": "PPP Calibration Diagnostics",
+          "owned_diagrams": [
+            {
+              "id": "Wb92e6cc11905ce5",
+              "name": "Collaboration Overview - PPP Calibration Diagnostics",
+              "type": "ClassDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": [
+            {
+              "id": "Elab56198592e4c5",
+              "name": "Elaboration - Analyst Evidence Design (475, 476, 477)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Elab86fdd4b13a52",
+              "name": "Detailed Sequence - Inspect PPP Calibration (476)",
+              "type": "InteractionDiagram"
+            }
+          ]
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "MyR0noWD.AAAAQ55",
+          "name": "Wireflow - Analyst Metrics and Reports"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "jXQJX1mGAqAALhjF",
+      "name": "Data Dictionary",
+      "issues": [
+        "SCRUM-498",
+        "SCRUM-548"
+      ],
+      "flow_details_id": "TWM3fbSGAqAALhjF",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb9b9f1c40a148cb",
+          "collaboration_id": "Wbd374f51f95ba29",
+          "name": "Inspect Dataset Columns",
+          "owned_diagrams": [
+            {
+              "id": "Wb7d19b0e4cb6dad",
+              "name": "Collaboration Overview - Inspect Dataset Columns",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wbd77c9edf94bde0",
+              "name": "Structural Design - Inspect Dataset Columns",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wba7597ad0d0469b",
+              "name": "Detailed Sequence - Inspect Dataset Columns",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "0FB0noWD.AAAAQjI",
+          "name": "Wireflow - Data Explorer and Dictionary"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "jv0JX1mGAqAALhjZ",
+      "name": "Audit Metadata",
+      "issues": [
+        "SCRUM-488",
+        "SCRUM-489"
+      ],
+      "flow_details_id": "Tuq3fbSGAqAALhjZ",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wbd1d2e243371bce",
+          "collaboration_id": "Wbc702fbe6667620",
+          "name": "Inspect Source Metadata",
+          "owned_diagrams": [
+            {
+              "id": "Wb6c72841c6afe2b",
+              "name": "Collaboration Overview - Inspect Source Metadata",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wb624ae3bbeb7114",
+              "name": "Structural Design - Inspect Source Metadata",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wb4287fc031f9c33",
+              "name": "Detailed Sequence - Inspect Source Metadata",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "0FB0noWD.AAAAQjI",
+          "name": "Wireflow - Data Explorer and Dictionary"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "oLOFX1mGAqAALhmy",
+      "name": "Plain Labels & Readability",
+      "issues": [
+        "SCRUM-640"
+      ],
+      "flow_details_id": "YKZ_fbSGAqAALhmy",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wb618129775e7178",
+          "collaboration_id": "Wb8c1e02a3c7ef13",
+          "name": "Present Clear Results and Limits",
+          "owned_diagrams": [
+            {
+              "id": "Wb0ccc23b10ed1c7",
+              "name": "Collaboration Overview - Present Clear Results and Limits",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wbf4aac161ae722e",
+              "name": "Structural Design - Present Clear Results and Limits",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wba5cf63ba4d9e0c",
+              "name": "Detailed Sequence - Present Clear Results and Limits",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "0FB0noWD.AAAAQjI",
+          "name": "Wireflow - Data Explorer and Dictionary"
+        },
+        {
+          "id": "MyR0noWD.AAAAQ55",
+          "name": "Wireflow - Analyst Metrics and Reports"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "sDahi1mGAqAALiDF",
+      "name": "Rank Plays with Game Context",
+      "issues": [
+        "SCRUM-539",
+        "SCRUM-540",
+        "SCRUM-541"
+      ],
+      "flow_details_id": "cCBHqbSGAqAALiDF",
+      "functional_overviews": [
+        {
+          "id": "ug6YC1mGAqAALg7I",
+          "name": "System Overview Diagram"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "DCPN.wWAUAAADbmr",
+          "collaboration_id": "RCPN.wWAUAAADbmk",
+          "name": "Rank Plays with Game Context",
+          "owned_diagrams": [
+            {
+              "id": "biPN.wWAUAAADbnk",
+              "name": "Structural Overview - Rank Plays with Game Context",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "dCPN.wWAUAAADbml",
+              "name": "Collaboration Overview - Rank Plays with Game Context",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "wSPN.wWAUAAADboU",
+              "name": "Behavioural Overview - Rank Plays with Game Context",
+              "type": "InteractionDiagram"
+            },
+            {
+              "id": "lvbrwIWAUAAADT6c",
+              "name": "Detailed Sequence - NLP Context Fallback (502)",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "TtR0noWD.AAAARAh",
+          "name": "Wireflow - Coach Context and Current Calls"
+        }
+      ],
+      "wireflow_scope_note": null
+    },
+    {
+      "use_case_id": "wGVrbjmGmMmMJQCm",
+      "name": " Save Notes to Tactics Board / Plan",
+      "issues": [
+        "SCRUM-481"
+      ],
+      "flow_details_id": "IHzM3PSGmMmMJQCm",
+      "functional_overviews": [
+        {
+          "id": "bawPbjmD.AAAAUbo",
+          "name": "Contextual ML Recommender Overview Diagram 2.0"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "Wbb6ea545fe9e0e5",
+          "collaboration_id": "Wb5b67df6b7f2c22",
+          "name": "Persist Coach-Owned Gameplan State",
+          "owned_diagrams": [
+            {
+              "id": "Wbeedf1f130b096e",
+              "name": "Collaboration Overview - Coach-Owned Gameplan Storage",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "Wb35c379282de6f4",
+              "name": "Detailed Sequence - Coach-Owned Gameplan Storage",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": [
+            {
+              "id": "Elab8132fcbcc10d",
+              "name": "Elaboration - Coach Gameplan Storage (481)",
+              "type": "ClassDiagram"
+            }
+          ]
+        }
+      ],
+      "native_wireflows": [],
+      "wireflow_scope_note": "Schema contract only; teammate client integration has separate ownership."
+    },
+    {
+      "use_case_id": "z9E5X1mGAqAALhlN",
+      "name": "Ranked List via API (Baseline)",
+      "issues": [
+        "SCRUM-546",
+        "SCRUM-609"
+      ],
+      "flow_details_id": "L8SffbSGAqAALhlN",
+      "functional_overviews": [
+        {
+          "id": "Wba6994d05cdc3b1",
+          "name": "Functional Overview - Current Analyst and Shot Evidence"
+        }
+      ],
+      "collaborations": [
+        {
+          "id": "KkPN.wWAUAAADbig",
+          "collaboration_id": "4kPN.wWAUAAADbiZ",
+          "name": "Ranked List via API (Baseline)",
+          "owned_diagrams": [
+            {
+              "id": "ikPN.wWAUAAADbia",
+              "name": "Collaboration Overview - Ranked List via API (Baseline)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "sUPN.wWAUAAADbjL",
+              "name": "Structural Overview - Ranked List via API (Baseline)",
+              "type": "ClassDiagram"
+            },
+            {
+              "id": "uUPN.wWAUAAADbj1",
+              "name": "Behavioural Overview - Ranked List via API (Baseline)",
+              "type": "InteractionDiagram"
+            }
+          ],
+          "referenced_existing_diagrams": []
+        }
+      ],
+      "native_wireflows": [
+        {
+          "id": "TtR0noWD.AAAARAh",
+          "name": "Wireflow - Coach Context and Current Calls"
+        }
+      ],
+      "wireflow_scope_note": null
+    }
+  ],
+  "scoped_collaboration_links": [
+    {
+      "scope": "SCRUM-488/489",
+      "use_case_id": "jv0JX1mGAqAALhjZ",
+      "use_case_name": "Audit Metadata",
+      "collaboration_id": "Wbc702fbe6667620",
+      "realization_id": "Wbd1d2e243371bce",
+      "overview_id": "Wb6c72841c6afe2b",
+      "design_id": "Wb624ae3bbeb7114",
+      "sequence_id": "Wb4287fc031f9c33"
+    },
+    {
+      "scope": "SCRUM-487",
+      "use_case_id": "IIdxX1mGAqAALhih",
+      "use_case_name": "Versioned CSV Tables",
+      "collaboration_id": "Wbb15d4312b3e0ab",
+      "realization_id": "Wbcf11651642e531",
+      "overview_id": "Wb2bd65971486c79",
+      "design_id": "Wbe3c7cf51c38af8",
+      "sequence_id": "Wbfdca427dda846a"
+    },
+    {
+      "scope": "SCRUM-498/548",
+      "use_case_id": "jXQJX1mGAqAALhjF",
+      "use_case_name": "Data Dictionary",
+      "collaboration_id": "Wbd374f51f95ba29",
+      "realization_id": "Wb9b9f1c40a148cb",
+      "overview_id": "Wb7d19b0e4cb6dad",
+      "design_id": "Wbd77c9edf94bde0",
+      "sequence_id": "Wba7597ad0d0469b"
+    },
+    {
+      "scope": "SCRUM-538/549/642",
+      "use_case_id": "dfl3vjmEEhz2rQBo",
+      "use_case_name": "Load PBP Parquet",
+      "collaboration_id": "Wb7af907ae3444d5",
+      "realization_id": "Wb18fe2d6c2d5c1d",
+      "overview_id": "Wb1cea4146f7af7a",
+      "design_id": "Wbe14aa0ee458921",
+      "sequence_id": "Wb65c1f837d207f1"
+    },
+    {
+      "scope": "SCRUM-544/642/643",
+      "use_case_id": "5V1jrLmAUAAADR1t",
+      "use_case_name": "Review Shot-Plan Recommendations",
+      "collaboration_id": "Wb757b244e73d0bb",
+      "realization_id": "Wb3ac6826c73d610",
+      "overview_id": "Wb0cfd27772004c5",
+      "design_id": "Wbca030b9426b2b1",
+      "sequence_id": "Wbdeeeb8690f418f"
+    },
+    {
+      "scope": "SCRUM-643",
+      "use_case_id": "Wbd8ae8a15dc28bc",
+      "use_case_name": "Explore Shot Attempts and Heatmaps",
+      "collaboration_id": "Wbd196a076351949",
+      "realization_id": "Wb931a284210a1a3",
+      "overview_id": "Wb60f1360c38f347",
+      "design_id": "Wb93dfeee4d3cc9e",
+      "sequence_id": "Wbd2838148f71b01"
+    },
+    {
+      "scope": "SCRUM-543/545/549/640",
+      "use_case_id": "Wbdc1d2b94f83b25",
+      "use_case_name": "Review Saved Shot-Model Evidence",
+      "collaboration_id": "Wb80dfa03767848d",
+      "realization_id": "Wb4ab2a625e80901",
+      "overview_id": "Wbea335a65d47c77",
+      "design_id": "Wbde26834bf381e6",
+      "sequence_id": "Wb2738dacbdf4320"
+    },
+    {
+      "scope": "SCRUM-643/644",
+      "use_case_id": "4tK5X1mGAqAALhlh",
+      "use_case_name": "Reactive Updates on Input Changes",
+      "collaboration_id": "Wbda933331c16473",
+      "realization_id": "Wb0cb634cb9e814c",
+      "overview_id": "Wb702f4085ee0b68",
+      "design_id": "Wbd177178dc56e92",
+      "sequence_id": "Wb87a1f415230853"
+    },
+    {
+      "scope": "SCRUM-640",
+      "use_case_id": "oLOFX1mGAqAALhmy",
+      "use_case_name": "Plain Labels & Readability",
+      "collaboration_id": "Wb8c1e02a3c7ef13",
+      "realization_id": "Wb618129775e7178",
+      "overview_id": "Wb0ccc23b10ed1c7",
+      "design_id": "Wbf4aac161ae722e",
+      "sequence_id": "Wba5cf63ba4d9e0c"
+    },
+    {
+      "scope": "SCRUM-481",
+      "use_case_id": "b1qTbjmHwzQe9gB6",
+      "use_case_name": " Save Notes to Tactics Board / Plan",
+      "collaboration_id": "Wb5b67df6b7f2c22",
+      "realization_id": "Wb83b8261d243ea5",
+      "overview_id": "Wbeedf1f130b096e",
+      "design_id": "Elab8132fcbcc10d",
+      "sequence_id": "Wb35c379282de6f4",
+      "design_reused": true
+    },
+    {
+      "scope": "SCRUM-481",
+      "use_case_id": "wGVrbjmGmMmMJQCm",
+      "use_case_name": " Save Notes to Tactics Board / Plan",
+      "collaboration_id": "Wb5b67df6b7f2c22",
+      "realization_id": "Wbb6ea545fe9e0e5",
+      "overview_id": "Wbeedf1f130b096e",
+      "design_id": "Elab8132fcbcc10d",
+      "sequence_id": "Wb35c379282de6f4",
+      "design_reused": true
+    },
+    {
+      "scope": "SCRUM-475",
+      "use_case_id": "Ub9lX1mGAqAALhoz",
+      "use_case_name": "Compute & Export Top-K Uplift (CSV/JSON)",
+      "collaboration_id": "Wb3ab5e3b8379f8c",
+      "realization_id": "Wb7b636af350543e",
+      "overview_id": "Wba78fd2b4704e06",
+      "design_id": "Elab56198592e4c5",
+      "sequence_id": "Elabcccf12e8a8ce",
+      "design_reused": true,
+      "sequence_reused": true
+    },
+    {
+      "scope": "SCRUM-476/542/619",
+      "use_case_id": "iK2lX1mGAqAALhof",
+      "use_case_name": "Seasonal Holdout",
+      "collaboration_id": "Wbef13d6d49301a1",
+      "realization_id": "Wb41c8a5352735d4",
+      "overview_id": "Wb92e6cc11905ce5",
+      "design_id": "Elab56198592e4c5",
+      "sequence_id": "Elab86fdd4b13a52",
+      "design_reused": true,
+      "sequence_reused": true
+    }
+  ],
+  "additional_explanation_realizations": [
+    {
+      "scope": "SCRUM-546",
+      "use_case_id": "TPn5X1mGAqAALhmK",
+      "collaboration_id": "4kPN.wWAUAAADbiZ",
+      "realization_id": "Wb540fcb3656aded",
+      "overview_id": "ikPN.wWAUAAADbia"
+    },
+    {
+      "scope": "SCRUM-546",
+      "use_case_id": "TPn5X1mGAqAALhmK",
+      "collaboration_id": "RCPN.wWAUAAADbmk",
+      "realization_id": "Wbc637762aff41f9",
+      "overview_id": "dCPN.wWAUAAADbml"
+    }
+  ],
+  "native_wireflow_count": 4,
+  "native_screen_count": 24,
+  "wireflow_note": "Native conceptual screen-state designs, not screenshots of the running app. Original native wireframes remain unchanged."
+}
