@@ -1,0 +1,103 @@
+{
+  "measurements": [
+    {
+      "step": "app_import",
+      "seconds": 2.436,
+      "rss_mib": 362.3
+    },
+    {
+      "path": "/meta/datasets",
+      "status": 200,
+      "seconds": 0.057,
+      "bytes": 3717,
+      "rss_mib": 412.4,
+      "peak_mib": 412.3
+    },
+    {
+      "path": "/meta/data-dictionary",
+      "status": 200,
+      "seconds": 0.003,
+      "bytes": 19723,
+      "rss_mib": 412.4,
+      "peak_mib": 412.3
+    },
+    {
+      "path": "/pbp/shotplan/rank",
+      "status": 200,
+      "seconds": 0.166,
+      "bytes": 4671,
+      "rss_mib": 555.6,
+      "peak_mib": 555.7
+    },
+    {
+      "path": "/metrics/shot-models",
+      "status": 200,
+      "seconds": 0.003,
+      "bytes": 3581,
+      "rss_mib": 555.6,
+      "peak_mib": 555.7
+    },
+    {
+      "path": "/analysis/shot-ml",
+      "status": 200,
+      "seconds": 0.003,
+      "bytes": 7189,
+      "rss_mib": 555.6,
+      "peak_mib": 555.7
+    },
+    {
+      "path": "/pbp/viz/shot-heatmap",
+      "status": 200,
+      "seconds": 0.615,
+      "bytes": 101016,
+      "rss_mib": 846.7,
+      "peak_mib": 846.8
+    },
+    {
+      "path": "/pbp/shots/preview",
+      "status": 200,
+      "seconds": 0.11,
+      "bytes": 947231,
+      "rss_mib": 854.6,
+      "peak_mib": 855.7
+    },
+    {
+      "path": "/viz/shot-heatmap",
+      "status": 200,
+      "seconds": 0.382,
+      "bytes": 93199,
+      "rss_mib": 904.3,
+      "peak_mib": 904.4
+    },
+    {
+      "path": "/export/shotplan.pdf",
+      "status": 200,
+      "seconds": 0.364,
+      "bytes": 77159,
+      "rss_mib": 912.9,
+      "peak_mib": 913.0
+    },
+    {
+      "step": "two_concurrent_heatmap_and_pdf",
+      "responses": [
+        {
+          "path": "/pbp/viz/shot-heatmap",
+          "status": 200,
+          "seconds": 0.688,
+          "bytes": 103188
+        },
+        {
+          "path": "/export/shotplan.pdf",
+          "status": 200,
+          "seconds": 0.679,
+          "bytes": 79001
+        }
+      ],
+      "rss_mib": 973.9,
+      "peak_mib": 974.2
+    }
+  ],
+  "peak_rss_mib": 974.2,
+  "limit_mib": 2048,
+  "auth": "Local test fixture; production authentication unchanged."
+}

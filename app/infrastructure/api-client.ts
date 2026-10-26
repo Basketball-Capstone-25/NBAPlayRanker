@@ -1,3 +1,4 @@
+import { normalizeShotAnalysis, type ShotAnalysis } from "../domain/shot-analysis";
 /** API client: all fetch helpers for the FastAPI backend. */
 
 export const API_BASE =
@@ -30,6 +31,8 @@ export const FALLBACK_TEAMS = [
 import { createClient } from "../../lib/supabase/client";
 import { localExportUrl } from "./export-contract";
 import { parseDataQualityReport, type DataQualityReport } from "./data-quality";
+import { parseDatasetCatalog, type DatasetMetadata, type DictionaryColumn } from "./dataset-catalog";
+import type { CoachingConditions } from "../domain/gameplan-context";
 
 /** Get Authorization headers for the current Supabase session. */
 async function getAuthHeaders(): Promise<Record<string, string>> {
@@ -53,7 +56,13 @@ async function fetchJson<T>(url: string): Promise<T> {
     const text = await res.text();
     throw new Error(`API error ${res.status}: ${text}`);
   }
-  return (await res.json()) as T;
+  const body = await res.json();
+  if (body && typeof body === "object" && !Array.isArray(body)) {
+    body.dataset_version = res.headers.get("X-Dataset-Version") || body.dataset_version;
+    const versions = res.headers.get("X-Dataset-Versions");
+    if (versions) body.dataset_versions = JSON.parse(versions);
+  }
+  return body as T;
 }
 
 export async function postJson<T>(url: string, body: unknown): Promise<T> {
@@ -113,6 +122,16 @@ export async function fetchDataQualityReport(signal?: AbortSignal): Promise<Data
     if (error instanceof TypeError) throw new Error("Could not reach the data-check service. Please try again.");
     throw error;
   }
+}
+
+export async function fetchDatasetCatalog(signal?: AbortSignal): Promise<DatasetMetadata[]> {
+  return parseDatasetCatalog(await fetchJsonWithStatus<unknown>(`${API_BASE}/meta/datasets`, signal));
+}
+
+export async function fetchDataDictionary(signal?: AbortSignal): Promise<{ columns: DictionaryColumn[] }> {
+  const data = await fetchJsonWithStatus<{ columns: DictionaryColumn[] }>(`${API_BASE}/meta/data-dictionary`, signal);
+  if (!Array.isArray(data?.columns)) throw new Error("Data Dictionary unavailable.");
+  return data;
 }
 
 /**
@@ -193,6 +212,8 @@ export type TeamPlaytypesPreviewResponse = {
 };
 
 export type BaselineRankResponse = {
+  dataset_versions?: Record<string, string>;
+  dataset_version?: string;
   season: string;
   our_team: string;
   opp_team: string;
@@ -203,6 +224,8 @@ export type BaselineRankResponse = {
 };
 
 export type ContextRankResponse = {
+  dataset_versions?: Record<string, string>;
+  dataset_version?: string;
   season: string;
   our_team: string;
   opp_team: string;
@@ -216,6 +239,8 @@ export type ContextRankResponse = {
 };
 
 export type ModelMetricsResponse = {
+  dataset_versions?: Record<string, string>;
+  dataset_version?: string;
   n_splits: number;
   metrics: Array<{
     model: string;
@@ -263,9 +288,7 @@ export type ShotPlanRankResponse = {
   _endpoint_used?: string;
 };
 
-// Heatmap responses can come from:
-// - Dataset1/root endpoint:     GET /viz/shot-heatmap      -> { caption, image_base64 }
-// - Dataset2/PBP endpoint:      GET /pbp/viz/shot-heatmap  -> { season, team, opp, shot_type, zone, max_shots, image_base64 }
+// Current PBP heatmap contract, including the submitted filters and sample counts.
 export type ShotHeatmapResponse = {
   image_base64: string;
   caption?: string;
@@ -275,12 +298,21 @@ export type ShotHeatmapResponse = {
   shot_type?: string | null;
   zone?: string | null;
   max_shots?: number;
+  n_shots?: number;
+  n_shots_total?: number;
+  n_shots_rendered?: number;
+  n_shots_excluded_location?: number;
+  n_shots_outside_halfcourt?: number;
+  n_shots_omitted_by_cap?: number;
 
   // Optional debug: which endpoint actually served this response.
   _endpoint_used?: string;
 };
 
 export type ShotModelMetricsResponse = {
+  source_sha256?: string;
+  best_model?: string;
+  later_season?: import("../domain/shot-analysis").ShotLaterSeason;
   n_splits: number;
   metrics: Array<{
     model: string;
@@ -293,14 +325,7 @@ export type ShotModelMetricsResponse = {
   }>;
 };
 
-export type ShotMlAnalysisResponse = {
-  dataset: any;
-  eda: any;
-  correlations: { labels: string[]; matrix: number[][] };
-  target_feature_corr: Array<{ feature: string; corr: number; abs: number }>;
-  feature_selection: any;
-  model_selection: any;
-};
+export type ShotMlAnalysisResponse = ShotAnalysis;
 
 // Dataset2: PBP meta options for dropdowns
 export type PbpMetaOptions = {
@@ -501,7 +526,7 @@ export async function baselineRank(opts: {
     pppDef: Number(r.PPP_DEF_SHRUNK),
     pppGap: Number(r.PPP_GAP),
     rationale: r.RATIONALE || "",
-    raw: r,
+    raw: { ...r, dataset_versions: data.dataset_versions },
   }));
 }
 
@@ -538,6 +563,7 @@ export async function contextRank(opts: {
   timeRemaining: number; // seconds remaining in current period
   k?: number;
   wOff?: number;
+  coaching?: CoachingConditions;
 }): Promise<
   Array<{
     playType: string;
@@ -572,6 +598,8 @@ export async function contextRank(opts: {
     w_off: String(wOff),
   });
 
+  if (opts.coaching) params.set("coaching", JSON.stringify(opts.coaching));
+
   const data = await fetchJson<ContextRankResponse>(
     `${API_BASE}/rank-plays/context-ml?${params.toString()}`
   );
@@ -586,7 +614,7 @@ export async function contextRank(opts: {
     deltaPPP: Number(r.DELTA_VS_BASELINE),
     contextLabel: r.CONTEXT_LABEL || "",
     rationale: r.RATIONALE || "",
-    raw: r,
+    raw: { ...r, dataset_versions: data.dataset_versions },
   }));
 }
 
@@ -734,51 +762,32 @@ export async function fetchShotHeatmap(opts: {
     throw new Error("fetchShotHeatmap requires either `team` or `our`.");
   }
 
-  // Dataset2 query style (team/opp) + max_shots
   const pPbp = new URLSearchParams({
     season: opts.season,
-    team,
+    our: team,
     opp: opts.opp,
   });
   if (opts.shotType) pPbp.set("shot_type", opts.shotType);
   if (opts.zone) pPbp.set("zone", opts.zone);
   if (opts.maxShots != null) pPbp.set("max_shots", String(opts.maxShots));
 
-  // Legacy/root query style (our/opp)
-  const pRoot = new URLSearchParams({
-    season: opts.season,
-    our: team,
-    opp: opts.opp,
-  });
-  if (opts.shotType) pRoot.set("shot_type", opts.shotType);
-  if (opts.zone) pRoot.set("zone", opts.zone);
-
-  const candidates = [
-    // Preferred Dataset2 name
-    `${API_BASE}/pbp/viz/shot-heatmap?${pPbp.toString()}`,
-
-    // Some people accidentally name it /pbp/viz/heatmap ( earlier URL)
-    `${API_BASE}/pbp/viz/heatmap?${pPbp.toString()}`,
-
-    // Legacy/root endpoint
-    `${API_BASE}/viz/shot-heatmap?${pRoot.toString()}`,
-  ];
-
-  const { data, usedUrl } = await tryJsonCandidates<ShotHeatmapResponse>(candidates, {
-    keepTryingOnClientError: true,
-  });
-
-  // Normalize so UI always gets image_base64
-  if (!(data as any)?.image_base64) {
-    throw new Error(
-      `Heatmap response missing image_base64. Endpoint used: ${usedUrl}`
-    );
+  const usedUrl = `${API_BASE}/pbp/viz/shot-heatmap?${pPbp.toString()}`;
+  let data: ShotHeatmapResponse;
+  try {
+    data = await fetchJsonWithStatus<ShotHeatmapResponse>(usedUrl);
+  } catch (reason) {
+    if (reason instanceof ApiError) {
+      if (reason.status === 401) throw new Error("Sign in again to view shot heatmaps.");
+      if (reason.status === 403) throw new Error("An analyst or coach account is required to view shot heatmaps.");
+      if (reason.status === 404) throw new Error("No shots match these filters. Try a different matchup or clear the shot type and zone.");
+      if (reason.status === 400 || reason.status === 422) throw new Error("Check the season, teams and heatmap filters, then try again.");
+      throw new Error("The heatmap service is unavailable. Please try again.");
+    }
+    if (reason instanceof TypeError) throw new Error("Could not reach the heatmap service. Please try again.");
+    throw reason;
   }
-
-  return {
-    ...data,
-    _endpoint_used: usedUrl,
-  };
+  if (typeof data?.image_base64 !== "string" || !data.image_base64) throw new Error("The heatmap service did not return an image. Please try again.");
+  return { ...data, _endpoint_used: usedUrl };
 }
 
 export function getShotPlanPdfUrl(opts: {
@@ -791,9 +800,7 @@ export function getShotPlanPdfUrl(opts: {
   zone?: string;
   maxShots?: number;
 }): string {
-  // Keep PDF export on the legacy root endpoint unless backend explicitly adds /pbp/export.
-  // This keeps existing exports stable.
-  const { season, our, opp, k = 5, wOff = 0.7, shotType, zone } = opts;
+  const { season, our, opp, k = 5, wOff = 0.7, shotType, zone, maxShots = 35000 } = opts;
 
   const params = new URLSearchParams({
     season,
@@ -801,6 +808,7 @@ export function getShotPlanPdfUrl(opts: {
     opp,
     k: String(k),
     w_off: String(wOff),
+    max_shots: String(maxShots),
   });
 
   if (shotType) params.set("shot_type", shotType);
@@ -823,7 +831,7 @@ export async function fetchShotMlAnalysis(opts?: {
   );
 
   // Normalize so pages can safely access correlation_filter.threshold, kept, etc.
-  return normalizeAnalysisResponse<ShotMlAnalysisResponse>(raw);
+  return normalizeShotAnalysis(raw);
 }
 
 export async function fetchShotModelMetrics(

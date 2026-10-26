@@ -1,0 +1,9 @@
+{
+  "source_commit": "45973ed5bb0a8fdadbf8e314d0f34adad4ddfc9b",
+  "file": "backend/data/pbp/shots_clean.parquet",
+  "bytes": 11634107,
+  "expected_sha256": "36f128eec443543c7b59dee537fcfc7162ae66b336eece5abf8d25c77cec0fce",
+  "restored_sha256": "36f128eec443543c7b59dee537fcfc7162ae66b336eece5abf8d25c77cec0fce",
+  "matches": true,
+  "content_validity": "Historical file restoration only; known team-attribution defects are not repaired by restoring these bytes."
+}

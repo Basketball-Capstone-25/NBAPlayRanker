@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-10-25T18:51:17.735461+00:00",
+  "backend_revision": "nba-playranker-api-00010-jp4",
+  "endpoint": "/rank-plays/baseline",
+  "matchup": {
+    "season": "2024-25",
+    "our": "TOR",
+    "opp": "BOS",
+    "k": 5,
+    "w_off": 0.7
+  },
+  "passed": true,
+  "measurements": [
+    {
+      "scenario": "Warm coach baseline",
+      "requests": 20,
+      "measurement": "nearest-rank p95",
+      "milliseconds": 459.847,
+      "limit_ms": 5000,
+      "passed": true
+    },
+    {
+      "scenario": "Two concurrent coach baseline requests",
+      "requests": 10,
+      "measurement": "nearest-rank p95",
+      "milliseconds": 420.338,
+      "limit_ms": 10000,
+      "passed": true
+    },
+    {
+      "scenario": "First coach baseline request after idle",
+      "requests": 1,
+      "measurement": "single request elapsed time",
+      "milliseconds": 21049.024,
+      "limit_ms": 45000,
+      "passed": true
+    }
+  ],
+  "idle_proof": {
+    "quiet_seconds_before_request": 1034.522460589,
+    "same_instance_start_and_request": true,
+    "new_instance_reason": "AUTOSCALING"
+  },
+  "session_cleanup_passed": true,
+  "evidence": {
+    "warm": "docs/iteration-17/verification/timing/baseline-warm-concurrent-final.json",
+    "warm_logs": "docs/iteration-17/verification/timing/warm-request-log-verification-final.json",
+    "cold": "docs/iteration-17/verification/timing/baseline-first-after-idle-final.json",
+    "cold_logs": "docs/iteration-17/verification/timing/cold-request-log-verification-final.json",
+    "cold_cleanup": "docs/iteration-17/verification/timing/baseline-first-after-idle-final-session-cleanup.json",
+    "warm_cleanup": "docs/iteration-17/verification/timing/baseline-warm-concurrent-final-session-cleanup.json",
+    "idle": "docs/iteration-17/verification/timing/idle-before-request.json",
+    "idle_timeline": "docs/iteration-17/verification/timing/idle-timeline.json"
+  },
+  "limitations": [
+    "Bounded functional timing sample, not a sustained-load capacity test.",
+    "The startup value is one first-after-idle observation, not a cold-start percentile."
+  ]
+}

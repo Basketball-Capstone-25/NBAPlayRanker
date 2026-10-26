@@ -1,0 +1,57 @@
+{
+  "checked_at_utc": "2026-10-25T17:29:39.415088+00:00",
+  "source_commit": "45973ed5bb0a8fdadbf8e314d0f34adad4ddfc9b",
+  "method": "Fresh shallow remote clone in an empty directory, fresh npm install and new Python virtual environment. No active-checkout node_modules or Python packages were reused.",
+  "versions": {
+    "node": "22.16.0",
+    "npm": "10.9.2",
+    "python": "3.13.7",
+    "spacy_model": "en_core_web_sm 3.8.0"
+  },
+  "commands": [
+    {
+      "command": "git clone --depth 1 git@github.com:Basketball-Capstone-25/NBAPlayRanker.git clean-checkout",
+      "result": "Pass"
+    },
+    {
+      "command": "npm ci",
+      "result": "Pass; dependency advisories recorded separately"
+    },
+    {
+      "command": "python3 -m venv backend/.venv",
+      "result": "Pass"
+    },
+    {
+      "command": "backend/.venv/bin/python -m pip install --prefer-binary -r backend/requirements-dev.txt",
+      "result": "Pass"
+    },
+    {
+      "command": "backend/.venv/bin/python -m spacy download en_core_web_sm",
+      "result": "Pass"
+    },
+    {
+      "command": "npm run build",
+      "result": "Pass"
+    },
+    {
+      "command": "backend/.venv/bin/python backend/data/etl/build_pbp_pipeline.py",
+      "result": "Pass; rebuilt historical cache and aggregates without --force, not a shot-data correction"
+    },
+    {
+      "command": "backend/.venv/bin/python -m pytest backend/tests/test_access_control.py backend/tests/test_supabase_jwt.py backend/tests/test_supabase_profiles.py backend/tests/test_access_control_api_bypass.py backend/tests/test_baseline_api.py -q",
+      "result": "46 passed, 1 Starlette httpx deprecation warning"
+    }
+  ],
+  "disk_usage_bytes": 1441951744,
+  "recommended_free_space_bytes": 5000000000,
+  "disk_recommendation_note": "5 GB is a planning allowance, not the measured install size. Keep extra room for later builds and data downloads.",
+  "live_local_checks": "local-recovery-checks.json",
+  "dataset_restore": "dataset-restore.json",
+  "private_value_scan": "private-value-scan.json",
+  "unverified": [
+    "A real database backup restored to an isolated database",
+    "Teammate independently following these steps",
+    "Browser walkthrough against this local build"
+  ],
+  "complete_recovery_acceptance": false
+}

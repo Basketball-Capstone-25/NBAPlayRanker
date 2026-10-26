@@ -1,0 +1,84 @@
+{
+  "measurements": [
+    {
+      "step": "app_import",
+      "seconds": 3.198,
+      "rss_mib": 376.6
+    },
+    {
+      "path": "/meta/datasets",
+      "status": 200,
+      "seconds": 0.29,
+      "bytes": 3710,
+      "rss_mib": 809.4,
+      "peak_mib": 809.6
+    },
+    {
+      "path": "/meta/data-dictionary",
+      "status": 200,
+      "seconds": 0.003,
+      "bytes": 18943,
+      "rss_mib": 809.5,
+      "peak_mib": 809.6
+    },
+    {
+      "path": "/pbp/shotplan/rank",
+      "status": 200,
+      "seconds": 0.122,
+      "bytes": 4671,
+      "rss_mib": 877.9,
+      "peak_mib": 878.0
+    },
+    {
+      "path": "/metrics/shot-models",
+      "status": 200,
+      "seconds": 0.01,
+      "bytes": 3489,
+      "rss_mib": 877.9,
+      "peak_mib": 878.0
+    },
+    {
+      "path": "/analysis/shot-ml",
+      "status": 200,
+      "seconds": 0.002,
+      "bytes": 6935,
+      "rss_mib": 877.9,
+      "peak_mib": 878.0
+    },
+    {
+      "path": "/pbp/viz/shot-heatmap",
+      "status": 200,
+      "seconds": 2.384,
+      "bytes": 101204,
+      "rss_mib": 1232.2,
+      "peak_mib": 1232.3
+    },
+    {
+      "path": "/pbp/shots/preview",
+      "status": 200,
+      "seconds": 0.14,
+      "bytes": 596519,
+      "rss_mib": 1299.5,
+      "peak_mib": 1300.6
+    },
+    {
+      "path": "/viz/shot-heatmap",
+      "status": 200,
+      "seconds": 0.455,
+      "bytes": 93447,
+      "rss_mib": 1604.8,
+      "peak_mib": 1604.9
+    },
+    {
+      "path": "/export/shotplan.pdf",
+      "status": 200,
+      "seconds": 0.468,
+      "bytes": 74339,
+      "rss_mib": 1878.4,
+      "peak_mib": 1878.5
+    }
+  ],
+  "peak_rss_mib": 1878.5,
+  "limit_mib": 2048,
+  "auth": "Local test fixture; production authentication unchanged."
+}

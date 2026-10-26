@@ -1,0 +1,67 @@
+{
+  "base_teamwork_revision": 59,
+  "checks": {
+    "DIAGRAM_all_original_ids_retained": true,
+    "MODEL_ELEMENT_all_original_ids_retained": true,
+    "DIAGRAM_ELEMENT_all_original_ids_retained": true,
+    "unrelated_diagrams_byte_identical": true,
+    "unrelated_diagram_elements_byte_identical": true,
+    "all_other_models_byte_identical": true,
+    "original_model_identity_and_creator_metadata_unchanged": true,
+    "all_original_composite_ids_retained": true,
+    "all_created_ids_roundtripped": true,
+    "all_model_labels_roundtripped": true,
+    "all_sequences_populated": true,
+    "target_lifelines_use_named_classifier": true,
+    "target_messages_labeled_and_documented": true,
+    "all_reply_labels_name_result_type": true,
+    "all_target_sequences_retained": true,
+    "all_original_sequence_ids_retained": true,
+    "server_baseline_has_no_pending_history": true,
+    "local_72_entry_archive_preserved": true,
+    "all_existing_embedded_resource_paths_retained": true,
+    "shared_deployment_views_preserved": true,
+    "unrelated_embedded_resource_contents_byte_identical": true,
+    "unrelated_resource_status_changes_only_mark_committed": true,
+    "project_identity_preserved": true,
+    "published_revision60_confirmed": true,
+    "published_author_and_comment_confirmed": true,
+    "published_pending_history_zero": true,
+    "shared_message_sequence_numbers_preserved": true,
+    "shared_return_associations_preserved": true
+  },
+  "counts": {
+    "DIAGRAM": {
+      "before": 201,
+      "after": 201,
+      "new": 0
+    },
+    "MODEL_ELEMENT": {
+      "before": 2245,
+      "after": 2280,
+      "new": 35
+    },
+    "DIAGRAM_ELEMENT": {
+      "before": 1823,
+      "after": 1856,
+      "new": 33
+    },
+    "sequences": 20,
+    "participants": 108,
+    "messages": 271,
+    "existing_pending_entries": 0,
+    "pending_entries_after": 0,
+    "revised_sequences": 17,
+    "revised_participants": 95,
+    "revised_messages": 241
+  },
+  "resource_commit_note": "Eight preexisting resources changed only status u to n when committed; their content bytes are identical.",
+  "scope": "17 sequence diagrams only; server revision59 architecture, nine Assignment2 diagrams and shared deployment preserved. Earlier local72 history archived separately. Published as shared revision60.",
+  "official_reopen": "ExportXML in normal Java mode succeeded. Headless mode selects evaluation instead of the installed Professional license.",
+  "native_sha256": "96f318aeaf843222fc98851157fe2fdcdcaf05b6893ff72001d94f8ef62531fe",
+  "published_teamwork_revision": 60,
+  "published_at_utc": "2026-10-25T18:16:28.782Z",
+  "published_author": "asahang@sheridancollege.ca",
+  "published_comment": "Clarify sequence lifelines, request parameters and return values (SCRUM-528)",
+  "verified": true
+}

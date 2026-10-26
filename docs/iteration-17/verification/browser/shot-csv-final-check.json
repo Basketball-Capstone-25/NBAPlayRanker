@@ -1,0 +1,13 @@
+{
+  "result": "Pass",
+  "downloaded_at": "2026-10-25T18:25:33.216285+00:00",
+  "file": "shots_2025-26_TOR-final.csv",
+  "rows": 5000,
+  "self_opponents": 0,
+  "dataset_versions": [
+    "sha256:2b98f7c62e8079c6c8c9dda857b4061cf21470f05ead801a7873c01ecc697eef"
+  ],
+  "sha256": "9e8cd1606729f804e449ded1616b8e2c845d30b68a871ec972fb9aadef6c5158",
+  "bytes": 672398,
+  "backend_revision": "nba-playranker-api-00010-jp4"
+}

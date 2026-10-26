@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-import hashlib
+from dataclasses import replace
 import json
+import re
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
@@ -43,6 +44,20 @@ def _records(df: pd.DataFrame) -> List[Dict[str, Any]]:
     return df.replace({np.nan: None}).to_dict(orient="records")
 
 
+def _version_headers(payload: ExportPayload) -> Dict[str, str]:
+    versions = payload.metadata.get("dataset_versions")
+    if not isinstance(versions, dict) or not versions or not all(
+        isinstance(key, str) and re.fullmatch(r"[a-z][a-z0-9_]{0,63}", key)
+        and isinstance(value, str) and re.fullmatch(r"sha256:[0-9a-f]{64}|unavailable", value)
+        for key, value in versions.items()
+    ):
+        return {}
+    headers = {"X-Dataset-Versions": json.dumps(versions, sort_keys=True)}
+    if "synergy" in versions:
+        headers["X-Dataset-Version"] = versions["synergy"]
+    return headers
+
+
 def create_export_report_router(
     rec: BaselineRecommender,
     valid_seasons: Iterable[str],
@@ -51,8 +66,10 @@ def create_export_report_router(
 ) -> APIRouter:
     seasons = set(valid_seasons)
     teams = set(valid_teams)
-    with Path(source_path).open("rb") as source:
-        digest = hashlib.file_digest(source, "sha256").hexdigest()
+    # These rows came from the loaded snapshot, which may differ from a file
+    # replaced on disk after startup.
+    version = rec.raw_df.attrs.get("dataset_version", "unavailable")
+    digest = version.removeprefix("sha256:") if version.startswith("sha256:") else None
 
     contract = ExportContract()
     for report in set(REPORT_ROLES) | set(SNAPSHOT_ROLES):
@@ -149,11 +166,12 @@ def create_export_report_router(
         if not check_user_access(user.get("role"), role):
             raise HTTPException(status_code=403, detail=f"Role '{user.get('role')}' cannot export '{report}'.")
         payload = build_payload(report, _season(season), our, opp, side, k, w_off)
+        payload = replace(payload, metadata={**payload.metadata, "dataset_versions": {"synergy": version}})
         try:
             file = contract.build_export(payload, format)
         except ExportFormatUnavailable as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc
-        return Response(content=file.content, media_type=file.media_type, headers=file.headers)
+        return Response(content=file.content, media_type=file.media_type, headers={**file.headers, **_version_headers(payload)})
 
     @router.post("/export/report")
     async def export_displayed_report(request: Request, user: dict = Depends(require_auth)) -> Response:
@@ -173,6 +191,7 @@ def create_export_report_router(
         file = await run_in_threadpool(contract.build_export, payload, fmt)
         return Response(content=file.content, media_type=file.media_type, headers={
             **file.headers,
+            **_version_headers(payload),
             "Cache-Control": "private, no-store",
             "X-Content-Type-Options": "nosniff",
         })

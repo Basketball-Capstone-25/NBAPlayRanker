@@ -11,6 +11,8 @@
     "margin",
     "shot_type",
     "zone",
+    "zone_method",
+    "location_valid",
     "shot_value",
     "is_make",
     "points",
@@ -20,11 +22,12 @@
     "angle"
   ],
   "fingerprint": {
-    "schema_version": "canonical_v1",
-    "source_mtime_ns": 1775565541218928200,
-    "source_path": "C:\\Users\\amous\\NBAPlayRanker-1\\backend\\data\\pbp\\nba_pbp_2021_present.parquet",
-    "source_size": 154249970
+    "schema_version": "canonical_v3_zone_quality",
+    "source_mtime_ns": 1792956477654775867,
+    "source_path": "/Users/gurkasahan/Developer/NBAPlayRanker/backend/data/pbp/shots_clean.parquet",
+    "source_sha256": "sha256:15078408bfaa84b6cc1a45cc7e10edd822e22b25166a3ab3f4931a0323f640cf",
+    "source_size": 21685858
   },
-  "notes": "Derived from shot_etl CLEAN_PARQUET; snake_case canonical for /pbp/*.",
-  "rows": 1332515
+  "notes": "Derived from quality-screened shot source; provenance and exclusions in sidecar.",
+  "rows": 1367928
 }

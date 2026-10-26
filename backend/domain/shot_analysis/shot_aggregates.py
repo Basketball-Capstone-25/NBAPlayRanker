@@ -96,7 +96,7 @@ def build_league_baselines(agg_df: pd.DataFrame) -> pd.DataFrame:
         )
 
     league = (
-        agg_df.groupby(group_cols + keys, as_index=False)
+        agg_df.groupby(group_cols + keys, as_index=False, dropna=False)
         .apply(_league)
         .reset_index(drop=True)
     )

@@ -1,0 +1,12 @@
+Command: npx vitest run
+Working directory: shared NBAPlayRanker checkout
+Captured output from the completed run; no second run was performed for this record.
+
+ RUN  v4.1.12 /Users/gurkasahan/Developer/NBAPlayRanker
+
+ Test Files  16 passed (16)
+      Tests  141 passed (141)
+   Start at  14:05:49
+   Duration  241ms (transform 1.32s, setup 0ms, import 1.81s, tests 176ms, environment 1ms)
+
+Exit code: 0

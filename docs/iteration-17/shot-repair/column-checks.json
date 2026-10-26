@@ -1,0 +1,28 @@
+{
+  "mapped": [
+    "ANGLE",
+    "CLOCK_SEC",
+    "DIST",
+    "GAME_ID",
+    "HOME_FLAG",
+    "MARGIN",
+    "OPP_ABBR",
+    "PERIOD",
+    "POINTS",
+    "SHOT_TYPE",
+    "TEAM_ABBR",
+    "X",
+    "Y",
+    "ZONE"
+  ],
+  "optional": [
+    "EVENT_ID",
+    "MADE",
+    "SEASON_STR",
+    "SHOOTER_ID",
+    "SHOT_VALUE"
+  ],
+  "ignored": [],
+  "missing_required": [],
+  "renamed": {}
+}

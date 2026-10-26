@@ -4,6 +4,8 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { useShotResult } from "./useShotResult";
+import { ShotHeatmapCounts } from "./ShotHeatmapCounts";
 import { fetchMetaOptions, fetchPbpMetaOptions, fetchShotHeatmap } from "../../../services/shotAnalysis";
 
 type Meta = {
@@ -95,14 +97,13 @@ export default function ShotHeatmapPage() {
   const [zone, setZone] = useState<string>("");
   const [maxShots, setMaxShots] = useState<number>(35000);
 
-  // Auto-render is for exploration mode; manual render is for “final screenshot” mode.
   const [autoRender, setAutoRender] = useState<boolean>(false);
-
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [heatmap, setHeatmap] = useState<HeatmapResponse | null>(null);
-
-  const requestIdRef = useRef(0);
+  const [inputError, setInputError] = useState<string | null>(null);
+  const inputs = { season, team, opp, shotType, zone, maxShots };
+  const query = useShotResult<typeof inputs, HeatmapResponse>(inputs);
+  const { loading } = query;
+  const error = inputError ?? query.error;
+  const heatmap = !error ? query.result : null;
   const didInitRef = useRef(false);
 
   // Load meta + restore saved settings (one-time restore guarded by didInitRef).
@@ -133,13 +134,14 @@ export default function ShotHeatmapPage() {
           if (saved) {
             try {
               const parsed = JSON.parse(saved);
-              setSeason(String(parsed.season ?? ""));
-              setTeam(String(parsed.team ?? "TOR"));
-              setOpp(String(parsed.opp ?? "BOS"));
-              setShotType(String(parsed.shotType ?? ""));
-              setZone(String(parsed.zone ?? ""));
-              setMaxShots(Number(parsed.maxShots ?? 35000));
-              setAutoRender(Boolean(parsed.autoRender ?? false));
+              setSeason(merged.seasons.includes(parsed.season) ? parsed.season : pickDefaultSeason(merged.seasons));
+              setTeam(merged.teams.includes(parsed.team) ? parsed.team : pickDefaultTeam(merged.teams, "TOR"));
+              setOpp(merged.teams.includes(parsed.opp) ? parsed.opp : pickDefaultTeam(merged.teams, "BOS"));
+              setShotType(merged.shotTypes.includes(parsed.shotType) ? parsed.shotType : "");
+              setZone(merged.zones.includes(parsed.zone) ? parsed.zone : "");
+              const savedCap = Number(parsed.maxShots);
+              setMaxShots(Number.isInteger(savedCap) && savedCap >= 1000 && savedCap <= 100000 ? savedCap : 35000);
+              setAutoRender(parsed.autoRender === true);
             } catch {
               // ignore malformed stored data
             }
@@ -151,7 +153,7 @@ export default function ShotHeatmapPage() {
         setTeam((prev) => prev || pickDefaultTeam(merged.teams, "TOR"));
         setOpp((prev) => prev || pickDefaultTeam(merged.teams, "BOS"));
       } catch (e: any) {
-        if (!cancelled) setError(e?.message ?? "Failed to load meta options.");
+        if (!cancelled) setInputError(e?.message ?? "Failed to load available filters.");
       }
     })();
 
@@ -162,14 +164,17 @@ export default function ShotHeatmapPage() {
 
   // Persist inputs so the page remembers your last “comparison setup.”
   useEffect(() => {
+    // Initial defaults must not overwrite saved filters before metadata loads.
+    if (!didInitRef.current) return;
     safeLocalSet(
       "nbaPlayRanker_shotHeatmap_v1",
       JSON.stringify({ season, team, opp, shotType, zone, maxShots, autoRender })
     );
   }, [season, team, opp, shotType, zone, maxShots, autoRender]);
 
-  const subtitle = useMemo(() => {
-    // Human-readable “receipt” of the heatmap context (useful for copy/paste or screenshots).
+  const subtitle = (() => {
+    if (!query.inputs) return "";
+    const { team, opp, season, shotType, zone, maxShots } = query.inputs;
     const parts = [
       `${normalizeLabel(team, meta?.teamNames)} vs ${normalizeLabel(opp, meta?.teamNames)}`,
       `Season: ${season || "—"}`,
@@ -178,27 +183,23 @@ export default function ShotHeatmapPage() {
     if (zone) parts.push(`Zone: ${zone}`);
     parts.push(`Max Shots: ${maxShots.toLocaleString()}`);
     return parts.join(" • ");
-  }, [team, opp, season, shotType, zone, maxShots, meta?.teamNames]);
+  })();
 
   // We require season + team + opponent so the backend has a defined matchup context.
-  const canRun = Boolean(season && team && opp);
+  const canRun = Boolean(season && team && opp && team !== opp);
 
-  async function run({ silent = false }: { silent?: boolean } = {}) {
-    // silent=true means “keep the previous image visible while fetching a refresh.”
+  async function run() {
+    setInputError(null);
     if (!canRun) {
-      if (!silent) setError("Please select season, team, and opponent.");
+      setInputError("Select a season and two different teams.");
       return;
     }
-
-    const myId = ++requestIdRef.current;
-    setLoading(true);
-    setError(null);
-
-    try {
-      // In normal runs, clear prior image so the user sees a fresh render state.
-      if (!silent) setHeatmap(null);
-
-      const res = await fetchShotHeatmap({
+    if (!Number.isInteger(maxShots) || maxShots < 1000 || maxShots > 100000) {
+      setInputError("Max shots must be a whole number from 1,000 to 100,000.");
+      return;
+    }
+    await query.run(async ({ season, team, opp, shotType, zone, maxShots }) => {
+      return await fetchShotHeatmap({
         season,
         team,
         opp,
@@ -207,17 +208,7 @@ export default function ShotHeatmapPage() {
         maxShots,
       });
 
-      // Ignore stale responses (prevents “old render overwrote new render” bugs).
-      if (requestIdRef.current !== myId) return;
-
-      setHeatmap(res as HeatmapResponse);
-    } catch (e: any) {
-      if (requestIdRef.current !== myId) return;
-      setHeatmap(null);
-      setError(e?.message ?? "Failed to render heatmap.");
-    } finally {
-      if (requestIdRef.current === myId) setLoading(false);
-    }
+    });
   }
 
   // Auto-render mode: rerender on any input change, but debounce to protect the backend.
@@ -226,8 +217,7 @@ export default function ShotHeatmapPage() {
     if (!canRun) return;
 
     const t = setTimeout(() => {
-      // silent mode keeps the previous image displayed while refreshing
-      run({ silent: true });
+      run();
     }, 350);
 
     return () => clearTimeout(t);
@@ -249,8 +239,8 @@ export default function ShotHeatmapPage() {
     setShotType("");
     setZone("");
     setMaxShots(35000);
-    setHeatmap(null);
-    setError(null);
+    query.reset();
+    setInputError(null);
   }
 
   function applyPreset(preset: "ALL" | "RIM" | "CORNER_3" | "ABOVE_BREAK_3" | "MIDRANGE") {
@@ -327,8 +317,9 @@ export default function ShotHeatmapPage() {
     []
   );
 
-  const downloadName = useMemo(() => {
-    // Generates a stable, filesystem-safe filename for the PNG download.
+  const downloadName = (() => {
+    if (!query.inputs) return "";
+    const { season, team, opp, shotType, zone } = query.inputs;
     const safe = (s: string) => s.replace(/[^a-z0-9_\-]+/gi, "_");
     const pieces = [
       "shot_heatmap",
@@ -340,7 +331,7 @@ export default function ShotHeatmapPage() {
       zone ? safe(zone) : "allzones",
     ];
     return pieces.join("_") + ".png";
-  }, [season, team, opp, shotType, zone]);
+  })();
 
   return (
     <main className="page" style={{ paddingBottom: 56 }}>
@@ -349,13 +340,14 @@ export default function ShotHeatmapPage() {
           <div style={{ minWidth: 260 }}>
             <h1 style={{ margin: 0 }}>Shot Heatmap</h1>
             <p className="muted" style={{ marginTop: 6, marginBottom: 0 }}>
-              Real, on-court shot density from Dataset2 (play-by-play shots).
+              Shot-attempt density from the selected team’s games against the opponent.
               For ranked recommendations, use{" "}
               <Link href="/shot-plan" style={{ textDecoration: "underline" }}>
                 Shot Plan
               </Link>
               .
             </p>
+            <p className="muted">Both makes and misses are included. Color shows attempt counts, not shooting percentage or expected points. Shots face the attacking basket; attempts beyond the displayed half court are counted separately.</p>
           </div>
 
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
@@ -493,10 +485,11 @@ export default function ShotHeatmapPage() {
         </div>
 
         {error ? (
-          <p className="error" style={{ marginTop: 12 }}>
+          <p role="alert" className="error" style={{ marginTop: 12 }}>
             {error}
           </p>
         ) : null}
+        {query.changed && <p role="status">Filters changed. Render again to see and download the updated heatmap.</p>}
       </section>
 
       <section className="card">
@@ -504,7 +497,7 @@ export default function ShotHeatmapPage() {
           <div>
             <h2 style={{ marginBottom: 6 }}>Heatmap</h2>
             <p className="muted" style={{ marginTop: 0 }}>
-              {subtitle}
+              {subtitle || "Render a heatmap to see the selected matchup."}
             </p>
           </div>
 
@@ -528,7 +521,7 @@ export default function ShotHeatmapPage() {
                     // ignore
                   }
                 }}
-                title="Copies the current filter summary"
+                title="Copies the filters used to render this image"
               >
                 Copy summary
               </button>
@@ -565,11 +558,7 @@ export default function ShotHeatmapPage() {
               </div>
             ) : null}
 
-            {typeof heatmap.n_shots === "number" ? (
-              <div className="muted" style={{ fontSize: 13 }}>
-                Shots used: {heatmap.n_shots.toLocaleString()}
-              </div>
-            ) : null}
+            <ShotHeatmapCounts heatmap={heatmap} />
           </div>
         )}
       </section>

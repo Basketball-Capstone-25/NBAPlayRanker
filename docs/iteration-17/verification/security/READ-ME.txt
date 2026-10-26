@@ -1,0 +1,9 @@
+Release security checks
+
+JWT verification: 7 tests passed, including a signed expired token and an invalid signature. These were local cryptographic fixtures.
+
+Gameplan sync: the shared sync module and the loading/saving sections are unchanged. All 13 sync/context tests passed.
+
+Private-value scan: no known private values were found in 930 source/build files. A separate credential-pattern scan found no private keys, secret tokens or signed JWT strings in 716 text files. Public publishable values were excluded from the private-value check.
+
+The JSON files record the scope and source hashes. These checks cover the source and local build present during review; they do not replace the final deployed checks.

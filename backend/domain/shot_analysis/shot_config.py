@@ -40,27 +40,44 @@ def season_int_to_str(season_value: Optional[object]) -> Optional[str]:
 # Zone mapping: (x, y) -> rim / paint / mid / corner3 / arc3
 
 RIM_RADIUS = 4.0
-PAINT_RADIUS = 12.0
-MID_RANGE_MAX = 22.0
+PAINT_HALF_WIDTH = 8.0
+PAINT_DEPTH = 13.75
+THREE_POINT_RADIUS = 23.75
 CORNER_Y_MIN = 22.0
-CORNER_X_MAX = 14.0
+CORNER_X_MAX = math.sqrt(THREE_POINT_RADIUS**2 - CORNER_Y_MIN**2)
+# A quality-screen tolerance for approximate provider locations, not a claim
+# about the provider's measurement precision. Conflicts beyond this are unknown.
+LOCATION_VALUE_TOLERANCE = 1.5
 
-def zone_from_xy(x: float, y: float, dist: Optional[float] = None) -> str:
+def classify_zone(x: float, y: float, dist: Optional[float] = None, shot_value: Optional[float] = None) -> tuple[str, str, bool]:
+    """Classify hoop-relative depth/lateral feet without moving the location.
+
+    Explicit attempt values settle plausible near-line rounding disagreements.
+    A serious contradiction remains unknown instead of inventing a shot location.
+    Missing attempt values use geometry and retain that provenance.
+    """
     if dist is None:
-        dist = math.sqrt((x or 0.0) ** 2 + (y or 0.0) ** 2)
-    abs_y = abs(y or 0.0)
-    abs_x = abs(x or 0.0)
-
+        dist = math.hypot(x, y)
+    if not all(math.isfinite(v) for v in (x, y, dist)) or abs(y) > 25 or not -5.25 <= x <= 88.75:
+        return "unknown", "invalid_location", False
+    abs_y = abs(y)
+    line_distance = abs_y - CORNER_Y_MIN if x <= CORNER_X_MAX else dist - THREE_POINT_RADIUS
+    known_value = shot_value in (2, 3)
+    if known_value and ((shot_value == 3 and line_distance < -LOCATION_VALUE_TOLERANCE) or (shot_value == 2 and line_distance > LOCATION_VALUE_TOLERANCE)):
+        return "unknown", "value_location_conflict", False
+    method = "attempt_value_and_location" if known_value else "geometry_only"
+    is_three = shot_value == 3 if known_value else line_distance > 0
+    if is_three:
+        return ("corner3" if x <= CORNER_X_MAX else "arc3"), method, True
     if dist <= RIM_RADIUS:
-        return "rim"
-    if dist <= PAINT_RADIUS and abs_y <= 8.0:
-        return "paint"
-    if dist <= MID_RANGE_MAX:
-        return "mid"
-    # Beyond mid-range: split into corner vs arc 3
-    if abs_y >= CORNER_Y_MIN and abs_x <= CORNER_X_MAX:
-        return "corner3"
-    return "arc3"
+        return "rim", method, True
+    if abs_y <= PAINT_HALF_WIDTH and x <= PAINT_DEPTH:
+        return "paint", method, True
+    return "mid", method, True
+
+
+def zone_from_xy(x: float, y: float, dist: Optional[float] = None, shot_value: Optional[float] = None) -> str:
+    return classify_zone(x, y, dist, shot_value)[0]
 
 # Shot type normalization
 
@@ -98,7 +115,7 @@ def normalize_shot_type(
         return "Bank Shot"
     if "fade" in s:
         return "Fadeaway"
-    if "stepback" in s or "step-back" in s:
+    if "stepback" in s or "step-back" in s or "step back" in s:
         return "Stepback"
     if "pullup" in s or "pull-up" in s:
         return "Pullup"

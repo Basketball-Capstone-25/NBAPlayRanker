@@ -7,6 +7,8 @@ from typing import Any, Dict, Optional
 
 import numpy as np
 import pandas as pd
+from infrastructure.data_access.dataset_metadata import source_version
+from .pbp_loader import get_pbp_canonical_df
 from fastapi.responses import StreamingResponse
 
 # Paths + caching
@@ -31,16 +33,21 @@ _SHOTS_DF: Optional[pd.DataFrame] = None
 def _load_canonical_shots_df() -> pd.DataFrame:
     """Load canonical shots parquet once and normalize column names."""
     global _SHOTS_DF
-    if _SHOTS_DF is not None:
+    if _SHOTS_DF is not None and _SHOTS_DF.attrs.get("dataset_version") == source_version(CANONICAL_PARQUET):
         return _SHOTS_DF
 
     if not CANONICAL_PARQUET.exists():
         raise FileNotFoundError(f"{CANONICAL_PARQUET} not found")
 
-    df = pd.read_parquet(CANONICAL_PARQUET)
+    df = get_pbp_canonical_df()
 
     # Normalize expected columns for downstream code (viz + API)
-    rename_map: Dict[str, str] = {}
+    rename_map: Dict[str, str] = {
+        "game_id": "GAME_ID", "shooter_id": "SHOOTER_ID", "home": "HOME_FLAG",
+        "period": "PERIOD", "clock_sec": "CLOCK_SEC", "margin": "MARGIN",
+        "shot_value": "SHOT_VALUE", "x": "X", "y": "Y", "dist": "DIST", "angle": "ANGLE",
+        "zone_method": "ZONE_METHOD", "location_valid": "LOCATION_VALID",
+    }
 
     if "SEASON" in df.columns and "SEASON_STR" not in df.columns:
         rename_map["SEASON"] = "SEASON_STR"
@@ -94,7 +101,7 @@ def _load_canonical_shots_df() -> pd.DataFrame:
         rename_map["points"] = "POINTS"
 
     if rename_map:
-        df = df.rename(columns=rename_map)
+        df = df.rename(columns=rename_map, copy=False)
 
     _SHOTS_DF = df
     return df
@@ -157,7 +164,7 @@ def get_meta_options() -> Dict[str, Any]:
         "teams": teams,
         "shotTypes": shot_types,
         "zones": zones,
-        "metadata": {"source": str(CANONICAL_PARQUET.name)},
+        "metadata": {"source": str(CANONICAL_PARQUET.name), "dataset_version": df.attrs.get("dataset_version")},
     }
 
 def _filter_df(
@@ -199,6 +206,8 @@ def _select_output_cols(df: pd.DataFrame) -> pd.DataFrame:
         "CLOCK_SEC",
         "SHOT_TYPE",
         "ZONE",
+        "ZONE_METHOD",
+        "LOCATION_VALID",
         "IS_MAKE",
         "POINTS",
         "X",
@@ -243,7 +252,7 @@ def get_shots_json(
         "returned_rows": len(rows),
         "columns": columns,
         "rows": rows,
-        "metadata": {"source": str(CANONICAL_PARQUET.name)},
+        "metadata": {"source": str(CANONICAL_PARQUET.name), "dataset_version": df.attrs.get("dataset_version")},
     }
 
 def get_shots_csv_response(
@@ -263,6 +272,7 @@ def get_shots_csv_response(
     out_df = _select_output_cols(filtered).head(int(limit)).copy()
 
     buf = io.StringIO()
+    out_df["DATASET_VERSION"] = df.attrs.get("dataset_version", "unavailable")
     out_df.to_csv(buf, index=False)
     buf.seek(0)
 
@@ -270,5 +280,5 @@ def get_shots_csv_response(
     return StreamingResponse(
         buf,
         media_type="text/csv",
-        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+        headers={"Content-Disposition": f'attachment; filename="{filename}"', "X-Dataset-Version": df.attrs.get("dataset_version", "unavailable")},
     )

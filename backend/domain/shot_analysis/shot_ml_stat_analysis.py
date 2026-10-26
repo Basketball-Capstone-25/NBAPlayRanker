@@ -11,7 +11,7 @@ from sklearn.feature_selection import SelectKBest, f_regression
 
 from infrastructure.data_access import build_meta, cache_valid, fingerprint_file, read_json, write_json_atomic, CACHE_DIR
 from domain.shot_analysis.shot_etl import CLEAN_PARQUET
-from domain.shot_analysis.shot_ml_models import get_feature_spec, load_shots_for_ml
+from domain.shot_analysis.shot_ml_models import get_feature_spec, load_shots_for_ml, shot_schema_report
 
 ANALYSIS_CACHE_PATH = CACHE_DIR / "shot_ml_analysis_cache.json"
 SCHEMA_VERSION = "shot_ml_analysis_v1"
@@ -98,6 +98,9 @@ def compute_shot_ml_analysis(
 
     dataset = {
         "rows_used": int(len(df)),
+        "n_games": int(df["GAME_ID"].nunique()),
+        "schema": shot_schema_report(df),
+        "prediction_contract": {k: spec[k] for k in ("prediction_kind", "input_timing", "limitations")},
         "max_rows": int(max_rows),
         "n_seasons": int(len(seasons)),
         "seasons": seasons,

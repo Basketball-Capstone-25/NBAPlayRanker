@@ -1,0 +1,243 @@
+{
+  "revision": "nba-playranker-api-00010-jp4",
+  "source": "Read-only Cloud Monitoring and Cloud Logging; no application requests made during the monitoring interval.",
+  "last_request_before_idle": [
+    {
+      "timestamp": "2026-10-25T18:32:50.967379Z",
+      "revision": "nba-playranker-api-00010-jp4",
+      "instance_hash": "fff8065aa996abb6b8c33cc43f1622c7440561de846d972ee9477274175df351",
+      "status": 200,
+      "server_latency": "0.005159411s"
+    }
+  ],
+  "samples": [
+    {
+      "captured_at": "2026-10-25T18:33:15.815411+00:00",
+      "quiet_seconds": 24.843,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:33:00Z",
+          "count": 2
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:33:00Z",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:35:40.242118+00:00",
+      "quiet_seconds": 169.27,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:35:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:35:00Z",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:36:48.646982+00:00",
+      "quiet_seconds": 237.674,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:36:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:36:00Z",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:38:38.387882+00:00",
+      "quiet_seconds": 347.415,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:38:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:38:00Z",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:40:44.105369+00:00",
+      "quiet_seconds": 473.133,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:40:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:40:00Z",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:41:46.536429+00:00",
+      "quiet_seconds": 535.564,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:41:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:41:00Z",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:42:48.821849+00:00",
+      "quiet_seconds": 597.849,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:42:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:42:00Z",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:43:51.702814+00:00",
+      "quiet_seconds": 660.73,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:43:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:43:00Z",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:44:54.320002+00:00",
+      "quiet_seconds": 723.347,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:44:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:44:00Z",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:45:56.561681+00:00",
+      "quiet_seconds": 785.589,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:45:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:45:00Z",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:46:58.684066+00:00",
+      "quiet_seconds": 847.712,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:46:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:46:00Z",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:48:01.059954+00:00",
+      "quiet_seconds": 910.087,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:47:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:47:00Z",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:49:03.156694+00:00",
+      "quiet_seconds": 972.184,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:48:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:48:00Z",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "captured_at": "2026-10-25T18:50:05.494999+00:00",
+      "quiet_seconds": 1034.522,
+      "latest_instance_counts": [
+        {
+          "state": "active",
+          "timestamp": "2026-10-25T18:49:00Z",
+          "count": 0
+        },
+        {
+          "state": "idle",
+          "timestamp": "2026-10-25T18:49:00Z",
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "zero_instance_evidence": "docs/iteration-17/verification/timing/idle-before-request.json",
+  "zero_instance_evidence_sha256": "39bb8eea1cd1ba2e696c0257b7ee378da9e8eb6183dee6360081ee69bdda3ab3",
+  "interpretation": "The final18:49UTC sample explicitly reports active0 and idle0. Missing metrics were not treated as zero.",
+  "settings_changed": false
+}

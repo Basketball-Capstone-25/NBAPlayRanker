@@ -8,6 +8,10 @@ import pandas as pd
 from .pbp_constants import CANONICAL_META_JSON, CANONICAL_PARQUET
 from .pbp_cache import read_json
 from .pbp_clean import ensure_canonical_parquet
+from .dataset_metadata import read_versioned_parquet, source_version
+from threading import RLock
+
+_LOAD_LOCK = RLock()
 
 _CANONICAL_DF: Optional[pd.DataFrame] = None
 _CANONICAL_ID: Optional[str] = None
@@ -38,11 +42,12 @@ def get_pbp_canonical_df(*, ensure: bool = True, force_rebuild: bool = False) ->
             "  python backend/data/etl/build_pbp_pipeline.py"
         )
 
-    cache_id = _current_cache_id() or str(CANONICAL_PARQUET.stat().st_mtime_ns)
+    cache_id = source_version(CANONICAL_PARQUET)
 
-    if _CANONICAL_DF is None or _CANONICAL_ID != cache_id:
-        _CANONICAL_DF = pd.read_parquet(CANONICAL_PARQUET)
-        _CANONICAL_ID = cache_id
+    with _LOAD_LOCK:
+        if _CANONICAL_DF is None or _CANONICAL_ID != cache_id:
+            _CANONICAL_DF = read_versioned_parquet(CANONICAL_PARQUET)
+            _CANONICAL_ID = cache_id
 
     return _CANONICAL_DF
 

@@ -1,0 +1,145 @@
+{
+  "started_at": "2026-10-25T19:03:17.387197+00:00",
+  "site": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app",
+  "endpoint": "/rank-plays/baseline",
+  "backend_revision": "nba-playranker-api-00010-jp4",
+  "scope": "Five authenticated read-only requests for the exact legacy BST-4 and BST-5 criteria. Jira ownership and status are unchanged.",
+  "checks": [
+    {
+      "case": "BST-4",
+      "scenario": "valid",
+      "method": "GET",
+      "params": {
+        "season": "2024-25",
+        "our": "TOR",
+        "opp": "BOS",
+        "k": 5,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-25T19:03:18.301070+00:00",
+      "elapsed_ms": 1381.986,
+      "status": 200,
+      "expected_status": 200,
+      "assertions": {
+        "expected_status": true,
+        "json_object": true,
+        "json_content_type": true,
+        "season": true,
+        "our_team": true,
+        "opp_team": true,
+        "k": true,
+        "w_off": true,
+        "w_def": true,
+        "five_rankings": true,
+        "required_row_fields": true
+      },
+      "passed": true,
+      "response_file": "valid.json"
+    },
+    {
+      "case": "BST-5",
+      "scenario": "missing-our",
+      "method": "GET",
+      "params": {
+        "season": "2024-25",
+        "opp": "BOS",
+        "k": 5,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-25T19:03:19.684377+00:00",
+      "elapsed_ms": 381.89,
+      "status": 422,
+      "expected_status": 422,
+      "assertions": {
+        "expected_status": true,
+        "json_object": true,
+        "json_content_type": true,
+        "json_detail": true,
+        "no_rankings": true
+      },
+      "passed": true,
+      "response_file": "missing-our.json"
+    },
+    {
+      "case": "BST-5",
+      "scenario": "negative-k",
+      "method": "GET",
+      "params": {
+        "season": "2024-25",
+        "our": "TOR",
+        "opp": "BOS",
+        "k": -1,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-25T19:03:20.067243+00:00",
+      "elapsed_ms": 336.221,
+      "status": 422,
+      "expected_status": 422,
+      "assertions": {
+        "expected_status": true,
+        "json_object": true,
+        "json_content_type": true,
+        "json_detail": true,
+        "no_rankings": true
+      },
+      "passed": true,
+      "response_file": "negative-k.json"
+    },
+    {
+      "case": "BST-5",
+      "scenario": "unknown-season",
+      "method": "GET",
+      "params": {
+        "season": "invalid-season",
+        "our": "TOR",
+        "opp": "BOS",
+        "k": 5,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-25T19:03:20.404208+00:00",
+      "elapsed_ms": 294.448,
+      "status": 400,
+      "expected_status": 400,
+      "assertions": {
+        "expected_status": true,
+        "json_object": true,
+        "json_content_type": true,
+        "json_detail": true,
+        "no_rankings": true
+      },
+      "passed": true,
+      "response_file": "unknown-season.json"
+    },
+    {
+      "case": "BST-5",
+      "scenario": "empty-our",
+      "method": "GET",
+      "params": {
+        "season": "2024-25",
+        "our": "",
+        "opp": "BOS",
+        "k": 5,
+        "w_off": 0.7
+      },
+      "started_at": "2026-10-25T19:03:20.699455+00:00",
+      "elapsed_ms": 301.561,
+      "status": 400,
+      "expected_status": 400,
+      "assertions": {
+        "expected_status": true,
+        "json_object": true,
+        "json_content_type": true,
+        "json_detail": true,
+        "no_rankings": true
+      },
+      "passed": true,
+      "response_file": "empty-our.json"
+    }
+  ],
+  "session_cleanup": {
+    "status": 204,
+    "passed": true
+  },
+  "finished_at": "2026-10-25T19:03:21.211832+00:00",
+  "passed": true
+}

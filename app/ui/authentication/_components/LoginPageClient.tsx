@@ -38,41 +38,27 @@ function LoginPageContent() {
         <div className="auth-stage">
           <div className="auth-badge">NBA Play Ranker • Secure access</div>
 
-          <h1 className="auth-title">Welcome back to the film room.</h1>
+          <h1 className="auth-title">Welcome back.</h1>
 
           <p className="auth-copy">
-            Sign in to continue into your role-based workspace and pick up right where your scouting,
-            matchup analysis, or evidence review left off.
+            Sign in to compare plays, build a gameplan or explore the data.
           </p>
 
           <div className="auth-point-grid">
             <div className="auth-point">
               <div className="auth-point-title">Coach workflow</div>
               <div className="auth-point-copy">
-                Matchup baseline, context-aware recommendations, and a polished gameplan view.
+                Compare matchups and build a gameplan.
               </div>
             </div>
 
             <div className="auth-point">
               <div className="auth-point-title">Analyst workflow</div>
               <div className="auth-point-copy">
-                Data explorer, metrics, heatmaps, shot analysis, and evidence-first reporting pages.
+                Explore the data and check model results.
               </div>
             </div>
 
-            <div className="auth-point">
-              <div className="auth-point-title">Explainable output</div>
-              <div className="auth-point-copy">
-                The product is built to feel like a finished decision-support tool, not a rough demo.
-              </div>
-            </div>
-
-            <div className="auth-point">
-              <div className="auth-point-title">Role-aware access</div>
-              <div className="auth-point-copy">
-                Navigation stays clean and only surfaces the views that matter to the signed-in user.
-              </div>
-            </div>
           </div>
         </div>
 
@@ -80,11 +66,11 @@ function LoginPageContent() {
           <div className="auth-panel-kicker">Log in</div>
           <h2 className="auth-panel-title">Access your workspace</h2>
           <p className="auth-panel-copy">
-            Use your account credentials to continue into the platform.
+            Enter your email and password.
           </p>
 
           {next ? (
-            <div className="auth-inline-note">After login, you will continue to: {next}</div>
+            <div className="auth-inline-note">Sign in to open the page you selected.</div>
           ) : null}
 
           {searchParams.get("access") === "pending" ? (
@@ -153,7 +139,7 @@ function LoginPageFallback() {
       <div className="auth-shell">
         <div className="auth-stage">
           <div className="auth-badge">NBA Play Ranker • Secure access</div>
-          <h1 className="auth-title">Welcome back to the film room.</h1>
+          <h1 className="auth-title">Welcome back.</h1>
           <p className="auth-copy">Loading login...</p>
         </div>
 

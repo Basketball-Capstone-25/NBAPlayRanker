@@ -15,9 +15,12 @@ class FileFingerprint:
     source_path: str
     source_mtime_ns: int
     source_size: int
+    source_sha256: str | None = None
 
     @property
     def id(self) -> str:
+        if self.source_sha256:
+            return f"{self.schema_version}|{self.source_sha256}"
         return f"{self.schema_version}|{self.source_path}|{self.source_mtime_ns}|{self.source_size}"
 
 
@@ -28,11 +31,13 @@ def ensure_dir(path: Path) -> None:
 def fingerprint_file(path: Path, *, schema_version: str) -> FileFingerprint:
     p = Path(path)
     st = p.stat()
+    from .dataset_metadata import source_version
     return FileFingerprint(
         schema_version=str(schema_version),
         source_path=str(p.resolve()),
         source_mtime_ns=int(getattr(st, "st_mtime_ns", int(st.st_mtime * 1e9))),
         source_size=int(st.st_size),
+        source_sha256=source_version(p),
     )
 
 
@@ -83,6 +88,7 @@ def cache_valid(meta_path: Path, expected: FileFingerprint) -> bool:
             source_path=str(stored["source_path"]),
             source_mtime_ns=int(stored["source_mtime_ns"]),
             source_size=int(stored["source_size"]),
+            source_sha256=stored.get("source_sha256"),
         )
     except Exception:
         return False

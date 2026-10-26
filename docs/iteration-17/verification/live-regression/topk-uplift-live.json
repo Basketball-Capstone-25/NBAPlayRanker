@@ -1,0 +1,84 @@
+{
+  "metric": "topk_ppp_uplift",
+  "metric_version": "1",
+  "season": "2024-25",
+  "our_team": "TOR",
+  "opp_team": "BOS",
+  "k": 3,
+  "k_returned": 3,
+  "filters": {
+    "season": "2024-25",
+    "our": "TOR",
+    "opp": "BOS",
+    "k": 3,
+    "w_off": 0.7,
+    "w_def": 0.30000000000000004,
+    "side": "offense"
+  },
+  "units": "points per possession",
+  "ranking_model": "existing possession-shrunk baseline matchup recommender",
+  "estimand": "historical modeled recommendation comparison",
+  "evaluation_scope": "in-sample descriptive diagnostic; not held-out evaluation",
+  "team_season": {
+    "ppp": 0.9692379945990373,
+    "points_numerator": 8255.0,
+    "possessions_denominator": 8517.0,
+    "play_type_rows": 11,
+    "scope": "all available offensive Synergy play-type rows for our team and season",
+    "formula": "sum(PTS) / sum(POSS)"
+  },
+  "topk": {
+    "modeled_ppp": 1.0716958031607486,
+    "modeled_points_numerator": 2861.427794439199,
+    "possessions_denominator": 2670.0,
+    "weighting": "historical offensive possessions, renormalized over selected play types",
+    "formula": "sum(PPP_PRED * POSS_OFF) / sum(POSS_OFF)"
+  },
+  "uplift_ppp": 0.10245780856171138,
+  "uplift_percent": 10.570964936645618,
+  "relative_uplift_unavailable_reason": null,
+  "uplift_formula": "topk.modeled_ppp - team_season.ppp",
+  "relative_uplift_formula": "100 * uplift_ppp / team_season.ppp",
+  "rankings": [
+    {
+      "rank": 1,
+      "play_type": "PRRollMan",
+      "modeled_ppp": 1.1537222821639372,
+      "historical_offense_possessions": 482.0,
+      "topk_weight": 0.1805243445692884,
+      "modeled_points_contribution": 556.0941400030177,
+      "uplift_vs_team_season_ppp": 0.18448428756489998
+    },
+    {
+      "rank": 2,
+      "play_type": "Spotup",
+      "modeled_ppp": 1.0654977911074488,
+      "historical_offense_possessions": 1828.0,
+      "topk_weight": 0.6846441947565544,
+      "modeled_points_contribution": 1947.7299621444165,
+      "uplift_vs_team_season_ppp": 0.09625979650841154
+    },
+    {
+      "rank": 3,
+      "play_type": "OffScreen",
+      "modeled_ppp": 0.9933435896993468,
+      "historical_offense_possessions": 360.0,
+      "topk_weight": 0.1348314606741573,
+      "modeled_points_contribution": 357.60369229176484,
+      "uplift_vs_team_season_ppp": 0.024105595100309518
+    }
+  ],
+  "data_provenance": {
+    "source_file": "synergy_playtypes_2019_2025_players.csv",
+    "source_sha256": "014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b",
+    "aggregation": "player rows aggregated by season, team, play type and side",
+    "baseline_points_source": "PTS (no fallback to rounded PPP)",
+    "recommendation_source": "/rank-plays/baseline with identical filters"
+  },
+  "limitations": [
+    "The baseline covers available Synergy play-type possessions, not independently verified whole-game possessions.",
+    "Recommendations and team-season reference use the same historical season; this is not out-of-sample evidence.",
+    "The selected mixture retains historical usage proportions; it is not a proposed equal-usage policy.",
+    "Modeled PPP and uplift do not demonstrate a causal improvement in future or real-game scoring."
+  ]
+}

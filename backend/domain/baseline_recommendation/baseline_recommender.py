@@ -1,6 +1,7 @@
 #baseline_recommender.py
 
 import pandas as pd
+from infrastructure.data_access.dataset_metadata import read_versioned_csv
 import numpy as np
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -190,7 +191,8 @@ def rank_playtypes_baseline(
         return (
             f"{row['PLAY_TYPE']}: Pred {row['PPP_PRED']:.3f} PPP. "
             f"Our(off) {row['PPP_OFF_SHRUNK']:.3f} vs Opp(def) {row['PPP_DEF_SHRUNK']:.3f} ({gap_str}). "
-            f"Reliability off={rel_off:.2f}, def={rel_def:.2f}."
+            f"Reliability off={rel_off:.2f}, def={rel_def:.2f}. "
+            "Game context was not used: score margin, period and clock do not affect this baseline ranking."
         )
 
     merged["RATIONALE"] = merged.apply(build_rationale, axis=1)
@@ -231,7 +233,7 @@ class BaselineRecommender(IBaselineRecommender):
         if not synergy_csv_path.exists():
             raise FileNotFoundError(synergy_csv_path)
 
-        self.raw_df = pd.read_csv(synergy_csv_path)
+        self.raw_df = read_versioned_csv(synergy_csv_path)
         self.team_df, self.league_df = prepare_baseline_tables(self.raw_df)
 
     def rank(self, season: str, our_team: str, opp_team: str, k: int = 5) -> pd.DataFrame:

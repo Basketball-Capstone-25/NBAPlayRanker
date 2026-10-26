@@ -1,0 +1,42 @@
+{
+  "started_at": "2026-10-25T18:31:46.517153+00:00",
+  "revision_under_test": "nba-playranker-api-00010-jp4",
+  "route": "/rank-plays/context-ml",
+  "parameters": {
+    "season": "2024-25",
+    "our": "TOR",
+    "opp": "BOS",
+    "k": 5,
+    "margin": -2,
+    "period": 5,
+    "time_remaining": 300
+  },
+  "checks": [
+    {
+      "name": "valid overtime boundary HTTP200",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "period5 and300seconds preserved",
+      "passed": true
+    },
+    {
+      "name": "five ranked rows returned",
+      "passed": true
+    },
+    {
+      "name": "source versions preserved",
+      "passed": true
+    }
+  ],
+  "elapsed_ms": 494.064,
+  "file": {
+    "file": "context-overtime-300.json",
+    "bytes": 3815,
+    "sha256": "588f6c544f856ec030211b351fc4efb06663752745367cc56712095980e19b3b"
+  },
+  "session_closed": true,
+  "finished_at": "2026-10-25T18:31:47.645317+00:00",
+  "passed": true
+}

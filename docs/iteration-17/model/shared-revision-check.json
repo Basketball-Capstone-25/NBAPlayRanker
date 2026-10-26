@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-25T18:08:46.512275+00:00",
+  "shared_revision": 59,
+  "shared_comment": "Model Top-K uplift panel on Model Metrics page (SCRUM-477)",
+  "shared_author": "mousaa@sheridancollege.ca",
+  "local_previous_revision": 56,
+  "local_pending_entries_archived": 72,
+  "conflict_scope": "Six deployment caption bounding boxes; no model, protocol or label conflict. Latest shared placements selected.",
+  "archive_sha256": "b43512eef82e4f11165b2fcef7e1c94338da41255f7287a5b626e2c6af63a881",
+  "integration_scope": "17 original sequence diagrams only. Retain 201 diagrams, all shared architecture changes, all9Assignment2 diagrams, existing message numbering and return associations.",
+  "nlp_returns": "Reuse two return-message identities added by teammate. Add only missing parse result.",
+  "publication": "Published as revision60, with zero pending entries."
+}

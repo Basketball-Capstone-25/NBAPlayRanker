@@ -708,7 +708,10 @@ def parse_game_context(text: str, defaults: Optional[Dict[str, Any]] = None) -> 
     if period is not None:
         period = int(_clamp(float(period), 1, 5))
     if time_remaining is not None:
-        time_remaining = _clamp(float(time_remaining), 0.0, 720.0)
+        max_clock = 300.0 if period == 5 else 720.0
+        if float(time_remaining) > max_clock:
+            warnings.append(f"Clock was limited to {int(max_clock)} seconds for the parsed period.")
+        time_remaining = _clamp(float(time_remaining), 0.0, max_clock)
     if shot_clock is not None:
         shot_clock = _clamp(float(shot_clock), 0.0, 24.0)
     if margin is not None:

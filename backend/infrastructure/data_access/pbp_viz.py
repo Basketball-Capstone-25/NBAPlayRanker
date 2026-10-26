@@ -136,229 +136,72 @@ def _filter_shots(df: pd.DataFrame, req: HeatmapRequest) -> pd.DataFrame:
     return df.loc[q].copy()
 
 
-def _make_caption(req: HeatmapRequest, n_total: int, n_rendered: int) -> str:
-    parts = [f"Shot Heatmap • {req.team} vs {req.opp} • {req.season}"]
-
-    if req.shot_type:
-        parts.append(f"Type: {req.shot_type}")
-    else:
-        parts.append("Type: All")
-
-    if req.zone:
-        parts.append(f"Zone: {req.zone}")
-    else:
-        parts.append("Zone: All")
-
-    parts.append(f"Matched: {n_total:,}")
-    if n_rendered != n_total:
-        parts.append(f"Rendered: {n_rendered:,}")
-
-    return " • ".join(parts)
+def _make_caption(req: HeatmapRequest, counts: dict) -> str:
+    parts = [f"{req.team} vs {req.opp} · {req.season}",
+             f"Type: {req.shot_type or 'All'} · Zone: {req.zone or 'All'}",
+             f"Matched: {counts['n_shots_total']:,} · Shown: {counts['n_shots_rendered']:,}"]
+    extra = []
+    if counts["n_shots_excluded_location"]:
+        extra.append(f"{counts['n_shots_excluded_location']:,} uncertain locations excluded")
+    if counts["n_shots_outside_halfcourt"]:
+        extra.append(f"{counts['n_shots_outside_halfcourt']:,} outside half court")
+    if counts["n_shots_omitted_by_cap"]:
+        extra.append(f"{counts['n_shots_omitted_by_cap']:,} omitted by sample cap")
+    if extra:
+        parts.append(" · ".join(extra))
+    return "\n".join(parts)
 
 
-def render_pbp_heatmap_png(
-    *,
-    season: str,
-    team: str,
-    opp: str,
-    shot_type: Optional[str] = None,
-    zone: Optional[str] = None,
-    max_shots: int = 35000,
-) -> bytes:
-    """
-    Render a PBP shot heatmap PNG from the canonical parquet.
-    Reuses viz_shot_heatmap.render_shot_heatmap_png, adapting canonical columns.
-    """
-    try:
-        from infrastructure.visualization_and_export.viz_shot_heatmap import (
-            render_shot_heatmap_png,
-        )
-    except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=(
-                "Shot heatmap rendering is unavailable because sportypy or the heatmap "
-                f"renderer could not be imported: {e}"
-            ),
-        ) from e
-
-    req = HeatmapRequest(
-        season=str(season).strip(),
-        team=_norm_code(team),
-        opp=_norm_code(opp),
-        shot_type=_clean_optional(shot_type),
-        zone=_clean_optional(zone),
-        max_shots=int(max_shots),
-    )
-
-    cols = ["season", "team", "opp", "shot_type", "zone", "x", "y"]
-    raw = _load_canonical(columns=cols)
+def _heatmap_data(*, season, team, opp, shot_type=None, zone=None, max_shots=35000):
+    from infrastructure.visualization_and_export.viz_shot_heatmap import heatmap_plot_data
+    req = HeatmapRequest(str(season).strip(), _norm_code(team), _norm_code(opp),
+                         _clean_optional(shot_type), _clean_optional(zone), int(max_shots))
+    raw = _load_canonical()
     _validate_columns(raw)
-
-    df = _prepare_df(raw)
+    cols = ["season", "team", "opp", "shot_type", "zone", "x", "y"]
+    cols += [c for c in ("home", "location_valid") if c in raw]
+    subset = raw.loc[(raw["season"] == req.season) & (raw["team"] == req.team), cols]
+    df = _prepare_df(subset)
     matched = _filter_shots(df, req)
-
     if matched.empty:
         options = _build_available_options(df, req)
-        raise HTTPException(
-            status_code=404,
-            detail={
-                "message": "No shots matched these heatmap filters.",
-                "requested": {
-                    "season": req.season,
-                    "team": req.team,
-                    "opp": req.opp,
-                    "shot_type": req.shot_type,
-                    "zone": req.zone,
-                },
-                "available": options,
-            },
-        )
-
-    render_df = matched
-    if len(render_df) > req.max_shots:
-        render_df = render_df.sample(n=req.max_shots, random_state=_stable_sample_seed(req))
-
-    shots_df = render_df.rename(
-        columns={
-            "season": "SEASON_STR",
-            "team": "TEAM_ABBR",
-            "opp": "OPP_ABBR",
-            "shot_type": "SHOT_TYPE",
-            "zone": "ZONE",
-            "x": "X",
-            "y": "Y",
-        }
-    )
-
-    title = _make_caption(req, n_total=len(matched), n_rendered=len(render_df))
-
-    return render_shot_heatmap_png(
-        shots_df=shots_df,
-        season=req.season,
-        our_team=req.team,
-        opp_team=req.opp,
-        shot_type=req.shot_type,
-        zone=req.zone,
-        title=title,
-    )
+        options["seasons"] = sorted(raw["season"].dropna().unique().tolist())
+        options["teams"] = sorted(raw.loc[raw["season"] == req.season, "team"].dropna().unique().tolist())
+        raise HTTPException(status_code=404, detail={
+            "message": "No shots matched these heatmap filters.",
+            "requested": {"season": req.season, "team": req.team, "opp": req.opp,
+                          "shot_type": req.shot_type, "zone": req.zone}, "available": options})
+    shots = matched.rename(columns={"season":"SEASON_STR", "team":"TEAM_ABBR", "opp":"OPP_ABBR",
+        "shot_type":"SHOT_TYPE", "zone":"ZONE", "x":"X", "y":"Y", "home":"HOME_FLAG",
+        "location_valid":"LOCATION_VALID"})
+    eligible, _, _, counts = heatmap_plot_data(shots)
+    rendered = eligible if len(eligible) <= req.max_shots else eligible.sample(n=req.max_shots, random_state=_stable_sample_seed(req))
+    counts.update(dataset_version=raw.attrs.get("dataset_version"), n_shots_total=len(matched), n_shots_rendered=len(rendered),
+                  n_shots_omitted_by_cap=len(eligible)-len(rendered))
+    return req, rendered, counts
 
 
-def render_pbp_heatmap_json(
-    *,
-    season: str,
-    team: str,
-    opp: str,
-    shot_type: Optional[str] = None,
-    zone: Optional[str] = None,
-    max_shots: int = 35000,
-) -> Dict[str, Any]:
-    """
-    Returns a UI-friendly payload including the base64 image and matched counts.
-    """
-    try:
-        from infrastructure.visualization_and_export.viz_shot_heatmap import (
-            png_bytes_to_base64,
-        )
-    except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=(
-                "Shot heatmap rendering is unavailable because sportypy or the heatmap "
-                f"renderer could not be imported: {e}"
-            ),
-        ) from e
-
-    req = HeatmapRequest(
-        season=str(season).strip(),
-        team=_norm_code(team),
-        opp=_norm_code(opp),
-        shot_type=_clean_optional(shot_type),
-        zone=_clean_optional(zone),
-        max_shots=int(max_shots),
-    )
-
-    cols = ["season", "team", "opp", "shot_type", "zone", "x", "y"]
-    raw = _load_canonical(columns=cols)
-    _validate_columns(raw)
-
-    df = _prepare_df(raw)
-    matched = _filter_shots(df, req)
-
-    if matched.empty:
-        options = _build_available_options(df, req)
-        raise HTTPException(
-            status_code=404,
-            detail={
-                "message": "No shots matched these heatmap filters.",
-                "requested": {
-                    "season": req.season,
-                    "team": req.team,
-                    "opp": req.opp,
-                    "shot_type": req.shot_type,
-                    "zone": req.zone,
-                },
-                "available": options,
-            },
-        )
-
-    render_df = matched
-    if len(render_df) > req.max_shots:
-        render_df = render_df.sample(n=req.max_shots, random_state=_stable_sample_seed(req))
-
-    png = render_pbp_heatmap_png(
-        season=req.season,
-        team=req.team,
-        opp=req.opp,
-        shot_type=req.shot_type,
-        zone=req.zone,
-        max_shots=req.max_shots,
-    )
-
-    return {
-        "season": req.season,
-        "team": req.team,
-        "opp": req.opp,
-        "shot_type": req.shot_type,
-        "zone": req.zone,
-        "max_shots": int(req.max_shots),
-        "n_shots_total": int(len(matched)),
-        "n_shots_rendered": int(len(render_df)),
-        "caption": _make_caption(req, n_total=len(matched), n_rendered=len(render_df)),
-        "image_base64": png_bytes_to_base64(png),
-    }
+def render_pbp_heatmap_png(*, season, team, opp, shot_type=None, zone=None, max_shots=35000) -> bytes:
+    from infrastructure.visualization_and_export.viz_shot_heatmap import render_shot_heatmap_png
+    req, shots, counts = _heatmap_data(season=season, team=team, opp=opp,
+        shot_type=shot_type, zone=zone, max_shots=max_shots)
+    return render_shot_heatmap_png(shots_df=shots, season=req.season, our_team=req.team,
+        opp_team=req.opp, shot_type=req.shot_type, zone=req.zone, title=_make_caption(req, counts), matched_count=counts["n_shots_total"])
 
 
-def render_pbp_heatmap_base64(
-    *,
-    season: str,
-    our: str,
-    opp: str,
-    shot_type: Optional[str] = None,
-    zone: Optional[str] = None,
-    max_shots: int = 35000,
-) -> Dict[str, Any]:
-    """
-    Compatibility wrapper for routers that expect a base64 payload.
-    """
-    payload = render_pbp_heatmap_json(
-        season=season,
-        team=our,
-        opp=opp,
-        shot_type=shot_type,
-        zone=zone,
-        max_shots=int(max_shots),
-    )
-    return {
-        "season": payload["season"],
-        "team": payload["team"],
-        "opp": payload["opp"],
-        "shot_type": payload["shot_type"],
-        "zone": payload["zone"],
-        "max_shots": payload["max_shots"],
-        "n_shots": payload["n_shots_rendered"],
-        "n_shots_total": payload["n_shots_total"],
-        "n_shots_rendered": payload["n_shots_rendered"],
-        "caption": payload["caption"],
-        "image_base64": payload["image_base64"],
-    }
+def render_pbp_heatmap_json(*, season, team, opp, shot_type=None, zone=None, max_shots=35000) -> Dict[str, Any]:
+    from infrastructure.visualization_and_export.viz_shot_heatmap import render_shot_heatmap_png, png_bytes_to_base64
+    req, shots, counts = _heatmap_data(season=season, team=team, opp=opp,
+        shot_type=shot_type, zone=zone, max_shots=max_shots)
+    caption = _make_caption(req, counts)
+    png = render_shot_heatmap_png(shots_df=shots, season=req.season, our_team=req.team,
+        opp_team=req.opp, shot_type=req.shot_type, zone=req.zone, title=caption, matched_count=counts["n_shots_total"])
+    return {"season": req.season, "team": req.team, "opp": req.opp,
+        "shot_type": req.shot_type, "zone": req.zone, "max_shots": req.max_shots,
+        **counts, "caption": caption, "image_base64": png_bytes_to_base64(png)}
+
+
+def render_pbp_heatmap_base64(*, season, our, opp, shot_type=None, zone=None, max_shots=35000):
+    payload = render_pbp_heatmap_json(season=season, team=our, opp=opp,
+        shot_type=shot_type, zone=zone, max_shots=max_shots)
+    return {**payload, "n_shots": payload["n_shots_rendered"]}

@@ -1,0 +1,73 @@
+{
+  "report": "context_rankings",
+  "filters": {
+    "season": "2024-25",
+    "our": "TOR",
+    "opp": "BOS",
+    "k": 5,
+    "margin": -2,
+    "period": 4,
+    "time_remaining": 120,
+    "overlay": true,
+    "overlay_strength": 1
+  },
+  "columns": [
+    "Play type",
+    "Final PPP",
+    "ML PPP",
+    "Baseline PPP",
+    "Change in PPP",
+    "Overlay PPP"
+  ],
+  "rows": [
+    {
+      "Play type": "PRRollMan",
+      "Final PPP": 1.1643191514039992,
+      "ML PPP": 1.158049992659318,
+      "Baseline PPP": 1.1537222821639372,
+      "Change in PPP": 0.010596869240061979,
+      "Overlay PPP": 0.0007773572688624312
+    },
+    {
+      "Play type": "Spotup",
+      "Final PPP": 1.0706339282211275,
+      "ML PPP": 1.0630577631175802,
+      "Baseline PPP": 1.0654977911074488,
+      "Change in PPP": 0.005136137113678663,
+      "Overlay PPP": 0.0002707320446398297
+    },
+    {
+      "Play type": "OffScreen",
+      "Final PPP": 0.997761964962498,
+      "ML PPP": 0.9923179237022316,
+      "Baseline PPP": 0.9933435896993468,
+      "Change in PPP": 0.004418375263151253,
+      "Overlay PPP": -0.000106547098908696
+    },
+    {
+      "Play type": "Postup",
+      "Final PPP": 0.9408668863915813,
+      "ML PPP": 0.9392564281335232,
+      "Baseline PPP": 0.9672598764072047,
+      "Change in PPP": -0.02639299001562334,
+      "Overlay PPP": -0.00038954174194180766
+    },
+    {
+      "Play type": "Isolation",
+      "Final PPP": 0.9109100823194228,
+      "ML PPP": 0.9087954161254079,
+      "Baseline PPP": 0.9017437474120693,
+      "Change in PPP": 0.009166334907353524,
+      "Overlay PPP": -0.0005520004726517556
+    }
+  ],
+  "metadata": {
+    "title": "Context rankings",
+    "source": "displayed result snapshot",
+    "dataset_versions": {
+      "synergy": "sha256:014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b",
+      "ml_predictions": "sha256:72e872325c287362d362a6c34de3ed1bed89e41fff0dfc802b8bbb01201d0fb8"
+    },
+    "limitations": "Final PPP includes the selected context overlay. These are modeled rankings, not observed outcomes."
+  }
+}

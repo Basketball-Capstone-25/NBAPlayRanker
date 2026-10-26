@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 type UserRole = "coach" | "analyst" | null;
 
-const signedInOnly = ["/glossary"];
+const signedInOnly = ["/glossary", "/data-dictionary"];
 
 const coachOnly = ["/matchup", "/context", "/gameplan"];
 

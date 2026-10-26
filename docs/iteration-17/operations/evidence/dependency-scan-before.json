@@ -1,0 +1,124 @@
+{
+  "source_commit": "45973ed5bb0a8fdadbf8e314d0f34adad4ddfc9b",
+  "stage": "Before release dependency fixes",
+  "counts": {
+    "info": 0,
+    "low": 0,
+    "moderate": 1,
+    "high": 2,
+    "critical": 3,
+    "total": 6
+  },
+  "packages": {
+    "@vitest/mocker": {
+      "severity": "moderate",
+      "direct": false,
+      "advisories": [
+        {
+          "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+          "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+        },
+        {
+          "title": "Vitest: Code injection via unauthenticated manual mock registration",
+          "url": "https://github.com/advisories/GHSA-qxg6-89mg-rqv8"
+        }
+      ],
+      "fix_available": {
+        "name": "vitest",
+        "version": "5.0.5",
+        "isSemVerMajor": true
+      }
+    },
+    "next": {
+      "severity": "critical",
+      "direct": true,
+      "advisories": [
+        {
+          "title": "Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are used",
+          "url": "https://github.com/advisories/GHSA-2464-fhr4-w9xw"
+        },
+        {
+          "title": "Next.js: Denial of Service in App Router using Server Actions",
+          "url": "https://github.com/advisories/GHSA-p3m5-59mp-jv5r"
+        }
+      ],
+      "fix_available": {
+        "name": "next",
+        "version": "15.5.28",
+        "isSemVerMajor": false
+      }
+    },
+    "source-map-js": {
+      "severity": "high",
+      "direct": false,
+      "advisories": [
+        {
+          "title": "source-map-js allows event-loop denial of service through indexed source-map section offsets",
+          "url": "https://github.com/advisories/GHSA-68fv-2mgg-jv7q"
+        }
+      ],
+      "fix_available": true
+    },
+    "tinypool": {
+      "severity": "critical",
+      "direct": false,
+      "advisories": [
+        {
+          "title": "Tinypool: Prototype Pollution gadget in worker options leads to Remote Code Execution",
+          "url": "https://github.com/advisories/GHSA-5gmw-xhrv-c9v3"
+        },
+        {
+          "title": "Tinypool: Prototype Pollution Gadget to RCE in run() options",
+          "url": "https://github.com/advisories/GHSA-85c8-ppgw-ccpr"
+        }
+      ],
+      "fix_available": {
+        "name": "vitest",
+        "version": "5.0.5",
+        "isSemVerMajor": true
+      }
+    },
+    "vite": {
+      "severity": "high",
+      "direct": false,
+      "advisories": [
+        {
+          "title": "launch-editor: escapeCmdArgs() omits % escaping on Windows",
+          "url": "https://github.com/advisories/GHSA-698v-4r3x-3vcv"
+        },
+        {
+          "title": "launch-editor: Editor CLI flag misinterpretation causing arbitrary command execution for some editors",
+          "url": "https://github.com/advisories/GHSA-r825-w8mm-5pxw"
+        },
+        {
+          "title": "launch-editor: `fs.existsSync()` existence check can be bypassed on Windows",
+          "url": "https://github.com/advisories/GHSA-587h-7wmj-h5pm"
+        },
+        {
+          "title": "Vite: Cross origin script execution through Vite custom middleware",
+          "url": "https://github.com/advisories/GHSA-9jrq-w75r-8gcw"
+        },
+        {
+          "title": "Vite: Files outside `server.fs.allow` could be served when project paths match system paths on non-Windows machine",
+          "url": "https://github.com/advisories/GHSA-rq7h-c2jc-7f22"
+        }
+      ],
+      "fix_available": true
+    },
+    "vitest": {
+      "severity": "critical",
+      "direct": true,
+      "advisories": [
+        {
+          "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+          "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+        }
+      ],
+      "fix_available": {
+        "name": "vitest",
+        "version": "5.0.5",
+        "isSemVerMajor": true
+      }
+    }
+  }
+}

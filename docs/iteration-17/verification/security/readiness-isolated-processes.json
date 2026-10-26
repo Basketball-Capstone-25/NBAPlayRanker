@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-10-25T18:03:44.420722+00:00",
+  "scope": "Three isolated Python processes; dotenv loading disabled; no production changes.",
+  "checks": [
+    {
+      "scenario": "missing-source",
+      "process_imported": true,
+      "health": 200,
+      "ready": 503,
+      "missing": [
+        "synergy_playtypes_2019_2025_players.csv (missing or unreadable)",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY"
+      ],
+      "anonymous_metadata": 401,
+      "invalid_metadata": 401,
+      "anonymous_baseline": 503,
+      "response_has_private_path": false
+    },
+    {
+      "scenario": "missing-auth",
+      "process_imported": true,
+      "health": 200,
+      "ready": 503,
+      "missing": [
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY"
+      ],
+      "anonymous_metadata": 401,
+      "invalid_metadata": 401,
+      "anonymous_baseline": 401,
+      "response_has_private_path": false
+    },
+    {
+      "scenario": "development-bypass",
+      "process_imported": true,
+      "health": 200,
+      "ready": 503,
+      "missing": [
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "secure authentication (development bypass is enabled)"
+      ],
+      "anonymous_metadata": 200,
+      "invalid_metadata": 200,
+      "anonymous_baseline": 422,
+      "response_has_private_path": false
+    }
+  ],
+  "strict_missing_configuration_passed": true,
+  "development_mode_note": "The explicit local development bypass intentionally permits requests. Readiness rejects that configuration; this is not evidence that bypass-enabled routes enforce production authentication."
+}

@@ -1,0 +1,23 @@
+{
+  "recorded_at_utc": "2026-10-25T17:50:12.386657+00:00",
+  "base_commit": "5fac9deafab1d73df911fbd05831d2c2eb363f97",
+  "working_tree_changes_present": true,
+  "command": "backend/.venv/bin/python -m pytest backend/tests/test_supabase_jwt.py -q",
+  "result": {
+    "passed": 7,
+    "failed": 0
+  },
+  "checks": [
+    "A correctly signed ES256 token is accepted without the legacy secret.",
+    "Expired signed tokens are rejected.",
+    "A token signed by a different private key is rejected.",
+    "Incorrect issuer and audience claims are rejected.",
+    "Unavailable signing keys fail closed.",
+    "HS256 is rejected without a configured secret."
+  ],
+  "scope": "Locally generated cryptographic fixtures exercise the production JWT verification function. This does not claim an expired production-account token was used.",
+  "source_sha256": {
+    "backend/tests/test_supabase_jwt.py": "5268dcc2e4b24cf0a5e95766a36dc14882360b3a26853c18fc3c987ad0e66eb6",
+    "backend/infrastructure/external_integrations/supabase_jwt.py": "49a2ea6dfe505a5b9aa74dc3df0d1669788271ea1811e8758848d9f791f92c0b"
+  }
+}

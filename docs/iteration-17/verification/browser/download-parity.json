@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "staged_git_byte_identity": [
+    {
+      "file": "docs/iteration-17/verification/browser/baseline.csv",
+      "sha256": "215308e0684d69b4f2d3c391e74c56b8bec47ca6dfb0be7f98a7b45997ca2e92",
+      "bytes": 975
+    },
+    {
+      "file": "docs/iteration-17/verification/browser/shot_model_metrics_splits_5.csv",
+      "sha256": "bd00ab9e1fc5c3cdbc911ee0af2f9d98442371baf01d63c5ecc26898da7663ba",
+      "bytes": 699
+    },
+    {
+      "file": "docs/iteration-17/model/Basketball Playtype Ranker.vpp",
+      "sha256": "96f318aeaf843222fc98851157fe2fdcdcaf05b6893ff72001d94f8ef62531fe",
+      "bytes": 17469440
+    }
+  ],
+  "baseline_browser_csv": {
+    "rows": 5,
+    "top_play": "PRRollMan",
+    "displayed_ppp": 1.154,
+    "source_matches": true
+  },
+  "context_browser_pdf": {
+    "pages": 1,
+    "top_play": "PRRollMan",
+    "displayed_ppp": 1.164,
+    "margin": -2,
+    "period": 4,
+    "seconds": 120,
+    "source_versions_match": true
+  }
+}

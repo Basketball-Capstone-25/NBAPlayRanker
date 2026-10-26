@@ -1,0 +1,405 @@
+{
+  "started_at": "2026-10-25T17:58:27.180876+00:00",
+  "api": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app",
+  "revision_under_test": "nba-playranker-api-00009-cqm",
+  "checks": [
+    {
+      "name": "public liveness",
+      "passed": true,
+      "route": "/health",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 568.35
+    },
+    {
+      "name": "configured readiness",
+      "passed": true,
+      "route": "/ready",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 192.1
+    },
+    {
+      "name": "readiness is ready",
+      "passed": true
+    },
+    {
+      "name": "analyst sign-in",
+      "passed": true
+    },
+    {
+      "name": "coach sign-in",
+      "passed": true
+    },
+    {
+      "name": "anonymous denied /meta/datasets",
+      "passed": true,
+      "route": "/meta/datasets",
+      "status": 401,
+      "expected": 401,
+      "elapsed_ms": 152.33
+    },
+    {
+      "name": "anonymous denied /meta/data-dictionary",
+      "passed": true,
+      "route": "/meta/data-dictionary",
+      "status": 401,
+      "expected": 401,
+      "elapsed_ms": 139.29
+    },
+    {
+      "name": "anonymous denied /metrics/shot-models",
+      "passed": true,
+      "route": "/metrics/shot-models",
+      "status": 401,
+      "expected": 401,
+      "elapsed_ms": 134.98
+    },
+    {
+      "name": "anonymous denied /analysis/shot-ml",
+      "passed": true,
+      "route": "/analysis/shot-ml",
+      "status": 401,
+      "expected": 401,
+      "elapsed_ms": 194.28
+    },
+    {
+      "name": "anonymous denied /pbp/shotplan/rank",
+      "passed": true,
+      "route": "/pbp/shotplan/rank",
+      "status": 401,
+      "expected": 401,
+      "elapsed_ms": 129.15
+    },
+    {
+      "name": "invalid session denied",
+      "passed": true,
+      "route": "/meta/datasets",
+      "status": 401,
+      "expected": 401,
+      "elapsed_ms": 133.07
+    },
+    {
+      "name": "dataset catalog",
+      "passed": true,
+      "route": "/meta/datasets",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 1950.34
+    },
+    {
+      "name": "six available versioned datasets",
+      "passed": true
+    },
+    {
+      "name": "shot source matches local release",
+      "passed": true
+    },
+    {
+      "name": "shot retrieval date recorded",
+      "passed": true
+    },
+    {
+      "name": "historical Synergy pull date remains unknown",
+      "passed": true
+    },
+    {
+      "name": "data dictionary",
+      "passed": true,
+      "route": "/meta/data-dictionary",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 354.66
+    },
+    {
+      "name": "dictionary covers each loaded column",
+      "passed": true
+    },
+    {
+      "name": "current columns have definitions",
+      "passed": true
+    },
+    {
+      "name": "play-type preview",
+      "passed": true,
+      "route": "/data/team-playtypes",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 545.75
+    },
+    {
+      "name": "play-type version matches catalog",
+      "passed": true
+    },
+    {
+      "name": "coach baseline",
+      "passed": true,
+      "route": "/rank-plays/baseline",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 955.14
+    },
+    {
+      "name": "baseline explains unused game context",
+      "passed": true
+    },
+    {
+      "name": "coach baseline CSV",
+      "passed": true,
+      "route": "/rank-plays/baseline.csv",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 369.33
+    },
+    {
+      "name": "baseline CSV includes actual source version",
+      "passed": true
+    },
+    {
+      "name": "analyst cannot call coaching route",
+      "passed": true,
+      "route": "/rank-plays/baseline",
+      "status": 403,
+      "expected": 403,
+      "elapsed_ms": 507.64
+    },
+    {
+      "name": "parse overtime situation",
+      "passed": true,
+      "route": "/nlp/parse",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 837.07
+    },
+    {
+      "name": "overtime parse keeps score and clock",
+      "passed": true
+    },
+    {
+      "name": "overtime ranking",
+      "passed": true,
+      "route": "/rank-plays/context-ml",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 6957.45
+    },
+    {
+      "name": "need-three ranking",
+      "passed": true,
+      "route": "/rank-plays/context-ml",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 620.39
+    },
+    {
+      "name": "coaching flag changes ranking scores",
+      "passed": true
+    },
+    {
+      "name": "ranker uses parsed overtime context",
+      "passed": true
+    },
+    {
+      "name": "invalid overtime clock rejected",
+      "passed": true,
+      "route": "/rank-plays/context-ml",
+      "status": 422,
+      "expected": 422,
+      "elapsed_ms": 346.96
+    },
+    {
+      "name": "unsupported coaching flag rejected",
+      "passed": true,
+      "route": "/rank-plays/context-ml",
+      "status": 422,
+      "expected": 422,
+      "elapsed_ms": 319.46
+    },
+    {
+      "name": "analyst shot plan",
+      "passed": true,
+      "route": "/pbp/shotplan/rank",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 1398.86
+    },
+    {
+      "name": "analyst has shot rankings",
+      "passed": true
+    },
+    {
+      "name": "analyst shot heatmap",
+      "passed": true,
+      "route": "/pbp/viz/shot-heatmap",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 5253.38
+    },
+    {
+      "name": "analyst heatmap has image",
+      "passed": true
+    },
+    {
+      "name": "analyst shot PDF",
+      "passed": true,
+      "route": "/export/shotplan.pdf",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 3439.0
+    },
+    {
+      "name": "analyst shot PDF is readable and versioned",
+      "passed": true
+    },
+    {
+      "name": "coach shot plan",
+      "passed": true,
+      "route": "/pbp/shotplan/rank",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 439.19
+    },
+    {
+      "name": "coach has shot rankings",
+      "passed": true
+    },
+    {
+      "name": "coach shot heatmap",
+      "passed": true,
+      "route": "/pbp/viz/shot-heatmap",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 2678.98
+    },
+    {
+      "name": "coach heatmap has image",
+      "passed": true
+    },
+    {
+      "name": "coach shot PDF",
+      "passed": true,
+      "route": "/export/shotplan.pdf",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 3153.54
+    },
+    {
+      "name": "coach shot PDF is readable and versioned",
+      "passed": true
+    },
+    {
+      "name": "repaired shot preview",
+      "passed": true,
+      "route": "/pbp/shots/preview",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 1089.03
+    },
+    {
+      "name": "preview contains valid opposing teams",
+      "passed": true
+    },
+    {
+      "name": "saved shot metrics",
+      "passed": true,
+      "route": "/metrics/shot-models",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 356.43
+    },
+    {
+      "name": "shot metrics use saved results",
+      "passed": true
+    },
+    {
+      "name": "saved shot analysis",
+      "passed": true,
+      "route": "/analysis/shot-ml",
+      "status": 200,
+      "expected": 200,
+      "elapsed_ms": 274.21
+    },
+    {
+      "name": "shot analysis response",
+      "passed": true
+    },
+    {
+      "name": "shot analysis matches deployed input",
+      "passed": true
+    },
+    {
+      "name": "coach cannot access analyst metrics",
+      "passed": true,
+      "route": "/metrics/shot-models",
+      "status": 403,
+      "expected": 403,
+      "elapsed_ms": 282.35
+    },
+    {
+      "name": "HTTP cannot retrain shot model",
+      "passed": true,
+      "route": "/pbp/metrics/shot-models",
+      "status": 400,
+      "expected": 400,
+      "elapsed_ms": 284.5
+    },
+    {
+      "name": "unbuilt fold choice is clear",
+      "passed": true,
+      "route": "/metrics/shot-models",
+      "status": 503,
+      "expected": 503,
+      "elapsed_ms": 271.78
+    }
+  ],
+  "sessions_closed": [
+    {
+      "role": "analyst",
+      "status": 204
+    },
+    {
+      "role": "coach",
+      "status": 204
+    }
+  ],
+  "files": [
+    {
+      "file": "dataset-catalog.json",
+      "bytes": 3717,
+      "sha256": "78fd1204d4bea2000eb78bb575d73b34e28d0bf70655a10545fd9a8c7ac18a40"
+    },
+    {
+      "file": "data-dictionary.json",
+      "bytes": 19723,
+      "sha256": "3c39e7bd6446cafb40b4181e4b34ce92115aa7f229c8ebea7bb1da30409b91c1"
+    },
+    {
+      "file": "context-overtime.json",
+      "bytes": 3905,
+      "sha256": "925a49debb9009a78bd1c2ad815f81e81bea7aeac07175176d8a299e846f6215"
+    },
+    {
+      "file": "analyst-shot-plan.pdf",
+      "bytes": 77159,
+      "sha256": "1216f0f08cc1863c8a9720b13013b7370bc17ee08844b05e12df1ff5ff99c572"
+    },
+    {
+      "file": "coach-shot-plan.pdf",
+      "bytes": 77159,
+      "sha256": "cfda97c913d2cd3039c9231dd9255cb025d9a5caf037c25ff500dcc50f266563"
+    },
+    {
+      "file": "shot-preview.json",
+      "bytes": 947679,
+      "sha256": "ceb7e440697b82eecfa4871e217f64df2e752404c1f902db0c30a20ea24a480c"
+    },
+    {
+      "file": "shot-analysis.json",
+      "bytes": 7189,
+      "sha256": "9a019d21ce787f2fa6c871c6d6530c8cddc9c95ebdcfdd9c506efc3e88fb0e20"
+    }
+  ],
+  "complete": true,
+  "finished_at": "2026-10-25T17:59:03.554301+00:00",
+  "passed": true
+}

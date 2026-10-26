@@ -1,0 +1,55 @@
+{
+  "verified_at_utc": "2026-10-25T18:25:56.027Z",
+  "shared_revision": 60,
+  "publication_check_count": 28,
+  "items": [
+    {
+      "key": "SCRUM-528",
+      "comment": {
+        "message": "Comment added to SCRUM-528 successfully",
+        "commentId": "11323",
+        "body": "Fixed the lifeline names and added typed request and reply labels across the 17 sequence diagrams. I also filled in the Glossary paths and the missing NLP reply. These changes are published in VP revision 60, with the recent teammate model work preserved.",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "description": "Fix the lifeline names and message labels in the shared Visual Paradigm project.\n\nThe 17 sequence diagrams are corrected and published in VP revision 60. The current shared model keeps all 201 diagrams, including the recent teammate updates.\n\nAcceptance criteria:\n\n* Use the same lifeline naming style across all sequence diagrams.\n* Label requests and replies with their inputs or returned values, including asynchronous messages.\n* Keep existing model IDs and unrelated diagrams unchanged.\n* Save readable diagrams in the shared GitHub repository and publish the model to Visual Paradigm Teamwork.\n\n"
+    },
+    {
+      "key": "SCRUM-554",
+      "comment": {
+        "message": "Comment added to SCRUM-554 successfully",
+        "commentId": "11324",
+        "body": "Published the saved changes as VP revision 60. The shared copy has all 201 diagrams and no pending changes. All 28 publication checks passed, and the saved model and diagram images now match the published revision.",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "description": "Publish the corrected sequence diagrams and keep the shared model and saved evidence in sync.\n\nVP revision 60 is published. The committed copy has all 201 diagrams and no pending changes. The publication checks passed.\n\nAcceptance criteria:\n\n* Publish the saved changes from VP Desktop.\n* Confirm the new shared revision matches the local project and has no pending changes.\n* Update the publication record and submission copy.\n\nThe earlier [publication record](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/4e4fee11d9237ecad4b62e5f44fcb57b20f7894b/docs/assignment-1-revision/interaction/teamwork-status.json) is retained as history. The current native model, diagram images and verification are in docs/iteration-17/model."
+    },
+    {
+      "key": "BSR-138",
+      "comment": {
+        "message": "Comment added to BSR-138 successfully",
+        "commentId": "11325",
+        "body": "The sequence fixes are now shared in VP revision 60. The published model passed the preservation checks, so this mitigation is complete.",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Resolved",
+      "description": "Mitigation completed through SCRUM-528 and SCRUM-554. The corrected sequence diagrams are published in VP revision 60, with all 201 diagrams and existing model identities preserved."
+    },
+    {
+      "key": "BSR-111",
+      "comment": {
+        "message": "Comment added to BSR-111 successfully",
+        "commentId": "11326",
+        "body": "The current update published successfully as VP revision 60. All 201 diagrams are present and there are no pending changes. The compatibility risk stays under monitoring because the earlier import and command-line publishing problems could recur.",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Monitoring",
+      "description": "Visual Paradigm version or publishing problems could interrupt shared model updates.\n\nThe deployment correction was published in revision 55, and the sequence corrections are now published in revision 60. The current shared copy has all 201 diagrams and no pending changes.\n\nA version mismatch previously blocked an import, and the command-line commit tool failed. The installed Professional edition and Desktop Team Commit completed the current update. Keep using the same installed version, back up the project before imports, and check the shared revision after publishing. This risk remains under monitoring."
+    }
+  ]
+}

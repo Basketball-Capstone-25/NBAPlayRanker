@@ -1,0 +1,834 @@
+{
+  "verified_at_utc": "2026-10-25T18:47:25.882Z",
+  "evidence_commit": "d161f42",
+  "items": [
+    {
+      "key": "SCRUM-632",
+      "started_at": "2026-10-25T18:39:11.968Z",
+      "comment": {
+        "message": "Comment added to SCRUM-632 successfully",
+        "commentId": "11327",
+        "body": "Added content versions to the loaded frames and carried them through API responses and exports. A frame without a version produces a warning.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/backend/tests/test_dataset_metadata.py) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/backend/tests/test_source_version_exports.py)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:39:16.430Z"
+    },
+    {
+      "key": "SCRUM-633",
+      "started_at": "2026-10-25T18:39:18.433Z",
+      "comment": {
+        "message": "Comment added to SCRUM-633 successfully",
+        "commentId": "11328",
+        "body": "Version checks passed for unchanged files, changed files and older displayed snapshots. The live CSV, JSON and PDF checks also retained the source version used for each result.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/report-downloads/verification.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/shot-csv-final-check.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:39:23.612Z"
+    },
+    {
+      "key": "SCRUM-634",
+      "started_at": "2026-10-25T18:39:25.614Z",
+      "comment": {
+        "message": "Comment added to SCRUM-634 successfully",
+        "commentId": "11329",
+        "body": "Added the source metadata API for the loaded datasets, including available pull dates, seasons, row counts and file versions. Missing files are returned as unavailable instead of hiding the source.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/dataset-catalog.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:39:30.763Z"
+    },
+    {
+      "key": "SCRUM-635",
+      "started_at": "2026-10-25T18:39:32.765Z",
+      "comment": {
+        "message": "Comment added to SCRUM-635 successfully",
+        "commentId": "11330",
+        "body": "Compared the API metadata with the runtime files and checked missing files, invalid source-date records and signed-out access. Valid sources remain available when another source cannot be read.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/backend/tests/test_source_version_exports.py)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:39:37.586Z"
+    },
+    {
+      "key": "SCRUM-636",
+      "started_at": "2026-10-25T18:39:39.587Z",
+      "comment": {
+        "message": "Comment added to SCRUM-636 successfully",
+        "commentId": "11331",
+        "body": "Added the source details panel to Data Explorer with loading, unavailable and retry states. The current source values are visible next to the data preview.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/app/ui/data-explorer/DatasetMetadataPanel.tsx)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:39:44.971Z"
+    },
+    {
+      "key": "SCRUM-637",
+      "started_at": "2026-10-25T18:39:57.174Z",
+      "comment": {
+        "message": "Comment added to SCRUM-637 successfully",
+        "commentId": "11332",
+        "body": "The displayed source values match the metadata API. The unavailable and recovery behavior is covered by the isolated metadata fixture.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/scripts/metadata-retry-harness.cjs)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:40:01.777Z"
+    },
+    {
+      "key": "SCRUM-638",
+      "started_at": "2026-10-25T18:40:03.779Z",
+      "comment": {
+        "message": "Comment added to SCRUM-638 successfully",
+        "commentId": "11333",
+        "body": "Built the separate Data Dictionary page with column definitions, units and sources. Missing definitions are marked as undocumented, and the page links to the Glossary.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/app/data-dictionary/page.tsx)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:40:09.405Z"
+    },
+    {
+      "key": "SCRUM-639",
+      "started_at": "2026-10-25T18:40:11.407Z",
+      "comment": {
+        "message": "Comment added to SCRUM-639 successfully",
+        "commentId": "11334",
+        "body": "Compared the dictionary with every loaded column and checked its search and protected access. The navigation check covers both directions between Dictionary and Glossary.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:40:16.109Z"
+    },
+    {
+      "key": "SCRUM-487",
+      "started_at": "2026-10-25T18:40:18.112Z",
+      "comment": {
+        "message": "Comment added to SCRUM-487 successfully",
+        "commentId": "11335",
+        "body": "Each loaded source now keeps a SHA-256 version with its API results and downloads. Checks confirmed that changed bytes get a new version and older displayed results keep their original version.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/report-downloads/verification.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:40:22.894Z"
+    },
+    {
+      "key": "SCRUM-488",
+      "started_at": "2026-10-25T18:40:24.897Z",
+      "comment": {
+        "message": "Comment added to SCRUM-488 successfully",
+        "commentId": "11336",
+        "body": "Added the dataset endpoint with source, recorded pull date, seasons, row count and file version. Its values match the six loaded datasets; the old Synergy pull date stays unknown because it was not recorded.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/dataset-catalog.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:40:29.752Z"
+    },
+    {
+      "key": "SCRUM-489",
+      "started_at": "2026-10-25T18:40:43.971Z",
+      "comment": {
+        "message": "Comment added to SCRUM-489 successfully",
+        "commentId": "11337",
+        "body": "Data Explorer now shows the source details beside the preview. The deployed panel matches the API: 47,982 source rows across six seasons, with the original pull date shown as unrecorded. The panel stayed visible during metadata errors and recovered when Retry was clicked.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:40:49.145Z"
+    },
+    {
+      "key": "SCRUM-498",
+      "started_at": "2026-10-25T18:40:51.147Z",
+      "comment": {
+        "message": "Comment added to SCRUM-498 successfully",
+        "commentId": "11338",
+        "body": "Added a separate Data Dictionary with definitions, units and sources for the loaded columns. Search works, and unknown columns stay visible as undocumented. Both links between Dictionary and Glossary were checked.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:40:56.819Z"
+    },
+    {
+      "key": "SCRUM-538",
+      "started_at": "2026-10-25T18:40:58.821Z",
+      "comment": {
+        "message": "Comment added to SCRUM-538 successfully",
+        "commentId": "11339",
+        "body": "Rebuilt the shot data from a new ESPN/hoopR snapshot because the historical raw file was unavailable. The 1,370,434 rebuilt shots have valid opposing teams; 600 event samples matched the provider data. A fresh Toronto export also passed the team checks.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/shot-repair/rebuild-validation.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/shot-repair/source-manifest.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:41:03.854Z"
+    },
+    {
+      "key": "SCRUM-539",
+      "started_at": "2026-10-25T18:41:05.856Z",
+      "comment": {
+        "message": "Comment added to SCRUM-539 successfully",
+        "commentId": "11340",
+        "body": "Gameplan now uses the newly parsed situation on the first Build. The first and second builds both used Q4, 28 seconds and a five-point deficit, with the same three rankings.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/tests/gameplan-context.test.ts)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:41:10.703Z"
+    },
+    {
+      "key": "SCRUM-540",
+      "started_at": "2026-10-25T18:41:12.705Z",
+      "comment": {
+        "message": "Comment added to SCRUM-540 successfully",
+        "commentId": "11341",
+        "body": "Supported coaching conditions now reach the ranker and change the documented scoring inputs. Unsupported instructions are shown as notes only, and invalid API values are rejected.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:41:17.553Z"
+    },
+    {
+      "key": "SCRUM-541",
+      "started_at": "2026-10-25T18:41:33.828Z",
+      "comment": {
+        "message": "Comment added to SCRUM-541 successfully",
+        "commentId": "11342",
+        "body": "Overtime now stays overtime from parsing through the displayed result and ranking request. The clock is limited to five minutes, and the API rejects a longer overtime clock.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:41:38.362Z"
+    },
+    {
+      "key": "SCRUM-543",
+      "started_at": "2026-10-25T18:41:40.364Z",
+      "comment": {
+        "message": "Comment added to SCRUM-543 successfully",
+        "commentId": "11343",
+        "body": "Shot metrics and analysis now load saved results, so opening the pages does not retrain a model. The deployed metrics request returned in about 0.4 seconds and the page showed the saved folds and later-season comparison.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:41:45.772Z"
+    },
+    {
+      "key": "SCRUM-544",
+      "started_at": "2026-10-25T18:41:47.774Z",
+      "preserved_inline_media": true,
+      "edited_existing_comment": true,
+      "comment": {
+        "message": "Comment 11321 on SCRUM-544 updated successfully",
+        "commentId": "11321",
+        "body": "<p>Shot Plan now loads for analysts. Toronto against Boston in 2021–22 returned five shot types and five zones, with a heatmap for the same filters.</p><figure data-type=\"media-single\" data-layout=\"center\"><div data-type=\"media\" data-media-type=\"file\" data-id=\"21b4b3d6-6328-4ba6-a4a7-b9532eb4537f\"></div></figure><p>Shot Heatmap and the role checks also passed. <a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json\">Verification</a>.</p>",
+        "appliedContentFormat": "html",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:41:52.678Z"
+    },
+    {
+      "key": "SCRUM-545",
+      "started_at": "2026-10-25T18:41:54.681Z",
+      "comment": {
+        "message": "Comment added to SCRUM-545 successfully",
+        "commentId": "11344",
+        "body": "Updated Shot Statistical Analysis to match the current API response. The page now renders the dataset and analysis sections without crashing, and does not display statistics the backend did not calculate.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:42:00.475Z"
+    },
+    {
+      "key": "SCRUM-546",
+      "started_at": "2026-10-25T18:42:02.478Z",
+      "comment": {
+        "message": "Comment added to SCRUM-546 successfully",
+        "commentId": "11345",
+        "body": "Baseline explanations now state that score, period and clock were not used. Context explanations show the situation actually supplied; the deployed baseline and context pages both passed the check.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:42:07.205Z"
+    },
+    {
+      "key": "SCRUM-547",
+      "started_at": "2026-10-25T18:42:27.478Z",
+      "comment": {
+        "message": "Comment added to SCRUM-547 successfully",
+        "commentId": "11346",
+        "body": "Added a separate readiness endpoint. Missing data or authentication settings now return a clear not-ready response naming the missing requirement, while liveness still reports that the process is running. Isolated missing-configuration checks and deployed readiness passed.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/security/readiness-isolated-processes.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:42:32.631Z"
+    },
+    {
+      "key": "SCRUM-548",
+      "started_at": "2026-10-25T18:42:34.634Z",
+      "comment": {
+        "message": "Comment added to SCRUM-548 successfully",
+        "commentId": "11347",
+        "body": "The shot schema check now separates mapped, optional, ignored and missing required columns. Extra metadata is reported without being treated as a model feature, and missing required fields still fail clearly.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/shot-repair/column-checks.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/backend/tests/test_shot_repair_contracts.py)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:42:39.795Z"
+    },
+    {
+      "key": "SCRUM-549",
+      "started_at": "2026-10-25T18:42:41.798Z",
+      "comment": {
+        "message": "Comment added to SCRUM-549 successfully",
+        "commentId": "11348",
+        "body": "Recovered pre-shot score margins from the replacement event source and stopped treating missing margins as tied scores. The saved evaluation uses finite inputs and a separate 2025-26 holdout. The model evaluates a proposed shot location and type; pre-possession prediction remains separate follow-up work.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/shot-repair/rebuild-validation.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/shot-repair/model-evaluation.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Done",
+      "completed_at": "2026-10-25T18:42:46.563Z"
+    },
+    {
+      "key": "BST-138",
+      "started_at": "2026-10-25T18:42:48.566Z",
+      "comment": {
+        "message": "Comment added to BST-138 successfully",
+        "commentId": "11349",
+        "body": "The rebuilt dataset has no self-opponents or one-team complete game groups. A fresh analyst export contained 5,000 Toronto 2025-26 shots with no self-opponents.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/shot-repair/rebuild-validation.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/shot-csv-final-check.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:42:53.519Z"
+    },
+    {
+      "key": "BST-140",
+      "started_at": "2026-10-25T18:42:55.522Z",
+      "comment": {
+        "message": "Comment added to BST-140 successfully",
+        "commentId": "11350",
+        "body": "The first Build used Q4, 28 seconds and margin -5. Building again without changing the inputs returned the same rankings and values.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/tests/gameplan-context.test.ts)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:42:59.991Z"
+    },
+    {
+      "key": "BST-141",
+      "started_at": "2026-10-25T18:43:16.288Z",
+      "comment": {
+        "message": "Comment added to BST-141 successfully",
+        "commentId": "11351",
+        "body": "Need-three and switching conditions reached the ranking request and changed the documented scores. Unsupported instructions remained visible as notes only.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:43:20.930Z"
+    },
+    {
+      "key": "BST-142",
+      "started_at": "2026-10-25T18:43:22.933Z",
+      "comment": {
+        "message": "Comment added to BST-142 successfully",
+        "commentId": "11352",
+        "body": "The overtime example kept period 5, 60 seconds and margin -2 through Build and the displayed result.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/tests/gameplan-context.test.ts)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:43:28.305Z"
+    },
+    {
+      "key": "BST-143",
+      "started_at": "2026-10-25T18:43:30.308Z",
+      "comment": {
+        "message": "Comment added to BST-143 successfully",
+        "commentId": "11353",
+        "body": "The analyst Shot Plan loaded five shot types and five zones for TOR/BOS 2021-22, with a heatmap based on 376 matched shots. The required API requests succeeded.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:43:35.682Z"
+    },
+    {
+      "key": "BST-144",
+      "started_at": "2026-10-25T18:43:37.685Z",
+      "comment": {
+        "message": "Comment added to BST-144 successfully",
+        "commentId": "11354",
+        "body": "The analyst Heatmap rendered 352 matched shots for TOR/BOS 2025-26. The API returned the image successfully.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:43:42.632Z"
+    },
+    {
+      "key": "BST-146",
+      "started_at": "2026-10-25T18:43:44.635Z",
+      "comment": {
+        "message": "Comment added to BST-146 successfully",
+        "commentId": "11355",
+        "body": "The default metrics request loaded saved results in about 0.4 seconds. The page displayed five-fold results and the separate 2025-26 comparison without starting training.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:43:50.216Z"
+    },
+    {
+      "key": "BST-147",
+      "started_at": "2026-10-25T18:44:06.248Z",
+      "comment": {
+        "message": "Comment added to BST-147 successfully",
+        "commentId": "11356",
+        "body": "Shot Statistical Analysis rendered the 200,000-shot sample, 7,739 games and six seasons without a client crash. Method details and available statistics matched the returned response.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:44:11.316Z"
+    },
+    {
+      "key": "BST-192",
+      "started_at": "2026-10-25T18:44:13.318Z",
+      "comment": {
+        "message": "Comment added to BST-192 successfully",
+        "commentId": "11357",
+        "body": "Preview and CSV versions matched the loaded source. The CSV, JSON and PDF report checks retained their result versions, and the older-snapshot fixture kept its original version.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/report-downloads/verification.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:44:18.254Z"
+    },
+    {
+      "key": "BST-193",
+      "started_at": "2026-10-25T18:44:20.257Z",
+      "comment": {
+        "message": "Comment added to BST-193 successfully",
+        "commentId": "11358",
+        "body": "Data Explorer matched the source API: 47,982 play-type rows, six seasons and the same version. The historical Synergy pull date remains unknown; the replacement shot source has a recorded retrieval date.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:44:25.444Z"
+    },
+    {
+      "key": "BST-194",
+      "started_at": "2026-10-25T18:44:27.447Z",
+      "comment": {
+        "message": "Comment added to BST-194 successfully",
+        "commentId": "11359",
+        "body": "The panel stayed visible when metadata was unavailable. Retry restored the three-row fixture source, and missing or corrupt optional files did not hide the valid source.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/scripts/metadata-retry-harness.cjs) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/metadata-retry/events.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:44:33.729Z"
+    },
+    {
+      "key": "BST-195",
+      "started_at": "2026-10-25T18:44:35.731Z",
+      "comment": {
+        "message": "Comment added to BST-195 successfully",
+        "commentId": "11360",
+        "body": "Every loaded column appears with its definition, unit and source. Searching MARGIN returned the two matching definitions, and the Dictionary and Glossary links worked in both directions.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:44:40.312Z"
+    },
+    {
+      "key": "BST-199",
+      "started_at": "2026-10-25T18:44:57.403Z",
+      "comment": {
+        "message": "Comment added to BST-199 successfully",
+        "commentId": "11361",
+        "body": "The API accepted period 5 at 300 seconds and rejected 301 seconds. Gameplan kept the overtime period and the five-minute clock limit.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:45:02.263Z"
+    },
+    {
+      "key": "BST-200",
+      "started_at": "2026-10-25T18:45:04.265Z",
+      "comment": {
+        "message": "Comment added to BST-200 successfully",
+        "commentId": "11362",
+        "body": "Supported need-three input changed the ranking scores. Invalid API inputs returned 422, while the unsupported foul-game instruction was shown as a note that did not affect ranking.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:45:09.110Z"
+    },
+    {
+      "key": "BST-201",
+      "started_at": "2026-10-25T18:45:11.112Z",
+      "comment": {
+        "message": "Comment added to BST-201 successfully",
+        "commentId": "11363",
+        "body": "The call labels matched the first displayed result in Matchup, Context and Gameplan. The label disappeared during Build; fixture checks covered changed order, empty results and stale results.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json) · [Details](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/tests/top-pick-call.test.tsx)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass",
+      "completed_at": "2026-10-25T18:45:16.205Z"
+    },
+    {
+      "key": "SCRUM-640",
+      "status": "Done",
+      "comment": {
+        "message": "Comment added to SCRUM-640 successfully",
+        "commentId": "11364",
+        "body": "Simplified Data Explorer and the shot result pages so the main result is easier to find, with technical details in expandable sections. The shot pages now offer the saved five-fold evaluation. The first CSV link failed to save a file; after the fix, a fresh download contained all three displayed models and the matching source version.\n\n[Browser checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json) · [Saved CSV check](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/shot-metrics-csv-check.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      }
+    }
+  ],
+  "suites": [
+    {
+      "key": "BST-104",
+      "comment": {
+        "message": "Comment added to BST-104 successfully",
+        "commentId": "11365",
+        "body": "All 10 linked cases now show Pass. The new source-version, metadata and dictionary checks are complete, including unavailable metadata and retry.\n\n[API checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/live-api-final/results.json) · [Metadata retry](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/metadata-retry/verification.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass"
+    },
+    {
+      "key": "BST-137",
+      "comment": {
+        "message": "Comment added to BST-137 successfully",
+        "commentId": "11366",
+        "body": "All 23 linked cases now show Pass. The repaired shot pages and Gameplan regressions were rechecked. Earlier failure results remain on the individual cases.\n\n[Browser checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/d161f42/docs/iteration-17/verification/browser/browser-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "status": "Pass"
+    }
+  ],
+  "after": [
+    {
+      "key": "BST-104",
+      "title": "Access Stored Datasets",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-114",
+      "title": "Validate Second Dataset and Models",
+      "status": "Testing In Progress"
+    },
+    {
+      "key": "BST-117",
+      "title": "Shot features are complete and available before possession",
+      "status": "Fail",
+      "parent": "BST-114"
+    },
+    {
+      "key": "BST-137",
+      "title": "Fall 2026 elaboration regression tests",
+      "status": "Pass"
+    },
+    {
+      "key": "BST-138",
+      "title": "Shot data uses different shooting and opposing teams",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "BST-140",
+      "title": "Gameplan uses the new situation on the first Build",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "BST-141",
+      "title": "Gameplan forwards supported coaching conditions to ranking",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "BST-142",
+      "title": "Gameplan preserves overtime from the parsed situation",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "BST-143",
+      "title": "Analyst Shot Plan page can use its required API",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "BST-144",
+      "title": "Analyst Shot Heatmap page can use its required API",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "BST-146",
+      "title": "Shot Model Metrics completes within its request limit",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "BST-147",
+      "title": "Shot Statistical Analysis renders the returned response",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "BST-192",
+      "title": "API results and downloads keep the source version",
+      "status": "Pass",
+      "parent": "BST-104"
+    },
+    {
+      "key": "BST-193",
+      "title": "Dataset metadata matches the loaded files",
+      "status": "Pass",
+      "parent": "BST-104"
+    },
+    {
+      "key": "BST-194",
+      "title": "Missing metadata stays visible and does not hide valid sources",
+      "status": "Pass",
+      "parent": "BST-104"
+    },
+    {
+      "key": "BST-195",
+      "title": "Data Dictionary explains the current columns",
+      "status": "Pass",
+      "parent": "BST-104"
+    },
+    {
+      "key": "BST-199",
+      "title": "Overtime accepts a five-minute clock and rejects longer input",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "BST-200",
+      "title": "Unsupported coaching inputs cannot silently alter rankings",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "BST-201",
+      "title": "The call label uses the first displayed ranked play",
+      "status": "Pass",
+      "parent": "BST-137"
+    },
+    {
+      "key": "SCRUM-487",
+      "title": "Tag every loaded data file with a version number so results can be traced to the exact data used",
+      "status": "Done",
+      "parent": "SCRUM-1"
+    },
+    {
+      "key": "SCRUM-488",
+      "title": "Backend: return each dataset’s pull date, seasons covered and row counts",
+      "status": "Done",
+      "parent": "SCRUM-1"
+    },
+    {
+      "key": "SCRUM-489",
+      "title": "Data Explorer: show each dataset’s pull date, seasons covered and row counts",
+      "status": "Done",
+      "parent": "SCRUM-1"
+    },
+    {
+      "key": "SCRUM-498",
+      "title": "Create a separate Data Dictionary page that explains every data column",
+      "status": "Done",
+      "parent": "SCRUM-1"
+    },
+    {
+      "key": "SCRUM-538",
+      "title": "Fix shots credited to the wrong team in the shot data, then rebuild the shot dataset",
+      "status": "Done",
+      "parent": "SCRUM-1"
+    },
+    {
+      "key": "SCRUM-539",
+      "title": "Gameplan: use the newly entered game situation the first time Build is clicked",
+      "status": "Done",
+      "parent": "SCRUM-4"
+    },
+    {
+      "key": "SCRUM-540",
+      "title": "Gameplan: send typed coaching conditions (e.g. \"need a three\") to the ranking, not just the numbers",
+      "status": "Done",
+      "parent": "SCRUM-3"
+    },
+    {
+      "key": "SCRUM-541",
+      "title": "Gameplan: keep overtime as overtime instead of changing it to the 4th quarter",
+      "status": "Done",
+      "parent": "SCRUM-3"
+    },
+    {
+      "key": "SCRUM-543",
+      "title": "Shot model pages: load saved results instead of retraining the model on every visit",
+      "status": "Done",
+      "parent": "SCRUM-5"
+    },
+    {
+      "key": "SCRUM-544",
+      "title": "Fix analysts getting \"access denied\" on the Shot Plan and Shot Heatmap pages",
+      "status": "Done",
+      "parent": "SCRUM-4"
+    },
+    {
+      "key": "SCRUM-545",
+      "title": "Fix the Shot Statistical Analysis page to use the backend’s current data fields",
+      "status": "Done",
+      "parent": "SCRUM-5"
+    },
+    {
+      "key": "SCRUM-546",
+      "title": "Baseline explanations: say when score, period and clock were not used",
+      "status": "Done",
+      "parent": "SCRUM-1"
+    },
+    {
+      "key": "SCRUM-547",
+      "title": "Backend: give a clear \"not ready\" message naming what is missing (data file or settings)",
+      "status": "Done",
+      "parent": "SCRUM-8"
+    },
+    {
+      "key": "SCRUM-548",
+      "title": "Data checks: warn when the shot data has columns the app does not recognise",
+      "status": "Done",
+      "parent": "SCRUM-5"
+    },
+    {
+      "key": "SCRUM-549",
+      "title": "Shot data: handle missing score margins and state when predictions can be made",
+      "status": "Done",
+      "parent": "SCRUM-5"
+    },
+    {
+      "key": "SCRUM-609",
+      "title": "Agree how fast Top-K recommendations must load, and confirm the app meets it",
+      "status": "In Progress",
+      "parent": "SCRUM-8"
+    },
+    {
+      "key": "SCRUM-613",
+      "title": "Run the Top-K response-time acceptance cases",
+      "status": "In Progress",
+      "parent": "SCRUM-609"
+    },
+    {
+      "key": "SCRUM-632",
+      "title": "Add content versions to loaded datasets and exports",
+      "status": "Done",
+      "parent": "SCRUM-487"
+    },
+    {
+      "key": "SCRUM-633",
+      "title": "Test dataset versions and export traceability",
+      "status": "Done",
+      "parent": "SCRUM-487"
+    },
+    {
+      "key": "SCRUM-634",
+      "title": "Expose dataset source details through the API",
+      "status": "Done",
+      "parent": "SCRUM-488"
+    },
+    {
+      "key": "SCRUM-635",
+      "title": "Check metadata against the loaded files",
+      "status": "Done",
+      "parent": "SCRUM-488"
+    },
+    {
+      "key": "SCRUM-636",
+      "title": "Show dataset details in Data Explorer",
+      "status": "Done",
+      "parent": "SCRUM-489"
+    },
+    {
+      "key": "SCRUM-637",
+      "title": "Verify the dataset details panel",
+      "status": "Done",
+      "parent": "SCRUM-489"
+    },
+    {
+      "key": "SCRUM-638",
+      "title": "Build the Data Dictionary page",
+      "status": "Done",
+      "parent": "SCRUM-498"
+    },
+    {
+      "key": "SCRUM-639",
+      "title": "Check dictionary coverage and navigation",
+      "status": "Done",
+      "parent": "SCRUM-498"
+    },
+    {
+      "key": "SCRUM-640",
+      "title": "Simplify Data Explorer and shot results after stakeholder feedback",
+      "status": "Done",
+      "parent": "SCRUM-5"
+    },
+    {
+      "key": "SCRUM-641",
+      "title": "Evaluate shot forecasts using only pre-possession inputs",
+      "status": "To Do",
+      "parent": "SCRUM-5"
+    }
+  ],
+  "counts": {
+    "development_items_done": 24,
+    "test_cases_pass": 15,
+    "suites_pass": 2
+  },
+  "preserved_open": {
+    "BST-114": "Testing In Progress",
+    "BST-117": "Fail",
+    "SCRUM-641": "To Do",
+    "SCRUM-609": "In Progress",
+    "SCRUM-613": "In Progress"
+  },
+  "description_corrections": [
+    "BST-116",
+    "BST-99"
+  ],
+  "errors_remaining": [],
+  "notes": [
+    "Earlier failed executions and comments are preserved.",
+    "SCRUM-544 comment11321 retained its inline screenshot and gained the verification link.",
+    "The shot prediction contract remains conditional on a supplied shot type and location; BST-117/SCRUM-641 remain open."
+  ]
+}

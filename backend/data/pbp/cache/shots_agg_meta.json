@@ -1,11 +1,10 @@
 {
-  "agg_parquet": "/Users/gurkasahan/Downloads/bgs-pspi 2/backend/data/pbp/shots_agg.parquet",
   "fingerprint": {
-    "schema_version": "agg_v1",
-    "source_mtime_ns": 1770111729033430299,
-    "source_path": "/Users/gurkasahan/Downloads/bgs-pspi 2/backend/data/pbp/shots_clean.parquet",
-    "source_size": 12430637
+    "schema_version": "agg_v2_nba_zone_geometry",
+    "source_mtime_ns": 1792956477654775867,
+    "source_path": "/Users/gurkasahan/Developer/NBAPlayRanker/backend/data/pbp/shots_clean.parquet",
+    "source_sha256": "sha256:15078408bfaa84b6cc1a45cc7e10edd822e22b25166a3ab3f4931a0323f640cf",
+    "source_size": 21685858
   },
-  "league_parquet": "/Users/gurkasahan/Downloads/bgs-pspi 2/backend/data/pbp/shots_agg_league.parquet",
-  "notes": "Aggregates derived from shots_clean.parquet (shot_aggregates.py)."
+  "notes": "NBA zone geometry and provider taxonomy; quarantined source games; unknown locations remain explicit."
 }

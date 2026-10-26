@@ -6,6 +6,7 @@ from typing import Dict, List
 
 import numpy as np
 import pandas as pd
+from infrastructure.data_access.dataset_metadata import read_versioned_parquet
 
 from .pbp_constants import (
     ALT_SOURCE_PARQUET,
@@ -40,6 +41,8 @@ CANONICAL_COLUMNS: List[str] = [
     # shot attributes
     "shot_type",
     "zone",
+    "zone_method",
+    "location_valid",
     "shot_value",
     "is_make",
     "points",
@@ -89,6 +92,8 @@ def build_canonical_from_clean(clean_df: pd.DataFrame) -> pd.DataFrame:
         "MARGIN": "margin",
         "SHOT_TYPE": "shot_type",
         "ZONE": "zone",
+        "ZONE_METHOD": "zone_method",
+        "LOCATION_VALID": "location_valid",
         "SHOT_VALUE": "shot_value",
         "MADE": "is_make",
         "POINTS": "points",
@@ -118,7 +123,7 @@ def build_canonical_from_clean(clean_df: pd.DataFrame) -> pd.DataFrame:
     # booleans / ints
     # Keep `is_make` as int (0/1) for ML convenience.
     df["is_make"] = pd.to_numeric(df["is_make"], errors="coerce").fillna(0).astype(int)
-    df["shot_value"] = pd.to_numeric(df["shot_value"], errors="coerce").fillna(0).astype(int)
+    df["shot_value"] = pd.to_numeric(df["shot_value"], errors="coerce")
     df["points"] = pd.to_numeric(df["points"], errors="coerce").fillna(0).astype(int)
     df["home"] = df["home"].astype(bool) if df["home"].dtype == bool else df["home"].fillna(False).astype(bool)
 
@@ -144,6 +149,8 @@ def build_canonical_from_clean(clean_df: pd.DataFrame) -> pd.DataFrame:
     df["shooter_id"] = df["shooter_id"].replace({"nan": None, "None": None, "NaN": None})
 
     df = df.reset_index(drop=True)
+    # A derivative receives its own file version when read back.
+    df.attrs = {}
 
     return df
 
@@ -166,7 +173,7 @@ def ensure_canonical_parquet(*, force_rebuild: bool = False) -> Path:
     ):
         return CANONICAL_PARQUET
 
-    clean_df = pd.read_parquet(CLEAN_PARQUET)
+    clean_df = read_versioned_parquet(CLEAN_PARQUET)
     canonical_df = build_canonical_from_clean(clean_df)
 
     write_parquet_atomic(canonical_df, CANONICAL_PARQUET)
@@ -185,4 +192,4 @@ def ensure_canonical_parquet(*, force_rebuild: bool = False) -> Path:
 def load_canonical_df(*, force_rebuild: bool = False) -> pd.DataFrame:
     """Convenience function used by scripts/tests."""
     ensure_canonical_parquet(force_rebuild=force_rebuild)
-    return pd.read_parquet(CANONICAL_PARQUET)
+    return read_versioned_parquet(CANONICAL_PARQUET)

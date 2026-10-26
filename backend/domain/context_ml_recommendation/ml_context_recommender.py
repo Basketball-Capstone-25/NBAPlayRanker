@@ -32,6 +32,7 @@ Important design choices:
 """
 
 from pathlib import Path
+import os
 import re
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
@@ -39,6 +40,7 @@ import numpy as np
 import pandas as pd
 
 from domain.baseline_recommendation import BaselineRecommender
+from infrastructure.data_access.dataset_metadata import read_versioned_csv
 
 try:
     from infrastructure.external_integrations.nlp_reasoning import infer_play_family_from_name
@@ -70,10 +72,10 @@ except Exception:  # pragma: no cover
 # ---------------------------------------------------------------------
 
 DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
-SYNERGY_CSV_PATH = DATA_DIR / "synergy_playtypes_2019_2025_players.csv"
+SYNERGY_CSV_PATH = Path(os.environ.get("SYNERGY_CSV_PATH", DATA_DIR / "synergy_playtypes_2019_2025_players.csv"))
 ML_PRED_PATH = DATA_DIR / "ml_offense_ppp_predictions.csv"
 
-_rec = BaselineRecommender(str(SYNERGY_CSV_PATH))
+_rec: Optional[BaselineRecommender] = None
 _ML_PRED_DF: Optional[pd.DataFrame] = None
 
 MODULE_VERSION = "3.0.0"
@@ -422,15 +424,16 @@ def _get_ml_pred_df() -> pd.DataFrame:
     if _ML_PRED_DF is None:
         if not ML_PRED_PATH.exists():
             raise FileNotFoundError(f"Missing ML prediction file: {ML_PRED_PATH}")
-        _ML_PRED_DF = pd.read_csv(ML_PRED_PATH)
+        loaded = read_versioned_csv(ML_PRED_PATH)
 
         required_cols = {"SEASON", "TEAM_ABBREVIATION", "PLAY_TYPE", "PPP_ML"}
-        missing = required_cols.difference(set(_ML_PRED_DF.columns))
+        missing = required_cols.difference(set(loaded.columns))
         if missing:
             raise ValueError(
                 "ml_offense_ppp_predictions.csv is missing required columns: "
                 + ", ".join(sorted(missing))
             )
+        _ML_PRED_DF = loaded
 
     return _ML_PRED_DF.copy()
 
@@ -474,6 +477,14 @@ def label_context(late_game_factor: float, trailing_factor: float, leading_facto
 
 
 def _play_family(play_type: Any) -> str:
+    source_families = {
+        "PRBallHandler": "ball_screen", "PRRollMan": "ball_screen",
+        "Spotup": "spot_up", "OffScreen": "off_screen",
+        "Postup": "post_up", "Handoff": "handoff", "Cut": "cut",
+        "Isolation": "isolation", "Transition": "transition",
+    }
+    if play_type in source_families:
+        return source_families[play_type]
     family = infer_play_family_from_name(str(play_type or ""))
     return family if family in FAMILIES else "other"
 
@@ -747,9 +758,10 @@ def _sanitize_numeric_context(
         defaults_used.append("time_remaining")
         guardrails.append("time_remaining defaulted to 360.0 seconds because no reliable clock value was parsed.")
     else:
-        if float(time_remaining) < 0.0 or float(time_remaining) > 720.0:
-            guardrails.append(f"time_remaining {time_remaining} was out of range and clamped into [0, 720].")
-        time_remaining = float(_clamp(float(time_remaining), 0.0, 720.0))
+        max_clock = 300.0 if period == 5 else 720.0
+        if float(time_remaining) < 0.0 or float(time_remaining) > max_clock:
+            guardrails.append(f"time_remaining {time_remaining} was out of range and clamped into [0, {max_clock:g}].")
+        time_remaining = float(_clamp(float(time_remaining), 0.0, max_clock))
 
     return float(margin), int(period), float(time_remaining), defaults_used, guardrails
 
@@ -851,6 +863,15 @@ def _normalize_context(
 
     if out["defense_style"] == "switch":
         out["vs_switching"] = True
+    elif out["vs_switching"]:
+        out["defense_style"] = "switch"
+
+    # Checkbox callers may not supply the parser's primary need string.
+    if not out["need"]:
+        for flag, need in [("need3", "need3"), ("quick2", "quick2"), ("two_for_one", "two_for_one"), ("hold_for_last", "last_shot"), ("must_score", "must_score"), ("safe", "safe")]:
+            if out[flag]:
+                out["need"] = need
+                break
 
     out["needs"] = _dedupe_keep_order(out["needs"])
     out["special_situations"] = _dedupe_keep_order(out["special_situations"])
@@ -950,6 +971,9 @@ def build_ml_matchup_table(
 
     Advanced NLP context now influences the offense/defense blend weights.
     """
+    global _rec
+    if _rec is None:
+        _rec = BaselineRecommender(str(SYNERGY_CSV_PATH))
     team_df = _rec.team_df.copy()
     league_df = _rec.league_df.copy()
     ml_df = _get_ml_pred_df()
@@ -1034,6 +1058,10 @@ def build_ml_matchup_table(
     )
 
     merged["PLAY_FAMILY"] = merged["PLAY_TYPE"].apply(_play_family)
+    merged.attrs["dataset_versions"] = {
+        "synergy": _rec.raw_df.attrs.get("dataset_version", "unavailable"),
+        "ml_predictions": ml_df.attrs.get("dataset_version", "unavailable"),
+    }
     return merged.reset_index(drop=True)
 
 
@@ -1290,6 +1318,7 @@ def apply_context_adjustments(
             f"Blend off/def={row['EFFECTIVE_W_OFF']:.2f}/{row['EFFECTIVE_W_DEF']:.2f}. "
             f"{detail}. "
             f"Late={late_game_factor:.2f}, trailing={trailing_factor:.2f}, leading={leading_factor:.2f}."
+            f" Used score margin {ctx['margin']:g}, period {ctx['period']} and {ctx['time_remaining']:g} seconds remaining."
             f"{guardrail_note}"
         )
 

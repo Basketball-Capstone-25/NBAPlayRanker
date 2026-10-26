@@ -1,8 +1,9 @@
 "use client";
 // Shot explorer page UI.
 
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useShotResult } from "./useShotResult";
 import {
   authenticatedDownload,
   fetchMetaOptions,
@@ -59,12 +60,15 @@ export default function ShotExplorerPage() {
   const [zone, setZone] = useState<string>("");
   const [limit, setLimit] = useState<number>(50);
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [inputError, setInputError] = useState<string | null>(null);
   const [exporting, setExporting] = useState(false);
   const [exportError, setExportError] = useState<string | null>(null);
 
-  const [data, setData] = useState<PbpShotsPreviewResponse | null>(null);
+  const inputs = { season, team, opp, shotType, zone, limit };
+  const query = useShotResult<typeof inputs, PbpShotsPreviewResponse>(inputs);
+  const { loading } = query;
+  const error = inputError ?? query.error;
+  const data = !error ? query.result : null;
 
   // Load meta options once:
   // - Dataset2 provides the “real” dropdown values (seasons/teams/shotTypes/zones).
@@ -94,7 +98,7 @@ export default function ShotExplorerPage() {
         setSeason((prev) => prev || pickDefaultSeason(merged.seasons));
         setTeam((prev) => prev || pickDefaultTeam(merged.teams, "TOR"));
       } catch (e: any) {
-        if (!cancelled) setError(e?.message ?? "Failed to load meta options.");
+        if (!cancelled) setInputError(e?.message ?? "Failed to load available filters.");
       }
     })();
 
@@ -103,23 +107,9 @@ export default function ShotExplorerPage() {
     };
   }, []);
 
-  const teamLabel = useMemo(() => {
-    // Friendly label for headers + chips (abbr + long name when available).
-    const name = meta?.teamNames?.[team];
-    return name ? `${team} (${name})` : team;
-  }, [meta?.teamNames, team]);
-
-  const oppLabel = useMemo(() => {
-    // Opponent label is only relevant when opp filter is set.
-    if (!opp) return "";
-    const name = meta?.teamNames?.[opp];
-    return name ? `${opp} (${name})` : opp;
-  }, [meta?.teamNames, opp]);
-
-  const csvUrl = useMemo(() => {
-    // CSV export is for “heavy lifting”, so we export up to 5,000 rows.
-    // Preview limit stays smaller to keep UI fast.
-    if (!season || !team) return "";
+  const csvUrl = (() => {
+    if (!data || !query.inputs) return "";
+    const { season, team, opp, shotType, zone } = query.inputs;
     return getPbpShotsCsvUrl({
       season,
       team,
@@ -128,10 +118,11 @@ export default function ShotExplorerPage() {
       zone: zone || undefined,
       limit: 5000,
     });
-  }, [season, team, opp, shotType, zone]);
+  })();
 
   async function exportCsv() {
-    if (!csvUrl || exporting) return;
+    if (!csvUrl || exporting || !query.inputs) return;
+    const { season, team, opp } = query.inputs;
     setExporting(true);
     setExportError(null);
     try {
@@ -144,19 +135,21 @@ export default function ShotExplorerPage() {
   }
 
   async function run() {
-    // Minimum required filters so the backend isn’t asked for “everything.”
+    setInputError(null); setExportError(null);
     if (!season || !team) {
-      setError("Please select at least season and team.");
+      setInputError("Please select a season and team.");
       return;
     }
-
-    try {
-      setLoading(true);
-      setError(null);
-      setData(null);
-
-      // This hits /pbp/shots/preview and returns columns + a small row sample.
-      const res = await fetchPbpShotsPreview({
+    if (team === opp) {
+      setInputError("Team and opponent must be different.");
+      return;
+    }
+    if (!Number.isInteger(limit) || limit < 10 || limit > 500) {
+      setInputError("Preview limit must be a whole number from 10 to 500.");
+      return;
+    }
+    await query.run(async ({ season, team, opp, shotType, zone, limit }) => {
+      return await fetchPbpShotsPreview({
         season,
         team,
         opp: opp || undefined,
@@ -165,12 +158,7 @@ export default function ShotExplorerPage() {
         limit,
       });
 
-      setData(res);
-    } catch (e: any) {
-      setError(e?.message ?? "Failed to fetch shots.");
-    } finally {
-      setLoading(false);
-    }
+    });
   }
 
   // Table-building helpers (backend returns canonical column list + row dicts).
@@ -229,12 +217,11 @@ export default function ShotExplorerPage() {
               {loading ? "Loading…" : "Run"}
             </button>
 
-            {csvUrl ? (
               <button
                 className="btn"
                 type="button"
                 onClick={exportCsv}
-                disabled={loading || exporting}
+                disabled={!csvUrl || exporting}
                 aria-busy={exporting}
                 style={{
                   background: "rgba(255,255,255,0.06)",
@@ -243,7 +230,6 @@ export default function ShotExplorerPage() {
               >
                 {exporting ? "Exporting CSV…" : "Export CSV (up to 5,000 rows)"}
               </button>
-            ) : null}
           </div>
         </div>
 
@@ -333,12 +319,13 @@ export default function ShotExplorerPage() {
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 12 }}>
           {summaryChips}
         </div>
+        {query.changed && <p role="status">Filters changed. Run again to see and export the updated rows.</p>}
 
         {/* Error panel keeps failures obvious without breaking the page */}
         {exportError && <p role="alert" style={{ marginTop: 12 }}>{exportError}</p>}
         {error ? (
           <div className="card" style={{ marginTop: 12, borderColor: "rgba(239,68,68,0.35)" }}>
-            <div className="muted" style={{ color: "rgba(239,68,68,0.95)" }}>
+            <div role="alert" className="muted" style={{ color: "rgba(239,68,68,0.95)" }}>
               {error}
             </div>
           </div>
@@ -350,13 +337,13 @@ export default function ShotExplorerPage() {
         <h2>Preview</h2>
 
         {/* Header chips show the final interpreted query (nice for screenshots) */}
-        <p className="muted" style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          {chip(teamLabel)}
-          {season ? chip(season) : null}
-          {opp ? chip(`vs ${oppLabel || opp}`) : chip("All opponents")}
-          {shotType ? chip(shotType) : chip("All shot types")}
-          {zone ? chip(zone) : chip("All zones")}
-        </p>
+        {data && <p className="muted" style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {chip(data.team)}
+          {chip(data.season)}
+          {chip(data.opp ? `vs ${data.opp}` : "All opponents")}
+          {chip(data.shot_type || "All shot types")}
+          {chip(data.zone || "All zones")}
+        </p>}
 
         {/* Empty state: tells you what to do next */}
         {!data && !loading ? (
@@ -384,6 +371,7 @@ export default function ShotExplorerPage() {
               {data.shot_type ? chip(`shot_type=${data.shot_type}`) : null}
               {data.zone ? chip(`zone=${data.zone}`) : null}
             </div>
+            {rows.length === 0 && <p>No shot attempts match these filters. Try a different matchup or clear the shot type and zone.</p>}
 
             {/* Table: uses server-sent column list so UI doesn’t break if schema changes */}
             <div className="card" style={{ padding: 0, overflowX: "auto", marginTop: 12 }}>

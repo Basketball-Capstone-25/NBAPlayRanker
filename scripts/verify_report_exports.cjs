@@ -4,6 +4,8 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const Module = require("node:module");
+const { spawnSync } = require("node:child_process");
+const { isDeepStrictEqual } = require("node:util");
 const ts = require("typescript");
 const { createServerClient } = require("@supabase/ssr");
 
@@ -12,7 +14,7 @@ const args = process.argv.slice(2);
 const backendOnly = args.includes("--backend-only");
 const includeTiming = args.includes("--timing");
 const outputArg = args.indexOf("--out");
-const output = outputArg >= 0 ? path.resolve(args[outputArg + 1]) : path.join(repo, "docs/assignment-2/verification/report-downloads");
+const output = outputArg >= 0 ? path.resolve(args[outputArg + 1]) : path.join(repo, "docs/iteration-17/verification/report-downloads");
 const site = "https://nbaplayranker-seven.vercel.app";
 const api = "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app";
 const summary = { started_at_utc: new Date().toISOString(), api, site: backendOnly ? null : site, complete: false, passed: false, checks: [], files: [], sessions: { opened: 0, closed: 0 } };
@@ -68,7 +70,14 @@ async function source(name, route, role, query) {
   const result = await call(url, { headers: { Authorization: `Bearer ${sessions[role].token}` } });
   record(`source: ${name}`, result.status === 200 && result.type?.startsWith("application/json"), { status: result.status, route });
   if (result.status !== 200) throw new Error("Source request failed.");
-  return JSON.parse(result.text);
+  const body = JSON.parse(result.text);
+  const versions = result.response.headers.get("X-Dataset-Versions");
+  body.dataset_versions = versions ? JSON.parse(versions) : body.dataset_versions;
+  const validVersions = body.dataset_versions && Object.keys(body.dataset_versions).length > 0
+    && Object.values(body.dataset_versions).every(value => typeof value === "string" && /^sha256:[a-f0-9]{64}$/.test(value));
+  record(`source versions: ${name}`, validVersions, { dataset_versions: body.dataset_versions ?? null });
+  if (!validVersions) throw new Error("Source response is missing verified dataset versions.");
+  return body;
 }
 function csvRows(text) {
   const records = []; let row = [], cell = "", quoted = false;
@@ -88,17 +97,30 @@ function csvRows(text) {
 function fileMatches(result, payload, format, expectedFilenameBase) {
   if (result.status !== 200 || !result.type?.startsWith(formats[format]) || !result.attachment?.startsWith("attachment;") || !result.attachment.endsWith(`.${format}"`) || !result.cache?.includes("no-store")) return false;
   if (result.attachment !== `attachment; filename="${expectedFilenameBase}.${format}"`) return false;
-  if (format === "pdf") return result.text.startsWith("%PDF-") && result.text.trimEnd().endsWith("%%EOF");
+  if (format === "pdf") {
+    if (!result.text.startsWith("%PDF-") || !result.text.trimEnd().endsWith("%%EOF")) return false;
+    const python = process.env.NBAPR_PYTHON || (fs.existsSync(path.join(repo, "backend/.venv/bin/python")) ? path.join(repo, "backend/.venv/bin/python") : "python3");
+    const extracted = spawnSync(python, ["-c", "import io,sys; from pypdf import PdfReader; reader=PdfReader(io.BytesIO(sys.stdin.buffer.read())); print('\\n'.join(page.extract_text() or '' for page in reader.pages))"],
+      { input: result.bytes, encoding: "utf8", timeout: 15000, maxBuffer: 2 * 1024 * 1024 });
+    if (extracted.status !== 0) return false;
+    const text = extracted.stdout.replace(/\s/g, "");
+    const versions = payload.metadata.dataset_versions;
+    return text.includes("Datasetversions:") && versions && typeof versions === "object"
+      && Object.entries(versions).every(([name, version]) => text.includes(`"${name}":"${version}"`))
+      && text.includes("displayed_result_snapshot");
+  }
   if (format === "json") {
     const body = JSON.parse(result.text);
     return body.contract_version === "1" && body.report === payload.report && JSON.stringify(body.filters) === JSON.stringify(payload.filters)
-      && JSON.stringify(body.rows) === JSON.stringify(payload.rows) && body.metadata.export_source === "displayed_result_snapshot";
+      && JSON.stringify(body.rows) === JSON.stringify(payload.rows) && body.metadata.export_source === "displayed_result_snapshot"
+      && isDeepStrictEqual(body.metadata.dataset_versions, payload.metadata.dataset_versions);
   }
   const rows = csvRows(result.text);
-  return JSON.stringify(rows[0]) === JSON.stringify(payload.columns) && rows.length === payload.rows.length + 1 && payload.rows.every((expected, index) => payload.columns.every((column, col) => {
+  const columns = [...payload.columns, "Dataset versions"];
+  return JSON.stringify(rows[0]) === JSON.stringify(columns) && rows.length === payload.rows.length + 1 && payload.rows.every((expected, index) => payload.columns.every((column, col) => {
     const actual = rows[index + 1][col], value = expected[column];
     return value === null ? actual === "" : typeof value === "number" ? actual !== "" && Number(actual) === value : actual === String(value);
-  }));
+  }) && isDeepStrictEqual(JSON.parse(rows[index + 1][payload.columns.length]), payload.metadata.dataset_versions));
 }
 async function postBackend(body, role, options = {}) {
   return call(`${api}/export/report`, { method: "POST", headers: { "Content-Type": "application/json", ...(role ? { Authorization: `Bearer ${sessions[role].token}` } : {}), ...options.headers }, body: options.raw ?? JSON.stringify(body) });
@@ -157,7 +179,7 @@ async function measureTopk() {
   record("Top-K timing campaign completed with valid responses", timing.measurements.length === 16 && timing.measurements.every(row => row.valid), { requests: timing.measurements.length, started_at_utc: timing.thresholds_recorded_at_utc, finished_at_utc: timing.finished_at_utc });
 }
 
-(async () => {
+async function main() {
   fs.mkdirSync(output, { recursive: true });
   try {
     summary.stage = "open test sessions";
@@ -173,8 +195,8 @@ async function measureTopk() {
     const baseline = await source("matchup rankings", "/rank-plays/baseline", "coach", matchup);
     const contextual = await source("context rankings", "/rank-plays/context-ml", "coach", { ...context, w_off: 0.7 });
     const metrics = await source("holdout metrics", "/metrics/baseline-vs-ml", "analyst", { n_splits: 5 });
-    const baselineRows = baseline.rankings.map(row => ({ playType: row.PLAY_TYPE, pppPred: Number(row.PPP_PRED), pppOff: Number(row.PPP_OFF_SHRUNK), pppDef: Number(row.PPP_DEF_SHRUNK), pppGap: Number(row.PPP_GAP) }));
-    const contextRows = contextual.rankings.map(row => ({ playType: row.PLAY_TYPE, finalPPP: Number(row.PPP_CONTEXT), mlPPP: Number(row.PPP_ML_BLEND), baselinePPP: Number(row.PPP_BASELINE), deltaPPP: Number(row.DELTA_VS_BASELINE), contextLabel: row.CONTEXT_LABEL || "", rationale: row.RATIONALE || "", raw: row }));
+    const baselineRows = baseline.rankings.map(row => ({ playType: row.PLAY_TYPE, pppPred: Number(row.PPP_PRED), pppOff: Number(row.PPP_OFF_SHRUNK), pppDef: Number(row.PPP_DEF_SHRUNK), pppGap: Number(row.PPP_GAP), raw: { ...row, dataset_versions: baseline.dataset_versions } }));
+    const contextRows = contextual.rankings.map(row => ({ playType: row.PLAY_TYPE, finalPPP: Number(row.PPP_CONTEXT), mlPPP: Number(row.PPP_ML_BLEND), baselinePPP: Number(row.PPP_BASELINE), deltaPPP: Number(row.DELTA_VS_BASELINE), contextLabel: row.CONTEXT_LABEL || "", rationale: row.RATIONALE || "", raw: { ...row, dataset_versions: contextual.dataset_versions } }));
     const meanMlPPP = contextRows.reduce((sum, row) => sum + row.mlPPP, 0) / contextRows.length;
     const displayRows = contextRows.map(row => {
       const overlay = computeOverlay(row, meanMlPPP, context.period, context.time_remaining, context.margin, 1);
@@ -243,4 +265,7 @@ async function measureTopk() {
     console.log(JSON.stringify({ complete: summary.complete, passed: summary.passed, checks: summary.checks.length, failed: summary.checks.filter(check => !check.passed).map(check => check.name), files: summary.files.length, sessions: summary.sessions }));
     process.exitCode = summary.passed ? 0 : 1;
   }
-})();
+}
+
+if (require.main === module) main();
+module.exports = { csvRows, fileMatches };

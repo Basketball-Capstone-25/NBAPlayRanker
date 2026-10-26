@@ -3,6 +3,19 @@ from __future__ import annotations
 import base64
 from io import BytesIO
 from typing import Optional, Tuple
+from threading import RLock
+from functools import wraps
+
+_RENDER_LOCK = RLock()
+
+def _serialized_render(function):
+    @wraps(function)
+    def render(*args, **kwargs):
+        # Matplotlib has process-wide drawing state. Keep concurrent requests
+        # from changing that state while another image is being rendered.
+        with _RENDER_LOCK:
+            return function(*args, **kwargs)
+    return render
 
 import numpy as np
 import pandas as pd
@@ -38,9 +51,7 @@ def _filter_shots(
     shot_type: Optional[str],
     zone: Optional[str],
 ) -> pd.DataFrame:
-    df = shots_df.copy()
-    df = df[df["SEASON_STR"] == season]
-    df = df[df["TEAM_ABBR"] == our_team]
+    df = shots_df.loc[(shots_df["SEASON_STR"] == season) & (shots_df["TEAM_ABBR"] == our_team)]
     if "OPP_ABBR" in df.columns and opp_team:
         df = df[df["OPP_ABBR"] == opp_team]
     if shot_type:
@@ -104,9 +115,14 @@ def _coords_to_sportypy_halfcourt(
         x = x_raw.copy()
         y = y_raw.copy()
 
-        # Ensure everything lands on the displayed half (rotate opposite end 180°)
-        mask = (x * side_sign) < 0
-        if mask.any():
+        if "HOME_FLAG" in df:
+            # hoopR home shots attack +X and away shots -X. Rotate by the
+            # attacking basket so a heave keeps its actual distance/direction.
+            orientation = np.where(df["HOME_FLAG"].to_numpy(dtype=bool)[ok], 1.0, -1.0) * side_sign
+            x *= orientation
+            y *= orientation
+        else:
+            mask = (x * side_sign) < 0
             x[mask] = -x[mask]
             y[mask] = -y[mask]
         return x, y
@@ -145,6 +161,26 @@ def _coords_to_sportypy_halfcourt(
     return x.astype(float), y.astype(float)
 
 
+def heatmap_plot_data(df: pd.DataFrame):
+    """Return only usable locations on the attacking half of the physical court."""
+    finite = np.isfinite(pd.to_numeric(df["X"], errors="coerce")) & np.isfinite(pd.to_numeric(df["Y"], errors="coerce"))
+    valid = finite & df.get("LOCATION_VALID", pd.Series(True, index=df.index)).fillna(False).astype(bool)
+    usable = df.loc[valid]
+    class PhysicalAxis:
+        def get_xlim(self):
+            return (0.0, 47.0)
+    class PhysicalCourt:
+        court_params = {"basket_center_to_baseline": 5.25}
+    x, y = _coords_to_sportypy_halfcourt(df=usable, ax=PhysicalAxis(), court=PhysicalCourt())
+    on = (x >= 0.0) & (x <= 47.0) & (np.abs(y) <= 25.0)
+    counts = {
+        "n_shots_excluded_location": int((~valid).sum()),
+        "n_shots_outside_halfcourt": int((~on).sum()),
+    }
+    return usable.iloc[np.flatnonzero(on)], x[on], y[on], counts
+
+
+@_serialized_render
 def render_shot_heatmap_png(
     *,
     shots_df: pd.DataFrame,
@@ -154,108 +190,39 @@ def render_shot_heatmap_png(
     shot_type: Optional[str] = None,
     zone: Optional[str] = None,
     title: Optional[str] = None,
+    matched_count: Optional[int] = None,
 ) -> bytes:
     _patch_sportypy_circle(400)
-
-    df = _filter_shots(
-        shots_df,
-        season=season,
-        our_team=our_team,
-        opp_team=opp_team,
-        shot_type=shot_type,
-        zone=zone,
-    )
-
+    df = _filter_shots(shots_df, season=season, our_team=our_team,
+                       opp_team=opp_team, shot_type=shot_type, zone=zone)
+    _, x, y, counts = heatmap_plot_data(df)
     court = NBACourt()
     fig, ax = plt.subplots(figsize=(7, 6))
     court.draw(ax=ax, display_range="offense")
-
-    if df.empty:
-        ax.set_title(title or "Shot Heatmap", fontsize=14, weight="bold")
-        ax.text(
-            0.5,
-            0.5,
-            "No shots found for filters",
-            transform=ax.transAxes,
-            ha="center",
-            va="center",
-            fontsize=12,
-        )
-        ax.axis("off")
-        buf = BytesIO()
-        fig.savefig(buf, format="png", dpi=150)
-        plt.close(fig)
-        return buf.getvalue()
-
-    # ✅ Key fix: convert X/Y into SportyPy coordinates (feet + midcourt origin)
-    x, y = _coords_to_sportypy_halfcourt(df=df, ax=ax, court=court)
-
-    # If conversion produced nothing usable
-    if x.size == 0:
-        ax.set_title(title or "Shot Heatmap", fontsize=14, weight="bold")
-        ax.text(
-            0.5,
-            0.5,
-            "Shot coordinates missing/invalid",
-            transform=ax.transAxes,
-            ha="center",
-            va="center",
-            fontsize=12,
-        )
-        ax.axis("off")
-        buf = BytesIO()
-        fig.savefig(buf, format="png", dpi=150)
-        plt.close(fig)
-        return buf.getvalue()
-
-    # Optional: drop points that are wildly off-court (helps if a few bad rows exist)
-    # SportyPy halfcourt generally shows x in [min(xlim), max(xlim)] and y in about [-25, 25]
-    x0, x1 = ax.get_xlim()
-    xmin, xmax = (min(x0, x1) - 2.0), (max(x0, x1) + 2.0)
-    on = (x >= xmin) & (x <= xmax) & (np.abs(y) <= 30.0)
-    x = x[on]
-    y = y[on]
-
-    if x.size == 0:
-        ax.set_title(title or "Shot Heatmap", fontsize=14, weight="bold")
-        ax.text(
-            0.5,
-            0.5,
-            "All shots landed off-court after normalization",
-            transform=ax.transAxes,
-            ha="center",
-            va="center",
-            fontsize=12,
-        )
-        ax.axis("off")
-        buf = BytesIO()
-        fig.savefig(buf, format="png", dpi=150)
-        plt.close(fig)
-        return buf.getvalue()
-
-    # Plot heatmap on top of court
-    # Use log bins only when we have enough shots; otherwise it can look “blank”
-    use_log = x.size >= 250
-
-    hb = ax.hexbin(
-        x,
-        y,
-        gridsize=35,
-        cmap="Reds",
-        bins="log" if use_log else None,
-        mincnt=1,
-        alpha=0.85,
-        linewidths=0,
-    )
-    # Ensure it draws above court artwork
-    try:
-        hb.set_zorder(30)
-    except Exception:
-        pass
-
-    ax.set_title(title or "Shot Heatmap", fontsize=14, weight="bold")
+    # SportyPy adds decoration padding. The data grid uses physical court bounds.
+    ax.set_xlim(-1, 48)
+    ax.set_ylim(-26, 26)
+    if x.size:
+        hb = ax.hexbin(x, y, gridsize=35, extent=(0, 47, -25, 25),
+                       cmap="Reds", mincnt=1, alpha=0.85, linewidths=0,
+                       vmin=0, zorder=30)
+        colorbar = fig.colorbar(hb, ax=ax, fraction=0.035, pad=0.02)
+        colorbar.set_label("Attempts per hexagon", fontsize=9)
+        from matplotlib.ticker import MaxNLocator
+        colorbar.locator = MaxNLocator(nbins=5, integer=True)
+        colorbar.update_ticks()
+    else:
+        message = "No shots found for filters" if df.empty and not matched_count else "No usable locations in the displayed half court"
+        ax.text(0.5, 0.5, message, transform=ax.transAxes, ha="center", va="center", fontsize=10)
+    ax.set_title(title or "Shot Heatmap", fontsize=11, weight="bold")
     ax.axis("off")
-
+    foot = "Attempt counts (makes + misses). Color scale varies by chart."
+    if counts["n_shots_excluded_location"]:
+        foot += f"\n{counts['n_shots_excluded_location']:,} uncertain/missing locations excluded."
+    if counts["n_shots_outside_halfcourt"]:
+        foot += f"\n{counts['n_shots_outside_halfcourt']:,} attempts outside the displayed half court."
+    fig.text(0.5, 0.02, foot, ha="center", fontsize=8)
+    fig.subplots_adjust(bottom=0.14, top=0.84)
     buf = BytesIO()
     fig.savefig(buf, format="png", dpi=150)
     plt.close(fig)

@@ -1,0 +1,32 @@
+Shot data and page repairs — SCRUM-538/543/544/545/548/549
+
+The shooting team now comes from the event's team ID and the game's two participant IDs. The old source file could not be recovered. The replacement is a new ESPN/hoopR snapshot downloaded on October 25, covering 2020-21 through 2025-26 regular-season and playoff games. Frozen assignment packages were left unchanged.
+
+The rebuild contains 1,370,434 shots from 7,739 games and all 30 NBA teams. Every row has different, recognized shooting and opposing teams. No substantial game has only one shooting-team label. Six hundred event samples were compared with the raw provider events, including team, opponent, home flag, points and score margin. See rebuild-validation.json and source-manifest.json.
+
+Margin is the score difference before the shot. Missing values are rejected instead of treated as a tied score. Older records leave 110,447 attempted shot values unknown; these remain null in both event files, and SHOT_VALUE is excluded from model inputs. Coordinates and distance are in feet, and angle is in degrees. Heatmaps use the attacking basket rather than flipping each point by position, so long heaves keep their direction. Any shots outside the displayed half court are identified on the plot.
+
+Shot Model Metrics and Statistical Analysis now read prepared results. Visiting either page cannot start training. Missing or stale results return a clear error. Analysts and coaches can use Shot Plan and Shot Heatmap; unrelated coach-only routes keep their existing access rules. Statistical Analysis renders the current response fields and leaves unavailable statistics unavailable. The column check lists required, optional and ignored columns separately.
+
+The evaluation uses a fixed sample of 75,000 shots (seed 42). Model selection uses five game-grouped folds from 61,995 shots in 2020-21 through 2024-25. The 13,005 sampled shots from 2025-26 are reserved for the final comparison. Gradient boosting had the lowest training CV RMSE (1.166). Its later-season RMSE was 1.169, versus 1.199 for the training-mean baseline; MAE was 1.087 versus 1.153. This is a small improvement. The model assumes a proposed shot location and type are supplied; it does not predict those choices or establish pre-possession forecast accuracy. See model-evaluation.json for all three models and all 15 fold results.
+
+Runtime checks used actual local data and API handlers with a local analyst authentication fixture. All checked responses succeeded. The initial process approached 1,879 MiB. Sharing shot frames, reading only metadata columns, filtering before copying, and serializing chart rendering brought the warm two-request campaign below 1,000 MiB. A separate cold two-request campaign stayed below 1,150 MiB, including subsequent metadata, preview, metrics, analysis, chart and PDF requests. These are local measurements, not production latency or memory guarantees. No HTTP request fitted a model.
+
+Reproduce from the repository root:
+
+1. Download the pinned provider files into an external folder:
+   backend/.venv/bin/python backend/data/etl/download_shot_sources.py docs/iteration-17/shot-repair/source-manifest.json /path/to/raw-shots
+2. Build into a separate staging folder, then review validation.json:
+   backend/.venv/bin/python backend/data/etl/rebuild_shots_from_hoopr.py /path/to/raw-shots /path/to/rebuilt-shots
+3. Check the runtime schema:
+   backend/.venv/bin/python backend/data/etl/check_shot_schema.py
+4. Rebuild prepared results only when the validated runtime input changes:
+   OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 backend/.venv/bin/python backend/data/etl/pbp_phase2_build.py
+5. Run the regression checks:
+   backend/.venv/bin/python -m pytest backend/tests/test_pbp_cache.py backend/tests/test_shot_repair_contracts.py backend/tests/test_shot_attribution_regression.py
+
+Official source documentation:
+https://hoopr.sportsdataverse.org/reference/load_nba_pbp.html
+https://github.com/sportsdataverse/hoopR/blob/main/R/load_nba.R
+https://github.com/sportsdataverse/sportsdataverse-data/releases/tag/espn_nba_pbp
+https://py.sportsdataverse.org/changelog-unreleased

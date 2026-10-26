@@ -1,0 +1,264 @@
+{
+  "captured_at": "2026-10-25T18:50:05.494999+00:00",
+  "revision": "nba-playranker-api-00010-jp4",
+  "source": "Read-only Cloud Monitoring and Cloud Logging APIs; no application request",
+  "last_request": [
+    {
+      "timestamp": "2026-10-25T18:32:50.967379Z",
+      "revision": "nba-playranker-api-00010-jp4",
+      "instance_hash": "fff8065aa996abb6b8c33cc43f1622c7440561de846d972ee9477274175df351",
+      "status": 200,
+      "server_latency": "0.005159411s"
+    }
+  ],
+  "quiet_seconds_since_last_response": 1034.522460589,
+  "instance_count_series": [
+    {
+      "state": "active",
+      "revision": "nba-playranker-api-00010-jp4",
+      "points": [
+        {
+          "timestamp": "2026-10-25T18:49:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:48:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:47:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:46:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:45:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:44:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:43:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:42:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:41:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:40:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:39:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:38:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:37:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:36:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:35:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:34:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:33:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:32:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:31:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:30:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:29:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:28:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:27:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:26:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:25:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:24:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:23:00Z",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "state": "idle",
+      "revision": "nba-playranker-api-00010-jp4",
+      "points": [
+        {
+          "timestamp": "2026-10-25T18:49:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:48:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:47:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:46:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:45:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:44:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:43:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:42:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:41:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:40:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:39:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:38:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:37:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:36:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:35:00Z",
+          "count": 2
+        },
+        {
+          "timestamp": "2026-10-25T18:34:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:33:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:32:00Z",
+          "count": 1
+        },
+        {
+          "timestamp": "2026-10-25T18:31:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:30:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:29:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:28:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:27:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:26:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:25:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:24:00Z",
+          "count": 0
+        },
+        {
+          "timestamp": "2026-10-25T18:23:00Z",
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "recent_instance_starts": [
+    {
+      "timestamp": "2026-10-25T18:31:36.349126Z",
+      "revision": "nba-playranker-api-00010-jp4",
+      "instance_hash": "6b23167e4a4af9ef8d67a5b7b7cb2dc52bdc57b3cc4be5612a1ac59e804938f0",
+      "message": "Starting new instance. Reason: AUTOSCALING - Instance started due to configured scaling factors (e.g. CPU utilization, request throughput, etc.) or no existing capacity for current traffic."
+    },
+    {
+      "timestamp": "2026-10-25T18:21:30.371409Z",
+      "revision": "nba-playranker-api-00010-jp4",
+      "instance_hash": "fff8065aa996abb6b8c33cc43f1622c7440561de846d972ee9477274175df351",
+      "message": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check."
+    }
+  ],
+  "interpretation": "A missing metric series is not proof of zero instances. Instance counts are sampled every60seconds and can arrive up to120seconds late. Confirm the measured first request against a new instance startup event.",
+  "references": [
+    "https://cloud.google.com/monitoring/api/metrics_gcp_p_z#run/container/instance_count",
+    "https://cloud.google.com/run/docs/about-instance-autoscaling"
+  ]
+}

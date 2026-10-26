@@ -1,0 +1,122 @@
+{
+  "measurements": [
+    {
+      "step": "app_import",
+      "seconds": 2.267,
+      "rss_mib": 361.5
+    },
+    {
+      "step": "cold_two_concurrent_heatmap_and_pdf",
+      "responses": [
+        {
+          "path": "/pbp/viz/shot-heatmap",
+          "status": 200,
+          "seconds": 1.303,
+          "bytes": 101016
+        },
+        {
+          "path": "/export/shotplan.pdf",
+          "status": 200,
+          "seconds": 1.294,
+          "bytes": 77159
+        }
+      ],
+      "rss_mib": 1084.9,
+      "peak_mib": 1085.1
+    },
+    {
+      "path": "/meta/datasets",
+      "status": 200,
+      "seconds": 0.033,
+      "bytes": 3717,
+      "rss_mib": 1088.0,
+      "peak_mib": 1088.1
+    },
+    {
+      "path": "/meta/data-dictionary",
+      "status": 200,
+      "seconds": 0.003,
+      "bytes": 19723,
+      "rss_mib": 1088.0,
+      "peak_mib": 1088.1
+    },
+    {
+      "path": "/pbp/shotplan/rank",
+      "status": 200,
+      "seconds": 0.02,
+      "bytes": 4671,
+      "rss_mib": 1088.8,
+      "peak_mib": 1088.9
+    },
+    {
+      "path": "/metrics/shot-models",
+      "status": 200,
+      "seconds": 0.002,
+      "bytes": 3489,
+      "rss_mib": 1088.8,
+      "peak_mib": 1088.9
+    },
+    {
+      "path": "/analysis/shot-ml",
+      "status": 200,
+      "seconds": 0.003,
+      "bytes": 6935,
+      "rss_mib": 1088.8,
+      "peak_mib": 1088.9
+    },
+    {
+      "path": "/pbp/viz/shot-heatmap",
+      "status": 200,
+      "seconds": 0.398,
+      "bytes": 101016,
+      "rss_mib": 1091.9,
+      "peak_mib": 1092.0
+    },
+    {
+      "path": "/pbp/shots/preview",
+      "status": 200,
+      "seconds": 0.075,
+      "bytes": 947231,
+      "rss_mib": 1098.1,
+      "peak_mib": 1100.2
+    },
+    {
+      "path": "/viz/shot-heatmap",
+      "status": 200,
+      "seconds": 0.326,
+      "bytes": 93199,
+      "rss_mib": 1098.6,
+      "peak_mib": 1100.2
+    },
+    {
+      "path": "/export/shotplan.pdf",
+      "status": 200,
+      "seconds": 0.364,
+      "bytes": 77159,
+      "rss_mib": 1119.8,
+      "peak_mib": 1119.9
+    },
+    {
+      "step": "two_concurrent_heatmap_and_pdf",
+      "responses": [
+        {
+          "path": "/pbp/viz/shot-heatmap",
+          "status": 200,
+          "seconds": 0.784,
+          "bytes": 103188
+        },
+        {
+          "path": "/export/shotplan.pdf",
+          "status": 200,
+          "seconds": 0.774,
+          "bytes": 79001
+        }
+      ],
+      "rss_mib": 1144.8,
+      "peak_mib": 1145.1
+    }
+  ],
+  "peak_rss_mib": 1145.1,
+  "limit_mib": 2048,
+  "auth": "Local test fixture; production authentication unchanged."
+}

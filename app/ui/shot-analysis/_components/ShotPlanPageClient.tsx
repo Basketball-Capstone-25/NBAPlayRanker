@@ -6,8 +6,10 @@
 //   1) Calls the backend baseline shot-plan ranker to recommend *what* to shoot.
 //   2) Calls the backend heatmap renderer to visualize *where* those shots happen.
 
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useShotResult } from "./useShotResult";
+import { ShotHeatmapCounts } from "./ShotHeatmapCounts";
 import {
   fetchMetaOptions,
   fetchPbpMetaOptions,
@@ -15,6 +17,8 @@ import {
   fetchShotPlanRank,
   getShotPlanPdfUrl,
   authenticatedDownload,
+  type ShotPlanRankResponse,
+  type ShotHeatmapResponse,
 } from "../../../services/shotAnalysis";
 
 type ShotRow = Record<string, any> & {
@@ -41,16 +45,16 @@ type ShotRow = Record<string, any> & {
 };
 
 function fmt(n: any, digits = 3) {
-  // Small numeric formatter used throughout tables/KPIs
+  if (n == null || n === "") return "Unavailable";
   const x = Number(n);
-  if (Number.isNaN(x)) return "-";
+  if (!Number.isFinite(x)) return "Unavailable";
   return x.toFixed(digits);
 }
 
 function fmtInt(n: any) {
-  // Integer display for attempts/sample sizes
+  if (n == null || n === "") return "Unavailable";
   const x = Number(n);
-  if (Number.isNaN(x)) return "-";
+  if (!Number.isFinite(x)) return "Unavailable";
   return String(Math.round(x));
 }
 
@@ -73,7 +77,7 @@ export default function ShotPlanPage() {
   const [meta, setMeta] = useState<any>(null);
 
   // Core matchup context
-  const [season, setSeason] = useState<string>("2021-22");
+  const [season, setSeason] = useState<string>("");
   const [our, setOur] = useState<string>("TOR");
   const [opp, setOpp] = useState<string>("BOS");
 
@@ -98,15 +102,15 @@ export default function ShotPlanPage() {
   // Toggle to show reason text for the top pick.
   const [showWhy, setShowWhy] = useState<boolean>(false);
 
-  // Typical request state
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  // Backend responses:
-  // - rank: structured baseline recommendations (top_shot_types, top_zones, optional best_shooter)
-  // - heatmap: { image_base64, caption?, n_shots?, ... }
-  const [rank, setRank] = useState<any>(null);
-  const [heatmap, setHeatmap] = useState<any>(null);
+  const [inputError, setInputError] = useState<string | null>(null);
+  const [exporting, setExporting] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
+  const inputs = { season, our, opp, k, wOff, shotType, zone, maxShots };
+  const query = useShotResult<typeof inputs, { rank: ShotPlanRankResponse; heatmap: ShotHeatmapResponse }>(inputs);
+  const { loading } = query;
+  const error = inputError ?? query.error;
+  const rank = !error ? query.result?.rank : null;
+  const heatmap = !error ? query.result?.heatmap : null;
 
   // Load meta options once:
   // - Keep Dataset1 teamNames (nice labels)
@@ -142,7 +146,7 @@ export default function ShotPlanPage() {
         setOpp((prev) => prev || pickDefaultTeam(merged.teams, "BOS"));
       } catch (e: any) {
         // If meta fails, we still want to show the page with an error callout
-        if (!cancelled) setError(e?.message ?? "Failed to load meta/options.");
+        if (!cancelled) setInputError(e?.message ?? "Failed to load available filters.");
       }
     }
 
@@ -161,23 +165,17 @@ export default function ShotPlanPage() {
     return name ? `${abbr} (${name})` : abbr;
   };
 
-  // “Export PDF” uses the existing root endpoint (/export/shotplan.pdf).
-  // Notes:
-  // - This is not the same as the heatmap endpoint.
-  // - It does NOT take maxShots (PDF is explanation + tables, not an image downsampling tool).
-  // - We optionally pass shotType/zone so the PDF can match what the user is looking at.
-  const pdfUrl = useMemo(() => {
-    if (!season || !our || !opp) return "";
-    return getShotPlanPdfUrl({
-      season,
-      our,
-      opp,
-      k,
-      wOff,
-      shotType: shotType || undefined,
-      zone: zone || undefined,
-    });
-  }, [season, our, opp, k, wOff, shotType, zone]);
+  const pdfUrl = rank && query.inputs ? getShotPlanPdfUrl({ ...query.inputs,
+    shotType: query.inputs.shotType || undefined, zone: query.inputs.zone || undefined,
+  }) : "";
+
+  async function exportPdf() {
+    if (!pdfUrl || exporting) return;
+    setExporting(true); setExportError(null);
+    try { await authenticatedDownload(pdfUrl); }
+    catch (reason) { setExportError(reason instanceof Error ? reason.message : "The PDF could not be downloaded."); }
+    finally { setExporting(false); }
+  }
 
   // Convenience: derive “quick picks” so the results feel more like a “gameplan”
   // Backend shape for rank is expected to have:
@@ -191,31 +189,29 @@ export default function ShotPlanPage() {
   const bestZone = topZones?.[0];
 
   async function run() {
-    // Basic validation before we even hit the API
-    // (keeps the backend clean and gives faster feedback in the UI)
+    setInputError(null); setExportError(null);
     if (!season || !our || !opp) {
-      setError("Please select season, our team, and opponent.");
+      setInputError("Please select season, our team, and opponent.");
       return;
     }
     if (our === opp) {
-      setError("Our team and opponent cannot be the same.");
+      setInputError("Our team and opponent cannot be the same.");
       return;
     }
     // Backend expects a small Top-K; UI historically sent large values and broke validation
-    if (k < 1 || k > 10) {
-      setError("Top K (k) must be between 1 and 10 (backend validation).");
+    if (!Number.isInteger(k) || k < 1 || k > 10) {
+      setInputError("Choose a whole number from 1 to 10 for Top K.");
       return;
     }
-    if (wOff < 0 || wOff > 1) {
-      setError("Offense weight (wOff) must be between 0 and 1.");
+    if (!Number.isFinite(wOff) || wOff < 0 || wOff > 1) {
+      setInputError("Offense weight must be between 0 and 1.");
       return;
     }
-
-    try {
-      setLoading(true);
-      setError(null);
-
-
+    if (!Number.isInteger(maxShots) || maxShots < 1000 || maxShots > 100000) {
+      setInputError("Heatmap max shots must be a whole number from 1,000 to 100,000.");
+      return;
+    }
+    await query.run(async ({ season, our, opp, k, wOff, shotType, zone, maxShots }) => {
       const [r, h] = await Promise.all([
         fetchShotPlanRank({ season, our, opp, k, wOff }),
         fetchShotHeatmap({
@@ -228,14 +224,8 @@ export default function ShotPlanPage() {
         }),
       ]);
 
-      // Store responses for rendering
-      setRank(r);
-      setHeatmap(h);
-    } catch (e: any) {
-      setError(e?.message ?? "Request failed.");
-    } finally {
-      setLoading(false);
-    }
+      return { rank: r, heatmap: h };
+    });
   }
 
   return (
@@ -260,8 +250,9 @@ export default function ShotPlanPage() {
 
         <p className="muted" style={{ marginTop: 8 }}>
           Rank the best <b>shot types</b> and <b>zones</b> for <b>{teamLabel(our)}</b> vs{" "}
-          <b>{teamLabel(opp)}</b>, then render a real heatmap for the selected filters.
+          <b>{teamLabel(opp)}</b>. Rankings blend our season-long offense with the opponent’s season-long defense.
         </p>
+        <p className="muted">Scores are estimated points per shot attempt, not points per possession. The heatmap shows only shots taken against the selected opponent; its filters do not change the rankings.</p>
 
         <p className="muted" style={{ margin: 0 }}>
           Want raw shots? Try <Link href="/shot-explorer">Shots Explorer</Link>.
@@ -343,7 +334,7 @@ export default function ShotPlanPage() {
               onChange={(e) => setK(Number(e.target.value || "1"))}
             />
             <div className="muted" style={{ marginTop: 6 }}>
-              Backend validation: <b>1–10</b>.
+              Show up to <b>10</b> results in each table.
             </div>
           </div>
 
@@ -377,7 +368,7 @@ export default function ShotPlanPage() {
               onChange={(e) => setMaxShots(Number(e.target.value || "0"))}
             />
             <div className="muted" style={{ marginTop: 6 }}>
-              Downsamples for speed (Dataset2 endpoint supports this).
+              Samples the heatmap when more attempts match.
             </div>
           </div>
         </div>
@@ -415,20 +406,18 @@ export default function ShotPlanPage() {
             {loading ? "Running…" : "Run"}
           </button>
 
-          {/* PDF export is a GET URL; opens in new tab */}
-          {pdfUrl ? (
             <button
               className="btn"
               type="button"
-              onClick={() => authenticatedDownload(pdfUrl).catch(e => alert(e))}
+              onClick={exportPdf}
+              disabled={!pdfUrl || exporting}
               style={{
                 background: "rgba(255,255,255,0.06)",
                 border: "1px solid rgba(255,255,255,0.12)",
               }}
             >
-              Export PDF
+              {exporting ? "Preparing PDF…" : "Export PDF"}
             </button>
-          ) : null}
 
           {/* Separate page for deep heatmap exploration */}
           <Link
@@ -442,11 +431,13 @@ export default function ShotPlanPage() {
             Open Heatmap Page
           </Link>
         </div>
+        {query.changed && <p role="status">Inputs changed. Run again to see and export the updated results.</p>}
+        {exportError && <p role="alert">{exportError}</p>}
 
         {/* Inline error callout */}
         {error ? (
           <div className="card" style={{ marginTop: 12, borderColor: "rgba(239,68,68,0.35)" }}>
-            <div className="muted" style={{ color: "rgba(239,68,68,0.95)" }}>
+            <div role="alert" className="muted" style={{ color: "rgba(239,68,68,0.95)" }}>
               {error}
             </div>
           </div>
@@ -459,7 +450,7 @@ export default function ShotPlanPage() {
 
         {/* Until rank is fetched, show a gentle instruction */}
         {!rank ? (
-          <p className="muted">Run the model to see recommended shot plans.</p>
+          <p className="muted">{loading ? "Loading shot plan…" : "Run to see recommended shot types and zones."}</p>
         ) : (
           <>
             {/* Backend returns canonical keys: season, our_team, opp_team, k, w_off, w_def */}
@@ -478,7 +469,7 @@ export default function ShotPlanPage() {
                 <div className="muted">Best shot type</div>
                 <div className="big">{bestShotType?.SHOT_TYPE ?? "-"}</div>
                 <div className="muted">
-                  EPA_PRED {fmt(bestShotType?.EPA_PRED)} • attempts_OFF{" "}
+                  Estimated points/attempt {fmt(bestShotType?.EPA_PRED)} • Our attempts{" "}
                   {fmtInt(bestShotType?.attempts_OFF)}
                 </div>
               </div>
@@ -487,7 +478,7 @@ export default function ShotPlanPage() {
                 <div className="muted">Best zone</div>
                 <div className="big">{bestZone?.ZONE ?? "-"}</div>
                 <div className="muted">
-                  EPA_PRED {fmt(bestZone?.EPA_PRED)} • attempts_OFF{" "}
+                  Estimated points/attempt {fmt(bestZone?.EPA_PRED)} • Our attempts{" "}
                   {fmtInt(bestZone?.attempts_OFF)}
                 </div>
               </div>
@@ -507,12 +498,12 @@ export default function ShotPlanPage() {
               <table className="table">
                 <thead>
                   <tr>
-                    <th>SHOT_TYPE</th>
-                    <th>EPA_PRED</th>
-                    <th>EPA_OFF_SHRUNK</th>
-                    <th>EPA_DEF_SHRUNK</th>
-                    <th>ATT_OFF</th>
-                    <th>ATT_DEF</th>
+                    <th>Shot type</th>
+                    <th>Estimated points/attempt</th>
+                    <th>Our adjusted points/attempt</th>
+                    <th>Opponent allowed points/attempt</th>
+                    <th>Our attempts</th>
+                    <th>Opponent defended attempts</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -546,12 +537,12 @@ export default function ShotPlanPage() {
               <table className="table">
                 <thead>
                   <tr>
-                    <th>ZONE</th>
-                    <th>EPA_PRED</th>
-                    <th>EPA_OFF_SHRUNK</th>
-                    <th>EPA_DEF_SHRUNK</th>
-                    <th>ATT_OFF</th>
-                    <th>ATT_DEF</th>
+                    <th>Zone</th>
+                    <th>Estimated points/attempt</th>
+                    <th>Our adjusted points/attempt</th>
+                    <th>Opponent allowed points/attempt</th>
+                    <th>Our attempts</th>
+                    <th>Opponent defended attempts</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -588,17 +579,17 @@ export default function ShotPlanPage() {
 
         {/* Heatmap is only available after Run() */}
         {!heatmap ? (
-          <p className="muted">Run the model to render the shot heatmap.</p>
+          <p className="muted">{loading ? "Loading heatmap…" : "Run to display shot attempts for this matchup."}</p>
         ) : (
           <>
             {/* Caption is optional because backend may return only image_base64 */}
             <p className="muted">
               {heatmap.caption
                 ? heatmap.caption
-                : `Heatmap • ${teamLabel(our)} vs ${teamLabel(opp)} • ${season}`}
-              {shotType ? ` • shot_type=${shotType}` : ""}
-              {zone ? ` • zone=${zone}` : ""}
+                : `Heatmap • ${teamLabel(query.inputs!.our)} vs ${teamLabel(query.inputs!.opp)} • ${query.inputs!.season}`}
             </p>
+
+            <ShotHeatmapCounts heatmap={heatmap} />
 
             <div className="card" style={{ padding: 14 }}>
               {/* image_base64 is returned by backend; we render it as a data URL */}
@@ -609,8 +600,7 @@ export default function ShotPlanPage() {
                 style={{ width: "100%", maxWidth: 980, height: "auto", borderRadius: 12 }}
               />
               <div className="muted" style={{ marginTop: 10 }}>
-                Tip: try narrowing by a <b>zone</b> (e.g. corner 3) to see opponent-specific
-                weaknesses.
+                The colors show where attempts occurred, including makes and misses. They do not measure shooting percentage or defensive weakness.
               </div>
             </div>
           </>

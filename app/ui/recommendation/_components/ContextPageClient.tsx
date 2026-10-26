@@ -8,6 +8,7 @@ import { useSearchParams } from "next/navigation";
 import { contextRank, fetchMetaOptions } from "../../../services/recommendation";
 import ReportExport from "../../_shared/components/ReportExport";
 import { quickCallHref } from "../../../domain/quick-call";
+import TopPickCall from "../../_shared/components/TopPickCall";
 import { contextReport, resultKey } from "../../../infrastructure/report-export";
 import {
   clamp01,
@@ -1079,7 +1080,8 @@ function ContextInner() {
               <div className="topRec">
                 <div className="topRecTitle">
                   <div className="playName">
-                    #{1} {bestRow.playType}
+                    #1 {bestRow.playType}
+                    <div><TopPickCall rows={displayRows} current={resultsCurrent} /></div>
                   </div>
                   <div className="badge">
                     PPP <span className="mono">{fmt(bestRow.finalPPP_display, 3)}</span>

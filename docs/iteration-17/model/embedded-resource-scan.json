@@ -1,0 +1,8 @@
+{
+  "findings": [],
+  "local_path_references": [],
+  "evidence_local_path_references": [],
+  "embedded_resources_scanned": 558,
+  "configured_secrets_compared": 2,
+  "passed": true
+}

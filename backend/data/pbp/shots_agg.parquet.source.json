@@ -1,0 +1,32 @@
+{
+  "version": "sha256:0649554dd4f3efdbebc19b0f80f1d7d9ef03aca576964fc281c59a97dc6aff99",
+  "pulled_at": "2026-10-25T17:25:32.000138+00:00",
+  "source": "ESPN NBA play-by-play via hoopR / sportsdataverse-data",
+  "source_urls": [
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2021.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2022.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2023.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2024.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2025.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2026.parquet"
+  ],
+  "raw_source_hashes": {
+    "play_by_play_2021.parquet": "ed5e89e6acc90e4c4e88dbe54d57477e1abb7f6e0380ebbbf94fa72c805fd51a",
+    "play_by_play_2022.parquet": "0fe5435bdd30187b8d8c5eb27bdf187821274a231f04608f15a46b5b59035f82",
+    "play_by_play_2023.parquet": "f3fac3a58cf1be8813f1f4332edb7fc8d83936df703892a700095d62f71da886",
+    "play_by_play_2024.parquet": "bda57bcb4f8aae57428979ac4a0f766f67c52c770d85b0e7fcf7237a333704b0",
+    "play_by_play_2025.parquet": "71d7d02671268f793f13a13d1a8a271cba1241cd9ba28c3a363a3f16ad56acc7",
+    "play_by_play_2026.parquet": "f7051c5c0c5b605419fcc0e0c13dd90df7803f96dab290554c1ef737433a98b2"
+  },
+  "coverage": "2020-21 through 2025-26; regular season and playoffs, with quarantined games excluded",
+  "generator": "backend/data/etl/rebuild_shots_from_hoopr.py",
+  "created_at": "2026-10-25T19:27:58.880234+00:00",
+  "quality_exclusions": {
+    "score_inconsistent_games": 14,
+    "score_inconsistent_shots": 2506,
+    "location_conflict_rows": 10,
+    "geometry_only_zone_rows": 110206,
+    "unknown_attempt_values": 110206
+  },
+  "notes": "Whole games with inconsistent field-goal score changes are quarantined. Margin is before this shot. Unknown attempt values remain null. Approximate geometry is used only when attempt value is unknown; serious value/location conflicts are excluded from charts and models."
+}

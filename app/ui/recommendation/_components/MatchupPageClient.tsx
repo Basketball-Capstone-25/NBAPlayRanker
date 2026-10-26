@@ -14,6 +14,7 @@ import {
 } from "../../../services/recommendation";
 import { normalizeWeights } from "../../../domain/weight-calculation";
 import ReportExport from "../../_shared/components/ReportExport";
+import TopPickCall from "../../_shared/components/TopPickCall";
 import { baselineReport, resultKey } from "../../../infrastructure/report-export";
 
 type MetaOptions = {
@@ -855,7 +856,8 @@ export default function MatchupPage() {
               <div className="topRec">
                 <div className="topRecTitle">
                   <div className="playName">
-                    #{1} {bestRow.playType}
+                    #1 {bestRow.playType}
+                    <div><TopPickCall rows={rows} current={resultsCurrent} /></div>
                   </div>
                   <div className="badge">
                     Pred PPP <span className="mono">{fmt(bestRow.pppPred, 3)}</span>

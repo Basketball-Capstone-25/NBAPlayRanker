@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+from infrastructure.data_access.dataset_metadata import read_versioned_parquet
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
@@ -28,14 +29,8 @@ def _get_shot_rec() -> ShotBaselineRecommender:
 
 
 def _get_shots_df() -> pd.DataFrame:
-    global _SHOTS_DF
-    if _SHOTS_DF is None:
-        if not CLEAN_PARQUET.exists():
-            raise FileNotFoundError(
-                f"shots_clean.parquet not found: {CLEAN_PARQUET}. Run backend/data/etl/build_pbp_pipeline.py"
-            )
-        _SHOTS_DF = pd.read_parquet(CLEAN_PARQUET)
-    return _SHOTS_DF
+    from infrastructure.data_access.shot_plot_data import get_shot_plot_df
+    return get_shot_plot_df()
 
 
 _ACCENT = colors.HexColor("#1a3c5e")
@@ -64,7 +59,7 @@ def _table_from_rows(title: str, rows: List[List[str]]) -> Table:
     col_w = [1.8 * inch, 0.8 * inch, 0.7 * inch]
     data = [
         [title, "", ""],          # row 0 — merged title
-        ["Name", "EPA", "Att."],  # row 1 — column headers
+        ["Name", "Pts/att.", "Att."],  # row 1 — column headers
     ] + rows
 
     table = Table(data, colWidths=col_w)
@@ -115,6 +110,7 @@ def build_shotplan_pdf(
     w_off: float,
     shot_type: Optional[str] = None,
     zone: Optional[str] = None,
+    max_shots: int = 35000,
 ) -> Tuple[io.BytesIO, str]:
     # Rankings
     rec = _get_shot_rec()
@@ -124,24 +120,29 @@ def build_shotplan_pdf(
     top_shot_types = result.get("top_shot_types", [])
     top_zones = result.get("top_zones", [])
 
-    # Heatmap image (lazy import)
-    try:
-        from infrastructure.visualization_and_export.viz_shot_heatmap import render_shot_heatmap_png
-    except Exception as e:
-        raise RuntimeError(f"viz_shot_heatmap import failed: {e}")
-
+    # Use the same canonical locations, exclusions and deterministic cap as the screen.
+    import base64
+    from infrastructure.data_access.pbp_viz import render_pbp_heatmap_json
+    from fastapi import HTTPException
     shots_df = _get_shots_df()
-    title = f"{our} vs {opp} • {season}"
-    png_bytes = render_shot_heatmap_png(
-        shots_df=shots_df,
-        season=season,
-        our_team=our,
-        opp_team=opp,
-        shot_type=shot_type,
-        zone=zone,
-        title=title,
-    )
+    try:
+        heatmap = render_pbp_heatmap_json(season=season, team=our, opp=opp,
+            shot_type=shot_type, zone=zone, max_shots=max_shots)
+        png_bytes = base64.b64decode(heatmap["image_base64"])
+        heatmap_note = f"Matched {heatmap['n_shots_total']:,} attempts; shown {heatmap['n_shots_rendered']:,}. Cap {max_shots:,}."
+    except HTTPException as error:
+        if error.status_code != 404:
+            raise
+        from infrastructure.visualization_and_export.viz_shot_heatmap import render_shot_heatmap_png
+        png_bytes = render_shot_heatmap_png(shots_df=shots_df.iloc[:0], season=season,
+            our_team=our, opp_team=opp, title=f"{our} vs {opp} · {season}")
+        heatmap_note = "No historical shots matched these court-view filters."
 
+    versions = {
+        "heatmap_canonical": heatmap.get("dataset_version") if "heatmap" in locals() else None,
+        "shot_aggregates": getattr(rec, "agg_df", pd.DataFrame()).attrs.get("dataset_version"),
+        "shot_league": getattr(rec, "league_df", pd.DataFrame()).attrs.get("dataset_version"),
+    }
     # Build PDF
     buf = io.BytesIO()
     c = canvas.Canvas(buf, pagesize=letter)
@@ -150,6 +151,8 @@ def build_shotplan_pdf(
     usable_w = page_w - 2 * margin
     y = page_h - margin
 
+    import json
+    c.setSubject(json.dumps(versions, sort_keys=True))
     c.setFont("Helvetica-Bold", 18)
     c.setFillColor(_ACCENT)
     c.drawString(margin, y, "Shot Plan")
@@ -167,7 +170,10 @@ def build_shotplan_pdf(
         f"Offense weight {w_off:.0%}  ·  Defense weight {w_def:.0%}  ·  Top-K {int(k)}",
     )
     c.setFillColor(colors.black)
-    y -= 0.30 * inch
+    y -= 0.14 * inch
+    c.setFont("Helvetica", 8)
+    c.drawString(margin, y, "Rankings use season-long offense and opponent defense, not only head-to-head games.")
+    y -= 0.22 * inch
 
     c.setStrokeColor(_ACCENT)
     c.setLineWidth(1)
@@ -212,11 +218,16 @@ def build_shotplan_pdf(
     c.setFillColor(_ACCENT)
     c.drawString(margin, y, "Court View")
     c.setFillColor(colors.black)
-    y -= 0.20 * inch
+    y -= 0.15 * inch
+    c.setFont("Helvetica", 8)
+    c.drawString(margin, y, f"Historical attempts · Type: {shot_type or 'All'} · Zone: {zone or 'All'}")
+    y -= 0.14 * inch
+    c.drawString(margin, y, heatmap_note)
+    y -= 0.12 * inch
 
     img_reader = ImageReader(io.BytesIO(png_bytes))
     img_w = 5.0 * inch
-    img_h = 4.2 * inch
+    img_h = 3.7 * inch
     img_x = margin + (usable_w - img_w) / 2        # centre horizontally
     img_y = y - img_h
     c.drawImage(
@@ -240,7 +251,7 @@ def build_shotplan_pdf(
     c.setFont("Helvetica", 8)
     c.setFillColor(colors.HexColor("#444444"))
     note = (
-        "EPA is shrunk toward league baselines using reliability weights "
+        "EPA means estimated points per shot attempt, not points per possession. Rates are shrunk toward league baselines using reliability weights "
         "(log1p(attempts)) to reduce small-sample noise. "
         "Matchup EPA blends our offense with opponent defense."
     )
@@ -263,7 +274,10 @@ def build_shotplan_pdf(
     # Footer
     c.setFont("Helvetica-Oblique", 7)
     c.setFillColor(colors.HexColor("#888888"))
-    c.drawRightString(page_w - margin, margin * 0.6, "Generated by NBA Play Ranker  ·  Basketball Strategy Analysis (Capstone)")
+    c.setFont("Helvetica", 6)
+    for index, (label, version) in enumerate(versions.items()):
+        c.drawString(margin, margin * 0.95 - index * 7, f"{label}: {version or 'unavailable'}")
+    c.drawRightString(page_w - margin, margin * 0.3, "Generated by NBA Play Ranker  ·  Basketball Strategy Analysis (Capstone)")
     c.setFillColor(colors.black)
     c.showPage()
     c.save()

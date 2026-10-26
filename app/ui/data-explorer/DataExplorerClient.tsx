@@ -8,6 +8,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import DataQualityPanel from "./DataQualityPanel";
+import DatasetMetadataPanel from "./DatasetMetadataPanel";
 import {
   API_BASE,
   authenticatedDownload,
@@ -100,7 +101,6 @@ export default function DataExplorerClient() {
   const [sortKey, setSortKey] = useState<string>("PPP");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
   const [search, setSearch] = useState<string>("");
-  const [showPipeline, setShowPipeline] = useState<boolean>(true);
 
   // Prevents stale responses when filters change rapidly.
   const requestIdRef = useRef(0);
@@ -161,7 +161,6 @@ export default function DataExplorerClient() {
       const mp = Number(p.minPoss ?? minPoss);
       const pl = String(p.playType ?? "");
       const si = String(p.side ?? side);
-      const show = Boolean(p.showPipeline ?? true);
 
       if (sd === "asc" || sd === "desc") setSortDir(sd);
       setSortKey(sk);
@@ -170,7 +169,6 @@ export default function DataExplorerClient() {
       if (Number.isFinite(mp)) setMinPoss(mp);
       if (si) setSide(si);
       setPlayType(pl);
-      setShowPipeline(show);
     } catch {
       // If prefs are corrupted, I ignore them and fall back to defaults.
     }
@@ -189,10 +187,9 @@ export default function DataExplorerClient() {
         minPoss,
         playType,
         side,
-        showPipeline,
       })
     );
-  }, [sortKey, sortDir, search, limit, minPoss, playType, side, showPipeline]);
+  }, [sortKey, sortDir, search, limit, minPoss, playType, side]);
   // Fetch when API-facing filters change; UI search/sort is client-side only.
   useEffect(() => {
     let cancelled = false;
@@ -390,8 +387,7 @@ export default function DataExplorerClient() {
               Data Explorer
             </h1>
             <p className="muted" style={{ marginTop: 6, fontSize: 14, marginBottom: 0 }}>
-              Preview the <strong>cleaned, team-level dataset</strong> used by the recommenders. This page contains{" "}
-              <strong>no predictions</strong>—only filterable data you can export for analysis.
+              Browse recorded team play-type stats and export the selected data.
             </p>
           </div>
 
@@ -436,10 +432,10 @@ export default function DataExplorerClient() {
                 setSide("offense");
                 setLimit(200);
               }}
-              title="Resets UI filters (does not change backend behavior)"
+              title="Reset table and filter choices"
               disabled={loading}
             >
-              Reset UI
+              Reset filters
             </button>
           </div>
         </div>
@@ -448,6 +444,7 @@ export default function DataExplorerClient() {
       {exportError && <p role="alert" className="card">{exportError}</p>}
 
       <DataQualityPanel />
+      <DatasetMetadataPanel />
 
       {/* FILTERS */}
       <section className="card" style={{ marginTop: 14 }}>
@@ -463,13 +460,13 @@ export default function DataExplorerClient() {
           <div>
             <h2 style={{ margin: "6px 0 4px", fontSize: 16 }}>Filters</h2>
             <p className="muted" style={{ fontSize: 13, margin: 0 }}>
-              Filter the dataset preview. Export uses the same filters (with a higher row cap).
+              Choose a season, team and play type.
             </p>
           </div>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
             <label style={{ fontSize: 13, display: "flex", gap: 8, alignItems: "center" }}>
-              Search (UI)
+              Search this table
               <input
                 className="input"
                 style={{ width: 260 }}
@@ -501,7 +498,7 @@ export default function DataExplorerClient() {
               type="button"
               onClick={() => setSortDir((d) => (d === "asc" ? "desc" : "asc"))}
               disabled={!columns.length}
-              title="Toggle sort direction (UI only)"
+              title="Change table sort direction"
             >
               {sortDir === "asc" ? "Asc ↑" : "Desc ↓"}
             </button>
@@ -587,7 +584,7 @@ export default function DataExplorerClient() {
             <div className="label">Visible rows</div>
             <div className="value">{fmtInt(viewRows.length)}</div>
             <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-              After UI search + sort.
+              Rows in this table.
             </div>
           </div>
 
@@ -611,7 +608,7 @@ export default function DataExplorerClient() {
                 overflow: "hidden",
                 border: "1px solid rgba(255,255,255,0.10)",
               }}
-              title="Visual indicator only (UI)"
+              title="Points per possession"
             >
               <div
                 style={{
@@ -673,13 +670,13 @@ export default function DataExplorerClient() {
           <div>
             <h2 style={{ margin: "6px 0 4px", fontSize: 16 }}>Preview table</h2>
             <p className="muted" style={{ fontSize: 13, margin: 0 }}>
-              Committee-friendly subset of columns. (UI search/sort does not change the exported CSV.)
+              CSV uses the selected filters, up to 1,000 rows. Table search and sorting do not change the download.
             </p>
           </div>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
             <span className="badge">
-              Export rows cap: {Math.max(limit, 1000)}
+              CSV row limit: {Math.max(limit, 1000)}
             </span>
             <button className="btn" type="button" onClick={exportCsv} disabled={!season || loading || exporting} aria-busy={exporting}>
               {exporting ? "Exporting CSV…" : "Export CSV"}
@@ -697,7 +694,7 @@ export default function DataExplorerClient() {
                     <th
                       key={c.key}
                       style={{ cursor: "pointer" }}
-                      title="Click to sort (UI)"
+                      title="Sort this table"
                       onClick={() => {
                         // Sorting here is only on the already-fetched rows — it doesn’t change what the API returns.
                         if (sortKey === c.key) {
@@ -756,69 +753,19 @@ export default function DataExplorerClient() {
         ) : null}
       </section>
 
-      {/* PIPELINE / DEFENSE PANEL */}
-      <section className="card">
-        <div
-          style={{
-            display: "flex",
-            alignItems: "baseline",
-            justifyContent: "space-between",
-            gap: 12,
-            flexWrap: "wrap",
-          }}
-        >
-          <div>
-            <h2 style={{ margin: "6px 0 4px", fontSize: 16 }}>
-              Pipeline summary (what this data represents)
-            </h2>
-            <p className="muted" style={{ fontSize: 13, margin: 0 }}>
-              Evidence for the defense: cleaning + aggregation pipeline (player rows → team rows) with export parity.
-            </p>
-          </div>
-
-          <button
-            className="btn btn--secondary"
-            type="button"
-            onClick={() => setShowPipeline((v) => !v)}
-          >
-            {showPipeline ? "Hide details" : "Show details"}
-          </button>
-        </div>
-
-        {showPipeline ? (
-          <>
-            <div style={{ marginTop: 10, display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-              <span className="badge blue">No predictions on this page</span>
-              <span className="badge">Filter + export only</span>
-              <span className="badge">Team-level aggregation</span>
-            </div>
-
-            <p className="muted" style={{ fontSize: 13, marginTop: 10 }}>
-              {pipeline?.dataSource ? pipeline.dataSource : "Data source: (not loaded)"}{" "}
-              <span className="badge">Explainability</span>
-            </p>
-
-            <ul className="muted" style={{ fontSize: 13, paddingLeft: 18, marginTop: 8 }}>
-              {(pipeline?.cleaning_and_aggregation ?? [
-                "Aggregate player rows into team-level play-type rows (possession-weighted).",
-                "Recompute team-level usage % (POSS_PCT) to avoid double-counting.",
-                "Add reliability weights to reduce small-sample noise (shrinkage).",
-              ]).map((x, i) => (
-                <li key={i}>{x}</li>
-              ))}
-            </ul>
-
-            <p className="muted" style={{ marginTop: 10, fontSize: 11 }}>
-              API call:{" "}
-              <code>{apiExample}</code>
-            </p>
-          </>
-        ) : (
-          <p className="muted" style={{ fontSize: 13, marginTop: 10 }}>
-            Hidden. Toggle “Show details” for defense notes + API trace.
-          </p>
-        )}
-      </section>
+      <details className="card">
+        <summary>How this data is prepared</summary>
+        <p className="muted">Player records are combined into team totals. This page shows recorded statistics, not model predictions.</p>
+        <p className="muted">Source: {pipeline?.dataSource || "Unavailable"}</p>
+        <ul className="muted">
+          {(pipeline?.cleaning_and_aggregation ?? [
+            "Combine player records into team play-type totals, weighted by possessions.",
+            "Recalculate each play type's share of team possessions.",
+            "Reduce the influence of small samples when preparing recommendations.",
+          ]).map((step, index) => <li key={index}>{step}</li>)}
+        </ul>
+        <details><summary>API request</summary><code style={{ overflowWrap: "anywhere" }}>{apiExample}</code></details>
+      </details>
     </main>
   );
 }

@@ -113,7 +113,9 @@ class ExportContract:
     @staticmethod
     def _to_csv(payload: ExportPayload) -> bytes:
         output = io.StringIO()
-        writer = csv.DictWriter(output, fieldnames=list(payload.columns), extrasaction="ignore")
+        versions = payload.metadata.get("dataset_versions")
+        columns = list(payload.columns) + (["Dataset versions"] if versions is not None else [])
+        writer = csv.DictWriter(output, fieldnames=columns, extrasaction="ignore")
         def safe_cell(value: Any) -> Any:
             # Spreadsheet applications may execute a string as a formula even
             # when CSV quoting is correct. Numeric values remain numeric.
@@ -121,8 +123,12 @@ class ExportContract:
                 return "'" + value
             return value
 
-        writer.writerow({column: safe_cell(column) for column in payload.columns})
-        writer.writerows({column: safe_cell(row.get(column)) for column in payload.columns} for row in payload.rows)
+        writer.writerow({column: safe_cell(column) for column in columns})
+        for row in payload.rows:
+            cells = {column: safe_cell(row.get(column)) for column in payload.columns}
+            if versions is not None:
+                cells["Dataset versions"] = safe_cell(json.dumps(versions, sort_keys=True) if isinstance(versions, dict) else str(versions))
+            writer.writerow(cells)
         return output.getvalue().encode("utf-8")
 
     @staticmethod

@@ -157,7 +157,7 @@ From the repository root after installing the development requirements:
 
 ```bash
 backend/.venv/bin/python -m pytest backend/tests -v
-npx vitest run --maxWorkers=1 --minWorkers=1
+npx vitest run --maxWorkers=1
 npx tsc --noEmit
 npm run build
 ```

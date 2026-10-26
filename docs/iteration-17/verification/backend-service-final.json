@@ -1,0 +1,44 @@
+{
+  "spec": {
+    "template": {
+      "metadata": {
+        "annotations": {
+          "autoscaling.knative.dev/maxScale": "2",
+          "run.googleapis.com/client-name": "gcloud",
+          "run.googleapis.com/client-version": "553.0.0",
+          "run.googleapis.com/cpu-throttling": "true",
+          "run.googleapis.com/startup-cpu-boost": "true"
+        },
+        "labels": {
+          "client.knative.dev/nonce": "ucwlgtfuky",
+          "commit": "e8f55b4",
+          "run.googleapis.com/startupProbeType": "Default"
+        }
+      },
+      "spec": {
+        "containerConcurrency": 2,
+        "containers": [
+          {
+            "resources": {
+              "limits": {
+                "cpu": "1",
+                "memory": "2Gi"
+              }
+            }
+          }
+        ],
+        "timeoutSeconds": 300
+      }
+    }
+  },
+  "status": {
+    "latestReadyRevisionName": "nba-playranker-api-00010-jp4",
+    "traffic": [
+      {
+        "latestRevision": true,
+        "percent": 100,
+        "revisionName": "nba-playranker-api-00010-jp4"
+      }
+    ]
+  }
+}

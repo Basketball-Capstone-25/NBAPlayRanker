@@ -1,0 +1,11 @@
+{
+  "load_milliseconds": [
+    155.65,
+    0.12,
+    0.04
+  ],
+  "cached": true,
+  "fold_rows": 15,
+  "source_sha256": "d2f647a048959ce14b798a3fe3f0b47e9eba860d7ecb35bec7b67d9968d657a4",
+  "holdout_matrix_matches_train_only_encoding": true
+}

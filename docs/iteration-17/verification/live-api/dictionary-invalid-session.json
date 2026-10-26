@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-10-25T18:11:04.980490+00:00",
+  "route": "/meta/data-dictionary",
+  "authentication": "Deliberately invalid non-secret token",
+  "status": 401,
+  "expected": 401,
+  "passed": true
+}
