@@ -291,6 +291,7 @@ export type ShotPlanRankResponse = {
 // Current PBP heatmap contract, including the submitted filters and sample counts.
 export type ShotHeatmapResponse = {
   image_base64: string;
+  dataset_version?: string;
   caption?: string;
   season?: string;
   team?: string;

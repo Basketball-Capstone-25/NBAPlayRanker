@@ -6,6 +6,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useShotResult } from "./useShotResult";
 import { ShotHeatmapCounts } from "./ShotHeatmapCounts";
+import { shotHeatmapExportUrl } from "../../../domain/shot-heatmap-export";
 import { fetchMetaOptions, fetchPbpMetaOptions, fetchShotHeatmap } from "../../../services/shotAnalysis";
 
 type Meta = {
@@ -317,21 +318,7 @@ export default function ShotHeatmapPage() {
     []
   );
 
-  const downloadName = (() => {
-    if (!query.inputs) return "";
-    const { season, team, opp, shotType, zone } = query.inputs;
-    const safe = (s: string) => s.replace(/[^a-z0-9_\-]+/gi, "_");
-    const pieces = [
-      "shot_heatmap",
-      season || "season",
-      team || "team",
-      "vs",
-      opp || "opp",
-      shotType ? safe(shotType) : "alltypes",
-      zone ? safe(zone) : "allzones",
-    ];
-    return pieces.join("_") + ".png";
-  })();
+  const downloadUrl = heatmap && query.inputs ? shotHeatmapExportUrl(query.inputs, heatmap.dataset_version) : null;
 
   return (
     <main className="page" style={{ paddingBottom: 56 }}>
@@ -503,13 +490,15 @@ export default function ShotHeatmapPage() {
 
           {heatmap?.image_base64 ? (
             <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-              <a
+              {downloadUrl ? <a
                 className="btn btn--secondary"
-                href={`data:image/png;base64,${heatmap.image_base64}`}
-                download={downloadName}
+                href={downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Downloads the displayed filters and data version. Any download error opens in a new tab."
               >
                 Download PNG
-              </a>
+              </a> : <span role="status">Render again to enable PNG download.</span>}
               <button
                 className="btn btn--secondary"
                 type="button"

@@ -49,11 +49,19 @@ describe("shot page result and export guards", () => {
   });
 
   it("labels and names a heatmap download using its successful request", () => {
-    mocks.query.inputs = saved; mocks.query.result = { image_base64: "test", caption: "Saved matchup", n_shots: 1000 };
+    mocks.query.inputs = saved; mocks.query.result = { image_base64: "test", caption: "Saved matchup", n_shots: 1000, dataset_version: `sha256:${"a".repeat(64)}` };
     const html = renderToStaticMarkup(<ShotHeatmap />);
     expect(html).toContain("LAL vs DEN"); expect(html).toContain("Season: 2024-25");
-    expect(html).toContain('download="shot_heatmap_2024-25_LAL_vs_DEN_Layup_rim.png"');
+    expect(html).toContain('href="/api/exports/shot-heatmap?season=2024-25&amp;team=LAL&amp;opp=DEN&amp;max_shots=1000&amp;version=sha256%3A' + "a".repeat(64) + '&amp;shot_type=Layup&amp;zone=rim"');
+    expect(html).toContain('target="_blank"'); expect(html).not.toContain('href="data:'); expect(html).not.toContain('download=');
     expect(html).toContain("Attempt"); expect(html).toContain("not shooting percentage");
+  });
+
+  it("requires another render when the displayed source version is missing", () => {
+    mocks.query.inputs = saved; mocks.query.result = { image_base64: "test", n_shots: 1000 };
+    const html = renderToStaticMarkup(<ShotHeatmap />);
+    expect(html).not.toContain("Download PNG");
+    expect(html).toContain("Render again to enable PNG download.");
   });
 
   it("exports the successful explorer filters and explains an empty result", () => {
