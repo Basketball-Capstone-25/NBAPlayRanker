@@ -1,6 +1,5 @@
 {
-  "status": "Prepared model verified; shared publication pending",
-  "native_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
+  "status": "Published in shared Visual Paradigm revision65; scoped content verified",
   "use_cases": [
     {
       "id": "4tK5X1mGAqAALhlh",
@@ -1656,5 +1655,9 @@
         }
       ]
     }
-  ]
+  ],
+  "prepared_native_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
+  "published_native_sha256": "e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408",
+  "published_revision": 65,
+  "publication_check": "publication-checks.json"
 }

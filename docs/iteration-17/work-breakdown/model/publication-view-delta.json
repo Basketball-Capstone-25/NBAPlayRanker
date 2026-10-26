@@ -1,0 +1,594 @@
+{
+  "added_models": [
+    {
+      "id": "guaSnoWAUAAADR8r",
+      "type": "WireflowConnector",
+      "name": "Back to Context ML",
+      "parent": "_Bfs31mGAqAALlYq",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "l4ASnoWAUAAADR5p",
+      "type": "WireflowNode",
+      "name": "Timeout Quick-Call",
+      "parent": "nL9nKVmAUUE.bzDS",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "hvqSnoWAUAAADR8n",
+      "type": "WireflowConnector",
+      "name": "Quick-Call Mode",
+      "parent": "_Bfs31mGAqAALlYq",
+      "author": "mousaa@sheridancollege.ca"
+    },
+    {
+      "id": "B_CinoWAUAAADRkF",
+      "type": "WFDState",
+      "name": "Initial",
+      "parent": "kSWrW1mGAqAALpiT",
+      "author": null
+    }
+  ],
+  "added_diagrams": [
+    {
+      "id": "y_CinoWAUAAADRkD",
+      "type": "WFWebDiagram",
+      "name": "Timeout Quick-Call",
+      "parent": "nL9nKVmAUUE.bzDS"
+    }
+  ],
+  "removed_shapes": [
+    {
+      "id": "1J_LLoWAUAAADTqx",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "Af3N.wWAUAAADbcL",
+      "model": null
+    },
+    {
+      "id": "5J_LLoWAUAAADTqj",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "PP3N.wWAUAAADbbZ",
+      "model": null
+    },
+    {
+      "id": "5J_LLoWAUAAADTql",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "Yv3N.wWAUAAADbbe",
+      "model": null
+    },
+    {
+      "id": "5J_LLoWAUAAADTqn",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "sv3N.wWAUAAADbbj",
+      "model": null
+    },
+    {
+      "id": "5J_LLoWAUAAADTqp",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "5v3N.wWAUAAADbb3",
+      "model": null
+    },
+    {
+      "id": "5J_LLoWAUAAADTqr",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "dv3N.wWAUAAADbb8",
+      "model": null
+    },
+    {
+      "id": "5J_LLoWAUAAADTqt",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "Lv3N.wWAUAAADbcB",
+      "model": null
+    },
+    {
+      "id": "BJ_LLoWAUAAADTqR",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "rcKwWwWAUAAADRbs",
+      "model": "ApiClient"
+    },
+    {
+      "id": "BJ_LLoWAUAAADTqT",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": ".3tA4bmAUAAADRiF",
+      "model": "ContextRankResponse"
+    },
+    {
+      "id": "JJ_LLoWAUAAADTqZ",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "ciKwWwWAUAAADRc_",
+      "model": "_RequireRole"
+    },
+    {
+      "id": "JJ_LLoWAUAAADTqb",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "aTt44bmAUAAADSFB",
+      "model": "AccessControlService"
+    },
+    {
+      "id": "JJ_LLoWAUAAADTqd",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "hRE04bmAUAAADSTj",
+      "model": "MLContextRecommender"
+    },
+    {
+      "id": "JJ_LLoWAUAAADTqf",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "NbKZ.wWAUAAADVtN",
+      "model": "BaselineRecommender"
+    },
+    {
+      "id": "JJ_LLoWAUAAADTqh",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "ZP3N.wWAUAAADbbK",
+      "model": null
+    },
+    {
+      "id": "NJ_LLoWAUAAADTq1",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "Kf3N.wWAUAAADbca",
+      "model": null
+    },
+    {
+      "id": "NJ_LLoWAUAAADTq3",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "Wf3N.wWAUAAADbcf",
+      "model": null
+    },
+    {
+      "id": "NJ_LLoWAUAAADTqz",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "4f3N.wWAUAAADbcQ",
+      "model": null
+    },
+    {
+      "id": "RJ_LLoWAUAAADTqV",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "T.g44bmAUAAADSCx",
+      "model": "FastAPIApp"
+    },
+    {
+      "id": "VJ_LLoWAUAAADTqv",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "Xv3N.wWAUAAADbcG",
+      "model": null
+    },
+    {
+      "id": "eJ_LLoWAUAAADTqN",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "LXtA4bmAUAAADRh4",
+      "model": "ContextPageClient"
+    },
+    {
+      "id": "eJ_LLoWAUAAADTqP",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "MHxo4bmAUAAADR8V",
+      "model": "SupabaseClient"
+    },
+    {
+      "id": "tJ_LLoWAUAAADTq5",
+      "type": "Association",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "hf3N.wWAUAAADbck",
+      "model": null
+    },
+    {
+      "id": "xJ_LLoWAUAAADTqX",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "jBg44bmAUAAADSDJ",
+      "model": "AuthDependency"
+    }
+  ],
+  "added_shapes": [
+    {
+      "id": "0uaSnoWAUAAADR8s",
+      "type": "WireflowConnector",
+      "diagram_id": "z2KLW1mGAqAALpXy",
+      "diagram": "Wireflow Diagram",
+      "model_id": "guaSnoWAUAAADR8r",
+      "model": "Back to Context ML"
+    },
+    {
+      "id": "4X7SnoWAUAAADSKE",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "EPFbLoWAUAAADT5c",
+      "model": "QuickCallBuilder"
+    },
+    {
+      "id": "4X7SnoWAUAAADSKG",
+      "type": "Dependency",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "sDLbLoWAUAAADT6b",
+      "model": null
+    },
+    {
+      "id": "Iq7SnoWAUAAADSJf",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "NCJbLoWAUAAADT4m",
+      "model": "QuickCallEndpoint"
+    },
+    {
+      "id": "KWbSnoWAUAAADSI5",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "YQ2bLoWAUAAADT3J",
+      "model": "QuickCallApi"
+    },
+    {
+      "id": "LYbSnoWAUAAADSId",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "THKbLoWAUAAADT1y",
+      "model": "QuickCallSituation"
+    },
+    {
+      "id": "LYbSnoWAUAAADSIf",
+      "type": "Dependency",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "VWtbLoWAUAAADT59",
+      "model": null
+    },
+    {
+      "id": "NvqSnoWAUAAADR8o",
+      "type": "WireflowConnector",
+      "diagram_id": "z2KLW1mGAqAALpXy",
+      "diagram": "Wireflow Diagram",
+      "model_id": "hvqSnoWAUAAADR8n",
+      "model": "Quick-Call Mode"
+    },
+    {
+      "id": "Op4ynoWAUAAADSKT",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "cZBbLoWAUAAADT4E",
+      "model": "QuickCallPlay"
+    },
+    {
+      "id": "Op4ynoWAUAAADSKV",
+      "type": "Dependency",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "BALbLoWAUAAADT6P",
+      "model": null
+    },
+    {
+      "id": "cJ7SnoWAUAAADSJz",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "TopbLoWAUAAADT49",
+      "model": "QuickCallService"
+    },
+    {
+      "id": "iDrSnoWAUAAADSIJ",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "ScEbLoWAUAAADT0p",
+      "model": "QuickCallModeClient"
+    },
+    {
+      "id": "l4ASnoWAUAAADR5o",
+      "type": "WireflowNode",
+      "diagram_id": "z2KLW1mGAqAALpXy",
+      "diagram": "Wireflow Diagram",
+      "model_id": "l4ASnoWAUAAADR5p",
+      "model": "Timeout Quick-Call"
+    },
+    {
+      "id": "tCbSnoWAUAAADSIo",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "9YWbLoWAUAAADT2q",
+      "model": "LateGameScenario"
+    },
+    {
+      "id": "z1bSnoWAUAAADSJK",
+      "type": "Class",
+      "diagram_id": "MJ_LLoWAUAAADToL",
+      "diagram": "Structural Overview - Timeout Quick-Call Mode",
+      "model_id": "VR.bLoWAUAAADT3j",
+      "model": "QuickCallResponse"
+    }
+  ],
+  "resource_changes": [
+    {
+      "path": "vpdiagramshapes/z2KLW1mGAqAALpXy.vps/details.xml",
+      "before_len": 2185292,
+      "after_len": 2463999,
+      "before_sha256": "4bdc1dc750c97395f8c262884bd4dba9ac9cf517933c97fd288a9ef45d068308",
+      "after_sha256": "4387d71d962bd421f694716be88a11e06020805135230fba9351eb56d8342cb9"
+    },
+    {
+      "path": "DiagramStateLazy.txt",
+      "before_len": 516,
+      "after_len": 959,
+      "before_sha256": "0634f9de9f3ea5f1046e4af9bd1513ec19eaae7ed7f8264bf998a20a7e70ece0",
+      "after_sha256": "3542147333913bfb3c5603cfa764ddc92fc85c7526df7ea1f73479f48fb0f5bc"
+    },
+    {
+      "path": "vpdiagramshapes/MJ_LLoWAUAAADToL.vps/details.xml",
+      "before_len": 11559,
+      "after_len": 4270,
+      "before_sha256": "b498c0368445d09c61673cec1552157b34fd86c3ecfd21a8be7590cd1d1067a3",
+      "after_sha256": "9661018dfecc701de7b2503d56625a8f2aed5bcfab340537268815e53a4646db"
+    },
+    {
+      "path": "diagramPreviewData/bp_LLoWAUAAADTtp",
+      "before_len": 4472,
+      "after_len": 4492,
+      "before_sha256": "81edda47b933bec7916ba4982f33a8e6841f87bb153c6440ad0d3added526515",
+      "after_sha256": "9217cce5d20523b8b7e069e9a8881ee009a270a6c243a2f6723bf692be249814"
+    }
+  ],
+  "resources_removed": [
+    {
+      "path": "DiagramState/1Ih0noWD.AAAAQuS/Wireflow/dIh0noWD.AAAAQuU",
+      "length": 45222
+    },
+    {
+      "path": "DiagramState/1Ih0noWD.AAAAQuS/Wireflow/dIh0noWD.AAAAQuU__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/3bh0noWD.AAAAQ1z/Wireflow/Pbh0noWD.AAAAQ11",
+      "length": 52466
+    },
+    {
+      "path": "DiagramState/3bh0noWD.AAAAQ1z/Wireflow/Pbh0noWD.AAAAQ11__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/9aR0noWD.AAAAQ8Q/Wireflow/9aR0noWD.AAAAQ8S",
+      "length": 78069
+    },
+    {
+      "path": "DiagramState/9aR0noWD.AAAAQ8Q/Wireflow/9aR0noWD.AAAAQ8S__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/CWR0noWD.AAAAQ94/Wireflow/yWR0noWD.AAAAQ96",
+      "length": 69775
+    },
+    {
+      "path": "DiagramState/CWR0noWD.AAAAQ94/Wireflow/yWR0noWD.AAAAQ96__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/EmR0noWD.AAAAQ9Y/Wireflow/kmR0noWD.AAAAQ9a",
+      "length": 70094
+    },
+    {
+      "path": "DiagramState/EmR0noWD.AAAAQ9Y/Wireflow/kmR0noWD.AAAAQ9a__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/FXh0noWD.AAAAQ3X/Wireflow/FXh0noWD.AAAAQ3Z",
+      "length": 65419
+    },
+    {
+      "path": "DiagramState/FXh0noWD.AAAAQ3X/Wireflow/FXh0noWD.AAAAQ3Z__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/GVB0noWD.AAAAQlx/Wireflow/OVB0noWD.AAAAQl0",
+      "length": 53166
+    },
+    {
+      "path": "DiagramState/GVB0noWD.AAAAQlx/Wireflow/OVB0noWD.AAAAQl0__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/Gnh0noWD.AAAAQ23/Wireflow/mnh0noWD.AAAAQ25",
+      "length": 58666
+    },
+    {
+      "path": "DiagramState/Gnh0noWD.AAAAQ23/Wireflow/mnh0noWD.AAAAQ25__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/H6R0noWD.AAAAQ80/Wireflow/X6R0noWD.AAAAQ82",
+      "length": 69671
+    },
+    {
+      "path": "DiagramState/H6R0noWD.AAAAQ80/Wireflow/X6R0noWD.AAAAQ82__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/JYh0noWD.AAAAQuy/Wireflow/pYh0noWD.AAAAQu0",
+      "length": 62669
+    },
+    {
+      "path": "DiagramState/JYh0noWD.AAAAQuy/Wireflow/pYh0noWD.AAAAQu0__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/KHh0noWD.AAAAQ2T/Wireflow/qHh0noWD.AAAAQ2V",
+      "length": 73960
+    },
+    {
+      "path": "DiagramState/KHh0noWD.AAAAQ2T/Wireflow/qHh0noWD.AAAAQ2V__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/LyR0noWD.AAAAQ7s/Wireflow/ryR0noWD.AAAAQ7u",
+      "length": 65403
+    },
+    {
+      "path": "DiagramState/LyR0noWD.AAAAQ7s/Wireflow/ryR0noWD.AAAAQ7u__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/S9R0noWD.AAAARC4/Wireflow/y9R0noWD.AAAARC6",
+      "length": 58583
+    },
+    {
+      "path": "DiagramState/S9R0noWD.AAAARC4/Wireflow/y9R0noWD.AAAARC6__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/UdR0noWD.AAAARCY/Wireflow/0dR0noWD.AAAARCa",
+      "length": 57833
+    },
+    {
+      "path": "DiagramState/UdR0noWD.AAAARCY/Wireflow/0dR0noWD.AAAARCa__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/YTR0noWD.AAAAREc/Wireflow/YTR0noWD.AAAAREe",
+      "length": 63529
+    },
+    {
+      "path": "DiagramState/YTR0noWD.AAAAREc/Wireflow/YTR0noWD.AAAAREe__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/YjR0noWD.AAAARD8/Wireflow/YjR0noWD.AAAARD.",
+      "length": 63062
+    },
+    {
+      "path": "DiagramState/YjR0noWD.AAAARD8/Wireflow/YjR0noWD.AAAARD.__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/bLh0noWD.AAAAQ1T/Wireflow/bLh0noWD.AAAAQ1V",
+      "length": 50911
+    },
+    {
+      "path": "DiagramState/bLh0noWD.AAAAQ1T/Wireflow/bLh0noWD.AAAAQ1V__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/cAh0noWD.AAAAQtO/Wireflow/CAh0noWD.AAAAQtQ",
+      "length": 66279
+    },
+    {
+      "path": "DiagramState/cAh0noWD.AAAAQtO/Wireflow/CAh0noWD.AAAAQtQ__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/gzR0noWD.AAAARE8/Wireflow/QzR0noWD.AAAARE.",
+      "length": 66842
+    },
+    {
+      "path": "DiagramState/gzR0noWD.AAAARE8/Wireflow/QzR0noWD.AAAARE.__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/i2R0noWD.AAAAQ.c/Wireflow/S2R0noWD.AAAAQ.e",
+      "length": 68099
+    },
+    {
+      "path": "DiagramState/i2R0noWD.AAAAQ.c/Wireflow/S2R0noWD.AAAAQ.e__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/lQh0noWD.AAAAQty/Wireflow/NQh0noWD.AAAAQt0",
+      "length": 52398
+    },
+    {
+      "path": "DiagramState/lQh0noWD.AAAAQty/Wireflow/NQh0noWD.AAAAQt0__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/pPB0noWD.AAAAQsu/Wireflow/1PB0noWD.AAAAQsw",
+      "length": 49280
+    },
+    {
+      "path": "DiagramState/pPB0noWD.AAAAQsu/Wireflow/1PB0noWD.AAAAQsw__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/sDR0noWD.AAAARDY/Wireflow/8DR0noWD.AAAARDa",
+      "length": 63851
+    },
+    {
+      "path": "DiagramState/sDR0noWD.AAAARDY/Wireflow/8DR0noWD.AAAARDa__metadata",
+      "length": 241
+    },
+    {
+      "path": "DiagramState/t3h0noWD.AAAAQ37/Wireflow/d3h0noWD.AAAAQ39",
+      "length": 60778
+    },
+    {
+      "path": "DiagramState/t3h0noWD.AAAAQ37/Wireflow/d3h0noWD.AAAAQ39__metadata",
+      "length": 241
+    }
+  ],
+  "resources_added": [
+    {
+      "path": "HTMLStringProperties/79aSnoWAUAAADR8v_htmlText",
+      "length": 86
+    },
+    {
+      "path": "HTMLStringProperties/y_CinoWAUAAADRkD_documentation",
+      "length": 279
+    },
+    {
+      "path": "diagramPreviewData/B_CinoWAUAAADRkE",
+      "length": 34742
+    },
+    {
+      "path": "diagramPreviewData/sJ_LLoWAUAAADToM",
+      "length": 3463
+    },
+    {
+      "path": "vpdiagramshapes/y_CinoWAUAAADRkD.vps/details.xml",
+      "length": 128104
+    }
+  ]
+}

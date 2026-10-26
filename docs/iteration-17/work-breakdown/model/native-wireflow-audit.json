@@ -1086,5 +1086,7 @@
     }
   ],
   "all_checks_passed": true,
-  "verification": "Official OpenAPI read-only reopen after the final scoped XML import. All 24 native states, widget text, pixels and reciprocal use-case references checked. Existing native models compared byte for byte to revision 63."
+  "verification": "Official OpenAPI read-only reopen after the final scoped XML import. All 24 native states, widget text, pixels and reciprocal use-case references checked. Existing native models compared byte for byte to revision 63.",
+  "evidence_stage": "Prepared candidate before shared publication",
+  "current_publication_check": "publication-checks.json"
 }

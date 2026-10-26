@@ -4,7 +4,7 @@ This guide connects Gurk’s features and repairs to their use cases, source fil
 
 The checked release is frontend **99a31e0** and backend **0ba37bb**, Cloud Run revision **00012-nrd**. Its recorded checks are **478 backend tests, 257 frontend tests, TypeScript and production build**. See the [release record](../verification/shot-flow-recheck/release/final-integrated-release.json) and [shot verification guide](../verification/shot-flow-recheck/README.md). This documentation review did not rerun the whole application.
 
-**Model publication is pending.** The checked candidate starts from shared revision **63**, preserves its **207 diagrams**, including Abdul’s six Quick Call diagrams, and contains **267 diagrams** after the scoped additions. The final native reopen preserved all four new wireflows, 24 screens and 17 reciprocal use-case references. See the [model crosswalk](model/model-traceability.json), [flow text](model/use-case-flows.json) and [native checks](model/native-wireflow-audit.json).
+The model is published in shared revision **65**, with **268 diagrams**. It retains all 207 diagram IDs from revision 63 and the prepared additions, including the teammate Quick Call changes received during publication. The published native file has SHA-256 `e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408`. A fresh native reopen confirmed all four new wireflows, 24 screens and 17 reciprocal use-case references; all 28 wireflow/screen renders match the checked candidate. See the [model crosswalk](model/model-traceability.json), [flow text](model/use-case-flows.json) and [publication checks](model/native-publication-check.json).
 
 ## Requirements and model alignment
 

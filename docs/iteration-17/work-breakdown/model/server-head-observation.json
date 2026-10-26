@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-10-26T18:23:47.548615+00:00",
+  "method": "Official UpdateTeamworkProject on an isolated private workspace; no authoritative project update or server commit",
+  "source": "Official command response and the isolated downloaded pristine project metadata",
+  "exit_code": 0,
+  "frozen_review_revision": 65,
+  "frozen_review_sha256": "e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408",
+  "server_head_observed": 66,
+  "server_head_publication": {
+    "version": "66",
+    "checkinUserName": "mousaa@sheridancollege.ca",
+    "commitComment": "Add request log flow of events and access/error sequences (SCRUM-494)",
+    "dateTime": "1793038516112"
+  },
+  "downloaded_pristine_sha256": "4ba3c40dd1528f9d477a201982eba2c0beb860b2eb6b233dbb0956ec00e10964",
+  "downloaded_pristine_pending_history": 0,
+  "sanitized_revision_log": [
+    "Teamwork revision in XML: 63",
+    "Teamwork revision in VPP: 63",
+    "Teamwork revision in Server: 66, 66",
+    "Teamwork revision in server latest VPP: 66"
+  ],
+  "interpretation": "Revision 65 is the verified frozen review artifact, not the latest server head. Revision 66 was observed but its changes were not inspected or validated.",
+  "authoritative_workspace_changed": false,
+  "server_commit_made": false,
+  "revision64_history_retrieved": false
+}

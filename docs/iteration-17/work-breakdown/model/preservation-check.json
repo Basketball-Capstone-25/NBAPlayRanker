@@ -1066,5 +1066,7 @@
     "orphan_deployment_associations_preexisting": true,
     "new_exception_signatures": []
   },
-  "verified": true
+  "verified": true,
+  "evidence_stage": "Prepared candidate before shared publication",
+  "current_publication_check": "publication-checks.json"
 }

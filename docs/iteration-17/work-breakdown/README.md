@@ -16,13 +16,13 @@ The [Jira readback](jira-review.json) verifies 35 Dev Subtasks across 16 complet
 | Implementation and tests | The [traceability report](code-traceability.md) links the requirements to source files, tests and actual execution records. Earlier failures and their fixes remain visible. |
 | Jira development tracking | Use-case fields, task breakdowns, estimates and completion records were checked against the saved work. Personal hours remain separate. |
 | Risks | Six targeted follow-ups describe the mitigation and what still needs attention. The forecasting and team-review requirements remain open. |
-| Shared work and future changes | The prepared model preserves the latest shared revision, including Abdul's Quick Call diagrams. The [contribution checklist](../../../CONTRIBUTING.md) carries these steps into future work. |
+| Shared work and future changes | The published model includes Abdul's latest Quick Call diagrams and preserves the reviewed use-case work. The [contribution checklist](../../../CONTRIBUTING.md) carries these steps into future work. |
 
-The prepared model passed all 43 checks. Its Desktop Team commit is still pending; use the [model guide](model/README.md) for the saved diagrams and publication status.
+The model is published as **revision 65**. All 43 preparation checks passed, and the published native copy reopened with all four wireflows and 24 screens intact. Use the [model guide](model/README.md) to open the project and follow a feature through its diagrams.
 
 ## What to check
 
-1. Open [SCRUM-645](https://basketball-strategy.atlassian.net/browse/SCRUM-645) for this review and its remaining steps. The existing implementation tickets keep their original results and history.
+1. Open [SCRUM-645](https://basketball-strategy.atlassian.net/browse/SCRUM-645) for this review and its completion evidence. The existing implementation tickets keep their original results and history.
 2. Follow the [code traceability report](code-traceability.md) from an issue to its source, tests and model references. The source release is frontend `99a31e0` and backend `0ba37bb`; this review does not deploy another application build.
 3. In VP, open the named use case from its functional overview, then **Use Case Details → Flow of Events**. Compare the success steps, error paths and acceptance criteria with the related collaboration and screen flow. The wireflows are conceptual screen-state designs; the app screenshots and recorded executions remain the implementation evidence.
 4. Open the linked Jira test case. Check its execution result and evidence. Failed executions retain their history and linked fixes.

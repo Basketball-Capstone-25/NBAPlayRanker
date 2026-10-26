@@ -1,0 +1,163 @@
+{
+  "stage": "Published shared revision verified for the scoped model work",
+  "verified": true,
+  "checks": {
+    "MODEL_ELEMENT_original_ids_retained": true,
+    "MODEL_ELEMENT_prepared_ids_retained": true,
+    "DIAGRAM_original_ids_retained": true,
+    "DIAGRAM_prepared_ids_retained": true,
+    "original_model_identity_and_creator_metadata_preserved": true,
+    "prepared_model_identity_and_creator_metadata_preserved": true,
+    "MODEL_ELEMENT_prepared_names_types_and_relationships_preserved": true,
+    "DIAGRAM_prepared_names_types_and_relationships_preserved": true,
+    "published_history_empty": true,
+    "shared_revision_advanced": true,
+    "publication_comment_matches": true,
+    "publication_author_present": true,
+    "all20_native_use_case_flows_conditions_scope_and_references_unchanged": true,
+    "all_exported_relationship_and_classifier_references_unchanged": true,
+    "all_scoped_view_ids_and_model_bindings_preserved": true,
+    "all_removed_views_are_only_the_23_listed_quick_call_design_views": true,
+    "only_two_listed_foreign_diagrams_change_view_membership": true,
+    "all_native_definitions_equal_apart_from_timestamps_and_two_named_incoming_extensions": true,
+    "all24_native_screen_states_and_widget_text_preserved": true,
+    "all17_reciprocal_use_case_links_preserved": true,
+    "all28_native_render_pixels_identical": true,
+    "published_artifact_hash_matches_committed_pristine": true,
+    "only_the48_native_screen_cache_resources_became_lazy": true,
+    "only_four_named_resource_contents_changed": true
+  },
+  "publication": {
+    "version": "65",
+    "checkinUserName": "asahang@sheridancollege.ca",
+    "commitComment": "Align use-case flows, wireflows and design with current features (SCRUM-645)",
+    "dateTime": "1793038201513"
+  },
+  "published_native_sha256": "e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408",
+  "prepared_native_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
+  "baseline_revision": 63,
+  "published_counts": {
+    "MODEL_ELEMENT": 2680,
+    "DIAGRAM": 268,
+    "DIAGRAM_ELEMENT": 2365
+  },
+  "pending_history_count": 0,
+  "scoped_diagrams_checked": 67,
+  "scoped_diagram_elements_checked": 526,
+  "use_cases_checked": 20,
+  "strict_comparison": "publication-initial-comparison.json retains the failed whole-project identity/resource comparison. The scoped checks above do not claim every original view ID or cached resource is unchanged.",
+  "incoming_changes": {
+    "history64_verified": false,
+    "history64_note": "The bounded official OpenAPI history request returned no target history for the standalone copy. The separate revision64 description/date was not verified.",
+    "evidence": "The four added native models record the teammate creator where supplied. The changes are limited to the existing Timeout Quick-Call structural view and its shared wireflow; all underlying original model and diagram IDs are retained. The exact replacement is listed in publication-view-delta.json.",
+    "added_models": [
+      {
+        "id": "guaSnoWAUAAADR8r",
+        "type": "WireflowConnector",
+        "name": "Back to Context ML",
+        "parent": "_Bfs31mGAqAALlYq",
+        "author": "mousaa@sheridancollege.ca"
+      },
+      {
+        "id": "l4ASnoWAUAAADR5p",
+        "type": "WireflowNode",
+        "name": "Timeout Quick-Call",
+        "parent": "nL9nKVmAUUE.bzDS",
+        "author": "mousaa@sheridancollege.ca"
+      },
+      {
+        "id": "hvqSnoWAUAAADR8n",
+        "type": "WireflowConnector",
+        "name": "Quick-Call Mode",
+        "parent": "_Bfs31mGAqAALlYq",
+        "author": "mousaa@sheridancollege.ca"
+      },
+      {
+        "id": "B_CinoWAUAAADRkF",
+        "type": "WFDState",
+        "name": "Initial",
+        "parent": "kSWrW1mGAqAALpiT",
+        "author": null
+      }
+    ],
+    "added_diagrams": [
+      {
+        "id": "y_CinoWAUAAADRkD",
+        "type": "WFWebDiagram",
+        "name": "Timeout Quick-Call",
+        "parent": "nL9nKVmAUUE.bzDS"
+      }
+    ],
+    "removed_views": 23,
+    "new_views": 15,
+    "native_extensions": [
+      {
+        "id": "kSWrW1mGAqAALpiT",
+        "change": "Existing state container adds only the new Quick-Call state B_CinoWAUAAADRkF, apart from modification time."
+      },
+      {
+        "id": "lgWvjjmAUAAADaxS",
+        "change": "Existing Context ML wireflow node adds only Quick-Call Mode and Back to Context ML connector references, apart from modification times."
+      }
+    ]
+  },
+  "resource_differences": {
+    "changes": [
+      {
+        "path": "vpdiagramshapes/z2KLW1mGAqAALpXy.vps/details.xml",
+        "before_len": 2185292,
+        "after_len": 2463999,
+        "before_sha256": "4bdc1dc750c97395f8c262884bd4dba9ac9cf517933c97fd288a9ef45d068308",
+        "after_sha256": "4387d71d962bd421f694716be88a11e06020805135230fba9351eb56d8342cb9"
+      },
+      {
+        "path": "DiagramStateLazy.txt",
+        "before_len": 516,
+        "after_len": 959,
+        "before_sha256": "0634f9de9f3ea5f1046e4af9bd1513ec19eaae7ed7f8264bf998a20a7e70ece0",
+        "after_sha256": "3542147333913bfb3c5603cfa764ddc92fc85c7526df7ea1f73479f48fb0f5bc"
+      },
+      {
+        "path": "vpdiagramshapes/MJ_LLoWAUAAADToL.vps/details.xml",
+        "before_len": 11559,
+        "after_len": 4270,
+        "before_sha256": "b498c0368445d09c61673cec1552157b34fd86c3ecfd21a8be7590cd1d1067a3",
+        "after_sha256": "9661018dfecc701de7b2503d56625a8f2aed5bcfab340537268815e53a4646db"
+      },
+      {
+        "path": "diagramPreviewData/bp_LLoWAUAAADTtp",
+        "before_len": 4472,
+        "after_len": 4492,
+        "before_sha256": "81edda47b933bec7916ba4982f33a8e6841f87bb153c6440ad0d3added526515",
+        "after_sha256": "9217cce5d20523b8b7e069e9a8881ee009a270a6c243a2f6723bf692be249814"
+      }
+    ],
+    "removed_cache_count": 48,
+    "explanation": "Twenty-four DiagramState image/cache resources and their metadata become lazy at Teamwork commit. The native widget definitions survive, and the official reopened renders are all pixel-identical. Two existing drawing resources reflect the exact Quick-Call view edits; one existing thumbnail and the lazy index also change.",
+    "added": [
+      {
+        "path": "HTMLStringProperties/79aSnoWAUAAADR8v_htmlText",
+        "length": 86
+      },
+      {
+        "path": "HTMLStringProperties/y_CinoWAUAAADRkD_documentation",
+        "length": 279
+      },
+      {
+        "path": "diagramPreviewData/B_CinoWAUAAADRkE",
+        "length": 34742
+      },
+      {
+        "path": "diagramPreviewData/sJ_LLoWAUAAADToM",
+        "length": 3463
+      },
+      {
+        "path": "vpdiagramshapes/y_CinoWAUAAADRkD.vps/details.xml",
+        "length": 128104
+      }
+    ]
+  },
+  "xml_export_note": "Both exports contain28 empty Qualifier composite objects with different generated IDs. Primary native model identities remain preserved. This export-only identity difference is retained in publication-content-comparison.json; it is not waived as a general model-ID exception.",
+  "native_reopen_evidence": "native-publication-check.json",
+  "source_model_review": "code-model-review.json"
+}

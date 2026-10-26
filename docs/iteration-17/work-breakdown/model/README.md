@@ -1,6 +1,12 @@
 # Model walkthrough
 
-**Shared publication is pending.** These views are from the checked candidate based on shared revision 63. It preserves all 207 existing diagrams, including Abdul’s latest Quick Call work, and contains 267 diagrams. The candidate checks cover 20 scoped use cases and four native wireflows with 24 editable screens.
+**Reviewed snapshot: shared revision 65.** The project contains 268 diagrams, including the intervening teammate Quick Call changes. All 207 diagrams from revision 63 and all prepared model and diagram IDs remain present. The checks cover 20 scoped use cases and four native wireflows with 24 editable screens. After publication, all 24 screens and 17 use-case links were verified again; all 28 wireflow/screen renders match the checked candidate. See the [publication checks](native-publication-check.json).
+
+Published native-file SHA-256: `e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408`.
+
+The [published native project](<Basketball Playtype Ranker.vpp>) contains the editable diagrams and screens. The [publication record](publication-checks.json) separates the preserved work from the incoming Quick Call view changes.
+
+The shared project later advanced to [revision 66](server-head-observation.json) for Abdul's request-log work. This review and native file cover revision 65; the later revision was observed but was not reviewed here.
 
 ## What to open in Visual Paradigm
 

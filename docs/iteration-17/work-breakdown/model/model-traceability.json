@@ -1,7 +1,6 @@
 {
-  "status": "Prepared model verified; shared publication pending",
+  "status": "Published in shared Visual Paradigm revision65; scoped content verified",
   "baseline_revision": 63,
-  "native_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
   "functional_overview_id": "Wba6994d05cdc3b1",
   "edited_use_cases": [
     {
@@ -1141,5 +1140,9 @@
   ],
   "native_wireflow_count": 4,
   "native_screen_count": 24,
-  "wireflow_note": "Native conceptual screen-state designs, not screenshots of the running app. Original native wireframes remain unchanged."
+  "wireflow_note": "Native conceptual screen-state designs, not screenshots of the running app. Original native wireframes remain unchanged.",
+  "prepared_native_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
+  "published_native_sha256": "e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408",
+  "published_revision": 65,
+  "publication_check": "publication-checks.json"
 }

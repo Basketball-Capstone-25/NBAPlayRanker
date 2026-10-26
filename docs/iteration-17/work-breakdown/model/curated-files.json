@@ -1,13 +1,48 @@
 [
   {
+    "path": "Basketball Playtype Ranker.vpp",
+    "bytes": 19415040,
+    "sha256": "e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408"
+  },
+  {
+    "path": "README.md",
+    "bytes": 4628,
+    "sha256": "193253be9bd13feb3141d17b611e2735ba705e8721da0d1df6984b8f44c85bb6"
+  },
+  {
+    "path": "code-model-review.json",
+    "bytes": 18513,
+    "sha256": "6b9fdeb3676343738c0c21d4583e5f89318886fe07b1b7c5d8de3657baaad5ba"
+  },
+  {
+    "path": "jira-use-case-check.json",
+    "bytes": 19967,
+    "sha256": "86aa77a811f23a3ef6c9e1c4964a0133e5f6f32ef06cee5fec4fad22315d06bf"
+  },
+  {
     "path": "model-traceability.json",
-    "bytes": 35617,
-    "sha256": "edbf922cdd5a874a9698b21a71e27406418bac4450c918a9169e2308a6b5c743"
+    "bytes": 35821,
+    "sha256": "e019fe9d623ccd40c36faa1addbb9bc588b5c9b4f2c17feb785186ece9796b07"
+  },
+  {
+    "path": "native-privacy-check.json",
+    "bytes": 167,
+    "sha256": "015f079b7b541cb5c4a5ac2915b0c8e753197848a1e8999ac0056518a057fab3"
+  },
+  {
+    "path": "native-publication-check.json",
+    "bytes": 8009,
+    "sha256": "ea234963a3f022bc67c932bf32e2fa797a329785fffa2e6db43c7f126eb456fe"
+  },
+  {
+    "path": "native-publication-reopen.xml",
+    "bytes": 9594,
+    "sha256": "5a977334c6b7ec4bfcc77bd0c03a6ccab2350d34db515646b715e89fb1f88471"
   },
   {
     "path": "native-wireflow-audit.json",
-    "bytes": 49103,
-    "sha256": "b9bb0cc80957b92aa8a9b477fa1af0975ebf75caebded419f69b22128ab756a5"
+    "bytes": 49229,
+    "sha256": "83d7437a5bda2f22b66e591b3361421dc4f51222e49f74eb7768bc8bcc2bb322"
   },
   {
     "path": "native-wireflows.xml",
@@ -16,13 +51,33 @@
   },
   {
     "path": "preservation-check.json",
-    "bytes": 26782,
-    "sha256": "dd929a740ed47f13e5c0048adf0a266be2820ea870ce09fbcff5c3e0eb436caf"
+    "bytes": 26908,
+    "sha256": "c636cc7bb659306cf53322506c1529e63c8682592174d3959333b7d8dba6d79a"
+  },
+  {
+    "path": "publication-checks.json",
+    "bytes": 7131,
+    "sha256": "d091ab3b99a73e02e889afae818a0aff484a3059d391f9b3d77434fbbfc4f269"
+  },
+  {
+    "path": "publication-content-comparison.json",
+    "bytes": 3695,
+    "sha256": "9c1de0abcc9141dd25ec5b9caa692914cd924d8f82593f9cd3e8af78e1ca3760"
+  },
+  {
+    "path": "publication-initial-comparison.json",
+    "bytes": 17864,
+    "sha256": "9e995ff2dff628d66c513844d0d733d3520ec67afeda3c34665bbfa3021b8c99"
+  },
+  {
+    "path": "publication-view-delta.json",
+    "bytes": 17279,
+    "sha256": "539097f8cb26dca16d4339bf053ddb40e5855edd3081713b455f422ee1987017"
   },
   {
     "path": "render-index.json",
-    "bytes": 25012,
-    "sha256": "258eb74749a2371b4b11e30e17ee8fcdf2ef7432db4dca9f5653388c2368e3c2"
+    "bytes": 28725,
+    "sha256": "4b0c72bc1aebaf7a07cd817113c696181d2d19ce720667cd74371544028c1aea"
   },
   {
     "path": "renders/Collaboration Overview - Coach-Owned Gameplan Storage.png",
@@ -171,13 +226,13 @@
   },
   {
     "path": "renders/Functional Overview - Current Analyst and Shot Evidence.png",
-    "bytes": 248791,
-    "sha256": "2714b11f4dcf63095a0789c71b35dab3f426f58966f3b13458c8904a2a1f0478"
+    "bytes": 247879,
+    "sha256": "1732350dfee8efe8f47390cc10dc366d8d9e74d017d1faae2037515ae0f2d72c"
   },
   {
     "path": "renders/Structural Design - Explore Shot Attempts and Heatmaps.png",
-    "bytes": 76160,
-    "sha256": "e62dc8c7878919b2452e84ac1dec80b37e31ae914d8ea15e00c46184ff7142ab"
+    "bytes": 76138,
+    "sha256": "b3fe5fc553289485e6899d1f590ebba07d812968a810ea7fa429a747af12b309"
   },
   {
     "path": "renders/Structural Design - Identify Result Data Versions.png",
@@ -186,8 +241,8 @@
   },
   {
     "path": "renders/Structural Design - Inspect Dataset Columns.png",
-    "bytes": 31456,
-    "sha256": "c4404d3d6b5efc444586f2ba7414ebd934d4aa5cae1a93fe369f6713a122c1c7"
+    "bytes": 31459,
+    "sha256": "7413699b4e96de1e4f7ee02404b06b9c0763f28bf48165ba6c478b9c115ad45f"
   },
   {
     "path": "renders/Structural Design - Inspect Source Metadata.png",
@@ -206,8 +261,8 @@
   },
   {
     "path": "renders/Structural Design - Review Saved Shot-Model Evidence.png",
-    "bytes": 41195,
-    "sha256": "5f36ad8f80b05d7df649b2047126af97fad3bf229ccdf2a43b6e260e47cacf26"
+    "bytes": 41193,
+    "sha256": "50e25d26a09de228d39d7e512f512d7546cb1cb03582db6fea13558cf8f7d26b"
   },
   {
     "path": "renders/Structural Design - Review Shot-Plan Recommendations.png",
@@ -365,8 +420,13 @@
     "sha256": "eb13f220de21462f2d8b91e75aff679e20c2ab6187ee2fc53074a968d59e08a7"
   },
   {
+    "path": "server-head-observation.json",
+    "bytes": 1328,
+    "sha256": "bfdffd3d229672c74e3e3ad9c329ae9276ce2aebf5f087745dc4a8a9893c4ddd"
+  },
+  {
     "path": "use-case-flows.json",
-    "bytes": 71634,
-    "sha256": "112ad8bfe7cfbf7d03e4cfc01c5a8cd061a91e65e427ffccfb40b7cc1951d16c"
+    "bytes": 71838,
+    "sha256": "dc1f26a74c6f9738a6aab498efa6c56861444fcf5d92391ec3260ceef706ead2"
   }
 ]

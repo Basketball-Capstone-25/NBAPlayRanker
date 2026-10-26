@@ -1,6 +1,6 @@
 {
   "checkedAt": "2026-10-26T17:47:29.254Z",
-  "status": "Jira fields match the verified prepared model; shared publication remains pending",
+  "status": "Jira use-case fields match the model content verified in published revision 65",
   "modelBaselineRevision": 63,
   "preparedNativeSha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
   "checkedJiraFields": 30,
@@ -51,7 +51,7 @@
     {
       "key": "SCRUM-481",
       "status": "Done",
-      "parentUseCase": "Save Notes to Tactics Board / Plan \u2014 baseline (b1qTbjmHwzQe9gB6), context (wGVrbjmGmMmMJQCm); storage schema only",
+      "parentUseCase": "Save Notes to Tactics Board / Plan — baseline (b1qTbjmHwzQe9gB6), context (wGVrbjmGmMmMJQCm); storage schema only",
       "nativeUseCaseIds": [
         "b1qTbjmHwzQe9gB6",
         "wGVrbjmGmMmMJQCm"

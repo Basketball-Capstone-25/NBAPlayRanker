@@ -1,0 +1,211 @@
+{
+  "published_pristine_revision": 65,
+  "published_pristine_sha256": "e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408",
+  "method": "Official OpenAPI read-only reopen on a disposable exact-pristine copy; RGBA pixel comparisons with the final prepared reopen.",
+  "native_reopen_pass": true,
+  "native_scenes_checked": 24,
+  "scene_ids_states_widget_text_preserved": true,
+  "reciprocal_use_case_links_checked": 17,
+  "reciprocal_use_case_links_preserved": true,
+  "render_comparisons": [
+    {
+      "file": "COACH-1.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "5e1ea26aacc51806240f1a94400777b703797d692feeb3b8073db27b6166a029",
+      "curated_render": "renders/coach-screen-1.png"
+    },
+    {
+      "file": "COACH-2.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "ccf698da7adf1b599f4ae89529af6d42f5dae4670f0c87a285dd45ddfd5b399c",
+      "curated_render": "renders/coach-screen-2.png"
+    },
+    {
+      "file": "COACH-3.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "1fa1377724d7f651e95400daec3e4d7fac8a2c5fcb8e54adac813b431199157a",
+      "curated_render": "renders/coach-screen-3.png"
+    },
+    {
+      "file": "COACH-4.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "54864318beff6c556bea8fa15f0b02d175af210673d1be0f36b61875d83f124b",
+      "curated_render": "renders/coach-screen-4.png"
+    },
+    {
+      "file": "COACH-5.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "ef55f8ed33a8ca581f995a63ba37e978ce01661b03dfd33b97c3e8fb6641c00a",
+      "curated_render": "renders/coach-screen-5.png"
+    },
+    {
+      "file": "COACH-6.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "30204434ff07fb13e6f1eca6742172be9a7b8f13f67522c2ce3a46f7f2f284cb",
+      "curated_render": "renders/coach-screen-6.png"
+    },
+    {
+      "file": "DATA-1.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "7e57cc7565d48b309ef923d27574a6b0d8a6fd672316ba46aade82d568a0d151",
+      "curated_render": "renders/data-screen-1.png"
+    },
+    {
+      "file": "DATA-2.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "5c56ead51465de6a6b917a50fad157e76083cfaf9227cd6e3e45c2a0dec9e3e5",
+      "curated_render": "renders/data-screen-2.png"
+    },
+    {
+      "file": "DATA-3.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "b50b014ae34b72e1418a5fc906b1f6b33d3aa30d868ddba2f9aa4cfd13594ed2",
+      "curated_render": "renders/data-screen-3.png"
+    },
+    {
+      "file": "DATA-4.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "26559ac7b18b2ef162b724a6624e1d81039bbaa352aaf03410fde8dd0479980a",
+      "curated_render": "renders/data-screen-4.png"
+    },
+    {
+      "file": "DATA-5.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "d9490b1506b6f4e9e32658f7ac19485c5197d4b33a16510cded8ed11fa04d4bc",
+      "curated_render": "renders/data-screen-5.png"
+    },
+    {
+      "file": "DATA-6.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "fbc1ebf1f2e83a341a6a7bd2bef45122eb655d77cb27dba97d8578eaf4f82ac6",
+      "curated_render": "renders/data-screen-6.png"
+    },
+    {
+      "file": "EVIDENCE-1.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "b8c2323495d4cd892d99e6c7494e1d6986f19045d4d2ae0f60315119bf8859e1",
+      "curated_render": "renders/evidence-screen-1.png"
+    },
+    {
+      "file": "EVIDENCE-2.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "37402ff06d99a0dac2afd3ec57ac54992e9d8c401ce838cfc21343855e59e03b",
+      "curated_render": "renders/evidence-screen-2.png"
+    },
+    {
+      "file": "EVIDENCE-3.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "5d4aeaff2f8cc186b119f9cfe97ae76ff5918533e5b1bee0a5883b6b0942671c",
+      "curated_render": "renders/evidence-screen-3.png"
+    },
+    {
+      "file": "EVIDENCE-4.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "2372a55819fa16ac3fa8dd82168b4ef8ca66040f324439fb4cfc66422e013025",
+      "curated_render": "renders/evidence-screen-4.png"
+    },
+    {
+      "file": "EVIDENCE-5.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "0df81553fa10f413a49e524ac9c5bbe47befb690a341ad3d36a1f17a3e3bb1ba",
+      "curated_render": "renders/evidence-screen-5.png"
+    },
+    {
+      "file": "EVIDENCE-6.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "19fec13ac24e677e044c896fe443f45dc8488c2bb43c8748de9bae479c0f2131",
+      "curated_render": "renders/evidence-screen-6.png"
+    },
+    {
+      "file": "SHOTS-1.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "d453b6e8b8651ef59bbe6b97f7b3e4bfc89add9696291cef271ea0b1b7b0fa93",
+      "curated_render": "renders/shots-screen-1.png"
+    },
+    {
+      "file": "SHOTS-2.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "2d59af27cca6a2c5411382d86cc707dd46439441000d15ceb30737456437ee06",
+      "curated_render": "renders/shots-screen-2.png"
+    },
+    {
+      "file": "SHOTS-3.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "668ae117a3c7f06ba985b44df7198a52f4a50ae9806d747c7d886cc0a0f49e28",
+      "curated_render": "renders/shots-screen-3.png"
+    },
+    {
+      "file": "SHOTS-4.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "91dd53a4614877a53f4df6e3c8478a3e58586cf1a4e289b6105a67e5589549a9",
+      "curated_render": "renders/shots-screen-4.png"
+    },
+    {
+      "file": "SHOTS-5.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "97b039189cae5ee2c660aee2abff909f412f87ac5f54c7edcfd1f2f7b79a3576",
+      "curated_render": "renders/shots-screen-5.png"
+    },
+    {
+      "file": "SHOTS-6.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "bab3da11b4495266b908c9126a040643bfc5d31ac94dffd02cc1cf833bc1d37e",
+      "curated_render": "renders/shots-screen-6.png"
+    },
+    {
+      "file": "flow-1.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "fa2e60754063905f1de68b08165bb40ae736fceab784ce8ce20bf9af67dd4869",
+      "curated_render": "renders/Wireflow - Data Explorer and Dictionary.png"
+    },
+    {
+      "file": "flow-2.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "9c17b746d36993fa8ed0ede2da99a850ff9ab1ceba6fb9ad1d75ca44f8b66cc4",
+      "curated_render": "renders/Wireflow - Shot Plan, Explorer and Heatmap.png"
+    },
+    {
+      "file": "flow-3.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "4d13c6138d20c18f7f2ceb7ded78674311f20eb48cd62f1c5de5b04f7f931f9f",
+      "curated_render": "renders/Wireflow - Analyst Metrics and Reports.png"
+    },
+    {
+      "file": "flow-4.png",
+      "same_dimensions": true,
+      "pixels_identical": true,
+      "published_render_sha256": "a26471802e081345a8c88c190f28f07ec4966710690557880d3227e2b72420ce",
+      "curated_render": "renders/Wireflow - Coach Context and Current Calls.png"
+    }
+  ],
+  "all_render_pixels_identical": true,
+  "reopen_receipt": "native-publication-reopen.xml",
+  "all_checks_passed": true
+}

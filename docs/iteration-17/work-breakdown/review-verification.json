@@ -1,11 +1,19 @@
 {
-  "stage": "Prepared review; shared VP publication pending",
-  "curated_manifest_entries": 74,
+  "stage": "Published revision 65 verified",
+  "curated_manifest_entries": 86,
   "curated_hash_failures": [],
-  "markdown_local_links_checked": 189,
+  "markdown_local_links_checked": 195,
   "missing_local_links": [],
+  "sensitive_text_findings": [],
   "prepared_model_checks_passed": 43,
+  "publication_checks_passed": 24,
   "jira_use_case_checks_passed": 102,
-  "application_retested_this_review": false,
-  "actual_hours_added": false
+  "live_application_campaign_repeated": false,
+  "review_ci": {
+    "run": 40372295411,
+    "conclusion": "success"
+  },
+  "actual_hours_added": false,
+  "later_server_head_observed": 66,
+  "later_server_head_scope_reviewed": false
 }

@@ -1,5 +1,5 @@
 {
-  "review_type": "Source and model contract comparison; no new application test execution",
+  "review_type": "Source and model contract comparison; no new live application campaign",
   "source_release": {
     "frontend": "99a31e0",
     "backend": "0ba37bb",
@@ -7,7 +7,7 @@
   },
   "baseline_model_revision": 63,
   "candidate_sha256": "9ef3e2c8fc8310d709cd3b01a6e088c02bd1fdfa8971263f152a2873186ead2b",
-  "publication": "Pending shared Teamwork publication",
+  "publication": "Published shared Teamwork revision 65; native content verified after publication",
   "checks": [
     {
       "area": "Top-K uplift",
@@ -210,8 +210,7 @@
   "remaining_limits": [
     "SCRUM-257 original cleanup release/feedback/team review is unavailable; current behavior checks do not replace that history.",
     "Proposed-shot diagnostics do not satisfy pre-possession forecasting. BST-117 remains Fail with planned SCRUM-641; BST-114 remains in progress.",
-    "The accepted baseline timing campaign is distinct from Quick Call browser observations; no two-second Quick Call guarantee is claimed.",
-    "Model publication is pending; this receipt verifies the candidate."
+    "The accepted baseline timing campaign is distinct from Quick Call browser observations; no two-second Quick Call guarantee is claimed."
   ],
   "final_model_readback": {
     "xml_sha256": "07bc10a450ec8e230f81e9d2db31627c609049f93048ed2c7ae46cd2d3ff5f2d",
@@ -447,5 +446,28 @@
         "result": "Pass"
       }
     ]
+  },
+  "publication_evidence": "native-publication-check.json",
+  "published_model": {
+    "revision": 65,
+    "sha256": "e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408",
+    "diagram_count": 268,
+    "prepared_diagram_count": 267,
+    "all_prepared_model_and_diagram_ids_retained": true,
+    "additional_team_work": "Includes the intervening teammate Quick Call screen and structural-view changes; their model identities and ownership are preserved.",
+    "native_screen_count": 24,
+    "native_reference_count": 17,
+    "native_renders_pixel_identical": 28
+  },
+  "post_publication_content_comparison": {
+    "native_state_definitions_checked": 24,
+    "state_definitions_preserved_except_last_modified": true,
+    "native_state_node_connector_models_checked": 70,
+    "native_models_preserved_except_commit_timestamps": true,
+    "scoped_use_case_definitions_checked": 20,
+    "use_cases_preserved_except_commit_timestamps_and_derived_view_ids": true,
+    "reciprocal_use_case_references_checked": 17,
+    "all_reciprocal_references_preserved": true,
+    "native_reopen_receipt": "native-publication-reopen.xml"
   }
 }
