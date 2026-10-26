@@ -1,0 +1,205 @@
+/* Timeout Quick-Call Mode: readable from arm's length during a 30-second timeout. */
+
+.page {
+  padding: 16px 14px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+
+.matchup {
+  margin: 4px 0 0;
+  font-size: 16px;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.backLink {
+  font-weight: 800;
+  font-size: 16px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  text-decoration: none;
+  color: inherit;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.control {
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 16px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+}
+
+.controlLabel {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(15, 23, 42, 0.6);
+}
+
+.controlValue {
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.stepButton {
+  height: 56px;
+  font-size: 30px;
+  font-weight: 900;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  background: rgba(15, 23, 42, 0.04);
+  cursor: pointer;
+}
+
+.stepButton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.scenarios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.scenario {
+  font-size: 16px;
+  font-weight: 800;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  background: #fff;
+  cursor: pointer;
+}
+
+.scenarioActive {
+  background: #0f172a;
+  color: #fff;
+}
+
+.status {
+  font-size: 15px;
+  color: rgba(15, 23, 42, 0.7);
+  min-height: 20px;
+}
+
+.notice {
+  font-size: 18px;
+  font-weight: 800;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #fff7e6;
+  border: 1px solid #f5b544;
+  color: #7a4a00;
+}
+
+.error {
+  font-size: 18px;
+  font-weight: 800;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #fdecec;
+  border: 1px solid #e57373;
+  color: #8a1c1c;
+}
+
+.plays {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.play {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: #fff;
+}
+
+.rank {
+  font-size: 40px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.playName {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.zone {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0b6bcb;
+}
+
+.reason {
+  font-size: 18px;
+  color: rgba(15, 23, 42, 0.75);
+  margin-top: 4px;
+}
+
+.ppp {
+  font-size: 28px;
+  font-weight: 900;
+  text-align: right;
+}
+
+.pppLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+@media (max-width: 720px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+  .play {
+    grid-template-columns: 44px 1fr;
+  }
+  .ppp {
+    grid-column: 2;
+    text-align: left;
+  }
+  .playName {
+    font-size: 26px;
+  }
+}

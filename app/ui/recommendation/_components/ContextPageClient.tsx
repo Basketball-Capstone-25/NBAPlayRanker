@@ -7,6 +7,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { contextRank, fetchMetaOptions } from "../../../services/recommendation";
 import ReportExport from "../../_shared/components/ReportExport";
+import { quickCallHref } from "../../../domain/quick-call";
 import { contextReport, resultKey } from "../../../infrastructure/report-export";
 import {
   clamp01,
@@ -253,6 +254,12 @@ function ContextInner() {
     const qs = new URLSearchParams({ season, our, opp, k: String(k) });
     return `/matchup?${qs.toString()}`;
   }, [season, our, opp, k]);
+
+  // SCRUM-628: open Timeout Quick-Call Mode with the current matchup and situation.
+  const quickCallLink = useMemo(
+    () => quickCallHref({ season, ourTeam: our, oppTeam: opp, margin, period, timeRemaining }),
+    [season, our, opp, margin, period, timeRemaining]
+  );
 
   const matchupChip = useMemo(() => {
     const ourName = meta.teamNames?.[our];
@@ -771,6 +778,11 @@ function ContextInner() {
             <Link className="btn" href="/gameplan">
               Gameplan
             </Link>
+            {canRun ? (
+              <Link className="btn btnPrimary" href={quickCallLink} aria-label="Open Timeout Quick-Call Mode">
+                Quick-Call Mode
+              </Link>
+            ) : null}
           </div>
         </div>
 
