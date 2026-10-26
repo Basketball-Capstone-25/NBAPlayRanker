@@ -2,7 +2,7 @@
   "stage": "Published revision 65 verified",
   "curated_manifest_entries": 86,
   "curated_hash_failures": [],
-  "markdown_local_links_checked": 195,
+  "markdown_local_links_checked": 196,
   "missing_local_links": [],
   "sensitive_text_findings": [],
   "prepared_model_checks_passed": 43,
@@ -15,5 +15,10 @@
   },
   "actual_hours_added": false,
   "later_server_head_observed": 66,
-  "later_server_head_scope_reviewed": false
+  "later_server_head_scope_reviewed": false,
+  "jira_closeout_checks_passed": 44,
+  "publication_ci": {
+    "run": 40377631461,
+    "conclusion": "success"
+  }
 }

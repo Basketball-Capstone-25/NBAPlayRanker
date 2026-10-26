@@ -53,5 +53,25 @@
     "run": 40372295411,
     "status": "success",
     "url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/40372295411"
+  },
+  "jira_closeout": {
+    "result": "Pass",
+    "checks_passed": 44,
+    "record": "jira-closeout.json",
+    "parent": "SCRUM-645",
+    "development_tasks": [
+      "SCRUM-673",
+      "SCRUM-674",
+      "SCRUM-675",
+      "SCRUM-676",
+      "SCRUM-677"
+    ],
+    "status": "Done"
+  },
+  "publication_commit": "ee17b630c7d034f4f49898ebcc03035a835ce473",
+  "publication_ci": {
+    "run": 40377631461,
+    "status": "success",
+    "url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/40377631461"
   }
 }

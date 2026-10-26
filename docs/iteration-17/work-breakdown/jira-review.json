@@ -370,11 +370,11 @@
       "SCRUM-550": "Compute & Export Top-K Uplift (CSV/JSON) (Ub9lX1mGAqAALhoz)",
       "SCRUM-643": "Explore Shot Attempts and Heatmaps (Wbd8ae8a15dc28bc); Review Shot-Plan Recommendations (5V1jrLmAUAAADR1t)"
     },
-    "modelPublicationNote": "New shot use-case IDs passed an official model import/export roundtrip. Their shared publication is still tracked by SCRUM-677; setting Jira references does not claim the model is published."
+    "modelPublicationNote": "The scoped model work is verified in shared revision 65 with zero pending committed history. See jira-closeout.json and model/publication-checks.json. A later teammate revision 66 was observed;65 is not claimed to be the latest head."
   },
   "currentAlignment": {
     "parent": "SCRUM-645",
-    "status": "In Progress",
+    "status": "Done",
     "subtasks": [
       {
         "key": "SCRUM-673",
@@ -391,19 +391,19 @@
       {
         "key": "SCRUM-675",
         "summary": "Update use-case flows and collaboration diagrams",
-        "status": "In Progress",
+        "status": "Done",
         "effortEstimateHours": 3
       },
       {
         "key": "SCRUM-676",
         "summary": "Verify model rendering and preserved project content",
-        "status": "To Do",
+        "status": "Done",
         "effortEstimateHours": 1
       },
       {
         "key": "SCRUM-677",
         "summary": "Publish and verify the shared Visual Paradigm revision",
-        "status": "To Do",
+        "status": "Done",
         "effortEstimateHours": 0.5
       }
     ],
@@ -3354,18 +3354,6 @@
   },
   "remaining": [
     {
-      "key": "SCRUM-675",
-      "work": "Finish and verify the model changes."
-    },
-    {
-      "key": "SCRUM-676",
-      "work": "Verify native rendering and preservation."
-    },
-    {
-      "key": "SCRUM-677",
-      "work": "Publish and read back the shared model revision."
-    },
-    {
       "key": "SCRUM-257",
       "work": "Historical contribution and team-review evidence is unavailable."
     },
@@ -3375,12 +3363,24 @@
     }
   ],
   "otherOwnership": "SCRUM-494 and SCRUM-628 remain teammate work. Feature lifecycle for SCRUM-3/4/8 is unchanged.",
-  "result": "Jira tracking corrections complete; shared model publication and the explicit historical/future limitations remain open.",
+  "result": "Jira tracking and scoped model publication are complete. The explicit historical evidence gap and future forecast requirement remain open.",
   "finalModelFieldCheck": {
     "artifact": "model/jira-use-case-check.json",
     "checkedFields": 30,
     "checks": 102,
     "passed": 102,
-    "publication": "pending"
+    "publication": "Verified scoped revision 65; see jira-closeout.json."
+  },
+  "publicationCloseout": {
+    "artifact": "jira-closeout.json",
+    "checkedAt": "2026-10-26T18:28:48.405Z",
+    "revision": 65,
+    "gitCommit": "ee17b630c7d034f4f49898ebcc03035a835ce473",
+    "nativeSha256": "e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408",
+    "checks": {
+      "passed": 44,
+      "total": 44
+    },
+    "noHoursAdded": true
   }
 }

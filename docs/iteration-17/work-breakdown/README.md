@@ -6,6 +6,8 @@ The [project checklist](../../../CONTRIBUTING.md) now sets the steps for future 
 
 The [Jira readback](jira-review.json) verifies 35 Dev Subtasks across 16 completed repairs, 30 use-case references, missing estimates and six specific risk follow-ups. All 682 preservation checks passed. [BST-207](https://basketball-strategy.atlassian.net/browse/BST-207) records the saved shot-metrics CSV check from its actual October 25 execution; existing cases cover the screen rendering.
 
+The [final Jira check](jira-closeout.json) confirms SCRUM-645 and all five development tasks are Done. Its completion comment includes the published functional overview and shot wireflow. All 44 closeout checks passed.
+
 ## How the work matches the breakdown
 
 | Requirement | What was checked or added |

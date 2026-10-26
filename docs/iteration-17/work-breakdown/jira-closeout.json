@@ -1,0 +1,294 @@
+{
+  "checkedAt": "2026-10-26T18:28:48.405Z",
+  "result": "Pass",
+  "scope": "Close out verified model and Jira alignment only",
+  "publishedModel": {
+    "revision": 65,
+    "sha256": "e0e8ef81d7af920d227c6f228e707a0e9673fd6f5131bd080d1bdbf75a2b0408",
+    "pendingCommittedHistory": 0,
+    "gitCommit": "ee17b630c7d034f4f49898ebcc03035a835ce473",
+    "verification": "model/publication-checks.json",
+    "publicationChecksPassed": 24,
+    "publicationChecksTotal": 24,
+    "note": "Revision 65 is the verified scoped publication. A later teammate revision 66 was observed and is not claimed reviewed here."
+  },
+  "issues": [
+    {
+      "key": "SCRUM-645",
+      "summary": "Align use-case models and Jira work breakdown",
+      "status": "Done",
+      "parent": "SCRUM-8",
+      "worklogs": 0,
+      "completionComment": "11507"
+    },
+    {
+      "key": "SCRUM-673",
+      "summary": "Review assigned Jira work against the work-breakdown requirements",
+      "status": "Done",
+      "parent": "SCRUM-645",
+      "worklogs": 0,
+      "completionComment": null
+    },
+    {
+      "key": "SCRUM-674",
+      "summary": "Complete Jira estimates, development steps and test links",
+      "status": "Done",
+      "parent": "SCRUM-645",
+      "worklogs": 0,
+      "completionComment": null
+    },
+    {
+      "key": "SCRUM-675",
+      "summary": "Update use-case flows and collaboration diagrams",
+      "status": "Done",
+      "parent": "SCRUM-645",
+      "worklogs": 0,
+      "completionComment": "11504"
+    },
+    {
+      "key": "SCRUM-676",
+      "summary": "Verify model rendering and preserved project content",
+      "status": "Done",
+      "parent": "SCRUM-645",
+      "worklogs": 0,
+      "completionComment": "11505"
+    },
+    {
+      "key": "SCRUM-677",
+      "summary": "Publish and verify the shared Visual Paradigm revision",
+      "status": "Done",
+      "parent": "SCRUM-645",
+      "worklogs": 0,
+      "completionComment": "11506"
+    }
+  ],
+  "comments": [
+    {
+      "issue": "SCRUM-675",
+      "id": "11504",
+      "body": "Updated the 20 use-case flows and their collaboration diagrams to match the current features. The four wireflows show the success, validation and error states, with teammate feature work kept separate.\n\n[Model crosswalk](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ee17b630c7d034f4f49898ebcc03035a835ce473/docs/iteration-17/work-breakdown/model/model-traceability.json)"
+    },
+    {
+      "issue": "SCRUM-676",
+      "id": "11505",
+      "body": "Reopened the committed native model and checked the diagrams. All 20 use-case flows and 24 screen states matched the prepared changes, and the 28 screen/wireflow renders matched. The incoming teammate view changes are recorded separately.\n\n[Publication checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ee17b630c7d034f4f49898ebcc03035a835ce473/docs/iteration-17/work-breakdown/model/publication-checks.json)"
+    },
+    {
+      "issue": "SCRUM-677",
+      "id": "11506",
+      "body": "Published this model work in shared Visual Paradigm revision 65. The committed copy was verified with no pending history, and the native project and publication proof are on main.\n\n[Publication proof](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ee17b630c7d034f4f49898ebcc03035a835ce473/docs/iteration-17/work-breakdown/model/publication-checks.json)"
+    },
+    {
+      "issue": "SCRUM-645",
+      "id": "11507",
+      "body": "<p>Finished the model and Jira work breakdown. The use-case flows, design diagrams and screen flows match the implemented features, and the work items link to their requirements and test evidence.</p><p>The model work is published in Visual Paradigm revision 65. The functional overview and shot wireflow below are exports from that revision.</p><p><a href=\"https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ee17b630c7d034f4f49898ebcc03035a835ce473/docs/iteration-17/work-breakdown/README.md\">Review guide and evidence</a></p>"
+    }
+  ],
+  "publishedImages": [
+    {
+      "fileName": "Functional Overview - Current Analyst and Shot Evidence.png",
+      "mediaId": "63fcf733-a015-4e95-9a4b-5a953242eb4e",
+      "revision": 65,
+      "commentId": "11507"
+    },
+    {
+      "fileName": "Wireflow - Shot Plan, Explorer and Heatmap.png",
+      "mediaId": "5a63bd6c-28e2-4aca-b4ca-14500956dcff",
+      "revision": 65,
+      "commentId": "11507"
+    }
+  ],
+  "priorProgress": {
+    "commentId": "11503",
+    "preserved": true,
+    "supersededBy": "11507"
+  },
+  "checks": [
+    {
+      "name": "SCRUM-645 is Done",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-645 has zero worklogs",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-645 owner preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-645 description preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-645 worklogs preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-645 sprint preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-645 previous links preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-645 previous attachments preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-645 original comment 11503 preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-673 is Done",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-673 has zero worklogs",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-674 is Done",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-674 has zero worklogs",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-675 is Done",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-675 has zero worklogs",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-675 owner preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-675 description preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-675 worklogs preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-675 sprint preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-675 previous links preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-675 previous attachments preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-676 is Done",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-676 has zero worklogs",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-676 owner preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-676 description preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-676 worklogs preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-676 sprint preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-676 previous links preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-676 previous attachments preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-677 is Done",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-677 has zero worklogs",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-677 owner preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-677 description preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-677 worklogs preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-677 sprint preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-677 previous links preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-677 previous attachments preserved",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-675 completion comment present",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-676 completion comment present",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-677 completion comment present",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-645 completion comment present",
+      "pass": true
+    },
+    {
+      "name": "published image Functional Overview - Current Analyst and Shot Evidence.png embedded",
+      "pass": true
+    },
+    {
+      "name": "published image Wireflow - Shot Plan, Explorer and Heatmap.png embedded",
+      "pass": true
+    },
+    {
+      "name": "exactly two published image nodes",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "passed": 44,
+    "total": 44
+  },
+  "remainingLimits": [
+    "SCRUM-257's original contribution/team-review evidence remains unavailable.",
+    "Before-possession forecasting is still planned in SCRUM-641; BST-117 remains failed.",
+    "Future unassigned team milestones and stakeholder reviews remain separate."
+  ],
+  "hoursAdded": 0
+}
