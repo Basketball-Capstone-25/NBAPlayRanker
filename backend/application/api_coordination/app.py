@@ -51,6 +51,7 @@ from application.api_coordination.data_quality_endpoints import (
 )
 from application.api_coordination.export_report_endpoints import create_export_report_router
 from application.api_coordination.quick_call_endpoints import create_quick_call_router
+from application.api_coordination.request_log_endpoints import create_request_log_router, install_request_logging
 from application.recommendation_services.quick_call_service import QuickCallService
 app = FastAPI(
     title="Basketball Strategy API",
@@ -816,6 +817,10 @@ if rec is not None:
     app.include_router(
         create_quick_call_router(quick_call_service, VALID_SEASONS, VALID_TEAMS, extra_dependencies=[data_quality_gate])
     )
+
+# SCRUM-494: analysts search endpoint activity; every signed-in call is recorded.
+app.include_router(create_request_log_router())
+install_request_logging(app)
 
 # Install last so preflight and early readiness/auth errors keep their CORS
 # headers. Browser clients can then read the actual service error.

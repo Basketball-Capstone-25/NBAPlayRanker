@@ -29,6 +29,8 @@ def require_auth(request: Request) -> dict:
         raise HTTPException(status_code=401, detail="Invalid or missing session token.")
 
     role = get_user_role(token) if token else None
+    # SCRUM-494: let the request-log middleware record who made this call.
+    request.state.audit_user = {"token": token, "role": role}
     if not check_user_access(role, "meta"):
         raise HTTPException(
             status_code=403,
