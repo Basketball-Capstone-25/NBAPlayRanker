@@ -2,6 +2,10 @@
 
 A decision-support tool for basketball coaches and analysts. Coaches get ranked play-type recommendations for upcoming matchups; analysts explore the underlying data, evaluate model performance, and review shot-level analysis.
 
+Use the [project work checklist](CONTRIBUTING.md) for Jira, model, code and test
+updates. The [current release guide](docs/iteration-17/README.md) records the
+latest verified work and the remaining team milestones.
+
 The [Iteration 14 elaboration evidence](docs/iteration-14/README.md) links the
 assigned stories, test results, deployment records and native model revision 51.
 This release adds analyst Top-K uplift JSON/CSV endpoints, a Calibration tab
