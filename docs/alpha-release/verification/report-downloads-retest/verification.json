@@ -1,0 +1,486 @@
+{
+  "started_at_utc": "2026-10-27T05:07:44.177Z",
+  "api": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app",
+  "site": "https://nbaplayranker-seven.vercel.app",
+  "complete": true,
+  "passed": true,
+  "checks": [
+    {
+      "name": "source: matchup rankings",
+      "passed": true,
+      "status": 200,
+      "route": "/rank-plays/baseline"
+    },
+    {
+      "name": "source versions: matchup rankings",
+      "passed": true,
+      "dataset_versions": {
+        "synergy": "sha256:014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b"
+      }
+    },
+    {
+      "name": "source: context rankings",
+      "passed": true,
+      "status": 200,
+      "route": "/rank-plays/context-ml"
+    },
+    {
+      "name": "source versions: context rankings",
+      "passed": true,
+      "dataset_versions": {
+        "synergy": "sha256:014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b",
+        "ml_predictions": "sha256:1c65a178405a9fb76ac2e17c59ec6afcd1c213afc82e74373882de1efadddf28"
+      }
+    },
+    {
+      "name": "source: holdout metrics",
+      "passed": true,
+      "status": 200,
+      "route": "/metrics/baseline-vs-ml"
+    },
+    {
+      "name": "source versions: holdout metrics",
+      "passed": true,
+      "dataset_versions": {
+        "synergy": "sha256:014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b"
+      }
+    },
+    {
+      "name": "backend baseline_rankings csv",
+      "passed": true,
+      "status": 200,
+      "bytes": 972,
+      "rows": 5,
+      "content_type": "text/csv; charset=utf-8",
+      "content_disposition": "attachment; filename=\"baseline-rankings_2024-25_TOR_BOS_5_0.7_0.3.csv\""
+    },
+    {
+      "name": "preflight baseline_rankings csv",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "native form baseline_rankings csv",
+      "passed": true,
+      "status": 200,
+      "bytes": 972,
+      "rows": 5,
+      "content_type": "text/csv; charset=utf-8",
+      "content_disposition": "attachment; filename=\"baseline-rankings_2024-25_TOR_BOS_5_0.7_0.3.csv\""
+    },
+    {
+      "name": "backend baseline_rankings json",
+      "passed": true,
+      "status": 200,
+      "bytes": 1297,
+      "rows": 5,
+      "content_type": "application/json",
+      "content_disposition": "attachment; filename=\"baseline-rankings_2024-25_TOR_BOS_5_0.7_0.3.json\""
+    },
+    {
+      "name": "preflight baseline_rankings json",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "native form baseline_rankings json",
+      "passed": true,
+      "status": 200,
+      "bytes": 1297,
+      "rows": 5,
+      "content_type": "application/json",
+      "content_disposition": "attachment; filename=\"baseline-rankings_2024-25_TOR_BOS_5_0.7_0.3.json\""
+    },
+    {
+      "name": "backend baseline_rankings pdf",
+      "passed": true,
+      "status": 200,
+      "bytes": 2410,
+      "rows": 5,
+      "content_type": "application/pdf",
+      "content_disposition": "attachment; filename=\"baseline-rankings_2024-25_TOR_BOS_5_0.7_0.3.pdf\""
+    },
+    {
+      "name": "preflight baseline_rankings pdf",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "native form baseline_rankings pdf",
+      "passed": true,
+      "status": 200,
+      "bytes": 2410,
+      "rows": 5,
+      "content_type": "application/pdf",
+      "content_disposition": "attachment; filename=\"baseline-rankings_2024-25_TOR_BOS_5_0.7_0.3.pdf\""
+    },
+    {
+      "name": "backend baseline_rankings wrong role",
+      "passed": true,
+      "status": 403,
+      "expected_status": 403,
+      "attachment": false
+    },
+    {
+      "name": "frontend baseline_rankings wrong role",
+      "passed": true,
+      "status": 403,
+      "expected_status": 403,
+      "attachment": false
+    },
+    {
+      "name": "backend context_rankings csv",
+      "passed": true,
+      "status": 200,
+      "bytes": 1588,
+      "rows": 5,
+      "content_type": "text/csv; charset=utf-8",
+      "content_disposition": "attachment; filename=\"context-rankings_2024-25_TOR_BOS_5_-2_4_120_True_1.csv\""
+    },
+    {
+      "name": "preflight context_rankings csv",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "native form context_rankings csv",
+      "passed": true,
+      "status": 200,
+      "bytes": 1588,
+      "rows": 5,
+      "content_type": "text/csv; charset=utf-8",
+      "content_disposition": "attachment; filename=\"context-rankings_2024-25_TOR_BOS_5_-2_4_120_True_1.csv\""
+    },
+    {
+      "name": "backend context_rankings json",
+      "passed": true,
+      "status": 200,
+      "bytes": 1788,
+      "rows": 5,
+      "content_type": "application/json",
+      "content_disposition": "attachment; filename=\"context-rankings_2024-25_TOR_BOS_5_-2_4_120_True_1.json\""
+    },
+    {
+      "name": "preflight context_rankings json",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "native form context_rankings json",
+      "passed": true,
+      "status": 200,
+      "bytes": 1788,
+      "rows": 5,
+      "content_type": "application/json",
+      "content_disposition": "attachment; filename=\"context-rankings_2024-25_TOR_BOS_5_-2_4_120_True_1.json\""
+    },
+    {
+      "name": "backend context_rankings pdf",
+      "passed": true,
+      "status": 200,
+      "bytes": 2681,
+      "rows": 5,
+      "content_type": "application/pdf",
+      "content_disposition": "attachment; filename=\"context-rankings_2024-25_TOR_BOS_5_-2_4_120_True_1.pdf\""
+    },
+    {
+      "name": "preflight context_rankings pdf",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "native form context_rankings pdf",
+      "passed": true,
+      "status": 200,
+      "bytes": 2681,
+      "rows": 5,
+      "content_type": "application/pdf",
+      "content_disposition": "attachment; filename=\"context-rankings_2024-25_TOR_BOS_5_-2_4_120_True_1.pdf\""
+    },
+    {
+      "name": "backend context_rankings wrong role",
+      "passed": true,
+      "status": 403,
+      "expected_status": 403,
+      "attachment": false
+    },
+    {
+      "name": "frontend context_rankings wrong role",
+      "passed": true,
+      "status": 403,
+      "expected_status": 403,
+      "attachment": false
+    },
+    {
+      "name": "backend model_metrics csv",
+      "passed": true,
+      "status": 200,
+      "bytes": 1003,
+      "rows": 4,
+      "content_type": "text/csv; charset=utf-8",
+      "content_disposition": "attachment; filename=\"model-metrics_5.csv\""
+    },
+    {
+      "name": "preflight model_metrics csv",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "native form model_metrics csv",
+      "passed": true,
+      "status": 200,
+      "bytes": 1003,
+      "rows": 4,
+      "content_type": "text/csv; charset=utf-8",
+      "content_disposition": "attachment; filename=\"model-metrics_5.csv\""
+    },
+    {
+      "name": "backend model_metrics json",
+      "passed": true,
+      "status": 200,
+      "bytes": 1508,
+      "rows": 4,
+      "content_type": "application/json",
+      "content_disposition": "attachment; filename=\"model-metrics_5.json\""
+    },
+    {
+      "name": "preflight model_metrics json",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "native form model_metrics json",
+      "passed": true,
+      "status": 200,
+      "bytes": 1508,
+      "rows": 4,
+      "content_type": "application/json",
+      "content_disposition": "attachment; filename=\"model-metrics_5.json\""
+    },
+    {
+      "name": "backend model_metrics pdf",
+      "passed": true,
+      "status": 200,
+      "bytes": 2645,
+      "rows": 4,
+      "content_type": "application/pdf",
+      "content_disposition": "attachment; filename=\"model-metrics_5.pdf\""
+    },
+    {
+      "name": "preflight model_metrics pdf",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "native form model_metrics pdf",
+      "passed": true,
+      "status": 200,
+      "bytes": 2645,
+      "rows": 4,
+      "content_type": "application/pdf",
+      "content_disposition": "attachment; filename=\"model-metrics_5.pdf\""
+    },
+    {
+      "name": "backend model_metrics wrong role",
+      "passed": true,
+      "status": 403,
+      "expected_status": 403,
+      "attachment": false
+    },
+    {
+      "name": "frontend model_metrics wrong role",
+      "passed": true,
+      "status": 403,
+      "expected_status": 403,
+      "attachment": false
+    },
+    {
+      "name": "backend anonymous session",
+      "passed": true,
+      "status": 401,
+      "expected_status": 401,
+      "attachment": false
+    },
+    {
+      "name": "backend unsupported format",
+      "passed": true,
+      "status": 400,
+      "expected_status": 400,
+      "attachment": false
+    },
+    {
+      "name": "backend malformed Unicode",
+      "passed": true,
+      "status": 400,
+      "expected_status": 400,
+      "attachment": false
+    },
+    {
+      "name": "backend oversize body",
+      "passed": true,
+      "status": 413,
+      "expected_status": 413,
+      "attachment": false
+    },
+    {
+      "name": "frontend anonymous session",
+      "passed": true,
+      "status": 401,
+      "expected_status": 401,
+      "attachment": false
+    },
+    {
+      "name": "frontend unsupported format",
+      "passed": true,
+      "status": 400,
+      "expected_status": 400,
+      "attachment": false
+    },
+    {
+      "name": "frontend foreign Origin",
+      "passed": true,
+      "status": 403,
+      "expected_status": 403,
+      "attachment": false
+    },
+    {
+      "name": "frontend null Origin",
+      "passed": true,
+      "status": 403,
+      "expected_status": 403,
+      "attachment": false
+    },
+    {
+      "name": "frontend malformed Unicode is not an attachment",
+      "passed": true,
+      "status": 400,
+      "expected_status": 400,
+      "attachment": false
+    },
+    {
+      "name": "frontend oversize body",
+      "passed": true,
+      "status": 413,
+      "expected_status": 413,
+      "attachment": false
+    },
+    {
+      "name": "verification sessions signed out locally",
+      "passed": true
+    }
+  ],
+  "files": [
+    {
+      "file": "baseline_rankings-source.json",
+      "bytes": 1523,
+      "sha256": "5d019ed476ee322f3920fd598fce981ebbb4a20795f1e1c8856bd84377555890"
+    },
+    {
+      "file": "backend-baseline_rankings.csv",
+      "bytes": 972,
+      "sha256": "f4cb7510791b9a3f465b2db31bbf53be2ebcdef5373efc57e333346151a43e15"
+    },
+    {
+      "file": "frontend-baseline_rankings.csv",
+      "bytes": 972,
+      "sha256": "f4cb7510791b9a3f465b2db31bbf53be2ebcdef5373efc57e333346151a43e15"
+    },
+    {
+      "file": "backend-baseline_rankings.json",
+      "bytes": 1297,
+      "sha256": "a61d30cf35e594eac3efec8fa378b4fcbfe63e7ba2114b3048315672f8103e40"
+    },
+    {
+      "file": "frontend-baseline_rankings.json",
+      "bytes": 1297,
+      "sha256": "a61d30cf35e594eac3efec8fa378b4fcbfe63e7ba2114b3048315672f8103e40"
+    },
+    {
+      "file": "backend-baseline_rankings.pdf",
+      "bytes": 2410,
+      "sha256": "ab9ec46d1e232883d33735e902cc1585db83aa0b51fe76ab527e5b5dca0a86f7"
+    },
+    {
+      "file": "frontend-baseline_rankings.pdf",
+      "bytes": 2410,
+      "sha256": "36404a4228349de4e3eb9b1824d286e0ba3b8d6fad9043a75023110f192b2560"
+    },
+    {
+      "file": "context_rankings-source.json",
+      "bytes": 2071,
+      "sha256": "69220270fcc2d9b1e90f02c101d351faaa78c9ceff3682793ac61aa13a46b4a0"
+    },
+    {
+      "file": "backend-context_rankings.csv",
+      "bytes": 1588,
+      "sha256": "dd131bfff87b63c1edd13f7da81c5ae5b3fde30f1519a5f5dfdbe84881891f20"
+    },
+    {
+      "file": "frontend-context_rankings.csv",
+      "bytes": 1588,
+      "sha256": "dd131bfff87b63c1edd13f7da81c5ae5b3fde30f1519a5f5dfdbe84881891f20"
+    },
+    {
+      "file": "backend-context_rankings.json",
+      "bytes": 1788,
+      "sha256": "732fbb574e00db059a9bd4ad8899b14dc9fd960127a4c00a145d34f1139938b8"
+    },
+    {
+      "file": "frontend-context_rankings.json",
+      "bytes": 1788,
+      "sha256": "732fbb574e00db059a9bd4ad8899b14dc9fd960127a4c00a145d34f1139938b8"
+    },
+    {
+      "file": "backend-context_rankings.pdf",
+      "bytes": 2681,
+      "sha256": "63a11fcf8a452867b01c45dd8662bb4833ca47b39657ef372b7e53bb39a53dac"
+    },
+    {
+      "file": "frontend-context_rankings.pdf",
+      "bytes": 2681,
+      "sha256": "bc5d30714e9f622e7aa5c0280789be6bf300a4bfdbf3edd1bb92a2ec7eced935"
+    },
+    {
+      "file": "model_metrics-source.json",
+      "bytes": 1742,
+      "sha256": "89b39f7ff422470fe12ef19bd80bc3d72815daee48868e7ce17c607b31a4df2b"
+    },
+    {
+      "file": "backend-model_metrics.csv",
+      "bytes": 1003,
+      "sha256": "b26dcb3f61b41b8d21800e30f013da3a4361de8e9ad2471ab3d9322fce5024bb"
+    },
+    {
+      "file": "frontend-model_metrics.csv",
+      "bytes": 1003,
+      "sha256": "b26dcb3f61b41b8d21800e30f013da3a4361de8e9ad2471ab3d9322fce5024bb"
+    },
+    {
+      "file": "backend-model_metrics.json",
+      "bytes": 1508,
+      "sha256": "4f9b557b0613c676b3e69d61b68a9f375362902e67d2fded977df2ab7d55fac6"
+    },
+    {
+      "file": "frontend-model_metrics.json",
+      "bytes": 1508,
+      "sha256": "4f9b557b0613c676b3e69d61b68a9f375362902e67d2fded977df2ab7d55fac6"
+    },
+    {
+      "file": "backend-model_metrics.pdf",
+      "bytes": 2645,
+      "sha256": "1b22f84206abc4777c6b7f13e55d336c4bd9a8cc5ee6fe6d9dbf9ceef9c8773e"
+    },
+    {
+      "file": "frontend-model_metrics.pdf",
+      "bytes": 2645,
+      "sha256": "b524222c47e726b037b4319458147c05cf42c75bb2de232648413c4041481858"
+    }
+  ],
+  "sessions": {
+    "opened": 2,
+    "closed": 2
+  },
+  "stage": "complete",
+  "scope": "API-derived report fixtures. Context applies the application's overlay function. Native form requests are HTTP checks; separate browser evidence verifies the visible controls and saved downloads.",
+  "finished_at_utc": "2026-10-27T05:08:29.584Z"
+}

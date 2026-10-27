@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-10-27T05:05:47.386485+00:00",
+  "frontend_commit": "9f8706ad989ac59c21564c5de3a5c6aeb1d62530",
+  "backend_commit": "d1b3559",
+  "frontend_deployment": "dpl_EMCHE6J8GsAZ9Yd3dTmzzCkh7DwC",
+  "frontend_status": "READY",
+  "site": "https://nbaplayranker-seven.vercel.app",
+  "backend_revision": "nba-playranker-api-00016-bop",
+  "backend_traffic_percent": 100,
+  "cloud_build": "045d3025-4775-43bc-bdec-b4420f5b4938",
+  "cloud_build_status": "SUCCESS",
+  "github_ci": {
+    "run": 40452826895,
+    "conclusion": "success",
+    "url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/40452826895"
+  },
+  "validation": {
+    "backend_tests_passed": 527,
+    "frontend_tests_passed": 300,
+    "typescript_exit": 0,
+    "production_build_exit": 0,
+    "staged_live_checks": 220,
+    "production_live_checks": 220,
+    "existing_export_checks_passed": 50,
+    "existing_export_files_saved": 21,
+    "existing_export_evidence": "report-downloads-retest/verification.json",
+    "initial_export_run_note": "The first export run was interrupted by a browser sign-out of the same test account; two requests returned 401. The original 48/50 result is retained in report-downloads. The isolated rerun passed 50/50."
+  },
+  "limits": "Counts describe the named checks, not every possible workflow. Shared model publication and final team submission are recorded separately."
+}

@@ -1,0 +1,244 @@
+{
+  "schema_version": "playtype_dashboard_v1",
+  "aggregation_version": "synergy_regular_season_v2",
+  "filters": {
+    "season": "2019-20",
+    "season_phase": "regular_season",
+    "our": "LAL",
+    "opp": "SAS",
+    "min_poss": 20
+  },
+  "dataset_versions": {
+    "synergy": "sha256:014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b"
+  },
+  "coverage": {
+    "offense_types": 11,
+    "defense_types": 7,
+    "unavailable_defense_types": [
+      "Cut",
+      "Misc",
+      "OffRebound",
+      "Transition"
+    ]
+  },
+  "usage_efficiency": {
+    "team": "LAL",
+    "total_possessions": 7729,
+    "league_total_possessions": 227322,
+    "rows": [
+      {
+        "play_type": "Cut",
+        "possessions": 593,
+        "points": 811,
+        "usage_pct": 7.672402639410015,
+        "ppp": 1.3676222596964587,
+        "league_usage_pct": 6.607367522721074,
+        "league_ppp": 1.286750998668442,
+        "usage_delta_pp": 1.0650351166889402,
+        "ppp_delta": 0.08087126102801667,
+        "sample_ok": true
+      },
+      {
+        "play_type": "Handoff",
+        "possessions": 292,
+        "points": 234,
+        "usage_pct": 3.7779790399792987,
+        "ppp": 0.8013698630136986,
+        "league_usage_pct": 5.0206315270849275,
+        "league_ppp": 0.9313940243581881,
+        "usage_delta_pp": -1.2426524871056288,
+        "ppp_delta": -0.13002416134448946,
+        "sample_ok": true
+      },
+      {
+        "play_type": "Isolation",
+        "possessions": 581,
+        "points": 505,
+        "usage_pct": 7.517143226808125,
+        "ppp": 0.8691910499139415,
+        "league_usage_pct": 6.30603285207767,
+        "league_ppp": 0.9130798744332055,
+        "usage_delta_pp": 1.2111103747304552,
+        "ppp_delta": -0.043888824519264014,
+        "sample_ok": true
+      },
+      {
+        "play_type": "Misc",
+        "possessions": 520,
+        "points": 300,
+        "usage_pct": 6.72790787941519,
+        "ppp": 0.5769230769230769,
+        "league_usage_pct": 5.592067639735705,
+        "league_ppp": 0.5532567652611705,
+        "usage_delta_pp": 1.1358402396794842,
+        "ppp_delta": 0.02366631166190636,
+        "sample_ok": true
+      },
+      {
+        "play_type": "OffRebound",
+        "possessions": 430,
+        "points": 525,
+        "usage_pct": 5.563462284901022,
+        "ppp": 1.2209302325581395,
+        "league_usage_pct": 4.92473231803345,
+        "league_ppp": 1.0999553372041089,
+        "usage_delta_pp": 0.6387299668675723,
+        "ppp_delta": 0.12097489535403061,
+        "sample_ok": true
+      },
+      {
+        "play_type": "OffScreen",
+        "possessions": 347,
+        "points": 279,
+        "usage_pct": 4.48958468107129,
+        "ppp": 0.8040345821325648,
+        "league_usage_pct": 4.647152497338577,
+        "league_ppp": 0.9719803104884513,
+        "usage_delta_pp": -0.1575678162672869,
+        "ppp_delta": -0.1679457283558865,
+        "sample_ok": true
+      },
+      {
+        "play_type": "PRBallHandler",
+        "possessions": 1172,
+        "points": 1012,
+        "usage_pct": 15.163669297451158,
+        "ppp": 0.863481228668942,
+        "league_usage_pct": 19.093620503074934,
+        "league_ppp": 0.8811169477467514,
+        "usage_delta_pp": -3.9299512056237766,
+        "ppp_delta": -0.017635719077809475,
+        "sample_ok": true
+      },
+      {
+        "play_type": "PRRollMan",
+        "possessions": 347,
+        "points": 428,
+        "usage_pct": 4.48958468107129,
+        "ppp": 1.2334293948126802,
+        "league_usage_pct": 5.932553822331319,
+        "league_ppp": 1.1313955212813287,
+        "usage_delta_pp": -1.4429691412600292,
+        "ppp_delta": 0.10203387353135152,
+        "sample_ok": true
+      },
+      {
+        "play_type": "Postup",
+        "possessions": 623,
+        "points": 566,
+        "usage_pct": 8.060551170914737,
+        "ppp": 0.9085072231139647,
+        "league_usage_pct": 4.6955420064929925,
+        "league_ppp": 0.9251452126662919,
+        "usage_delta_pp": 3.3650091644217444,
+        "ppp_delta": -0.016637989552327204,
+        "sample_ok": true
+      },
+      {
+        "play_type": "Spotup",
+        "possessions": 1453,
+        "points": 1472,
+        "usage_pct": 18.79932720921206,
+        "ppp": 1.0130763936682725,
+        "league_usage_pct": 21.37188657499054,
+        "league_ppp": 1.0149229154230903,
+        "usage_delta_pp": -2.5725593657784813,
+        "ppp_delta": -0.0018465217548178092,
+        "sample_ok": true
+      },
+      {
+        "play_type": "Transition",
+        "possessions": 1371,
+        "points": 1569,
+        "usage_pct": 17.738387889765818,
+        "ppp": 1.1444201312910285,
+        "league_usage_pct": 15.80841273611881,
+        "league_ppp": 1.1113089937666965,
+        "usage_delta_pp": 1.9299751536470087,
+        "ppp_delta": 0.033111137524332035,
+        "sample_ok": true
+      }
+    ]
+  },
+  "opponent_defense": {
+    "team": "SAS",
+    "tracked_possessions": 5057,
+    "rows": [
+      {
+        "play_type": "Spotup",
+        "possessions": 1652,
+        "points_allowed": 1801,
+        "allowed_ppp": 1.0901937046004844,
+        "league_allowed_ppp": 1.0095958246861323,
+        "allowed_ppp_delta": 0.08059787991435208,
+        "sample_ok": true,
+        "weak_spot_rank": 1
+      },
+      {
+        "play_type": "Postup",
+        "possessions": 392,
+        "points_allowed": 372,
+        "allowed_ppp": 0.9489795918367347,
+        "league_allowed_ppp": 0.9266673082475219,
+        "allowed_ppp_delta": 0.02231228358921289,
+        "sample_ok": true,
+        "weak_spot_rank": 2
+      },
+      {
+        "play_type": "PRBallHandler",
+        "possessions": 1585,
+        "points_allowed": 1403,
+        "allowed_ppp": 0.885173501577287,
+        "league_allowed_ppp": 0.8780555749007591,
+        "allowed_ppp_delta": 0.007117926676527886,
+        "sample_ok": true,
+        "weak_spot_rank": 3
+      },
+      {
+        "play_type": "Handoff",
+        "possessions": 368,
+        "points_allowed": 337,
+        "allowed_ppp": 0.9157608695652174,
+        "league_allowed_ppp": 0.9187637969094923,
+        "allowed_ppp_delta": -0.003002927344274875,
+        "sample_ok": true,
+        "weak_spot_rank": null
+      },
+      {
+        "play_type": "Isolation",
+        "possessions": 469,
+        "points_allowed": 413,
+        "allowed_ppp": 0.8805970149253731,
+        "league_allowed_ppp": 0.9102394081105605,
+        "allowed_ppp_delta": -0.029642393185187355,
+        "sample_ok": true,
+        "weak_spot_rank": null
+      },
+      {
+        "play_type": "OffScreen",
+        "possessions": 417,
+        "points_allowed": 390,
+        "allowed_ppp": 0.935251798561151,
+        "league_allowed_ppp": 0.9661854103343465,
+        "allowed_ppp_delta": -0.030933611773195424,
+        "sample_ok": true,
+        "weak_spot_rank": null
+      },
+      {
+        "play_type": "PRRollMan",
+        "possessions": 174,
+        "points_allowed": 172,
+        "allowed_ppp": 0.9885057471264368,
+        "league_allowed_ppp": 1.0246913580246915,
+        "allowed_ppp_delta": -0.03618561089825467,
+        "sample_ok": true,
+        "weak_spot_rank": null
+      }
+    ]
+  },
+  "warnings": [
+    "These are historical regular-season profiles, not a forecast for this game.",
+    "Opponent defensive data covers 7 play types; missing categories are unavailable, not zero.",
+    "The sample cutoff is a display rule, not a confidence interval."
+  ]
+}
