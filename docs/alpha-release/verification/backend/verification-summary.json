@@ -1,0 +1,100 @@
+{
+  "scope": "Alpha backend and play-type arithmetic; no deployment or production success claimed by this local evidence.",
+  "features": {
+    "SCRUM-695": "Usage versus efficiency relative to the same league play type",
+    "SCRUM-696": "Opponent defensive weak spots ranked by allowed PPP above the same league play type"
+  },
+  "defects": {
+    "SCRUM-701": {
+      "before": "Regular season and playoffs were combined; duplicate player rows and missing phase were accepted.",
+      "after": "Regular-season ID and season must agree; duplicate player/team/play-type rows are rejected.",
+      "tests": [
+        "test_regular_season_totals_exclude_playoffs",
+        "test_duplicate_player_source_row_cannot_double_count_possessions",
+        "test_source_phase_is_required_instead_of_silently_mixing_seasons"
+      ]
+    },
+    "SCRUM-702": {
+      "before": "PPP, FG% and eFG% were all averaged with possession weights.",
+      "after": "PPP uses total points/possessions; FG% uses total makes/attempts; rounded source eFG% is weighted by attempts. League rates use the same denominators. The separate lagged-forecast eFG aggregator is corrected too.",
+      "tests": [
+        "test_field_goal_rates_use_attempts_and_ppp_uses_exact_counts",
+        "test_league_rates_use_counts_and_their_own_denominators"
+      ]
+    },
+    "SCRUM-703": {
+      "before": "A weaker defense reduced both baseline and context matchup scores.",
+      "after": "Offense is blended directly with opponent PPP allowed; raising allowed PPP cannot lower the unadjusted score when other inputs are fixed.",
+      "tests": [
+        "test_weaker_opponent_defense_does_not_lower_offensive_score",
+        "test_context_blend_keeps_the_same_defense_direction"
+      ]
+    }
+  },
+  "api": {
+    "method": "GET",
+    "path": "/analytics/playtypes",
+    "role": "coach",
+    "params": [
+      "season",
+      "our",
+      "opp",
+      "min_poss (integer 1..10000; default20)"
+    ],
+    "success_contract": "dashboard-response.json",
+    "low_sample_contract": "dashboard-all-low-sample.json"
+  },
+  "formulas": {
+    "ppp": "sum(PTS)/sum(POSS)",
+    "fg_pct": "sum(FGM)/sum(FGA)",
+    "efg_pct": "sum(source_EFG_PCT*FGA)/sum(FGA); approximate because source rates are rounded and 3PM is absent",
+    "usage_pct": "100*team_playtype_POSS/sum(team_offense_POSS across tracked types)",
+    "league_usage_pct": "100*league_playtype_POSS/sum(league_offense_POSS across tracked types)",
+    "league_ppp": "sum(league points for play type and side)/sum(league possessions for play type and side)",
+    "usage_delta_pp": "usage_pct-league_usage_pct",
+    "ppp_delta": "team_ppp-league_ppp",
+    "allowed_ppp_delta": "opponent_allowed_ppp-league_allowed_ppp",
+    "baseline_estimate": "w_off*shrunk_offense_ppp+w_def*shrunk_opponent_allowed_ppp"
+  },
+  "limits": [
+    "Regular-season source snapshot only; this audit does not prove the upstream snapshot is complete.",
+    "The source has eleven offensive and seven defensive categories; unavailable defensive categories are listed, never treated as zero.",
+    "GP is a legacy sum of player appearances, not team games; new charts use possessions.",
+    "Sample cutoff is a display rule, not a confidence interval. Low-sample rows remain visible and cannot receive a Top3 weak-spot highlight.",
+    "More usage and higher historical efficiency do not establish that running a play more would cause improvement.",
+    "Score, free-throw, shooting-foul and and-one rates overlap; future outcome views must show separate rates, not a100%stack.",
+    "League statistics are possession-weighted within season, phase, side and play type, not averaged across players/teams/sides indiscriminately.",
+    "Baseline/regular ML diagnostics use observed-season features. Lagged forecast evidence is separate; prior submitted evidence is retained unchanged."
+  ],
+  "compatibility": [
+    "Existing endpoint names and recommendation role checks remain.",
+    "Existing baseline/context numbers change because source scope and arithmetic are corrected.",
+    "Metadata identifies regular_season and synergy_regular_season_v2.",
+    "Captured POST report snapshots preserve their supplied history; regenerated GET reports identify regular-season scope.",
+    "Saved play-type prediction and analysis-cache versions are checked against the loaded source and aggregation.",
+    "No shot data/model artifacts, teammate Request Log implementation or QuickCall rules were changed."
+  ],
+  "primary_references": [
+    {
+      "url": "https://support.synergysports.com/support/solutions/articles/77000572558-glossary",
+      "supports": "PPP denominator and overlapping scoring/free-throw/foul/and-one rates."
+    },
+    {
+      "url": "https://search.r-project.org/CRAN/refmans/hoopR/html/nba_synergyplaytypes.html",
+      "supports": "Provider fields, player/team selection and explicit season_type input."
+    },
+    {
+      "url": "https://www.nba.com/stats/help/glossary",
+      "supports": "FG%=FGM/FGA; eFG%=(FGM+0.5*3PM)/FGA."
+    }
+  ],
+  "tests": {
+    "initial_foundation_failures": 6,
+    "focused_passed": 65,
+    "full_backend_passed": 527,
+    "full_backend_failures": 0,
+    "local_identity": "Controlled JWT/role fixtures; live auth and browser verification are separate.",
+    "initial_failures_file": "baseline-regressions-before.txt",
+    "full_results_file": "backend-full-tests.txt"
+  }
+}

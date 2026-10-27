@@ -22,7 +22,7 @@ def source():
                     "SEASON": f"{year}-{(year + 1) % 100:02d}", "SEASON_ID": 20000 + year,
                     "TEAM_ABBREVIATION": f"T{team}", "PLAY_TYPE": f"Play{play}",
                     "PLAYER_ID": team, "TYPE_GROUPING": "Offensive", "POSS": poss,
-                    "PTS": poss * ppp, "EFG_PCT": ppp / 2,
+                    "PTS": poss * ppp, "FGA": poss * 0.8, "EFG_PCT": ppp / 2,
                     "TOV_POSS_PCT": 0.1 + rng.uniform(0, 0.05),
                     "FT_POSS_PCT": 0.1, "SCORE_POSS_PCT": ppp / 2,
                 })

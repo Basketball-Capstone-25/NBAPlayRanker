@@ -1,0 +1,114 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+_________________ test_regular_season_totals_exclude_playoffs __________________
+
+source =     SEASON  SEASON_ID ENTITY_TYPE  ...  SF_POSS_PCT FT_POSS_PCT PLUSONE_POSS_PCT
+0  2024-25      22024      Player  .....           0.02
+1  2024-25      22024      Player  ...          0.1         0.1             0.02
+
+[2 rows x 22 columns]
+
+    def test_regular_season_totals_exclude_playoffs(source):
+        playoff = player_row(1, poss=50, points=100, fga=50, fgm=50, efg=1.0, season_id=42024)
+        row = build_team_playtype_tables(pd.concat([source, pd.DataFrame([playoff])])).iloc[0]
+>       assert row["POSS"] == 110
+E       assert np.float64(160.0) == 110
+
+backend/tests/test_baseline_aggregation.py:39: AssertionError
+_________ test_field_goal_rates_use_attempts_and_ppp_uses_exact_counts _________
+
+source =     SEASON  SEASON_ID ENTITY_TYPE  ...  SF_POSS_PCT FT_POSS_PCT PLUSONE_POSS_PCT
+0  2024-25      22024      Player  .....           0.02
+1  2024-25      22024      Player  ...          0.1         0.1             0.02
+
+[2 rows x 22 columns]
+
+    def test_field_goal_rates_use_attempts_and_ppp_uses_exact_counts(source):
+        source.loc[0, "PPP"] = 0.899  # Stored rounded rates must not replace exact counts.
+        row = build_team_playtype_tables(source).iloc[0]
+>       assert row["PPP"] == pytest.approx(1.0)
+E       assert np.float64(0.9990909090909091) == 1.0 ± 1.0e-06
+E         
+E         comparison failed
+E         Obtained: 0.9990909090909091
+E         Expected: 1.0 ± 1.0e-06
+
+backend/tests/test_baseline_aggregation.py:47: AssertionError
+___________ test_league_rates_use_counts_and_their_own_denominators ____________
+
+source =     SEASON  SEASON_ID ENTITY_TYPE  ...  SF_POSS_PCT FT_POSS_PCT PLUSONE_POSS_PCT
+0  2024-25      22024      Player  .....           0.02
+1  2024-25      22024      Player  ...          0.1         0.1             0.02
+
+[2 rows x 22 columns]
+
+    def test_league_rates_use_counts_and_their_own_denominators(source):
+        other = player_row(3, poss=10, points=5, fga=10, fgm=1, efg=0.1, team="BOS")
+        teams = build_team_playtype_tables(pd.concat([source, pd.DataFrame([other])]))
+        row = build_league_averages(teams).iloc[0]
+        assert row["PPP"] == pytest.approx(115 / 120)
+>       assert row["FG_PCT"] == pytest.approx(16 / 30)
+E       assert np.float64(0.5083333333333333) == 0.5333333333333333 ± 5.3e-07
+E         
+E         comparison failed
+E         Obtained: 0.5083333333333333
+E         Expected: 0.5333333333333333 ± 5.3e-07
+
+backend/tests/test_baseline_aggregation.py:57: AssertionError
+_______ test_duplicate_player_source_row_cannot_double_count_possessions _______
+
+source =     SEASON  SEASON_ID ENTITY_TYPE  ...  SF_POSS_PCT FT_POSS_PCT PLUSONE_POSS_PCT
+0  2024-25      22024      Player  .....           0.02
+1  2024-25      22024      Player  ...          0.1         0.1             0.02
+
+[2 rows x 22 columns]
+
+    def test_duplicate_player_source_row_cannot_double_count_possessions(source):
+>       with pytest.raises(ValueError, match="[Dd]uplicate"):
+E       Failed: DID NOT RAISE ValueError
+
+backend/tests/test_baseline_aggregation.py:62: Failed
+_______ test_source_phase_is_required_instead_of_silently_mixing_seasons _______
+
+source =     SEASON  SEASON_ID ENTITY_TYPE  ...  SF_POSS_PCT FT_POSS_PCT PLUSONE_POSS_PCT
+0  2024-25      22024      Player  .....           0.02
+1  2024-25      22024      Player  ...          0.1         0.1             0.02
+
+[2 rows x 22 columns]
+
+    def test_source_phase_is_required_instead_of_silently_mixing_seasons(source):
+>       with pytest.raises(ValueError, match="SEASON_ID"):
+E       Failed: DID NOT RAISE ValueError
+
+backend/tests/test_baseline_aggregation.py:67: Failed
+_________ test_weaker_opponent_defense_does_not_lower_offensive_score __________
+
+    def test_weaker_opponent_defense_does_not_lower_offensive_score():
+        common = {
+            "SEASON": "2024-25", "PLAY_TYPE": "Isolation", "POSS": 100,
+            "POSS_PCT": 0.1, "RELIABILITY_WEIGHT": 1.0,
+            **{column: 0.2 for column in WEIGHT_COLS},
+        }
+        teams = pd.DataFrame([
+            {**common, "SIDE": "offense", "TEAM_ABBREVIATION": "TOR", "PPP": 1.1},
+            {**common, "SIDE": "defense", "TEAM_ABBREVIATION": "BOS", "PPP": 0.9},
+        ])
+        league = pd.DataFrame([
+            {"SEASON": "2024-25", "PLAY_TYPE": "Isolation", "SIDE": side, "PPP": 1.0}
+            for side in ["offense", "defense"]
+        ])
+        stronger = rank_playtypes_baseline(teams, league, "2024-25", "TOR", "BOS", k=1)
+        teams.loc[teams.SIDE.eq("defense"), "PPP"] = 1.1
+        weaker = rank_playtypes_baseline(teams, league, "2024-25", "TOR", "BOS", k=1)
+>       assert weaker.iloc[0]["PPP_PRED"] > stronger.iloc[0]["PPP_PRED"]
+E       assert np.float64(1.04) > np.float64(1.1)
+
+backend/tests/test_baseline_aggregation.py:88: AssertionError
+=========================== short test summary info ============================
+FAILED backend/tests/test_baseline_aggregation.py::test_regular_season_totals_exclude_playoffs
+FAILED backend/tests/test_baseline_aggregation.py::test_field_goal_rates_use_attempts_and_ppp_uses_exact_counts
+FAILED backend/tests/test_baseline_aggregation.py::test_league_rates_use_counts_and_their_own_denominators
+FAILED backend/tests/test_baseline_aggregation.py::test_duplicate_player_source_row_cannot_double_count_possessions
+FAILED backend/tests/test_baseline_aggregation.py::test_source_phase_is_required_instead_of_silently_mixing_seasons
+FAILED backend/tests/test_baseline_aggregation.py::test_weaker_opponent_defense_does_not_lower_offensive_score
+6 failed in 0.12s

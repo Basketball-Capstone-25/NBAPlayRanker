@@ -1,0 +1,534 @@
+{
+  "task": "SCRUM-526",
+  "evaluation": "season-ahead regular-season PPP backtest",
+  "prediction_time": "Before the target regular season, after the entire previous regular season has ended.",
+  "horizon": "One full regular season; one row per team and play type.",
+  "input_availability": "Every predictor and both baselines use only the immediately previous regular season. The target season supplies outcomes for scoring only.",
+  "features": [
+    "PRIOR_PPP",
+    "PRIOR_LEAGUE_PPP",
+    "PRIOR_LOG_POSS",
+    "PRIOR_POSS_SHARE",
+    "PRIOR_EFG_PCT",
+    "PRIOR_TOV_POSS_PCT",
+    "PRIOR_FT_POSS_PCT",
+    "PRIOR_SCORE_POSS_PCT"
+  ],
+  "target": "Sum of player points divided by sum of player possessions for the target team, play type, and regular season.",
+  "selection": {
+    "training_target_seasons": [
+      "2020-21",
+      "2021-22",
+      "2022-23"
+    ],
+    "training_rows": 990,
+    "tuning_target_season": "2023-24",
+    "tuning_rows": 330,
+    "candidates": [
+      {
+        "alpha": 0.1,
+        "tuning_rmse_ppp": 0.06936375802934777
+      },
+      {
+        "alpha": 1.0,
+        "tuning_rmse_ppp": 0.06939759252807211
+      },
+      {
+        "alpha": 10.0,
+        "tuning_rmse_ppp": 0.06976975829509217
+      },
+      {
+        "alpha": 100.0,
+        "tuning_rmse_ppp": 0.07255387711152898
+      }
+    ],
+    "selected_alpha": 0.1,
+    "rule": "Fixed eight prior-season features and Ridge family; choose lowest tuning RMSE, break ties by smaller alpha."
+  },
+  "final_fit": {
+    "target_seasons": [
+      "2020-21",
+      "2021-22",
+      "2022-23",
+      "2023-24"
+    ],
+    "rows": 1320,
+    "scaler_mean": [
+      0.9938291300562778,
+      0.9963194475366436,
+      6.371077287154889,
+      0.09090909090909091,
+      0.5293836968242313,
+      0.13324234108144725,
+      0.12142565705971904,
+      0.46216819666327413
+    ],
+    "scaler_scale": [
+      0.19367123638367212,
+      0.18133611878562925,
+      0.6752318462870783,
+      0.0667452723978083,
+      0.07816133422879641,
+      0.1298201372144192,
+      0.05148738471791107,
+      0.0994316761535221
+    ],
+    "ridge_coefficients": [
+      0.04308945152180589,
+      0.13484814538596843,
+      0.004877737005580954,
+      -0.001980432781322047,
+      0.001995082638988134,
+      -0.015572702345053079,
+      0.00877381963505015,
+      -0.0047093042156182525
+    ],
+    "ridge_intercept": 1.0014774814603602,
+    "preprocessing": "StandardScaler fitted again on all earlier training and tuning rows after choosing alpha. No final-test rows used to fit anything."
+  },
+  "final_test": {
+    "target_season": "2024-25",
+    "feature_seasons": [
+      "2023-24"
+    ],
+    "rows": 330,
+    "teams": 30,
+    "play_types": 11,
+    "weighting": "Each team/play-type row has equal weight; all models score the same rows.",
+    "metrics": {
+      "ridge": {
+        "count": 330,
+        "mean_predicted_ppp": 1.017843189232301,
+        "mean_realized_ppp": 0.9955612876677842,
+        "bias_ppp": 0.022281901564516867,
+        "mae_ppp": 0.05229700926211488,
+        "rmse_ppp": 0.06711957271759049,
+        "binned_absolute_bias_ppp": 0.022281901564516864,
+        "bins": [
+          {
+            "lower_ppp": 0.4691116607080943,
+            "upper_ppp": 0.6447840059453878,
+            "count": 30,
+            "mean_predicted_ppp": 0.5209203180376322,
+            "mean_realized_ppp": 0.4972122637439567,
+            "bias_ppp": 0.023708054293675458,
+            "sparse": false
+          },
+          {
+            "lower_ppp": 0.6447840059453878,
+            "upper_ppp": 0.8204563511826811,
+            "count": 0,
+            "mean_predicted_ppp": null,
+            "mean_realized_ppp": null,
+            "bias_ppp": null,
+            "sparse": true
+          },
+          {
+            "lower_ppp": 0.8204563511826811,
+            "upper_ppp": 0.9961286964199745,
+            "count": 104,
+            "mean_predicted_ppp": 0.94477904767898,
+            "mean_realized_ppp": 0.9306708144966083,
+            "bias_ppp": 0.014108233182371642,
+            "sparse": false
+          },
+          {
+            "lower_ppp": 0.9961286964199745,
+            "upper_ppp": 1.171801041657268,
+            "count": 155,
+            "mean_predicted_ppp": 1.092328987455633,
+            "mean_realized_ppp": 1.0653256336481485,
+            "bias_ppp": 0.027003353807484545,
+            "sparse": false
+          },
+          {
+            "lower_ppp": 1.171801041657268,
+            "upper_ppp": 1.3474733868945614,
+            "count": 41,
+            "mean_predicted_ppp": 1.2851860705193499,
+            "mean_realized_ppp": 1.2610638803643854,
+            "bias_ppp": 0.024122190154964532,
+            "sparse": false
+          }
+        ]
+      },
+      "prior_team": {
+        "count": 330,
+        "mean_predicted_ppp": 1.010725707536559,
+        "mean_realized_ppp": 0.9955612876677842,
+        "bias_ppp": 0.01516441986877483,
+        "mae_ppp": 0.06339613541711127,
+        "rmse_ppp": 0.08135302279810318,
+        "binned_absolute_bias_ppp": 0.0280984328407573,
+        "bins": [
+          {
+            "lower_ppp": 0.3941176470588235,
+            "upper_ppp": 0.6033149509803921,
+            "count": 26,
+            "mean_predicted_ppp": 0.5134775737751162,
+            "mean_realized_ppp": 0.4920460916087296,
+            "bias_ppp": 0.02143148216638669,
+            "sparse": false
+          },
+          {
+            "lower_ppp": 0.6033149509803921,
+            "upper_ppp": 0.8125122549019608,
+            "count": 8,
+            "mean_predicted_ppp": 0.7181463083616377,
+            "mean_realized_ppp": 0.6859270523863596,
+            "bias_ppp": 0.03221925597527814,
+            "sparse": true
+          },
+          {
+            "lower_ppp": 0.8125122549019608,
+            "upper_ppp": 1.0217095588235294,
+            "count": 130,
+            "mean_predicted_ppp": 0.9387699815074765,
+            "mean_realized_ppp": 0.9551862287411467,
+            "bias_ppp": -0.016416247233670064,
+            "sparse": false
+          },
+          {
+            "lower_ppp": 1.0217095588235294,
+            "upper_ppp": 1.230906862745098,
+            "count": 127,
+            "mean_predicted_ppp": 1.1130071613598713,
+            "mean_realized_ppp": 1.076735991684787,
+            "bias_ppp": 0.03627116967508463,
+            "sparse": false
+          },
+          {
+            "lower_ppp": 1.230906862745098,
+            "upper_ppp": 1.4401041666666667,
+            "count": 39,
+            "mean_predicted_ppp": 1.3090227952139164,
+            "mean_realized_ppp": 1.2649981910034351,
+            "bias_ppp": 0.04402460421048137,
+            "sparse": false
+          }
+        ]
+      },
+      "prior_league": {
+        "count": 330,
+        "mean_predicted_ppp": 1.0140158200483023,
+        "mean_realized_ppp": 0.9955612876677842,
+        "bias_ppp": 0.018454532380517894,
+        "mae_ppp": 0.05345446240364739,
+        "rmse_ppp": 0.06816927297929853,
+        "binned_absolute_bias_ppp": 0.018454532380517898,
+        "bins": [
+          {
+            "lower_ppp": 0.5311417147934251,
+            "upper_ppp": 0.6887616103171249,
+            "count": 30,
+            "mean_predicted_ppp": 0.5311417147934249,
+            "mean_realized_ppp": 0.4972122637439567,
+            "bias_ppp": 0.0339294510494684,
+            "sparse": false
+          },
+          {
+            "lower_ppp": 0.6887616103171249,
+            "upper_ppp": 0.8463815058408246,
+            "count": 0,
+            "mean_predicted_ppp": null,
+            "mean_realized_ppp": null,
+            "bias_ppp": null,
+            "sparse": true
+          },
+          {
+            "lower_ppp": 0.8463815058408246,
+            "upper_ppp": 1.0040014013645244,
+            "count": 120,
+            "mean_predicted_ppp": 0.9477217929369194,
+            "mean_realized_ppp": 0.9380692160062901,
+            "bias_ppp": 0.009652576930629476,
+            "sparse": false
+          },
+          {
+            "lower_ppp": 1.0040014013645244,
+            "upper_ppp": 1.1616212968882242,
+            "count": 150,
+            "mean_predicted_ppp": 1.1025807883156593,
+            "mean_realized_ppp": 1.0787813163924118,
+            "bias_ppp": 0.023799471923247516,
+            "sparse": false
+          },
+          {
+            "lower_ppp": 1.1616212968882242,
+            "upper_ppp": 1.319241192411924,
+            "count": 30,
+            "mean_predicted_ppp": 1.3192411924119238,
+            "mean_realized_ppp": 1.3077784546144509,
+            "bias_ppp": 0.011462737797472955,
+            "sparse": false
+          }
+        ]
+      }
+    },
+    "by_play_type": [
+      {
+        "play_type": "Cut",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.05277635304885672,
+          "rmse_ppp": 0.06522507685180365,
+          "bias_ppp": 0.012755085476509942
+        },
+        "prior_team": {
+          "mae_ppp": 0.05330937339696103,
+          "rmse_ppp": 0.06784239287334584,
+          "bias_ppp": 0.008457813783759522
+        },
+        "prior_league": {
+          "mae_ppp": 0.057910879840902596,
+          "rmse_ppp": 0.06932929060704465,
+          "bias_ppp": 0.011462737797472955
+        }
+      },
+      {
+        "play_type": "Handoff",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.0530024188346409,
+          "rmse_ppp": 0.06263816430335754,
+          "bias_ppp": -0.0045502553546864725
+        },
+        "prior_team": {
+          "mae_ppp": 0.05797406178486022,
+          "rmse_ppp": 0.07506531459157093,
+          "bias_ppp": -0.008765736356172138
+        },
+        "prior_league": {
+          "mae_ppp": 0.05342255317085034,
+          "rmse_ppp": 0.06415565325670552,
+          "bias_ppp": -0.008166519927644555
+        }
+      },
+      {
+        "play_type": "Isolation",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.05897817604585141,
+          "rmse_ppp": 0.07375727015592,
+          "bias_ppp": 0.0430241372977076
+        },
+        "prior_team": {
+          "mae_ppp": 0.06563160188233172,
+          "rmse_ppp": 0.084091428128865,
+          "bias_ppp": 0.022308692273650725
+        },
+        "prior_league": {
+          "mae_ppp": 0.05782314024423929,
+          "rmse_ppp": 0.07052616713820209,
+          "bias_ppp": 0.03127341823641735
+        }
+      },
+      {
+        "play_type": "Misc",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.048100905765012476,
+          "rmse_ppp": 0.06110310115582599,
+          "bias_ppp": 0.023708054293675458
+        },
+        "prior_team": {
+          "mae_ppp": 0.06479984087582384,
+          "rmse_ppp": 0.07773324549018361,
+          "bias_ppp": 0.033160488766640725
+        },
+        "prior_league": {
+          "mae_ppp": 0.05487040163914469,
+          "rmse_ppp": 0.06972071910912551,
+          "bias_ppp": 0.0339294510494684
+        }
+      },
+      {
+        "play_type": "OffRebound",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.049121590066061975,
+          "rmse_ppp": 0.06431093401035487,
+          "bias_ppp": 0.028499715006839572
+        },
+        "prior_team": {
+          "mae_ppp": 0.06378782195130657,
+          "rmse_ppp": 0.0737816137692213,
+          "bias_ppp": 0.0256459154087232
+        },
+        "prior_league": {
+          "mae_ppp": 0.049425622932838795,
+          "rmse_ppp": 0.06556859548834455,
+          "bias_ppp": 0.024948349691223823
+        }
+      },
+      {
+        "play_type": "OffScreen",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.07497721625635766,
+          "rmse_ppp": 0.09584937273123943,
+          "bias_ppp": 0.0295494092937169
+        },
+        "prior_team": {
+          "mae_ppp": 0.10437816125972672,
+          "rmse_ppp": 0.1210486405866139,
+          "bias_ppp": 0.0173028830019406
+        },
+        "prior_league": {
+          "mae_ppp": 0.07344996606105207,
+          "rmse_ppp": 0.09436187808377633,
+          "bias_ppp": 0.031443242943165604
+        }
+      },
+      {
+        "play_type": "PRBallHandler",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.04648700399334564,
+          "rmse_ppp": 0.05539446133900751,
+          "bias_ppp": 0.019279926431723382
+        },
+        "prior_team": {
+          "mae_ppp": 0.04376065780892233,
+          "rmse_ppp": 0.05784231628762958,
+          "bias_ppp": 0.012111544103652042
+        },
+        "prior_league": {
+          "mae_ppp": 0.050013722890208195,
+          "rmse_ppp": 0.05967844353879224,
+          "bias_ppp": 0.011560689076301856
+        }
+      },
+      {
+        "play_type": "PRRollMan",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.07335927973519384,
+          "rmse_ppp": 0.09085760041294455,
+          "bias_ppp": 0.06353714668762134
+        },
+        "prior_team": {
+          "mae_ppp": 0.09980494112489137,
+          "rmse_ppp": 0.1191035823327103,
+          "bias_ppp": 0.057365002581984376
+        },
+        "prior_league": {
+          "mae_ppp": 0.0675840304491608,
+          "rmse_ppp": 0.08596447470481773,
+          "bias_ppp": 0.0586049010035188
+        }
+      },
+      {
+        "play_type": "Postup",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.04758886843163676,
+          "rmse_ppp": 0.06004177230656037,
+          "bias_ppp": 0.009949814404784577
+        },
+        "prior_team": {
+          "mae_ppp": 0.06933228560549208,
+          "rmse_ppp": 0.0850151566958193,
+          "bias_ppp": -0.004342487280022049
+        },
+        "prior_league": {
+          "mae_ppp": 0.047903112335893686,
+          "rmse_ppp": 0.0599037998517773,
+          "bias_ppp": 0.003942720337443254
+        }
+      },
+      {
+        "play_type": "Spotup",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.03696603824656194,
+          "rmse_ppp": 0.044101054019237626,
+          "bias_ppp": -0.0014461987445853178
+        },
+        "prior_team": {
+          "mae_ppp": 0.03853382277255914,
+          "rmse_ppp": 0.04822013877500148,
+          "bias_ppp": -0.01018492692802463
+        },
+        "prior_league": {
+          "mae_ppp": 0.040728552473911335,
+          "rmse_ppp": 0.05028135231041163,
+          "bias_ppp": -0.009144661728095941
+        }
+      },
+      {
+        "play_type": "Transition",
+        "count": 30,
+        "ridge": {
+          "mae_ppp": 0.033909251459744286,
+          "rmse_ppp": 0.044802539403102665,
+          "bias_ppp": 0.02079408241637853
+        },
+        "prior_team": {
+          "mae_ppp": 0.0360449211253488,
+          "rmse_ppp": 0.047640157323603986,
+          "bias_ppp": 0.013749429200390758
+        },
+        "prior_league": {
+          "mae_ppp": 0.034867104401919535,
+          "rmse_ppp": 0.04570162302886226,
+          "bias_ppp": 0.01314552770642529
+        }
+      }
+    ]
+  },
+  "coverage": [
+    {
+      "target_season": "2019-20",
+      "observed_target_rows": 330,
+      "scored_rows_with_prior_season": 0,
+      "target_rows_without_prior_season": 330,
+      "prior_season_rows_without_target": 0
+    },
+    {
+      "target_season": "2020-21",
+      "observed_target_rows": 330,
+      "scored_rows_with_prior_season": 330,
+      "target_rows_without_prior_season": 0,
+      "prior_season_rows_without_target": 0
+    },
+    {
+      "target_season": "2021-22",
+      "observed_target_rows": 330,
+      "scored_rows_with_prior_season": 330,
+      "target_rows_without_prior_season": 0,
+      "prior_season_rows_without_target": 0
+    },
+    {
+      "target_season": "2022-23",
+      "observed_target_rows": 330,
+      "scored_rows_with_prior_season": 330,
+      "target_rows_without_prior_season": 0,
+      "prior_season_rows_without_target": 0
+    },
+    {
+      "target_season": "2023-24",
+      "observed_target_rows": 330,
+      "scored_rows_with_prior_season": 330,
+      "target_rows_without_prior_season": 0,
+      "prior_season_rows_without_target": 0
+    },
+    {
+      "target_season": "2024-25",
+      "observed_target_rows": 330,
+      "scored_rows_with_prior_season": 330,
+      "target_rows_without_prior_season": 0,
+      "prior_season_rows_without_target": 0
+    }
+  ],
+  "limitations": [
+    "This is a season-ahead evaluation, not a pre-game or matchup forecast. It does not use opponents, current rosters, injuries, or target-season statistics.",
+    "The CSV is a historical snapshot, not an archived release with publication timestamps. Season lag enforces logical availability but cannot prove the exact information published on a past date.",
+    "Player coverage and any source corrections limit the aggregate. Missing prior-season rows are excluded and counted; no future-season imputation is used.",
+    "The latest season is excluded from model selection in this evaluation. It has appeared in earlier retrospective project reports, so it is not a previously unseen external dataset.",
+    "Only one final season is scored. Team/play-type rows are related, so these counts do not imply independent experiments or prove generalization to future seasons.",
+    "PPP is continuous, not a probability. Positive bias means overprediction. Calibration bins with fewer than 20 rows are marked sparse; no calibration correction is fitted to final outcomes."
+  ],
+  "source_dataset_version": "sha256:014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b",
+  "aggregation_version": "synergy_regular_season_v2"
+}

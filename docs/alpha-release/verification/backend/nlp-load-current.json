@@ -1,0 +1,41 @@
+{
+  "scenario": "in-process FastAPI app, threads as concurrent users",
+  "concurrent_users": 8,
+  "requests_total": 400,
+  "errors": 0,
+  "duration_seconds": 3.18,
+  "requests_per_second": 126.0,
+  "latency_ms": {
+    "p50": 59.9,
+    "p95": 122.5,
+    "max": 224.4
+  },
+  "memory_mb": {
+    "rss_before_first_nlp_request": 714.2,
+    "rss_after_nlp_warmup": 714.4,
+    "rss_peak_under_load": 719.4,
+    "rss_after_load": 718.1,
+    "limit": 2048
+  },
+  "nlp_pipeline": {
+    "status": "ok",
+    "pipeline_version": "1.0.0",
+    "spacy_model_requested": "en_core_web_sm",
+    "spacy_model_loaded": "en_core_web_sm",
+    "spacy_pipe_names": [
+      "tok2vec",
+      "tagger",
+      "parser",
+      "attribute_ruler",
+      "lemmatizer",
+      "sentencizer",
+      "entity_ruler"
+    ],
+    "nltk_version": "3.10.4",
+    "wordnet_available": true
+  },
+  "environment": {
+    "python": "3.11.17",
+    "platform": "macOS-26.6-arm64-arm-64bit"
+  }
+}
