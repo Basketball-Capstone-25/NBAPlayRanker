@@ -37,6 +37,7 @@ export default function NavBar() {
   const coachWorkspaceLinks = useMemo<NavItem[]>(
     () => [
       { href: "/matchup", label: "Matchup / Baseline" },
+      { href: "/matchup-dashboard", label: "Matchup dashboard" },
       { href: "/context", label: "Context / ML" },
       { href: "/gameplan", label: "Gameplan", accent: true },
     ],

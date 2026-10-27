@@ -1,0 +1,42 @@
+{
+  "scope": "Local Chrome browser, real authorized coach session, frontend localhost:3001 and API 127.0.0.1:8000",
+  "checks": [
+    {
+      "case": "TOR/BOS 2024-25 usage",
+      "result": "Pass",
+      "observed": "8517 possessions, 11 rows; Cut 745 possessions, PPP 1.197 and league PPP 1.307."
+    },
+    {
+      "case": "BOS 2024-25 defense",
+      "result": "Pass",
+      "observed": "7 rows; top three Handoff +0.073, Pick and roll handler +0.031, Isolation +0.024; four unavailable categories explicitly named."
+    },
+    {
+      "case": "Cutoff 5000",
+      "result": "Pass",
+      "observed": "All 7 defense rows remain, all marked small sample, no top-three highlights."
+    },
+    {
+      "case": "Same team",
+      "result": "Pass",
+      "observed": "TOR versus TOR removes results and asks for different teams."
+    },
+    {
+      "case": "Failed request then retry",
+      "result": "Pass",
+      "observed": "Stopped local API, changed season to2023-24: old chart removed and retry displayed. Restarted API and clicked Try again: 2023-24 profile loaded, Handoff 417 possessions and0.993 allowed PPP."
+    },
+    {
+      "case": "Baseline refresh and stale court map",
+      "result": "Pass",
+      "observed": "Generated PRRollMan map with1.086 estimate; reran baseline for same inputs; result returned with no old map. Changed season: rankings/map cleared and exports disabled."
+    }
+  ],
+  "limitations": [
+    "Local verification only; production verification is recorded separately.",
+    "API deliberately stopped only on local127.0.0.1; production service was not interrupted.",
+    "Table values were read from rendered UI; source-level equality checks are in backend evidence."
+  ],
+  "recorded_at": "2026-10-27T04:58:41.536369+00:00",
+  "execution_window": "October27 2026, before this record was saved"
+}

@@ -412,7 +412,7 @@ export default function DataExplorerClient() {
           }}
         >
           <p className="muted" style={{ fontSize: 12, margin: 0 }}>
-            Season <strong>{season || "—"}</strong> • <strong>{teamLabel}</strong> • Side{" "}
+            Regular season <strong>{season || "—"}</strong> • <strong>{teamLabel}</strong> • Side{" "}
             <strong>{side}</strong> • Showing <strong>{returnedRows}</strong> / <strong>{totalRows}</strong>{" "}
             rows
           </p>

@@ -5,7 +5,7 @@ type UserRole = "coach" | "analyst" | null;
 
 const signedInOnly = ["/glossary", "/data-dictionary"];
 
-const coachOnly = ["/matchup", "/context", "/gameplan"];
+const coachOnly = ["/matchup", "/matchup-dashboard", "/context", "/gameplan"];
 
 const analystOnly = [
   "/data-explorer",
