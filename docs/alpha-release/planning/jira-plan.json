@@ -1,0 +1,4221 @@
+{
+  "snapshotNote": "Initial planning snapshot from October 27. See jira-source-closeout.json for the later production retest and capacity-review.json for the revised future estimates, dates and scope. This file preserves the original plan and failures.",
+  "capturedAt": "2026-10-27 05:01:27 UTC",
+  "status": "Planning created and verified. Alpha implementation, production verification and shared VP publication are still in progress.",
+  "feature": {
+    "key": "SCRUM-329",
+    "status": "In Progress"
+  },
+  "stories": [
+    {
+      "key": "SCRUM-695",
+      "name": "Compare Usage and Efficiency",
+      "useCaseId": "A35cd925e814ba68",
+      "release": "Alpha",
+      "releaseId": "10003",
+      "sprintId": 186,
+      "start": "2026-10-27",
+      "due": "2026-10-29",
+      "points": 5,
+      "status": "In Progress",
+      "testSuite": "BST-226",
+      "devSubtasks": [
+        "SCRUM-704",
+        "SCRUM-705",
+        "SCRUM-706",
+        "SCRUM-707",
+        "SCRUM-708"
+      ],
+      "testCases": [
+        {
+          "key": "BST-232",
+          "summary": "Usage chart and table match team and league source totals",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-233",
+          "summary": "Sample cutoff flags rows without changing usage shares",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-234",
+          "summary": "Usage comparison clears outdated results and recovers after a failed request",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-235",
+          "summary": "Usage comparison enforces the intended user role",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-236",
+          "summary": "Regular-season team totals exclude playoff possessions",
+          "status": "Fail",
+          "bug": "SCRUM-701"
+        },
+        {
+          "key": "BST-237",
+          "summary": "Field-goal rates use shot attempts instead of possessions",
+          "status": "Fail",
+          "bug": "SCRUM-702"
+        },
+        {
+          "key": "BST-238",
+          "summary": "Duplicate source rows cannot double-count play-type possessions",
+          "status": "Fail",
+          "bug": "SCRUM-701"
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-696",
+      "name": "View Opponent Defensive Weak Spots",
+      "useCaseId": "A308531b428a7bd1",
+      "release": "Alpha",
+      "releaseId": "10003",
+      "sprintId": 186,
+      "start": "2026-10-27",
+      "due": "2026-10-29",
+      "points": 5,
+      "status": "In Progress",
+      "testSuite": "BST-227",
+      "devSubtasks": [
+        "SCRUM-709",
+        "SCRUM-710",
+        "SCRUM-711",
+        "SCRUM-712",
+        "SCRUM-713"
+      ],
+      "testCases": [
+        {
+          "key": "BST-239",
+          "summary": "Opponent weak spots use league-relative defensive efficiency",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-240",
+          "summary": "Small samples and missing defensive types cannot become weak spots",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-241",
+          "summary": "Opponent changes cannot leave the previous team's results on screen",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-242",
+          "summary": "Opponent defense view protects team data behind the intended role",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-243",
+          "summary": "A weaker opposing defense does not lower baseline predicted PPP",
+          "status": "Fail",
+          "bug": "SCRUM-703"
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-697",
+      "name": "Compare Play Types with League Average",
+      "useCaseId": "A32dd7c488267720",
+      "release": "Beta",
+      "releaseId": "10004",
+      "sprintId": 187,
+      "start": "2026-11-03",
+      "due": "2026-11-09",
+      "points": 3,
+      "status": "To Do",
+      "testSuite": "BST-228",
+      "devSubtasks": [
+        "SCRUM-714",
+        "SCRUM-715",
+        "SCRUM-716",
+        "SCRUM-717"
+      ],
+      "testCases": [
+        {
+          "key": "BST-244",
+          "summary": "League benchmark uses matched-season weighted totals",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-245",
+          "summary": "Missing league categories remain unavailable",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-246",
+          "summary": "League comparison handles access and changing filters",
+          "status": "Verify",
+          "bug": null
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-698",
+      "name": "Track Play-Type Trends Across Seasons",
+      "useCaseId": "A3fb2384b7572cf4",
+      "release": "Beta",
+      "releaseId": "10004",
+      "sprintId": 188,
+      "start": "2026-11-10",
+      "due": "2026-11-16",
+      "points": 5,
+      "status": "To Do",
+      "testSuite": "BST-229",
+      "devSubtasks": [
+        "SCRUM-718",
+        "SCRUM-719",
+        "SCRUM-720",
+        "SCRUM-721",
+        "SCRUM-722"
+      ],
+      "testCases": [
+        {
+          "key": "BST-247",
+          "summary": "Season trends match source totals in chronological order",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-248",
+          "summary": "Missing seasons create gaps rather than zero values",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-249",
+          "summary": "Trend filters and permissions stay consistent",
+          "status": "Verify",
+          "bug": null
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-699",
+      "name": "Compare Head-to-Head Play-Type Profiles",
+      "useCaseId": "A3f15ca90f30ea8e",
+      "release": "Final",
+      "releaseId": "10005",
+      "sprintId": 190,
+      "start": "2026-11-24",
+      "due": "2026-11-30",
+      "points": 3,
+      "status": "To Do",
+      "testSuite": "BST-230",
+      "devSubtasks": [
+        "SCRUM-723",
+        "SCRUM-724",
+        "SCRUM-725",
+        "SCRUM-726"
+      ],
+      "testCases": [
+        {
+          "key": "BST-250",
+          "summary": "Two-team profiles use the same season and matching categories",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-251",
+          "summary": "Swapping teams swaps labels and values without changing calculations",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-252",
+          "summary": "Profile comparison states its season-long scope and protects access",
+          "status": "Verify",
+          "bug": null
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-700",
+      "name": "View Possession Outcome Rates",
+      "useCaseId": "A303ecfb1b5e7ad9",
+      "release": "Final",
+      "releaseId": "10005",
+      "sprintId": 191,
+      "start": "2026-12-01",
+      "due": "2026-12-07",
+      "points": 5,
+      "status": "To Do",
+      "testSuite": "BST-231",
+      "devSubtasks": [
+        "SCRUM-727",
+        "SCRUM-728",
+        "SCRUM-729",
+        "SCRUM-730",
+        "SCRUM-731"
+      ],
+      "testCases": [
+        {
+          "key": "BST-253",
+          "summary": "Outcome rates match possession-weighted source fields",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-254",
+          "summary": "Overlapping outcome rates are not normalized into a 100% stack",
+          "status": "Verify",
+          "bug": null
+        },
+        {
+          "key": "BST-255",
+          "summary": "Invalid and missing outcome rates stay explicit",
+          "status": "Verify",
+          "bug": null
+        }
+      ]
+    }
+  ],
+  "bugs": [
+    {
+      "key": "SCRUM-701",
+      "summary": "Separate source phases and reject duplicate play-type rows",
+      "status": "In Progress",
+      "devSubtasks": [
+        "SCRUM-732",
+        "SCRUM-733"
+      ],
+      "originalEvidence": [
+        "docs/alpha-release/verification/backend/baseline-regressions-before.txt",
+        "docs/alpha-release/verification/backend/source-audit-before.json"
+      ]
+    },
+    {
+      "key": "SCRUM-702",
+      "summary": "Calculate field-goal rates with the correct shot denominator",
+      "status": "In Progress",
+      "devSubtasks": [
+        "SCRUM-734",
+        "SCRUM-735"
+      ],
+      "originalEvidence": [
+        "docs/alpha-release/verification/backend/baseline-regressions-before.txt",
+        "docs/alpha-release/verification/backend/source-audit-before.json"
+      ]
+    },
+    {
+      "key": "SCRUM-703",
+      "summary": "Fix the effect of opponent defense on predicted PPP",
+      "status": "In Progress",
+      "devSubtasks": [
+        "SCRUM-736",
+        "SCRUM-737"
+      ],
+      "originalEvidence": [
+        "docs/alpha-release/verification/backend/baseline-regressions-before.txt",
+        "docs/alpha-release/verification/backend/defense-direction-before.json"
+      ]
+    }
+  ],
+  "evidenceCounts": {
+    "newStories": 6,
+    "bugTasks": 3,
+    "devSubtasks": 34,
+    "testSuites": 6,
+    "testCases": 24,
+    "unrunCases": 20,
+    "failedCases": 4,
+    "underlyingFailedRegressionAssertions": 6,
+    "formalLinks": 85,
+    "newActualHours": 0
+  },
+  "riskFollowups": [
+    {
+      "key": "BSR-49",
+      "commentId": "11524",
+      "text": "The Alpha data review found mixed regular/playoff rows and field-goal rates using the wrong denominator. The linked fixes will separate the phases and check team and league totals against the source before the new comparisons are released."
+    },
+    {
+      "key": "BSR-48",
+      "commentId": "11525",
+      "text": "The new comparisons will keep all play types visible with possession counts and a sample cutoff. Low-count rows will be flagged and excluded from the Top 3. Tests cover missing categories and cases with no supported positive weak spot."
+    },
+    {
+      "key": "BSR-41",
+      "commentId": "11526",
+      "text": "Opponent weak spots will show observed allowed PPP. The final outcome view will show overlapping rates separately, and the two-team profile view will clearly use whole-season data. None of these views will claim future accuracy or direct-game results."
+    },
+    {
+      "key": "BSR-58",
+      "commentId": "11527",
+      "text": "The phase-mixing defect is linked to a separate fix. The planned trend view will compare the same regular-season scope across seasons and show missing coverage as gaps."
+    },
+    {
+      "key": "BSR-88",
+      "commentId": "11528",
+      "text": "Each new view will bind its chart and table to the same successful filter result. The test plan covers changed filters, failed requests and retries."
+    },
+    {
+      "key": "BSR-55",
+      "commentId": "11529",
+      "text": "The six new baseline use cases are split across the releases: two for Alpha, two for Beta and two for Final. Alpha work is planned for October 29, ahead of the October 30 submission deadline. Existing teammate tasks and release dates are unchanged."
+    }
+  ],
+  "preserved": "Existing issue ownership, risk ratings, risk statuses, descriptions, historical comments and links are preserved. Only the baseline Feature was reopened to track its new authorized scope. No worklogs were created or edited.",
+  "planningEstimates": "Dev Subtask fields contain current estimates for planned work, separate from actual hours. Each is at most three hours, within the course's four-hour limit.",
+  "deadlines": {
+    "alphaJiraMilestone": "2026-10-27",
+    "alphaInternalReview": "2026-10-29",
+    "alphaSlate": "2026-10-30 23:59 America/Toronto",
+    "betaSlate": "2026-11-23 23:59 America/Toronto",
+    "finalSlate": "2026-12-18 09:00 America/Toronto"
+  },
+  "readbacks": {
+    "SCRUM-695": {
+      "summary": "Compare a team's play-type usage and efficiency",
+      "type": "Story",
+      "typeId": "10004",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "points": 5,
+      "effortEstimateHours": null,
+      "useCase": "Compare Usage and Efficiency (A35cd925e814ba68)",
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-696": {
+      "summary": "Show which play types an opponent allows to score efficiently",
+      "type": "Story",
+      "typeId": "10004",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "points": 5,
+      "effortEstimateHours": null,
+      "useCase": "View Opponent Defensive Weak Spots (A308531b428a7bd1)",
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-697": {
+      "summary": "Compare a team's play types with the league average",
+      "type": "Story",
+      "typeId": "10004",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "points": 3,
+      "effortEstimateHours": null,
+      "useCase": "Compare Play Types with League Average (A32dd7c488267720)",
+      "sprints": [
+        {
+          "id": 187,
+          "name": "Iteration 19",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-698": {
+      "summary": "Track a team's play-type usage and efficiency across seasons",
+      "type": "Story",
+      "typeId": "10004",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "points": 5,
+      "effortEstimateHours": null,
+      "useCase": "Track Play-Type Trends Across Seasons (A3fb2384b7572cf4)",
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-699": {
+      "summary": "Compare two teams' season-long play-type profiles",
+      "type": "Story",
+      "typeId": "10004",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "points": 3,
+      "effortEstimateHours": null,
+      "useCase": "Compare Head-to-Head Play-Type Profiles (A3f15ca90f30ea8e)",
+      "sprints": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-700": {
+      "summary": "Show independent possession outcome rates by play type",
+      "type": "Story",
+      "typeId": "10004",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "points": 5,
+      "effortEstimateHours": null,
+      "useCase": "View Possession Outcome Rates (A303ecfb1b5e7ad9)",
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-701": {
+      "summary": "Separate source phases and reject duplicate play-type rows",
+      "type": "Task",
+      "typeId": "10003",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "points": 3,
+      "effortEstimateHours": null,
+      "useCase": "Compare Usage and Efficiency (A35cd925e814ba68)",
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-702": {
+      "summary": "Calculate field-goal rates with the correct shot denominator",
+      "type": "Task",
+      "typeId": "10003",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "points": 2,
+      "effortEstimateHours": null,
+      "useCase": "Compare Usage and Efficiency (A35cd925e814ba68)",
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-703": {
+      "summary": "Fix the effect of opponent defense on predicted PPP",
+      "type": "Task",
+      "typeId": "10003",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "points": 2,
+      "effortEstimateHours": null,
+      "useCase": "View Opponent Defensive Weak Spots (A308531b428a7bd1)",
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-704": {
+      "summary": "Define usage and efficiency calculations and screen flow",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-695",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-705": {
+      "summary": "Build the usage and efficiency data endpoint",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-695",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-706": {
+      "summary": "Add the usage and efficiency chart and table",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-695",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-707": {
+      "summary": "Test usage totals, filters and access",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-695",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-708": {
+      "summary": "Publish the usage comparison and its model",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-695",
+      "points": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-709": {
+      "summary": "Model the opponent defense view and its sample rules",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-696",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-710": {
+      "summary": "Build the opponent defense breakdown",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-696",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-711": {
+      "summary": "Show opponent weak spots with clear sample counts",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-696",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-712": {
+      "summary": "Test defensive ordering and changed filters",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-696",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-713": {
+      "summary": "Publish and verify the opponent defense view",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-696",
+      "points": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-714": {
+      "summary": "Define league comparison calculations and VP flow",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 187,
+          "name": "Iteration 19",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-715": {
+      "summary": "Build weighted team and league comparisons",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 187,
+          "name": "Iteration 19",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-716": {
+      "summary": "Add the league comparison view",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 187,
+          "name": "Iteration 19",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-717": {
+      "summary": "Test and publish the league comparison",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 187,
+          "name": "Iteration 19",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-718": {
+      "summary": "Model season trends and missing-data rules",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-719": {
+      "summary": "Build consistent cross-season play-type summaries",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-720": {
+      "summary": "Add the season trend chart and table",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-721": {
+      "summary": "Test season coverage and trend calculations",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-722": {
+      "summary": "Publish and verify season trends",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "points": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-723": {
+      "summary": "Model the two-team profile comparison",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-724": {
+      "summary": "Build aligned team profiles",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-725": {
+      "summary": "Add the two-team comparison screen",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-726": {
+      "summary": "Test and publish team profile comparison",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-727": {
+      "summary": "Define independent outcome rates and VP flow",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-728": {
+      "summary": "Build validated possession-rate summaries",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-729": {
+      "summary": "Add the outcome-rate comparison view",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-730": {
+      "summary": "Test overlap, invalid rates and source parity",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-731": {
+      "summary": "Publish and verify possession outcomes",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "points": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-732": {
+      "summary": "Separate phase-specific aggregation and dependent artifacts",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-701",
+      "points": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-733": {
+      "summary": "Check regular-season and playoff separation",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-701",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-734": {
+      "summary": "Use metric-specific denominators in team and league tables",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-702",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-735": {
+      "summary": "Verify team and league field-goal calculations",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-702",
+      "points": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-736": {
+      "summary": "Correct defensive contribution in baseline and context ranking",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-703",
+      "points": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "SCRUM-737": {
+      "summary": "Test stronger and weaker opponent defense",
+      "type": "Dev Subtask",
+      "typeId": "10002",
+      "status": "In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-703",
+      "points": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future"
+        }
+      ]
+    },
+    "BST-226": {
+      "summary": "Compare Usage and Efficiency",
+      "type": "Test Suite",
+      "typeId": "10013",
+      "status": "Testing In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-227": {
+      "summary": "View Opponent Defensive Weak Spots",
+      "type": "Test Suite",
+      "typeId": "10013",
+      "status": "Testing In Progress",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-228": {
+      "summary": "Compare Play Types with League Average",
+      "type": "Test Suite",
+      "typeId": "10013",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-229": {
+      "summary": "Track Play-Type Trends Across Seasons",
+      "type": "Test Suite",
+      "typeId": "10013",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-230": {
+      "summary": "Compare Head-to-Head Play-Type Profiles",
+      "type": "Test Suite",
+      "typeId": "10013",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-231": {
+      "summary": "View Possession Outcome Rates",
+      "type": "Test Suite",
+      "typeId": "10013",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-232": {
+      "summary": "Usage chart and table match team and league source totals",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-233": {
+      "summary": "Sample cutoff flags rows without changing usage shares",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-234": {
+      "summary": "Usage comparison clears outdated results and recovers after a failed request",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-235": {
+      "summary": "Usage comparison enforces the intended user role",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-236": {
+      "summary": "Regular-season team totals exclude playoff possessions",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Fail",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-237": {
+      "summary": "Field-goal rates use shot attempts instead of possessions",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Fail",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-238": {
+      "summary": "Duplicate source rows cannot double-count play-type possessions",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Fail",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-239": {
+      "summary": "Opponent weak spots use league-relative defensive efficiency",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-227",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-240": {
+      "summary": "Small samples and missing defensive types cannot become weak spots",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-227",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-241": {
+      "summary": "Opponent changes cannot leave the previous team's results on screen",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-227",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-242": {
+      "summary": "Opponent defense view protects team data behind the intended role",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-227",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-243": {
+      "summary": "A weaker opposing defense does not lower baseline predicted PPP",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Fail",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-227",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-244": {
+      "summary": "League benchmark uses matched-season weighted totals",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-245": {
+      "summary": "Missing league categories remain unavailable",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-246": {
+      "summary": "League comparison handles access and changing filters",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-247": {
+      "summary": "Season trends match source totals in chronological order",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-229",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-248": {
+      "summary": "Missing seasons create gaps rather than zero values",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-229",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-249": {
+      "summary": "Trend filters and permissions stay consistent",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-229",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-250": {
+      "summary": "Two-team profiles use the same season and matching categories",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-230",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-251": {
+      "summary": "Swapping teams swaps labels and values without changing calculations",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-230",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-252": {
+      "summary": "Profile comparison states its season-long scope and protects access",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-230",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-253": {
+      "summary": "Outcome rates match possession-weighted source fields",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-231",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-254": {
+      "summary": "Overlapping outcome rates are not normalized into a 100% stack",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-231",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    },
+    "BST-255": {
+      "summary": "Invalid and missing outcome rates stay explicit",
+      "type": "Test Case",
+      "typeId": "10012",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-231",
+      "points": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": []
+    }
+  },
+  "checks": [
+    {
+      "name": "Created issue keys are unique",
+      "pass": true
+    },
+    {
+      "name": "All 73 new issues are read back",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-695 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-696 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-701 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-702 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-703 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-704 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-704 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-704 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-704 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-704 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-704 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-705 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-705 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-705 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-705 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-705 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-705 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-706 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-706 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-706 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-706 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-706 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-706 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-707 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-707 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-707 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-707 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-707 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-707 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-708 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-708 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-708 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-708 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-708 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-708 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-709 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-709 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-709 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-709 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-709 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-709 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-710 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-710 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-710 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-710 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-710 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-710 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-711 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-711 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-711 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-711 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-711 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-711 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-712 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-712 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-712 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-712 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-712 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-712 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-713 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-713 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-713 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-713 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-713 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-713 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-732 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-732 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-732 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-732 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-732 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-732 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-733 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-733 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-733 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-733 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-733 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-733 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-734 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-734 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-734 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-734 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-734 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-734 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-735 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-735 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-735 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-735 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-735 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-735 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-736 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-736 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-736 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-736 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-736 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-736 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-737 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-737 parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-737 Dev Subtask type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-737 effort estimate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-737 inherited sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-737 estimate within course limit",
+      "pass": true
+    },
+    {
+      "name": "BST-226 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-226 Epic-level Test Suite",
+      "pass": true
+    },
+    {
+      "name": "BST-227 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-227 Epic-level Test Suite",
+      "pass": true
+    },
+    {
+      "name": "BST-228 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-228 Epic-level Test Suite",
+      "pass": true
+    },
+    {
+      "name": "BST-229 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-229 Epic-level Test Suite",
+      "pass": true
+    },
+    {
+      "name": "BST-230 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-230 Epic-level Test Suite",
+      "pass": true
+    },
+    {
+      "name": "BST-231 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-231 Epic-level Test Suite",
+      "pass": true
+    },
+    {
+      "name": "BST-232 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-232 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-232 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-232 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-233 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-233 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-233 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-233 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-234 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-234 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-234 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-234 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-235 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-235 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-235 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-235 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-236 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-236 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-236 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-236 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-237 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-237 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-237 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-237 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-238 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-238 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-238 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-238 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-239 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-239 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-239 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-239 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-240 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-240 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-240 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-240 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-241 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-241 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-241 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-241 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-242 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-242 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-242 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-242 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-243 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-243 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-243 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-243 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-244 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-244 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-244 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-244 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-245 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-245 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-245 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-245 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-246 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-246 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-246 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-246 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-247 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-247 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-247 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-247 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-248 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-248 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-248 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-248 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-249 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-249 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-249 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-249 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-250 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-250 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-250 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-250 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-251 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-251 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-251 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-251 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-252 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-252 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-252 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-252 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-253 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-253 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-253 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-253 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-254 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-254 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-254 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-254 correct result",
+      "pass": true
+    },
+    {
+      "name": "BST-255 assigned to Gurk",
+      "pass": true
+    },
+    {
+      "name": "BST-255 parent",
+      "pass": true
+    },
+    {
+      "name": "BST-255 Task-level Test Case",
+      "pass": true
+    },
+    {
+      "name": "BST-255 correct result",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-695 Story type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-695 story points",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-695 UC ID",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-695 target sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-695 planned state",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-695 baseline Feature parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-696 Story type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-696 story points",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-696 UC ID",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-696 target sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-696 planned state",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-696 baseline Feature parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 Story type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 story points",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 UC ID",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 target sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 planned state",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 baseline Feature parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 Story type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 story points",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 UC ID",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 target sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 planned state",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 baseline Feature parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 Story type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 story points",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 UC ID",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 target sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 planned state",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 baseline Feature parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 Story type",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 story points",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 UC ID",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 target sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 planned state",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 baseline Feature parent",
+      "pass": true
+    },
+    {
+      "name": "alpha-version",
+      "pass": true
+    },
+    {
+      "name": "beta-version",
+      "pass": true
+    },
+    {
+      "name": "final-version",
+      "pass": true
+    },
+    {
+      "name": "due-dates",
+      "pass": true
+    },
+    {
+      "name": "no-actual-hours",
+      "pass": true
+    },
+    {
+      "name": "BST-226 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-227 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-228 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-229 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-230 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-231 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-232 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-233 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-234 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-235 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-236 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-237 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-238 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-239 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-240 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-241 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-242 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-243 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-244 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-245 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-246 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-247 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-248 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-249 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-250 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-251 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-252 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-253 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-254 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "BST-255 visible on Board4",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-226|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-321|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-322|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-495|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-49|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-48|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-88|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-41|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-232|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-233|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-234|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-235|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-236|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-236|SCRUM-701",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-237|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-237|SCRUM-702",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-238|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-238|SCRUM-701",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-227|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-321|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-546|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-609|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-48|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-59|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-41|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-88|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-239|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-240|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-241|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-242|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-243|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-243|SCRUM-703",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-228|SCRUM-697",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-321|SCRUM-697",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-49|SCRUM-697",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-48|SCRUM-697",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-41|SCRUM-697",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-244|SCRUM-697",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-245|SCRUM-697",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-246|SCRUM-697",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-229|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-631|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-495|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-58|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-48|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-41|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-247|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-248|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-249|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-230|SCRUM-699",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-321|SCRUM-699",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-630|SCRUM-699",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-41|SCRUM-699",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-48|SCRUM-699",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-88|SCRUM-699",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-250|SCRUM-699",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-251|SCRUM-699",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-252|SCRUM-699",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-231|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-498|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "Relates|SCRUM-548|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-49|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-41|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-48|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-88|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-253|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-254|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "Relates|BST-255|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "Blocks|SCRUM-701|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Blocks|SCRUM-701|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-49|SCRUM-701",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-58|SCRUM-701",
+      "pass": true
+    },
+    {
+      "name": "Blocks|SCRUM-702|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-49|SCRUM-702",
+      "pass": true
+    },
+    {
+      "name": "Blocks|SCRUM-703|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-41|SCRUM-703",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-88|SCRUM-703",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-88|SCRUM-697",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-88|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-55|SCRUM-695",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-55|SCRUM-696",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-55|SCRUM-697",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-55|SCRUM-698",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-55|SCRUM-699",
+      "pass": true
+    },
+    {
+      "name": "Relates|BSR-55|SCRUM-700",
+      "pass": true
+    },
+    {
+      "name": "BSR-49 preserves summary",
+      "pass": true
+    },
+    {
+      "name": "BSR-49 preserves description",
+      "pass": true
+    },
+    {
+      "name": "BSR-49 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BSR-49 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BSR-49 preserves reporter",
+      "pass": true
+    },
+    {
+      "name": "BSR-49 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BSR-49 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BSR-49 preserves customFields",
+      "pass": true
+    },
+    {
+      "name": "BSR-49 retains old links",
+      "pass": true
+    },
+    {
+      "name": "BSR-49 adds one concise comment",
+      "pass": true
+    },
+    {
+      "name": "BSR-48 preserves summary",
+      "pass": true
+    },
+    {
+      "name": "BSR-48 preserves description",
+      "pass": true
+    },
+    {
+      "name": "BSR-48 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BSR-48 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BSR-48 preserves reporter",
+      "pass": true
+    },
+    {
+      "name": "BSR-48 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BSR-48 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BSR-48 preserves customFields",
+      "pass": true
+    },
+    {
+      "name": "BSR-48 retains old links",
+      "pass": true
+    },
+    {
+      "name": "BSR-48 adds one concise comment",
+      "pass": true
+    },
+    {
+      "name": "BSR-41 preserves summary",
+      "pass": true
+    },
+    {
+      "name": "BSR-41 preserves description",
+      "pass": true
+    },
+    {
+      "name": "BSR-41 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BSR-41 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BSR-41 preserves reporter",
+      "pass": true
+    },
+    {
+      "name": "BSR-41 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BSR-41 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BSR-41 preserves customFields",
+      "pass": true
+    },
+    {
+      "name": "BSR-41 retains old links",
+      "pass": true
+    },
+    {
+      "name": "BSR-41 adds one concise comment",
+      "pass": true
+    },
+    {
+      "name": "BSR-58 preserves summary",
+      "pass": true
+    },
+    {
+      "name": "BSR-58 preserves description",
+      "pass": true
+    },
+    {
+      "name": "BSR-58 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BSR-58 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BSR-58 preserves reporter",
+      "pass": true
+    },
+    {
+      "name": "BSR-58 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BSR-58 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BSR-58 preserves customFields",
+      "pass": true
+    },
+    {
+      "name": "BSR-58 retains old links",
+      "pass": true
+    },
+    {
+      "name": "BSR-58 adds one concise comment",
+      "pass": true
+    },
+    {
+      "name": "BSR-88 preserves summary",
+      "pass": true
+    },
+    {
+      "name": "BSR-88 preserves description",
+      "pass": true
+    },
+    {
+      "name": "BSR-88 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BSR-88 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BSR-88 preserves reporter",
+      "pass": true
+    },
+    {
+      "name": "BSR-88 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BSR-88 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BSR-88 preserves customFields",
+      "pass": true
+    },
+    {
+      "name": "BSR-88 retains old links",
+      "pass": true
+    },
+    {
+      "name": "BSR-88 adds one concise comment",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves summary",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves description",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves reporter",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves customFields",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 retains old links",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 adds one concise comment",
+      "pass": true
+    },
+    {
+      "name": "Parent329 is reopened for added scope",
+      "pass": true
+    }
+  ],
+  "commentReceipts": [
+    {
+      "key": "BST-236",
+      "operation": "failure-comment",
+      "commentId": "11520",
+      "body": "Before the fix, this check failed. The source audit found 531 combined possessions and PPP 0.9417363465. The regression fixture also returned 160 possessions instead of 110 and accepted a missing SEASON_ID.\n\nThe fix is tracked in [SCRUM-701](https://basketball-strategy.atlassian.net/browse/SCRUM-701). The original output is saved in baseline-regressions-before.txt; the case needs a recorded retest before it can pass."
+    },
+    {
+      "key": "BST-237",
+      "operation": "failure-comment",
+      "commentId": "11521",
+      "body": "Before the fix, this check failed. The audit found FG% 46.1108% and eFG% 48.7547% from possession weighting. The fixtures also showed rounded PPP replacing exact counts and an incorrect league FG denominator.\n\nThe fix is tracked in [SCRUM-702](https://basketball-strategy.atlassian.net/browse/SCRUM-702). The original output is saved in baseline-regressions-before.txt; the case needs a recorded retest before it can pass."
+    },
+    {
+      "key": "BST-238",
+      "operation": "failure-comment",
+      "commentId": "11522",
+      "body": "Before the fix, this check failed. The regression expected a duplicate-row error, but the current aggregation accepted the duplicate.\n\nThe fix is tracked in [SCRUM-701](https://basketball-strategy.atlassian.net/browse/SCRUM-701). The original output is saved in baseline-regressions-before.txt; the case needs a recorded retest before it can pass."
+    },
+    {
+      "key": "BST-243",
+      "operation": "failure-comment",
+      "commentId": "11523",
+      "body": "Before the fix, this check failed. The audit reproduced predicted PPP falling from 1.10 to 1.04 when allowed PPP rose from 0.9 to 1.1.\n\nThe fix is tracked in [SCRUM-703](https://basketball-strategy.atlassian.net/browse/SCRUM-703). The original output is saved in baseline-regressions-before.txt; the case needs a recorded retest before it can pass."
+    },
+    {
+      "key": "SCRUM-329",
+      "operation": "parent-comment",
+      "commentId": "11530",
+      "body": "Added six new baseline use cases: usage and efficiency (SCRUM-695) and opponent weak spots (SCRUM-696) for Alpha; league comparison (SCRUM-697) and season trends (SCRUM-698) for Beta; two-team profiles (SCRUM-699) and possession outcome rates (SCRUM-700) for Final. Each has a VP use-case reference, development tasks and a test suite. Alpha is planned for October 29, ahead of the October 30 submission deadline; the four later stories remain To Do."
+    }
+  ],
+  "links": [
+    {
+      "inwardIssue": "BST-226",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BST-226|SCRUM-695"
+    },
+    {
+      "inwardIssue": "SCRUM-695",
+      "outwardIssue": "SCRUM-321",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-321|SCRUM-695"
+    },
+    {
+      "inwardIssue": "SCRUM-695",
+      "outwardIssue": "SCRUM-322",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-322|SCRUM-695"
+    },
+    {
+      "inwardIssue": "SCRUM-695",
+      "outwardIssue": "SCRUM-495",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-495|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BSR-49",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-49|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BSR-48",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-48|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BSR-88",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-88|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BSR-41",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-41|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BST-232",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BST-232|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BST-233",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BST-233|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BST-234",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BST-234|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BST-235",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BST-235|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BST-236",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BST-236|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BST-236",
+      "outwardIssue": "SCRUM-701",
+      "linkType": "Relates",
+      "signature": "Relates|BST-236|SCRUM-701"
+    },
+    {
+      "inwardIssue": "BST-237",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BST-237|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BST-237",
+      "outwardIssue": "SCRUM-702",
+      "linkType": "Relates",
+      "signature": "Relates|BST-237|SCRUM-702"
+    },
+    {
+      "inwardIssue": "BST-238",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BST-238|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BST-238",
+      "outwardIssue": "SCRUM-701",
+      "linkType": "Relates",
+      "signature": "Relates|BST-238|SCRUM-701"
+    },
+    {
+      "inwardIssue": "BST-227",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BST-227|SCRUM-696"
+    },
+    {
+      "inwardIssue": "SCRUM-696",
+      "outwardIssue": "SCRUM-321",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-321|SCRUM-696"
+    },
+    {
+      "inwardIssue": "SCRUM-696",
+      "outwardIssue": "SCRUM-546",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-546|SCRUM-696"
+    },
+    {
+      "inwardIssue": "SCRUM-696",
+      "outwardIssue": "SCRUM-609",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-609|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BSR-48",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-48|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BSR-59",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-59|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BSR-41",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-41|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BSR-88",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-88|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BST-239",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BST-239|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BST-240",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BST-240|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BST-241",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BST-241|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BST-242",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BST-242|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BST-243",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BST-243|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BST-243",
+      "outwardIssue": "SCRUM-703",
+      "linkType": "Relates",
+      "signature": "Relates|BST-243|SCRUM-703"
+    },
+    {
+      "inwardIssue": "BST-228",
+      "outwardIssue": "SCRUM-697",
+      "linkType": "Relates",
+      "signature": "Relates|BST-228|SCRUM-697"
+    },
+    {
+      "inwardIssue": "SCRUM-697",
+      "outwardIssue": "SCRUM-321",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-321|SCRUM-697"
+    },
+    {
+      "inwardIssue": "BSR-49",
+      "outwardIssue": "SCRUM-697",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-49|SCRUM-697"
+    },
+    {
+      "inwardIssue": "BSR-48",
+      "outwardIssue": "SCRUM-697",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-48|SCRUM-697"
+    },
+    {
+      "inwardIssue": "BSR-41",
+      "outwardIssue": "SCRUM-697",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-41|SCRUM-697"
+    },
+    {
+      "inwardIssue": "BST-244",
+      "outwardIssue": "SCRUM-697",
+      "linkType": "Relates",
+      "signature": "Relates|BST-244|SCRUM-697"
+    },
+    {
+      "inwardIssue": "BST-245",
+      "outwardIssue": "SCRUM-697",
+      "linkType": "Relates",
+      "signature": "Relates|BST-245|SCRUM-697"
+    },
+    {
+      "inwardIssue": "BST-246",
+      "outwardIssue": "SCRUM-697",
+      "linkType": "Relates",
+      "signature": "Relates|BST-246|SCRUM-697"
+    },
+    {
+      "inwardIssue": "BST-229",
+      "outwardIssue": "SCRUM-698",
+      "linkType": "Relates",
+      "signature": "Relates|BST-229|SCRUM-698"
+    },
+    {
+      "inwardIssue": "SCRUM-698",
+      "outwardIssue": "SCRUM-631",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-631|SCRUM-698"
+    },
+    {
+      "inwardIssue": "SCRUM-698",
+      "outwardIssue": "SCRUM-495",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-495|SCRUM-698"
+    },
+    {
+      "inwardIssue": "BSR-58",
+      "outwardIssue": "SCRUM-698",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-58|SCRUM-698"
+    },
+    {
+      "inwardIssue": "BSR-48",
+      "outwardIssue": "SCRUM-698",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-48|SCRUM-698"
+    },
+    {
+      "inwardIssue": "BSR-41",
+      "outwardIssue": "SCRUM-698",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-41|SCRUM-698"
+    },
+    {
+      "inwardIssue": "BST-247",
+      "outwardIssue": "SCRUM-698",
+      "linkType": "Relates",
+      "signature": "Relates|BST-247|SCRUM-698"
+    },
+    {
+      "inwardIssue": "BST-248",
+      "outwardIssue": "SCRUM-698",
+      "linkType": "Relates",
+      "signature": "Relates|BST-248|SCRUM-698"
+    },
+    {
+      "inwardIssue": "BST-249",
+      "outwardIssue": "SCRUM-698",
+      "linkType": "Relates",
+      "signature": "Relates|BST-249|SCRUM-698"
+    },
+    {
+      "inwardIssue": "BST-230",
+      "outwardIssue": "SCRUM-699",
+      "linkType": "Relates",
+      "signature": "Relates|BST-230|SCRUM-699"
+    },
+    {
+      "inwardIssue": "SCRUM-699",
+      "outwardIssue": "SCRUM-321",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-321|SCRUM-699"
+    },
+    {
+      "inwardIssue": "SCRUM-699",
+      "outwardIssue": "SCRUM-630",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-630|SCRUM-699"
+    },
+    {
+      "inwardIssue": "BSR-41",
+      "outwardIssue": "SCRUM-699",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-41|SCRUM-699"
+    },
+    {
+      "inwardIssue": "BSR-48",
+      "outwardIssue": "SCRUM-699",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-48|SCRUM-699"
+    },
+    {
+      "inwardIssue": "BSR-88",
+      "outwardIssue": "SCRUM-699",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-88|SCRUM-699"
+    },
+    {
+      "inwardIssue": "BST-250",
+      "outwardIssue": "SCRUM-699",
+      "linkType": "Relates",
+      "signature": "Relates|BST-250|SCRUM-699"
+    },
+    {
+      "inwardIssue": "BST-251",
+      "outwardIssue": "SCRUM-699",
+      "linkType": "Relates",
+      "signature": "Relates|BST-251|SCRUM-699"
+    },
+    {
+      "inwardIssue": "BST-252",
+      "outwardIssue": "SCRUM-699",
+      "linkType": "Relates",
+      "signature": "Relates|BST-252|SCRUM-699"
+    },
+    {
+      "inwardIssue": "BST-231",
+      "outwardIssue": "SCRUM-700",
+      "linkType": "Relates",
+      "signature": "Relates|BST-231|SCRUM-700"
+    },
+    {
+      "inwardIssue": "SCRUM-700",
+      "outwardIssue": "SCRUM-498",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-498|SCRUM-700"
+    },
+    {
+      "inwardIssue": "SCRUM-700",
+      "outwardIssue": "SCRUM-548",
+      "linkType": "Relates",
+      "signature": "Relates|SCRUM-548|SCRUM-700"
+    },
+    {
+      "inwardIssue": "BSR-49",
+      "outwardIssue": "SCRUM-700",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-49|SCRUM-700"
+    },
+    {
+      "inwardIssue": "BSR-41",
+      "outwardIssue": "SCRUM-700",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-41|SCRUM-700"
+    },
+    {
+      "inwardIssue": "BSR-48",
+      "outwardIssue": "SCRUM-700",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-48|SCRUM-700"
+    },
+    {
+      "inwardIssue": "BSR-88",
+      "outwardIssue": "SCRUM-700",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-88|SCRUM-700"
+    },
+    {
+      "inwardIssue": "BST-253",
+      "outwardIssue": "SCRUM-700",
+      "linkType": "Relates",
+      "signature": "Relates|BST-253|SCRUM-700"
+    },
+    {
+      "inwardIssue": "BST-254",
+      "outwardIssue": "SCRUM-700",
+      "linkType": "Relates",
+      "signature": "Relates|BST-254|SCRUM-700"
+    },
+    {
+      "inwardIssue": "BST-255",
+      "outwardIssue": "SCRUM-700",
+      "linkType": "Relates",
+      "signature": "Relates|BST-255|SCRUM-700"
+    },
+    {
+      "inwardIssue": "SCRUM-701",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Blocks",
+      "signature": "Blocks|SCRUM-701|SCRUM-695"
+    },
+    {
+      "inwardIssue": "SCRUM-701",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Blocks",
+      "signature": "Blocks|SCRUM-701|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BSR-49",
+      "outwardIssue": "SCRUM-701",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-49|SCRUM-701"
+    },
+    {
+      "inwardIssue": "BSR-58",
+      "outwardIssue": "SCRUM-701",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-58|SCRUM-701"
+    },
+    {
+      "inwardIssue": "SCRUM-702",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Blocks",
+      "signature": "Blocks|SCRUM-702|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BSR-49",
+      "outwardIssue": "SCRUM-702",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-49|SCRUM-702"
+    },
+    {
+      "inwardIssue": "SCRUM-703",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Blocks",
+      "signature": "Blocks|SCRUM-703|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BSR-41",
+      "outwardIssue": "SCRUM-703",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-41|SCRUM-703"
+    },
+    {
+      "inwardIssue": "BSR-88",
+      "outwardIssue": "SCRUM-703",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-88|SCRUM-703"
+    },
+    {
+      "inwardIssue": "BSR-88",
+      "outwardIssue": "SCRUM-697",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-88|SCRUM-697"
+    },
+    {
+      "inwardIssue": "BSR-88",
+      "outwardIssue": "SCRUM-698",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-88|SCRUM-698"
+    },
+    {
+      "inwardIssue": "BSR-55",
+      "outwardIssue": "SCRUM-695",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-55|SCRUM-695"
+    },
+    {
+      "inwardIssue": "BSR-55",
+      "outwardIssue": "SCRUM-696",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-55|SCRUM-696"
+    },
+    {
+      "inwardIssue": "BSR-55",
+      "outwardIssue": "SCRUM-697",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-55|SCRUM-697"
+    },
+    {
+      "inwardIssue": "BSR-55",
+      "outwardIssue": "SCRUM-698",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-55|SCRUM-698"
+    },
+    {
+      "inwardIssue": "BSR-55",
+      "outwardIssue": "SCRUM-699",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-55|SCRUM-699"
+    },
+    {
+      "inwardIssue": "BSR-55",
+      "outwardIssue": "SCRUM-700",
+      "linkType": "Relates",
+      "signature": "Relates|BSR-55|SCRUM-700"
+    }
+  ]
+}

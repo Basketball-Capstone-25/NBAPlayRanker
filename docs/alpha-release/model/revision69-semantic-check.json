@@ -1,0 +1,1681 @@
+{
+  "checks": {
+    "all_model_ids_retained": true,
+    "no_unclassified_identity_or_content_change": true,
+    "all_use_case_definitions_preserved": true,
+    "all_doccomposer_models_preserved": true
+  },
+  "verified": true,
+  "counts": {
+    "models": 3165,
+    "changed_raw": 183,
+    "use_cases": 83
+  },
+  "explicit_changes": [
+    {
+      "id": "J_YLyVmAUUE.byfZ",
+      "name": "Requirements Model",
+      "type": "Model",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "kOHnKVmAUUE.bzDc",
+      "name": "Interaction Model",
+      "type": "Model",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "8zHsqVmAUUE.bzvI",
+      "name": "Association",
+      "type": "ModelRelationshipContainer",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared.",
+        "Container child index reflects only the six Alpha association reparentings; all other order/targets unchanged."
+      ]
+    },
+    {
+      "id": "SqIEC1mGAqAALhA3",
+      "name": "Functional Requirements",
+      "type": "Package",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "Z9YMi1mGAqAALhL1",
+      "name": "Coach",
+      "type": "Actor",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "iIXBi1mGAqAALiBm",
+      "name": "Baseline Playtype Recommender",
+      "type": "Package",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "WlLCa1mGAqAALh.o",
+      "name": "Dependency",
+      "type": "ModelRelationshipContainer",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "_Bfs31mGAqAALlYq",
+      "name": "WireflowConnector",
+      "type": "ModelRelationshipContainer",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "BwYKwNmGAqAALne6",
+      "name": "Message",
+      "type": "ModelRelationshipContainer",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared.",
+        "Container child index reflects only the six Alpha association reparentings; all other order/targets unchanged."
+      ]
+    },
+    {
+      "id": "7sZ6GLmAUAAADRP1",
+      "name": "Design Model 2.0",
+      "type": "Model",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "uG9GGLmAUAAADRQg",
+      "name": "User Interface Layer",
+      "type": "Package",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "bb3GGLmAUAAADRQp",
+      "name": "Application Layer",
+      "type": "Package",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "KPwmGLmAUAAADRRC",
+      "name": "Domain Layer",
+      "type": "Package",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "wd4mGLmAUAAADRRL",
+      "name": "Infrastructure Layer",
+      "type": "Package",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "RyZmGLmAUAAADRSN",
+      "name": "Data Explorer UI",
+      "type": "Subsystem",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "ln1mGLmAUAAADRSY",
+      "name": "Recommendation UI",
+      "type": "Subsystem",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "Pq3mGLmAUAAADRS5",
+      "name": "API Coordination",
+      "type": "Subsystem",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "9H_mGLmAUAAADRTE",
+      "name": "Recommendation Services",
+      "type": "Subsystem",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "t58WGLmAUAAADRTl",
+      "name": "Baseline Recommendation",
+      "type": "Subsystem",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "Q0q54bmAUAAADWMo",
+      "name": "Realization",
+      "type": "ModelRelationshipContainer",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "60KwWwWAUAAADRZX",
+      "name": "Frontend Infrastructure",
+      "type": "Subsystem",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "NbKZ.wWAUAAADVtN",
+      "name": "BaselineRecommender",
+      "type": "Class",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A35cd925e814ba68",
+      "name": "Compare Usage and Efficiency",
+      "type": "UseCase",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A308531b428a7bd1",
+      "name": "View Opponent Defensive Weak Spots",
+      "type": "UseCase",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A32dd7c488267720",
+      "name": "Compare Play Types with League Average",
+      "type": "UseCase",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3fb2384b7572cf4",
+      "name": "Track Play-Type Trends Across Seasons",
+      "type": "UseCase",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3f15ca90f30ea8e",
+      "name": "Compare Head-to-Head Play-Type Profiles",
+      "type": "UseCase",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A303ecfb1b5e7ad9",
+      "name": "View Possession Outcome Rates",
+      "type": "UseCase",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3f2166b165833fa",
+      "name": "Compare Usage and Efficiency",
+      "type": "Collaboration",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3b41e10f1f421f5",
+      "name": "Detailed Sequence - Compare Usage and Efficiency",
+      "type": "Frame",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A38d873fe7359eda",
+      "name": "coach",
+      "type": "InteractionLifeLine",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3b0f0cc8d14a0ac",
+      "name": "page",
+      "type": "InteractionLifeLine",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A32f56d9dbd51ded",
+      "name": "request",
+      "type": "InteractionLifeLine",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A303f77b428d0322",
+      "name": "api",
+      "type": "InteractionLifeLine",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A34ce87ca582c294",
+      "name": "service",
+      "type": "InteractionLifeLine",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3f5edfefc0d574e",
+      "name": "View Opponent Defensive Weak Spots",
+      "type": "Collaboration",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A37a0fc6e322d293",
+      "name": "Detailed Sequence - View Opponent Defensive Weak Spots",
+      "type": "Frame",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3b35879c2776d68",
+      "name": "coach",
+      "type": "InteractionLifeLine",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3a5b526aa480ea8",
+      "name": "page",
+      "type": "InteractionLifeLine",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A38253a23e478290",
+      "name": "request",
+      "type": "InteractionLifeLine",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A36f61302f705c72",
+      "name": "api",
+      "type": "InteractionLifeLine",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3362030607db7f7",
+      "name": "service",
+      "type": "InteractionLifeLine",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3b3109b2033a74d",
+      "name": "uses",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3c40adacc968564",
+      "name": "uses",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A39eac8830a6231a",
+      "name": "uses",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A365ac9f48155b95",
+      "name": "current rows",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A313b8edd94e4d6a",
+      "name": "captured filters",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3429b13740e0386",
+      "name": "fixed authenticated request",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A393ea5c693fdd78",
+      "name": "GET /analytics/playtypes",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3fc17f35b48fea4",
+      "name": "validated current data",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A36bfaf4a3c43af8",
+      "name": "regular-season aggregates",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A36f388534bc5acd",
+      "name": "uses",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3f4a55f0410914b",
+      "name": "uses",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A38ccfa2ede3114a",
+      "name": "uses",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3691b699fd01066",
+      "name": "current rows",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A38a087f8b9d296f",
+      "name": "captured filters",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A384ff14c5fb8811",
+      "name": "fixed authenticated request",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A30cb8fe754c898f",
+      "name": "GET /analytics/playtypes",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3c52929f437462c",
+      "name": "validated current data",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3b9917d02c6a817",
+      "name": "regular-season aggregates",
+      "type": "Dependency",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A39e403bbbed9e3f",
+      "name": "selectInputs(filters: DashboardFilters, tab: DashboardTab): void",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A37d362de03e2011",
+      "name": "run(filters: DashboardFilters, fetchResult: DashboardFetcher, publish: StatePublisher)",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A39dc930bcc9f9c2",
+      "name": "GET /analytics/playtypes(season: str, our: str, opp: str, min_poss: int, auth: BearerToken)",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A317264076d0f449",
+      "name": "build(season: str, our_team: str, opp_team: str, min_poss: int)",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3f64bbf90a99369",
+      "name": "result: PlaytypeDashboard | DomainError",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A37011a8af33d43e",
+      "name": "response: PlaytypeDashboard | HttpError(400|401|403|422|503)",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A321b0fb157a67a1",
+      "name": "currentResult: PlaytypeDashboard | RetryError (matching snapshot only)",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A360b486ec5325da",
+      "name": "view: UsageScatterAndTable | EmptyOrUnavailable",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A36c322a021e41fe",
+      "name": "selectInputs(filters: DashboardFilters, tab: DashboardTab): void",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3fec18b97586e26",
+      "name": "run(filters: DashboardFilters, signal: AbortSignal)",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A317f970642ffeae",
+      "name": "GET /analytics/playtypes(season: str, our: str, opp: str, min_poss: int, auth: BearerToken)",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A39dacf3395424fa",
+      "name": "build(season: str, our_team: str, opp_team: str, min_poss: int)",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A36719a545c3fc80",
+      "name": "result: PlaytypeDashboard | DomainError",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3a9830953adb597",
+      "name": "response: PlaytypeDashboard | HttpError(400|401|403|422|503)",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A384b06983268a03",
+      "name": "currentResult: PlaytypeDashboard | RetryError (matching snapshot only)",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A30818f28700ac72",
+      "name": "view: OpponentDefenseChartAndTable | EmptyOrUnavailable",
+      "type": "Message",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A38dd30689da30ec",
+      "name": "",
+      "type": "Association",
+      "definition_preserved": true,
+      "classification": [
+        "New Alpha association moved from Message container to correct Association container.",
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A39f691210e8d8c4",
+      "name": "",
+      "type": "Association",
+      "definition_preserved": true,
+      "classification": [
+        "New Alpha association moved from Message container to correct Association container.",
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A372ed183fa94bdb",
+      "name": "",
+      "type": "Association",
+      "definition_preserved": true,
+      "classification": [
+        "New Alpha association moved from Message container to correct Association container.",
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A351f9a6a645fd8a",
+      "name": "",
+      "type": "Association",
+      "definition_preserved": true,
+      "classification": [
+        "New Alpha association moved from Message container to correct Association container.",
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3535e6d6b4ff19b",
+      "name": "",
+      "type": "Association",
+      "definition_preserved": true,
+      "classification": [
+        "New Alpha association moved from Message container to correct Association container.",
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3e6f134dd231736",
+      "name": "",
+      "type": "Association",
+      "definition_preserved": true,
+      "classification": [
+        "New Alpha association moved from Message container to correct Association container.",
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A37f54ed2a78ddf4",
+      "name": "",
+      "type": "Realization",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3ea88db0664d25c",
+      "name": "",
+      "type": "Realization",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A35e5d1c9a33571d",
+      "name": "MatchupDashboardClient",
+      "type": "Class",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3797d0d9a554dd5",
+      "name": "UsageEfficiencyChart",
+      "type": "Class",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A30603ad6e378b21",
+      "name": "OpponentDefenseChart",
+      "type": "Class",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A32b7b8bdeeb7471",
+      "name": "PlaytypeDashboardEndpoints",
+      "type": "Class",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A375bbe8193ce880",
+      "name": "PlaytypeDashboardService",
+      "type": "Class",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A3525233679a4e95",
+      "name": "DashboardRequest",
+      "type": "Class",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "A327006a83868238",
+      "name": "PlaytypeDashboardClientAPI",
+      "type": "Class",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "G9O13oWD.AAAAQmz",
+      "name": "Open Matchup Dashboard",
+      "type": "WireflowNode",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "wou13oWD.AAAAQt0",
+      "name": "Choose the matchup",
+      "type": "WireflowNode",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "bEu13oWD.AAAAQuU",
+      "name": "Loading current inputs",
+      "type": "WireflowNode",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "i0u13oWD.AAAAQu2",
+      "name": "Usage and Efficiency",
+      "type": "WireflowNode",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "vMu13oWD.AAAAQva",
+      "name": "Opponent Defense",
+      "type": "WireflowNode",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "Dcu13oWD.AAAAQv.",
+      "name": "Low sample support",
+      "type": "WireflowNode",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "KCu13oWD.AAAAQwi",
+      "name": "No above-league callout",
+      "type": "WireflowNode",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "tiu13oWD.AAAAQxG",
+      "name": "Unavailable or retry",
+      "type": "WireflowNode",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "kyu13oWD.AAAAQxc",
+      "name": "Open dashboard",
+      "type": "WireflowConnector",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "nyu13oWD.AAAAQzW",
+      "name": "Valid filters change",
+      "type": "WireflowConnector",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "vyu13oWD.AAAAQza",
+      "name": "Latest request succeeds",
+      "type": "WireflowConnector",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "_yu13oWD.AAAAQze",
+      "name": "Select Defense",
+      "type": "WireflowConnector",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "YKu13oWD.AAAAQzm",
+      "name": "Low samples flagged",
+      "type": "WireflowConnector",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "kKu13oWD.AAAAQzq",
+      "name": "No supported highlight",
+      "type": "WireflowConnector",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "MKu13oWD.AAAAQzu",
+      "name": "Request fails",
+      "type": "WireflowConnector",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "YC4d3oWD.AAAAQuo",
+      "name": "Open Matchup Dashboard",
+      "type": "WFDState",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared.",
+        "One reciprocal backreference initialized from the existing wireflow node that points to this exact state; widget content unchanged."
+      ]
+    },
+    {
+      "id": "yi4d3oWD.AAAAQu4",
+      "name": "Choose the matchup",
+      "type": "WFDState",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared.",
+        "One reciprocal backreference initialized from the existing wireflow node that points to this exact state; widget content unchanged."
+      ]
+    },
+    {
+      "id": "pi4d3oWD.AAAAQvI",
+      "name": "Loading current inputs",
+      "type": "WFDState",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared.",
+        "One reciprocal backreference initialized from the existing wireflow node that points to this exact state; widget content unchanged."
+      ]
+    },
+    {
+      "id": "Ni4d3oWD.AAAAQvX",
+      "name": "Usage and Efficiency",
+      "type": "WFDState",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared.",
+        "One reciprocal backreference initialized from the existing wireflow node that points to this exact state; widget content unchanged."
+      ]
+    },
+    {
+      "id": "Di4d3oWD.AAAAQvm",
+      "name": "Opponent Defense",
+      "type": "WFDState",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared.",
+        "One reciprocal backreference initialized from the existing wireflow node that points to this exact state; widget content unchanged."
+      ]
+    },
+    {
+      "id": "7i4d3oWD.AAAAQv2",
+      "name": "Low sample support",
+      "type": "WFDState",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared.",
+        "One reciprocal backreference initialized from the existing wireflow node that points to this exact state; widget content unchanged."
+      ]
+    },
+    {
+      "id": "Xi4d3oWD.AAAAQwG",
+      "name": "No above-league callout",
+      "type": "WFDState",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared.",
+        "One reciprocal backreference initialized from the existing wireflow node that points to this exact state; widget content unchanged."
+      ]
+    },
+    {
+      "id": "gS4d3oWD.AAAAQwV",
+      "name": "Unavailable or retry",
+      "type": "WFDState",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared.",
+        "One reciprocal backreference initialized from the existing wireflow node that points to this exact state; widget content unchanged."
+      ]
+    },
+    {
+      "id": "m7kT3oWD.AAAAQmC",
+      "name": "",
+      "type": "ReportDiagramDetailsContainer",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "IXkT3oWD.AAAAQmG",
+      "name": "NBA Play Ranker Software Requirements Specification",
+      "type": "ReportDiagramDetails",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "aXkT3oWD.AAAAQmI",
+      "name": "",
+      "type": "RDStyleRepository",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "RvkT3oWD.AAAAQmh",
+      "name": "Normal Table",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "5vkT3oWD.AAAAQmk",
+      "name": "Table Grid",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "1vkT3oWD.AAAAQmt",
+      "name": "Light Shading",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "DvkT3oWD.AAAAQnM",
+      "name": "Light Shading Accent 1",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "zvkT3oWD.AAAAQnq",
+      "name": "Light Shading Accent 2",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "bvkT3oWD.AAAAQoI",
+      "name": "Light Shading Accent 3",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "HvkT3oWD.AAAAQom",
+      "name": "Light List",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "PvkT3oWD.AAAAQo.",
+      "name": "Light Grid",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "fvkT3oWD.AAAAQpr",
+      "name": "Light List Accent 1",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "QfkT3oWD.AAAAQqD",
+      "name": "Light List Accent 2",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "ofkT3oWD.AAAAQqb",
+      "name": "Light List Accent 3",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "MfkT3oWD.AAAAQqz",
+      "name": "Light Grid Accent 1",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "CfkT3oWD.AAAAQrg",
+      "name": "Light Grid Accent 2",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "yfkT3oWD.AAAAQsN",
+      "name": "Light Grid Accent 3",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "afkT3oWD.AAAAQs6",
+      "name": "Properties",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "GfkT3oWD.AAAAQs.",
+      "name": "Summaries",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "2fkT3oWD.AAAAQtC",
+      "name": "Summaries2",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "efkT3oWD.AAAAQtH",
+      "name": "Confirmation",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "RfkT3oWD.AAAAQtS",
+      "name": "Scenario",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "pfkT3oWD.AAAAQtp",
+      "name": "ScenarioNoProcedure",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "5fkT3oWD.AAAAQtv",
+      "name": "EmptyTable",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "lfkT3oWD.AAAAQtx",
+      "name": "Table Style 1",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "NfkT3oWD.AAAAQt6",
+      "name": "Table Style 1 (Center Header)",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "9fkT3oWD.AAAAQuD",
+      "name": "Table Normal (Sided)",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "jfkT3oWD.AAAAQuN",
+      "name": "Light List - H1",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "zfkT3oWD.AAAAQul",
+      "name": "Light List - H2",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "bfkT3oWD.AAAAQu9",
+      "name": "Light List - H3",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "HfkT3oWD.AAAAQvV",
+      "name": "Light List - H4",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "nfkT3oWD.AAAAQvt",
+      "name": "ETLTable",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "3fkT3oWD.AAAAQvx",
+      "name": "Confirmation (with header)",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "ffkT3oWD.AAAAQv.",
+      "name": "",
+      "type": "RDNumberingSetting",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "4_kT3oWD.AAAAQwT",
+      "name": "",
+      "type": "ReportDiagramOption",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "Sh8T3oWD.AAAARnA",
+      "name": "NBA Play Ranker Software Design Document",
+      "type": "ReportDiagramDetails",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "rh8T3oWD.AAAARnB",
+      "name": "",
+      "type": "RDStyleRepository",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "oJ8T3oWD.AAAARnY",
+      "name": "Normal Table",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "cJ8T3oWD.AAAARna",
+      "name": "Table Grid",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "yJ8T3oWD.AAAARni",
+      "name": "Light Shading",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "6J8T3oWD.AAAARoA",
+      "name": "Light Shading Accent 1",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "OJ8T3oWD.AAAARoe",
+      "name": "Light Shading Accent 2",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "eJ8T3oWD.AAAARo8",
+      "name": "Light Shading Accent 3",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "BJ8T3oWD.AAAARpa",
+      "name": "Light List",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "RJ8T3oWD.AAAARpy",
+      "name": "Light Grid",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "JJ8T3oWD.AAAARqf",
+      "name": "Light List Accent 1",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "5J8T3oWD.AAAARq3",
+      "name": "Light List Accent 2",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "lJ8T3oWD.AAAARrP",
+      "name": "Light List Accent 3",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "1J8T3oWD.AAAARrn",
+      "name": "Light Grid Accent 1",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "NJ8T3oWD.AAAARsU",
+      "name": "Light Grid Accent 2",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "dJ8T3oWD.AAAARtB",
+      "name": "Light Grid Accent 3",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "jJ8T3oWD.AAAARtu",
+      "name": "Properties",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "LJ8T3oWD.AAAARty",
+      "name": "Summaries",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "bJ8T3oWD.AAAARt2",
+      "name": "Summaries2",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "7J8T3oWD.AAAARt7",
+      "name": "Confirmation",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "HJ8T3oWD.AAAARuG",
+      "name": "Scenario",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "XJ8T3oWD.AAAARud",
+      "name": "ScenarioNoProcedure",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "fJ8T3oWD.AAAARuj",
+      "name": "EmptyTable",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "Qp8T3oWD.AAAARul",
+      "name": "Table Style 1",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "Yp8T3oWD.AAAARuu",
+      "name": "Table Style 1 (Center Header)",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "Ep8T3oWD.AAAARu3",
+      "name": "Table Normal (Sided)",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "kp8T3oWD.AAAARvB",
+      "name": "Light List - H1",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "0p8T3oWD.AAAARvZ",
+      "name": "Light List - H2",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "sp8T3oWD.AAAARvx",
+      "name": "Light List - H3",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "8p8T3oWD.AAAARwJ",
+      "name": "Light List - H4",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "ip8T3oWD.AAAARwh",
+      "name": "ETLTable",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "Wp8T3oWD.AAAARwl",
+      "name": "Confirmation (with header)",
+      "type": "RDTableStyle",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "Bp8T3oWD.AAAARwx",
+      "name": "",
+      "type": "RDNumberingSetting",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    },
+    {
+      "id": "pp8T3oWD.AAAARxE",
+      "name": "",
+      "type": "ReportDiagramOption",
+      "definition_preserved": true,
+      "classification": [
+        "ModelView wrapper identifiers normalized; exact view/diagram bindings and their order compared."
+      ]
+    }
+  ],
+  "unexplained": [],
+  "comparison_rule": "Only lastModifiedTime/pmLastModified ignored. Property maps compare independent of order, ordered lists remain ordered; model-address prefixes normalized only for existing target IDs. The enumerated six parent moves, ModelView wrapper IDs, and eight reciprocal state links are separately checked."
+}

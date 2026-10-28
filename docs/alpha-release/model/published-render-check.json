@@ -1,0 +1,310 @@
+{
+  "published_revision": 70,
+  "published_native_sha256": "3a5d8591feaa48b47fe8a7c4ba87ab55f40c04726ece36ca14116192b7c7d060",
+  "native_reopen": "native-reopen-check.xml",
+  "images": [
+    {
+      "file": "ALPHA-1.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "bd487b9ebd64b73e52ee04a7c16da8984c522b1421d69c9baf2f682ee754c87c",
+      "verified": true
+    },
+    {
+      "file": "ALPHA-2.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "68dd89b1a8ded322f7833048660c4d7066dce14d3d20231fa408fe43461a8021",
+      "verified": true
+    },
+    {
+      "file": "ALPHA-3.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "c36372bc30b94567b454abfeb0599883de60c5f37c8820eda040f2c42555fc30",
+      "verified": true
+    },
+    {
+      "file": "ALPHA-4.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "29de3cb146b30c97d47319f44c7c5a9254a7522b2a8376d16cd0379bbfe5d6fd",
+      "verified": true
+    },
+    {
+      "file": "ALPHA-5.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "ccd75d222a94585ba4df0ed20e2c72a3b89f7c838e0ca251e913156fe99d75dc",
+      "verified": true
+    },
+    {
+      "file": "ALPHA-6.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "6e188288bd3328077f35f538812e78bee88207d206eecc430f8760aa52e4db40",
+      "verified": true
+    },
+    {
+      "file": "ALPHA-7.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "088a50f2557824b38dabf558c0355accfb0265d69d4953f84c22d2e055aee494",
+      "verified": true
+    },
+    {
+      "file": "ALPHA-8.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "d915a948c80a0b7a53bf441ec84e81ea0458864157b5025faad701755db2bfc4",
+      "verified": true
+    },
+    {
+      "file": "Baseline Playtype Recommender Overview 2.0.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "2b1263da89b2d4f58efc6ef47f78e910e00121f2bbc94b027dd902430370917d",
+      "verified": true
+    },
+    {
+      "file": "Behavioural Overview - Access Analyst Workspace.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "0994400672070fcc36e5704f2f6965f3ecd9630e55ce569b654d30f28753563d",
+      "verified": true
+    },
+    {
+      "file": "Behavioural Overview - Authenticate Analyst Access.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "08d8ff0776f93835a700d5f980e6f63ecbdf7fa18eb30964d1166f615cec18b6",
+      "verified": true
+    },
+    {
+      "file": "Behavioural Overview - Rank Plays with Game Context.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "50c7f7610dc4bceb7fc596f1c1aa378effefb540d66b5d78fddb76ea948f161a",
+      "verified": true
+    },
+    {
+      "file": "Behavioural Overview - Ranked List via API (Baseline).png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "9097951ad5d4acdc3b1977710869af839ab7e51c0316c500b233770cacf09bde",
+      "verified": true
+    },
+    {
+      "file": "Behavioural Overview - Validate Coach Access.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "c20c02f435475c58faab0966853f5a5fddb2ecf100a5fe6a406f3b36dd2d6c1c",
+      "verified": true
+    },
+    {
+      "file": "Collaboration Overview - Access Analyst Workspace.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "d4f2b7bcd9938e57f6247f86370747f7089e919408f936276bffa2a3748707c6",
+      "verified": true
+    },
+    {
+      "file": "Collaboration Overview - Authenticate Analyst Access.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "fe0e61eb7accaa3392be5c81c48710947be785bd44a263192aa3828a6fb663b2",
+      "verified": true
+    },
+    {
+      "file": "Collaboration Overview - Compare Usage and Efficiency.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "d9a0162929014049030f0405beda9cf834da87155d447e9d1bfc3821d586ff4d",
+      "verified": true
+    },
+    {
+      "file": "Collaboration Overview - Export KPIs - Reports (486).png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "a801834b0c58eb809ee5bc85169642542098fe6c645a754bccee97b35d34e01d",
+      "verified": true
+    },
+    {
+      "file": "Collaboration Overview - Rank Plays with Game Context.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "5b3937141e9d6da22b8a5c4d14a93e0528f3563d3796b2f7b24e6c949104d665",
+      "verified": true
+    },
+    {
+      "file": "Collaboration Overview - Ranked List via API (Baseline).png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "f75deffb391ef67d5fa73b2ef80b61c05d9067148cd3a51162c168603fcf42d3",
+      "verified": true
+    },
+    {
+      "file": "Collaboration Overview - Validate Coach Access.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "50fa115104bffb8987d160c6c2cf7af1c50305fbbdc08dcc5ce3672f31cc3aab",
+      "verified": true
+    },
+    {
+      "file": "Collaboration Overview - View Opponent Defensive Weak Spots.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "c4e8de86b582868d8218723d52dff2f3d02b423f606d434d52bd2c272ed8ce43",
+      "verified": true
+    },
+    {
+      "file": "Contextual ML Recommender Overview Diagram 2.0.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "bb0f094288c3e0f215249ed2aff83ede18ff6b9aee3b3542b931ca6b0a0be921",
+      "verified": true
+    },
+    {
+      "file": "Data Foundations and Explorer Overview.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "19beeadaf325b8e82eb27dec719be034a9e1f82514258ce31b915f47625002f4",
+      "verified": true
+    },
+    {
+      "file": "Deployment Diagram.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "50e445241406c1a672998113d5bb501070ab8d5e1460d84de1a9519bc4ac821c",
+      "verified": true
+    },
+    {
+      "file": "Detailed Sequence - Compare Usage and Efficiency.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "2cb5d4aa767291b18bcff4bc8e3b576e7a70e051f5e805162009a1100826bb36",
+      "verified": true
+    },
+    {
+      "file": "Detailed Sequence - Export Displayed Results (486).png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "c74efee6d015c3c60e9423891c56c7fa948eadc3ad9c87fda80de92decb0cc7d",
+      "verified": true
+    },
+    {
+      "file": "Detailed Sequence - View Opponent Defensive Weak Spots.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "18a6e6b56b0e68cdde1cbc44490c28ceed7946f9ac63ad15a47b694991a5f754",
+      "verified": true
+    },
+    {
+      "file": "Domain Model Class Diagram.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "526d8668c5c4cf9df36c8500d87b8b9a49c3624fc25d96ee886225b511cdfe75",
+      "verified": true
+    },
+    {
+      "file": "Elaboration - Shared Export Controls (486).png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "744ee7ab7c2a2797dee0c388f42af5ee9c6fa887926a185be5b2202fd27b8937",
+      "verified": true
+    },
+    {
+      "file": "Functional Overview - Baseline Comparisons.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "1f80fb16ee7d7ab314f362bae2c7a6951c05e80f05adeda24b53dcc5339c76b3",
+      "verified": true
+    },
+    {
+      "file": "Software System Architecture - Subsystem Dependencies.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "3241ef6c44c040a02089b2d59449e9bb3a7c75ac45af437682687ad4631692e5",
+      "verified": true
+    },
+    {
+      "file": "Software System Architecture.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "aaad86dc6113b0ae97f631d56d6735e65af7acef2b4fc24f5f2805335a712ae9",
+      "verified": true
+    },
+    {
+      "file": "Structural Design - Compare Usage and Efficiency.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "d54c46db27b59cdf3c475e78ac456049e7b2277c4dfdc0fda9307b92a9dd4aa8",
+      "verified": true
+    },
+    {
+      "file": "Structural Design - View Opponent Defensive Weak Spots.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "77cbc88a5055a9472992698b58b333ac63d152284652d14bb3f2b514929eaeff",
+      "verified": true
+    },
+    {
+      "file": "Structural Overview - Access Analyst Workspace.png",
+      "bytes_identical": false,
+      "pixels_identical": true,
+      "published_sha256": "a90c3f6cdc178b867abec8d97f5ad38ddc52fd4a4ceb041168915da872e1aea8",
+      "verified": true
+    },
+    {
+      "file": "Structural Overview - Authenticate Analyst Access.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "f9d14c07c46de9bae9f9a28eaa9e28a2d111c3d0718985d419a65df11cfaf768",
+      "verified": true
+    },
+    {
+      "file": "Structural Overview - Rank Plays with Game Context.png",
+      "bytes_identical": false,
+      "pixels_identical": true,
+      "published_sha256": "2a43ad1aec919dcb816edf7b2ad0d4917e4a5ba147661cd711d77e3653563a4a",
+      "verified": true
+    },
+    {
+      "file": "Structural Overview - Ranked List via API (Baseline).png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "4d7c6d58df7db0705c4eb7feaad77e81cbb185ee147b0067760e9491c4ca8d6b",
+      "verified": true
+    },
+    {
+      "file": "Structural Overview - Validate Coach Access.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "76980e2de9ce58607301aeae27aeca1336369ba6e19f045e75d1e728f5f58d40",
+      "verified": true
+    },
+    {
+      "file": "System Context Diagram.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "345fb46fc29d959cd48f8156ab989ebf454f0b939dbc53c93187226714d77ba8",
+      "verified": true
+    },
+    {
+      "file": "Wireflow - Baseline Comparisons.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "4aa90b00e7d55dacb1b5184a2309ef42cc135a005fbd01a896d7c1e4bab24995",
+      "verified": true
+    },
+    {
+      "file": "flow-1.png",
+      "bytes_identical": true,
+      "pixels_identical": true,
+      "published_sha256": "4aa90b00e7d55dacb1b5184a2309ef42cc135a005fbd01a896d7c1e4bab24995",
+      "verified": true
+    }
+  ],
+  "image_count": 43,
+  "verified": true
+}

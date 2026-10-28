@@ -1,0 +1,11 @@
+{
+  "operation": "Official UpdateTeamworkProject on isolated workspace copy",
+  "observed_at_utc": "2026-10-28T05:17:54.981501+00:00",
+  "local_revision": 69,
+  "server_revision": 69,
+  "downloaded_server_pristine_revision": 69,
+  "result": "No update available. The vendor prints Update failed for this no-op; local and server revisions are explicitly69.",
+  "authoritative_project_modified": false,
+  "raw_log_sha256": "952223159ae751aef2355fdb5c406f88487e65d62ed2590b933bf9d8cf01e061",
+  "verified": true
+}

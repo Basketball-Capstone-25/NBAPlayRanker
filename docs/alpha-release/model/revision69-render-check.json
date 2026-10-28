@@ -1,0 +1,161 @@
+{
+  "native_reopen_pass": true,
+  "render_comparisons": [
+    {
+      "file": "ALPHA-1.png",
+      "pixels_identical": true,
+      "prepared_size": [
+        706,
+        476
+      ],
+      "published_size": [
+        706,
+        476
+      ]
+    },
+    {
+      "file": "ALPHA-2.png",
+      "pixels_identical": true,
+      "prepared_size": [
+        706,
+        476
+      ],
+      "published_size": [
+        706,
+        476
+      ]
+    },
+    {
+      "file": "ALPHA-3.png",
+      "pixels_identical": true,
+      "prepared_size": [
+        706,
+        476
+      ],
+      "published_size": [
+        706,
+        476
+      ]
+    },
+    {
+      "file": "ALPHA-4.png",
+      "pixels_identical": true,
+      "prepared_size": [
+        706,
+        476
+      ],
+      "published_size": [
+        706,
+        476
+      ]
+    },
+    {
+      "file": "ALPHA-5.png",
+      "pixels_identical": true,
+      "prepared_size": [
+        706,
+        476
+      ],
+      "published_size": [
+        706,
+        476
+      ]
+    },
+    {
+      "file": "ALPHA-6.png",
+      "pixels_identical": true,
+      "prepared_size": [
+        706,
+        476
+      ],
+      "published_size": [
+        706,
+        476
+      ]
+    },
+    {
+      "file": "ALPHA-7.png",
+      "pixels_identical": true,
+      "prepared_size": [
+        706,
+        476
+      ],
+      "published_size": [
+        706,
+        476
+      ]
+    },
+    {
+      "file": "ALPHA-8.png",
+      "pixels_identical": true,
+      "prepared_size": [
+        706,
+        476
+      ],
+      "published_size": [
+        706,
+        476
+      ]
+    },
+    {
+      "file": "Collaboration Overview - Compare Usage and Efficiency.png",
+      "pixels_identical": false,
+      "prepared_size": [
+        1396,
+        456
+      ],
+      "published_size": [
+        1396,
+        456
+      ]
+    },
+    {
+      "file": "Collaboration Overview - View Opponent Defensive Weak Spots.png",
+      "pixels_identical": false,
+      "prepared_size": [
+        1396,
+        456
+      ],
+      "published_size": [
+        1396,
+        456
+      ]
+    },
+    {
+      "file": "Structural Design - Compare Usage and Efficiency.png",
+      "pixels_identical": false,
+      "prepared_size": [
+        1786,
+        1366
+      ],
+      "published_size": [
+        1786,
+        1366
+      ]
+    },
+    {
+      "file": "Structural Design - View Opponent Defensive Weak Spots.png",
+      "pixels_identical": false,
+      "prepared_size": [
+        1786,
+        1366
+      ],
+      "published_size": [
+        1786,
+        1366
+      ]
+    },
+    {
+      "file": "flow-1.png",
+      "pixels_identical": true,
+      "prepared_size": [
+        2316,
+        930
+      ],
+      "published_size": [
+        2316,
+        930
+      ]
+    }
+  ]
+}

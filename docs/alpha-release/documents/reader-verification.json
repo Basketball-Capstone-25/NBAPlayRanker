@@ -1,0 +1,85 @@
+{
+  "source": "Visual Paradigm DocumentationManager.generateDocComposerWord, then readable Word formatting with unchanged substantive text and native images",
+  "source_native_candidate_sha256": "c3680feba0f6fc657c4fa0cc1ecc8a23ef39a6ba400b13eeee94e5302b23964e",
+  "publication_status": "Published revision 70; a fresh official export has identical ordered text, embedded media and relationship targets.",
+  "formatting": [
+    "Move exact native glossary and use-case summary tables from invalid w:p/w:r/w:tbl nesting into valid body-level tables; preserve every original cell.",
+    "Flatten native one-column scenario lists into unchanged paragraphs; remove only empty/N/A stock property rows.",
+    "Set readable heading styles, preserve image bytes, fit the tall Analyst overview on its heading page, keep Properties rows intact and repeat only genuine column headers.",
+    "Add page numbers and clickable contents entries checked against the final PDF bookmarks."
+  ],
+  "visual_review": {
+    "SRS": "All38 pages reviewed; final changed pages and contents rechecked.",
+    "SDD": "All41 pages reviewed independently; corrected architecture/deployment/access captions and heading/figure placement rechecked."
+  },
+  "documents": {
+    "SRS": {
+      "native_doccomposer_diagram_id": "rHkT3oWD.AAAAQmD",
+      "reader_sha256": "81297eaa9d27509b2d81cd6875d54a5e41f918601c6eca4a3c75d46916f66968",
+      "pdf_sha256": "e2383562554dc01922214c27c0aab6bc592f7c97c27baa527bd6e072bc66908f",
+      "pages": 38,
+      "toc_entries": 52,
+      "native_media_count_including_uml_icons": 290,
+      "source_diagram_count": 6,
+      "restored_tables": [
+        {
+          "heading_cells": [
+            "Term",
+            "Meaning"
+          ],
+          "rows": 12,
+          "exact_cell_text_preserved": true
+        },
+        {
+          "heading_cells": [
+            "Use case",
+            "Model creator",
+            "Scope"
+          ],
+          "rows": 30,
+          "exact_cell_text_preserved": true
+        }
+      ],
+      "missing_native_paragraphs": {},
+      "checks": {
+        "all_substantive_native_paragraph_text_preserved": true,
+        "all_embedded_native_media_bytes_preserved": true,
+        "contents_pages_match_pdf_bookmarks": true,
+        "all_pages_rendered": true,
+        "obsolete_claims_absent": true,
+        "invalid_native_table_nesting_repaired_without_text_changes": true,
+        "required_document_sections_present": true
+      },
+      "verified": true,
+      "prepared_raw_sha256": "26420bbd07d101713fb9c01427c9cd477c7cd8618d770bd2dd69543ad753af8c",
+      "published_raw_sha256": "2ad29cefd6edc9ebc99c37c7370f8284e5be4646eb58c7b322e245f85fe14dc4"
+    },
+    "SDD": {
+      "native_doccomposer_diagram_id": "_B8T3oWD.AAAARm.",
+      "reader_sha256": "64c7b795bc2b7af303ffb7406cfa540f7ea63ea60043ecc8c0d897df0a814ecb",
+      "pdf_sha256": "38a9e3f0e69c59ca49b399d1da4507bc1d213879804442f4b2d210c2e1903704",
+      "pages": 41,
+      "toc_entries": 47,
+      "native_media_count_including_uml_icons": 28,
+      "source_diagram_count": 28,
+      "restored_tables": [],
+      "missing_native_paragraphs": {},
+      "checks": {
+        "all_substantive_native_paragraph_text_preserved": true,
+        "all_embedded_native_media_bytes_preserved": true,
+        "contents_pages_match_pdf_bookmarks": true,
+        "all_pages_rendered": true,
+        "obsolete_claims_absent": true,
+        "invalid_native_table_nesting_repaired_without_text_changes": true,
+        "required_document_sections_present": true
+      },
+      "verified": true,
+      "prepared_raw_sha256": "79b14e15da4734106ff567ed683bb5cf3aa8067dcf210691e803c95ee5e02686",
+      "published_raw_sha256": "2d4c06fc0475f203107a1ad8e4e98b2a49d465ffc79de547a2a5c41337de16d1"
+    }
+  },
+  "verified": true,
+  "published_native_revision": 70,
+  "published_native_sha256": "3a5d8591feaa48b47fe8a7c4ba87ab55f40c04726ece36ca14116192b7c7d060",
+  "publication_equivalence": "published-export-equivalence.json"
+}

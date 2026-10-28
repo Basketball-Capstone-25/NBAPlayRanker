@@ -1,0 +1,4688 @@
+{
+  "capturedAt": "2026-10-27T05:20:24.150Z",
+  "scope": "Alpha application retests and source tasks; shared model/document publication is still pending.",
+  "counts": {
+    "scopedIssues": 73,
+    "alphaTestCasesPass": 12,
+    "alphaSuitesPass": 2,
+    "calculationFixesDone": 3,
+    "sourceTestSubtasksDone": 12,
+    "futureCasesVerify": 12,
+    "userReportedHoursAdded": 9
+  },
+  "openPublication": [
+    "SCRUM-695",
+    "SCRUM-696",
+    "SCRUM-704",
+    "SCRUM-708",
+    "SCRUM-709",
+    "SCRUM-713"
+  ],
+  "readbacks": [
+    {
+      "key": "BST-226",
+      "title": "Compare Usage and Efficiency",
+      "type": "Test Suite",
+      "status": "Pass",
+      "parent": null,
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-227",
+      "title": "View Opponent Defensive Weak Spots",
+      "type": "Test Suite",
+      "status": "Pass",
+      "parent": null,
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-228",
+      "title": "Compare Play Types with League Average",
+      "type": "Test Suite",
+      "status": "Verify",
+      "parent": null,
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-229",
+      "title": "Track Play-Type Trends Across Seasons",
+      "type": "Test Suite",
+      "status": "Verify",
+      "parent": null,
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-230",
+      "title": "Compare Head-to-Head Play-Type Profiles",
+      "type": "Test Suite",
+      "status": "Verify",
+      "parent": null,
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-231",
+      "title": "View Possession Outcome Rates",
+      "type": "Test Suite",
+      "status": "Verify",
+      "parent": null,
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-232",
+      "title": "Usage chart and table match team and league source totals",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-226",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-233",
+      "title": "Sample cutoff flags rows without changing usage shares",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-226",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-234",
+      "title": "Usage comparison clears outdated results and recovers after a failed request",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-226",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-235",
+      "title": "Usage comparison enforces the intended user role",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-226",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-236",
+      "title": "Regular-season team totals exclude playoff possessions",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-226",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-237",
+      "title": "Field-goal rates use shot attempts instead of possessions",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-226",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-238",
+      "title": "Duplicate source rows cannot double-count play-type possessions",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-226",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-239",
+      "title": "Opponent weak spots use league-relative defensive efficiency",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-227",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-240",
+      "title": "Small samples and missing defensive types cannot become weak spots",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-227",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-241",
+      "title": "Opponent changes cannot leave the previous team's results on screen",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-227",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-242",
+      "title": "Opponent defense view protects team data behind the intended role",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-227",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-243",
+      "title": "A weaker opposing defense does not lower baseline predicted PPP",
+      "type": "Test Case",
+      "status": "Pass",
+      "parent": "BST-227",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-244",
+      "title": "League benchmark uses matched-season weighted totals",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-228",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-245",
+      "title": "Missing league categories remain unavailable",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-228",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-246",
+      "title": "League comparison handles access and changing filters",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-228",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-247",
+      "title": "Season trends match source totals in chronological order",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-229",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-248",
+      "title": "Missing seasons create gaps rather than zero values",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-229",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-249",
+      "title": "Trend filters and permissions stay consistent",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-229",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-250",
+      "title": "Two-team profiles use the same season and matching categories",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-230",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-251",
+      "title": "Swapping teams swaps labels and values without changing calculations",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-230",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-252",
+      "title": "Profile comparison states its season-long scope and protects access",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-230",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-253",
+      "title": "Outcome rates match possession-weighted source fields",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-231",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-254",
+      "title": "Overlapping outcome rates are not normalized into a 100% stack",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-231",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "BST-255",
+      "title": "Invalid and missing outcome rates stay explicit",
+      "type": "Test Case",
+      "status": "Verify",
+      "parent": "BST-231",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [],
+      "points": null,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "SCRUM-695",
+      "title": "Compare a team's play-type usage and efficiency",
+      "type": "Story",
+      "status": "In Progress",
+      "parent": "SCRUM-329",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": 5,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "SCRUM-696",
+      "title": "Show which play types an opponent allows to score efficiently",
+      "type": "Story",
+      "status": "In Progress",
+      "parent": "SCRUM-329",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": 5,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "SCRUM-697",
+      "title": "Compare a team's play types with the league average",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRUM-329",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 187,
+          "name": "Iteration 19"
+        }
+      ],
+      "points": 3,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "SCRUM-698",
+      "title": "Track a team's play-type usage and efficiency across seasons",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRUM-329",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20"
+        }
+      ],
+      "points": 5,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "SCRUM-699",
+      "title": "Compare two teams' season-long play-type profiles",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRUM-329",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22"
+        }
+      ],
+      "points": 3,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "SCRUM-700",
+      "title": "Show independent possession outcome rates by play type",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRUM-329",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23"
+        }
+      ],
+      "points": 5,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "SCRUM-701",
+      "title": "Separate source phases and reject duplicate play-type rows",
+      "type": "Task",
+      "status": "Done",
+      "parent": "SCRUM-329",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": 3,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "SCRUM-702",
+      "title": "Calculate field-goal rates with the correct shot denominator",
+      "type": "Task",
+      "status": "Done",
+      "parent": "SCRUM-329",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": 2,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "SCRUM-703",
+      "title": "Fix the effect of opponent defense on predicted PPP",
+      "type": "Task",
+      "status": "Done",
+      "parent": "SCRUM-329",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": 2,
+      "effortEstimateHours": null
+    },
+    {
+      "key": "SCRUM-704",
+      "title": "Define usage and efficiency calculations and screen flow",
+      "type": "Dev Subtask",
+      "status": "In Progress",
+      "parent": "SCRUM-695",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-705",
+      "title": "Build the usage and efficiency data endpoint",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-695",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-706",
+      "title": "Add the usage and efficiency chart and table",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-695",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-707",
+      "title": "Test usage totals, filters and access",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-695",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-708",
+      "title": "Publish the usage comparison and its model",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-695",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 1
+    },
+    {
+      "key": "SCRUM-709",
+      "title": "Model the opponent defense view and its sample rules",
+      "type": "Dev Subtask",
+      "status": "In Progress",
+      "parent": "SCRUM-696",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-710",
+      "title": "Build the opponent defense breakdown",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-696",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-711",
+      "title": "Show opponent weak spots with clear sample counts",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-696",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-712",
+      "title": "Test defensive ordering and changed filters",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-696",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-713",
+      "title": "Publish and verify the opponent defense view",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-696",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 1
+    },
+    {
+      "key": "SCRUM-714",
+      "title": "Define league comparison calculations and VP flow",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-697",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 187,
+          "name": "Iteration 19"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-715",
+      "title": "Build weighted team and league comparisons",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-697",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 187,
+          "name": "Iteration 19"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-716",
+      "title": "Add the league comparison view",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-697",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 187,
+          "name": "Iteration 19"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-717",
+      "title": "Test and publish the league comparison",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-697",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 187,
+          "name": "Iteration 19"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-718",
+      "title": "Model season trends and missing-data rules",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-698",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-719",
+      "title": "Build consistent cross-season play-type summaries",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-698",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-720",
+      "title": "Add the season trend chart and table",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-698",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-721",
+      "title": "Test season coverage and trend calculations",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-698",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-722",
+      "title": "Publish and verify season trends",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-698",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 1
+    },
+    {
+      "key": "SCRUM-723",
+      "title": "Model the two-team profile comparison",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-699",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-724",
+      "title": "Build aligned team profiles",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-699",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-725",
+      "title": "Add the two-team comparison screen",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-699",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-726",
+      "title": "Test and publish team profile comparison",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-699",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-727",
+      "title": "Define independent outcome rates and VP flow",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-700",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-728",
+      "title": "Build validated possession-rate summaries",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-700",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-729",
+      "title": "Add the outcome-rate comparison view",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-700",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-730",
+      "title": "Test overlap, invalid rates and source parity",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-700",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-731",
+      "title": "Publish and verify possession outcomes",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "parent": "SCRUM-700",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 1
+    },
+    {
+      "key": "SCRUM-732",
+      "title": "Separate phase-specific aggregation and dependent artifacts",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-701",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 3
+    },
+    {
+      "key": "SCRUM-733",
+      "title": "Check regular-season and playoff separation",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-701",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-734",
+      "title": "Use metric-specific denominators in team and league tables",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-702",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-735",
+      "title": "Verify team and league field-goal calculations",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-702",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 1
+    },
+    {
+      "key": "SCRUM-736",
+      "title": "Correct defensive contribution in baseline and context ranking",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-703",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 2
+    },
+    {
+      "key": "SCRUM-737",
+      "title": "Test stronger and weaker opponent defense",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "parent": "SCRUM-703",
+      "owner": "Gurkaranjit Asahan",
+      "sprint": [
+        {
+          "id": 186,
+          "name": "Iteration 18"
+        }
+      ],
+      "points": null,
+      "effortEstimateHours": 1
+    }
+  ],
+  "checks": [
+    {
+      "name": "BST-226 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-226 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-227 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-228 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-229 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-230 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-231 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-232 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 description content preserved (read format changed to HTML)",
+      "passed": true
+    },
+    {
+      "name": "BST-232 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-233 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-234 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-235 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-236 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-237 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-238 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-239 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 description content preserved (read format changed to HTML)",
+      "passed": true
+    },
+    {
+      "name": "BST-239 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-240 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 description content preserved (read format changed to HTML)",
+      "passed": true
+    },
+    {
+      "name": "BST-240 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-241 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-242 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-243 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-244 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-245 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-246 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-247 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-248 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-249 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-250 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-251 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-252 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-253 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-254 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "BST-255 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 description preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 created preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 description content preserved (read format changed to HTML)",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 description content preserved (read format changed to HTML)",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 exists in the original planning readback",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 labels preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 owner preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 issue type preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 Story point estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 Effort Estimate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 Parent Use Case preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 sprint preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 original failure comment 11520 unchanged",
+      "passed": true
+    },
+    {
+      "name": "BST-237 original failure comment 11521 unchanged",
+      "passed": true
+    },
+    {
+      "name": "BST-238 original failure comment 11522 unchanged",
+      "passed": true
+    },
+    {
+      "name": "BST-243 original failure comment 11523 unchanged",
+      "passed": true
+    },
+    {
+      "name": "BST-244 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-245 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-246 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-247 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-248 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-249 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-250 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-251 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-252 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-253 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-254 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "BST-255 future case remains unrun Verify",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 future story remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 future story remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 future story remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 future story remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 remains In Progress pending model",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 remains In Progress pending model",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 remains In Progress pending model",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 remains In Progress pending model",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 remains open pending model",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 remains open pending model",
+      "passed": true
+    },
+    {
+      "name": "User-reported worklogs total exactly nine hours",
+      "passed": true
+    }
+  ],
+  "suiteReceipts": [
+    {
+      "key": "BST-226",
+      "comment": {
+        "message": "Comment added to BST-226 successfully",
+        "commentId": "11560",
+        "body": "All seven usage comparison cases passed. The suite covers source totals, sample flags, request states and access, including the successful retests for phase mixing, denominators and duplicate rows.\n\n[Alpha verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/bafe2d87eaa8a2db34e54dcf584d34e8db2f3786/docs/alpha-release/verification)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-226 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-227",
+      "comment": {
+        "message": "Comment added to BST-227 successfully",
+        "commentId": "11561",
+        "body": "All five opponent-defense cases passed. The suite covers league-relative ordering, small and missing samples, changed requests, access and the corrected defensive-score direction.\n\n[Alpha verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/tree/bafe2d87eaa8a2db34e54dcf584d34e8db2f3786/docs/alpha-release/verification)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-227 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    }
+  ]
+}
+

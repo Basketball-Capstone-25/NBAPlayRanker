@@ -1,0 +1,38 @@
+{
+  "published_revision": 70,
+  "published_native_sha256": "3a5d8591feaa48b47fe8a7c4ba87ab55f40c04726ece36ca14116192b7c7d060",
+  "prepared_candidate_sha256": "c3680feba0f6fc657c4fa0cc1ecc8a23ef39a6ba400b13eeee94e5302b23964e",
+  "source": "Fresh official DocumentationManager.generateDocComposerWord export from a disposable copy of committed revision 70.",
+  "documents": {
+    "SRS": {
+      "prepared_raw_sha256": "26420bbd07d101713fb9c01427c9cd477c7cd8618d770bd2dd69543ad753af8c",
+      "published_raw_sha256": "2ad29cefd6edc9ebc99c37c7370f8284e5be4646eb58c7b322e245f85fe14dc4",
+      "text_runs": 3375,
+      "embedded_media": 290,
+      "checks": {
+        "ordered_native_text_identical": true,
+        "all_native_images_identical": true,
+        "native_relationship_targets_identical": true
+      },
+      "verified": true
+    },
+    "SDD": {
+      "prepared_raw_sha256": "79b14e15da4734106ff567ed683bb5cf3aa8067dcf210691e803c95ee5e02686",
+      "published_raw_sha256": "2d4c06fc0475f203107a1ad8e4e98b2a49d465ffc79de547a2a5c41337de16d1",
+      "text_runs": 451,
+      "embedded_media": 28,
+      "checks": {
+        "ordered_native_text_identical": true,
+        "all_native_images_identical": true,
+        "native_relationship_targets_identical": true
+      },
+      "verified": true
+    }
+  },
+  "checks": {
+    "SRS_native_content_equivalent": true,
+    "SDD_native_content_equivalent": true
+  },
+  "verified": true,
+  "reader_decision": "Use the already rendered and reviewed reader files only if every comparison passes; no substantive document content is regenerated or edited for this comparison."
+}

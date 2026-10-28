@@ -1,0 +1,55 @@
+NBA PLAY RANKER — ALPHA RELEASE
+
+Open the coach dashboard:
+https://nbaplayranker-seven.vercel.app/matchup-dashboard
+
+Gurk's two new use cases
+
+SCRUM-695 — Compare Usage and Efficiency
+Compare how often a team uses each play type and its points per possession
+with the league for that same play type. The chart and table use the same
+figures. Possession counts and small-sample labels help explain the results.
+
+SCRUM-696 — View Opponent Defensive Weak Spots
+Compare the opponent's allowed points per possession with the league. The
+view highlights up to three above-average areas that meet the selected
+possession cutoff. Unavailable play types are shown as missing, not zero.
+
+Both views describe regular-season history. They do not predict the next game
+or show that running a play more often will improve the team's performance.
+
+Related calculation fixes
+
+SCRUM-701 separates regular-season and playoff rows and checks duplicates.
+SCRUM-702 uses the correct totals and denominators for shooting percentages.
+SCRUM-703 corrects how opponent defensive strength affects the existing ranks.
+The original failed checks and successful retests are kept in verification/.
+
+Where to check the work
+
+verification/READ-ME.txt — deployed app, automated checks and browser evidence.
+planning/ — Jira task, test, risk and actual-hours records.
+The model and document publication records identify the final shared VP file.
+Use the private team handoff for the report and submission documents.
+
+Jira links
+
+https://basketball-strategy.atlassian.net/browse/SCRUM-695
+https://basketball-strategy.atlassian.net/browse/SCRUM-696
+https://basketball-strategy.atlassian.net/browse/BST-226
+https://basketball-strategy.atlassian.net/browse/BST-227
+
+Next releases
+
+Beta: SCRUM-697 adds comparisons for other play-type rates; SCRUM-698 compares
+play-type performance across seasons.
+Final: SCRUM-699 compares the two teams' season profiles; SCRUM-700 shows
+possession outcome rates separately because those rates can overlap.
+These four use cases are planned, not completed Alpha features.
+
+Team submission
+
+The team still needs to review each member's contribution, record the working
+demo in Microsoft Teams, obtain the domain expert's actual feedback, confirm
+the professor's access and submit the required files in SLATE. The code and
+model evidence do not replace those steps.
