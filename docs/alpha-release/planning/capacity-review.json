@@ -2913,5 +2913,6 @@
       "pass": true
     }
   ],
-  "deadlineQualification": "The authenticated SLATE Data Analytics defence item is due December 7, but the team's specialization was not explicitly confirmed. It is not treated as a binding team deadline."
+  "deadlineQualification": "The authenticated SLATE Data Analytics defence item is due December 7, but the team's specialization was not explicitly confirmed. It is not treated as a binding team deadline.",
+  "snapshotNote": "This review records the agreed future scheduling adjustment. The later published model revision 70 aligns the planned league-rate scope and single-team preconditions. Beta/Final stories and their tests remain planned; see jira-final-closeout.json for current statuses."
 }

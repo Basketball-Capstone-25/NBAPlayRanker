@@ -1,5 +1,5 @@
 {
-  "snapshotNote": "Initial planning snapshot from October 27. See jira-source-closeout.json for the later production retest and capacity-review.json for the revised future estimates, dates and scope. This file preserves the original plan and failures.",
+  "snapshotNote": "Historical initial planning snapshot from October 27. jira-source-closeout.json records the production retest; capacity-review.json records the revised future plan. Current final statuses and published model revision 70 are verified in jira-final-closeout.json. Original planning values and failure evidence are preserved below.",
   "capturedAt": "2026-10-27 05:01:27 UTC",
   "status": "Planning created and verified. Alpha implementation, production verification and shared VP publication are still in progress.",
   "feature": {

@@ -4683,6 +4683,6 @@
         "statusName": "Pass"
       }
     }
-  ]
+  ],
+  "snapshotNote": "Historical application verification snapshot from before model publication. The six pending model/publication items in this snapshot were subsequently completed after verified VP revision 70 and the final report check. See jira-final-closeout.json for current statuses; these original checks are preserved."
 }
-

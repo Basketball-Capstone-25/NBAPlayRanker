@@ -29,7 +29,8 @@ Where to check the work
 
 verification/READ-ME.txt — deployed app, automated checks and browser evidence.
 planning/ — Jira task, test, risk and actual-hours records.
-The model and document publication records identify the final shared VP file.
+planning/jira-final-closeout.json — current completed and planned Jira items.
+The model and document records verify shared VP revision 70 and its exports.
 Use the private team handoff for the report and submission documents.
 
 Jira links
