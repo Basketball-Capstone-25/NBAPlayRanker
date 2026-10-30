@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import time
+from contextlib import asynccontextmanager
 from datetime import date
 from typing import Any, Dict, Optional
 
 from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query, Request
+from fastapi.concurrency import run_in_threadpool
 
 from application.access_control_services.request_log import (
     DEFAULT_PAGE_SIZE,
@@ -24,8 +26,25 @@ from infrastructure.external_integrations import supabase_request_log as store
 from infrastructure.external_integrations.supabase_jwt import decode_supabase_jwt
 
 
+def _flush_on_shutdown(app: FastAPI) -> None:
+    """Wrap the app's lifespan so queued log writes finish before the process exits."""
+    previous = app.router.lifespan_context
+
+    @asynccontextmanager
+    async def lifespan(running_app):
+        async with previous(running_app) as state:
+            yield state
+        await run_in_threadpool(store.flush)
+
+    app.router.lifespan_context = lifespan
+
+
 def install_request_logging(app: FastAPI) -> None:
-    """After each response, queue a log row for signed-in coach/analyst calls."""
+    """After each response, queue a log row for signed-in coach/analyst calls.
+
+    SCRUM-493: queued rows are flushed on shutdown so a restart does not lose them.
+    """
+    _flush_on_shutdown(app)
 
     @app.middleware("http")
     async def record_request(request: Request, call_next):

@@ -7,6 +7,7 @@ infrastructure/external_integrations/supabase_request_log.py.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from typing import Any, Dict, List, Mapping, Optional
@@ -14,7 +15,10 @@ from urllib.parse import parse_qsl, urlencode
 
 LOGGED_METHODS = frozenset({"GET", "POST", "PUT", "PATCH", "DELETE"})
 UNLOGGED_PATHS = frozenset({"/health", "/ready", "/openapi.json", "/docs", "/docs/oauth2-redirect", "/nlp/health"})
-SECRET_PARAM_NAMES = frozenset({"token", "access_token", "refresh_token", "apikey", "api_key", "key", "password", "secret"})
+SECRET_PARAM_NAMES = frozenset({"token", "access_token", "refresh_token", "apikey", "api_key", "key", "password", "secret", "code", "sig", "signature"})
+# SCRUM-493: any parameter whose name suggests a credential, or whose value looks like a JWT, is never stored.
+SECRET_NAME_PARTS = ("token", "secret", "password", "passwd", "apikey", "api_key", "authorization", "jwt", "credential")
+_JWT_VALUE = re.compile(r"^eyJ[\w-]+\.[\w-]+\.[\w-]*$")
 QUERY_MAX_CHARS = 500
 ENDPOINT_MAX_CHARS = 200
 DEFAULT_PAGE_SIZE = 50
@@ -51,11 +55,19 @@ def should_log(method: str, path: str, role: Optional[str]) -> bool:
     return role in ("coach", "analyst") and method.upper() in LOGGED_METHODS and path not in UNLOGGED_PATHS
 
 
+def is_secret_param(name: str, value: str) -> bool:
+    """True for credential-like parameters: known names, credential-like names or JWT values."""
+    lowered = name.lower().replace("-", "_")
+    if lowered in SECRET_PARAM_NAMES or any(part in lowered for part in SECRET_NAME_PARTS):
+        return True
+    return bool(_JWT_VALUE.match(value.strip()))
+
+
 def clean_query(raw_query: str) -> str:
     """Drop credential-like parameters and cap the length."""
     if not raw_query:
         return ""
-    kept = [(k, v) for k, v in parse_qsl(raw_query, keep_blank_values=True) if k.lower() not in SECRET_PARAM_NAMES]
+    kept = [(k, v) for k, v in parse_qsl(raw_query, keep_blank_values=True) if not is_secret_param(k, v)]
     text = urlencode(kept)
     return text[:QUERY_MAX_CHARS]
 
