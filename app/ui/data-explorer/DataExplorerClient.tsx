@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import DataQualityPanel from "./DataQualityPanel";
 import DatasetMetadataPanel from "./DatasetMetadataPanel";
+import ShotDataExplorer from "./ShotDataExplorer";
 import {
   API_BASE,
   authenticatedDownload,
@@ -71,7 +72,39 @@ function safeLocalSet(key: string, value: string) {
   }
 }
 
+type ExplorerDataset = "synergy" | "shots";
+const DATASET_KEY = "nbaPlayRanker_dataExplorer_dataset";
+
+// SCRUM-627: switch between the Synergy play-type data and the play-by-play shots.
+function DatasetSwitch({ value, onChange }: { value: ExplorerDataset; onChange: (d: ExplorerDataset) => void }) {
+  const option = (id: ExplorerDataset, label: string) => (
+    <button
+      type="button"
+      role="radio"
+      aria-checked={value === id}
+      className={value === id ? "btn" : "btn btn--secondary"}
+      onClick={() => onChange(id)}
+    >
+      {label}
+    </button>
+  );
+  return (
+    <div role="radiogroup" aria-label="Dataset" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
+      {option("synergy", "Synergy play types")}
+      {option("shots", "Play-by-play shots")}
+    </div>
+  );
+}
+
 export default function DataExplorerClient() {
+  const [dataset, setDataset] = useState<ExplorerDataset>("synergy");
+  useEffect(() => {
+    if (safeLocalGet(DATASET_KEY) === "shots") setDataset("shots");
+  }, []);
+  function switchDataset(next: ExplorerDataset) {
+    setDataset(next);
+    safeLocalSet(DATASET_KEY, next);
+  }
   const [meta, setMeta] = useState<MetaOptions>({
     seasons: [],
     teams: [],
@@ -369,6 +402,22 @@ export default function DataExplorerClient() {
     return rest.length ? `${first}&${rest.join("&")}` : first;
   }, [season, team, side, playType, minPoss, limit]);
 
+  if (dataset === "shots") {
+    return (
+      <main className="page" style={{ paddingBottom: 56 }}>
+        <header className="page__header" style={heroStyle}>
+          <h1 className="h1" style={{ margin: 0 }}>Data Explorer</h1>
+          <p className="muted" style={{ marginTop: 6, fontSize: 14, marginBottom: 0 }}>
+            Browse the play-by-play shots and export the filtered view.
+          </p>
+          <DatasetSwitch value={dataset} onChange={switchDataset} />
+        </header>
+        <DatasetMetadataPanel />
+        <ShotDataExplorer />
+      </main>
+    );
+  }
+
   return (
     <main className="page" style={{ paddingBottom: 56 }}>
       {/* HERO */}
@@ -389,6 +438,7 @@ export default function DataExplorerClient() {
             <p className="muted" style={{ marginTop: 6, fontSize: 14, marginBottom: 0 }}>
               Browse recorded team play-type stats and export the selected data.
             </p>
+            <DatasetSwitch value={dataset} onChange={switchDataset} />
           </div>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>

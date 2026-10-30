@@ -1,0 +1,19 @@
+.panel { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+.filters { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)) auto; gap: 10px; align-items: end; }
+.field { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 700; color: rgba(15, 23, 42, 0.7); }
+.input { font: inherit; font-weight: 400; color: #0f172a; padding: 8px 10px; border-radius: 10px; border: 1px solid rgba(15, 23, 42, 0.2); background: #fff; }
+.actions { display: flex; gap: 8px; }
+.button { font-weight: 800; padding: 9px 14px; border-radius: 10px; border: 1px solid rgba(15, 23, 42, 0.2); background: #fff; cursor: pointer; }
+.button:disabled { opacity: 0.4; cursor: not-allowed; }
+.primary { background: #0f172a; color: #fff; }
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.status { font-size: 14px; color: rgba(15, 23, 42, 0.7); min-height: 18px; }
+.error { padding: 10px 12px; border-radius: 12px; background: #fdecec; border: 1px solid #e57373; color: #8a1c1c; font-weight: 700; }
+.tableWrap { overflow-x: auto; border: 1px solid rgba(15, 23, 42, 0.12); border-radius: 14px; background: #fff; }
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th, .table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid rgba(15, 23, 42, 0.08); white-space: nowrap; }
+.table th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(15, 23, 42, 0.6); }
+.made { color: #067647; font-weight: 800; }
+.missed { color: rgba(15, 23, 42, 0.55); }
+.note { font-size: 12px; color: rgba(15, 23, 42, 0.6); margin: 0; }
+@media (max-width: 960px) { .filters { grid-template-columns: 1fr 1fr; } .actions { grid-column: 1 / -1; } }
