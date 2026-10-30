@@ -31,8 +31,8 @@ COLUMNS: List[Tuple[str, str, str]] = [
     ("ZONE", "zone", "Zone"),
     ("IS_MAKE", "result", "Result"),
     ("POINTS", "points", "Points"),
-    ("X", "x", "Court x (ft)"),
-    ("Y", "y", "Court y (ft)"),
+    ("X", "x", "Court x (ft from center)"),
+    ("Y", "y", "Court y (ft from center)"),
     ("DIST", "distance_ft", "Distance (ft)"),
 ]
 SORT_KEYS = ["GAME_ID", "PERIOD", "CLOCK_SEC"]

@@ -83,6 +83,7 @@ function DatasetSwitch({ value, onChange }: { value: ExplorerDataset; onChange: 
       role="radio"
       aria-checked={value === id}
       className={value === id ? "btn" : "btn btn--secondary"}
+      style={value === id ? { background: "#0f172a", color: "#fff", borderColor: "#0f172a" } : undefined}
       onClick={() => onChange(id)}
     >
       {label}
@@ -412,7 +413,6 @@ export default function DataExplorerClient() {
           </p>
           <DatasetSwitch value={dataset} onChange={switchDataset} />
         </header>
-        <DatasetMetadataPanel />
         <ShotDataExplorer />
       </main>
     );
