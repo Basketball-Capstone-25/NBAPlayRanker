@@ -951,3 +951,33 @@ textarea {
     max-width: none;
   }
 }
+/* SCRUM-496 / UC24: the #1 ranked play (and any tie) stands out on Matchup and Context.
+   Dark text on amber keeps 4.5:1+ contrast on light and dark backgrounds. */
+.topPickRow {
+  border: 2px solid #b45309;
+  border-radius: 12px;
+  background: rgba(245, 158, 11, 0.12);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18);
+}
+tr.topPickRow td { background: rgba(245, 158, 11, 0.12); }
+tr.topPickRow td:first-child { box-shadow: inset 4px 0 0 #b45309; }
+.topPickBadge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #fbbf24;
+  color: #1f1300;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+@media (prefers-color-scheme: dark) {
+  .topPickRow { border-color: #fbbf24; background: rgba(251, 191, 36, 0.16); }
+  tr.topPickRow td:first-child { box-shadow: inset 4px 0 0 #fbbf24; }
+}
+@media (forced-colors: active) {
+  .topPickRow { border-color: Highlight; }
+  .topPickBadge { border: 1px solid CanvasText; }
+}

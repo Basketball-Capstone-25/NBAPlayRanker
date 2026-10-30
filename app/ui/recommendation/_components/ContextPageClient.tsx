@@ -9,6 +9,8 @@ import { contextRank, fetchMetaOptions } from "../../../services/recommendation"
 import ReportExport from "../../_shared/components/ReportExport";
 import { quickCallHref } from "../../../domain/quick-call";
 import TopPickCall from "../../_shared/components/TopPickCall";
+import TopPickBadge from "../../_shared/components/TopPickBadge";
+import { topPickIndexes } from "../../../domain/top-pick";
 import { contextReport, resultKey } from "../../../infrastructure/report-export";
 import {
   clamp01,
@@ -401,6 +403,10 @@ function ContextInner() {
   ) : null;
 
   const bestRow = useMemo(() => (displayRows.length ? displayRows[0] : null), [displayRows]);
+  // SCRUM-496: the #1 play and any play tied with it on the displayed score.
+  const topPicks = useMemo(() => new Set(topPickIndexes(displayRows.map((r) => r.finalPPP_display))), [displayRows]);
+  const topTied = topPicks.size > 1;
+
 
   const maxPPP = useMemo(() => {
     if (!displayRows.length) return 1.2;
@@ -1082,6 +1088,11 @@ function ContextInner() {
                   <div className="playName">
                     #1 {bestRow.playType}
                     <div><TopPickCall rows={displayRows} current={resultsCurrent} /></div>
+                    {topTied ? (
+                      <div className="muted" style={{ fontSize: 12 }} data-testid="top-pick-tie">
+                        <TopPickBadge tied /> Tied with {[...topPicks].slice(1).map((i) => displayRows[i].playType).join(", ")} on PPP
+                      </div>
+                    ) : null}
                   </div>
                   <div className="badge">
                     PPP <span className="mono">{fmt(bestRow.finalPPP_display, 3)}</span>
@@ -1114,10 +1125,11 @@ function ContextInner() {
                 const d = Number(r.deltaPPP_display);
                 const sign = d >= 0 ? "+" : "";
                 return (
-                  <div key={`${r.playType}-${idx}`} className="barRow">
+                  <div key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "barRow topPickRow" : "barRow"}>
                     <div className="barLabel">
                       <div style={{ fontWeight: 900, fontSize: 12 }}>
                         #{idx + 1} {r.playType}
+                        {topPicks.has(idx) ? <TopPickBadge tied={topTied} /> : null}
                       </div>
                       <div className="muted">
                         Δ {sign}
@@ -1170,7 +1182,7 @@ function ContextInner() {
                       const d = Number(r.deltaPPP_display);
                       const sign = d >= 0 ? "+" : "";
                       return (
-                        <tr key={`${r.playType}-${idx}`}>
+                        <tr key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "topPickRow" : undefined}>
                           <td>{idx + 1}</td>
                           <td style={{ fontWeight: 900 }}>{r.playType}</td>
                           <td>{fmt(r.finalPPP_display, 3)}</td>

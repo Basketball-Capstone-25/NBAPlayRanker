@@ -15,6 +15,8 @@ import {
 import { normalizeWeights } from "../../../domain/weight-calculation";
 import ReportExport from "../../_shared/components/ReportExport";
 import TopPickCall from "../../_shared/components/TopPickCall";
+import TopPickBadge from "../../_shared/components/TopPickBadge";
+import { topPickIndexes } from "../../../domain/top-pick";
 import { baselineReport, resultKey } from "../../../infrastructure/report-export";
 
 type MetaOptions = {
@@ -389,6 +391,10 @@ export default function MatchupPage() {
   }, [metaReady, season, our, opp]);
 
   const bestRow = useMemo(() => (rows.length ? rows[0] : null), [rows]);
+  // SCRUM-496: the #1 play and any play tied with it on the displayed score.
+  const topPicks = useMemo(() => new Set(topPickIndexes(rows.map((r) => r.pppPred))), [rows]);
+  const topTied = topPicks.size > 1;
+
 
   // Default viz play type to #1
   useEffect(() => {
@@ -893,6 +899,11 @@ export default function MatchupPage() {
                   <div className="playName">
                     #1 {bestRow.playType}
                     <div><TopPickCall rows={rows} current={resultsCurrent} /></div>
+                    {topTied ? (
+                      <div className="muted" style={{ fontSize: 12 }} data-testid="top-pick-tie">
+                        <TopPickBadge tied /> Tied with {[...topPicks].slice(1).map((i) => rows[i].playType).join(", ")} on PPP
+                      </div>
+                    ) : null}
                   </div>
                   <div className="badge">
                     Pred PPP <span className="mono">{fmt(bestRow.pppPred, 3)}</span>
@@ -928,10 +939,11 @@ export default function MatchupPage() {
                 // Stable bar scale (avoid “blowing up” on high PPP)
                 const width = clamp01(Number(r.pppPred) / 1.4) * 100;
                 return (
-                  <div key={`${r.playType}-${idx}`} className="barRow">
+                  <div key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "barRow topPickRow" : "barRow"}>
                     <div className="barLabel">
                       <div style={{ fontWeight: 900, fontSize: 12 }}>
                         #{idx + 1} {r.playType}
+                        {topPicks.has(idx) ? <TopPickBadge tied={topTied} /> : null}
                       </div>
                       <div className="muted">
                         gap <span className="mono">{fmt(r.pppGap, 3)}</span>
@@ -1066,7 +1078,7 @@ export default function MatchupPage() {
                     {rows.map((r, idx) => {
                       const raw = r.raw ?? {};
                       return (
-                        <tr key={`${r.playType}-${idx}`}>
+                        <tr key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "topPickRow" : undefined}>
                           <td>{idx + 1}</td>
                           <td style={{ fontWeight: 900 }}>{r.playType}</td>
                           <td>{fmt(r.pppPred, 3)}</td>
