@@ -1,0 +1,438 @@
+{
+  "scope": "Production source/test closeout; Alpha stories and VP/publication tasks remain open.",
+  "receipts": [
+    {
+      "key": "BST-232",
+      "body": "Pass. The deployed TOR 2024-25 view shows 11 play types and 8,517 possessions. The chart and table match the team and same-play-type league totals; the API check also passed for LAL/SAS 2019-20.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+      "comment": {
+        "message": "Comment added to BST-232 successfully",
+        "commentId": "11531",
+        "body": "Pass. The deployed TOR 2024-25 view shows 11 play types and 8,517 possessions. The chart and table match the team and same-play-type league totals; the API check also passed for LAL/SAS 2019-20.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-232 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-233",
+      "body": "Pass. Increasing the cutoff to 5,000 keeps the rows and their usage shares unchanged. Small samples are flagged rather than hidden; the full-team denominator stays the same.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+      "comment": {
+        "message": "Comment added to BST-233 successfully",
+        "commentId": "11532",
+        "body": "Pass. Increasing the cutoff to 5,000 keeps the rows and their usage shares unchanged. Small samples are flagged rather than hidden; the full-team denominator stays the same.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-233 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-234",
+      "body": "Pass. Changed filters clear the old comparison. In the local browser, stopping the API showed the error and retry button; restarting it and retrying loaded the selected 2023-24 profile. Request-order tests also passed.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/local-checks.json)",
+      "comment": {
+        "message": "Comment added to BST-234 successfully",
+        "commentId": "11533",
+        "body": "Pass. Changed filters clear the old comparison. In the local browser, stopping the API showed the error and retry button; restarting it and retrying loaded the selected 2023-24 profile. Request-order tests also passed.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/local-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-234 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-235",
+      "body": "Pass. A coach can open the dashboard. Signed-out access goes to login, and an analyst is redirected to Data Explorer. The deployed API returned 401 for no/invalid session and 403 for the analyst.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/production-checks.json)",
+      "comment": {
+        "message": "Comment added to BST-235 successfully",
+        "commentId": "11534",
+        "body": "Pass. A coach can open the dashboard. Signed-out access goes to login, and an analyst is redirected to Data Explorer. The deployed API returned 401 for no/invalid session and 403 for the analyst.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/production-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-235 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-236",
+      "body": "Retest passed after SCRUM-701. Regular-season totals now exclude playoff rows, and a missing or inconsistent season phase is rejected. The deployed comparison matches separately calculated regular-season source totals in both checked seasons.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to BST-236 successfully",
+        "commentId": "11535",
+        "body": "Retest passed after SCRUM-701. Regular-season totals now exclude playoff rows, and a missing or inconsistent season phase is rejected. The deployed comparison matches separately calculated regular-season source totals in both checked seasons.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-236 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-237",
+      "body": "Retest passed after SCRUM-702. PPP now uses total points divided by possessions, and FG% uses makes divided by attempts. The team and league regression checks passed. eFG% is weighted by attempts and remains approximate because the source percentages are rounded.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to BST-237 successfully",
+        "commentId": "11536",
+        "body": "Retest passed after SCRUM-702. PPP now uses total points divided by possessions, and FG% uses makes divided by attempts. The team and league regression checks passed. eFG% is weighted by attempts and remains approximate because the source percentages are rounded.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-237 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-238",
+      "body": "Retest passed after SCRUM-701. Duplicate player/team/play-type source rows now raise a validation error instead of increasing the totals. The original failed check is retained above.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to BST-238 successfully",
+        "commentId": "11537",
+        "body": "Retest passed after SCRUM-701. Duplicate player/team/play-type source rows now raise a validation error instead of increasing the totals. The original failed check is retained above.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-238 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-239",
+      "body": "Pass. The deployed BOS 2024-25 profile shows seven defensive types. Handoff, Pick-and-Roll Ball Handler and Isolation are the supported positive differences above league PPP. The order, raw allowed PPP and counts match the source checks.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+      "comment": {
+        "message": "Comment added to BST-239 successfully",
+        "commentId": "11538",
+        "body": "Pass. The deployed BOS 2024-25 profile shows seven defensive types. Handoff, Pick-and-Roll Ball Handler and Isolation are the supported positive differences above league PPP. The order, raw allowed PPP and counts match the source checks.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-239 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-240",
+      "body": "Pass. At a cutoff of 5,000, all seven defensive rows remain visible and no weak spot is highlighted. Cut, Miscellaneous, Offensive Rebound and Transition are explicitly unavailable, not zero.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/production-checks.json)",
+      "comment": {
+        "message": "Comment added to BST-240 successfully",
+        "commentId": "11539",
+        "body": "Pass. At a cutoff of 5,000, all seven defensive rows remain visible and no weak spot is highlighted. Cut, Miscellaneous, Offensive Rebound and Transition are explicitly unavailable, not zero.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/production-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-240 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-241",
+      "body": "Pass. Changing the filters removes the previous comparison. Choosing the same team shows a validation message. The local failed-request/retry check recovered the newly selected profile, and stale-response tests passed.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/local-checks.json)",
+      "comment": {
+        "message": "Comment added to BST-241 successfully",
+        "commentId": "11540",
+        "body": "Pass. Changing the filters removes the previous comparison. Choosing the same team shows a validation message. The local failed-request/retry check recovered the newly selected profile, and stale-response tests passed.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/local-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-241 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-242",
+      "body": "Pass. The deployed defense endpoint allowed the coach and rejected signed-out, invalid-session and analyst requests. The browser also redirected an analyst away from the dashboard.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+      "comment": {
+        "message": "Comment added to BST-242 successfully",
+        "commentId": "11541",
+        "body": "Pass. The deployed defense endpoint allowed the coach and rejected signed-out, invalid-session and analyst requests. The browser also redirected an analyst away from the dashboard.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-242 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "BST-243",
+      "body": "Retest passed after SCRUM-703. With the other inputs fixed, increasing the opponent's allowed PPP no longer lowers the score. Both the baseline and context regression checks passed.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to BST-243 successfully",
+        "commentId": "11542",
+        "body": "Retest passed after SCRUM-703. With the other inputs fixed, increasing the opponent's allowed PPP no longer lowers the score. Both the baseline and context regression checks passed.\n\n[Recorded checks](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue BST-243 transitioned successfully",
+        "transitionId": 31,
+        "statusName": "Pass"
+      }
+    },
+    {
+      "key": "SCRUM-701",
+      "body": "Separated regular-season rows from playoffs and rejected missing phases and duplicate source rows. Rebuilt the dependent tables, evaluation results and caches. BST-236 and BST-238 now pass.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-701 successfully",
+        "commentId": "11543",
+        "body": "Separated regular-season rows from playoffs and rejected missing phases and duplicate source rows. Rebuilt the dependent tables, evaluation results and caches. BST-236 and BST-238 now pass.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-701 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-702",
+      "body": "Corrected team and league denominators: PPP uses points/possessions, FG% uses makes/attempts, and rounded eFG% uses attempt weights. The saved calculations were rebuilt and BST-237 now passes.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-702 successfully",
+        "commentId": "11544",
+        "body": "Corrected team and league denominators: PPP uses points/possessions, FG% uses makes/attempts, and rounded eFG% uses attempt weights. The saved calculations were rebuilt and BST-237 now passes.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-702 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-703",
+      "body": "Corrected the opponent-defense contribution in baseline and context rankings. A higher allowed PPP now moves the estimate in the expected direction. BST-243 passes.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-703 successfully",
+        "commentId": "11545",
+        "body": "Corrected the opponent-defense contribution in baseline and context rankings. A higher allowed PPP now moves the estimate in the expected direction. BST-243 passes.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-703 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-705",
+      "body": "Added the coach endpoint for regular-season usage, PPP and same-play-type league differences. It validates the filters, keeps full-team usage totals and returns sample flags. Both deployed source comparisons and access checks passed.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-705 successfully",
+        "commentId": "11546",
+        "body": "Added the coach endpoint for regular-season usage, PPP and same-play-type league differences. It validates the filters, keeps full-team usage totals and returns sample flags. Both deployed source comparisons and access checks passed.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-705 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-706",
+      "body": "Added the usage chart and matching table with possession counts and small-sample labels. Changed or failed requests clear old results, and the view works at the checked mobile width.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/production-checks.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-706 successfully",
+        "commentId": "11547",
+        "body": "Added the usage chart and matching table with possession counts and small-sample labels. Changed or failed requests clear old results, and the view works at the checked mobile width.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/production-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-706 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-707",
+      "body": "Checked source totals, usage shares, sample flags, changed requests and role access. BST-232 through BST-238 now pass, with the original calculation failures kept in their history.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/release.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-707 successfully",
+        "commentId": "11548",
+        "body": "Checked source totals, usage shares, sample flags, changed requests and role access. BST-232 through BST-238 now pass, with the original calculation failures kept in their history.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/release.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-707 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-710",
+      "body": "Added the defensive breakdown with points allowed, possessions, PPP and same-play-type league differences. The deployed values and ordering match the raw-source checks.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-710 successfully",
+        "commentId": "11549",
+        "body": "Added the defensive breakdown with points allowed, possessions, PPP and same-play-type league differences. The deployed values and ordering match the raw-source checks.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/production-api/results.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-710 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-711",
+      "body": "Added the opponent chart, full table and supported weak-spot highlights. Small samples stay visible and unavailable categories are named. The production cutoff and mobile checks passed.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/production-checks.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-711 successfully",
+        "commentId": "11550",
+        "body": "Added the opponent chart, full table and supported weak-spot highlights. Small samples stay visible and unavailable categories are named. The production cutoff and mobile checks passed.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/browser/production-checks.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-711 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-712",
+      "body": "Checked defensive totals, league-relative ordering, sample eligibility, missing categories and changed requests. BST-239 through BST-243 now pass.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/release.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-712 successfully",
+        "commentId": "11551",
+        "body": "Checked defensive totals, league-relative ordering, sample eligibility, missing categories and changed requests. BST-239 through BST-243 now pass.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/release.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-712 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-732",
+      "body": "Updated phase-specific aggregation and validation, then rebuilt the affected prediction and analysis artifacts. The metadata now identifies the regular-season aggregation.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-732 successfully",
+        "commentId": "11552",
+        "body": "Updated phase-specific aggregation and validation, then rebuilt the affected prediction and analysis artifacts. The metadata now identifies the regular-season aggregation.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-732 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-733",
+      "body": "Rechecked regular-season separation, missing phases and duplicate rows. The regressions pass, and the deployed source totals match independent calculations.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-733 successfully",
+        "commentId": "11553",
+        "body": "Rechecked regular-season separation, missing phases and duplicate rows. The regressions pass, and the deployed source totals match independent calculations.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-733 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-734",
+      "body": "Replaced the shared possession weighting with the correct denominator for each metric, including the separate lagged-forecast eFG calculation.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-734 successfully",
+        "commentId": "11554",
+        "body": "Replaced the shared possession weighting with the correct denominator for each metric, including the separate lagged-forecast eFG calculation.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-734 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-735",
+      "body": "The team and league denominator regressions now pass. Rechecked exact-count PPP and attempt-based FG/eFG calculations after rebuilding the saved artifacts.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-735 successfully",
+        "commentId": "11555",
+        "body": "The team and league denominator regressions now pass. Rechecked exact-count PPP and attempt-based FG/eFG calculations after rebuilding the saved artifacts.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-735 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-736",
+      "body": "Updated baseline and context blending to use opponent PPP allowed in the same direction while preserving reliability weights.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-736 successfully",
+        "commentId": "11556",
+        "body": "Updated baseline and context blending to use opponent PPP allowed in the same direction while preserving reliability weights.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-736 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    },
+    {
+      "key": "SCRUM-737",
+      "body": "The stronger/weaker-defense regression checks now pass for both ranking paths. The original failing direction check remains linked in BST-243.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+      "comment": {
+        "message": "Comment added to SCRUM-737 successfully",
+        "commentId": "11557",
+        "body": "The stronger/weaker-defense regression checks now pass for both ranking paths. The original failing direction check remains linked in BST-243.\n\n[Verification](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/main/docs/alpha-release/verification/backend/verification-summary.json)",
+        "appliedContentFormat": "markdown",
+        "jsmCommentType": "publicComment"
+      },
+      "transition": {
+        "message": "Issue SCRUM-737 transitioned successfully",
+        "transitionId": 41,
+        "statusName": "Done"
+      }
+    }
+  ]
+}
+

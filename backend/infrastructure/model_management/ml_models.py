@@ -13,6 +13,7 @@ from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from domain.baseline_recommendation.baseline_recommender import AGGREGATION_VERSION, SEASON_PHASE
 
 FEATURE_COLS = [
     "POSS",
@@ -55,7 +56,20 @@ def load_offense_dataset(team_df: pd.DataFrame, league_df: pd.DataFrame) -> pd.D
         raise ValueError(f"Dataset missing required columns: {missing}")
 
     data = data.dropna(subset=FEATURE_COLS + [TARGET_COL, "PPP_LEAGUE"]).reset_index(drop=True)
+    data.attrs.update(team_df.attrs)
     return data
+
+
+def validate_prediction_provenance(predictions: pd.DataFrame, team_df: pd.DataFrame) -> None:
+    """Reject saved predictions built from a different source or aggregation."""
+    expected = {
+        "SOURCE_DATASET_VERSION": team_df.attrs.get("dataset_version", "unavailable"),
+        "AGGREGATION_VERSION": AGGREGATION_VERSION,
+        "SEASON_PHASE": SEASON_PHASE,
+    }
+    for column, value in expected.items():
+        if column not in predictions or predictions.empty or not predictions[column].eq(value).all():
+            raise ValueError("Saved play-type predictions do not match the current source/aggregation; rebuild them offline.")
 
 def get_features_and_target(data: pd.DataFrame, feature_cols: List[str]) -> Tuple[np.ndarray, np.ndarray]:
     """Extract X (features) and y (target PPP) from the DataFrame."""
@@ -102,7 +116,7 @@ def _make_rf(random_state: int) -> RandomForestRegressor:
         max_depth=RF_PARAMS["max_depth"],
         min_samples_leaf=RF_PARAMS["min_samples_leaf"],
         random_state=random_state,
-        n_jobs=-1,
+        n_jobs=1,
     )
 
 def _make_gb(random_state: int) -> GradientBoostingRegressor:
@@ -261,6 +275,9 @@ def train_and_save_predictions_walk_forward(
 
     out = data[["SEASON", "TEAM_ABBREVIATION", "PLAY_TYPE"]].copy()
     out["PPP_ML"] = y_hat
+    out["SOURCE_DATASET_VERSION"] = team_df.attrs.get("dataset_version", "unavailable")
+    out["AGGREGATION_VERSION"] = AGGREGATION_VERSION
+    out["SEASON_PHASE"] = SEASON_PHASE
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     out.to_csv(output_path, index=False)

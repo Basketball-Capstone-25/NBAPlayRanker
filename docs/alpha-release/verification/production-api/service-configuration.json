@@ -1,0 +1,39 @@
+{
+  "spec": {
+    "template": {
+      "metadata": {
+        "annotations": {
+          "autoscaling.knative.dev/maxScale": "2",
+          "run.googleapis.com/client-name": "gcloud",
+          "run.googleapis.com/client-version": "553.0.0",
+          "run.googleapis.com/cpu-throttling": "true",
+          "run.googleapis.com/startup-cpu-boost": "true"
+        }
+      },
+      "spec": {
+        "containerConcurrency": 2,
+        "containers": [
+          {
+            "resources": {
+              "limits": {
+                "cpu": "1",
+                "memory": "2Gi"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "status": {
+    "latestReadyRevisionName": "nba-playranker-api-00016-bop",
+    "traffic": [
+      {
+        "percent": 100,
+        "revisionName": "nba-playranker-api-00016-bop",
+        "tag": "alpha",
+        "url": "https://alpha---nba-playranker-api-bbv5uwlpba-nn.a.run.app"
+      }
+    ]
+  }
+}

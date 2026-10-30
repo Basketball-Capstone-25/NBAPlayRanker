@@ -21,6 +21,7 @@ from application.api_coordination.export_contract import (
     ExportPayload,
 )
 from domain.baseline_recommendation import BaselineRecommender, rank_playtypes_baseline
+from domain.baseline_recommendation.baseline_recommender import AGGREGATION_VERSION, SEASON_PHASE
 from domain.statistical_analysis.topk_uplift import UpliftDataUnavailable, compute_topk_uplift
 from infrastructure.visualization_and_export.table_pdf import render_table_pdf
 from application.api_coordination.report_snapshot import (
@@ -166,7 +167,9 @@ def create_export_report_router(
         if not check_user_access(user.get("role"), role):
             raise HTTPException(status_code=403, detail=f"Role '{user.get('role')}' cannot export '{report}'.")
         payload = build_payload(report, _season(season), our, opp, side, k, w_off)
-        payload = replace(payload, metadata={**payload.metadata, "dataset_versions": {"synergy": version}})
+        payload = replace(payload, filters={**payload.filters, "season_phase": SEASON_PHASE}, metadata={
+            **payload.metadata, "dataset_versions": {"synergy": version}, "aggregation_version": AGGREGATION_VERSION,
+        })
         try:
             file = contract.build_export(payload, format)
         except ExportFormatUnavailable as exc:

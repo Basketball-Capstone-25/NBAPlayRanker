@@ -1,0 +1,2712 @@
+{
+  "prepared_sha256": "7e46d7e8b111a24b52beebef22825b96b623ea6661bc46b55486873b10fab331",
+  "published_sha256": "015c3b7f65a2b93ddd07bfd772bcd2bae476e1ea1b750ecd8c971e2e213da90c",
+  "tables": {
+    "DIAGRAM": {
+      "prepared": 292,
+      "published": 292,
+      "missing": [],
+      "added": [],
+      "changed_count": 57
+    },
+    "DIAGRAM_ELEMENT": {
+      "prepared": 2604,
+      "published": 2604,
+      "missing": [],
+      "added": [],
+      "changed_count": 55
+    }
+  },
+  "changed_views": [
+    {
+      "table": "DIAGRAM",
+      "id": "rmXAqVmFaUi8twA7",
+      "name": "Use Case Diagram5",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038201726\";",
+          "after": "\"1793079875542\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "BiwYC1mGAqAALg6W",
+      "name": "System Context Diagram",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038201728\";",
+          "after": "\"1793079875543\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "ug6YC1mGAqAALg7I",
+      "name": "System Overview Diagram",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038201731\";",
+          "after": "\"1793079875546\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "8U3N.wWAUAAADbJS",
+      "name": "Recommendation UI Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875555\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "UK3N.wWAUAAADbL0",
+      "name": "API Coordination Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685369\";",
+          "after": "\"1793079875558\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "1a3N.wWAUAAADbNg",
+      "name": "Recommendation Services Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875559\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "jG3N.wWAUAAADbOG",
+      "name": "Analytics Services Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875559\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "7m3N.wWAUAAADbOs",
+      "name": "Access Control Services Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685369\";",
+          "after": "\"1793079875559\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "bO3N.wWAUAAADbPG",
+      "name": "Frontend Services Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685369\";",
+          "after": "\"1793079875559\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "xe3N.wWAUAAADbP8",
+      "name": "Baseline Recommendation Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875559\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "wB3N.wWAUAAADbQg",
+      "name": "Context ML Recommendation Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685370\";",
+          "after": "\"1793079875559\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "VR3N.wWAUAAADbRG",
+      "name": "Statistical Analysis Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875560\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "gp3N.wWAUAAADbRc",
+      "name": "Shot Analysis Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875560\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "lZ3N.wWAUAAADbSg",
+      "name": "Frontend Domain Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875561\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "2l3N.wWAUAAADbTK",
+      "name": "Data Access Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875561\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "J13N.wWAUAAADbU0",
+      "name": "Model Management Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875561\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "4t3N.wWAUAAADbVO",
+      "name": "Visualization and Export Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875561\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "c93N.wWAUAAADbV2",
+      "name": "External Integrations Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685370\";",
+          "after": "\"1793079875561\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "yT3N.wWAUAAADbW6",
+      "name": "Frontend Infrastructure Overview",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516210\";",
+          "after": "\"1793079875561\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "Nr3N.wWAUAAADbYM",
+      "name": "Software System Architecture",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685370\";",
+          "after": "\"1793079875562\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "_33N.wWAUAAADbZO",
+      "name": "Software System Architecture - Subsystem Dependencies",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685371\";",
+          "after": "\"1793079875562\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "7f3N.wWAUAAADbcq",
+      "name": "Collaboration Overview - Access Analyst Workspace",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516216\";",
+          "after": "\"1793079875562\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "EAPN.wWAUAAADbdi",
+      "name": "Structural Overview - Access Analyst Workspace",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685371\";",
+          "after": "\"1793079875562\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "ikPN.wWAUAAADbia",
+      "name": "Collaboration Overview - Ranked List via API (Baseline)",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516217\";",
+          "after": "\"1793079875562\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "sUPN.wWAUAAADbjL",
+      "name": "Structural Overview - Ranked List via API (Baseline)",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685371\";",
+          "after": "\"1793079875562\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "dCPN.wWAUAAADbml",
+      "name": "Collaboration Overview - Rank Plays with Game Context",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516218\";",
+          "after": "\"1793079875563\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "biPN.wWAUAAADbnk",
+      "name": "Structural Overview - Rank Plays with Game Context",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685371\";",
+          "after": "\"1793079875563\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "eOPN.wWAUAAADbs.",
+      "name": "Collaboration Overview - Authenticate Analyst Access",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685371\";",
+          "after": "\"1793079875563\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "3zPN.wWAUAAADb3t",
+      "name": "Collaboration Overview - Validate Coach Access",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685371\";",
+          "after": "\"1793079875563\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "8W4D.wWAUAAADc8a",
+      "name": "Deployment Diagram",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "lastCommitted": {
+          "before": "1793040337188;",
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": "\"mousaa@sheridancollege.ca\";",
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": "\"Mousaa\";",
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": "1793040338745;",
+          "after": "1793079854894;"
+        },
+        "pmLastModified": {
+          "before": "\"1793040352288\";",
+          "after": "\"1793079875576\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "A2a6e559ca1de02a",
+      "name": "Collaboration Overview - Run Data Quality Checks (480)",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516218\";",
+          "after": "\"1793079875563\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "A2271d30211208e1",
+      "name": "Collaboration Overview - Export KPIs / Reports (486)",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685371\";",
+          "after": "\"1793079875563\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "zx_LLoWAUAAADTnU",
+      "name": "Collaboration Overview - Timeout Quick-Call Mode",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516218\";",
+          "after": "\"1793079875563\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "Wba6994d05cdc3b1",
+      "name": "Functional Overview - Current Analyst and Shot Evidence",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038201732\";",
+          "after": "\"1793079875546\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "Wb6c72841c6afe2b",
+      "name": "Collaboration Overview - Inspect Source Metadata",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516218\";",
+          "after": "\"1793079875563\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "Wb2bd65971486c79",
+      "name": "Collaboration Overview - Identify Result Data Versions",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516218\";",
+          "after": "\"1793079875563\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "Wb7d19b0e4cb6dad",
+      "name": "Collaboration Overview - Inspect Dataset Columns",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516218\";",
+          "after": "\"1793079875564\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "Wb702f4085ee0b68",
+      "name": "Collaboration Overview - Keep Results Matched to Inputs",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793038516218\";",
+          "after": "\"1793079875564\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "A0iGnoWAUAAADUYP",
+      "name": "Collaboration Overview - Search Endpoint Activity Log",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "pmLastModified": {
+          "before": "\"1793039685371\";",
+          "after": "\"1793079875564\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "A3cf8fafe4c86b93",
+      "name": "Functional Overview - Baseline Comparisons",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854895;"
+        },
+        "pmLastModified": {
+          "before": null,
+          "after": "\"1793079875546\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "A3cf379bfe3cc8dd",
+      "name": "Collaboration Overview - Compare Usage and Efficiency",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "customizedSortDiagramElementIds": {
+          "before": "(\n\t\t\"A390ba6aaa3331dc\", \n\t\t\"A3e5dcaddb2999f5\", \n\t\t\"A30af7e3363d38c6\", \n\t\t\"A3051a675b821a8f\", \n\t\t\"A327362f9720cf93\", \n\t\t\"PKOb3oWD.AAAAQzi\", \n\t\t\"_KOb3oWD.AAAAQzk\", \n\t\t\"gqOb3oWD.AAAAQzm\", \n\t\t\"wqOb3oWD.AAAAQzo\"\n\t);",
+          "after": "(\n\t\t\"A390ba6aaa3331dc\", \n\t\t\"A3e5dcaddb2999f5\", \n\t\t\"A30af7e3363d38c6\", \n\t\t\"A3051a675b821a8f\", \n\t\t\"A327362f9720cf93\", \n\t\t\"_KOb3oWD.AAAAQzk\", \n\t\t\"gqOb3oWD.AAAAQzm\", \n\t\t\"wqOb3oWD.AAAAQzo\", \n\t\t\"PKOb3oWD.AAAAQzi\"\n\t);"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854895;"
+        },
+        "pmLastModified": {
+          "before": null,
+          "after": "\"1793079875565\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "A327a1441c95755c",
+      "name": "Structural Design - Compare Usage and Efficiency",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854894;"
+        },
+        "pmLastModified": {
+          "before": null,
+          "after": "\"1793079875567\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "A3e9523dccaf0e81",
+      "name": "Collaboration Overview - View Opponent Defensive Weak Spots",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "customizedSortDiagramElementIds": {
+          "before": "(\n\t\t\"A328120bca496118\", \n\t\t\"A381a579d8e7a09e\", \n\t\t\"A342eaeae5a73953\", \n\t\t\"A3af0c7d87e95c6a\", \n\t\t\"A329a808dbd506f5\", \n\t\t\"0GOb3oWD.AAAAQ0B\", \n\t\t\"sGOb3oWD.AAAAQ0D\", \n\t\t\"cGOb3oWD.AAAAQ0F\", \n\t\t\"8GOb3oWD.AAAAQ0H\"\n\t);",
+          "after": "(\n\t\t\"A328120bca496118\", \n\t\t\"A381a579d8e7a09e\", \n\t\t\"A342eaeae5a73953\", \n\t\t\"A3af0c7d87e95c6a\", \n\t\t\"A329a808dbd506f5\", \n\t\t\"sGOb3oWD.AAAAQ0D\", \n\t\t\"cGOb3oWD.AAAAQ0F\", \n\t\t\"8GOb3oWD.AAAAQ0H\", \n\t\t\"0GOb3oWD.AAAAQ0B\"\n\t);"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854896;"
+        },
+        "pmLastModified": {
+          "before": null,
+          "after": "\"1793079875569\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "A3696b87b3695497",
+      "name": "Structural Design - View Opponent Defensive Weak Spots",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854895;"
+        },
+        "pmLastModified": {
+          "before": null,
+          "after": "\"1793079875570\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "A3b04d8e6012d617",
+      "name": "Detailed Sequence - Compare Usage and Efficiency",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854895;"
+        },
+        "pmLastModified": {
+          "before": null,
+          "after": "\"1793079875571\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "A3f8fcffbb410dc9",
+      "name": "Detailed Sequence - View Opponent Defensive Weak Spots",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854896;"
+        },
+        "pmLastModified": {
+          "before": null,
+          "after": "\"1793079875573\";"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "LdO13oWD.AAAAQmg",
+      "name": "Screen - Baseline Comparisons - 1 Open Matchup Dashboard",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "diagramLastModified": {
+          "before": "1793077048394;",
+          "after": "1793079854897;"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854897;"
+        },
+        "pmLastModified": {
+          "before": "\"1793077048483\";",
+          "after": "\"1793079875580\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853539;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "lIu13oWD.AAAAQtn",
+      "name": "Screen - Baseline Comparisons - 2 Choose the matchup",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "diagramLastModified": {
+          "before": "1793077048411;",
+          "after": "1793079854899;"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854899;"
+        },
+        "pmLastModified": {
+          "before": "\"1793077048484\";",
+          "after": "\"1793079875580\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853539;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "tEu13oWD.AAAAQuH",
+      "name": "Screen - Baseline Comparisons - 3 Loading current inputs",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "diagramLastModified": {
+          "before": "1793077048426;",
+          "after": "1793079854901;"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854901;"
+        },
+        "pmLastModified": {
+          "before": "\"1793077048484\";",
+          "after": "\"1793079875581\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853540;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "vUu13oWD.AAAAQun",
+      "name": "Screen - Baseline Comparisons - 4 Usage and Efficiency",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "diagramLastModified": {
+          "before": "1793077048431;",
+          "after": "1793079854901;"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854901;"
+        },
+        "pmLastModified": {
+          "before": "\"1793077048484\";",
+          "after": "\"1793079875581\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853540;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "nMu13oWD.AAAAQvL",
+      "name": "Screen - Baseline Comparisons - 5 Opponent Defense",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "diagramLastModified": {
+          "before": "1793077048435;",
+          "after": "1793079854900;"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854899;"
+        },
+        "pmLastModified": {
+          "before": "\"1793077048484\";",
+          "after": "\"1793079875581\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853541;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "Ncu13oWD.AAAAQvv",
+      "name": "Screen - Baseline Comparisons - 6 Low sample support",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "diagramLastModified": {
+          "before": "1793077048441;",
+          "after": "1793079854898;"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854898;"
+        },
+        "pmLastModified": {
+          "before": "\"1793077048484\";",
+          "after": "\"1793079875581\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853541;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "CCu13oWD.AAAAQwT",
+      "name": "Screen - Baseline Comparisons - 7 No above-league callout",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "diagramLastModified": {
+          "before": "1793077048447;",
+          "after": "1793079854896;"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854896;"
+        },
+        "pmLastModified": {
+          "before": "\"1793077048484\";",
+          "after": "\"1793079875581\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853542;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "Fiu13oWD.AAAAQw3",
+      "name": "Screen - Baseline Comparisons - 8 Unavailable or retry",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "diagramLastModified": {
+          "before": "1793077048452;",
+          "after": "1793079854897;"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854896;"
+        },
+        "pmLastModified": {
+          "before": "\"1793077048484\";",
+          "after": "\"1793079875581\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853542;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "rNO13oWD.AAAAQlj",
+      "name": "Wireflow - Baseline Comparisons",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854900;"
+        },
+        "pmLastModified": {
+          "before": null,
+          "after": "\"1793079875581\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853538;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "rHkT3oWD.AAAAQmD",
+      "name": "NBA Play Ranker Software Requirements Specification",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "diagramLastModified": {
+          "before": "1793078108192;",
+          "after": "1793079854900;"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854900;"
+        },
+        "pmLastModified": {
+          "before": "\"1793078131371\";",
+          "after": "\"1793079875584\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853543;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM",
+      "id": "_B8T3oWD.AAAARm.",
+      "name": "NBA Play Ranker Software Design Document",
+      "diagram_id": null,
+      "shape_type": null,
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "diagramLastModified": {
+          "before": "1793079232423;",
+          "after": "1793079854899;"
+        },
+        "lastCommitted": {
+          "before": null,
+          "after": "1793079853211;"
+        },
+        "lastCommittedUser": {
+          "before": null,
+          "after": "\"asahang@sheridancollege.ca\";"
+        },
+        "lastCommittedUserName": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "lastModified": {
+          "before": null,
+          "after": "1793079854899;"
+        },
+        "pmLastModified": {
+          "before": "\"1793079232485\";",
+          "after": "\"1793079875584\";"
+        },
+        "teamworkAuthor": {
+          "before": null,
+          "after": "\"Gurk\";"
+        },
+        "teamworkCreateDateTime": {
+          "before": null,
+          "after": "1793079853544;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "mW4D.wWAUAAADc8w",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Node",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=6;, \n\t\t@width=432;, \n\t\t@height=43;, \n\t\t@side=12;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=0;, \n\t\t@y=6;, \n\t\t@width=432;, \n\t\t@height=38;, \n\t\t@side=12;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "requestResetCaptionSize": {
+          "before": "T;",
+          "after": null
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "GW4D.wWAUAAADc8s",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Node",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=6;, \n\t\t@width=512;, \n\t\t@height=43;, \n\t\t@side=12;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=0;, \n\t\t@y=6;, \n\t\t@width=512;, \n\t\t@height=38;, \n\t\t@side=12;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "requestResetCaptionSize": {
+          "before": "T;",
+          "after": null
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "BW4D.wWAUAAADc9O",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-478;, \n\t\t@y=-61;, \n\t\t@width=307;, \n\t\t@height=42;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-486;, \n\t\t@y=-60;, \n\t\t@width=323;, \n\t\t@height=40;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "hW4D.wWAUAAADc9Q",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=193;, \n\t\t@y=-61;, \n\t\t@width=214;, \n\t\t@height=42;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=195;, \n\t\t@y=-60;, \n\t\t@width=210;, \n\t\t@height=40;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "hW4D.wWAUAAADc9S",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=71;, \n\t\t@y=49;, \n\t\t@width=214;, \n\t\t@height=43;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=61;, \n\t\t@y=50;, \n\t\t@width=234;, \n\t\t@height=40;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "hW4D.wWAUAAADc9U",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=86;, \n\t\t@y=-67;, \n\t\t@width=218;, \n\t\t@height=43;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=82;, \n\t\t@y=-66;, \n\t\t@width=227;, \n\t\t@height=40;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "hW4D.wWAUAAADc9W",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-312;, \n\t\t@y=-67;, \n\t\t@width=229;, \n\t\t@height=43;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-312;, \n\t\t@y=-66;, \n\t\t@width=228;, \n\t\t@height=40;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "RW4D.wWAUAAADc9Y",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Deployment",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-156;, \n\t\t@y=12;, \n\t\t@width=79;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-162;, \n\t\t@y=12;, \n\t\t@width=91;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "RW4D.wWAUAAADc9a",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Deployment",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-160;, \n\t\t@y=32;, \n\t\t@width=79;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-166;, \n\t\t@y=32;, \n\t\t@width=91;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "RW4D.wWAUAAADc9c",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Deployment",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-158;, \n\t\t@y=87;, \n\t\t@width=79;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-164;, \n\t\t@y=87;, \n\t\t@width=91;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "xW4D.wWAUAAADc9e",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Deployment",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-77;, \n\t\t@y=94;, \n\t\t@width=79;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-83;, \n\t\t@y=94;, \n\t\t@width=91;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "xW4D.wWAUAAADc9g",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Deployment",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-20;, \n\t\t@y=94;, \n\t\t@width=79;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-26;, \n\t\t@y=94;, \n\t\t@width=91;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "xW4D.wWAUAAADc9i",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Deployment",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-20;, \n\t\t@y=94;, \n\t\t@width=79;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-26;, \n\t\t@y=94;, \n\t\t@width=91;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "xW4D.wWAUAAADc9k",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Deployment",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=32;, \n\t\t@y=12;, \n\t\t@width=79;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=26;, \n\t\t@y=12;, \n\t\t@width=91;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "xW4D.wWAUAAADc9m",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Deployment",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=134;, \n\t\t@y=12;, \n\t\t@width=79;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=128;, \n\t\t@y=12;, \n\t\t@width=91;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "JW4D.wWAUAAADc9o",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Deployment",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-20;, \n\t\t@y=74;, \n\t\t@width=79;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-26;, \n\t\t@y=74;, \n\t\t@width=91;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "JW4D.wWAUAAADc9q",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Deployment",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-20;, \n\t\t@y=28;, \n\t\t@width=80;, \n\t\t@height=16;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-25;, \n\t\t@y=29;, \n\t\t@width=91;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "ZW4D.wWAUAAADc98",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=653;, \n\t\t@y=12;, \n\t\t@width=82;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=654;, \n\t\t@y=12;, \n\t\t@width=80;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "5W4D.wWAUAAADc9.",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=399;, \n\t\t@y=291;, \n\t\t@width=53;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=396;, \n\t\t@y=291;, \n\t\t@width=59;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "VW4D.wWAUAAADc.S",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=-196;, \n\t\t@y=260;, \n\t\t@width=99;, \n\t\t@height=15;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=-198;, \n\t\t@y=260;, \n\t\t@width=103;, \n\t\t@height=14;, \n\t\t@side=1;, \n\t\t@visible=F;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "Dep52bba4b07e94b",
+      "name": null,
+      "diagram_id": "8W4D.wWAUAAADc8a",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=681;, \n\t\t@y=152;, \n\t\t@width=364;, \n\t\t@height=42;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=671;, \n\t\t@y=153;, \n\t\t@width=385;, \n\t\t@height=40;, \n\t\t@side=1;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "A3c4e9a1bd71d603",
+      "name": null,
+      "diagram_id": "A3b04d8e6012d617",
+      "shape_type": "Message",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": {
+        "before": "A3c4e9a1bd71d603:\"run(filters: DashboardFilters, signal: AbortSignal)\":Message {",
+        "after": "A3c4e9a1bd71d603:\"run(filters: DashboardFilters, fetchResult: DashboardFetcher, publish: StatePublisher)\":Message {"
+      },
+      "properties": {}
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "_dr13oWD.AAAAQul",
+      "name": null,
+      "diagram_id": "rNO13oWD.AAAAQlj",
+      "shape_type": "WireflowConnector",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "40;",
+          "after": "200;"
+        },
+        "width": {
+          "before": "210;",
+          "after": "370;"
+        },
+        "x": {
+          "before": "430;",
+          "after": "350;"
+        },
+        "y": {
+          "before": "155;",
+          "after": "75;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "I9r13oWD.AAAAQun",
+      "name": null,
+      "diagram_id": "rNO13oWD.AAAAQlj",
+      "shape_type": "WireflowConnector",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": {
+        "before": "I9r13oWD.AAAAQun:\"Submit current inputs\":WireflowConnector {",
+        "after": "I9r13oWD.AAAAQun:\"Valid filters change\":WireflowConnector {"
+      },
+      "properties": {
+        "height": {
+          "before": "40;",
+          "after": "200;"
+        },
+        "width": {
+          "before": "210;",
+          "after": "370;"
+        },
+        "x": {
+          "before": "430;",
+          "after": "350;"
+        },
+        "y": {
+          "before": "155;",
+          "after": "75;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "Y9r13oWD.AAAAQup",
+      "name": null,
+      "diagram_id": "rNO13oWD.AAAAQlj",
+      "shape_type": "WireflowConnector",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "40;",
+          "after": "200;"
+        },
+        "width": {
+          "before": "210;",
+          "after": "370;"
+        },
+        "x": {
+          "before": "430;",
+          "after": "350;"
+        },
+        "y": {
+          "before": "155;",
+          "after": "75;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "k9r13oWD.AAAAQur",
+      "name": null,
+      "diagram_id": "rNO13oWD.AAAAQlj",
+      "shape_type": "WireflowConnector",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "250;",
+          "after": "410;"
+        },
+        "width": {
+          "before": "40;",
+          "after": "200;"
+        },
+        "x": {
+          "before": "205;",
+          "after": "125;"
+        },
+        "y": {
+          "before": "330;",
+          "after": "250;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "p9r13oWD.AAAAQut",
+      "name": null,
+      "diagram_id": "rNO13oWD.AAAAQlj",
+      "shape_type": "WireflowConnector",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "250;",
+          "after": "410;"
+        },
+        "width": {
+          "before": "40;",
+          "after": "200;"
+        },
+        "x": {
+          "before": "205;",
+          "after": "125;"
+        },
+        "y": {
+          "before": "330;",
+          "after": "250;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "V9r13oWD.AAAAQuv",
+      "name": null,
+      "diagram_id": "rNO13oWD.AAAAQlj",
+      "shape_type": "WireflowConnector",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "250;",
+          "after": "410;"
+        },
+        "width": {
+          "before": "660;",
+          "after": "820;"
+        },
+        "x": {
+          "before": "-415;",
+          "after": "-495;"
+        },
+        "y": {
+          "before": "330;",
+          "after": "250;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "t9r13oWD.AAAAQux",
+      "name": null,
+      "diagram_id": "rNO13oWD.AAAAQlj",
+      "shape_type": "WireflowConnector",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "250;",
+          "after": "410;"
+        },
+        "width": {
+          "before": "1280;",
+          "after": "1440;"
+        },
+        "x": {
+          "before": "-1035;",
+          "after": "-1115;"
+        },
+        "y": {
+          "before": "330;",
+          "after": "250;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "_4Kt3oWD.AAAAQzx",
+      "name": null,
+      "diagram_id": "A3cf8fafe4c86b93",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "125;",
+          "after": "285;"
+        },
+        "metaModelElement": {
+          "before": "<8zHsqVmAUUE.bzvH:BwYKwNmGAqAALne6:A38dd30689da30ec>;",
+          "after": "<8zHsqVmAUUE.bzvH:8zHsqVmAUUE.bzvI:A38dd30689da30ec>;"
+        },
+        "width": {
+          "before": "180;",
+          "after": "340;"
+        },
+        "x": {
+          "before": "70;",
+          "after": "-10;"
+        },
+        "y": {
+          "before": "-30;",
+          "after": "-110;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "wEKt3oWD.AAAAQzz",
+      "name": null,
+      "diagram_id": "A3cf8fafe4c86b93",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "145;",
+          "after": "305;"
+        },
+        "metaModelElement": {
+          "before": "<8zHsqVmAUUE.bzvH:BwYKwNmGAqAALne6:A39f691210e8d8c4>;",
+          "after": "<8zHsqVmAUUE.bzvH:8zHsqVmAUUE.bzvI:A39f691210e8d8c4>;"
+        },
+        "width": {
+          "before": "180;",
+          "after": "340;"
+        },
+        "x": {
+          "before": "70;",
+          "after": "-10;"
+        },
+        "y": {
+          "before": "55;",
+          "after": "-25;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "UEKt3oWD.AAAAQz1",
+      "name": null,
+      "diagram_id": "A3cf8fafe4c86b93",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "125;",
+          "after": "285;"
+        },
+        "metaModelElement": {
+          "before": "<8zHsqVmAUUE.bzvH:BwYKwNmGAqAALne6:A372ed183fa94bdb>;",
+          "after": "<8zHsqVmAUUE.bzvH:8zHsqVmAUUE.bzvI:A372ed183fa94bdb>;"
+        },
+        "width": {
+          "before": "180;",
+          "after": "340;"
+        },
+        "x": {
+          "before": "70;",
+          "after": "-10;"
+        },
+        "y": {
+          "before": "-30;",
+          "after": "-110;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "sEKt3oWD.AAAAQz3",
+      "name": null,
+      "diagram_id": "A3cf8fafe4c86b93",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "145;",
+          "after": "305;"
+        },
+        "metaModelElement": {
+          "before": "<8zHsqVmAUUE.bzvH:BwYKwNmGAqAALne6:A351f9a6a645fd8a>;",
+          "after": "<8zHsqVmAUUE.bzvH:8zHsqVmAUUE.bzvI:A351f9a6a645fd8a>;"
+        },
+        "width": {
+          "before": "180;",
+          "after": "340;"
+        },
+        "x": {
+          "before": "70;",
+          "after": "-10;"
+        },
+        "y": {
+          "before": "55;",
+          "after": "-25;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "iEKt3oWD.AAAAQz5",
+      "name": null,
+      "diagram_id": "A3cf8fafe4c86b93",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "125;",
+          "after": "285;"
+        },
+        "metaModelElement": {
+          "before": "<8zHsqVmAUUE.bzvH:BwYKwNmGAqAALne6:A3535e6d6b4ff19b>;",
+          "after": "<8zHsqVmAUUE.bzvH:8zHsqVmAUUE.bzvI:A3535e6d6b4ff19b>;"
+        },
+        "width": {
+          "before": "180;",
+          "after": "340;"
+        },
+        "x": {
+          "before": "70;",
+          "after": "-10;"
+        },
+        "y": {
+          "before": "-30;",
+          "after": "-110;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "6EKt3oWD.AAAAQz7",
+      "name": null,
+      "diagram_id": "A3cf8fafe4c86b93",
+      "shape_type": "Association",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "height": {
+          "before": "145;",
+          "after": "305;"
+        },
+        "metaModelElement": {
+          "before": "<8zHsqVmAUUE.bzvH:BwYKwNmGAqAALne6:A3e6f134dd231736>;",
+          "after": "<8zHsqVmAUUE.bzvH:8zHsqVmAUUE.bzvI:A3e6f134dd231736>;"
+        },
+        "width": {
+          "before": "180;",
+          "after": "340;"
+        },
+        "x": {
+          "before": "70;",
+          "after": "-10;"
+        },
+        "y": {
+          "before": "55;",
+          "after": "-25;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "PKOb3oWD.AAAAQzi",
+      "name": null,
+      "diagram_id": "A3cf379bfe3cc8dd",
+      "shape_type": "Realization",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "x": {
+          "before": "-40;",
+          "after": "-80;"
+        },
+        "y": {
+          "before": "-50;",
+          "after": "-100;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "_KOb3oWD.AAAAQzk",
+      "name": null,
+      "diagram_id": "A3cf379bfe3cc8dd",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "x": {
+          "before": "-670;",
+          "after": "-1340;"
+        },
+        "y": {
+          "before": "-50;",
+          "after": "-100;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "gqOb3oWD.AAAAQzm",
+      "name": null,
+      "diagram_id": "A3cf379bfe3cc8dd",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "x": {
+          "before": "-670;",
+          "after": "-1340;"
+        },
+        "y": {
+          "before": "-50;",
+          "after": "-100;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "wqOb3oWD.AAAAQzo",
+      "name": null,
+      "diagram_id": "A3cf379bfe3cc8dd",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "x": {
+          "before": "-670;",
+          "after": "-1340;"
+        },
+        "y": {
+          "before": "-50;",
+          "after": "-100;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "S32b3oWD.AAAAQxM",
+      "name": null,
+      "diagram_id": "A327a1441c95755c",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=40;, \n\t\t@y=40;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-40;",
+          "after": "-80;"
+        },
+        "y": {
+          "before": "-40;",
+          "after": "-80;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "632b3oWD.AAAAQxO",
+      "name": null,
+      "diagram_id": "A327a1441c95755c",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=40;, \n\t\t@y=40;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-40;",
+          "after": "-80;"
+        },
+        "y": {
+          "before": "-40;",
+          "after": "-80;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "m32b3oWD.AAAAQxQ",
+      "name": null,
+      "diagram_id": "A327a1441c95755c",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=1040;, \n\t\t@y=400;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-1040;",
+          "after": "-2080;"
+        },
+        "y": {
+          "before": "-400;",
+          "after": "-800;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "232b3oWD.AAAAQxS",
+      "name": null,
+      "diagram_id": "A327a1441c95755c",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=40;, \n\t\t@y=400;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-40;",
+          "after": "-80;"
+        },
+        "y": {
+          "before": "-400;",
+          "after": "-800;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "O32b3oWD.AAAAQxU",
+      "name": null,
+      "diagram_id": "A327a1441c95755c",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=40;, \n\t\t@y=760;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-40;",
+          "after": "-80;"
+        },
+        "y": {
+          "before": "-760;",
+          "after": "-1520;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "e32b3oWD.AAAAQxW",
+      "name": null,
+      "diagram_id": "A327a1441c95755c",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=1040;, \n\t\t@y=760;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-1040;",
+          "after": "-2080;"
+        },
+        "y": {
+          "before": "-760;",
+          "after": "-1520;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "0GOb3oWD.AAAAQ0B",
+      "name": null,
+      "diagram_id": "A3e9523dccaf0e81",
+      "shape_type": "Realization",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "x": {
+          "before": "-40;",
+          "after": "-80;"
+        },
+        "y": {
+          "before": "-50;",
+          "after": "-100;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "sGOb3oWD.AAAAQ0D",
+      "name": null,
+      "diagram_id": "A3e9523dccaf0e81",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "x": {
+          "before": "-670;",
+          "after": "-1340;"
+        },
+        "y": {
+          "before": "-50;",
+          "after": "-100;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "cGOb3oWD.AAAAQ0F",
+      "name": null,
+      "diagram_id": "A3e9523dccaf0e81",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "x": {
+          "before": "-670;",
+          "after": "-1340;"
+        },
+        "y": {
+          "before": "-50;",
+          "after": "-100;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "8GOb3oWD.AAAAQ0H",
+      "name": null,
+      "diagram_id": "A3e9523dccaf0e81",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "x": {
+          "before": "-670;",
+          "after": "-1340;"
+        },
+        "y": {
+          "before": "-50;",
+          "after": "-100;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "6COb3oWD.AAAAQy1",
+      "name": null,
+      "diagram_id": "A3696b87b3695497",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=40;, \n\t\t@y=40;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-40;",
+          "after": "-80;"
+        },
+        "y": {
+          "before": "-40;",
+          "after": "-80;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "OCOb3oWD.AAAAQy3",
+      "name": null,
+      "diagram_id": "A3696b87b3695497",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=40;, \n\t\t@y=40;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-40;",
+          "after": "-80;"
+        },
+        "y": {
+          "before": "-40;",
+          "after": "-80;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "eCOb3oWD.AAAAQy5",
+      "name": null,
+      "diagram_id": "A3696b87b3695497",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=1040;, \n\t\t@y=400;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-1040;",
+          "after": "-2080;"
+        },
+        "y": {
+          "before": "-400;",
+          "after": "-800;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "BCOb3oWD.AAAAQy7",
+      "name": null,
+      "diagram_id": "A3696b87b3695497",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=40;, \n\t\t@y=400;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-40;",
+          "after": "-80;"
+        },
+        "y": {
+          "before": "-400;",
+          "after": "-800;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "RCOb3oWD.AAAAQy9",
+      "name": null,
+      "diagram_id": "A3696b87b3695497",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=40;, \n\t\t@y=760;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-40;",
+          "after": "-80;"
+        },
+        "y": {
+          "before": "-760;",
+          "after": "-1520;"
+        }
+      }
+    },
+    {
+      "table": "DIAGRAM_ELEMENT",
+      "id": "pCOb3oWD.AAAAQy_",
+      "name": null,
+      "diagram_id": "A3696b87b3695497",
+      "shape_type": "Dependency",
+      "columns": [
+        "DEFINITION"
+      ],
+      "definition_header_change": null,
+      "properties": {
+        "_captionUIModel": {
+          "before": "(\n\t\t@x=0;, \n\t\t@y=0;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);",
+          "after": "(\n\t\t@x=1040;, \n\t\t@y=760;, \n\t\t@width=0;, \n\t\t@height=0;, \n\t\t@side=0;, \n\t\t@visible=T;, \n\t\t@internalWidth=-2147483648;, \n\t\t@internalHeight=-2147483648;\n\t);"
+        },
+        "x": {
+          "before": "-1040;",
+          "after": "-2080;"
+        },
+        "y": {
+          "before": "-760;",
+          "after": "-1520;"
+        }
+      }
+    }
+  ],
+  "changed_property_counts": {
+    "pmLastModified": 57,
+    "lastCommitted": 19,
+    "lastCommittedUser": 19,
+    "lastCommittedUserName": 19,
+    "lastModified": 19,
+    "customizedSortDiagramElementIds": 2,
+    "diagramLastModified": 10,
+    "teamworkAuthor": 11,
+    "teamworkCreateDateTime": 11,
+    "_captionUIModel": 33,
+    "requestResetCaptionSize": 2,
+    "height": 13,
+    "width": 13,
+    "x": 33,
+    "y": 33,
+    "metaModelElement": 6
+  },
+  "interpretation": {
+    "scope": "Read-only native SQLite comparison; no project writes or Visual Paradigm commands.",
+    "all_diagram_and_view_ids_retained": true,
+    "non_definition_view_columns_unchanged": true,
+    "connector_points_unchanged": true,
+    "deployment": "21 existing views have only caption metric normalization; all protocol label strings and route point arrays are retained.",
+    "new_alpha_views": "New wireflow, functional and collaboration/structural connector bounding boxes normalize; structural caption coordinates compensate. Published raster verification is recorded separately.",
+    "functional_associations": "Six existing target IDs are retained; metaModelElement parent path normalizes from the message container to the association container.",
+    "caption_corrections": "The usage controller request now matches the implemented callback-based signature. The wireflow connector caption now describes automatic input-change loading.",
+    "diagram_order": "Two new collaboration sort lists reorder one child without adding/removing any child IDs."
+  }
+}

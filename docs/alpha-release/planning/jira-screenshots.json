@@ -1,0 +1,70 @@
+{
+  "receipts": [
+    {
+      "key": "SCRUM-695",
+      "ref": "usage",
+      "mediaId": "b2ddc4b5-f66f-463f-b611-f751116df69a",
+      "response": {
+        "message": "Comment added to SCRUM-695 successfully",
+        "commentId": "11558",
+        "jsmCommentType": "publicComment",
+        "inlineMediaEmbedded": true,
+        "inlineMediaCount": 1
+      }
+    },
+    {
+      "key": "SCRUM-696",
+      "ref": "defense",
+      "mediaId": "6d0c2148-588b-479d-b4b5-e11da87bb533",
+      "response": {
+        "message": "Comment added to SCRUM-696 successfully",
+        "commentId": "11559",
+        "jsmCommentType": "publicComment",
+        "inlineMediaEmbedded": true,
+        "inlineMediaCount": 1
+      }
+    },
+    {
+      "key": "BST-232",
+      "ref": "usage",
+      "commentId": "11531",
+      "mediaId": "b2ddc4b5-f66f-463f-b611-f751116df69a",
+      "response": {
+        "message": "Comment 11531 on BST-232 updated successfully",
+        "commentId": "11531",
+        "jsmCommentType": "publicComment",
+        "inlineMediaEmbedded": true,
+        "inlineMediaCount": 1
+      }
+    },
+    {
+      "key": "BST-239",
+      "ref": "defense",
+      "commentId": "11538",
+      "mediaId": "6d0c2148-588b-479d-b4b5-e11da87bb533",
+      "response": {
+        "message": "Comment 11538 on BST-239 updated successfully",
+        "commentId": "11538",
+        "jsmCommentType": "publicComment",
+        "inlineMediaEmbedded": true,
+        "inlineMediaCount": 1
+      }
+    },
+    {
+      "key": "BST-240",
+      "ref": "sample",
+      "commentId": "11539",
+      "mediaId": "0cdbec0d-766b-4069-b0b7-77fcaa6b1768",
+      "response": {
+        "message": "Comment 11539 on BST-240 updated successfully",
+        "commentId": "11539",
+        "jsmCommentType": "publicComment",
+        "inlineMediaEmbedded": true,
+        "inlineMediaCount": 1
+      }
+    }
+  ],
+  "readbackVerified": true,
+  "notes": "Screenshots are from the deployed Alpha browser checks. Original failure comments were not edited."
+}
+

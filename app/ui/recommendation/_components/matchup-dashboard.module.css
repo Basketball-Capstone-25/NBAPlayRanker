@@ -1,0 +1,43 @@
+.page { max-width: 1140px; margin: 0 auto; padding: 30px 22px 64px; color: #172033; }
+.header { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-bottom: 24px; }
+.header h1 { margin: 7px 0 9px; font-size: clamp(27px, 4vw, 36px); letter-spacing: -1px; }
+.header p, .sectionHeading p { margin: 0; color: #536176; line-height: 1.6; }
+.kicker { color: #65528e; font-size: 12px; font-weight: 700; letter-spacing: .05em; }
+.link { color: #5b21b6; font-weight: 650; white-space: nowrap; }
+.filters { display: grid; grid-template-columns: .8fr 1.4fr 1.4fr 1fr; gap: 16px; padding: 20px; background: #f4f3fa; border-radius: 16px; }
+.filters label { display: grid; gap: 7px; font-size: 13px; font-weight: 650; }
+.filters select { min-width: 0; width: 100%; border: 1px solid #cbd5e1; border-radius: 9px; padding: 10px; color: #172033; background: white; font: inherit; }
+.tabs { display: flex; gap: 8px; margin-top: 23px; flex-wrap: wrap; }
+.tabs button, .button { border: 1px solid #cbd5e1; border-radius: 10px; background: white; padding: 11px 17px; font: inherit; font-weight: 650; cursor: pointer; color: #334155; }
+.tabs button[aria-pressed=true], .button { color: white; background: #5b21b6; border-color: #5b21b6; }
+.page button:focus-visible, .page select:focus-visible, .page a:focus-visible, .page summary:focus-visible { outline: 3px solid #8b5cf6; outline-offset: 4px; }
+.scope { font-size: 13px; color: #536176; margin: 16px 1px; }
+.card { background: white; border: 1px solid #e2e8f0; border-radius: 17px; padding: 24px; box-shadow: 0 6px 22px #17203305; }
+.card h2 { font-size: 21px; margin: 0 0 8px; letter-spacing: -.35px; }
+.sectionHeading { display: flex; gap: 18px; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+.sectionHeading p { font-size: 14px; }
+.pill { flex-shrink: 0; background: #f1f5f9; color: #475569; padding: 7px 10px; border-radius: 8px; font-size: 12px; }
+.chart { overflow-x: auto; margin-top: 20px; }
+.chart svg { width: 100%; min-width: 600px; display: block; }
+.note { font-size: 13px; color: #536176; line-height: 1.6; margin: 16px 0 23px; }
+.tableWrap { overflow-x: auto; }
+.tableWrap table { width: 100%; border-collapse: collapse; text-align: right; font-variant-numeric: tabular-nums; font-size: 13px; }
+.tableWrap caption { text-align: left; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+.tableWrap th, .tableWrap td { padding: 12px 10px; border-bottom: 1px solid #e2e8f0; white-space: nowrap; }
+.tableWrap thead th { background: #f8fafc; font-size: 12px; color: #475569; }
+.tableWrap th:first-child { text-align: left; }
+.tableWrap tbody th { font-weight: 600; }
+.number { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; width: 23px; height: 23px; color: #5b21b6; background: #f3e8ff; margin-right: 8px; font-size: 11px; }
+.sample { color: #475569; font-size: 11px; }
+.smallSample { color: #92400e; background: #fef3c7; padding: 4px 7px; border-radius: 6px; font-size: 11px; }
+.weakSpots { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.weakSpots li { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 11px; padding: 15px; display: grid; gap: 7px; }
+.weakSpots .kicker { color: #9a3412; }
+.weakSpots strong { font-size: 17px; }
+.weakSpots span, .weakSpots small { font-size: 12px; }
+.weakSpots small { color: #67564c; }
+.notice { font-size: 13px; line-height: 1.6; background: #f8fafc; border-left: 3px solid #94a3b8; padding: 12px 15px; margin: 20px 0 0; }
+.details { margin-top: 20px; font-size: 13px; color: #475569; line-height: 1.7; }
+.details summary { cursor: pointer; color: #334155; font-weight: 650; }
+.details code { overflow-wrap: anywhere; font-size: 11px; }
+@media (max-width: 760px) { .page { padding: 22px 14px 45px; } .header, .sectionHeading { flex-direction: column; gap: 12px; align-items: flex-start; } .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 15px; } .card { padding: 18px 14px; } .weakSpots { grid-template-columns: 1fr; } }

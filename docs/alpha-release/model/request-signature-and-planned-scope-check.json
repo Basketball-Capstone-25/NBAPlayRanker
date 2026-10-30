@@ -1,0 +1,46 @@
+{
+  "baseline_sha256": "b23103a87df9402b8c9239d745138a87466332f4c5098e7b3f661c0374be83df",
+  "candidate_sha256": "e0610e62e09b0a35a8b8f01e9aa61c9ede2984ba2f57fcbbd405e522914f6574",
+  "counts": {
+    "models": 3165,
+    "diagrams": 292,
+    "diagram_elements": 2604
+  },
+  "checks": {
+    "all_model_ids_preserved": true,
+    "only_four_intended_semantic_models_changed": true,
+    "diagram_all_rows_byte_identical": true,
+    "diagram_element_all_rows_byte_identical": true,
+    "model_identity_metadata_preserved": true,
+    "only_intended_message_name_changes": true,
+    "both_alpha_sequence_guard_labels_match": true,
+    "structural_guard_parameters_match": true,
+    "old_signal_documentation_removed": true,
+    "actual_source_guard_parameters_match": true,
+    "followup_pending_changes_recorded": true
+  },
+  "semantic_changes": [
+    {
+      "id": "A32dd7c488267720",
+      "name": "Compare Play Types with League Average",
+      "type": "UseCase"
+    },
+    {
+      "id": "A3fec18b97586e26",
+      "name": "run(filters: DashboardFilters, fetchResult: DashboardFetcher, publish: StatePublisher)",
+      "type": "Message"
+    },
+    {
+      "id": "A3525233679a4e95",
+      "name": "DashboardRequest",
+      "type": "Class"
+    },
+    {
+      "id": "MMUT3oWD.AAAARBP",
+      "name": "",
+      "type": "RDHtmlTemplate"
+    }
+  ],
+  "scope": "One Weak Spots request label and matching operation documentation; planned Beta league-rate table use case and its native SRS conditions. The entire saved working model was the input, including all current view rows. No diagram or view rows changed.",
+  "verified": true
+}

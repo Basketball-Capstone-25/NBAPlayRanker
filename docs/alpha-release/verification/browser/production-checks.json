@@ -1,0 +1,48 @@
+{
+  "recorded_at": "2026-10-27T05:08:29.647724+00:00",
+  "site": "https://nbaplayranker-seven.vercel.app",
+  "deployment": "dpl_EMCHE6J8GsAZ9Yd3dTmzzCkh7DwC",
+  "checks": [
+    {
+      "name": "coach dashboard and real source totals",
+      "passed": true,
+      "details": "TOR vs BOS, 2024-25: 8,517 offensive possessions, 11 offensive rows and 7 defensive rows. Cut has 745 possessions and 1.197 PPP. Boston Handoff has 384 possessions and 1.010 allowed PPP, or +0.073 above league."
+    },
+    {
+      "name": "small sample preservation",
+      "passed": true,
+      "details": "A cutoff of 5,000 keeps all 7 defensive rows visible and removes the weak-spot highlights."
+    },
+    {
+      "name": "Mobile layout at 390 by 844",
+      "passed": true,
+      "details": "The document and body both measured 380 pixels wide. The 600-pixel chart and 724-pixel table scroll inside 290-pixel containers. The viewport was reset after the check."
+    },
+    {
+      "name": "signed-out access",
+      "passed": true,
+      "details": "Sign-out returned to the public home page. Opening the dashboard while signed out redirected to login with the dashboard as the next page."
+    },
+    {
+      "name": "analyst role restriction",
+      "passed": true,
+      "details": "Signing in as an analyst and opening the dashboard both redirected to Data Explorer. The coach dashboard was not displayed."
+    },
+    {
+      "name": "analyst source display",
+      "passed": true,
+      "details": "Data Explorer showed the regular-season label, 11 Toronto rows and 8,517 possessions. The source checks passed."
+    }
+  ],
+  "screenshots": [
+    "production-usage.png",
+    "production-defense.png",
+    "production-mobile.png",
+    "production-low-sample.png",
+    "production-data-explorer.png"
+  ],
+  "limitations": [
+    "Screenshots document this execution, not historical executions or expert endorsement.",
+    "Service outage and retry were exercised only locally; no production outage was induced."
+  ]
+}

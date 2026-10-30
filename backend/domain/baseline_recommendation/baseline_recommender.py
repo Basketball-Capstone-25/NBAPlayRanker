@@ -8,8 +8,13 @@ from typing import Any, Dict, List, Tuple
 
 from domain.baseline_recommendation.interfaces import IBaselineRecommender
 
-# Rate stats we average using POSS as weights (so players with more
-# possessions have a bigger influence on the team number).
+AGGREGATION_VERSION = "synergy_regular_season_v2"
+SEASON_PHASE = "regular_season"
+
+# These possession-based rates overlap. They are not mutually exclusive outcomes.
+POSSESSION_RATE_COLS = [
+    "SCORE_POSS_PCT", "TOV_POSS_PCT", "SF_POSS_PCT", "FT_POSS_PCT", "PLUSONE_POSS_PCT",
+]
 WEIGHT_COLS = [
     "PPP",
     "FG_PCT",
@@ -21,9 +26,62 @@ WEIGHT_COLS = [
     "PLUSONE_POSS_PCT",
 ]
 
+
+def regular_season_rows(raw_df: pd.DataFrame) -> pd.DataFrame:
+    """Select an identified regular season before counting player-ending plays."""
+    required = {
+        "SEASON", "SEASON_ID", "PLAYER_ID", "TEAM_ABBREVIATION", "TEAM_NAME",
+        "PLAY_TYPE", "TYPE_GROUPING", "GP", "POSS", "PTS", "FGM", "FGA", "EFG_PCT",
+        *POSSESSION_RATE_COLS,
+    }
+    missing = sorted(required - set(raw_df.columns))
+    if missing:
+        raise ValueError(f"Play-type source is missing columns: {', '.join(missing)}")
+    phase = raw_df["SEASON_ID"].astype(str)
+    frame = raw_df.loc[phase.str.fullmatch(r"2\d{4}")].copy()
+    if frame.empty:
+        raise ValueError("Play-type source has no regular-season rows.")
+    years = frame["SEASON_ID"].astype(str).str[1:].astype(int)
+    labels = years.map(lambda year: f"{year}-{(year + 1) % 100:02d}")
+    if not frame["SEASON"].eq(labels).all():
+        raise ValueError("SEASON and regular-season SEASON_ID must agree.")
+    keys = ["SEASON", "PLAYER_ID", "TEAM_ABBREVIATION", "PLAY_TYPE", "TYPE_GROUPING"]
+    if frame[keys].isna().any().any():
+        raise ValueError("Play-type source requires known player, team, season and play-type keys.")
+    if frame.duplicated(keys).any():
+        raise ValueError("Duplicate player / team / play-type rows would double-count possessions.")
+    if "ENTITY_TYPE" in frame and not frame["ENTITY_TYPE"].eq("Player").all():
+        raise ValueError("Play-type aggregation requires player rows without team-total duplicates.")
+    if not frame["TYPE_GROUPING"].isin(["Offensive", "Defensive"]).all():
+        raise ValueError("Play-type source contains an unknown offense/defense grouping.")
+    counts = frame[["GP", "POSS", "PTS", "FGM", "FGA"]].to_numpy(dtype=float)
+    rates = frame[["EFG_PCT", *POSSESSION_RATE_COLS]].to_numpy(dtype=float)
+    if not np.isfinite(counts).all() or not np.isfinite(rates).all():
+        raise ValueError("Play-type counts and rates must be finite.")
+    if (counts < 0).any() or not np.equal(counts, np.floor(counts)).all() or (frame["POSS"] <= 0).any() or (frame["FGM"] > frame["FGA"]).any():
+        raise ValueError("Play-type counts must be valid and possessions positive.")
+    if (rates < 0).any() or (rates[:, 0] > 1.5).any() or (rates[:, 1:] > 1).any():
+        raise ValueError("Play-type source contains an invalid rate.")
+    return frame
+
+
+def _aggregate_rates(group: pd.DataFrame) -> dict[str, float]:
+    """Keep each rate's denominator; rounded eFG is weighted by attempts."""
+    poss = float(group["POSS"].sum())
+    fga = float(group["FGA"].sum())
+    out = {
+        "PPP": float(group["PTS"].sum()) / poss if poss > 0 else np.nan,
+        "FG_PCT": float(group["FGM"].sum()) / fga if fga > 0 else np.nan,
+        "EFG_PCT": float((group["EFG_PCT"] * group["FGA"]).sum()) / fga if fga > 0 else np.nan,
+    }
+    for column in POSSESSION_RATE_COLS:
+        out[column] = float((group[column] * group["POSS"]).sum()) / poss if poss > 0 else np.nan
+    return out
+
+
 def build_team_playtype_tables(raw_df: pd.DataFrame) -> pd.DataFrame:
-    """Aggregate Synergy player-level data into TEAM-level play-type rows."""
-    df = raw_df.copy()
+    """Aggregate regular-season player rows without mixing playoff samples."""
+    df = regular_season_rows(raw_df)
 
     # Map Synergy's TYPE_GROUPING to a simple SIDE flag.
     df["SIDE"] = df["TYPE_GROUPING"].str.lower().map(
@@ -36,14 +94,13 @@ def build_team_playtype_tables(raw_df: pd.DataFrame) -> pd.DataFrame:
         poss = group["POSS"].sum()
 
         out = {
-            "GP": group["GP"].sum(),       # total games (sum over players; used only as reference)
+            # Retained for older exports: this is player appearances, NOT team games.
+            "GP": group["GP"].sum(),
             "POSS": poss,                 # total possessions for the team/playtype/side
             "POSS_PCT": np.nan,           # placeholder — recomputed after groupby
         }
 
-        # Weighted averages for rate stats
-        for col in WEIGHT_COLS:
-            out[col] = np.average(group[col], weights=group["POSS"]) if poss > 0 else np.nan
+        out.update(_aggregate_rates(group))
 
         # Raw sums for simple context/debug
         out["PTS"] = group["PTS"].sum()
@@ -58,6 +115,8 @@ def build_team_playtype_tables(raw_df: pd.DataFrame) -> pd.DataFrame:
     # that go to each play type (per season/team/side).
     team_totals = team_df.groupby(["SEASON", "TEAM_ABBREVIATION", "SIDE"])["POSS"].transform("sum")
     team_df["POSS_PCT"] = team_df["POSS"] / team_totals
+    team_df.attrs.update(raw_df.attrs)
+    team_df.attrs.update(aggregation_version=AGGREGATION_VERSION, season_phase=SEASON_PHASE)
 
     return team_df
 
@@ -74,15 +133,15 @@ def build_league_averages(team_df: pd.DataFrame) -> pd.DataFrame:
 
     def agg(group: pd.DataFrame) -> pd.Series:
         poss = group["POSS"].sum()
-        out = {"LEAGUE_POSS": poss}
-        for col in WEIGHT_COLS:
-            out[col] = np.average(group[col], weights=group["POSS"]) if poss > 0 else np.nan
+        out = {"LEAGUE_POSS": poss, "PTS": group["PTS"].sum(), "FGA": group["FGA"].sum()}
+        out.update(_aggregate_rates(group))
         return pd.Series(out)
 
     league_df = team_df.groupby(group_cols, as_index=False).apply(agg)
 
     max_log = np.log1p(league_df["LEAGUE_POSS"]).max()
     league_df["RELIABILITY_WEIGHT"] = np.log1p(league_df["LEAGUE_POSS"]) / max_log if max_log > 0 else 0.0
+    league_df.attrs.update(team_df.attrs)
     return league_df
 
 def prepare_baseline_tables(raw_df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
@@ -112,6 +171,10 @@ def rank_playtypes_baseline(
         raise ValueError(f"Unknown our_team '{our_team}'.")
     if opp_team not in valid_teams:
         raise ValueError(f"Unknown opp_team '{opp_team}'.")
+    if our_team == opp_team:
+        raise ValueError("Our team and opponent must be different.")
+    if not np.isfinite([w_off, w_def]).all() or min(w_off, w_def) < 0 or not np.isclose(w_off + w_def, 1):
+        raise ValueError("Offense and defense weights must be nonnegative and sum to one.")
     if not (1 <= k <= 10):
         raise ValueError("k must be between 1 and 10.")
     off = team_df.query(
@@ -168,18 +231,14 @@ def rank_playtypes_baseline(
     merged["PPP_OFF_SHRUNK"] = rel_off * merged["PPP_OFF"] + (1 - rel_off) * merged["PPP_LEAGUE_OFF"]
     merged["PPP_DEF_SHRUNK"] = rel_def * merged["PPP_DEF"] + (1 - rel_def) * merged["PPP_LEAGUE_DEF"]
     #
-    # PPP_PRED = w_off * PPP_OFF_SHRUNK
-    #          + w_def * (2*PPP_LEAGUE_OFF - PPP_DEF_SHRUNK)
-    #
-    # Interpret the defense term:
-    # - If opponent allows MORE than league (PPP_DEF_SHRUNK high), the term becomes smaller.
-    # - If opponent allows LESS than league (PPP_DEF_SHRUNK low), the term becomes larger.
+    # A defense that allows more points should raise, not lower, the offensive score.
+    # This weighted historical estimate is not a validated pre-game forecast.
     merged["PPP_PRED"] = (
         float(w_off) * merged["PPP_OFF_SHRUNK"]
-        + float(w_def) * (2 * merged["PPP_LEAGUE_OFF"] - merged["PPP_DEF_SHRUNK"])
+        + float(w_def) * merged["PPP_DEF_SHRUNK"]
     )
 
-    # Simple explainable gap (coach-friendly)
+    # A descriptive difference between historical profiles, not a matchup advantage.
     merged["PPP_GAP"] = merged["PPP_OFF_SHRUNK"] - merged["PPP_DEF_SHRUNK"]
     merged = merged.sort_values(["PPP_PRED", "POSS_OFF"], ascending=[False, False])
 
@@ -190,8 +249,9 @@ def rank_playtypes_baseline(
         rel_def = float(row["RELIABILITY_WEIGHT_DEF"])
         return (
             f"{row['PLAY_TYPE']}: Pred {row['PPP_PRED']:.3f} PPP. "
-            f"Our(off) {row['PPP_OFF_SHRUNK']:.3f} vs Opp(def) {row['PPP_DEF_SHRUNK']:.3f} ({gap_str}). "
+            f"Our(off) {row['PPP_OFF_SHRUNK']:.3f} vs Opp(allowed) {row['PPP_DEF_SHRUNK']:.3f} ({gap_str}). "
             f"Reliability off={rel_off:.2f}, def={rel_def:.2f}. "
+            "Regular-season historical estimate. "
             "Game context was not used: score margin, period and clock do not affect this baseline ranking."
         )
 

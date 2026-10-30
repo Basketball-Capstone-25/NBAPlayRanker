@@ -1,0 +1,327 @@
+{
+  "published_revision": 70,
+  "native_sha256": "3a5d8591feaa48b47fe8a7c4ba87ab55f40c04726ece36ca14116192b7c7d060",
+  "files": [
+    {
+      "file": "model/Basketball-Playtype-Ranker-revision70.vpp",
+      "bytes": 21831680,
+      "sha256": "3a5d8591feaa48b47fe8a7c4ba87ab55f40c04726ece36ca14116192b7c7d060"
+    },
+    {
+      "file": "model/README.md",
+      "bytes": 1422,
+      "sha256": "e0b2ec69285bccfc1ff3eb8b35da10a9136165db1549cd2592323bf4225b9f46"
+    },
+    {
+      "file": "model/diagrams/ALPHA-1.png",
+      "bytes": 31552,
+      "sha256": "bd487b9ebd64b73e52ee04a7c16da8984c522b1421d69c9baf2f682ee754c87c"
+    },
+    {
+      "file": "model/diagrams/ALPHA-2.png",
+      "bytes": 30310,
+      "sha256": "68dd89b1a8ded322f7833048660c4d7066dce14d3d20231fa408fe43461a8021"
+    },
+    {
+      "file": "model/diagrams/ALPHA-3.png",
+      "bytes": 30370,
+      "sha256": "c36372bc30b94567b454abfeb0599883de60c5f37c8820eda040f2c42555fc30"
+    },
+    {
+      "file": "model/diagrams/ALPHA-4.png",
+      "bytes": 30429,
+      "sha256": "29de3cb146b30c97d47319f44c7c5a9254a7522b2a8376d16cd0379bbfe5d6fd"
+    },
+    {
+      "file": "model/diagrams/ALPHA-5.png",
+      "bytes": 30835,
+      "sha256": "ccd75d222a94585ba4df0ed20e2c72a3b89f7c838e0ca251e913156fe99d75dc"
+    },
+    {
+      "file": "model/diagrams/ALPHA-6.png",
+      "bytes": 30506,
+      "sha256": "6e188288bd3328077f35f538812e78bee88207d206eecc430f8760aa52e4db40"
+    },
+    {
+      "file": "model/diagrams/ALPHA-7.png",
+      "bytes": 29694,
+      "sha256": "088a50f2557824b38dabf558c0355accfb0265d69d4953f84c22d2e055aee494"
+    },
+    {
+      "file": "model/diagrams/ALPHA-8.png",
+      "bytes": 29338,
+      "sha256": "d915a948c80a0b7a53bf441ec84e81ea0458864157b5025faad701755db2bfc4"
+    },
+    {
+      "file": "model/diagrams/Baseline Playtype Recommender Overview 2.0.png",
+      "bytes": 127548,
+      "sha256": "2b1263da89b2d4f58efc6ef47f78e910e00121f2bbc94b027dd902430370917d"
+    },
+    {
+      "file": "model/diagrams/Behavioural Overview - Access Analyst Workspace.png",
+      "bytes": 142797,
+      "sha256": "0994400672070fcc36e5704f2f6965f3ecd9630e55ce569b654d30f28753563d"
+    },
+    {
+      "file": "model/diagrams/Behavioural Overview - Authenticate Analyst Access.png",
+      "bytes": 164272,
+      "sha256": "08d8ff0776f93835a700d5f980e6f63ecbdf7fa18eb30964d1166f615cec18b6"
+    },
+    {
+      "file": "model/diagrams/Behavioural Overview - Rank Plays with Game Context.png",
+      "bytes": 147370,
+      "sha256": "50c7f7610dc4bceb7fc596f1c1aa378effefb540d66b5d78fddb76ea948f161a"
+    },
+    {
+      "file": "model/diagrams/Behavioural Overview - Ranked List via API (Baseline).png",
+      "bytes": 89028,
+      "sha256": "9097951ad5d4acdc3b1977710869af839ab7e51c0316c500b233770cacf09bde"
+    },
+    {
+      "file": "model/diagrams/Behavioural Overview - Validate Coach Access.png",
+      "bytes": 127886,
+      "sha256": "c20c02f435475c58faab0966853f5a5fddb2ecf100a5fe6a406f3b36dd2d6c1c"
+    },
+    {
+      "file": "model/diagrams/Collaboration Overview - Access Analyst Workspace.png",
+      "bytes": 42904,
+      "sha256": "d4f2b7bcd9938e57f6247f86370747f7089e919408f936276bffa2a3748707c6"
+    },
+    {
+      "file": "model/diagrams/Collaboration Overview - Authenticate Analyst Access.png",
+      "bytes": 27401,
+      "sha256": "fe0e61eb7accaa3392be5c81c48710947be785bd44a263192aa3828a6fb663b2"
+    },
+    {
+      "file": "model/diagrams/Collaboration Overview - Compare Usage and Efficiency.png",
+      "bytes": 27973,
+      "sha256": "d9a0162929014049030f0405beda9cf834da87155d447e9d1bfc3821d586ff4d"
+    },
+    {
+      "file": "model/diagrams/Collaboration Overview - Export KPIs - Reports (486).png",
+      "bytes": 35757,
+      "sha256": "a801834b0c58eb809ee5bc85169642542098fe6c645a754bccee97b35d34e01d"
+    },
+    {
+      "file": "model/diagrams/Collaboration Overview - Rank Plays with Game Context.png",
+      "bytes": 63999,
+      "sha256": "5b3937141e9d6da22b8a5c4d14a93e0528f3563d3796b2f7b24e6c949104d665"
+    },
+    {
+      "file": "model/diagrams/Collaboration Overview - Ranked List via API (Baseline).png",
+      "bytes": 52035,
+      "sha256": "f75deffb391ef67d5fa73b2ef80b61c05d9067148cd3a51162c168603fcf42d3"
+    },
+    {
+      "file": "model/diagrams/Collaboration Overview - Validate Coach Access.png",
+      "bytes": 38126,
+      "sha256": "50fa115104bffb8987d160c6c2cf7af1c50305fbbdc08dcc5ce3672f31cc3aab"
+    },
+    {
+      "file": "model/diagrams/Collaboration Overview - View Opponent Defensive Weak Spots.png",
+      "bytes": 28310,
+      "sha256": "c4e8de86b582868d8218723d52dff2f3d02b423f606d434d52bd2c272ed8ce43"
+    },
+    {
+      "file": "model/diagrams/Contextual ML Recommender Overview Diagram 2.0.png",
+      "bytes": 319613,
+      "sha256": "bb0f094288c3e0f215249ed2aff83ede18ff6b9aee3b3542b931ca6b0a0be921"
+    },
+    {
+      "file": "model/diagrams/Data Foundations and Explorer Overview.png",
+      "bytes": 62268,
+      "sha256": "19beeadaf325b8e82eb27dec719be034a9e1f82514258ce31b915f47625002f4"
+    },
+    {
+      "file": "model/diagrams/Deployment Diagram.png",
+      "bytes": 204812,
+      "sha256": "50e445241406c1a672998113d5bb501070ab8d5e1460d84de1a9519bc4ac821c"
+    },
+    {
+      "file": "model/diagrams/Detailed Sequence - Compare Usage and Efficiency.png",
+      "bytes": 44341,
+      "sha256": "2cb5d4aa767291b18bcff4bc8e3b576e7a70e051f5e805162009a1100826bb36"
+    },
+    {
+      "file": "model/diagrams/Detailed Sequence - Export Displayed Results (486).png",
+      "bytes": 56029,
+      "sha256": "c74efee6d015c3c60e9423891c56c7fa948eadc3ad9c87fda80de92decb0cc7d"
+    },
+    {
+      "file": "model/diagrams/Detailed Sequence - View Opponent Defensive Weak Spots.png",
+      "bytes": 44425,
+      "sha256": "18a6e6b56b0e68cdde1cbc44490c28ceed7946f9ac63ad15a47b694991a5f754"
+    },
+    {
+      "file": "model/diagrams/Domain Model Class Diagram.png",
+      "bytes": 141421,
+      "sha256": "526d8668c5c4cf9df36c8500d87b8b9a49c3624fc25d96ee886225b511cdfe75"
+    },
+    {
+      "file": "model/diagrams/Elaboration - Shared Export Controls (486).png",
+      "bytes": 55607,
+      "sha256": "744ee7ab7c2a2797dee0c388f42af5ee9c6fa887926a185be5b2202fd27b8937"
+    },
+    {
+      "file": "model/diagrams/Functional Overview - Baseline Comparisons.png",
+      "bytes": 91813,
+      "sha256": "1f80fb16ee7d7ab314f362bae2c7a6951c05e80f05adeda24b53dcc5339c76b3"
+    },
+    {
+      "file": "model/diagrams/Software System Architecture - Subsystem Dependencies.png",
+      "bytes": 119883,
+      "sha256": "3241ef6c44c040a02089b2d59449e9bb3a7c75ac45af437682687ad4631692e5"
+    },
+    {
+      "file": "model/diagrams/Software System Architecture.png",
+      "bytes": 63372,
+      "sha256": "aaad86dc6113b0ae97f631d56d6735e65af7acef2b4fc24f5f2805335a712ae9"
+    },
+    {
+      "file": "model/diagrams/Structural Design - Compare Usage and Efficiency.png",
+      "bytes": 110278,
+      "sha256": "d54c46db27b59cdf3c475e78ac456049e7b2277c4dfdc0fda9307b92a9dd4aa8"
+    },
+    {
+      "file": "model/diagrams/Structural Design - View Opponent Defensive Weak Spots.png",
+      "bytes": 110391,
+      "sha256": "77cbc88a5055a9472992698b58b333ac63d152284652d14bb3f2b514929eaeff"
+    },
+    {
+      "file": "model/diagrams/Structural Overview - Access Analyst Workspace.png",
+      "bytes": 264756,
+      "sha256": "a90c3f6cdc178b867abec8d97f5ad38ddc52fd4a4ceb041168915da872e1aea8"
+    },
+    {
+      "file": "model/diagrams/Structural Overview - Authenticate Analyst Access.png",
+      "bytes": 225156,
+      "sha256": "f9d14c07c46de9bae9f9a28eaa9e28a2d111c3d0718985d419a65df11cfaf768"
+    },
+    {
+      "file": "model/diagrams/Structural Overview - Rank Plays with Game Context.png",
+      "bytes": 314725,
+      "sha256": "2a43ad1aec919dcb816edf7b2ad0d4917e4a5ba147661cd711d77e3653563a4a"
+    },
+    {
+      "file": "model/diagrams/Structural Overview - Ranked List via API (Baseline).png",
+      "bytes": 254653,
+      "sha256": "4d7c6d58df7db0705c4eb7feaad77e81cbb185ee147b0067760e9491c4ca8d6b"
+    },
+    {
+      "file": "model/diagrams/Structural Overview - Validate Coach Access.png",
+      "bytes": 272109,
+      "sha256": "76980e2de9ce58607301aeae27aeca1336369ba6e19f045e75d1e728f5f58d40"
+    },
+    {
+      "file": "model/diagrams/System Context Diagram.png",
+      "bytes": 47114,
+      "sha256": "345fb46fc29d959cd48f8156ab989ebf454f0b939dbc53c93187226714d77ba8"
+    },
+    {
+      "file": "model/diagrams/Wireflow - Baseline Comparisons.png",
+      "bytes": 158495,
+      "sha256": "4aa90b00e7d55dacb1b5184a2309ef42cc135a005fbd01a896d7c1e4bab24995"
+    },
+    {
+      "file": "model/documentation-sync-check.json",
+      "bytes": 2473,
+      "sha256": "386a5be32b5207c91b29c6e49996a81a4595442de4233ffdbe591ae29d8c636b"
+    },
+    {
+      "file": "model/model-traceability.json",
+      "bytes": 2527,
+      "sha256": "5a5e36bf8ee9bdc701823f12c86c581e99e807b65924e8be1630e8158ee2a900"
+    },
+    {
+      "file": "model/native-wireflow-reopen.xml",
+      "bytes": 3181,
+      "sha256": "40350aa9b1503f702a303f9fec5b93d5c6e28a386b0493dcc8fd5eb0a9543f09"
+    },
+    {
+      "file": "model/prepared-native-preservation.json",
+      "bytes": 118583,
+      "sha256": "20871e8422d87e55c808d0771b2633d6c26949f7a5c9ab3b258b5ab9020d206f"
+    },
+    {
+      "file": "model/publication-check.json",
+      "bytes": 6332,
+      "sha256": "0a6dfad11bad501c028a10defc01009a701934c76dd1a19454a7d3bcc56dd989"
+    },
+    {
+      "file": "model/published-render-check.json",
+      "bytes": 11088,
+      "sha256": "1cb5f790f89e14b3412e88fa54988493e3a3e24abf3d46c862bef5f241593d82"
+    },
+    {
+      "file": "model/render-manifest.json",
+      "bytes": 8053,
+      "sha256": "2a47dd4560ae922b251f0a7c050b234dd6a65fd3d4dc466463174ae0e2fcfadd"
+    },
+    {
+      "file": "model/request-signature-and-planned-scope-check.json",
+      "bytes": 1622,
+      "sha256": "782614bb493af497029c56648a9ceb0fbc80acd87d816221922f7c565e816fb2"
+    },
+    {
+      "file": "model/revision69-layout-check.json",
+      "bytes": 78562,
+      "sha256": "f26b9385d2ca431da4b04662316dc5053363baac9f46b5bd706bea376bd4157c"
+    },
+    {
+      "file": "model/revision69-render-check.json",
+      "bytes": 2762,
+      "sha256": "bc4ae9cba918702e4ec7825f78b7b95a27a36c8e1ab2b2fb67dc199e7f13c8ee"
+    },
+    {
+      "file": "model/revision69-semantic-check.json",
+      "bytes": 55491,
+      "sha256": "dd2adb73d6ed65d307d50cb9ba71803e1630fb387a196160d92a3bab36011c2f"
+    },
+    {
+      "file": "model/server-freshness-before-publication.json",
+      "bytes": 510,
+      "sha256": "e1cdd8b8172948a0d33f1c5fb8278ee9df3de8658ed2851a8329bf710e44acd2"
+    },
+    {
+      "file": "documents/README.md",
+      "bytes": 1101,
+      "sha256": "c77f0ec78e22f9bbd95c9ded3eaab78ea1ce50d321fecc7c20b832cd35ad3f2d"
+    },
+    {
+      "file": "documents/SDD.docx",
+      "bytes": 3573863,
+      "sha256": "64c7b795bc2b7af303ffb7406cfa540f7ea63ea60043ecc8c0d897df0a814ecb"
+    },
+    {
+      "file": "documents/SDD.pdf",
+      "bytes": 4577777,
+      "sha256": "38a9e3f0e69c59ca49b399d1da4507bc1d213879804442f4b2d210c2e1903704"
+    },
+    {
+      "file": "documents/SRS.docx",
+      "bytes": 1028671,
+      "sha256": "81297eaa9d27509b2d81cd6875d54a5e41f918601c6eca4a3c75d46916f66968"
+    },
+    {
+      "file": "documents/SRS.pdf",
+      "bytes": 1628320,
+      "sha256": "e2383562554dc01922214c27c0aab6bc592f7c97c27baa527bd6e072bc66908f"
+    },
+    {
+      "file": "documents/native-doccomposer-export.xml",
+      "bytes": 245,
+      "sha256": "7992f36bad3dc3ac04423f43f5391b5c2525584baa4eedf7066845cee68ec533"
+    },
+    {
+      "file": "documents/published-export-equivalence.json",
+      "bytes": 1617,
+      "sha256": "43f308c11751c0e999b75f1f33b3d704a314dc1762a5400c7975ecc0d2f4861c"
+    },
+    {
+      "file": "documents/reader-verification.json",
+      "bytes": 4000,
+      "sha256": "037cf77f3fc93ff3dd586bb93d24635d90a70cd3fc21b84801a66cb02c4cf286"
+    }
+  ],
+  "file_count": 64
+}

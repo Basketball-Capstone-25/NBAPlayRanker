@@ -1,0 +1,933 @@
+{
+  "started_at": "2026-10-27T05:04:00.626891+00:00",
+  "api": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app",
+  "revision": "nba-playranker-api-00016-bop",
+  "source_sha256": "014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b",
+  "checks": [
+    {
+      "name": "readiness",
+      "passed": true,
+      "status": 200,
+      "elapsed_ms": 417.4
+    },
+    {
+      "name": "service ready",
+      "passed": true
+    },
+    {
+      "name": "coach sign-in",
+      "passed": true
+    },
+    {
+      "name": "analyst sign-in",
+      "passed": true
+    },
+    {
+      "name": "anonymous dashboard denied",
+      "passed": true,
+      "status": 401,
+      "elapsed_ms": 308.26
+    },
+    {
+      "name": "analyst dashboard denied",
+      "passed": true,
+      "status": 403,
+      "elapsed_ms": 473.98
+    },
+    {
+      "name": "invalid session denied",
+      "passed": true,
+      "status": 401,
+      "elapsed_ms": 120.46
+    },
+    {
+      "name": "dashboard 2024-25 TOR/BOS",
+      "passed": true,
+      "status": 200,
+      "elapsed_ms": 302.03
+    },
+    {
+      "name": "scope and version 2024-25",
+      "passed": true
+    },
+    {
+      "name": "private response 2024-25",
+      "passed": true
+    },
+    {
+      "name": "offensive total 2024-25",
+      "passed": true
+    },
+    {
+      "name": "defensive total 2024-25",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Cut possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Cut points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Cut ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Cut usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Cut league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Cut league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Handoff possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Handoff points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Handoff ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Handoff usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Handoff league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Handoff league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Isolation possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Isolation points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Isolation ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Isolation usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Isolation league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Isolation league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Misc possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Misc points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Misc ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Misc usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Misc league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Misc league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffRebound possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffRebound points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffRebound ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffRebound usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffRebound league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffRebound league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffScreen possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffScreen points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffScreen ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffScreen usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffScreen league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR OffScreen league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRBallHandler possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRBallHandler points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRBallHandler ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRBallHandler usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRBallHandler league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRBallHandler league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRRollMan possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRRollMan points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRRollMan ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRRollMan usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRRollMan league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR PRRollMan league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Postup possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Postup points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Postup ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Postup usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Postup league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Postup league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Spotup possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Spotup points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Spotup ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Spotup usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Spotup league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Spotup league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Transition possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Transition points",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Transition ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Transition usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Transition league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 TOR Transition league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Handoff possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Handoff points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Handoff allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Handoff league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS PRBallHandler possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS PRBallHandler points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS PRBallHandler allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS PRBallHandler league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Isolation possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Isolation points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Isolation allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Isolation league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Postup possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Postup points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Postup allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Postup league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS OffScreen possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS OffScreen points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS OffScreen allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS OffScreen league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS PRRollMan possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS PRRollMan points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS PRRollMan allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS PRRollMan league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Spotup possessions",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Spotup points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Spotup allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2024-25 BOS Spotup league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "sorted defense 2024-25",
+      "passed": true
+    },
+    {
+      "name": "missing defensive categories 2024-25",
+      "passed": true
+    },
+    {
+      "name": "dashboard 2019-20 LAL/SAS",
+      "passed": true,
+      "status": 200,
+      "elapsed_ms": 302.8
+    },
+    {
+      "name": "scope and version 2019-20",
+      "passed": true
+    },
+    {
+      "name": "private response 2019-20",
+      "passed": true
+    },
+    {
+      "name": "offensive total 2019-20",
+      "passed": true
+    },
+    {
+      "name": "defensive total 2019-20",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Cut possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Cut points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Cut ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Cut usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Cut league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Cut league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Handoff possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Handoff points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Handoff ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Handoff usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Handoff league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Handoff league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Isolation possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Isolation points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Isolation ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Isolation usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Isolation league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Isolation league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Misc possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Misc points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Misc ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Misc usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Misc league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Misc league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffRebound possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffRebound points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffRebound ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffRebound usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffRebound league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffRebound league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffScreen possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffScreen points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffScreen ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffScreen usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffScreen league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL OffScreen league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRBallHandler possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRBallHandler points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRBallHandler ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRBallHandler usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRBallHandler league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRBallHandler league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRRollMan possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRRollMan points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRRollMan ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRRollMan usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRRollMan league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL PRRollMan league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Postup possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Postup points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Postup ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Postup usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Postup league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Postup league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Spotup possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Spotup points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Spotup ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Spotup usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Spotup league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Spotup league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Transition possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Transition points",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Transition ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Transition usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Transition league_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 LAL Transition league_usage_pct",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Spotup possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Spotup points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Spotup allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Spotup league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Postup possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Postup points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Postup allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Postup league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS PRBallHandler possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS PRBallHandler points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS PRBallHandler allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS PRBallHandler league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Handoff possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Handoff points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Handoff allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Handoff league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Isolation possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Isolation points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Isolation allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS Isolation league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS OffScreen possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS OffScreen points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS OffScreen allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS OffScreen league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS PRRollMan possessions",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS PRRollMan points_allowed",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS PRRollMan allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "2019-20 SAS PRRollMan league_allowed_ppp",
+      "passed": true
+    },
+    {
+      "name": "sorted defense 2019-20",
+      "passed": true
+    },
+    {
+      "name": "missing defensive categories 2019-20",
+      "passed": true
+    },
+    {
+      "name": "high sample cutoff",
+      "passed": true,
+      "status": 200,
+      "elapsed_ms": 351.73
+    },
+    {
+      "name": "all rows retained with no highlights",
+      "passed": true
+    },
+    {
+      "name": "invalid input {'min_poss': 0}",
+      "passed": true,
+      "status": 422,
+      "elapsed_ms": 388.56
+    },
+    {
+      "name": "invalid input {'opp': 'TOR'}",
+      "passed": true,
+      "status": 400,
+      "elapsed_ms": 286.17
+    },
+    {
+      "name": "invalid input {'season': '1900-01'}",
+      "passed": true,
+      "status": 400,
+      "elapsed_ms": 254.6
+    },
+    {
+      "name": "existing route /rank-plays/baseline",
+      "passed": true,
+      "status": 200,
+      "elapsed_ms": 347.6
+    },
+    {
+      "name": "existing route /rank-plays/context-ml",
+      "passed": true,
+      "status": 200,
+      "elapsed_ms": 9286.67
+    },
+    {
+      "name": "existing route /data/team-playtypes",
+      "passed": true,
+      "status": 200,
+      "elapsed_ms": 324.1
+    },
+    {
+      "name": "existing route /metrics/topk-uplift",
+      "passed": true,
+      "status": 200,
+      "elapsed_ms": 431.82
+    },
+    {
+      "name": "existing route /metrics/baseline-vs-ml",
+      "passed": true,
+      "status": 200,
+      "elapsed_ms": 15500.71
+    },
+    {
+      "name": "existing route /analysis/ml",
+      "passed": true,
+      "status": 200,
+      "elapsed_ms": 50553.74
+    }
+  ],
+  "session_cleanup": [
+    {
+      "role": "coach",
+      "status": 204
+    },
+    {
+      "role": "analyst",
+      "status": 204
+    }
+  ],
+  "complete": true,
+  "finished_at": "2026-10-27T05:05:21.762270+00:00",
+  "passed": true
+}

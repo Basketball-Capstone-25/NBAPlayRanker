@@ -1,0 +1,2918 @@
+{
+  "checkedAt": "2026-10-27T06:00:11.447Z",
+  "status": "VERIFIED",
+  "availability": {
+    "gurkWeeklyRangeHours": [
+      4,
+      6
+    ],
+    "sourceIssue": "BSR-140",
+    "sourceComment": "11305",
+    "abdulAvailability": "unconfirmed",
+    "backupAgreement": "unconfirmed",
+    "interpretation": "Availability is approximate; estimates and weekly allowances are planning values, not actual hours or a confirmed commitment."
+  },
+  "originalFutureHours": 40,
+  "currentEstimatedFutureHours": 22,
+  "estimateChanges": [
+    {
+      "story": "SCRUM-697",
+      "oldHours": 9,
+      "newHours": 6,
+      "scope": "Add FG%, eFG%, turnover and free-throw possession rates to a matched-season team/league table. No additional chart or export.",
+      "rationale": "Existing regular-season validation and _aggregate_rates already calculate each denominator correctly. Reuse those tables, the dashboard request guard, controls, error states and table styling; new work is a rate contract, paired table, source-parity tests and model publication.",
+      "subtasks": [
+        [
+          "714",
+          1
+        ],
+        [
+          "715",
+          1.5
+        ],
+        [
+          "716",
+          1.5
+        ],
+        [
+          "717",
+          2
+        ]
+      ]
+    },
+    {
+      "story": "SCRUM-698",
+      "oldHours": 11,
+      "newHours": 6,
+      "scope": "One team's chosen play type across available seasons, a simple chronological chart/table, counts and explicit gaps. No custom date range, forecasts, multiple-series builder or new export.",
+      "rationale": "The existing team table already groups every available season and computes usage/PPP. Reuse validation and UI controls; add chronological selection, missing-season semantics and a small line chart plus tests.",
+      "subtasks": [
+        [
+          "718",
+          1
+        ],
+        [
+          "719",
+          1.5
+        ],
+        [
+          "720",
+          1.5
+        ],
+        [
+          "721",
+          1.5
+        ],
+        [
+          "722",
+          0.5
+        ]
+      ]
+    },
+    {
+      "story": "SCRUM-699",
+      "oldHours": 9,
+      "newHours": 4,
+      "scope": "A side-by-side same-season table for two teams, preserving each team's usage denominator and missing categories. No new chart or direct-matchup inference.",
+      "rationale": "Fetch two existing season profiles, outer-join their categories and reuse the dashboard table and controls. Remaining model, swap/denominator tests and publication are explicitly budgeted.",
+      "subtasks": [
+        [
+          "723",
+          0.5
+        ],
+        [
+          "724",
+          1
+        ],
+        [
+          "725",
+          1
+        ],
+        [
+          "726",
+          1.5
+        ]
+      ]
+    },
+    {
+      "story": "SCRUM-700",
+      "oldHours": 11,
+      "newHours": 6,
+      "scope": "Independent scoring, turnover, shooting-foul, free-throw and and-one possession rates in an unstacked table. Show definitions and denominators; no exclusive outcome distribution or new chart/export.",
+      "rationale": "POSSESSION_RATE_COLS and _aggregate_rates already implement the required possession-weighted source aggregation. New work is the bounded rate response, definitions/overlap presentation, validation tests and model publication.",
+      "subtasks": [
+        [
+          "727",
+          1
+        ],
+        [
+          "728",
+          1.5
+        ],
+        [
+          "729",
+          1.5
+        ],
+        [
+          "730",
+          1.5
+        ],
+        [
+          "731",
+          0.5
+        ]
+      ]
+    }
+  ],
+  "weeklyPlan": [
+    {
+      "iteration": 19,
+      "id": 187,
+      "dates": "November 3–9",
+      "featureWork": [
+        [
+          "SCRUM-714",
+          1
+        ],
+        [
+          "SCRUM-715",
+          1.5
+        ],
+        [
+          "SCRUM-716",
+          1.5
+        ]
+      ],
+      "featureHours": 4,
+      "existingWork": "Review the coaching scenarios and current risk/blocker list.",
+      "existingPlanningAllowance": 1,
+      "total": 5
+    },
+    {
+      "iteration": 20,
+      "id": 188,
+      "dates": "November 10–16",
+      "featureWork": [
+        [
+          "SCRUM-717",
+          2
+        ],
+        [
+          "SCRUM-718",
+          1
+        ],
+        [
+          "SCRUM-719",
+          1.5
+        ]
+      ],
+      "featureHours": 4.5,
+      "existingWork": "Stakeholder follow-up and check Beta report/test evidence.",
+      "existingPlanningAllowance": 1,
+      "total": 5.5
+    },
+    {
+      "iteration": 21,
+      "id": 189,
+      "dates": "November 17–23",
+      "featureWork": [
+        [
+          "SCRUM-720",
+          1.5
+        ],
+        [
+          "SCRUM-721",
+          1.5
+        ],
+        [
+          "SCRUM-722",
+          0.5
+        ],
+        [
+          "SCRUM-723",
+          0.5
+        ]
+      ],
+      "featureHours": 4,
+      "existingWork": "Beta team report, artifact review and submission preparation.",
+      "existingPlanningAllowance": 1.5,
+      "total": 5.5
+    },
+    {
+      "iteration": 22,
+      "id": 190,
+      "dates": "November 24–30",
+      "featureWork": [
+        [
+          "SCRUM-724",
+          1
+        ],
+        [
+          "SCRUM-725",
+          1
+        ],
+        [
+          "SCRUM-726",
+          1.5
+        ],
+        [
+          "SCRUM-727",
+          1
+        ]
+      ],
+      "featureHours": 4.5,
+      "existingWork": "Review final model/report alignment and remaining risks.",
+      "existingPlanningAllowance": 1,
+      "total": 5.5
+    },
+    {
+      "iteration": 23,
+      "id": 191,
+      "dates": "December 1–7",
+      "featureWork": [
+        [
+          "SCRUM-728",
+          1.5
+        ],
+        [
+          "SCRUM-729",
+          1.5
+        ],
+        [
+          "SCRUM-730",
+          1.5
+        ],
+        [
+          "SCRUM-731",
+          0.5
+        ]
+      ],
+      "featureHours": 5,
+      "existingWork": "Prepare demo evidence and review the walkthrough.",
+      "existingPlanningAllowance": 1,
+      "total": 6
+    },
+    {
+      "iteration": 24,
+      "id": 192,
+      "dates": "December 8–14",
+      "featureWork": [],
+      "featureHours": 0,
+      "existingWork": "Rehearse individual/team demos, integrate final report/model feedback, verify source package. Leave up to two extra hours for release blockers.",
+      "existingPlanningAllowance": 4,
+      "total": 4,
+      "bufferHours": 2
+    },
+    {
+      "iteration": 25,
+      "id": 193,
+      "dates": "December 15–18",
+      "featureWork": [],
+      "featureHours": 0,
+      "existingWork": "Final contribution/artifact review and submission handoff.",
+      "existingPlanningAllowance": 4,
+      "total": 4
+    }
+  ],
+  "capacityRisk": {
+    "baselineEstimatedHours": 22,
+    "otherAllowancesNov3ToDec7": 5.5,
+    "totalNov3ToDec7": 27.5,
+    "fiveWeekCapacityAt4": 20,
+    "fiveWeekCapacityAt6": 30,
+    "spareAt6": 2.5,
+    "gapAt4": 7.5,
+    "conclusion": "The narrowed scope fits only if availability is near five to six hours most weeks. It is not robust at four hours or to substantial rework. Reassess after the first Beta implementation; reduce further visual polish, move non-release work into December 8–14, or agree additional capacity if needed. Do not count Abdul's unconfirmed hours.",
+    "unknowns": [
+      "Actual exam/absence schedule",
+      "Time needed for stakeholder meetings and feedback",
+      "Team report/defence review duration",
+      "Backup agreement",
+      "Which specialization-specific defence deadline applies to this team"
+    ]
+  },
+  "originals": [
+    {
+      "key": "SCRUM-697",
+      "title": "Compare a team's play types with the league average",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "start": "2026-11-03",
+      "due": "2026-11-09",
+      "sprint": [
+        {
+          "id": 187,
+          "name": "Iteration 19",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>As a coach, I want to compare my team&#039;s play types with the same-season league average, so I can see which areas are above or below the wider benchmark.</p><p>Use case: Compare Play Types with League Average (A32dd7c488267720).</p><p>Acceptance criteria:</p><ul><li><p>Use one team, season and regular-season side consistently for team and league values.</p></li><li><p>Calculate league PPP from summed points and possessions for each play type, not an unweighted mean of team percentages.</p></li><li><p>Show team PPP, league PPP, their difference and sample counts; state whether the selected team is included in the league benchmark.</p></li><li><p>Show missing categories as unavailable instead of zero; keep source version and labels visible.</p></li><li><p>Verify filters, request states, role access and linked tests before deployment and completion.</p></li></ul><p>Planned for Beta; due 2026-11-09.</p>"
+    },
+    {
+      "key": "SCRUM-698",
+      "title": "Track a team's play-type usage and efficiency across seasons",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "start": "2026-11-10",
+      "due": "2026-11-16",
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>As a coach, I want to compare a team&#039;s play-type usage and efficiency across available seasons, so I can see how its style has changed.</p><p>Use case: Track Play-Type Trends Across Seasons (A3fb2384b7572cf4).</p><p>Acceptance criteria:</p><ul><li><p>Select one team and one or more play types across the available seasons.</p></li><li><p>Use consistent regular-season definitions and show possession counts, usage and PPP for each season.</p></li><li><p>Keep seasons in chronological order and mark missing seasons as gaps, not zero results.</p></li><li><p>Do not connect these season summaries to last 5/10/15-game form or claim they forecast future performance.</p></li><li><p>Verify chart/table parity, sample warnings, request states and role access, then publish the linked model and tests.</p></li></ul><p>Planned for Beta; due 2026-11-16.</p>"
+    },
+    {
+      "key": "SCRUM-699",
+      "title": "Compare two teams' season-long play-type profiles",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "start": "2026-11-24",
+      "due": "2026-11-30",
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>As a coach, I want to compare two teams&#039; play-type profiles side by side, so I can prepare for their different styles.</p><p>Use case: Compare Head-to-Head Play-Type Profiles (A3f15ca90f30ea8e).</p><p>Acceptance criteria:</p><ul><li><p>Select two distinct teams and one available regular season.</p></li><li><p>Align play types and show each team&#039;s offensive usage, PPP and possession counts using the same denominators.</p></li><li><p>Label the comparison as season-long profiles, not statistics from direct games between those teams.</p></li><li><p>Keep missing categories separate from zero and use consistent units/scales on both sides.</p></li><li><p>Verify swap behavior, source totals, request states and role access; publish tests and the VP model.</p></li></ul><p>Planned for Final; due 2026-11-30.</p>"
+    },
+    {
+      "key": "SCRUM-700",
+      "title": "Show independent possession outcome rates by play type",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "start": "2026-12-01",
+      "due": "2026-12-07",
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>As a coach, I want to see scoring, turnover and foul-related possession rates for each play type, so I can understand how possessions tend to finish.</p><p>Use case: View Possession Outcome Rates (A303ecfb1b5e7ad9).</p><p>Acceptance criteria:</p><ul><li><p>Select a team and season and show regular-season play-type possession counts with scoring, turnover, free-throw, shooting-foul and and-one rates where supported by the source.</p></li><li><p>Treat the rates as independent, potentially overlapping measures. Do not stack or normalize them into an exclusive100% outcome chart.</p></li><li><p>Use the correct possession weighting and state the rounded-source limitation; flag impossible source rates instead of silently clamping or treating them as valid.</p></li><li><p>Show plain definitions, missing values and small-sample limitations.</p></li><li><p>Verify source parity, boundary/invalid data, request states and role access before publishing the model and app.</p></li></ul><p>Planned for Final; due 2026-12-07.</p>"
+    },
+    {
+      "key": "SCRUM-714",
+      "title": "Define league comparison calculations and VP flow",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 187,
+          "name": "Iteration 19",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Model the matched-season comparison and define the weighted league denominator.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-697.</p>"
+    },
+    {
+      "key": "SCRUM-715",
+      "title": "Build weighted team and league comparisons",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "effortHours": 3,
+      "sprint": [
+        {
+          "id": 187,
+          "name": "Iteration 19",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Return matching team/league totals, PPP deltas and coverage.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-697.</p>"
+    },
+    {
+      "key": "SCRUM-716",
+      "title": "Add the league comparison view",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 187,
+          "name": "Iteration 19",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Show clear side-by-side values, sample counts and missing-data states.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-697.</p>"
+    },
+    {
+      "key": "SCRUM-717",
+      "title": "Test and publish the league comparison",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 187,
+          "name": "Iteration 19",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Reconcile source totals, test access and state changes, publish the model and verify the deployed view.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-697.</p>"
+    },
+    {
+      "key": "SCRUM-718",
+      "title": "Model season trends and missing-data rules",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Define the season comparison flow, chart design and gap behavior in VP.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-698.</p>"
+    },
+    {
+      "key": "SCRUM-719",
+      "title": "Build consistent cross-season play-type summaries",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "effortHours": 3,
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Aggregate the same fields and phase per season with explicit coverage.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-698.</p>"
+    },
+    {
+      "key": "SCRUM-720",
+      "title": "Add the season trend chart and table",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "effortHours": 3,
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Show chronological trends, possession counts and visible gaps.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-698.</p>"
+    },
+    {
+      "key": "SCRUM-721",
+      "title": "Test season coverage and trend calculations",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Check exact per-season source totals, gaps, filtering, access and stale requests.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-698.</p>"
+    },
+    {
+      "key": "SCRUM-722",
+      "title": "Publish and verify season trends",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "effortHours": 1,
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Publish source/model and verify the deployed flow with actual evidence.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-698.</p>"
+    },
+    {
+      "key": "SCRUM-723",
+      "title": "Model the two-team profile comparison",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Define same-season side-by-side scope and distinguish it from direct-matchup records.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-699.</p>"
+    },
+    {
+      "key": "SCRUM-724",
+      "title": "Build aligned team profiles",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "effortHours": 3,
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Join play-type categories without dropping missing categories or changing per-team usage denominators.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-699.</p>"
+    },
+    {
+      "key": "SCRUM-725",
+      "title": "Add the two-team comparison screen",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Show symmetric labels/scales and clear missing-data states.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-699.</p>"
+    },
+    {
+      "key": "SCRUM-726",
+      "title": "Test and publish team profile comparison",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Verify swapping, calculations, access, stale requests and published model/app evidence.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-699.</p>"
+    },
+    {
+      "key": "SCRUM-727",
+      "title": "Define independent outcome rates and VP flow",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Map supported source fields and overlapping definitions; design an unstacked rate view.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-700.</p>"
+    },
+    {
+      "key": "SCRUM-728",
+      "title": "Build validated possession-rate summaries",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "effortHours": 3,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Aggregate rates by their correct denominator and flag missing or invalid inputs.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-700.</p>"
+    },
+    {
+      "key": "SCRUM-729",
+      "title": "Add the outcome-rate comparison view",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "effortHours": 3,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Show independent rates with plain definitions, counts and meaningful error states.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-700.</p>"
+    },
+    {
+      "key": "SCRUM-730",
+      "title": "Test overlap, invalid rates and source parity",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Use known overlaps above 100% and invalid-source fixtures to prove no false exclusive distribution is created.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-700.</p>"
+    },
+    {
+      "key": "SCRUM-731",
+      "title": "Publish and verify possession outcomes",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "effortHours": 1,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Publish app/model changes and attach actual test and screenshot evidence.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-700.</p>"
+    },
+    {
+      "key": "BST-244",
+      "title": "League benchmark uses matched-season weighted totals",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "due": "2026-11-09",
+      "releases": [],
+      "description": "<p>Use case: Compare Play Types with League Average (A32dd7c488267720).\nRelated story: SCRUM-697.</p><p>Steps:</p><ol><li><p>Select a team and season.</p></li><li><p>Recompute the league benchmark from source points and possessions.</p></li></ol><p>Expected result:\nThe comparison uses the same phase and side; its weighted PPP and signed difference match source totals.</p>"
+    },
+    {
+      "key": "BST-245",
+      "title": "Missing league categories remain unavailable",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "due": "2026-11-09",
+      "releases": [],
+      "description": "<p>Use case: Compare Play Types with League Average (A32dd7c488267720).\nRelated story: SCRUM-697.</p><p>Steps:</p><ol><li><p>Use a fixture with a missing category and a small sample.</p></li></ol><p>Expected result:\nMissing data is not shown as zero; counts and limitations remain visible.</p>"
+    },
+    {
+      "key": "BST-246",
+      "title": "League comparison handles access and changing filters",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "due": "2026-11-09",
+      "releases": [],
+      "description": "<p>Use case: Compare Play Types with League Average (A32dd7c488267720).\nRelated story: SCRUM-697.</p><p>Steps:</p><ol><li><p>Test coach access, unsupported access and changed/failed/retried requests.</p></li></ol><p>Expected result:\nOnly authorized current-filter results are displayed; old results never appear under new labels.</p>"
+    },
+    {
+      "key": "BSR-55",
+      "title": "Unplanned features compete with the agreed scope",
+      "status": "Monitoring",
+      "owner": "Gurkaranjit Asahan",
+      "releases": [],
+      "description": "<p>New features may consume the time reserved for agreed release requirements and defect fixes.</p>"
+    },
+    {
+      "key": "BSR-140",
+      "title": "Record weekly capacity, backup owners and blocked work",
+      "status": "Planning",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BSR-76",
+      "releases": [],
+      "description": "<p>Agree on each team member&#039;s remaining work and availability.</p><p>Acceptance criteria:</p><ul><li><p>Record weekly availability and planned tasks through December 18.</p></li><li><p>Name backups for code, data, diagrams and deployment, with any handoff needed.</p></li><li><p>Record blockers, exams, absences and agreed scope changes.</p></li><li><p>Review progress each week and adjust the plan with both members.</p></li></ul>"
+    }
+  ],
+  "current": [
+    {
+      "key": "SCRUM-697",
+      "title": "Compare a team's play types with the league average",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "start": "2026-11-03",
+      "due": "2026-11-16",
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>As a coach, I want to compare my team&#039;s shooting and possession rates with the same-season league average, so I can see where its play types differ from the league.</p><p>Use case: Compare Play Types with League Average (A32dd7c488267720).</p><p>Acceptance criteria:</p><ul><li><p>Use the same regular season, side and play type for team and league values. State that the selected team is included in the league benchmark.</p></li><li><p>Show FG%, eFG%, turnover possession rate and free-throw possession rate in a side-by-side table with percentage-point differences, field-goal attempts and possession counts.</p></li><li><p>Calculate FG% from summed FGM / FGA. Weight the source eFG% by FGA and explain that it is based on rounded source rates. Weight turnover and free-throw possession rates by POSS.</p></li><li><p>Keep missing categories or zero denominators unavailable rather than showing zero. Show the source version and sample limitations.</p></li><li><p>Reuse the existing controls and request states. Verify source totals, invalid data, role access and changing filters, then publish the linked tests and VP model.</p></li></ul><p>Planned for Beta, November 3–16. This adds detailed rate comparisons beyond the Alpha usage/PPP view. No extra chart or export is included.</p>"
+    },
+    {
+      "key": "SCRUM-698",
+      "title": "Track a team's play-type usage and efficiency across seasons",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "start": "2026-11-10",
+      "due": "2026-11-20",
+      "sprint": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>As a coach, I want to compare a team&#039;s play-type usage and efficiency across available seasons, so I can see how its style has changed.</p><p>Use case: Track Play-Type Trends Across Seasons (A3fb2384b7572cf4).</p><p>Acceptance criteria:</p><ul><li><p>Select one team and one play type across available regular seasons.</p></li><li><p>Show possession counts, usage and PPP in a chronological table and simple trend chart using the same definitions in every season.</p></li><li><p>Mark missing seasons as gaps instead of zero and show sample limitations.</p></li><li><p>Describe historical season summaries, not recent-game form or future predictions.</p></li><li><p>Verify chart/table parity, source totals, request states and role access, then publish the linked model and tests.</p></li></ul><p>Planned for Beta, November 10–20, with time before the November 23 submission. No multi-series chart builder or new export is included.</p>"
+    },
+    {
+      "key": "SCRUM-699",
+      "title": "Compare two teams' season-long play-type profiles",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "start": "2026-11-17",
+      "due": "2026-11-30",
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>As a coach, I want to compare two teams&#039; play-type profiles side by side, so I can prepare for their different styles.</p><p>Use case: Compare Head-to-Head Play-Type Profiles (A3f15ca90f30ea8e).</p><p>Acceptance criteria:</p><ul><li><p>Select two distinct teams and one available regular season.</p></li><li><p>Align play types and show each team&#039;s offensive usage, PPP and possession counts using each team&#039;s full-season possession total for its own usage denominator.</p></li><li><p>Label the comparison as season-long profiles, not statistics from direct games between those teams.</p></li><li><p>Keep missing categories separate from zero and use consistent units/scales on both sides.</p></li><li><p>Verify swap behavior, source totals, request states and role access; publish tests and the VP model.</p></li></ul><p>Planned for Final, November 17–30. Reuse the existing controls and table; no additional chart or export is included.</p>"
+    },
+    {
+      "key": "SCRUM-700",
+      "title": "Show independent possession outcome rates by play type",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "start": "2026-11-24",
+      "due": "2026-12-07",
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>As a coach, I want to see scoring, turnover and foul-related possession rates for each play type, so I can understand how possessions tend to finish.</p><p>Use case: View Possession Outcome Rates (A303ecfb1b5e7ad9).</p><p>Acceptance criteria:</p><ul><li><p>Select a team and season and show regular-season play-type possession counts with scoring, turnover, free-throw, shooting-foul and and-one rates where supported by the source.</p></li><li><p>Treat the rates as independent, potentially overlapping measures. Do not stack or normalize them into an exclusive 100% outcome chart.</p></li><li><p>Use the correct possession weighting and state the rounded-source limitation; flag impossible source rates instead of silently clamping or treating them as valid.</p></li><li><p>Show plain definitions, missing values and small-sample limitations.</p></li><li><p>Verify source parity, boundary/invalid data, request states and role access before publishing the model and app.</p></li></ul><p>Planned for Final, November 24–December 7. Use an unstacked table with all supported rate definitions; no additional chart or export is included.</p>"
+    },
+    {
+      "key": "SCRUM-714",
+      "title": "Define league comparison calculations and VP flow",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "start": "2026-11-03",
+      "due": "2026-11-09",
+      "effortHours": 1,
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Define the FG%, eFG%, turnover and free-throw rate comparisons in VP. Specify FGA and POSS denominators, percentage-point differences, missing values and the rounded eFG source limitation. Allow a single selected team; remove the planned model&#039;s distinct-team matchup precondition. Align its overview, flow and screen design to this rates-only table before implementation.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-697.</p>"
+    },
+    {
+      "key": "SCRUM-715",
+      "title": "Build weighted team and league comparisons",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "start": "2026-11-03",
+      "due": "2026-11-09",
+      "effortHours": 1.5,
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Reuse the regular-season team and league tables to return FG%, eFG%, turnover and free-throw possession rates, denominator counts and signed differences.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-697.</p>"
+    },
+    {
+      "key": "SCRUM-716",
+      "title": "Add the league comparison view",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "start": "2026-11-03",
+      "due": "2026-11-09",
+      "effortHours": 1.5,
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Reuse the dashboard controls and table styles to show the four detailed rate comparisons, counts, missing values and current request states. No new chart is required.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-697.</p>"
+    },
+    {
+      "key": "SCRUM-717",
+      "title": "Test and publish the league comparison",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "start": "2026-11-10",
+      "due": "2026-11-16",
+      "effortHours": 2,
+      "sprint": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Check all four rates against raw source totals, including FGA weighting, possession weighting, zero denominators, access and stale requests. Publish the tested view and matching model.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-697.</p>"
+    },
+    {
+      "key": "SCRUM-718",
+      "title": "Model season trends and missing-data rules",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "start": "2026-11-10",
+      "due": "2026-11-16",
+      "effortHours": 1,
+      "sprint": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Model one selected play type across available seasons, including chronological order, sample counts and missing-season gaps.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-698.</p>"
+    },
+    {
+      "key": "SCRUM-719",
+      "title": "Build consistent cross-season play-type summaries",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "start": "2026-11-10",
+      "due": "2026-11-16",
+      "effortHours": 1.5,
+      "sprint": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Reuse the existing regular-season team table to return the selected team&#039;s play-type usage, PPP and possessions in chronological order.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-698.</p>"
+    },
+    {
+      "key": "SCRUM-720",
+      "title": "Add the season trend chart and table",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "start": "2026-11-17",
+      "due": "2026-11-20",
+      "effortHours": 1.5,
+      "sprint": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Reuse the dashboard controls and table. Add a simple trend chart for one play type with visible gaps and matching table values.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-698.</p>"
+    },
+    {
+      "key": "SCRUM-721",
+      "title": "Test season coverage and trend calculations",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "start": "2026-11-17",
+      "due": "2026-11-20",
+      "effortHours": 1.5,
+      "sprint": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Check exact per-season source totals, gaps, filtering, access and stale requests.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-698.</p>"
+    },
+    {
+      "key": "SCRUM-722",
+      "title": "Publish and verify season trends",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "start": "2026-11-17",
+      "due": "2026-11-20",
+      "effortHours": 0.5,
+      "sprint": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10004",
+          "name": "Beta Release"
+        }
+      ],
+      "description": "<p>Publish source/model and verify the deployed flow with actual evidence.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-698.</p>"
+    },
+    {
+      "key": "SCRUM-723",
+      "title": "Model the two-team profile comparison",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "start": "2026-11-17",
+      "due": "2026-11-20",
+      "effortHours": 0.5,
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Model a same-season, side-by-side table of two teams. Preserve each team&#039;s usage denominator and distinguish season profiles from direct-game records.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-699.</p>"
+    },
+    {
+      "key": "SCRUM-724",
+      "title": "Build aligned team profiles",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "start": "2026-11-24",
+      "due": "2026-11-30",
+      "effortHours": 1,
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Reuse existing team profiles and align their play-type categories without dropping missing categories or changing either team&#039;s usage denominator.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-699.</p>"
+    },
+    {
+      "key": "SCRUM-725",
+      "title": "Add the two-team comparison screen",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "start": "2026-11-24",
+      "due": "2026-11-30",
+      "effortHours": 1,
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Reuse the dashboard controls and table to show the two team profiles with consistent units, swapped labels and clear missing values.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-699.</p>"
+    },
+    {
+      "key": "SCRUM-726",
+      "title": "Test and publish team profile comparison",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "start": "2026-11-24",
+      "due": "2026-11-30",
+      "effortHours": 1.5,
+      "sprint": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Verify swapping, calculations, access, stale requests and published model/app evidence.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-699.</p>"
+    },
+    {
+      "key": "SCRUM-727",
+      "title": "Define independent outcome rates and VP flow",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "start": "2026-11-24",
+      "due": "2026-11-30",
+      "effortHours": 1,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Define scoring, turnover, shooting-foul, free-throw and and-one possession rates in VP. Use an unstacked table and explain that the rates can overlap.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-700.</p>"
+    },
+    {
+      "key": "SCRUM-728",
+      "title": "Build validated possession-rate summaries",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "start": "2026-12-01",
+      "due": "2026-12-07",
+      "effortHours": 1.5,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Reuse the validated possession-rate aggregation to return the supported rates, possession counts, definitions and invalid or missing-data states.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-700.</p>"
+    },
+    {
+      "key": "SCRUM-729",
+      "title": "Add the outcome-rate comparison view",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "start": "2026-12-01",
+      "due": "2026-12-07",
+      "effortHours": 1.5,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Reuse the dashboard table and request handling to show independent rates with plain definitions and counts. Do not normalize them into a 100% distribution.</p><p>Done when the relevant checks pass, the work is published, and the result is linked from SCRUM-700.</p>"
+    },
+    {
+      "key": "SCRUM-730",
+      "title": "Test overlap, invalid rates and source parity",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "start": "2026-12-01",
+      "due": "2026-12-07",
+      "effortHours": 1.5,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Use known overlaps above 100% and invalid-source fixtures to prove no false exclusive distribution is created.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-700.</p>"
+    },
+    {
+      "key": "SCRUM-731",
+      "title": "Publish and verify possession outcomes",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "start": "2026-12-01",
+      "due": "2026-12-07",
+      "effortHours": 0.5,
+      "sprint": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future"
+        }
+      ],
+      "releases": [
+        {
+          "id": "10005",
+          "name": "Final Release"
+        }
+      ],
+      "description": "<p>Publish app/model changes and attach actual test and screenshot evidence.</p><p>Done when the work is saved in the shared repository or VP project, its relevant checks pass, and the result is linked from SCRUM-700.</p>"
+    },
+    {
+      "key": "BST-244",
+      "title": "League benchmark preserves shooting and possession-rate denominators",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "due": "2026-11-09",
+      "releases": [],
+      "description": "<p>Use case: Compare Play Types with League Average (A32dd7c488267720). Related story: SCRUM-697.</p><p>Steps:</p><ol><li><p>Select a coach team and season, then compare its FG%, eFG%, turnover and free-throw possession rates with the same-season league table.</p></li><li><p>Recompute FG% from summed FGM / FGA, eFG% from FGA-weighted source rates, and turnover/free-throw rates from POSS-weighted source values.</p></li><li><p>Compare the denominator counts and signed percentage-point differences.</p></li></ol><p>Expected result: All four rates and differences match the source calculations for the same phase, side and play type. The selected team&#039;s inclusion in the league and the rounded eFG source limitation are explicit.</p>"
+    },
+    {
+      "key": "BST-245",
+      "title": "Missing league categories remain unavailable",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "due": "2026-11-09",
+      "releases": [],
+      "description": "<p>Use case: Compare Play Types with League Average (A32dd7c488267720). Related story: SCRUM-697.</p><p>Steps:</p><ol><li><p>Use fixtures with a missing play type, a small sample and a zero FGA denominator.</p></li><li><p>Inspect each comparison rate, denominator count and availability message.</p></li></ol><p>Expected result: Missing categories and undefined shooting rates remain unavailable. Valid possession rates and their counts remain visible; nothing is silently converted to zero.</p>"
+    },
+    {
+      "key": "BST-246",
+      "title": "League comparison handles access and changing filters",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "due": "2026-11-09",
+      "releases": [],
+      "description": "<p>Use case: Compare Play Types with League Average (A32dd7c488267720).\nRelated story: SCRUM-697.</p><p>Steps:</p><ol><li><p>Test coach access, unsupported access and changed/failed/retried requests.</p></li></ol><p>Expected result:\nOnly authorized current-filter results are displayed; old results never appear under new labels.</p>"
+    },
+    {
+      "key": "BSR-55",
+      "title": "Unplanned features compete with the agreed scope",
+      "status": "Monitoring",
+      "owner": "Gurkaranjit Asahan",
+      "releases": [],
+      "description": "<p>New features may consume the time reserved for agreed release requirements and defect fixes.</p>"
+    },
+    {
+      "key": "BSR-140",
+      "title": "Record weekly capacity, backup owners and blocked work",
+      "status": "Planning",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BSR-76",
+      "releases": [],
+      "description": "<p>Agree on each team member&#039;s remaining work and availability.</p><p>Acceptance criteria:</p><ul><li><p>Record weekly availability and planned tasks through December 18.</p></li><li><p>Name backups for code, data, diagrams and deployment, with any handoff needed.</p></li><li><p>Record blockers, exams, absences and agreed scope changes.</p></li><li><p>Review progress each week and adjust the plan with both members.</p></li></ul>"
+    }
+  ],
+  "comments": [
+    {
+      "key": "BSR-140",
+      "id": "11562",
+      "body": "I spread the remaining baseline work across November 3–December 7. The plan needs about 5–6 hours a week including review. At four hours a week, it is about 7.5 hours short. Abdul's availability and the backup roles still need confirmation, so this stays open. I will review the plan each week before taking on more work."
+    },
+    {
+      "key": "BSR-55",
+      "id": "11563",
+      "body": "The four remaining baseline views will reuse the existing calculations, controls and tables. I removed extra charts and exports from their scope and spread the work across the remaining weeks. Beta features are targeted for November 20 and Final features for December 7. The remaining capacity gap is tracked in BSR-140; the future work is still planned."
+    }
+  ],
+  "safeguards": {
+    "actualHoursChanged": false,
+    "teammateOwnershipChanged": false,
+    "releaseDatesChanged": false,
+    "sprintLifecycleChanged": false,
+    "futureWorkCompleted": false,
+    "models": "Published revision 69 keeps the future use cases planned. Future design subtasks must mirror the refined rate/table scope before implementation."
+  },
+  "checks": [
+    {
+      "name": "SCRUM-697 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-697 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-698 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-699 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-700 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-714 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-715 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-716 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-717 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-718 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-719 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-720 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-721 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-722 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-723 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-724 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-725 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-726 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-727 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-728 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-729 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-730 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 preserves status",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "SCRUM-731 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "BST-244 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BST-244 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "BST-244 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "BST-244 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BST-244 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BST-244 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "BST-244 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BST-244 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "BST-244 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "BST-244 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "BST-245 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BST-245 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "BST-245 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "BST-245 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BST-245 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BST-245 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "BST-245 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BST-245 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "BST-245 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "BST-245 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "BST-246 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BST-246 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "BST-246 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "BST-246 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BST-246 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BST-246 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "BST-246 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BST-246 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "BST-246 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "BST-246 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "BSR-55 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves comment 10027",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves comment 10940",
+      "pass": true
+    },
+    {
+      "name": "BSR-55 preserves comment 11529",
+      "pass": true
+    },
+    {
+      "name": "BSR-140 preserves assignee",
+      "pass": true
+    },
+    {
+      "name": "BSR-140 preserves parent",
+      "pass": true
+    },
+    {
+      "name": "BSR-140 preserves issuetype",
+      "pass": true
+    },
+    {
+      "name": "BSR-140 preserves priority",
+      "pass": true
+    },
+    {
+      "name": "BSR-140 preserves status",
+      "pass": true
+    },
+    {
+      "name": "BSR-140 preserves fixVersions",
+      "pass": true
+    },
+    {
+      "name": "BSR-140 preserves labels",
+      "pass": true
+    },
+    {
+      "name": "BSR-140 preserves attachment",
+      "pass": true
+    },
+    {
+      "name": "BSR-140 preserves issuelinks",
+      "pass": true,
+      "comparison": "Link ID, type, endpoint and direction; linked issue titles reflect approved edits."
+    },
+    {
+      "name": "BSR-140 preserves worklog",
+      "pass": true
+    },
+    {
+      "name": "BSR-140 preserves comment 11305",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-697 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-698 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-699 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-699 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-700 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-700 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-714 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-715 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-715 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-716 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-716 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-717 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-717 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-718 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-718 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-719 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-719 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-720 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-720 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-721 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-722 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-723 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-723 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-724 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-724 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-725 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-725 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-726 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-727 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-727 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-728 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-728 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "SCRUM-729 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-729 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-730 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 applied duedate",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 applied customfield_10015",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-731 applied customfield_10061",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-697 target sprint",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-698 target sprint",
+      "pass": true
+    },
+    {
+      "name": "BST-244 applied summary",
+      "pass": true
+    },
+    {
+      "name": "BST-244 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "BST-245 applied description",
+      "pass": true,
+      "comparison": "HTML entity normalization only"
+    },
+    {
+      "name": "All future implementation remains To Do",
+      "pass": true
+    },
+    {
+      "name": "Future tests remain Verify",
+      "pass": true
+    },
+    {
+      "name": "SCRUM-714 requires single-team rates-only future model scope",
+      "pass": true
+    }
+  ],
+  "deadlineQualification": "The authenticated SLATE Data Analytics defence item is due December 7, but the team's specialization was not explicitly confirmed. It is not treated as a binding team deadline.",
+  "snapshotNote": "This review records the agreed future scheduling adjustment. The later published model revision 70 aligns the planned league-rate scope and single-team preconditions. Beta/Final stories and their tests remain planned; see jira-final-closeout.json for current statuses."
+}

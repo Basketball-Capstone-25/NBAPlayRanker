@@ -1,0 +1,85 @@
+{
+  "stage": "prepared documentation cleanup; not yet published",
+  "baseline_sha256": "d2c357ef7013887686c119082085777aa3053d4e74d312f753dd3968516c11e1",
+  "candidate_sha256": "c3680feba0f6fc657c4fa0cc1ecc8a23ef39a6ba400b13eeee94e5302b23964e",
+  "counts": {
+    "models": 3165,
+    "diagrams": 292,
+    "diagram_elements": 2604
+  },
+  "semantic_model_changes": [
+    {
+      "id": "A35cd925e814ba68",
+      "name": "Compare Usage and Efficiency",
+      "fields": [
+        "documentation",
+        "documentation_plain"
+      ]
+    },
+    {
+      "id": "A308531b428a7bd1",
+      "name": "View Opponent Defensive Weak Spots",
+      "fields": [
+        "documentation",
+        "documentation_plain"
+      ]
+    },
+    {
+      "id": "A3fb2384b7572cf4",
+      "name": "Track Play-Type Trends Across Seasons",
+      "fields": [
+        "preConditions"
+      ]
+    },
+    {
+      "id": "A303ecfb1b5e7ad9",
+      "name": "View Possession Outcome Rates",
+      "fields": [
+        "preConditions"
+      ]
+    },
+    {
+      "id": "6MUT3oWD.AAAARBZ",
+      "name": "",
+      "fields": [
+        "text"
+      ]
+    },
+    {
+      "id": "LMUT3oWD.AAAARBt",
+      "name": "",
+      "fields": [
+        "text"
+      ]
+    }
+  ],
+  "diagram_description_changes": [
+    "Nr3N.wWAUAAADbYM",
+    "WuPN.wWAUAAADbuO"
+  ],
+  "diagram_html_resource_changes": [
+    "HTMLStringProperties/8W4D.wWAUAAADc8a_documentation",
+    "HTMLStringProperties/Nr3N.wWAUAAADbYM_documentation",
+    "HTMLStringProperties/WuPN.wWAUAAADbuO_documentation"
+  ],
+  "checks": {
+    "all_model_ids_preserved": true,
+    "only_six_documentation_models_changed": true,
+    "all_other_model_content_and_all_flows_unchanged": true,
+    "all_model_identity_authorship_metadata_preserved": true,
+    "all_diagram_ids_preserved": true,
+    "only_architecture_and_access_plain_diagram_rows_changed": true,
+    "all_diagram_views_byte_identical": true,
+    "all_diagram_layout_and_references_preserved": true,
+    "only_three_diagram_html_resources_changed": true,
+    "previous_pending_history_preserved": true,
+    "both_alpha_guard_signatures_still_match_source": true,
+    "alpha_descriptions_have_no_chronology_claim": true,
+    "one_team_future_preconditions": true,
+    "deployment_html_matches_current_storage": true,
+    "architecture_html_removes_automatic_fallback": true,
+    "access_html_distinguishes_roles": true,
+    "no_native_document_ids_or_relationships_added_or_deleted": true
+  },
+  "verified": true
+}

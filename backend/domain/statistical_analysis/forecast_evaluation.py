@@ -27,7 +27,7 @@ def _season_label(year: int) -> str:
 
 def aggregate_regular_seasons(raw: pd.DataFrame) -> pd.DataFrame:
     """Keep regular-season offense, with no global normalization or imputation."""
-    required = [*KEYS, "SEASON_ID", "PLAYER_ID", "TYPE_GROUPING", "POSS", "PTS", *RATE_COLUMNS]
+    required = [*KEYS, "SEASON_ID", "PLAYER_ID", "TYPE_GROUPING", "POSS", "PTS", "FGA", *RATE_COLUMNS]
     missing = sorted(set(required) - set(raw.columns))
     if missing:
         raise ValueError(f"Forecast data is missing columns: {', '.join(missing)}")
@@ -43,18 +43,20 @@ def aggregate_regular_seasons(raw: pd.DataFrame) -> pd.DataFrame:
         raise ValueError("SEASON and regular-season SEASON_ID must agree.")
     if frame.duplicated([*KEYS, "PLAYER_ID"]).any():
         raise ValueError("Duplicate player / team / play-type season rows would double-count possessions.")
-    numeric = frame[["POSS", "PTS", *RATE_COLUMNS]].to_numpy(dtype=float)
+    numeric = frame[["POSS", "PTS", "FGA", *RATE_COLUMNS]].to_numpy(dtype=float)
     if not np.isfinite(numeric).all():
         raise ValueError("Forecast input values must be finite.")
     if (frame["POSS"] <= 0).any() or (numeric[:, 1:] < 0).any():
         raise ValueError("Possessions must be positive; points and rates must not be negative.")
 
     for column in RATE_COLUMNS:
-        frame[column] = frame[column] * frame["POSS"]
-    totals = frame.groupby(KEYS, as_index=False, sort=True)[["POSS", "PTS", *RATE_COLUMNS]].sum()
+        frame[column] = frame[column] * frame["FGA" if column == "EFG_PCT" else "POSS"]
+    totals = frame.groupby(KEYS, as_index=False, sort=True)[["POSS", "PTS", "FGA", *RATE_COLUMNS]].sum()
+    if (totals["FGA"] <= 0).any():
+        raise ValueError("Forecast team/play-type rows require positive shot attempts for eFG%.")
     totals["PPP"] = totals["PTS"] / totals["POSS"]
     for column in RATE_COLUMNS:
-        totals[column] = totals[column] / totals["POSS"]
+        totals[column] = totals[column] / totals["FGA" if column == "EFG_PCT" else "POSS"]
     totals["LOG_POSS"] = np.log1p(totals["POSS"])
     totals["POSS_SHARE"] = totals["POSS"] / totals.groupby(["SEASON", "TEAM_ABBREVIATION"])["POSS"].transform("sum")
     league = totals.groupby(["SEASON", "PLAY_TYPE"])[["PTS", "POSS"]].transform("sum")

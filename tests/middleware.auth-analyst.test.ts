@@ -67,4 +67,12 @@ describe("Analyst access control in middleware", () => {
     expect(location).toContain("/login");
     expect(location).toContain("next=%2Fdata-explorer%3Fx%3D1");
   });
+
+  it.each([null, "analyst", "coach"])("protects matchup dashboard for role %s", async role => {
+    mockGetUser.mockResolvedValue({ data: { user: role ? { id: "u1" } : null } });
+    mockSingle.mockResolvedValue({ data: { role } });
+    const res = await middleware(new NextRequest("http://localhost:3000/matchup-dashboard"));
+    if (role === "coach") expect(res.status).toBe(200);
+    else expect(res.headers.get("location")).toContain(role ? "/data-explorer" : "/login");
+  });
 });

@@ -433,6 +433,10 @@ def _get_ml_pred_df() -> pd.DataFrame:
                 "ml_offense_ppp_predictions.csv is missing required columns: "
                 + ", ".join(sorted(missing))
             )
+        from infrastructure.model_management.ml_models import validate_prediction_provenance
+        if _rec is None:
+            raise ValueError("Play-type source must be loaded before validating saved predictions.")
+        validate_prediction_provenance(loaded, _rec.team_df)
         _ML_PRED_DF = loaded
 
     return _ML_PRED_DF.copy()
@@ -1045,7 +1049,7 @@ def build_ml_matchup_table(
 
     merged["PPP_BASELINE"] = (
         float(eff_w_off) * merged["PPP_OFF_SHRUNK"]
-        + float(eff_w_def) * (2 * merged["PPP_LEAGUE_OFF"] - merged["PPP_DEF_SHRUNK"])
+        + float(eff_w_def) * merged["PPP_DEF_SHRUNK"]
     )
 
     merged = merged[merged["PPP_ML"].notna()].copy()
@@ -1054,7 +1058,7 @@ def build_ml_matchup_table(
 
     merged["PPP_ML_BLEND"] = (
         float(eff_w_off) * merged["PPP_ML"]
-        + float(eff_w_def) * (2 * merged["PPP_LEAGUE_OFF"] - merged["PPP_DEF_SHRUNK"])
+        + float(eff_w_def) * merged["PPP_DEF_SHRUNK"]
     )
 
     merged["PLAY_FAMILY"] = merged["PLAY_TYPE"].apply(_play_family)

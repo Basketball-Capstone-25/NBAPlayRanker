@@ -32,7 +32,7 @@ def test_baseline_csv_matches_the_ranking_page():
     assert res.status_code == 200, res.text
     assert res.headers["content-type"].startswith("text/csv")
     assert res.headers["content-disposition"] == (
-        f'attachment; filename="baseline-rankings_{SEASON}_TOR_BOS_3_0.7.csv"'
+        f'attachment; filename="baseline-rankings_{SEASON}_TOR_BOS_3_0.7_regular-season.csv"'
     )
     rows = list(csv.DictReader(io.StringIO(res.text)))
     assert [row["PLAY_TYPE"] for row in rows] == [row["PLAY_TYPE"] for row in page]
@@ -48,6 +48,8 @@ def test_json_carries_the_same_rows_as_csv():
 
     assert body["report"] == "baseline_rankings"
     assert body["filters"]["our"] == "TOR"
+    assert body["filters"]["season_phase"] == "regular_season"
+    assert body["metadata"]["aggregation_version"] == "synergy_regular_season_v2"
     assert [row["PLAY_TYPE"] for row in body["rows"]] == [row["PLAY_TYPE"] for row in csv_rows]
 
 

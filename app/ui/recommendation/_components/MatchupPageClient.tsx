@@ -178,6 +178,9 @@ export default function MatchupPage() {
   const [viz, setViz] = useState<VizResponse | null>(null);
   const [vizLoading, setVizLoading] = useState(false);
   const [vizError, setVizError] = useState<string | null>(null);
+  const [loadedVizKey, setLoadedVizKey] = useState("");
+  const baselineRequestId = useRef(0);
+  const vizRequestId = useRef(0);
 
   const didAutoRunRef = useRef(false);
 
@@ -235,6 +238,12 @@ export default function MatchupPage() {
 
   const exportFilters = { season, our, opp, k, w_off: norm.wOff, w_def: norm.wDef };
   const currentKey = resultKey(exportFilters);
+  const currentKeyRef = useRef(currentKey);
+  currentKeyRef.current = currentKey;
+  const currentVizKey = `${currentKey}|${vizPlayType}`;
+  const currentVizKeyRef = useRef(currentVizKey);
+  currentVizKeyRef.current = currentVizKey;
+  const currentViz = loadedVizKey === currentVizKey ? viz : null;
   const resultsCurrent = loadedKey === currentKey && rows.length > 0 && !loading && !error;
   const exportPayload = resultsCurrent ? baselineReport(exportFilters, rows) : null;
 
@@ -253,10 +262,18 @@ export default function MatchupPage() {
 
   // Reset viz when matchup changes
   useEffect(() => {
+    baselineRequestId.current++;
+    vizRequestId.current++;
+    setLoading(false);
+    setVizLoading(false);
+    setError(null);
     setViz(null);
+    setLoadedVizKey("");
     setVizError(null);
     setVizPlayType("");
-  }, [season, our, opp, k, wOff, wDef]);
+  }, [currentKey]);
+
+  useEffect(() => () => { baselineRequestId.current++; vizRequestId.current++; }, []);
 
   function getPdfUrlForPlayType(playType: string) {
     if (!season || !our || !opp || !playType) return "#";
@@ -281,6 +298,13 @@ export default function MatchupPage() {
       return;
     }
 
+    const requestId = ++baselineRequestId.current;
+    const requestKey = currentKey;
+    vizRequestId.current++;
+    setViz(null);
+    setLoadedVizKey("");
+    setVizLoading(false);
+    setVizError(null);
     try {
       setLoading(true);
       setError(null);
@@ -296,14 +320,17 @@ export default function MatchupPage() {
         wDef: norm.wDef,
       });
 
-      setRows(Array.isArray(out) ? out : []);
-      setLoadedKey(currentKey);
+      if (requestId === baselineRequestId.current && requestKey === currentKeyRef.current) {
+        setRows(Array.isArray(out) ? out : []);
+        setLoadedKey(requestKey);
+      }
     } catch (e: any) {
-      console.error(e);
-      setError(e?.message ?? "Failed to generate baseline recommendations.");
-      setRows([]);
+      if (requestId === baselineRequestId.current && requestKey === currentKeyRef.current) {
+        setError(e?.message ?? "Failed to generate baseline recommendations.");
+        setRows([]);
+      }
     } finally {
-      setLoading(false);
+      if (requestId === baselineRequestId.current) setLoading(false);
     }
   }
 
@@ -318,10 +345,14 @@ export default function MatchupPage() {
       return;
     }
 
+    if (!resultsCurrent) return;
+    const requestId = ++vizRequestId.current;
+    const requestKey = `${currentKey}|${pt}`;
     try {
       setVizLoading(true);
       setVizError(null);
       setViz(null);
+      setLoadedVizKey("");
 
       const out = await fetchPlaytypeViz({
         season,
@@ -331,13 +362,17 @@ export default function MatchupPage() {
         wOff: norm.wOff,
       });
 
-      setViz(out);
+      if (requestId === vizRequestId.current && requestKey === currentVizKeyRef.current) {
+        setViz(out);
+        setLoadedVizKey(requestKey);
+      }
     } catch (e: any) {
-      console.error(e);
-      setVizError(e?.message ?? "Failed to generate court visualization.");
-      setViz(null);
+      if (requestId === vizRequestId.current && requestKey === currentVizKeyRef.current) {
+        setVizError(e?.message ?? "Failed to generate court visualization.");
+        setViz(null);
+      }
     } finally {
-      setVizLoading(false);
+      if (requestId === vizRequestId.current) setVizLoading(false);
     }
   }
 
@@ -686,8 +721,8 @@ export default function MatchupPage() {
             <Icon name="info" /> Baseline • Coach view
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link className="btn" href="/data-explorer">
-              Data Explorer
+            <Link className="btn" href="/matchup-dashboard">
+              Matchup dashboard
             </Link>
             <Link className="btn" href={runContextHref}>
               Next: Context / ML
@@ -697,7 +732,7 @@ export default function MatchupPage() {
 
         <h1>Matchup / Baseline</h1>
         <p className="sub">
-          Pick a matchup and get the Top-K play types. This is the transparent “trust anchor” before Context / ML.
+          Compare play types using regular-season offense and opponent defense. These rankings are estimates, not a forecast of the next game.
         </p>
       </div>
 
@@ -842,11 +877,11 @@ export default function MatchupPage() {
       <div className="card resultsCard">
         <div className="sectionTitle">
           <h2>Top recommendations</h2>
-          <span className="badge">{rows.length ? `${our} vs ${opp} • ${season}` : "Run to see results"}</span>
+          <span className="badge">{resultsCurrent ? `${our} vs ${opp} • ${season} regular season` : "Run to see results"}</span>
         </div>
 
-        {!loading && rows.length === 0 ? (
-          <p className="muted">Pick teams + season, then click Run Baseline.</p>
+        {!loading && !resultsCurrent ? (
+          <p className="muted">{rows.length ? "Inputs changed. Run Baseline again to update the rankings." : "Pick teams and a season, then click Run Baseline."}</p>
         ) : loading ? (
           <p className="muted">Computing shrunk PPPs and ranking Top-K…</p>
         ) : (
@@ -958,9 +993,9 @@ export default function MatchupPage() {
                   </div>
 
                   {vizError ? <div className="error">{vizError}</div> : null}
-                  {viz?.caption ? (
+                  {currentViz?.caption ? (
                     <p className="muted" style={{ marginTop: 10 }}>
-                      {viz.caption}
+                      {currentViz.caption}
                     </p>
                   ) : (
                     <p className="muted" style={{ marginTop: 10 }}>
@@ -970,7 +1005,7 @@ export default function MatchupPage() {
                 </div>
 
                 <div>
-                  {!viz ? (
+                  {!currentViz ? (
                     <div
                       style={{
                         borderRadius: 14,
@@ -985,7 +1020,7 @@ export default function MatchupPage() {
                     </div>
                   ) : (
                     <div className="imgFrame">
-                      <img src={`data:image/png;base64,${viz.image_base64}`} alt="Court map" />
+                      <img src={`data:image/png;base64,${currentViz.image_base64}`} alt={`Court map for ${vizPlayType}`} />
                     </div>
                   )}
                 </div>

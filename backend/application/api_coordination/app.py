@@ -35,14 +35,17 @@ from infrastructure.data_access.dataset_metadata import read_versioned_csv, read
 from application.api_coordination.auth_dependency import require_auth, require_role
 
 from domain.baseline_recommendation import BaselineRecommender, rank_playtypes_baseline, ShotBaselineRecommender
+from domain.baseline_recommendation.baseline_recommender import AGGREGATION_VERSION, SEASON_PHASE
 from domain.context_ml_recommendation import rank_ml_with_context
 from domain.shot_analysis import CLEAN_PARQUET, run_shot_model_cv, compute_shot_ml_analysis
 from domain.statistical_analysis import compute_ml_analysis
 from infrastructure.model_management import paired_t_test_rmse, run_cv_evaluation
+from infrastructure.model_management.ml_models import validate_prediction_provenance
 
 from application.api_coordination.export_endpoints import create_pdf_router
 from application.api_coordination.topk_uplift_endpoints import create_topk_uplift_router
 from application.api_coordination.calibration_endpoints import create_calibration_router
+from application.api_coordination.playtype_dashboard_endpoints import create_playtype_dashboard_router
 from application.api_coordination.data_quality_endpoints import (
     DataQualityGate,
     QUALITY_HEADER,
@@ -143,14 +146,21 @@ if rec is not None:
 app.include_router(create_dataset_router(lambda: rec.raw_df if rec is not None else None))
 # SCRUM-479: rankings are blocked (or flagged) when the loaded source fails its checks.
 data_quality_gate = DataQualityGate(lambda: rec.raw_df)
-install_data_quality_header(app, data_quality_gate, ("/rank-plays/",))
+install_data_quality_header(app, data_quality_gate, ("/rank-plays/", "/analytics/playtypes"))
+if rec is not None:
+    app.include_router(create_playtype_dashboard_router(rec, data_quality_gate))
 
 # Cache ML predictions ONCE (if file exists).
 ML_PRED_DF: Optional[pd.DataFrame] = None
 if ML_PRED_CSV.exists():
     try:
         ML_PRED_DF = read_versioned_csv(ML_PRED_CSV)
+        if rec is None:
+            ML_PRED_DF = None
+        else:
+            validate_prediction_provenance(ML_PRED_DF, rec.team_df)
     except (OSError, ValueError):
+        ML_PRED_DF = None
         logger.error("Saved play-type predictions are unreadable.")
 
 SHOT_REC: Optional[ShotBaselineRecommender] = None
@@ -225,11 +235,14 @@ async def dataset_state(request, call_next):
         return JSONResponse({"detail": "Play-type data is unavailable. Check /ready."}, status_code=503)
     response = await call_next(request)
     path = request.url.path
-    if rec is not None and response.status_code < 400 and path.startswith(("/data/", "/rank-plays/", "/metrics/", "/analysis/", "/export/")) and "shot" not in path and path not in {"/export/report", "/rank-plays/context-ml"}:
+    if rec is not None and response.status_code < 400 and path.startswith(("/data/", "/rank-plays/", "/metrics/", "/analysis/", "/analytics/", "/export/")) and "shot" not in path and path not in {"/export/report", "/rank-plays/context-ml"}:
         import json
         versions = {"synergy": rec.raw_df.attrs.get("dataset_version", "unavailable")}
         response.headers["X-Dataset-Version"] = versions["synergy"]
         response.headers["X-Dataset-Versions"] = json.dumps(versions)
+        if path != "/data/quality-report":
+            response.headers["X-Aggregation-Version"] = AGGREGATION_VERSION
+            response.headers["X-Season-Phase"] = SEASON_PHASE
     return response
 
 # Meta endpoints (used by frontend dropdowns + defense explanations)
@@ -239,6 +252,8 @@ def meta_options() -> Dict[str, Any]:
     """Dropdown options for the frontend."""
     return {
         "dataset_version": rec.raw_df.attrs.get("dataset_version"),
+        "aggregation_version": AGGREGATION_VERSION,
+        "season_phase": SEASON_PHASE,
         "seasons": VALID_SEASONS,
         "teams": VALID_TEAMS,
         "teamNames": TEAM_NAMES,
@@ -251,17 +266,22 @@ def meta_options() -> Dict[str, Any]:
 def pipeline_info() -> Dict[str, Any]:
     """A plain-English explanation of the data pipeline."""
     return {
-        "dataSource": "Synergy play-type snapshot (player rows) aggregated into team-level play-type tables (offense/defense).",
+        "dataSource": "Synergy regular-season player rows aggregated into team-level play-type tables (offense/defense).",
+        "aggregation_version": AGGREGATION_VERSION,
+        "season_phase": SEASON_PHASE,
         "cleaning_and_aggregation": [
+            "Select regular-season source rows; playoffs are not mixed into these profiles.",
             "Map Synergy TYPE_GROUPING to SIDE = offense/defense.",
             "Group player rows into team-level rows by (SEASON, TEAM, PLAY_TYPE, SIDE).",
-            "Compute possession-weighted averages for efficiency stats (PPP, eFG%, TOV%, etc.).",
+            "Compute PPP from points/possessions and FG% from makes/attempts; weight rounded eFG% by attempts and possession rates by possessions.",
+            "Usage is the share of tracked play types for that side: eleven offensive categories and seven defensive categories in this source.",
+            "The legacy GP export field sums player appearances; it is not team games played.",
             "Compute RELIABILITY_WEIGHT from log1p(POSS) to reduce noise from small samples (used for shrinkage).",
             "Build league baselines per (SEASON, PLAY_TYPE, SIDE) for shrinkage anchors.",
         ],
         "modeling": [
             "Baseline model: shrink team offense/defense toward league baselines; combine into PPP_PRED.",
-            "ML model: RandomForest predicts offense PPP using team-level play-type features (offline CV).",
+            "ML model: a model selected offline estimates offense PPP from observed-season team play-type features.",
             "AI use case: ML-based PPP blended with opponent defense, then adjusted using small, transparent context bonuses/penalties.",
         ],
         "etl_reference": "See backend/data/etl/build_synergy_dataset.R for the dataset build logic (if applicable in your repo).",
@@ -273,9 +293,12 @@ def baseline_formula() -> Dict[str, Any]:
     return {
         "inputs": ["PPP_OFF (team offense)", "PPP_DEF (opponent defense allowed)", "league baselines", "reliability weights"],
         "shrinkage": "PPP_SHRUNK = REL * PPP_TEAM + (1-REL) * PPP_LEAGUE",
-        "prediction": "PPP_PRED = w_off * PPP_OFF_SHRUNK + w_def * (2*PPP_LEAGUE_OFF - PPP_DEF_SHRUNK)",
+        "prediction": "PPP_PRED = w_off * PPP_OFF_SHRUNK + w_def * PPP_DEF_SHRUNK",
+        "formula": "PPP_PRED = w_off * PPP_OFF_SHRUNK + w_def * PPP_DEF_SHRUNK",
+        "aggregation_version": AGGREGATION_VERSION,
+        "season_phase": SEASON_PHASE,
         "defaults": {"w_off": 0.7, "w_def": 0.3},
-        "interpretation": "We combine how efficient we are at a play type with how friendly the opponent is at allowing it, while stabilizing small samples using league averages.",
+        "interpretation": "Combine historical regular-season offense PPP with opponent PPP allowed, with both stabilized toward league averages. This is a heuristic estimate, not a validated forecast. The offense-minus-defense difference is descriptive, not a matchup advantage.",
     }
 
 @app.get("/data/team-playtypes", dependencies=[Depends(require_role("data"))])
@@ -333,6 +356,8 @@ def team_playtypes(
             "returned_rows": len(records),
             "rows": records,
             "dataset_version": rec.raw_df.attrs.get("dataset_version"),
+            "aggregation_version": AGGREGATION_VERSION,
+            "season_phase": SEASON_PHASE,
         }
     )
 
@@ -363,6 +388,8 @@ def team_playtypes_csv(
 
     df = df.replace({np.nan: None})
     df["DATASET_VERSION"] = rec.raw_df.attrs.get("dataset_version")
+    df["AGGREGATION_VERSION"] = AGGREGATION_VERSION
+    df["SEASON_PHASE"] = SEASON_PHASE
 
     import io
 
@@ -418,6 +445,8 @@ def rank_baseline(
             "k": k,
             "w_off": float(w_off),
             "w_def": float(w_def),
+            "aggregation_version": AGGREGATION_VERSION,
+            "season_phase": SEASON_PHASE,
             "rankings": _df_to_records(df),
         }
     )
@@ -450,6 +479,8 @@ def rank_baseline_csv(
 
     buffer = io.StringIO()
     df["DATASET_VERSION"] = rec.raw_df.attrs.get("dataset_version", "unavailable")
+    df["AGGREGATION_VERSION"] = AGGREGATION_VERSION
+    df["SEASON_PHASE"] = SEASON_PHASE
     df.to_csv(buffer, index=False)
     buffer.seek(0)
 
@@ -540,11 +571,13 @@ def rank_context_ml(
             "time_remaining_period_sec": float(time_remaining),
             "coaching_conditions": conditions.model_dump(exclude_none=True),
             "dataset_versions": versions,
+            "aggregation_version": AGGREGATION_VERSION,
+            "season_phase": SEASON_PHASE,
             "w_off": float(w_off),
             "w_def": float(w_def),
             "rankings": rankings,
         }
-    ), headers={"X-Dataset-Versions": json.dumps(versions)})
+    ), headers={"X-Dataset-Versions": json.dumps(versions), "X-Aggregation-Version": AGGREGATION_VERSION, "X-Season-Phase": SEASON_PHASE})
 
 # Model evaluation endpoint (defense evidence)
 
@@ -835,5 +868,5 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-    expose_headers=["X-Data-Quality", "X-Dataset-Version", "X-Dataset-Versions"],
+    expose_headers=["X-Data-Quality", "X-Dataset-Version", "X-Dataset-Versions", "X-Aggregation-Version", "X-Season-Phase"],
 )

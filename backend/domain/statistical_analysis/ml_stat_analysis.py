@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Tuple
 import json
+import hashlib
 from pathlib import Path
 
 import numpy as np
@@ -22,15 +23,26 @@ class _Cache:
     n_splits: int
     min_poss: int
     payload: Dict[str, Any]
+    input_signature: str
 
 
 _CACHE: Optional[_Cache] = None
 
-ANALYSIS_CACHE_PATH = Path(__file__).resolve().parent / "data" / "cache" / "ml_analysis_cache.json"
-SCHEMA_VERSION = "ml_analysis_v2"
+ANALYSIS_CACHE_PATH = Path(__file__).resolve().parents[2] / "data" / "cache" / "ml_analysis_cache.json"
+SCHEMA_VERSION = "ml_analysis_v3_regular_season"
 
 
-def _read_disk_cache(n_splits: int, min_poss: int) -> Optional[Dict[str, Any]]:
+def _analysis_signature(team_df: pd.DataFrame, league_df: pd.DataFrame) -> str:
+    digest = hashlib.sha256()
+    for frame in (team_df, league_df):
+        metadata = {key: frame.attrs.get(key) for key in ("dataset_version", "aggregation_version", "season_phase")}
+        digest.update(json.dumps(metadata, sort_keys=True).encode())
+        digest.update(json.dumps(list(frame.columns)).encode())
+        digest.update(pd.util.hash_pandas_object(frame, index=False).to_numpy(dtype="<u8").tobytes())
+    return digest.hexdigest()
+
+
+def _read_disk_cache(n_splits: int, min_poss: int, input_signature: str) -> Optional[Dict[str, Any]]:
     try:
         if not ANALYSIS_CACHE_PATH.exists():
             return None
@@ -38,6 +50,8 @@ def _read_disk_cache(n_splits: int, min_poss: int) -> Optional[Dict[str, Any]]:
         raw = json.loads(ANALYSIS_CACHE_PATH.read_text(encoding="utf-8"))
 
         if raw.get("schema_version") != SCHEMA_VERSION:
+            return None
+        if raw.get("input_signature") != input_signature:
             return None
         if int(raw.get("n_splits", -1)) != int(n_splits):
             return None
@@ -50,13 +64,14 @@ def _read_disk_cache(n_splits: int, min_poss: int) -> Optional[Dict[str, Any]]:
         return None
 
 
-def _write_disk_cache(n_splits: int, min_poss: int, payload: Dict[str, Any]) -> None:
+def _write_disk_cache(n_splits: int, min_poss: int, payload: Dict[str, Any], input_signature: str) -> None:
     try:
         ANALYSIS_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
         ANALYSIS_CACHE_PATH.write_text(
             json.dumps(
                 {
                     "schema_version": SCHEMA_VERSION,
+                    "input_signature": input_signature,
                     "n_splits": int(n_splits),
                     "min_poss": int(min_poss),
                     "payload": payload,
@@ -162,14 +177,15 @@ def compute_ml_analysis(
     force_refresh: bool = False,
 ) -> Dict[str, Any]:
     global _CACHE
+    input_signature = _analysis_signature(team_df, league_df)
 
-    if _CACHE and not force_refresh and _CACHE.n_splits == n_splits and _CACHE.min_poss == min_poss:
+    if _CACHE and not force_refresh and _CACHE.n_splits == n_splits and _CACHE.min_poss == min_poss and _CACHE.input_signature == input_signature:
         return _CACHE.payload
 
     if not force_refresh:
-        disk_payload = _read_disk_cache(n_splits=n_splits, min_poss=min_poss)
+        disk_payload = _read_disk_cache(n_splits=n_splits, min_poss=min_poss, input_signature=input_signature)
         if disk_payload:
-            _CACHE = _Cache(n_splits=n_splits, min_poss=min_poss, payload=disk_payload)
+            _CACHE = _Cache(n_splits=n_splits, min_poss=min_poss, payload=disk_payload, input_signature=input_signature)
             return disk_payload
 
     off = team_df[team_df["SIDE"] == "offense"].copy()
@@ -187,6 +203,9 @@ def compute_ml_analysis(
     df = df.dropna(subset=needed).reset_index(drop=True)
 
     dataset = {
+        "dataset_version": team_df.attrs.get("dataset_version"),
+        "aggregation_version": team_df.attrs.get("aggregation_version"),
+        "season_phase": team_df.attrs.get("season_phase"),
         "rows_after_filters": int(len(df)),
         "min_poss_filter": int(min_poss),
         "n_seasons": int(df["SEASON"].nunique()),
@@ -241,8 +260,8 @@ def compute_ml_analysis(
                 ],
             },
         }
-        _write_disk_cache(n_splits=n_splits, min_poss=min_poss, payload=payload)
-        _CACHE = _Cache(n_splits=n_splits, min_poss=min_poss, payload=payload)
+        _write_disk_cache(n_splits=n_splits, min_poss=min_poss, payload=payload, input_signature=input_signature)
+        _CACHE = _Cache(n_splits=n_splits, min_poss=min_poss, payload=payload, input_signature=input_signature)
         return payload
 
     gkf = GroupKFold(n_splits=actual_splits)
@@ -342,6 +361,6 @@ def compute_ml_analysis(
         },
     }
 
-    _write_disk_cache(n_splits=n_splits, min_poss=min_poss, payload=payload)
-    _CACHE = _Cache(n_splits=n_splits, min_poss=min_poss, payload=payload)
+    _write_disk_cache(n_splits=n_splits, min_poss=min_poss, payload=payload, input_signature=input_signature)
+    _CACHE = _Cache(n_splits=n_splits, min_poss=min_poss, payload=payload, input_signature=input_signature)
     return payload

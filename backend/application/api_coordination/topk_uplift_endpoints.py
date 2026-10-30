@@ -12,6 +12,7 @@ from fastapi.responses import JSONResponse, StreamingResponse
 
 from application.api_coordination.auth_dependency import require_role
 from domain.baseline_recommendation import BaselineRecommender, rank_playtypes_baseline
+from domain.baseline_recommendation.baseline_recommender import AGGREGATION_VERSION, SEASON_PHASE
 from domain.statistical_analysis.topk_uplift import compute_topk_uplift, UpliftDataUnavailable
 
 
@@ -44,7 +45,9 @@ def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> AP
         "source_file": rec.raw_df.attrs.get("source_file", source_path.name),
         "source_sha256": version.removeprefix("sha256:") if version.startswith("sha256:") else None,
         "dataset_version": version,
-        "aggregation": "player rows aggregated by season, team, play type and side",
+        "aggregation": "regular-season player rows aggregated by season, team, play type and side",
+        "aggregation_version": AGGREGATION_VERSION,
+        "season_phase": SEASON_PHASE,
         "baseline_points_source": "PTS (no fallback to rounded PPP)",
         "recommendation_source": "/rank-plays/baseline with identical filters",
     }

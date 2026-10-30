@@ -1,0 +1,35 @@
+ALPHA RELEASE VERIFICATION
+
+Open the coach dashboard:
+https://nbaplayranker-seven.vercel.app/matchup-dashboard
+
+The release adds usage/efficiency comparisons and opponent defensive weak spots.
+Both use regular-season play-type data. They describe historical profiles;
+they do not predict the next game or prove that using a play more will help.
+
+What was checked
+- 527 backend tests and 300 frontend tests passed.
+- TypeScript and the production build passed.
+- 220 real-session checks passed on the staged API, then on production.
+- 50 existing report-export checks passed in the final isolated run.
+- The live browser showed both coach views, changed filters, low-sample states,
+  mobile scrolling, sign-in and analyst access restrictions.
+- Data Explorer showed the corrected regular-season totals.
+
+Use release.json for the deployed commits, build IDs and CI link.
+production-api/results.json has the current API checks.
+browser/production-checks.json explains the actual browser observations.
+report-downloads-retest/ contains the saved CSV, JSON and PDF files.
+backend/ contains the original calculation failures and successful repairs.
+
+The first report-export run was interrupted by signing out the same test
+account in the browser. Two requests returned 401. Its original 48/50 result
+remains in report-downloads/. The isolated rerun passed 50/50.
+
+TOR vs BOS, 2024-25, cutoff 20 is the demo example. TOR has 11 offensive play
+types and 8,517 recorded possessions. BOS has seven defensive play types.
+Missing defensive categories are shown as unavailable, never as zero.
+
+These are the named release checks, not a claim that every possible workflow
+or all future features were tested. Native-model publication, the team report,
+Teams recording, domain-expert review and school submission are separate.

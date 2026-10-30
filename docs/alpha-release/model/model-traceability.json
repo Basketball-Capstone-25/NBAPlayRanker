@@ -1,0 +1,76 @@
+{
+  "publication_status": "Published and verified revision 70",
+  "prepared_native_sha256": "c3680feba0f6fc657c4fa0cc1ecc8a23ef39a6ba400b13eeee94e5302b23964e",
+  "functional_overview_id": "A3cf8fafe4c86b93",
+  "alpha_native_wireflow_id": "rNO13oWD.AAAAQlj",
+  "native_screen_states": 8,
+  "native_doccomposer": {
+    "SRS": "rHkT3oWD.AAAAQmD",
+    "SDD": "_B8T3oWD.AAAARm."
+  },
+  "use_cases": [
+    {
+      "jira": "SCRUM-695",
+      "use_case_id": "A35cd925e814ba68",
+      "name": "Compare Usage and Efficiency",
+      "scope": "Alpha implemented",
+      "collaboration_id": "A3f2166b165833fa",
+      "overview_id": "A3cf379bfe3cc8dd",
+      "structural_design_id": "A327a1441c95755c",
+      "sequence_id": "A3b04d8e6012d617"
+    },
+    {
+      "jira": "SCRUM-696",
+      "use_case_id": "A308531b428a7bd1",
+      "name": "View Opponent Defensive Weak Spots",
+      "scope": "Alpha implemented",
+      "collaboration_id": "A3f5edfefc0d574e",
+      "overview_id": "A3e9523dccaf0e81",
+      "structural_design_id": "A3696b87b3695497",
+      "sequence_id": "A3f8fcffbb410dc9"
+    },
+    {
+      "jira": "SCRUM-697",
+      "use_case_id": "A32dd7c488267720",
+      "name": "Compare Play Types with League Average",
+      "scope": "Beta planned",
+      "collaboration_id": null,
+      "overview_id": null,
+      "structural_design_id": null,
+      "sequence_id": null
+    },
+    {
+      "jira": "SCRUM-698",
+      "use_case_id": "A3fb2384b7572cf4",
+      "name": "Track Play-Type Trends Across Seasons",
+      "scope": "Beta planned",
+      "collaboration_id": null,
+      "overview_id": null,
+      "structural_design_id": null,
+      "sequence_id": null
+    },
+    {
+      "jira": "SCRUM-699",
+      "use_case_id": "A3f15ca90f30ea8e",
+      "name": "Compare Head-to-Head Play-Type Profiles",
+      "scope": "Final planned",
+      "collaboration_id": null,
+      "overview_id": null,
+      "structural_design_id": null,
+      "sequence_id": null
+    },
+    {
+      "jira": "SCRUM-700",
+      "use_case_id": "A303ecfb1b5e7ad9",
+      "name": "View Possession Outcome Rates",
+      "scope": "Final planned",
+      "collaboration_id": null,
+      "overview_id": null,
+      "structural_design_id": null,
+      "sequence_id": null
+    }
+  ],
+  "future_scope_note": "The four later-release use cases are planned requirements. Their implementation, detailed design and execution evidence remain future work.",
+  "published_revision": 70,
+  "published_native_sha256": "3a5d8591feaa48b47fe8a7c4ba87ab55f40c04726ece36ca14116192b7c7d060"
+}

@@ -1,0 +1,39 @@
+{
+  "basis": "User supplied 4 hours for baseline on October 24, 3 hours for model/report review on October 25 and 2 hours for testing on October 27. No per-use-case split was supplied or invented.",
+  "date_anchor": "00:00 America/Toronto is only the required work-date anchor; the user did not supply an exact start time.",
+  "previous_feature_worklogs": 0,
+  "added_hours": 9,
+  "worklogs": [
+    {
+      "issue": "SCRUM-329",
+      "date": "2026-10-24",
+      "hours": 4,
+      "comment": "Worked on the baseline usage and efficiency comparison and the opponent defense view (SCRUM-695 and SCRUM-696).",
+      "id": "10129",
+      "timeSpent": "4h",
+      "started": "2026-10-24T00:00:00.000-0400",
+      "message": "Worklog added to SCRUM-329"
+    },
+    {
+      "issue": "SCRUM-329",
+      "date": "2026-10-25",
+      "hours": 3,
+      "comment": "Reviewed the Alpha use cases, diagrams and report for the two dashboard views.",
+      "id": "10130",
+      "timeSpent": "3h",
+      "started": "2026-10-25T00:00:00.000-0400",
+      "message": "Worklog added to SCRUM-329"
+    },
+    {
+      "issue": "SCRUM-329",
+      "date": "2026-10-27",
+      "hours": 2,
+      "comment": "Tested the Alpha dashboard calculations, filters, permissions and display states.",
+      "id": "10131",
+      "timeSpent": "2h",
+      "started": "2026-10-27T00:00:00.000-0400",
+      "message": "Worklog added to SCRUM-329"
+    }
+  ]
+}
+

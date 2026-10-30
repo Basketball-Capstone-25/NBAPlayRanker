@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-10-28T05:32:12.580998+00:00",
+  "scope": "Public homepage and backend health availability only. No authenticated feature campaign rerun.",
+  "checks": [
+    {
+      "url": "https://nbaplayranker-seven.vercel.app/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "seconds": 1.14,
+      "body_json": null
+    },
+    {
+      "url": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app/health",
+      "status": 200,
+      "content_type": "application/json",
+      "seconds": 23.922,
+      "body_json": {
+        "status": "ok"
+      }
+    }
+  ]
+}

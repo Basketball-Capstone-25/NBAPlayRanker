@@ -1,0 +1,147 @@
+{
+  "verified": true,
+  "published_revision": 70,
+  "published_author": "asahang@sheridancollege.ca",
+  "published_at_utc": "2026-10-28T05:28:28.681000+00:00",
+  "comment": "Update Alpha documentation and planned comparison flows (SCRUM-695\u2013700)",
+  "pending_changes": 0,
+  "prepared_sha256": "c3680feba0f6fc657c4fa0cc1ecc8a23ef39a6ba400b13eeee94e5302b23964e",
+  "published_native_sha256": "3a5d8591feaa48b47fe8a7c4ba87ab55f40c04726ece36ca14116192b7c7d060",
+  "counts": {
+    "models": 3165,
+    "use_cases": 83,
+    "diagrams": 292,
+    "views": 2604
+  },
+  "checks": {
+    "new_shared_revision_after69": true,
+    "exact_commit_comment": true,
+    "expected_user_author": true,
+    "zero_pending_history": true,
+    "all_model_ids_preserved": true,
+    "all_model_identity_metadata_preserved": true,
+    "all_model_content_preserved": true,
+    "all_83_use_cases_and_native_doccomposer_content_preserved": true,
+    "diagram_ids_retained": true,
+    "all_diagram_identity_creators_layout_and_content_preserved": true,
+    "diagram_element_ids_retained": true,
+    "diagram_elements_byte_identical": true,
+    "project_file_ids_retained": true,
+    "all_native_resource_bytes_preserved": true,
+    "official_native_reopen_passed": true,
+    "all_43_exported_diagrams_pixel_identical": true,
+    "fresh_published_doccomposer_exports_match_reviewed_content": true
+  },
+  "unclassified_model_identity_changes": [],
+  "unclassified_model_content_changes": [],
+  "table_deltas": {
+    "DIAGRAM": {
+      "prepared_count": 292,
+      "published_count": 292,
+      "missing": [],
+      "added": [],
+      "changed": [
+        "Nr3N.wWAUAAADbYM",
+        "WuPN.wWAUAAADbuO"
+      ],
+      "classified_changes": [
+        {
+          "id": "Nr3N.wWAUAAADbYM",
+          "name": "Software System Architecture",
+          "properties": [
+            {
+              "property": "lastCommittedUser",
+              "classification": "Vendor modification/commit metadata.",
+              "before_sha256": "e97ce96d840c15d99dee6e48af6f502efdb8431062d0df44c8fb9d0e1992ad2e",
+              "after_sha256": "3898cc98bd588c95c5621f1c998cddd7bf9fc4c2a24dfefa7937e3b1e746bd4c"
+            },
+            {
+              "property": "lastModified",
+              "classification": "Vendor modification/commit metadata.",
+              "before_sha256": "f31eaf34e61c4a17e93da8a7095f76466a16ccaa3b0ede3948a3d8ee57994ebf",
+              "after_sha256": "bdf70878882c3f393b3d7d143b8375bb53f7aeb55a01845a0b5a46c56c2e82b6"
+            },
+            {
+              "property": "lastCommitted",
+              "classification": "Vendor modification/commit metadata.",
+              "before_sha256": "5b4d7117e2f7e0d10177baeef824e5cffb16e1cf347659dafddcbf71c00a97f3",
+              "after_sha256": "bfcf423d29495251abeb498fad9c994a08b053c971e0d434401e7146af102285"
+            },
+            {
+              "property": "pmLastModified",
+              "classification": "Vendor modification/commit metadata.",
+              "before_sha256": "c3ffcc72d77621c4678e29ca0973d0be2b0fbe9ba0dce109b0fbb6b4cb5fda9b",
+              "after_sha256": "f5e78bb456810511a1654e07eb89ec70a1792ec3824cc6767811762feffd05a7"
+            },
+            {
+              "property": "lastCommittedUserName",
+              "classification": "Vendor modification/commit metadata.",
+              "before_sha256": "b59a3b04be1e92bea758237289b718ed36695852df558ee4bc9ebd247efc4d1e",
+              "after_sha256": "b27245c2c05e5554264a4718eeafa386f4165921c1ec3cbd9063e8c48bd59810"
+            }
+          ]
+        },
+        {
+          "id": "WuPN.wWAUAAADbuO",
+          "name": "Behavioural Overview - Authenticate Analyst Access",
+          "properties": [
+            {
+              "property": "lastModified",
+              "classification": "Vendor modification/commit metadata.",
+              "before_sha256": "3ca227bb72de1ee1459d96fa3e051713925ac1de41dff9f5a5704922849b7b5e",
+              "after_sha256": "d5cc6ac7a01b7622bc40f7ee30dec35f77db589da4637d632afe0d431517cdd8"
+            },
+            {
+              "property": "lastCommitted",
+              "classification": "Vendor modification/commit metadata.",
+              "before_sha256": "d61a2ee323a64e1d7dddd107d05164b7c7d9a043a8a49b1b2109373b98ee8841",
+              "after_sha256": "bfcf423d29495251abeb498fad9c994a08b053c971e0d434401e7146af102285"
+            },
+            {
+              "property": "pmLastModified",
+              "classification": "Vendor modification/commit metadata.",
+              "before_sha256": "0f5570ebb0618776c46991e4a022efc8714003fac73d9e83604a82c7912b8198",
+              "after_sha256": "f4d8197f425d262e1bba05dfac072d8a2ceb250377f55f9d5f3811011977f88b"
+            }
+          ]
+        }
+      ],
+      "unclassified_changes": [],
+      "identity_changes": []
+    },
+    "DIAGRAM_ELEMENT": {
+      "prepared_count": 2604,
+      "published_count": 2604,
+      "missing": [],
+      "added": [],
+      "changed": []
+    },
+    "PROJECT_FILE": {
+      "prepared_count": 633,
+      "published_count": 633,
+      "missing": [],
+      "added": [],
+      "changed": [
+        "ormpane.xml",
+        "HTMLStringProperties/WuPN.wWAUAAADbuO_documentation",
+        "HTMLStringProperties/8W4D.wWAUAAADc8a_documentation",
+        "projectPropertiesFiles/OptionCodeGeneration",
+        "projectPropertiesFiles/OptionReport",
+        "projectPropertiesFiles/OptionImporter",
+        "projectPropertiesFiles/VPUMLTreeOptions",
+        "projectPropertiesFiles/DiagramGenerator",
+        "persistentModelFiles/PrintingFramework",
+        "HTMLStringProperties/Nr3N.wWAUAAADbYM_documentation"
+      ],
+      "content_changed": [],
+      "status_only_changes": 10
+    }
+  },
+  "normalization": "Only modification timestamps and property-map order are normalized. Existing target IDs resolve qualified addresses. Ephemeral ModelView wrapper IDs normalize while exact view/diagram bindings and their order remain compared. Any view or resource byte difference remains explicit and requires separate classification.",
+  "evidence": {
+    "native_file": "Basketball-Playtype-Ranker-revision70.vpp",
+    "native_wireflow": "native-wireflow-reopen.xml",
+    "diagram_renders": "published-render-check.json",
+    "doccomposer_equivalence": "../documents/published-export-equivalence.json"
+  }
+}

@@ -1,0 +1,2736 @@
+{
+  "checkedAt": "2026-10-28T05:44:17.567Z",
+  "status": "PASS",
+  "scope": "Gurk's six baseline use cases, supporting repairs, development tasks and test plan. Future Beta/Final work remains planned.",
+  "model": {
+    "revision": 70,
+    "sha256": "3a5d8591feaa48b47fe8a7c4ba87ab55f40c04726ece36ca14116192b7c7d060",
+    "evidenceCommit": "ce826f68e825f8d4c2a052a3c55c29e354d1d866",
+    "publishedProof": "docs/alpha-release/model/publication-check.json"
+  },
+  "completionComments": [
+    {
+      "key": "SCRUM-704",
+      "id": "11564",
+      "body": "The usage flow, chart and table design are published in VP revision 70. They define full-team usage, same-play-type league differences and small-sample flags. [Published model and diagrams](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ce826f68e825f8d4c2a052a3c55c29e354d1d866/docs/alpha-release/model/README.md)",
+      "status": "Done"
+    },
+    {
+      "key": "SCRUM-709",
+      "id": "11565",
+      "body": "The defense flow and screen design are published in VP revision 70. They show positive league differences, supported Top 3 results and unavailable defensive categories. [Published model and diagrams](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ce826f68e825f8d4c2a052a3c55c29e354d1d866/docs/alpha-release/model/README.md)",
+      "status": "Done"
+    },
+    {
+      "key": "SCRUM-708",
+      "id": "11566",
+      "body": "The usage comparison is deployed, and the coach view, sample cutoff and changed-filter checks passed. The matching model and release evidence are published. [Alpha release guide](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ce826f68e825f8d4c2a052a3c55c29e354d1d866/docs/alpha-release/READ-ME.txt)",
+      "status": "Done"
+    },
+    {
+      "key": "SCRUM-713",
+      "id": "11567",
+      "body": "The opponent defense view is deployed and its coach, role and sample checks passed. The model now matches the screen and API. The outage-and-retry check was run locally. [Alpha release guide](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ce826f68e825f8d4c2a052a3c55c29e354d1d866/docs/alpha-release/READ-ME.txt)",
+      "status": "Done"
+    },
+    {
+      "key": "SCRUM-695",
+      "id": "11568",
+      "body": "The usage comparison is complete. It keeps all play types visible, flags small samples and compares usage and PPP with the same play type across the league. Tests and the published VP design are linked in the release guide. [Alpha release guide](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ce826f68e825f8d4c2a052a3c55c29e354d1d866/docs/alpha-release/READ-ME.txt)",
+      "status": "Done"
+    },
+    {
+      "key": "SCRUM-696",
+      "id": "11569",
+      "body": "The opponent view is complete. It ranks supported positive PPP differences, keeps raw allowed PPP visible and marks the four missing defensive categories unavailable. Tests and the published VP design are linked in the release guide. [Alpha release guide](https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/ce826f68e825f8d4c2a052a3c55c29e354d1d866/docs/alpha-release/READ-ME.txt)",
+      "status": "Done"
+    }
+  ],
+  "counts": {
+    "Pass": 14,
+    "Verify": 16,
+    "Done": 21,
+    "To Do": 22
+  },
+  "teamFeature": {
+    "key": "SCRUM-329",
+    "status": "In Progress",
+    "remaining": [
+      "Team contribution review",
+      "Teams recording",
+      "Domain-expert feedback",
+      "Final submission"
+    ]
+  },
+  "worklogs": [
+    {
+      "id": "10129",
+      "date": "2026-10-24",
+      "hours": 4
+    },
+    {
+      "id": "10130",
+      "date": "2026-10-25",
+      "hours": 3
+    },
+    {
+      "id": "10131",
+      "date": "2026-10-27",
+      "hours": 2
+    }
+  ],
+  "worklogTotalHours": 9,
+  "newWorklogs": 0,
+  "checks": [
+    {
+      "name": "SCRUM-695 done",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 duedate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 assignee preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 reporter preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 creator preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 issuetype preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 priority preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 customfield_10020 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 customfield_10016 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 customfield_10061 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 customfield_10060 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 customfield_10015 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 formal links preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 attachments preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 worklogs preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 one concise completion comment",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 done",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 duedate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 assignee preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 reporter preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 creator preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 issuetype preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 priority preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 customfield_10020 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 customfield_10016 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 customfield_10061 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 customfield_10060 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 customfield_10015 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 formal links preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 attachments preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 worklogs preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 one concise completion comment",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 done",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 duedate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 assignee preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 reporter preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 creator preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 issuetype preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 priority preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 customfield_10020 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 customfield_10016 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 customfield_10061 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 customfield_10060 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 customfield_10015 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 formal links preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 attachments preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 worklogs preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 one concise completion comment",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 done",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 duedate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 assignee preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 reporter preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 creator preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 issuetype preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 priority preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 customfield_10020 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 customfield_10016 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 customfield_10061 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 customfield_10060 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 customfield_10015 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 formal links preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 attachments preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 worklogs preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 one concise completion comment",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 done",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 duedate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 assignee preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 reporter preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 creator preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 issuetype preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 priority preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 customfield_10020 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 customfield_10016 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 customfield_10061 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 customfield_10060 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 customfield_10015 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 formal links preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 attachments preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 worklogs preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 one concise completion comment",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 done",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 summary preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 description preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 duedate preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 assignee preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 reporter preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 creator preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 issuetype preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 priority preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 parent preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 customfield_10020 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 customfield_10016 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 customfield_10061 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 customfield_10060 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 customfield_10015 preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 formal links preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 attachments preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 worklogs preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 one concise completion comment",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 historical comment 11558 body preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 historical comment 11558 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 historical comment 11558 updated preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 historical comment author preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 historical comment 11559 body preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 historical comment 11559 created preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 historical comment 11559 updated preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 historical comment author preserved",
+      "passed": true
+    },
+    {
+      "name": "Feature 329 remains In Progress",
+      "passed": true
+    },
+    {
+      "name": "Original 9-hour worklogs preserved",
+      "passed": true
+    },
+    {
+      "name": "All 73 scoped items returned",
+      "passed": true
+    },
+    {
+      "name": "BST-226 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-226 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-226 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-227 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-227 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-227 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-228 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-228 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-228 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-229 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-229 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-229 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-230 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-230 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-230 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-231 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-231 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-231 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-232 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-232 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-232 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-233 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-233 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-233 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-234 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-234 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-234 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-235 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-235 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-235 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-236 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-236 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-236 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-237 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-237 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-237 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-238 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-238 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-238 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-239 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-239 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-239 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-240 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-240 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-240 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-241 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-241 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-241 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-242 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-242 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-242 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-243 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-243 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-243 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-244 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-244 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-244 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-245 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-245 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-245 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-246 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-246 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-246 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-247 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-247 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-247 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-248 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-248 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-248 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-249 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-249 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-249 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-250 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-250 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-250 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-251 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-251 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-251 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-252 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-252 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-252 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-253 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-253 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-253 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-254 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-254 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-254 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "BST-255 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "BST-255 expected result",
+      "passed": true
+    },
+    {
+      "name": "BST-255 course hierarchy",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-695 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-696 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-697 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-698 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-699 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-700 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-701 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-702 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-703 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-704 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-705 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-706 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-707 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-708 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-709 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-710 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-711 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-712 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-713 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-714 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-715 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-716 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-717 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-718 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-719 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-720 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-721 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-722 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-723 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-724 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-725 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-726 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-727 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-728 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-729 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-730 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-731 future remains To Do",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-732 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-733 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-734 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-735 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-736 Gurk ownership preserved",
+      "passed": true
+    },
+    {
+      "name": "SCRUM-737 Gurk ownership preserved",
+      "passed": true
+    }
+  ],
+  "issues": [
+    {
+      "key": "BST-226",
+      "title": "Compare Usage and Efficiency",
+      "type": "Test Suite",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10013",
+      "hierarchyLevel": 1
+    },
+    {
+      "key": "BST-227",
+      "title": "View Opponent Defensive Weak Spots",
+      "type": "Test Suite",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10013",
+      "hierarchyLevel": 1
+    },
+    {
+      "key": "BST-228",
+      "title": "Compare Play Types with League Average",
+      "type": "Test Suite",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10013",
+      "hierarchyLevel": 1
+    },
+    {
+      "key": "BST-229",
+      "title": "Track Play-Type Trends Across Seasons",
+      "type": "Test Suite",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10013",
+      "hierarchyLevel": 1
+    },
+    {
+      "key": "BST-230",
+      "title": "Compare Head-to-Head Play-Type Profiles",
+      "type": "Test Suite",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10013",
+      "hierarchyLevel": 1
+    },
+    {
+      "key": "BST-231",
+      "title": "View Possession Outcome Rates",
+      "type": "Test Suite",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": null,
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10013",
+      "hierarchyLevel": 1
+    },
+    {
+      "key": "BST-232",
+      "title": "Usage chart and table match team and league source totals",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-233",
+      "title": "Sample cutoff flags rows without changing usage shares",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-234",
+      "title": "Usage comparison clears outdated results and recovers after a failed request",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-235",
+      "title": "Usage comparison enforces the intended user role",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-236",
+      "title": "Regular-season team totals exclude playoff possessions",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-237",
+      "title": "Field-goal rates use shot attempts instead of possessions",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-238",
+      "title": "Duplicate source rows cannot double-count play-type possessions",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-226",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-239",
+      "title": "Opponent weak spots use league-relative defensive efficiency",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-227",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-240",
+      "title": "Small samples and missing defensive types cannot become weak spots",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-227",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-241",
+      "title": "Opponent changes cannot leave the previous team's results on screen",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-227",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-242",
+      "title": "Opponent defense view protects team data behind the intended role",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-227",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-243",
+      "title": "A weaker opposing defense does not lower baseline predicted PPP",
+      "type": "Test Case",
+      "status": "Pass",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-227",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-244",
+      "title": "League benchmark preserves shooting and possession-rate denominators",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-245",
+      "title": "Missing league categories remain unavailable",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-246",
+      "title": "League comparison handles access and changing filters",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-228",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-247",
+      "title": "Season trends match source totals in chronological order",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-229",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-248",
+      "title": "Missing seasons create gaps rather than zero values",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-229",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-249",
+      "title": "Trend filters and permissions stay consistent",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-229",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-250",
+      "title": "Two-team profiles use the same season and matching categories",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-230",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-251",
+      "title": "Swapping teams swaps labels and values without changing calculations",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-230",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-252",
+      "title": "Profile comparison states its season-long scope and protects access",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-230",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-253",
+      "title": "Outcome rates match possession-weighted source fields",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-231",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-254",
+      "title": "Overlapping outcome rates are not normalized into a 100% stack",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-231",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "BST-255",
+      "title": "Invalid and missing outcome rates stay explicit",
+      "type": "Test Case",
+      "status": "Verify",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "BST-231",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": null,
+      "useCase": null,
+      "sprints": null,
+      "links": [],
+      "issueTypeId": "10012",
+      "hierarchyLevel": 0
+    },
+    {
+      "key": "SCRUM-695",
+      "title": "Compare a team's play-type usage and efficiency",
+      "type": "Story",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "dueDate": null,
+      "storyPoints": 5,
+      "effortEstimateHours": null,
+      "useCase": "Compare Usage and Efficiency (A35cd925e814ba68)",
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-696",
+      "title": "Show which play types an opponent allows to score efficiently",
+      "type": "Story",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "dueDate": null,
+      "storyPoints": 5,
+      "effortEstimateHours": null,
+      "useCase": "View Opponent Defensive Weak Spots (A308531b428a7bd1)",
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-697",
+      "title": "Compare a team's play types with the league average",
+      "type": "Story",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "dueDate": null,
+      "storyPoints": 3,
+      "effortEstimateHours": null,
+      "useCase": "Compare Play Types with League Average (A32dd7c488267720)",
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can reload data on demand and see common shot patterns behind a shot plan.",
+          "startDate": "2026-11-10T05:00:00.000Z",
+          "endDate": "2026-11-17T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-698",
+      "title": "Track a team's play-type usage and efficiency across seasons",
+      "type": "Story",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "dueDate": null,
+      "storyPoints": 5,
+      "effortEstimateHours": null,
+      "useCase": "Track Play-Type Trends Across Seasons (A3fb2384b7572cf4)",
+      "sprints": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a coach, I get a polished app with recent-form insights and voice input for game context.",
+          "startDate": "2026-11-17T05:00:00.000Z",
+          "endDate": "2026-11-24T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-699",
+      "title": "Compare two teams' season-long play-type profiles",
+      "type": "Story",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "dueDate": null,
+      "storyPoints": 3,
+      "effortEstimateHours": null,
+      "useCase": "Compare Head-to-Head Play-Type Profiles (A3f15ca90f30ea8e)",
+      "sprints": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can review a hardened, validated system with complete documentation.",
+          "startDate": "2026-11-24T05:00:00.000Z",
+          "endDate": "2026-12-01T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-700",
+      "title": "Show independent possession outcome rates by play type",
+      "type": "Story",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "dueDate": null,
+      "storyPoints": 5,
+      "effortEstimateHours": null,
+      "useCase": "View Possession Outcome Rates (A303ecfb1b5e7ad9)",
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can read a final report and models that match the delivered system.",
+          "startDate": "2026-12-01T05:00:00.000Z",
+          "endDate": "2026-12-08T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-701",
+      "title": "Separate source phases and reject duplicate play-type rows",
+      "type": "Task",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "dueDate": null,
+      "storyPoints": 3,
+      "effortEstimateHours": null,
+      "useCase": "Compare Usage and Efficiency (A35cd925e814ba68)",
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-702",
+      "title": "Calculate field-goal rates with the correct shot denominator",
+      "type": "Task",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "dueDate": null,
+      "storyPoints": 2,
+      "effortEstimateHours": null,
+      "useCase": "Compare Usage and Efficiency (A35cd925e814ba68)",
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-703",
+      "title": "Fix the effect of opponent defense on predicted PPP",
+      "type": "Task",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-329",
+      "dueDate": null,
+      "storyPoints": 2,
+      "effortEstimateHours": null,
+      "useCase": "View Opponent Defensive Weak Spots (A308531b428a7bd1)",
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-704",
+      "title": "Define usage and efficiency calculations and screen flow",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-695",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-705",
+      "title": "Build the usage and efficiency data endpoint",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-695",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-706",
+      "title": "Add the usage and efficiency chart and table",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-695",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-707",
+      "title": "Test usage totals, filters and access",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-695",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-708",
+      "title": "Publish the usage comparison and its model",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-695",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-709",
+      "title": "Model the opponent defense view and its sample rules",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-696",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-710",
+      "title": "Build the opponent defense breakdown",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-696",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-711",
+      "title": "Show opponent weak spots with clear sample counts",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-696",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-712",
+      "title": "Test defensive ordering and changed filters",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-696",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-713",
+      "title": "Publish and verify the opponent defense view",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-696",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-714",
+      "title": "Define league comparison calculations and VP flow",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can reload data on demand and see common shot patterns behind a shot plan.",
+          "startDate": "2026-11-10T05:00:00.000Z",
+          "endDate": "2026-11-17T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-715",
+      "title": "Build weighted team and league comparisons",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can reload data on demand and see common shot patterns behind a shot plan.",
+          "startDate": "2026-11-10T05:00:00.000Z",
+          "endDate": "2026-11-17T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-716",
+      "title": "Add the league comparison view",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can reload data on demand and see common shot patterns behind a shot plan.",
+          "startDate": "2026-11-10T05:00:00.000Z",
+          "endDate": "2026-11-17T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-717",
+      "title": "Test and publish the league comparison",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-697",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 188,
+          "name": "Iteration 20",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can reload data on demand and see common shot patterns behind a shot plan.",
+          "startDate": "2026-11-10T05:00:00.000Z",
+          "endDate": "2026-11-17T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-718",
+      "title": "Model season trends and missing-data rules",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a coach, I get a polished app with recent-form insights and voice input for game context.",
+          "startDate": "2026-11-17T05:00:00.000Z",
+          "endDate": "2026-11-24T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-719",
+      "title": "Build consistent cross-season play-type summaries",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a coach, I get a polished app with recent-form insights and voice input for game context.",
+          "startDate": "2026-11-17T05:00:00.000Z",
+          "endDate": "2026-11-24T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-720",
+      "title": "Add the season trend chart and table",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a coach, I get a polished app with recent-form insights and voice input for game context.",
+          "startDate": "2026-11-17T05:00:00.000Z",
+          "endDate": "2026-11-24T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-721",
+      "title": "Test season coverage and trend calculations",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a coach, I get a polished app with recent-form insights and voice input for game context.",
+          "startDate": "2026-11-17T05:00:00.000Z",
+          "endDate": "2026-11-24T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-722",
+      "title": "Publish and verify season trends",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-698",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 0.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 189,
+          "name": "Iteration 21",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a coach, I get a polished app with recent-form insights and voice input for game context.",
+          "startDate": "2026-11-17T05:00:00.000Z",
+          "endDate": "2026-11-24T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-723",
+      "title": "Model the two-team profile comparison",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 0.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can review a hardened, validated system with complete documentation.",
+          "startDate": "2026-11-24T05:00:00.000Z",
+          "endDate": "2026-12-01T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-724",
+      "title": "Build aligned team profiles",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can review a hardened, validated system with complete documentation.",
+          "startDate": "2026-11-24T05:00:00.000Z",
+          "endDate": "2026-12-01T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-725",
+      "title": "Add the two-team comparison screen",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can review a hardened, validated system with complete documentation.",
+          "startDate": "2026-11-24T05:00:00.000Z",
+          "endDate": "2026-12-01T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-726",
+      "title": "Test and publish team profile comparison",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-699",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 190,
+          "name": "Iteration 22",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can review a hardened, validated system with complete documentation.",
+          "startDate": "2026-11-24T05:00:00.000Z",
+          "endDate": "2026-12-01T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-727",
+      "title": "Define independent outcome rates and VP flow",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can read a final report and models that match the delivered system.",
+          "startDate": "2026-12-01T05:00:00.000Z",
+          "endDate": "2026-12-08T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-728",
+      "title": "Build validated possession-rate summaries",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can read a final report and models that match the delivered system.",
+          "startDate": "2026-12-01T05:00:00.000Z",
+          "endDate": "2026-12-08T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-729",
+      "title": "Add the outcome-rate comparison view",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can read a final report and models that match the delivered system.",
+          "startDate": "2026-12-01T05:00:00.000Z",
+          "endDate": "2026-12-08T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-730",
+      "title": "Test overlap, invalid rates and source parity",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can read a final report and models that match the delivered system.",
+          "startDate": "2026-12-01T05:00:00.000Z",
+          "endDate": "2026-12-08T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-731",
+      "title": "Publish and verify possession outcomes",
+      "type": "Dev Subtask",
+      "status": "To Do",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-700",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 0.5,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 191,
+          "name": "Iteration 23",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As a supervisor, I can read a final report and models that match the delivered system.",
+          "startDate": "2026-12-01T05:00:00.000Z",
+          "endDate": "2026-12-08T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-732",
+      "title": "Separate phase-specific aggregation and dependent artifacts",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-701",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 3,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-733",
+      "title": "Check regular-season and playoff separation",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-701",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-734",
+      "title": "Use metric-specific denominators in team and league tables",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-702",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-735",
+      "title": "Verify team and league field-goal calculations",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-702",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-736",
+      "title": "Correct defensive contribution in baseline and context ranking",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-703",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 2,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    },
+    {
+      "key": "SCRUM-737",
+      "title": "Test stronger and weaker opponent defense",
+      "type": "Dev Subtask",
+      "status": "Done",
+      "owner": "Gurkaranjit Asahan",
+      "parent": "SCRUM-703",
+      "dueDate": null,
+      "storyPoints": null,
+      "effortEstimateHours": 1,
+      "useCase": null,
+      "sprints": [
+        {
+          "id": 186,
+          "name": "Iteration 18",
+          "state": "future",
+          "boardId": 1,
+          "goal": "As an analyst, I can see each dataset’s version, coverage and access history before trusting a ranking.",
+          "startDate": "2026-10-27T04:00:00.000Z",
+          "endDate": "2026-11-03T04:59:00.000Z"
+        }
+      ],
+      "links": []
+    }
+  ],
+  "typeEvidence": [
+    {
+      "id": "10012",
+      "name": "Test Case",
+      "hierarchyLevel": 0,
+      "subtask": false,
+      "source": "Current full issue readback for BST-226 and BST-232"
+    },
+    {
+      "id": "10013",
+      "name": "Test Suite",
+      "hierarchyLevel": 1,
+      "subtask": false,
+      "source": "Current full issue readback for BST-226 and BST-232"
+    }
+  ]
+}
