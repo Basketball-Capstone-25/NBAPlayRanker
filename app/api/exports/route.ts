@@ -1,5 +1,5 @@
 import { createClient } from "../../../lib/supabase/server";
-import { EXPORT_PATHS, exportFilename } from "../../infrastructure/export-contract";
+import { EXPORT_PATHS, exportExtension, exportFilename } from "../../infrastructure/export-contract";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -53,7 +53,7 @@ export async function GET(request: Request) {
       return errorResponse(`Export failed (${upstream.status}). Check your access and selected filters.`, status);
     }
     const contentType = upstream.headers.get("content-type") || "";
-    const expectedType = path.endsWith(".pdf") ? "application/pdf" : "text/csv";
+    const expectedType = { ".pdf": "application/pdf", ".json": "application/json", ".csv": "text/csv" }[exportExtension(path)];
     if (contentType.split(";")[0].trim().toLowerCase() !== expectedType || !upstream.body) {
       return errorResponse("The export service returned an unexpected file response.", 502);
     }

@@ -7,11 +7,20 @@ export const EXPORT_PATHS = new Set([
   "/metrics/topk-uplift.csv",
   "/export/shotplan.pdf",
   "/export/playtype-viz.pdf",
+  "/data/pbp-shots.csv",
+  "/data/pbp-shots.json",
 ]);
+
+/** File extension for an export path (.pdf, .json or .csv). */
+export function exportExtension(path: string): ".pdf" | ".json" | ".csv" {
+  if (path.endsWith(".pdf")) return ".pdf";
+  if (path.endsWith(".json")) return ".json";
+  return ".csv";
+}
 
 export function exportFilename(path: string, requested?: string | null): string {
   const fallback = path.split("/").pop() || "download";
-  const extension = path.endsWith(".pdf") ? ".pdf" : ".csv";
+  const extension = exportExtension(path);
   const name = (requested || fallback)
     .replace(/[^a-zA-Z0-9._ -]/g, "_")
     .replace(/^\.+/, "")
