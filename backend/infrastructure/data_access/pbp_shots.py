@@ -106,6 +106,12 @@ def _load_canonical_shots_df() -> pd.DataFrame:
     _SHOTS_DF = df
     return df
 
+
+def load_canonical_shots() -> pd.DataFrame:
+    """Canonical shots with normalized column names, cached per process (SCRUM-627)."""
+    return _load_canonical_shots_df()
+
+
 # JSON safety: replace NaN/Inf recursively
 
 def _sanitize_json(obj: Any) -> Any:
