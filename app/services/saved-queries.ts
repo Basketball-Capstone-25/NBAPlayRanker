@@ -44,9 +44,10 @@ function rowLimit(limit: number): number {
 export function createSavedQueryService(backend: SavedQueryBackend = supabaseSavedQueryStore()): SavedQueryService {
   return {
     list: () => backend.list(),
-    save: (name, definition, existing) =>
+    // async so a bad name comes back as a rejected promise, like a Supabase error.
+    save: async (name, definition, existing) =>
       backend.insert(checkedName(name, existing), { ...definition, rowLimit: rowLimit(definition.rowLimit) }),
-    rename: (id, name, existing) => backend.rename(id, checkedName(name, existing, id)),
+    rename: async (id, name, existing) => backend.rename(id, checkedName(name, existing, id)),
     remove: (id) => backend.remove(id),
   };
 }
