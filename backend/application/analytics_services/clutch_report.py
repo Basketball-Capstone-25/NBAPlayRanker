@@ -175,6 +175,10 @@ def _situation(f: Dict[str, Any]) -> str:
     return f"{period}, {minutes}:{seconds:02d} or less left, margin {f['margin_min']:+d} to {f['margin_max']:+d}"
 
 
+def situation_text(report: Dict[str, Any]) -> str:
+    return _situation(report["filters"])
+
+
 def report_filename(report: Dict[str, Any], ext: str) -> str:
     f = report["filters"]
     return f"clutch_{f['team']}_vs_{f['opp']}_{f['season']}.{ext}"
