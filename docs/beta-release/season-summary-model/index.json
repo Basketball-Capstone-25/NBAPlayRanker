@@ -1,0 +1,64 @@
+{
+  "status": "Published and verified",
+  "source_shared_revision": 87,
+  "use_case": {
+    "id": "1fgVX1mGAqAALhpS",
+    "number": "UC30",
+    "name": "On Demand KPI Block"
+  },
+  "jira": [
+    "https://basketball-strategy.atlassian.net/browse/SCRUM-495",
+    "https://basketball-strategy.atlassian.net/browse/SCRUM-777"
+  ],
+  "test_cases": [
+    "https://basketball-strategy.atlassian.net/browse/BST-295",
+    "https://basketball-strategy.atlassian.net/browse/BST-296",
+    "https://basketball-strategy.atlassian.net/browse/BST-297",
+    "https://basketball-strategy.atlassian.net/browse/BST-298",
+    "https://basketball-strategy.atlassian.net/browse/BST-299"
+  ],
+  "diagrams_before": 310,
+  "diagrams_prepared": 323,
+  "existing_diagrams_preserved": 310,
+  "existing_diagram_elements_preserved": 2877,
+  "diagrams": [
+    {
+      "id": "B36dc0abbf6acad0",
+      "image": "functional-overview.png"
+    },
+    {
+      "id": "B3bacba23325de15",
+      "image": "collaboration-overview.png"
+    },
+    {
+      "id": "B3523d8d8e359879",
+      "image": "structural-design.png"
+    },
+    {
+      "id": "B3cd7012fe3f6553",
+      "image": "sequence-summary.png"
+    },
+    {
+      "id": "B39e096bce90c629",
+      "image": "sequence-retry.png"
+    },
+    {
+      "id": "B3beeae47bbd9d16",
+      "image": "validation-model.png"
+    },
+    {
+      "id": "F0P4g4WD.AAAAQ03",
+      "image": "wireflow.png"
+    }
+  ],
+  "wireflow": "wireflow.png",
+  "native_file_included": true,
+  "note": "Native file is the exact committed pristine revision88. All images were freshly exported from a read-only copy of that committed file. Preparation and publication checks are separate.",
+  "published_revision": 88,
+  "published_at_utc": "2026-11-09T16:39:12.419000+00:00",
+  "native_sha256": "b33c1783b8fe4aae552f3fe51f361deb900e64bf827e6c59ad09e5aba0dbf506",
+  "pending_history": 0,
+  "native_file": "Basketball Playtype Ranker.vpp",
+  "publication_proof": "publication-verification.json",
+  "privacy_proof": "privacy-check.json"
+}

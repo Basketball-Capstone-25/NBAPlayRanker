@@ -1,0 +1,42 @@
+{
+  "shared_report_url": "https://sheridanc-my.sharepoint.com/:w:/r/personal/mousaa_shernet_sheridancollege_ca/_layouts/15/doc2.aspx?sourcedoc=%7BD052FB32-B7AF-4F5E-8D88-AEFA1A56CFA2%7D&file=Capstone%20Report%20Winter%202026.docx&action=default&mobileredirect=true&DefaultItemOpen=1&web=1",
+  "mode": "Reviewing; Track Changes on for everyone",
+  "changes": [
+    {
+      "section": "Project Requirements / Use-Cases",
+      "text": "Season summary (On Demand KPI Block): the coach or analyst compares the team’s observed season PPP with the modeled average for the selected Top-K plays. The summary shows their difference and each play type’s share of recorded offensive possessions. It uses one regular season and a selected opponent; it does not offer last-5 or last-10-game windows because the source contains season totals."
+    },
+    {
+      "section": "Project Requirements / User Interface",
+      "text": "For Beta, the season summary appears directly on Matchup and Data Explorer. The coach summary follows the completed Run Baseline selection, including Top-K and the offense/defense weights. The analyst chooses one offensive team and a separate opponent; this view uses the top five plays with 70/30 weights. Table search and preview filters do not change the full-season totals. Changing the matchup clears old values. Missing data has a clear message, and failed requests have a retry option. The summary is labeled as a historical comparison, not measured improvement or a forecast."
+    },
+    {
+      "section": "Validation and Testing / Validation Results",
+      "text": "The Beta season summary is covered by suite BST-294 and cases BST-295 to BST-299. All five passed local checks for calculations, missing or invalid input, role access, both screens and result refreshes. The source checks include 25 summary API tests and 48 client/UI tests. With TOR against BOS in 2024-25, both roles showed 0.969 observed PPP, 1.009 modeled PPP and a +0.040 PPP difference; the selected plays used 38.3% of 8,517 recorded offensive possessions. A stopped local API showed a retry message and recovered after restart. The live release (e085b3b) then passed 81 API checks and 13 browser checks for the selected flows. Jira keeps the results for BST-295 to BST-299 and passing retests for BST-313 and BST-314. The matching use-case flow, API design, screen states and validation links are published in VP revision 88."
+    }
+  ],
+  "verification": {
+    "all_three_live_texts_checked": true,
+    "autosaved_online": true,
+    "use_case_verified_after_reload": true,
+    "existing_paragraphs_not_replaced": true,
+    "fresh_download_path_confirmed": false
+  },
+  "followup": {
+    "checked_at": "2026-11-09T16:36:51.521977+00:00",
+    "scope": "Only the final sentence of the added Beta validation paragraph was replaced.",
+    "release": "e085b3b",
+    "production_checks": {
+      "api": 81,
+      "scoped_browser": 13
+    },
+    "vp_publication": "Published revision 88",
+    "autosave_confirmed": true
+  },
+  "vp_publication_followup": {
+    "checked_at": "2026-11-09T16:40:58.076487+00:00",
+    "scope": "Only the last sentence of the added Beta validation paragraph was replaced.",
+    "revision": 88,
+    "autosave_confirmed": true
+  }
+}

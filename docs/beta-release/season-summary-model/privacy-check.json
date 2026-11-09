@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-11-09T16:42:29.907486+00:00",
+  "native_sha256": "b33c1783b8fe4aae552f3fe51f361deb900e64bf827e6c59ad09e5aba0dbf506",
+  "scope": "Committed revision88 native bytes, all native database table strings/blobs, decompressed gzip resources and nested archive contents. Known private values are only compared in memory and never emitted. Image pixels are not OCR-scanned.",
+  "known_private_values_checked": 3,
+  "counts": {
+    "payloads": 41201,
+    "embedded_resources": 1053,
+    "decompressed": 1053,
+    "zip_members": 0,
+    "public_anon_jwt": 0
+  },
+  "findings": [],
+  "errors": []
+}

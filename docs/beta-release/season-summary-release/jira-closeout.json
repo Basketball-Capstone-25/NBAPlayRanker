@@ -1,0 +1,424 @@
+{
+  "checked_at": "2026-11-09T16:45:57.775Z",
+  "issues": [
+    {
+      "key": "BSR-41",
+      "summary": "Metric labels may imply unsupported accuracy",
+      "status": "Monitoring",
+      "assignedToGurk": true,
+      "parent": null,
+      "type": "Risk",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-476"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-498"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-526"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-695"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-696"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-697"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-698"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-699"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-700"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-703"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-495"
+        }
+      ]
+    },
+    {
+      "key": "BSR-49",
+      "summary": "Player-to-team aggregation may calculate incorrect totals",
+      "status": "Monitoring",
+      "assignedToGurk": true,
+      "parent": null,
+      "type": "Risk",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-478"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-479"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-695"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-697"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-700"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-701"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-702"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-495"
+        }
+      ]
+    },
+    {
+      "key": "BSR-95",
+      "summary": "Deployment settings may not match the tested release",
+      "status": "Monitoring",
+      "assignedToGurk": false,
+      "parent": null,
+      "type": "Risk",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-506"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-524"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-532"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-777"
+        }
+      ]
+    },
+    {
+      "key": "BSR-111",
+      "summary": "Visual Paradigm compatibility may block shared model updates",
+      "status": "Monitoring",
+      "assignedToGurk": true,
+      "parent": null,
+      "type": "Risk",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-528"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-503"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-509"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-440"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-567"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-606"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-777"
+        }
+      ]
+    },
+    {
+      "key": "BST-294",
+      "summary": "Season summary and shared release checks",
+      "status": "Pass",
+      "assignedToGurk": true,
+      "parent": null,
+      "type": "Test Suite",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-495"
+        }
+      ]
+    },
+    {
+      "key": "BST-295",
+      "summary": "Season summary matches the source totals and Top-K weights",
+      "status": "Pass",
+      "assignedToGurk": true,
+      "parent": "BST-294",
+      "type": "Test Case",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-772"
+        }
+      ]
+    },
+    {
+      "key": "BST-296",
+      "summary": "Season summary distinguishes missing periods from invalid data",
+      "status": "Pass",
+      "assignedToGurk": true,
+      "parent": "BST-294",
+      "type": "Test Case",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-772"
+        }
+      ]
+    },
+    {
+      "key": "BST-297",
+      "summary": "Season summary enforces coach and analyst access",
+      "status": "Pass",
+      "assignedToGurk": true,
+      "parent": "BST-294",
+      "type": "Test Case",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-772"
+        }
+      ]
+    },
+    {
+      "key": "BST-298",
+      "summary": "Show matching season summaries for coach and analyst",
+      "status": "Pass",
+      "assignedToGurk": true,
+      "parent": "BST-294",
+      "type": "Test Case",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-776"
+        }
+      ]
+    },
+    {
+      "key": "BST-299",
+      "summary": "Clear and recover season summaries when filters or service change",
+      "status": "Pass",
+      "assignedToGurk": true,
+      "parent": "BST-294",
+      "type": "Test Case",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-776"
+        }
+      ]
+    },
+    {
+      "key": "BST-313",
+      "summary": "Download the integrated clutch report as CSV and PDF",
+      "status": "Pass",
+      "assignedToGurk": true,
+      "parent": "BST-294",
+      "type": "Test Case",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-787"
+        }
+      ]
+    },
+    {
+      "key": "BST-314",
+      "summary": "Hand a clutch report preset from analyst to coach",
+      "status": "Pass",
+      "assignedToGurk": true,
+      "parent": "BST-294",
+      "type": "Test Case",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-788"
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-495",
+      "summary": "Show modeled PPP difference and play usage for a selected season",
+      "status": "Done",
+      "assignedToGurk": true,
+      "parent": "SCRUM-5",
+      "type": "Story",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-695"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-698"
+        },
+        {
+          "type": "Relates",
+          "key": "BST-294"
+        },
+        {
+          "type": "Relates",
+          "key": "BSR-49"
+        },
+        {
+          "type": "Relates",
+          "key": "BSR-41"
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-772",
+      "summary": "Build the season uplift and usage summary API",
+      "status": "Done",
+      "assignedToGurk": true,
+      "parent": "SCRUM-495",
+      "type": "Dev Subtask",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "BST-295"
+        },
+        {
+          "type": "Relates",
+          "key": "BST-296"
+        },
+        {
+          "type": "Relates",
+          "key": "BST-297"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-778"
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-776",
+      "summary": "Show the season summary in the coach and analyst screens",
+      "status": "Done",
+      "assignedToGurk": true,
+      "parent": "SCRUM-495",
+      "type": "Dev Subtask",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "BST-298"
+        },
+        {
+          "type": "Relates",
+          "key": "BST-299"
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-777",
+      "summary": "Update the summary model and verify the deployed flow",
+      "status": "Done",
+      "assignedToGurk": true,
+      "parent": "SCRUM-495",
+      "type": "Dev Subtask",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-787"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-788"
+        },
+        {
+          "type": "Relates",
+          "key": "BSR-95"
+        },
+        {
+          "type": "Relates",
+          "key": "BSR-111"
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-787",
+      "summary": "Allow clutch report CSV and PDF downloads through the export proxy",
+      "status": "Done",
+      "assignedToGurk": true,
+      "parent": null,
+      "type": "Task",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "SCRUM-777"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-629"
+        },
+        {
+          "type": "Relates",
+          "key": "BST-313"
+        }
+      ]
+    },
+    {
+      "key": "SCRUM-788",
+      "summary": "Give analysts a coach handoff link from the clutch report",
+      "status": "Done",
+      "assignedToGurk": true,
+      "parent": null,
+      "type": "Task",
+      "links": [
+        {
+          "type": "Relates",
+          "key": "BST-314"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-777"
+        },
+        {
+          "type": "Relates",
+          "key": "SCRUM-629"
+        }
+      ]
+    }
+  ],
+  "summary_comment": "11692",
+  "summary_inline_images": 3,
+  "notes": "Historical failed test comments and teammate ownership were retained."
+}

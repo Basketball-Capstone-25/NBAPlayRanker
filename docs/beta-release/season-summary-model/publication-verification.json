@@ -1,0 +1,79 @@
+{
+  "verified": true,
+  "published_revision": 88,
+  "published_author": "asahang@sheridancollege.ca",
+  "published_at_utc": "2026-11-09T16:39:12.419000+00:00",
+  "comment": "Add season summary flow, API design and screen states (SCRUM-495/777)",
+  "pending_history": 0,
+  "native_sha256": "b33c1783b8fe4aae552f3fe51f361deb900e64bf827e6c59ad09e5aba0dbf506",
+  "counts": {
+    "before_diagrams": 310,
+    "published_diagrams": 323,
+    "added_diagrams": 13,
+    "original_views": 2877,
+    "published_views": 2974,
+    "published_models": 3700,
+    "resources": 1053
+  },
+  "checks": {
+    "revision88": true,
+    "expected_author": true,
+    "expected_comment": true,
+    "zero_pending_history": true,
+    "all_prepared_model_ids_and_identity_preserved": true,
+    "all310_original_diagram_ids_retained": true,
+    "all2877_original_view_rows_byte_identical": true,
+    "all323_prepared_diagrams_retained": true,
+    "original_diagram_layout_content_and_identity_preserved": true,
+    "only_empty_qualifiers_added_to_new_associations": true,
+    "new_connector_paths_endpoints_and_labels_preserved": true,
+    "new_diagram_changes_are_commit_metadata_or_same_view_sort_order": true,
+    "no_original_resource_removed": true,
+    "removed_resources_are_new_screen_svg_previews": true,
+    "existing_resource_content_retained_with_appended_lazy_preview_index": true,
+    "all_six_published_screens_render_identically": true,
+    "all13_new_diagrams_rendered_from_committed_native": true,
+    "privacy_scan_passed": true
+  },
+  "publication_changes": {
+    "existing_diagrams": "Vendor commit metadata and equivalent address qualification only; all original view rows remain byte-identical.",
+    "new_associations": "Four empty qualifiers added by the first Desktop commit; original endpoints preserved.",
+    "new_connectors": "22 connector bounding boxes recalculated; saved paths, pin positions, endpoints and labels unchanged.",
+    "new_diagrams": "Commit metadata and drawing-order normalization of the same view IDs.",
+    "new_screen_resources": "12 generated SVG preview/cache records moved into the lazy-preview index. All six native states freshly rendered with identical pixels.",
+    "old_resources": "No original resource removed. Other content remains exact except an appended lazy-preview index."
+  },
+  "fresh_screen_exports": [
+    {
+      "diagram": "XMP4g4WD.AAAAQ08",
+      "title": "Choose a matchup",
+      "fresh_export_matches_prepared_screen_pixels": true
+    },
+    {
+      "diagram": "vuP4g4WD.AAAAQ2V",
+      "title": "Load current season",
+      "fresh_export_matches_prepared_screen_pixels": true
+    },
+    {
+      "diagram": "QRP4g4WD.AAAAQ25",
+      "title": "Show season summary",
+      "fresh_export_matches_prepared_screen_pixels": true
+    },
+    {
+      "diagram": "CpP4g4WD.AAAAQ3h",
+      "title": "Hide when not applicable",
+      "fresh_export_matches_prepared_screen_pixels": true
+    },
+    {
+      "diagram": "u5P4g4WD.AAAAQ4F",
+      "title": "No data",
+      "fresh_export_matches_prepared_screen_pixels": true
+    },
+    {
+      "diagram": "oVP4g4WD.AAAAQ4l",
+      "title": "Could not load summary",
+      "fresh_export_matches_prepared_screen_pixels": true
+    }
+  ],
+  "note": "The later orthogonal GET-connector draft was never adopted or published. This proof and all curated assets refer only to committed revision88."
+}

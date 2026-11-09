@@ -55,7 +55,10 @@ SCRUM-787 and SCRUM-788 passed hosted retesting: actual CSV/PDF files saved, and
 the copied link opened a matching Quick-Call for the coach. Analysts remained
 blocked from that coach page. The coach link represents one situation from
 the report filters, using the margin closest to a tie; it does not pass an entire
-margin range to Quick-Call. VP publication remains the final step for SCRUM-777.
+margin range to Quick-Call. The matching use-case flow, API design, validation links and screen states are
+published in VP revision 88. See ../season-summary-model/ for the native model
+and publication checks. The shared report has matching use-case, UI and test
+updates; its existing review mode and teammate changes were preserved.
 
 Frontend: https://nbaplayranker-seven.vercel.app
 Vercel deployment: dpl_44aNGta92YE9BdzFiy2YfHycwzH3 (production READY).

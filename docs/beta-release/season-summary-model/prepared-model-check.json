@@ -1,0 +1,279 @@
+{
+  "verified": true,
+  "baseline_shared_revision": 87,
+  "checked_at": "2026-11-09T16:29:40.783460+00:00",
+  "candidate_sha256": "e2ce3d9b2027b75e4f691b51467d122b89e17478ad43595cb78ddeaa78e853fd",
+  "checks": {
+    "sqlite_integrity_ok": true,
+    "all_original_model_ids_preserved": true,
+    "original_model_identity_creators_and_timestamps_preserved": true,
+    "only_expected_model_content_changes": true,
+    "diagram_original_ids_preserved": true,
+    "diagram_original_rows_byte_identical": true,
+    "diagram_element_original_ids_preserved": true,
+    "diagram_element_original_rows_byte_identical": true,
+    "project_file_original_ids_preserved": true,
+    "original_resource_bytes_preserved": true,
+    "uc30_season_only": true,
+    "uc30_correct_usage_denominator": true,
+    "uc30_coach_rerun": true,
+    "uc30_empty_result": true,
+    "uc30_timeout": true,
+    "uc30_latest_request": true,
+    "uc30_role_checks": true,
+    "uc30_source_failure": true,
+    "uc30_no_forecast": true,
+    "uc30_test_arithmetic": true,
+    "uc30_test_no_data": true,
+    "uc30_test_roles": true,
+    "uc30_test_screens": true,
+    "uc30_test_retry": true,
+    "exactly_five_summary_test_cases": true,
+    "all_requested_diagrams_saved": true,
+    "native_wireflow_saved": true,
+    "six_native_screens": true,
+    "uc30_wireflow_link": true,
+    "authoritative_project_unchanged": true
+  },
+  "model_identity_changes": [],
+  "model_content_changes": [
+    {
+      "id": "kOHnKVmAUUE.bzDc",
+      "name": "Interaction Model",
+      "type": "Model"
+    },
+    {
+      "id": "8zHsqVmAUUE.bzvI",
+      "name": "Association",
+      "type": "ModelRelationshipContainer"
+    },
+    {
+      "id": "Z9YMi1mGAqAALhL1",
+      "name": "Coach",
+      "type": "Actor"
+    },
+    {
+      "id": "CE8Mi1mGAqAALhMB",
+      "name": "Analyst",
+      "type": "Actor"
+    },
+    {
+      "id": "Ni5Fq1mGAqAALgl.",
+      "name": "Validation Model",
+      "type": "Model"
+    },
+    {
+      "id": "WlLCa1mGAqAALh.o",
+      "name": "Dependency",
+      "type": "ModelRelationshipContainer"
+    },
+    {
+      "id": "1fgVX1mGAqAALhpS",
+      "name": "On Demand KPI Block",
+      "type": "UseCase"
+    },
+    {
+      "id": "n.GDX1mGAqAALhvl",
+      "name": "Uplift & KPI Surfacing",
+      "type": "Package"
+    },
+    {
+      "id": "_Bfs31mGAqAALlYq",
+      "name": "WireflowConnector",
+      "type": "ModelRelationshipContainer"
+    },
+    {
+      "id": "BwYKwNmGAqAALne6",
+      "name": "Message",
+      "type": "ModelRelationshipContainer"
+    },
+    {
+      "id": "ln1mGLmAUAAADRSY",
+      "name": "Recommendation UI",
+      "type": "Subsystem"
+    },
+    {
+      "id": "Pq3mGLmAUAAADRS5",
+      "name": "API Coordination",
+      "type": "Subsystem"
+    },
+    {
+      "id": "NIGWGLmAUAAADRT7",
+      "name": "Statistical Analysis",
+      "type": "Subsystem"
+    },
+    {
+      "id": "Q0q54bmAUAAADWMo",
+      "name": "Realization",
+      "type": "ModelRelationshipContainer"
+    },
+    {
+      "id": "60KwWwWAUAAADRZX",
+      "name": "Frontend Infrastructure",
+      "type": "Subsystem"
+    },
+    {
+      "id": "Elab71605d6c9012",
+      "name": "TopKUplift",
+      "type": "Class"
+    }
+  ],
+  "table_deltas": {
+    "DIAGRAM": {
+      "before": 310,
+      "after": 323,
+      "missing": [],
+      "added": [
+        "B3523d8d8e359879",
+        "B36dc0abbf6acad0",
+        "B39e096bce90c629",
+        "B3bacba23325de15",
+        "B3beeae47bbd9d16",
+        "B3cd7012fe3f6553",
+        "CpP4g4WD.AAAAQ3h",
+        "F0P4g4WD.AAAAQ03",
+        "QRP4g4WD.AAAAQ25",
+        "XMP4g4WD.AAAAQ08",
+        "oVP4g4WD.AAAAQ4l",
+        "u5P4g4WD.AAAAQ4F",
+        "vuP4g4WD.AAAAQ2V"
+      ],
+      "changed": []
+    },
+    "DIAGRAM_ELEMENT": {
+      "before": 2877,
+      "after": 2974,
+      "missing": [],
+      "added": [
+        ".Ekkg4WD.AAAAQ08",
+        "1Ekkg4WD.AAAAQ1E",
+        "1kkkg4WD.AAAAQ2Z",
+        "2Ekkg4WD.AAAAQ06",
+        "2kkkg4WD.AAAAQ2N",
+        "3kP4g4WD.AAAAQzD",
+        "5kkkg4WD.AAAAQ2U",
+        "6kP4g4WD.AAAAQyG",
+        "6kkkg4WD.AAAAQ2I",
+        "7kP4g4WD.AAAAQy_",
+        "80P4g4WD.AAAAQ0v",
+        "B3166291a14ac6d4",
+        "B3180dbc10a6328e",
+        "B32100c1e5ca9453",
+        "B32191e390d75122",
+        "B322fed89445a6d4",
+        "B3237e2518da7206",
+        "B324ab172502c611",
+        "B324e93a72067ddf",
+        "B325cf30e0c34fc8",
+        "B326d649e0cce970",
+        "B32b8e7666a01498",
+        "B32d31ea0f832b94",
+        "B33cc7273c5d2acb",
+        "B3410a3c36b43d0c",
+        "B34b7222f4f2165d",
+        "B34bef1e2cf3951a",
+        "B351180f9f23f615",
+        "B35d14dab0e8f2f6",
+        "B35fce31b0cfa4fe",
+        "B3604796eb4681bf",
+        "B3618bc524c4bffc",
+        "B36c3991ff59085d",
+        "B375057646b8e783",
+        "B376ab4763d564c0",
+        "B37e09672101d139",
+        "B37fd961cfc6df49",
+        "B3834c6bfa7e0ca1",
+        "B394aeb49756f966",
+        "B39a7906b4bdaf53",
+        "B39bf399c5179a9d",
+        "B3a62a64de1702d2",
+        "B3a978ebc53d4213",
+        "B3adc83f66887f91",
+        "B3b80dcf33626943",
+        "B3b8a6353563fd6c",
+        "B3bbff75c856381d",
+        "B3bc918bed25d282",
+        "B3c5d639f23d5f85",
+        "B3c623294d859747",
+        "B3cd5b6d850d1ae7",
+        "B3d40df1d0735435",
+        "B3d8b7db88486557",
+        "B3e746eb21dd8ab4",
+        "B3e83fcaeecaf1e7",
+        "B3e9d2811a2cb6de",
+        "B3f5140800dd09f7",
+        "B3fa8ac84e21fa46",
+        "BeP4g4WD.AAAAQ2n",
+        "Ckkkg4WD.AAAAQ2B",
+        "DRP4g4WD.AAAAQ3N",
+        "FEkkg4WD.AAAAQ1C",
+        "Fkkkg4WD.AAAAQ2W",
+        "Gkkkg4WD.AAAAQ2K",
+        "JEkkg4WD.AAAAQ1A",
+        "Jkkkg4WD.AAAAQ2T",
+        "K0P4g4WD.AAAAQ01",
+        "Kkkkg4WD.AAAAQ2F",
+        "NEkkg4WD.AAAAQ1F",
+        "Okkkg4WD.AAAAQ2O",
+        "REkkg4WD.AAAAQ0.",
+        "Rkkkg4WD.AAAAQ2R",
+        "S0P4g4WD.AAAAQ0z",
+        "Skkkg4WD.AAAAQ2C",
+        "U0P4g4WD.AAAAQ0t",
+        "Vkkkg4WD.AAAAQ2X",
+        "Wkkkg4WD.AAAAQ2L",
+        "WpP4g4WD.AAAAQ3z",
+        "Z5P4g4WD.AAAAQ4V",
+        "akP4g4WD.AAAAQyE",
+        "akkkg4WD.AAAAQ2H",
+        "cVP4g4WD.AAAAQ41",
+        "eEkkg4WD.AAAAQ07",
+        "ekkkg4WD.AAAAQ2Q",
+        "fkP4g4WD.AAAAQzH",
+        "hEkkg4WD.AAAAQ09",
+        "i0P4g4WD.AAAAQ0x",
+        "lEkkg4WD.AAAAQ1D",
+        "nkP4g4WD.AAAAQzB",
+        "ocP4g4WD.AAAAQ1b",
+        "pEkkg4WD.AAAAQ1B",
+        "skkkg4WD.AAAAQ1_",
+        "tEkkg4WD.AAAAQ1G",
+        "vkP4g4WD.AAAAQzF",
+        "xEkkg4WD.AAAAQ0_",
+        "ykP4g4WD.AAAAQyC",
+        "ykkkg4WD.AAAAQ2E"
+      ],
+      "changed": []
+    },
+    "PROJECT_FILE": {
+      "before": 1047,
+      "after": 1065,
+      "missing": [],
+      "added": [
+        "DiagramState/CpP4g4WD.AAAAQ3h/Wireflow/ipP4g4WD.AAAAQ3j",
+        "DiagramState/CpP4g4WD.AAAAQ3h/Wireflow/ipP4g4WD.AAAAQ3j__metadata",
+        "DiagramState/QRP4g4WD.AAAAQ25/Wireflow/IRP4g4WD.AAAAQ27",
+        "DiagramState/QRP4g4WD.AAAAQ25/Wireflow/IRP4g4WD.AAAAQ27__metadata",
+        "DiagramState/XMP4g4WD.AAAAQ08/Wireflow/0sP4g4WD.AAAAQ0_",
+        "DiagramState/XMP4g4WD.AAAAQ08/Wireflow/0sP4g4WD.AAAAQ0___metadata",
+        "DiagramState/oVP4g4WD.AAAAQ4l/Wireflow/YVP4g4WD.AAAAQ4n",
+        "DiagramState/oVP4g4WD.AAAAQ4l/Wireflow/YVP4g4WD.AAAAQ4n__metadata",
+        "DiagramState/u5P4g4WD.AAAAQ4F/Wireflow/.5P4g4WD.AAAAQ4H",
+        "DiagramState/u5P4g4WD.AAAAQ4F/Wireflow/.5P4g4WD.AAAAQ4H__metadata",
+        "DiagramState/vuP4g4WD.AAAAQ2V/Wireflow/IeP4g4WD.AAAAQ2X",
+        "DiagramState/vuP4g4WD.AAAAQ2V/Wireflow/IeP4g4WD.AAAAQ2X__metadata",
+        "HTMLStringProperties/B3523d8d8e359879_documentation",
+        "HTMLStringProperties/B36dc0abbf6acad0_documentation",
+        "HTMLStringProperties/B39e096bce90c629_documentation",
+        "HTMLStringProperties/B3bacba23325de15_documentation",
+        "HTMLStringProperties/B3beeae47bbd9d16_documentation",
+        "HTMLStringProperties/B3cd7012fe3f6553_documentation"
+      ],
+      "changed": [
+        "ormpane.xml"
+      ]
+    }
+  },
+  "pending_history": 1310,
+  "normalization": "Model comparison ignores only modification timestamps, property-map order and equivalent qualified references. Original diagrams and diagram elements are compared as complete database rows. Publication is not claimed."
+}
