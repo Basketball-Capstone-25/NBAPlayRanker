@@ -11,6 +11,7 @@ import {
   describeClutch,
   type ClutchFilters,
   type ClutchReport,
+  type ZoneSplit,
 } from "../../domain/clutch-report";
 import { fetchClutchReport } from "../../services/clutch-report";
 
@@ -26,6 +27,75 @@ export type ClutchReportPanelProps = {
   season?: string;
   team?: string;
 };
+
+const SMALL_STYLE: React.CSSProperties = { background: "#fff4d6", color: "#7a4b00" };
+
+function pps(split: ZoneSplit): string {
+  return split.points_per_shot === null ? "—" : split.points_per_shot.toFixed(2);
+}
+
+function SplitCells({ split }: { split: ZoneSplit }) {
+  const style = split.small_sample ? SMALL_STYLE : undefined;
+  return (
+    <>
+      <td style={style} data-small-sample={split.small_sample ? "true" : undefined}>
+        {split.shots}
+        {split.small_sample ? <span title="Small sample"> *</span> : null}
+      </td>
+      <td style={style}>{split.makes}</td>
+      <td style={style}>{pps(split)}</td>
+    </>
+  );
+}
+
+/** Both teams side by side by zone; zones under the small-sample threshold are shaded and starred. */
+export function ClutchTable({ report }: { report: ClutchReport }) {
+  const { team, opp } = report.filters;
+  if (report.rows.length === 0) {
+    return <p className="muted" style={{ fontSize: 13 }}>{report.message ?? "No shots match these situations."}</p>;
+  }
+  return (
+    <>
+      <div style={{ overflowX: "auto" }}>
+        <table aria-label={`Clutch shots by zone, ${team} vs ${opp}`} style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, textAlign: "center" }}>
+          <thead>
+            <tr>
+              <th />
+              <th colSpan={3} scope="colgroup">{team}</th>
+              <th colSpan={3} scope="colgroup">{opp}</th>
+            </tr>
+            <tr>
+              <th scope="col" style={{ textAlign: "left" }}>Zone</th>
+              {[team, opp].flatMap((t) => [
+                <th key={`${t}-s`} scope="col">Shots</th>,
+                <th key={`${t}-m`} scope="col">Makes</th>,
+                <th key={`${t}-p`} scope="col">Pts/shot</th>,
+              ])}
+            </tr>
+          </thead>
+          <tbody>
+            {report.rows.map((row) => (
+              <tr key={row.zone}>
+                <th scope="row" style={{ textAlign: "left", fontWeight: 600 }}>{row.label}</th>
+                <SplitCells split={row.team} />
+                <SplitCells split={row.opp} />
+              </tr>
+            ))}
+            <tr style={{ fontWeight: 700 }}>
+              <th scope="row" style={{ textAlign: "left" }}>All zones</th>
+              <SplitCells split={report.totals.team} />
+              <SplitCells split={report.totals.opp} />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p className="muted" style={{ fontSize: 12 }}>
+        * Fewer than {report.small_sample_threshold} shots: a small sample, so treat its rate with caution.
+        {report.dataset_version ? ` Data version ${report.dataset_version.slice(0, 19)}.` : ""}
+      </p>
+    </>
+  );
+}
 
 function toInt(value: string): number {
   return value.trim() === "" ? NaN : Number(value);
@@ -141,6 +211,7 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
           {applied.team.toUpperCase()} vs {applied.opp.toUpperCase()}, {applied.season}: {describeClutch(applied)}.
         </p>
       ) : null}
+      {status === "ready" && report ? <ClutchTable report={report} /> : null}
     </section>
   );
 }
