@@ -11,6 +11,8 @@ import DataQualityPanel from "./DataQualityPanel";
 import DatasetMetadataPanel from "./DatasetMetadataPanel";
 import ShotDataExplorer from "./ShotDataExplorer";
 import AnalystSeasonSummary from "./AnalystSeasonSummary";
+import SavedQueriesPanel from "./SavedQueriesPanel";
+import type { FilterOptions, QueryDefinition, SavedQuery } from "../../domain/saved-query";
 import {
   API_BASE,
   authenticatedDownload,
@@ -404,6 +406,34 @@ export default function DataExplorerClient() {
     return rest.length ? `${first}&${rest.join("&")}` : first;
   }, [season, team, side, playType, minPoss, limit]);
 
+  // SCRUM-771: the current Synergy view as a saved query, and opening one back.
+  const synergyQuery = useMemo<QueryDefinition>(
+    () => ({
+      dataset: "synergy",
+      filters: { season, team, side, playType, minPoss, search },
+      sortKey,
+      sortDir,
+      rowLimit: limit,
+    }),
+    [season, team, side, playType, minPoss, search, sortKey, sortDir, limit]
+  );
+  const synergyOptions = useMemo<FilterOptions>(
+    () => ({ season: meta.seasons, team: meta.teams, playType: meta.playTypes }),
+    [meta.seasons, meta.teams, meta.playTypes]
+  );
+  function openSynergyQuery(query: SavedQuery) {
+    const f = query.filters;
+    setSeason(String(f.season ?? ""));
+    setTeam(String(f.team ?? ""));
+    setSide(String(f.side ?? "offense"));
+    setPlayType(String(f.playType ?? ""));
+    setMinPoss(Number(f.minPoss ?? 0) || 0);
+    setSearch(String(f.search ?? ""));
+    setSortKey(query.sortKey ?? "PPP");
+    setSortDir(query.sortDir ?? "desc");
+    setLimit(query.rowLimit);
+  }
+
   if (dataset === "shots") {
     return (
       <main className="page" style={{ paddingBottom: 56 }}>
@@ -706,6 +736,8 @@ export default function DataExplorerClient() {
           </p>
         )}
       </section>
+
+      <SavedQueriesPanel definition={synergyQuery} options={synergyOptions} onOpen={openSynergyQuery} />
 
       <AnalystSeasonSummary season={season} team={team} side={side} teams={meta.teams} teamNames={meta.teamNames} />
 
