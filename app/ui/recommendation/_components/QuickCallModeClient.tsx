@@ -3,6 +3,7 @@
 // UI Layer — Timeout Quick-Call Mode (SCRUM-628).
 // Top 3 plays in large text, each with its best shot zone and a one-line reason.
 // Score, period and clock change with one tap; the list refreshes within 2 seconds.
+// The #1 play also gets a direct call such as "Run Spot-Up" (SCRUM-497).
 
 import Link from "next/link";
 import React, { Suspense, useMemo, useState } from "react";
@@ -21,6 +22,7 @@ import {
 } from "../../../domain/quick-call";
 import { QuickCallForbiddenError } from "../../../services/quick-call";
 import { useQuickCallResult } from "./useQuickCallResult";
+import TopPickCall from "../../_shared/components/TopPickCall";
 import styles from "./QuickCallMode.module.css";
 
 const CONTROLS: { field: SituationField; label: string; show: (s: QuickCallSituation) => string }[] = [
@@ -126,10 +128,13 @@ function QuickCallInner() {
 
       {result && status === "ready" ? (
         <ol className={styles.plays} aria-label="Top 3 plays">
-          {result.plays.map((play) => (
+          {result.plays.map((play, i) => (
             <li className={styles.play} key={play.play_type}>
               <span className={styles.rank}>{play.rank}</span>
               <div>
+                {i === 0 ? (
+                  <TopPickCall className={styles.call} rows={result.plays.map((p) => ({ playType: p.play_type }))} />
+                ) : null}
                 <div className={styles.playName}>{play.play_type}</div>
                 <div className={styles.zone}>Shot zone: {play.shot_zone}</div>
                 <div className={styles.reason}>{play.reason}</div>
