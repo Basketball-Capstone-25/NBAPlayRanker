@@ -16,6 +16,7 @@ import { normalizeWeights } from "../../../domain/weight-calculation";
 import ReportExport from "../../_shared/components/ReportExport";
 import TopPickCall from "../../_shared/components/TopPickCall";
 import TopPickBadge from "../../_shared/components/TopPickBadge";
+import SeasonSummary from "../../_shared/components/SeasonSummary";
 import { topPickIndexes } from "../../../domain/top-pick";
 import { baselineReport, resultKey } from "../../../infrastructure/report-export";
 
@@ -247,6 +248,7 @@ export default function MatchupPage() {
   currentVizKeyRef.current = currentVizKey;
   const currentViz = loadedVizKey === currentVizKey ? viz : null;
   const resultsCurrent = loadedKey === currentKey && rows.length > 0 && !loading && !error;
+  const summaryReady = loadedKey === currentKey && !loading && !error;
   const exportPayload = resultsCurrent ? baselineReport(exportFilters, rows) : null;
 
   const runContextHref = useMemo(() => {
@@ -878,6 +880,9 @@ export default function MatchupPage() {
           {error ? <div className="error">{error}</div> : null}
         </div>
       </div>
+
+      <SeasonSummary filters={summaryReady ? { season, our, opp, k, w_off: norm.wOff } : null}
+        unavailableReason="Run Baseline to see the summary for these rankings." />
 
       {/* Results */}
       <div className="card resultsCard">

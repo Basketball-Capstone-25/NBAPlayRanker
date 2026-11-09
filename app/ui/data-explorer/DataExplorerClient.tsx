@@ -10,6 +10,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import DataQualityPanel from "./DataQualityPanel";
 import DatasetMetadataPanel from "./DatasetMetadataPanel";
 import ShotDataExplorer from "./ShotDataExplorer";
+import AnalystSeasonSummary from "./AnalystSeasonSummary";
 import {
   API_BASE,
   authenticatedDownload,
@@ -706,6 +707,8 @@ export default function DataExplorerClient() {
         )}
       </section>
 
+      <AnalystSeasonSummary season={season} team={team} side={side} teams={meta.teams} teamNames={meta.teamNames} />
+
       {/* TABLE */}
       <section className="card">
         <div
@@ -805,7 +808,7 @@ export default function DataExplorerClient() {
 
       <details className="card">
         <summary>How this data is prepared</summary>
-        <p className="muted">Player records are combined into team totals. This page shows recorded statistics, not model predictions.</p>
+        <p className="muted">Player records are combined into team totals. The preview table shows recorded statistics, not model predictions.</p>
         <p className="muted">Source: {pipeline?.dataSource || "Unavailable"}</p>
         <ul className="muted">
           {(pipeline?.cleaning_and_aggregation ?? [
