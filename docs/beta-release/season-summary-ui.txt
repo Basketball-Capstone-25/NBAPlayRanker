@@ -1,0 +1,44 @@
+Season summary screens — SCRUM-776
+
+What changed
+The coach Matchup and analyst Data Explorer now show the season summary inline.
+It compares observed team PPP with the modeled Top-K average and shows each
+selected play type's share of the full offensive season.
+
+The coach summary follows the rankings from Run Baseline, including normalized
+weights and Top-K. Changing inputs clears it until the next run finishes.
+The analyst summary uses the selected season and offensive team, a separate
+opponent, Top 5 and 70/30 weights. Table-only filters do not change its totals.
+Defense, all-teams and shot-data views do not show an offensive play-type summary.
+
+How to explain the code
+app/domain/season-summary.ts checks the response matches the requested filters
+and that usage totals and PPP subtraction agree before displaying the numbers.
+app/infrastructure/season-summary.ts sends the session token in the header and
+handles errors, timeout, cancellation and retry. An old reply cannot replace
+the current selection.
+app/ui/_shared/components/SeasonSummary.tsx displays the values and usage bars.
+The coach page supplies its completed ranking filters. AnalystSeasonSummary.tsx
+adds the separate opponent selector and limits the panel to one offensive team.
+
+Local checks
+Both existing test accounts signed in successfully against the local app/API.
+TOR vs BOS, 2024-25, Top 5, 70/30: observed 0.969 PPP; modeled 1.009 PPP;
+difference +0.040 PPP; selected usage 38.3% of 8,517 recorded possessions.
+TOR vs BOS, 2023-24: 0.998 / 1.001 / +0.003 PPP; 40.4% of 8,069 possessions.
+TOR vs DEN, 2024-25: 0.969 / 1.028 / +0.059 PPP.
+Changing the coach season cleared the summary before rerunning. Analyst table
+search kept the same full-season values. Defense, all teams and shot data hid
+the summary as expected. Stopping the local API showed a retry state; restarting
+it and retrying restored the selected matchup. Screenshots are in
+docs/beta-release/season-summary-ui/. These are local screenshots, not deployment proof.
+
+Validation: 361 frontend tests pass, including 48 new client/UI checks. The 25
+summary API tests also pass. TypeScript and the production build pass.
+BST-298 records both role views. BST-299 records filters, missing data and retry.
+The review also corrected the coach's successful-empty-result state so it can
+show No data instead of asking for another run.
+
+Next
+SCRUM-777 covers the VP update, deployment and hosted checks. SCRUM-495 remains
+in progress until those are finished. This change is not deployed yet.

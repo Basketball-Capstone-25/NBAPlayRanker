@@ -1,0 +1,47 @@
+Season summary API - SCRUM-495 / SCRUM-772
+
+This first section adds GET /analytics/playtypes/summary. It accepts season,
+our, opp, k and w_off. The only supported period is "season". Coaches and
+analysts can use it; the existing detailed uplift exports remain analyst-only.
+
+The calculation reuses the existing Top-K rankings and uplift calculation:
+- Observed PPP = all recorded team-season offensive points / possessions.
+- Modeled PPP = sum(predicted PPP * play possessions) / selected possessions.
+- Modeled uplift = modeled PPP - observed PPP.
+- Play usage = play possessions / all team-season offensive possessions * 100.
+
+For example, if Cut has 100 of the team's 400 possessions, its usage is 25%.
+It stays 25% even if Cut is the only selected play. Shortlist weights used in
+the modeled PPP calculation are a different denominator.
+
+Missing seasons or unmatched play types return status=no_data, summary=null
+and an empty play_types list. Invalid filters return 400/422. Bad source data
+returns 503 rather than an invented zero. The response includes its filters,
+source version and limitations. These are historical comparisons, not proof
+that following the recommendations will improve scoring.
+
+Code to review:
+backend/application/analytics_services/season_summary.py - calculation/response
+backend/application/api_coordination/season_summary_endpoints.py - API/access
+backend/tests/test_season_summary.py - arithmetic, filters and access checks
+
+Verification on November 8, 2026:
+- 25 new summary tests passed.
+- 63 focused tests passed, including existing uplift and dashboard tests.
+- The first complete backend run had 586 passes and one request-log shutdown
+  failure because local service settings let other tests queue remote writes.
+  SCRUM-778 tracks permanent test isolation.
+- All 587 backend tests passed with live service settings excluded, using:
+
+SUPABASE_URL='' SUPABASE_PUBLISHABLE_KEY='' NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY='' OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 LOKY_MAX_CPU_COUNT=2 MPLBACKEND=Agg backend/.venv/bin/python -m pytest backend/tests -q
+
+The initial focused run also found a tiny floating-point difference between
+the default defense weight and 1 - w_off. Both calls now use the same explicit
+weights; parity is tested at offense weights 0, 0.7 and 1.
+
+Jira: BST-294 covers the API, with cases BST-295 through BST-297. These are
+local automated results, not deployed browser checks.
+
+Next: SCRUM-776 connects the inline screen. SCRUM-777 covers VP, browser tests,
+deployment and the Beta evidence. SCRUM-495 remains in progress. No frontend
+or production deployment is included in this section.
