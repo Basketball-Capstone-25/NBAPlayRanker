@@ -43,3 +43,36 @@ export function validateName(name: string, existing: readonly SavedQuery[], igno
   const taken = existing.some((q) => q.id !== ignoreId && normalizeQueryName(q.name).toLowerCase() === key);
   return taken ? `You already have a query called "${clean}".` : "";
 }
+
+/** The values each filter can take in the data loaded right now, keyed by filter name. */
+export type FilterOptions = Partial<Record<string, readonly string[]>>;
+
+const FILTER_LABELS: Record<string, string> = {
+  season: "Season",
+  team: "Team",
+  opp: "Opponent",
+  playType: "Play type",
+  shotType: "Shot type",
+  zone: "Zone",
+};
+
+/**
+ * Lists saved filter values that no longer exist in the data, for example a
+ * season that was removed. Blank values mean "all" and are never missing, and
+ * filters with no option list (numbers, search text) are not checked.
+ */
+export function missingValues(definition: QueryDefinition, options: FilterOptions): string[] {
+  const missing: string[] = [];
+  for (const [key, value] of Object.entries(definition.filters)) {
+    const allowed = options[key];
+    if (!allowed || value === "" || typeof value !== "string") continue;
+    if (!allowed.includes(value)) missing.push(`${FILTER_LABELS[key] ?? key} ${value}`);
+  }
+  return missing;
+}
+
+export function describeMissing(missing: readonly string[]): string {
+  if (missing.length === 0) return "";
+  const list = missing.length === 1 ? missing[0] : `${missing.slice(0, -1).join(", ")} and ${missing[missing.length - 1]}`;
+  return `This query uses ${list}, which ${missing.length === 1 ? "is" : "are"} no longer in the data. Change ${missing.length === 1 ? "it" : "them"} and save again.`;
+}
