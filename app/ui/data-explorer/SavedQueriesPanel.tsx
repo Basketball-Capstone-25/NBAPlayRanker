@@ -32,6 +32,9 @@ export default function SavedQueriesPanel({ definition, options, onOpen, service
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [rename, setRename] = useState("");
+  const [confirmId, setConfirmId] = useState<string | null>(null);
 
   useEffect(() => {
     let alive = true;
@@ -64,6 +67,34 @@ export default function SavedQueriesPanel({ definition, options, onOpen, service
     }
     setMessage(`Opened "${query.name}".`);
     onOpen(query);
+  }
+
+  async function saveRename(query: SavedQuery) {
+    setBusy(true);
+    try {
+      const updated = await service.rename(query.id, rename, queries);
+      setQueries((list) => list.map((q) => (q.id === updated.id ? updated : q)).sort(byName));
+      setEditingId(null);
+      setMessage(`Renamed to "${updated.name}".`);
+    } catch (error) {
+      setMessage(errorMessage(error, "The query could not be renamed. Try again."));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function remove(query: SavedQuery) {
+    setBusy(true);
+    try {
+      await service.remove(query.id);
+      setQueries((list) => list.filter((q) => q.id !== query.id));
+      setMessage(`Deleted "${query.name}".`);
+    } catch (error) {
+      setMessage(errorMessage(error, "The query could not be deleted. Try again."));
+    } finally {
+      setConfirmId(null);
+      setBusy(false);
+    }
   }
 
   return (
@@ -103,13 +134,46 @@ export default function SavedQueriesPanel({ definition, options, onOpen, service
         <ul aria-label="Your saved queries" style={{ listStyle: "none", padding: 0, margin: "10px 0 0", display: "grid", gap: 8 }}>
           {queries.map((q) => (
             <li key={q.id} style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-              <strong style={{ flex: "1 1 240px" }}>{q.name}</strong>
+              {editingId === q.id ? (
+                <input
+                  className="input"
+                  aria-label={`New name for ${q.name}`}
+                  value={rename}
+                  maxLength={160}
+                  style={{ flex: "1 1 240px" }}
+                  onChange={(e) => setRename(e.target.value)}
+                />
+              ) : (
+                <strong style={{ flex: "1 1 240px" }}>{q.name}</strong>
+              )}
               <span className="muted" style={{ fontSize: 12 }}>
                 {q.dataset === "shots" ? "Play-by-play shots" : "Synergy play types"}
               </span>
               <button className="btn btn--secondary" type="button" onClick={() => open(q)}>
                 Open
               </button>
+              {editingId === q.id ? (
+                <>
+                  <button className="btn" type="button" disabled={busy} onClick={() => saveRename(q)}>Save name</button>
+                  <button className="btn btn--secondary" type="button" onClick={() => setEditingId(null)}>Cancel</button>
+                </>
+              ) : (
+                <button
+                  className="btn btn--secondary"
+                  type="button"
+                  onClick={() => { setEditingId(q.id); setRename(q.name); setConfirmId(null); }}
+                >
+                  Rename
+                </button>
+              )}
+              {confirmId === q.id ? (
+                <>
+                  <button className="btn" type="button" disabled={busy} onClick={() => remove(q)}>Confirm delete</button>
+                  <button className="btn btn--secondary" type="button" onClick={() => setConfirmId(null)}>Keep</button>
+                </>
+              ) : (
+                <button className="btn btn--secondary" type="button" onClick={() => setConfirmId(q.id)}>Delete</button>
+              )}
             </li>
           ))}
         </ul>
