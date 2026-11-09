@@ -92,3 +92,23 @@ describe("Quick-Call results follow the displayed situation", () => {
     expect(show()).not.toContain('aria-label="Top 3 plays"');
   });
 });
+describe("Quick-Call top-pick call (SCRUM-497)", () => {
+  it("labels only the first ranked play with a direct call", async () => {
+    const three: QuickCallResponse = { ...response(), plays: [
+      { rank: 1, play_type: "PRBallHandler", ppp: 1.12, shot_zone: "Above the break 3", reason: "Best late option." },
+      { rank: 2, play_type: "Spotup", ppp: 1.08, shot_zone: "Corner 3", reason: "Second option." },
+      { rank: 3, play_type: "Isolation", ppp: 0.95, shot_zone: "Mid-range", reason: "Third option." },
+    ] };
+    await new QuickCallRequest().run(base, async () => three, publish);
+    const html = show();
+    expect(html).toContain("Run Pick-and-Roll (Ball Handler)");
+    expect(html).not.toContain("Run Spot-Up");
+    expect(html.match(/data-testid="top-pick-action"/g)?.length).toBe(1);
+  });
+
+  it("does not show a call for a situation that has no current result", async () => {
+    await new QuickCallRequest().run(base, async () => response("Spotup"), publish);
+    expect(show()).toContain("Run Spot-Up");
+    expect(show({ ...base, margin: 5 })).not.toContain("Run Spot-Up");
+  });
+});
