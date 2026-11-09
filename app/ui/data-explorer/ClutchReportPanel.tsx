@@ -4,7 +4,6 @@
 // Analysts pick a matchup and late-game situations, then compare both teams'
 // shots, makes and points per shot by zone.
 
-import Link from "next/link";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
 import { quickCallHref } from "../../domain/quick-call";
 import {
@@ -106,14 +105,40 @@ export function ClutchTable({ report }: { report: ClutchReport }) {
   );
 }
 
-/** PDF and CSV downloads and the Quick-Call preset for the report on screen. */
+export async function copyClutchCoachLink(filters: ClutchFilters, origin: string, writeText: (text: string) => Promise<void>) {
+  const url = new URL(quickCallHref(clutchQuickCallSituation(filters)), origin).href;
+  const reportKey = clutchReportUrl(filters);
+  try {
+    await writeText(url);
+    return { url, reportKey, copied: true };
+  } catch {
+    return { url, reportKey, copied: false };
+  }
+}
+
+type CoachLinkCopy = Awaited<ReturnType<typeof copyClutchCoachLink>>;
+
+export function ClutchCoachLinkFeedback({ filters, copy }: { filters: ClutchFilters; copy: CoachLinkCopy | null }) {
+  if (!copy || copy.reportKey !== clutchReportUrl(filters)) return null;
+  return copy.copied ? <p role="status" className="muted" style={{ fontSize: 13 }}>Coach link copied.</p> :
+    <label style={{ display: "grid", gap: 6, marginTop: 10, fontSize: 13 }}>
+      Could not copy automatically. Select and copy this coach link:
+      <input className="input" readOnly value={copy.url} onFocus={event => event.currentTarget.select()} />
+    </label>;
+}
+
+/** Downloads and a Quick-Call link that the analyst can share with a coach. */
 export function ClutchActions({ filters, downloading, onDownload }: {
   filters: ClutchFilters;
   downloading: "" | ClutchFormat;
   onDownload(format: ClutchFormat): void;
 }) {
-  const href = quickCallHref(clutchQuickCallSituation(filters));
+  const [copy, setCopy] = useState<CoachLinkCopy | null>(null);
+  async function copyLink() {
+    setCopy(await copyClutchCoachLink(filters, window.location.origin, text => navigator.clipboard.writeText(text)));
+  }
   return (
+    <>
     <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
       <button className="btn btn--secondary" type="button" disabled={!!downloading} onClick={() => onDownload("pdf")}>
         {downloading === "pdf" ? "Preparing PDF…" : "Download PDF"}
@@ -121,10 +146,11 @@ export function ClutchActions({ filters, downloading, onDownload }: {
       <button className="btn btn--secondary" type="button" disabled={!!downloading} onClick={() => onDownload("csv")}>
         {downloading === "csv" ? "Preparing CSV…" : "Download CSV"}
       </button>
-      <Link className="btn" href={href} data-testid="clutch-quick-call">
-        Open in Quick-Call
-      </Link>
+      <button className="btn" type="button" onClick={copyLink}>Copy coach link</button>
+      <span className="muted" style={{ fontSize: 12 }}>For a coach account.</span>
     </div>
+    <ClutchCoachLinkFeedback filters={filters} copy={copy} />
+    </>
   );
 }
 
