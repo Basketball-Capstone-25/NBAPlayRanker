@@ -1,0 +1,18 @@
+{
+  "status": {
+    "latestReadyRevisionName": "nba-playranker-api-00018-xoy",
+    "traffic": [
+      {
+        "revisionName": "nba-playranker-api-00016-bop",
+        "tag": "alpha",
+        "url": "https://alpha---nba-playranker-api-bbv5uwlpba-nn.a.run.app"
+      },
+      {
+        "percent": 100,
+        "revisionName": "nba-playranker-api-00018-xoy",
+        "tag": "beta-summary",
+        "url": "https://beta-summary---nba-playranker-api-bbv5uwlpba-nn.a.run.app"
+      }
+    ]
+  }
+}

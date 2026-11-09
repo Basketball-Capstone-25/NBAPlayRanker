@@ -1,0 +1,105 @@
+{
+  "recorded_at": "2026-11-09T16:32:10.499313+00:00",
+  "frontend_commit": "e085b3b2bdfae2d7f593f7429cb5f5806b9df63b",
+  "deployment": "dpl_44aNGta92YE9BdzFiy2YfHycwzH3",
+  "stable_url": "https://nbaplayranker-seven.vercel.app",
+  "backend_revision": "nba-playranker-api-00018-xoy",
+  "checks": [
+    {
+      "name": "Coach summary",
+      "passed": true,
+      "observed": "TOR/BOS 2024-25: observed 0.969, modeled 1.009, difference +0.040; usage 38.3% of 8,517 possessions."
+    },
+    {
+      "name": "Coach filter change",
+      "passed": true,
+      "observed": "Changing season cleared the old summary until Run Baseline finished."
+    },
+    {
+      "name": "Coach second season",
+      "passed": true,
+      "observed": "TOR/BOS 2023-24: observed 0.998, modeled 1.001, difference +0.003; usage 40.4% of 8,069 possessions."
+    },
+    {
+      "name": "Analyst opponent change",
+      "passed": true,
+      "observed": "TOR/DEN 2024-25: observed 0.969, modeled 1.028, difference +0.059; usage 38.3% of 8,517 possessions."
+    },
+    {
+      "name": "Analyst defense gate",
+      "passed": true,
+      "observed": "Selecting Defense replaced the summary with a request to select one team and Offense."
+    },
+    {
+      "name": "Analyst shot-data gate",
+      "passed": true,
+      "observed": "Switching to Play-by-play shots removed the season summary."
+    },
+    {
+      "name": "Saved query persistence",
+      "passed": true,
+      "observed": "A disposable query survived reload; Open restored the saved 2024-25 season after changing to 2023-24."
+    },
+    {
+      "name": "Saved query cleanup",
+      "passed": true,
+      "observed": "The disposable query was deleted; the screen confirmed No saved queries yet."
+    },
+    {
+      "name": "Clutch browser CSV",
+      "passed": true,
+      "observed": "Downloaded 550 bytes; byte-identical to the verified 10-row direct API CSV, with all values matching the displayed five zones for TOR and BOS."
+    },
+    {
+      "name": "Clutch browser PDF",
+      "passed": true,
+      "observed": "Downloaded 2,661 bytes; rendered one page, with readable matching filters, five zones, totals and small-sample warnings."
+    },
+    {
+      "name": "Coach link copy",
+      "passed": true,
+      "observed": "Copied the stable-host link for TOR/BOS 2024-25, margin 0, period 4, time 300."
+    },
+    {
+      "name": "Analyst role protection",
+      "passed": true,
+      "observed": "Opening the coach link as analyst redirected to Data Explorer."
+    },
+    {
+      "name": "Coach handoff",
+      "passed": true,
+      "observed": "Opening the same link as coach loaded TOR/BOS, tied, Q4, 5:00 and three recommendations. This is one representative situation, not the full margin range."
+    }
+  ],
+  "limits": [
+    "Scoped feature and integration checks, not a full-app performance or accessibility audit.",
+    "No production outage was forced. Empty/error/late-response behavior is covered by API and local component checks.",
+    "The browser download event timed out, but newly saved files were found in Downloads and inspected."
+  ],
+  "files": {
+    "coach-summary.jpg": {
+      "bytes": 90365,
+      "sha256": "1c96cad2000f467e3b5f07d3fc75ea7e41b0b0e094781027676987acd92ad03c"
+    },
+    "analyst-summary.jpg": {
+      "bytes": 86227,
+      "sha256": "dd6a0c8d3538cd24755b9f72eb324688332e10f41f4475a81f88202c43393b10"
+    },
+    "clutch-report.jpg": {
+      "bytes": 84586,
+      "sha256": "41fa076aada243ee45786d3576d0585af758db9c682a40e631676da5bf94520f"
+    },
+    "coach-handoff.jpg": {
+      "bytes": 81585,
+      "sha256": "18cf824f21be56bda59dc6b75250a097cf3384107b5e295960883c25789e05d8"
+    },
+    "clutch-browser.csv": {
+      "bytes": 550,
+      "sha256": "fdaf0482c880b3546786bf7ff5887660e5033391f4e576bfc691b06e9baf1db2"
+    },
+    "clutch-browser.pdf": {
+      "bytes": 2661,
+      "sha256": "0015a7cbed75ef24bb7bef993c43521b92d7800708fe9060714b0d7d43fa853d"
+    }
+  }
+}

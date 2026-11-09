@@ -1,0 +1,15 @@
+{
+  "frontend_commit": "e085b3b2bdfae2d7f593f7429cb5f5806b9df63b",
+  "deployment_id": "dpl_44aNGta92YE9BdzFiy2YfHycwzH3",
+  "state": "READY",
+  "production_alias": "nbaplayranker-seven.vercel.app",
+  "backend_commit": "b8bc1d573f227604ee644e95e8cb28047942dd9f",
+  "backend_build": "e492b921-c0e6-40b1-8381-2e964df83859",
+  "backend_revision": "nba-playranker-api-00018-xoy",
+  "traffic_percent": 100,
+  "github_ci": 42653442314,
+  "backend_tests": 609,
+  "frontend_tests": 401,
+  "production_api_checks": 81,
+  "browser_checks": 13
+}

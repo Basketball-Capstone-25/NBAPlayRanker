@@ -1,0 +1,13 @@
+"# Clutch report TOR vs BOS 2024-25: 4th quarter and overtime, 5:00 or less left, margin -5 to +5"
+# Zones with fewer than 20 shots are small samples
+zone,team,shots,makes,points,points_per_shot,small_sample
+At the rim,TOR,5,3,6,1.200,yes
+At the rim,BOS,2,1,2,1.000,yes
+Paint (not at the rim),TOR,5,2,4,0.800,yes
+Paint (not at the rim),BOS,1,1,2,2.000,yes
+Mid-range,TOR,1,1,2,2.000,yes
+Mid-range,BOS,2,0,0,0.000,yes
+Corner 3,TOR,2,1,3,1.500,yes
+Corner 3,BOS,7,2,6,0.857,yes
+Above-the-break 3,TOR,2,1,3,1.500,yes
+Above-the-break 3,BOS,7,3,9,1.286,yes

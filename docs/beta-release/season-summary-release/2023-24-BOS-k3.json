@@ -1,0 +1,51 @@
+{
+  "status": "ok",
+  "message": null,
+  "filters": {
+    "period": "season",
+    "season": "2023-24",
+    "our": "TOR",
+    "opp": "BOS",
+    "k": 3,
+    "w_off": 0.7,
+    "w_def": 0.30000000000000004,
+    "side": "offense",
+    "season_phase": "regular_season"
+  },
+  "dataset_version": "sha256:014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b",
+  "aggregation_version": "synergy_regular_season_v2",
+  "summary": {
+    "observed_team_ppp": 0.9975213781137687,
+    "modeled_topk_ppp": 1.0186025603144826,
+    "modeled_uplift_ppp": 0.021081182200713866,
+    "team_possessions": 8069.0,
+    "selected_possessions": 2524.0,
+    "selected_usage_pct": 31.280208204238445,
+    "k_returned": 3
+  },
+  "play_types": [
+    {
+      "rank": 1,
+      "play_type": "PRRollMan",
+      "possessions": 376.0,
+      "usage_pct": 4.65980914611476
+    },
+    {
+      "rank": 2,
+      "play_type": "Spotup",
+      "possessions": 1806.0,
+      "usage_pct": 22.381955632668237
+    },
+    {
+      "rank": 3,
+      "play_type": "OffScreen",
+      "possessions": 342.0,
+      "usage_pct": 4.238443425455447
+    }
+  ],
+  "limitations": [
+    "Season totals only; this source cannot provide last-5 or last-10-game comparisons.",
+    "Modeled uplift is a historical comparison, not measured improvement or a future forecast.",
+    "Usage covers recorded offensive play-type possessions, not independently verified whole-game possessions."
+  ]
+}

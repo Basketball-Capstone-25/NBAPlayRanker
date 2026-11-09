@@ -1,0 +1,79 @@
+Season summary release checks — SCRUM-777
+
+The production API passed 81 checks on November 9, 2026. Both coach and analyst
+accounts returned the same summary. The checks compared API values with the
+source CSV and the existing baseline rankings, then signed both accounts out.
+production-results.json contains each result and the execution time.
+
+Application source: e085b3b2bdfae2d7f593f7429cb5f5806b9df63b
+Backend source: b8bc1d573f227604ee644e95e8cb28047942dd9f
+Cloud Run revision: nba-playranker-api-00018-xoy, promoted to 100% traffic.
+API: https://nba-playranker-api-937082897804.northamerica-northeast1.run.app
+Source checks: 609 backend tests and 401 frontend tests passed, with TypeScript
+and a production build. CI: https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/42653442314
+
+What the numbers mean
+- Observed PPP = recorded offensive points / recorded offensive possessions.
+- Modeled PPP = sum(predicted PPP x selected play possessions) / selected possessions.
+- Difference = modeled PPP - observed PPP.
+- Play usage = play possessions / all recorded offensive season possessions x 100.
+
+Verified examples, all with TOR offense and 70/30 weights:
+Season   Opponent  Top K  Observed PPP  Modeled PPP  Difference  Selected usage
+2024-25  BOS       5      0.969238      1.008873     +0.039635   38.3351%
+2023-24  BOS       3      0.997521      1.018603     +0.021081   31.2802%
+2024-25  DEN       5      0.969238      1.028417     +0.059179   38.3351%
+
+For TOR/BOS 2024-25, the five selected plays have 3,265 of 8,517 recorded
+possessions. 3,265 / 8,517 x 100 = 38.3351%. Their weights in the modeled
+average use the 3,265 selected possessions; usage bars use the full 8,517.
+The three saved JSON responses contain the exact values and filters.
+
+The checks also covered anonymous/invalid-token access, invalid filters, an
+unavailable season, private caching and the analyst-only detailed uplift API.
+Clutch-report CSV and PDF downloaded directly from the API. The CSV's 10 data
+rows matched every zone, team, count, rate and sample flag in its JSON response.
+Both files had the expected filename, content type and private/no-store header.
+The browser also saved both files. The CSV matched the API file byte for byte;
+the one-page PDF was rendered and checked against the displayed table.
+Coach access to the analyst-only clutch report was denied.
+
+Limits and remaining checks
+These summaries use regular-season play-type totals. They do not provide
+last-five/last-ten-game results. Modeled differences are historical comparisons,
+not measured improvement or future predictions. Usage covers recorded play-type
+possessions, not independently verified whole-game possessions. The clutch
+report uses a separate shot dataset and its own selected situation filters.
+
+The live browser passed the 13 scoped checks in browser-results.json. Both
+workspaces displayed the summary correctly. Changing a coach season cleared
+the old result until Run Baseline finished; changing the analyst opponent
+recalculated it. Defense and shot-data views hid the offensive summary.
+A saved-query check also passed reload/open, and its disposable record was deleted.
+
+SCRUM-787 and SCRUM-788 passed hosted retesting: actual CSV/PDF files saved, and
+the copied link opened a matching Quick-Call for the coach. Analysts remained
+blocked from that coach page. The coach link represents one situation from
+the report filters, using the margin closest to a tie; it does not pass an entire
+margin range to Quick-Call. VP publication remains the final step for SCRUM-777.
+
+Frontend: https://nbaplayranker-seven.vercel.app
+Vercel deployment: dpl_44aNGta92YE9BdzFiy2YfHycwzH3 (production READY).
+The build includes the shared saved-query and clutch-report changes from main.
+Cloud Run kept 1 CPU, 2 GiB, min 0, max 2, concurrency 2 and the existing
+auth/environment settings. No paid tier or billing setting changed.
+
+The first staged run stopped on a CSV-verifier mistake: quoted metadata was
+mistaken for the header. Parsing CSV records before filtering comments fixed
+the verifier. The staged retest and production run each passed 81 checks.
+The original failed run remains in the external release workspace; it was not
+a product-data failure and was not replaced by a passing result.
+
+Run the check again from the repository root, using a new output directory:
+backend/.venv/bin/python scripts/verify_summary_release.py --api https://nba-playranker-api-937082897804.northamerica-northeast1.run.app --output /tmp/summary-api-check
+
+The script reads local auth configuration and the existing private test-account
+file. It accepts only the listed service origins, sends no tokens in URLs and
+logs out its sessions. Credentials and raw account data are not included here.
+Source file: backend/data/synergy_playtypes_2019_2025_players.csv
+SHA256: 014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b

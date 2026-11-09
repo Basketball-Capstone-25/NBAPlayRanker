@@ -1,0 +1,368 @@
+{
+  "started_at": "2026-11-09T16:24:21.660816+00:00",
+  "api": "https://nba-playranker-api-937082897804.northamerica-northeast1.run.app",
+  "source_sha256": "014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b",
+  "checks": [
+    {
+      "name": "readiness",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "ready",
+      "passed": true
+    },
+    {
+      "name": "coach sign in",
+      "passed": true
+    },
+    {
+      "name": "analyst sign in",
+      "passed": true
+    },
+    {
+      "name": "anonymous summary denied",
+      "passed": true,
+      "status": 401
+    },
+    {
+      "name": "invalid token denied",
+      "passed": true,
+      "status": 401
+    },
+    {
+      "name": "2024-25-BOS-k5 coach",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "2024-25-BOS-k5 analyst",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "2024-25-BOS-k5 role parity",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 private",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 scope",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 source",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 possession denominator",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 observed PPP",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 rankings",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "2024-25-BOS-k5 selected types",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 modeled PPP",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 difference",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 usage PRRollMan",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 usage Spotup",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 usage OffScreen",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 usage Postup",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 usage Isolation",
+      "passed": true
+    },
+    {
+      "name": "2024-25-BOS-k5 selected usage",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 coach",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "2023-24-BOS-k3 analyst",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "2023-24-BOS-k3 role parity",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 private",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 scope",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 source",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 possession denominator",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 observed PPP",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 rankings",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "2023-24-BOS-k3 selected types",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 modeled PPP",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 difference",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 usage PRRollMan",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 usage Spotup",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 usage OffScreen",
+      "passed": true
+    },
+    {
+      "name": "2023-24-BOS-k3 selected usage",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 coach",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "2024-25-DEN-k5 analyst",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "2024-25-DEN-k5 role parity",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 private",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 scope",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 source",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 possession denominator",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 observed PPP",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 rankings",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "2024-25-DEN-k5 selected types",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 modeled PPP",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 difference",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 usage PRRollMan",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 usage Spotup",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 usage OffScreen",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 usage Postup",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 usage Isolation",
+      "passed": true
+    },
+    {
+      "name": "2024-25-DEN-k5 selected usage",
+      "passed": true
+    },
+    {
+      "name": "missing period",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "missing data stays empty",
+      "passed": true
+    },
+    {
+      "name": "invalid selection {'opp': 'TOR'}",
+      "passed": true,
+      "status": 400
+    },
+    {
+      "name": "invalid selection {'period': 'last10'}",
+      "passed": true,
+      "status": 422
+    },
+    {
+      "name": "invalid selection {'k': 11}",
+      "passed": true,
+      "status": 422
+    },
+    {
+      "name": "detailed evidence stays analyst only",
+      "passed": true,
+      "status": 403
+    },
+    {
+      "name": "clutch report",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "clutch csv",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "csv attachment",
+      "passed": true
+    },
+    {
+      "name": "csv private",
+      "passed": true
+    },
+    {
+      "name": "CSV media type",
+      "passed": true
+    },
+    {
+      "name": "CSV metadata",
+      "passed": true
+    },
+    {
+      "name": "CSV columns",
+      "passed": true
+    },
+    {
+      "name": "CSV rows",
+      "passed": true
+    },
+    {
+      "name": "CSV values match report",
+      "passed": true,
+      "data_rows": 10
+    },
+    {
+      "name": "clutch pdf",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "pdf attachment",
+      "passed": true
+    },
+    {
+      "name": "pdf private",
+      "passed": true
+    },
+    {
+      "name": "PDF media type",
+      "passed": true
+    },
+    {
+      "name": "PDF signature",
+      "passed": true
+    },
+    {
+      "name": "coach clutch denied",
+      "passed": true,
+      "status": 403
+    },
+    {
+      "name": "coach session cleaned up",
+      "passed": true,
+      "status": 204
+    },
+    {
+      "name": "analyst session cleaned up",
+      "passed": true,
+      "status": 204
+    }
+  ],
+  "complete": true,
+  "session_cleanup": [
+    {
+      "role": "coach",
+      "status": 204
+    },
+    {
+      "role": "analyst",
+      "status": 204
+    }
+  ],
+  "passed": true,
+  "finished_at": "2026-11-09T16:24:30.490852+00:00"
+}
