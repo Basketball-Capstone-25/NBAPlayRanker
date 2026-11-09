@@ -4,16 +4,25 @@
 // Analysts pick a matchup and late-game situations, then compare both teams'
 // shots, makes and points per shot by zone.
 
+import Link from "next/link";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
+import { quickCallHref } from "../../domain/quick-call";
 import {
   clutchFilterProblem,
+  clutchQuickCallSituation,
   DEFAULT_CLUTCH,
   describeClutch,
   type ClutchFilters,
   type ClutchReport,
   type ZoneSplit,
 } from "../../domain/clutch-report";
-import { fetchClutchReport } from "../../services/clutch-report";
+import {
+  authenticatedDownload,
+  clutchFilename,
+  clutchReportUrl,
+  fetchClutchReport,
+  type ClutchFormat,
+} from "../../services/clutch-report";
 
 type Status = "idle" | "loading" | "ready" | "error";
 
@@ -97,6 +106,28 @@ export function ClutchTable({ report }: { report: ClutchReport }) {
   );
 }
 
+/** PDF and CSV downloads and the Quick-Call preset for the report on screen. */
+export function ClutchActions({ filters, downloading, onDownload }: {
+  filters: ClutchFilters;
+  downloading: "" | ClutchFormat;
+  onDownload(format: ClutchFormat): void;
+}) {
+  const href = quickCallHref(clutchQuickCallSituation(filters));
+  return (
+    <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+      <button className="btn btn--secondary" type="button" disabled={!!downloading} onClick={() => onDownload("pdf")}>
+        {downloading === "pdf" ? "Preparing PDF…" : "Download PDF"}
+      </button>
+      <button className="btn btn--secondary" type="button" disabled={!!downloading} onClick={() => onDownload("csv")}>
+        {downloading === "csv" ? "Preparing CSV…" : "Download CSV"}
+      </button>
+      <Link className="btn" href={href} data-testid="clutch-quick-call">
+        Open in Quick-Call
+      </Link>
+    </div>
+  );
+}
+
 function toInt(value: string): number {
   return value.trim() === "" ? NaN : Number(value);
 }
@@ -108,6 +139,7 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const inFlight = useRef<AbortController | null>(null);
+  const [downloading, setDownloading] = useState<"" | ClutchFormat>("");
 
   // Follow the explorer's season and team until the analyst changes them here.
   useEffect(() => {
@@ -144,6 +176,20 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
       setApplied(null);
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "The clutch report could not be built.");
+    }
+  }
+
+  async function download(format: ClutchFormat) {
+    if (!applied) return;
+    setDownloading(format);
+    try {
+      // Uses the filters of the report on screen, not unsaved edits in the form.
+      await authenticatedDownload(clutchReportUrl(applied, format), clutchFilename(applied, format));
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Download failed.");
+      setStatus("error");
+    } finally {
+      setDownloading("");
     }
   }
 
@@ -212,6 +258,7 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
         </p>
       ) : null}
       {status === "ready" && report ? <ClutchTable report={report} /> : null}
+      {status === "ready" && applied ? <ClutchActions filters={applied} downloading={downloading} onDownload={download} /> : null}
     </section>
   );
 }
