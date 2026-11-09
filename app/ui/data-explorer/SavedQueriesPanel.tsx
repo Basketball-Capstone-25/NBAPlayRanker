@@ -5,7 +5,7 @@
 // states the question it answers, and opens it again later on any device.
 
 import React, { FormEvent, useEffect, useMemo, useState } from "react";
-import type { FilterOptions, QueryDefinition, SavedQuery } from "../../domain/saved-query";
+import { describeMissing, missingValues, type FilterOptions, type QueryDefinition, type SavedQuery } from "../../domain/saved-query";
 import { createSavedQueryService, type SavedQueryService } from "../../services/saved-queries";
 
 type Status = "loading" | "ready" | "unavailable";
@@ -56,6 +56,16 @@ export default function SavedQueriesPanel({ definition, options, onOpen, service
     }
   }
 
+  function open(query: SavedQuery) {
+    const missing = missingValues(query, options);
+    if (missing.length > 0) {
+      setMessage(describeMissing(missing));
+      return;
+    }
+    setMessage(`Opened "${query.name}".`);
+    onOpen(query);
+  }
+
   return (
     <section className="card" aria-label="Saved queries" style={{ marginTop: 14 }}>
       <h2 style={{ margin: "6px 0 4px", fontSize: 16 }}>Saved queries</h2>
@@ -97,6 +107,9 @@ export default function SavedQueriesPanel({ definition, options, onOpen, service
               <span className="muted" style={{ fontSize: 12 }}>
                 {q.dataset === "shots" ? "Play-by-play shots" : "Synergy play types"}
               </span>
+              <button className="btn btn--secondary" type="button" onClick={() => open(q)}>
+                Open
+              </button>
             </li>
           ))}
         </ul>
