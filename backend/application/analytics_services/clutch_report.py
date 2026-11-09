@@ -167,3 +167,38 @@ def build_report(df: pd.DataFrame, f: ClutchFilters) -> Dict[str, Any]:
         "message": message,
         "dataset_version": df.attrs.get("dataset_version"),
     }
+
+
+def _situation(f: Dict[str, Any]) -> str:
+    period = "4th quarter and overtime" if f["period_from"] == 4 else f"period {f['period_from']} onward, including overtime"
+    minutes, seconds = divmod(int(f["seconds_left"]), 60)
+    return f"{period}, {minutes}:{seconds:02d} or less left, margin {f['margin_min']:+d} to {f['margin_max']:+d}"
+
+
+def report_filename(report: Dict[str, Any], ext: str) -> str:
+    f = report["filters"]
+    return f"clutch_{f['team']}_vs_{f['opp']}_{f['season']}.{ext}"
+
+
+CSV_HEADER = [
+    "zone", "team", "shots", "makes", "points", "points_per_shot", "small_sample",
+]
+
+
+def report_csv(report: Dict[str, Any]) -> str:
+    """One row per zone and team, so the two teams can be compared in a spreadsheet."""
+    import csv
+    import io
+
+    f = report["filters"]
+    out = io.StringIO()
+    writer = csv.writer(out, lineterminator="\n")
+    writer.writerow([f"# Clutch report {f['team']} vs {f['opp']} {f['season']}: {_situation(f)}"])
+    writer.writerow([f"# Zones with fewer than {report['small_sample_threshold']} shots are small samples"])
+    writer.writerow(CSV_HEADER)
+    for row in report["rows"]:
+        for side, team in (("team", f["team"]), ("opp", f["opp"])):
+            s = row[side]
+            pps = "" if s["points_per_shot"] is None else f"{s['points_per_shot']:.3f}"
+            writer.writerow([row["label"], team, s["shots"], s["makes"], s["points"], pps, "yes" if s["small_sample"] else "no"])
+    return out.getvalue()
