@@ -3,7 +3,7 @@
 // UI Layer — Data Explorer play-by-play shots (SCRUM-627).
 // Analysts filter the shot dataset, page through 50 shots at a time and export the filtered view.
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   authenticatedDownload,
   canSearchShots,
@@ -19,12 +19,37 @@ import {
   type ShotResult,
 } from "../../services/shot-explorer";
 import styles from "./ShotDataExplorer.module.css";
+import SavedQueriesPanel from "./SavedQueriesPanel";
+import type { FilterOptions, QueryDefinition, SavedQuery } from "../../domain/saved-query";
 
 type Status = "idle" | "loading" | "ready" | "error";
 
 const EMPTY: ShotFilters = { season: "", team: "", opp: "", shotType: "", zone: "", result: "" };
 
-export default function ShotDataExplorer() {
+const RESULTS: readonly ShotResult[] = ["", "made", "missed"];
+
+/** Turns saved filter values back into shot filters, ignoring keys this view does not use (SCRUM-771). */
+export function shotFiltersFrom(query: SavedQuery): ShotFilters {
+  const text = (key: string) => String(query.filters[key] ?? "");
+  const result = text("result") as ShotResult;
+  return {
+    season: text("season"),
+    team: text("team"),
+    opp: text("opp"),
+    shotType: text("shotType"),
+    zone: text("zone"),
+    result: RESULTS.includes(result) ? result : "",
+  };
+}
+
+type ShotDataExplorerProps = {
+  /** A saved shots query to load when the view opens. */
+  initialQuery?: SavedQuery | null;
+  /** Called when the analyst opens a saved Synergy query from this view. */
+  onOpenOther?: (query: SavedQuery) => void;
+};
+
+export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: ShotDataExplorerProps = {}) {
   const [options, setOptions] = useState<PbpMetaOptions | null>(null);
   const [draft, setDraft] = useState<ShotFilters>(EMPTY);
   const [applied, setApplied] = useState<ShotFilters | null>(null);
@@ -71,6 +96,38 @@ export default function ShotDataExplorer() {
       });
     return () => controller.abort();
   }, [applied, page]);
+
+  function openQuery(query: SavedQuery) {
+    if (query.dataset !== "shots") {
+      onOpenOther?.(query);
+      return;
+    }
+    const filters = shotFiltersFrom(query);
+    setDraft(filters);
+    setPage(1);
+    setApplied(canSearchShots(filters) ? filters : null);
+  }
+
+  useEffect(() => {
+    if (initialQuery) openQuery(initialQuery);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialQuery]);
+
+  const shown = applied ?? draft;
+  const definition = useMemo<QueryDefinition>(
+    () => ({ dataset: "shots", filters: { ...shown }, sortKey: null, sortDir: null, rowLimit: SHOT_PAGE_SIZE }),
+    [shown]
+  );
+  const savedOptions = useMemo<FilterOptions>(
+    () => ({
+      season: options?.seasons,
+      team: options?.teams,
+      opp: options?.teams,
+      shotType: options?.shotTypes,
+      zone: options?.zones,
+    }),
+    [options]
+  );
 
   function search(event: FormEvent) {
     event.preventDefault();
@@ -214,6 +271,8 @@ export default function ShotDataExplorer() {
           Next
         </button>
       </div>
+
+      <SavedQueriesPanel definition={definition} options={savedOptions} onOpen={openQuery} />
     </section>
   );
 }
