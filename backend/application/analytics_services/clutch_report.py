@@ -11,6 +11,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, Optional
 
+import pandas as pd
+
 MAX_PERIOD = 4  # 4 = fourth quarter; overtime periods are 5 and above
 MAX_SECONDS_LEFT = 12 * 60
 MAX_MARGIN = 40
@@ -75,3 +77,85 @@ class ClutchFilters:
             "margin_min": self.margin_min,
             "margin_max": self.margin_max,
         }
+
+
+SMALL_SAMPLE = 20  # fewer shots than this in a zone is flagged as a small sample
+ZONE_ORDER = ["rim", "paint", "mid", "corner3", "arc3", "unknown"]  # zone codes from shot_config
+
+
+class ClutchDataUnavailable(RuntimeError):
+    """The shot dataset has not been built or is missing columns (HTTP 503)."""
+
+
+REQUIRED = {"SEASON_STR", "TEAM_ABBR", "OPP_ABBR", "PERIOD", "CLOCK_SEC", "MARGIN", "ZONE", "IS_MAKE"}
+
+
+def _zone_key(zone: str):
+    return (ZONE_ORDER.index(zone), zone) if zone in ZONE_ORDER else (len(ZONE_ORDER), zone)
+
+
+def _points(df: pd.DataFrame) -> pd.Series:
+    made = df["IS_MAKE"].fillna(0).astype(int)
+    if "POINTS" in df.columns:
+        return df["POINTS"].fillna(0).astype(float) * (made > 0)
+    if "SHOT_VALUE" in df.columns:
+        return df["SHOT_VALUE"].fillna(0).astype(float) * made
+    raise ClutchDataUnavailable("Shot data has no points column.")
+
+
+def _split(shots: int, makes: int, points: float) -> Dict[str, Any]:
+    return {
+        "shots": shots,
+        "makes": makes,
+        "points": int(round(points)),
+        "points_per_shot": round(points / shots, 3) if shots else None,
+        "small_sample": shots < SMALL_SAMPLE,
+    }
+
+
+def late_game_shots(df: pd.DataFrame, f: ClutchFilters, shooter: str, defender: str) -> pd.DataFrame:
+    """One team's shots against the other in the chosen late-game situations.
+
+    MARGIN is already the shooting team's score minus the opponent's before the
+    shot, so the same margin range applies to both teams. Shots with an unknown
+    margin are left out rather than guessed.
+    """
+    mask = (
+        (df["SEASON_STR"] == f.season)
+        & (df["TEAM_ABBR"] == shooter)
+        & (df["OPP_ABBR"] == defender)
+        & (df["PERIOD"] >= f.period_from)
+        & (df["CLOCK_SEC"] <= f.seconds_left)
+        & df["MARGIN"].between(f.margin_min, f.margin_max)
+    )
+    return df[mask]
+
+
+def build_report(df: pd.DataFrame, f: ClutchFilters) -> Dict[str, Any]:
+    if df is None or not REQUIRED.issubset(df.columns):
+        raise ClutchDataUnavailable("Shot data is not available yet.")
+    sides = {f.team: late_game_shots(df, f, f.team, f.opp), f.opp: late_game_shots(df, f, f.opp, f.team)}
+    totals: Dict[str, Dict[str, Any]] = {}
+    by_zone: Dict[str, Dict[str, Dict[str, Any]]] = {}
+    for team, shots in sides.items():
+        points = _points(shots)
+        made = shots["IS_MAKE"].fillna(0).astype(int)
+        totals[team] = _split(len(shots), int(made.sum()), float(points.sum()))
+        for zone, idx in shots.groupby(shots["ZONE"].fillna("Unknown")).groups.items():
+            by_zone.setdefault(str(zone), {})[team] = _split(len(idx), int(made.loc[idx].sum()), float(points.loc[idx].sum()))
+    empty = _split(0, 0, 0.0)
+    rows = [
+        {"zone": zone, "team": teams.get(f.team, empty), "opp": teams.get(f.opp, empty)}
+        for zone, teams in sorted(by_zone.items(), key=lambda item: _zone_key(item[0]))
+    ]
+    message = None
+    if not rows:
+        message = "No shots match these situations. Try an earlier period, more time left or a wider margin."
+    return {
+        "filters": f.as_dict(),
+        "small_sample_threshold": SMALL_SAMPLE,
+        "totals": {"team": totals[f.team], "opp": totals[f.opp]},
+        "rows": rows,
+        "message": message,
+        "dataset_version": df.attrs.get("dataset_version"),
+    }
