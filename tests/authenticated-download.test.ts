@@ -4,6 +4,7 @@ const { getSession } = vi.hoisted(() => ({ getSession: vi.fn() }));
 vi.mock("../lib/supabase/client", () => ({ createClient: () => ({ auth: { getSession } }) }));
 
 import { API_BASE, authenticatedDownload } from "../app/infrastructure/api-client";
+import { clutchFilename, clutchReportUrl } from "../app/infrastructure/clutch-report";
 
 describe("authenticated HTTP downloads", () => {
   const anchor = { href: "", target: "", rel: "", click: vi.fn(), remove: vi.fn() };
@@ -42,6 +43,19 @@ describe("authenticated HTTP downloads", () => {
     getSession.mockResolvedValue({ data: { session: null } });
     await expect(authenticatedDownload(`${API_BASE}/rank-plays/baseline.csv`)).rejects.toThrow("Sign in");
     expect(createElement).not.toHaveBeenCalled();
+  });
+
+  it.each(["csv", "pdf"] as const)("opens the clutch %s through the authenticated proxy", async format => {
+    const filters = { season: "2024-25", team: "TOR", opp: "BOS", periodFrom: 4,
+      secondsLeft: 300, marginMin: -5, marginMax: 5 };
+    await authenticatedDownload(clutchReportUrl(filters, format), clutchFilename(filters, format));
+    const target = new URL(anchor.href, "https://frontend.example.test");
+    expect(target.pathname).toBe("/api/exports");
+    expect(target.searchParams.get("path")).toBe(`/data/clutch-report.${format}`);
+    expect(target.searchParams.get("query")).toBe("season=2024-25&team=TOR&opp=BOS&period_from=4&seconds_left=300&margin_min=-5&margin_max=5");
+    expect(target.searchParams.get("filename")).toBe(`clutch_TOR_vs_BOS_2024-25.${format}`);
+    expect(anchor.href).not.toContain("test-session-token");
+    expect(anchor.click).toHaveBeenCalledOnce();
   });
 
   it.each(["https://foreign.example.test/data/team-playtypes.csv", `${API_BASE}/meta/options`])(

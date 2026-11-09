@@ -9,6 +9,8 @@ export const EXPORT_PATHS = new Set([
   "/export/playtype-viz.pdf",
   "/data/pbp-shots.csv",
   "/data/pbp-shots.json",
+  "/data/clutch-report.csv",
+  "/data/clutch-report.pdf",
 ]);
 
 /** File extension for an export path (.pdf, .json or .csv). */

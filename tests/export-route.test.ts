@@ -72,7 +72,7 @@ describe("same-origin export proxy", () => {
     expect(await response.text()).not.toContain("cookie-session-token");
   });
 
-  it.each(["https://foreign.example.test/file.csv", "//foreign.example.test/file.csv", "/meta/options", "/data/../meta/options"])(
+  it.each(["https://foreign.example.test/file.csv", "//foreign.example.test/file.csv", "/meta/options", "/data/../meta/options", "/data/clutch-report.json"])(
     "rejects unapproved paths without authentication or upstream fetch: %s", async path => {
       const response = await GET(request(path));
       expect(response.status).toBe(400);
@@ -80,6 +80,28 @@ describe("same-origin export proxy", () => {
       expect(fetchMock).not.toHaveBeenCalled();
     }
   );
+
+  it.each([["csv", "text/csv", "zone,shots\nAt the rim,2\n"], ["pdf", "application/pdf", "%PDF-clutch-fixture"]])(
+    "forwards the clutch %s with the verified session and preserves the file", async (extension, contentType, body) => {
+      fetchMock.mockResolvedValue(new Response(body, { headers: { "content-type": contentType } }));
+      const path = `/data/clutch-report.${extension}`;
+      const query = "season=2024-25&team=TOR&opp=BOS&period_from=4&seconds_left=300&margin_min=-5&margin_max=5";
+      const response = await GET(request(path, query));
+      expect(response.status).toBe(200);
+      expect(String(fetchMock.mock.calls[0][0])).toBe(`https://api.example.test${path}?${query}`);
+      expect(fetchMock.mock.calls[0][1]).toMatchObject({ headers: { Authorization: "Bearer cookie-session-token" }, cache: "no-store", redirect: "manual" });
+      expect(response.headers.get("content-type")).toBe(contentType);
+      expect(response.headers.get("cache-control")).toBe("private, no-store");
+      expect(await response.text()).toBe(body);
+    }
+  );
+
+  it.each(["csv", "pdf"])("retains backend role denial for clutch %s", async extension => {
+    fetchMock.mockResolvedValue(new Response('{"detail":"Forbidden"}', { status: 403 }));
+    const response = await GET(request(`/data/clutch-report.${extension}`));
+    expect(response.status).toBe(403);
+    expect(response.headers.has("content-disposition")).toBe(false);
+  });
 
   it.each([{ Origin: "https://foreign.example.test" }, { "Sec-Fetch-Site": "cross-site" }])(
     "rejects cross-origin requests", async headers => {
