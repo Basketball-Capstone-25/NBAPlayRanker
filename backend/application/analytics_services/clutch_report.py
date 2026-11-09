@@ -81,6 +81,14 @@ class ClutchFilters:
 
 SMALL_SAMPLE = 20  # fewer shots than this in a zone is flagged as a small sample
 ZONE_ORDER = ["rim", "paint", "mid", "corner3", "arc3", "unknown"]  # zone codes from shot_config
+ZONE_LABELS = {
+    "rim": "At the rim",
+    "paint": "Paint (not at the rim)",
+    "mid": "Mid-range",
+    "corner3": "Corner 3",
+    "arc3": "Above-the-break 3",
+    "unknown": "Unknown location",
+}
 
 
 class ClutchDataUnavailable(RuntimeError):
@@ -145,7 +153,7 @@ def build_report(df: pd.DataFrame, f: ClutchFilters) -> Dict[str, Any]:
             by_zone.setdefault(str(zone), {})[team] = _split(len(idx), int(made.loc[idx].sum()), float(points.loc[idx].sum()))
     empty = _split(0, 0, 0.0)
     rows = [
-        {"zone": zone, "team": teams.get(f.team, empty), "opp": teams.get(f.opp, empty)}
+        {"zone": zone, "label": ZONE_LABELS.get(zone, zone), "team": teams.get(f.team, empty), "opp": teams.get(f.opp, empty)}
         for zone, teams in sorted(by_zone.items(), key=lambda item: _zone_key(item[0]))
     ]
     message = None
