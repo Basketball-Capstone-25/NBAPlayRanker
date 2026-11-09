@@ -421,7 +421,14 @@ export default function DataExplorerClient() {
     () => ({ season: meta.seasons, team: meta.teams, playType: meta.playTypes }),
     [meta.seasons, meta.teams, meta.playTypes]
   );
+  const [pendingShots, setPendingShots] = useState<SavedQuery | null>(null);
   function openSynergyQuery(query: SavedQuery) {
+    if (query.dataset === "shots") {
+      setPendingShots(query);
+      switchDataset("shots");
+      return;
+    }
+    if (dataset !== "synergy") switchDataset("synergy");
     const f = query.filters;
     setSeason(String(f.season ?? ""));
     setTeam(String(f.team ?? ""));
@@ -444,7 +451,7 @@ export default function DataExplorerClient() {
           </p>
           <DatasetSwitch value={dataset} onChange={switchDataset} />
         </header>
-        <ShotDataExplorer />
+        <ShotDataExplorer initialQuery={pendingShots} onOpenOther={openSynergyQuery} />
       </main>
     );
   }
