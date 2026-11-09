@@ -20,6 +20,7 @@ import {
 } from "../../services/shot-explorer";
 import styles from "./ShotDataExplorer.module.css";
 import SavedQueriesPanel from "./SavedQueriesPanel";
+import ClutchReportPanel from "./ClutchReportPanel";
 import type { FilterOptions, QueryDefinition, SavedQuery } from "../../domain/saved-query";
 
 type Status = "idle" | "loading" | "ready" | "error";
@@ -273,6 +274,8 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: S
       </div>
 
       <SavedQueriesPanel definition={definition} options={savedOptions} onOpen={openQuery} />
+
+      <ClutchReportPanel seasons={options?.seasons ?? []} teams={options?.teams ?? []} season={draft.season} team={draft.team} />
     </section>
   );
 }
