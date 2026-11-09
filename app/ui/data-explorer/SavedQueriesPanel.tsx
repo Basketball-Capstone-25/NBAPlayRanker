@@ -25,6 +25,14 @@ export function errorMessage(error: unknown, fallback: string): string {
   return error instanceof Error && error.message ? error.message : fallback;
 }
 
+/** What opening a saved query does: load it, or name the filter values that are gone. */
+export function openOutcome(query: SavedQuery, options: FilterOptions): { load: boolean; message: string } {
+  const missing = missingValues(query, options);
+  return missing.length > 0
+    ? { load: false, message: describeMissing(missing) }
+    : { load: true, message: `Opened "${query.name}".` };
+}
+
 export default function SavedQueriesPanel({ definition, options, onOpen, service: injected }: SavedQueriesPanelProps) {
   const service = useMemo(() => injected ?? createSavedQueryService(), [injected]);
   const [queries, setQueries] = useState<SavedQuery[]>([]);
@@ -60,13 +68,9 @@ export default function SavedQueriesPanel({ definition, options, onOpen, service
   }
 
   function open(query: SavedQuery) {
-    const missing = missingValues(query, options);
-    if (missing.length > 0) {
-      setMessage(describeMissing(missing));
-      return;
-    }
-    setMessage(`Opened "${query.name}".`);
-    onOpen(query);
+    const outcome = openOutcome(query, options);
+    setMessage(outcome.message);
+    if (outcome.load) onOpen(query);
   }
 
   async function saveRename(query: SavedQuery) {
