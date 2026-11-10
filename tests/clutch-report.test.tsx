@@ -129,6 +129,17 @@ describe("clutch report display", () => {
     expect(html).not.toContain('href="/context/quick-call');
   });
 
+  it("shows a failed download under the buttons and only when there is one", () => {
+    const failed = renderToStaticMarkup(
+      <ClutchActions filters={filters} downloading="" onDownload={() => {}} downloadError="Sign in to download this file." />
+    );
+    expect(failed).toContain('role="alert"');
+    expect(failed).toContain("Sign in to download this file.");
+    expect(failed.indexOf("Download CSV")).toBeLessThan(failed.indexOf("Sign in to download this file."));
+    const ok = renderToStaticMarkup(<ClutchActions filters={filters} downloading="" onDownload={() => {}} />);
+    expect(ok).not.toContain('role="alert"');
+  });
+
   it("renders the filter form before a report is built", () => {
     const html = renderToStaticMarkup(<ClutchReportPanel seasons={["2024-25"]} teams={["BOS", "TOR"]} season="2024-25" team="TOR" />);
     for (const text of ['aria-label="Clutch report"', "Your team", "Opponent", "Time left in period", "Margin from", "Build report"])
