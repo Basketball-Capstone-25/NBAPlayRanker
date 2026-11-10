@@ -128,10 +128,12 @@ export function ClutchCoachLinkFeedback({ filters, copy }: { filters: ClutchFilt
 }
 
 /** Downloads and a Quick-Call link that the analyst can share with a coach. */
-export function ClutchActions({ filters, downloading, onDownload }: {
+export function ClutchActions({ filters, downloading, onDownload, downloadError = "" }: {
   filters: ClutchFilters;
   downloading: "" | ClutchFormat;
   onDownload(format: ClutchFormat): void;
+  /** A failed download is shown under the buttons and keeps the report on screen. */
+  downloadError?: string;
 }) {
   const [copy, setCopy] = useState<CoachLinkCopy | null>(null);
   async function copyLink() {
@@ -149,6 +151,7 @@ export function ClutchActions({ filters, downloading, onDownload }: {
       <button className="btn" type="button" onClick={copyLink}>Copy coach link</button>
       <span className="muted" style={{ fontSize: 12 }}>For a coach account.</span>
     </div>
+    {downloadError ? <p role="alert" style={{ fontSize: 13 }}>{downloadError}</p> : null}
     <ClutchCoachLinkFeedback filters={filters} copy={copy} />
     </>
   );
@@ -164,6 +167,7 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
   const [applied, setApplied] = useState<ClutchFilters | null>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  const [downloadError, setDownloadError] = useState("");
   const inFlight = useRef<AbortController | null>(null);
   const [downloading, setDownloading] = useState<"" | ClutchFormat>("");
 
@@ -189,6 +193,7 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
     inFlight.current = controller;
     const filters = { ...draft };
     setStatus("loading");
+    setDownloadError("");
     setMessage("");
     try {
       const data = await fetchClutchReport(filters, controller.signal);
@@ -208,12 +213,12 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
   async function download(format: ClutchFormat) {
     if (!applied) return;
     setDownloading(format);
+    setDownloadError("");
     try {
       // Uses the filters of the report on screen, not unsaved edits in the form.
       await authenticatedDownload(clutchReportUrl(applied, format), clutchFilename(applied, format));
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Download failed.");
-      setStatus("error");
+      setDownloadError(error instanceof Error ? error.message : "Download failed.");
     } finally {
       setDownloading("");
     }
@@ -284,7 +289,7 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
         </p>
       ) : null}
       {status === "ready" && report ? <ClutchTable report={report} /> : null}
-      {status === "ready" && applied ? <ClutchActions filters={applied} downloading={downloading} onDownload={download} /> : null}
+      {status === "ready" && applied ? <ClutchActions filters={applied} downloading={downloading} onDownload={download} downloadError={downloadError} /> : null}
     </section>
   );
 }
