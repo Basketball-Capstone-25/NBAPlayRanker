@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "scope": {
+    "season": "2024-25",
+    "team": "TOR",
+    "side": "offense",
+    "season_phase": "regular_season"
+  },
+  "source_sha256": "014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b",
+  "play_types": 11,
+  "table_body_rows": 33,
+  "matched_numeric_cells": 176,
+  "comparison": "Complete captured table text matches production API rates, counts, labels and signed differences after display formatting.",
+  "captured_table_sha256": "6ad440157ddddc08b5f00a6d8fcb7b2065c4f889e8ab3d93d07eb6e0949b0d88"
+}

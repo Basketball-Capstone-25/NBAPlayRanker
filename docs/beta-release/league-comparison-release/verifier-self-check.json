@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "checks": [
+    "close accepts matching numbers",
+    "close rejects bool",
+    "close rejects NaN",
+    "close rejects numeric strings",
+    "close preserves null",
+    "empty source sample remains unavailable",
+    "zero attempts keep possession rates",
+    "source hash unchanged",
+    "2024-25-TOR-offense matches independent raw totals",
+    "2024-25-TOR-defense matches independent raw totals",
+    "2024-25-BOS-offense matches independent raw totals",
+    "2024-25-BOS-defense matches independent raw totals",
+    "2023-24-TOR-offense matches independent raw totals",
+    "2023-24-TOR-defense matches independent raw totals",
+    "2023-24-BOS-offense matches independent raw totals",
+    "2023-24-BOS-defense matches independent raw totals",
+    "changed rate is detected",
+    "missing difference is detected",
+    "missing category is detected"
+  ],
+  "script_logic_unchanged_except_repo_path": true,
+  "script_sha256": "f3093cd8ac11e08d8d2469e15b00c34d8386bd4c794f28c98c89d6e12f0ac111",
+  "live_requests_repeated": false
+}

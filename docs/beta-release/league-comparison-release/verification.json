@@ -1,0 +1,17 @@
+{
+  "scope": "League comparison release (SCRUM-697/715/716/717)",
+  "source_commit": "a3a321b66ace9ad3da0a134f953e258ec7e53e7b",
+  "frontend": {"url": "https://nbaplayranker-seven.vercel.app", "deployment": "dpl_EaR6wHMZaPu5f4DCZ9szCreLX97w", "project": "prj_qn5meAcMT2pMIF1Y6XXInNBe96c8", "stable_alias_verified": true},
+  "backend": {"revision": "nba-playranker-api-00020-res", "traffic_percent": 100},
+  "checks": {"backend_tests_passed": 636, "frontend_tests_passed": 443, "typescript": "pass", "build": "pass"},
+  "ci": {"run": 43466447052, "conclusion": "success", "url": "https://github.com/Basketball-Capstone-25/NBAPlayRanker/actions/runs/43466447052"},
+  "staged_api": {"record": "staged-results.json", "passed": 52, "scenarios": 8},
+  "production_api": {"record": "production-results.json", "passed": 52, "scenarios": 8},
+  "browser_table": {"record": "browser-table-verification.json", "categories": 11, "rows": 33, "matched_numeric_cells": 176},
+  "browser_checks": ["TOR 2024-25 offense matches the API table", "Cutoff 1000 changes warnings without changing rates", "TOR defense shows seven recorded categories", "BOS 2023-24 works without a distinct opponent", "Stopped local API shows an error; restarting and retrying restores the table", "Existing Usage and efficiency and Opponent weak spots tabs still work"],
+  "source_sha256": "014dfb758ed7a791392bbd5c83d2a770893c0b3cba93e318ce4d4235ef9dfb3b",
+  "verification_script": "../../../scripts/verify_league_release.py",
+  "screenshots": ["production-offense-detail.jpg", "production-defense.jpg", "local-api-unavailable.jpg"],
+  "limits": ["League comparison and existing summary smoke checks only; not a full application audit.", "The outage and retry check used the local API."],
+  "cleanup": {"local_test_servers": "stopped", "api_sessions": "coach and analyst logout returned 204 in both runs"}
+}

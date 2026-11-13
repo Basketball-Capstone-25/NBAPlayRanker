@@ -1,0 +1,37 @@
+League comparison release
+
+Open https://nbaplayranker-seven.vercel.app/matchup-dashboard as a coach.
+Choose League comparison, TOR, 2024–25 and Offense.
+The table shows FG%, eFG%, turnover and free-throw possession rates,
+with team and league counts and percentage-point differences.
+
+What was checked
+636 backend tests, 443 frontend tests, TypeScript and the build passed.
+GitHub CI 43466447052 passed for the source commit in verification.json.
+Both staged and production API runs passed 52 checks across eight selections.
+The checks compare rates and counts with the raw regular-season source,
+verify coach access, deny analyst/anonymous access and check invalid filters.
+Both verification sessions were signed out after each run.
+
+The captured TOR offense table matches all 176 displayed numeric cells
+across 11 categories and 33 rows. The screenshots show the live offense
+and defense views. The cutoff changes warnings, not the underlying rates.
+The error screenshot is from stopping the local API; retry recovered after
+it restarted. Production was not stopped for this check.
+
+Files
+verification.json: source, deployment and check summary.
+staged-results.json and production-results.json: complete execution records.
+production-TOR-offense.json and production-offense-table.txt: matching API
+response and browser table. browser-table-verification.json records parity.
+production-offense-detail.jpg and production-defense.jpg: live screenshots.
+local-api-unavailable.jpg: local connection-error state.
+../league-comparison-code.txt: exact code links and a simple worked example.
+
+Run the verifier from the repository with its existing backend environment:
+backend/.venv/bin/python scripts/verify_league_release.py --api https://nba-playranker-api-937082897804.northamerica-northeast1.run.app --output /path/to/new-output-folder
+It uses the existing private test accounts and local configuration.
+Credentials are not included here. The output folder must not already exist.
+
+This evidence covers the league comparison section of Beta.
+The VP publication and remaining Beta deliverables are tracked separately.
