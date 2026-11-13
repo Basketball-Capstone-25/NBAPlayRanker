@@ -8,6 +8,14 @@ if str(BACKEND_DIR) not in sys.path:
 import os
 import pytest
 
+# Empty values keep dotenv from enabling live services during app import.
+for name in (
+    "SUPABASE_URL",
+    "SUPABASE_PUBLISHABLE_KEY",
+    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+):
+    os.environ[name] = ""
+
 from application.api_coordination.app import app as _app  # noqa: F401
 
 os.environ.pop("SUPABASE_JWT_SECRET", None)
