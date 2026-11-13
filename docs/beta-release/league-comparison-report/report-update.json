@@ -1,0 +1,53 @@
+{
+  "updated_utc": "2026-11-13T17:05:17.742273+00:00",
+  "task": "SCRUM-697",
+  "shared_document_url": "https://sheridanc-my.sharepoint.com/:w:/r/personal/mousaa_shernet_sheridancollege_ca/_layouts/15/doc2.aspx?sourcedoc=%7BD052FB32-B7AF-4F5E-8D88-AEFA1A56CFA2%7D&file=Capstone%20Report%20Winter%202026.docx&action=default&mobileredirect=true&DefaultItemOpen=1&web=1",
+  "edit_method": "Word Online UI, Reviewing mode with Track Changes; added three scoped paragraphs and revised one release-plan sentence.",
+  "save_status_observed": "Last saved: Just now",
+  "source_commit": "a3a321b66ace9ad3da0a134f953e258ec7e53e7b",
+  "production_frontend": "dpl_EaR6wHMZaPu5f4DCZ9szCreLX97w",
+  "release_plan_sentence": {
+    "before": "League comparisons for other rates, season trends and saved queries are planned for Beta, and head-to-head profiles and possession outcome rates for Final.",
+    "after": "The original release plan scheduled league comparisons for other rates, season trends and saved queries for Beta, and head-to-head profiles and possession outcome rates for Final."
+  },
+  "paragraphs": {
+    "use_case": "Compare to League Average (SCRUM-697): the coach selects one team, regular season and offense or defense, then compares each play type’s FG%, eFG%, turnover rate and free-throw possession rate with the same league sample. The league includes the selected team. Differences are shown in percentage points. These historical profiles describe team performance or rates allowed on defense; they are not predictions.",
+    "ui": "The League comparison tab on Matchup dashboard shows team, league and difference rows for each play type, with possession and attempt counts. FG% uses total makes divided by attempts. eFG% uses attempt-weighted source rates; turnover and free-throw possession rates use possession-weighted source rates. Difference is 100 × (team rate − league rate), in percentage points. Changing the sample cutoff changes warnings only, not the rates. Missing values appear as a dash. New selections clear old results, and failed requests offer Retry comparison. The calculation details explain source rounding and that free-throw possession rate is not free-throw shooting accuracy.",
+    "validation": "League comparison (SCRUM-697) is covered by suite BST-228 and cases BST-244 to BST-246. The deployed build a3a321b passed 52 API checks. Browser checks confirmed the TOR offense and defense tables, sample warnings without changed rates, and correct results after team and season changes. TOR’s 2024-25 Cut FG% was 61.6% versus 66.8% for the league, a −5.2 percentage-point difference. Missing and zero-denominator cases and retry recovery passed locally. The matching VP model is prepared; shared publication is still pending."
+  },
+  "preservation": "Existing cover, teammate content and earlier season-summary paragraphs preserved. Existing changes were not accepted or rejected.",
+  "validation_scope": {
+    "production_api_checks_passed": 52,
+    "production_browser": "TOR offense and defense; cutoff warnings without rate changes; team/season refresh; existing Usage and Efficiency tab.",
+    "local_only": "Missing/zero denominator fixtures and outage/retry recovery.",
+    "jira_suite": "BST-228",
+    "jira_cases": [
+      "BST-244",
+      "BST-245",
+      "BST-246"
+    ]
+  },
+  "vp_publication": "pending",
+  "fresh_docx_export_confirmed": false,
+  "whole_beta_report_complete_claimed": false,
+  "screenshots": [
+    {
+      "path": "report-use-case.jpg",
+      "bytes": 116125,
+      "sha256": "fb8dba5c3271c41cf09d4d90ed20b639031838c42fe9c4f5ba62c155264d1347",
+      "visually_checked": true
+    },
+    {
+      "path": "report-ui.jpg",
+      "bytes": 128249,
+      "sha256": "2be70dc10f791b83168ef9326329ef0684c6df2e8a1289bfcfe582d19e310935",
+      "visually_checked": true
+    },
+    {
+      "path": "report-validation.jpg",
+      "bytes": 120818,
+      "sha256": "89ca9709973e292c18a7d507a39833bd236d9501879ef56dc1edfe5138ff8a8b",
+      "visually_checked": true
+    }
+  ]
+}
