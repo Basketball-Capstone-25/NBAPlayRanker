@@ -1,0 +1,56 @@
+League comparison — code guide (SCRUM-697)
+
+This section adds a coach view of team rates beside the league average.
+It uses one team, one regular season and either offense or defense.
+The links below point to build a3a321b66ace9ad3da0a134f953e258ec7e53e7b.
+
+1. Where the rates come from
+backend/domain/baseline_recommendation/baseline_recommender.py, lines 68–78
+https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/a3a321b66ace9ad3da0a134f953e258ec7e53e7b/backend/domain/baseline_recommendation/baseline_recommender.py#L68-L78
+The new view reuses these existing calculations. FG% is total field goals made
+divided by total attempts. eFG% is sum(source eFG rate × attempts) / total attempts.
+Turnover and free-throw possession rates use sum(source rate × possessions)
+divided by total possessions. They are not averages of the displayed percentages.
+
+2. How the team is compared with the league
+backend/application/analytics_services/league_comparison.py, lines 49–73
+https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/a3a321b66ace9ad3da0a134f953e258ec7e53e7b/backend/application/analytics_services/league_comparison.py#L49-L73
+Both sides use the same season, side and play type. The league includes the
+selected team. Difference = 100 × (team rate − league rate), in percentage points.
+If a category or denominator is missing, its rate and difference stay unavailable.
+
+3. Who can request the comparison
+backend/application/api_coordination/league_comparison_endpoints.py, lines 16–32
+https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/a3a321b66ace9ad3da0a134f953e258ec7e53e7b/backend/application/api_coordination/league_comparison_endpoints.py#L16-L32
+The API checks coach access and source quality before returning results.
+Invalid filters return 400 or 422. Unusable comparison data returns 503.
+
+4. What the table shows
+app/ui/recommendation/_components/LeagueComparisonTable.tsx, lines 30–53
+https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/a3a321b66ace9ad3da0a134f953e258ec7e53e7b/app/ui/recommendation/_components/LeagueComparisonTable.tsx#L30-L53
+Each play type has a team row, league row and difference row. Counts show the
+sample behind the rates. A sample warning appears when possessions or attempts
+fall below the selected cutoff. Changing the cutoff never changes the rates.
+The calculation details explain the source rounding and missing values.
+
+5. What happens when a selection changes or a request fails
+app/ui/recommendation/_components/LeagueComparisonPanel.tsx, lines 24–42
+https://github.com/Basketball-Capstone-25/NBAPlayRanker/blob/a3a321b66ace9ad3da0a134f953e258ec7e53e7b/app/ui/recommendation/_components/LeagueComparisonPanel.tsx#L24-L42
+A new team, season or side gets fresh loading state. Old replies cannot replace
+the current selection. A failed request shows a reason and Retry comparison.
+
+Example to explain: TOR, 2024–25, Offense, Cut
+TOR has 381 made field goals from 619 attempts, across 745 possessions.
+TOR FG% = 381 / 619 × 100 = 61.5509%, displayed as 61.6%.
+League FG% = 66.7718%, displayed as 66.8%.
+Difference = 61.5509 − 66.7718 = −5.2209 percentage points, displayed as −5.2 pp.
+The calculation uses full precision before rounding the display.
+The league sample has 14,274 attempts and 17,011 possessions.
+
+To show it, sign in as a coach and open Matchup dashboard → League comparison.
+Select TOR, 2024–25 and Offense. Find Cut and open How these rates are calculated.
+Change the sample cutoff to 1,000: warnings change but the rates stay the same.
+Switch to Defense to see rates allowed by that defense. Higher is not always better.
+These are historical profiles, not forecasts or direct games against one opponent.
+Free-throw possession rate is not free-throw shooting accuracy. The possession
+rates can overlap; eFG%, turnover and free-throw rates use rounded source rates.
