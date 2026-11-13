@@ -8,6 +8,7 @@ import { DashboardRequest, emptyDashboard, selectDashboard, withRequestDeadline,
 import { playtypeName, type DashboardFilters, type PlaytypeDashboard } from "../../../domain/playtype-dashboard";
 import { UsageEfficiencyChart, OpponentDefenseChart, signed } from "./PlaytypeCharts";
 import LeagueComparisonPanel from "./LeagueComparisonPanel";
+import SeasonTrendPanel from "./SeasonTrendPanel";
 import styles from "./matchup-dashboard.module.css";
 
 type View = "usage" | "defense";
@@ -82,8 +83,9 @@ export default function MatchupDashboardClient() {
   const [meta, setMeta] = useState<MetaOptions | null>(null), [metaError, setMetaError] = useState("");
   const [metaAttempt, setMetaAttempt] = useState(0), [attempt, setAttempt] = useState(0);
   const [season, setSeason] = useState(""), [our, setOur] = useState(""), [opp, setOpp] = useState("");
-  const [minimum, setMinimum] = useState(20), [view, setView] = useState<View>("usage");
-  const [leagueView, setLeagueView] = useState(false);
+  const [minimum, setMinimum] = useState(20), [view, setView] = useState<View | "league" | "trend">("usage");
+  const leagueView = view === "league", trendView = view === "trend";
+  const [playType, setPlayType] = useState("");
   const [leagueSide, setLeagueSide] = useState<"offense" | "defense">("offense");
   const [state, setState] = useState(emptyDashboard);
   const request = useRef<DashboardRequest | null>(null);
@@ -101,6 +103,7 @@ export default function MatchupDashboardClient() {
       setSeason(old => old || result.seasons[result.seasons.length - 1]);
       const team = result.teams.includes("TOR") ? "TOR" : result.teams[0];
       setOur(old => old || team);
+      setPlayType(old => old || (result.playTypes?.includes("Cut") ? "Cut" : result.playTypes?.[0] || ""));
       setOpp(old => old || (result.teams.includes("BOS") && team !== "BOS" ? "BOS" : result.teams.find(t => t !== team) || ""));
     }).catch(() => { if (active) setMetaError("Team and season choices are unavailable. Please try again."); });
     return () => { active = false; };
@@ -108,33 +111,37 @@ export default function MatchupDashboardClient() {
 
   useEffect(() => {
     const current = request.current!;
-    if (valid && !leagueView) void current.run(filters, fetchPlaytypeDashboard, setState);
+    if (valid && !leagueView && !trendView) void current.run(filters, fetchPlaytypeDashboard, setState);
     else { current.cancel(); setState(emptyDashboard()); }
     return () => current.cancel();
-  }, [filters, valid, attempt, leagueView]);
+  }, [filters, valid, attempt, leagueView, trendView]);
 
   return <main className={styles.page}>
     <header className={styles.header}><div><span className={styles.kicker}>Coach workspace · Regular season</span>
-      <h1>Matchup dashboard</h1><p>Compare your team’s playing style, league rates and the opponent’s defensive weak spots.</p></div>
+      <h1>Matchup dashboard</h1><p>Explore playing style, league comparisons, season trends and defensive weak spots.</p></div>
       <Link className={styles.link} href="/matchup">View baseline rankings →</Link>
     </header>
     {metaError ? <div className={styles.card} role="alert"><p>{metaError}</p><button className={styles.button} onClick={() => setMetaAttempt(x => x + 1)}>Retry team list</button></div>
       : !meta ? <div className={styles.card} role="status">Loading teams and seasons…</div> : <>
         <div className={styles.filters}>
-          <label>Season<select value={season} onChange={e => setSeason(e.target.value)}>{meta.seasons.map(s => <option key={s}>{s}</option>)}</select></label>
-          <label>{leagueView ? "Team" : "Our team"}<select value={our} onChange={e => setOur(e.target.value)}>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label>
-          {leagueView ? <label>Side<select value={leagueSide} onChange={e => setLeagueSide(e.target.value as "offense" | "defense")}>
+          {!trendView && <label>Season<select value={season} onChange={e => setSeason(e.target.value)}>{meta.seasons.map(s => <option key={s}>{s}</option>)}</select></label>}
+          <label>{leagueView || trendView ? "Team" : "Our team"}<select value={our} onChange={e => setOur(e.target.value)}>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label>
+          {trendView ? <label>Play type<select value={playType} onChange={e => setPlayType(e.target.value)}>
+            {meta.playTypes?.map(p => <option key={p} value={p}>{playtypeName(p)}</option>)}</select></label>
+            : leagueView ? <label>Side<select value={leagueSide} onChange={e => setLeagueSide(e.target.value as "offense" | "defense")}>
             <option value="offense">Offense</option><option value="defense">Defense</option></select></label>
             : <label>Opponent<select value={opp} onChange={e => setOpp(e.target.value)}>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label>}
-          <label>{leagueView ? "Sample cutoff" : "Possession cutoff"}<select value={minimum} onChange={e => setMinimum(Number(e.target.value))}>{[1, 20, 50, 100, 250, 500, 1000, 5000].map(n => <option key={n} value={n}>{integer(n)}</option>)}</select></label>
+          <label>{leagueView || trendView ? "Sample cutoff" : "Possession cutoff"}<select value={minimum} onChange={e => setMinimum(Number(e.target.value))}>{[1, 20, 50, 100, 250, 500, 1000, 5000].map(n => <option key={n} value={n}>{integer(n)}</option>)}</select></label>
         </div>
         <div className={styles.tabs} role="group" aria-label="Choose comparison">
-          <button aria-pressed={!leagueView && view === "usage"} onClick={() => { setLeagueView(false); setView("usage"); }}>Usage and efficiency</button>
-          <button aria-pressed={!leagueView && view === "defense"} onClick={() => { setLeagueView(false); setView("defense"); }}>Opponent weak spots</button>
-          <button aria-pressed={leagueView} onClick={() => setLeagueView(true)}>League comparison</button>
+          <button aria-pressed={view === "usage"} onClick={() => setView("usage")}>Usage and efficiency</button>
+          <button aria-pressed={view === "defense"} onClick={() => setView("defense")}>Opponent weak spots</button>
+          <button aria-pressed={leagueView} onClick={() => setView("league")}>League comparison</button>
+          <button aria-pressed={trendView} onClick={() => setView("trend")}>Season trends</button>
         </div>
-        <p className={styles.scope}>{season} regular season · {leagueView ? `${our} ${leagueSide} vs league` : `${our} vs ${opp}`} · Historical profiles</p>
-        {leagueView ? <LeagueComparisonPanel filters={{ season, team: our, side: leagueSide }} minimum={minimum} />
+        <p className={styles.scope}>{trendView ? `All available regular seasons · ${our} offense` : `${season} regular season · ${leagueView ? `${our} ${leagueSide} vs league` : `${our} vs ${opp}`}`} · Historical profiles</p>
+        {trendView ? <SeasonTrendPanel filters={{ team: our, play_type: playType }} minimum={minimum} />
+          : leagueView ? <LeagueComparisonPanel filters={{ season, team: our, side: leagueSide }} minimum={minimum} />
           : !valid ? <div className={styles.card} role="alert">Choose two different teams to compare.</div>
           : <DashboardResultState state={selectDashboard(state, filters)} view={view} retry={() => setAttempt(x => x + 1)} />}
       </>}
