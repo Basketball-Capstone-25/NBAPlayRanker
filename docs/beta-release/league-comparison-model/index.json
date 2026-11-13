@@ -1,0 +1,73 @@
+{
+  "scope": "SCRUM-697 / SCRUM-714 league comparison model",
+  "published_revision": 89,
+  "native_file": "Basketball Playtype Ranker.vpp",
+  "native_sha256": "03a796d13fbaf67b87675606e7956e6d32b47f35ab882708e8913623586ed1e4",
+  "diagram_count": 334,
+  "added_league_views": 11,
+  "published_author": "asahang@sheridancollege.ca",
+  "published_at_utc": "2026-11-13T18:29:58.528000+00:00",
+  "comment": "Add league comparison flow, rate calculations and test cases (SCRUM-697/714)",
+  "files": {
+    "Basketball Playtype Ranker.vpp": {
+      "bytes": 28864512,
+      "sha256": "03a796d13fbaf67b87675606e7956e6d32b47f35ab882708e8913623586ed1e4"
+    },
+    "README.txt": {
+      "bytes": 2030,
+      "sha256": "37fc766e4be0ec8d736d18cc01b46bd240c9c3cac4901147af1282fecfc3d41c"
+    },
+    "collaboration-overview.png": {
+      "bytes": 31802,
+      "sha256": "7a8ab81f0c47b932d869fdbd240583aa8dde94399fbbd85081dbbc8e995aeff6"
+    },
+    "privacy-check.json": {
+      "bytes": 632,
+      "sha256": "baf3d4f102e9c99b8cefd4989c06dac160dbf18b6b7175313505f5bbc3509d7f"
+    },
+    "publication-verification.json": {
+      "bytes": 2185,
+      "sha256": "dfb0bdf499f442e0b62ed60547d284fc89914b6760d982899d9384689583d9e8"
+    },
+    "screen-1-filters.png": {
+      "bytes": 26348,
+      "sha256": "e4e140825c2b4e6620f124622dc2f7ebad25579cae5821de349e9c22762a35f8"
+    },
+    "screen-2-loading.png": {
+      "bytes": 28602,
+      "sha256": "ef38cc67496b9bba2a16e4fcd334dbdcb29346b9b0d0f4a3258a5b8202a8c7ca"
+    },
+    "screen-3-comparison.png": {
+      "bytes": 32825,
+      "sha256": "08c5d3c367b650fb7a78ee5ef5ad9d89849404edd7eb9bc0d921b90913b744ae"
+    },
+    "screen-4-missing-data.png": {
+      "bytes": 33097,
+      "sha256": "d013b2edda080bbe08a102ca464b2d075c8d8395e02e7554f33368d4e5bdbe95"
+    },
+    "screen-5-retry.png": {
+      "bytes": 27014,
+      "sha256": "49afd8653a0756aeb6e8c82608c3ef950e65fda5868852b9b3523b0a36722d2c"
+    },
+    "sequence-access-retry.png": {
+      "bytes": 36486,
+      "sha256": "ed5f66993e201f4b432acdc0286a6b2bbde66de0cb0647883fcb6b159b88a913"
+    },
+    "sequence-comparison.png": {
+      "bytes": 42203,
+      "sha256": "8d236e78feec5acf5c6fe565f193caecd4e2e138e216ccebc0552de6631be606"
+    },
+    "structural-design.png": {
+      "bytes": 64556,
+      "sha256": "15953cd448a9568996cc7139e492ef43191b1aeabb2b2817e6ecaf5ee73be6cf"
+    },
+    "test-plan.png": {
+      "bytes": 35992,
+      "sha256": "5bf874538c5a3cfaca105b8be98de2d40f9aab46426ef2e01f42c453ca12bc7b"
+    },
+    "wireflow.png": {
+      "bytes": 120065,
+      "sha256": "173e07c4853d21a8352ffdd2bb4222252a314c01a444e2f8449fdc0623b97ce5"
+    }
+  }
+}

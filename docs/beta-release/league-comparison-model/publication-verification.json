@@ -1,0 +1,44 @@
+{
+  "verified": true,
+  "checked_at": "2026-11-13T18:34:58.268660+00:00",
+  "published_revision": 89,
+  "published_author": "asahang@sheridancollege.ca",
+  "published_at_utc": "2026-11-13T18:29:58.528000+00:00",
+  "comment": "Add league comparison flow, rate calculations and test cases (SCRUM-697/714)",
+  "native_sha256": "03a796d13fbaf67b87675606e7956e6d32b47f35ab882708e8913623586ed1e4",
+  "pending_history_in_committed_pristine": 0,
+  "counts": {
+    "models": 3767,
+    "diagrams": 334,
+    "new_league_diagrams": 11,
+    "views": 3055
+  },
+  "checks": {
+    "revision89_exact_receipt": true,
+    "expected_author": true,
+    "committed_pristine_has_zero_pending_history": true,
+    "all_model_ids_identity_and_content_preserved": true,
+    "all334_diagrams_and3055_views_retained": true,
+    "existing_diagram_layout_and_identity_preserved": true,
+    "new_diagram_changes_are_commit_metadata_and_same_view_ordering": true,
+    "view_changes_fully_classified": true,
+    "removed_resources_are_only22_generated_screen_preview_records": true,
+    "other_resource_content_preserved_lazy_index_extended": true,
+    "five_league_screens_render_identically": true,
+    "six_existing_summary_screens_render_identically": true,
+    "eleven_new_views_render_from_committed_native": true,
+    "published_native_unchanged_by_rendering": true,
+    "published_privacy_scan_passed": true
+  },
+  "publication_normalization": {
+    "diagrams": "Commit metadata, equivalent target qualification and ordering of the same view IDs.",
+    "views": {
+      "derived_connector_bounds": 15,
+      "existing_summary_label_visibility": 9,
+      "new_view_name_cache": 3
+    },
+    "resources": "22 generated screen SVG/cache records were invalidated; native states remain exact. All eleven screen states render identically."
+  },
+  "preserved_work": "The 146 prior Season Summary layout entries were included in the prepared model. Their wording, paths and native states remain preserved; publication refreshed connector bounds and nine label visibility settings. Later local Season Summary entries were left untouched and are not part of this committed snapshot.",
+  "unclassified_view_changes": []
+}
