@@ -47,6 +47,7 @@ from application.api_coordination.topk_uplift_endpoints import create_topk_uplif
 from application.api_coordination.calibration_endpoints import create_calibration_router
 from application.api_coordination.playtype_dashboard_endpoints import create_playtype_dashboard_router
 from application.api_coordination.season_summary_endpoints import create_season_summary_router
+from application.api_coordination.league_comparison_endpoints import create_league_comparison_router
 from application.api_coordination.data_quality_endpoints import (
     DataQualityGate,
     QUALITY_HEADER,
@@ -152,6 +153,7 @@ install_data_quality_header(app, data_quality_gate, ("/rank-plays/", "/analytics
 if rec is not None:
     app.include_router(create_playtype_dashboard_router(rec, data_quality_gate))
     app.include_router(create_season_summary_router(rec, data_quality_gate))
+    app.include_router(create_league_comparison_router(rec, data_quality_gate))
 
 # Cache ML predictions ONCE (if file exists).
 ML_PRED_DF: Optional[pd.DataFrame] = None
