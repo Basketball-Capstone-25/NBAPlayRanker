@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-13T17:05:17.742273+00:00",
+  "updated_utc": "2026-11-13T18:31:40.051507+00:00",
   "task": "SCRUM-697",
   "shared_document_url": "https://sheridanc-my.sharepoint.com/:w:/r/personal/mousaa_shernet_sheridancollege_ca/_layouts/15/doc2.aspx?sourcedoc=%7BD052FB32-B7AF-4F5E-8D88-AEFA1A56CFA2%7D&file=Capstone%20Report%20Winter%202026.docx&action=default&mobileredirect=true&DefaultItemOpen=1&web=1",
   "edit_method": "Word Online UI, Reviewing mode with Track Changes; added three scoped paragraphs and revised one release-plan sentence.",
@@ -13,7 +13,7 @@
   "paragraphs": {
     "use_case": "Compare to League Average (SCRUM-697): the coach selects one team, regular season and offense or defense, then compares each play type’s FG%, eFG%, turnover rate and free-throw possession rate with the same league sample. The league includes the selected team. Differences are shown in percentage points. These historical profiles describe team performance or rates allowed on defense; they are not predictions.",
     "ui": "The League comparison tab on Matchup dashboard shows team, league and difference rows for each play type, with possession and attempt counts. FG% uses total makes divided by attempts. eFG% uses attempt-weighted source rates; turnover and free-throw possession rates use possession-weighted source rates. Difference is 100 × (team rate − league rate), in percentage points. Changing the sample cutoff changes warnings only, not the rates. Missing values appear as a dash. New selections clear old results, and failed requests offer Retry comparison. The calculation details explain source rounding and that free-throw possession rate is not free-throw shooting accuracy.",
-    "validation": "League comparison (SCRUM-697) is covered by suite BST-228 and cases BST-244 to BST-246. The deployed build a3a321b passed 52 API checks. Browser checks confirmed the TOR offense and defense tables, sample warnings without changed rates, and correct results after team and season changes. TOR’s 2024-25 Cut FG% was 61.6% versus 66.8% for the league, a −5.2 percentage-point difference. Missing and zero-denominator cases and retry recovery passed locally. The matching VP model is prepared; shared publication is still pending."
+    "validation": "League comparison (SCRUM-697) is covered by suite BST-228 and cases BST-244 to BST-246. The deployed build a3a321b passed 52 API checks. Browser checks confirmed the TOR offense and defense tables, sample warnings without changed rates, and correct results after team and season changes. TOR’s 2024-25 Cut FG% was 61.6% versus 66.8% for the league, a −5.2 percentage-point difference. Missing and zero-denominator cases and retry recovery passed locally. The matching use-case flow, calculations, wireflow and test plan are published in VP revision 89."
   },
   "preservation": "Existing cover, teammate content and earlier season-summary paragraphs preserved. Existing changes were not accepted or rejected.",
   "validation_scope": {
@@ -27,7 +27,7 @@
       "BST-246"
     ]
   },
-  "vp_publication": "pending",
+  "vp_publication": "published revision 89",
   "fresh_docx_export_confirmed": false,
   "whole_beta_report_complete_claimed": false,
   "screenshots": [
@@ -45,9 +45,18 @@
     },
     {
       "path": "report-validation.jpg",
-      "bytes": 120818,
-      "sha256": "89ca9709973e292c18a7d507a39833bd236d9501879ef56dc1edfe5138ff8a8b",
+      "bytes": 74850,
+      "sha256": "8398fa7749282f131d1b011b3811414a2f34fd89eb99b978121b678b47989385",
       "visually_checked": true
     }
-  ]
+  ],
+  "publication_followup": {
+    "replaced_sentence": "The matching VP model is prepared; shared publication is still pending.",
+    "replacement_sentence": "The matching use-case flow, calculations, wireflow and test plan are published in VP revision 89.",
+    "verified_pristine_revision": 89,
+    "pristine_pending_entries": 0,
+    "working_copy_zero_pending_claimed": false,
+    "shared_report_save_status": "Last saved: Just now",
+    "preserved_other_content": true
+  }
 }

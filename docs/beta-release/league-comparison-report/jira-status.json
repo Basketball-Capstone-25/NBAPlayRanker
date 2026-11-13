@@ -1,13 +1,13 @@
 {
-  "checked_at": "2026-11-13T17:08:05.614Z",
+  "checked_at": "2026-11-13T18:35:26.049Z",
   "scope": "League comparison section of Beta",
-  "vp_publication": "Prepared; awaiting Desktop Team commit",
+  "vp_publication": "Published revision 89; committed copy has zero pending changes",
   "issues": [
-    {"key": "SCRUM-697", "summary": "Compare a team's play types with the league average", "status": "In Progress", "assignee": "Gurkaranjit Asahan", "type": "Story", "parent": "SCRUM-329", "linked_work": ["BST-228", "SCRUM-321", "BSR-49", "BSR-48", "BSR-41", "BST-244", "BST-245", "BST-246", "BSR-88", "BSR-55"], "comment_count": 2},
-    {"key": "SCRUM-714", "summary": "Define league comparison calculations and VP flow", "status": "In Progress", "assignee": "Gurkaranjit Asahan", "type": "Dev Subtask", "parent": "SCRUM-697", "linked_work": [], "comment_count": 1},
+    {"key": "SCRUM-697", "summary": "Compare a team's play types with the league average", "status": "Done", "assignee": "Gurkaranjit Asahan", "type": "Story", "parent": "SCRUM-329", "linked_work": ["BST-228", "SCRUM-321", "BSR-49", "BSR-48", "BSR-41", "BST-244", "BST-245", "BST-246", "BSR-88", "BSR-55"], "comment_count": 2},
+    {"key": "SCRUM-714", "summary": "Define league comparison calculations and VP flow", "status": "Done", "assignee": "Gurkaranjit Asahan", "type": "Dev Subtask", "parent": "SCRUM-697", "linked_work": ["BSR-111"], "comment_count": 1},
     {"key": "SCRUM-715", "summary": "Build weighted team and league comparisons", "status": "Done", "assignee": "Gurkaranjit Asahan", "type": "Dev Subtask", "parent": "SCRUM-697", "linked_work": [], "comment_count": 1},
     {"key": "SCRUM-716", "summary": "Add the league comparison view", "status": "Done", "assignee": "Gurkaranjit Asahan", "type": "Dev Subtask", "parent": "SCRUM-697", "linked_work": [], "comment_count": 1},
-    {"key": "SCRUM-717", "summary": "Test and publish the league comparison", "status": "In Progress", "assignee": "Gurkaranjit Asahan", "type": "Dev Subtask", "parent": "SCRUM-697", "linked_work": [], "comment_count": 1},
+    {"key": "SCRUM-717", "summary": "Test and publish the league comparison", "status": "Done", "assignee": "Gurkaranjit Asahan", "type": "Dev Subtask", "parent": "SCRUM-697", "linked_work": [], "comment_count": 1},
     {"key": "SCRUM-778", "summary": "Isolate backend tests from local request-log credentials", "status": "Done", "assignee": "Gurkaranjit Asahan", "type": "Task", "linked_work": ["SCRUM-772"], "comment_count": 1},
     {"key": "BST-228", "summary": "Compare Play Types with League Average", "status": "Pass", "assignee": "Gurkaranjit Asahan", "type": "Test Suite", "linked_work": ["SCRUM-697"], "comment_count": 1},
     {"key": "BST-244", "summary": "League benchmark preserves shooting and possession-rate denominators", "status": "Pass", "assignee": "Gurkaranjit Asahan", "type": "Test Case", "parent": "BST-228", "linked_work": ["SCRUM-697"], "comment_count": 1},
@@ -16,6 +16,7 @@
     {"key": "BSR-49", "summary": "Player-to-team aggregation may calculate incorrect totals", "status": "Monitoring", "assignee": "Gurkaranjit Asahan", "type": "Risk", "linked_work": ["SCRUM-478", "SCRUM-479", "SCRUM-695", "SCRUM-697", "SCRUM-700", "SCRUM-701", "SCRUM-702", "SCRUM-495"], "comment_count": 5},
     {"key": "BSR-48", "summary": "Small-sample play types distort rankings", "status": "Monitoring", "assignee": "Gurkaranjit Asahan", "type": "Risk", "linked_work": ["SCRUM-474", "SCRUM-479", "SCRUM-480", "SCRUM-695", "SCRUM-696", "SCRUM-697", "SCRUM-698", "SCRUM-699", "SCRUM-700"], "comment_count": 4},
     {"key": "BSR-41", "summary": "Metric labels may imply unsupported accuracy", "status": "Monitoring", "assignee": "Gurkaranjit Asahan", "type": "Risk", "linked_work": ["SCRUM-476", "SCRUM-498", "SCRUM-526", "SCRUM-695", "SCRUM-696", "SCRUM-697", "SCRUM-698", "SCRUM-699", "SCRUM-700", "SCRUM-703", "SCRUM-495"], "comment_count": 7},
-    {"key": "BSR-88", "summary": "Displayed results may disagree with API data", "status": "Monitoring", "assignee": "Gurkaranjit Asahan", "type": "Risk", "linked_work": ["SCRUM-545", "SCRUM-539", "SCRUM-484", "SCRUM-695", "SCRUM-696", "SCRUM-699", "SCRUM-700", "SCRUM-703", "SCRUM-697", "SCRUM-698"], "comment_count": 5}
+    {"key": "BSR-88", "summary": "Displayed results may disagree with API data", "status": "Monitoring", "assignee": "Gurkaranjit Asahan", "type": "Risk", "linked_work": ["SCRUM-545", "SCRUM-539", "SCRUM-484", "SCRUM-695", "SCRUM-696", "SCRUM-699", "SCRUM-700", "SCRUM-703", "SCRUM-697", "SCRUM-698"], "comment_count": 5},
+    {"key": "BSR-111", "summary": "Visual Paradigm compatibility may block shared model updates", "status": "Monitoring", "assignee": "Gurkaranjit Asahan", "type": "Risk", "linked_work": ["SCRUM-528", "SCRUM-503", "SCRUM-509", "SCRUM-440", "SCRUM-567", "SCRUM-606", "SCRUM-777", "SCRUM-714"], "comment_count": 7}
   ]
 }
