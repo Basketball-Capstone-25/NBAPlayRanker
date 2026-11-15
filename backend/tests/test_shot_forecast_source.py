@@ -35,6 +35,7 @@ def test_keeps_regular_attempts_without_using_observed_location_or_type():
     assert rows.GAME_DATE.tolist() == [pd.Timestamp("2024-01-01")] * 2
     assert rows.GAME_DATE.dt.tz is None
     assert coverage == {"source_shots": 3, "source_games": 2, "metadata_games": 2,
+        "unreferenced_metadata_games": 0,
         "regular_season_shots": 2, "regular_season_games": 1,
         "excluded_playoff_shots": 1, "excluded_other_phase_shots": 0}
     pd.testing.assert_frame_equal(shots, original)
@@ -45,6 +46,15 @@ def test_calendar_dates_are_eastern_even_when_source_timestamps_are_utc():
     games["game_date"] = ["2024-01-02T02:00:00Z", "2024-04-20"]
     rows, _ = prepare_shot_forecast_rows(shots, games)
     assert rows.GAME_DATE.eq(pd.Timestamp("2024-01-01")).all()
+
+
+def test_unreferenced_raw_game_phase_does_not_block_retained_shots():
+    shots, games = source()
+    unrelated = pd.DataFrame([{"game_id": 999, "game_date": date(2024, 4, 18),
+        "season": 2024, "season_type": 5}])
+    rows, coverage = prepare_shot_forecast_rows(shots, pd.concat([games, unrelated]))
+    assert rows.EVENT_ID.tolist() == ["1011", "1012"]
+    assert coverage["unreferenced_metadata_games"] == 1
 
 
 def test_excludes_other_known_phases_and_can_return_no_regular_games():

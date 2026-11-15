@@ -65,6 +65,9 @@ def prepare_shot_forecast_rows(shots: pd.DataFrame, games: pd.DataFrame) -> tupl
 
     metadata = games[GAME_COLUMNS].drop_duplicates().copy()
     metadata["GAME_ID"] = _ids(metadata.game_id, "Metadata game IDs")
+    source_metadata_games = metadata.GAME_ID.nunique()
+    # Raw files also contain games absent from the retained shot dataset.
+    metadata = metadata.loc[metadata.GAME_ID.isin(clean.GAME_ID)].copy()
     metadata["GAME_DATE"] = metadata.game_date.map(_game_date)
     for column in ("season", "season_type"):
         numbers = pd.to_numeric(metadata[column], errors="coerce")
@@ -87,6 +90,7 @@ def prepare_shot_forecast_rows(shots: pd.DataFrame, games: pd.DataFrame) -> tupl
     retained = joined.loc[joined.season_type.eq(2), [*SHOT_COLUMNS, "GAME_DATE"]].reset_index(drop=True)
     coverage = {"source_shots": len(clean), "source_games": int(clean.GAME_ID.nunique()),
         "metadata_games": len(metadata), "regular_season_shots": len(retained),
+        "unreferenced_metadata_games": int(source_metadata_games - len(metadata)),
         "regular_season_games": int(retained.GAME_ID.nunique()),
         "excluded_playoff_shots": int(joined.season_type.eq(3).sum()),
         "excluded_other_phase_shots": int(joined.season_type.eq(1).sum())}
