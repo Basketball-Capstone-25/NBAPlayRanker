@@ -574,6 +574,7 @@ export async function contextRank(opts: {
     deltaPPP: number;
     contextLabel: string;
     rationale: string;
+    shotZone: string;
     raw: Record<string, any>;
   }>
 > {
@@ -615,6 +616,7 @@ export async function contextRank(opts: {
     deltaPPP: Number(r.DELTA_VS_BASELINE),
     contextLabel: r.CONTEXT_LABEL || "",
     rationale: r.RATIONALE || "",
+    shotZone: typeof r.SHOT_ZONE === "string" ? r.SHOT_ZONE : "",
     raw: { ...r, dataset_versions: data.dataset_versions },
   }));
 }

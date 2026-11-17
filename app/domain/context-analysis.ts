@@ -12,6 +12,8 @@ export type ContextRow = {
   deltaPPP: number;
   contextLabel: string;
   rationale: string;
+  /** Best shot zone for the play type, from the API (SCRUM-795). */
+  shotZone?: string;
   raw: Record<string, any>;
 };
 
