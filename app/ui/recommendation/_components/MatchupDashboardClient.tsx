@@ -10,6 +10,7 @@ import { UsageEfficiencyChart, OpponentDefenseChart, signed } from "./PlaytypeCh
 import LeagueComparisonPanel from "./LeagueComparisonPanel";
 import SeasonTrendPanel from "./SeasonTrendPanel";
 import TeamComparisonPanel from "./TeamComparisonPanel";
+import PossessionOutcomesPanel from "./PossessionOutcomesPanel";
 import styles from "./matchup-dashboard.module.css";
 
 type View = "usage" | "defense";
@@ -84,8 +85,9 @@ export default function MatchupDashboardClient() {
   const [meta, setMeta] = useState<MetaOptions | null>(null), [metaError, setMetaError] = useState("");
   const [metaAttempt, setMetaAttempt] = useState(0), [attempt, setAttempt] = useState(0);
   const [season, setSeason] = useState(""), [our, setOur] = useState(""), [opp, setOpp] = useState("");
-  const [minimum, setMinimum] = useState(20), [view, setView] = useState<View | "league" | "trend" | "profiles">("usage");
+  const [minimum, setMinimum] = useState(20), [view, setView] = useState<View | "league" | "trend" | "profiles" | "outcomes">("usage");
   const leagueView = view === "league", trendView = view === "trend", profilesView = view === "profiles";
+  const outcomesView = view === "outcomes";
   const [playType, setPlayType] = useState("");
   const [leagueSide, setLeagueSide] = useState<"offense" | "defense">("offense");
   const [state, setState] = useState(emptyDashboard);
@@ -112,10 +114,10 @@ export default function MatchupDashboardClient() {
 
   useEffect(() => {
     const current = request.current!;
-    if (valid && !leagueView && !trendView && !profilesView) void current.run(filters, fetchPlaytypeDashboard, setState);
+    if (valid && !leagueView && !trendView && !profilesView && !outcomesView) void current.run(filters, fetchPlaytypeDashboard, setState);
     else { current.cancel(); setState(emptyDashboard()); }
     return () => current.cancel();
-  }, [filters, valid, attempt, leagueView, trendView, profilesView]);
+  }, [filters, valid, attempt, leagueView, trendView, profilesView, outcomesView]);
 
   return <main className={styles.page}>
     <header className={styles.header}><div><span className={styles.kicker}>Coach workspace · Regular season</span>
@@ -126,13 +128,13 @@ export default function MatchupDashboardClient() {
       : !meta ? <div className={styles.card} role="status">Loading teams and seasons…</div> : <>
         <div className={styles.filters}>
           {!trendView && <label>Season<select value={season} onChange={e => setSeason(e.target.value)}>{meta.seasons.map(s => <option key={s}>{s}</option>)}</select></label>}
-          <label>{leagueView || trendView ? "Team" : "Our team"}<select value={our} onChange={e => setOur(e.target.value)}>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label>
+          <label>{leagueView || trendView || outcomesView ? "Team" : "Our team"}<select value={our} onChange={e => setOur(e.target.value)}>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label>
           {trendView ? <label>Play type<select value={playType} onChange={e => setPlayType(e.target.value)}>
             {meta.playTypes?.map(p => <option key={p} value={p}>{playtypeName(p)}</option>)}</select></label>
             : leagueView ? <label>Side<select value={leagueSide} onChange={e => setLeagueSide(e.target.value as "offense" | "defense")}>
             <option value="offense">Offense</option><option value="defense">Defense</option></select></label>
-            : <label>Opponent<select value={opp} onChange={e => setOpp(e.target.value)}>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label>}
-          <label>{leagueView || trendView || profilesView ? "Sample cutoff" : "Possession cutoff"}<select value={minimum} onChange={e => setMinimum(Number(e.target.value))}>{[1, 20, 50, 100, 250, 500, 1000, 5000].map(n => <option key={n} value={n}>{integer(n)}</option>)}</select></label>
+            : !outcomesView ? <label>Opponent<select value={opp} onChange={e => setOpp(e.target.value)}>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label> : null}
+          <label>{leagueView || trendView || profilesView || outcomesView ? "Sample cutoff" : "Possession cutoff"}<select value={minimum} onChange={e => setMinimum(Number(e.target.value))}>{[1, 20, 50, 100, 250, 500, 1000, 5000].map(n => <option key={n} value={n}>{integer(n)}</option>)}</select></label>
         </div>
         <div className={styles.tabs} role="group" aria-label="Choose comparison">
           <button aria-pressed={view === "usage"} onClick={() => setView("usage")}>Usage and efficiency</button>
@@ -140,10 +142,12 @@ export default function MatchupDashboardClient() {
           <button aria-pressed={leagueView} onClick={() => setView("league")}>League comparison</button>
           <button aria-pressed={trendView} onClick={() => setView("trend")}>Season trends</button>
           <button aria-pressed={profilesView} onClick={() => setView("profiles")}>Team profiles</button>
+          <button aria-pressed={outcomesView} onClick={() => setView("outcomes")}>Possession outcomes</button>
         </div>
-        <p className={styles.scope}>{trendView ? `All available regular seasons · ${our} offense` : `${season} regular season · ${leagueView ? `${our} ${leagueSide} vs league` : `${our} vs ${opp}`}`} · Historical profiles</p>
+        <p className={styles.scope}>{trendView ? `All available regular seasons · ${our} offense` : `${season} regular season · ${leagueView ? `${our} ${leagueSide} vs league` : outcomesView ? `${our} offense` : `${our} vs ${opp}`}`} · Historical profiles</p>
         {trendView ? <SeasonTrendPanel filters={{ team: our, play_type: playType }} minimum={minimum} />
           : leagueView ? <LeagueComparisonPanel filters={{ season, team: our, side: leagueSide }} minimum={minimum} />
+          : outcomesView ? <PossessionOutcomesPanel filters={{ season, team: our }} minimum={minimum} />
           : !valid ? <div className={styles.card} role="alert">Choose two different teams to compare.</div>
           : profilesView ? <>
             <button className={styles.button} type="button" onClick={() => { setOur(opp); setOpp(our); }}>Swap teams</button>
