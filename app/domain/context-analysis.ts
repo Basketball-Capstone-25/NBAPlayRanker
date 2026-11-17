@@ -135,3 +135,16 @@ export function computeOverlay(
     varianceProxy,
   };
 }
+
+/**
+ * One short reason a coach can read at a glance (SCRUM-795), e.g.
+ * "+0.05 PPP vs season baseline (late & trailing)". Same wording the
+ * retired Quick-Call screen used.
+ */
+export function contextReason(deltaPPP: number, contextLabel: string): string {
+  if (!Number.isFinite(deltaPPP)) return "Highest expected points for this matchup";
+  const sign = deltaPPP >= 0 ? "+" : "";
+  const state = (contextLabel || "").split("|")[0].trim();
+  const reason = `${sign}${deltaPPP.toFixed(2)} PPP vs season baseline`;
+  return state && state.toLowerCase() !== "normal context" ? `${reason} (${state.toLowerCase()})` : reason;
+}
