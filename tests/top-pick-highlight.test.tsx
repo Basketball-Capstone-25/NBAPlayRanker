@@ -26,12 +26,19 @@ describe("#1 play highlight (SCRUM-496)", () => {
   });
 
   it("is used on both the Matchup and Context rankings", () => {
-    for (const file of ["MatchupPageClient.tsx", "ContextPageClient.tsx"]) {
-      const src = readFileSync(`app/ui/recommendation/_components/${file}`, "utf8");
-      expect(src).toContain("topPickIndexes(");
-      expect(src).toContain('"barRow topPickRow"');
-      expect(src).toContain("<TopPickBadge tied={topTied} />");
-    }
+    const dir = "app/ui/recommendation/_components";
+    const matchup = readFileSync(`${dir}/MatchupPageClient.tsx`, "utf8");
+    expect(matchup).toContain("topPickIndexes(");
+    expect(matchup).toContain('"barRow topPickRow"');
+    expect(matchup).toContain("<TopPickBadge tied={topTied} />");
+
+    // SCRUM-795: Context ML passes its top picks to the large ranked list.
+    const context = readFileSync(`${dir}/ContextPageClient.tsx`, "utf8");
+    expect(context).toContain("topPickIndexes(");
+    expect(context).toContain("tied={topTied}");
+    const list = readFileSync(`${dir}/RankedPlayList.tsx`, "utf8");
+    expect(list).toContain("topPickRow");
+    expect(list).toContain("<TopPickBadge tied={tied} />");
   });
 
   it("keeps the highlight readable in light, dark and high-contrast modes", () => {

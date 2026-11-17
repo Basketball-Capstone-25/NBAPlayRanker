@@ -7,9 +7,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { contextRank, fetchMetaOptions } from "../../../services/recommendation";
 import ReportExport from "../../_shared/components/ReportExport";
-import { quickCallHref } from "../../../domain/quick-call";
-import TopPickCall from "../../_shared/components/TopPickCall";
-import TopPickBadge from "../../_shared/components/TopPickBadge";
+import RankedPlayList from "./RankedPlayList";
 import { topPickIndexes } from "../../../domain/top-pick";
 import { contextReport, resultKey } from "../../../infrastructure/report-export";
 import {
@@ -18,6 +16,7 @@ import {
   computeScoreFactors,
   categorizePlay,
   computeOverlay,
+  contextReason,
   type ContextRow,
   type OverlayBreakdown,
 } from "../../../domain/context-analysis";
@@ -258,12 +257,6 @@ function ContextInner() {
     return `/matchup?${qs.toString()}`;
   }, [season, our, opp, k]);
 
-  // SCRUM-628: open Timeout Quick-Call Mode with the current matchup and situation.
-  const quickCallLink = useMemo(
-    () => quickCallHref({ season, ourTeam: our, oppTeam: opp, margin, period, timeRemaining }),
-    [season, our, opp, margin, period, timeRemaining]
-  );
-
   const matchupChip = useMemo(() => {
     const ourName = meta.teamNames?.[our];
     const oppName = meta.teamNames?.[opp];
@@ -402,16 +395,9 @@ function ContextInner() {
     { ...requestFilters, overlay: applyOverlay, overlay_strength: overlayStrength }, displayRows,
   ) : null;
 
-  const bestRow = useMemo(() => (displayRows.length ? displayRows[0] : null), [displayRows]);
   // SCRUM-496: the #1 play and any play tied with it on the displayed score.
   const topPicks = useMemo(() => new Set(topPickIndexes(displayRows.map((r) => r.finalPPP_display))), [displayRows]);
   const topTied = topPicks.size > 1;
-
-
-  const maxPPP = useMemo(() => {
-    if (!displayRows.length) return 1.2;
-    return Math.max(...displayRows.map((r) => Number(r.finalPPP_display) || 0), 1.2);
-  }, [displayRows]);
 
   // Quick preset buttons.
   function applyPreset(p: { margin: number; period: number; time: number; text: string }) {
@@ -682,50 +668,10 @@ function ContextInner() {
           margin-top: 12px;
         }
 
-        .topRec {
-          border: 1px solid rgba(15, 23, 42, 0.1);
-          border-radius: 14px;
-          padding: 12px;
-          background: rgba(255, 255, 255, 0.9);
-        }
 
-        .topRecTitle {
-          display: flex;
-          align-items: baseline;
-          justify-content: space-between;
-          gap: 10px;
-          flex-wrap: wrap;
-        }
 
-        .playName {
-          font-weight: 900;
-          font-size: 15px;
-          letter-spacing: -0.2px;
-        }
 
-        .barList {
-          display: grid;
-          gap: 10px;
-          margin-top: 12px;
-        }
 
-        .barRow {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 8px;
-        }
-        @media (min-width: 720px) {
-          .barRow {
-            grid-template-columns: 240px 1fr 110px;
-            align-items: center;
-            gap: 10px;
-          }
-        }
-
-        .barLabel {
-          display: grid;
-          gap: 2px;
-        }
 
         details.moreInfo {
           margin-top: 14px;
@@ -785,11 +731,6 @@ function ContextInner() {
             <Link className="btn" href="/gameplan">
               Gameplan
             </Link>
-            {canRun ? (
-              <Link className="btn btnPrimary" href={quickCallLink} aria-label="Open Timeout Quick-Call Mode">
-                Quick-Call Mode
-              </Link>
-            ) : null}
           </div>
         </div>
 
@@ -1082,76 +1023,23 @@ function ContextInner() {
           <p className="muted">Generating ML + context ranking…</p>
         ) : (
           <>
-            {bestRow ? (
-              <div className="topRec">
-                <div className="topRecTitle">
-                  <div className="playName">
-                    #1 {bestRow.playType}
-                    <div><TopPickCall rows={displayRows} current={resultsCurrent} /></div>
-                    {topTied ? (
-                      <div className="muted" style={{ fontSize: 12 }} data-testid="top-pick-tie">
-                        <TopPickBadge tied /> Tied with {[...topPicks].slice(1).map((i) => displayRows[i].playType).join(", ")} on PPP
-                      </div>
-                    ) : null}
-                  </div>
-                  <div className="badge">
-                    PPP <span className="mono">{fmt(bestRow.finalPPP_display, 3)}</span>
-                  </div>
-                </div>
-
-                <p className="muted" style={{ marginTop: 8 }}>
-                  {bestRow.rationale}
-                </p>
-
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
-                  <span className="badge">
-                    ML <span className="mono">{fmt(bestRow.mlPPP, 3)}</span>
-                  </span>
-                  <span className="badge">
-                    Baseline <span className="mono">{fmt(bestRow.baselinePPP, 3)}</span>
-                  </span>
-                  {applyOverlay ? (
-                    <span className="badge">
-                      Overlay <span className="mono">{fmt(bestRow.overlay.overlayPPP, 3)}</span>
-                    </span>
-                  ) : null}
-                </div>
-              </div>
+            {/* SCRUM-795: one large list, same style the Quick-Call screen used. */}
+            <RankedPlayList
+              plays={displayRows.map((r) => ({
+                playType: r.playType,
+                ppp: Number(r.finalPPP_display),
+                shotZone: r.shotZone,
+                reason: contextReason(Number(r.deltaPPP_display), r.contextLabel),
+              }))}
+              current={resultsCurrent}
+              topPicks={topPicks}
+              tied={topTied}
+            />
+            {topTied ? (
+              <p className="muted" style={{ fontSize: 12, marginTop: 8 }} data-testid="top-pick-tie">
+                #1 is tied with {[...topPicks].slice(1).map((i) => displayRows[i].playType).join(", ")} on PPP
+              </p>
             ) : null}
-
-            <div className="barList" style={{ marginTop: 12 }}>
-              {displayRows.map((r, idx) => {
-                const width = clamp01((Number(r.finalPPP_display) || 0) / maxPPP) * 100;
-                const d = Number(r.deltaPPP_display);
-                const sign = d >= 0 ? "+" : "";
-                return (
-                  <div key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "barRow topPickRow" : "barRow"}>
-                    <div className="barLabel">
-                      <div style={{ fontWeight: 900, fontSize: 12 }}>
-                        #{idx + 1} {r.playType}
-                        {topPicks.has(idx) ? <TopPickBadge tied={topTied} /> : null}
-                      </div>
-                      <div className="muted">
-                        Δ {sign}
-                        <span className="mono">{fmt(d, 3)}</span>
-                        {applyOverlay ? (
-                          <>
-                            {" "}
-                            • overlay <span className="mono">{fmt(r.overlay.overlayPPP, 3)}</span>
-                          </>
-                        ) : null}
-                      </div>
-                    </div>
-
-                    <div className="meter" aria-label={`PPP bar for ${r.playType}`}>
-                      <div style={{ width: `${width}%` }} />
-                    </div>
-
-                    <div className="mono">{fmt(r.finalPPP_display, 3)}</div>
-                  </div>
-                );
-              })}
-            </div>
 
             {/* Optional breakdown table */}
             {showBreakdown ? (
