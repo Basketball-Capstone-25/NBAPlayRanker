@@ -1,6 +1,7 @@
 """Checks required before shot data can support recommendations or models."""
 from functools import lru_cache
 from pathlib import Path
+from typing import Optional
 
 import pandas as pd
 import pyarrow.parquet as pq
@@ -42,9 +43,26 @@ def _inspect_file(path: str, size: int, modified: int) -> dict:
     return inspect_shot_rows(pd.read_parquet(path, columns=[column for column in columns if column in present]))
 
 
+# SCRUM-491: the check describes the loaded shots, so it is kept until an analyst
+# reload has accepted a new file and cleared it.
+_LOADED: Optional[dict] = None
+
+
 def shot_data_quality(path: Path = CLEAN_PARQUET) -> dict:
+    global _LOADED
+    loaded_path = path == CLEAN_PARQUET
+    if loaded_path and _LOADED is not None:
+        return _LOADED
     try:
         stat = path.stat()
-        return _inspect_file(str(path), stat.st_size, stat.st_mtime_ns)
+        result = _inspect_file(str(path), stat.st_size, stat.st_mtime_ns)
     except (OSError, ValueError, KeyError):
         return {"valid_attribution": False, "reason": "Shot source data is missing or cannot be checked."}
+    if loaded_path:
+        _LOADED = result
+    return result
+
+
+def clear_shot_data_quality() -> None:
+    global _LOADED
+    _LOADED = None

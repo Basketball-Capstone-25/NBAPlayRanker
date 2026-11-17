@@ -874,10 +874,12 @@ def _after_synergy_reload(loaded: BaselineRecommender, predictions: Optional[pd.
 def _after_pbp_reload() -> None:
     """SCRUM-491: shot views that read the cleaned file pick up the checked one."""
     from domain.shot_analysis.shot_ml_models import clear_shots_clean_cache
+    from domain.shot_analysis.shot_quality import clear_shot_data_quality
     from infrastructure.data_access.shot_plot_data import clear_shot_plot_cache
 
     clear_shot_plot_cache()
     clear_shots_clean_cache()
+    clear_shot_data_quality()
 
 
 # SCRUM-490/491: analysts reload the Synergy source or the shot data without a restart.

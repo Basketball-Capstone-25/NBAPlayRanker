@@ -96,3 +96,15 @@ def test_shot_views_keep_loaded_rows_until_the_reload_clears_them(monkeypatch, t
 
     app_module._after_pbp_reload()
     assert shot_plot_data._FRAME is None and shot_ml_models._CLEAN_CACHE is None
+
+
+def test_shot_check_describes_the_loaded_rows_until_a_reload(monkeypatch):
+    """SCRUM-491: a broken file on disk does not pause shot results on its own."""
+    from application.api_coordination import app as app_module
+    from domain.shot_analysis import shot_quality
+
+    loaded = {"valid_attribution": True}
+    monkeypatch.setattr(shot_quality, "_LOADED", loaded)
+    assert shot_quality.shot_data_quality() is loaded
+    app_module._after_pbp_reload()
+    assert shot_quality._LOADED is None
