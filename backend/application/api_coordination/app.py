@@ -63,6 +63,7 @@ from application.api_coordination.request_log_endpoints import create_request_lo
 from application.api_coordination.shot_explorer_endpoints import create_shot_explorer_router, default_shot_loader
 from application.analytics_services.shot_explorer import ShotExplorerService
 from application.api_coordination.clutch_report_endpoints import create_clutch_report_router
+from domain.baseline_recommendation.playtype_zones import best_shot_zone
 from application.recommendation_services.quick_call_service import QuickCallService
 app = FastAPI(
     title="Basketball Strategy API",
@@ -565,7 +566,10 @@ def rank_context_ml(
         "LATE_GAME_FACTOR",
         "TRAILING_FACTOR",
         "LEADING_FACTOR",
+        "SHOT_ZONE",
     ]
+    # SCRUM-795: each ranked play carries its best shot zone for the Context ML list.
+    df["SHOT_ZONE"] = df["PLAY_TYPE"].map(best_shot_zone)
     out_cols = [c for c in out_cols if c in df.columns]
     rankings = _df_to_records(df[out_cols])
 
