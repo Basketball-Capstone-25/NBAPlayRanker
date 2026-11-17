@@ -1,6 +1,6 @@
 """Where each Synergy play type usually ends: shot-zone weights and labels.
 
-Shared by the court-map renderer and Quick-Call Mode so both describe the
+Shared by the court-map renderer and the Context ML ranking so both describe the
 same zones for a play type.
 """
 

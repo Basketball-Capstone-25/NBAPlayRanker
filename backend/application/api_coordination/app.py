@@ -58,13 +58,11 @@ from application.api_coordination.data_quality_endpoints import (
     install_data_quality_header,
 )
 from application.api_coordination.export_report_endpoints import create_export_report_router
-from application.api_coordination.quick_call_endpoints import create_quick_call_router
 from application.api_coordination.request_log_endpoints import create_request_log_router, install_request_logging
 from application.api_coordination.shot_explorer_endpoints import create_shot_explorer_router, default_shot_loader
 from application.analytics_services.shot_explorer import ShotExplorerService
 from application.api_coordination.clutch_report_endpoints import create_clutch_report_router
 from domain.baseline_recommendation.playtype_zones import best_shot_zone
-from application.recommendation_services.quick_call_service import QuickCallService
 app = FastAPI(
     title="Basketball Strategy API",
     description=(
@@ -842,31 +840,6 @@ def export_shotplan_pdf(
 app.include_router(create_pdf_router(rec, VALID_SEASONS, VALID_TEAMS, TEAM_NAMES))
 if rec is not None:
     app.include_router(create_export_report_router(rec, VALID_SEASONS, VALID_TEAMS, SYNERGY_CSV))
-
-# Timeout Quick-Call Mode (SCRUM-628): context-aware top 3 with a baseline fallback.
-if rec is not None:
-    quick_call_service = QuickCallService(
-        context_ranker=lambda req: rank_ml_with_context(
-            season=req.season,
-            our_team=req.our_team,
-            opp_team=req.opp_team,
-            margin=req.margin,
-            period=req.period,
-            time_remaining_period_sec=req.time_remaining,
-            k=3,
-        ),
-        baseline_ranker=lambda req: rank_playtypes_baseline(
-            team_df=rec.team_df,
-            league_df=rec.league_df,
-            season=req.season,
-            our_team=req.our_team,
-            opp_team=req.opp_team,
-            k=3,
-        ),
-    )
-    app.include_router(
-        create_quick_call_router(quick_call_service, VALID_SEASONS, VALID_TEAMS, extra_dependencies=[data_quality_gate])
-    )
 
 # SCRUM-627: analysts browse and export the play-by-play shot dataset in the Data Explorer.
 app.include_router(create_shot_explorer_router(ShotExplorerService(default_shot_loader)))
