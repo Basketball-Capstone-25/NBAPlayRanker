@@ -9,6 +9,7 @@ import { playtypeName, type DashboardFilters, type PlaytypeDashboard } from "../
 import { UsageEfficiencyChart, OpponentDefenseChart, signed } from "./PlaytypeCharts";
 import LeagueComparisonPanel from "./LeagueComparisonPanel";
 import SeasonTrendPanel from "./SeasonTrendPanel";
+import TeamComparisonPanel from "./TeamComparisonPanel";
 import styles from "./matchup-dashboard.module.css";
 
 type View = "usage" | "defense";
@@ -83,8 +84,8 @@ export default function MatchupDashboardClient() {
   const [meta, setMeta] = useState<MetaOptions | null>(null), [metaError, setMetaError] = useState("");
   const [metaAttempt, setMetaAttempt] = useState(0), [attempt, setAttempt] = useState(0);
   const [season, setSeason] = useState(""), [our, setOur] = useState(""), [opp, setOpp] = useState("");
-  const [minimum, setMinimum] = useState(20), [view, setView] = useState<View | "league" | "trend">("usage");
-  const leagueView = view === "league", trendView = view === "trend";
+  const [minimum, setMinimum] = useState(20), [view, setView] = useState<View | "league" | "trend" | "profiles">("usage");
+  const leagueView = view === "league", trendView = view === "trend", profilesView = view === "profiles";
   const [playType, setPlayType] = useState("");
   const [leagueSide, setLeagueSide] = useState<"offense" | "defense">("offense");
   const [state, setState] = useState(emptyDashboard);
@@ -111,10 +112,10 @@ export default function MatchupDashboardClient() {
 
   useEffect(() => {
     const current = request.current!;
-    if (valid && !leagueView && !trendView) void current.run(filters, fetchPlaytypeDashboard, setState);
+    if (valid && !leagueView && !trendView && !profilesView) void current.run(filters, fetchPlaytypeDashboard, setState);
     else { current.cancel(); setState(emptyDashboard()); }
     return () => current.cancel();
-  }, [filters, valid, attempt, leagueView, trendView]);
+  }, [filters, valid, attempt, leagueView, trendView, profilesView]);
 
   return <main className={styles.page}>
     <header className={styles.header}><div><span className={styles.kicker}>Coach workspace · Regular season</span>
@@ -131,18 +132,23 @@ export default function MatchupDashboardClient() {
             : leagueView ? <label>Side<select value={leagueSide} onChange={e => setLeagueSide(e.target.value as "offense" | "defense")}>
             <option value="offense">Offense</option><option value="defense">Defense</option></select></label>
             : <label>Opponent<select value={opp} onChange={e => setOpp(e.target.value)}>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label>}
-          <label>{leagueView || trendView ? "Sample cutoff" : "Possession cutoff"}<select value={minimum} onChange={e => setMinimum(Number(e.target.value))}>{[1, 20, 50, 100, 250, 500, 1000, 5000].map(n => <option key={n} value={n}>{integer(n)}</option>)}</select></label>
+          <label>{leagueView || trendView || profilesView ? "Sample cutoff" : "Possession cutoff"}<select value={minimum} onChange={e => setMinimum(Number(e.target.value))}>{[1, 20, 50, 100, 250, 500, 1000, 5000].map(n => <option key={n} value={n}>{integer(n)}</option>)}</select></label>
         </div>
         <div className={styles.tabs} role="group" aria-label="Choose comparison">
           <button aria-pressed={view === "usage"} onClick={() => setView("usage")}>Usage and efficiency</button>
           <button aria-pressed={view === "defense"} onClick={() => setView("defense")}>Opponent weak spots</button>
           <button aria-pressed={leagueView} onClick={() => setView("league")}>League comparison</button>
           <button aria-pressed={trendView} onClick={() => setView("trend")}>Season trends</button>
+          <button aria-pressed={profilesView} onClick={() => setView("profiles")}>Team profiles</button>
         </div>
         <p className={styles.scope}>{trendView ? `All available regular seasons · ${our} offense` : `${season} regular season · ${leagueView ? `${our} ${leagueSide} vs league` : `${our} vs ${opp}`}`} · Historical profiles</p>
         {trendView ? <SeasonTrendPanel filters={{ team: our, play_type: playType }} minimum={minimum} />
           : leagueView ? <LeagueComparisonPanel filters={{ season, team: our, side: leagueSide }} minimum={minimum} />
           : !valid ? <div className={styles.card} role="alert">Choose two different teams to compare.</div>
+          : profilesView ? <>
+            <button className={styles.button} type="button" onClick={() => { setOur(opp); setOpp(our); }}>Swap teams</button>
+            <TeamComparisonPanel filters={{ season, team: our, opponent: opp }} minimum={minimum} />
+          </>
           : <DashboardResultState state={selectDashboard(state, filters)} view={view} retry={() => setAttempt(x => x + 1)} />}
       </>}
   </main>;
