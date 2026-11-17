@@ -67,3 +67,22 @@ def test_shot_baseline_rank_returns_dict():
     result = rec.rank(season=rec.available_seasons[0], our_team=rec.available_teams[0], opp_team=rec.available_teams[1], k=3)
     assert isinstance(result, dict)
     assert "by_shot_type" in result or "by_zone" in result or len(result) > 0
+
+
+def test_adopt_swaps_tables_and_keeps_the_same_object(tmp_path):
+    """SCRUM-490: a reload swaps tables in place so every router sees them."""
+    rec = BaselineRecommender(str(DATA_PATH))
+    lines = DATA_PATH.read_text(encoding="utf-8").splitlines()
+    smaller = tmp_path / "synergy.csv"
+    smaller.write_text("\n".join(lines[:2001]) + "\n", encoding="utf-8")
+    fresh = BaselineRecommender(str(smaller))
+
+    same = rec
+    rec.adopt(fresh)
+
+    assert rec is same
+    assert rec.source_path == smaller
+    assert rec.raw_df is fresh.raw_df
+    assert rec.team_df is fresh.team_df and rec.league_df is fresh.league_df
+    assert len(rec.raw_df) == 2000
+    assert rec.raw_df.attrs["dataset_version"] == fresh.raw_df.attrs["dataset_version"]

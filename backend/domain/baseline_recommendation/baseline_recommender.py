@@ -293,8 +293,19 @@ class BaselineRecommender(IBaselineRecommender):
         if not synergy_csv_path.exists():
             raise FileNotFoundError(synergy_csv_path)
 
+        self.source_path = synergy_csv_path
         self.raw_df = read_versioned_csv(synergy_csv_path)
         self.team_df, self.league_df = prepare_baseline_tables(self.raw_df)
+
+    def adopt(self, other: "BaselineRecommender") -> None:
+        """Take another, fully loaded copy's tables (SCRUM-490).
+
+        Routers keep a reference to this object, so a reload swaps the tables
+        here instead of replacing the object. The new copy is built and checked
+        first; the previous tables stay in use until this call.
+        """
+        self.source_path = other.source_path
+        self.raw_df, self.team_df, self.league_df = other.raw_df, other.team_df, other.league_df
 
     def rank(self, season: str, our_team: str, opp_team: str, k: int = 5) -> pd.DataFrame:
         return rank_playtypes_baseline(
