@@ -93,3 +93,14 @@ def test_baseline_rationale_discloses_missing_context_for_every_row():
 @pytest.mark.parametrize("source, family", [("Spotup", "spot_up"), ("OffScreen", "off_screen"), ("PRBallHandler", "ball_screen"), ("PRRollMan", "ball_screen")])
 def test_source_play_names_have_a_supported_context_family(source, family):
     assert ranker._play_family(source) == family
+
+
+def test_each_ranked_play_carries_its_best_shot_zone():
+    """SCRUM-795: the Context ML list shows a shot zone for every play."""
+    from domain.baseline_recommendation.playtype_zones import best_shot_zone
+
+    rows = request_rank({"margin": -3, "period": 4, "time_remaining": 28}).json()["rankings"]
+    assert len(rows) == 3
+    for row in rows:
+        assert row["SHOT_ZONE"] == best_shot_zone(row["PLAY_TYPE"])
+        assert row["SHOT_ZONE"].strip()
