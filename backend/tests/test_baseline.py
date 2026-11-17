@@ -1,5 +1,6 @@
 import pathlib
 
+import pandas as pd
 import pytest
 
 from domain.baseline_recommendation import BaselineRecommender
@@ -72,9 +73,10 @@ def test_shot_baseline_rank_returns_dict():
 def test_adopt_swaps_tables_and_keeps_the_same_object(tmp_path):
     """SCRUM-490: a reload swaps tables in place so every router sees them."""
     rec = BaselineRecommender(str(DATA_PATH))
-    lines = DATA_PATH.read_text(encoding="utf-8").splitlines()
+    frame = pd.read_csv(DATA_PATH)
     smaller = tmp_path / "synergy.csv"
-    smaller.write_text("\n".join(lines[:2001]) + "\n", encoding="utf-8")
+    # Regular-season rows only (SEASON_ID 2xxxx); the file starts with playoffs.
+    frame[frame["SEASON_ID"].astype(str).str.startswith("2")].head(2000).to_csv(smaller, index=False)
     fresh = BaselineRecommender(str(smaller))
 
     same = rec
