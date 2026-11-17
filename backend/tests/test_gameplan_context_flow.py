@@ -104,3 +104,8 @@ def test_each_ranked_play_carries_its_best_shot_zone():
     for row in rows:
         assert row["SHOT_ZONE"] == best_shot_zone(row["PLAY_TYPE"])
         assert row["SHOT_ZONE"].strip()
+
+
+def test_quick_call_endpoint_is_gone():
+    """SCRUM-795: Quick-Call Mode was folded into Context ML."""
+    assert not [route.path for route in app.routes if "quick-call" in getattr(route, "path", "")]
