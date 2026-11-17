@@ -99,3 +99,27 @@ def test_home_flag_keeps_heaves_away_from_the_attacking_basket():
     frame = pd.DataFrame({"X":[-40.,40.,40.,-40.],"Y":[0.,0.,0.,0.],"HOME_FLAG":[True,False,True,False]})
     x, y = _coords_to_sportypy_halfcourt(df=frame, ax=Axis(), court=Court())
     np.testing.assert_array_equal(x, [-40.,-40.,40.,40.])
+
+
+def test_loaded_shots_stay_until_a_reload_swaps_them(monkeypatch):
+    """SCRUM-491: files on disk never replace the loaded shots on their own."""
+    from infrastructure.data_access import pbp_loader, pbp_shots
+
+    def no_disk(**_kwargs):
+        raise AssertionError("the loaded snapshot should be served without reading disk")
+
+    first = pd.DataFrame({"season": ["2024-25"], "team": ["TOR"]})
+    first.attrs["dataset_version"] = "sha256:" + "1" * 64
+    monkeypatch.setattr(pbp_loader, "_CANONICAL_DF", first)
+    monkeypatch.setattr(pbp_loader, "_CANONICAL_ID", first.attrs["dataset_version"])
+    monkeypatch.setattr(pbp_loader, "ensure_canonical_parquet", no_disk)
+    monkeypatch.setattr(pbp_shots, "_SHOTS_DF", None)
+
+    assert pbp_loader.get_pbp_canonical_df() is first
+    assert pbp_shots.load_canonical_shots()["TEAM_ABBR"].tolist() == ["TOR"]
+
+    second = pd.DataFrame({"season": ["2024-25"], "team": ["BOS"]})
+    second.attrs["dataset_version"] = "sha256:" + "2" * 64
+    pbp_loader.swap_pbp_canonical(second)
+    assert pbp_loader.get_pbp_canonical_df() is second
+    assert pbp_shots.load_canonical_shots()["TEAM_ABBR"].tolist() == ["BOS"]

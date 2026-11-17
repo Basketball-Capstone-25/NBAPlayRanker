@@ -7,7 +7,6 @@ from typing import Any, Dict, Optional
 
 import numpy as np
 import pandas as pd
-from infrastructure.data_access.dataset_metadata import source_version
 from .pbp_loader import get_pbp_canonical_df
 from fastapi.responses import StreamingResponse
 
@@ -33,13 +32,11 @@ _SHOTS_DF: Optional[pd.DataFrame] = None
 def _load_canonical_shots_df() -> pd.DataFrame:
     """Load canonical shots parquet once and normalize column names."""
     global _SHOTS_DF
-    if _SHOTS_DF is not None and _SHOTS_DF.attrs.get("dataset_version") == source_version(CANONICAL_PARQUET):
-        return _SHOTS_DF
-
-    if not CANONICAL_PARQUET.exists():
-        raise FileNotFoundError(f"{CANONICAL_PARQUET} not found")
-
+    # SCRUM-491: follow the loaded snapshot, not the file on disk, so a failed
+    # reload never replaces the data analysts are using.
     df = get_pbp_canonical_df()
+    if _SHOTS_DF is not None and _SHOTS_DF.attrs.get("dataset_version") == df.attrs.get("dataset_version"):
+        return _SHOTS_DF
 
     # Normalize expected columns for downstream code (viz + API)
     rename_map: Dict[str, str] = {

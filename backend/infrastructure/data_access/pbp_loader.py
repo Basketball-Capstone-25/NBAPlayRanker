@@ -33,6 +33,12 @@ def get_pbp_canonical_df(*, ensure: bool = True, force_rebuild: bool = False) ->
 
     global _CANONICAL_DF, _CANONICAL_ID
 
+    # SCRUM-491: once loaded, keep serving the same snapshot. A changed or broken
+    # file on disk only takes effect through an analyst reload, which checks it first.
+    with _LOAD_LOCK:
+        if _CANONICAL_DF is not None and not force_rebuild:
+            return _CANONICAL_DF
+
     if ensure:
         ensure_canonical_parquet(force_rebuild=force_rebuild)
 
@@ -50,6 +56,14 @@ def get_pbp_canonical_df(*, ensure: bool = True, force_rebuild: bool = False) ->
             _CANONICAL_ID = cache_id
 
     return _CANONICAL_DF
+
+def swap_pbp_canonical(frame: pd.DataFrame) -> None:
+    """Serve an already checked canonical frame from now on (SCRUM-491)."""
+    global _CANONICAL_DF, _CANONICAL_ID
+    with _LOAD_LOCK:
+        _CANONICAL_DF = frame
+        _CANONICAL_ID = frame.attrs.get("dataset_version")
+
 
 def clear_pbp_canonical_cache() -> None:
     """Clear the in-memory canonical dataframe cache (useful for tests/dev)."""
