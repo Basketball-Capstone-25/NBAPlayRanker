@@ -143,10 +143,10 @@ export function ClutchActions({ filters, downloading, onDownload, downloadError 
     <>
     <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
       <button className="btn btn--secondary" type="button" disabled={!!downloading} onClick={() => onDownload("pdf")}>
-        {downloading === "pdf" ? "Preparing PDF…" : "Download PDF"}
+        {downloading === "pdf" ? "Preparing PDF…" : "Download clutch report (PDF)"}
       </button>
       <button className="btn btn--secondary" type="button" disabled={!!downloading} onClick={() => onDownload("csv")}>
-        {downloading === "csv" ? "Preparing CSV…" : "Download CSV"}
+        {downloading === "csv" ? "Preparing CSV…" : "Download clutch report (CSV)"}
       </button>
       <button className="btn" type="button" onClick={copyLink}>Copy coach link</button>
       <span className="muted" style={{ fontSize: 12 }}>For a coach account.</span>

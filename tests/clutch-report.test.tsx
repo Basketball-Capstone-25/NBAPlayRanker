@@ -122,8 +122,8 @@ describe("clutch report display", () => {
 
   it("offers downloads and a coach handoff instead of navigating the analyst to a forbidden page", () => {
     const html = renderToStaticMarkup(<ClutchActions filters={filters} downloading="" onDownload={() => {}} />);
-    expect(html).toContain("Download PDF");
-    expect(html).toContain("Download CSV");
+    expect(html).toContain("Download clutch report (PDF)");
+    expect(html).toContain("Download clutch report (CSV)");
     expect(html).toContain("Copy coach link");
     expect(html).toContain("For a coach account");
     expect(html).not.toContain('href="/context');
@@ -135,7 +135,7 @@ describe("clutch report display", () => {
     );
     expect(failed).toContain('role="alert"');
     expect(failed).toContain("Sign in to download this file.");
-    expect(failed.indexOf("Download CSV")).toBeLessThan(failed.indexOf("Sign in to download this file."));
+    expect(failed.indexOf("Download clutch report (CSV)")).toBeLessThan(failed.indexOf("Sign in to download this file."));
     const ok = renderToStaticMarkup(<ClutchActions filters={filters} downloading="" onDownload={() => {}} />);
     expect(ok).not.toContain('role="alert"');
   });

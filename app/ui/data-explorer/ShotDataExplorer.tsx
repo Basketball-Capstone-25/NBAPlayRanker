@@ -230,10 +230,10 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: S
         </div>
         <div className={styles.actions}>
           <button className={styles.button} type="button" disabled={!canExport} onClick={() => void exportFile("csv")}>
-            {exporting === "csv" ? "Exporting CSV…" : "Export CSV"}
+            {exporting === "csv" ? "Exporting shots…" : "Export matching shots (CSV)"}
           </button>
           <button className={styles.button} type="button" disabled={!canExport} onClick={() => void exportFile("json")}>
-            {exporting === "json" ? "Exporting JSON…" : "Export JSON"}
+            {exporting === "json" ? "Exporting shots…" : "Export matching shots (JSON)"}
           </button>
         </div>
       </div>

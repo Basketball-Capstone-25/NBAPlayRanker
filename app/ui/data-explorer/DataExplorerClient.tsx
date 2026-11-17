@@ -481,7 +481,7 @@ export default function DataExplorerClient() {
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <button className="btn btn--secondary" type="button" onClick={exportCsv} disabled={!season || loading || exporting} aria-busy={exporting}>
-              {exporting ? "Exporting CSV…" : "Export CSV"}
+              {exporting ? "Exporting play-type rows…" : "Export play-type rows (CSV)"}
             </button>
             <Link className="btn" href="/matchup">
               Next: Baseline Matchup
@@ -771,7 +771,7 @@ export default function DataExplorerClient() {
               CSV row limit: {Math.max(limit, 1000)}
             </span>
             <button className="btn" type="button" onClick={exportCsv} disabled={!season || loading || exporting} aria-busy={exporting}>
-              {exporting ? "Exporting CSV…" : "Export CSV"}
+              {exporting ? "Exporting play-type rows…" : "Export play-type rows (CSV)"}
             </button>
           </div>
         </div>
