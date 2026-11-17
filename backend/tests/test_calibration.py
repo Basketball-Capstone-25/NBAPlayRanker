@@ -115,7 +115,7 @@ def test_missing_schema_empty_rows_and_negative_possessions_are_rejected(offense
 @pytest.fixture
 def calibration_client(offense_data):
     test_app = FastAPI()
-    test_app.include_router(create_calibration_router(pd.DataFrame(), pd.DataFrame()))
+    test_app.include_router(create_calibration_router(lambda: (pd.DataFrame(), pd.DataFrame())))
     with patch("application.api_coordination.calibration_endpoints.load_offense_dataset", return_value=offense_data):
         yield TestClient(test_app)
 

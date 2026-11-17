@@ -146,7 +146,7 @@ except (OSError, ValueError, KeyError) as exc:
     logger.error("Play-type data unavailable: %s (%s). Check /ready.", SYNERGY_CSV.name, type(exc).__name__)
 if rec is not None:
     app.include_router(create_topk_uplift_router(rec, SYNERGY_CSV))
-    app.include_router(create_calibration_router(rec.team_df, rec.league_df))
+    app.include_router(create_calibration_router(lambda: (rec.team_df, rec.league_df)))
     app.include_router(create_data_quality_router(lambda: rec.raw_df))
 app.include_router(create_dataset_router(lambda: rec.raw_df if rec is not None else None))
 # SCRUM-479: rankings are blocked (or flagged) when the loaded source fails its checks.

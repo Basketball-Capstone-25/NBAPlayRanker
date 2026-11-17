@@ -65,12 +65,18 @@ def create_export_report_router(
     valid_teams: Iterable[str],
     source_path: Path,
 ) -> APIRouter:
-    seasons = set(valid_seasons)
-    teams = set(valid_teams)
-    # These rows came from the loaded snapshot, which may differ from a file
-    # replaced on disk after startup.
-    version = rec.raw_df.attrs.get("dataset_version", "unavailable")
-    digest = version.removeprefix("sha256:") if version.startswith("sha256:") else None
+    # SCRUM-490: keep the app's lists (an analyst reload updates them in place).
+    seasons = valid_seasons if isinstance(valid_seasons, (list, set, tuple, frozenset)) else list(valid_seasons)
+    teams = valid_teams if isinstance(valid_teams, (list, set, tuple, frozenset)) else list(valid_teams)
+
+    def version() -> str:
+        # Rows come from the loaded tables, which may differ from a file replaced
+        # on disk; label them with the version actually in memory.
+        return rec.raw_df.attrs.get("dataset_version", "unavailable")
+
+    def digest() -> Optional[str]:
+        current = version()
+        return current.removeprefix("sha256:") if current.startswith("sha256:") else None
 
     contract = ExportContract()
     for report in set(REPORT_ROLES) | set(SNAPSHOT_ROLES):
@@ -131,7 +137,7 @@ def create_export_report_router(
             result = compute_topk_uplift(
                 rec.team_df, ranked, season=season, our_team=our, opp_team=opp,
                 k=k, w_off=w_off,
-                provenance={"source_file": Path(source_path).name, "source_sha256": digest},
+                provenance={"source_file": Path(source_path).name, "source_sha256": digest()},
             )
         except UpliftDataUnavailable as exc:
             raise HTTPException(status_code=404, detail=str(exc)) from exc
@@ -168,7 +174,7 @@ def create_export_report_router(
             raise HTTPException(status_code=403, detail=f"Role '{user.get('role')}' cannot export '{report}'.")
         payload = build_payload(report, _season(season), our, opp, side, k, w_off)
         payload = replace(payload, filters={**payload.filters, "season_phase": SEASON_PHASE}, metadata={
-            **payload.metadata, "dataset_versions": {"synergy": version}, "aggregation_version": AGGREGATION_VERSION,
+            **payload.metadata, "dataset_versions": {"synergy": version()}, "aggregation_version": AGGREGATION_VERSION,
         })
         try:
             file = contract.build_export(payload, format)

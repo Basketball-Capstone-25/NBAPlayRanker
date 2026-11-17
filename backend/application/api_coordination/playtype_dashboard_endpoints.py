@@ -12,7 +12,16 @@ from domain.baseline_recommendation.playtype_dashboard import PlaytypeDashboardS
 
 def create_playtype_dashboard_router(rec: BaselineRecommender, data_quality_gate: DataQualityGate) -> APIRouter:
     router = APIRouter(tags=["Matchup dashboard"])
-    service = PlaytypeDashboardService(rec.team_df, rec.league_df, rec.raw_df.attrs.get("dataset_version", "unavailable"))
+    built: dict[str, Any] = {}
+
+    def service() -> PlaytypeDashboardService:
+        # SCRUM-490: rebuild only when an analyst reload swapped the tables.
+        if built.get("frame") is not rec.raw_df:
+            built["service"] = PlaytypeDashboardService(
+                rec.team_df, rec.league_df, rec.raw_df.attrs.get("dataset_version", "unavailable"),
+            )
+            built["frame"] = rec.raw_df
+        return built["service"]
 
     @router.get("/analytics/playtypes", dependencies=[Depends(require_role("recommendation")), Depends(data_quality_gate)])
     def playtype_dashboard(
@@ -24,7 +33,7 @@ def create_playtype_dashboard_router(rec: BaselineRecommender, data_quality_gate
     ) -> dict[str, Any]:
         response.headers["Cache-Control"] = "private, no-store"
         try:
-            return service.build(season, our, opp, min_poss)
+            return service().build(season, our, opp, min_poss)
         except ValueError as error:
             raise HTTPException(status_code=400, detail=str(error), headers={"Cache-Control": "private, no-store"}) from error
 

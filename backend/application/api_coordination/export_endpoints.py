@@ -28,8 +28,9 @@ def create_pdf_router(
     Create a FastAPI router for PDF export endpoints.
     Called by app.py: app.include_router(create_pdf_router(rec, ...))
     """
-    valid_seasons_set = set(valid_seasons)
-    valid_teams_set = set(valid_teams)
+    # SCRUM-490: keep the app's lists (an analyst reload updates them in place).
+    valid_seasons_set = valid_seasons if isinstance(valid_seasons, (list, set, tuple, frozenset)) else list(valid_seasons)
+    valid_teams_set = valid_teams if isinstance(valid_teams, (list, set, tuple, frozenset)) else list(valid_teams)
 
     router = APIRouter(tags=["export"])
 

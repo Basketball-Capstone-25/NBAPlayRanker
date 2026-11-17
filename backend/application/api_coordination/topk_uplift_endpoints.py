@@ -38,19 +38,22 @@ def _csv_evidence(payload: dict) -> str:
 
 
 def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> APIRouter:
-    """Reuse the baseline tables and the version captured when they were loaded."""
+    """Reuse the baseline tables and the version of the tables currently loaded."""
     source_path = Path(source_path)
-    version = rec.raw_df.attrs.get("dataset_version", "unavailable")
-    provenance = {
-        "source_file": rec.raw_df.attrs.get("source_file", source_path.name),
-        "source_sha256": version.removeprefix("sha256:") if version.startswith("sha256:") else None,
-        "dataset_version": version,
-        "aggregation": "regular-season player rows aggregated by season, team, play type and side",
-        "aggregation_version": AGGREGATION_VERSION,
-        "season_phase": SEASON_PHASE,
-        "baseline_points_source": "PTS (no fallback to rounded PPP)",
-        "recommendation_source": "/rank-plays/baseline with identical filters",
-    }
+
+    def provenance() -> dict:
+        # Read per request so an analyst reload (SCRUM-490) is labelled correctly.
+        version = rec.raw_df.attrs.get("dataset_version", "unavailable")
+        return {
+            "source_file": rec.raw_df.attrs.get("source_file", source_path.name),
+            "source_sha256": version.removeprefix("sha256:") if version.startswith("sha256:") else None,
+            "dataset_version": version,
+            "aggregation": "regular-season player rows aggregated by season, team, play type and side",
+            "aggregation_version": AGGREGATION_VERSION,
+            "season_phase": SEASON_PHASE,
+            "baseline_points_source": "PTS (no fallback to rounded PPP)",
+            "recommendation_source": "/rank-plays/baseline with identical filters",
+        }
     router = APIRouter(tags=["metrics"], dependencies=[Depends(require_role("analytics"))])
 
     def evidence(
@@ -69,7 +72,7 @@ def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> AP
             )
             return compute_topk_uplift(
                 rec.team_df, ranked, season=season, our_team=our, opp_team=opp,
-                k=k, w_off=w_off, provenance=provenance,
+                k=k, w_off=w_off, provenance=provenance(),
             )
         except UpliftDataUnavailable as exc:
             raise HTTPException(status_code=404, detail=str(exc)) from exc
