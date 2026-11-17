@@ -871,11 +871,20 @@ def _after_synergy_reload(loaded: BaselineRecommender, predictions: Optional[pd.
     data_quality_gate.refresh()
 
 
+def _after_pbp_reload() -> None:
+    """SCRUM-491: shot views that read the cleaned file pick up the checked one."""
+    from domain.shot_analysis.shot_ml_models import clear_shots_clean_cache
+    from infrastructure.data_access.shot_plot_data import clear_shot_plot_cache
+
+    clear_shot_plot_cache()
+    clear_shots_clean_cache()
+
+
 # SCRUM-490/491: analysts reload the Synergy source or the shot data without a restart.
 app.include_router(create_data_reload_router(
     SynergyReloadService(rec, ML_PRED_CSV, EXPECTED_SEASONS, EXPECTED_TEAMS, _after_synergy_reload)
     if rec is not None else None,
-    PbpReloadService(),
+    PbpReloadService(on_reloaded=_after_pbp_reload),
 ))
 
 # SCRUM-494: analysts search endpoint activity; every signed-in call is recorded.

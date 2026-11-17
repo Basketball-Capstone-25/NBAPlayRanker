@@ -76,3 +76,23 @@ def test_second_reload_waits_for_the_first(setup):
             service.reload()
     finally:
         service._lock.release()
+
+
+def test_shot_views_keep_loaded_rows_until_the_reload_clears_them(monkeypatch, tmp_path):
+    """SCRUM-491: heatmap/PDF and shot model rows do not follow the file on their own."""
+    from application.api_coordination import app as app_module
+    from domain.shot_analysis import shot_ml_models
+    from infrastructure.data_access import shot_plot_data
+
+    plot = pd.DataFrame({"SEASON_STR": ["2024-25"]})
+    monkeypatch.setattr(shot_plot_data, "_FRAME", plot)
+    monkeypatch.setattr(shot_plot_data, "CLEAN_PARQUET", tmp_path / "missing.parquet")
+    cached = shot_ml_models._CleanCache(cache_id="loaded", df=pd.DataFrame({"SEASON_STR": ["2024-25"]}))
+    monkeypatch.setattr(shot_ml_models, "_CLEAN_CACHE", cached)
+    monkeypatch.setattr(shot_ml_models, "CLEAN_PARQUET", tmp_path / "missing.parquet")
+
+    assert shot_plot_data.get_shot_plot_df() is plot
+    assert shot_ml_models.get_shots_clean_df() is cached.df
+
+    app_module._after_pbp_reload()
+    assert shot_plot_data._FRAME is None and shot_ml_models._CLEAN_CACHE is None

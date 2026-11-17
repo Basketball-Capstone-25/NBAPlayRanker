@@ -1,7 +1,7 @@
 """Shared, read-only columns used by both shot heatmaps and PDF exports."""
 from threading import RLock
 from .pbp_constants import CLEAN_PARQUET
-from .dataset_metadata import read_versioned_parquet, source_version
+from .dataset_metadata import read_versioned_parquet
 
 _FRAME = None
 _LOCK = RLock()
@@ -9,8 +9,15 @@ COLUMNS = ["SEASON_STR", "TEAM_ABBR", "OPP_ABBR", "SHOT_TYPE", "ZONE", "X", "Y",
 
 def get_shot_plot_df():
     global _FRAME
-    version = source_version(CLEAN_PARQUET)
+    # SCRUM-491: keep the loaded shots; a changed file is only read after an
+    # analyst reload has checked it and cleared this cache.
     with _LOCK:
-        if _FRAME is None or _FRAME.attrs.get("dataset_version") != version:
+        if _FRAME is None:
             _FRAME = read_versioned_parquet(CLEAN_PARQUET, columns=COLUMNS)
         return _FRAME
+
+
+def clear_shot_plot_cache() -> None:
+    global _FRAME
+    with _LOCK:
+        _FRAME = None

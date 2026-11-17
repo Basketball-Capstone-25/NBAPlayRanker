@@ -69,9 +69,19 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         df = df.rename(columns=cols)
     return df
 
+def clear_shots_clean_cache() -> None:
+    """Drop the loaded shots so the next request reads the reloaded file."""
+    global _CLEAN_CACHE
+    _CLEAN_CACHE = None
+
+
 def get_shots_clean_df(*, force_reload: bool = False) -> pd.DataFrame:
     """Load shots_clean.parquet once per process (cached)."""
     global _CLEAN_CACHE
+
+    # SCRUM-491: keep the loaded shots until an analyst reload clears this cache.
+    if _CLEAN_CACHE is not None and not force_reload:
+        return _CLEAN_CACHE.df
 
     if not CLEAN_PARQUET.exists():
         raise FileNotFoundError(
@@ -80,32 +90,31 @@ def get_shots_clean_df(*, force_reload: bool = False) -> pd.DataFrame:
         )
 
     cid = _clean_cache_id()
-    if force_reload or _CLEAN_CACHE is None or _CLEAN_CACHE.cache_id != cid:
-        wanted = [
-            "SEASON_STR",
-            "TEAM_ABBR",
-            "OPP_ABBR",
-            "HOME_FLAG",
-            "PERIOD",
-            "CLOCK_SEC",
-            "MARGIN",
-            "SHOT_TYPE",
-            "ZONE",
-            "SHOT_VALUE",
-            "DIST",
-            "ANGLE",
-            "X",
-            "Y",
-            "MADE",
-            "POINTS",
-            "GAME_ID",
-            "SHOOTER_ID",
-        ]
+    wanted = [
+        "SEASON_STR",
+        "TEAM_ABBR",
+        "OPP_ABBR",
+        "HOME_FLAG",
+        "PERIOD",
+        "CLOCK_SEC",
+        "MARGIN",
+        "SHOT_TYPE",
+        "ZONE",
+        "SHOT_VALUE",
+        "DIST",
+        "ANGLE",
+        "X",
+        "Y",
+        "MADE",
+        "POINTS",
+        "GAME_ID",
+        "SHOOTER_ID",
+    ]
 
-        from infrastructure.data_access.dataset_metadata import read_versioned_parquet
-        df = read_versioned_parquet(CLEAN_PARQUET, columns=wanted)
-        df = _normalize_columns(df)
-        _CLEAN_CACHE = _CleanCache(cache_id=cid, df=df)
+    from infrastructure.data_access.dataset_metadata import read_versioned_parquet
+    df = read_versioned_parquet(CLEAN_PARQUET, columns=wanted)
+    df = _normalize_columns(df)
+    _CLEAN_CACHE = _CleanCache(cache_id=cid, df=df)
 
     return _CLEAN_CACHE.df
 
