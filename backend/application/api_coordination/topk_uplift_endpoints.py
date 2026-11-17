@@ -95,14 +95,14 @@ def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> AP
     def topk_uplift_json(payload: dict = Depends(evidence)) -> JSONResponse:
         return JSONResponse(
             content=payload,
-            headers={"Content-Disposition": f'attachment; filename="{filename(payload, "json")}"', "X-Dataset-Version": version},
+            headers={"Content-Disposition": f'attachment; filename="{filename(payload, "json")}"', "X-Dataset-Version": payload["data_provenance"]["dataset_version"]},
         )
 
     @router.get("/metrics/topk-uplift.csv")
     def topk_uplift_csv(payload: dict = Depends(evidence)) -> StreamingResponse:
         return StreamingResponse(
             iter([_csv_evidence(payload)]), media_type="text/csv",
-            headers={"Content-Disposition": f'attachment; filename="{filename(payload, "csv")}"', "X-Dataset-Version": version},
+            headers={"Content-Disposition": f'attachment; filename="{filename(payload, "csv")}"', "X-Dataset-Version": payload["data_provenance"]["dataset_version"]},
         )
 
     return router
