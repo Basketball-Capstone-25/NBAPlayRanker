@@ -1,7 +1,7 @@
 // Domain Layer — late-game (clutch) report (SCRUM-629).
 // Same limits as backend/application/analytics_services/clutch_report.py so the
 // panel can explain a bad filter before calling the API.
-import { clampSituation, formatClock, type QuickCallSituation } from "./quick-call";
+import { clampSituation, formatClock, type GameSituation } from "./game-situation";
 
 export type ClutchFilters = {
   season: string;
@@ -65,10 +65,10 @@ export function describeClutch(f: ClutchFilters): string {
 }
 
 /**
- * The Quick-Call situation for this report: the latest period in the range,
+ * The coach-link situation for this report: the latest period in the range,
  * the time limit, and the margin in the range closest to a tie.
  */
-export function clutchQuickCallSituation(f: ClutchFilters): QuickCallSituation {
+export function clutchSituation(f: ClutchFilters): GameSituation {
   const margin = f.marginMin > 0 ? f.marginMin : f.marginMax < 0 ? f.marginMax : 0;
   return clampSituation({
     season: f.season,

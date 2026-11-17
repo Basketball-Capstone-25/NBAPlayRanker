@@ -5,10 +5,10 @@
 // shots, makes and points per shot by zone.
 
 import React, { FormEvent, useEffect, useRef, useState } from "react";
-import { quickCallHref } from "../../domain/quick-call";
+import { contextHref } from "../../domain/game-situation";
 import {
   clutchFilterProblem,
-  clutchQuickCallSituation,
+  clutchSituation,
   DEFAULT_CLUTCH,
   describeClutch,
   type ClutchFilters,
@@ -106,7 +106,7 @@ export function ClutchTable({ report }: { report: ClutchReport }) {
 }
 
 export async function copyClutchCoachLink(filters: ClutchFilters, origin: string, writeText: (text: string) => Promise<void>) {
-  const url = new URL(quickCallHref(clutchQuickCallSituation(filters)), origin).href;
+  const url = new URL(contextHref(clutchSituation(filters)), origin).href;
   const reportKey = clutchReportUrl(filters);
   try {
     await writeText(url);
@@ -127,7 +127,7 @@ export function ClutchCoachLinkFeedback({ filters, copy }: { filters: ClutchFilt
     </label>;
 }
 
-/** Downloads and a Quick-Call link that the analyst can share with a coach. */
+/** Downloads and a Context ML link that the analyst can share with a coach. */
 export function ClutchActions({ filters, downloading, onDownload, downloadError = "" }: {
   filters: ClutchFilters;
   downloading: "" | ClutchFormat;

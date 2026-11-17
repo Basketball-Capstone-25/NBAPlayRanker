@@ -3,13 +3,13 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import {
   clutchFilterProblem,
-  clutchQuickCallSituation,
+  clutchSituation,
   DEFAULT_CLUTCH,
   describeClutch,
   type ClutchFilters,
   type ClutchReport,
 } from "../app/domain/clutch-report";
-import { quickCallHref } from "../app/domain/quick-call";
+import { contextHref } from "../app/domain/game-situation";
 
 vi.mock("../lib/supabase/client", () => ({ createClient: () => ({ auth: { getSession: vi.fn() } }) }));
 import { clutchFilename, clutchReportUrl } from "../app/infrastructure/clutch-report";
@@ -55,22 +55,22 @@ describe("clutch report filters (SCRUM-629)", () => {
   });
 });
 
-describe("clutch report as a Quick-Call preset", () => {
+describe("clutch report as a Context ML coach link", () => {
   it("copies a shareable coach URL with the displayed report's situation", async () => {
     const write = vi.fn().mockResolvedValue(undefined);
     const result = await copyClutchCoachLink({ ...filters, marginMin: -5, marginMax: -1 }, "https://frontend.example.test", write);
-    expect(result).toMatchObject({ copied: true, url: "https://frontend.example.test/context/quick-call?season=2024-25&our=TOR&opp=BOS&margin=-1&period=4&time=300" });
+    expect(result).toMatchObject({ copied: true, url: "https://frontend.example.test/context?season=2024-25&our=TOR&opp=BOS&margin=-1&period=4&timeRemaining=300" });
     expect(write).toHaveBeenCalledWith(result.url);
   });
 
   it("keeps a selectable link when clipboard permission is denied", async () => {
     const result = await copyClutchCoachLink(filters, "https://frontend.example.test", async () => { throw new Error("Not allowed"); });
     expect(result.copied).toBe(false);
-    expect(result.url).toBe("https://frontend.example.test/context/quick-call?season=2024-25&our=TOR&opp=BOS&margin=0&period=4&time=300");
+    expect(result.url).toBe("https://frontend.example.test/context?season=2024-25&our=TOR&opp=BOS&margin=0&period=4&timeRemaining=300");
     const html = renderToStaticMarkup(<ClutchCoachLinkFeedback filters={filters} copy={result} />);
     expect(html).toContain("Could not copy automatically");
     expect(html).toMatch(/readonly=""/i);
-    expect(html).toContain("context/quick-call?");
+    expect(html).toContain("/context?season=");
   });
 
   it.each([true, false])("hides late clipboard feedback after the report changes (copied=%s)", async copied => {
@@ -80,7 +80,7 @@ describe("clutch report as a Quick-Call preset", () => {
     }));
     // Both ranges map to a tied-game preset, but they are different reports.
     const nextFilters = { ...filters, marginMin: -2, marginMax: 2 };
-    expect(clutchQuickCallSituation(nextFilters)).toEqual(clutchQuickCallSituation(filters));
+    expect(clutchSituation(nextFilters)).toEqual(clutchSituation(filters));
     finish();
     const result = await pending;
     expect(renderToStaticMarkup(<ClutchCoachLinkFeedback filters={nextFilters} copy={result} />)).toBe("");
@@ -89,12 +89,12 @@ describe("clutch report as a Quick-Call preset", () => {
   });
 
   it("uses the matchup, the time limit and the margin closest to a tie", () => {
-    expect(quickCallHref(clutchQuickCallSituation(filters))).toBe(
-      "/context/quick-call?season=2024-25&our=TOR&opp=BOS&margin=0&period=4&time=300"
+    expect(contextHref(clutchSituation(filters))).toBe(
+      "/context?season=2024-25&our=TOR&opp=BOS&margin=0&period=4&timeRemaining=300"
     );
-    expect(clutchQuickCallSituation({ ...filters, marginMin: -5, marginMax: -1 }).margin).toBe(-1);
-    expect(clutchQuickCallSituation({ ...filters, marginMin: 2, marginMax: 6 }).margin).toBe(2);
-    expect(clutchQuickCallSituation({ ...filters, periodFrom: 2 }).period).toBe(4);
+    expect(clutchSituation({ ...filters, marginMin: -5, marginMax: -1 }).margin).toBe(-1);
+    expect(clutchSituation({ ...filters, marginMin: 2, marginMax: 6 }).margin).toBe(2);
+    expect(clutchSituation({ ...filters, periodFrom: 2 }).period).toBe(4);
   });
 });
 
@@ -126,7 +126,7 @@ describe("clutch report display", () => {
     expect(html).toContain("Download CSV");
     expect(html).toContain("Copy coach link");
     expect(html).toContain("For a coach account");
-    expect(html).not.toContain('href="/context/quick-call');
+    expect(html).not.toContain('href="/context');
   });
 
   it("shows a failed download under the buttons and only when there is one", () => {
