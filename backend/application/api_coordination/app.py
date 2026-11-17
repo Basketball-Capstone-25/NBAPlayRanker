@@ -52,6 +52,8 @@ from application.api_coordination.season_trend_endpoints import create_season_tr
 from application.api_coordination.team_comparison_endpoints import create_team_comparison_router
 from application.api_coordination.possession_outcomes_endpoints import create_possession_outcomes_router
 from application.api_coordination.data_quality_endpoints import (
+    EXPECTED_SEASONS,
+    EXPECTED_TEAMS,
     DataQualityGate,
     QUALITY_HEADER,
     create_data_quality_router,
@@ -62,6 +64,8 @@ from application.api_coordination.request_log_endpoints import create_request_lo
 from application.api_coordination.shot_explorer_endpoints import create_shot_explorer_router, default_shot_loader
 from application.analytics_services.shot_explorer import ShotExplorerService
 from application.api_coordination.clutch_report_endpoints import create_clutch_report_router
+from application.api_coordination.data_reload_endpoints import create_data_reload_router
+from application.data_reload_services.synergy_reload import SynergyReloadService
 from domain.baseline_recommendation.playtype_zones import best_shot_zone
 app = FastAPI(
     title="Basketball Strategy API",
@@ -846,6 +850,31 @@ app.include_router(create_shot_explorer_router(ShotExplorerService(default_shot_
 
 # SCRUM-629: analysts build a late-game (clutch) report for a matchup from the same shots.
 app.include_router(create_clutch_report_router(default_shot_loader))
+
+
+def _after_synergy_reload(loaded: BaselineRecommender, predictions: Optional[pd.DataFrame]) -> None:
+    """SCRUM-490: refresh what was derived from the old tables, in place."""
+    global ML_PRED_DF
+    VALID_SEASONS[:] = sorted(loaded.team_df["SEASON"].dropna().unique().tolist())
+    VALID_TEAMS[:] = sorted(loaded.team_df["TEAM_ABBREVIATION"].dropna().unique().tolist())
+    VALID_PLAYTYPES[:] = sorted(loaded.team_df["PLAY_TYPE"].dropna().unique().tolist())
+    names = loaded.team_df[["TEAM_ABBREVIATION", "TEAM_NAME"]].dropna().drop_duplicates()
+    TEAM_NAMES.clear()
+    TEAM_NAMES.update({r["TEAM_ABBREVIATION"]: r["TEAM_NAME"] for _, r in names.iterrows()})
+    ML_PRED_DF = predictions
+    # Context ML keeps its own references; point them at the reloaded data.
+    from domain.context_ml_recommendation import ml_context_recommender
+
+    ml_context_recommender._rec = loaded
+    ml_context_recommender._ML_PRED_DF = None
+    data_quality_gate.refresh()
+
+
+# SCRUM-490: analysts reload the Synergy source without a restart.
+app.include_router(create_data_reload_router(
+    SynergyReloadService(rec, ML_PRED_CSV, EXPECTED_SEASONS, EXPECTED_TEAMS, _after_synergy_reload)
+    if rec is not None else None
+))
 
 # SCRUM-494: analysts search endpoint activity; every signed-in call is recorded.
 app.include_router(create_request_log_router())
