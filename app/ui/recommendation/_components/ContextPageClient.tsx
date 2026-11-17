@@ -213,7 +213,8 @@ function ContextInner() {
 
         const qsMargin = params.get("margin");
         const qsPeriod = params.get("period");
-        const qsTime = params.get("timeRemaining");
+        // "time" is the name old Quick-Call links used (SCRUM-795).
+        const qsTime = params.get("timeRemaining") ?? params.get("time");
         const qsOverlay = params.get("overlay");
         const qsStrength = params.get("strength");
 
