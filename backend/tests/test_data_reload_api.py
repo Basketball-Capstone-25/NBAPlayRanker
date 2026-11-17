@@ -69,3 +69,34 @@ def test_failed_reload_keeps_previous_data_and_explains(tmp_path, monkeypatch):
     assert app_module.rec.raw_df is before
     ranked = call("GET", "/rank-plays/baseline", "coach", params={"season": app_module.VALID_SEASONS[-1], "our": "TOR", "opp": "BOS", "k": 3})
     assert ranked.status_code == 200
+
+
+# SCRUM-491: the play-by-play reload uses the same role rules and error handling.
+from application.data_reload_services.pbp_reload import PbpReloadService  # noqa: E402
+from application.data_reload_services.synergy_reload import DataReloadError  # noqa: E402
+
+
+@pytest.mark.parametrize("role", ["coach", None])
+def test_only_analysts_can_reload_shots(role, monkeypatch):
+    monkeypatch.setattr(PbpReloadService, "_reload", lambda self: pytest.fail("reload must not run"))
+    assert call("POST", "/data/reload/pbp", role).status_code == 403
+
+
+def test_analyst_shot_reload_returns_the_new_version(monkeypatch):
+    result = {"dataset": "pbp_shots", "status": "reloaded", "previous_version": "a", "dataset_version": "b"}
+    monkeypatch.setattr(PbpReloadService, "_reload", lambda self: result)
+    response = call("POST", "/data/reload/pbp", "analyst")
+    assert response.status_code == 200 and response.json() == result
+    assert response.headers["Cache-Control"] == "no-store"
+
+
+def test_failed_shot_reload_explains_and_keeps_previous_data(monkeypatch):
+    def reject(self):
+        raise DataReloadError("shots_clean.parquet is missing columns: GAME_ID.")
+
+    monkeypatch.setattr(PbpReloadService, "_reload", reject)
+    response = call("POST", "/data/reload/pbp", "analyst")
+    assert response.status_code == 422
+    assert response.json()["detail"] == (
+        "Reload failed; the previous data is still in use. shots_clean.parquet is missing columns: GAME_ID."
+    )
