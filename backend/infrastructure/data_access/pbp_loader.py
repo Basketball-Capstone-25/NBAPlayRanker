@@ -57,6 +57,11 @@ def get_pbp_canonical_df(*, ensure: bool = True, force_rebuild: bool = False) ->
 
     return _CANONICAL_DF
 
+def loaded_pbp_canonical() -> Optional[pd.DataFrame]:
+    """The snapshot currently served, or None before the first load."""
+    return _CANONICAL_DF
+
+
 def swap_pbp_canonical(frame: pd.DataFrame) -> None:
     """Serve an already checked canonical frame from now on (SCRUM-491)."""
     global _CANONICAL_DF, _CANONICAL_ID
