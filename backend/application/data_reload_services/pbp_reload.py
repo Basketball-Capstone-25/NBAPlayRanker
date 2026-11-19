@@ -66,6 +66,7 @@ class PbpReloadService:
             raise DataReloadError(f"{name} was not found.") from error
         except (OSError, ValueError) as error:
             raise DataReloadError(f"{name} could not be read ({type(error).__name__}).") from error
+        clean_version = clean.attrs.get("dataset_version")
 
         missing = [column for column in REQUIRED_CLEAN_COLUMNS if column not in clean.columns]
         if missing:
@@ -82,6 +83,8 @@ class PbpReloadService:
             canonical = build_canonical_from_clean(clean)
         except (KeyError, ValueError, TypeError) as error:
             raise DataReloadError(f"{name} could not be converted ({type(error).__name__}).") from error
+        # Release source-only columns before reading back the staged table.
+        del clean
         if canonical.empty:
             raise DataReloadError(f"{name} has no usable shots (each needs a season, team, game and court location).")
         bad_seasons = sorted({s for s in canonical["season"].unique() if not _SEASON.match(str(s))})
@@ -90,7 +93,7 @@ class PbpReloadService:
 
         try:
             fingerprint = fingerprint_file(self._clean_path, schema_version=CANONICAL_SCHEMA_VERSION)
-            if fingerprint.source_sha256 != clean.attrs.get("dataset_version"):
+            if fingerprint.source_sha256 != clean_version:
                 raise ValueError("The shot source changed after it was read.")
             metadata = build_meta(
                 fingerprint=fingerprint,

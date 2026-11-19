@@ -173,6 +173,30 @@ def test_source_changed_after_read_is_not_used_for_metadata(setup, monkeypatch):
     assert pbp_loader.loaded_pbp_canonical() is before and calls == []
 
 
+def test_source_frame_is_released_before_snapshot_readback(setup, monkeypatch):
+    import weakref
+    from application.data_reload_services import pbp_reload
+
+    service, _, _, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    read = pbp_reload.read_versioned_parquet
+    save = pbp_reload.save_pbp_snapshot
+    references = []
+
+    def track_source(path):
+        frame = read(path)
+        references.append(weakref.ref(frame))
+        return frame
+
+    def check_source_released(*args):
+        assert references[0]() is None
+        return save(*args)
+
+    monkeypatch.setattr(pbp_reload, "read_versioned_parquet", track_source)
+    monkeypatch.setattr(pbp_reload, "save_pbp_snapshot", check_source_released)
+    assert service.reload()["rows"] == 1
+
+
 def test_shot_views_keep_loaded_rows_until_the_reload_clears_them(monkeypatch, tmp_path):
     """SCRUM-491: heatmap/PDF and shot model rows do not follow the file on their own."""
     from application.api_coordination import app as app_module
