@@ -113,6 +113,66 @@ def test_two_team_game_passes_attribution_check(setup):
     assert calls == [True]
 
 
+@pytest.mark.parametrize("existing", [True, False])
+@pytest.mark.parametrize("failure", ["metadata_write", "readback", "second_publish"])
+def test_snapshot_failure_keeps_disk_and_memory_together(setup, monkeypatch, existing, failure):
+    from infrastructure.data_access import pbp_snapshot
+
+    service, before, calls, _ = setup
+    paths = (service._canonical_path, service._meta_path)
+    if existing:
+        paths[0].parent.mkdir()
+        for path in paths:
+            path.write_bytes(b"previous snapshot")
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+
+    def fail(*args, **kwargs):
+        raise OSError("injected snapshot failure")
+
+    if failure == "metadata_write":
+        monkeypatch.setattr(pbp_snapshot, "write_json_atomic", fail)
+    elif failure == "readback":
+        monkeypatch.setattr(pbp_snapshot, "read_versioned_parquet", fail)
+    else:
+        replace = pbp_snapshot.os.replace
+
+        def reject_metadata(source, target):
+            if target == service._meta_path:
+                fail()
+            replace(source, target)
+
+        monkeypatch.setattr(pbp_snapshot.os, "replace", reject_metadata)
+
+    with pytest.raises(DataReloadError, match="could not be saved"):
+        service.reload()
+    for path in paths:
+        if existing:
+            assert path.read_bytes() == b"previous snapshot"
+        else:
+            assert not path.exists()
+    assert pbp_loader.loaded_pbp_canonical() is before
+    assert pbp_loader._CANONICAL_ID == before.attrs["dataset_version"]
+    assert calls == []
+
+
+def test_source_changed_after_read_is_not_used_for_metadata(setup, monkeypatch):
+    from application.data_reload_services import pbp_reload
+
+    service, before, calls, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    convert = pbp_reload.build_canonical_from_clean
+
+    def replace_source(clean):
+        pd.DataFrame([{**SHOT, "GAME_ID": "new-game"}]).to_parquet(service._clean_path, index=False)
+        return convert(clean)
+
+    monkeypatch.setattr(pbp_reload, "build_canonical_from_clean", replace_source)
+    with pytest.raises(DataReloadError, match="could not be saved"):
+        service.reload()
+    assert not service._canonical_path.exists() and not service._meta_path.exists()
+    assert pbp_loader.loaded_pbp_canonical() is before and calls == []
+
+
 def test_shot_views_keep_loaded_rows_until_the_reload_clears_them(monkeypatch, tmp_path):
     """SCRUM-491: heatmap/PDF and shot model rows do not follow the file on their own."""
     from application.api_coordination import app as app_module

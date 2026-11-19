@@ -1,8 +1,8 @@
 """Reload the play-by-play shot data while the backend keeps running (SCRUM-491).
 
 The cleaned shots file is read, converted and checked in memory first. Only a
-file that passes is written as the new canonical table and swapped in; any
-failure leaves the shots already in memory in use and says why.
+file that passes is written as the new canonical table and swapped in. Validation
+and snapshot-save errors keep the previous stored and loaded shots in use.
 """
 
 from __future__ import annotations
@@ -18,7 +18,7 @@ from application.data_reload_services.synergy_reload import DataReloadError, Rel
 from domain.shot_analysis.shot_quality import inspect_shot_rows
 from infrastructure.data_access import pbp_loader
 from infrastructure.data_access.dataset_metadata import read_versioned_parquet
-from infrastructure.data_access.pbp_cache import build_meta, fingerprint_file, write_json_atomic, write_parquet_atomic
+from infrastructure.data_access.pbp_cache import build_meta, fingerprint_file
 from infrastructure.data_access.pbp_clean import CANONICAL_COLUMNS, build_canonical_from_clean
 from infrastructure.data_access.pbp_constants import (
     CANONICAL_META_JSON,
@@ -26,6 +26,7 @@ from infrastructure.data_access.pbp_constants import (
     CANONICAL_SCHEMA_VERSION,
     CLEAN_PARQUET,
 )
+from infrastructure.data_access.pbp_snapshot import save_pbp_snapshot
 
 # Without these a shot cannot be placed in a game, team or on the court.
 REQUIRED_CLEAN_COLUMNS = ("SEASON_STR", "TEAM_ABBR", "OPP_ABBR", "GAME_ID", "X", "Y", "POINTS")
@@ -88,13 +89,15 @@ class PbpReloadService:
             raise DataReloadError(f"{name} has unrecognised seasons: {', '.join(map(str, bad_seasons[:5]))}.")
 
         try:
-            write_parquet_atomic(canonical, self._canonical_path)
-            write_json_atomic(self._meta_path, build_meta(
-                fingerprint=fingerprint_file(self._clean_path, schema_version=CANONICAL_SCHEMA_VERSION),
+            fingerprint = fingerprint_file(self._clean_path, schema_version=CANONICAL_SCHEMA_VERSION)
+            if fingerprint.source_sha256 != clean.attrs.get("dataset_version"):
+                raise ValueError("The shot source changed after it was read.")
+            metadata = build_meta(
+                fingerprint=fingerprint,
                 extra={"rows": int(len(canonical)), "columns": CANONICAL_COLUMNS,
                        "notes": "Rebuilt by an analyst reload (SCRUM-491)."},
-            ))
-            loaded = read_versioned_parquet(self._canonical_path)
+            )
+            loaded = save_pbp_snapshot(canonical, metadata, self._canonical_path, self._meta_path)
         except (OSError, ValueError) as error:
             raise DataReloadError(f"The checked shots could not be saved ({type(error).__name__}).") from error
 
