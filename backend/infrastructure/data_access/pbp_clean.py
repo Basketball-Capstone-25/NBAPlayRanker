@@ -128,21 +128,19 @@ def build_canonical_from_clean(clean_df: pd.DataFrame) -> pd.DataFrame:
         df[c] = df[c].astype(str).str.strip()
 
     # Drop rows that are missing critical fields (before casting to str, so NaNs are real NaNs).
-    df = df.dropna(subset=["season", "team", "game_id", "x", "y"]).copy()
+    df = df.dropna(subset=["season", "team", "game_id", "x", "y"])
 
     # Type normalization (best-effort; do not crash on weird values).
     df["season"] = df["season"].astype(str)
     df["team"] = df["team"].astype(str)
     df["game_id"] = df["game_id"].astype(str)
 
-    # Optional string fields: keep None instead of "nan" / "None"
-    df["opp"] = df["opp"].where(df["opp"].notna(), None)
-    df["opp"] = df["opp"].astype(object)
-    df["opp"] = df["opp"].replace({"nan": None, "None": None, "NaN": None})
-
-    df["shooter_id"] = df["shooter_id"].where(df["shooter_id"].notna(), None)
-    df["shooter_id"] = df["shooter_id"].astype(object)
-    df["shooter_id"] = df["shooter_id"].replace({"nan": None, "None": None, "NaN": None})
+    # Keep optional text compact when old and new snapshots overlap during reload.
+    # Missing IDs stay missing rather than becoming the text "nan" or "None".
+    for column in ["opp", "shooter_id"]:
+        df[column] = df[column].astype("string[pyarrow]").replace(
+            {"nan": pd.NA, "None": pd.NA, "NaN": pd.NA},
+        )
 
     df = df.reset_index(drop=True)
     # A derivative receives its own file version when read back.

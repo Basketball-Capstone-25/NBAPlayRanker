@@ -94,6 +94,22 @@ def test_cache_survives_checkout_path_and_timestamp_changes(clean_dataset, tmp_p
     assert not cache_valid(meta_path, fingerprint_file(copied, schema_version="v3"))
 
 
+def test_optional_shot_ids_stay_compact_and_round_trip_missing_values(clean_dataset, tmp_path):
+    source = pd.concat([clean_dataset] * 10000, ignore_index=True)
+    source["SHOOTER_ID"] = pd.Series([f"player-{i}" for i in range(len(source))], dtype=object)
+    source.loc[:4, "SHOOTER_ID"] = [None, "nan", "None", "NaN", "00123"]
+    result = pbp_clean.build_canonical_from_clean(source)
+
+    assert result["shooter_id"].memory_usage(deep=True) < source["SHOOTER_ID"].memory_usage(deep=True) / 2
+    assert result.loc[:3, "shooter_id"].isna().all()
+    assert result.loc[4, "shooter_id"] == "00123"
+    path = tmp_path / "compact.parquet"
+    result.to_parquet(path, index=False)
+    restored = pd.read_parquet(path)
+    assert restored["shooter_id"].fillna("missing").tolist() == result["shooter_id"].fillna("missing").tolist()
+    assert restored["opp"].tolist() == ["BOS"] * len(source)
+
+
 def test_heatmap_filters_before_normalizing_full_source(monkeypatch):
     from infrastructure.data_access import pbp_viz
     import infrastructure.visualization_and_export.viz_shot_heatmap as plot
