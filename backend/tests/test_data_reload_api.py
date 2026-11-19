@@ -100,3 +100,27 @@ def test_failed_shot_reload_explains_and_keeps_previous_data(monkeypatch):
     assert response.json()["detail"] == (
         "Reload failed; the previous data is still in use. shots_clean.parquet is missing columns: GAME_ID."
     )
+
+
+def test_shot_reload_rejects_self_opponent_with_422(tmp_path, monkeypatch):
+    import pandas as pd
+    from infrastructure.data_access import pbp_loader
+
+    source = tmp_path / "shots_clean.parquet"
+    pd.DataFrame([{
+        "SEASON_STR": "2024-25", "TEAM_ABBR": "TOR", "OPP_ABBR": "TOR",
+        "GAME_ID": "game-1", "X": 1.0, "Y": 4.0, "POINTS": 2,
+    }]).to_parquet(source, index=False)
+    service = PbpReloadService(clean_path=source, canonical_path=tmp_path / "canonical.parquet",
+                               meta_path=tmp_path / "metadata.json")
+    checked_reload = service._reload
+    before = pbp_loader.loaded_pbp_canonical()
+    monkeypatch.setattr(PbpReloadService, "_reload", lambda self: checked_reload())
+
+    response = call("POST", "/data/reload/pbp", "analyst")
+
+    assert response.status_code == 422
+    assert "1 self-opponent rows" in response.json()["detail"]
+    assert response.headers["Cache-Control"] == "no-store"
+    assert pbp_loader.loaded_pbp_canonical() is before
+    assert not service._canonical_path.exists() and not service._meta_path.exists()

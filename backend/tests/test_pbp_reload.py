@@ -78,6 +78,41 @@ def test_second_reload_waits_for_the_first(setup):
         service._lock.release()
 
 
+@pytest.mark.parametrize("rows,reason", [
+    ([{**SHOT, "OPP_ABBR": "TOR"}], "1 self-opponent rows"),
+    ([{**SHOT, "TEAM_ABBR": "NY", "OPP_ABBR": "NYK"}], "1 self-opponent rows"),
+    ([{**SHOT, "TEAM_ABBR": "BAD"}], "1 unsupported team rows"),
+    ([{**SHOT, "OPP_ABBR": None}], "1 unsupported team rows"),
+    ([SHOT] * 100, "1 incomplete game groups"),
+])
+def test_invalid_attribution_keeps_stored_and_loaded_shots(setup, rows, reason):
+    service, before, calls, tmp_path = setup
+    service._canonical_path.parent.mkdir()
+    before.to_parquet(service._canonical_path, index=False)
+    service._meta_path.write_text('{"snapshot": "previous"}')
+    stored = service._canonical_path.read_bytes()
+    metadata = service._meta_path.read_bytes()
+    pd.DataFrame(rows).to_parquet(service._clean_path, index=False)
+
+    with pytest.raises(DataReloadError, match=reason):
+        service.reload()
+
+    assert service._canonical_path.read_bytes() == stored
+    assert service._meta_path.read_bytes() == metadata
+    assert pbp_loader.loaded_pbp_canonical() is before
+    assert pbp_loader._CANONICAL_ID == before.attrs["dataset_version"]
+    assert calls == []
+
+
+def test_two_team_game_passes_attribution_check(setup):
+    service, _, calls, _ = setup
+    other_team = {**SHOT, "TEAM_ABBR": "BOS", "OPP_ABBR": "TOR"}
+    pd.DataFrame([SHOT, other_team] * 60).to_parquet(service._clean_path, index=False)
+
+    assert service.reload()["rows"] == 120
+    assert calls == [True]
+
+
 def test_shot_views_keep_loaded_rows_until_the_reload_clears_them(monkeypatch, tmp_path):
     """SCRUM-491: heatmap/PDF and shot model rows do not follow the file on their own."""
     from application.api_coordination import app as app_module

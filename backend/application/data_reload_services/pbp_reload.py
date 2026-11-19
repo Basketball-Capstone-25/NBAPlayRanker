@@ -15,6 +15,7 @@ from typing import Any, Callable, Dict, Optional
 import pandas as pd
 
 from application.data_reload_services.synergy_reload import DataReloadError, ReloadInProgress
+from domain.shot_analysis.shot_quality import inspect_shot_rows
 from infrastructure.data_access import pbp_loader
 from infrastructure.data_access.dataset_metadata import read_versioned_parquet
 from infrastructure.data_access.pbp_cache import build_meta, fingerprint_file, write_json_atomic, write_parquet_atomic
@@ -68,6 +69,14 @@ class PbpReloadService:
         missing = [column for column in REQUIRED_CLEAN_COLUMNS if column not in clean.columns]
         if missing:
             raise DataReloadError(f"{name} is missing columns: {', '.join(missing)}.")
+        quality = inspect_shot_rows(clean)
+        if not quality["valid_attribution"]:
+            raise DataReloadError(
+                f"{name} has invalid team attribution: "
+                f"{quality['self_opponent_rows']} self-opponent rows, "
+                f"{quality['unsupported_team_rows']} unsupported team rows and "
+                f"{quality['incomplete_game_groups']} incomplete game groups."
+            )
         try:
             canonical = build_canonical_from_clean(clean)
         except (KeyError, ValueError, TypeError) as error:
