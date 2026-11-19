@@ -126,7 +126,7 @@ def test_shot_reload_rejects_self_opponent_with_422(tmp_path, monkeypatch):
     assert not service._canonical_path.exists() and not service._meta_path.exists()
 
 
-@pytest.mark.parametrize("operation", ["write_json_atomic", "read_versioned_parquet"])
+@pytest.mark.parametrize("operation", ["write_json_atomic", "_read_parquet_batches"])
 def test_shot_save_failure_returns_422_without_changing_data(tmp_path, monkeypatch, operation):
     import pandas as pd
     from infrastructure.data_access import pbp_loader, pbp_snapshot

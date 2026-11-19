@@ -132,7 +132,7 @@ def test_snapshot_failure_keeps_disk_and_memory_together(setup, monkeypatch, exi
     if failure == "metadata_write":
         monkeypatch.setattr(pbp_snapshot, "write_json_atomic", fail)
     elif failure == "readback":
-        monkeypatch.setattr(pbp_snapshot, "read_versioned_parquet", fail)
+        monkeypatch.setattr(pbp_snapshot, "_read_parquet_batches", fail)
     else:
         replace = pbp_snapshot.os.replace
 

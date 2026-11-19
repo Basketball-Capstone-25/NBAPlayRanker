@@ -36,9 +36,9 @@ def test_failed_save_preserves_both_files(snapshot, monkeypatch, existing, failu
     if failure == "metadata_write":
         monkeypatch.setattr(pbp_snapshot, "write_json_atomic", fail)
     elif failure == "readback":
-        monkeypatch.setattr(pbp_snapshot, "read_versioned_parquet", fail)
+        monkeypatch.setattr(pbp_snapshot, "_read_parquet_batches", fail)
     elif failure == "changed_rows":
-        monkeypatch.setattr(pbp_snapshot, "read_versioned_parquet", lambda path: frame.assign(team="BOS"))
+        monkeypatch.setattr(pbp_snapshot, "_read_parquet_batches", lambda path: iter([frame.assign(team="BOS")]))
     elif failure == "metadata_readback":
         monkeypatch.setattr(pbp_snapshot, "read_json", lambda path: {"wrong": "snapshot"})
     else:
@@ -97,6 +97,52 @@ def test_object_text_columns_can_return_as_string_dtype(snapshot):
     frame["team"] = frame["team"].astype(object)
     loaded = pbp_snapshot.save_pbp_snapshot(frame, metadata, *paths)
     pd.testing.assert_frame_equal(loaded, frame, check_dtype=False, check_exact=True)
+
+
+@pytest.mark.parametrize("rows", [0, 2])
+def test_readback_rejects_missing_or_extra_rows(snapshot, monkeypatch, rows):
+    frame, metadata, paths = snapshot
+    wrong = pd.concat([frame] * rows, ignore_index=True) if rows else frame.iloc[:0]
+    monkeypatch.setattr(pbp_snapshot, "_read_parquet_batches", lambda path: iter([wrong]))
+    with pytest.raises(ValueError, match="checked"):
+        pbp_snapshot.save_pbp_snapshot(frame, metadata, *paths)
+    assert not any(path.exists() for path in paths)
+
+
+def test_readback_rejects_changed_column_order(snapshot, monkeypatch):
+    frame, metadata, paths = snapshot
+    write = pbp_snapshot.write_parquet_atomic
+    monkeypatch.setattr(pbp_snapshot, "write_parquet_atomic", lambda data, path: write(data.iloc[:, ::-1], path))
+    with pytest.raises(ValueError, match="columns"):
+        pbp_snapshot.save_pbp_snapshot(frame, metadata, *paths)
+    assert not any(path.exists() for path in paths)
+
+
+@pytest.mark.parametrize("corrupt_last", [False, True])
+def test_every_readback_batch_is_checked(snapshot, monkeypatch, corrupt_last):
+    _, metadata, paths = snapshot
+    frame = pd.DataFrame({"shot": range(130001), "team": ["TOR"] * 130001})
+    read_batches = pbp_snapshot._read_parquet_batches
+    sizes = []
+
+    def observe_batches(path):
+        for batch in read_batches(path):
+            sizes.append(len(batch))
+            if corrupt_last and len(sizes) == 2:
+                batch.loc[len(batch) - 1, "team"] = "BOS"
+            yield batch
+
+    monkeypatch.setattr(pbp_snapshot, "_read_parquet_batches", observe_batches)
+    if corrupt_last:
+        with pytest.raises(ValueError, match="checked rows"):
+            pbp_snapshot.save_pbp_snapshot(frame, metadata, *paths)
+        assert not any(path.exists() for path in paths)
+    else:
+        loaded = pbp_snapshot.save_pbp_snapshot(frame, metadata, *paths)
+        pd.testing.assert_frame_equal(loaded, frame)
+        assert loaded is not frame and frame.attrs == {}
+        assert loaded.attrs["dataset_version"] == source_version(paths[0])
+    assert sizes == [65536, 64465]
 
 
 def test_failed_rollback_keeps_recovery_files_and_raises_unexpected_error(snapshot, monkeypatch):

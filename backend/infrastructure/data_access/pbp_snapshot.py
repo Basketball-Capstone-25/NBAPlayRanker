@@ -8,9 +8,16 @@ import tempfile
 from pathlib import Path
 
 import pandas as pd
+import pyarrow.parquet as pq
 
-from .dataset_metadata import read_versioned_parquet, source_version
+from .dataset_metadata import source_version
 from .pbp_cache import read_json, write_json_atomic, write_parquet_atomic
+
+
+def _read_parquet_batches(path: Path):
+    with pq.ParquetFile(path, pre_buffer=False) as parquet:
+        for batch in parquet.iter_batches(batch_size=65536, use_threads=False):
+            yield batch.to_pandas(use_threads=False)
 
 
 def save_pbp_snapshot(
@@ -31,14 +38,25 @@ def save_pbp_snapshot(
         staged = [folder / target.name for folder, target in zip(folders, targets)]
         write_parquet_atomic(frame, staged[0])
         write_json_atomic(staged[1], metadata)
-        loaded = read_versioned_parquet(staged[0])
+        if pq.read_schema(staged[0]).names != list(frame.columns):
+            raise ValueError("The staged shot columns did not match the checked table.")
+        offset = 0
         try:
-            # Parquet can return an object text column as pandas' string dtype.
-            pd.testing.assert_frame_equal(loaded, frame, check_dtype=False, check_exact=True)
+            for batch in _read_parquet_batches(staged[0]):
+                expected = frame.iloc[offset:offset + len(batch)].reset_index(drop=True)
+                # Parquet can return an object text column as pandas' string dtype.
+                pd.testing.assert_frame_equal(batch, expected, check_dtype=False, check_exact=True)
+                offset += len(batch)
         except AssertionError as error:
             raise ValueError("The staged shot table did not match the checked rows.") from error
+        if offset != len(frame):
+            raise ValueError("The staged shot row count did not match the checked table.")
         if read_json(staged[1]) != metadata:
             raise ValueError("The staged shot files did not match the checked snapshot.")
+        # Keep the checked rows without retaining a second full read-back table.
+        loaded = frame.copy(deep=False)
+        loaded.attrs["dataset_version"] = source_version(staged[0])
+        loaded.attrs["source_file"] = targets[0].name
         fingerprint = metadata["fingerprint"]
         if source_version(Path(fingerprint["source_path"])) != fingerprint["source_sha256"]:
             raise ValueError("The shot source changed while preparing the reload.")
