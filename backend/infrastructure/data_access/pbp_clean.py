@@ -103,16 +103,12 @@ def build_canonical_from_clean(clean_df: pd.DataFrame) -> pd.DataFrame:
         "ANGLE": "angle",
     }
 
-    df = clean_df.copy()
-
-    # Rename known fields and create any missing canonical columns.
-    df = df.rename(columns={k: v for k, v in mapping.items() if k in df.columns})
-    for col in CANONICAL_COLUMNS:
-        if col not in df.columns:
-            df[col] = np.nan
-
-    # Keep canonical ordering.
-    df = df[CANONICAL_COLUMNS].copy()
+    # Copy only columns used by the canonical table, once.
+    df = pd.DataFrame(
+        {target: clean_df[source] if source in clean_df.columns else np.nan
+         for source, target in mapping.items()},
+        index=clean_df.index, columns=CANONICAL_COLUMNS,
+    )
 
     # Core numerics (convert before dropping missing core fields)
     for c in ["x", "y", "dist", "angle", "clock_sec", "margin"]:

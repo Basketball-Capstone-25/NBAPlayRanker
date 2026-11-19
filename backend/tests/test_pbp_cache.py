@@ -55,6 +55,33 @@ def test_unknown_attempt_value_stays_missing_in_canonical(clean_dataset):
     assert result.loc[0, "points"] == 2
 
 
+def test_conversion_keeps_row_order_optional_fields_and_original_input(clean_dataset):
+    source = pd.concat([clean_dataset, clean_dataset.assign(GAME_ID="game-2", POINTS=0)])
+    source.index = [41, 7]
+    source["SHOOTER_ID"] = ["player-1", None]
+    source["ZONE_METHOD"] = ["source", "geometry_only"]
+    source["LOCATION_VALID"] = [True, False]
+    source["UNUSED_FEATURE"] = ["extra source information"] * 2
+    source.attrs["dataset_version"] = "original-version"
+    before = source.copy(deep=True)
+
+    result = pbp_clean.build_canonical_from_clean(source)
+
+    assert list(result.columns) == pbp_clean.CANONICAL_COLUMNS
+    assert result.index.tolist() == [0, 1]
+    assert result["game_id"].tolist() == ["game-1", "game-2"]
+    assert result.loc[0, "shooter_id"] == "player-1"
+    assert pd.isna(result.loc[1, "shooter_id"])
+    assert result["zone_method"].tolist() == ["source", "geometry_only"]
+    assert result["location_valid"].tolist() == [True, False]
+    assert result["points"].tolist() == [2, 0]
+    assert result["margin"].isna().all()
+    assert result.attrs == {}
+    result.loc[0, "x"] = 999
+    pd.testing.assert_frame_equal(source, before)
+    assert source.attrs == before.attrs
+
+
 def test_cache_survives_checkout_path_and_timestamp_changes(clean_dataset, tmp_path):
     from infrastructure.data_access.pbp_cache import fingerprint_file, build_meta, write_json_atomic, cache_valid
     import shutil
