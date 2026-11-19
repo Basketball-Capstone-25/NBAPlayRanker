@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import re
 import threading
+import weakref
 from pathlib import Path
 from typing import Any, Callable, Dict, Optional
 
@@ -17,8 +18,8 @@ import pandas as pd
 from application.data_reload_services.synergy_reload import DataReloadError, ReloadInProgress
 from domain.shot_analysis.shot_quality import inspect_shot_rows
 from infrastructure.data_access import pbp_loader
-from infrastructure.data_access.dataset_metadata import read_versioned_parquet
-from infrastructure.data_access.pbp_cache import build_meta, fingerprint_file
+from infrastructure.data_access.dataset_metadata import read_versioned_parquet, source_version
+from infrastructure.data_access.pbp_cache import build_meta, fingerprint_file, read_json
 from infrastructure.data_access.pbp_clean import CANONICAL_COLUMNS, build_canonical_from_clean
 from infrastructure.data_access.pbp_constants import (
     CANONICAL_META_JSON,
@@ -46,6 +47,7 @@ class PbpReloadService:
         self._meta_path = Path(meta_path)
         self._on_reloaded = on_reloaded
         self._lock = threading.Lock()
+        self._accepted_snapshot = None
 
     def reload(self) -> Dict[str, Any]:
         if not self._lock.acquire(blocking=False):
@@ -59,6 +61,8 @@ class PbpReloadService:
         name = self._clean_path.name
         current: Optional[pd.DataFrame] = pbp_loader.loaded_pbp_canonical()
         previous = current.attrs.get("dataset_version", "unavailable") if current is not None else "not loaded"
+        if self._is_unchanged(current):
+            return self._result(current, previous)
 
         try:
             clean = read_versioned_parquet(self._clean_path)
@@ -106,11 +110,29 @@ class PbpReloadService:
 
         pbp_loader.swap_pbp_canonical(loaded)
         self._on_reloaded()
+        self._accepted_snapshot = (weakref.ref(loaded), clean_version,
+                                   loaded.attrs["dataset_version"], metadata)
+        return self._result(loaded, previous)
+
+    def _is_unchanged(self, current: Optional[pd.DataFrame]) -> bool:
+        if self._accepted_snapshot is None or current is None:
+            return False
+        frame, source, version, metadata = self._accepted_snapshot
+        if current is not frame() or current.attrs.get("dataset_version") != version:
+            return False
+        try:
+            return (source_version(self._clean_path) == source
+                    and source_version(self._canonical_path) == version
+                    and read_json(self._meta_path) == metadata)
+        except (OSError, ValueError):
+            return False
+
+    def _result(self, loaded: pd.DataFrame, previous: str) -> Dict[str, Any]:
         version = loaded.attrs.get("dataset_version", "unavailable")
         return {
             "dataset": "pbp_shots",
             "status": "reloaded",
-            "source_file": name,
+            "source_file": self._clean_path.name,
             "previous_version": previous,
             "dataset_version": version,
             "changed": version != previous,

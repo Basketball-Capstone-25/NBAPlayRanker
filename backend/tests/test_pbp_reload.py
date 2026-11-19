@@ -197,6 +197,92 @@ def test_source_frame_is_released_before_snapshot_readback(setup, monkeypatch):
     assert service.reload()["rows"] == 1
 
 
+def test_unchanged_reload_reuses_only_the_previously_checked_snapshot(setup, monkeypatch):
+    from application.data_reload_services import pbp_reload
+
+    service, _, calls, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    first = service.reload()
+    loaded = pbp_loader.loaded_pbp_canonical()
+
+    def unexpected_read(*args, **kwargs):
+        pytest.fail("unchanged checked files should not allocate another full table")
+
+    monkeypatch.setattr(pbp_reload, "read_versioned_parquet", unexpected_read)
+    second = service.reload()
+    assert second["changed"] is False and second["rows"] == first["rows"]
+    assert second["previous_version"] == second["dataset_version"] == first["dataset_version"]
+    assert pbp_loader.loaded_pbp_canonical() is loaded and calls == [True]
+
+
+@pytest.mark.parametrize("valid", [True, False])
+def test_changed_source_still_runs_validation_after_a_success(setup, valid):
+    service, _, calls, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    first = service.reload()
+    loaded = pbp_loader.loaded_pbp_canonical()
+    stored = service._canonical_path.read_bytes()
+    metadata = service._meta_path.read_bytes()
+    replacement = {**SHOT, "GAME_ID": "new-game", "OPP_ABBR": "BOS" if valid else "TOR"}
+    pd.DataFrame([replacement]).to_parquet(service._clean_path, index=False)
+
+    if valid:
+        second = service.reload()
+        assert second["dataset_version"] != first["dataset_version"] and second["changed"]
+        assert pbp_loader.loaded_pbp_canonical()["game_id"].tolist() == ["new-game"]
+        assert calls == [True, True]
+    else:
+        with pytest.raises(DataReloadError, match="self-opponent"):
+            service.reload()
+        assert pbp_loader.loaded_pbp_canonical() is loaded and calls == [True]
+        assert service._canonical_path.read_bytes() == stored
+        assert service._meta_path.read_bytes() == metadata
+
+
+@pytest.mark.parametrize("target,missing", [("canonical", False), ("meta", False),
+                                           ("canonical", True), ("meta", True), ("clean", True)])
+def test_modified_or_missing_files_are_not_treated_as_unchanged(setup, target, missing):
+    from infrastructure.data_access.dataset_metadata import source_version
+    from infrastructure.data_access.pbp_cache import read_json
+
+    service, _, calls, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    first = service.reload()
+    loaded = pbp_loader.loaded_pbp_canonical()
+    path = getattr(service, f"_{target}_path")
+    if missing:
+        path.unlink()
+    else:
+        path.write_bytes(b"tampered file")
+
+    if target == "clean":
+        with pytest.raises(DataReloadError, match="was not found"):
+            service.reload()
+        assert pbp_loader.loaded_pbp_canonical() is loaded and calls == [True]
+    else:
+        service.reload()
+        assert calls == [True, True]
+        assert source_version(service._canonical_path) == first["dataset_version"]
+        assert read_json(service._meta_path)["fingerprint"]["source_sha256"] == source_version(service._clean_path)
+
+
+@pytest.mark.parametrize("state", ["new_service", "unloaded", "replaced_frame"])
+def test_files_alone_do_not_bypass_first_validation(setup, state):
+    service, _, calls, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    service.reload()
+    if state == "new_service":
+        service = PbpReloadService(service._clean_path, service._canonical_path,
+                                   service._meta_path, lambda: calls.append(True))
+    elif state == "unloaded":
+        pbp_loader.clear_pbp_canonical_cache()
+    else:
+        pbp_loader.swap_pbp_canonical(pbp_loader.loaded_pbp_canonical().copy())
+
+    service.reload()
+    assert calls == [True, True]
+
+
 def test_shot_views_keep_loaded_rows_until_the_reload_clears_them(monkeypatch, tmp_path):
     """SCRUM-491: heatmap/PDF and shot model rows do not follow the file on their own."""
     from application.api_coordination import app as app_module
