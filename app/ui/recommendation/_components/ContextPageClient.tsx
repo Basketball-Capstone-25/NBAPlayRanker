@@ -43,19 +43,10 @@ function fmt(n: any, digits = 3) {
   return x.toFixed(digits);
 }
 
-function pickDefaultSeason(seasons: string[]) {
-  return seasons.length ? seasons[seasons.length - 1] : "";
-}
-function pickDefaultOur(teams: string[]) {
-  if (teams.includes("TOR")) return "TOR";
-  return teams[0] ?? "";
-}
-function pickDefaultOpp(teams: string[], our: string) {
-  const preferred = ["BOS", "LAL", "DEN", "MIA", "GSW"];
-  for (const t of preferred) {
-    if (teams.includes(t) && t !== our) return t;
-  }
-  return teams.find((t) => t !== our) ?? "";
+// SCRUM-824: nothing is pre-selected. A link may carry a matchup or situation
+// (for example the clutch coach link); only values that exist in the data are used.
+function linkedValue(value: string | null, allowed: string[]) {
+  return value && allowed.includes(value) ? value : "";
 }
 
 function secondsToClock(sec: number) {
@@ -164,9 +155,15 @@ function ContextInner() {
   const [opp, setOpp] = useState("");
   const [k, setK] = useState(5);
 
-  const [margin, setMargin] = useState<number>(-2);
-  const [period, setPeriod] = useState<number>(4);
-  const [timeRemaining, setTimeRemaining] = useState<number>(120);
+  // Game situation: blank until the coach sets it (SCRUM-824).
+  const [marginIn, setMarginIn] = useState<number | null>(null);
+  const [periodIn, setPeriodIn] = useState<number | null>(null);
+  const [timeIn, setTimeIn] = useState<number | null>(null);
+  const situationSet = marginIn !== null && periodIn !== null && timeIn !== null;
+  // Only read once the situation is set; nothing is shown or sent before that.
+  const margin = marginIn ?? 0;
+  const period = periodIn ?? 1;
+  const timeRemaining = timeIn ?? 720;
 
   const [applyOverlay, setApplyOverlay] = useState(true);
   const [overlayStrength, setOverlayStrength] = useState(1.0);
@@ -177,9 +174,7 @@ function ContextInner() {
   const [showBreakdown, setShowBreakdown] = useState(false);
 
   // Optional “Describe the situation” input (coach friendly)
-  const [situationText, setSituationText] = useState(
-    "Down 2 with 3:00 left in the 4th. We need a good look. After timeout."
-  );
+  const [situationText, setSituationText] = useState("");
 
   // Results
   const [rows, setRows] = useState<ContextRow[]>([]);
@@ -187,10 +182,9 @@ function ContextInner() {
   const [toast, setToast] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loadedKey, setLoadedKey] = useState("");
-  const requestFilters = { season, our, opp, k, margin, period, time_remaining: timeRemaining };
+  const requestFilters = { season, our, opp, k, margin: marginIn, period: periodIn, time_remaining: timeIn };
   const currentKey = resultKey(requestFilters);
 
-  const didAutoRunRef = useRef(false);
   const liveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -207,9 +201,9 @@ function ContextInner() {
         const qsOpp = params.get("opp") ?? "";
         const qsK = params.get("k") ?? "";
 
-        const defaultSeason = qsSeason || pickDefaultSeason(m.seasons ?? []);
-        const defaultOur = qsOur || pickDefaultOur(m.teams ?? []);
-        const defaultOpp = qsOpp || pickDefaultOpp(m.teams ?? [], defaultOur);
+        const linkedSeason = linkedValue(qsSeason, m.seasons ?? []);
+        const linkedOur = linkedValue(qsOur, m.teams ?? []);
+        const linkedOpp = linkedValue(qsOpp, m.teams ?? []);
 
         const qsMargin = params.get("margin");
         const qsPeriod = params.get("period");
@@ -218,14 +212,14 @@ function ContextInner() {
         const qsOverlay = params.get("overlay");
         const qsStrength = params.get("strength");
 
-        setSeason((prev) => prev || defaultSeason);
-        setOur((prev) => prev || defaultOur);
-        setOpp((prev) => prev || defaultOpp);
+        setSeason((prev) => prev || linkedSeason);
+        setOur((prev) => prev || linkedOur);
+        setOpp((prev) => prev || linkedOpp);
 
         if (qsK && Number.isFinite(Number(qsK))) setK(Math.min(10, Math.max(1, Number(qsK))));
-        if (qsMargin && Number.isFinite(Number(qsMargin))) setMargin(Number(qsMargin));
-        if (qsPeriod && Number.isFinite(Number(qsPeriod))) setPeriod(Number(qsPeriod));
-        if (qsTime && Number.isFinite(Number(qsTime))) setTimeRemaining(Number(qsTime));
+        if (qsMargin && Number.isFinite(Number(qsMargin))) setMarginIn(Number(qsMargin));
+        if (qsPeriod && Number.isFinite(Number(qsPeriod))) setPeriodIn(Number(qsPeriod));
+        if (qsTime && Number.isFinite(Number(qsTime))) setTimeIn(Number(qsTime));
         if (qsOverlay === "0") setApplyOverlay(false);
         if (qsStrength && Number.isFinite(Number(qsStrength))) setOverlayStrength(Number(qsStrength));
       } catch (e: any) {
@@ -250,8 +244,8 @@ function ContextInner() {
     if (!metaReady) return false;
     if (!season || !our || !opp) return false;
     if (our === opp) return false;
-    return true;
-  }, [metaReady, season, our, opp]);
+    return situationSet;
+  }, [metaReady, season, our, opp, situationSet]);
 
   const baselineHref = useMemo(() => {
     const qs = new URLSearchParams({ season, our, opp, k: String(k) });
@@ -272,9 +266,9 @@ function ContextInner() {
       our,
       opp,
       k: String(k),
-      margin: String(margin),
-      period: String(period),
-      timeRemaining: String(timeRemaining),
+      ...(marginIn !== null ? { margin: String(marginIn) } : {}),
+      ...(periodIn !== null ? { period: String(periodIn) } : {}),
+      ...(timeIn !== null ? { timeRemaining: String(timeIn) } : {}),
       overlay: applyOverlay ? "1" : "0",
       strength: String(overlayStrength),
     });
@@ -296,6 +290,10 @@ function ContextInner() {
   async function runContext() {
     if (!season || !our || !opp) {
       setError("Please select a season, our team, and an opponent.");
+      return;
+    }
+    if (!situationSet) {
+      setError("Set the score margin, period and time remaining.");
       return;
     }
     if (our === opp) {
@@ -330,13 +328,6 @@ function ContextInner() {
     }
   }
 
-  useEffect(() => {
-    if (!canRun) return;
-    if (didAutoRunRef.current) return;
-    didAutoRunRef.current = true;
-    runContext();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [canRun]);
 
   useEffect(() => {
     if (!liveMode) return;
@@ -402,9 +393,9 @@ function ContextInner() {
 
   // Quick preset buttons.
   function applyPreset(p: { margin: number; period: number; time: number; text: string }) {
-    setMargin(p.margin);
-    setPeriod(p.period);
-    setTimeRemaining(p.time);
+    setMarginIn(p.margin);
+    setPeriodIn(p.period);
+    setTimeIn(p.time);
     setSituationText(p.text);
   }
 
@@ -809,6 +800,7 @@ function ContextInner() {
           <label>
             Season
             <select className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
+              <option value="" disabled>Choose a season</option>
               {(meta.seasons ?? []).map((s) => (
                 <option key={s} value={s}>
                   {s}
@@ -818,7 +810,7 @@ function ContextInner() {
           </label>
 
           <label>
-            Top-K
+            Top-K <span className="muted" style={{ fontWeight: 400 }}>(model setting)</span>
             <select className="input" value={k} onChange={(e) => setK(Number(e.target.value))}>
               {[3, 5, 7, 10].map((x) => (
                 <option key={x} value={x}>
@@ -831,6 +823,7 @@ function ContextInner() {
           <label>
             Our Team
             <select className="input" value={our} onChange={(e) => setOur(e.target.value)}>
+              <option value="" disabled>Choose our team</option>
               {(meta.teams ?? []).map((t) => (
                 <option key={t} value={t}>
                   {t}
@@ -842,6 +835,7 @@ function ContextInner() {
           <label>
             Opponent
             <select className="input" value={opp} onChange={(e) => setOpp(e.target.value)}>
+              <option value="" disabled>Choose an opponent</option>
               {(meta.teams ?? []).map((t) => (
                 <option key={t} value={t} disabled={t === our}>
                   {t}
@@ -863,8 +857,10 @@ function ContextInner() {
                 style={{ width: 110 }}
                 type="number"
                 step={1}
-                value={margin}
-                onChange={(e) => setMargin(Number(e.target.value))}
+                placeholder="e.g. -3"
+                aria-label="Score margin"
+                value={marginIn ?? ""}
+                onChange={(e) => setMarginIn(e.target.value === "" ? null : Number(e.target.value))}
               />
             </div>
 
@@ -874,13 +870,20 @@ function ContextInner() {
               min={-15}
               max={15}
               step={1}
-              value={Number.isFinite(margin) ? margin : 0}
-              onChange={(e) => setMargin(Number(e.target.value))}
+              value={marginIn ?? 0}
+              style={{ opacity: marginIn === null ? 0.35 : 1 }}
+              onChange={(e) => setMarginIn(Number(e.target.value))}
             />
 
             <p className="muted">
-              trailing <strong>{fmt(scoreFactorsNow.trailing, 2)}</strong> • leading{" "}
-              <strong>{fmt(scoreFactorsNow.leading, 2)}</strong>
+              {marginIn === null ? (
+                "Not set: type the margin or drag the slider."
+              ) : (
+                <>
+                  trailing <strong>{fmt(scoreFactorsNow.trailing, 2)}</strong> • leading{" "}
+                  <strong>{fmt(scoreFactorsNow.leading, 2)}</strong>
+                </>
+              )}
             </p>
           </div>
 
@@ -891,7 +894,8 @@ function ContextInner() {
                 <p className="muted">Set period + time remaining</p>
               </div>
 
-              <select className="input" value={period} onChange={(e) => setPeriod(Number(e.target.value))} style={{ width: 110 }}>
+              <select className="input" aria-label="Period" value={periodIn ?? ""} onChange={(e) => setPeriodIn(Number(e.target.value))} style={{ width: 110 }}>
+                <option value="" disabled>Period</option>
                 <option value={1}>P1</option>
                 <option value={2}>P2</option>
                 <option value={3}>P3</option>
@@ -906,21 +910,23 @@ function ContextInner() {
               min={0}
               max={720}
               step={10}
-              value={Number.isFinite(timeRemaining) ? timeRemaining : 0}
-              onChange={(e) => setTimeRemaining(Number(e.target.value))}
+              aria-label="Time remaining in the period"
+              value={timeIn ?? 360}
+              style={{ opacity: timeIn === null ? 0.35 : 1 }}
+              onChange={(e) => setTimeIn(Number(e.target.value))}
             />
 
             <div style={{ display: "flex", justifyContent: "space-between", gap: 10, flexWrap: "wrap" }}>
               <div className="muted">
-                <Icon name="clock" /> <strong>{secondsToClock(timeRemaining)}</strong>
+                <Icon name="clock" /> <strong>{timeIn === null ? "Not set: drag to the time left" : secondsToClock(timeRemaining)}</strong>
               </div>
               <div className="muted">
-                late <strong>{fmt(lateFactorNow, 2)}</strong>
+                late <strong>{periodIn === null || timeIn === null ? "—" : fmt(lateFactorNow, 2)}</strong>
               </div>
             </div>
 
             <div className="meter" aria-label="late factor meter">
-              <div style={{ width: `${clamp01(lateFactorNow) * 100}%` }} />
+              <div style={{ width: `${periodIn === null || timeIn === null ? 0 : clamp01(lateFactorNow) * 100}%` }} />
             </div>
           </div>
         </div>
@@ -933,14 +939,14 @@ function ContextInner() {
                 <p className="muted">Coach notes for this scenario (saved in the share link later if you want)</p>
               </div>
             </div>
-            <textarea className="input" value={situationText} onChange={(e) => setSituationText(e.target.value)} />
+            <textarea className="input" placeholder="Optional notes, for example: need a good look after the timeout." value={situationText} onChange={(e) => setSituationText(e.target.value)} />
           </div>
 
           <div className="ctxBox">
             <div className="ctxTop">
               <div>
                 <div style={{ fontWeight: 900, fontSize: 12 }}>Overlay controls</div>
-                <p className="muted">Small context nudges (on by default)</p>
+                <p className="muted">Model settings: small context nudges (on by default)</p>
               </div>
               <span className="badge">
                 <Icon name="sliders" /> strength {fmt(overlayStrength, 1)}
@@ -999,7 +1005,9 @@ function ContextInner() {
 
         <div className="row">
           <span className="badge">
-            {matchupChip} • P{period} • {secondsToClock(timeRemaining)} • margin {margin >= 0 ? `+${margin}` : margin}
+            {situationSet
+              ? `${matchupChip} • P${period} • ${secondsToClock(timeRemaining)} • margin ${margin >= 0 ? `+${margin}` : margin}`
+              : "Choose the matchup and the game situation, then run."}
           </span>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link className="btn" href={baselineHref}>
