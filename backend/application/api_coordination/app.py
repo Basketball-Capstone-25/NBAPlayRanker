@@ -65,6 +65,7 @@ from application.api_coordination.shot_explorer_endpoints import create_shot_exp
 from application.analytics_services.shot_explorer import ShotExplorerService
 from application.api_coordination.clutch_report_endpoints import create_clutch_report_router
 from application.api_coordination.data_reload_endpoints import create_data_reload_router
+from application.api_coordination.player_shots_endpoints import create_player_shots_router
 from application.data_reload_services.pbp_reload import PbpReloadService
 from application.data_reload_services.synergy_reload import SynergyReloadService
 from domain.baseline_recommendation.playtype_zones import best_shot_zone
@@ -851,6 +852,9 @@ app.include_router(create_shot_explorer_router(ShotExplorerService(default_shot_
 
 # SCRUM-629: analysts build a late-game (clutch) report for a matchup from the same shots.
 app.include_router(create_clutch_report_router(default_shot_loader))
+
+# SCRUM-825: coaches see where a player made shots against the opponent.
+app.include_router(create_player_shots_router(lambda: _get_shots_clean_df()))
 
 
 def _after_synergy_reload(loaded: BaselineRecommender, predictions: Optional[pd.DataFrame]) -> None:
