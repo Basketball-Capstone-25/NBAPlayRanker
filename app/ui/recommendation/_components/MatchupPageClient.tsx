@@ -70,20 +70,15 @@ function safePct(x: any) {
   return `${(v * 100).toFixed(1)}%`;
 }
 
-// Defaults make the page feel “ready” on load
-function pickDefaultSeason(seasons: string[]) {
-  return seasons.length ? seasons[seasons.length - 1] : "";
-}
-function pickDefaultOur(teams: string[]) {
-  if (teams.includes("TOR")) return "TOR";
-  return teams[0] ?? "";
-}
-function pickDefaultOpp(teams: string[], our: string) {
-  const preferred = ["BOS", "LAL", "DEN", "MIA", "GSW"];
-  for (const t of preferred) {
-    if (teams.includes(t) && t !== our) return t;
-  }
-  return teams.find((t) => t !== our) ?? "";
+// SCRUM-824: no matchup is pre-selected. A link may carry one (for example
+// "Compare Baseline" on Context ML); only values that exist in the data are used.
+function linkedMatchup(search: string, seasons: string[], teams: string[]) {
+  const params = new URLSearchParams(search);
+  const pick = (key: string, allowed: string[]) => {
+    const value = params.get(key) ?? "";
+    return allowed.includes(value) ? value : "";
+  };
+  return { season: pick("season", seasons), our: pick("our", teams), opp: pick("opp", teams) };
 }
 
 function Icon({ name }: { name: "play" | "download" | "map" | "pdf" | "info" }) {
@@ -185,9 +180,7 @@ export default function MatchupPage() {
   const baselineRequestId = useRef(0);
   const vizRequestId = useRef(0);
 
-  const didAutoRunRef = useRef(false);
-
-  // Init meta + defaults
+  // Init meta + model settings (no matchup is pre-selected, SCRUM-824)
   useEffect(() => {
     let cancelled = false;
 
@@ -199,13 +192,10 @@ export default function MatchupPage() {
         if (cancelled) return;
         setMeta(m);
 
-        const defaultSeason = pickDefaultSeason(m.seasons ?? []);
-        const defaultOur = pickDefaultOur(m.teams ?? []);
-        const defaultOpp = pickDefaultOpp(m.teams ?? [], defaultOur);
-
-        setSeason((prev) => prev || defaultSeason);
-        setOur((prev) => prev || defaultOur);
-        setOpp((prev) => prev || defaultOpp);
+        const linked = linkedMatchup(window.location.search, m.seasons ?? [], m.teams ?? []);
+        setSeason((prev) => prev || linked.season);
+        setOur((prev) => prev || linked.our);
+        setOpp((prev) => prev || linked.opp);
 
         const b = await fetchBaselineInfo();
         if (cancelled) return;
@@ -379,18 +369,6 @@ export default function MatchupPage() {
       if (requestId === vizRequestId.current) setVizLoading(false);
     }
   }
-
-  // Auto-run once when defaults are loaded
-  useEffect(() => {
-    if (!metaReady) return;
-    if (!season || !our || !opp) return;
-    if (didAutoRunRef.current) return;
-    if (loading) return;
-
-    didAutoRunRef.current = true;
-    runBaseline();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [metaReady, season, our, opp]);
 
   const bestRow = useMemo(() => (rows.length ? rows[0] : null), [rows]);
   // SCRUM-496: the #1 play and any play tied with it on the displayed score.
@@ -755,6 +733,7 @@ export default function MatchupPage() {
           <label>
             Season
             <select className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
+              <option value="" disabled>Choose a season</option>
               {(meta.seasons ?? []).map((s) => (
                 <option key={s} value={s}>
                   {s}
@@ -764,7 +743,7 @@ export default function MatchupPage() {
           </label>
 
           <label>
-            Top-K
+            Top-K <span className="muted" style={{ fontWeight: 400 }}>(model setting)</span>
             <select className="input" value={k} onChange={(e) => setK(Number(e.target.value))}>
               {[3, 5, 7, 10].map((x) => (
                 <option key={x} value={x}>
@@ -777,6 +756,7 @@ export default function MatchupPage() {
           <label>
             Our Team
             <select className="input" value={our} onChange={(e) => setOur(e.target.value)}>
+              <option value="" disabled>Choose our team</option>
               {(meta.teams ?? []).map((t) => (
                 <option key={t} value={t}>
                   {t}
@@ -788,6 +768,7 @@ export default function MatchupPage() {
           <label>
             Opponent
             <select className="input" value={opp} onChange={(e) => setOpp(e.target.value)}>
+              <option value="" disabled>Choose an opponent</option>
               {(meta.teams ?? []).map((t) => (
                 <option key={t} value={t} disabled={t === our}>
                   {t}
@@ -799,7 +780,7 @@ export default function MatchupPage() {
 
         <div className="weightsWrap">
           <div className="sectionTitle" style={{ marginBottom: 0 }}>
-            <h2>Weights (auto-normalized)</h2>
+            <h2>Model settings: weights (auto-normalized)</h2>
             <span className="badge">
               off={fmt(norm.wOff, 2)} • def={fmt(norm.wDef, 2)}
             </span>
