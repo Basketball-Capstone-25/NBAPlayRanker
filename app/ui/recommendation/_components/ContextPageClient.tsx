@@ -8,6 +8,8 @@ import { useSearchParams } from "next/navigation";
 import { contextRank, fetchMetaOptions } from "../../../services/recommendation";
 import ReportExport from "../../_shared/components/ReportExport";
 import RankedPlayList from "./RankedPlayList";
+import VoiceSituationButton from "./VoiceSituationButton";
+import type { SituationField, VoiceSituation } from "../../../domain/voice-situation";
 import { topPickIndexes } from "../../../domain/top-pick";
 import { contextReport, resultKey } from "../../../infrastructure/report-export";
 import {
@@ -160,6 +162,10 @@ function ContextInner() {
   const [periodIn, setPeriodIn] = useState<number | null>(null);
   const [timeIn, setTimeIn] = useState<number | null>(null);
   const situationSet = marginIn !== null && periodIn !== null && timeIn !== null;
+  // SCRUM-626: fields a spoken phrase did not give are highlighted until set by hand.
+  const [unclear, setUnclear] = useState<SituationField[]>([]);
+  const needsHand = (field: SituationField, value: number | null) => value === null && unclear.includes(field);
+  const handStyle = { outline: "2px solid #f59e0b", outlineOffset: 2 };
   // Only read once the situation is set; nothing is shown or sent before that.
   const margin = marginIn ?? 0;
   const period = periodIn ?? 1;
@@ -390,6 +396,16 @@ function ContextInner() {
   // SCRUM-496: the #1 play and any play tied with it on the displayed score.
   const topPicks = useMemo(() => new Set(topPickIndexes(displayRows.map((r) => r.finalPPP_display))), [displayRows]);
   const topTied = topPicks.size > 1;
+
+  // SCRUM-626: a spoken situation fills what was understood and clears the rest,
+  // so an old value never mixes with a new phrase. The coach still clicks Run.
+  function applyVoice(result: VoiceSituation, heard: string) {
+    setMarginIn(result.margin);
+    setPeriodIn(result.period);
+    setTimeIn(result.timeRemaining);
+    setUnclear(result.unclear);
+    setSituationText(heard);
+  }
 
   // Quick preset buttons.
   function applyPreset(p: { margin: number; period: number; time: number; text: string }) {
@@ -845,6 +861,10 @@ function ContextInner() {
           </label>
         </div>
 
+        <div style={{ marginTop: 12 }} data-testid="voice-situation">
+          <VoiceSituationButton onResult={applyVoice} />
+        </div>
+
         <div className="ctxGrid" style={{ marginTop: 12 }}>
           <div className="ctxBox">
             <div className="ctxTop">
@@ -854,10 +874,10 @@ function ContextInner() {
               </div>
               <input
                 className="input"
-                style={{ width: 110 }}
                 type="number"
                 step={1}
                 placeholder="e.g. -3"
+                style={needsHand("margin", marginIn) ? { width: 110, ...handStyle } : { width: 110 }}
                 aria-label="Score margin"
                 value={marginIn ?? ""}
                 onChange={(e) => setMarginIn(e.target.value === "" ? null : Number(e.target.value))}
@@ -894,7 +914,7 @@ function ContextInner() {
                 <p className="muted">Set period + time remaining</p>
               </div>
 
-              <select className="input" aria-label="Period" value={periodIn ?? ""} onChange={(e) => setPeriodIn(Number(e.target.value))} style={{ width: 110 }}>
+              <select className="input" aria-label="Period" value={periodIn ?? ""} onChange={(e) => setPeriodIn(Number(e.target.value))} style={needsHand("period", periodIn) ? { width: 110, ...handStyle } : { width: 110 }}>
                 <option value="" disabled>Period</option>
                 <option value={1}>P1</option>
                 <option value={2}>P2</option>
@@ -912,7 +932,7 @@ function ContextInner() {
               step={10}
               aria-label="Time remaining in the period"
               value={timeIn ?? 360}
-              style={{ opacity: timeIn === null ? 0.35 : 1 }}
+              style={needsHand("timeRemaining", timeIn) ? { opacity: 0.6, ...handStyle } : { opacity: timeIn === null ? 0.35 : 1 }}
               onChange={(e) => setTimeIn(Number(e.target.value))}
             />
 
