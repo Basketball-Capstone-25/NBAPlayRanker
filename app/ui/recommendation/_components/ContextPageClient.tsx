@@ -9,6 +9,7 @@ import { contextRank, fetchMetaOptions } from "../../../services/recommendation"
 import ReportExport from "../../_shared/components/ReportExport";
 import RankedPlayList from "./RankedPlayList";
 import VoiceSituationButton from "./VoiceSituationButton";
+import PlayerMadeShotsPanel from "./PlayerMadeShotsPanel";
 import type { SituationField, VoiceSituation } from "../../../domain/voice-situation";
 import { topPickIndexes } from "../../../domain/top-pick";
 import { contextReport, resultKey } from "../../../infrastructure/report-export";
@@ -1129,6 +1130,9 @@ function ContextInner() {
           </>
         )}
       </div>
+
+      {/* SCRUM-825: where a chosen player made shots against this opponent. */}
+      <PlayerMadeShotsPanel our={our} opp={opp} />
 
       {/* ✅ More info (all explanations go here, at the bottom) */}
       <details className="moreInfo">
