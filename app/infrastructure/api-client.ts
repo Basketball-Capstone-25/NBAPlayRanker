@@ -415,10 +415,12 @@ export async function fetchMetaOptions(): Promise<MetaOptions> {
 // Defensive behavior:
 // - If /pbp isn't mounted, we fall back to Dataset1 meta so UI doesn't crash.
 
-export async function fetchPbpMetaOptions(): Promise<PbpMetaOptions> {
+export async function fetchPbpMetaOptions(options: { strict?: boolean } = {}): Promise<PbpMetaOptions> {
   try {
     return await fetchJson<PbpMetaOptions>(`${API_BASE}/pbp/meta/options`);
-  } catch {
+  } catch (error) {
+    // After a reload, fallback options cannot establish which filters still exist.
+    if (options.strict) throw error;
     const m = await fetchMetaOptions();
     return {
       seasons: m.seasons ?? FALLBACK_SEASONS,

@@ -48,9 +48,23 @@ type ShotDataExplorerProps = {
   initialQuery?: SavedQuery | null;
   /** Called when the analyst opens a saved Synergy query from this view. */
   onOpenOther?: (query: SavedQuery) => void;
+  refreshVersion?: number;
+  reloading?: boolean;
 };
 
-export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: ShotDataExplorerProps = {}) {
+/** Keep only filters that still exist in the reloaded shot dataset. */
+export function refreshedShotFilters(filters: ShotFilters, options: PbpMetaOptions): ShotFilters {
+  const team = options.teams.includes(filters.team) ? filters.team : "";
+  return {
+    season: options.seasons.includes(filters.season) ? filters.season : "", team,
+    opp: options.teams.includes(filters.opp) && filters.opp !== team ? filters.opp : "",
+    shotType: options.shotTypes?.includes(filters.shotType) ? filters.shotType : "",
+    zone: options.zones?.includes(filters.zone) ? filters.zone : "",
+    result: RESULTS.includes(filters.result) ? filters.result : "",
+  };
+}
+
+export default function ShotDataExplorer({ initialQuery = null, onOpenOther, refreshVersion = 0, reloading = false }: ShotDataExplorerProps = {}) {
   const [options, setOptions] = useState<PbpMetaOptions | null>(null);
   const [draft, setDraft] = useState<ShotFilters>(EMPTY);
   const [applied, setApplied] = useState<ShotFilters | null>(null);
@@ -60,26 +74,50 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: S
   const [message, setMessage] = useState("");
   const [exporting, setExporting] = useState<"" | "csv" | "json">("");
   const inFlight = useRef<AbortController | null>(null);
+  const loadedMetadata = useRef(false);
+  const [metadataVersion, setMetadataVersion] = useState(-1);
+  const [metadataError, setMetadataError] = useState("");
+  const [metadataAttempt, setMetadataAttempt] = useState(0);
+  const metadataBlocked = reloading || metadataVersion !== refreshVersion;
 
   useEffect(() => {
     let alive = true;
-    fetchPbpMetaOptions()
+    setMetadataVersion(-1);
+    setMetadataError("");
+    if (reloading) return;
+    fetchPbpMetaOptions({ strict: true })
       .then((meta) => {
         if (!alive) return;
         setOptions(meta);
         const season = meta.seasons?.[meta.seasons.length - 1] ?? "";
         const team = meta.teams?.includes("TOR") ? "TOR" : meta.teams?.[0] ?? "";
-        setDraft((d) => ({ ...d, season: d.season || season, team: d.team || team }));
+        const firstLoad = !loadedMetadata.current;
+        setDraft(previous => {
+          const next = refreshedShotFilters(previous, meta);
+          return firstLoad ? { ...next, season: next.season || season, team: next.team || team } : next;
+        });
+        setApplied(previous => {
+          if (!previous) return null;
+          const next = refreshedShotFilters(previous, meta);
+          return canSearchShots(next) ? next : null;
+        });
+        setPage(1);
+        loadedMetadata.current = true;
+        setMetadataVersion(refreshVersion);
       })
-      .catch(() => alive && setOptions({ seasons: [], teams: [], shotTypes: [], zones: [] }));
+      .catch(() => {
+        if (alive) setMetadataError("Could not refresh the shot view. Retry the view below; another dataset reload is not needed.");
+      });
     return () => {
       alive = false;
     };
-  }, []);
+  }, [refreshVersion, reloading, metadataAttempt]);
 
   useEffect(() => {
-    if (!applied) return;
     inFlight.current?.abort();
+    setResult(null);
+    setMessage("");
+    if (!applied || metadataBlocked) { setStatus("idle"); return; }
     const controller = new AbortController();
     inFlight.current = controller;
     setStatus("loading");
@@ -96,7 +134,7 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: S
         setMessage(error instanceof ShotAccessError || error instanceof Error ? error.message : "Could not load shots.");
       });
     return () => controller.abort();
-  }, [applied, page]);
+  }, [applied, page, refreshVersion, metadataBlocked]);
 
   function openQuery(query: SavedQuery) {
     if (query.dataset !== "shots") {
@@ -132,6 +170,7 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: S
 
   function search(event: FormEvent) {
     event.preventDefault();
+    if (metadataBlocked) return;
     if (!canSearchShots(draft)) {
       setStatus("error");
       setMessage("Pick a season and team.");
@@ -142,7 +181,7 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: S
   }
 
   async function exportFile(format: "csv" | "json") {
-    if (!applied) return;
+    if (!applied || metadataBlocked || status !== "ready") return;
     setExporting(format);
     try {
       await authenticatedDownload(shotExportUrl(applied, format), shotExportFilename(applied, format));
@@ -154,10 +193,10 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: S
     }
   }
 
-  const rows = result?.rows ?? [];
+  const rows = metadataBlocked ? [] : result?.rows ?? [];
   const columns = result?.columns ?? [];
   const totalPages = result ? Math.max(1, Math.ceil(result.total / SHOT_PAGE_SIZE)) : 1;
-  const canExport = status === "ready" && !!result && result.total > 0 && !exporting;
+  const canExport = !metadataBlocked && status === "ready" && !!result && result.total > 0 && !exporting;
   const set = (key: keyof ShotFilters) => (e: { target: { value: string } }) => setDraft({ ...draft, [key]: e.target.value });
 
   return (
@@ -168,6 +207,10 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: S
           One row per shot with its court location, from the ESPN play-by-play data. Choose a season and team, then narrow it down.
         </p>
       </div>
+
+      {metadataError ? <div className={styles.error} role="alert"><p>{metadataError}</p>
+        <button className={styles.button} type="button" onClick={() => setMetadataAttempt(value => value + 1)}>Retry view</button></div>
+        : metadataBlocked ? <p role="status">{reloading ? "Reloading shot data…" : "Refreshing shot options…"}</p> : null}
 
       <form className={styles.filters} onSubmit={search} aria-label="Filter shots">
         <label className={styles.field}>
@@ -214,13 +257,13 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: S
           </select>
         </label>
         <div className={styles.actions}>
-          <button className={`${styles.button} ${styles.primary}`} type="submit">Search</button>
+          <button className={`${styles.button} ${styles.primary}`} type="submit" disabled={metadataBlocked}>Search</button>
         </div>
       </form>
 
       <div className={styles.bar}>
         <div className={styles.status} role="status" aria-live="polite">
-          {status === "idle" ? "Pick a season and team, then Search." : null}
+          {status === "idle" && !metadataBlocked ? "Pick a season and team, then Search." : null}
           {status === "loading" ? "Loading shots…" : null}
           {status === "ready" && result
             ? result.total === 0
@@ -262,20 +305,20 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther }: S
       ) : null}
 
       <div className={styles.bar}>
-        <button className={styles.button} type="button" disabled={page <= 1 || status === "loading"} onClick={() => setPage((p) => Math.max(1, p - 1))}>
+        <button className={styles.button} type="button" disabled={metadataBlocked || page <= 1 || status === "loading"} onClick={() => setPage((p) => Math.max(1, p - 1))}>
           Previous
         </button>
         <p className={styles.note}>
           Exports use the searched filters, up to 10,000 shots{result?.dataset_version ? ` • data version ${result.dataset_version.slice(0, 19)}` : ""}.
         </p>
-        <button className={styles.button} type="button" disabled={!result?.has_next || status === "loading"} onClick={() => setPage((p) => p + 1)}>
+        <button className={styles.button} type="button" disabled={metadataBlocked || !result?.has_next || status === "loading"} onClick={() => setPage((p) => p + 1)}>
           Next
         </button>
       </div>
 
       <SavedQueriesPanel definition={definition} options={savedOptions} onOpen={openQuery} />
 
-      <ClutchReportPanel seasons={options?.seasons ?? []} teams={options?.teams ?? []} season={draft.season} team={draft.team} />
+      {!metadataBlocked && <ClutchReportPanel key={refreshVersion} seasons={options?.seasons ?? []} teams={options?.teams ?? []} season={draft.season} team={draft.team} />}
     </section>
   );
 }

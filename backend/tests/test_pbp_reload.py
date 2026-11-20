@@ -78,6 +78,211 @@ def test_second_reload_waits_for_the_first(setup):
         service._lock.release()
 
 
+@pytest.mark.parametrize("rows,reason", [
+    ([{**SHOT, "OPP_ABBR": "TOR"}], "1 self-opponent rows"),
+    ([{**SHOT, "TEAM_ABBR": "NY", "OPP_ABBR": "NYK"}], "1 self-opponent rows"),
+    ([{**SHOT, "TEAM_ABBR": "BAD"}], "1 unsupported team rows"),
+    ([{**SHOT, "OPP_ABBR": None}], "1 unsupported team rows"),
+    ([SHOT] * 100, "1 incomplete game groups"),
+])
+def test_invalid_attribution_keeps_stored_and_loaded_shots(setup, rows, reason):
+    service, before, calls, tmp_path = setup
+    service._canonical_path.parent.mkdir()
+    before.to_parquet(service._canonical_path, index=False)
+    service._meta_path.write_text('{"snapshot": "previous"}')
+    stored = service._canonical_path.read_bytes()
+    metadata = service._meta_path.read_bytes()
+    pd.DataFrame(rows).to_parquet(service._clean_path, index=False)
+
+    with pytest.raises(DataReloadError, match=reason):
+        service.reload()
+
+    assert service._canonical_path.read_bytes() == stored
+    assert service._meta_path.read_bytes() == metadata
+    assert pbp_loader.loaded_pbp_canonical() is before
+    assert pbp_loader._CANONICAL_ID == before.attrs["dataset_version"]
+    assert calls == []
+
+
+def test_two_team_game_passes_attribution_check(setup):
+    service, _, calls, _ = setup
+    other_team = {**SHOT, "TEAM_ABBR": "BOS", "OPP_ABBR": "TOR"}
+    pd.DataFrame([SHOT, other_team] * 60).to_parquet(service._clean_path, index=False)
+
+    assert service.reload()["rows"] == 120
+    assert calls == [True]
+
+
+@pytest.mark.parametrize("existing", [True, False])
+@pytest.mark.parametrize("failure", ["metadata_write", "readback", "second_publish"])
+def test_snapshot_failure_keeps_disk_and_memory_together(setup, monkeypatch, existing, failure):
+    from infrastructure.data_access import pbp_snapshot
+
+    service, before, calls, _ = setup
+    paths = (service._canonical_path, service._meta_path)
+    if existing:
+        paths[0].parent.mkdir()
+        for path in paths:
+            path.write_bytes(b"previous snapshot")
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+
+    def fail(*args, **kwargs):
+        raise OSError("injected snapshot failure")
+
+    if failure == "metadata_write":
+        monkeypatch.setattr(pbp_snapshot, "write_json_atomic", fail)
+    elif failure == "readback":
+        monkeypatch.setattr(pbp_snapshot, "_read_parquet_batches", fail)
+    else:
+        replace = pbp_snapshot.os.replace
+
+        def reject_metadata(source, target):
+            if target == service._meta_path:
+                fail()
+            replace(source, target)
+
+        monkeypatch.setattr(pbp_snapshot.os, "replace", reject_metadata)
+
+    with pytest.raises(DataReloadError, match="could not be saved"):
+        service.reload()
+    for path in paths:
+        if existing:
+            assert path.read_bytes() == b"previous snapshot"
+        else:
+            assert not path.exists()
+    assert pbp_loader.loaded_pbp_canonical() is before
+    assert pbp_loader._CANONICAL_ID == before.attrs["dataset_version"]
+    assert calls == []
+
+
+def test_source_changed_after_read_is_not_used_for_metadata(setup, monkeypatch):
+    from application.data_reload_services import pbp_reload
+
+    service, before, calls, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    convert = pbp_reload.build_canonical_from_clean
+
+    def replace_source(clean):
+        pd.DataFrame([{**SHOT, "GAME_ID": "new-game"}]).to_parquet(service._clean_path, index=False)
+        return convert(clean)
+
+    monkeypatch.setattr(pbp_reload, "build_canonical_from_clean", replace_source)
+    with pytest.raises(DataReloadError, match="could not be saved"):
+        service.reload()
+    assert not service._canonical_path.exists() and not service._meta_path.exists()
+    assert pbp_loader.loaded_pbp_canonical() is before and calls == []
+
+
+def test_source_frame_is_released_before_snapshot_readback(setup, monkeypatch):
+    import weakref
+    from application.data_reload_services import pbp_reload
+
+    service, _, _, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    read = pbp_reload.read_versioned_parquet
+    save = pbp_reload.save_pbp_snapshot
+    references = []
+
+    def track_source(path):
+        frame = read(path)
+        references.append(weakref.ref(frame))
+        return frame
+
+    def check_source_released(*args):
+        assert references[0]() is None
+        return save(*args)
+
+    monkeypatch.setattr(pbp_reload, "read_versioned_parquet", track_source)
+    monkeypatch.setattr(pbp_reload, "save_pbp_snapshot", check_source_released)
+    assert service.reload()["rows"] == 1
+
+
+def test_unchanged_reload_reuses_only_the_previously_checked_snapshot(setup, monkeypatch):
+    from application.data_reload_services import pbp_reload
+
+    service, _, calls, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    first = service.reload()
+    loaded = pbp_loader.loaded_pbp_canonical()
+
+    def unexpected_read(*args, **kwargs):
+        pytest.fail("unchanged checked files should not allocate another full table")
+
+    monkeypatch.setattr(pbp_reload, "read_versioned_parquet", unexpected_read)
+    second = service.reload()
+    assert second["changed"] is False and second["rows"] == first["rows"]
+    assert second["previous_version"] == second["dataset_version"] == first["dataset_version"]
+    assert pbp_loader.loaded_pbp_canonical() is loaded and calls == [True]
+
+
+@pytest.mark.parametrize("valid", [True, False])
+def test_changed_source_still_runs_validation_after_a_success(setup, valid):
+    service, _, calls, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    first = service.reload()
+    loaded = pbp_loader.loaded_pbp_canonical()
+    stored = service._canonical_path.read_bytes()
+    metadata = service._meta_path.read_bytes()
+    replacement = {**SHOT, "GAME_ID": "new-game", "OPP_ABBR": "BOS" if valid else "TOR"}
+    pd.DataFrame([replacement]).to_parquet(service._clean_path, index=False)
+
+    if valid:
+        second = service.reload()
+        assert second["dataset_version"] != first["dataset_version"] and second["changed"]
+        assert pbp_loader.loaded_pbp_canonical()["game_id"].tolist() == ["new-game"]
+        assert calls == [True, True]
+    else:
+        with pytest.raises(DataReloadError, match="self-opponent"):
+            service.reload()
+        assert pbp_loader.loaded_pbp_canonical() is loaded and calls == [True]
+        assert service._canonical_path.read_bytes() == stored
+        assert service._meta_path.read_bytes() == metadata
+
+
+@pytest.mark.parametrize("target,missing", [("canonical", False), ("meta", False),
+                                           ("canonical", True), ("meta", True), ("clean", True)])
+def test_modified_or_missing_files_are_not_treated_as_unchanged(setup, target, missing):
+    from infrastructure.data_access.dataset_metadata import source_version
+    from infrastructure.data_access.pbp_cache import read_json
+
+    service, _, calls, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    first = service.reload()
+    loaded = pbp_loader.loaded_pbp_canonical()
+    path = getattr(service, f"_{target}_path")
+    if missing:
+        path.unlink()
+    else:
+        path.write_bytes(b"tampered file")
+
+    if target == "clean":
+        with pytest.raises(DataReloadError, match="was not found"):
+            service.reload()
+        assert pbp_loader.loaded_pbp_canonical() is loaded and calls == [True]
+    else:
+        service.reload()
+        assert calls == [True, True]
+        assert source_version(service._canonical_path) == first["dataset_version"]
+        assert read_json(service._meta_path)["fingerprint"]["source_sha256"] == source_version(service._clean_path)
+
+
+@pytest.mark.parametrize("state", ["new_service", "unloaded", "replaced_frame"])
+def test_files_alone_do_not_bypass_first_validation(setup, state):
+    service, _, calls, _ = setup
+    pd.DataFrame([SHOT]).to_parquet(service._clean_path, index=False)
+    service.reload()
+    if state == "new_service":
+        service = PbpReloadService(service._clean_path, service._canonical_path,
+                                   service._meta_path, lambda: calls.append(True))
+    elif state == "unloaded":
+        pbp_loader.clear_pbp_canonical_cache()
+    else:
+        pbp_loader.swap_pbp_canonical(pbp_loader.loaded_pbp_canonical().copy())
+
+    service.reload()
+    assert calls == [True, True]
+
+
 def test_shot_views_keep_loaded_rows_until_the_reload_clears_them(monkeypatch, tmp_path):
     """SCRUM-491: heatmap/PDF and shot model rows do not follow the file on their own."""
     from application.api_coordination import app as app_module

@@ -1,23 +1,25 @@
 """Reload the play-by-play shot data while the backend keeps running (SCRUM-491).
 
 The cleaned shots file is read, converted and checked in memory first. Only a
-file that passes is written as the new canonical table and swapped in; any
-failure leaves the shots already in memory in use and says why.
+file that passes is written as the new canonical table and swapped in. Validation
+and snapshot-save errors keep the previous stored and loaded shots in use.
 """
 
 from __future__ import annotations
 
 import re
 import threading
+import weakref
 from pathlib import Path
 from typing import Any, Callable, Dict, Optional
 
 import pandas as pd
 
 from application.data_reload_services.synergy_reload import DataReloadError, ReloadInProgress
+from domain.shot_analysis.shot_quality import inspect_shot_rows
 from infrastructure.data_access import pbp_loader
-from infrastructure.data_access.dataset_metadata import read_versioned_parquet
-from infrastructure.data_access.pbp_cache import build_meta, fingerprint_file, write_json_atomic, write_parquet_atomic
+from infrastructure.data_access.dataset_metadata import read_versioned_parquet, source_version
+from infrastructure.data_access.pbp_cache import build_meta, fingerprint_file, read_json
 from infrastructure.data_access.pbp_clean import CANONICAL_COLUMNS, build_canonical_from_clean
 from infrastructure.data_access.pbp_constants import (
     CANONICAL_META_JSON,
@@ -25,6 +27,7 @@ from infrastructure.data_access.pbp_constants import (
     CANONICAL_SCHEMA_VERSION,
     CLEAN_PARQUET,
 )
+from infrastructure.data_access.pbp_snapshot import save_pbp_snapshot
 
 # Without these a shot cannot be placed in a game, team or on the court.
 REQUIRED_CLEAN_COLUMNS = ("SEASON_STR", "TEAM_ABBR", "OPP_ABBR", "GAME_ID", "X", "Y", "POINTS")
@@ -44,6 +47,7 @@ class PbpReloadService:
         self._meta_path = Path(meta_path)
         self._on_reloaded = on_reloaded
         self._lock = threading.Lock()
+        self._accepted_snapshot = None
 
     def reload(self) -> Dict[str, Any]:
         if not self._lock.acquire(blocking=False):
@@ -57,6 +61,8 @@ class PbpReloadService:
         name = self._clean_path.name
         current: Optional[pd.DataFrame] = pbp_loader.loaded_pbp_canonical()
         previous = current.attrs.get("dataset_version", "unavailable") if current is not None else "not loaded"
+        if self._is_unchanged(current):
+            return self._result(current, previous)
 
         try:
             clean = read_versioned_parquet(self._clean_path)
@@ -64,14 +70,25 @@ class PbpReloadService:
             raise DataReloadError(f"{name} was not found.") from error
         except (OSError, ValueError) as error:
             raise DataReloadError(f"{name} could not be read ({type(error).__name__}).") from error
+        clean_version = clean.attrs.get("dataset_version")
 
         missing = [column for column in REQUIRED_CLEAN_COLUMNS if column not in clean.columns]
         if missing:
             raise DataReloadError(f"{name} is missing columns: {', '.join(missing)}.")
+        quality = inspect_shot_rows(clean)
+        if not quality["valid_attribution"]:
+            raise DataReloadError(
+                f"{name} has invalid team attribution: "
+                f"{quality['self_opponent_rows']} self-opponent rows, "
+                f"{quality['unsupported_team_rows']} unsupported team rows and "
+                f"{quality['incomplete_game_groups']} incomplete game groups."
+            )
         try:
             canonical = build_canonical_from_clean(clean)
         except (KeyError, ValueError, TypeError) as error:
             raise DataReloadError(f"{name} could not be converted ({type(error).__name__}).") from error
+        # Release source-only columns before reading back the staged table.
+        del clean
         if canonical.empty:
             raise DataReloadError(f"{name} has no usable shots (each needs a season, team, game and court location).")
         bad_seasons = sorted({s for s in canonical["season"].unique() if not _SEASON.match(str(s))})
@@ -79,23 +96,43 @@ class PbpReloadService:
             raise DataReloadError(f"{name} has unrecognised seasons: {', '.join(map(str, bad_seasons[:5]))}.")
 
         try:
-            write_parquet_atomic(canonical, self._canonical_path)
-            write_json_atomic(self._meta_path, build_meta(
-                fingerprint=fingerprint_file(self._clean_path, schema_version=CANONICAL_SCHEMA_VERSION),
+            fingerprint = fingerprint_file(self._clean_path, schema_version=CANONICAL_SCHEMA_VERSION)
+            if fingerprint.source_sha256 != clean_version:
+                raise ValueError("The shot source changed after it was read.")
+            metadata = build_meta(
+                fingerprint=fingerprint,
                 extra={"rows": int(len(canonical)), "columns": CANONICAL_COLUMNS,
                        "notes": "Rebuilt by an analyst reload (SCRUM-491)."},
-            ))
-            loaded = read_versioned_parquet(self._canonical_path)
+            )
+            loaded = save_pbp_snapshot(canonical, metadata, self._canonical_path, self._meta_path)
         except (OSError, ValueError) as error:
             raise DataReloadError(f"The checked shots could not be saved ({type(error).__name__}).") from error
 
         pbp_loader.swap_pbp_canonical(loaded)
         self._on_reloaded()
+        self._accepted_snapshot = (weakref.ref(loaded), clean_version,
+                                   loaded.attrs["dataset_version"], metadata)
+        return self._result(loaded, previous)
+
+    def _is_unchanged(self, current: Optional[pd.DataFrame]) -> bool:
+        if self._accepted_snapshot is None or current is None:
+            return False
+        frame, source, version, metadata = self._accepted_snapshot
+        if current is not frame() or current.attrs.get("dataset_version") != version:
+            return False
+        try:
+            return (source_version(self._clean_path) == source
+                    and source_version(self._canonical_path) == version
+                    and read_json(self._meta_path) == metadata)
+        except (OSError, ValueError):
+            return False
+
+    def _result(self, loaded: pd.DataFrame, previous: str) -> Dict[str, Any]:
         version = loaded.attrs.get("dataset_version", "unavailable")
         return {
             "dataset": "pbp_shots",
             "status": "reloaded",
-            "source_file": name,
+            "source_file": self._clean_path.name,
             "previous_version": previous,
             "dataset_version": version,
             "changed": version != previous,

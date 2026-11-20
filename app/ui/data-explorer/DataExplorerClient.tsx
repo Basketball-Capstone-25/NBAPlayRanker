@@ -8,6 +8,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import DataQualityPanel from "./DataQualityPanel";
+import DatasetReloadPanel from "./DatasetReloadPanel";
+import type { ReloadDataset } from "../../domain/dataset-reload";
 import DatasetMetadataPanel from "./DatasetMetadataPanel";
 import ShotDataExplorer from "./ShotDataExplorer";
 import AnalystSeasonSummary from "./AnalystSeasonSummary";
@@ -102,6 +104,28 @@ function DatasetSwitch({ value, onChange }: { value: ExplorerDataset; onChange: 
 
 export default function DataExplorerClient() {
   const [dataset, setDataset] = useState<ExplorerDataset>("synergy");
+  const [pendingReload, setPendingReload] = useState<ReloadDataset | null>(null);
+  const [synergyRevision, setSynergyRevision] = useState(0);
+  const [shotsRevision, setShotsRevision] = useState(0);
+  const [metadataRevision, setMetadataRevision] = useState(-1);
+  const [metadataError, setMetadataError] = useState("");
+  const loadedMetadata = useRef(false);
+  const synergyReloading = pendingReload === "synergy";
+  const synergyBlocked = synergyReloading || metadataRevision !== synergyRevision;
+  function afterReload(target: ReloadDataset) {
+    if (target === "synergy") setSynergyRevision(value => value + 1);
+    else setShotsRevision(value => value + 1);
+  }
+  function updatePending(target: ReloadDataset | null) {
+    setPendingReload(target);
+    if (target === "synergy") {
+      requestIdRef.current++;
+      setMetadataRevision(-1);
+      setRows([]);
+      setTotalRows(0);
+      setReturnedRows(0);
+    }
+  }
   useEffect(() => {
     if (safeLocalGet(DATASET_KEY) === "shots") setDataset("shots");
   }, []);
@@ -144,42 +168,35 @@ export default function DataExplorerClient() {
   const didInitRef = useRef(false);
   useEffect(() => {
     let cancelled = false;
-
+    setMetadataRevision(-1);
+    setMetadataError("");
+    setPipeline(null);
+    if (synergyReloading) return;
+    // Pipeline notes are optional and must not hold up the refreshed table.
+    void fetchPipelineInfo().then(value => { if (!cancelled) setPipeline(value); }).catch(() => {});
     async function init() {
       try {
         const m = await fetchMetaOptions();
         if (cancelled) return;
-
+        if (m._fallback) throw new Error("Play-type options could not be refreshed.");
+        const firstLoad = !loadedMetadata.current;
+        const seasons = m.seasons ?? [], teams = m.teams ?? [];
+        const sides = m.sides?.length ? m.sides : ["offense", "defense"];
         setMeta(m);
-
-        // Sensible defaults so the page loads with data:
-        // - most recent season
-        // - TOR if available (nice for demos), otherwise first team
-        const seasons = m.seasons ?? [];
-        const teams = m.teams ?? [];
-
-        const defaultSeason = seasons.length ? seasons[seasons.length - 1] : "";
-        const defaultTeam = teams.includes("TOR") ? "TOR" : teams[0] ?? "";
-
-        setSeason((prev) => prev || defaultSeason);
-        setTeam((prev) => prev || defaultTeam);
-
-        // Pipeline info is “nice to have” for reviewers.
-        const p = await fetchPipelineInfo();
-        if (!cancelled) setPipeline(p);
-      } catch (e: any) {
-        console.error(e);
-        if (!cancelled) {
-          setError(e?.message ?? "Failed to load metadata.");
-        }
+        setSeason(previous => seasons.includes(previous) ? previous : seasons[seasons.length - 1] ?? "");
+        setTeam(previous => teams.includes(previous) || (!firstLoad && !previous) ? previous
+          : firstLoad ? teams.includes("TOR") ? "TOR" : teams[0] ?? "" : "");
+        setSide(previous => sides.includes(previous) ? previous : sides[0]);
+        setPlayType(previous => m.playTypes?.includes(previous) ? previous : "");
+        loadedMetadata.current = true;
+        setMetadataRevision(synergyRevision);
+      } catch {
+        if (!cancelled) setMetadataError("Could not refresh the play-type view. Retry the view below; another dataset reload is not needed.");
       }
     }
-
-    init();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+    void init();
+    return () => { cancelled = true; };
+  }, [synergyRevision, synergyReloading]);
   // Restore UI prefs (purely convenience)
   // This does NOT change the API itself — it only restores how I was viewing the table last time.
   useEffect(() => {
@@ -233,7 +250,10 @@ export default function DataExplorerClient() {
 
     async function run() {
 
-      if (!season) return;
+      setRows([]);
+      setTotalRows(0);
+      setReturnedRows(0);
+      if (!season || synergyBlocked) { setLoading(false); return; }
 
       const myId = ++requestIdRef.current;
 
@@ -258,7 +278,7 @@ export default function DataExplorerClient() {
         setRows(Array.isArray(resp.rows) ? resp.rows : []);
       } catch (e: any) {
         console.error(e);
-        if (!cancelled) {
+        if (!cancelled && requestIdRef.current === myId) {
           setError(e?.message ?? "Unable to load data.");
           setRows([]);
           setTotalRows(0);
@@ -273,7 +293,7 @@ export default function DataExplorerClient() {
     return () => {
       cancelled = true;
     };
-  }, [season, team, side, playType, minPoss, limit]);
+  }, [season, team, side, playType, minPoss, limit, synergyRevision, synergyBlocked]);
   const csvUrl = useMemo(() => {
     return getTeamPlaytypesCsvUrl({
       season: season || undefined,
@@ -286,7 +306,7 @@ export default function DataExplorerClient() {
   }, [season, team, side, playType, minPoss, limit]);
 
   async function exportCsv() {
-    if (!season || exporting) return;
+    if (!season || exporting || synergyBlocked || loading) return;
     setExporting(true);
     setExportError(null);
     try {
@@ -325,6 +345,7 @@ export default function DataExplorerClient() {
   }, [meta.teamNames, team]);
   // Client-side search + sort on already-fetched rows.
   const viewRows = useMemo(() => {
+    if (synergyBlocked) return [];
     const list = Array.isArray(rows) ? rows : [];
     const q = search.trim().toLowerCase();
 
@@ -356,7 +377,7 @@ export default function DataExplorerClient() {
     });
 
     return sorted;
-  }, [rows, search, sortKey, sortDir]);
+  }, [rows, search, sortKey, sortDir, synergyBlocked]);
   // KPI tiles (based on what’s currently visible after UI filtering)
   // These are just quick sanity-check stats for the preview.
   const kpis = useMemo(() => {
@@ -451,7 +472,9 @@ export default function DataExplorerClient() {
           </p>
           <DatasetSwitch value={dataset} onChange={switchDataset} />
         </header>
-        <ShotDataExplorer initialQuery={pendingShots} onOpenOther={openSynergyQuery} />
+        <DatasetReloadPanel key="dataset-reload" onReloaded={afterReload} onPendingChange={updatePending} />
+        <ShotDataExplorer initialQuery={pendingShots} onOpenOther={openSynergyQuery}
+          refreshVersion={shotsRevision} reloading={pendingReload === "pbp"} />
       </main>
     );
   }
@@ -480,7 +503,7 @@ export default function DataExplorerClient() {
           </div>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <button className="btn btn--secondary" type="button" onClick={exportCsv} disabled={!season || loading || exporting} aria-busy={exporting}>
+            <button className="btn btn--secondary" type="button" onClick={exportCsv} disabled={!season || loading || exporting || synergyBlocked} aria-busy={exporting}>
               {exporting ? "Exporting play-type rows…" : "Export play-type rows (CSV)"}
             </button>
             <Link className="btn" href="/matchup">
@@ -529,10 +552,13 @@ export default function DataExplorerClient() {
         </div>
       </header>
 
+      <DatasetReloadPanel key="dataset-reload" onReloaded={afterReload} onPendingChange={updatePending} />
       {exportError && <p role="alert" className="card">{exportError}</p>}
-
-      <DataQualityPanel />
-      <DatasetMetadataPanel />
+      {metadataError ? <section className="card" role="alert"><p>{metadataError}</p>
+        <button className="btn btn--secondary" type="button" onClick={() => setSynergyRevision(value => value + 1)}>Retry view</button></section>
+        : synergyBlocked ? <p className="card" role="status">{synergyReloading ? "Reloading play-type data…" : "Refreshing play-type options…"}</p> : null}
+      {!synergyBlocked && <><DataQualityPanel key={`quality-${synergyRevision}`} />
+        <DatasetMetadataPanel key={`metadata-${synergyRevision}-${shotsRevision}`} /></>}
 
       {/* FILTERS */}
       <section className="card" style={{ marginTop: 14 }}>
@@ -746,7 +772,8 @@ export default function DataExplorerClient() {
 
       <SavedQueriesPanel definition={synergyQuery} options={synergyOptions} onOpen={openSynergyQuery} />
 
-      <AnalystSeasonSummary season={season} team={team} side={side} teams={meta.teams} teamNames={meta.teamNames} />
+      <AnalystSeasonSummary season={season} team={team} side={side} teams={meta.teams}
+        teamNames={meta.teamNames} refreshVersion={synergyRevision} refreshing={synergyBlocked} />
 
       {/* TABLE */}
       <section className="card">
@@ -770,7 +797,7 @@ export default function DataExplorerClient() {
             <span className="badge">
               CSV row limit: {Math.max(limit, 1000)}
             </span>
-            <button className="btn" type="button" onClick={exportCsv} disabled={!season || loading || exporting} aria-busy={exporting}>
+            <button className="btn" type="button" onClick={exportCsv} disabled={!season || loading || exporting || synergyBlocked} aria-busy={exporting}>
               {exporting ? "Exporting play-type rows…" : "Export play-type rows (CSV)"}
             </button>
           </div>

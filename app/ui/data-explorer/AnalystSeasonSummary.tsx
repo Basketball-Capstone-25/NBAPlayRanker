@@ -9,13 +9,13 @@ export function analystSummaryFilters(season: string, team: string, side: string
     ? { season, our: team, opp: opponent, k: 5, w_off: 0.7 } : null;
 }
 
-export default function AnalystSeasonSummary({ season, team, side, teams, teamNames }: {
-  season: string; team: string; side: string; teams: string[]; teamNames?: Record<string, string>;
+export default function AnalystSeasonSummary({ season, team, side, teams, teamNames, refreshVersion = 0, refreshing = false }: {
+  season: string; team: string; side: string; teams: string[]; teamNames?: Record<string, string>; refreshVersion?: number; refreshing?: boolean;
 }) {
   const [selectedOpponent, setSelectedOpponent] = useState("BOS");
   const opponents = teams.filter(value => value !== team);
   const opponent = opponents.includes(selectedOpponent) ? selectedOpponent : opponents[0] || "";
-  const filters = analystSummaryFilters(season, team, side, opponent);
+  const filters = refreshing ? null : analystSummaryFilters(season, team, side, opponent);
   return <div>
     <label style={{ display: "grid", gap: 6, maxWidth: 300, fontSize: 13 }}>
       Summary opponent
@@ -26,6 +26,7 @@ export default function AnalystSeasonSummary({ season, team, side, teams, teamNa
       </select>
     </label>
     <p className="muted" style={{ fontSize: 13 }}>Summary uses the full offensive season and the top 5 baseline play types. Table search, play-type filters, possession minimum and row limit do not change it.</p>
-    <SeasonSummary filters={filters} unavailableReason="Select one team and Offense in the filters above to view a season summary." />
+    <SeasonSummary key={refreshVersion} filters={filters} unavailableReason={refreshing ? "Refresh the play-type view before loading its summary."
+      : "Select one team and Offense in the filters above to view a season summary."} />
   </div>;
 }
