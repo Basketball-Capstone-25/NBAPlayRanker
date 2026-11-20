@@ -964,3 +964,59 @@ export function getPbpShotsCsvUrlLegacy(opts: {
 
   return `${API_BASE}/shots.csv?${params.toString()}`;
 }
+
+// SCRUM-825: where a player made shots against the opponent (Context ML).
+export type ShotPlayer = { id: string; name: string; made: number };
+export type PlayerMadeShots = {
+  player: { id: string; name: string };
+  our: string;
+  opp: string;
+  seasons: string[];
+  games: number;
+  player_games: number;
+  attempts: number;
+  made: number;
+  shown: number;
+  excluded_location: number;
+  outside_halfcourt: number;
+  points: [number, number][];
+};
+
+/** Like fetchJsonWithStatus, but a refused request reads as the backend's own explanation. */
+async function fetchExplained<T>(url: string, signal?: AbortSignal): Promise<T> {
+  try {
+    return await fetchJsonWithStatus<T>(url, signal);
+  } catch (error) {
+    if (error instanceof ApiError) {
+      let message = `The request failed (${error.status}). Try again.`;
+      try {
+        const detail = JSON.parse(error.body)?.detail;
+        if (typeof detail === "string" && detail.trim()) message = detail;
+      } catch {
+        // keep the generic message
+      }
+      throw new Error(message);
+    }
+    throw error;
+  }
+}
+
+export function fetchPlayerShotSeasons(signal?: AbortSignal): Promise<{ seasons: string[] }> {
+  return fetchExplained(`${API_BASE}/viz/player-made-shots/seasons`, signal);
+}
+
+export function fetchShotPlayers(
+  opts: { our: string; opp: string; seasons: string[] },
+  signal?: AbortSignal,
+): Promise<{ players: ShotPlayer[]; unnamed_players: number }> {
+  const params = new URLSearchParams({ our: opts.our, opp: opts.opp, seasons: opts.seasons.join(",") });
+  return fetchExplained(`${API_BASE}/viz/player-made-shots/players?${params}`, signal);
+}
+
+export function fetchPlayerMadeShots(
+  opts: { our: string; opp: string; seasons: string[]; player: string },
+  signal?: AbortSignal,
+): Promise<PlayerMadeShots> {
+  const params = new URLSearchParams({ our: opts.our, opp: opts.opp, seasons: opts.seasons.join(","), player: opts.player });
+  return fetchExplained(`${API_BASE}/viz/player-made-shots?${params}`, signal);
+}
