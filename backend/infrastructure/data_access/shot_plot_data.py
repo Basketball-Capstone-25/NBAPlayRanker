@@ -5,7 +5,9 @@ from .dataset_metadata import read_versioned_parquet
 
 _FRAME = None
 _LOCK = RLock()
-COLUMNS = ["SEASON_STR", "TEAM_ABBR", "OPP_ABBR", "SHOT_TYPE", "ZONE", "X", "Y", "HOME_FLAG", "LOCATION_VALID", "ZONE_METHOD"]
+# SCRUM-825: MADE, SHOOTER_ID and GAME_ID feed the player made-shot view.
+COLUMNS = ["SEASON_STR", "TEAM_ABBR", "OPP_ABBR", "SHOT_TYPE", "ZONE", "X", "Y", "HOME_FLAG", "LOCATION_VALID", "ZONE_METHOD",
+           "MADE", "SHOOTER_ID", "GAME_ID"]
 
 def get_shot_plot_df():
     global _FRAME
