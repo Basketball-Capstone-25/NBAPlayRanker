@@ -6,6 +6,7 @@
 "use client";
 
 import Link from "next/link";
+import styles from "./AnalystWorkspace.module.css";
 import { useEffect, useMemo, useRef, useState } from "react";
 import DataQualityPanel from "./DataQualityPanel";
 import DatasetReloadPanel from "./DatasetReloadPanel";
@@ -54,8 +55,6 @@ function fmtInt(v: any) {
   if (!Number.isFinite(n)) return "—";
   return String(Math.round(n));
 }
-
-
 
 // localStorage can throw in some environments (private mode / blocked storage),
 // so I wrap reads/writes to keep the page from crashing over a preference.
@@ -394,14 +393,6 @@ export default function DataExplorerClient() {
       minPPP,
     };
   }, [viewRows]);
-  const heroStyle: React.CSSProperties = {
-    borderRadius: 18,
-    padding: "18px 18px 14px",
-    background:
-      "linear-gradient(135deg, rgba(56,189,248,0.16), rgba(99,102,241,0.14), rgba(34,197,94,0.10))",
-    border: "1px solid rgba(255,255,255,0.10)",
-  };
-
   // Reproducible API URL for the current filters.
   const apiExample = useMemo(() => {
     const parts: string[] = [];
@@ -452,25 +443,29 @@ export default function DataExplorerClient() {
 
   if (dataset === "shots") {
     return (
-      <div className="page" style={{ paddingBottom: 56 }}>
-        <header className="page__header" style={heroStyle}>
+      <div className={`page ${styles.workspace}`} style={{ paddingBottom: 56 }}>
+        <header className={styles.header}>
+          <div className={styles.eyebrow}>Analyst workspace</div>
           <h1 className="h1" style={{ margin: 0 }}>Data Explorer</h1>
           <p className="muted" style={{ marginTop: 6, fontSize: 14, marginBottom: 0 }}>
             Browse the play-by-play shots and export the filtered view.
           </p>
           <DatasetSwitch value={dataset} onChange={switchDataset} />
         </header>
-        <DatasetReloadPanel key="dataset-reload" onReloaded={afterReload} onPendingChange={updatePending} />
         <ShotDataExplorer initialQuery={pendingShots} onOpenOther={openSynergyQuery}
           refreshVersion={shotsRevision} reloading={pendingReload === "pbp"} />
+        <details className={`card ${styles.tools}`}>
+          <summary>Dataset tools</summary>
+          <DatasetReloadPanel key="dataset-reload" onReloaded={afterReload} onPendingChange={updatePending} />
+        </details>
       </div>
     );
   }
 
   return (
-    <div className="page" style={{ paddingBottom: 56 }}>
+    <div className={`page ${styles.workspace}`} style={{ paddingBottom: 56 }}>
       {/* HERO */}
-      <header className="page__header" style={heroStyle}>
+      <header className={styles.header}>
         <div
           style={{
             display: "flex",
@@ -481,6 +476,7 @@ export default function DataExplorerClient() {
           }}
         >
           <div>
+            <div className={styles.eyebrow}>Analyst workspace</div>
             <h1 className="h1" style={{ margin: 0 }}>
               Data Explorer
             </h1>
@@ -540,13 +536,11 @@ export default function DataExplorerClient() {
         </div>
       </header>
 
-      <DatasetReloadPanel key="dataset-reload" onReloaded={afterReload} onPendingChange={updatePending} />
       {exportError && <p role="alert" className="card">{exportError}</p>}
       {metadataError ? <section className="card" role="alert"><p>{metadataError}</p>
         <button className="btn btn--secondary" type="button" onClick={() => setSynergyRevision(value => value + 1)}>Retry view</button></section>
         : synergyBlocked ? <p className="card" role="status">{synergyReloading ? "Reloading play-type data…" : "Refreshing play-type options…"}</p> : null}
-      {!synergyBlocked && <><DataQualityPanel key={`quality-${synergyRevision}`} />
-        <DatasetMetadataPanel key={`metadata-${synergyRevision}-${shotsRevision}`} /></>}
+      {!synergyBlocked && <DataQualityPanel key={`quality-${synergyRevision}`} />}
 
       {/* FILTERS */}
       <section className="card" style={{ marginTop: 14 }}>
@@ -566,7 +560,7 @@ export default function DataExplorerClient() {
             </p>
           </div>
 
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+          <div className={styles.toolbar}>
             <label style={{ fontSize: 13, display: "flex", gap: 8, alignItems: "center" }}>
               Search this table
               <input
@@ -740,11 +734,6 @@ export default function DataExplorerClient() {
         )}
       </section>
 
-      <SavedQueriesPanel definition={synergyQuery} options={synergyOptions} onOpen={openSynergyQuery} />
-
-      <AnalystSeasonSummary season={season} team={team} side={side} teams={meta.teams}
-        teamNames={meta.teamNames} refreshVersion={synergyRevision} refreshing={synergyBlocked} />
-
       {/* TABLE */}
       <section className="card">
         <div
@@ -841,6 +830,17 @@ export default function DataExplorerClient() {
           </div>
         ) : null}
       </section>
+
+      <SavedQueriesPanel definition={synergyQuery} options={synergyOptions} onOpen={openSynergyQuery} />
+
+      <AnalystSeasonSummary season={season} team={team} side={side} teams={meta.teams}
+        teamNames={meta.teamNames} refreshVersion={synergyRevision} refreshing={synergyBlocked} />
+
+      <details className={`card ${styles.tools}`}>
+        <summary>Dataset tools and source</summary>
+        <DatasetReloadPanel key="dataset-reload" onReloaded={afterReload} onPendingChange={updatePending} />
+        {!synergyBlocked && <DatasetMetadataPanel key={`metadata-${synergyRevision}-${shotsRevision}`} />}
+      </details>
 
       <details className="card">
         <summary>How this data is prepared</summary>
