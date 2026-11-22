@@ -4,6 +4,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Gameplan.module.css";
+import { loadShotsForSeason } from "./shot-coverage";
 import { gameplanSelectionKey, selectGameplanResult, type GameplanSelection } from "./gameplan-result";
 import TopPickCall from "../../_shared/components/TopPickCall";
 import { periodLabel, periodSeconds, resolveGameSituation, type ParsedSituation, type ResolvedSituation } from "../../../domain/gameplan-context";
@@ -19,6 +20,7 @@ import {
 } from "../../../services/recommendation";
 import {
   fetchShotHeatmap,
+  fetchPbpMetaOptions,
   fetchShotPlanRank,
   getShotPlanPdfUrl,
   authenticatedDownload,
@@ -168,6 +170,7 @@ export function GameplanDiagramCaption({ caption }: { caption: string }) {
 export default function GameplanClient() {
   const [options, setOptions] = useState<MetaOptions | null>(null);
   const [optError, setOptError] = useState<string | null>(null);
+  const [shotSeasons, setShotSeasons] = useState<string[] | null>(null);
 
   // Situation
   // SCRUM-841: the coach chooses the matchup; nothing is pre-selected.
@@ -262,6 +265,15 @@ export default function GameplanClient() {
 
   // Used to ignore stale async responses when the user rebuilds quickly.
   const latestBuildRef = useRef<number>(0);
+
+  // Shot coverage is separate from the play-type season dropdown.
+  useEffect(() => {
+    let alive = true;
+    fetchPbpMetaOptions({ strict: true }).then((meta) => {
+      if (alive) setShotSeasons(meta.seasons);
+    }).catch(() => { /* A metadata failure must not exclude a potentially valid season. */ });
+    return () => { alive = false; };
+  }, []);
 
   // Load options
   useEffect(() => {
@@ -652,13 +664,13 @@ export default function GameplanClient() {
       setShotLoading(true);
       setShotError(null);
       try {
-        const shot = await fetchShotPlanRank({
+        const shot = await loadShotsForSeason(season, shotSeasons, () => fetchShotPlanRank({
           season,
           our,
           opp,
           k: 5,
           wOff,
-        });
+        }));
 
         if (latestBuildRef.current !== myBuildId) return;
 
@@ -1314,6 +1326,7 @@ export default function GameplanClient() {
                   <div className={styles.sitLabel}>Shot type</div>
                   <select
                     className={styles.select}
+                    aria-label="Shot type"
                     value={selectedShotType}
                     onChange={(e) => setSelectedShotType(e.target.value)}
                     disabled={!resultState.shotsCurrent || !shotTypeOptions.length}
@@ -1331,6 +1344,7 @@ export default function GameplanClient() {
                   <div className={styles.sitLabel}>Zone</div>
                   <select
                     className={styles.select}
+                    aria-label="Court zone"
                     value={selectedZone}
                     onChange={(e) => setSelectedZone(e.target.value)}
                     disabled={!resultState.shotsCurrent || !zoneOptions.length}
@@ -1345,7 +1359,6 @@ export default function GameplanClient() {
                 </div>
               </div>
 
-              {shotError ? <div className={styles.warnSmall}>{shotError}</div> : null}
             </div>
           </section>
 
