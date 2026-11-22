@@ -56,7 +56,7 @@ def test_report_has_all_checks_source_metadata_and_no_cache(source):
     assert {check["name"]: check["status"] for check in report["checks"]} == {
         "schema": "pass", "completeness": "pass", "duplicates": "pass", "coverage": "pass",
     }
-    assert report["dataset"]["rows"] == 180
+    assert report["dataset"]["rows"] == len(EXPECTED_SEASONS) * len(EXPECTED_TEAMS)
     assert report["dataset"]["seasons"] == list(EXPECTED_SEASONS)
     assert report["dataset"]["teams"] == list(EXPECTED_TEAMS)
     assert report["dataset"]["version"].startswith("frame-sha256:")
