@@ -20,11 +20,9 @@ export default function TopKUpliftPanel() {
 
   useEffect(() => {
     fetchMetaOptions().then(meta => {
+      // SCRUM-841: the analyst chooses the season and teams; none is pre-selected.
       setSeasons(meta.seasons);
       setTeams(meta.teams);
-      setSeason(meta.seasons[meta.seasons.length - 1] ?? "");
-      setOur(meta.teams[0] ?? "");
-      setOpp(meta.teams[1] ?? "");
     }).catch(() => setError("Unable to load seasons and teams."));
   }, []);
 
@@ -46,10 +44,11 @@ export default function TopKUpliftPanel() {
     return () => controller.abort();
   }, [season, our, opp, k]);
 
-  const select = (label: string, value: string, options: string[], onChange: (v: string) => void) => (
+  const select = (label: string, value: string, options: string[], onChange: (v: string) => void, prompt?: string) => (
     <label style={{ display: "grid", gap: 4 }}>
       <span className="label">{label}</span>
       <select className="input" value={value} onChange={event => onChange(event.target.value)}>
+        {prompt ? <option value="" disabled>{prompt}</option> : null}
         {options.map(option => <option key={option} value={option}>{option}</option>)}
       </select>
     </label>
@@ -60,13 +59,14 @@ export default function TopKUpliftPanel() {
     <p className="muted">How much better the recommended Top-K play types score than the team&apos;s own season average,
       in points per possession (PPP). Positive means the shortlist beats the team&apos;s usual offense.</p>
     <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "end" }}>
-      {select("Season", season, seasons, setSeason)}
-      {select("Our team", our, teams, setOur)}
-      {select("Opponent", opp, teams, setOpp)}
-      {select("Top-K", String(k), ["3", "5", "7", "10"], value => setK(Number(value)))}
+      {select("Season", season, seasons, setSeason, "Choose a season")}
+      {select("Our team", our, teams, setOur, "Choose our team")}
+      {select("Opponent", opp, teams, setOpp, "Choose an opponent")}
+      {select("Top-K (model setting)", String(k), ["3", "5", "7", "10"], value => setK(Number(value)))}
     </div>
     {error ? <p role="alert">{error}</p>
       : missing ? <p role="status">No uplift result for this matchup: {missing}</p>
+      : !season || !our || !opp ? <p role="status">Choose a season and two teams to see the uplift.</p>
       : loading || !report ? <p role="status">Computing uplift…</p> : <>
         <div className="grid" style={{ marginTop: 12 }}>
           <div className="kpi"><div className="label">Uplift</div>
