@@ -1,0 +1,18 @@
+.readout { padding: 20px; border: 1px solid #d4e5df; border-radius: 12px; background: #f3faf7; margin: 18px 0; }
+.readout h3 { margin: 0 0 10px; color: #153b31; font-size: 21px; }
+.readout p { margin: 8px 0; line-height: 1.6; color: #334155; }
+.label { display: flex; flex-direction: column; gap: 7px; color: #334155; font-size: 14px; }
+.label select { background: white; color: #172033; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; max-width: 100%; min-width: 0; }
+.label input { accent-color: #5b21b6; width: 100%; }
+.numbers { display: flex; gap: 28px; flex-wrap: wrap; margin: 18px 0; }
+.numbers span { display: flex; flex-direction: column; gap: 5px; color: #475569; font-size: 13px; }
+.numbers strong { font-size: 26px; color: #173d33; font-variant-numeric: tabular-nums; }
+.controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.result { display: block; background: white; border: 1px solid #d4e5df; border-radius: 10px; padding: 18px; margin: 16px 0; }
+.result strong { display: block; font-size: 25px; margin-bottom: 7px; color: #173d33; }
+.quiet { font-size: 13px; }
+.bars { display: grid; gap: 16px; margin: 18px 0; }
+.barLabel { display: flex; justify-content: space-between; gap: 12px; line-height: 1.5; }
+.track { height: 8px; border-radius: 6px; background: #e2e8f0; margin-top: 7px; }
+.fill { display: block; height: 100%; border-radius: inherit; background: #5b21b6; }
+@media (max-width: 560px) { .controls { grid-template-columns: 1fr; } .readout { padding: 15px; } }

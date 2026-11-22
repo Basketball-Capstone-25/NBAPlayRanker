@@ -30,7 +30,7 @@ export function UsageEfficiencyChart({ rows }: { rows: UsageEfficiencyRow[] }) {
     <text x="400" y="405" textAnchor="middle" fontSize="14" fill="#334155">Usage difference from league (percentage points)</text>
     <text x="400" y="20" textAnchor="middle" fontSize="14" fill="#334155">PPP difference from league</text>
     {rows.map((r, i) => <g key={r.play_type}>
-      <title>{playtypeName(r.play_type)}: usage {r.usage_pct.toFixed(1)}%, PPP {r.ppp.toFixed(3)}; {r.possessions} possessions{r.sample_ok ? "" : "; small sample"}</title>
+      <title>{`${playtypeName(r.play_type)}: usage ${r.usage_pct.toFixed(1)}%, PPP ${r.ppp.toFixed(3)}; ${r.possessions} possessions${r.sample_ok ? "" : "; small sample"}`}</title>
       <circle cx={x(r.usage_delta_pp)} cy={y(r.ppp_delta)} r="12" fill={r.sample_ok ? "#5b21b6" : "white"} stroke="#5b21b6" strokeWidth="2" />
       <text x={x(r.usage_delta_pp)} y={y(r.ppp_delta) + 4} textAnchor="middle" fontSize="11" fontWeight="700" fill={r.sample_ok ? "white" : "#5b21b6"}>{i + 1}</text>
     </g>)}
@@ -49,7 +49,7 @@ export function OpponentDefenseChart({ rows }: { rows: OpponentDefenseRow[] }) {
     {rows.map((r, i) => {
       const y = 44 + i * 48, width = Math.abs(r.allowed_ppp_delta) * scale;
       return <g key={r.play_type}>
-        <title>{playtypeName(r.play_type)}: {r.allowed_ppp.toFixed(3)} allowed PPP; league {r.league_allowed_ppp.toFixed(3)}; {r.possessions} possessions{r.sample_ok ? "" : "; small sample"}</title>
+        <title>{`${playtypeName(r.play_type)}: ${r.allowed_ppp.toFixed(3)} allowed PPP; league ${r.league_allowed_ppp.toFixed(3)}; ${r.possessions} possessions${r.sample_ok ? "" : "; small sample"}`}</title>
         <text x="12" y={y + 17} fontSize="15" fill="#1e293b">{playtypeName(r.play_type)}</text>
         <rect x={Math.min(center, center + r.allowed_ppp_delta * scale)} y={y} width={Math.max(1, width)} height="27" rx="4"
           fill={r.sample_ok ? (r.allowed_ppp_delta > 0 ? "#c2410c" : "#0f766e") : "#f1f5f9"}

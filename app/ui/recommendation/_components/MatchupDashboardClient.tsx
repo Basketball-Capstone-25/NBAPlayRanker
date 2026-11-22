@@ -11,6 +11,8 @@ import LeagueComparisonPanel from "./LeagueComparisonPanel";
 import SeasonTrendPanel from "./SeasonTrendPanel";
 import TeamComparisonPanel from "./TeamComparisonPanel";
 import PossessionOutcomesPanel from "./PossessionOutcomesPanel";
+import UsageReadout from "./UsageReadout";
+import PossessionScenario from "./PossessionScenario";
 import styles from "./matchup-dashboard.module.css";
 
 type View = "usage" | "defense";
@@ -31,9 +33,10 @@ export function DashboardResults({ data, view }: { data: PlaytypeDashboard; view
         <span className={styles.pill}>{integer(usage.total_possessions)} recorded possessions</span>
       </div>
       {usage.rows.length === 0 ? <p role="status">No offensive play-type data is available for this selection.</p> : <>
+        <UsageReadout key={`reading:${JSON.stringify(filters)}`} data={data} />
         <div className={styles.chart}><UsageEfficiencyChart rows={usage.rows} /></div>
         <p className={styles.note}>Numbers match the table. Hollow circles mark small samples. Higher PPP with lower usage is a pattern to review, not proof that using the play more will improve results.</p>
-        <div className={styles.tableWrap}><table>
+        <details className={styles.details}><summary>See every play’s numbers</summary><div className={styles.tableWrap}><table>
           <caption>{filters.our} usage and efficiency · {filters.season} regular season</caption>
           <thead><tr><th scope="col">Play type</th><th scope="col">Possessions</th><th scope="col">Usage</th><th scope="col">League usage</th><th scope="col">PPP</th><th scope="col">League PPP</th><th scope="col">Sample</th></tr></thead>
           <tbody>{usage.rows.map((r, i) => <tr key={r.play_type}>
@@ -41,7 +44,8 @@ export function DashboardResults({ data, view }: { data: PlaytypeDashboard; view
             <td>{integer(r.possessions)}</td><td>{r.usage_pct.toFixed(1)}%</td><td>{r.league_usage_pct.toFixed(1)}%</td>
             <td>{r.ppp.toFixed(3)}</td><td>{r.league_ppp.toFixed(3)}</td><td><Sample ok={r.sample_ok} minimum={filters.min_poss} /></td>
           </tr>)}</tbody>
-        </table></div>
+        </table></div></details>
+        <PossessionScenario key={`scenario:${JSON.stringify(filters)}`} rows={usage.rows} />
       </>}
     </section> : <section className={styles.card} aria-labelledby="defense-title">
       <div className={styles.sectionHeading}>
@@ -51,17 +55,18 @@ export function DashboardResults({ data, view }: { data: PlaytypeDashboard; view
       {defense.rows.length === 0 ? <p role="status">No defensive play-type data is available for this selection.</p> : <>
         {weakSpots.length ? <ol className={styles.weakSpots} aria-label="Supported defensive weak spots">
           {weakSpots.map(r => <li key={r.play_type}><span className={styles.kicker}>Area to review {r.weak_spot_rank}</span><strong>{playtypeName(r.play_type)}</strong>
-            <span><b>{signed(r.allowed_ppp_delta)} PPP</b> above league</span><small>{integer(r.possessions)} possessions</small></li>)}
+            <span>{r.allowed_ppp_delta < .0005 ? <b>Close to the league rate</b> : <><b>{(100 * r.allowed_ppp_delta).toFixed(1)} more points allowed</b> per 100 of these possessions than the league</>}</span><small>{integer(r.possessions)} recorded possessions</small></li>)}
         </ol> : <p className={styles.notice} role="status">No above-league defensive weak spot meets this possession cutoff. The full profile is shown below.</p>}
+        {weakSpots[0] ? <p className={styles.note}>Start by reviewing how {filters.opp} defends {playtypeName(weakSpots[0].play_type).toLowerCase()}. They allowed {(100 * weakSpots[0].allowed_ppp).toFixed(1)} points per 100 of those possessions; the league allowed {(100 * weakSpots[0].league_allowed_ppp).toFixed(1)}. Check the film for openings your players can actually use.</p> : null}
         <div className={styles.chart}><OpponentDefenseChart rows={defense.rows} /></div>
         <p className={styles.note}>Dashed bars mark small samples. Only above-league values that meet the cutoff can be highlighted.</p>
-        <div className={styles.tableWrap}><table>
+        <details className={styles.details}><summary>See defensive totals and rates</summary><div className={styles.tableWrap}><table>
           <caption>{filters.opp} defensive profile · {filters.season} regular season</caption>
           <thead><tr><th scope="col">Play type</th><th scope="col">Possessions</th><th scope="col">Points allowed</th><th scope="col">Allowed PPP</th><th scope="col">League PPP</th><th scope="col">Difference</th><th scope="col">Sample</th></tr></thead>
           <tbody>{defense.rows.map(r => <tr key={r.play_type}><th scope="row">{playtypeName(r.play_type)}</th><td>{integer(r.possessions)}</td>
             <td>{integer(r.points_allowed)}</td><td>{r.allowed_ppp.toFixed(3)}</td><td>{r.league_allowed_ppp.toFixed(3)}</td>
             <td>{signed(r.allowed_ppp_delta)}</td><td><Sample ok={r.sample_ok} minimum={filters.min_poss} /></td></tr>)}</tbody>
-        </table></div>
+        </table></div></details>
       </>}
       {data.coverage.unavailable_defense_types.length > 0 && <p className={styles.notice}><strong>Defensive data unavailable:</strong> {data.coverage.unavailable_defense_types.map(playtypeName).join(", ")}. These categories are missing from the source, not zero.</p>}
     </section>}
@@ -128,7 +133,7 @@ export default function MatchupDashboardClient() {
 
   return <main className={styles.page}>
     <header className={styles.header}><div><span className={styles.kicker}>Coach workspace · Regular season</span>
-      <h1>Matchup dashboard</h1><p>Explore playing style, league comparisons, season trends and defensive weak spots.</p></div>
+      <h1>Matchup dashboard</h1><p>Find a strength, spot a concern, and decide what to review before the next game.</p></div>
       <Link className={styles.link} href="/matchup">View baseline rankings →</Link>
     </header>
     {metaError ? <div className={styles.card} role="alert"><p>{metaError}</p><button className={styles.button} onClick={() => setMetaAttempt(x => x + 1)}>Retry team list</button></div>
@@ -158,14 +163,16 @@ export default function MatchupDashboardClient() {
           : <>
           {stale ? <p className={styles.notice} role="status">Inputs changed. Click Show results to update these results.</p> : null}
           <p className={styles.scope}>{shown.view === "trend" ? `All available regular seasons · ${shown.our} offense` : `${shown.season} regular season · ${shown.view === "league" ? `${shown.our} ${shown.leagueSide} vs league` : shown.view === "outcomes" ? `${shown.our} offense` : `${shown.our} vs ${shown.opp}`}`} · Historical profiles</p>
+          {shown.season === "2026-27" && shown.view !== "trend" ? <p className={styles.notice}>2026–27 is a partial-season snapshot. Some play types are missing, and the rates can change as more games are added.</p> : null}
           {shown.view === "trend" ? <SeasonTrendPanel filters={{ team: shown.our, play_type: shown.playType }} minimum={shown.minimum} />
           : shown.view === "league" ? <LeagueComparisonPanel filters={{ season: shown.season, team: shown.our, side: shown.leagueSide }} minimum={shown.minimum} />
           : shown.view === "outcomes" ? <PossessionOutcomesPanel filters={{ season: shown.season, team: shown.our }} minimum={shown.minimum} />
           : shown.view === "profiles" ? <>
-            <button className={styles.button} type="button" onClick={() => { setOur(shown.opp); setOpp(shown.our); setShown({ ...shown, view, our: shown.opp, opp: shown.our }); }}>Swap teams</button>
+            <button className={styles.button} type="button" disabled={stale} onClick={() => { setOur(shown.opp); setOpp(shown.our); setShown({ ...shown, our: shown.opp, opp: shown.our }); }}>Swap teams</button>
             <TeamComparisonPanel filters={{ season: shown.season, team: shown.our, opponent: shown.opp }} minimum={shown.minimum} />
           </>
           : <DashboardResultState state={selectDashboard(state, shownFilters!)} view={shown.view as View} retry={() => setAttempt(x => x + 1)} />}
+          <p className={styles.note}>Source: NBA/Synergy regular-season play types. Totals cover recorded qualifying player possessions; they may not include every team possession. These views compare season profiles, not only games between the selected teams.</p>
           </>}
       </>}
   </main>;
