@@ -7,6 +7,7 @@ import Link from "next/link";
 import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useShotResult } from "./useShotResult";
 import { loadShotOptions } from "./shotOptions";
+import { heatmapPresetFilters, type HeatmapPreset } from "./heatmapPresets";
 import { ShotHeatmapCounts } from "./ShotHeatmapCounts";
 import { shotHeatmapExportUrl } from "../../../domain/shot-heatmap-export";
 import { fetchShotHeatmap } from "../../../services/shotAnalysis";
@@ -54,27 +55,6 @@ function normalizeLabel(abbr: string, teamNames?: Record<string, string>) {
   // Converts "TOR" -> "TOR — Toronto Raptors" when name mapping exists.
   const name = teamNames?.[abbr];
   return name ? `${abbr} — ${name}` : abbr;
-}
-
-function findBestOption(options: string[], needles: string[]) {
-  // Best-effort preset resolver:
-  // 1) exact match (case-insensitive)
-  // 2) substring match (case-insensitive)
-  const opts = (options ?? []).filter(Boolean);
-  if (!opts.length) return "";
-  const lower = opts.map((x) => x.toLowerCase());
-
-  for (const n of needles) {
-    const needle = n.toLowerCase();
-    const idx = lower.findIndex((o) => o === needle);
-    if (idx >= 0) return opts[idx];
-  }
-  for (const n of needles) {
-    const needle = n.toLowerCase();
-    const idx = lower.findIndex((o) => o.includes(needle));
-    if (idx >= 0) return opts[idx];
-  }
-  return "";
 }
 
 export default function ShotHeatmapPage() {
@@ -225,45 +205,11 @@ export default function ShotHeatmapPage() {
     setInputError(null);
   }
 
-  function applyPreset(preset: "ALL" | "RIM" | "CORNER_3" | "ABOVE_BREAK_3" | "MIDRANGE") {
-    // Presets are best-effort mappings because dataset naming can vary.
-    const shotTypes = meta?.shotTypes ?? [];
-    const zones = meta?.zones ?? [];
-
-    // Always start clean
-    let nextShotType = "";
-    let nextZone = "";
-
-    if (preset === "ALL") {
-      nextShotType = "";
-      nextZone = "";
-    }
-
-    if (preset === "RIM") {
-      nextShotType =
-        findBestOption(shotTypes, ["rim", "at rim", "restricted", "paint"]) || nextShotType;
-      nextZone = findBestOption(zones, ["rim", "restricted", "paint", "at rim"]) || nextZone;
-    }
-
-    if (preset === "CORNER_3") {
-      nextShotType =
-        findBestOption(shotTypes, ["corner 3", "corner three", "3pt", "3"]) || nextShotType;
-      nextZone = findBestOption(zones, ["corner", "corner 3", "corner three"]) || nextZone;
-    }
-
-    if (preset === "ABOVE_BREAK_3") {
-      nextShotType = findBestOption(shotTypes, ["3pt", "3", "three"]) || nextShotType;
-      nextZone =
-        findBestOption(zones, ["above the break", "above break", "arc", "3"]) || nextZone;
-    }
-
-    if (preset === "MIDRANGE") {
-      nextShotType = findBestOption(shotTypes, ["mid", "midrange", "2pt"]) || nextShotType;
-      nextZone = findBestOption(zones, ["mid", "midrange", "elbow", "short"]) || nextZone;
-    }
-
-    setShotType(nextShotType);
-    setZone(nextZone);
+  function applyPreset(preset: HeatmapPreset) {
+    const filters = heatmapPresetFilters(preset, meta?.zones ?? []);
+    if (!filters) return;
+    setShotType(filters.shotType);
+    setZone(filters.zone);
   }
 
   const chipStyle = (active: boolean): React.CSSProperties => ({
@@ -331,7 +277,8 @@ export default function ShotHeatmapPage() {
               type="button"
               style={chipStyle(false)}
               onClick={() => applyPreset(p.key)}
-              title="Sets shot type + zone (when available in your metadata)"
+              disabled={!meta || !heatmapPresetFilters(p.key, meta.zones)}
+              title={meta && heatmapPresetFilters(p.key, meta.zones) ? "Show all shot types in this zone" : "This zone is not available in the shot data"}
             >
               {p.label}
             </button>
