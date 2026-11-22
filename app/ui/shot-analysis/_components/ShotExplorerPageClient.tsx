@@ -5,10 +5,9 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useShotResult } from "./useShotResult";
+import { loadShotOptions } from "./shotOptions";
 import {
   authenticatedDownload,
-  fetchMetaOptions,
-  fetchPbpMetaOptions,
   fetchPbpShotsPreview,
   getPbpShotsCsvUrl,
 } from "../../../services/shotAnalysis";
@@ -51,13 +50,15 @@ export default function ShotExplorerPage() {
   const [limit, setLimit] = useState<number>(50);
 
   const [inputError, setInputError] = useState<string | null>(null);
+  const [metadataError, setMetadataError] = useState<string | null>(null);
+  const [metadataAttempt, setMetadataAttempt] = useState(0);
   const [exporting, setExporting] = useState(false);
   const [exportError, setExportError] = useState<string | null>(null);
 
   const inputs = { season, team, opp, shotType, zone, limit };
   const query = useShotResult<typeof inputs, PbpShotsPreviewResponse>(inputs);
   const { loading } = query;
-  const error = inputError ?? query.error;
+  const error = metadataError ?? inputError ?? query.error;
   const data = !error ? query.result : null;
 
   // Load meta options once:
@@ -65,35 +66,25 @@ export default function ShotExplorerPage() {
   // - Dataset1 provides teamNames (nice labels like "TOR (Raptors)").
   useEffect(() => {
     let cancelled = false;
+    setMetadataError(null);
 
     (async () => {
       try {
-        const [mMain, mPbp] = await Promise.all([
-          fetchMetaOptions(),
-          fetchPbpMetaOptions(),
-        ]);
-
-        const merged: Meta = {
-          seasons: mPbp.seasons,
-          teams: mPbp.teams,
-          shotTypes: mPbp.shotTypes ?? [],
-          zones: mPbp.zones ?? [],
-          teamNames: mMain.teamNames ?? {},
-        };
+        const merged = await loadShotOptions();
 
         if (cancelled) return;
         setMeta(merged);
 
         // SCRUM-841: nothing is pre-selected; the analyst chooses the season and team.
       } catch (e: any) {
-        if (!cancelled) setInputError(e?.message ?? "Failed to load available filters.");
+        if (!cancelled) setMetadataError(e?.message ?? "Shot filters could not be loaded.");
       }
     })();
 
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [metadataAttempt]);
 
   const csvUrl = (() => {
     if (!data || !query.inputs) return "";
@@ -123,6 +114,7 @@ export default function ShotExplorerPage() {
   }
 
   async function run() {
+    if (!meta) return;
     setInputError(null); setExportError(null);
     if (!season || !team) {
       setInputError("Please select a season and team.");
@@ -177,7 +169,7 @@ export default function ShotExplorerPage() {
         </div>
 
         <p className="muted" style={{ marginTop: 8 }}>
-          Find recorded shots by team, opponent and court zone, then export your selection.
+          Find recorded shots by team, opponent and court zone. Includes regular-season and playoff games.
         </p>
 
         <p className="muted" style={{ margin: 0 }}>
@@ -192,7 +184,7 @@ export default function ShotExplorerPage() {
 
           {/* Actions: Run = preview query, CSV = export query */}
           <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-            <button className="btn primary" onClick={run} disabled={loading}>
+            <button className="btn primary" onClick={run} disabled={loading || !meta}>
               {loading ? "Loading…" : "Run"}
             </button>
 
@@ -308,6 +300,7 @@ export default function ShotExplorerPage() {
           <div className="card" style={{ marginTop: 12, borderColor: "rgba(239,68,68,0.35)" }}>
             <div role="alert" className="muted" style={{ color: "rgba(239,68,68,0.95)" }}>
               {error}
+              {metadataError && <button className="btn btn--secondary" type="button" onClick={() => setMetadataAttempt(value => value + 1)}>Retry filters</button>}
             </div>
           </div>
         ) : null}

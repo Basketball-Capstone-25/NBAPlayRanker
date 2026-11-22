@@ -10,10 +10,9 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useShotResult } from "./useShotResult";
+import { loadShotOptions } from "./shotOptions";
 import { ShotHeatmapCounts } from "./ShotHeatmapCounts";
 import {
-  fetchMetaOptions,
-  fetchPbpMetaOptions,
   fetchShotHeatmap,
   fetchShotPlanRank,
   getShotPlanPdfUrl,
@@ -92,12 +91,14 @@ export default function ShotPlanPage() {
   const [showWhy, setShowWhy] = useState<boolean>(false);
 
   const [inputError, setInputError] = useState<string | null>(null);
+  const [metadataError, setMetadataError] = useState<string | null>(null);
+  const [metadataAttempt, setMetadataAttempt] = useState(0);
   const [exporting, setExporting] = useState(false);
   const [exportError, setExportError] = useState<string | null>(null);
   const inputs = { season, our, opp, k, wOff, shotType, zone, maxShots };
   const query = useShotResult<typeof inputs, { rank: ShotPlanRankResponse; heatmap: ShotHeatmapResponse }>(inputs);
   const { loading } = query;
-  const error = inputError ?? query.error;
+  const error = metadataError ?? inputError ?? query.error;
   const rank = !error ? query.result?.rank : null;
   const heatmap = !error ? query.result?.heatmap : null;
 
@@ -107,22 +108,11 @@ export default function ShotPlanPage() {
   // - Also pull Dataset2 shotTypes/zones for nicer heatmap filters
   useEffect(() => {
     let cancelled = false;
+    setMetadataError(null);
 
     async function init() {
       try {
-        // Run both meta calls in parallel so the page loads faster
-        const [m1, mPbp] = await Promise.all([fetchMetaOptions(), fetchPbpMetaOptions()]);
-
-        // Merge into one meta object:
-        // - m1 contains teamNames + any Dataset1 extras
-        // - mPbp contains Dataset2-specific dropdown values
-        const merged = {
-          ...m1,
-          seasons: mPbp.seasons,
-          teams: mPbp.teams,
-          shotTypes: mPbp.shotTypes ?? [],
-          zones: mPbp.zones ?? [],
-        };
+        const merged = await loadShotOptions();
 
         // If the user navigated away before this resolved, avoid setting state
         if (cancelled) return;
@@ -131,7 +121,7 @@ export default function ShotPlanPage() {
         // SCRUM-841: nothing is pre-selected.
       } catch (e: any) {
         // If meta fails, we still want to show the page with an error callout
-        if (!cancelled) setInputError(e?.message ?? "Failed to load available filters.");
+        if (!cancelled) setMetadataError(e?.message ?? "Shot filters could not be loaded.");
       }
     }
 
@@ -139,7 +129,7 @@ export default function ShotPlanPage() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [metadataAttempt]);
 
   // Derived weight for defense side (always complements offense weight)
   const wDef = useMemo(() => 1 - wOff, [wOff]);
@@ -174,6 +164,7 @@ export default function ShotPlanPage() {
   const bestZone = topZones?.[0];
 
   async function run() {
+    if (!meta) return;
     setInputError(null); setExportError(null);
     if (!season || !our || !opp) {
       setInputError("Please select season, our team, and opponent.");
@@ -226,7 +217,7 @@ export default function ShotPlanPage() {
         </div>
 
         <p className="muted" style={{ marginTop: 8 }}>
-          Compare shot types and court zones using our season-long offense and the opponent’s season-long defense.
+          Compare shot types and zones using season-long offense and defense, including regular-season and playoff games.
         </p>
         <p className={styles.notice}>Scores are estimated points per shot attempt, not points per possession. The heatmap shows only shots taken against the selected opponent; its filters do not change the rankings.</p>
 
@@ -381,7 +372,7 @@ export default function ShotPlanPage() {
 
         {/* Actions */}
         <div style={{ display: "flex", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
-          <button className="btn primary" onClick={run} disabled={loading}>
+          <button className="btn primary" onClick={run} disabled={loading || !meta}>
             {loading ? "Running…" : "Run"}
           </button>
 
@@ -418,6 +409,7 @@ export default function ShotPlanPage() {
           <div className="card" style={{ marginTop: 12, borderColor: "rgba(239,68,68,0.35)" }}>
             <div role="alert" className="muted" style={{ color: "rgba(239,68,68,0.95)" }}>
               {error}
+              {metadataError && <button className="btn btn--secondary" type="button" onClick={() => setMetadataAttempt(value => value + 1)}>Retry filters</button>}
             </div>
           </div>
         ) : null}

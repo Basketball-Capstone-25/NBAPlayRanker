@@ -6,9 +6,10 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useShotResult } from "./useShotResult";
+import { loadShotOptions } from "./shotOptions";
 import { ShotHeatmapCounts } from "./ShotHeatmapCounts";
 import { shotHeatmapExportUrl } from "../../../domain/shot-heatmap-export";
-import { fetchMetaOptions, fetchPbpMetaOptions, fetchShotHeatmap } from "../../../services/shotAnalysis";
+import { fetchShotHeatmap } from "../../../services/shotAnalysis";
 
 type Meta = {
   seasons: string[];
@@ -89,28 +90,23 @@ export default function ShotHeatmapPage() {
 
   const [autoRender, setAutoRender] = useState<boolean>(false);
   const [inputError, setInputError] = useState<string | null>(null);
+  const [metadataError, setMetadataError] = useState<string | null>(null);
+  const [metadataAttempt, setMetadataAttempt] = useState(0);
   const inputs = { season, team, opp, shotType, zone, maxShots };
   const query = useShotResult<typeof inputs, HeatmapResponse>(inputs);
   const { loading } = query;
-  const error = inputError ?? query.error;
+  const error = metadataError ?? inputError ?? query.error;
   const heatmap = !error ? query.result : null;
   const didInitRef = useRef(false);
 
   // Load meta + restore saved settings (one-time restore guarded by didInitRef).
   useEffect(() => {
     let cancelled = false;
+    setMetadataError(null);
 
     (async () => {
       try {
-        const [mMain, mPbp] = await Promise.all([fetchMetaOptions(), fetchPbpMetaOptions()]);
-
-        const merged: Meta = {
-          seasons: (mPbp?.seasons ?? []) as string[],
-          teams: (mPbp?.teams ?? []) as string[],
-          shotTypes: (mPbp?.shotTypes ?? []) as string[],
-          zones: (mPbp?.zones ?? []) as string[],
-          teamNames: (mMain?.teamNames ?? {}) as Record<string, string>,
-        };
+        const merged = await loadShotOptions();
 
         if (cancelled) return;
 
@@ -139,14 +135,14 @@ export default function ShotHeatmapPage() {
         }
 
       } catch (e: any) {
-        if (!cancelled) setInputError(e?.message ?? "Failed to load available filters.");
+        if (!cancelled) setMetadataError(e?.message ?? "Shot filters could not be loaded.");
       }
     })();
 
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [metadataAttempt]);
 
   // Persist inputs so the page remembers your last “comparison setup.”
   useEffect(() => {
@@ -172,7 +168,7 @@ export default function ShotHeatmapPage() {
   })();
 
   // We require season + team + opponent so the backend has a defined matchup context.
-  const canRun = Boolean(season && team && opp && team !== opp);
+  const canRun = Boolean(meta && season && team && opp && team !== opp);
 
   async function run() {
     setInputError(null);
@@ -304,7 +300,7 @@ export default function ShotHeatmapPage() {
           <div style={{ minWidth: 0, flex: "1 1 300px" }}>
             <h1 style={{ margin: 0 }}>Shot Heatmap</h1>
             <p className="muted" style={{ marginTop: 6, marginBottom: 0 }}>
-              Shot-attempt density from the selected team’s games against the opponent.
+              Shot-attempt density against this opponent, including regular-season and playoff games.
               For ranked recommendations, use{" "}
               <Link href="/shot-plan" style={{ textDecoration: "underline" }}>
                 Shot Plan
@@ -457,6 +453,7 @@ export default function ShotHeatmapPage() {
         {error ? (
           <p role="alert" className="error" style={{ marginTop: 12 }}>
             {error}
+              {metadataError && <button className="btn btn--secondary" type="button" onClick={() => setMetadataAttempt(value => value + 1)}>Retry filters</button>}
           </p>
         ) : null}
         {query.changed && <p role="status">Filters changed. Render again to see and download the updated heatmap.</p>}

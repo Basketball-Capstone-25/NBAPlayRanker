@@ -448,7 +448,7 @@ export default function DataExplorerClient() {
           <div className={styles.eyebrow}>Analyst workspace</div>
           <h1 className="h1" style={{ margin: 0 }}>Data Explorer</h1>
           <p className="muted" style={{ marginTop: 6, fontSize: 14, marginBottom: 0 }}>
-            Browse the play-by-play shots and export the filtered view.
+            Browse and export recorded shots, including regular-season and playoff games.
           </p>
           <DatasetSwitch value={dataset} onChange={switchDataset} />
         </header>
