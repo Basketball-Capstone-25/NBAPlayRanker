@@ -17,6 +17,9 @@ export default function TopKUpliftPanel() {
   const [missing, setMissing] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  // SCRUM-843: the uplift is computed only for the inputs the analyst ran.
+  const [ran, setRan] = useState<{ season: string; our: string; opp: string; k: number } | null>(null);
+  const stale = ran !== null && (ran.season !== season || ran.our !== our || ran.opp !== opp || ran.k !== k);
 
   useEffect(() => {
     fetchMetaOptions().then(meta => {
@@ -27,7 +30,8 @@ export default function TopKUpliftPanel() {
   }, []);
 
   useEffect(() => {
-    if (!season || !our || !opp) return;
+    if (!ran) return;
+    const { season, our, opp, k } = ran;
     if (our === opp) { setReport(null); setMissing("Pick two different teams."); return; }
     const controller = new AbortController();
     setLoading(true);
@@ -42,7 +46,7 @@ export default function TopKUpliftPanel() {
       else setError(reason instanceof Error ? reason.message : "Unable to load uplift.");
     }).finally(() => { if (!controller.signal.aborted) setLoading(false); });
     return () => controller.abort();
-  }, [season, our, opp, k]);
+  }, [ran]);
 
   const select = (label: string, value: string, options: string[], onChange: (v: string) => void, prompt?: string) => (
     <label style={{ display: "grid", gap: 4 }}>
@@ -63,10 +67,13 @@ export default function TopKUpliftPanel() {
       {select("Our team", our, teams, setOur, "Choose our team")}
       {select("Opponent", opp, teams, setOpp, "Choose an opponent")}
       {select("Top-K (model setting)", String(k), ["3", "5", "7", "10"], value => setK(Number(value)))}
+      <button className="btn btnPrimary" type="button" disabled={!season || !our || !opp || our === opp || loading}
+        onClick={() => setRan({ season, our, opp, k })}>Compute uplift</button>
     </div>
+    {stale ? <p className="muted" role="status">Inputs changed. Click Compute uplift to update these results.</p> : null}
     {error ? <p role="alert">{error}</p>
       : missing ? <p role="status">No uplift result for this matchup: {missing}</p>
-      : !season || !our || !opp ? <p role="status">Choose a season and two teams to see the uplift.</p>
+      : !ran ? <p role="status">Choose a season and two teams, then click Compute uplift.</p>
       : loading || !report ? <p role="status">Computing uplift…</p> : <>
         <div className="grid" style={{ marginTop: 12 }}>
           <div className="kpi"><div className="label">Uplift</div>
