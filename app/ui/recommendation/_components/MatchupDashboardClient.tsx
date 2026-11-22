@@ -93,8 +93,19 @@ export default function MatchupDashboardClient() {
   const [state, setState] = useState(emptyDashboard);
   const request = useRef<DashboardRequest | null>(null);
   if (!request.current) request.current = new DashboardRequest();
-  const filters = useMemo<DashboardFilters>(() => ({ season, our, opp, min_poss: minimum }), [season, our, opp, minimum]);
   const valid = Boolean(meta && season && our && opp && our !== opp);
+
+  // SCRUM-843: results appear only after "Show results"; later input changes mark them out of date.
+  type Shown = { view: typeof view; season: string; our: string; opp: string; minimum: number; playType: string; leagueSide: "offense" | "defense" };
+  const choice: Shown = { view, season, our, opp, minimum, playType, leagueSide };
+  const ready = trendView ? Boolean(meta && our && playType) : leagueView || outcomesView ? Boolean(meta && season && our) : valid;
+  const [shown, setShown] = useState<Shown | null>(null);
+  const stale = shown !== null && JSON.stringify(shown) !== JSON.stringify(choice);
+  const shownFilters = useMemo<DashboardFilters | null>(
+    () => (shown ? { season: shown.season, our: shown.our, opp: shown.opp, min_poss: shown.minimum } : null),
+    [shown],
+  );
+  const shownTable = Boolean(shown && !["league", "trend", "profiles", "outcomes"].includes(shown.view));
 
   useEffect(() => {
     let active = true;
@@ -110,10 +121,10 @@ export default function MatchupDashboardClient() {
 
   useEffect(() => {
     const current = request.current!;
-    if (valid && !leagueView && !trendView && !profilesView && !outcomesView) void current.run(filters, fetchPlaytypeDashboard, setState);
+    if (shownTable && shownFilters) void current.run(shownFilters, fetchPlaytypeDashboard, setState);
     else { current.cancel(); setState(emptyDashboard()); }
     return () => current.cancel();
-  }, [filters, valid, attempt, leagueView, trendView, profilesView, outcomesView]);
+  }, [shownFilters, shownTable, attempt]);
 
   return <main className={styles.page}>
     <header className={styles.header}><div><span className={styles.kicker}>Coach workspace · Regular season</span>
@@ -140,16 +151,22 @@ export default function MatchupDashboardClient() {
           <button aria-pressed={profilesView} onClick={() => setView("profiles")}>Team profiles</button>
           <button aria-pressed={outcomesView} onClick={() => setView("outcomes")}>Possession outcomes</button>
         </div>
-        <p className={styles.scope}>{trendView ? `All available regular seasons · ${our} offense` : `${season} regular season · ${leagueView ? `${our} ${leagueSide} vs league` : outcomesView ? `${our} offense` : `${our} vs ${opp}`}`} · Historical profiles</p>
-        {trendView ? <SeasonTrendPanel filters={{ team: our, play_type: playType }} minimum={minimum} />
-          : leagueView ? <LeagueComparisonPanel filters={{ season, team: our, side: leagueSide }} minimum={minimum} />
-          : outcomesView ? <PossessionOutcomesPanel filters={{ season, team: our }} minimum={minimum} />
-          : !valid ? <div className={styles.card} role="alert">Choose two different teams to compare.</div>
-          : profilesView ? <>
-            <button className={styles.button} type="button" onClick={() => { setOur(opp); setOpp(our); }}>Swap teams</button>
-            <TeamComparisonPanel filters={{ season, team: our, opponent: opp }} minimum={minimum} />
+        <button className={styles.button} type="button" disabled={!ready} onClick={() => setShown(choice)}>Show results</button>
+        {!shown ? <div className={styles.card} role="status" data-testid="dashboard-prompt">
+            {trendView ? "Choose a team and a play type" : leagueView || outcomesView ? "Choose a season and a team" : "Choose a season and two different teams"}, then click Show results.
+          </div>
+          : <>
+          {stale ? <p className={styles.notice} role="status">Inputs changed. Click Show results to update these results.</p> : null}
+          <p className={styles.scope}>{shown.view === "trend" ? `All available regular seasons · ${shown.our} offense` : `${shown.season} regular season · ${shown.view === "league" ? `${shown.our} ${shown.leagueSide} vs league` : shown.view === "outcomes" ? `${shown.our} offense` : `${shown.our} vs ${shown.opp}`}`} · Historical profiles</p>
+          {shown.view === "trend" ? <SeasonTrendPanel filters={{ team: shown.our, play_type: shown.playType }} minimum={shown.minimum} />
+          : shown.view === "league" ? <LeagueComparisonPanel filters={{ season: shown.season, team: shown.our, side: shown.leagueSide }} minimum={shown.minimum} />
+          : shown.view === "outcomes" ? <PossessionOutcomesPanel filters={{ season: shown.season, team: shown.our }} minimum={shown.minimum} />
+          : shown.view === "profiles" ? <>
+            <button className={styles.button} type="button" onClick={() => { setOur(shown.opp); setOpp(shown.our); setShown({ ...shown, view, our: shown.opp, opp: shown.our }); }}>Swap teams</button>
+            <TeamComparisonPanel filters={{ season: shown.season, team: shown.our, opponent: shown.opp }} minimum={shown.minimum} />
           </>
-          : <DashboardResultState state={selectDashboard(state, filters)} view={view} retry={() => setAttempt(x => x + 1)} />}
+          : <DashboardResultState state={selectDashboard(state, shownFilters!)} view={shown.view as View} retry={() => setAttempt(x => x + 1)} />}
+          </>}
       </>}
   </main>;
 }
