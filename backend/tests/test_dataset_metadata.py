@@ -79,6 +79,25 @@ def test_catalog_requires_a_session():
     assert TestClient(app_module.app).get("/meta/data-dictionary").status_code == 401
 
 
+def test_saved_prediction_provenance_is_documented_in_the_live_catalog():
+    columns = request("/meta/data-dictionary").json()["columns"]
+    entries = {c["column"]: c for c in columns if c["dataset"] == "ml_predictions"}
+    for name in ("SOURCE_DATASET_VERSION", "AGGREGATION_VERSION", "SEASON_PHASE"):
+        assert entries[name]["documented"]
+        assert entries[name]["unit"] != "Unknown"
+    assert "Content hash" in entries["SOURCE_DATASET_VERSION"]["meaning"]
+    assert "regular-season" in entries["SEASON_PHASE"]["meaning"]
+
+
+def test_shot_aggregate_team_definition_distinguishes_defense_from_shooting_team():
+    columns = request("/meta/data-dictionary").json()["columns"]
+    entries = {(c["dataset"], c["column"]): c for c in columns}
+    assert "Shooting team" in entries[("shots", "TEAM_ABBR")]["meaning"]
+    assert "defending team" in entries[("shot_aggregates", "TEAM_ABBR")]["meaning"]
+    for dataset in ("shot_aggregates", "shot_league"):
+        assert "combination of both" in entries[(dataset, "LEVEL")]["meaning"]
+
+
 def test_readiness_reports_names_but_no_secret_values():
     result = readiness_report({}, source_loaded=False, predictions_loaded=False)
     assert not result["ready"]

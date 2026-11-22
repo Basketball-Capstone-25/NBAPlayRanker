@@ -61,8 +61,20 @@ DEFINITIONS = {
     "LEAGUE_REL_WEIGHT": ("Sample-size reliability weight for a league shot group.", "weight, 0–1"),
     "PPP_PRED": ("Estimated points per possession from the saved model.", "points per possession"),
     "PPP_ML": ("Saved model estimate of offensive points per possession.", "points per possession"),
+    "SOURCE_DATASET_VERSION": ("Content hash of the play-type source used to build these predictions. It must match the currently loaded source.", "SHA-256 identifier"),
+    "AGGREGATION_VERSION": ("Version of the team aggregation rules used to build the saved predictions.", "version label"),
+    "SEASON_PHASE": ("Part of the season used to build these predictions. The current play-type model uses regular-season rows only.", "category"),
 }
 ALIASES = {"TEAM": "TEAM_ABBR", "OPP": "OPP_ABBR", "HOME": "HOME_FLAG", "IS_MAKE": "MADE"}
+DATASET_DEFINITIONS = {
+    "shot_aggregates": {
+        "TEAM_ABBR": ("Team described by the aggregate: the shooting team for offense, or the defending team for defense. Check ROLE.", "team code"),
+        "LEVEL": ("Whether attempts are grouped by shot type, court zone, or the combination of both.", "category"),
+    },
+    "shot_league": {
+        "LEVEL": ("Whether attempts are grouped by shot type, court zone, or the combination of both.", "category"),
+    },
+}
 
 
 def dictionary_entries(catalog: list[dict]) -> list[dict]:
@@ -70,7 +82,7 @@ def dictionary_entries(catalog: list[dict]) -> list[dict]:
     for dataset in catalog:
         for column in dataset["columns"]:
             key = ALIASES.get(column.upper(), column.upper())
-            definition = DEFINITIONS.get(key)
+            definition = DATASET_DEFINITIONS.get(dataset["id"], {}).get(key, DEFINITIONS.get(key))
             entries.append({"dataset": dataset["id"], "dataset_name": dataset["name"],
                             "column": column, "meaning": definition[0] if definition else "Undocumented column.",
                             "unit": definition[1] if definition else "Unknown", "source": dataset["source"],
