@@ -11,9 +11,11 @@ import ShotPlan from "../app/ui/shot-analysis/_components/ShotPlanPageClient";
 describe("analyst page controls", () => {
   it("makes every analysis view reachable with a keyboard button", () => {
     const html = renderToStaticMarkup(<StatisticalAnalysis />);
-    for (const label of ["Overview", "EDA", "Correlations", "Feature Selection", "Model Tuning", "Raw JSON"]) {
+    for (const label of ["Overview", "Distributions", "Correlations", "Feature Selection", "Model Tuning", "Raw JSON"]) {
       expect(html).toMatch(new RegExp(`<button[^>]*aria-pressed="(?:true|false)"[^>]*>${label}</button>`));
     }
+    expect(html).toContain("<summary>Analysis tools</summary>");
+    expect(html).not.toContain("<details open");
     expect(html).toContain("Force recompute");
   });
 
