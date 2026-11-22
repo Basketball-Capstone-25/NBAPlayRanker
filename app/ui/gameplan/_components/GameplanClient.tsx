@@ -154,6 +154,10 @@ export function GameplanShotAdvice({ shotType, zone }: { shotType: string; zone:
   </>;
 }
 
+export function GameplanEmptyShots({ completed, error }: { completed: boolean; error: string | null }) {
+  return <p className={styles.empty} role="status">{error ? "Shot priorities could not load. Build the gameplan again to retry." : completed ? "No shot data is available for this matchup and season. Play-type recommendations remain separate." : "Build a gameplan to see shot priorities for this matchup."}</p>;
+}
+
 export function GameplanDiagramCaption({ caption }: { caption: string }) {
   return <div className={styles.vizCaption}>
     <div>{caption}</div>
@@ -1084,7 +1088,7 @@ export default function GameplanClient() {
             ) : null}
             {!top3.length ? (
               <div className={styles.empty}>
-                Choose a matchup and situation, then select <b>Build Gameplan</b>.
+                {resultState.current ? "No play-type data is available for this matchup and season. Try another season or team." : <>Choose a matchup and situation, then select <b>Build Gameplan</b>.</>}
               </div>
             ) : (
               <div className={styles.quickCards}>
@@ -1271,7 +1275,7 @@ export default function GameplanClient() {
               {loading || shotLoading ? (
                 <p className={styles.empty} role="status">Finding shot priorities for this matchup…</p>
               ) : !resultState.shotsCurrent ? (
-                <p className={styles.empty}>{shotError ? "Shot priorities could not load. Build the gameplan again to retry." : "Build a gameplan to see shot priorities for this matchup."}</p>
+                <GameplanEmptyShots completed={resultState.current} error={shotError} />
               ) : <GameplanShotAdvice shotType={selectedShotType} zone={selectedZone} />}
 
               <div className={styles.shotBtns}>

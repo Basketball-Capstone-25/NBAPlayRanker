@@ -152,7 +152,7 @@ export function ContextResults({ current, loading, hasRows, matchupLabel, childr
       <span className="badge">{current && !loading ? matchupLabel : "Run to see results"}</span>
     </div>
     {!loading && !hasRows ? (
-      <p className="muted">Set the situation and click Run Context + ML.</p>
+      <p className="muted" role="status">{current ? "No play-type data is available for this matchup and season. Try another season or team." : "Set the situation and click Run Context + ML."}</p>
     ) : loading ? (
       <p className="muted" role="status">Generating ML + context ranking…</p>
     ) : !current ? (
@@ -1099,7 +1099,7 @@ function ContextInner() {
       </div>
 
       {/* Results */}
-      <ContextResults current={resultsCurrent} loading={loading} hasRows={displayRows.length > 0} matchupLabel={`${our} vs ${opp} • ${season}`}>
+      <ContextResults current={loadedKey === currentKey && !loading && !error} loading={loading} hasRows={displayRows.length > 0} matchupLabel={`${our} vs ${opp} • ${season}`}>
             {/* SCRUM-795: one large list, same style the Quick-Call screen used. */}
             <RankedPlayList
               plays={displayRows.map((r) => ({

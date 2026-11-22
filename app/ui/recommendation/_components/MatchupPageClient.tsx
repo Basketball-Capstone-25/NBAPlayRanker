@@ -3,7 +3,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   API_BASE,
   authenticatedDownload,
@@ -136,6 +136,10 @@ function Icon({ name }: { name: "play" | "download" | "map" | "pdf" | "info" }) 
         </svg>
       );
   }
+}
+
+export function BaselineEmptyState({ completed, hasRows, className }: { completed: boolean; hasRows: boolean; className?: string }) {
+  return <p className={className} role="status">{completed ? "No play-type data is available for this matchup and season. Try another season or team." : hasRows ? "Inputs changed. Run Baseline again to update the rankings." : "Pick teams and a season, then click Run Baseline."}</p>;
 }
 
 export default function MatchupPage() {
@@ -903,7 +907,7 @@ export default function MatchupPage() {
         </div>
 
         {!loading && !resultsCurrent ? (
-          <p className="emptyState">{rows.length ? "Inputs changed. Run Baseline again to update the rankings." : "Pick teams and a season, then click Run Baseline."}</p>
+          <BaselineEmptyState className="emptyState" completed={summaryReady} hasRows={rows.length > 0} />
         ) : loading ? (
           <p className="emptyState" role="status">Finding the strongest plays for this matchup…</p>
         ) : (
