@@ -4,11 +4,18 @@ import { describe, expect, it, vi } from "vitest";
 
 vi.mock("../app/services/analytics", () => ({ fetchMlAnalysis: vi.fn(), fetchModelMetrics: vi.fn(), fetchPipelineInfo: vi.fn() }));
 vi.mock("../lib/supabase/client", () => ({ createClient: () => ({ auth: { getSession: vi.fn() } }) }));
+import DataExplorer from "../app/ui/data-explorer/DataExplorerClient";
 import StatisticalAnalysis from "../app/ui/analytics/_components/StatisticalAnalysisPageClient";
 import ShotExplorer from "../app/ui/shot-analysis/_components/ShotExplorerPageClient";
 import ShotPlan from "../app/ui/shot-analysis/_components/ShotPlanPageClient";
 
 describe("analyst page controls", () => {
+  it("does not report an empty dataset before filters have loaded", () => {
+    const html = renderToStaticMarkup(<DataExplorer />);
+    expect(html).toContain("Refreshing play-type options");
+    expect(html).not.toContain("No recorded play-type rows match");
+    expect(html).not.toContain("No rows match these filters");
+  });
   it("makes every analysis view reachable with a keyboard button", () => {
     const html = renderToStaticMarkup(<StatisticalAnalysis />);
     for (const label of ["Overview", "Distributions", "Correlations", "Feature Selection", "Model Tuning", "Raw JSON"]) {

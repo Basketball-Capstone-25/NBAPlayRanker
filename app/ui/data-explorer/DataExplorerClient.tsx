@@ -7,7 +7,7 @@
 
 import Link from "next/link";
 import styles from "./AnalystWorkspace.module.css";
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import DataQualityPanel from "./DataQualityPanel";
 import DatasetReloadPanel from "./DatasetReloadPanel";
 import type { ReloadDataset } from "../../domain/dataset-reload";
@@ -727,9 +727,10 @@ export default function DataExplorerClient() {
           </p>
         )}
 
-        {!loading && !error && rows.length === 0 && (
+        {!season && !synergyBlocked && <p className="muted" style={{ marginTop: 14 }}>Choose a season to load recorded play-type stats.</p>}
+        {!!season && !synergyBlocked && !loading && !error && rows.length === 0 && (
           <p className="muted" style={{ marginTop: 14 }}>
-            No rows match these filters.
+            No recorded play-type rows match these filters.
           </p>
         )}
       </section>
