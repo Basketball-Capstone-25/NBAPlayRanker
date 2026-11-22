@@ -15,14 +15,26 @@ from infrastructure.data_access.data_quality import run_data_quality_checks
 
 logger = logging.getLogger(__name__)
 
-# The bundled source covers these seasons and all 30 teams. Deriving the
-# expectations from the source itself would hide an entirely missing team.
-EXPECTED_SEASONS = tuple(f"{year}-{str(year + 1)[-2:]}" for year in range(2019, 2025))
-EXPECTED_TEAMS = (
-    "ATL", "BKN", "BOS", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GSW",
-    "HOU", "IND", "LAC", "LAL", "MEM", "MIA", "MIL", "MIN", "NOP", "NYK",
-    "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SAS", "TOR", "UTA", "WAS",
+# The seasons and teams the source must cover live in a data file, so a new
+# season is added there rather than in code. They are not derived from the
+# source itself, because that would hide an entirely missing team.
+COVERAGE_PATH = os.getenv(
+    "EXPECTED_COVERAGE_PATH",
+    os.path.join(os.path.dirname(__file__), "..", "..", "data", "expected_coverage.json"),
 )
+
+
+def load_expected_coverage(path: str = COVERAGE_PATH) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    with open(path, encoding="utf-8") as handle:
+        coverage = json.load(handle)
+    seasons = tuple(str(season) for season in coverage.get("seasons", []))
+    teams = tuple(str(team) for team in coverage.get("teams", []))
+    if not seasons or not teams:
+        raise ValueError(f"{path} must list at least one season and one team")
+    return seasons, teams
+
+
+EXPECTED_SEASONS, EXPECTED_TEAMS = load_expected_coverage()
 
 
 def _source_version(frame: pd.DataFrame) -> str:
