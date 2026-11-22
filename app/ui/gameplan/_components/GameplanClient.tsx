@@ -143,9 +143,10 @@ export default function GameplanClient() {
   const [optError, setOptError] = useState<string | null>(null);
 
   // Situation
-  const [season, setSeason] = useState("2024-25");
-  const [our, setOur] = useState("TOR");
-  const [opp, setOpp] = useState("BOS");
+  // SCRUM-841: the coach chooses the matchup; nothing is pre-selected.
+  const [season, setSeason] = useState("");
+  const [our, setOur] = useState("");
+  const [opp, setOpp] = useState("");
 
   // Friendly focus slider (0..100)
   const [focus, setFocus] = useState(35);
@@ -242,17 +243,12 @@ export default function GameplanClient() {
         if (!alive) return;
         setOptions(data);
 
-        const seasons = data?.seasons ?? ["2024-25"];
-        const teams = normalizeTeams(data);
-
-        setSeason((prev) => (seasons.includes(prev) ? prev : seasons[0]));
-        const codes = new Set(teams.map((t) => t.code));
-        setOur((prev) => (codes.has(prev) ? prev : teams[0]?.code ?? "TOR"));
-        setOpp((prev) => {
-          if (codes.has(prev) && prev !== (teams[0]?.code ?? "TOR")) return prev;
-          const fallback = teams.find((t) => t.code !== (teams[0]?.code ?? "TOR"));
-          return fallback?.code ?? "BOS";
-        });
+        // Keep a choice only if it exists in the loaded data.
+        const seasons = data?.seasons ?? [];
+        const codes = new Set(normalizeTeams(data).map((t) => t.code));
+        setSeason((prev) => (seasons.includes(prev) ? prev : ""));
+        setOur((prev) => (codes.has(prev) ? prev : ""));
+        setOpp((prev) => (codes.has(prev) ? prev : ""));
       } catch (e: any) {
         if (!alive) return;
         setOptError(e?.message || "Couldn’t load team/season options.");
@@ -276,6 +272,7 @@ export default function GameplanClient() {
   useEffect(() => {
     let alive = true;
     loadedKeyRef.current = "";
+    if (!season || !our || !opp) return () => { alive = false; };
     setSyncStatus("loading");
     setSyncNote("");
     setOfferDraft(null);
@@ -362,7 +359,8 @@ export default function GameplanClient() {
   const wOff = useMemo(() => Number((1 - wDef).toFixed(2)), [wDef]);
 
   const teamOptions = useMemo(() => normalizeTeams(options), [options]);
-  const seasonOptions = useMemo(() => options?.seasons ?? ["2024-25"], [options]);
+  const seasonOptions = useMemo(() => options?.seasons ?? [], [options]);
+  const matchupChosen = Boolean(season && our && opp && our !== opp);
 
   const activePlays = useMemo(() => {
     if (recommendationStyle === "baseline") return baselinePlays;
@@ -751,7 +749,8 @@ export default function GameplanClient() {
               className={styles.primaryBtn}
               type="button"
               onClick={buildGameplan}
-              disabled={loading || parsing}
+              disabled={loading || parsing || !matchupChosen}
+              title={matchupChosen ? undefined : "Choose a season and two different teams first."}
             >
               {loading ? "Building…" : "Build Gameplan"}
             </button>
@@ -830,6 +829,7 @@ export default function GameplanClient() {
               value={season}
               onChange={(e) => setSeason(e.target.value)}
             >
+              <option value="" disabled>Choose a season</option>
               {seasonOptions.map((s) => (
                 <option key={s} value={s}>
                   {s}
@@ -841,7 +841,8 @@ export default function GameplanClient() {
           <div className={styles.sitBlock}>
             <div className={styles.sitLabel}>Our team</div>
             <select className={styles.select} value={our} onChange={(e) => setOur(e.target.value)}>
-              {(teamOptions.length ? teamOptions : [{ code: "TOR" }]).map((t) => (
+              <option value="" disabled>Choose our team</option>
+              {teamOptions.map((t) => (
                 <option key={t.code} value={t.code}>
                   {t.code}
                   {t.name ? ` — ${t.name}` : ""}
@@ -853,7 +854,8 @@ export default function GameplanClient() {
           <div className={styles.sitBlock}>
             <div className={styles.sitLabel}>Opponent</div>
             <select className={styles.select} value={opp} onChange={(e) => setOpp(e.target.value)}>
-              {(teamOptions.length ? teamOptions : [{ code: "BOS" }]).map((t) => (
+              <option value="" disabled>Choose an opponent</option>
+              {teamOptions.map((t) => (
                 <option key={t.code} value={t.code}>
                   {t.code}
                   {t.name ? ` — ${t.name}` : ""}
