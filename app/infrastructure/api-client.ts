@@ -4,23 +4,6 @@ import { normalizeShotAnalysis, type ShotAnalysis } from "../domain/shot-analysi
 export const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:8000";
 
-export const FALLBACK_SEASONS = [
-  "2019-20",
-  "2020-21",
-  "2021-22",
-  "2022-23",
-  "2023-24",
-  "2024-25",
-];
-
-export const FALLBACK_TEAMS = [
-  "ATL","BKN","BOS","CHA","CHI","CLE",
-  "DAL","DEN","DET","GSW","HOU","IND",
-  "LAC","LAL","MEM","MIA","MIL","MIN",
-  "NOP","NYK","OKC","ORL","PHI","PHX",
-  "POR","SAC","SAS","TOR","UTA","WAS",
-];
-
 // Small fetch helpers
 //
 // We keep these tiny and predictable.
@@ -389,10 +372,10 @@ export async function fetchMetaOptions(): Promise<MetaOptions> {
   try {
     return await fetchJson<MetaOptions>(`${API_BASE}/meta/options`);
   } catch {
-    // If backend isn't running, keep UI usable with fallback dropdowns.
+    // If the backend isn't running, offer no choices rather than a made-up list.
     return {
-      seasons: FALLBACK_SEASONS,
-      teams: FALLBACK_TEAMS,
+      seasons: [],
+      teams: [],
       teamNames: {},
       playTypes: [],
       sides: ["offense", "defense"],
@@ -423,8 +406,8 @@ export async function fetchPbpMetaOptions(options: { strict?: boolean } = {}): P
     if (options.strict) throw error;
     const m = await fetchMetaOptions();
     return {
-      seasons: m.seasons ?? FALLBACK_SEASONS,
-      teams: m.teams ?? FALLBACK_TEAMS,
+      seasons: m.seasons ?? [],
+      teams: m.teams ?? [],
       shotTypes: [],
       zones: [],
     };
