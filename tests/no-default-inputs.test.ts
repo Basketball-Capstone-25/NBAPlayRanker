@@ -28,3 +28,32 @@ describe("Baseline and Context ML start with no game inputs (SCRUM-824)", () => 
     expect(read("MatchupPageClient.tsx")).toContain("linkedMatchup(window.location.search");
   });
 });
+
+describe("every other page starts with no game inputs (SCRUM-841)", () => {
+  const pages = [
+    "app/ui/gameplan/_components/GameplanClient.tsx",
+    "app/ui/recommendation/_components/MatchupDashboardClient.tsx",
+    "app/ui/data-explorer/DataExplorerClient.tsx",
+    "app/ui/data-explorer/ShotDataExplorer.tsx",
+    "app/ui/data-explorer/AnalystSeasonSummary.tsx",
+    "app/ui/shot-analysis/_components/ShotPlanPageClient.tsx",
+    "app/ui/shot-analysis/_components/ShotHeatmapPageClient.tsx",
+    "app/ui/shot-analysis/_components/ShotExplorerPageClient.tsx",
+    "app/ui/analytics/_components/TopKUpliftPanel.tsx",
+  ];
+
+  it.each(pages)("%s pre-selects no team, season or situation", (file) => {
+    const src = readFileSync(file, "utf8");
+    expect(src).not.toMatch(/pickDefault(Season|Team|Our|Opp)/);
+    expect(src).not.toMatch(/useState(<string>)?\("(TOR|BOS|20\d\d-\d\d)"\)/);
+    expect(src).not.toMatch(/includes\("(TOR|BOS)"\)/);
+    expect(src).not.toMatch(/seasons\[(meta\.|result\.|m\.)?seasons\.length - 1\]/);
+  });
+
+  it("starts the gameplan situation blank", () => {
+    const src = readFileSync(pages[0], "utf8");
+    expect(src).toContain("useState<number | null>(null)");
+    expect(src).not.toMatch(/useState\((4|180|-2)\)/);
+    expect(src).toContain('useState<string>("")');
+  });
+});
