@@ -102,12 +102,8 @@ export default function MatchupDashboardClient() {
     void withRequestDeadline(fetchMetaOptions(), "Team choices took too long to load.").then(result => {
       if (!active) return;
       if (result._fallback || !result.seasons?.length || !result.teams?.length) throw new Error("Team and season choices are unavailable. Please try again.");
+      // SCRUM-841: nothing is pre-selected; the coach chooses every input.
       setMeta(result);
-      setSeason(old => old || result.seasons[result.seasons.length - 1]);
-      const team = result.teams.includes("TOR") ? "TOR" : result.teams[0];
-      setOur(old => old || team);
-      setPlayType(old => old || (result.playTypes?.includes("Cut") ? "Cut" : result.playTypes?.[0] || ""));
-      setOpp(old => old || (result.teams.includes("BOS") && team !== "BOS" ? "BOS" : result.teams.find(t => t !== team) || ""));
     }).catch(() => { if (active) setMetaError("Team and season choices are unavailable. Please try again."); });
     return () => { active = false; };
   }, [metaAttempt]);
@@ -127,14 +123,14 @@ export default function MatchupDashboardClient() {
     {metaError ? <div className={styles.card} role="alert"><p>{metaError}</p><button className={styles.button} onClick={() => setMetaAttempt(x => x + 1)}>Retry team list</button></div>
       : !meta ? <div className={styles.card} role="status">Loading teams and seasons…</div> : <>
         <div className={styles.filters}>
-          {!trendView && <label>Season<select value={season} onChange={e => setSeason(e.target.value)}>{meta.seasons.map(s => <option key={s}>{s}</option>)}</select></label>}
-          <label>{leagueView || trendView || outcomesView ? "Team" : "Our team"}<select value={our} onChange={e => setOur(e.target.value)}>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label>
+          {!trendView && <label>Season<select value={season} onChange={e => setSeason(e.target.value)}><option value="" disabled>Choose a season</option>{meta.seasons.map(s => <option key={s}>{s}</option>)}</select></label>}
+          <label>{leagueView || trendView || outcomesView ? "Team" : "Our team"}<select value={our} onChange={e => setOur(e.target.value)}><option value="" disabled>Choose a team</option>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label>
           {trendView ? <label>Play type<select value={playType} onChange={e => setPlayType(e.target.value)}>
-            {meta.playTypes?.map(p => <option key={p} value={p}>{playtypeName(p)}</option>)}</select></label>
+            <option value="" disabled>Choose a play type</option>{meta.playTypes?.map(p => <option key={p} value={p}>{playtypeName(p)}</option>)}</select></label>
             : leagueView ? <label>Side<select value={leagueSide} onChange={e => setLeagueSide(e.target.value as "offense" | "defense")}>
             <option value="offense">Offense</option><option value="defense">Defense</option></select></label>
-            : !outcomesView ? <label>Opponent<select value={opp} onChange={e => setOpp(e.target.value)}>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label> : null}
-          <label>{leagueView || trendView || profilesView || outcomesView ? "Sample cutoff" : "Possession cutoff"}<select value={minimum} onChange={e => setMinimum(Number(e.target.value))}>{[1, 20, 50, 100, 250, 500, 1000, 5000].map(n => <option key={n} value={n}>{integer(n)}</option>)}</select></label>
+            : !outcomesView ? <label>Opponent<select value={opp} onChange={e => setOpp(e.target.value)}><option value="" disabled>Choose an opponent</option>{meta.teams.map(t => <option key={t} value={t}>{t}{meta.teamNames?.[t] ? ` · ${meta.teamNames[t]}` : ""}</option>)}</select></label> : null}
+          <label>{leagueView || trendView || profilesView || outcomesView ? "Sample cutoff" : "Possession cutoff"} (display setting)<select value={minimum} onChange={e => setMinimum(Number(e.target.value))}>{[1, 20, 50, 100, 250, 500, 1000, 5000].map(n => <option key={n} value={n}>{integer(n)}</option>)}</select></label>
         </div>
         <div className={styles.tabs} role="group" aria-label="Choose comparison">
           <button aria-pressed={view === "usage"} onClick={() => setView("usage")}>Usage and efficiency</button>
