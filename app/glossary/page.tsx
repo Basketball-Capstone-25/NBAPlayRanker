@@ -87,7 +87,7 @@ const TERMS: Array<{
     meaning:
       "A defense page that shows holdout evaluation metrics for multiple models (RMSE/MAE/R²), plus tuning evidence pulled from Statistical Analysis.",
     whyItMatters:
-      "Shows model choice was validated, not guessed: generalization evidence + tuning/search evidence.",
+      "Compare errors on held-out data. The regular model uses observed-season features, so these results do not establish pre-game forecast accuracy.",
     tags: ["Pages", "Evaluation", "Models"],
     where: [{ label: "Model Performance", href: "/model-metrics" }],
     aliases: ["Metrics page", "Holdout metrics"],
@@ -166,7 +166,7 @@ const TERMS: Array<{
   {
     term: "Dataset1 (Synergy Play Types)",
     meaning:
-      "The play-type dataset used to compute play-type efficiency (PPP) by team/season, and to power the baseline and context recommendations.",
+      "Regular-season play-type data used to calculate team efficiency and power the baseline and context rankings.",
     whyItMatters:
       "This dataset supports the primary recommendation unit: which *play types* to run versus an opponent.",
     tags: ["Data", "Dataset1", "Core"],
@@ -180,7 +180,7 @@ const TERMS: Array<{
   {
     term: "Dataset2 (NBA Play-by-Play Shots)",
     meaning:
-      "A large play-by-play-derived shot event dataset (one row per shot) used for shot plans, heatmaps, and shot evaluation pages.",
+      "One row per recorded shot from regular-season and playoff games. It powers shot plans, heatmaps and shot-model evaluation. The latest season can be incomplete.",
     whyItMatters:
       "Adds a defendable ‘shot selection’ layer and real spatial visuals to the product.",
     tags: ["Data", "Dataset2", "Core"],
@@ -468,15 +468,15 @@ const TERMS: Array<{
     meaning:
       "A model-based estimate for offensive efficiency used by the context workflow before applying context adjustments.",
     whyItMatters:
-      "Represents the ‘AI’ part: it replaces purely historical offense PPP with a predictive signal.",
+      "Shows the model's estimate before the coaching adjustments. It uses observed-season rates, not only information available before a game.",
     tags: ["AI", "Models", "Dataset1"],
     where: [{ label: "AI Context", href: "/context" }],
     aliases: ["mlPPP"],
   },
   {
-    term: "PPP_CONTEXT (Final PPP)",
+    term: "PPP_CONTEXT (Context ranking score)",
     meaning:
-      "The context-aware final efficiency value after applying situation logic (score/time) on top of ML/baseline signals.",
+      "A ranking score after score, clock and coaching adjustments are applied to the model and baseline estimates. It is not a calibrated forecast of points per possession.",
     whyItMatters:
       "This is what ultimately determines the context ranking order on the AI page.",
     tags: ["AI", "Context", "Metrics", "Dataset1"],
@@ -486,7 +486,7 @@ const TERMS: Array<{
   {
     term: "DELTA_VS_BASELINE",
     meaning:
-      "How much the context-aware PPP differs from baseline PPP for the same play type.",
+      "The context ranking score minus the baseline estimate for the same play type. This measures a change in ranking score, not a promised scoring gain.",
     whyItMatters:
       "Makes AI impact measurable: reviewers can see exactly how recommendations shift.",
     tags: ["AI", "Context", "Evaluation", "Dataset1"],
@@ -553,7 +553,7 @@ const TERMS: Array<{
     meaning:
       "Testing where entire seasons are held out for evaluation instead of mixing training and testing within the same season.",
     whyItMatters:
-      "More realistic: the model is evaluated on ‘future-like’ data it didn’t train on.",
+      "Keeps each held-out season separate from training. Observed-season inputs still limit what this tells us about forecasting a future game.",
     tags: ["Evaluation", "Models", "Dataset1"],
     where: [{ label: "Model Performance", href: "/model-metrics" }],
     aliases: ["n_splits", "season holdout"],
