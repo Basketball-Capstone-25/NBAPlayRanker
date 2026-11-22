@@ -6,6 +6,13 @@ vi.mock("../lib/supabase/client", () => ({ createClient: () => ({}) }));
 import Gameplan, { GameplanShotAdvice, GameplanDiagramCaption } from "../app/ui/gameplan/_components/GameplanClient";
 
 describe("Gameplan before a matchup is built", () => {
+  it("distinguishes the ranking pool from the three visible Quick Call options", () => {
+    const html = renderToStaticMarkup(<Gameplan />);
+    expect(html).toContain('aria-label="Ranked options"');
+    expect(html).toContain("Quick Call shows the top 3.");
+    expect(html).not.toContain('aria-label="Plays to show"');
+  });
+
   it("does not export shot advice before a completed gameplan", () => {
     const html = renderToStaticMarkup(<Gameplan />);
     const pdfButton = html.match(/<button[^>]*>Export PDF<\/button>/)?.[0];
@@ -30,6 +37,8 @@ describe("Gameplan evidence scope", () => {
     expect(html).toContain("season-long offense and opponent defense");
     expect(html).toContain("do not use the score, clock or coaching conditions");
     expect(html).toContain("points per shot attempt, not points per possession");
+    expect(html).toContain("regular-season and playoff games");
+    expect(html).toContain("recorded head-to-head attempts");
     expect(html).not.toContain("open 3");
     expect(html).not.toContain("Vs switch");
   });

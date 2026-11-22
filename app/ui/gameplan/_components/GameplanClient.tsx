@@ -149,6 +149,9 @@ export function GameplanShotAdvice({ shotType, zone }: { shotType: string; zone:
       These rates compare season-long offense and opponent defense. They do not use the score, clock or coaching conditions.
       Estimates are points per shot attempt, not points per possession.
     </p>
+    <p className={styles.smallMuted}>
+      Shot data includes regular-season and playoff games. The heatmap shows recorded head-to-head attempts; it can be empty even when season rates are available.
+    </p>
     <ul className={styles.bullets}>
       {shotType ? <li>Selected shot type: {shotType}.</li> : null}
       {zone ? <li>Selected court zone: {zone}.</li> : null}
@@ -901,10 +904,10 @@ export default function GameplanClient() {
           </div>
 
           <div className={styles.sitBlock}>
-            <div className={styles.sitLabel}>Plays to show</div>
+            <div className={styles.sitLabel}>Ranked options</div>
             <select
               className={styles.select}
-              aria-label="Plays to show"
+              aria-label="Ranked options"
               value={showPlays}
               onChange={(e) => setShowPlays(Number(e.target.value))}
             >
@@ -914,6 +917,7 @@ export default function GameplanClient() {
                 </option>
               ))}
             </select>
+            <div className={styles.sitHint}>Quick Call shows the top 3.</div>
           </div>
 
           <div className={styles.sitBlock}>
