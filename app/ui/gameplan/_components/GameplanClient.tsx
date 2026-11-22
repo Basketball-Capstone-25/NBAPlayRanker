@@ -140,6 +140,27 @@ function Chip({
   );
 }
 
+export function GameplanShotAdvice({ shotType, zone }: { shotType: string; zone: string }) {
+  return <>
+    <div className={styles.shotHeadline}>Shot priorities from season data</div>
+    <p className={styles.smallMuted}>
+      These rates compare season-long offense and opponent defense. They do not use the score, clock or coaching conditions.
+      Estimates are points per shot attempt, not points per possession.
+    </p>
+    <ul className={styles.bullets}>
+      {shotType ? <li>Selected shot type: {shotType}.</li> : null}
+      {zone ? <li>Selected court zone: {zone}.</li> : null}
+    </ul>
+  </>;
+}
+
+export function GameplanDiagramCaption({ caption }: { caption: string }) {
+  return <div className={styles.vizCaption}>
+    <div>{caption}</div>
+    <div>Season-baseline diagram. Its PPP does not include the game situation or coaching adjustments.</div>
+  </div>;
+}
+
 export default function GameplanClient() {
   const [options, setOptions] = useState<MetaOptions | null>(null);
   const [optError, setOptError] = useState<string | null>(null);
@@ -747,26 +768,6 @@ export default function GameplanClient() {
     };
   }, [vizTab, shotVizKey, resultInputs, selectedShotType, selectedZone]);
 
-  const shotPlanBullets = useMemo(() => {
-    const bullets: string[] = [];
-
-    if (ctxNeed3) {
-      bullets.push("Primary: create an open 3 (corner or slot) off a paint touch.");
-    } else if (ctxProtectLead) {
-      bullets.push("Primary: safe, high-quality shot (rim or catch-and-shoot). No risky passes.");
-    } else {
-      bullets.push("Primary: get a clean rim touch or a catch-and-shoot 3.");
-    }
-
-    if (selectedShotType) bullets.push(`Look for: ${selectedShotType}.`);
-    if (selectedZone) bullets.push(`Target zone: ${selectedZone}.`);
-
-    if (ctxVsSwitching) bullets.push("Vs switch: slip early, then attack the mismatch with pace.");
-    if (ctxLateClock) bullets.push("Late clock: simplify — 1 action to the rim, 1 kick-out option.");
-
-    return bullets;
-  }, [ctxNeed3, ctxProtectLead, ctxVsSwitching, ctxLateClock, selectedShotType, selectedZone]);
-
   const shotTypeOptions = useMemo(() => {
     const opts = topShotTypes.map((x) => String(x?.SHOT_TYPE ?? "")).filter(Boolean);
     return Array.from(new Set(opts));
@@ -1270,17 +1271,7 @@ export default function GameplanClient() {
                 <p className={styles.empty} role="status">Finding shot priorities for this matchup…</p>
               ) : !resultState.shotsCurrent ? (
                 <p className={styles.empty}>{shotError ? "Shot priorities could not load. Build the gameplan again to retry." : "Build a gameplan to see shot priorities for this matchup."}</p>
-              ) : <>
-              <div className={styles.shotHeadline}>
-                {ctxNeed3 ? "We want an open 3…" : "We want a high-quality shot…"}
-              </div>
-
-              <ul className={styles.bullets}>
-                {shotPlanBullets.map((b, i) => (
-                  <li key={i}>{b}</li>
-                ))}
-              </ul>
-              </>}
+              ) : <GameplanShotAdvice shotType={selectedShotType} zone={selectedZone} />}
 
               <div className={styles.shotBtns}>
                 <button
@@ -1397,7 +1388,7 @@ export default function GameplanClient() {
                         alt={`Play zones for ${selectedPlay.playType}`}
                       />
                       {playVizCaption ? (
-                        <div className={styles.vizCaption}>{playVizCaption}</div>
+                        <GameplanDiagramCaption caption={playVizCaption} />
                       ) : null}
                     </>
                   ) : (
