@@ -1,6 +1,6 @@
 {
   "note": "Seasons and teams the Synergy source must cover. Add a season here when its data is loaded.",
-  "seasons": ["2019-20", "2020-21", "2021-22", "2022-23", "2023-24", "2024-25"],
+  "seasons": ["2019-20", "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26", "2026-27"],
   "teams": [
     "ATL", "BKN", "BOS", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GSW",
     "HOU", "IND", "LAC", "LAL", "MEM", "MIA", "MIL", "MIN", "NOP", "NYK",
