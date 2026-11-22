@@ -1,21 +1,23 @@
 /* app/gameplan/Gameplan.module.css */
 
 .page {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 28px 20px 48px;
+  padding: 16px 14px 40px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  color: #17243d;
+  gap: 14px;
+  background:
+    radial-gradient(900px 500px at 10% 5%, rgba(0, 155, 255, 0.14), transparent 60%),
+    radial-gradient(800px 520px at 90% 0%, rgba(255, 80, 170, 0.12), transparent 55%),
+    radial-gradient(700px 500px at 60% 100%, rgba(20, 220, 140, 0.10), transparent 55%),
+    #ffffff;
 }
 
 .hero {
   border-radius: 18px;
   border: 1px solid rgba(0,0,0,0.10);
-  background: #fff;
-  box-shadow: 0 4px 18px rgba(23,36,61,0.025);
-  padding: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.72));
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  padding: 16px;
   overflow: hidden;
 }
 
@@ -29,7 +31,7 @@
 
 .h1 {
   margin: 0;
-  font-size: clamp(26px, 3vw, 34px);
+  font-size: 30px;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
@@ -50,7 +52,7 @@
 }
 
 .primaryBtn {
-  background: #6950d4;
+  background: linear-gradient(135deg, rgba(0,0,0,0.92), rgba(0,0,0,0.82));
   color: white;
   border: 1px solid rgba(0,0,0,0.18);
   border-radius: 12px;
@@ -74,17 +76,14 @@
 .ghostBtn:hover { transform: translateY(-1px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
 
 .situationBar {
-  margin-top: 22px;
-  padding-top: 20px;
-  border-top: 1px solid #e9ecf2;
+  margin-top: 14px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: 140px 170px 170px 1fr 130px 190px;
+  gap: 10px;
   align-items: end;
 }
 
 .sitBlock, .sitBlockWide {
-  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -92,7 +91,7 @@
 
 .sitLabel {
   font-size: 12px;
-  color: #526078;
+  opacity: 0.75;
 }
 
 .sitHint {
@@ -108,14 +107,10 @@
   font-size: 13px;
   background: rgba(255,255,255,0.96);
   outline: none;
-  width: 100%;
-  min-width: 0;
-  color: #17243d;
 }
 
 .slider {
   width: 100%;
-  accent-color: #6950d4;
 }
 
 .sliderEnds {
@@ -136,7 +131,7 @@
 }
 
 .contextLeft {
-  min-width: min(320px, 100%);
+  min-width: 320px;
 }
 
 .contextTitle {
@@ -164,18 +159,17 @@
 .chip:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(0,0,0,0.08); }
 .chipActive {
   border-color: rgba(0,0,0,0.30);
-  background: #f0ecfc;
-  color: #55439f;
+  background: linear-gradient(180deg, rgba(0,155,255,0.16), rgba(255,255,255,0.92));
 }
 
 .contextRight {
   flex: 1;
-  min-width: min(320px, 100%);
+  min-width: 320px;
 }
 
 .miniInputs {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
   gap: 10px;
 }
 
@@ -223,7 +217,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.4fr);
+  grid-template-columns: 420px 1fr;
   gap: 14px;
   align-items: start;
 }
@@ -232,11 +226,12 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  position: sticky;
+  top: 12px;
   align-self: start;
 }
 
 .right {
-  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -246,8 +241,8 @@
   border-radius: 16px;
   border: 1px solid rgba(0,0,0,0.10);
   background: rgba(255,255,255,0.92);
-  padding: 20px;
-  box-shadow: 0 3px 14px rgba(23,36,61,0.025);
+  padding: 14px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
 }
 
 .panelHeader {
@@ -255,8 +250,7 @@
   justify-content: space-between;
   gap: 10px;
   align-items: baseline;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .h2 {
@@ -271,8 +265,8 @@
 }
 
 .empty {
-  border: 1px solid #e9ecf2;
-  background: #f7f8fc;
+  border: 1px dashed rgba(0,0,0,0.18);
+  background: rgba(0,0,0,0.02);
   border-radius: 14px;
   padding: 12px;
   font-size: 13px;
@@ -293,8 +287,8 @@
   transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
   overflow: hidden;
 }
-.quickCard:hover { border-color: #c4b8e8; box-shadow: 0 4px 14px rgba(23,36,61,0.06); }
-.quickCardActive { border-color: #a28bdc; box-shadow: 0 0 0 1px #e7e0f7; }
+.quickCard:hover { transform: translateY(-1px); box-shadow: 0 16px 30px rgba(0,0,0,0.10); }
+.quickCardActive { border-color: rgba(0,0,0,0.36); box-shadow: 0 18px 38px rgba(0,0,0,0.12); }
 
 .selectCardOverlay {
   position: absolute;
@@ -375,7 +369,7 @@
   flex-direction: column;
   gap: 6px;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.35;
 }
 
 .steps {
@@ -385,7 +379,7 @@
   flex-direction: column;
   gap: 6px;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.35;
 }
 
 .cardBtns {
@@ -409,7 +403,7 @@
 .btnSoft:hover { transform: translateY(-1px); box-shadow: 0 12px 22px rgba(0,0,0,0.08); }
 
 .btnPrimarySmall {
-  background: #6950d4;
+  background: linear-gradient(135deg, rgba(0,0,0,0.92), rgba(0,0,0,0.82));
   color: white;
   border: 1px solid rgba(0,0,0,0.18);
   border-radius: 12px;
@@ -550,7 +544,7 @@
   margin-top: 6px;
   font-size: 12px;
   opacity: 0.75;
-  line-height: 1.5;
+  line-height: 1.35;
 }
 
 .counterOutcome {
@@ -581,7 +575,7 @@
 .textarea {
   min-height: 120px;
   resize: vertical;
-  line-height: 1.5;
+  line-height: 1.35;
 }
 
 .notesBox {
@@ -625,44 +619,6 @@
 
 .detailKey { opacity: 0.75; }
 .detailVal { opacity: 0.95; }
-
-.quickHow {
-  position: relative;
-  z-index: 2;
-  padding-top: 10px;
-  border-top: 1px solid #e9ecf2;
-}
-.quickHow > summary {
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 650;
-  color: #55439f;
-}
-.page button:focus-visible, .select:focus-visible, .input:focus-visible,
-.textarea:focus-visible, .slider:focus-visible, .page summary:focus-visible {
-  outline: 3px solid #b8a9ef;
-  outline-offset: 3px;
-}
-.eyebrow {
-  margin: 0 0 8px;
-  color: #6950d4;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-@media (max-width: 600px) {
-  .page { padding: 20px 12px 36px; }
-  .hero, .panel { padding: 16px; }
-  .situationBar { grid-template-columns: 1fr !important; }
-  .contextLeft, .contextRight { min-width: 0; width: 100%; }
-  .miniInputs { grid-template-columns: 1fr; }
-  .heroActions { justify-content: flex-start; }
-  .summaryBadge { border-radius: 12px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .page button, .quickCard { transition: none; }
-}
 
 @media (max-width: 1100px) {
   .situationBar {

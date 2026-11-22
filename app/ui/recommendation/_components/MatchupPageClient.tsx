@@ -389,16 +389,15 @@ export default function MatchupPage() {
     <section className="pageRoot">
       <style jsx>{`
         .pageRoot {
-          max-width: 1200px;
+          max-width: 1100px;
           margin: 0 auto;
-          padding: 28px 20px 48px;
-          color: #17243d;
+          padding: 18px 16px 34px;
         }
 
         .hero {
           display: grid;
-          gap: 10px;
-          margin-bottom: 22px;
+          gap: 6px;
+          margin-bottom: 12px;
         }
 
         .heroTop {
@@ -424,9 +423,8 @@ export default function MatchupPage() {
 
         h1 {
           margin: 0;
-          font-size: clamp(26px, 3vw, 34px);
-          letter-spacing: -0.035em;
-          line-height: 1.15;
+          font-size: 22px;
+          letter-spacing: -0.3px;
         }
 
         .sub {
@@ -437,11 +435,10 @@ export default function MatchupPage() {
         }
 
         .card {
-          border-radius: 18px;
-          border: 1px solid #e3e7ef;
-          background: #fff;
-          padding: 22px;
-          box-shadow: 0 4px 18px rgba(23, 36, 61, 0.025);
+          border-radius: 16px;
+          border: 1px solid rgba(15, 23, 42, 0.1);
+          background: rgba(255, 255, 255, 0.78);
+          padding: 14px;
         }
 
         .grid2 {
@@ -466,8 +463,8 @@ export default function MatchupPage() {
         }
         .sectionTitle h2 {
           margin: 0;
-          font-size: 17px;
-          letter-spacing: -0.02em;
+          font-size: 14px;
+          letter-spacing: -0.2px;
         }
 
         .inputs {
@@ -477,7 +474,7 @@ export default function MatchupPage() {
         }
         @media (min-width: 640px) {
           .inputs {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: 1fr 1fr;
           }
         }
 
@@ -515,21 +512,22 @@ export default function MatchupPage() {
           align-items: center;
           gap: 8px;
           padding: 10px 12px;
-          border-radius: 10px;
-          border: 1px solid #d8deea;
+          border-radius: 999px;
+          border: 1px solid rgba(15, 23, 42, 0.14);
           background: rgba(255, 255, 255, 0.9);
           color: rgba(15, 23, 42, 0.92);
-          font-weight: 650;
+          font-weight: 800;
           font-size: 13px;
           text-decoration: none;
           cursor: pointer;
         }
 
         .btnPrimary {
-          border: 1px solid #6950d4;
-          background: #6950d4;
+          border: 1px solid rgba(255, 255, 255, 0.26);
+          background: linear-gradient(135deg, #2563eb 0%, #7c3aed 55%, #ec4899 100%);
           color: #fff;
-          box-shadow: 0 3px 8px rgba(105, 80, 212, 0.14);
+          box-shadow: 0 16px 34px rgba(37, 99, 235, 0.22);
+          text-shadow: 0 1px 0 rgba(0, 0, 0, 0.14);
         }
 
         .btn:disabled {
@@ -547,6 +545,12 @@ export default function MatchupPage() {
           margin-top: 10px;
           font-size: 12px;
           color: rgba(185, 28, 28, 0.92);
+        }
+
+        .weightsWrap {
+          display: grid;
+          gap: 10px;
+          margin-top: 12px;
         }
 
         .weightBox {
@@ -571,7 +575,7 @@ export default function MatchupPage() {
         }
 
         .resultsCard {
-          margin-top: 20px;
+          margin-top: 12px;
         }
 
         .topRec {
@@ -629,7 +633,7 @@ export default function MatchupPage() {
 
         .meter > div {
           height: 100%;
-          background: #7964cf;
+          background: rgba(15, 23, 42, 0.35);
         }
 
         .mono {
@@ -646,9 +650,11 @@ export default function MatchupPage() {
           cursor: pointer;
           font-weight: 900;
           color: rgba(15, 23, 42, 0.9);
-          list-style: disclosure-closed;
+          list-style: none;
         }
-
+        details.moreInfo summary::-webkit-details-marker {
+          display: none;
+        }
 
         .tableWrap {
           overflow-x: auto;
@@ -692,71 +698,34 @@ export default function MatchupPage() {
           height: auto;
           display: block;
         }
-        .advanced {
-          margin-top: 18px;
-          border-top: 1px solid #e9ecf2;
-          padding-top: 14px;
-        }
-        .advanced > summary {
-          cursor: pointer;
-          font-size: 13px;
-          font-weight: 650;
-          color: #55439f;
-          padding: 4px 0;
-        }
-        .advanced[open] > summary { margin-bottom: 14px; }
-        .input:focus-visible, .btn:focus-visible, .chipBtn:focus-visible,
-        .range:focus-visible, summary:focus-visible {
-          outline: 3px solid #b8a9ef;
-          outline-offset: 3px;
-        }
-        .btn:not(:disabled):hover { border-color: #a99ad9; background: #f7f5fd; }
-        .btnPrimary:not(:disabled):hover { background: #5940bd; color: #fff; }
-        .range { accent-color: #6950d4; }
-        .emptyState {
-          margin: 0;
-          padding: 28px 18px;
-          border-radius: 12px;
-          background: #f7f8fc;
-          color: #59677c;
-          text-align: center;
-          font-size: 14px;
-          line-height: 1.6;
-        }
-        @media (max-width: 639px) {
-          .pageRoot { padding: 20px 12px 36px; }
-          .card { padding: 16px; }
-          .badge { white-space: normal; }
-          .heroTop { align-items: flex-start; }
-        }
       `}</style>
 
       {/* Header */}
       <div className="hero">
         <div className="heroTop">
           <div className="badge">
-            <Icon name="info" /> Matchup planning
+            <Icon name="info" /> Baseline • Coach view
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link className="btn" href="/matchup-dashboard">
               Matchup dashboard
             </Link>
             <Link className="btn" href={runContextHref}>
-              Add game context
+              Next: Context / ML
             </Link>
           </div>
         </div>
 
-        <h1>Find your best plays</h1>
+        <h1>Matchup / Baseline</h1>
         <p className="sub">
-          Rank your offense against their defense. Season-based estimates, not a next-game forecast.
+          Compare play types using regular-season offense and opponent defense. These rankings are estimates, not a forecast of the next game.
         </p>
       </div>
 
       {/* Inputs + Run */}
       <div className="card">
         <div className="sectionTitle">
-          <h2>Choose your matchup</h2>
+          <h2>Matchup + context inputs</h2>
           <span className="badge">{metaReady ? "Ready" : meta?._fallback ? "Data unavailable" : "Loading…"}</span>
         </div>
 
@@ -774,7 +743,7 @@ export default function MatchupPage() {
           </label>
 
           <label>
-            Plays to show <span className="muted" style={{ fontWeight: 400 }}>(model setting)</span>
+            Top-K <span className="muted" style={{ fontWeight: 400 }}>(model setting)</span>
             <select className="input" value={k} onChange={(e) => setK(Number(e.target.value))}>
               {[3, 5, 7, 10].map((x) => (
                 <option key={x} value={x}>
@@ -809,8 +778,14 @@ export default function MatchupPage() {
           </label>
         </div>
 
-        <details className="advanced">
-          <summary>Adjust ranking weights · {Math.round(norm.wOff * 100)}% offense / {Math.round(norm.wDef * 100)}% defense</summary>
+        <div className="weightsWrap">
+          <div className="sectionTitle" style={{ marginBottom: 0 }}>
+            <h2>Model settings: weights (auto-normalized)</h2>
+            <span className="badge">
+              off={fmt(norm.wOff, 2)} • def={fmt(norm.wDef, 2)}
+            </span>
+          </div>
+
           <div className="grid2">
             <div className="weightBox">
               <div className="weightTop">
@@ -873,23 +848,22 @@ export default function MatchupPage() {
             </div>
           </div>
 
-        </details>
+          <div className="row">
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <button className="btn btnPrimary" type="button" onClick={runBaseline} disabled={!canRun || loading}>
+                <Icon name="play" /> {loading ? "Running…" : "Run Baseline"}
+              </button>
 
-        <div className="row">
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <button className="btn btnPrimary" type="button" onClick={runBaseline} disabled={!canRun || loading}>
-              <Icon name="play" /> {loading ? "Running…" : "Run Baseline"}
-            </button>
+              <ReportExport payload={exportPayload}
+                disabledReason={loading ? "Wait for the rankings to finish." : !resultsCurrent && rows.length ? "Inputs changed. Run Baseline again before exporting." : undefined}
+                description="Export the displayed rankings and matchup settings." />
+            </div>
 
-            <ReportExport payload={exportPayload}
-              disabledReason={loading ? "Wait for the rankings to finish." : !resultsCurrent && rows.length ? "Inputs changed. Run Baseline again before exporting." : undefined}
-              description="Export the displayed rankings and matchup settings." />
+            <div className="badge">{season && our && opp ? matchupLabel : "Select teams"}</div>
           </div>
 
-          <div className="badge">{season && our && opp ? matchupLabel : "Select teams"}</div>
+          {error ? <div className="error" role="alert">{error}</div> : null}
         </div>
-
-        {error ? <div className="error" role="alert">{error}</div> : null}
       </div>
 
       <SeasonSummary filters={summaryReady ? { season, our, opp, k, w_off: norm.wOff } : null}
@@ -903,9 +877,9 @@ export default function MatchupPage() {
         </div>
 
         {!loading && !resultsCurrent ? (
-          <p className="emptyState">{rows.length ? "Inputs changed. Run Baseline again to update the rankings." : "Pick teams and a season, then click Run Baseline."}</p>
+          <p className="muted">{rows.length ? "Inputs changed. Run Baseline again to update the rankings." : "Pick teams and a season, then click Run Baseline."}</p>
         ) : loading ? (
-          <p className="emptyState" role="status">Finding the strongest plays for this matchup…</p>
+          <p className="muted" role="status">Computing shrunk PPPs and ranking Top-K…</p>
         ) : (
           <>
             {/* Top 1 */}
@@ -922,7 +896,7 @@ export default function MatchupPage() {
                     ) : null}
                   </div>
                   <div className="badge">
-                    Estimated points / possession <span className="mono">{fmt(bestRow.pppPred, 3)}</span>
+                    Pred PPP <span className="mono">{fmt(bestRow.pppPred, 3)}</span>
                   </div>
                 </div>
                 <p className="muted" style={{ marginTop: 8 }}>
@@ -980,7 +954,7 @@ export default function MatchupPage() {
             <div style={{ marginTop: 14 }}>
               <div className="sectionTitle">
                 <h2>Court map</h2>
-                <span className="badge">Play diagram</span>
+                <span className="badge">SportyPy</span>
               </div>
 
               <div className="grid2">
@@ -1127,7 +1101,7 @@ export default function MatchupPage() {
 
       {/* ✅ More info (all explanations live here, at the bottom) */}
       <details className="moreInfo">
-        <summary>How these rankings work</summary>
+        <summary>More info</summary>
 
         <div style={{ marginTop: 10, display: "grid", gap: 10 }}>
           <div className="card" style={{ padding: 12 }}>

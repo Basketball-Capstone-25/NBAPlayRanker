@@ -748,10 +748,9 @@ export default function GameplanClient() {
       <header className={styles.hero}>
         <div className={styles.heroTop}>
           <div>
-            <p className={styles.eyebrow}>Coach workspace</p>
-            <h1 className={styles.h1}>Build your gameplan</h1>
+            <h1 className={styles.h1}>Gameplan</h1>
             <p className={styles.sub}>
-              Turn a matchup and game situation into a short list of plays to run.
+              Set the situation → get 3 clear options → tap for diagram & counters.
             </p>
           </div>
 
@@ -777,107 +776,12 @@ export default function GameplanClient() {
           </div>
         </div>
 
-        {/* Situation controls */}
-        <div className={styles.situationBar}>
-          <div className={styles.sitBlock}>
-            <div className={styles.sitLabel}>Season</div>
-            <select
-              className={styles.select}
-              aria-label="Season"
-              value={season}
-              onChange={(e) => setSeason(e.target.value)}
-            >
-              <option value="" disabled>Choose a season</option>
-              {seasonOptions.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className={styles.sitBlock}>
-            <div className={styles.sitLabel}>Our team</div>
-            <select className={styles.select} aria-label="Our team" value={our} onChange={(e) => setOur(e.target.value)}>
-              <option value="" disabled>Choose our team</option>
-              {teamOptions.map((t) => (
-                <option key={t.code} value={t.code}>
-                  {t.code}
-                  {t.name ? ` — ${t.name}` : ""}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className={styles.sitBlock}>
-            <div className={styles.sitLabel}>Opponent</div>
-            <select className={styles.select} aria-label="Opponent" value={opp} onChange={(e) => setOpp(e.target.value)}>
-              <option value="" disabled>Choose an opponent</option>
-              {teamOptions.map((t) => (
-                <option key={t.code} value={t.code}>
-                  {t.code}
-                  {t.name ? ` — ${t.name}` : ""}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className={styles.sitBlockWide}>
-            <div className={styles.sitLabel}>
-              Focus <span className={styles.sitHint}>Ranking preference</span>
-            </div>
-            <input
-              className={styles.slider}
-              aria-label="Offense or defense focus"
-              type="range"
-              min={0}
-              max={100}
-              step={5}
-              value={focus}
-              onChange={(e) => setFocus(Number(e.target.value))}
-            />
-            <div className={styles.sliderEnds}>
-              <span>Bucket</span>
-              <span>Stop</span>
-            </div>
-          </div>
-
-          <div className={styles.sitBlock}>
-            <div className={styles.sitLabel}>Plays to show</div>
-            <select
-              className={styles.select}
-              aria-label="Plays to show"
-              value={showPlays}
-              onChange={(e) => setShowPlays(Number(e.target.value))}
-            >
-              {[3, 5, 7, 10].map((n) => (
-                <option key={n} value={n}>
-                  {n}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className={styles.sitBlock}>
-            <div className={styles.sitLabel}>Ranking method</div>
-            <select
-              className={styles.select}
-              aria-label="Ranking method"
-              value={recommendationStyle}
-              onChange={(e) => setRecommendationStyle(e.target.value as "smart" | "baseline")}
-            >
-              <option value="smart">Smart (ML + context)</option>
-              <option value="baseline">Baseline</option>
-            </select>
-          </div>
-        </div>
-
         {/* Natural language input */}
         <div className={styles.panel} style={{ marginTop: 14 }}>
           <div className={styles.panelHeader}>
             <h2 className={styles.h2}>Describe the situation</h2>
             <span className={styles.smallMuted}>
-              Add the score, clock and what your team needs.
+              Type it like a coach: score, time, any constraints.
             </span>
           </div>
 
@@ -934,6 +838,101 @@ export default function GameplanClient() {
               </div>
             </div>
           ) : null}
+        </div>
+
+        {/* Situation controls */}
+        <div className={styles.situationBar}>
+          <div className={styles.sitBlock}>
+            <div className={styles.sitLabel}>Season</div>
+            <select
+              className={styles.select}
+              aria-label="Season"
+              value={season}
+              onChange={(e) => setSeason(e.target.value)}
+            >
+              <option value="" disabled>Choose a season</option>
+              {seasonOptions.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className={styles.sitBlock}>
+            <div className={styles.sitLabel}>Our team</div>
+            <select className={styles.select} aria-label="Our team" value={our} onChange={(e) => setOur(e.target.value)}>
+              <option value="" disabled>Choose our team</option>
+              {teamOptions.map((t) => (
+                <option key={t.code} value={t.code}>
+                  {t.code}
+                  {t.name ? ` — ${t.name}` : ""}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className={styles.sitBlock}>
+            <div className={styles.sitLabel}>Opponent</div>
+            <select className={styles.select} aria-label="Opponent" value={opp} onChange={(e) => setOpp(e.target.value)}>
+              <option value="" disabled>Choose an opponent</option>
+              {teamOptions.map((t) => (
+                <option key={t.code} value={t.code}>
+                  {t.code}
+                  {t.name ? ` — ${t.name}` : ""}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className={styles.sitBlockWide}>
+            <div className={styles.sitLabel}>
+              Focus (model setting) <span className={styles.sitHint}>Need a bucket ↔ Must get a stop</span>
+            </div>
+            <input
+              className={styles.slider}
+              type="range"
+              min={0}
+              max={100}
+              step={5}
+              aria-label="Offense or defense focus"
+              value={focus}
+              onChange={(e) => setFocus(Number(e.target.value))}
+            />
+            <div className={styles.sliderEnds}>
+              <span>Bucket</span>
+              <span>Stop</span>
+            </div>
+          </div>
+
+          <div className={styles.sitBlock}>
+            <div className={styles.sitLabel}>Plays shown (display setting)</div>
+            <select
+              className={styles.select}
+              aria-label="Plays to show"
+              value={showPlays}
+              onChange={(e) => setShowPlays(Number(e.target.value))}
+            >
+              {[3, 5, 7, 10].map((n) => (
+                <option key={n} value={n}>
+                  {n}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className={styles.sitBlock}>
+            <div className={styles.sitLabel}>Recommendations (model setting)</div>
+            <select
+              className={styles.select}
+              aria-label="Ranking method"
+              value={recommendationStyle}
+              onChange={(e) => setRecommendationStyle(e.target.value as "smart" | "baseline")}
+            >
+              <option value="smart">Smart (ML + context)</option>
+              <option value="baseline">Baseline</option>
+            </select>
+          </div>
         </div>
 
         {/* Context row */}
@@ -1041,7 +1040,7 @@ export default function GameplanClient() {
             ) : null}
             {!top3.length ? (
               <div className={styles.empty}>
-                Choose a matchup and situation, then select <b>Build Gameplan</b>.
+                Tap <b>Build Gameplan</b> to get your options.
               </div>
             ) : (
               <div className={styles.quickCards}>
@@ -1107,14 +1106,14 @@ export default function GameplanClient() {
                         ) : null}
                       </div>
 
-                      <details className={styles.quickHow}>
-                        <summary>How to run this play</summary>
+                      <div className={styles.quickHow}>
+                        <div className={styles.smallMuted}>How to run</div>
                         <ol className={styles.steps}>
                           {coachingCuesFor(p.playType).slice(0, 3).map((c, i) => (
                             <li key={i}>{c}</li>
                           ))}
                         </ol>
-                      </details>
+                      </div>
 
                       <div className={styles.cardBtns}>
                         <button
