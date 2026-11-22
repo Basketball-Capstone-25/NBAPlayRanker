@@ -11,6 +11,7 @@ import TopKUpliftPanel from "./TopKUpliftPanel";
 import ReportExport from "../../_shared/components/ReportExport";
 import { metricsReport } from "../../../infrastructure/report-export";
 import { LatestRequest } from "../../../infrastructure/latest-request";
+import { rmseBarWidths } from "./rmse-bars";
 
 type MetricsRow = {
   model: string;
@@ -75,10 +76,6 @@ function fmtP(n: any) {
   if (!Number.isFinite(x)) return "—";
   if (x < 0.0001) return "<0.0001";
   return x.toFixed(4);
-}
-
-function clamp01(x: number) {
-  return Math.max(0, Math.min(1, x));
 }
 
 function safeNum(n: any, fallback = NaN) {
@@ -234,21 +231,7 @@ export default function ModelMetricsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rows.length]);
 
-  // RMSE bars (normalized)
-  const rmseBars = useMemo(() => {
-    if (!rows.length) return [];
-    const vals = rows.map((r) => safeNum(r.RMSE_mean)).filter((x) => Number.isFinite(x));
-    if (!vals.length) return [];
-    const min = Math.min(...vals);
-    const max = Math.max(...vals);
-    const denom = Math.max(1e-9, max - min);
-
-    return rows.map((r) => {
-      const v = safeNum(r.RMSE_mean);
-      const score = Number.isFinite(v) ? 1 - (v - min) / denom : 0;
-      return { model: r.model, widthPct: clamp01(score) * 100 };
-    });
-  }, [rows]);
+  const rmseBars = useMemo(() => rmseBarWidths(rows), [rows]);
 
   const holdoutSplitsLabel = useMemo(() => {
     const s = Number(data?.n_splits ?? nSplits);
@@ -503,13 +486,13 @@ export default function ModelMetricsPage() {
                   Holdout scan (lower RMSE is better)
                 </h2>
                 <p className="muted" style={{ fontSize: 13, marginTop: 0 }}>
-                  Shorter bars mean less error. The scale is shared by the models in this run.
+                  Shorter bars mean less error. Bars start at zero and share the same scale for this run.
                 </p>
 
                 <div style={{ display: "grid", gap: 10, marginTop: 10 }}>
                   {rmseBars.map((b) => {
                     const row = rows.find((r) => r.model === b.model);
-                    const isBest = bestModel?.model === b.model;
+                    const isBest = b.widthPct !== null && bestModel?.model === b.model;
 
                     return (
                       <div
@@ -543,7 +526,8 @@ export default function ModelMetricsPage() {
                           </div>
                         </div>
 
-                        <div
+                        {b.widthPct === null ? <span className="muted">Unavailable</span> : <div
+                          aria-hidden="true"
                           style={{
                             height: 12,
                             borderRadius: 999,
@@ -561,7 +545,7 @@ export default function ModelMetricsPage() {
                                 : "linear-gradient(90deg, rgba(15,23,42,0.35), rgba(15,23,42,0.20))",
                             }}
                           />
-                        </div>
+                        </div>}
 
                         <div style={{ fontFamily: "var(--mono)", fontSize: 12, textAlign: "right" }}>
                           {fmt(row?.RMSE_mean, 3)}
