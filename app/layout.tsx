@@ -12,11 +12,12 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <NavBar />
 
-        <main className="container">
+        <main className="container" id="main-content" tabIndex={-1}>
           {children}
 
           <footer className="footer">

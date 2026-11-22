@@ -35,7 +35,7 @@ const contexts = ["After timeout", "Late clock", "Need a 3", "Protect lead", "En
 
 export default function HomeLandingClient() {
   return (
-    <main className="page">
+    <div className="page">
       <div className="bg">
         <div className="noise" />
         <div className="vignette" />
@@ -903,7 +903,7 @@ export default function HomeLandingClient() {
           flex-wrap: wrap;
         }
       `}</style>
-    </main>
+    </div>
   );
 }
 

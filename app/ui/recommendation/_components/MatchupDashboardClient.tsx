@@ -131,7 +131,7 @@ export default function MatchupDashboardClient() {
     return () => current.cancel();
   }, [shownFilters, shownTable, attempt]);
 
-  return <main className={styles.page}>
+  return <div className={styles.page}>
     <header className={styles.header}><div><span className={styles.kicker}>Coach workspace · Regular season</span>
       <h1>Matchup dashboard</h1><p>Find a strength, spot a concern, and decide what to review before the next game.</p></div>
       <Link className={styles.link} href="/matchup">View baseline rankings →</Link>
@@ -175,5 +175,5 @@ export default function MatchupDashboardClient() {
           <p className={styles.note}>Source: NBA/Synergy regular-season play types. Totals cover recorded qualifying player possessions; they may not include every team possession. These views compare season profiles, not only games between the selected teams.</p>
           </>}
       </>}
-  </main>;
+  </div>;
 }

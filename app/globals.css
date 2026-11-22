@@ -16,19 +16,19 @@
 
   /* Base UI colors */
   --bg: #f6f7fb;
-  --surface: rgba(255, 255, 255, 0.86);
-  --card: rgba(255, 255, 255, 0.92);
+  --surface: #fff;
+  --card: #fff;
   --text: #0f172a;
   --muted: rgba(15, 23, 42, 0.70);
   --border: rgba(15, 23, 42, 0.10);
 
   /* Accents */
-  --accent: var(--nba-blue);
+  --accent: #5942a8;
   --accent-2: var(--nba-red);
 
   /* Effects */
-  --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-  --shadow-soft: 0 10px 22px rgba(15, 23, 42, 0.06);
+  --shadow: 0 3px 12px rgba(15, 23, 42, 0.025);
+  --shadow-soft: 0 2px 8px rgba(15, 23, 42, 0.025);
   --ring: 0 0 0 3px rgba(29, 66, 138, 0.14);
   --radius: 16px;
 
@@ -53,12 +53,7 @@ body {
   margin: 0;
   color: var(--text);
 
-  /* More “alive” background, still professional */
-  background:
-    radial-gradient(1100px 600px at 12% -10%, rgba(29, 66, 138, 0.14) 0%, transparent 60%),
-    radial-gradient(900px 520px at 92% 0%, rgba(200, 16, 46, 0.10) 0%, transparent 55%),
-    radial-gradient(1200px 700px at 30% 110%, rgba(29, 66, 138, 0.08) 0%, transparent 55%),
-    linear-gradient(180deg, #ffffff 0%, var(--bg) 70%, #eef2ff 100%);
+  background: var(--bg);
 
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -83,9 +78,9 @@ a:hover {
 
 /* Container */
 .container {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 22px 16px 40px;
+  padding: 24px 24px 40px;
 }
 
 /* =========================
@@ -981,3 +976,27 @@ tr.topPickRow td:first-child { box-shadow: inset 4px 0 0 #b45309; }
   .topPickRow { border-color: Highlight; }
   .topPickBadge { border: 1px solid CanvasText; }
 }
+
+/* Shared surface and keyboard treatment. */
+button, input, select, textarea { font: inherit; }
+button, a, summary { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #9b8bd0; outline-offset: 3px; }
+summary { cursor: pointer; }
+.skip-link { position: fixed; top: -80px; left: 16px; z-index: 100; padding: 12px 18px; border-radius: 8px; color: white; background: #403085; }
+.skip-link:focus { top: 10px; }
+.footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #e1e5ed; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 11px; }
+.auth-shell { background: white; border: 1px solid #e0e5ec; box-shadow: 0 10px 40px #1b244010; }
+.auth-shell::before { display: none; }
+.auth-stage { background: #17263d; }
+.auth-title { color: #f6f7fd; font-weight: 750; }
+.auth-copy { color: #bac7da; }
+.auth-badge { color: #cabbf2; background: transparent; border-color: #53617b; box-shadow: none; }
+.auth-point { background: transparent; box-shadow: none; border-color: #465670; }
+.auth-point-title { color: #e1d8fa; }
+.auth-point-copy { color: #acbdd5; }
+.auth-panel { background: white; }
+.auth-submit { background: #5942a8; box-shadow: none; }
+.auth-submit:hover { background: #48378f; }
+.auth-role-card.active { background: #f0edf9; border-color: #a18bcd; box-shadow: none; }
+@media (max-width: 700px) { .container { padding: 18px 14px 32px; } .auth-stage { padding: 25px; } .auth-point-grid { display: none; } .auth-title { font-size: 30px; } .auth-panel { padding: 25px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
