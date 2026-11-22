@@ -54,3 +54,96 @@ describe("league comparison table", () => {
     expect(failed).not.toContain("<table");
   });
 });
+
+describe("league readouts", () => {
+  const mainView = (data: LeagueComparison, metric: "fg_pct" | "efg_pct" | "tov_pct" | "ft_pct", minimum = 1) =>
+    renderToStaticMarkup(<LeagueComparisonTable data={data} minimum={minimum} initialMetric={metric} />).split("<details")[0];
+
+  it("shows one metric and one row per play type before the full-data disclosure", () => {
+    const html = mainView(report(), "fg_pct");
+    expect(html.match(/<tr[ >]/g)).toHaveLength(2);
+    expect(html).toContain('data-label="TOR"'); expect(html).toContain('data-label="League"');
+    expect(html).toContain("50.0%"); expect(html).toContain("60.0%");
+    expect(html).toContain("10.0 pp below league");
+    expect(html).not.toContain("20.0%");
+    expect(html).toContain("8 shot attempts");
+    expect(html).toContain('style="width:50%"');
+    expect(html).toContain('style="width:60%"');
+  });
+
+  it("changes the basketball interpretation for defense without changing values", () => {
+    const data = report();
+    const offense = mainView(data, "fg_pct");
+    expect(offense).toContain("Makes shots less often");
+    expect(offense).toContain('data-tone="caution"');
+    data.filters.side = "defense";
+    const defense = mainView(data, "fg_pct");
+    expect(defense).toContain("Opponents make shots less often");
+    expect(defense).toContain('data-tone="favorable"');
+    expect(defense).toContain("50.0%"); expect(defense).toContain("10.0 pp below league");
+  });
+
+  it("treats turnovers as worse on offense and better when forced on defense", () => {
+    const data = report();
+    expect(mainView(data, "tov_pct")).toContain("Turns the ball over more often");
+    expect(mainView(data, "tov_pct")).toContain('data-tone="caution"');
+    data.filters.side = "defense";
+    const html = mainView(data, "tov_pct");
+    expect(html).toContain("Forces more turnovers");
+    expect(html).toContain('data-tone="favorable"');
+    expect(html).toContain("20.0%"); expect(html).toContain("10 possessions");
+  });
+
+  it("uses the selected rate denominator for warnings and the headline", () => {
+    const data = report(); data.rows[0].team!.possessions = 25;
+    const shooting = mainView(data, "fg_pct", 20);
+    expect(shooting).toContain("Small sample");
+    expect(shooting).toContain("More data is needed");
+    expect(shooting).toContain("50.0%");
+    const turnovers = mainView(data, "tov_pct", 20);
+    expect(turnovers).not.toContain('>Small sample</span>');
+    expect(turnovers).toContain("Cut: turns the ball over more often");
+    expect(turnovers).toContain("25 possessions");
+  });
+
+  it("keeps eFG distinct from shots made and scales its bars up to 150 percent", () => {
+    const data = report();
+    data.rows[0].team!.efg_pct = 1.2; data.rows[0].league!.efg_pct = 0.6;
+    data.rows[0].difference_pp.efg_pct = 60;
+    const html = mainView(data, "efg_pct");
+    expect(html).toContain("120.0%"); expect(html).toContain("60.0 pp above league");
+    expect(html).toContain('style="width:80%"'); expect(html).toContain('style="width:40%"');
+    expect(html).toContain("Gets more scoring value from shots");
+    expect(html).toContain("extra value of three-pointers");
+  });
+
+  it("explains free-throw possession rates without confusing them with shooting accuracy", () => {
+    const data = report();
+    expect(mainView(data, "ft_pct")).toContain("Gets free throws less often");
+    expect(mainView(data, "ft_pct")).toContain("not free-throw shooting accuracy");
+    data.filters.side = "defense";
+    const html = mainView(data, "ft_pct");
+    expect(html).toContain("Allows fewer free-throw possessions");
+    expect(html).toContain('data-tone="favorable"');
+  });
+
+  it("does not pick a missing rate for the headline or convert it to zero", () => {
+    const data = report(); data.rows[0].team = null; data.rows[0].difference_pp.fg_pct = null;
+    const html = mainView(data, "fg_pct");
+    expect(html).toContain("Comparison unavailable");
+    expect(html).toContain("More data is needed");
+    expect(html).not.toContain("<strong>0.0%</strong>");
+    expect(html).toContain("<small>Unavailable</small>");
+    expect(html.match(/aria-hidden="true"/g)).toHaveLength(1);
+    expect(html).not.toContain('style="width:0%"');
+  });
+
+  it("updates the season, team and values from the selected report", () => {
+    const data = report(); data.filters.team = "BOS"; data.filters.season = "2026-27";
+    data.rows[0].team!.fg_pct = 0.8; data.rows[0].difference_pp.fg_pct = 20;
+    const html = mainView(data, "fg_pct");
+    expect(html).toContain("How does BOS compare?"); expect(html).toContain("2026-27");
+    expect(html).toContain("80.0%"); expect(html).toContain("20.0 pp above league");
+    expect(html).not.toContain("TOR"); expect(html).not.toContain("2024-25");
+  });
+});
