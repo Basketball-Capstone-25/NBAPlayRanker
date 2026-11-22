@@ -153,11 +153,14 @@ def test_row_order_cannot_change_the_result(source):
 def test_bundled_final_season_has_no_effect_on_model_or_preprocessing():
     source = pd.read_csv(Path(__file__).resolve().parents[1] / "data/synergy_playtypes_2019_2025_players.csv")
     report, predictions = forecasts.evaluate_forecasts(source)
-    assert report["selection"]["training_rows"] == 990
+    seasons = sorted(source.SEASON.unique())
+    # 30 teams x 11 play types per complete season; the first season is only history.
+    assert report["selection"]["training_rows"] == 330 * (len(seasons) - 3)
     assert report["selection"]["tuning_rows"] == 330
-    assert report["final_test"]["target_season"] == "2024-25"
-    assert report["final_test"]["rows"] == 330
-    final = source.SEASON.eq("2024-25")
+    assert report["final_test"]["target_season"] == seasons[-1]
+    # The latest season can still be in progress, so it may lack a few team play types.
+    assert 0 < report["final_test"]["rows"] <= 330
+    final = source.SEASON.eq(seasons[-1])
     source.loc[final, "PTS"] *= 4
     source.loc[final, "POSS"] *= 2
     source.loc[final, forecasts.RATE_COLUMNS] *= 3
