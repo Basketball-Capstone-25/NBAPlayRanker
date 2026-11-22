@@ -4,6 +4,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from application.api_coordination import app as app_module
+from application.api_coordination.data_quality_endpoints import EXPECTED_SEASONS
 
 AUTH = "application.access_control_services.access_control_service"
 PARAMS = {"team": "TOR", "play_type": "Cut"}
@@ -24,7 +25,7 @@ def test_coach_gets_all_regular_seasons_without_an_opponent():
     assert response.headers["Cache-Control"] == "private, no-store"
     assert response.headers["X-Data-Quality"] == "pass"
     assert response.json()["filters"] == {**PARAMS, "side": "offense", "season_phase": "regular_season"}
-    assert len(response.json()["rows"]) == 6
+    assert len(response.json()["rows"]) == len(EXPECTED_SEASONS)
 
 
 @pytest.mark.parametrize("role,token,status", [("coach", False, 401), ("analyst", True, 403),

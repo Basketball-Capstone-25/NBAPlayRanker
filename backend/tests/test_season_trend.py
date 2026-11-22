@@ -5,6 +5,7 @@ import pytest
 
 from application.analytics_services.season_trend import build_season_trend, TrendDataUnavailable
 from application.api_coordination.app import rec
+from application.api_coordination.data_quality_endpoints import EXPECTED_SEASONS
 
 
 @pytest.mark.parametrize("team,play", [("TOR", "Cut"), ("BOS", "Spotup"), ("DEN", "PRBallHandler")])
@@ -12,7 +13,7 @@ def test_trend_matches_regular_season_source_counts(team, play):
     result = build_season_trend(rec, team, play)
     assert result["status"] == "ok"
     assert result["dataset_version"] == rec.raw_df.attrs["dataset_version"]
-    assert [r["season"] for r in result["rows"]] == [f"{y}-{(y + 1) % 100:02d}" for y in range(2019, 2025)]
+    assert [r["season"] for r in result["rows"]] == list(EXPECTED_SEASONS)
     for row in result["rows"]:
         raw = rec.raw_df
         source = raw.loc[raw.SEASON_ID.astype(str).eq("2" + row["season"][:4])
