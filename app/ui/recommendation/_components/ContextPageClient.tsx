@@ -3,9 +3,10 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { contextRank, fetchMetaOptions } from "../../../services/recommendation";
+import { LatestRequest } from "../../../infrastructure/latest-request";
 import ReportExport from "../../_shared/components/ReportExport";
 import RankedPlayList from "./RankedPlayList";
 import VoiceSituationButton from "./VoiceSituationButton";
@@ -138,6 +139,28 @@ function Icon({
   }
 }
 
+export function ContextResults({ current, loading, hasRows, matchupLabel, children }: {
+  current: boolean;
+  loading: boolean;
+  hasRows: boolean;
+  matchupLabel: string;
+  children: React.ReactNode;
+}) {
+  return <div className="card resultsCard">
+    <div className="sectionTitle">
+      <h2>Top recommendations</h2>
+      <span className="badge">{current && !loading ? matchupLabel : "Run to see results"}</span>
+    </div>
+    {!loading && !hasRows ? (
+      <p className="muted">Set the situation and click Run Context + ML.</p>
+    ) : loading ? (
+      <p className="muted" role="status">Generating ML + context ranking…</p>
+    ) : !current ? (
+      <p className="muted" role="status">Inputs changed. Run Context + ML again.</p>
+    ) : children}
+  </div>;
+}
+
 // ✅ Inner component uses useSearchParams()
 // ✅ Outer export wraps in Suspense
 function ContextInner() {
@@ -191,6 +214,8 @@ function ContextInner() {
   const [loadedKey, setLoadedKey] = useState("");
   const requestFilters = { season, our, opp, k, margin: marginIn, period: periodIn, time_remaining: timeIn };
   const currentKey = resultKey(requestFilters);
+  const requestsRef = useRef(new LatestRequest());
+  const lastAttemptedKeyRef = useRef("");
 
   const liveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -308,38 +333,33 @@ function ContextInner() {
       return;
     }
 
-    try {
-      setLoading(true);
-      setError(null);
-      setRows([]);
-      setLoadedKey("");
-
-      const out = await contextRank({
-        season,
-        our,
-        opp,
-        margin,
-        period,
-        timeRemaining,
-        k,
-      });
-
-      setRows(Array.isArray(out) ? out : []);
-      setLoadedKey(currentKey);
-    } catch (e: any) {
-      console.error(e);
-      setError(e?.message ?? "Failed to generate context+ML recommendations.");
-      setRows([]);
-    } finally {
-      setLoading(false);
-    }
+    lastAttemptedKeyRef.current = currentKey;
+    await requestsRef.current.run(currentKey, () => contextRank({
+      season, our, opp, margin, period, timeRemaining, k,
+    }), {
+      start: () => {
+        setLoading(true);
+        setError(null);
+        setRows([]);
+        setLoadedKey("");
+      },
+      success: (out) => {
+        setRows(Array.isArray(out) ? out : []);
+        setLoadedKey(currentKey);
+      },
+      error: (reason) => {
+        setError(reason instanceof Error ? reason.message : "Failed to generate context+ML recommendations.");
+        setRows([]);
+      },
+      settled: () => setLoading(false),
+    }, true);
   }
 
 
   useEffect(() => {
     if (!liveMode) return;
     if (!canRun) return;
-    if (loading) return;
+    if (loading || lastAttemptedKeyRef.current === currentKey) return;
 
     if (liveTimerRef.current) clearTimeout(liveTimerRef.current);
     liveTimerRef.current = setTimeout(() => {
@@ -350,7 +370,7 @@ function ContextInner() {
       if (liveTimerRef.current) clearTimeout(liveTimerRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [liveMode, margin, period, timeRemaining, season, our, opp, k]);
+  }, [liveMode, currentKey, canRun, loading]);
 
   const meanMlPPP = useMemo(() => {
     const vals = rows.map((r) => Number(r.mlPPP)).filter((x) => Number.isFinite(x));
@@ -1040,20 +1060,7 @@ function ContextInner() {
       </div>
 
       {/* Results */}
-      <div className="card resultsCard">
-        <div className="sectionTitle">
-          <h2>Top recommendations</h2>
-          <span className="badge">
-            {displayRows.length ? `${our} vs ${opp} • ${season}` : "Run to see results"}
-          </span>
-        </div>
-
-        {!loading && displayRows.length === 0 ? (
-          <p className="muted">Set the situation and click Run Context + ML.</p>
-        ) : loading ? (
-          <p className="muted" role="status">Generating ML + context ranking…</p>
-        ) : (
-          <>
+      <ContextResults current={resultsCurrent} loading={loading} hasRows={displayRows.length > 0} matchupLabel={`${our} vs ${opp} • ${season}`}>
             {/* SCRUM-795: one large list, same style the Quick-Call screen used. */}
             <RankedPlayList
               plays={displayRows.map((r) => ({
@@ -1128,9 +1135,7 @@ function ContextInner() {
                 </table>
               </div>
             ) : null}
-          </>
-        )}
-      </div>
+      </ContextResults>
 
       {/* SCRUM-825: where a chosen player made shots against this opponent. */}
       <PlayerMadeShotsPanel our={our} opp={opp} />
