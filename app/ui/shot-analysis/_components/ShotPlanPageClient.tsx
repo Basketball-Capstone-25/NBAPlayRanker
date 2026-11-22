@@ -58,18 +58,6 @@ function fmtInt(n: any) {
   return String(Math.round(x));
 }
 
-function pickDefaultSeason(seasons: string[]) {
-  // Backend typically returns seasons sorted; safest “latest” is last.
-  if (!seasons?.length) return "2021-22";
-  return seasons[seasons.length - 1];
-}
-
-function pickDefaultTeam(teams: string[], prefer: string) {
-  // Prefer TOR/BOS, but fall back safely if not present (prevents empty dropdown edge-cases)
-  if (!teams?.length) return prefer;
-  return teams.includes(prefer) ? prefer : teams[0];
-}
-
 export default function ShotPlanPage() {
   // Meta is merged from:
   // - Dataset1 /meta/options (teamNames mapping: "TOR" -> "Toronto Raptors")
@@ -78,8 +66,8 @@ export default function ShotPlanPage() {
 
   // Core matchup context
   const [season, setSeason] = useState<string>("");
-  const [our, setOur] = useState<string>("TOR");
-  const [opp, setOpp] = useState<string>("BOS");
+  const [our, setOur] = useState<string>("");
+  const [opp, setOpp] = useState<string>("");
 
   // Backend expects k between 1 and 10.
   const [k, setK] = useState<number>(5);
@@ -139,11 +127,7 @@ export default function ShotPlanPage() {
         if (cancelled) return;
         setMeta(merged);
 
-        // Set safe defaults if state is empty
-        // (prevents blank select values if the initial state was "")
-        setSeason((prev) => prev || pickDefaultSeason(merged.seasons));
-        setOur((prev) => prev || pickDefaultTeam(merged.teams, "TOR"));
-        setOpp((prev) => prev || pickDefaultTeam(merged.teams, "BOS"));
+        // SCRUM-841: nothing is pre-selected.
       } catch (e: any) {
         // If meta fails, we still want to show the page with an error callout
         if (!cancelled) setInputError(e?.message ?? "Failed to load available filters.");
@@ -286,6 +270,7 @@ export default function ShotPlanPage() {
           <div>
             <div className="label">Season</div>
             <select className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
+              <option value="" disabled>Choose a season</option>
               {(meta?.seasons ?? []).map((s: string) => (
                 <option key={s} value={s}>
                   {s}
@@ -298,6 +283,7 @@ export default function ShotPlanPage() {
           <div>
             <div className="label">Our team</div>
             <select className="input" value={our} onChange={(e) => setOur(e.target.value)}>
+              <option value="" disabled>Choose our team</option>
               {(meta?.teams ?? []).map((t: string) => (
                 <option key={t} value={t}>
                   {teamLabel(t)}
@@ -310,6 +296,7 @@ export default function ShotPlanPage() {
           <div>
             <div className="label">Opponent</div>
             <select className="input" value={opp} onChange={(e) => setOpp(e.target.value)}>
+              <option value="" disabled>Choose an opponent</option>
               {(meta?.teams ?? []).map((t: string) => (
                 <option key={t} value={t}>
                   {teamLabel(t)}
