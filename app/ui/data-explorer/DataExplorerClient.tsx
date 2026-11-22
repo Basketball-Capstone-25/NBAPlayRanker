@@ -6,6 +6,7 @@
 "use client";
 
 import Link from "next/link";
+import styles from "./AnalystWorkspace.module.css";
 import { useEffect, useMemo, useRef, useState } from "react";
 import DataQualityPanel from "./DataQualityPanel";
 import DatasetReloadPanel from "./DatasetReloadPanel";
@@ -53,10 +54,6 @@ function fmtInt(v: any) {
   const n = Number(v);
   if (!Number.isFinite(n)) return "—";
   return String(Math.round(n));
-}
-
-function clamp01(x: number) {
-  return Math.max(0, Math.min(1, x));
 }
 
 // localStorage can throw in some environments (private mode / blocked storage),
@@ -396,23 +393,6 @@ export default function DataExplorerClient() {
       minPPP,
     };
   }, [viewRows]);
-  // PPP quality bar (visual only)
-  const pppBar = useMemo(() => {
-    const v = Number(kpis.avgPPP);
-    if (!Number.isFinite(v)) return { pct: 0, label: "\u2014" };
-    // Typical PPP range ~[0.7 .. 1.3]
-    const pct = clamp01((v - 0.7) / 0.6) * 100;
-    return { pct, label: fmtNum(v, 3) };
-  }, [kpis.avgPPP]);
-
-  const heroStyle: React.CSSProperties = {
-    borderRadius: 18,
-    padding: "18px 18px 14px",
-    background:
-      "linear-gradient(135deg, rgba(56,189,248,0.16), rgba(99,102,241,0.14), rgba(34,197,94,0.10))",
-    border: "1px solid rgba(255,255,255,0.10)",
-  };
-
   // Reproducible API URL for the current filters.
   const apiExample = useMemo(() => {
     const parts: string[] = [];
@@ -463,25 +443,29 @@ export default function DataExplorerClient() {
 
   if (dataset === "shots") {
     return (
-      <main className="page" style={{ paddingBottom: 56 }}>
-        <header className="page__header" style={heroStyle}>
+      <div className={`page ${styles.workspace}`} style={{ paddingBottom: 56 }}>
+        <header className={styles.header}>
+          <div className={styles.eyebrow}>Analyst workspace</div>
           <h1 className="h1" style={{ margin: 0 }}>Data Explorer</h1>
           <p className="muted" style={{ marginTop: 6, fontSize: 14, marginBottom: 0 }}>
             Browse the play-by-play shots and export the filtered view.
           </p>
           <DatasetSwitch value={dataset} onChange={switchDataset} />
         </header>
-        <DatasetReloadPanel key="dataset-reload" onReloaded={afterReload} onPendingChange={updatePending} />
         <ShotDataExplorer initialQuery={pendingShots} onOpenOther={openSynergyQuery}
           refreshVersion={shotsRevision} reloading={pendingReload === "pbp"} />
-      </main>
+        <details className={`card ${styles.tools}`}>
+          <summary>Dataset tools</summary>
+          <DatasetReloadPanel key="dataset-reload" onReloaded={afterReload} onPendingChange={updatePending} />
+        </details>
+      </div>
     );
   }
 
   return (
-    <main className="page" style={{ paddingBottom: 56 }}>
+    <div className={`page ${styles.workspace}`} style={{ paddingBottom: 56 }}>
       {/* HERO */}
-      <header className="page__header" style={heroStyle}>
+      <header className={styles.header}>
         <div
           style={{
             display: "flex",
@@ -492,6 +476,7 @@ export default function DataExplorerClient() {
           }}
         >
           <div>
+            <div className={styles.eyebrow}>Analyst workspace</div>
             <h1 className="h1" style={{ margin: 0 }}>
               Data Explorer
             </h1>
@@ -506,7 +491,7 @@ export default function DataExplorerClient() {
               {exporting ? "Exporting play-type rows…" : "Export play-type rows (CSV)"}
             </button>
             <Link className="btn" href="/matchup">
-              Next: Baseline Matchup
+              Open Matchup
             </Link>
           </div>
         </div>
@@ -551,13 +536,11 @@ export default function DataExplorerClient() {
         </div>
       </header>
 
-      <DatasetReloadPanel key="dataset-reload" onReloaded={afterReload} onPendingChange={updatePending} />
       {exportError && <p role="alert" className="card">{exportError}</p>}
       {metadataError ? <section className="card" role="alert"><p>{metadataError}</p>
         <button className="btn btn--secondary" type="button" onClick={() => setSynergyRevision(value => value + 1)}>Retry view</button></section>
         : synergyBlocked ? <p className="card" role="status">{synergyReloading ? "Reloading play-type data…" : "Refreshing play-type options…"}</p> : null}
-      {!synergyBlocked && <><DataQualityPanel key={`quality-${synergyRevision}`} />
-        <DatasetMetadataPanel key={`metadata-${synergyRevision}-${shotsRevision}`} /></>}
+      {!synergyBlocked && <DataQualityPanel key={`quality-${synergyRevision}`} />}
 
       {/* FILTERS */}
       <section className="card" style={{ marginTop: 14 }}>
@@ -577,7 +560,7 @@ export default function DataExplorerClient() {
             </p>
           </div>
 
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+          <div className={styles.toolbar}>
             <label style={{ fontSize: 13, display: "flex", gap: 8, alignItems: "center" }}>
               Search this table
               <input
@@ -714,28 +697,8 @@ export default function DataExplorerClient() {
           <div className="kpi">
             <div className="label">Avg PPP</div>
             <div className="value">{Number.isFinite(Number(kpis.avgPPP)) ? fmtNum(kpis.avgPPP, 3) : "—"}</div>
-            <div
-              style={{
-                marginTop: 10,
-                height: 10,
-                borderRadius: 999,
-                background: "rgba(15,23,42,0.08)",
-                overflow: "hidden",
-                border: "1px solid rgba(255,255,255,0.10)",
-              }}
-              title="Points per possession"
-            >
-              <div
-                style={{
-                  width: `${pppBar.pct}%`,
-                  height: "100%",
-                  background:
-                    "linear-gradient(90deg, rgba(59,130,246,0.60), rgba(34,197,94,0.35))",
-                }}
-              />
-            </div>
             <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-              Typical range ~0.7–1.3 PPP.
+              Average across visible play-type rows.
             </div>
           </div>
 
@@ -770,11 +733,6 @@ export default function DataExplorerClient() {
           </p>
         )}
       </section>
-
-      <SavedQueriesPanel definition={synergyQuery} options={synergyOptions} onOpen={openSynergyQuery} />
-
-      <AnalystSeasonSummary season={season} team={team} side={side} teams={meta.teams}
-        teamNames={meta.teamNames} refreshVersion={synergyRevision} refreshing={synergyBlocked} />
 
       {/* TABLE */}
       <section className="card">
@@ -873,6 +831,17 @@ export default function DataExplorerClient() {
         ) : null}
       </section>
 
+      <SavedQueriesPanel definition={synergyQuery} options={synergyOptions} onOpen={openSynergyQuery} />
+
+      <AnalystSeasonSummary season={season} team={team} side={side} teams={meta.teams}
+        teamNames={meta.teamNames} refreshVersion={synergyRevision} refreshing={synergyBlocked} />
+
+      <details className={`card ${styles.tools}`}>
+        <summary>Dataset tools and source</summary>
+        <DatasetReloadPanel key="dataset-reload" onReloaded={afterReload} onPendingChange={updatePending} />
+        {!synergyBlocked && <DatasetMetadataPanel key={`metadata-${synergyRevision}-${shotsRevision}`} />}
+      </details>
+
       <details className="card">
         <summary>How this data is prepared</summary>
         <p className="muted">Player records are combined into team totals. The preview table shows recorded statistics, not model predictions.</p>
@@ -886,6 +855,6 @@ export default function DataExplorerClient() {
         </ul>
         <details><summary>API request</summary><code style={{ overflowWrap: "anywhere" }}>{apiExample}</code></details>
       </details>
-    </main>
+    </div>
   );
 }
