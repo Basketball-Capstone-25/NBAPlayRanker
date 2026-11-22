@@ -375,8 +375,8 @@ export default function ModelMetricsPage() {
           </div>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link className="btn" href="/context">
-              Context Simulator
+            <Link className="btn" href="/data-explorer">
+              Data Explorer
             </Link>
             <Link className="btn" href="/statistical-analysis">
               Statistical Analysis

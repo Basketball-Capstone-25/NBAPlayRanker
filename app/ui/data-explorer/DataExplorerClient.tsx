@@ -490,8 +490,8 @@ export default function DataExplorerClient() {
             <button className="btn btn--secondary" type="button" onClick={exportCsv} disabled={!season || loading || exporting || synergyBlocked} aria-busy={exporting}>
               {exporting ? "Exporting play-type rows…" : "Export play-type rows (CSV)"}
             </button>
-            <Link className="btn" href="/matchup">
-              Open Matchup
+            <Link className="btn" href="/model-metrics">
+              Model Metrics
             </Link>
           </div>
         </div>
