@@ -33,7 +33,7 @@ export default function DataDictionaryPage() {
     </div>
     {error ? <p role="alert">{error} <button className="btn" onClick={() => setAttempt(x => x + 1)}>Retry</button></p> :
       columns === null ? <p role="status">Loading column definitions…</p> : <>
-        <p className={styles.count} role="status">{visible.length} columns shown. {columns.filter(c => !c.documented).length} undocumented.</p>
+        <p className={styles.count} role="status">{visible.length} columns shown. {visible.filter(c => !c.documented).length} of these need a definition.</p>
         <div className={styles.tableWrap} tabIndex={0} role="region" aria-label="Column definitions"><table>
           <thead><tr><th scope="col">Dataset</th><th scope="col">Column</th><th scope="col">Meaning</th><th scope="col">Unit</th><th scope="col">Source</th></tr></thead>
           <tbody>{visible.map(c => <tr key={`${c.dataset}:${c.column}`}>
