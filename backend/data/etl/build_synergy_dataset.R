@@ -5,7 +5,7 @@ cat("Working directory:", getwd(), "\n\n")
 
 # ---- packages ----
 
-needed <- c("hoopR", "dplyr", "purrr", "readr", "vroom")
+needed <- c("hoopR", "dplyr", "purrr", "readr", "vroom", "jsonlite")
 new_pkgs <- needed[!(needed %in% rownames(installed.packages()))]
 
 if (length(new_pkgs) > 0) {
@@ -18,7 +18,12 @@ invisible(lapply(needed, library, character.only = TRUE))
 
 PLAYER_OR_TEAM <- "P"  # "P" = players, "T" = teams
 
-SEASONS <- sprintf("%d-%02d", 2019:2024, 20:25)   # "2019-20" ... "2024-25"
+# Seasons come from the coverage file the backend checks against, so adding a
+# season is one edit there. Already-downloaded chunks are reused below.
+COVERAGE_FILE <- file.path("data", "expected_coverage.json")
+SEASONS <- jsonlite::fromJSON(COVERAGE_FILE)$seasons
+if (length(SEASONS) == 0) stop("No seasons listed in ", COVERAGE_FILE)
+cat("Seasons:", paste(SEASONS, collapse = ", "), "\n")
 
 PLAYTYPES <- c(
   "Isolation", "Transition", "PRBallHandler", "PRRollman", "Postup",
