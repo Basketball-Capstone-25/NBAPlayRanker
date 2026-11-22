@@ -3,7 +3,6 @@
 "use client";
 
 import Link from "next/link";
-import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { fetchModelMetrics, fetchPipelineInfo, fetchMlAnalysis } from "../../../services/analytics";
 import CalibrationPanel from "./CalibrationPanel";
@@ -337,9 +336,16 @@ export default function ModelMetricsPage() {
   });
 
   return (
-    <section className={`card ${styles.workspace}`} style={{ padding: 0, overflow: "hidden" }}>
-      <div className={styles.header}>
-        <div className={styles.eyebrow}>Model evaluation</div>
+    <section className="card" style={{ padding: 0, overflow: "hidden" }}>
+      {/* HERO */}
+      <div
+        style={{
+          padding: "18px 18px 16px",
+          background:
+            "radial-gradient(1200px 400px at 10% 10%, rgba(59,130,246,0.22), transparent 60%), radial-gradient(900px 340px at 90% 0%, rgba(16,185,129,0.16), transparent 55%), linear-gradient(180deg, rgba(15,23,42,0.06), rgba(15,23,42,0.02))",
+          borderBottom: "1px solid rgba(15,23,42,0.08)",
+        }}
+      >
         <div
           style={{
             display: "flex",
@@ -352,11 +358,12 @@ export default function ModelMetricsPage() {
           <div style={{ maxWidth: 780 }}>
             <h1 className="h1" style={{ marginBottom: 6 }}>
               Model Performance
-
+              <span style={{ opacity: 0.8, fontWeight: 700 }}> — Baseline vs ML</span>
             </h1>
 
             <p className="muted" style={{ fontSize: 14, margin: "6px 0 0" }}>
-              Compare prediction error across models and inspect how each result was tested.
+              Compare baseline and ML models on held-out seasons, then review the features and
+              settings used for tuning.
             </p>
 
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
@@ -365,6 +372,9 @@ export default function ModelMetricsPage() {
               </span>
               <span className="badge" style={{ background: "rgba(15, 23, 42, 0.06)" }}>
                 Season holdout
+              </span>
+              <span className="badge" style={{ background: "rgba(16,185,129,0.10)", color: "rgba(5,150,105,0.95)" }}>
+                Coach-friendly interpretation
               </span>
               {topBadge ? (
                 <span className="badge blue" style={{ background: "rgba(59,130,246,0.12)", color: "rgba(30,64,175,0.95)" }}>
@@ -379,7 +389,7 @@ export default function ModelMetricsPage() {
               Data Explorer
             </Link>
             <Link className="btn" href="/statistical-analysis">
-              Statistical Analysis
+              Next: Statistical Analysis
             </Link>
           </div>
         </div>
@@ -395,9 +405,9 @@ export default function ModelMetricsPage() {
             flexWrap: "wrap",
           }}
         >
-          <div className={styles.toolbar}>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
             <label style={{ fontSize: 13, fontWeight: 700, color: "rgba(15,23,42,0.85)" }}>
-              Season folds
+              Season folds (n_splits)
               <select
                 className="input"
                 style={{ width: 110, display: "inline-block", marginLeft: 8 }}
@@ -479,6 +489,213 @@ export default function ModelMetricsPage() {
         {/* SCOREBOARD TAB */}
         {tab === "scoreboard" ? (
           <>
+            {/* KPI strip */}
+            <div className="grid" style={{ marginTop: 2 }}>
+              <div className="kpi">
+                <div className="label">What’s being predicted</div>
+                <div className="value" style={{ fontSize: 16, fontWeight: 900 }}>
+                  Play Type PPP
+                </div>
+                <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
+                  Points per possession by play type (team-level).
+                </div>
+              </div>
+
+              <div className="kpi">
+                <div className="label">Holdout method</div>
+                <div className="value" style={{ fontSize: 16, fontWeight: 900 }}>
+                  Season splits
+                </div>
+                <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
+                  Training and test rows use separate season groups.
+                </div>
+              </div>
+
+              <div className="kpi">
+                <div className="label">Folds</div>
+                <div className="value">{holdoutSplitsLabel}</div>
+                <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
+                  More folds = more repeated testing.
+                </div>
+              </div>
+            </div>
+
+            {/* Model comparison panel */}
+            <div
+              style={{
+                marginTop: 14,
+                borderRadius: 18,
+                border: "1px solid rgba(15,23,42,0.10)",
+                background:
+                  "radial-gradient(900px 280px at 15% 10%, rgba(59,130,246,0.10), transparent 55%), radial-gradient(900px 280px at 85% 0%, rgba(16,185,129,0.10), transparent 55%), rgba(255,255,255,0.7)",
+                padding: 14,
+                boxShadow: "0 16px 30px rgba(15,23,42,0.06)",
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+                <div>
+                  <h2 style={{ margin: "2px 0 6px", fontSize: 16, fontWeight: 900 }}>
+                    “How much better is it?” (Basketball terms)
+                  </h2>
+                  <p className="muted" style={{ fontSize: 13, margin: 0 }}>
+                    RMSE/MAE are <strong>prediction error</strong> on PPP. Converting PPP error to “points”:
+                    <br />
+                    <span style={{ fontFamily: "var(--mono)" }}>
+                      0.01 PPP error ≈ 1.0 point per 100 possessions (of prediction error)
+                    </span>
+                  </p>
+                </div>
+
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+                  <label style={{ fontSize: 13, fontWeight: 800 }}>
+                    Possessions scale
+                    <input
+                      className="input"
+                      type="number"
+                      min={50}
+                      max={200}
+                      step={1}
+                      value={poss}
+                      onChange={(e) => setPoss(Number(e.target.value))}
+                      style={{ width: 110, marginLeft: 8 }}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 12 }}>
+                <label style={{ fontSize: 13, fontWeight: 800 }}>
+                  Model A (better)
+                  <select
+                    className="input"
+                    style={{ width: 220, marginLeft: 8 }}
+                    value={compareA}
+                    onChange={(e) => setCompareA(e.target.value)}
+                    disabled={!modelNames.length}
+                  >
+                    {modelNames.map((m) => (
+                      <option key={m} value={m}>
+                        {prettyModelName(m)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label style={{ fontSize: 13, fontWeight: 800 }}>
+                  Model B (compare)
+                  <select
+                    className="input"
+                    style={{ width: 220, marginLeft: 8 }}
+                    value={compareB}
+                    onChange={(e) => setCompareB(e.target.value)}
+                    disabled={!modelNames.length}
+                  >
+                    {modelNames.map((m) => (
+                      <option key={m} value={m}>
+                        {prettyModelName(m)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={() => {
+                    // quick swap
+                    const a = compareA;
+                    setCompareA(compareB);
+                    setCompareB(a);
+                  }}
+                  disabled={!compareA || !compareB}
+                >
+                  Swap
+                </button>
+
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={() => {
+                    if (bestModel?.model) setCompareA(bestModel.model);
+                    if (baselineGuess?.model) setCompareB(baselineGuess.model);
+                  }}
+                  disabled={!rows.length}
+                >
+                  Compare vs Baseline
+                </button>
+              </div>
+
+              {/* Comparison output */}
+              <div style={{ marginTop: 12 }}>
+                {compare ? (
+                  <div className="grid" style={{ marginTop: 0 }}>
+                    <div className="kpi">
+                      <div className="label">RMSE improvement (PPP error)</div>
+                      <div className="value" style={{ fontSize: 18, fontWeight: 900 }}>
+                        {compare.dRMSE >= 0 ? "+" : "—"}
+                        {fmt(Math.abs(compare.dRMSE), 4)} PPP
+                      </div>
+                      <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
+                        {Number.isFinite(compare.pctRMSE)
+                          ? `${fmt(Math.abs(compare.pctRMSE), 1)}% lower RMSE vs ${prettyModelName(compare.b.model)}`
+                          : "Percent improvement unavailable."}
+                      </div>
+                    </div>
+
+                    <div className="kpi">
+                      <div className="label">≈ points / 100 possessions (error)</div>
+                      <div className="value" style={{ fontSize: 18, fontWeight: 900 }}>
+                        {compare.pointsPer100_RMSE >= 0 ? "+" : "—"}
+                        {fmt(Math.abs(compare.pointsPer100_RMSE), 2)}
+                      </div>
+                      <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
+                        “Closer to true PPP” by ~{fmt(Math.abs(compare.pointsPer100_RMSE), 2)} points per 100 poss.
+                      </div>
+                    </div>
+
+                    <div className="kpi">
+                      <div className="label">≈ points / {compare.possN} possessions (error)</div>
+                      <div className="value" style={{ fontSize: 18, fontWeight: 900 }}>
+                        {compare.pointsPerGame_RMSE >= 0 ? "+" : "—"}
+                        {fmt(Math.abs(compare.pointsPerGame_RMSE), 2)}
+                      </div>
+                      <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
+                        Scales the same error to your chosen possession count.
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="muted" style={{ fontSize: 13, margin: 0 }}>
+                    Select two models to compare.
+                  </p>
+                )}
+
+                <div
+                  style={{
+                    marginTop: 10,
+                    padding: 12,
+                    borderRadius: 14,
+                    border: "1px solid rgba(15,23,42,0.10)",
+                    background: "rgba(255,255,255,0.7)",
+                  }}
+                >
+                  <div style={{ fontWeight: 900, fontSize: 13, marginBottom: 6 }}>Coach translation (quick)</div>
+                  <ul className="muted" style={{ fontSize: 13, paddingLeft: 18, margin: 0 }}>
+                    <li>
+                      <strong>PPP</strong> is points per possession for a play type (like “PnR Ball Handler”).
+                    </li>
+                    <li>
+                      <strong>RMSE</strong> is “typical miss” on PPP predictions. Lower means less error in this evaluation.
+                    </li>
+                    <li>
+                      A drop of <strong>0.01 PPP</strong> in RMSE ≈ <strong>1 point per 100 possessions</strong> less
+                      prediction error (not guaranteed points scored).
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             {/* Quick RMSE bar scan */}
             {rows.length ? (
               <div style={{ marginTop: 14 }}>
@@ -573,214 +790,10 @@ export default function ModelMetricsPage() {
               </div>
             ) : null}
 
-            {/* KPI strip */}
-            <div className="grid" style={{ marginTop: 2 }}>
-              <div className="kpi">
-                <div className="label">What’s being predicted</div>
-                <div className="value" style={{ fontSize: 16, fontWeight: 900 }}>
-                  Play Type PPP
-                </div>
-                <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                  Points per possession by play type (team-level).
-                </div>
-              </div>
-
-              <div className="kpi">
-                <div className="label">Holdout method</div>
-                <div className="value" style={{ fontSize: 16, fontWeight: 900 }}>
-                  Season splits
-                </div>
-                <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                  Training and test rows use separate season groups.
-                </div>
-              </div>
-
-              <div className="kpi">
-                <div className="label">Folds</div>
-                <div className="value">{holdoutSplitsLabel}</div>
-                <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                  More folds = more repeated testing.
-                </div>
-              </div>
-            </div>
-
-            {/* Model comparison panel */}
-            <details
-              style={{
-                marginTop: 14,
-                borderRadius: 18,
-                border: "1px solid rgba(15,23,42,0.10)",
-                background: "#fff",
-                padding: 14,
-                boxShadow: "none",
-              }}
-            >
-              <summary>Translate prediction error</summary>
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-                <div>
-                  <p className="muted" style={{ fontSize: 13, margin: 0 }}>
-                    RMSE/MAE are <strong>prediction error</strong> on PPP. Converting PPP error to “points”:
-                    <br />
-                    <span style={{ fontFamily: "var(--mono)" }}>
-                      0.01 PPP error ≈ 1.0 point per 100 possessions (of prediction error)
-                    </span>
-                  </p>
-                </div>
-
-                <div className={styles.toolbar}>
-                  <label style={{ fontSize: 13, fontWeight: 800 }}>
-                    Possessions scale
-                    <input
-                      className="input"
-                      type="number"
-                      min={50}
-                      max={200}
-                      step={1}
-                      value={poss}
-                      onChange={(e) => setPoss(Number(e.target.value))}
-                      style={{ width: 110, marginLeft: 8 }}
-                    />
-                  </label>
-                </div>
-              </div>
-
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 12 }}>
-                <label style={{ fontSize: 13, fontWeight: 800 }}>
-                  Model A
-                  <select
-                    className="input"
-                    style={{ width: 220, marginLeft: 8 }}
-                    value={compareA}
-                    onChange={(e) => setCompareA(e.target.value)}
-                    disabled={!modelNames.length}
-                  >
-                    {modelNames.map((m) => (
-                      <option key={m} value={m}>
-                        {prettyModelName(m)}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label style={{ fontSize: 13, fontWeight: 800 }}>
-                  Model B
-                  <select
-                    className="input"
-                    style={{ width: 220, marginLeft: 8 }}
-                    value={compareB}
-                    onChange={(e) => setCompareB(e.target.value)}
-                    disabled={!modelNames.length}
-                  >
-                    {modelNames.map((m) => (
-                      <option key={m} value={m}>
-                        {prettyModelName(m)}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <button
-                  className="btn"
-                  type="button"
-                  onClick={() => {
-                    // quick swap
-                    const a = compareA;
-                    setCompareA(compareB);
-                    setCompareB(a);
-                  }}
-                  disabled={!compareA || !compareB}
-                >
-                  Swap
-                </button>
-
-                <button
-                  className="btn"
-                  type="button"
-                  onClick={() => {
-                    if (bestModel?.model) setCompareA(bestModel.model);
-                    if (baselineGuess?.model) setCompareB(baselineGuess.model);
-                  }}
-                  disabled={!rows.length}
-                >
-                  Compare vs Baseline
-                </button>
-              </div>
-
-              {/* Comparison output */}
-              <div style={{ marginTop: 12 }}>
-                {compare ? (
-                  <div className="grid" style={{ marginTop: 0 }}>
-                    <div className="kpi">
-                      <div className="label">RMSE improvement (PPP error)</div>
-                      <div className="value" style={{ fontSize: 18, fontWeight: 900 }}>
-                        {compare.dRMSE >= 0 ? "+" : "—"}
-                        {fmt(Math.abs(compare.dRMSE), 4)} PPP
-                      </div>
-                      <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                        {Number.isFinite(compare.pctRMSE)
-                          ? `${fmt(Math.abs(compare.pctRMSE), 1)}% ${compare.dRMSE >= 0 ? "lower" : "higher"} RMSE vs ${prettyModelName(compare.b.model)}`
-                          : "Percent improvement unavailable."}
-                      </div>
-                    </div>
-
-                    <div className="kpi">
-                      <div className="label">≈ points / 100 possessions (error)</div>
-                      <div className="value" style={{ fontSize: 18, fontWeight: 900 }}>
-                        {compare.pointsPer100_RMSE >= 0 ? "+" : "—"}
-                        {fmt(Math.abs(compare.pointsPer100_RMSE), 2)}
-                      </div>
-                      <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                        {compare.dRMSE >= 0 ? "Less" : "More"} prediction error by ~{fmt(Math.abs(compare.pointsPer100_RMSE), 2)} points per 100 possessions.
-                      </div>
-                    </div>
-
-                    <div className="kpi">
-                      <div className="label">≈ points / {compare.possN} possessions (error)</div>
-                      <div className="value" style={{ fontSize: 18, fontWeight: 900 }}>
-                        {compare.pointsPerGame_RMSE >= 0 ? "+" : "—"}
-                        {fmt(Math.abs(compare.pointsPerGame_RMSE), 2)}
-                      </div>
-                      <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                        Scales the same error to your chosen possession count.
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <p className="muted" style={{ fontSize: 13, margin: 0 }}>
-                    Select two models to compare.
-                  </p>
-                )}
-
-                <div
-                  style={{
-                    marginTop: 10,
-                    padding: 12,
-                    borderRadius: 14,
-                    border: "1px solid rgba(15,23,42,0.10)",
-                    background: "rgba(255,255,255,0.7)",
-                  }}
-                >
-                  <div style={{ fontWeight: 900, fontSize: 13, marginBottom: 6 }}>Reading the error scale</div>
-                  <ul className="muted" style={{ fontSize: 13, paddingLeft: 18, margin: 0 }}>
-                    <li>
-                      <strong>PPP</strong> is points per possession for a play type (like “PnR Ball Handler”).
-                    </li>
-                    <li>
-                      <strong>RMSE</strong> is “typical miss” on PPP predictions. Lower means less error in this evaluation.
-                    </li>
-                    <li>
-                      A drop of <strong>0.01 PPP</strong> in RMSE ≈ <strong>1 point per 100 possessions</strong> less
-                      prediction error (not guaranteed points scored).
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </details>
-
             {/* Stats line in plain terms */}
             {data ? (
-              <details style={{ marginTop: 14 }}>
-                <summary>Statistical comparison</summary>
+              <div style={{ marginTop: 14 }}>
+                <h2 style={{ margin: "8px 0 6px", fontSize: 16, fontWeight: 900 }}>Is the improvement real?</h2>
                 <div
                   style={{
                     padding: 12,
@@ -798,7 +811,7 @@ export default function ModelMetricsPage() {
                     A dash means no paired test result was returned.
                   </p>
                 </div>
-              </details>
+              </div>
             ) : null}
           </>
         ) : null}

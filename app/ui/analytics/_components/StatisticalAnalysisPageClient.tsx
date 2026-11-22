@@ -3,7 +3,6 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { fetchMlAnalysis } from "../../../services/analytics";
 
 type CorrMatrix = { labels: string[]; matrix: number[][] };
@@ -562,9 +561,16 @@ export default function StatisticalAnalysisPage() {
   }, [data, minPoss]);
 
   return (
-    <section className={`card ${styles.workspace}`} style={{ padding: 0, overflow: "hidden" }}>
-      <div className={styles.header}>
-        <div className={styles.eyebrow}>Model evaluation</div>
+    <section className="card" style={{ padding: 0, overflow: "hidden" }}>
+      {/* HERO */}
+      <div
+        style={{
+          padding: "18px 18px 16px",
+          background:
+            "radial-gradient(1200px 420px at 10% 10%, rgba(59,130,246,0.22), transparent 60%), radial-gradient(900px 360px at 90% 0%, rgba(16,185,129,0.16), transparent 55%), linear-gradient(180deg, rgba(15,23,42,0.06), rgba(15,23,42,0.02))",
+          borderBottom: "1px solid rgba(15,23,42,0.08)",
+        }}
+      >
         <div
           style={{
             display: "flex",
@@ -577,11 +583,12 @@ export default function StatisticalAnalysisPage() {
           <div style={{ maxWidth: 820 }}>
             <h1 className="h1" style={{ marginBottom: 6 }}>
               Statistical Analysis
-
+              <span style={{ opacity: 0.8, fontWeight: 700 }}> — show your work</span>
             </h1>
 
             <p className="muted" style={{ fontSize: 14, margin: 0 }}>
-              Explore the play-type data, compare useful inputs and review model tuning.
+              Everything on this page comes from a single backend payload. “Defense dashboard” for:
+              distributions, correlations, feature selection, and model tuning.
             </p>
 
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
@@ -589,9 +596,11 @@ export default function StatisticalAnalysisPage() {
                 className="badge blue"
                 style={{ background: "rgba(59,130,246,0.12)", color: "rgba(30,64,175,0.95)" }}
               >
-                Play-type data
+                Dataset1 (Synergy)
               </span>
-
+              <span className="badge" style={{ background: "rgba(15, 23, 42, 0.06)" }}>
+                Single endpoint: /analysis/ml
+              </span>
               {bestModel ? (
                 <span
                   className="badge blue"
@@ -613,10 +622,10 @@ export default function StatisticalAnalysisPage() {
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link className="btn" href="/model-metrics">
-              Model Performance
+              Back: Model Performance
             </Link>
             <Link className="btn" href="/glossary">
-              Glossary
+              Next: Glossary
             </Link>
           </div>
         </div>
@@ -632,9 +641,9 @@ export default function StatisticalAnalysisPage() {
             flexWrap: "wrap",
           }}
         >
-          <div className={styles.toolbar}>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
             <label style={{ fontSize: 13, fontWeight: 800, color: "rgba(15,23,42,0.85)" }}>
-              Season folds
+              n_splits
               <select
                 className="input"
                 style={{ width: 110, display: "inline-block", marginLeft: 8 }}
@@ -651,7 +660,7 @@ export default function StatisticalAnalysisPage() {
             </label>
 
             <label style={{ fontSize: 13, fontWeight: 800, color: "rgba(15,23,42,0.85)" }}>
-              Minimum possessions
+              min_poss
               <input
                 className="input"
                 style={{ width: 110, display: "inline-block", marginLeft: 8 }}
@@ -668,9 +677,6 @@ export default function StatisticalAnalysisPage() {
               {loading ? "Running…" : "Run"}
             </button>
 
-            <details>
-              <summary>Analysis tools</summary>
-              <div className={styles.toolbar}>
             <button
               className="btn"
               type="button"
@@ -694,9 +700,6 @@ export default function StatisticalAnalysisPage() {
               Clear cache
             </button>
 
-              </div>
-            </details>
-
             {stage ? (
               <span className="muted" style={{ fontSize: 12 }}>
                 {stage}
@@ -706,7 +709,7 @@ export default function StatisticalAnalysisPage() {
 
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
             <TabPill active={tab === "overview"} label="Overview" onClick={() => setTab("overview")} />
-            <TabPill active={tab === "eda"} label="Distributions" onClick={() => setTab("eda")} />
+            <TabPill active={tab === "eda"} label="EDA" onClick={() => setTab("eda")} />
             <TabPill active={tab === "correlations"} label="Correlations" onClick={() => setTab("correlations")} />
             <TabPill active={tab === "selection"} label="Feature Selection" onClick={() => setTab("selection")} />
             <TabPill active={tab === "models"} label="Model Tuning" onClick={() => setTab("models")} />
@@ -807,28 +810,25 @@ export default function StatisticalAnalysisPage() {
                 boxShadow: "0 16px 30px rgba(15,23,42,0.06)",
               }}
             >
-              <details>
-              <summary>What each analysis shows</summary>
+              <h2 style={{ margin: "2px 0 8px", fontSize: 16, fontWeight: 900 }}>How to read this page</h2>
               <ol className="muted" style={{ fontSize: 13, paddingLeft: 18, margin: 0 }}>
                 <li>
-                  <strong>Distributions</strong> shows the spread of values and missing data.
+                  <strong>EDA</strong> shows distribution + missing values (data quality & filters).
                 </li>
                 <li>
-                  <strong>Correlations</strong> shows which statistics move together.
+                  <strong>Correlations</strong> explains relationships + redundancy (why we prune features).
                 </li>
                 <li>
-                  <strong>Feature selection</strong> compares the inputs retained by three selection methods.
+                  <strong>Feature selection</strong> compares the inputs retained by filter, KBest and RFE methods.
                 </li>
                 <li>
-                  <strong>Model tuning</strong> compares prediction error for the tested model settings.
+                  <strong>Model tuning</strong> compares candidate models (lowest RMSE wins).
                 </li>
               </ol>
 
-              </details>
-
               {takeaways ? (
                 <div style={{ marginTop: 12 }}>
-                  <div style={{ fontWeight: 900, fontSize: 13, marginBottom: 6 }}>Dataset summary</div>
+                  <div style={{ fontWeight: 900, fontSize: 13, marginBottom: 6 }}>Quick takeaways (coach version)</div>
                   <ul className="muted" style={{ fontSize: 13, paddingLeft: 18, margin: 0 }}>
                     <li>
                       Target is <strong>{takeaways.target}</strong> (points per possession for a play type).
@@ -851,7 +851,7 @@ export default function StatisticalAnalysisPage() {
 
               <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
                 <button className="btn" type="button" onClick={() => setTab("eda")} disabled={!data}>
-                  View distributions
+                  Go to EDA
                 </button>
                 <button className="btn" type="button" onClick={() => setTab("correlations")} disabled={!data}>
                   Go to Correlations
@@ -877,7 +877,7 @@ export default function StatisticalAnalysisPage() {
               }}
             >
               <div>
-                <h2 style={{ margin: "2px 0 6px", fontSize: 18, fontWeight: 900 }}>Distributions</h2>
+                <h2 style={{ margin: "2px 0 6px", fontSize: 18, fontWeight: 900 }}>EDA</h2>
                 <p className="muted" style={{ fontSize: 13, margin: 0 }}>
                   Distributions + missingness so reviewers can trust the dataset quality and filters.
                 </p>
@@ -1023,7 +1023,7 @@ export default function StatisticalAnalysisPage() {
                     </p>
                   </div>
 
-                  <div className={styles.toolbar}>
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
                     <label style={{ fontSize: 13, fontWeight: 800 }}>
                       Mode
                       <select
