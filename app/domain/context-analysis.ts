@@ -143,8 +143,9 @@ export function computeOverlay(
  */
 export function contextReason(deltaPPP: number, contextLabel: string): string {
   if (!Number.isFinite(deltaPPP)) return "Highest expected points for this matchup";
-  const sign = deltaPPP >= 0 ? "+" : "";
+  const rounded = deltaPPP.toFixed(2);
+  const change = Number(rounded) === 0 ? "0.00" : `${deltaPPP > 0 ? "+" : ""}${rounded}`;
   const state = (contextLabel || "").split("|")[0].trim();
-  const reason = `${sign}${deltaPPP.toFixed(2)} PPP vs season baseline`;
+  const reason = `${change} PPP vs season baseline`;
   return state && state.toLowerCase() !== "normal context" ? `${reason} (${state.toLowerCase()})` : reason;
 }

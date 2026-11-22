@@ -50,7 +50,15 @@ describe("one-line reason", () => {
   it("compares to the season baseline and names a late-game state", () => {
     expect(contextReason(0.0512, "Late & trailing | Q4 0:28")).toBe("+0.05 PPP vs season baseline (late & trailing)");
     expect(contextReason(-0.031, "Normal context | Q2")).toBe("-0.03 PPP vs season baseline");
-    expect(contextReason(0, "")).toBe("+0.00 PPP vs season baseline");
+    expect(contextReason(0, "")).toBe("0.00 PPP vs season baseline");
+  });
+
+  it("does not show a positive or negative sign for a change that rounds to zero", () => {
+    for (const value of [0, -0, 0.0049, -0.0049]) {
+      expect(contextReason(value, "")).toBe("0.00 PPP vs season baseline");
+    }
+    expect(contextReason(0.0051, "")).toBe("+0.01 PPP vs season baseline");
+    expect(contextReason(-0.0051, "")).toBe("-0.01 PPP vs season baseline");
   });
 
   it("falls back when the change is missing", () => {
