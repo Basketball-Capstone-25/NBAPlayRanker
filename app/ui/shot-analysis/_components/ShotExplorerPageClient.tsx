@@ -26,6 +26,7 @@ function chip(text: string) {
   // Small “filter summary” badges so you can screenshot the exact query context for defense/docs.
   return (
     <span
+      key={text}
       className="badge"
       style={{
         background: "rgba(255,255,255,0.06)",
