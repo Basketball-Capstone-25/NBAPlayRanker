@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { ShotLaterSeasonResults, shotModelName } from "./ShotLaterSeasonResults";
 import { fetchShotModelMetrics } from "../../../services/shotAnalysis";
 import type { ShotLaterSeason } from "../../../domain/shot-analysis";
@@ -39,10 +40,11 @@ export function ShotMetricsContent({ data, loading, error, onReload }: {
     }
   }
   return <>
-    <header className="card">
+    <header className={styles.header}>
+      <div className={styles.eyebrow}>Model evaluation</div>
       <h1 className="h1">Shot Model Metrics</h1>
       <p>Compare how well the models estimate points for a proposed shot.</p>
-      <p className="muted">Shot location and type must be supplied. These results do not measure pre-possession forecasts.</p>
+      <p className={styles.notice}>Shot location and type must be supplied. These results do not measure pre-possession forecasts.</p>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
         <Link href="/shot-plan">Shot Plan</Link>
         <Link href="/shot-statistical-analysis">Shot Statistical Analysis</Link>
@@ -94,7 +96,7 @@ export default function ShotModelMetricsPage() {
     }).finally(() => { if (active) setLoading(false); });
     return () => { active = false; };
   }, [attempt]);
-  return <div className="page" style={{ paddingBottom: 56 }}><ShotMetricsContent data={data} loading={loading} error={error} onReload={() => {
+  return <div className={`page ${styles.workspace}`} style={{ paddingBottom: 56 }}><ShotMetricsContent data={data} loading={loading} error={error} onReload={() => {
     setLoading(true); setData(null); setError(null); setAttempt(value => value + 1);
   }} /></div>;
 }

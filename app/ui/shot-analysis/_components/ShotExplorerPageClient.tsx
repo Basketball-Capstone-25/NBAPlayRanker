@@ -3,6 +3,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useShotResult } from "./useShotResult";
 import {
   authenticatedDownload,
@@ -165,31 +166,22 @@ export default function ShotExplorerPage() {
   }, [season, team, opp, shotType, zone, limit]);
 
   return (
-    <div className="page">
+    <div className={`page ${styles.workspace}`}>
       {/* Hero header: sets context + points users to the recommendation page */}
-      <header
-        className="card"
-        style={{
-          padding: 20,
-          borderRadius: 16,
-          background:
-            "linear-gradient(135deg, rgba(34,197,94,0.15), rgba(59,130,246,0.12) 40%, rgba(15,22,44,0.95))",
-          border: "1px solid rgba(255,255,255,0.10)",
-        }}
-      >
+      <header className={styles.header}>
+        <div className={styles.eyebrow}>Shot analysis</div>
         <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
           <h1 style={{ margin: 0 }}>Shots Explorer</h1>
-          <span className="badge blue">Dataset2 • Raw PBP</span>
+
           <span className="badge">One row per shot</span>
         </div>
 
         <p className="muted" style={{ marginTop: 8 }}>
-          Browse raw shots from the play-by-play dataset. Filter, preview quickly, then export CSV
-          for deeper analysis in Excel / R / Python.
+          Find recorded shots by team, opponent and court zone, then export your selection.
         </p>
 
         <p className="muted" style={{ margin: 0 }}>
-          Want recommendations? See <Link href="/shot-plan">Shot Plan</Link>.
+          Compare shot choices in <Link href="/shot-plan">Shot Plan</Link>.
         </p>
       </header>
 
@@ -221,7 +213,7 @@ export default function ShotExplorerPage() {
         </div>
 
         {/* Primary filters: season + team + optional opponent */}
-        <div className="grid" style={{ marginTop: 12, gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))" }}>
+        <div className={styles.columns}>
           <div>
             <label className="label" htmlFor="shot-explorer-input-1">Season</label>
             <select id="shot-explorer-input-1" className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
@@ -262,7 +254,7 @@ export default function ShotExplorerPage() {
         </div>
 
         {/* Secondary filters: optional shotType + zone + preview limit */}
-        <div className="grid" style={{ marginTop: 12, gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))" }}>
+        <div className={styles.columns}>
           <div>
             <label className="label" htmlFor="shot-explorer-input-4">Shot type (optional)</label>
             <select id="shot-explorer-input-4" className="input" value={shotType} onChange={(e) => setShotType(e.target.value)}>

@@ -12,6 +12,7 @@ import {
   type RequestLogPage,
 } from "../../../services/request-log";
 import styles from "./RequestLog.module.css";
+import workspace from "../../data-explorer/AnalystWorkspace.module.css";
 
 type Status = "loading" | "ready" | "error";
 
@@ -73,13 +74,14 @@ export default function RequestLogClient() {
   const totalPages = result?.total != null ? Math.max(1, Math.ceil(result.total / REQUEST_LOG_PAGE_SIZE)) : null;
 
   return (
-    <div className={styles.page} aria-label="Request log">
-      <div>
+    <div className={`${styles.page} ${workspace.workspace}`} aria-label="Request log">
+      <header className={workspace.header}>
+        <div className={workspace.eyebrow}>Analyst workspace</div>
         <h1 className={styles.title}>Request Log</h1>
-        <p className={styles.sub}>Who called which API endpoint, and when. Newest first. Times are shown in your local time; date filters use UTC days.</p>
-      </div>
+        <p className={styles.sub}>Review recent requests, response times and errors.</p>
+      </header>
 
-      <form className={styles.filters} onSubmit={search} aria-label="Filter the request log">
+      <form className={`card ${styles.filters}`} onSubmit={search} aria-label="Filter the request log">
         <label className={styles.field}>
           User email contains
           <input className={styles.input} value={draft.user} maxLength={320} placeholder="coach@"
@@ -106,6 +108,7 @@ export default function RequestLogClient() {
         </div>
       </form>
 
+      <p className={styles.sub}>Newest first · Times use your local timezone · Date filters use UTC days</p>
       <div className={styles.status} role="status" aria-live="polite">
         {status === "loading" ? "Loading…" : null}
         {status === "ready" && result

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { fetchShotMlAnalysis } from "../../../services/shotAnalysis";
 import type { ShotAnalysis } from "../../../domain/shot-analysis";
 
@@ -71,13 +72,14 @@ export default function ShotStatisticalAnalysisPage() {
     }).finally(() => { if (active) setLoading(false); });
     return () => { active = false; };
   }, [retry]);
-  return <div className="container">
-    <section className="card">
+  return <div className={`page ${styles.workspace}`}>
+    <header className={styles.header}>
+      <div className={styles.eyebrow}>Model evaluation</div>
       <h1>Shot Statistical Analysis</h1>
       <p>Explore shot outcomes and the inputs used by the models.</p>
       <Link href="/shot-model-metrics">Shot Model Metrics</Link>{" · "}<Link href="/shot-explorer">Shot Explorer</Link>
       <div style={{ marginTop: 16 }}><button className="btn" disabled={loading} onClick={() => setRetry(x => x + 1)}>{loading ? "Loading analysis…" : "Reload analysis"}</button></div>
-    </section>
+    </header>
     {error && <section className="card" role="alert"><h2>Shot analysis unavailable</h2><p>{error}</p></section>}
     {data && !loading && <ShotAnalysisResults data={data} />}
   </div>;
