@@ -68,7 +68,9 @@ describe("team profile table", () => {
     expect(html).toContain("-0.200"); expect(html).toContain("+0.100");
   });
   it("does not show negative zero when differences round to zero", () => {
-    const data = report(); data.rows[0].difference = { usage_pp: -0.00001, ppp: -0.00001 };
+    const data = report(); data.team_possessions = data.opponent_possessions = 1_000_000;
+    data.rows = [{ play_type: "Cut", team: { possessions: 1_000_000, points: 999_999, usage_pct: 100, ppp: .999999 },
+      opponent: { possessions: 1_000_000, points: 1_000_000, usage_pct: 100, ppp: 1 }, difference: { usage_pp: 0, ppp: -.000001 } }];
     const html = renderToStaticMarkup(<TeamComparisonTable data={data} />);
     expect(html).toContain("0.0 pp"); expect(html).toContain("0.000");
     expect(html).not.toContain("-0.0 pp"); expect(html).not.toContain("-0.000");
@@ -94,6 +96,22 @@ describe("team profile table", () => {
 describe("team profile readouts", () => {
   const mainView = (data: TeamComparison, metric: "ppp" | "usage", minimum = 20) =>
     renderToStaticMarkup(<TeamComparisonTable data={data} minimum={minimum} initialMetric={metric} />).split("<details")[0];
+
+  it.each([false, true])("rounds the source-count difference consistently when teams are reversed: %s", reverse => {
+    const data = report(); data.team_possessions = 80; data.opponent_possessions = 100;
+    data.rows = [{ play_type: "OffScreen", team: { possessions: 80, points: 91, usage_pct: 100, ppp: 91 / 80 },
+      opponent: { possessions: 100, points: 100, usage_pct: 100, ppp: 1 }, difference: { usage_pp: 0, ppp: 91 / 80 - 1 } }];
+    if (reverse) {
+      [data.rows[0].team, data.rows[0].opponent] = [data.rows[0].opponent, data.rows[0].team];
+      [data.team_possessions, data.opponent_possessions] = [data.opponent_possessions, data.team_possessions];
+      data.rows[0].difference.ppp *= -1;
+    }
+    const html = renderToStaticMarkup(<TeamComparisonTable data={data} minimum={1} />);
+    expect(html).toContain("13.8 points apart");
+    expect(html).toContain(`${reverse ? "BOS" : "TOR"} scored 13.8 more points`);
+    expect(html).toContain(reverse ? "-0.138" : "+0.138");
+    expect(html).not.toContain("13.7 points apart");
+  });
 
   it("converts PPP to points per 100 play-type possessions with the same bar scale", () => {
     const html = mainView(report(), "ppp", 1);

@@ -2,19 +2,19 @@
 
 import React, { useId, useState } from "react";
 import type { TeamComparison, TeamProfile } from "../../../domain/team-comparison";
+import { profileDifferenceText, profileValueText } from "../../../domain/profile-display";
 import { playtypeName } from "../../../domain/playtype-dashboard";
 import styles from "./matchup-dashboard.module.css";
 import readout from "./comparison-readouts.module.css";
 
 type ProfileMetric = "ppp" | "usage";
 const count = (value: number | null | undefined) => value == null ? "—" : value.toLocaleString("en-US");
-const rate = (value: number | null | undefined, digits: number, unit = "") =>
-  value == null ? "—" : `${value.toFixed(digits)}${unit}`;
-const difference = (value: number | null, digits: number, unit = "") => {
+const rate = (value: string | null, unit = "") => value === null ? "—" : `${value}${unit}`;
+const difference = (value: string | null, unit = "") => {
   if (value === null) return "—";
-  const rounded = Number(value.toFixed(digits));
-  return `${rounded > 0 ? "+" : ""}${rounded.toFixed(digits)}${unit}`;
+  return `${Number(value) > 0 ? "+" : ""}${value}${unit}`;
 };
+const magnitude = (value: string | null) => value?.replace(/^-/, "") ?? "";
 const displayValue = (sample: TeamProfile | null, metric: ProfileMetric) =>
   metric === "usage" ? sample?.usage_pct ?? null : sample?.ppp == null ? null : sample.ppp * 100;
 const displayDifference = (row: TeamComparison["rows"][number], metric: ProfileMetric) =>
@@ -22,11 +22,12 @@ const displayDifference = (row: TeamComparison["rows"][number], metric: ProfileM
 
 function observation(data: TeamComparison, row: TeamComparison["rows"][number], metric: ProfileMetric) {
   const delta = displayDifference(row, metric);
+  const rounded = profileDifferenceText(data, row, metric);
   if (delta === null) return "Comparison unavailable";
-  if (Math.abs(delta) < 0.05) return metric === "usage" ? "Used about as often" : "About the same scoring rate";
+  if (Number(rounded) === 0) return metric === "usage" ? "Used about as often" : "About the same scoring rate";
   const higherTeam = delta > 0 ? data.filters.team : data.filters.opponent;
   return metric === "usage" ? `${higherTeam} used this play more often`
-    : `${higherTeam} scored ${Math.abs(delta).toFixed(1)} more points per 100 of these possessions`;
+    : `${higherTeam} scored ${magnitude(rounded)} more points per 100 of these possessions`;
 }
 
 export function TeamComparisonTable({ data, minimum = 20, initialMetric = "ppp" }: {
@@ -43,6 +44,7 @@ export function TeamComparisonTable({ data, minimum = 20, initialMetric = "ppp" 
   const standout = eligible.reduce<TeamComparison["rows"][number] | null>((best, row) =>
     !best || Math.abs(displayDifference(row, metric)!) > Math.abs(displayDifference(best, metric)!) ? row : best, null);
   const standoutDelta = standout ? displayDifference(standout, metric) : null;
+  const standoutText = standout ? profileDifferenceText(data, standout, metric) : null;
   const barMaximum = metric === "usage" ? 100 : Math.max(100, ...data.rows.flatMap(row =>
     [displayValue(row.team, metric) ?? 0, displayValue(row.opponent, metric) ?? 0]));
   return <section className={`${styles.card} ${readout.card}`} aria-labelledby={titleId}>
@@ -60,9 +62,9 @@ export function TeamComparisonTable({ data, minimum = 20, initialMetric = "ppp" 
     {missingTeams.length ? <p className={readout.notice} role="status">No recorded offensive data for {missingTeams.join(" or ")} in {filters.season}.</p> : null}
     {data.rows.length ? <>
       <div className={readout.headline} aria-live="polite"><span className={readout.eyebrow}>One thing to notice</span>
-        {standout && standoutDelta !== null && Math.abs(standoutDelta) >= 0.05 ? <>
+        {standout && standoutDelta !== null && Number(standoutText) !== 0 ? <>
           <strong>{playtypeName(standout.play_type)}: {observation(data, standout, metric)}.</strong>
-          <p>{metric === "usage" ? `${Math.abs(standoutDelta).toFixed(1)} percentage points apart. ` : ""}
+          <p>{metric === "usage" ? `${magnitude(standoutText)} percentage points apart. ` : ""}
             The largest {metric === "usage" ? "play-mix" : "scoring-rate"} gap among categories with at least {count(minimum)} recorded possessions for each team.
             {" "}{metric === "usage" ? "Use this to compare what each team tends to run." : "Use this to choose a play type to review on film, not to predict extra points."}</p>
         </> : <><strong>{eligible.length ? "The two profiles are close on this measure." : "More shared data is needed for a clear comparison."}</strong>
@@ -73,12 +75,13 @@ export function TeamComparisonTable({ data, minimum = 20, initialMetric = "ppp" 
           <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Play type</th><th scope="col" role="columnheader">{filters.team}</th><th scope="col" role="columnheader">{filters.opponent}</th><th scope="col" role="columnheader">What it shows</th></tr></thead>
           <tbody role="rowgroup">{data.rows.map(row => {
             const delta = displayDifference(row, metric);
+            const deltaText = profileDifferenceText(data, row, metric);
             const small = [row.team, row.opponent].some(sample => sample !== null && sample.possessions < minimum);
             return <tr key={row.play_type} role="row">
               <th scope="row" role="rowheader">{playtypeName(row.play_type)}{small ? <span className={readout.sample}>Small sample</span> : null}</th>
               {(["team", "opponent"] as const).map(side => {
                 const value = displayValue(row[side], metric);
-                return <td key={side} role="cell" data-label={filters[side]}><strong>{rate(value, 1, metric === "usage" ? "%" : "")}</strong>
+                return <td key={side} role="cell" data-label={filters[side]}><strong>{rate(profileValueText(data, row, side, metric), metric === "usage" ? "%" : "")}</strong>
                   {value === null ? <small>Unavailable</small> :
                     <span className={readout.barTrack} aria-hidden="true"><span className={side === "team" ? readout.teamBar : readout.referenceBar}
                       style={{ width: `${100 * value / barMaximum}%` }} /></span>}
@@ -86,8 +89,8 @@ export function TeamComparisonTable({ data, minimum = 20, initialMetric = "ppp" 
                 </td>;
               })}
               <td className={readout.takeaway} role="cell" data-tone="neutral">{delta === null ? <span>Comparison unavailable</span> : <>
-                <strong>{metric === "usage" ? Math.abs(delta) < 0.05 ? "About the same share" : `${Math.abs(delta).toFixed(1)} pp apart`
-                  : Math.abs(delta) < 0.05 ? "About the same rate" : `${Math.abs(delta).toFixed(1)} points apart`}</strong>
+                <strong>{metric === "usage" ? Number(deltaText) === 0 ? "About the same share" : `${magnitude(deltaText)} pp apart`
+                  : Number(deltaText) === 0 ? "About the same rate" : `${magnitude(deltaText)} points apart`}</strong>
                 <small>{small ? "Too few possessions to highlight a difference." : observation(data, row, metric)}</small>
               </>}</td>
             </tr>;
@@ -108,10 +111,10 @@ export function TeamComparisonTable({ data, minimum = 20, initialMetric = "ppp" 
             {(["team", "opponent"] as const).map((side, index) => <tr key={side}>
               {index === 0 ? <th scope="rowgroup" rowSpan={3}>{playtypeName(row.play_type)}</th> : null}
               <th scope="row">{filters[side]}</th><td>{count(row[side]?.possessions)}</td>
-              <td>{rate(row[side]?.usage_pct, 1, "%")}</td><td>{rate(row[side]?.ppp, 3)}</td><td>{count(row[side]?.points)}</td>
+              <td>{rate(profileValueText(data, row, side, "usage"), "%")}</td><td>{rate(profileValueText(data, row, side, "ppp", 3, false))}</td><td>{count(row[side]?.points)}</td>
             </tr>)}
             <tr><th scope="row">Difference</th><td>—</td>
-              <td>{difference(row.difference.usage_pp, 1, " pp")}</td><td>{difference(row.difference.ppp, 3)}</td><td>—</td></tr>
+              <td>{difference(profileDifferenceText(data, row, "usage"), " pp")}</td><td>{difference(profileDifferenceText(data, row, "ppp", 3, false))}</td><td>—</td></tr>
           </tbody>)}
         </table>
       </div> : null}
