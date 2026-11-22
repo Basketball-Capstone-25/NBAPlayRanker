@@ -55,7 +55,7 @@ export default function ForgotPasswordPage() {
             <div className="auth-point">
               <div className="auth-point-title">Secure recovery</div>
               <div className="auth-point-copy">
-                The reset link routes back through your existing auth callback flow.
+                Open the link in your email to choose a new password.
               </div>
             </div>
 

@@ -122,7 +122,9 @@ function LoginPageContent() {
             </button>
           </form>
 
-          {message ? <div className="auth-alert auth-alert-error">{message}</div> : null}
+          <p className="auth-panel-note"><Link href="/forgot-password">Forgot your password?</Link></p>
+
+          {message ? <div role="alert" className="auth-alert auth-alert-error">{message}</div> : null}
 
           <div className="auth-panel-note">
             Need an account? <Link href="/signup">Create one here</Link>

@@ -12,7 +12,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import type { CSSProperties } from "react";
+import styles from "../reference.module.css";
 
 type WhereLink = { label: string; href: string };
 
@@ -909,21 +909,6 @@ const TERMS: Array<{
   },
 ];
 
-function pillStyle(active: boolean): CSSProperties {
-  return {
-    borderRadius: 999,
-    padding: "6px 10px",
-    border: "1px solid rgba(15, 23, 42, 0.10)",
-    background: active
-      ? "linear-gradient(135deg, rgba(56,189,248,0.22), rgba(99,102,241,0.18), rgba(34,197,94,0.12))"
-      : "rgba(255,255,255,0.60)",
-    fontSize: 12,
-    cursor: "pointer",
-    userSelect: "none",
-    boxShadow: active ? "0 8px 22px rgba(15, 23, 42, 0.10)" : "none",
-  };
-}
-
 export default function GlossaryPage() {
   const [query, setQuery] = useState("");
   const [tag, setTag] = useState<string>("All");
@@ -949,231 +934,21 @@ export default function GlossaryPage() {
     });
   }, [query, tag]);
 
-  const counts = useMemo(() => {
-    const withWhy = filtered.filter((t) => Boolean(t.whyItMatters)).length;
-    const withWhere = filtered.filter((t) => (t.where?.length ?? 0) > 0).length;
-    return { total: filtered.length, withWhy, withWhere };
-  }, [filtered]);
-
-  const heroStyle: CSSProperties = {
-    borderRadius: 18,
-    padding: "18px 18px 14px",
-    background:
-      "linear-gradient(135deg, rgba(56,189,248,0.16), rgba(99,102,241,0.14), rgba(34,197,94,0.10))",
-    border: "1px solid rgba(255,255,255,0.10)",
-  };
-
-  return (
-    <main className="page" style={{ paddingBottom: 56 }}>
-      {/* HERO */}
-      <header className="page__header" style={heroStyle}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "baseline",
-            justifyContent: "space-between",
-            gap: 12,
-            flexWrap: "wrap",
-          }}
-        >
-          <div>
-            <h1 className="h1" style={{ margin: 0 }}>
-              Glossary
-            </h1>
-            <p className="muted" style={{ marginTop: 6, fontSize: 14, marginBottom: 0 }}>
-              Plain-English definitions for terms used across the entire product built for fast review and easy traceability.
-            </p>
-          </div>
-        </div>
-
-        {/* ✅ Keep only: Search bar + counters + tag pills (no Product map) */}
-        <div
-          style={{
-            marginTop: 14,
-            display: "flex",
-            gap: 10,
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-            <label style={{ fontSize: 13, display: "flex", gap: 8, alignItems: "center" }}>
-              Search
-              <input
-                className="input"
-                style={{ width: 320, maxWidth: "100%" }}
-                placeholder="Try: PPP, shrinkage, GroupKFold, shot type, Top-K, baseline…"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </label>
-
-            <span className="badge">
-              Showing {counts.total} {counts.total === 1 ? "term" : "terms"}
-            </span>
-            <span className="badge blue">With “Why it matters”: {counts.withWhy}</span>
-            <span className="badge">With “Where you see it”: {counts.withWhere}</span>
-          </div>
-
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
-            {allTags.map((t) => (
-              <span
-                key={t}
-                role="button"
-                tabIndex={0}
-                style={pillStyle(tag === t)}
-                onClick={() => setTag(t)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") setTag(t);
-                }}
-                aria-label={`Filter glossary by tag ${t}`}
-                title={`Filter: ${t}`}
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-      </header>
-
-      {/* CONTENT */}
-      <section className="card" style={{ marginTop: 14 }}>
-        {filtered.length === 0 ? (
-          <div style={{ padding: 8 }}>
-            <p className="muted" style={{ margin: 0 }}>
-              No terms match your search. Try removing filters or searching a shorter keyword.
-            </p>
-          </div>
-        ) : (
-          <div style={{ marginTop: 4, display: "grid", gap: 12 }}>
-            {filtered.map((t) => (
-              <article
-                key={t.term}
-                style={{
-                  border: "1px solid rgba(15, 23, 42, 0.10)",
-                  borderRadius: 16,
-                  padding: 14,
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.70), rgba(255,255,255,0.55))",
-                  boxShadow: "0 10px 26px rgba(15, 23, 42, 0.06)",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    gap: 10,
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <div style={{ display: "flex", gap: 10, alignItems: "baseline", flexWrap: "wrap" }}>
-                    <h2 style={{ margin: 0, fontSize: 16 }}>{t.term}</h2>
-                    {t.tags?.length ? (
-                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                        {t.tags.map((x) => (
-                          <span key={x} className="badge">
-                            {x}
-                          </span>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-
-                  {t.whyItMatters ? <span className="badge blue">Why it matters</span> : null}
-                </div>
-
-                <p className="muted" style={{ marginTop: 10, fontSize: 13 }}>
-                  {t.meaning}
-                </p>
-
-                {t.where?.length ? (
-                  <div style={{ marginTop: 10 }}>
-                    <div className="muted" style={{ fontSize: 12, marginBottom: 6 }}>
-                      Where you see it:
-                    </div>
-                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                      {t.where.map((w) => (
-                        <Link
-                          key={`${t.term}-${w.href}-${w.label}`}
-                          href={w.href}
-                          className="badge"
-                          style={{
-                            textDecoration: "none",
-                            background: "rgba(255,255,255,0.55)",
-                            borderColor: "rgba(15,23,42,0.12)",
-                          }}
-                        >
-                          {w.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
-
-                {t.whyItMatters ? (
-                  <div
-                    style={{
-                      marginTop: 10,
-                      borderRadius: 14,
-                      padding: 12,
-                      border: "1px solid rgba(29, 66, 138, 0.18)",
-                      background: "rgba(29, 66, 138, 0.06)",
-                    }}
-                  >
-                    <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-                      <span
-                        className="badge"
-                        style={{
-                          background: "rgba(29,66,138,0.12)",
-                          borderColor: "rgba(29,66,138,0.20)",
-                        }}
-                      >
-                        Context
-                      </span>
-                      <span style={{ fontSize: 12, color: "rgba(15,23,42,0.85)" }}>{t.whyItMatters}</span>
-                    </div>
-                  </div>
-                ) : null}
-              </article>
-            ))}
-          </div>
-        )}
-
-        <div
-          style={{
-            marginTop: 16,
-            display: "flex",
-            gap: 10,
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-          }}
-        >
-          <Link className="btn" href="/model-metrics">
-            Back: Model Performance
-          </Link>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <button
-              className="btn btn--secondary"
-              type="button"
-              onClick={() => {
-                setQuery("");
-                setTag("All");
-                try {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                } catch {
-                  window.scrollTo(0, 0);
-                }
-              }}
-            >
-              Clear filters
-            </button>
-            <Link className="btn" href="/">
-              Home
-            </Link>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+  return <section className={styles.page}>
+    <header className={styles.heading}><div><p className={styles.eyebrow}>REFERENCE</p><h1>Basketball & analytics glossary</h1><p>A quick explanation of the terms used in the app.</p></div><Link className="btn" href="/data-dictionary">Data Dictionary ↗</Link></header>
+    <section className={styles.filters} aria-label="Find a term">
+      <label>Search terms<input className="input" type="search" placeholder="Try PPP, usage or Random Forest" value={query} onChange={e => setQuery(e.target.value)} /></label>
+      <label>Category<select className="input" value={tag} onChange={e => setTag(e.target.value)}>{allTags.map(t => <option key={t}>{t}</option>)}</select></label>
+      <button className="btn" onClick={() => { setQuery(""); setTag("All"); }}>Clear</button>
+    </section>
+    <p className={styles.count} role="status">{filtered.length} {filtered.length === 1 ? "term" : "terms"}</p>
+    <div className={styles.terms}>{filtered.map(t => <details className={styles.term} key={t.term}>
+      <summary><span>{t.term}</span><span className={styles.tag}>{t.tags?.[0]}</span></summary>
+      <div className={styles.definition}><p>{t.meaning}</p>
+        {t.whyItMatters ? <p className={styles.context}>{t.whyItMatters}</p> : null}
+        {t.where?.length ? <div className={styles.links}>{t.where.map(w => <Link key={`${w.href}-${w.label}`} href={w.href}>{w.label} ↗</Link>)}</div> : null}
+      </div>
+    </details>)}</div>
+    {filtered.length === 0 ? <div className={styles.empty}><h2>No matching terms</h2><p>Try a shorter search or choose another category.</p></div> : null}
+  </section>;
 }
