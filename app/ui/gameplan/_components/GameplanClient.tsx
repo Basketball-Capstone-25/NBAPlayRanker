@@ -4,6 +4,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Gameplan.module.css";
+import { gameplanSelectionKey, selectGameplanResult, type GameplanSelection } from "./gameplan-result";
 import TopPickCall from "../../_shared/components/TopPickCall";
 import { periodLabel, periodSeconds, resolveGameSituation, type ParsedSituation, type ResolvedSituation } from "../../../domain/gameplan-context";
 import { FIELD_LABEL, situationFromParse, type ParseReply, type SituationField } from "../../../domain/voice-situation";
@@ -185,6 +186,7 @@ export default function GameplanClient() {
   const [baselinePlays, setBaselinePlays] = useState<NormalizedPlay[]>([]);
   const [smartPlays, setSmartPlays] = useState<NormalizedPlay[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [completedSelection, setCompletedSelection] = useState<GameplanSelection | null>(null);
 
   // NLP explanations for top plays
   const [explainMap, setExplainMap] = useState<Record<string, ExplainItem>>({});
@@ -195,11 +197,13 @@ export default function GameplanClient() {
   const [playVizError, setPlayVizError] = useState<string | null>(null);
   const [playVizCaption, setPlayVizCaption] = useState<string>("");
   const [playVizBase64, setPlayVizBase64] = useState<string>("");
+  const [loadedPlayVizKey, setLoadedPlayVizKey] = useState("");
 
   const [shotVizLoading, setShotVizLoading] = useState(false);
   const [shotVizError, setShotVizError] = useState<string | null>(null);
   const [shotVizCaption, setShotVizCaption] = useState<string>("");
   const [shotVizBase64, setShotVizBase64] = useState<string>("");
+  const [loadedShotVizKey, setLoadedShotVizKey] = useState("");
 
   // Shot plan (Dataset2)
   const [shotLoading, setShotLoading] = useState(false);
@@ -363,10 +367,23 @@ export default function GameplanClient() {
   const seasonOptions = useMemo(() => options?.seasons ?? [], [options]);
   const matchupChosen = Boolean(season && our && opp && our !== opp);
 
+  const draftSelection: GameplanSelection = {
+    season, our, opp, k: clamp(showPlays, 1, 10), wOff, wDef,
+    situation: situationSet ? currentSituation() : null, prompt: nlText,
+  };
+  const currentInputKey = gameplanSelectionKey(draftSelection);
+  const currentInputKeyRef = useRef(currentInputKey);
+  currentInputKeyRef.current = currentInputKey;
+  const resultState = selectGameplanResult(completedSelection, draftSelection, {
+    loading, parsing, shotLoading, shotError, hasShots: topShotTypes.length > 0 || topZones.length > 0,
+  });
+  const resultInputs = resultState.inputs;
+
   const activePlays = useMemo(() => {
+    if (!resultState.current) return [];
     if (recommendationStyle === "baseline") return baselinePlays;
     return smartPlays.length ? smartPlays : baselinePlays;
-  }, [recommendationStyle, baselinePlays, smartPlays]);
+  }, [resultState.current, recommendationStyle, baselinePlays, smartPlays]);
 
   const selectedPlay = useMemo(() => {
     if (!activePlays.length) return null;
@@ -375,6 +392,8 @@ export default function GameplanClient() {
   }, [activePlays, selectedId]);
 
   const top3 = useMemo(() => activePlays.slice(0, 3), [activePlays]);
+  const playVizKey = resultInputs && selectedPlay ? `${gameplanSelectionKey(resultInputs)}|${selectedPlay.playType}` : "";
+  const shotVizKey = resultState.shotsCurrent && resultInputs ? `${gameplanSelectionKey(resultInputs)}|${selectedShotType}|${selectedZone}` : "";
 
   const situationSummary = useMemo(() => {
     if (quarter === null || timeLeft === null || margin === null) return "Situation not set";
@@ -433,10 +452,15 @@ export default function GameplanClient() {
       return situationSet ? currentSituation() : null;
     }
 
+    const parseKey = currentInputKeyRef.current;
     try {
       setParsing(true);
       setStatusHint("Understanding situation…");
       const res = await postJson<NlpParseResponse & ParseReply>(`${API_BASE}/nlp/parse`, { text: nlText });
+      if (currentInputKeyRef.current !== parseKey) {
+        setStatusHint("Inputs changed. Build the gameplan again.");
+        return null;
+      }
       setNlConfidence(res.confidence ?? null);
       setNlQuestions(res.clarifying_questions ?? []);
       const c = res.context ?? {};
@@ -469,10 +493,10 @@ export default function GameplanClient() {
       const coaching = resolved.coaching;
       setCtxAfterTimeout(Boolean(coaching.after_timeout));
       setCtxLateClock(Boolean(coaching.late_clock));
-      setCtxNeed3(Boolean(coaching.need3));
+      setCtxNeed3(Boolean(coaching.need3 || coaching.need === "need3"));
       setCtxProtectLead(Boolean(coaching.protect_lead));
       setCtxEndQ(resolved.end_of_quarter);
-      setCtxVsSwitching(Boolean(coaching.vs_switching));
+      setCtxVsSwitching(Boolean(coaching.vs_switching || coaching.defense_style === "switch"));
 
       setStatusHint("Situation parsed ✅");
       setTimeout(() => setStatusHint(""), 900);
@@ -489,6 +513,12 @@ export default function GameplanClient() {
     const myBuildId = ++latestBuildRef.current;
 
     setLoading(true);
+    setCompletedSelection(null);
+    setBaselinePlays([]);
+    setSmartPlays([]);
+    setTopShotTypes([]);
+    setTopZones([]);
+    setShotError(null);
     setStatusHint("");
     setExplainMap({});
     setRankingNote("");
@@ -501,6 +531,8 @@ export default function GameplanClient() {
         setStatusHint("Set the period, time left and score (or describe them) before building.");
         return;
       }
+
+      const submitted: GameplanSelection = { ...draftSelection, situation };
 
       // Baseline recommendations (Dataset1)
       const baseRankRaw = await baselineRank({
@@ -613,8 +645,8 @@ export default function GameplanClient() {
 
         const firstType = types[0]?.SHOT_TYPE ?? "";
         const firstZone = zones[0]?.ZONE ?? "";
-        setSelectedShotType((prev) => prev || String(firstType));
-        setSelectedZone((prev) => prev || String(firstZone));
+        setSelectedShotType(String(firstType));
+        setSelectedZone(String(firstZone));
       } catch (e: any) {
         if (latestBuildRef.current !== myBuildId) return;
         setTopShotTypes([]);
@@ -626,10 +658,12 @@ export default function GameplanClient() {
         if (latestBuildRef.current === myBuildId) setShotLoading(false);
       }
 
+      if (latestBuildRef.current !== myBuildId) return;
+      setCompletedSelection(submitted);
       setStatusHint(smart.length ? "Smart recommendations ready ✅" : "Using baseline ✅");
       setTimeout(() => setStatusHint(""), 900);
     } catch (e: any) {
-      setStatusHint(e?.message || "Couldn’t build the gameplan.");
+      if (latestBuildRef.current === myBuildId) setStatusHint(e?.message || "Couldn’t build the gameplan.");
     } finally {
       if (latestBuildRef.current === myBuildId) setLoading(false);
     }
@@ -642,23 +676,27 @@ export default function GameplanClient() {
       setPlayVizError(null);
       setPlayVizBase64("");
       setPlayVizCaption("");
+      setPlayVizLoading(false);
+      setLoadedPlayVizKey("");
 
-      if (!selectedPlay) return;
+      if (!selectedPlay || !resultInputs) return;
 
       setPlayVizLoading(true);
       try {
         const res = await fetchPlaytypeViz({
-          season,
-          our,
-          opp,
+          season: resultInputs.season,
+          our: resultInputs.our,
+          opp: resultInputs.opp,
           playType: selectedPlay.playType,
-          wOff,
+          wOff: resultInputs.wOff,
         });
         if (!alive) return;
+        setLoadedPlayVizKey(playVizKey);
         setPlayVizCaption(res?.caption ?? "");
         setPlayVizBase64(res?.image_base64 ?? "");
       } catch (e: any) {
         if (!alive) return;
+        setLoadedPlayVizKey(playVizKey);
         setPlayVizError(e?.message || "Couldn’t load play diagram.");
       } finally {
         if (alive) setPlayVizLoading(false);
@@ -668,7 +706,7 @@ export default function GameplanClient() {
     return () => {
       alive = false;
     };
-  }, [selectedPlay?.playType, season, our, opp, wOff]);
+  }, [playVizKey, resultInputs, selectedPlay?.playType]);
 
   // Fetch shot heatmap when tab is active.
   useEffect(() => {
@@ -677,24 +715,27 @@ export default function GameplanClient() {
       setShotVizError(null);
       setShotVizBase64("");
       setShotVizCaption("");
+      setShotVizLoading(false);
+      setLoadedShotVizKey("");
 
-      if (vizTab !== "shotHeatmap") return;
-      if (!season || !our || !opp) return;
+      if (vizTab !== "shotHeatmap" || !shotVizKey || !resultInputs) return;
 
       setShotVizLoading(true);
       try {
         const res = await fetchShotHeatmap({
-          season,
-          our,
-          opp,
+          season: resultInputs.season,
+          our: resultInputs.our,
+          opp: resultInputs.opp,
           shotType: selectedShotType || undefined,
           zone: selectedZone || undefined,
         });
         if (!alive) return;
+        setLoadedShotVizKey(shotVizKey);
         setShotVizCaption(res?.caption ?? "");
         setShotVizBase64(res?.image_base64 ?? "");
       } catch (e: any) {
         if (!alive) return;
+        setLoadedShotVizKey(shotVizKey);
         setShotVizError(e?.message || "Couldn’t load shot heatmap.");
       } finally {
         if (alive) setShotVizLoading(false);
@@ -704,7 +745,7 @@ export default function GameplanClient() {
     return () => {
       alive = false;
     };
-  }, [vizTab, season, our, opp, selectedShotType, selectedZone]);
+  }, [vizTab, shotVizKey, resultInputs, selectedShotType, selectedZone]);
 
   const shotPlanBullets = useMemo(() => {
     const bullets: string[] = [];
@@ -1026,7 +1067,8 @@ export default function GameplanClient() {
               </span>
             </div>
 
-            {rankingNote ? <p className={styles.warn} role="status">{rankingNote}</p> : null}
+            {resultState.changed ? <p className={styles.warn} role="status">Inputs changed. Build Gameplan again to update the recommendations.</p> : null}
+            {resultState.current && rankingNote ? <p className={styles.warn} role="status">{rankingNote}</p> : null}
             {top3.length > 0 && recommendationStyle === "smart" && !smartPlays.length && !rankingNote ? (
               <p className={styles.smallMuted} role="status">
                 {loading ? "Showing the season baseline while context results load." : "No context ranking was returned. Showing the season baseline."} Score, clock and coaching conditions do not affect these baseline results.
@@ -1224,9 +1266,9 @@ export default function GameplanClient() {
             </div>
 
             <div className={styles.shotPlan}>
-              {shotLoading ? (
+              {loading || shotLoading ? (
                 <p className={styles.empty} role="status">Finding shot priorities for this matchup…</p>
-              ) : !topShotTypes.length && !topZones.length ? (
+              ) : !resultState.shotsCurrent ? (
                 <p className={styles.empty}>{shotError ? "Shot priorities could not load. Build the gameplan again to retry." : "Build a gameplan to see shot priorities for this matchup."}</p>
               ) : <>
               <div className={styles.shotHeadline}>
@@ -1245,7 +1287,7 @@ export default function GameplanClient() {
                   className={styles.btnSoft}
                   type="button"
                   onClick={() => setVizTab("shotHeatmap")}
-                  disabled={shotLoading}
+                  disabled={!resultState.shotsCurrent}
                 >
                   {shotLoading ? "Loading…" : "Show heatmap"}
                 </button>
@@ -1253,15 +1295,19 @@ export default function GameplanClient() {
                 <button
                   className={styles.btnSoft}
                   type="button"
-                  onClick={() => authenticatedDownload(getShotPlanPdfUrl({
-                    season,
-                    our,
-                    opp,
-                    k: 5,
-                    wOff,
-                    shotType: selectedShotType || undefined,
-                    zone: selectedZone || undefined,
-                  })).catch(e => alert(e))}
+                  disabled={!resultState.shotsCurrent}
+                  onClick={() => {
+                    if (!resultState.shotsCurrent || !resultInputs) return;
+                    authenticatedDownload(getShotPlanPdfUrl({
+                      season: resultInputs.season,
+                      our: resultInputs.our,
+                      opp: resultInputs.opp,
+                      k: 5,
+                      wOff: resultInputs.wOff,
+                      shotType: selectedShotType || undefined,
+                      zone: selectedZone || undefined,
+                    })).catch(e => alert(e));
+                  }}
                 >
                   Export PDF
                 </button>
@@ -1274,7 +1320,7 @@ export default function GameplanClient() {
                     className={styles.select}
                     value={selectedShotType}
                     onChange={(e) => setSelectedShotType(e.target.value)}
-                    disabled={!shotTypeOptions.length}
+                    disabled={!resultState.shotsCurrent || !shotTypeOptions.length}
                   >
                     <option value="">(Any)</option>
                     {shotTypeOptions.map((s) => (
@@ -1291,7 +1337,7 @@ export default function GameplanClient() {
                     className={styles.select}
                     value={selectedZone}
                     onChange={(e) => setSelectedZone(e.target.value)}
-                    disabled={!zoneOptions.length}
+                    disabled={!resultState.shotsCurrent || !zoneOptions.length}
                   >
                     <option value="">(Any)</option>
                     {zoneOptions.map((s) => (
@@ -1338,7 +1384,7 @@ export default function GameplanClient() {
                     Diagram for: <b>{selectedPlay.playType}</b>
                   </div>
 
-                  {playVizLoading ? (
+                  {playVizLoading || loadedPlayVizKey !== playVizKey ? (
                     <div className={styles.empty}>Loading diagram…</div>
                   ) : playVizError ? (
                     <div className={styles.warnSmall}>{playVizError}</div>
@@ -1365,7 +1411,9 @@ export default function GameplanClient() {
               <div className={styles.vizWrap}>
                 <div className={styles.vizTitle}>Shot Heatmap</div>
 
-                {shotVizLoading ? (
+                {!resultState.shotsCurrent ? (
+                  <div className={styles.empty}>Build a gameplan to fetch shot data, then open this tab.</div>
+                ) : shotVizLoading || loadedShotVizKey !== shotVizKey ? (
                   <div className={styles.empty}>Loading heatmap…</div>
                 ) : shotVizError ? (
                   <div className={styles.warnSmall}>{shotVizError}</div>
