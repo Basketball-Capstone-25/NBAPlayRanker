@@ -1281,10 +1281,10 @@ export default function StatisticalAnalysisPage() {
                   <div className="kpi">
                     <div className="label">CV Method</div>
                     <div className="value" style={{ fontSize: 16, fontWeight: 900 }}>
-                      {tuning.cv}
+                      {tuning.cv.replace(" (prevents leakage)", "")}
                     </div>
                     <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-                      Grouped by season to avoid leakage.
+                      Season groups stay together within each CV fold. The inputs still describe the observed season.
                     </div>
                   </div>
 

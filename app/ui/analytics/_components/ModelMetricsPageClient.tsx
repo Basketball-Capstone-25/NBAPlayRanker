@@ -927,7 +927,7 @@ export default function ModelMetricsPage() {
                   <div className="kpi">
                     <div className="label">Tuning CV method</div>
                     <div className="value" style={{ fontSize: 16, fontWeight: 900 }}>
-                      {tuning.cv}
+                      {tuning.cv.replace(" (prevents leakage)", "")}
                     </div>
                     <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
                       Season groups stay together within each CV fold.
