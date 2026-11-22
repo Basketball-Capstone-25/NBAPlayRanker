@@ -42,3 +42,6 @@ backend/data/pbp/*.parquet
 
 shotplan_preview.pdf
 .vercel
+
+# Local shot source downloads and staging rebuilds
+.shot-work/
