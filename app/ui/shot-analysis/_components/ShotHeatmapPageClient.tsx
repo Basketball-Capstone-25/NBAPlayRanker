@@ -25,18 +25,6 @@ type HeatmapResponse = {
   [k: string]: any;
 };
 
-function pickDefaultSeason(seasons: string[]) {
-  // Default to most recent season (or a stable fallback if meta is missing).
-  if (!seasons?.length) return "2021-22";
-  return seasons[seasons.length - 1];
-}
-
-function pickDefaultTeam(teams: string[], prefer: string) {
-  // Prefer a common team so first load feels “ready” (TOR/BOS), otherwise use first option.
-  if (!teams?.length) return prefer;
-  return teams.includes(prefer) ? prefer : teams[0];
-}
-
 function clamp(n: number, lo: number, hi: number) {
   // Keeps numeric inputs within safe bounds so we don’t request absurd backend jobs.
   return Math.max(lo, Math.min(hi, n));
@@ -92,8 +80,8 @@ export default function ShotHeatmapPage() {
 
   // Core filters (these map directly to the heatmap endpoint params).
   const [season, setSeason] = useState<string>("");
-  const [team, setTeam] = useState<string>("TOR");
-  const [opp, setOpp] = useState<string>("BOS");
+  const [team, setTeam] = useState<string>("");
+  const [opp, setOpp] = useState<string>("");
   const [shotType, setShotType] = useState<string>("");
   const [zone, setZone] = useState<string>("");
   const [maxShots, setMaxShots] = useState<number>(35000);
@@ -135,24 +123,20 @@ export default function ShotHeatmapPage() {
           if (saved) {
             try {
               const parsed = JSON.parse(saved);
-              setSeason(merged.seasons.includes(parsed.season) ? parsed.season : pickDefaultSeason(merged.seasons));
-              setTeam(merged.teams.includes(parsed.team) ? parsed.team : pickDefaultTeam(merged.teams, "TOR"));
-              setOpp(merged.teams.includes(parsed.opp) ? parsed.opp : pickDefaultTeam(merged.teams, "BOS"));
+              setSeason(merged.seasons.includes(parsed.season) ? parsed.season : "");
+              setTeam(merged.teams.includes(parsed.team) ? parsed.team : "");
+              setOpp(merged.teams.includes(parsed.opp) ? parsed.opp : "");
               setShotType(merged.shotTypes.includes(parsed.shotType) ? parsed.shotType : "");
               setZone(merged.zones.includes(parsed.zone) ? parsed.zone : "");
               const savedCap = Number(parsed.maxShots);
               setMaxShots(Number.isInteger(savedCap) && savedCap >= 1000 && savedCap <= 100000 ? savedCap : 35000);
-              setAutoRender(parsed.autoRender === true);
+              // SCRUM-843: auto-render always starts off, so nothing runs on page load.
             } catch {
               // ignore malformed stored data
             }
           }
         }
 
-        // Defaults if empty (these only fill blanks; they don't overwrite restored values).
-        setSeason((prev) => prev || pickDefaultSeason(merged.seasons));
-        setTeam((prev) => prev || pickDefaultTeam(merged.teams, "TOR"));
-        setOpp((prev) => prev || pickDefaultTeam(merged.teams, "BOS"));
       } catch (e: any) {
         if (!cancelled) setInputError(e?.message ?? "Failed to load available filters.");
       }
@@ -232,11 +216,11 @@ export default function ShotHeatmapPage() {
   }
 
   function resetFilters() {
-    // Reset returns the page to a stable “default matchup” state.
+    // Reset clears every choice (SCRUM-841).
     if (!meta) return;
-    setSeason(pickDefaultSeason(meta.seasons));
-    setTeam(pickDefaultTeam(meta.teams, "TOR"));
-    setOpp(pickDefaultTeam(meta.teams, "BOS"));
+    setSeason("");
+    setTeam("");
+    setOpp("");
     setShotType("");
     setZone("");
     setMaxShots(35000);
@@ -391,6 +375,7 @@ export default function ShotHeatmapPage() {
           <label>
             Season
             <select value={season} onChange={(e) => setSeason(e.target.value)} disabled={!meta?.seasons?.length}>
+              <option value="" disabled>Choose a season</option>
               {(meta?.seasons ?? []).map((s) => (
                 <option key={s} value={s}>
                   {s}
@@ -402,6 +387,7 @@ export default function ShotHeatmapPage() {
           <label>
             Team
             <select value={team} onChange={(e) => setTeam(e.target.value)} disabled={!meta?.teams?.length}>
+              <option value="" disabled>Choose a team</option>
               {(meta?.teams ?? []).map((t) => (
                 <option key={t} value={t}>
                   {normalizeLabel(t, meta?.teamNames)}
@@ -413,6 +399,7 @@ export default function ShotHeatmapPage() {
           <label>
             Opponent
             <select value={opp} onChange={(e) => setOpp(e.target.value)} disabled={!meta?.teams?.length}>
+              <option value="" disabled>Choose an opponent</option>
               {(meta?.teams ?? []).map((t) => (
                 <option key={t} value={t}>
                   {normalizeLabel(t, meta?.teamNames)}
