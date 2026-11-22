@@ -5,7 +5,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Gameplan.module.css";
 import TopPickCall from "../../_shared/components/TopPickCall";
-import { periodLabel, periodSeconds, resolveBuildSituation, resolveGameSituation, type ParsedSituation, type ResolvedSituation } from "../../../domain/gameplan-context";
+import { periodLabel, periodSeconds, resolveGameSituation, type ParsedSituation, type ResolvedSituation } from "../../../domain/gameplan-context";
+import { FIELD_LABEL, situationFromParse, type ParseReply, type SituationField } from "../../../domain/voice-situation";
 
 import {
   baselineRank,
@@ -152,21 +153,21 @@ export default function GameplanClient() {
   const [focus, setFocus] = useState(35);
 
   // Context
-  const [quarter, setQuarter] = useState(4);
-  const [timeLeft, setTimeLeft] = useState(180);
-  const [margin, setMargin] = useState(-2);
+  // SCRUM-841: the game situation starts blank; the coach sets it or describes it.
+  const [quarter, setQuarter] = useState<number | null>(null);
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
+  const [margin, setMargin] = useState<number | null>(null);
+  const situationSet = quarter !== null && timeLeft !== null && margin !== null;
 
   const [ctxAfterTimeout, setCtxAfterTimeout] = useState(false);
-  const [ctxLateClock, setCtxLateClock] = useState(true);
+  const [ctxLateClock, setCtxLateClock] = useState(false);
   const [ctxNeed3, setCtxNeed3] = useState(false);
   const [ctxProtectLead, setCtxProtectLead] = useState(false);
   const [ctxEndQ, setCtxEndQ] = useState(false);
   const [ctxVsSwitching, setCtxVsSwitching] = useState(false);
 
   // Natural language (NLP)
-  const [nlText, setNlText] = useState<string>(
-    "Down 2 with 3:00 left in the 4th. We need a good look. After timeout."
-  );
+  const [nlText, setNlText] = useState<string>("");
   const [nlConfidence, setNlConfidence] = useState<number | null>(null);
   const [nlQuestions, setNlQuestions] = useState<string[]>([]);
   const [nlWarnings, setNlWarnings] = useState<string[]>([]);
@@ -376,6 +377,7 @@ export default function GameplanClient() {
   const top3 = useMemo(() => activePlays.slice(0, 3), [activePlays]);
 
   const situationSummary = useMemo(() => {
+    if (quarter === null || timeLeft === null || margin === null) return "Situation not set";
     const upDown =
       margin === 0 ? "Tied" : margin > 0 ? `Up ${margin}` : `Down ${Math.abs(margin)}`;
     const t = prettyTime(timeLeft);
@@ -408,52 +410,69 @@ export default function GameplanClient() {
     });
   }
 
+  /** Only called once the period, time left and score are all set. */
   function currentSituation(): ResolvedSituation {
+    const period = quarter ?? 0, time_remaining = timeLeft ?? 0, score = margin ?? 0;
     return resolveGameSituation({
       ...parsedConditions,
-      period: quarter, time_remaining: timeLeft, margin,
+      period, time_remaining, margin: score,
       after_timeout: ctxAfterTimeout, late_clock: ctxLateClock, need3: ctxNeed3,
       protect_lead: ctxProtectLead, end_of_quarter: ctxEndQ, vs_switching: ctxVsSwitching,
       need: ctxNeed3 ? "need3" : parsedConditions.need === "need3" ? undefined : parsedConditions.need,
       defense_style: ctxVsSwitching ? "switch" : parsedConditions.defense_style === "switch" ? undefined : parsedConditions.defense_style,
-    }, { period: quarter, time_remaining: timeLeft, margin });
+    }, { period, time_remaining, margin: score });
   }
 
-  async function runNlpParse(): Promise<ResolvedSituation> {
+  // SCRUM-841: only values the description actually gives are filled; the rest
+  // keep what the coach set (or stay blank). Nothing is guessed.
+  async function runNlpParse(): Promise<ResolvedSituation | null> {
     if (!nlText.trim()) {
       setNlConfidence(null);
       setNlQuestions([]);
       setNlWarnings([]);
-      return currentSituation();
+      return situationSet ? currentSituation() : null;
     }
 
     try {
       setParsing(true);
       setStatusHint("Understanding situation…");
-      const resolved = await resolveBuildSituation(nlText, currentSituation(), async (text, defaults) => {
-        const res = await postJson<NlpParseResponse>(`${API_BASE}/nlp/parse`, {
-          text,
-          defaults: { period: defaults.period, time_remaining: defaults.time_remaining, margin: defaults.margin },
-        });
-        setNlConfidence(res.confidence ?? null);
-        setNlQuestions(res.clarifying_questions ?? []);
-        const c = res.context ?? {};
-        setParsedConditions(c);
-        const normalized = resolveGameSituation(c, defaults);
-        setNlWarnings([...normalized.warnings, ...(res.warnings ?? [])]);
-        return c;
-      });
+      const res = await postJson<NlpParseResponse & ParseReply>(`${API_BASE}/nlp/parse`, { text: nlText });
+      setNlConfidence(res.confidence ?? null);
+      setNlQuestions(res.clarifying_questions ?? []);
+      const c = res.context ?? {};
+      setParsedConditions(c);
       lastParsedTextRef.current = nlText;
+
+      const heard = situationFromParse(res);
+      const period = heard.period ?? quarter;
+      const seconds = heard.timeRemaining ?? timeLeft;
+      const score = heard.margin ?? margin;
+      setQuarter(period);
+      setTimeLeft(seconds);
+      setMargin(score);
+      if (period === null || seconds === null || score === null) {
+        const missing: SituationField[] = [];
+        if (score === null) missing.push("margin");
+        if (period === null) missing.push("period");
+        if (seconds === null) missing.push("timeRemaining");
+        const names = missing.map((f) => FIELD_LABEL[f]).join(" and ");
+        setNlWarnings([...(res.warnings ?? []), `The description did not give the ${names}. Set it below.`]);
+        setStatusHint(`Set the ${names} to continue.`);
+        return null;
+      }
+
+      const resolved = resolveGameSituation(c, { period, time_remaining: seconds, margin: score });
+      setNlWarnings([...resolved.warnings, ...(res.warnings ?? [])]);
       setQuarter(resolved.period);
       setTimeLeft(resolved.time_remaining);
       setMargin(resolved.margin);
-      const c = resolved.coaching;
-      setCtxAfterTimeout(Boolean(c.after_timeout));
-      setCtxLateClock(Boolean(c.late_clock));
-      setCtxNeed3(Boolean(c.need3));
-      setCtxProtectLead(Boolean(c.protect_lead));
+      const coaching = resolved.coaching;
+      setCtxAfterTimeout(Boolean(coaching.after_timeout));
+      setCtxLateClock(Boolean(coaching.late_clock));
+      setCtxNeed3(Boolean(coaching.need3));
+      setCtxProtectLead(Boolean(coaching.protect_lead));
       setCtxEndQ(resolved.end_of_quarter);
-      setCtxVsSwitching(Boolean(c.vs_switching));
+      setCtxVsSwitching(Boolean(coaching.vs_switching));
 
       setStatusHint("Situation parsed ✅");
       setTimeout(() => setStatusHint(""), 900);
@@ -477,7 +496,11 @@ export default function GameplanClient() {
     try {
       const situation = nlText.trim() && nlText !== lastParsedTextRef.current
         ? await runNlpParse()
-        : currentSituation();
+        : situationSet ? currentSituation() : null;
+      if (!situation) {
+        setStatusHint("Set the period, time left and score (or describe them) before building.");
+        return;
+      }
 
       // Baseline recommendations (Dataset1)
       const baseRankRaw = await baselineRank({
@@ -935,11 +958,13 @@ export default function GameplanClient() {
                   type="number"
                   min={1}
                   max={5}
-                  value={quarter}
+                  placeholder="1–5"
+                  value={quarter ?? ""}
                   onChange={(e) => {
-                    const nextPeriod = clamp(Math.round(Number(e.target.value || 4)), 1, 5);
+                    if (e.target.value === "") return setQuarter(null);
+                    const nextPeriod = clamp(Math.round(Number(e.target.value)), 1, 5);
                     setQuarter(nextPeriod);
-                    setTimeLeft((seconds) => Math.min(seconds, periodSeconds(nextPeriod)));
+                    setTimeLeft((seconds) => (seconds === null ? null : Math.min(seconds, periodSeconds(nextPeriod))));
                   }}
                 />
               </div>
@@ -950,9 +975,10 @@ export default function GameplanClient() {
                   className={styles.input}
                   type="number"
                   min={0}
-                  max={periodSeconds(quarter)}
-                  value={timeLeft}
-                  onChange={(e) => setTimeLeft(clamp(Number(e.target.value), 0, periodSeconds(quarter)))}
+                  max={periodSeconds(quarter ?? 1)}
+                  placeholder="e.g. 40"
+                  value={timeLeft ?? ""}
+                  onChange={(e) => setTimeLeft(e.target.value === "" ? null : clamp(Number(e.target.value), 0, periodSeconds(quarter ?? 1)))}
                 />
               </div>
 
@@ -963,8 +989,9 @@ export default function GameplanClient() {
                   type="number"
                   min={-50}
                   max={50}
-                  value={margin}
-                  onChange={(e) => setMargin(clamp(Number(e.target.value || 0), -50, 50))}
+                  placeholder="e.g. -3"
+                  value={margin ?? ""}
+                  onChange={(e) => setMargin(e.target.value === "" ? null : clamp(Number(e.target.value), -50, 50))}
                 />
               </div>
             </div>
