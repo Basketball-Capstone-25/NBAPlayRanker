@@ -4,6 +4,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useShotResult } from "./useShotResult";
 import { ShotHeatmapCounts } from "./ShotHeatmapCounts";
 import { shotHeatmapExportUrl } from "../../../domain/shot-heatmap-export";
@@ -269,15 +270,6 @@ export default function ShotHeatmapPage() {
     setZone(nextZone);
   }
 
-  const headerStyle: React.CSSProperties = {
-    // Hero styling: the goal is to make this look like a finished “product” page.
-    borderRadius: 18,
-    padding: "18px 18px 14px",
-    background:
-      "linear-gradient(135deg, rgba(56,189,248,0.18), rgba(99,102,241,0.16), rgba(244,63,94,0.10))",
-    border: "1px solid rgba(255,255,255,0.10)",
-  };
-
   const chipStyle = (active: boolean): React.CSSProperties => ({
     // Preset chips: lightweight, no external UI libs.
     borderRadius: 999,
@@ -305,10 +297,11 @@ export default function ShotHeatmapPage() {
   const downloadUrl = heatmap && query.inputs ? shotHeatmapExportUrl(query.inputs, heatmap.dataset_version) : null;
 
   return (
-    <main className="page" style={{ paddingBottom: 56 }}>
-      <header className="page__header" style={headerStyle}>
+    <div className={`page ${styles.workspace}`} style={{ paddingBottom: 56 }}>
+      <header className={styles.header}>
+        <div className={styles.eyebrow}>Shot analysis</div>
         <div style={{ display: "flex", gap: 14, alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap" }}>
-          <div style={{ minWidth: 260 }}>
+          <div style={{ minWidth: 0, flex: "1 1 300px" }}>
             <h1 style={{ margin: 0 }}>Shot Heatmap</h1>
             <p className="muted" style={{ marginTop: 6, marginBottom: 0 }}>
               Shot-attempt density from the selected team’s games against the opponent.
@@ -318,10 +311,11 @@ export default function ShotHeatmapPage() {
               </Link>
               .
             </p>
-            <p className="muted">Both makes and misses are included. Color shows attempt counts, not shooting percentage or expected points. Shots face the attacking basket; attempts beyond the displayed half court are counted separately.</p>
+            <p className={styles.notice}>Color shows attempt counts, not shooting percentage. Makes and misses are both included.</p>
+            <details><summary>How shots are shown</summary><p>Shots face the attacking basket. Attempts beyond the displayed half court are counted separately; color does not show expected points.</p></details>
           </div>
 
-          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+          <div className={styles.toolbar}>
             <Link className="btn btn--secondary" href="/shot-plan">
               Back to Shot Plan
             </Link>
@@ -367,14 +361,14 @@ export default function ShotHeatmapPage() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
           <h2 style={{ marginBottom: 8 }}>Filters</h2>
           <div className="muted" style={{ fontSize: 13 }}>
-            Tip: Keep Auto-render on during exploration, turn it off if your backend is busy.
+            Choose a matchup, then render the court.
           </div>
         </div>
 
         <div className="form-grid">
           <label>
             Season
-            <select value={season} onChange={(e) => setSeason(e.target.value)} disabled={!meta?.seasons?.length}>
+            <select className="input" value={season} onChange={(e) => setSeason(e.target.value)} disabled={!meta?.seasons?.length}>
               <option value="" disabled>Choose a season</option>
               {(meta?.seasons ?? []).map((s) => (
                 <option key={s} value={s}>
@@ -386,7 +380,7 @@ export default function ShotHeatmapPage() {
 
           <label>
             Team
-            <select value={team} onChange={(e) => setTeam(e.target.value)} disabled={!meta?.teams?.length}>
+            <select className="input" value={team} onChange={(e) => setTeam(e.target.value)} disabled={!meta?.teams?.length}>
               <option value="" disabled>Choose a team</option>
               {(meta?.teams ?? []).map((t) => (
                 <option key={t} value={t}>
@@ -398,7 +392,7 @@ export default function ShotHeatmapPage() {
 
           <label>
             Opponent
-            <select value={opp} onChange={(e) => setOpp(e.target.value)} disabled={!meta?.teams?.length}>
+            <select className="input" value={opp} onChange={(e) => setOpp(e.target.value)} disabled={!meta?.teams?.length}>
               <option value="" disabled>Choose an opponent</option>
               {(meta?.teams ?? []).map((t) => (
                 <option key={t} value={t}>
@@ -417,6 +411,7 @@ export default function ShotHeatmapPage() {
           <label>
             Shot type (optional)
             <select
+              className="input"
               value={shotType}
               onChange={(e) => setShotType(e.target.value)}
               disabled={!meta?.shotTypes?.length}
@@ -432,7 +427,7 @@ export default function ShotHeatmapPage() {
 
           <label>
             Zone (optional)
-            <select value={zone} onChange={(e) => setZone(e.target.value)} disabled={!meta?.zones?.length}>
+            <select className="input" value={zone} onChange={(e) => setZone(e.target.value)} disabled={!meta?.zones?.length}>
               <option value="">All</option>
               {(meta?.zones ?? []).map((z) => (
                 <option key={z} value={z}>
@@ -446,6 +441,7 @@ export default function ShotHeatmapPage() {
             Max shots (downsample)
             <input
               type="number"
+              className="input"
               min={1000}
               max={100000}
               step={1000}
@@ -476,7 +472,7 @@ export default function ShotHeatmapPage() {
           </div>
 
           {heatmap?.image_base64 ? (
-            <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+            <div className={styles.toolbar}>
               {downloadUrl ? <a
                 className="btn btn--secondary"
                 href={downloadUrl}
@@ -538,6 +534,6 @@ export default function ShotHeatmapPage() {
           </div>
         )}
       </section>
-    </main>
+    </div>
   );
 }

@@ -8,6 +8,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useShotResult } from "./useShotResult";
 import { ShotHeatmapCounts } from "./ShotHeatmapCounts";
 import {
@@ -213,33 +214,24 @@ export default function ShotPlanPage() {
   }
 
   return (
-    <main className="page">
+    <div className={`page ${styles.workspace}`}>
       {/* “Vibrant” hero-style header using a subtle gradient panel */}
-      <header
-        className="card"
-        style={{
-          padding: 20,
-          borderRadius: 16,
-          background:
-            "linear-gradient(135deg, rgba(59,130,246,0.18), rgba(99,102,241,0.10) 45%, rgba(15,22,44,0.95))",
-          border: "1px solid rgba(255,255,255,0.10)",
-        }}
-      >
+      <header className={styles.header}>
+        <div className={styles.eyebrow}>Shot analysis</div>
         <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
           <h1 style={{ margin: 0 }}>Shot Plan</h1>
-          <span className="badge blue">Dataset2 • PBP Shots</span>
+
           <span className="badge">Baseline</span>
-          <span className="badge">Offense vs Defense</span>
+
         </div>
 
         <p className="muted" style={{ marginTop: 8 }}>
-          Rank the best <b>shot types</b> and <b>zones</b> for <b>{teamLabel(our)}</b> vs{" "}
-          <b>{teamLabel(opp)}</b>. Rankings blend our season-long offense with the opponent’s season-long defense.
+          Compare shot types and court zones using our season-long offense and the opponent’s season-long defense.
         </p>
-        <p className="muted">Scores are estimated points per shot attempt, not points per possession. The heatmap shows only shots taken against the selected opponent; its filters do not change the rankings.</p>
+        <p className={styles.notice}>Scores are estimated points per shot attempt, not points per possession. The heatmap shows only shots taken against the selected opponent; its filters do not change the rankings.</p>
 
         <p className="muted" style={{ margin: 0 }}>
-          Want raw shots? Try <Link href="/shot-explorer">Shots Explorer</Link>.
+          Browse individual attempts in <Link href="/shot-explorer">Shots Explorer</Link>.
         </p>
       </header>
 
@@ -249,8 +241,8 @@ export default function ShotPlanPage() {
           <h2 style={{ margin: 0 }}>Inputs</h2>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
             {/* Show both weights so users understand the blend */}
-            <span className="badge">wOff={fmt(wOff, 2)}</span>
-            <span className="badge">wDef={fmt(wDef, 2)}</span>
+            <span className="badge">Offense {Math.round(wOff * 100)}%</span>
+            <span className="badge">Defense {Math.round(wDef * 100)}%</span>
 
             {/* Toggle “why” rationale blocks (from backend RATIONALE field) */}
             <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
@@ -265,11 +257,11 @@ export default function ShotPlanPage() {
         </div>
 
         {/* Matchup selectors */}
-        <div className="grid" style={{ marginTop: 12, gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}>
+        <div className={styles.columns}>
           {/* Season */}
           <div>
-            <div className="label">Season</div>
-            <select className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
+            <label className="label" htmlFor="shot-plan-input-1">Season</label>
+            <select id="shot-plan-input-1" className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
               <option value="" disabled>Choose a season</option>
               {(meta?.seasons ?? []).map((s: string) => (
                 <option key={s} value={s}>
@@ -281,8 +273,8 @@ export default function ShotPlanPage() {
 
           {/* Our */}
           <div>
-            <div className="label">Our team</div>
-            <select className="input" value={our} onChange={(e) => setOur(e.target.value)}>
+            <label className="label" htmlFor="shot-plan-input-2">Our team</label>
+            <select id="shot-plan-input-2" className="input" value={our} onChange={(e) => setOur(e.target.value)}>
               <option value="" disabled>Choose our team</option>
               {(meta?.teams ?? []).map((t: string) => (
                 <option key={t} value={t}>
@@ -294,8 +286,8 @@ export default function ShotPlanPage() {
 
           {/* Opp */}
           <div>
-            <div className="label">Opponent</div>
-            <select className="input" value={opp} onChange={(e) => setOpp(e.target.value)}>
+            <label className="label" htmlFor="shot-plan-input-3">Opponent</label>
+            <select id="shot-plan-input-3" className="input" value={opp} onChange={(e) => setOpp(e.target.value)}>
               <option value="" disabled>Choose an opponent</option>
               {(meta?.teams ?? []).map((t: string) => (
                 <option key={t} value={t}>
@@ -307,11 +299,11 @@ export default function ShotPlanPage() {
         </div>
 
         {/* Scoring knobs + heatmap speed knob */}
-        <div className="grid" style={{ marginTop: 12, gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}>
+        <div className={styles.columns}>
           {/* Top K */}
           <div>
-            <div className="label">Top K results (k)</div>
-            <input
+            <label className="label" htmlFor="shot-plan-input-4">Top K results (k)</label>
+            <input id="shot-plan-input-4"
               className="input"
               type="number"
               min={1}
@@ -327,8 +319,8 @@ export default function ShotPlanPage() {
 
           {/* wOff */}
           <div>
-            <div className="label">Offense weight (wOff)</div>
-            <input
+            <label className="label" htmlFor="shot-plan-input-5">Offense weight (wOff)</label>
+            <input id="shot-plan-input-5"
               className="input"
               type="number"
               min={0}
@@ -344,8 +336,8 @@ export default function ShotPlanPage() {
 
           {/* maxShots */}
           <div>
-            <div className="label">Heatmap max shots</div>
-            <input
+            <label className="label" htmlFor="shot-plan-input-6">Heatmap max shots</label>
+            <input id="shot-plan-input-6"
               className="input"
               type="number"
               min={1000}
@@ -361,10 +353,10 @@ export default function ShotPlanPage() {
         </div>
 
         {/* Heatmap filters (optional) */}
-        <div className="grid" style={{ marginTop: 12, gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+        <div className={styles.columns}>
           <div>
-            <div className="label">Heatmap shot type (optional)</div>
-            <select className="input" value={shotType} onChange={(e) => setShotType(e.target.value)}>
+            <label className="label" htmlFor="shot-plan-input-7">Heatmap shot type (optional)</label>
+            <select id="shot-plan-input-7" className="input" value={shotType} onChange={(e) => setShotType(e.target.value)}>
               <option value="">(All shot types)</option>
               {(meta?.shotTypes ?? []).map((s: string) => (
                 <option key={s} value={s}>
@@ -375,8 +367,8 @@ export default function ShotPlanPage() {
           </div>
 
           <div>
-            <div className="label">Heatmap zone (optional)</div>
-            <select className="input" value={zone} onChange={(e) => setZone(e.target.value)}>
+            <label className="label" htmlFor="shot-plan-input-8">Heatmap zone (optional)</label>
+            <select id="shot-plan-input-8" className="input" value={zone} onChange={(e) => setZone(e.target.value)}>
               <option value="">(All zones)</option>
               {(meta?.zones ?? []).map((z: string) => (
                 <option key={z} value={z}>
@@ -449,8 +441,7 @@ export default function ShotPlanPage() {
 
             {/* Quick summary cards */}
             <div
-              className="grid"
-              style={{ marginTop: 12, gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}
+              className={styles.columns}
             >
               <div className="kpi">
                 <div className="muted">Best shot type</div>
@@ -593,6 +584,6 @@ export default function ShotPlanPage() {
           </>
         )}
       </section>
-    </main>
+    </div>
   );
 }

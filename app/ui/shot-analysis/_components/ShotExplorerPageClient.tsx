@@ -3,6 +3,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useShotResult } from "./useShotResult";
 import {
   authenticatedDownload,
@@ -164,31 +165,22 @@ export default function ShotExplorerPage() {
   }, [season, team, opp, shotType, zone, limit]);
 
   return (
-    <main className="page">
+    <div className={`page ${styles.workspace}`}>
       {/* Hero header: sets context + points users to the recommendation page */}
-      <header
-        className="card"
-        style={{
-          padding: 20,
-          borderRadius: 16,
-          background:
-            "linear-gradient(135deg, rgba(34,197,94,0.15), rgba(59,130,246,0.12) 40%, rgba(15,22,44,0.95))",
-          border: "1px solid rgba(255,255,255,0.10)",
-        }}
-      >
+      <header className={styles.header}>
+        <div className={styles.eyebrow}>Shot analysis</div>
         <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
           <h1 style={{ margin: 0 }}>Shots Explorer</h1>
-          <span className="badge blue">Dataset2 • Raw PBP</span>
+
           <span className="badge">One row per shot</span>
         </div>
 
         <p className="muted" style={{ marginTop: 8 }}>
-          Browse raw shots from the play-by-play dataset. Filter, preview quickly, then export CSV
-          for deeper analysis in Excel / R / Python.
+          Find recorded shots by team, opponent and court zone, then export your selection.
         </p>
 
         <p className="muted" style={{ margin: 0 }}>
-          Want recommendations? See <Link href="/shot-plan">Shot Plan</Link>.
+          Compare shot choices in <Link href="/shot-plan">Shot Plan</Link>.
         </p>
       </header>
 
@@ -220,10 +212,10 @@ export default function ShotExplorerPage() {
         </div>
 
         {/* Primary filters: season + team + optional opponent */}
-        <div className="grid" style={{ marginTop: 12, gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}>
+        <div className={styles.columns}>
           <div>
-            <div className="label">Season</div>
-            <select className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
+            <label className="label" htmlFor="shot-explorer-input-1">Season</label>
+            <select id="shot-explorer-input-1" className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
               <option value="" disabled>Choose a season</option>
               {(meta?.seasons ?? []).map((s) => (
                 <option key={s} value={s}>
@@ -234,8 +226,8 @@ export default function ShotExplorerPage() {
           </div>
 
           <div>
-            <div className="label">Team</div>
-            <select className="input" value={team} onChange={(e) => setTeam(e.target.value)}>
+            <label className="label" htmlFor="shot-explorer-input-2">Team</label>
+            <select id="shot-explorer-input-2" className="input" value={team} onChange={(e) => setTeam(e.target.value)}>
               <option value="" disabled>Choose a team</option>
               {(meta?.teams ?? []).map((t) => (
                 <option key={t} value={t}>
@@ -246,8 +238,8 @@ export default function ShotExplorerPage() {
           </div>
 
           <div>
-            <div className="label">Opponent (optional)</div>
-            <select className="input" value={opp} onChange={(e) => setOpp(e.target.value)}>
+            <label className="label" htmlFor="shot-explorer-input-3">Opponent (optional)</label>
+            <select id="shot-explorer-input-3" className="input" value={opp} onChange={(e) => setOpp(e.target.value)}>
               <option value="">All</option>
               {(meta?.teams ?? [])
                 .filter((t) => t !== team)
@@ -261,10 +253,10 @@ export default function ShotExplorerPage() {
         </div>
 
         {/* Secondary filters: optional shotType + zone + preview limit */}
-        <div className="grid" style={{ marginTop: 12, gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}>
+        <div className={styles.columns}>
           <div>
-            <div className="label">Shot type (optional)</div>
-            <select className="input" value={shotType} onChange={(e) => setShotType(e.target.value)}>
+            <label className="label" htmlFor="shot-explorer-input-4">Shot type (optional)</label>
+            <select id="shot-explorer-input-4" className="input" value={shotType} onChange={(e) => setShotType(e.target.value)}>
               <option value="">All</option>
               {(meta?.shotTypes ?? []).map((st) => (
                 <option key={st} value={st}>
@@ -275,8 +267,8 @@ export default function ShotExplorerPage() {
           </div>
 
           <div>
-            <div className="label">Zone (optional)</div>
-            <select className="input" value={zone} onChange={(e) => setZone(e.target.value)}>
+            <label className="label" htmlFor="shot-explorer-input-5">Zone (optional)</label>
+            <select id="shot-explorer-input-5" className="input" value={zone} onChange={(e) => setZone(e.target.value)}>
               <option value="">All</option>
               {(meta?.zones ?? []).map((z) => (
                 <option key={z} value={z}>
@@ -287,8 +279,8 @@ export default function ShotExplorerPage() {
           </div>
 
           <div>
-            <div className="label">Preview limit</div>
-            <input
+            <label className="label" htmlFor="shot-explorer-input-6">Preview limit</label>
+            <input id="shot-explorer-input-6"
               className="input"
               type="number"
               min={10}
@@ -389,6 +381,6 @@ export default function ShotExplorerPage() {
           </>
         ) : null}
       </section>
-    </main>
+    </div>
   );
 }
