@@ -810,7 +810,7 @@ function ContextInner() {
       <div className="card">
         <div className="sectionTitle">
           <h2>Matchup + context inputs</h2>
-          <span className="badge">{metaReady ? "Ready" : "Loading…"}</span>
+          <span className="badge">{metaReady ? "Ready" : meta?._fallback ? "Data unavailable" : "Loading…"}</span>
         </div>
 
         <div className="inputs">
