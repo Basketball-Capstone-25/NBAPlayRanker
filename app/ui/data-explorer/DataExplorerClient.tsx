@@ -55,9 +55,7 @@ function fmtInt(v: any) {
   return String(Math.round(n));
 }
 
-function clamp01(x: number) {
-  return Math.max(0, Math.min(1, x));
-}
+
 
 // localStorage can throw in some environments (private mode / blocked storage),
 // so I wrap reads/writes to keep the page from crashing over a preference.
@@ -396,15 +394,6 @@ export default function DataExplorerClient() {
       minPPP,
     };
   }, [viewRows]);
-  // PPP quality bar (visual only)
-  const pppBar = useMemo(() => {
-    const v = Number(kpis.avgPPP);
-    if (!Number.isFinite(v)) return { pct: 0, label: "\u2014" };
-    // Typical PPP range ~[0.7 .. 1.3]
-    const pct = clamp01((v - 0.7) / 0.6) * 100;
-    return { pct, label: fmtNum(v, 3) };
-  }, [kpis.avgPPP]);
-
   const heroStyle: React.CSSProperties = {
     borderRadius: 18,
     padding: "18px 18px 14px",
@@ -714,28 +703,8 @@ export default function DataExplorerClient() {
           <div className="kpi">
             <div className="label">Avg PPP</div>
             <div className="value">{Number.isFinite(Number(kpis.avgPPP)) ? fmtNum(kpis.avgPPP, 3) : "—"}</div>
-            <div
-              style={{
-                marginTop: 10,
-                height: 10,
-                borderRadius: 999,
-                background: "rgba(15,23,42,0.08)",
-                overflow: "hidden",
-                border: "1px solid rgba(255,255,255,0.10)",
-              }}
-              title="Points per possession"
-            >
-              <div
-                style={{
-                  width: `${pppBar.pct}%`,
-                  height: "100%",
-                  background:
-                    "linear-gradient(90deg, rgba(59,130,246,0.60), rgba(34,197,94,0.35))",
-                }}
-              />
-            </div>
             <div className="muted" style={{ fontSize: 12, marginTop: 6 }}>
-              Typical range ~0.7–1.3 PPP.
+              Average across visible play-type rows.
             </div>
           </div>
 
