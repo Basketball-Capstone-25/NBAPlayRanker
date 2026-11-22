@@ -90,3 +90,77 @@ describe("team profile table", () => {
       .toContain("Loading team profiles");
   });
 });
+
+describe("team profile readouts", () => {
+  const mainView = (data: TeamComparison, metric: "ppp" | "usage", minimum = 20) =>
+    renderToStaticMarkup(<TeamComparisonTable data={data} minimum={minimum} initialMetric={metric} />).split("<details")[0];
+
+  it("converts PPP to points per 100 play-type possessions with the same bar scale", () => {
+    const html = mainView(report(), "ppp", 1);
+    expect(html.match(/<tr[ >]/g)).toHaveLength(3);
+    expect(html).toContain('data-label="TOR"'); expect(html).toContain('data-label="BOS"');
+    expect(html).toContain("120.0"); expect(html).toContain("100.0");
+    expect(html).toContain("20.0 points apart");
+    expect(html).toContain("TOR scored 20.0 more points per 100 of these possessions");
+    expect(html).toContain('style="width:100%"');
+    expect(html).toContain('style="width:83.33333333333333%"');
+    expect(html).not.toContain("1.200");
+    expect(html).toContain("does not mean running more of that play will raise team scoring");
+  });
+
+  it("uses the minimum for the headline without hiding a smaller sample", () => {
+    const html = mainView(report(), "ppp");
+    expect(html).toContain("Isolation: BOS scored 10.0 more points per 100 of these possessions");
+    expect(html).toContain("Small sample"); expect(html).toContain("120.0");
+    expect(html).not.toContain("Cut: TOR scored 20.0");
+    expect(html).toContain("Too few possessions to highlight a difference");
+  });
+
+  it("presents usage as a style comparison with percentage-point differences", () => {
+    const html = mainView(report(), "usage", 1);
+    expect(html).toContain("10.0%"); expect(html).toContain("20.0%");
+    expect(html).toContain("10.0 pp apart"); expect(html).toContain("BOS used this play more often");
+    expect(html).toContain("style, not which team is better");
+    expect(html).not.toContain('data-tone="favorable"');
+    expect(html).not.toContain('data-tone="caution"');
+    expect(html).toContain('style="width:10%"'); expect(html).toContain('style="width:20%"');
+  });
+
+  it("keeps missing scoring rates and real zero usage separate", () => {
+    const data = report();
+    data.rows = [{ play_type: "Cut", team: { possessions: 0, points: 0, usage_pct: 0, ppp: null },
+      opponent: null, difference: { usage_pp: null, ppp: null } }];
+    const scoring = mainView(data, "ppp");
+    expect(scoring).toContain("Comparison unavailable"); expect(scoring).not.toContain("<strong>0.0</strong>");
+    expect(scoring).toContain("More shared data is needed");
+    expect(scoring).toContain("<small>Unavailable</small>");
+    expect(scoring).not.toContain('aria-hidden="true"');
+    const usage = mainView(data, "usage");
+    expect(usage).toContain("<strong>0.0%</strong>"); expect(usage).toContain("Comparison unavailable");
+    expect(usage.match(/aria-hidden="true"/g)).toHaveLength(1);
+    expect(usage).toContain('style="width:0%"');
+  });
+
+  it("swaps the interpretation when both teams and values are swapped", () => {
+    const data = report(); data.filters.team = "BOS"; data.filters.opponent = "TOR";
+    [data.team_possessions, data.opponent_possessions] = [data.opponent_possessions, data.team_possessions];
+    for (const row of data.rows) {
+      [row.team, row.opponent] = [row.opponent, row.team];
+      row.difference = { usage_pp: -row.difference.usage_pp!, ppp: -row.difference.ppp! };
+    }
+    const html = mainView(data, "ppp", 1);
+    expect(html).toContain("BOS and TOR: how they play");
+    expect(html).toContain("Cut: TOR scored 20.0 more points per 100 of these possessions");
+  });
+
+  it("uses new season data and retains exact points in the full numbers", () => {
+    const data = report(); data.filters.season = "2026-27";
+    data.rows[0].team!.points = 15; data.rows[0].team!.ppp = 1.5; data.rows[0].difference.ppp = 0.5;
+    const html = renderToStaticMarkup(<TeamComparisonTable data={data} minimum={1} />);
+    expect(html).toContain("2026-27"); expect(html).not.toContain("2024-25");
+    expect(html).toContain("150.0"); expect(html).toContain("50.0 points apart");
+    expect(html).toContain("<td>1.500</td><td>15</td>");
+    expect(html).toContain("not a count of every team possession");
+    expect(html).toContain("not whole-team offensive rating");
+  });
+});
