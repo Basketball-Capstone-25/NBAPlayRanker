@@ -220,7 +220,7 @@ export default function ShotExplorerPage() {
 
           <div>
             <label className="label" htmlFor="shot-explorer-input-2">Team</label>
-            <select id="shot-explorer-input-2" className="input" value={team} onChange={(e) => setTeam(e.target.value)}>
+            <select id="shot-explorer-input-2" className="input" value={team} onChange={(e) => { setTeam(e.target.value); if (opp === e.target.value) setOpp(""); setInputError(null); }}>
               <option value="" disabled>Choose a team</option>
               {(meta?.teams ?? []).map((t) => (
                 <option key={t} value={t}>

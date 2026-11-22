@@ -102,7 +102,7 @@ export default function ShotHeatmapPage() {
               const parsed = JSON.parse(saved);
               setSeason(merged.seasons.includes(parsed.season) ? parsed.season : "");
               setTeam(merged.teams.includes(parsed.team) ? parsed.team : "");
-              setOpp(merged.teams.includes(parsed.opp) ? parsed.opp : "");
+              setOpp(merged.teams.includes(parsed.opp) && parsed.opp !== parsed.team ? parsed.opp : "");
               setShotType(merged.shotTypes.includes(parsed.shotType) ? parsed.shotType : "");
               setZone(merged.zones.includes(parsed.zone) ? parsed.zone : "");
               const savedCap = Number(parsed.maxShots);
@@ -323,7 +323,7 @@ export default function ShotHeatmapPage() {
 
           <label>
             Team
-            <select className="input" value={team} onChange={(e) => setTeam(e.target.value)} disabled={!meta?.teams?.length}>
+            <select className="input" value={team} onChange={(e) => { setTeam(e.target.value); if (opp === e.target.value) setOpp(""); setInputError(null); }} disabled={!meta?.teams?.length}>
               <option value="" disabled>Choose a team</option>
               {(meta?.teams ?? []).map((t) => (
                 <option key={t} value={t}>
@@ -337,7 +337,7 @@ export default function ShotHeatmapPage() {
             Opponent
             <select className="input" value={opp} onChange={(e) => setOpp(e.target.value)} disabled={!meta?.teams?.length}>
               <option value="" disabled>Choose an opponent</option>
-              {(meta?.teams ?? []).map((t) => (
+              {(meta?.teams ?? []).filter((t: string) => t !== team).map((t) => (
                 <option key={t} value={t}>
                   {normalizeLabel(t, meta?.teamNames)}
                 </option>

@@ -265,7 +265,7 @@ export default function ShotPlanPage() {
           {/* Our */}
           <div>
             <label className="label" htmlFor="shot-plan-input-2">Our team</label>
-            <select id="shot-plan-input-2" className="input" value={our} onChange={(e) => setOur(e.target.value)}>
+            <select id="shot-plan-input-2" className="input" value={our} onChange={(e) => { setOur(e.target.value); if (opp === e.target.value) setOpp(""); setInputError(null); }}>
               <option value="" disabled>Choose our team</option>
               {(meta?.teams ?? []).map((t: string) => (
                 <option key={t} value={t}>
@@ -280,7 +280,7 @@ export default function ShotPlanPage() {
             <label className="label" htmlFor="shot-plan-input-3">Opponent</label>
             <select id="shot-plan-input-3" className="input" value={opp} onChange={(e) => setOpp(e.target.value)}>
               <option value="" disabled>Choose an opponent</option>
-              {(meta?.teams ?? []).map((t: string) => (
+              {(meta?.teams ?? []).filter((t: string) => t !== our).map((t: string) => (
                 <option key={t} value={t}>
                   {teamLabel(t)}
                 </option>
