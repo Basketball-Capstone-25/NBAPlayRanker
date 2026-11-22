@@ -440,15 +440,16 @@ function ContextInner() {
     <section className="pageRoot">
       <style jsx>{`
         .pageRoot {
-          max-width: 1100px;
+          max-width: 1200px;
           margin: 0 auto;
-          padding: 18px 16px 34px;
+          padding: 28px 20px 48px;
+          color: #17243d;
         }
 
         .hero {
           display: grid;
-          gap: 6px;
-          margin-bottom: 12px;
+          gap: 10px;
+          margin-bottom: 22px;
         }
 
         .heroTop {
@@ -474,8 +475,9 @@ function ContextInner() {
 
         h1 {
           margin: 0;
-          font-size: 22px;
-          letter-spacing: -0.3px;
+          font-size: clamp(26px, 3vw, 34px);
+          letter-spacing: -0.035em;
+          line-height: 1.15;
         }
 
         .sub {
@@ -486,10 +488,11 @@ function ContextInner() {
         }
 
         .card {
-          border-radius: 16px;
-          border: 1px solid rgba(15, 23, 42, 0.1);
-          background: rgba(255, 255, 255, 0.78);
-          padding: 14px;
+          border-radius: 18px;
+          border: 1px solid #e3e7ef;
+          background: #fff;
+          padding: 22px;
+          box-shadow: 0 4px 18px rgba(23, 36, 61, 0.025);
           overflow: hidden;
         }
 
@@ -515,8 +518,8 @@ function ContextInner() {
         }
         .sectionTitle h2 {
           margin: 0;
-          font-size: 14px;
-          letter-spacing: -0.2px;
+          font-size: 17px;
+          letter-spacing: -0.02em;
         }
 
         .inputs {
@@ -526,7 +529,7 @@ function ContextInner() {
         }
         @media (min-width: 640px) {
           .inputs {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
           }
         }
 
@@ -589,22 +592,21 @@ function ContextInner() {
           align-items: center;
           gap: 8px;
           padding: 10px 12px;
-          border-radius: 999px;
-          border: 1px solid rgba(15, 23, 42, 0.14);
+          border-radius: 10px;
+          border: 1px solid #d8deea;
           background: rgba(255, 255, 255, 0.9);
           color: rgba(15, 23, 42, 0.92);
-          font-weight: 800;
+          font-weight: 650;
           font-size: 13px;
           text-decoration: none;
           cursor: pointer;
         }
 
         .btnPrimary {
-          border: 1px solid rgba(255, 255, 255, 0.26);
-          background: linear-gradient(135deg, #2563eb 0%, #7c3aed 55%, #ec4899 100%);
+          border: 1px solid #6950d4;
+          background: #6950d4;
           color: #fff;
-          box-shadow: 0 16px 34px rgba(37, 99, 235, 0.22);
-          text-shadow: 0 1px 0 rgba(0, 0, 0, 0.14);
+          box-shadow: 0 3px 8px rgba(105, 80, 212, 0.14);
         }
 
         .btn:disabled {
@@ -675,7 +677,7 @@ function ContextInner() {
 
         .meter > div {
           height: 100%;
-          background: rgba(15, 23, 42, 0.35);
+          background: #7964cf;
         }
 
         .mono {
@@ -711,11 +713,9 @@ function ContextInner() {
           cursor: pointer;
           font-weight: 900;
           color: rgba(15, 23, 42, 0.9);
-          list-style: none;
+          list-style: disclosure-closed;
         }
-        details.moreInfo summary::-webkit-details-marker {
-          display: none;
-        }
+
 
         .tableWrap {
           overflow-x: auto;
@@ -745,13 +745,50 @@ function ContextInner() {
           color: rgba(15, 23, 42, 0.82);
           background: rgba(15, 23, 42, 0.02);
         }
+        .advanced {
+          margin-top: 18px;
+          border-top: 1px solid #e9ecf2;
+          padding-top: 14px;
+        }
+        .advanced > summary {
+          cursor: pointer;
+          font-size: 13px;
+          font-weight: 650;
+          color: #55439f;
+          padding: 4px 0;
+        }
+        .advanced[open] > summary { margin-bottom: 14px; }
+        .input:focus-visible, .btn:focus-visible, .chipBtn:focus-visible,
+        .range:focus-visible, summary:focus-visible {
+          outline: 3px solid #b8a9ef;
+          outline-offset: 3px;
+        }
+        .btn:not(:disabled):hover { border-color: #a99ad9; background: #f7f5fd; }
+        .btnPrimary:not(:disabled):hover { background: #5940bd; color: #fff; }
+        .range { accent-color: #6950d4; }
+        .emptyState {
+          margin: 0;
+          padding: 28px 18px;
+          border-radius: 12px;
+          background: #f7f8fc;
+          color: #59677c;
+          text-align: center;
+          font-size: 14px;
+          line-height: 1.6;
+        }
+        @media (max-width: 639px) {
+          .pageRoot { padding: 20px 12px 36px; }
+          .card { padding: 16px; }
+          .badge { white-space: normal; }
+          .heroTop { align-items: flex-start; }
+        }
       `}</style>
 
       {/* Header */}
       <div className="hero">
         <div className="heroTop">
           <div className="badge">
-            <Icon name="spark" /> Context / ML • Coach view
+            <Icon name="spark" /> In-game planning
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link className="btn" href={baselineHref}>
@@ -763,8 +800,8 @@ function ContextInner() {
           </div>
         </div>
 
-        <h1>Context / ML</h1>
-        <p className="sub">Set the situation, then run to re-rank Top-K play types under score/time context.</p>
+        <h1>Find the right play for this moment</h1>
+        <p className="sub">Choose a matchup, add the score and clock, then compare your options.</p>
 
         <div className="presetRow">
           <button
@@ -829,7 +866,7 @@ function ContextInner() {
       {/* Inputs */}
       <div className="card">
         <div className="sectionTitle">
-          <h2>Matchup + context inputs</h2>
+          <h2>Choose your matchup</h2>
           <span className="badge">{metaReady ? "Ready" : meta?._fallback ? "Data unavailable" : "Loading…"}</span>
         </div>
 
@@ -847,7 +884,7 @@ function ContextInner() {
           </label>
 
           <label>
-            Top-K <span className="muted" style={{ fontWeight: 400 }}>(model setting)</span>
+            Plays to show <span className="muted" style={{ fontWeight: 400 }}>(model setting)</span>
             <select className="input" value={k} onChange={(e) => setK(Number(e.target.value))}>
               {[3, 5, 7, 10].map((x) => (
                 <option key={x} value={x}>
@@ -890,8 +927,8 @@ function ContextInner() {
           <div className="ctxBox">
             <div className="ctxTop">
               <div>
-                <div style={{ fontWeight: 900, fontSize: 12 }}>Margin (our − opponent)</div>
-                <p className="muted">Negative = trailing, Positive = leading</p>
+                <div style={{ fontWeight: 700, fontSize: 13 }}>Score margin</div>
+                <p className="muted">Our score minus theirs. Negative means we’re trailing.</p>
               </div>
               <input
                 className="input"
@@ -978,17 +1015,18 @@ function ContextInner() {
             <div className="ctxTop">
               <div>
                 <div style={{ fontWeight: 900, fontSize: 12 }}>Describe the situation</div>
-                <p className="muted">Coach notes for this scenario (saved in the share link later if you want)</p>
+                <p className="muted">Optional notes to keep with this scenario.</p>
               </div>
             </div>
             <textarea className="input" aria-label="Situation notes" placeholder="Optional notes, for example: need a good look after the timeout." value={situationText} onChange={(e) => setSituationText(e.target.value)} />
           </div>
 
-          <div className="ctxBox">
+          <details className="advanced">
+            <summary>Ranking adjustments & live updates</summary>
             <div className="ctxTop">
               <div>
-                <div style={{ fontWeight: 900, fontSize: 12 }}>Overlay controls</div>
-                <p className="muted">Model settings: small context nudges (on by default)</p>
+                <div style={{ fontWeight: 900, fontSize: 12 }}>Context adjustment</div>
+                <p className="muted">Small rule-based adjustments, applied after the model.</p>
               </div>
               <span className="badge">
                 <Icon name="sliders" /> strength {fmt(overlayStrength, 1)}
@@ -1021,29 +1059,30 @@ function ContextInner() {
               </label>
             </div>
 
-            <div className="row" style={{ marginTop: 10, paddingTop: 10 }}>
-              <button className="btn btnPrimary" type="button" onClick={runContext} disabled={!canRun || loading}>
-                <Icon name="play" /> {loading ? "Running…" : "Run Context + ML"}
-              </button>
+          </details>
+        </div>
 
-              <ReportExport payload={exportPayload}
-                disabledReason={loading ? "Wait for the rankings to finish." : !resultsCurrent && rows.length ? "Inputs changed. Run Context + ML again before exporting." : undefined}
-                description="Export these rankings, including the selected context overlay." />
+        <div className="row" style={{ marginTop: 10, paddingTop: 10 }}>
+          <button className="btn btnPrimary" type="button" onClick={runContext} disabled={!canRun || loading}>
+            <Icon name="play" /> {loading ? "Running…" : "Run Context + ML"}
+          </button>
 
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <button className="btn" type="button" onClick={copyShareLink}>
-                  <Icon name="copy" /> Copy share link
-                </button>
-                <button className="btn" type="button" onClick={() => setShowBreakdown((v) => !v)}>
-                  <Icon name="trend" /> {showBreakdown ? "Hide breakdown" : "Show breakdown"}
-                </button>
-              </div>
-            </div>
+          <ReportExport payload={exportPayload}
+            disabledReason={loading ? "Wait for the rankings to finish." : !resultsCurrent && rows.length ? "Inputs changed. Run Context + ML again before exporting." : undefined}
+            description="Export these rankings, including the selected context overlay." />
 
-            {error ? <div className="error" role="alert">{error}</div> : null}
-            {toast ? <div className="toast" role="status">{toast}</div> : null}
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <button className="btn" type="button" onClick={copyShareLink}>
+              <Icon name="copy" /> Copy share link
+            </button>
+            <button className="btn" type="button" onClick={() => setShowBreakdown((v) => !v)}>
+              <Icon name="trend" /> {showBreakdown ? "Hide breakdown" : "Show breakdown"}
+            </button>
           </div>
         </div>
+
+        {error ? <div className="error" role="alert">{error}</div> : null}
+        {toast ? <div className="toast" role="status">{toast}</div> : null}
 
         <div className="row">
           <span className="badge">
@@ -1142,7 +1181,7 @@ function ContextInner() {
 
       {/* ✅ More info (all explanations go here, at the bottom) */}
       <details className="moreInfo">
-        <summary>More info</summary>
+        <summary>How these rankings work</summary>
 
         <div style={{ marginTop: 10, display: "grid", gap: 10 }}>
           <div className="card" style={{ padding: 12 }}>
