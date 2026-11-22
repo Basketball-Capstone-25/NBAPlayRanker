@@ -1,0 +1,15 @@
+.summary { margin: 20px 0; padding: 18px 20px; border: 1px solid #ddd6fe; border-radius: 12px; background: #f8f7ff; color: #27324a; }
+.period { margin: 0 0 6px; color: #5b5274; font-size: 13px; }
+.headline { margin: 0 0 9px; font-size: 22px; line-height: 1.4; color: #241544; font-weight: 700; }
+.summary p:last-child { margin-bottom: 0; }
+.explanation { margin: 9px 0; font-size: 14px; line-height: 1.6; }
+.endpoints { display: flex; gap: 24px; flex-wrap: wrap; margin: 14px 0 8px; }
+.endpoint { display: grid; gap: 3px; font-size: 13px; color: #536176; }
+.endpoint strong { font-size: 19px; color: #27324a; }
+.controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.scaleControl { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #334155; cursor: pointer; }
+.scaleControl input { width: 17px; height: 17px; accent-color: #5b21b6; }
+.axisNote { font-size: 13px; color: #536176; line-height: 1.5; margin: 0 0 6px; }
+.chart { overflow-x: auto; margin-top: 18px; }
+.chart svg { display: block; width: 100%; min-width: 590px; }
+.partial { color: #805100; font-size: 13px; line-height: 1.6; margin: 10px 0; }

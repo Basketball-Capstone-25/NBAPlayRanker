@@ -24,7 +24,7 @@ describe("season trend states", () => {
   it("shows one metric at a time with the matching table and source details", () => {
     const html = render({ data: report(), loading: false, error: "" });
     expect(html).toContain('role="group" aria-label="Trend metric"');
-    expect(html).toContain('aria-pressed="true">PPP'); expect(html).toContain('aria-pressed="false">Usage');
+    expect(html).toContain('aria-pressed="true">Scoring (PPP)'); expect(html).toContain('aria-pressed="false">Usage');
     expect(html.match(/<svg /g)).toHaveLength(1); expect(html.match(/<table>/g)).toHaveLength(1);
     for (const text of ["1.200", "10.0%", "How this trend is calculated", "play-type points", "fixture", "not describe recent-game form"])
       expect(html).toContain(text);
@@ -44,5 +44,28 @@ describe("season trend states", () => {
   it("asks for an incomplete selection instead of starting a request", () => {
     const html = renderToStaticMarkup(<SeasonTrendPanel filters={{ team: "TOR", play_type: "" }} />);
     expect(html).toContain("Select a team and play type"); expect(html).not.toContain("Loading");
+  });
+  it("explains the observed scoring difference without promising team points per game", () => {
+    const data = report();
+    data.rows = [
+      { season: "2025-26", possessions: 100, points: 110, team_possessions: 1000, usage_pct: 10, ppp: 1.1 },
+      { season: "2026-27", possessions: 100, points: 115, team_possessions: 1000, usage_pct: 10, ppp: 1.15 },
+    ];
+    const html = render({ data, loading: false, error: "" });
+    expect(html).toContain("5.0 more points per 100 Cut possessions");
+    expect(html).toContain("2025-26 → 2026-27");
+    expect(html).toContain("does not predict extra team points per game");
+    expect(html).toContain("2026–27 is a partial season");
+    expect(html).toContain("does not use the selected opponent");
+    expect(html).toContain("Start chart at zero");
+    expect(html).toContain("View exact season values");
+  });
+  it("does not turn a low-sample endpoint into a confident headline", () => {
+    const data = report();
+    data.rows.push({ ...data.rows[0], season: "2025-26", possessions: 100, points: 100, ppp: 1 });
+    const html = render({ data, loading: false, error: "" });
+    expect(html).toContain("Small sample: hold off on a takeaway");
+    expect(html).not.toContain("fewer points per 100");
+    expect(html).toContain("1.200 PPP");
   });
 });

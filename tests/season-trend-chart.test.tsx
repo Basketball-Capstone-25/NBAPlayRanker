@@ -23,14 +23,17 @@ describe("season trend chart and table", () => {
     const path = trendPath(html);
     expect(path.match(/M /g)).toHaveLength(2); expect(path.match(/L /g)).toHaveLength(1);
     expect(path).toContain("M 60 "); expect(path).toContain("M 740 ");
-    expect(path).toContain("M 60 86"); // 1.2 PPP on the 0–1.5 scale.
-    expect(path).toContain("M 740 50"); // 1.5 PPP reaches the labeled upper tick.
+    expect(html).toContain("Focused scale — does not start at zero.");
+    expect(html).toContain("Axis: 1.020–1.580 PPP");
+    const ys = [...html.matchAll(/<circle cx="[^"]+" cy="([^"]+)"/g)].map(match => Number(match[1]));
+    expect(ys[0]).toBeCloseTo(230 - 180 * (1.2 - 1.02) / 0.56);
+    expect(ys[2]).toBeCloseTo(230 - 180 * (1.5 - 1.02) / 0.56);
     expect(html.match(/<circle /g)).toHaveLength(3);
     expect(html).toContain("No data"); expect(html).toContain("2023-24");
     expect(html).toContain('role="img"'); expect(html).toContain("Exact values are in the table");
   });
   it("scales usage from zero to the next five-percentage-point boundary", () => {
-    const html = renderToStaticMarkup(<SeasonTrendChart data={report()} metric="usage_pct" minimum={20} />);
+    const html = renderToStaticMarkup(<SeasonTrendChart data={report()} metric="usage_pct" minimum={20} scale="zero" />);
     expect(html).toContain('cx="60" cy="50"');
     expect(html).toContain("25%"); expect(html).toContain("25.0% usage; 100 possessions");
     expect(html).toContain("6.25%");
@@ -43,9 +46,10 @@ describe("season trend chart and table", () => {
     ];
     const html = renderToStaticMarkup(<SeasonTrendChart data={data} metric="usage_pct" minimum={20} />);
     const coordinates = [...html.matchAll(/<circle cx="([^"]+)" cy="([^"]+)"/g)].map(match => [Number(match[1]), Number(match[2])]);
-    expect(html).toContain("10%"); expect(html).toContain("0%"); expect(html).toContain("2.5%");
-    expect(coordinates[0][0]).toBe(60); expect(coordinates[0][1]).toBeCloseTo(123.8);
-    expect(coordinates[1][0]).toBe(740); expect(coordinates[1][1]).toBeCloseTo(73.4);
+    expect(html).toContain("Axis: 4.8%–9.8%");
+    expect(html).toContain("Focused scale — does not start at zero");
+    expect(coordinates[0][0]).toBe(60); expect(coordinates[0][1]).toBeCloseTo(190.4);
+    expect(coordinates[1][0]).toBe(740); expect(coordinates[1][1]).toBeCloseTo(89.6);
   });
   it("uses hollow circles for small samples without changing the line", () => {
     const small = renderToStaticMarkup(<SeasonTrendChart data={report()} metric="ppp" minimum={20} />);
