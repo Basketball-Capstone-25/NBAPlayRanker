@@ -58,9 +58,7 @@ describe("analyst summary scope", () => {
       .toEqual({ season: "2024-25", our: "TOR", opp: "BOS", k: 5, w_off: 0.7 });
     const html = renderToStaticMarkup(<AnalystSeasonSummary season="2024-25" team="TOR" side="offense" teams={["TOR", "BOS"]} />);
     expect(html).toContain("Summary opponent");
-    expect(html).toContain('value="BOS" selected=""');
     expect(html).toContain("Table search, play-type filters, possession minimum and row limit do not change it");
-    expect(html).toContain("Loading season summary");
   });
   it("requires a single team and offense before requesting data", () => {
     for (const [season, team, side, opponent] of [["", "TOR", "offense", "BOS"], ["2024-25", "", "offense", "BOS"], ["2024-25", "TOR", "defense", "BOS"], ["2024-25", "TOR", "offense", "TOR"]]) {
@@ -70,9 +68,11 @@ describe("analyst summary scope", () => {
     expect(html).toContain("Select one team and Offense");
     expect(html).not.toContain("Loading season summary");
   });
-  it("chooses a different opponent when our team changes to the selected opponent", () => {
+  it("pre-selects no opponent and never offers our own team (SCRUM-841)", () => {
     const html = renderToStaticMarkup(<AnalystSeasonSummary season="2024-25" team="BOS" side="offense" teams={["TOR", "BOS"]} />);
-    expect(html).toContain('value="TOR" selected=""');
+    expect(html).toContain("Choose an opponent");
+    expect(html).not.toMatch(/value="TOR" selected=""/);
     expect(html).not.toContain('value="BOS"');
+    expect(html).not.toContain("Loading season summary");
   });
 });
