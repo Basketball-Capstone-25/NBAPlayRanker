@@ -22,18 +22,6 @@ type Meta = {
   teamNames?: Record<string, string>;
 };
 
-function pickDefaultSeason(seasons: string[]) {
-  // Default to the most recent season available (or 2021-22 if meta is empty).
-  if (!seasons?.length) return "2021-22";
-  return seasons[seasons.length - 1];
-}
-
-function pickDefaultTeam(teams: string[], prefer: string) {
-  // Prefer a familiar team (TOR) when available so the first load feels “not blank.”
-  if (!teams?.length) return prefer;
-  return teams.includes(prefer) ? prefer : teams[0];
-}
-
 function chip(text: string) {
   // Small “filter summary” badges so you can screenshot the exact query context for defense/docs.
   return (
@@ -54,7 +42,7 @@ export default function ShotExplorerPage() {
 
   // Filter inputs (these map directly to the /pbp/shots/preview query params).
   const [season, setSeason] = useState<string>("");
-  const [team, setTeam] = useState<string>("TOR");
+  const [team, setTeam] = useState<string>("");
   const [opp, setOpp] = useState<string>("");
   const [shotType, setShotType] = useState<string>("");
   const [zone, setZone] = useState<string>("");
@@ -94,9 +82,7 @@ export default function ShotExplorerPage() {
         if (cancelled) return;
         setMeta(merged);
 
-        // Auto-fill sensible defaults so the user can “Run” immediately without touching everything.
-        setSeason((prev) => prev || pickDefaultSeason(merged.seasons));
-        setTeam((prev) => prev || pickDefaultTeam(merged.teams, "TOR"));
+        // SCRUM-841: nothing is pre-selected; the analyst chooses the season and team.
       } catch (e: any) {
         if (!cancelled) setInputError(e?.message ?? "Failed to load available filters.");
       }
@@ -238,6 +224,7 @@ export default function ShotExplorerPage() {
           <div>
             <div className="label">Season</div>
             <select className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
+              <option value="" disabled>Choose a season</option>
               {(meta?.seasons ?? []).map((s) => (
                 <option key={s} value={s}>
                   {s}
@@ -249,6 +236,7 @@ export default function ShotExplorerPage() {
           <div>
             <div className="label">Team</div>
             <select className="input" value={team} onChange={(e) => setTeam(e.target.value)}>
+              <option value="" disabled>Choose a team</option>
               {(meta?.teams ?? []).map((t) => (
                 <option key={t} value={t}>
                   {meta?.teamNames?.[t] ? `${t} (${meta.teamNames[t]})` : t}
