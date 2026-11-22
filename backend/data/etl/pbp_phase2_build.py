@@ -34,8 +34,11 @@ def main() -> None:
     def deadline(_signum, _frame):
         raise TimeoutError("Shot preparation exceeded the 10-minute limit.")
 
-    signal.signal(signal.SIGALRM, deadline)
-    signal.alarm(600)
+    # SIGALRM does not exist on Windows, so the 10-minute limit applies on Unix only.
+    has_alarm = hasattr(signal, "SIGALRM")
+    if has_alarm:
+        signal.signal(signal.SIGALRM, deadline)
+        signal.alarm(600)
 
     def sanitize(obj):
         if obj is None:
@@ -106,7 +109,8 @@ def main() -> None:
     CV_CACHE.write_text(json.dumps(cv_out, indent=2), encoding="utf-8")
     print(f"Wrote: {CV_CACHE}")
 
-    signal.alarm(0)
+    if has_alarm:
+        signal.alarm(0)
     print("Done.")
 
 if __name__ == "__main__":
