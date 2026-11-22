@@ -145,7 +145,7 @@ export default function DataExplorerClient() {
 
   const [season, setSeason] = useState<string>("");
   const [team, setTeam] = useState<string>("");
-  const [side, setSide] = useState<string>("offense");
+  const [side, setSide] = useState<string>("");
   const [playType, setPlayType] = useState<string>(""); // blank means “all play types”
   const [minPoss, setMinPoss] = useState<number>(0);
   const [limit, setLimit] = useState<number>(200);
@@ -179,14 +179,13 @@ export default function DataExplorerClient() {
         const m = await fetchMetaOptions();
         if (cancelled) return;
         if (m._fallback) throw new Error("Play-type options could not be refreshed.");
-        const firstLoad = !loadedMetadata.current;
+        // SCRUM-841: keep the analyst's own choices if they still exist; never pre-select one.
         const seasons = m.seasons ?? [], teams = m.teams ?? [];
         const sides = m.sides?.length ? m.sides : ["offense", "defense"];
         setMeta(m);
-        setSeason(previous => seasons.includes(previous) ? previous : seasons[seasons.length - 1] ?? "");
-        setTeam(previous => teams.includes(previous) || (!firstLoad && !previous) ? previous
-          : firstLoad ? teams.includes("TOR") ? "TOR" : teams[0] ?? "" : "");
-        setSide(previous => sides.includes(previous) ? previous : sides[0]);
+        setSeason(previous => seasons.includes(previous) ? previous : "");
+        setTeam(previous => teams.includes(previous) ? previous : "");
+        setSide(previous => sides.includes(previous) ? previous : "");
         setPlayType(previous => m.playTypes?.includes(previous) ? previous : "");
         loadedMetadata.current = true;
         setMetadataRevision(synergyRevision);
@@ -453,7 +452,7 @@ export default function DataExplorerClient() {
     const f = query.filters;
     setSeason(String(f.season ?? ""));
     setTeam(String(f.team ?? ""));
-    setSide(String(f.side ?? "offense"));
+    setSide(String(f.side ?? ""));
     setPlayType(String(f.playType ?? ""));
     setMinPoss(Number(f.minPoss ?? 0) || 0);
     setSearch(String(f.search ?? ""));
@@ -539,8 +538,8 @@ export default function DataExplorerClient() {
                 setSortDir("desc");
                 setMinPoss(0);
                 setPlayType("");
-                setTeam(meta.teams?.includes("TOR") ? "TOR" : meta.teams?.[0] ?? "");
-                setSide("offense");
+                setTeam("");
+                setSide("");
                 setLimit(200);
               }}
               title="Reset table and filter choices"
@@ -623,6 +622,7 @@ export default function DataExplorerClient() {
           <label>
             Season
             <select className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
+              <option value="" disabled>Choose a season</option>
               {(meta.seasons?.length ? meta.seasons : []).map((s) => (
                 <option key={s} value={s}>
                   {s}
@@ -646,6 +646,7 @@ export default function DataExplorerClient() {
           <label>
             Side
             <select className="input" value={side} onChange={(e) => setSide(e.target.value)}>
+              <option value="">Both sides</option>
               {(meta.sides?.length ? meta.sides : ["offense", "defense"]).map((s) => (
                 <option key={s} value={s}>
                   {s}
