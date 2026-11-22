@@ -889,7 +889,7 @@ export default function GameplanClient() {
 
           <div className={styles.sitBlockWide}>
             <div className={styles.sitLabel}>
-              Focus <span className={styles.sitHint}>Need a bucket ↔ Must get a stop</span>
+              Focus (model setting) <span className={styles.sitHint}>Need a bucket ↔ Must get a stop</span>
             </div>
             <input
               className={styles.slider}
@@ -907,7 +907,7 @@ export default function GameplanClient() {
           </div>
 
           <div className={styles.sitBlock}>
-            <div className={styles.sitLabel}>Plays shown</div>
+            <div className={styles.sitLabel}>Plays shown (display setting)</div>
             <select
               className={styles.select}
               value={showPlays}
@@ -922,7 +922,7 @@ export default function GameplanClient() {
           </div>
 
           <div className={styles.sitBlock}>
-            <div className={styles.sitLabel}>Recommendations</div>
+            <div className={styles.sitLabel}>Recommendations (model setting)</div>
             <select
               className={styles.select}
               value={recommendationStyle}
