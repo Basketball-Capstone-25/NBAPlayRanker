@@ -1,6 +1,6 @@
 {
-  "version": "sha256:0649554dd4f3efdbebc19b0f80f1d7d9ef03aca576964fc281c59a97dc6aff99",
-  "pulled_at": "2026-10-25T17:25:32.000138+00:00",
+  "version": "sha256:44387a35d56719c74fb39a19dde5c4da6c7e91f3b065d3a1c18034277635607c",
+  "pulled_at": "2026-11-22T03:48:42.098118+00:00",
   "source": "ESPN NBA play-by-play via hoopR / sportsdataverse-data",
   "source_urls": [
     "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2021.parquet",
@@ -8,7 +8,8 @@
     "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2023.parquet",
     "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2024.parquet",
     "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2025.parquet",
-    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2026.parquet"
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2026.parquet",
+    "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_pbp/play_by_play_2027.parquet"
   ],
   "raw_source_hashes": {
     "play_by_play_2021.parquet": "ed5e89e6acc90e4c4e88dbe54d57477e1abb7f6e0380ebbbf94fa72c805fd51a",
@@ -16,11 +17,12 @@
     "play_by_play_2023.parquet": "f3fac3a58cf1be8813f1f4332edb7fc8d83936df703892a700095d62f71da886",
     "play_by_play_2024.parquet": "bda57bcb4f8aae57428979ac4a0f766f67c52c770d85b0e7fcf7237a333704b0",
     "play_by_play_2025.parquet": "71d7d02671268f793f13a13d1a8a271cba1241cd9ba28c3a363a3f16ad56acc7",
-    "play_by_play_2026.parquet": "f7051c5c0c5b605419fcc0e0c13dd90df7803f96dab290554c1ef737433a98b2"
+    "play_by_play_2026.parquet": "f7051c5c0c5b605419fcc0e0c13dd90df7803f96dab290554c1ef737433a98b2",
+    "play_by_play_2027.parquet": "bf7e48909fdf621eef6b9d443c2e70d432c11eec53f974ac2559a7a9b5c1448e"
   },
-  "coverage": "2020-21 through 2025-26; regular season and playoffs, with quarantined games excluded",
+  "coverage": "2020-21 through 2026-27; regular season and playoffs, with quarantined games excluded",
   "generator": "backend/data/etl/rebuild_shots_from_hoopr.py",
-  "created_at": "2026-10-25T19:27:58.880234+00:00",
+  "created_at": "2026-11-22T03:49:39.791926+00:00",
   "quality_exclusions": {
     "score_inconsistent_games": 14,
     "score_inconsistent_shots": 2506,
