@@ -404,7 +404,7 @@ export default function NavBar() {
           flex: 0 0 auto;
         }
 
-        .npr-brand-wrap {
+        .npr-header :global(.npr-brand-wrap) {
           display: inline-block !important;
           text-decoration: none !important;
           min-width: 0;
@@ -487,7 +487,7 @@ export default function NavBar() {
           min-width: 0;
         }
 
-        .npr-link {
+        .npr-header :global(.npr-link) {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -511,7 +511,7 @@ export default function NavBar() {
             color 160ms ease;
         }
 
-        .npr-link:hover {
+        .npr-header :global(.npr-link:hover) {
           transform: translateY(-1px);
           background: rgba(255, 255, 255, 0.88);
           border-color: rgba(37, 99, 235, 0.16);
@@ -519,47 +519,47 @@ export default function NavBar() {
           box-shadow: 0 14px 28px rgba(15, 23, 42, 0.06);
         }
 
-        .npr-link-active {
+        .npr-header :global(.npr-link-active) {
           background: rgba(37, 99, 235, 0.08);
           border-color: rgba(37, 99, 235, 0.18);
           color: #0f172a;
           box-shadow: 0 14px 28px rgba(37, 99, 235, 0.1);
         }
 
-        .npr-link-workspace {
+        .npr-header :global(.npr-link-workspace) {
           background: rgba(255, 255, 255, 0.62);
           border-color: rgba(15, 23, 42, 0.06);
           padding: 8px 13px;
           font-size: 14px;
         }
 
-        .npr-link-accent {
+        .npr-header :global(.npr-link-accent) {
           background: linear-gradient(135deg, #2563eb 0%, #7c3aed 55%, #ec4899 100%);
           color: #ffffff;
           border-color: rgba(255, 255, 255, 0.22);
           box-shadow: 0 16px 34px rgba(124, 58, 237, 0.2);
         }
 
-        .npr-link-accent:hover {
+        .npr-header :global(.npr-link-accent:hover) {
           border-color: rgba(255, 255, 255, 0.36);
           color: #ffffff;
           filter: brightness(1.03);
         }
 
-        .npr-link-accent.npr-link-active {
+        .npr-header :global(.npr-link-accent.npr-link-active) {
           box-shadow: 0 18px 38px rgba(124, 58, 237, 0.26);
           outline: 2px solid rgba(255, 255, 255, 0.48);
           outline-offset: 2px;
         }
 
-        .npr-auth-group {
+        .npr-header :global(.npr-auth-group) {
           display: flex;
           align-items: center;
           gap: 10px;
           flex-shrink: 0;
         }
 
-        .npr-auth-combo {
+        .npr-header :global(.npr-auth-combo) {
           display: inline-flex;
           align-items: center;
           gap: 10px;
@@ -573,7 +573,7 @@ export default function NavBar() {
           backdrop-filter: blur(10px);
         }
 
-        .npr-auth-combo-link {
+        .npr-header :global(.npr-auth-combo-link) {
           text-decoration: none !important;
           color: rgba(15, 23, 42, 0.82);
           font-size: 14px;
@@ -585,13 +585,13 @@ export default function NavBar() {
           transition: background 160ms ease, color 160ms ease, transform 160ms ease;
         }
 
-        .npr-auth-combo-link:hover {
+        .npr-header :global(.npr-auth-combo-link:hover) {
           background: rgba(15, 23, 42, 0.04);
           color: rgba(15, 23, 42, 0.96);
           transform: translateY(-1px);
         }
 
-        .npr-auth-combo-link-primary {
+        .npr-header :global(.npr-auth-combo-link-primary) {
           background: linear-gradient(
             135deg,
             rgba(37, 99, 235, 0.12) 0%,
@@ -601,13 +601,13 @@ export default function NavBar() {
           color: #0f172a;
         }
 
-        .npr-auth-combo-divider {
+        .npr-header :global(.npr-auth-combo-divider) {
           color: rgba(15, 23, 42, 0.34);
           font-weight: 700;
           user-select: none;
         }
 
-        .npr-loading-chip {
+        .npr-header :global(.npr-loading-chip) {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -622,7 +622,7 @@ export default function NavBar() {
           box-shadow: 0 10px 20px rgba(15, 23, 42, 0.04);
         }
 
-        .npr-cta-signout {
+        .npr-header :global(.npr-cta-signout) {
           appearance: none;
           border: 1px solid rgba(255, 255, 255, 0.18);
           background: linear-gradient(135deg, #2563eb 0%, #7c3aed 55%, #ec4899 100%);
@@ -643,7 +643,7 @@ export default function NavBar() {
             border-color 160ms ease;
         }
 
-        .npr-cta-signout:hover {
+        .npr-header :global(.npr-cta-signout:hover) {
           transform: translateY(-1px);
           filter: brightness(1.03);
           border-color: rgba(255, 255, 255, 0.28);
@@ -751,6 +751,9 @@ export default function NavBar() {
 
         .npr-mobile-panel {
           display: none;
+          max-height: calc(100dvh - 76px);
+          overflow-y: auto;
+          overscroll-behavior: contain;
           max-width: 1220px;
           margin: 0 auto;
           padding: 0 16px 14px;
@@ -778,8 +781,9 @@ export default function NavBar() {
           margin-bottom: 10px;
         }
 
-        .npr-link-mobile {
+        .npr-header :global(.npr-link-mobile) {
           display: flex;
+          min-height: 44px;
           justify-content: flex-start;
           width: 100%;
           margin-top: 8px;
@@ -787,12 +791,12 @@ export default function NavBar() {
           padding: 13px 14px;
         }
 
-        .npr-mobile-auth {
+        .npr-header :global(.npr-mobile-auth) {
           display: grid;
           gap: 10px;
         }
 
-        .npr-auth-link-mobile {
+        .npr-header :global(.npr-auth-link-mobile) {
           appearance: none;
           border: 1px solid rgba(15, 23, 42, 0.08);
           background: rgba(255, 255, 255, 0.84);
@@ -811,14 +815,14 @@ export default function NavBar() {
           cursor: pointer;
         }
 
-        .npr-auth-link-mobile-primary {
+        .npr-header :global(.npr-auth-link-mobile-primary) {
           background: linear-gradient(135deg, #2563eb 0%, #7c3aed 55%, #ec4899 100%);
           color: #ffffff;
           border-color: rgba(255, 255, 255, 0.18);
           box-shadow: 0 18px 34px rgba(124, 58, 237, 0.2);
         }
 
-        .npr-mobile-cta-signout {
+        .npr-header :global(.npr-mobile-cta-signout) {
           appearance: none;
           width: 100%;
           min-height: 52px;
@@ -834,7 +838,7 @@ export default function NavBar() {
           cursor: pointer;
         }
 
-        .npr-mobile-meta {
+        .npr-header :global(.npr-mobile-meta) {
           padding: 13px 14px;
           border-radius: 16px;
           border: 1px solid rgba(15, 23, 42, 0.08);
@@ -844,10 +848,10 @@ export default function NavBar() {
         }
 
         @media (max-width: 1120px) {
-          .npr-link,
-          .npr-link-workspace,
-          .npr-auth-combo-link,
-          .npr-cta-signout {
+          .npr-header :global(.npr-link),
+          .npr-header :global(.npr-link-workspace),
+          .npr-header :global(.npr-auth-combo-link),
+          .npr-header :global(.npr-cta-signout) {
             font-size: 13.5px;
           }
 
