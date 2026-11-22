@@ -89,13 +89,8 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther, ref
       .then((meta) => {
         if (!alive) return;
         setOptions(meta);
-        const season = meta.seasons?.[meta.seasons.length - 1] ?? "";
-        const team = meta.teams?.includes("TOR") ? "TOR" : meta.teams?.[0] ?? "";
-        const firstLoad = !loadedMetadata.current;
-        setDraft(previous => {
-          const next = refreshedShotFilters(previous, meta);
-          return firstLoad ? { ...next, season: next.season || season, team: next.team || team } : next;
-        });
+        // SCRUM-841: keep only the analyst's own choices that still exist; never pre-select one.
+        setDraft(previous => refreshedShotFilters(previous, meta));
         setApplied(previous => {
           if (!previous) return null;
           const next = refreshedShotFilters(previous, meta);
