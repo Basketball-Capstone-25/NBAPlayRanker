@@ -16,7 +16,7 @@ describe("lost server connection message (SCRUM-887)", () => {
 
   it("replaces the browser's Failed to fetch with a plain sentence", async () => {
     fetchMock.mockRejectedValue(new TypeError("Failed to fetch"));
-    const error = await postJson("https://api.test/x", {}).catch((e) => e);
+    const error = (await postJson("https://api.test/x", {}).catch((e: Error) => e)) as Error;
     expect(error).toBeInstanceOf(TypeError);
     expect(error.message).toBe(SERVER_UNREACHABLE);
   });
