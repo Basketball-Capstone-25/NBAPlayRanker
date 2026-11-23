@@ -11,6 +11,7 @@ from domain.shot_analysis.shot_forecast_source import GAME_COLUMNS, SHOT_COLUMNS
 
 
 def file_sha256(path: Path) -> str:
+    """SHA-256 of a file, read in 1 MB blocks."""
     digest = hashlib.sha256()
     with path.open("rb") as stream:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
@@ -19,6 +20,7 @@ def file_sha256(path: Path) -> str:
 
 
 def load_shot_forecast_source(clean_path: Path, raw_dir: Path) -> tuple[pd.DataFrame, dict]:
+    """Load the clean shot file only if it matches its recorded source version and raw files."""
     metadata = json.loads(clean_path.with_suffix(clean_path.suffix + ".source.json").read_text())
     expected = metadata.get("version", "")
     if not isinstance(expected, str) or not re.fullmatch(r"sha256:[0-9a-f]{64}", expected):

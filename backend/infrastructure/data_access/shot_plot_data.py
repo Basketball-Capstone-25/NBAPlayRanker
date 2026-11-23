@@ -10,6 +10,7 @@ COLUMNS = ["SEASON_STR", "TEAM_ABBR", "OPP_ABBR", "SHOT_TYPE", "ZONE", "X", "Y",
            "MADE", "SHOOTER_ID", "GAME_ID"]
 
 def get_shot_plot_df():
+    """Loaded shot rows for charts, read once and kept until an analyst reload clears them."""
     global _FRAME
     # SCRUM-491: keep the loaded shots; a changed file is only read after an
     # analyst reload has checked it and cleared this cache.
@@ -20,6 +21,7 @@ def get_shot_plot_df():
 
 
 def clear_shot_plot_cache() -> None:
+    """Drop the loaded shot rows so the next request reads the reloaded file."""
     global _FRAME
     with _LOCK:
         _FRAME = None

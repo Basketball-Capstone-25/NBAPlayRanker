@@ -11,6 +11,7 @@ from typing import Any, Dict, Optional
 
 @dataclass(frozen=True)
 class FileFingerprint:
+    """Identity of a source file, used to tell whether a derived cache is still valid."""
     schema_version: str
     source_path: str
     source_mtime_ns: int
@@ -25,10 +26,12 @@ class FileFingerprint:
 
 
 def ensure_dir(path: Path) -> None:
+    """Create a folder and its parents if missing."""
     Path(path).mkdir(parents=True, exist_ok=True)
 
 
 def fingerprint_file(path: Path, *, schema_version: str) -> FileFingerprint:
+    """Fingerprint a source file for the given cache schema version."""
     p = Path(path)
     st = p.stat()
     from .dataset_metadata import source_version
@@ -42,6 +45,7 @@ def fingerprint_file(path: Path, *, schema_version: str) -> FileFingerprint:
 
 
 def read_json(path: Path) -> Optional[Dict[str, Any]]:
+    """Read a JSON file, or None if it is missing or unreadable."""
     p = Path(path)
     if not p.exists():
         return None
@@ -52,6 +56,7 @@ def read_json(path: Path) -> Optional[Dict[str, Any]]:
 
 
 def write_json_atomic(path: Path, data: Dict[str, Any]) -> None:
+    """Write JSON through a temporary file so readers never see a half-written file."""
     p = Path(path)
     ensure_dir(p.parent)
     tmp_fd, tmp_name = tempfile.mkstemp(prefix=p.name + ".", suffix=".tmp", dir=str(p.parent))
@@ -68,6 +73,7 @@ def write_json_atomic(path: Path, data: Dict[str, Any]) -> None:
 
 
 def write_parquet_atomic(df: Any, path: Path) -> None:
+    """Write Parquet through a temporary file, then swap it in."""
     p = Path(path)
     ensure_dir(p.parent)
     tmp_path = p.with_suffix(p.suffix + ".tmp")
@@ -76,6 +82,7 @@ def write_parquet_atomic(df: Any, path: Path) -> None:
 
 
 def cache_valid(meta_path: Path, expected: FileFingerprint) -> bool:
+    """True when the cache metadata matches the expected source fingerprint."""
     meta = read_json(meta_path)
     if not meta:
         return False
@@ -96,6 +103,7 @@ def cache_valid(meta_path: Path, expected: FileFingerprint) -> bool:
 
 
 def build_meta(*, fingerprint: FileFingerprint, extra: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    """Metadata to store next to a cache: its source fingerprint plus extra fields."""
     out: Dict[str, Any] = {"fingerprint": asdict(fingerprint)}
     if extra:
         out.update(extra)

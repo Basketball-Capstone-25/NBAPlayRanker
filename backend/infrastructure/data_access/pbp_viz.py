@@ -1,3 +1,5 @@
+"""Shot heatmap rendering from the play-by-play shot data."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -13,6 +15,7 @@ from .pbp_io import read_parquet_cached
 
 @dataclass
 class HeatmapRequest:
+    """Filters for a shot heatmap: season, team, opponent and optional shot type and zone."""
     season: str
     team: str
     opp: str
@@ -182,6 +185,7 @@ def _heatmap_data(*, season, team, opp, shot_type=None, zone=None, max_shots=350
 
 
 def render_pbp_heatmap_png(*, season, team, opp, shot_type=None, zone=None, max_shots=35000) -> bytes:
+    """Render the shot heatmap as PNG bytes."""
     from infrastructure.visualization_and_export.viz_shot_heatmap import render_shot_heatmap_png
     req, shots, counts = _heatmap_data(season=season, team=team, opp=opp,
         shot_type=shot_type, zone=zone, max_shots=max_shots)
@@ -190,6 +194,7 @@ def render_pbp_heatmap_png(*, season, team, opp, shot_type=None, zone=None, max_
 
 
 def render_pbp_heatmap_json(*, season, team, opp, shot_type=None, zone=None, max_shots=35000) -> Dict[str, Any]:
+    """Render the shot heatmap as base64 PNG plus the shot counts behind it."""
     from infrastructure.visualization_and_export.viz_shot_heatmap import render_shot_heatmap_png, png_bytes_to_base64
     req, shots, counts = _heatmap_data(season=season, team=team, opp=opp,
         shot_type=shot_type, zone=zone, max_shots=max_shots)
@@ -202,6 +207,7 @@ def render_pbp_heatmap_json(*, season, team, opp, shot_type=None, zone=None, max
 
 
 def render_pbp_heatmap_base64(*, season, our, opp, shot_type=None, zone=None, max_shots=35000):
+    """Older call shape (our/opp) for the heatmap JSON, kept for existing pages."""
     payload = render_pbp_heatmap_json(season=season, team=our, opp=opp,
         shot_type=shot_type, zone=zone, max_shots=max_shots)
     return {**payload, "n_shots": payload["n_shots_rendered"]}
