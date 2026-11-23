@@ -1046,7 +1046,7 @@ export default function GameplanClient() {
               </div>
 
               <div className={styles.miniBlock}>
-                <div className={styles.sitLabel}>Time left (sec)</div>
+                <div className={styles.sitLabel}>Time left (seconds)</div>
                 <input
                   className={styles.input}
                   type="number"
@@ -1060,7 +1060,7 @@ export default function GameplanClient() {
               </div>
 
               <div className={styles.miniBlock}>
-                <div className={styles.sitLabel}>Score (our − opp)</div>
+                <div className={styles.sitLabel}>Score margin (us − them)</div>
                 <input
                   className={styles.input}
                   type="number"
