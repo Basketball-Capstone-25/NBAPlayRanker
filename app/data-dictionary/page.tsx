@@ -34,7 +34,7 @@ export default function DataDictionaryPage() {
     <div className={styles.filters}>
       <label htmlFor="dictionary-search">Find a column<input className="input" type="search" id="dictionary-search" placeholder="Search names or meanings" value={query} onChange={event => setQuery(event.target.value)} /></label>
       <label>Dataset<select className="input" value={dataset} onChange={e => setDataset(e.target.value)}><option>All datasets</option>{datasets.map(d => <option key={d}>{d}</option>)}</select></label>
-      <button className="btn" onClick={() => { setQuery(""); setDataset("All datasets"); }}>Clear</button>
+      <button type="button" className="btn" disabled={!query && dataset === "All datasets"} onClick={() => { setQuery(""); setDataset("All datasets"); }}>Clear</button>
     </div>
     {error ? <p role="alert">{error} <button className="btn" onClick={() => setAttempt(x => x + 1)}>Retry</button></p> :
       columns === null ? <p role="status">Loading column definitions…</p> : <>
@@ -46,7 +46,7 @@ export default function DataDictionaryPage() {
             <td>{c.documented ? c.meaning : <strong>Undocumented column</strong>}</td><td>{c.unit}</td><td>{c.source}</td>
           </tr>)}</tbody>
         </table></div>
-        {visible.length === 0 && <p>No matching columns.</p>}
+        {visible.length === 0 && <p>No columns match. Try another search term or choose All datasets.</p>}
       </>}
   </section>;
 }
