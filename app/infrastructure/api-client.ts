@@ -32,9 +32,22 @@ async function getAuthHeaders(): Promise<Record<string, string>> {
   return {};
 }
 
+export const SERVER_UNREACHABLE = "Could not reach the NBA Play Ranker server. Check your connection and try again.";
+
+/** fetch(), but a network failure reads as a plain sentence instead of "Failed to fetch". */
+async function apiFetch(url: string, init?: RequestInit): Promise<Response> {
+  try {
+    return await fetch(url, init);
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") throw error;
+    // Still a TypeError, so callers with their own connection message keep it.
+    throw new TypeError(SERVER_UNREACHABLE);
+  }
+}
+
 async function fetchJson<T>(url: string): Promise<T> {
   const headers = await getAuthHeaders();
-  const res = await fetch(url, { cache: "no-store", headers });
+  const res = await apiFetch(url, { cache: "no-store", headers });
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`API error ${res.status}: ${text}`);
@@ -50,7 +63,7 @@ async function fetchJson<T>(url: string): Promise<T> {
 
 export async function postJson<T>(url: string, body: unknown): Promise<T> {
   const authHeaders = await getAuthHeaders();
-  const res = await fetch(url, {
+  const res = await apiFetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json", ...authHeaders },
     body: JSON.stringify(body ?? {}),
@@ -77,7 +90,7 @@ class ApiError extends Error {
 
 async function fetchJsonWithStatus<T>(url: string, signal?: AbortSignal): Promise<T> {
   const headers = await getAuthHeaders();
-  const res = await fetch(url, { cache: "no-store", headers, ...(signal ? { signal } : {}) });
+  const res = await apiFetch(url, { cache: "no-store", headers, ...(signal ? { signal } : {}) });
   const text = await res.text();
 
   if (!res.ok) {
