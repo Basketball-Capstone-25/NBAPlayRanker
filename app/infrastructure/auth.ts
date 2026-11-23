@@ -6,6 +6,7 @@
  */
 
 import { createClient } from "../../lib/supabase/client";
+import { teamFromMetadata } from "../domain/account-team";
 
 export type UserRole = "coach" | "analyst";
 
@@ -72,6 +73,7 @@ export async function signUp(
   email: string,
   password: string,
   role: UserRole,
+  team = "",
 ): Promise<void> {
   const supabase = createClient();
 
@@ -79,7 +81,8 @@ export async function signUp(
     email,
     password,
     options: {
-      data: { requested_role: role },
+      // The team is an optional preference (SCRUM-842). Roles stay in profiles.
+      data: team ? { requested_role: role, team } : { requested_role: role },
       emailRedirectTo: getEmailRedirectUrl(),
     },
   });
@@ -87,4 +90,18 @@ export async function signUp(
   if (error) {
     throw new Error(error.message);
   }
+}
+
+/** The team saved on the signed-in user's account, or "" (SCRUM-842). */
+export async function getAccountTeam(): Promise<string> {
+  const supabase = createClient();
+  const { data } = await supabase.auth.getUser();
+  return teamFromMetadata(data.user?.user_metadata);
+}
+
+/** Save (or clear with "") the signed-in user's team. Only the user can change it. */
+export async function setAccountTeam(team: string): Promise<void> {
+  const supabase = createClient();
+  const { error } = await supabase.auth.updateUser({ data: { team: team || null } });
+  if (error) throw new Error(error.message);
 }

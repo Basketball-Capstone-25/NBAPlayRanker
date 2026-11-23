@@ -13,5 +13,7 @@ export interface ISignInResult {
 
 export interface IAuthGateway {
   signIn(email: string, password: string): Promise<ISignInResult>;
-  signUp(email: string, password: string, role: UserRole): Promise<void>;
+  signUp(email: string, password: string, role: UserRole, team?: string): Promise<void>;
+  getAccountTeam(): Promise<string>;
+  setAccountTeam(team: string): Promise<void>;
 }
