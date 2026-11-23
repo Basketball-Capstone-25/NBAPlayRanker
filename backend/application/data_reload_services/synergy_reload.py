@@ -27,6 +27,7 @@ class ReloadInProgress(Exception):
 
 
 class SynergyReloadService:
+    """Reloads the Synergy play-type source after checking coverage, then refreshes the recommenders."""
     def __init__(
         self,
         rec: BaselineRecommender,

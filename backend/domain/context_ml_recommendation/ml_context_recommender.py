@@ -1,3 +1,5 @@
+"""Context-aware ML ranking: adjusts baseline play-type PPP for score margin, period and time left."""
+
 from __future__ import annotations
 
 """
@@ -473,6 +475,7 @@ def compute_context_factors(
 
 
 def label_context(late_game_factor: float, trailing_factor: float, leading_factor: float) -> str:
+    """Short label for the situation, e.g. "Late & trailing", shown with the ranking."""
     if late_game_factor >= 0.5 and trailing_factor > 0:
         return "Late & trailing"
     if late_game_factor >= 0.5 and leading_factor > 0:

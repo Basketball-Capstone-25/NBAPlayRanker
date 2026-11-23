@@ -75,6 +75,7 @@ def clean_query(raw_query: str) -> str:
 def build_record(
     *, email: Optional[str], role: str, method: str, path: str, raw_query: str, status_code: int, duration_ms: float
 ) -> RequestRecord:
+    """Build one request-log row; trims long values so the log stays bounded."""
     email = (email or "").strip()[:320] or None
     return RequestRecord(
         user_email=email,
@@ -93,6 +94,7 @@ class InvalidLogFilter(ValueError):
 
 @dataclass(frozen=True)
 class LogFilters:
+    """Validated request-log filters and paging."""
     user: str = ""
     endpoint: str = ""
     date_from: Optional[date] = None
@@ -119,6 +121,7 @@ def parse_filters(
     *, user: str = "", endpoint: str = "", date_from: Optional[date] = None, date_to: Optional[date] = None,
     page: int = 1, page_size: int = DEFAULT_PAGE_SIZE,
 ) -> LogFilters:
+    """Validate request-log filters; rejects bad pages, sizes and date ranges."""
     if page < 1:
         raise InvalidLogFilter("Page must be 1 or more.")
     if not 1 <= page_size <= MAX_PAGE_SIZE:
@@ -168,6 +171,7 @@ def total_from_content_range(header: Optional[str]) -> Optional[int]:
 
 
 def page_payload(rows: List[Mapping[str, Any]], total: Optional[int], filters: LogFilters) -> Dict[str, Any]:
+    """Response body for one page of the request log, with whether more pages exist."""
     has_next = (filters.offset + len(rows) < total) if total is not None else len(rows) == filters.page_size
     return {
         "items": list(rows),

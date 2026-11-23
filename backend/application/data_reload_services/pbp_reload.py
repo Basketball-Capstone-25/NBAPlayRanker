@@ -35,6 +35,7 @@ _SEASON = re.compile(r"^\d{4}-\d{2}$")
 
 
 class PbpReloadService:
+    """Reloads the shot files: checks them, stages a copy, swaps them in, and restores the old files if anything fails."""
     def __init__(
         self,
         clean_path: Path = CLEAN_PARQUET,
