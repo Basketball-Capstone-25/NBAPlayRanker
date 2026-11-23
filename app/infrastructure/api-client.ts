@@ -61,6 +61,7 @@ async function fetchJson<T>(url: string): Promise<T> {
   return body as T;
 }
 
+/** POST a JSON body with the user's session token and return the parsed reply. */
 export async function postJson<T>(url: string, body: unknown): Promise<T> {
   const authHeaders = await getAuthHeaders();
   const res = await apiFetch(url, {
@@ -105,6 +106,7 @@ async function fetchJsonWithStatus<T>(url: string, signal?: AbortSignal): Promis
   }
 }
 
+/** Fetch the Synergy data-quality report, with plain messages for sign-in, role and connection problems. */
 export async function fetchDataQualityReport(signal?: AbortSignal): Promise<DataQualityReport> {
   try {
     return parseDataQualityReport(await fetchJsonWithStatus<unknown>(`${API_BASE}/data/quality-report`, signal));
@@ -120,10 +122,12 @@ export async function fetchDataQualityReport(signal?: AbortSignal): Promise<Data
   }
 }
 
+/** List each bundled dataset with its version, pull date, seasons and row count. */
 export async function fetchDatasetCatalog(signal?: AbortSignal): Promise<DatasetMetadata[]> {
   return parseDatasetCatalog(await fetchJsonWithStatus<unknown>(`${API_BASE}/meta/datasets`, signal));
 }
 
+/** Fetch the column definitions shown on the Data Dictionary page. */
 export async function fetchDataDictionary(signal?: AbortSignal): Promise<{ columns: DictionaryColumn[] }> {
   const data = await fetchJsonWithStatus<{ columns: DictionaryColumn[] }>(`${API_BASE}/meta/data-dictionary`, signal);
   if (!Array.isArray(data?.columns)) throw new Error("Data Dictionary unavailable.");
@@ -381,6 +385,7 @@ function normalizeAnalysisResponse<T extends { feature_selection?: any }>(raw: a
 
 // Meta (Dataset1)
 
+/** Load the seasons, teams and play types that exist in the data. Offers no choices if the backend is down. */
 export async function fetchMetaOptions(): Promise<MetaOptions> {
   try {
     return await fetchJson<MetaOptions>(`${API_BASE}/meta/options`);
@@ -411,6 +416,7 @@ export async function fetchMetaOptions(): Promise<MetaOptions> {
 // Defensive behavior:
 // - If /pbp isn't mounted, we fall back to Dataset1 meta so UI doesn't crash.
 
+/** Load the shot dataset's own seasons, teams, shot types and zones. */
 export async function fetchPbpMetaOptions(options: { strict?: boolean } = {}): Promise<PbpMetaOptions> {
   try {
     return await fetchJson<PbpMetaOptions>(`${API_BASE}/pbp/meta/options`);
@@ -427,16 +433,19 @@ export async function fetchPbpMetaOptions(options: { strict?: boolean } = {}): P
   }
 }
 
+/** Describe how the play-type data was prepared (shown under Data Explorer details). */
 export async function fetchPipelineInfo(): Promise<any> {
   return await fetchJson(`${API_BASE}/meta/pipeline`);
 }
 
+/** Fetch the baseline formula and its default offense/defense weights. */
 export async function fetchBaselineInfo(): Promise<any> {
   return await fetchJson(`${API_BASE}/meta/baseline-formula`);
 }
 
 // Data Explorer (Dataset1)
 
+/** Fetch team play-type rows for the Data Explorer table. */
 export async function fetchTeamPlaytypesPreview(opts: {
   season: string;
   team?: string;
@@ -460,6 +469,7 @@ export async function fetchTeamPlaytypesPreview(opts: {
   );
 }
 
+/** Build the CSV export URL for the same filters as the Data Explorer table. */
 export function getTeamPlaytypesCsvUrl(opts: {
   season: string;
   team?: string;
@@ -482,6 +492,7 @@ export function getTeamPlaytypesCsvUrl(opts: {
 
 // Baseline ranking (Dataset1)
 
+/** Rank play types for a matchup with the baseline formula (no game context). */
 export async function baselineRank(opts: {
   season: string;
   our: string;
@@ -529,6 +540,7 @@ export async function baselineRank(opts: {
   }));
 }
 
+/** Build the CSV export URL for a baseline ranking. */
 export function getBaselineCsvUrl(opts: {
   season: string;
   our: string;
@@ -553,6 +565,7 @@ export function getBaselineCsvUrl(opts: {
 
 // Context + ML ranking (Dataset1)
 
+/** Rank play types for a matchup and game situation with the context ML model. */
 export async function contextRank(opts: {
   season: string;
   our: string;
@@ -621,6 +634,7 @@ export async function contextRank(opts: {
 
 // Model metrics (Dataset1)
 
+/** Fetch season-holdout errors for the baseline and ML models. */
 export async function fetchModelMetrics(nSplits = 5): Promise<ModelMetricsResponse> {
   const params = new URLSearchParams({ n_splits: String(nSplits) });
   return await fetchJson<ModelMetricsResponse>(
@@ -630,6 +644,7 @@ export async function fetchModelMetrics(nSplits = 5): Promise<ModelMetricsRespon
 
 // Statistical Analysis (Dataset1)
 
+/** Fetch the saved statistical analysis of the play-type models. */
 export async function fetchMlAnalysis(opts?: {
   nSplits?: number;
   minPoss?: number;
@@ -653,6 +668,7 @@ export async function fetchMlAnalysis(opts?: {
 
 // SportyPy Visualization (Dataset1)
 
+/** Fetch the court diagram for the ranked play types. */
 export async function fetchPlaytypeViz(opts: {
   season: string;
   our: string;
@@ -680,6 +696,7 @@ export async function fetchPlaytypeViz(opts: {
 // we implement defensive helpers that try the most likely candidate paths
 // and also try alternate query param naming (our/opp vs our_team/opp_team).
 
+/** Rank shot zones for a matchup on the Shot Plan page. */
 export async function fetchShotPlanRank(opts: {
   season: string;
   our: string;
@@ -749,6 +766,7 @@ export async function fetchShotPlanRank(opts: {
   return safe;
 }
 
+/** Render a shot-attempt heatmap image for a team and opponent. */
 export async function fetchShotHeatmap(opts: {
   season: string;
   team?: string;
@@ -791,6 +809,7 @@ export async function fetchShotHeatmap(opts: {
   return { ...data, _endpoint_used: usedUrl };
 }
 
+/** Build the Shot Plan PDF export URL. */
 export function getShotPlanPdfUrl(opts: {
   season: string;
   our: string;
@@ -818,6 +837,7 @@ export function getShotPlanPdfUrl(opts: {
   return `${API_BASE}/export/shotplan.pdf?${params.toString()}`;
 }
 
+/** Fetch the saved statistical analysis of the shot models. */
 export async function fetchShotMlAnalysis(opts?: {
   nSplits?: number;
   refresh?: boolean;
@@ -835,6 +855,7 @@ export async function fetchShotMlAnalysis(opts?: {
   return normalizeShotAnalysis(raw);
 }
 
+/** Fetch grouped cross-validation results for the shot models. */
 export async function fetchShotModelMetrics(
   nSplits = 5
 ): Promise<ShotModelMetricsResponse> {
@@ -885,6 +906,7 @@ function buildPbpShotsParams(opts: {
   return params;
 }
 
+/** Fetch one page of shots for the Data Explorer shot table. */
 export async function fetchPbpShotsPreview(opts: {
   season: string;
   team: string;
@@ -927,6 +949,7 @@ export async function fetchPbpShotsPreview(opts: {
   return safe;
 }
 
+/** Build the CSV export URL for the filtered shots. */
 export function getPbpShotsCsvUrl(opts: {
   season: string;
   team: string;
@@ -997,10 +1020,12 @@ async function fetchExplained<T>(url: string, signal?: AbortSignal): Promise<T> 
   }
 }
 
+/** List seasons that have play-by-play shots, for the player heat map. */
 export function fetchPlayerShotSeasons(signal?: AbortSignal): Promise<{ seasons: string[] }> {
   return fetchExplained(`${API_BASE}/viz/player-made-shots/seasons`, signal);
 }
 
+/** List a team's players with their made shots against an opponent. */
 export function fetchShotPlayers(
   opts: { our: string; opp: string; seasons: string[] },
   signal?: AbortSignal,
@@ -1009,6 +1034,7 @@ export function fetchShotPlayers(
   return fetchExplained(`${API_BASE}/viz/player-made-shots/players?${params}`, signal);
 }
 
+/** Fetch one player's made shots against an opponent for the chosen seasons. */
 export function fetchPlayerMadeShots(
   opts: { our: string; opp: string; seasons: string[]; player: string },
   signal?: AbortSignal,
