@@ -67,7 +67,7 @@ export default function TopKUpliftPanel() {
       {select("Our team", our, teams, setOur, "Choose our team")}
       {select("Opponent", opp, teams, setOpp, "Choose an opponent")}
       {select("Top-K (model setting)", String(k), ["3", "5", "7", "10"], value => setK(Number(value)))}
-      <button className="btn btnPrimary" type="button" disabled={!season || !our || !opp || our === opp || loading}
+      <button className="btn primary" type="button" disabled={!season || !our || !opp || our === opp || loading}
         onClick={() => setRan({ season, our, opp, k })}>Compute uplift</button>
     </div>
     {stale ? <p className="muted" role="status">Inputs changed. Click Compute uplift to update these results.</p> : null}

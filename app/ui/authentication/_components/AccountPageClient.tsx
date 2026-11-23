@@ -61,7 +61,7 @@ export default function AccountPageClient() {
         <p className="muted" style={{ margin: 0, fontSize: 13 }}>
           Pages pre-fill this as &quot;our team&quot;. Nothing else is filled in from your account.
         </p>
-        <button className="btn btnPrimary" type="submit" disabled={status !== "ready" || team === saved}>
+        <button className="btn primary" type="submit" disabled={status !== "ready" || team === saved}>
           {status === "saving" ? "Saving…" : "Save"}
         </button>
         {message && <p role="status" style={{ margin: 0 }}>{message}</p>}

@@ -276,7 +276,7 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
             onChange={(e) => set("marginMax", toInt(e.target.value))} />
         </label>
         <div style={{ display: "flex", alignItems: "end" }}>
-          <button className="btn btnPrimary" type="submit" disabled={status === "loading"}>
+          <button className="btn primary" type="submit" disabled={status === "loading"}>
             {status === "loading" ? "Building…" : "Build report"}
           </button>
         </div>
