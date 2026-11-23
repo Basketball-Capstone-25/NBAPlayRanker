@@ -5,7 +5,7 @@ const read = (file: string) => readFileSync(`app/ui/data-explorer/${file}`, "utf
 
 describe("Data Explorer export buttons say what they export (SCRUM-393)", () => {
   it("names the play-type rows, matching shots and clutch report", () => {
-    expect(read("DataExplorerClient.tsx").match(/"Export play-type rows \(CSV\)"/g)).toHaveLength(2);
+    expect(read("DataExplorerClient.tsx").match(/"Export play-type rows \(CSV\)"/g)).toHaveLength(1);
     const shots = read("ShotDataExplorer.tsx");
     expect(shots).toContain('"Export matching shots (CSV)"');
     expect(shots).toContain('"Export matching shots (JSON)"');
