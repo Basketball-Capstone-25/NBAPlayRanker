@@ -111,7 +111,7 @@ export default function RequestLogClient() {
 
       <p className={styles.sub}>Newest first · Times use your local timezone · Date filters use UTC days</p>
       <div className={styles.status} role="status" aria-live="polite">
-        {status === "loading" ? "Loading…" : null}
+        {status === "loading" ? "Loading requests…" : null}
         {status === "ready" && result
           ? result.total === 0
             ? "No requests match these filters."
@@ -126,7 +126,8 @@ export default function RequestLogClient() {
           <table className={styles.table}>
             <thead>
               <tr>
-                <th>Time</th><th>User</th><th>Role</th><th>Method</th><th>Endpoint</th><th>Query</th><th>Status</th><th>ms</th>
+                <th scope="col">Time</th><th scope="col">User</th><th scope="col">Role</th><th scope="col">Method</th>
+                <th scope="col">Endpoint</th><th scope="col">Query</th><th scope="col">Status</th><th scope="col">Duration (ms)</th>
               </tr>
             </thead>
             <tbody>
