@@ -64,6 +64,7 @@ export function refreshedShotFilters(filters: ShotFilters, options: PbpMetaOptio
   };
 }
 
+/** Play-by-play shot table with filters, paging and CSV/JSON export. */
 export default function ShotDataExplorer({ initialQuery = null, onOpenOther, refreshVersion = 0, reloading = false }: ShotDataExplorerProps = {}) {
   const [options, setOptions] = useState<PbpMetaOptions | null>(null);
   const [draft, setDraft] = useState<ShotFilters>(EMPTY);

@@ -21,6 +21,7 @@ export type SavedQueriesPanelProps = {
 
 const byName = (a: SavedQuery, b: SavedQuery) => a.name.localeCompare(b.name);
 
+/** Readable message from an unknown error, or the fallback. */
 export function errorMessage(error: unknown, fallback: string): string {
   return error instanceof Error && error.message ? error.message : fallback;
 }
@@ -33,6 +34,7 @@ export function openOutcome(query: SavedQuery, options: FilterOptions): { load: 
     : { load: true, message: `Opened "${query.name}".` };
 }
 
+/** Save the current filters as a named question and reopen saved ones. */
 export default function SavedQueriesPanel({ definition, options, onOpen, service: injected }: SavedQueriesPanelProps) {
   const service = useMemo(() => injected ?? createSavedQueryService(), [injected]);
   const [queries, setQueries] = useState<SavedQuery[]>([]);

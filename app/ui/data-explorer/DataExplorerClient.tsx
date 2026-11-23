@@ -99,6 +99,7 @@ function DatasetSwitch({ value, onChange }: { value: ExplorerDataset; onChange: 
   );
 }
 
+/** Analyst Data Explorer: play-type table and shot table, filters, exports, data checks and saved queries. */
 export default function DataExplorerClient() {
   const [dataset, setDataset] = useState<ExplorerDataset>("synergy");
   const [pendingReload, setPendingReload] = useState<ReloadDataset | null>(null);

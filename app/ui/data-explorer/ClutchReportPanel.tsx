@@ -105,6 +105,7 @@ export function ClutchTable({ report }: { report: ClutchReport }) {
   );
 }
 
+/** Copy a Context ML link pre-set to this clutch situation; reports whether the copy worked. */
 export async function copyClutchCoachLink(filters: ClutchFilters, origin: string, writeText: (text: string) => Promise<void>) {
   const url = new URL(contextHref(clutchSituation(filters)), origin).href;
   const reportKey = clutchReportUrl(filters);
@@ -118,6 +119,7 @@ export async function copyClutchCoachLink(filters: ClutchFilters, origin: string
 
 type CoachLinkCopy = Awaited<ReturnType<typeof copyClutchCoachLink>>;
 
+/** Confirms the copy, or shows the link to copy by hand if the browser blocked it. */
 export function ClutchCoachLinkFeedback({ filters, copy }: { filters: ClutchFilters; copy: CoachLinkCopy | null }) {
   if (!copy || copy.reportKey !== clutchReportUrl(filters)) return null;
   return copy.copied ? <p role="status" className="muted" style={{ fontSize: 13 }}>Coach link copied.</p> :
@@ -161,6 +163,7 @@ function toInt(value: string): number {
   return value.trim() === "" ? NaN : Number(value);
 }
 
+/** Late-game zone comparison for two teams, with PDF/CSV download and a coach link. */
 export default function ClutchReportPanel({ seasons, teams, teamNames, season = "", team = "" }: ClutchReportPanelProps) {
   const [draft, setDraft] = useState<ClutchFilters>({ season, team, opp: "", ...DEFAULT_CLUTCH });
   const [report, setReport] = useState<ClutchReport | null>(null);
