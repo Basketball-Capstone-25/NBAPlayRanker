@@ -977,8 +977,8 @@ function ContextInner() {
           <div className="ctxBox">
             <div className="ctxTop">
               <div>
-                <div style={{ fontWeight: 900, fontSize: 12 }}>Time pressure</div>
-                <p className="muted">Set period + time remaining</p>
+                <div style={{ fontWeight: 700, fontSize: 13 }}>Time pressure</div>
+                <p className="muted">Set the period and the time left in it.</p>
               </div>
 
               <select className="input" aria-label="Period" value={periodIn ?? ""} onChange={(e) => setPeriodIn(Number(e.target.value))} style={needsHand("period", periodIn) ? { width: 110, ...handStyle } : { width: 110 }}>
@@ -1022,7 +1022,7 @@ function ContextInner() {
           <div className="ctxBox">
             <div className="ctxTop">
               <div>
-                <div style={{ fontWeight: 900, fontSize: 12 }}>Describe the situation</div>
+                <div style={{ fontWeight: 700, fontSize: 13 }}>Describe the situation</div>
                 <p className="muted">Optional notes to keep with this scenario.</p>
               </div>
             </div>
@@ -1033,7 +1033,7 @@ function ContextInner() {
             <summary>Ranking adjustments & live updates</summary>
             <div className="ctxTop">
               <div>
-                <div style={{ fontWeight: 900, fontSize: 12 }}>Context adjustment</div>
+                <div style={{ fontWeight: 700, fontSize: 13 }}>Context adjustment</div>
                 <p className="muted">Small rule-based adjustments, applied after the model.</p>
               </div>
               <span className="badge">
