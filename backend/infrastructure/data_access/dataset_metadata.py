@@ -23,6 +23,7 @@ def _digest(path: str, size: int, mtime_ns: int) -> str:
 
 
 def source_version(path: Path | str) -> str:
+    """Cheap version ID for a file from its path, size and modified time."""
     path = Path(path)
     stat = path.stat()
     return _digest(str(path.resolve()), stat.st_size, stat.st_mtime_ns)
@@ -42,10 +43,12 @@ def _read(path: Path | str, kind: str, **kwargs) -> pd.DataFrame:
 
 
 def read_versioned_csv(path: Path | str, **kwargs) -> pd.DataFrame:
+    """Read a CSV and attach its content hash as frame.attrs['dataset_version']."""
     return _read(path, "csv", **kwargs)
 
 
 def read_versioned_parquet(path: Path | str, **kwargs) -> pd.DataFrame:
+    """Read a Parquet file and attach its content hash as frame.attrs['dataset_version']."""
     return _read(path, "parquet", **kwargs)
 
 
@@ -60,6 +63,7 @@ DATASETS = {
 
 
 def describe_dataset(dataset_id: str, root: Path = DATA_DIR, frame: pd.DataFrame | None = None) -> dict:
+    """Audit details for one dataset: version, pull date (only if recorded for these exact bytes), seasons, rows and warnings."""
     relative, title, source, season_column = DATASETS[dataset_id]
     path = root / relative
     base = {"id": dataset_id, "name": title, "file": relative, "source": source}
@@ -124,6 +128,7 @@ def _describe_cached(dataset_id: str, root: str, size: int, mtime_ns: int, sidec
 
 
 def dataset_catalog(root: Path = DATA_DIR, synergy: pd.DataFrame | None = None) -> list[dict]:
+    """Audit details for every bundled dataset; a file that cannot be read is listed as unavailable."""
     result = []
     for dataset_id, (relative, *_rest) in DATASETS.items():
         path = root / relative

@@ -29,6 +29,7 @@ SYNERGY_ROW_KEY: List[str] = [
 
 @dataclass(frozen=True)
 class CheckResult:
+    """Outcome of one check: pass, fail or not_run, with details."""
     name: str
     status: str
     details: Dict[str, Any] = field(default_factory=dict)
@@ -36,6 +37,7 @@ class CheckResult:
 
 @dataclass(frozen=True)
 class DataQualityReport:
+    """All check results and whether the data is safe for the recommenders."""
     status: str
     safe_for_use: bool
     checks: List[CheckResult] = field(default_factory=list)
@@ -138,4 +140,5 @@ class DataQualityChecker:
 
 
 def run_data_quality_checks(df: pd.DataFrame, **kwargs: Any) -> DataQualityReport:
+    """Run schema, completeness, duplicate and coverage checks on the Synergy source."""
     return DataQualityChecker().run_data_quality_checks(df, **kwargs)

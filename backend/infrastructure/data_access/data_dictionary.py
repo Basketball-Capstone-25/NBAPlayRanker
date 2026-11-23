@@ -78,6 +78,7 @@ DATASET_DEFINITIONS = {
 
 
 def dictionary_entries(catalog: list[dict]) -> list[dict]:
+    """Definition, type and units for every column in the catalog; unknown columns are flagged as undocumented."""
     entries = []
     for dataset in catalog:
         for column in dataset["columns"]:
