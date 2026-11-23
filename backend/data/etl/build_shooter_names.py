@@ -28,6 +28,7 @@ TEXT_COLUMNS = ["text", "description", "event_description"]
 
 
 def main() -> None:
+    """Write shooter_names.csv (athlete ID, name, plays) from the play-by-play text."""
     names = pq.read_schema(RAW).names
     id_col = next((c for c in ID_COLUMNS if c in names), None)
     text_col = next((c for c in TEXT_COLUMNS if c in names), None)

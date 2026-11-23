@@ -1,5 +1,10 @@
 #!/usr/bin/env Rscript
 
+# Download Synergy play-type stats (players, offense and defense, regular season
+# and playoffs) through hoopR for every season in data/expected_coverage.json.
+# Run from the backend folder. Existing chunk files are reused, so only new
+# seasons are downloaded.
+
 cat("Running build_synergy_dataset.R\n")
 cat("Working directory:", getwd(), "\n\n")
 

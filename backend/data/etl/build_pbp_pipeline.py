@@ -40,6 +40,7 @@ def _ensure_backend_on_path() -> Path:
 
 
 def main() -> None:
+    """Legacy shot build from nba_pbp_2021_present.parquet. Use rebuild_shots_from_hoopr.py for the quality-checked rebuild."""
     parser = argparse.ArgumentParser(description="Build Dataset2 (PBP/shot) artifacts")
     parser.add_argument(
         "--force",

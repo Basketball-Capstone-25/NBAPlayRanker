@@ -22,6 +22,7 @@ from infrastructure.data_access.pbp_clean import build_canonical_from_clean
 
 
 def rebuild(raw_dir: Path, output: Path):
+    """Build quality-checked shot files from pinned raw downloads into a staging folder, with a validation report."""
     output.mkdir(parents=True, exist_ok=True)
     manifest = json.loads((raw_dir / "download-manifest.json").read_text())
     frames, summaries, samples, quarantines = [], [], [], []

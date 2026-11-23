@@ -12,6 +12,7 @@ from domain.shot_analysis.shot_ml_models import shot_schema_report
 
 
 def main():
+    """Check that the runtime shot files have the required columns; lists optional and ignored ones."""
     parser = argparse.ArgumentParser()
     parser.add_argument("path", nargs="?", type=Path, default=CLEAN_PARQUET)
     args = parser.parse_args()

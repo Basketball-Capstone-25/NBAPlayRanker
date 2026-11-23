@@ -9,6 +9,7 @@ import urllib.request
 
 
 def main():
+    """Download the pinned play-by-play files in a manifest; stop if any file's size or hash changed."""
     parser = argparse.ArgumentParser()
     parser.add_argument("manifest", type=Path)
     parser.add_argument("output", type=Path)
