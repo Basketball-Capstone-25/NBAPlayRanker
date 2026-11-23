@@ -143,6 +143,7 @@ function Chip({
   );
 }
 
+/** Explains that shot priorities come from season data, not the game situation. */
 export function GameplanShotAdvice({ shotType, zone }: { shotType: string; zone: string }) {
   return <>
     <div className={styles.shotHeadline}>Shot priorities from season data</div>
@@ -160,10 +161,12 @@ export function GameplanShotAdvice({ shotType, zone }: { shotType: string; zone:
   </>;
 }
 
+/** Message when shot priorities are not built, failed or have no data. */
 export function GameplanEmptyShots({ completed, error }: { completed: boolean; error: string | null }) {
   return <p className={styles.empty} role="status">{error ? "Shot priorities could not load. Build the gameplan again to retry." : completed ? "No shot data is available for this matchup and season. Play-type recommendations remain separate." : "Build a gameplan to see shot priorities for this matchup."}</p>;
 }
 
+/** Caption that marks the court diagram as season-baseline only. */
 export function GameplanDiagramCaption({ caption }: { caption: string }) {
   return <div className={styles.vizCaption}>
     <div>{caption}</div>
@@ -171,6 +174,7 @@ export function GameplanDiagramCaption({ caption }: { caption: string }) {
   </div>;
 }
 
+/** Coach Gameplan: matchup, situation and coaching notes in; ranked plays, shot priorities and a printable plan out. */
 export default function GameplanClient() {
   const [options, setOptions] = useState<MetaOptions | null>(null);
   const [optError, setOptError] = useState<string | null>(null);

@@ -23,6 +23,7 @@ function formatTime(iso: string): string {
   return Number.isNaN(date.getTime()) ? iso : date.toLocaleString();
 }
 
+/** Analyst view of recent API requests with filters and paging. */
 export default function RequestLogClient() {
   const [draft, setDraft] = useState<RequestLogFilters>(EMPTY);
   const [applied, setApplied] = useState<RequestLogFilters>(EMPTY);
