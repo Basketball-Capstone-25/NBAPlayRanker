@@ -1027,14 +1027,10 @@ export default function GameplanClient() {
           <div className={styles.contextRight}>
             <div className={styles.miniInputs}>
               <div className={styles.miniBlock}>
-                <div className={styles.sitLabel}>Period (5 = OT)</div>
-                <input
-                  className={styles.input}
-                  type="number"
-                  min={1}
-                  max={5}
+                <div className={styles.sitLabel}>Period</div>
+                <select
+                  className={styles.select}
                   aria-label="Period"
-                  placeholder="1–5"
                   value={quarter ?? ""}
                   onChange={(e) => {
                     if (e.target.value === "") return setQuarter(null);
@@ -1042,7 +1038,14 @@ export default function GameplanClient() {
                     setQuarter(nextPeriod);
                     setTimeLeft((seconds) => (seconds === null ? null : Math.min(seconds, periodSeconds(nextPeriod))));
                   }}
-                />
+                >
+                  <option value="">Not set</option>
+                  <option value={1}>Q1</option>
+                  <option value={2}>Q2</option>
+                  <option value={3}>Q3</option>
+                  <option value={4}>Q4</option>
+                  <option value={5}>OT</option>
+                </select>
               </div>
 
               <div className={styles.miniBlock}>
