@@ -59,8 +59,12 @@ export default function RequestLogClient() {
     return () => controller.abort();
   }, [applied, page]);
 
+  // The To date must not come before the From date.
+  const badRange = Boolean(draft.dateFrom && draft.dateTo && draft.dateTo < draft.dateFrom);
+
   function search(event: FormEvent) {
     event.preventDefault();
+    if (badRange) return;
     setPage(1);
     setApplied({ ...draft });
   }
@@ -104,9 +108,10 @@ export default function RequestLogClient() {
                  onChange={(e) => setDraft({ ...draft, dateTo: e.target.value })} />
         </label>
         <div className={styles.actions}>
-          <button className={`${styles.button} ${styles.primary}`} type="submit">Search</button>
+          <button className={`${styles.button} ${styles.primary}`} type="submit" disabled={badRange}>Search</button>
           <button className={styles.button} type="button" onClick={clear}>Clear</button>
         </div>
+        {badRange ? <p className={styles.error} role="alert">The To date must be on or after the From date.</p> : null}
       </form>
 
       <p className={styles.sub}>Newest first · Times use your local timezone · Date filters use UTC days</p>
