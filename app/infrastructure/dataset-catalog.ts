@@ -1,3 +1,5 @@
+// Infrastructure layer — shape and checks for the dataset catalog (versions, pull dates, seasons).
+
 export type DatasetMetadata = {
   id: string; name: string; file: string; source: string; status: string;
   version: string | null; pulled_at: string | null; seasons: string[];
@@ -8,6 +10,7 @@ export type DictionaryColumn = {
   unit: string; source: string; documented: boolean;
 };
 
+/** Validate the catalog reply and keep only well-formed entries. */
 export function parseDatasetCatalog(value: unknown): DatasetMetadata[] {
   const data = value as { datasets?: unknown };
   if (!data || !Array.isArray(data.datasets)) throw new Error("Dataset metadata unavailable.");

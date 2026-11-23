@@ -1,3 +1,5 @@
+// Infrastructure layer — shape and checks for the Synergy data-quality report.
+
 export type QualityStatus = "pass" | "fail" | "not_run";
 
 export type QualityCheck = {

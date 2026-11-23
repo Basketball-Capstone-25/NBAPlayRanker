@@ -1,3 +1,5 @@
+// Infrastructure layer — asks the server to reload the stored play-type or shot files.
+
 import { createClient } from "../../lib/supabase/client";
 import { API_BASE } from "./api-client";
 import { DatasetReloadError, parseDatasetReload, type DatasetReloadResult, type ReloadDataset } from "../domain/dataset-reload";

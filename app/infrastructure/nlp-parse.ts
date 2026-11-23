@@ -1,3 +1,5 @@
+// Infrastructure layer — calls the backend parser for spoken or typed game situations.
+
 import { API_BASE, postJson } from "./api-client";
 import type { ParseReply } from "../domain/voice-situation";
 

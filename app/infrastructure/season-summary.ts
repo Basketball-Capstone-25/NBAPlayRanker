@@ -1,7 +1,10 @@
+// Infrastructure layer — fetches season summaries and keeps only the latest request's result.
+
 import { createClient } from "../../lib/supabase/client";
 import { API_BASE } from "./api-client";
 import { parseSeasonSummary, summaryKey, type SeasonSummary, type SummaryFilters } from "../domain/season-summary";
 
+/** Fetch and validate the summary for the given filters. */
 export async function fetchSeasonSummary(filters: SummaryFilters, signal?: AbortSignal): Promise<SeasonSummary> {
   const session = await createClient().auth.getSession().catch(() => null);
   signal?.throwIfAborted();
@@ -31,6 +34,7 @@ export const emptySummary = (): SummaryState => ({ key: "", data: null, loading:
 export const selectSummary = (state: SummaryState, filters: SummaryFilters): SummaryState =>
   state.key === summaryKey(filters) ? state : emptySummary();
 
+/** Runs one summary request at a time and drops replies for older filters. */
 export class SummaryRequest {
   private controller: AbortController | null = null;
   private version = 0;
