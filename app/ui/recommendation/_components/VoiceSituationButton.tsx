@@ -27,6 +27,18 @@ type Recognition = {
 
 type Status = "idle" | "listening" | "parsing";
 
+/** Microphone icon so the button reads as voice input at a glance. */
+function MicIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+      strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      <rect x="9" y="2" width="6" height="12" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0" />
+      <line x1="12" y1="18" x2="12" y2="22" />
+    </svg>
+  );
+}
+
 export function voiceErrorMessage(error?: string): string {
   if (error === "not-allowed" || error === "service-not-allowed") {
     return "Microphone access is blocked. Allow it in the browser, or set the situation by hand.";
@@ -112,7 +124,9 @@ export default function VoiceSituationButton({
         aria-pressed={status === "listening"}
         disabled={supported === null || status === "parsing"}
         onClick={status === "listening" ? stop : start}
+        style={{ display: "inline-flex", alignItems: "center", gap: 6 }}
       >
+        <MicIcon />
         {status === "listening" ? "Listening… tap to stop" : status === "parsing" ? "Understanding…" : "Speak the situation"}
       </button>
       <span className="muted" style={{ fontSize: 12 }}>
