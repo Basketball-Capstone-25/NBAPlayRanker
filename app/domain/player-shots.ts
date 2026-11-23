@@ -34,11 +34,13 @@ export function heatCells(points: readonly (readonly [number, number])[], cell =
 /** Fill opacity for a square: busier squares are a deeper green, never invisible. */
 export const cellOpacity = (share: number) => 0.2 + 0.75 * Math.max(0, Math.min(1, share));
 
+/** Seasons as readable text, e.g. "2023-24 and 2024-25". */
 export function listSeasons(seasons: readonly string[]): string {
   if (seasons.length <= 2) return seasons.join(" and ");
   return `${seasons.slice(0, -1).join(", ")} and ${seasons[seasons.length - 1]}`;
 }
 
+/** One sentence describing the made-shot map, used as its caption and alt text. */
 export function describeMadeShots(r: {
   player: { name: string }; opp: string; seasons: string[]; made: number; shown: number; player_games: number;
   excluded_location: number; outside_halfcourt: number;

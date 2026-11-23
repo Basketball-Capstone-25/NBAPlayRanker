@@ -19,6 +19,7 @@ export const OVERTIME_SECONDS = 300;
 
 const clampTo = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
+/** Length of a period in seconds (12 min, or 5 min in overtime). */
 export function periodSeconds(period: number): number {
   return period >= OVERTIME_PERIOD ? OVERTIME_SECONDS : REGULATION_SECONDS;
 }
@@ -47,6 +48,7 @@ export function contextHref(s: GameSituation): string {
   return `/context?${query}`;
 }
 
+/** Seconds left as M:SS. */
 export function formatClock(seconds: number): string {
   const whole = Math.max(0, Math.round(seconds));
   return `${Math.floor(whole / 60)}:${String(whole % 60).padStart(2, "0")}`;

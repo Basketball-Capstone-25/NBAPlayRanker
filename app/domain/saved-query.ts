@@ -26,6 +26,7 @@ export type SavedQuery = QueryDefinition & {
 export const MAX_QUERY_NAME = 120;
 export const MAX_ROW_LIMIT = 10000;
 
+/** Trim and collapse spaces in a saved query name. */
 export function normalizeQueryName(name: string): string {
   return name.trim().replace(/\s+/g, " ");
 }
@@ -71,6 +72,7 @@ export function missingValues(definition: QueryDefinition, options: FilterOption
   return missing;
 }
 
+/** Explain which saved filters no longer exist in the data. */
 export function describeMissing(missing: readonly string[]): string {
   if (missing.length === 0) return "";
   const list = missing.length === 1 ? missing[0] : `${missing.slice(0, -1).join(", ")} and ${missing[missing.length - 1]}`;
