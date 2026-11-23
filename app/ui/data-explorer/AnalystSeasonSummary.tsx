@@ -1,14 +1,19 @@
 "use client";
 
+// UI Layer — season summary on the Data Explorer for one team against a chosen opponent.
+// Shown only for offense with a single team, so the summary always matches the table filters.
+
 import React, { useState } from "react";
 import SeasonSummary from "../_shared/components/SeasonSummary";
 import type { SummaryFilters } from "../../domain/season-summary";
 
+/** Summary filters for the current table choice, or null when the choice cannot be summarised. */
 export function analystSummaryFilters(season: string, team: string, side: string, opponent: string): SummaryFilters | null {
   return season && team && side === "offense" && opponent && team !== opponent
     ? { season, our: team, opp: opponent, k: 5, w_off: 0.7 } : null;
 }
 
+/** Opponent picker plus the shared season summary card. */
 export default function AnalystSeasonSummary({ season, team, side, teams, teamNames, refreshVersion = 0, refreshing = false }: {
   season: string; team: string; side: string; teams: string[]; teamNames?: Record<string, string>; refreshVersion?: number; refreshing?: boolean;
 }) {

@@ -1,5 +1,8 @@
 "use client";
 
+// UI Layer — the Synergy data-quality report: schema, completeness, duplicates and coverage.
+// The checks cover every source row, not just the rows in the current table.
+
 import React, { useEffect, useState } from "react";
 import { fetchDataQualityReport, type DataQualityReport, type QualityCheck, type QualityStatus } from "../../services/dataExplorer";
 
@@ -37,6 +40,7 @@ function details(check: QualityCheck): string {
   return typeof d.reason === "string" ? d.reason : "See the report for this check.";
 }
 
+/** Renders each check with its status, plus loading, error and refresh states. */
 export function DataQualityReportView({ state, onRefresh }: { state: QualityState; onRefresh: () => void }) {
   const report = state.kind === "ready" ? state.report : null;
   return (
@@ -83,6 +87,7 @@ export function DataQualityReportView({ state, onRefresh }: { state: QualityStat
   );
 }
 
+/** Loads the report and refreshes it on request. */
 export default function DataQualityPanel() {
   const [attempt, setAttempt] = useState(0);
   const [state, setState] = useState<QualityState>({ kind: "loading" });

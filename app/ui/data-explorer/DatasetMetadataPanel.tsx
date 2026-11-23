@@ -1,10 +1,14 @@
 "use client";
 
+// UI Layer — audit details for each dataset: version, original pull date, seasons and rows.
+// Missing details are shown as not recorded rather than hidden.
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { fetchDatasetCatalog } from "../../infrastructure/api-client";
 import type { DatasetMetadata } from "../../infrastructure/dataset-catalog";
 
+/** Lists the dataset catalog with its audit metadata. */
 export default function DatasetMetadataPanel() {
   const [datasets, setDatasets] = useState<DatasetMetadata[] | null>(null);
   const [error, setError] = useState("");

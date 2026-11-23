@@ -1,5 +1,8 @@
 "use client";
 
+// UI Layer — lets an analyst reload the stored play-type or shot files on the server.
+// Reports whether the previous data is still in use when a reload fails.
+
 import React, { useEffect, useRef, useState } from "react";
 import { DatasetReloadError, type DatasetReloadResult, type ReloadDataset } from "../../domain/dataset-reload";
 import { reloadDataset } from "../../infrastructure/dataset-reload";
@@ -13,6 +16,7 @@ export type ReloadState =
 
 const names: Record<ReloadDataset, string> = { synergy: "play types", pbp: "shots" };
 
+/** Reload buttons and the result of the last reload. */
 export function DatasetReloadView({ state, onReload }: { state: ReloadState; onReload(dataset: ReloadDataset): void }) {
   const pending = state.kind === "loading";
   const uncertain = state.kind === "error" && state.uncertain;
@@ -51,6 +55,7 @@ type Props = {
   onPendingChange?(dataset: ReloadDataset | null): void;
 };
 
+/** Runs a reload and tells the page when new data is in place. */
 export default function DatasetReloadPanel({ onReloaded, onPendingChange }: Props) {
   const [state, setState] = useState<ReloadState>({ kind: "idle" });
   const inFlight = useRef<AbortController | null>(null);
