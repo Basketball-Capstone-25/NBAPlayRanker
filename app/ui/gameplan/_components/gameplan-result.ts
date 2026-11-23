@@ -1,3 +1,6 @@
+// UI Layer — keeps Gameplan results tied to the inputs they were built from.
+// If the inputs change after a build, the old results are treated as out of date.
+
 import type { ResolvedSituation } from "../../../domain/gameplan-context";
 
 export type GameplanSelection = {
@@ -11,6 +14,7 @@ export type GameplanSelection = {
   prompt: string;
 };
 
+/** Stable key for a set of Gameplan inputs, used to spot changes. */
 export function gameplanSelectionKey(selection: GameplanSelection): string {
   const situation = selection.situation;
   // An omitted condition and an unchecked condition mean the same thing.
@@ -33,6 +37,7 @@ export function gameplanSelectionKey(selection: GameplanSelection): string {
   ]);
 }
 
+/** Decides which built result, if any, is still current for the inputs on screen. */
 export function selectGameplanResult(
   completed: GameplanSelection | null,
   draft: GameplanSelection,

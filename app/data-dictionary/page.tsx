@@ -1,5 +1,7 @@
 "use client";
 
+// Route /data-dictionary — searchable definitions of every dataset column.
+
 import Link from "next/link";
 import styles from "../reference.module.css";
 import { useEffect, useMemo, useState } from "react";
