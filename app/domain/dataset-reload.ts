@@ -1,3 +1,6 @@
+// Domain layer — results of reloading a stored dataset on the server.
+// A reply must name the dataset that was reloaded, or the result is treated as unknown.
+
 export type ReloadDataset = "synergy" | "pbp";
 
 export type DatasetReloadResult = {
@@ -12,6 +15,7 @@ export type DatasetReloadResult = {
   quality_status?: "pass";
 };
 
+/** A failed reload, with whether the old data is still in use. */
 export class DatasetReloadError extends Error {
   constructor(message: string, public readonly outcome: "not_started" | "rejected" | "unknown", public readonly status?: number) {
     super(message);

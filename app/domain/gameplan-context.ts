@@ -1,3 +1,6 @@
+// Domain layer — the Gameplan game situation and coaching conditions.
+// Merges what the coach typed with what the parser understood, without inventing values.
+
 export const NEEDS = ["need3", "quick2", "two_for_one", "last_shot", "must_score", "safe"] as const;
 export const DEFENSE_STYLES = ["switch", "drop", "hedge", "blitz", "ice", "under", "top_lock", "zone_2_3", "zone_3_2", "zone_1_3_1", "box_and_1", "matchup_zone", "generic_zone"] as const;
 export const CONDITION_FLAGS = ["after_timeout", "late_clock", "need3", "protect_lead", "vs_switching", "must_stop", "quick2", "two_for_one", "slob", "blob", "advance_ball", "hold_for_last", "safe", "must_score", "no_three"] as const;
@@ -16,14 +19,17 @@ export type ResolvedSituation = GameSituation & {
   warnings: string[];
 };
 
+/** Q1–Q4, or OT1, OT2... for overtime periods. */
 export function periodLabel(period: number): string {
   return period === 5 ? "OT" : `Q${period}`;
 }
 
+/** Length of a period in seconds (12 min, or 5 min for overtime). */
 export function periodSeconds(period: number): number {
   return period === 5 ? 300 : 720;
 }
 
+/** Combine parsed and typed situation fields, preferring what was typed. */
 export function resolveGameSituation(parsed: ParsedSituation, fallback: GameSituation): ResolvedSituation {
   const finite = (value: unknown, previous: number) => typeof value === "number" && Number.isFinite(value) ? value : previous;
   const period = Math.max(1, Math.min(5, Math.round(finite(parsed.period, fallback.period))));

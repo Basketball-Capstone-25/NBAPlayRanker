@@ -1,3 +1,6 @@
+// Domain layer — the season summary for a matchup and the checks on its reply.
+// A reply is accepted only if it matches the filters that were asked for.
+
 export type SummaryFilters = { season: string; our: string; opp: string; k: number; w_off: number };
 type SummaryScope = SummaryFilters & {
   period: "season"; w_def: number; side: "offense"; season_phase: "regular_season";
