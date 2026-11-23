@@ -241,6 +241,9 @@ export default function NavBar() {
 
     return (
       <div className="npr-auth-group">
+        <Link href="/account" className="npr-auth-combo-link" onClick={closeAll}>
+          Account
+        </Link>
         <button type="button" className="npr-cta-signout" onClick={handleSignOut}>
           Sign out
         </button>
@@ -272,6 +275,9 @@ export default function NavBar() {
 
     return (
       <div className="npr-mobile-auth">
+        <Link href="/account" className="npr-auth-link-mobile" onClick={closeAll}>
+          Account
+        </Link>
         <button type="button" className="npr-mobile-cta-signout" onClick={handleSignOut}>
           Sign out
         </button>
