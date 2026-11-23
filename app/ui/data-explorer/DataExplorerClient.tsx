@@ -523,6 +523,7 @@ export default function DataExplorerClient() {
                 setSortDir("desc");
                 setMinPoss(0);
                 setPlayType("");
+                setSeason("");
                 setTeam("");
                 setSide("");
                 setLimit(200);
