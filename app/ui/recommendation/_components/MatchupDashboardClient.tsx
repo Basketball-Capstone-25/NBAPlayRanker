@@ -14,6 +14,7 @@ import PossessionOutcomesPanel from "./PossessionOutcomesPanel";
 import UsageReadout from "./UsageReadout";
 import PossessionScenario from "./PossessionScenario";
 import styles from "./matchup-dashboard.module.css";
+import { useAccountTeam } from "../../_shared/useAccountTeam";
 
 type View = "usage" | "defense";
 const integer = (n: number) => n.toLocaleString("en-US");
@@ -103,6 +104,11 @@ export default function MatchupDashboardClient() {
   // SCRUM-843: results appear only after "Show results"; later input changes mark them out of date.
   type Shown = { view: typeof view; season: string; our: string; opp: string; minimum: number; playType: string; leagueSide: "offense" | "defense" };
   const choice: Shown = { view, season, our, opp, minimum, playType, leagueSide };
+  // SCRUM-842: the account team is the only input pre-filled, and only when blank.
+  const accountTeam = useAccountTeam(meta?.teams);
+  useEffect(() => {
+    if (accountTeam) setOur((prev) => prev || accountTeam);
+  }, [accountTeam]);
   const ready = trendView ? Boolean(meta && our && playType) : leagueView || outcomesView ? Boolean(meta && season && our) : valid;
   const [shown, setShown] = useState<Shown | null>(null);
   const stale = shown !== null && JSON.stringify(shown) !== JSON.stringify(choice);

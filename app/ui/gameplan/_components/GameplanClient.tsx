@@ -26,6 +26,7 @@ import {
   authenticatedDownload,
 } from "../../../services/shotAnalysis";
 import { gradeFromRank, coachingCuesFor, counterPlanFor } from "../../../domain/coaching-knowledge";
+import { useAccountTeam } from "../../_shared/useAccountTeam";
 import {
   normalizeTeams,
   normalizeWhy,
@@ -404,6 +405,12 @@ export default function GameplanClient() {
   const wOff = useMemo(() => Number((1 - wDef).toFixed(2)), [wDef]);
 
   const teamOptions = useMemo(() => normalizeTeams(options), [options]);
+
+  // SCRUM-842: the account team is the only input pre-filled, and only when blank.
+  const accountTeam = useAccountTeam(useMemo(() => teamOptions.map((t) => t.code), [teamOptions]));
+  useEffect(() => {
+    if (accountTeam) setOur((prev) => prev || accountTeam);
+  }, [accountTeam]);
   const seasonOptions = useMemo(() => options?.seasons ?? [], [options]);
   const matchupChosen = Boolean(season && our && opp && our !== opp);
 
