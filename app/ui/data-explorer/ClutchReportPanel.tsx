@@ -235,21 +235,21 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
         <label style={{ fontSize: 13, display: "grid", gap: 6 }}>
           Season
           <select className="input" value={draft.season} onChange={(e) => set("season", e.target.value)}>
-            <option value="">Choose…</option>
+            <option value="">Choose a season</option>
             {seasons.map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
         </label>
         <label style={{ fontSize: 13, display: "grid", gap: 6 }}>
           Your team
           <select className="input" value={draft.team} onChange={(e) => set("team", e.target.value)}>
-            <option value="">Choose…</option>
+            <option value="">Choose your team</option>
             {teams.map((t) => <option key={t} value={t}>{label(t)}</option>)}
           </select>
         </label>
         <label style={{ fontSize: 13, display: "grid", gap: 6 }}>
           Opponent
           <select className="input" value={draft.opp} onChange={(e) => set("opp", e.target.value)}>
-            <option value="">Choose…</option>
+            <option value="">Choose an opponent</option>
             {teams.filter((t) => t !== draft.team).map((t) => <option key={t} value={t}>{label(t)}</option>)}
           </select>
         </label>
@@ -276,7 +276,7 @@ export default function ClutchReportPanel({ seasons, teams, teamNames, season = 
             onChange={(e) => set("marginMax", toInt(e.target.value))} />
         </label>
         <div style={{ display: "flex", alignItems: "end" }}>
-          <button className="btn" type="submit" disabled={status === "loading"}>
+          <button className="btn btnPrimary" type="submit" disabled={status === "loading"}>
             {status === "loading" ? "Building…" : "Build report"}
           </button>
         </div>

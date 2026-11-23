@@ -211,14 +211,14 @@ export default function ShotDataExplorer({ initialQuery = null, onOpenOther, ref
         <label className={styles.field}>
           Season
           <select className={styles.input} value={draft.season} onChange={set("season")}>
-            <option value="">Choose…</option>
+            <option value="">Choose a season</option>
             {(options?.seasons ?? []).map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
         </label>
         <label className={styles.field}>
           Team
           <select className={styles.input} value={draft.team} onChange={set("team")}>
-            <option value="">Choose…</option>
+            <option value="">Choose a team</option>
             {(options?.teams ?? []).map((t) => <option key={t} value={t}>{t}</option>)}
           </select>
         </label>
