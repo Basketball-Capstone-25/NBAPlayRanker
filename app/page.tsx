@@ -15,7 +15,7 @@ export default function Page() {
         <h1>Know the matchup.<br /><span>Make your next move.</span></h1>
         <p className={styles.lead}>Compare play types, spot defensive openings and build a gameplan with the numbers behind every choice.</p>
         <div className={styles.actions}>
-          <Link className={styles.primary} href="/login">Open your workspace <span aria-hidden>↗</span></Link>
+          <Link className={styles.primary} href="/login">Open your workspace <span aria-hidden>→</span></Link>
           <Link className={styles.secondary} href="/signup">Create an account</Link>
         </div>
         <p className={styles.note}>Historical data. Clear comparisons. Your coaching judgment.</p>
@@ -45,7 +45,7 @@ export default function Page() {
 
     <section className={styles.analyst} aria-labelledby="analyst-heading">
       <div><p className={styles.kicker}>ANALYST WORKSPACE</p><h2 id="analyst-heading">Go straight to the evidence.</h2><p>Browse the source data, inspect shot locations and check model performance.</p></div>
-      <div className={styles.tools}><Link href="/data-explorer">Data Explorer <span aria-hidden>↗</span></Link><Link href="/model-metrics">Model Metrics <span aria-hidden>↗</span></Link><Link href="/shot-heatmap">Shot Heatmap <span aria-hidden>↗</span></Link></div>
+      <div className={styles.tools}><Link href="/data-explorer">Data Explorer <span aria-hidden>→</span></Link><Link href="/model-metrics">Model Metrics <span aria-hidden>→</span></Link><Link href="/shot-heatmap">Shot Heatmap <span aria-hidden>→</span></Link></div>
     </section>
     <p className={styles.access}>Workspace access requires an approved coach or analyst account. <Link href="/glossary">New to the terms?</Link></p>
   </section>;
