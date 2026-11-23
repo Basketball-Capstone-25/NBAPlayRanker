@@ -8,6 +8,8 @@ import { useEffect, useMemo, useState } from "react";
 import { fetchDataDictionary } from "../infrastructure/api-client";
 import type { DictionaryColumn } from "../infrastructure/dataset-catalog";
 
+const countLabel = (count: number, noun: string) => `${count} ${noun}${count === 1 ? "" : "s"}`;
+
 export default function DataDictionaryPage() {
   const [columns, setColumns] = useState<DictionaryColumn[] | null>(null);
   const [error, setError] = useState("");
@@ -26,6 +28,7 @@ export default function DataDictionaryPage() {
     (dataset === "All datasets" || c.dataset_name === dataset) &&
     `${c.dataset_name} ${c.column} ${c.meaning}`.toLowerCase().includes(query.toLowerCase())), [columns, query, dataset]);
   const datasets = [...new Set((columns || []).map(c => c.dataset_name))].sort();
+  const undocumented = visible.filter(c => !c.documented).length;
   return <section className={styles.page}>
     <header className={styles.heading}><div><p className={styles.eyebrow}>REFERENCE</p><h1>Data Dictionary</h1><p>Look up column definitions, units and data sources.</p></div><Link className="btn" href="/glossary">Glossary ↗</Link></header>
     <div className={styles.filters}>
@@ -35,7 +38,7 @@ export default function DataDictionaryPage() {
     </div>
     {error ? <p role="alert">{error} <button className="btn" onClick={() => setAttempt(x => x + 1)}>Retry</button></p> :
       columns === null ? <p role="status">Loading column definitions…</p> : <>
-        <p className={styles.count} role="status">{visible.length} columns shown. {visible.filter(c => !c.documented).length} of these need a definition.</p>
+        <p className={styles.count} role="status">{countLabel(visible.length, "column")} shown.{undocumented > 0 && ` ${countLabel(undocumented, "column")} still need a definition.`}</p>
         <div className={styles.tableWrap} tabIndex={0} role="region" aria-label="Column definitions"><table>
           <thead><tr><th scope="col">Dataset</th><th scope="col">Column</th><th scope="col">Meaning</th><th scope="col">Unit</th><th scope="col">Source</th></tr></thead>
           <tbody>{visible.map(c => <tr key={`${c.dataset}:${c.column}`}>
