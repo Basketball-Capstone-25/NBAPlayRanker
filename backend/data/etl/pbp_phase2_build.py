@@ -23,6 +23,7 @@ ANALYSIS_CACHE = CACHE_DIR / "pbp_phase2_shot_ml_analysis.json"
 CV_CACHE = CACHE_DIR / "pbp_phase2_shot_model_cv.json"
 
 def main() -> None:
+    """Rebuild the saved shot model analysis and cross-validation results from the current shot file."""
     import json
     import math
     import signal

@@ -22,10 +22,12 @@ from domain.statistical_analysis.forecast_evaluation import evaluate_forecasts
 
 
 def sha256(path: Path) -> str:
+    """SHA-256 of a file."""
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def main() -> None:
+    """Evaluate season-ahead play-type forecasts and write the report."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, default=BACKEND / "data/synergy_playtypes_2019_2025_players.csv")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "docs/iteration-15/forecast")

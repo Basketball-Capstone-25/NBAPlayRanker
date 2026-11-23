@@ -31,6 +31,7 @@ from infrastructure.data_access.dataset_metadata import read_versioned_csv
 
 
 def main() -> None:
+    """Retrain play-type predictions and analysis from the Synergy source and write evidence files."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, default=BACKEND / "data/synergy_playtypes_2019_2025_players.csv")
     parser.add_argument("--output-dir", type=Path, default=BACKEND / "data")

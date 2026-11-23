@@ -22,6 +22,7 @@ from infrastructure.model_management.ml_models import (
 
 
 def main() -> None:
+    """Run the season-holdout comparison of play-type models and print it."""
     print("Running season-holdout evaluation (offense PPP prediction)...")
 
     rec = BaselineRecommender(str(DATA_CSV_PATH))

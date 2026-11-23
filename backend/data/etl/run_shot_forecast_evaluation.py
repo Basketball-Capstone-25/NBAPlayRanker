@@ -20,6 +20,7 @@ from infrastructure.data_access.shot_forecast_source import file_sha256, load_sh
 
 
 def run(clean_path: Path, raw_dir: Path, output_dir: Path) -> dict:
+    """Evaluate pre-game shot forecasts from the pinned shot source and return the report."""
     destination = output_dir.resolve()
     if destination == ROOT or ROOT in destination.parents:
         raise ValueError("Save evaluation results outside the code checkout.")
@@ -48,6 +49,7 @@ def run(clean_path: Path, raw_dir: Path, output_dir: Path) -> dict:
 
 
 def main():
+    """Command-line entry: run the evaluation and save results outside the code checkout."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--clean", type=Path, default=BACKEND / "data/pbp/shots_clean.parquet")
     parser.add_argument("--raw-dir", type=Path, required=True, help="Directory containing the pinned original Parquet sources.")
