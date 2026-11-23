@@ -13,6 +13,7 @@ import VoiceSituationButton from "./VoiceSituationButton";
 import PlayerMadeShotsPanel from "./PlayerMadeShotsPanel";
 import type { SituationField, VoiceSituation } from "../../../domain/voice-situation";
 import { topPickIndexes } from "../../../domain/top-pick";
+import { useAccountTeam } from "../../_shared/useAccountTeam";
 import { contextReport, resultKey } from "../../../infrastructure/report-export";
 import {
   clamp01,
@@ -266,6 +267,12 @@ function ContextInner() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // SCRUM-842: the account team is the only input pre-filled, and only when blank.
+  const accountTeam = useAccountTeam(meta?.teams);
+  useEffect(() => {
+    if (accountTeam) setOur((prev) => prev || accountTeam);
+  }, [accountTeam]);
 
   const metaReady = useMemo(
     () => (meta?.seasons?.length ?? 0) > 0 && (meta?.teams?.length ?? 0) > 0,

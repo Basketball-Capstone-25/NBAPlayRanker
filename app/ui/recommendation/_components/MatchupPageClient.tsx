@@ -13,6 +13,7 @@ import {
   fetchPlaytypeViz,
 } from "../../../services/recommendation";
 import { normalizeWeights } from "../../../domain/weight-calculation";
+import { useAccountTeam } from "../../_shared/useAccountTeam";
 import ReportExport from "../../_shared/components/ReportExport";
 import TopPickCall from "../../_shared/components/TopPickCall";
 import TopPickBadge from "../../_shared/components/TopPickBadge";
@@ -218,6 +219,12 @@ export default function MatchupPage() {
       cancelled = true;
     };
   }, []);
+
+  // SCRUM-842: the account team is the only input pre-filled, and only when blank.
+  const accountTeam = useAccountTeam(meta?.teams);
+  useEffect(() => {
+    if (accountTeam) setOur((prev) => prev || accountTeam);
+  }, [accountTeam]);
 
   const metaReady = useMemo(
     () => (meta?.seasons?.length ?? 0) > 0 && (meta?.teams?.length ?? 0) > 0,
