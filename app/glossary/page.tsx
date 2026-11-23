@@ -939,7 +939,7 @@ export default function GlossaryPage() {
     <section className={styles.filters} aria-label="Find a term">
       <label>Search terms<input className="input" type="search" placeholder="Try PPP, usage or Random Forest" value={query} onChange={e => setQuery(e.target.value)} /></label>
       <label>Category<select className="input" value={tag} onChange={e => setTag(e.target.value)}>{allTags.map(t => <option key={t}>{t}</option>)}</select></label>
-      <button className="btn" onClick={() => { setQuery(""); setTag("All"); }}>Clear</button>
+      <button type="button" className="btn" disabled={!query && tag === "All"} onClick={() => { setQuery(""); setTag("All"); }}>Clear</button>
     </section>
     <p className={styles.count} role="status">{filtered.length} {filtered.length === 1 ? "term" : "terms"}</p>
     <div className={styles.terms}>{filtered.map(t => <details className={styles.term} key={t.term}>
