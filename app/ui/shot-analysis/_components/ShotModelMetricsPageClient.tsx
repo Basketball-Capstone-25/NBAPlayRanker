@@ -46,9 +46,9 @@ export function ShotMetricsContent({ data, loading, error, onReload }: {
       <p>Compare how well the models estimate points for a proposed shot.</p>
       <p className={styles.notice}>Shot location and type must be supplied. These results do not measure pre-possession forecasts.</p>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-        <Link href="/shot-plan">Shot Plan</Link>
-        <Link href="/shot-statistical-analysis">Shot Statistical Analysis</Link>
-        <button className="btn btn--secondary" disabled={loading} onClick={onReload}>{loading ? "Loading results…" : "Reload results"}</button>
+        <Link className="btn" href="/shot-plan">Shot Plan</Link>
+        <Link className="btn" href="/shot-statistical-analysis">Shot Statistical Analysis</Link>
+        <button type="button" className="btn btn--secondary" disabled={loading} onClick={onReload}>{loading ? "Loading results…" : "Reload results"}</button>
       </div>
     </header>
     {loading ? <p role="status" className="card">Loading saved results…</p> : error ?
@@ -65,7 +65,7 @@ export function ShotMetricsContent({ data, loading, error, onReload }: {
           <div style={{ display: "flex", gap: 12, marginTop: 16, flexWrap: "wrap" }}>
             {data?.n_splits === 5 && /^[a-f0-9]{64}$/.test(data.source_sha256 ?? "") &&
               <a className="btn btn--secondary" href={`/api/exports/shot-metrics?version=${data.source_sha256}`} target="_blank" rel="noopener noreferrer">Export training results (CSV)</a>}
-            <button className="btn btn--secondary" disabled={!best} onClick={copySummary}>Copy training summary</button>
+            <button type="button" className="btn btn--secondary" disabled={!best} onClick={copySummary}>Copy training summary</button>
           </div>
           <p role="status">{copyStatus}</p>
           <details>
