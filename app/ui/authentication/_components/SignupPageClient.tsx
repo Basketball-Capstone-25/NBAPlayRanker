@@ -67,6 +67,9 @@ export default function SignupPageClient() {
           <p className="auth-panel-copy">
             Request a role and create your account. Access begins after administrator approval.
           </p>
+          <p className="auth-panel-copy">
+            Coaches can choose their team under Account after signing in, so pages start with it filled in.
+          </p>
 
           <form className="auth-form" onSubmit={handleSignup}>
             <div className="auth-field">
