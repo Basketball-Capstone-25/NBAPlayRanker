@@ -487,9 +487,7 @@ export default function DataExplorerClient() {
           </div>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <button className="btn btn--secondary" type="button" onClick={exportCsv} disabled={!season || loading || exporting || synergyBlocked} aria-busy={exporting}>
-              {exporting ? "Exporting play-type rows…" : "Export play-type rows (CSV)"}
-            </button>
+            {/* The CSV export lives above the preview table, next to its row limit (SCRUM-393). */}
             <Link className="btn" href="/model-metrics">
               Model Metrics
             </Link>
