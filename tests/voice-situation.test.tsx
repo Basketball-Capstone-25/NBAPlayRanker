@@ -46,7 +46,10 @@ describe("spoken game situation (SCRUM-626)", () => {
   });
 
   it("offers the button where speech works and the controls where it does not", () => {
-    expect(renderToStaticMarkup(<VoiceSituationButton onResult={() => {}} supportedOverride />)).toContain("Speak the situation");
+    const withVoice = renderToStaticMarkup(<VoiceSituationButton onResult={() => {}} supportedOverride />);
+    expect(withVoice).toContain("Speak the situation");
+    // The microphone icon is decorative; the label still names the action.
+    expect(withVoice).toMatch(/<svg[^>]*aria-hidden="true"/);
     const without = renderToStaticMarkup(<VoiceSituationButton onResult={() => {}} supportedOverride={false} />);
     expect(without).toContain("Voice input works in Chrome, Edge and Safari");
     expect(without).not.toContain("<button");
