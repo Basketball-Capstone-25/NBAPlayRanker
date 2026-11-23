@@ -903,7 +903,7 @@ function ContextInner() {
           </label>
 
           <label>
-            Our Team
+            Our team
             <select className="input" value={our} onChange={(e) => setOur(e.target.value)}>
               <option value="" disabled>Choose our team</option>
               {(meta.teams ?? []).map((t) => (
@@ -983,10 +983,10 @@ function ContextInner() {
 
               <select className="input" aria-label="Period" value={periodIn ?? ""} onChange={(e) => setPeriodIn(Number(e.target.value))} style={needsHand("period", periodIn) ? { width: 110, ...handStyle } : { width: 110 }}>
                 <option value="" disabled>Period</option>
-                <option value={1}>P1</option>
-                <option value={2}>P2</option>
-                <option value={3}>P3</option>
-                <option value={4}>P4</option>
+                <option value={1}>Q1</option>
+                <option value={2}>Q2</option>
+                <option value={3}>Q3</option>
+                <option value={4}>Q4</option>
                 <option value={5}>OT</option>
               </select>
             </div>
@@ -1095,7 +1095,7 @@ function ContextInner() {
         <div className="row">
           <span className="badge">
             {situationSet
-              ? `${matchupChip} • P${period} • ${secondsToClock(timeRemaining)} • margin ${margin >= 0 ? `+${margin}` : margin}`
+              ? `${matchupChip} • ${period >= 5 ? "OT" : `Q${period}`} • ${secondsToClock(timeRemaining)} • margin ${margin >= 0 ? `+${margin}` : margin}`
               : "Choose the matchup and the game situation, then run."}
           </span>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
