@@ -30,7 +30,7 @@ export default function DataDictionaryPage() {
   const datasets = [...new Set((columns || []).map(c => c.dataset_name))].sort();
   const undocumented = visible.filter(c => !c.documented).length;
   return <section className={styles.page}>
-    <header className={styles.heading}><div><p className={styles.eyebrow}>REFERENCE</p><h1>Data Dictionary</h1><p>Look up column definitions, units and data sources.</p></div><Link className="btn" href="/glossary">Glossary ↗</Link></header>
+    <header className={styles.heading}><div><p className={styles.eyebrow}>REFERENCE</p><h1>Data Dictionary</h1><p>Look up column definitions, units and data sources.</p></div><Link className="btn" href="/glossary">Glossary <span aria-hidden>→</span></Link></header>
     <div className={styles.filters}>
       <label htmlFor="dictionary-search">Find a column<input className="input" type="search" id="dictionary-search" placeholder="Search names or meanings" value={query} onChange={event => setQuery(event.target.value)} /></label>
       <label>Dataset<select className="input" value={dataset} onChange={e => setDataset(e.target.value)}><option>All datasets</option>{datasets.map(d => <option key={d}>{d}</option>)}</select></label>
