@@ -139,7 +139,7 @@ const TERMS: Array<{
     whyItMatters:
       "Lets anyone see the underlying events that the Shot Plan and Heatmap are built from (traceability).",
     tags: ["Pages", "Dataset2", "Data", "Exports"],
-    where: [{ label: "Shots Explorer", href: "/shot-explorer" }],
+    where: [{ label: "Shot Explorer", href: "/shot-explorer" }],
     aliases: ["PBP preview", "Shot rows"],
   },
   {
@@ -187,7 +187,7 @@ const TERMS: Array<{
     where: [
       { label: "Shot Plan", href: "/shot-plan" },
       { label: "Shot Heatmap", href: "/shot-heatmap" },
-      { label: "Shots Explorer", href: "/shot-explorer" },
+      { label: "Shot Explorer", href: "/shot-explorer" },
     ],
     aliases: ["PBP", "Shots parquet"],
   },
@@ -212,7 +212,7 @@ const TERMS: Array<{
       { label: "AI Context", href: "/context" },
       { label: "Shot Plan", href: "/shot-plan" },
       { label: "Shot Heatmap", href: "/shot-heatmap" },
-      { label: "Shots Explorer", href: "/shot-explorer" },
+      { label: "Shot Explorer", href: "/shot-explorer" },
     ],
     aliases: ["meta/options"],
   },
@@ -225,7 +225,7 @@ const TERMS: Array<{
     tags: ["Engineering", "Exports", "Data"],
     where: [
       { label: "Data Explorer", href: "/data-explorer" },
-      { label: "Shots Explorer", href: "/shot-explorer" },
+      { label: "Shot Explorer", href: "/shot-explorer" },
     ],
   },
   {
@@ -237,7 +237,7 @@ const TERMS: Array<{
     tags: ["Engineering", "Data"],
     where: [
       { label: "Data Explorer", href: "/data-explorer" },
-      { label: "Shots Explorer", href: "/shot-explorer" },
+      { label: "Shot Explorer", href: "/shot-explorer" },
     ],
     aliases: ["preview limit"],
   },
@@ -287,7 +287,7 @@ const TERMS: Array<{
       { label: "AI Context", href: "/context" },
       { label: "Shot Plan", href: "/shot-plan" },
       { label: "Shot Heatmap", href: "/shot-heatmap" },
-      { label: "Shots Explorer", href: "/shot-explorer" },
+      { label: "Shot Explorer", href: "/shot-explorer" },
     ],
     aliases: ["our", "opp"],
   },
@@ -736,7 +736,7 @@ const TERMS: Array<{
     where: [
       { label: "Data Explorer", href: "/data-explorer" },
       { label: "Matchup (Baseline)", href: "/matchup" },
-      { label: "Shots Explorer", href: "/shot-explorer" },
+      { label: "Shot Explorer", href: "/shot-explorer" },
       { label: "Shot Model Metrics", href: "/shot-model-metrics" },
     ],
   },
@@ -758,7 +758,7 @@ const TERMS: Array<{
       "Provides a large, high-granularity dataset for spatial visuals and shot selection recommendations.",
     tags: ["Dataset2", "Data", "Core"],
     where: [
-      { label: "Shots Explorer", href: "/shot-explorer" },
+      { label: "Shot Explorer", href: "/shot-explorer" },
       { label: "Shot Heatmap", href: "/shot-heatmap" },
       { label: "Shot Plan", href: "/shot-plan" },
     ],
@@ -770,7 +770,7 @@ const TERMS: Array<{
     whyItMatters:
       "It’s the raw foundation for shot aggregation, heatmaps, and shot-plan rankings.",
     tags: ["Dataset2", "Data"],
-    where: [{ label: "Shots Explorer", href: "/shot-explorer" }],
+    where: [{ label: "Shot Explorer", href: "/shot-explorer" }],
     aliases: ["shot row"],
   },
   {
@@ -783,7 +783,7 @@ const TERMS: Array<{
     where: [
       { label: "Shot Plan", href: "/shot-plan" },
       { label: "Shot Heatmap", href: "/shot-heatmap" },
-      { label: "Shots Explorer", href: "/shot-explorer" },
+      { label: "Shot Explorer", href: "/shot-explorer" },
     ],
   },
   {
@@ -796,7 +796,7 @@ const TERMS: Array<{
     where: [
       { label: "Shot Plan", href: "/shot-plan" },
       { label: "Shot Heatmap", href: "/shot-heatmap" },
-      { label: "Shots Explorer", href: "/shot-explorer" },
+      { label: "Shot Explorer", href: "/shot-explorer" },
     ],
   },
   {
@@ -903,7 +903,7 @@ const TERMS: Array<{
     tags: ["Core", "Evaluation"],
     where: [
       { label: "Data Explorer", href: "/data-explorer" },
-      { label: "Shots Explorer", href: "/shot-explorer" },
+      { label: "Shot Explorer", href: "/shot-explorer" },
       { label: "Matchup (Baseline)", href: "/matchup" },
     ],
   },
@@ -935,7 +935,7 @@ export default function GlossaryPage() {
   }, [query, tag]);
 
   return <section className={styles.page}>
-    <header className={styles.heading}><div><p className={styles.eyebrow}>REFERENCE</p><h1>Basketball & analytics glossary</h1><p>A quick explanation of the terms used in the app.</p></div><Link className="btn" href="/data-dictionary">Data Dictionary ↗</Link></header>
+    <header className={styles.heading}><div><p className={styles.eyebrow}>REFERENCE</p><h1>Basketball & analytics glossary</h1><p>A quick explanation of the terms used in the app.</p></div><Link className="btn" href="/data-dictionary">Data Dictionary <span aria-hidden>→</span></Link></header>
     <section className={styles.filters} aria-label="Find a term">
       <label>Search terms<input className="input" type="search" placeholder="Try PPP, usage or Random Forest" value={query} onChange={e => setQuery(e.target.value)} /></label>
       <label>Category<select className="input" value={tag} onChange={e => setTag(e.target.value)}>{allTags.map(t => <option key={t}>{t}</option>)}</select></label>
@@ -946,7 +946,7 @@ export default function GlossaryPage() {
       <summary><span>{t.term}</span><span className={styles.tag}>{t.tags?.[0]}</span></summary>
       <div className={styles.definition}><p>{t.meaning}</p>
         {t.whyItMatters ? <p className={styles.context}>{t.whyItMatters}</p> : null}
-        {t.where?.length ? <div className={styles.links}>{t.where.map(w => <Link key={`${w.href}-${w.label}`} href={w.href}>{w.label} ↗</Link>)}</div> : null}
+        {t.where?.length ? <div className={styles.links}>{t.where.map(w => <Link key={`${w.href}-${w.label}`} href={w.href}>{w.label} <span aria-hidden>→</span></Link>)}</div> : null}
       </div>
     </details>)}</div>
     {filtered.length === 0 ? <div className={styles.empty}><h2>No matching terms</h2><p>Try a shorter search or choose another category.</p></div> : null}
