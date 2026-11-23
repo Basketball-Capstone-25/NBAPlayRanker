@@ -52,7 +52,8 @@ export function ShotMetricsContent({ data, loading, error, onReload }: {
       </div>
     </header>
     {loading ? <p role="status" className="card">Loading saved results…</p> : error ?
-      <section className="card" role="alert"><h2>Results unavailable</h2><p>{error}</p></section> : rows.length ? <>
+      <section className="card" role="alert"><h2>Results unavailable</h2><p>{error}</p>
+        <button type="button" className="btn" onClick={onReload}>Try again</button></section> : rows.length ? <>
         {data?.later_season && <ShotLaterSeasonResults result={data.later_season} selectedModel={data.best_model} />}
         <section className="card">
           <h2>Training-season cross-validation</h2>
