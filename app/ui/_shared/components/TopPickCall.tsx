@@ -1,3 +1,6 @@
+// UI Layer — the call for the #1 ranked play, e.g. "Run Pick-and-Roll (Roll Man)".
+// Turns play-type codes into the name a coach would say on the floor.
+
 import React from "react";
 
 const PLAY_NAMES: Record<string, string> = {
@@ -9,6 +12,7 @@ const PLAY_NAMES: Record<string, string> = {
   OffRebound: "Offensive Rebound",
 };
 
+/** Shows the imperative call for the top pick, or nothing when no play is ranked. */
 export default function TopPickCall({
   rows,
   current = true,

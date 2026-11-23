@@ -1,5 +1,8 @@
 "use client";
 
+// UI Layer — the site header: workspace links for the signed-in role, Account and Sign out.
+// Links are filtered by role so coaches and analysts only see pages they can open.
+
 import "./navigation.css";
 
 import Link from "next/link";
@@ -15,6 +18,7 @@ type NavItem = {
   accent?: boolean;
 };
 
+/** Top navigation with desktop and mobile layouts; reads the session and role from Supabase. */
 export default function NavBar() {
   const pathname = usePathname();
   const router = useRouter();

@@ -1,5 +1,8 @@
 "use client";
 
+// UI Layer — season summary card for a matchup: observed vs modeled PPP and play usage.
+// Results load only for the filters given and show retry and empty states.
+
 import React, { useEffect, useRef, useState } from "react";
 import { playtypeName } from "../../../domain/playtype-dashboard";
 import { summaryKey, type SummaryFilters, type SeasonSummary as SummaryData } from "../../../domain/season-summary";
@@ -9,6 +12,7 @@ import styles from "./season-summary.module.css";
 const count = (value: number) => value.toLocaleString("en-US", { maximumFractionDigits: 0 });
 const signed = (value: number) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}`;
 
+/** Renders the loaded summary figures and the usage of each ranked play. */
 export function SeasonSummaryResults({ data }: { data: SummaryData }) {
   if (data.status === "no_data") return <p role="status">No data for this period. Try another season or matchup.</p>;
   const { summary, filters } = data;
@@ -40,6 +44,7 @@ export function SeasonSummaryResults({ data }: { data: SummaryData }) {
   </>;
 }
 
+/** Renders the loading, error (with retry) or empty state. */
 export function SeasonSummaryState({ state, retry }: { state: SummaryState; retry: () => void }) {
   if (state.loading) return <p role="status">Loading season summary…</p>;
   if (state.error) return <div role="alert"><p>{state.error}</p><button type="button" className={styles.button} onClick={retry}>Retry summary</button></div>;
@@ -60,6 +65,7 @@ function SummaryLoader({ filters }: { filters: SummaryFilters }) {
   return <SeasonSummaryState state={selectSummary(state, filters)} retry={() => setAttempt(value => value + 1)} />;
 }
 
+/** Fetches and shows the summary for the given filters. */
 export default function SeasonSummary({ filters, unavailableReason = "Choose a season and two different teams." }: {
   filters: SummaryFilters | null; unavailableReason?: string;
 }) {

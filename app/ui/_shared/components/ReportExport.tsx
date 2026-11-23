@@ -1,11 +1,15 @@
 "use client";
 
+// UI Layer — the shared Export control (CSV, PDF or JSON) used under ranking results.
+// It exports exactly the payload on screen and explains why export is disabled.
+
 import React, { useEffect, useId, useRef, useState } from "react";
 import { prepareReportExport, submitReportExport, type ExportFormat, type ReportPayload } from "../../../infrastructure/report-export";
 
 type Props = { payload: ReportPayload | null; disabledReason?: string; description?: string };
 type ExportState = { kind: "idle" | "preparing" | "requested" | "error"; message?: string };
 
+/** Presentational export row: format picker, button and status message. */
 export function ReportExportView({ format, onFormat, onExport, disabled, description, state }: {
   format: ExportFormat; onFormat: (format: ExportFormat) => void; onExport: () => void;
   disabled?: string; description?: string; state: ExportState;
@@ -33,6 +37,7 @@ export function ReportExportView({ format, onFormat, onExport, disabled, descrip
   );
 }
 
+/** Prepares and submits the export for the current results payload. */
 export default function ReportExport({ payload, disabledReason, description }: Props) {
   const [format, setFormat] = useState<ExportFormat>("csv");
   const [state, setState] = useState<ExportState>({ kind: "idle" });
