@@ -5,6 +5,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useShotResult } from "./useShotResult";
+import { useAccountTeam } from "../../_shared/useAccountTeam";
 import { loadShotOptions } from "./shotOptions";
 import {
   authenticatedDownload,
@@ -44,6 +45,12 @@ export default function ShotExplorerPage() {
   // Filter inputs (these map directly to the /pbp/shots/preview query params).
   const [season, setSeason] = useState<string>("");
   const [team, setTeam] = useState<string>("");
+
+  // SCRUM-842: the account team is the only input pre-filled, and only when blank.
+  const accountTeam = useAccountTeam(meta?.teams);
+  useEffect(() => {
+    if (accountTeam) setTeam((prev) => prev || accountTeam);
+  }, [accountTeam]);
   const [opp, setOpp] = useState<string>("");
   const [shotType, setShotType] = useState<string>("");
   const [zone, setZone] = useState<string>("");

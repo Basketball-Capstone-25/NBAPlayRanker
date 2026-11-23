@@ -10,6 +10,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import styles from "../../data-explorer/AnalystWorkspace.module.css";
 import { useShotResult } from "./useShotResult";
+import { useAccountTeam } from "../../_shared/useAccountTeam";
 import { loadShotOptions } from "./shotOptions";
 import { ShotHeatmapCounts } from "./ShotHeatmapCounts";
 import {
@@ -67,6 +68,12 @@ export default function ShotPlanPage() {
   // Core matchup context
   const [season, setSeason] = useState<string>("");
   const [our, setOur] = useState<string>("");
+
+  // SCRUM-842: the account team is the only input pre-filled, and only when blank.
+  const accountTeam = useAccountTeam(meta?.teams);
+  useEffect(() => {
+    if (accountTeam) setOur((prev) => prev || accountTeam);
+  }, [accountTeam]);
   const [opp, setOpp] = useState<string>("");
 
   // Backend expects k between 1 and 10.

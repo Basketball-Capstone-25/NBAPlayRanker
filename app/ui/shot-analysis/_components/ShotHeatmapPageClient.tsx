@@ -9,6 +9,7 @@ import { useShotResult } from "./useShotResult";
 import { loadShotOptions } from "./shotOptions";
 import { heatmapPresetFilters, type HeatmapPreset } from "./heatmapPresets";
 import { ShotHeatmapCounts } from "./ShotHeatmapCounts";
+import { useAccountTeam } from "../../_shared/useAccountTeam";
 import { shotHeatmapExportUrl } from "../../../domain/shot-heatmap-export";
 import { fetchShotHeatmap } from "../../../services/shotAnalysis";
 
@@ -63,6 +64,12 @@ export default function ShotHeatmapPage() {
   // Core filters (these map directly to the heatmap endpoint params).
   const [season, setSeason] = useState<string>("");
   const [team, setTeam] = useState<string>("");
+
+  // SCRUM-842: the account team is the only input pre-filled, and only when blank.
+  const accountTeam = useAccountTeam(meta?.teams);
+  useEffect(() => {
+    if (accountTeam) setTeam((prev) => prev || accountTeam);
+  }, [accountTeam]);
   const [opp, setOpp] = useState<string>("");
   const [shotType, setShotType] = useState<string>("");
   const [zone, setZone] = useState<string>("");
