@@ -16,6 +16,7 @@ export type RankedPlay = {
   reason: string;
 };
 
+/** Large ranked list: rank, call on #1, play name, best shot zone, reason and expected PPP. */
 export default function RankedPlayList({
   plays,
   current,

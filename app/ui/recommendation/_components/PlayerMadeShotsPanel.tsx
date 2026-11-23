@@ -24,6 +24,7 @@ import {
 const GREEN = "#16a34a";
 const LINE = "rgba(15, 23, 42, 0.55)";
 
+/** Half court with made shots binned into 2 ft squares; deeper green means more makes. */
 export function CourtHeatmap({ result }: { result: PlayerMadeShots }) {
   const cells = heatCells(result.points);
   const size = CELL_FEET * COURT.scale;
@@ -58,6 +59,7 @@ export function CourtHeatmap({ result }: { result: PlayerMadeShots }) {
   );
 }
 
+/** Pick seasons and one of our players to see where they score against the opponent. */
 export default function PlayerMadeShotsPanel({ our, opp }: { our: string; opp: string }) {
   const [available, setAvailable] = useState<string[]>([]);
   const [seasons, setSeasons] = useState<string[]>([]);

@@ -39,6 +39,7 @@ function MicIcon() {
   );
 }
 
+/** Plain message for a speech recognition error code. */
 export function voiceErrorMessage(error?: string): string {
   if (error === "not-allowed" || error === "service-not-allowed") {
     return "Microphone access is blocked. Allow it in the browser, or set the situation by hand.";
@@ -47,6 +48,7 @@ export function voiceErrorMessage(error?: string): string {
   return "Voice input stopped. Try again, or set the situation by hand.";
 }
 
+/** Speak the situation: records speech, parses it, and passes back only the fields understood. */
 export default function VoiceSituationButton({
   onResult,
   parse = parseSpokenSituation,

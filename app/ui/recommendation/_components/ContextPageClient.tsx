@@ -140,6 +140,7 @@ function Icon({
   }
 }
 
+/** Shows results only while they match the inputs that produced them; otherwise a prompt to run. */
 export function ContextResults({ current, loading, hasRows, matchupLabel, children }: {
   current: boolean;
   loading: boolean;
@@ -1237,6 +1238,7 @@ function ContextInner() {
   );
 }
 
+/** Context ML page wrapped in Suspense so share-link query parameters can be read. */
 export default function ContextPage() {
   return (
     <Suspense
