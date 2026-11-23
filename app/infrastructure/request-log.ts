@@ -36,6 +36,7 @@ export const REQUEST_LOG_PAGE_SIZE = 50;
 /** The signed-in user is not an analyst (HTTP 401/403). */
 export class RequestLogForbiddenError extends Error {}
 
+/** Request log API URL for the chosen filters. */
 export function requestLogUrl(filters: RequestLogFilters): string {
   const query = new URLSearchParams();
   if (filters.user?.trim()) query.set("user", filters.user.trim());
@@ -47,6 +48,7 @@ export function requestLogUrl(filters: RequestLogFilters): string {
   return `${API_BASE}/admin/request-log?${query}`;
 }
 
+/** Fetch one page of the request log. */
 export async function fetchRequestLog(filters: RequestLogFilters, signal?: AbortSignal): Promise<RequestLogPage> {
   const { data } = await createClient().auth.getSession();
   const token = data.session?.access_token;

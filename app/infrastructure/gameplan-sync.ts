@@ -44,11 +44,13 @@ export type SaveResult =
   | { status: "local"; reason: string }
   | { status: "error"; message: string };
 
+/** True when a Gameplan has notes, roles or plan items worth saving. */
 export function hasContent(s: GameplanState | null): boolean {
   if (!s) return false;
   return Object.values(s.notes).some((v) => v.trim()) || s.plan.length > 0 || Object.values(s.roles).some((v) => v.trim());
 }
 
+/** Read a Gameplan saved by the older browser-only version, if any. */
 export function readLegacyLocal(storage: Pick<Storage, "getItem"> | null): GameplanState | null {
   if (!storage) return null;
   const parse = <T,>(key: string, fallback: T): T => {
@@ -67,6 +69,7 @@ export function readLegacyLocal(storage: Pick<Storage, "getItem"> | null): Gamep
   return hasContent(state) ? state : null;
 }
 
+/** Load the coach's saved Gameplan for a matchup, or fall back to local-only mode. */
 export async function loadGameplan(backend: GameplanBackend, m: Matchup): Promise<LoadResult> {
   try {
     const userId = await backend.userId();
@@ -78,6 +81,7 @@ export async function loadGameplan(backend: GameplanBackend, m: Matchup): Promis
   }
 }
 
+/** Save the Gameplan, refusing to overwrite a newer saved revision. */
 export async function saveGameplan(
   backend: GameplanBackend,
   m: Matchup,
@@ -113,6 +117,7 @@ const toState = (row: any): GameplanState => ({
   roles: { ...EMPTY_ROLES, ...(row.roles ?? {}) },
 });
 
+/** Gameplan storage backed by the Supabase gameplan_state table. */
 export function supabaseGameplanBackend(): GameplanBackend {
   const supabase = createClient();
   return {

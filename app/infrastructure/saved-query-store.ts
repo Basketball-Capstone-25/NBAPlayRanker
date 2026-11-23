@@ -37,6 +37,7 @@ type Row = {
 
 const COLUMNS = "id,name,dataset,filters,sort_key,sort_dir,row_limit,updated_at";
 
+/** Convert a database row into a saved query. */
 export function toSavedQuery(row: Row): SavedQuery {
   return {
     id: row.id,
@@ -55,6 +56,7 @@ function fail(error: { code?: string; message?: string }, name: string): never {
   throw new Error(error.message || "Saved queries are unavailable right now.");
 }
 
+/** Saved queries stored per user in Supabase. */
 export function supabaseSavedQueryStore(): SavedQueryBackend {
   const supabase = createClient();
   return {
