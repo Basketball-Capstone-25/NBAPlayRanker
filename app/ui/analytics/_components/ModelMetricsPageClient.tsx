@@ -351,8 +351,7 @@ export default function ModelMetricsPage() {
         >
           <div style={{ maxWidth: 780 }}>
             <h1 className="h1" style={{ marginBottom: 6 }}>
-              Model Performance
-
+              Model Metrics
             </h1>
 
             <p className="muted" style={{ fontSize: 14, margin: "6px 0 0" }}>
