@@ -1,0 +1,18 @@
+{
+  "version": "sha256:e063ed4c55b867431642c15946392896fd29f357495402d9fe1896f3bce26d9a",
+  "pulled_at": "2026-11-22T03:15:23+00:00",
+  "source": "NBA Stats / Synergy play types via hoopR",
+  "generator": "backend/data/etl/build_synergy_dataset.R",
+  "season_downloaded_at": {
+    "2019-20": "2025-12-07T18:16:50+00:00",
+    "2020-21": "2025-12-07T18:16:52+00:00",
+    "2021-22": "2025-12-07T18:16:55+00:00",
+    "2022-23": "2025-12-07T18:16:58+00:00",
+    "2023-24": "2025-12-07T18:17:01+00:00",
+    "2024-25": "2025-12-07T18:17:04+00:00",
+    "2025-26": "2026-11-22T03:15:22+00:00",
+    "2026-27": "2026-11-22T03:15:23+00:00"
+  },
+  "chunk_count": 352,
+  "notes": "pulled_at is the newest chunk download. Seasons whose chunks were reused keep their earlier download date."
+}
