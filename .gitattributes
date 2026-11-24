@@ -7,3 +7,6 @@
 /docs/alpha-release/** -text
 /docs/beta-release/** -text
 /docs/beta-release/**/*.pdf binary
+
+# Keep the play-type CSV bytes fixed so its recorded source version still matches.
+/backend/data/synergy_playtypes_2019_2025_players.csv -text
