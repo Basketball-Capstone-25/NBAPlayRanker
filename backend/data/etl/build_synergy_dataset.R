@@ -207,6 +207,18 @@ synergy <- vroom::vroom(files, show_col_types = FALSE)
 # Write the final combined dataset to data/synergy_playtypes_2019_2025_players.csv
 readr::write_csv(synergy, FINAL_CSV)
 
+# Record the pull date next to the CSV so the Data Explorer can show it.
+# The date comes from the chunk download times, not from today's date.
+python <- Sys.which(c("python", "python3"))
+python <- python[nzchar(python)][1]
+if (is.na(python)) {
+  warning("Python not found; run backend/data/etl/record_synergy_source.py to record the pull date.")
+} else {
+  status <- system2(python, c(file.path("data", "etl", "record_synergy_source.py"),
+                              "--csv", FINAL_CSV, "--chunks", CHUNK_DIR))
+  if (status != 0) warning("Could not record the pull date for ", FINAL_CSV)
+}
+
 cat("\n===== RESULTS =====\n")
 cat("Rows:   ", nrow(synergy), "\n")
 cat("Output: ", normalizePath(FINAL_CSV), "\n")
