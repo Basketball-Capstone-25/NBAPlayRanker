@@ -17,16 +17,22 @@ export default function TopKUpliftPanel() {
   const [missing, setMissing] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [optionsError, setOptionsError] = useState<string | null>(null);
   // SCRUM-843: the uplift is computed only for the inputs the analyst ran.
   const [ran, setRan] = useState<{ season: string; our: string; opp: string; k: number } | null>(null);
   const stale = ran !== null && (ran.season !== season || ran.our !== our || ran.opp !== opp || ran.k !== k);
 
   useEffect(() => {
     fetchMetaOptions().then(meta => {
+      // SCRUM-968: an empty fallback means the request failed, so say so instead of leaving blank lists.
+      if (meta._fallback || meta.seasons.length === 0) {
+        setOptionsError("Seasons and teams didn't load. The server may still be busy with the holdout run.");
+        return;
+      }
       // SCRUM-841: the analyst chooses the season and teams; none is pre-selected.
       setSeasons(meta.seasons);
       setTeams(meta.teams);
-    }).catch(() => setError("Unable to load seasons and teams."));
+    }).catch(() => setOptionsError("Unable to load seasons and teams."));
   }, []);
 
   useEffect(() => {
@@ -70,6 +76,7 @@ export default function TopKUpliftPanel() {
       <button className="btn primary" type="button" disabled={!season || !our || !opp || our === opp || loading}
         onClick={() => setRan({ season, our, opp, k })}>Compute uplift</button>
     </div>
+    {optionsError ? <p role="alert">{optionsError}</p> : null}
     {stale ? <p className="muted" role="status">Inputs changed. Click Compute uplift to update these results.</p> : null}
     {error ? <p role="alert">{error}</p>
       : missing ? <p role="status">No uplift result for this matchup: {missing}</p>
