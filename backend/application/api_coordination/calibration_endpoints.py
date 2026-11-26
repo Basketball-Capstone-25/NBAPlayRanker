@@ -17,16 +17,19 @@ def create_calibration_router(tables: Callable[[], Tuple[pd.DataFrame, pd.DataFr
 
     @lru_cache(maxsize=16)
     def cached(frame_id: int, n_splits: int, n_bins: int):
+        """Cache by team-table identity, fold count and bin count so reloaded data gets a new calculation."""
         team_df, league_df = tables()
         data = load_offense_dataset(team_df, league_df)
         return compute_calibration(data, n_splits=n_splits, n_bins=n_bins)
 
     def report(n_splits: int, n_bins: int):
+        """Read the current team-table identity before choosing a cached result."""
         # A reload swaps the tables, so the cached report is keyed by them.
         return cached(id(tables()[0]), n_splits, n_bins)
 
     @router.get("/metrics/calibration", dependencies=[Depends(require_role("analytics"))])
     def calibration(n_splits: int = Query(5, ge=1, le=10), n_bins: int = Query(10, ge=2, le=20)):
+        """Group historical predicted PPP into bins and compare it with observed PPP."""
         try:
             return report(n_splits, n_bins)
         except (ValueError, KeyError) as error:
