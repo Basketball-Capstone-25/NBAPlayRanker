@@ -1,3 +1,5 @@
+// Coach dashboard for comparing historical play types across teams and seasons.
+
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -24,6 +26,7 @@ function Sample({ ok, minimum }: { ok: boolean; minimum: number }) {
     : <span className={styles.smallSample}>Small sample</span>;
 }
 
+/** Use one response for the chart and its table so each numbered point can be traced to the same play. */
 export function DashboardResults({ data, view }: { data: PlaytypeDashboard; view: View }) {
   const { filters, usage_efficiency: usage, opponent_defense: defense } = data;
   const weakSpots = defense.rows.filter(r => r.weak_spot_rank !== null);
@@ -81,12 +84,14 @@ export function DashboardResults({ data, view }: { data: PlaytypeDashboard; view
   </>;
 }
 
+/** Show a retry on a failed request and an empty message when the comparison has no data. */
 export function DashboardResultState({ state, view, retry }: { state: DashboardState; view: View; retry: () => void }) {
   if (state.loading) return <div className={styles.card} role="status">Loading the selected teams’ regular-season profiles…</div>;
   if (state.error) return <div className={styles.card} role="alert"><h2>Comparison unavailable</h2><p>{state.error}</p><button className={styles.button} onClick={retry}>Try again</button></div>;
   return state.data ? <DashboardResults data={state.data} view={view} /> : <div className={styles.card} role="status">No comparison data is available.</div>;
 }
 
+/** Keep the form selection separate from the last submitted filters so editing a team cannot relabel the numbers on screen. */
 export default function MatchupDashboardClient() {
   const [meta, setMeta] = useState<MetaOptions | null>(null), [metaError, setMetaError] = useState("");
   const [metaAttempt, setMetaAttempt] = useState(0), [attempt, setAttempt] = useState(0);

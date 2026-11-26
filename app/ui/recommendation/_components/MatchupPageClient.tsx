@@ -1,4 +1,4 @@
-// Baseline matchup page UI.
+// Baseline matchup rankings, season evidence and downloads.
 
 "use client";
 
@@ -139,10 +139,12 @@ function Icon({ name }: { name: "play" | "download" | "map" | "pdf" | "info" }) 
   }
 }
 
+/** Show the empty message only after the selected matchup has finished loading. */
 export function BaselineEmptyState({ completed, hasRows, className }: { completed: boolean; hasRows: boolean; className?: string }) {
   return <p className={className} role="status">{completed ? "No play-type data is available for this matchup and season. Try another season or team." : hasRows ? "Inputs changed. Run Baseline again to update the rankings." : "Pick teams and a season, then click Run Baseline."}</p>;
 }
 
+/** Rank plays with the selected weights. The completed request key ties the season summary and export to the same matchup. */
 export default function MatchupPage() {
   // Meta drives dropdowns (seasons/teams)
   const [meta, setMeta] = useState<MetaOptions>({

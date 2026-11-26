@@ -1,3 +1,4 @@
+/* Shared layout and responsive tables for the six dashboard comparisons. */
 .page { max-width: 1140px; margin: 0 auto; padding: 30px 22px 64px; color: #172033; }
 .header { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-bottom: 24px; }
 .header h1 { margin: 7px 0 9px; font-size: clamp(27px, 4vw, 36px); letter-spacing: -1px; }

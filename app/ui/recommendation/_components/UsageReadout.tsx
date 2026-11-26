@@ -1,9 +1,12 @@
+// Basketball interpretation of a selected point on the usage chart.
+
 "use client";
 
 import React, { useState } from "react";
 import { playtypeName, type PlaytypeDashboard } from "../../../domain/playtype-dashboard";
 import styles from "./coach-reading.module.css";
 
+/** Start with the best supported PPP difference when available. Match the opponent by play type before comparing its defense. */
 export default function UsageReadout({ data }: { data: PlaytypeDashboard }) {
   const rows = data.usage_efficiency.rows;
   const [selected, setSelected] = useState("");
