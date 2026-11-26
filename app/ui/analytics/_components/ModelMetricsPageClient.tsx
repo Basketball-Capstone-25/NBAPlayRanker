@@ -93,6 +93,7 @@ function prettyModelName(m: string) {
 
 type TabKey = "scoreboard" | "holdout" | "calibration" | "uplift" | "tuning" | "trace";
 
+/** Keeps the holdout results tied to the fold count that produced them so the export matches the displayed table. */
 export default function ModelMetricsPage() {
   // Data
   const [pipeline, setPipeline] = useState<PipelineInfo | null>(null);

@@ -1,3 +1,5 @@
+// Compares a shortlist of play types with the team’s usual points per possession.
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -6,6 +8,7 @@ import { fetchTopKUplift, UpliftUnavailableError, type TopKUpliftReport } from "
 
 const ppp = (value: number) => value.toFixed(3);
 
+/** Runs the comparison for the submitted matchup and keeps later filter edits separate from that result. */
 export default function TopKUpliftPanel() {
   const [seasons, setSeasons] = useState<string[]>([]);
   const [teams, setTeams] = useState<string[]>([]);
