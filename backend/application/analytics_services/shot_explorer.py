@@ -59,6 +59,8 @@ def _clean(value: Optional[str], name: str, max_len: int = 40) -> Optional[str]:
 
 @dataclass(frozen=True)
 class ShotFilters:
+    """Selection and page size for browsing one team’s play-by-play shot attempts."""
+
     season: str
     team: str
     opp: Optional[str] = None
@@ -80,6 +82,7 @@ class ShotFilters:
         page: int = 1,
         page_size: int = DEFAULT_PAGE_SIZE,
     ) -> "ShotFilters":
+        """Normalize the selected teams, make/miss filter and page bounds before reading shot rows."""
         season = _clean(season, "Season", 7)
         team = _clean(team, "Team", 4)
         if not season or not team:
@@ -106,6 +109,7 @@ class ShotFilters:
         )
 
     def as_dict(self) -> Dict[str, Any]:
+        """Describe the shot selection independently of pagination so the same filters can appear in exports."""
         return {
             "season": self.season,
             "team": self.team,
@@ -140,6 +144,8 @@ def _cell(key: str, value: Any) -> Any:
 
 @dataclass(frozen=True)
 class ShotExport:
+    """Rows selected for download, including the source version and whether the export limit was reached."""
+
     filters: ShotFilters
     columns: List[Dict[str, str]]
     rows: List[Dict[str, Any]]
@@ -148,10 +154,12 @@ class ShotExport:
     dataset_version: Optional[str]
 
     def filename(self, ext: str) -> str:
+        """Identify the season, shooting team and opponent in the download name."""
         parts = [self.filters.season, self.filters.team, self.filters.opp or "all"]
         return "pbp_shots_" + "_".join(p.replace(" ", "-") for p in parts) + f".{ext}"
 
     def to_csv(self) -> str:
+        """Write the selection and row count above the labelled columns, leaving missing cells blank."""
         out = io.StringIO()
         writer = csv.writer(out, lineterminator="\n")
         filters = "; ".join(f"{k}={v}" for k, v in self.filters.as_dict().items() if v)
@@ -163,6 +171,7 @@ class ShotExport:
         return out.getvalue()
 
     def to_json(self) -> Dict[str, Any]:
+        """Include total matches and the cap flag beside the exported rows so clients can spot a partial download."""
         return {
             "dataset": "pbp_shots",
             "filters": self.filters.as_dict(),
@@ -180,6 +189,7 @@ class ShotExplorerService:
     """Applies ShotFilters to the canonical shots and shapes table rows."""
 
     def __init__(self, load_shots: Callable[[], pd.DataFrame]) -> None:
+        """Accept a loader so the same filtering rules work with the deployed shot table or a test fixture."""
         self._load_shots = load_shots
 
     def _shots(self) -> pd.DataFrame:
@@ -193,6 +203,7 @@ class ShotExplorerService:
 
     @staticmethod
     def filter_shots(df: pd.DataFrame, f: ShotFilters) -> pd.DataFrame:
+        """Apply the season and team selection, then optional filters with available columns; order attempts by game and clock."""
         mask = (df["SEASON_STR"] == f.season) & (df["TEAM_ABBR"] == f.team)
         if f.opp and "OPP_ABBR" in df.columns:
             mask &= df["OPP_ABBR"] == f.opp
@@ -211,14 +222,17 @@ class ShotExplorerService:
 
     @staticmethod
     def columns(df: pd.DataFrame) -> List[Dict[str, str]]:
+        """Expose labels and keys only for columns carried by the loaded dataset."""
         return [{"key": key, "label": label} for src, key, label in COLUMNS if src in df.columns]
 
     @staticmethod
     def to_table(df: pd.DataFrame) -> List[Dict[str, Any]]:
+        """Translate source values into the public row format, including clock display and make/miss labels."""
         present = [(src, key) for src, key, _ in COLUMNS if src in df.columns]
         return [{key: _cell(key, rec[src]) for src, key in present} for rec in df.to_dict(orient="records")]
 
     def page(self, f: ShotFilters) -> Dict[str, Any]:
+        """Return the requested window while keeping the total and next-page flag based on all matches."""
         df = self._shots()
         matched = self.filter_shots(df, f)
         total = int(len(matched))
@@ -236,6 +250,7 @@ class ShotExplorerService:
         }
 
     def export(self, f: ShotFilters) -> ShotExport:
+        """Reuse the preview filters across all pages and stop at the configured download limit."""
         df = self._shots()
         matched = self.filter_shots(df, f)
         total = int(len(matched))

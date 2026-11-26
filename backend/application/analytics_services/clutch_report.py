@@ -33,6 +33,8 @@ def _text(value: Optional[str], name: str, max_len: int) -> str:
 
 @dataclass(frozen=True)
 class ClutchFilters:
+    """The two teams and the late-game clock and score window applied to both sides."""
+
     season: str
     team: str
     opp: str
@@ -52,6 +54,7 @@ class ClutchFilters:
         margin_min: int = -5,
         margin_max: int = 5,
     ) -> "ClutchFilters":
+        """Normalize team codes and reject times or score margins that cannot describe a supported situation."""
         season = _text(season, "season", 7)
         team = _text(team, "team", 4).upper()
         opp = _text(opp, "opponent", 4).upper()
@@ -68,6 +71,7 @@ class ClutchFilters:
         return cls(season, team, opp, period_from, seconds_left, margin_min, margin_max)
 
     def as_dict(self) -> Dict[str, Any]:
+        """Carry the exact clock and margin limits into the report and its exports."""
         return {
             "season": self.season,
             "team": self.team,
@@ -140,6 +144,7 @@ def late_game_shots(df: pd.DataFrame, f: ClutchFilters, shooter: str, defender: 
 
 
 def build_report(df: pd.DataFrame, f: ClutchFilters) -> Dict[str, Any]:
+    """Compare both teams’ attempts, makes and points in the same late-game window, including totals by zone."""
     if df is None or not REQUIRED.issubset(df.columns):
         raise ClutchDataUnavailable("Shot data is not available yet.")
     sides = {f.team: late_game_shots(df, f, f.team, f.opp), f.opp: late_game_shots(df, f, f.opp, f.team)}
@@ -176,10 +181,12 @@ def _situation(f: Dict[str, Any]) -> str:
 
 
 def situation_text(report: Dict[str, Any]) -> str:
+    """Describe the period, remaining time and signed score margin from the report filters."""
     return _situation(report["filters"])
 
 
 def report_filename(report: Dict[str, Any], ext: str) -> str:
+    """Include both teams and the season so a downloaded clutch report identifies the matchup."""
     f = report["filters"]
     return f"clutch_{f['team']}_vs_{f['opp']}_{f['season']}.{ext}"
 
