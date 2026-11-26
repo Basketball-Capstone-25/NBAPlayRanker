@@ -1,3 +1,5 @@
+"""Draws the court zones associated with a play type for the coach’s play diagram."""
+
 from __future__ import annotations
 
 from io import BytesIO
@@ -23,6 +25,7 @@ __all__ = ["PLAYTYPE_ZONES", "zones_for_playtype", "render_playtype_zone_png", "
 
 
 def render_playtype_zone_png(play_type: str, title: str) -> bytes:
+    """Shade the mapped court zones by their configured weights and return the finished diagram as a PNG."""
     _patch_sportypy_circle(400)
     zones = zones_for_playtype(play_type)
 

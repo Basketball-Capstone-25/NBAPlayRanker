@@ -24,6 +24,7 @@ def _shots(split: Dict[str, Any]) -> str:
 
 
 def render_clutch_pdf(report: Dict[str, Any], situation: str) -> bytes:
+    """Lay out both teams’ filtered zone totals and small-sample markers on a printable report."""
     f = report["filters"]
     styles = getSampleStyleSheet()
     title = f"Clutch report: {f['team']} vs {f['opp']}, {f['season']}"

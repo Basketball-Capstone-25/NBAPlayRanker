@@ -1,3 +1,5 @@
+"""Renders recorded shot locations on the attacking half court."""
+
 from __future__ import annotations
 
 import base64
@@ -39,6 +41,7 @@ def _patch_sportypy_circle(npoints: int = 400) -> None:
 
 
 def png_bytes_to_base64(png: bytes) -> str:
+    """Encode a PNG for a JSON response. The caller supplies any image URL prefix."""
     return base64.b64encode(png).decode("utf-8")
 
 
@@ -192,6 +195,7 @@ def render_shot_heatmap_png(
     title: Optional[str] = None,
     matched_count: Optional[int] = None,
 ) -> bytes:
+    """Draw the filtered, usable shot locations as a density map and return the PNG bytes."""
     _patch_sportypy_circle(400)
     df = _filter_shots(shots_df, season=season, our_team=our_team,
                        opp_team=opp_team, shot_type=shot_type, zone=zone)
