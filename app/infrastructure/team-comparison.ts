@@ -1,7 +1,10 @@
+// Loads offensive profiles for an ordered team matchup.
+
 import { createClient } from "../../lib/supabase/client";
 import { API_BASE } from "./api-client";
 import { parseTeamComparison, type TeamComparison, type TeamComparisonFilters } from "../domain/team-comparison";
 
+/** Capture both teams before loading so the profile parser can verify the returned matchup. */
 export async function fetchTeamComparison(filters: TeamComparisonFilters, signal?: AbortSignal): Promise<TeamComparison> {
   const snapshot = { season: filters.season, team: filters.team, opponent: filters.opponent };
   signal?.throwIfAborted();

@@ -1,7 +1,10 @@
+// Requests the team and league rates used in the coach comparison.
+
 import { createClient } from "../../lib/supabase/client";
 import { API_BASE } from "./api-client";
 import { parseLeagueComparison, type LeagueComparison, type LeagueFilters } from "../domain/league-comparison";
 
+/** Check the response against the season, team and side captured when the request began. */
 export async function fetchLeagueComparison(filters: LeagueFilters, signal?: AbortSignal): Promise<LeagueComparison> {
   const snapshot = { ...filters };
   signal?.throwIfAborted();
