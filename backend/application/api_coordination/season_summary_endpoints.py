@@ -12,6 +12,7 @@ from domain.statistical_analysis.topk_uplift import UpliftDataUnavailable
 
 
 def create_season_summary_router(rec: BaselineRecommender, gate: DataQualityGate) -> APIRouter:
+    """Give coach and analyst views the same season-summary calculation."""
     router = APIRouter(tags=["Season summary"])
 
     @router.get("/analytics/playtypes/summary", dependencies=[
@@ -26,6 +27,7 @@ def create_season_summary_router(rec: BaselineRecommender, gate: DataQualityGate
         w_off: float = Query(0.7, ge=0, le=1, allow_inf_nan=False),
         period: Literal["season"] = Query("season"),
     ) -> dict:
+        """Compare the modeled Top-K points per possession with the team’s recorded season average."""
         response.headers["Cache-Control"] = "private, no-store"
         try:
             return build_season_summary(rec, season, our, opp, k, w_off)

@@ -9,6 +9,7 @@ from domain.baseline_recommendation import BaselineRecommender
 
 
 def create_possession_outcomes_router(rec: BaselineRecommender, gate: DataQualityGate) -> APIRouter:
+    """Expose offensive outcome rates from the checked play-type source."""
     router = APIRouter(tags=["Possession outcomes"])
 
     @router.get("/analytics/playtypes/possession-outcomes", dependencies=[
@@ -19,6 +20,7 @@ def create_possession_outcomes_router(rec: BaselineRecommender, gate: DataQualit
         season: str = Query(..., min_length=7, max_length=7),
         team: str = Query(..., min_length=2, max_length=3),
     ) -> dict:
+        """Return separately measured scoring, turnover and foul rates for each play type."""
         response.headers["Cache-Control"] = "private, no-store"
         try:
             return build_possession_outcomes(rec, season, team)

@@ -11,10 +11,12 @@ from domain.baseline_recommendation.playtype_dashboard import PlaytypeDashboardS
 
 
 def create_playtype_dashboard_router(rec: BaselineRecommender, data_quality_gate: DataQualityGate) -> APIRouter:
+    """Keep one dashboard service for the currently loaded play-type tables."""
     router = APIRouter(tags=["Matchup dashboard"])
     built: dict[str, Any] = {}
 
     def service() -> PlaytypeDashboardService:
+        """Rebuild the dashboard service when a reload replaces the source frame."""
         # SCRUM-490: rebuild only when an analyst reload swapped the tables.
         if built.get("frame") is not rec.raw_df:
             built["service"] = PlaytypeDashboardService(
@@ -31,6 +33,7 @@ def create_playtype_dashboard_router(rec: BaselineRecommender, data_quality_gate
         opp: str = Query(..., min_length=1, max_length=8),
         min_poss: int = Query(20, ge=1, le=10000),
     ) -> dict[str, Any]:
+        """Compare offensive usage and efficiency with the opponent’s defensive profile and flag small samples."""
         response.headers["Cache-Control"] = "private, no-store"
         try:
             return service().build(season, our, opp, min_poss)

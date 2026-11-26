@@ -9,6 +9,7 @@ from domain.baseline_recommendation import BaselineRecommender
 
 
 def create_season_trend_router(rec: BaselineRecommender, gate: DataQualityGate) -> APIRouter:
+    """Attach the offensive trend calculation to the checked play-type source."""
     router = APIRouter(tags=["Season trends"])
 
     @router.get("/analytics/playtypes/season-trend", dependencies=[
@@ -19,6 +20,7 @@ def create_season_trend_router(rec: BaselineRecommender, gate: DataQualityGate) 
         team: str = Query(..., min_length=2, max_length=3),
         play_type: str = Query(..., min_length=1, max_length=40),
     ) -> dict:
+        """Follow one team’s offensive usage and points per possession for a play type across seasons."""
         response.headers["Cache-Control"] = "private, no-store"
         try:
             return build_season_trend(rec, team, play_type)
