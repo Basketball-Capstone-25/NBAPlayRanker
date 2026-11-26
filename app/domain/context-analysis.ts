@@ -29,10 +29,12 @@ export type OverlayBreakdown = {
   varianceProxy: number;
 };
 
+/** Bound game-situation factors to the interval from zero to one. */
 export function clamp01(x: number) {
   return Math.max(0, Math.min(1, x));
 }
 
+/** Increase the clock adjustment over the last three minutes, using different weights for early quarters, the fourth and overtime. */
 export function computeLateFactor(period: number, timeRemainingSec: number) {
   const t = Number(timeRemainingSec);
   const p = Number(period);
@@ -45,6 +47,7 @@ export function computeLateFactor(period: number, timeRemainingSec: number) {
   return 0.70 + 0.30 * lateRamp;
 }
 
+/** Scale a lead and a deficit separately. The effect stops increasing at a 15-point margin. */
 export function computeScoreFactors(margin: number) {
   const m = Number(margin);
   const cap = 15;
@@ -53,6 +56,7 @@ export function computeScoreFactors(margin: number) {
   return { trailing, leading };
 }
 
+/** Map a play label to overlapping pace and risk cues used by the context rules. */
 export function categorizePlay(playType: string) {
   const s = (playType ?? "").toLowerCase();
 
@@ -80,6 +84,7 @@ export function categorizePlay(playType: string) {
   return { quick, safe, risky, slow };
 }
 
+/** Calculate the rule-based change in PPP from the clock, margin, play type and model scores. Return its components so the coach can inspect the adjustment. */
 export function computeOverlay(
   row: ContextRow,
   meanMlPPP: number,

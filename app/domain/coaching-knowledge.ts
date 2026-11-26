@@ -4,12 +4,14 @@
 // Coaching cues and defensive counter-plan rules (coachingCuesFor, counterPlanFor).
 // Encodes basketball tactical knowledge.
 
+/** Convert the zero-based rank to the A, B or C label shown with a coaching cue. */
 export function gradeFromRank(rank: number) {
   if (rank === 0) return "A";
   if (rank === 1) return "B";
   return "C";
 }
 
+/** Look up on-court instructions for the play, with general cues for an unrecognized play name. */
 export function coachingCuesFor(playType: string): string[] {
   const p = playType.toLowerCase();
 
@@ -70,6 +72,7 @@ export type CounterPlanEntry = {
   outcome: string;
 };
 
+/** Pair likely defensive responses with suggested counters for the chosen play family. */
 export function counterPlanFor(playType: string): CounterPlanEntry[] {
   const base = playType.toLowerCase();
   const isPnR = base.includes("pick") || base.includes("roll") || base.includes("pr");

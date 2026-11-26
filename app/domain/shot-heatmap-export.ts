@@ -1,3 +1,5 @@
+// Filter and source-version contract for a heatmap PNG download.
+
 export type ShotHeatmapExportInputs = {
   season: string;
   team: string;
@@ -11,6 +13,7 @@ export type ShotHeatmapExportInputs = {
 const TEAMS = new Set("ATL BOS BKN CHA CHI CLE DAL DEN DET GSW HOU IND LAC LAL MEM MIA MIL MIN NOP NYK OKC ORL PHI PHX POR SAC SAS TOR UTA WAS".split(" "));
 const KEYS = new Set(["season", "team", "opp", "shot_type", "zone", "max_shots", "version"]);
 
+/** Validate the same matchup, shot limit and dataset version that produced the visible court. */
 export function parseShotHeatmapExport(params: URLSearchParams): ShotHeatmapExportInputs | null {
   for (const key of params.keys()) if (!KEYS.has(key) || params.getAll(key).length !== 1) return null;
   const season = params.get("season") ?? "";
@@ -29,6 +32,7 @@ export function parseShotHeatmapExport(params: URLSearchParams): ShotHeatmapExpo
   return { season, team, opp, shotType, zone, maxShots, version };
 }
 
+/** Build the local PNG download link only when all submitted filters and the source version are valid. */
 export function shotHeatmapExportUrl(inputs: Omit<ShotHeatmapExportInputs, "version">, version: unknown): string | null {
   if (typeof version !== "string") return null;
   const params = new URLSearchParams({ season: inputs.season, team: inputs.team, opp: inputs.opp,
@@ -38,6 +42,7 @@ export function shotHeatmapExportUrl(inputs: Omit<ShotHeatmapExportInputs, "vers
   return parseShotHeatmapExport(params) ? `/api/exports/shot-heatmap?${params}` : null;
 }
 
+/** Include the shot type, zone and limit so downloads of the same matchup are distinguishable. */
 export function shotHeatmapFilename(inputs: ShotHeatmapExportInputs): string {
   const safe = (value: string) => value.replace(/[^a-z0-9_-]+/gi, "_");
   return `shot_heatmap_${inputs.season}_${inputs.team}_vs_${inputs.opp}_${safe(inputs.shotType || "alltypes")}_${safe(inputs.zone || "allzones")}_max_${inputs.maxShots}.png`;
