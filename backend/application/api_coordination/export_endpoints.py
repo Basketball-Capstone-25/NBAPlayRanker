@@ -90,6 +90,8 @@ def create_pdf_router(
 
         title = f"{our} vs {opp} • {season} • {play_type}"
         png_bytes = render_playtype_zone_png(play_type=play_type, title=title)
+        if png_bytes is None:
+            raise HTTPException(404, f"No court zone is mapped for {play_type}.")
 
         # Build PDF (infrastructure)
         pdf_bytes = build_playtype_viz_pdf(

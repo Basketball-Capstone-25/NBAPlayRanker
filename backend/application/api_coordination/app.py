@@ -68,7 +68,7 @@ from application.api_coordination.data_reload_endpoints import create_data_reloa
 from application.api_coordination.player_shots_endpoints import create_player_shots_router
 from application.data_reload_services.pbp_reload import PbpReloadService
 from application.data_reload_services.synergy_reload import SynergyReloadService
-from domain.baseline_recommendation.playtype_zones import best_shot_zone
+from domain.baseline_recommendation.playtype_zones import best_shot_zone, mapped_court_zones
 app = FastAPI(
     title="Basketball Strategy API",
     description=(
@@ -466,6 +466,7 @@ def rank_baseline(
             "w_def": float(w_def),
             "aggregation_version": AGGREGATION_VERSION,
             "season_phase": SEASON_PHASE,
+            "court_map_play_types": [play for play in df["PLAY_TYPE"] if mapped_court_zones(play)],
             "rankings": _df_to_records(df),
         }
     )
@@ -724,6 +725,8 @@ def viz_playtype_zones(
 
     title = f"{our} vs {opp} • {season} • {play_type}"
     png = render_playtype_zone_png(play_type, title)
+    if png is None:
+        raise HTTPException(404, f"No court zone is mapped for {play_type}.")
 
     return {"caption": caption, "image_base64": png_bytes_to_base64(png)}
 

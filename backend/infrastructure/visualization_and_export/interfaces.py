@@ -23,10 +23,10 @@ class IRenderShotHeatmapPng(Protocol):
         ...
 
 class IRenderPlaytypeZonePng(Protocol):
-    """Render a play-type zone court diagram and return PNG bytes."""
+    """Supply court diagrams only for play types with an explicit zone mapping."""
 
-    def __call__(self, play_type: str, title: str) -> bytes:
-        """Draw the configured zones for one play type under the requested title."""
+    def __call__(self, play_type: str, title: str) -> bytes | None:
+        """Return the labeled court as PNG bytes, or None when no zone is mapped."""
         ...
 
 class IPngBytesToBase64(Protocol):
