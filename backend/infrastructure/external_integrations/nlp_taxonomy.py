@@ -1,13 +1,11 @@
-#backend/nlp_taxonomy.py
-
-from __future__ import annotations
-
 """
 Shared basketball NLP vocabulary and pattern utilities.
 
 This file keeps the parser deterministic while still allowing broad basketball
 coverage language, late-game phrases, and action-family hints.
 """
+
+from __future__ import annotations
 
 import re
 from typing import Iterable, List, Optional, Sequence, Tuple
@@ -31,6 +29,7 @@ WORD_NUMBERS = {
 
 
 def num_from_token(token: str) -> Optional[int]:
+    """Read a digit or a supported number word in a clock or score phrase."""
     token = (token or "").strip().lower()
     if not token:
         return None
@@ -40,6 +39,7 @@ def num_from_token(token: str) -> Optional[int]:
 
 
 def first_match(text: str, patterns: Sequence[Tuple[str, str]]) -> Tuple[Optional[str], Optional[str]]:
+    """Return the first matching label in rule order and the wording that triggered it."""
     for label, pattern in patterns:
         m = re.search(pattern, text)
         if m:
@@ -115,6 +115,7 @@ PLAY_FAMILY_LABELS = {
 
 
 def extract_play_families(text: str) -> Tuple[List[str], List[str]]:
+    """Pair each distinct play family in the prompt with the phrase that identified it."""
     labels: List[str] = []
     matches: List[str] = []
     for label, pattern in PLAY_FAMILY_PATTERNS:
@@ -126,6 +127,7 @@ def extract_play_families(text: str) -> Tuple[List[str], List[str]]:
 
 
 def family_label(family: str) -> str:
+    """Format a play-family code for display, including codes outside the vocabulary."""
     return PLAY_FAMILY_LABELS.get(family, family.replace("_", " "))
 
 
@@ -146,4 +148,5 @@ _DEFENSE_FAMILY_MAP = {
 
 
 def defense_label(defense_style: str) -> str:
+    """Translate a coverage code into the basketball wording shown to coaches."""
     return _DEFENSE_FAMILY_MAP.get(defense_style, defense_style.replace("_", " "))
