@@ -39,6 +39,7 @@ function chip(text: string) {
   );
 }
 
+/** Keeps the preview and CSV tied to the last completed search so changing a filter cannot export different shots by mistake. */
 export default function ShotExplorerPage() {
   const [meta, setMeta] = useState<Meta | null>(null);
 

@@ -1,8 +1,11 @@
+// Request state shared by shot previews, plans and heatmaps.
+
 "use client";
 
 import { useEffect, useRef, useState } from "react";
 import { emptyShotResult, selectShotResult, ShotResultRequest } from "../../../infrastructure/shot-result-state";
 
+/** Associates each result with its submitted inputs and cancels pending work on reset or unmount. */
 export function useShotResult<I extends object, R>(inputs: I) {
   const [state, setState] = useState(() => emptyShotResult<I, R>());
   const request = useRef<ShotResultRequest<I, R> | null>(null);

@@ -58,6 +58,7 @@ function normalizeLabel(abbr: string, teamNames?: Record<string, string>) {
   return name ? `${abbr} — ${name}` : abbr;
 }
 
+/** Builds a court map for the submitted filters and keeps the download tied to the completed result. */
 export default function ShotHeatmapPage() {
   const [meta, setMeta] = useState<Meta | null>(null);
 

@@ -1,3 +1,5 @@
+// Dataset and distribution views for the saved shot analysis.
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -8,6 +10,7 @@ import type { ShotAnalysis } from "../../../domain/shot-analysis";
 
 const value = (n: number | null | undefined, digits = 0) => n == null || !Number.isFinite(n) ? "Unavailable" : n.toLocaleString(undefined, { maximumFractionDigits: digits });
 
+/** Shows the sampled shots and their points distribution, with a message when the saved histogram cannot be used. */
 export function ShotAnalysisResults({ data }: { data: ShotAnalysis }) {
   return <>
     <section className="card">
@@ -59,6 +62,7 @@ export function ShotAnalysisResults({ data }: { data: ShotAnalysis }) {
   </>;
 }
 
+/** Loads the saved analysis and ignores a response if the user leaves the page before it arrives. */
 export default function ShotStatisticalAnalysisPage() {
   const [data, setData] = useState<ShotAnalysis | null>(null);
   const [loading, setLoading] = useState(true);

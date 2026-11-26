@@ -1,3 +1,5 @@
+// Saved shot-model evaluation results and their dataset version.
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -24,6 +26,7 @@ type MetricsResponse = {
 
 const fmt = (value: number | null | undefined) => value == null || !Number.isFinite(value) ? "Unavailable" : value.toFixed(3);
 
+/** Presents the later-season test separately from the training folds and offers a CSV when the saved run has a usable data version. */
 export function ShotMetricsContent({ data, loading, error, onReload }: {
   data: MetricsResponse | null; loading: boolean; error: string | null; onReload: () => void;
 }) {
@@ -84,6 +87,7 @@ export function ShotMetricsContent({ data, loading, error, onReload }: {
   </>;
 }
 
+/** Retrieves saved metrics on load or retry so opening the page does not start a training job. */
 export default function ShotModelMetricsPage() {
   const [data, setData] = useState<MetricsResponse | null>(null);
   const [loading, setLoading] = useState(true);

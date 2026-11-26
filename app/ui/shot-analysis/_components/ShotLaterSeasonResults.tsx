@@ -1,10 +1,14 @@
+// Evaluation on a shot season held out from model selection.
+
 import React from "react";
 
 import type { ShotLaterSeason } from "../../../domain/shot-analysis";
 const metric = (value: number | null) => value == null || !Number.isFinite(value) ? "Unavailable" : value.toFixed(4);
 
+/** Expands the known model IDs for display and keeps an unfamiliar ID visible as supplied. */
 export const shotModelName = (name: string) => ({ gbr: "Gradient boosting", ridge: "Ridge regression", rf: "Random forest", training_mean: "Training-mean baseline" }[name] || name);
 
+/** Shows test errors beside the held-out season and keeps training counts separate from that test sample. */
 export function ShotLaterSeasonResults({ result, selectedModel }: { result: ShotLaterSeason; selectedModel?: string }) {
   return <section className="card">
     <h2>Later-season test: {result.test_season}</h2>
