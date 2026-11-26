@@ -350,6 +350,7 @@ def _build_entity_patterns() -> List[Dict[str, Any]]:
 class BasketballNLPPipeline:
     """Keep spaCy’s language pipeline and basketball phrase matcher together for reuse across prompts."""
     def __init__(self, model_name: str = DEFAULT_SPACY_MODEL) -> None:
+        """Load the language pipeline and register the basketball phrases used by the matcher."""
         self.model_name = model_name
         self._nlp = self._build_nlp(model_name)
         self._phrase_matcher = PhraseMatcher(self._nlp.vocab, attr="LOWER")
