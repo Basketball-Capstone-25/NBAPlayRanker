@@ -1,3 +1,5 @@
+// Loads a team’s source outcome rates for one season.
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -10,6 +12,7 @@ import styles from "./matchup-dashboard.module.css";
 type State = { data: PossessionOutcomes | null; loading: boolean; error: string };
 const initial = (): State => ({ data: null, loading: true, error: "" });
 
+/** Show loading and retry states before displaying the returned outcome rates. */
 export function PossessionOutcomesResultState({ state, minimum, retry }: { state: State; minimum: number; retry(): void }) {
   if (state.loading) return <div className={styles.card} role="status">Loading possession rates…</div>;
   if (state.error) return <div className={styles.card} role="alert"><h2>Possession rates unavailable</h2>
@@ -36,6 +39,7 @@ function PossessionOutcomesLoader({ filters, minimum }: { filters: OutcomeFilter
   return <PossessionOutcomesResultState state={state} minimum={minimum} retry={() => setAttempt(value => value + 1)} />;
 }
 
+/** Reset the request when the team or season changes so an earlier reply cannot replace the new selection. */
 export default function PossessionOutcomesPanel({ filters, minimum }: { filters: OutcomeFilters; minimum: number }) {
   if (!filters.season || !filters.team)
     return <div className={styles.card} role="status">Select a team and a season.</div>;

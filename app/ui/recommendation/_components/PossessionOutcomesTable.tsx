@@ -1,3 +1,5 @@
+// Per-play scoring, turnover and foul rates with their source coverage.
+
 import React, { useId, useState } from "react";
 import { OUTCOME_METRICS, type OutcomeRate, type PossessionOutcomes } from "../../../domain/possession-outcomes";
 import { playtypeName } from "../../../domain/playtype-dashboard";
@@ -11,6 +13,7 @@ const coverage = (rate: OutcomeRate, possessions: number) =>
   `${count(rate.usable_possessions)} of ${count(possessions)} possessions have a usable rate; `
   + `${count(rate.missing_possessions)} missing; ${count(rate.invalid_possessions)} invalid.`;
 
+/** Give each outcome its own scale because a possession can count toward multiple rates. The detail rows show how much usable data each rate has. */
 export function PossessionOutcomesTable({ data, minimum = 20 }: { data: PossessionOutcomes; minimum?: number }) {
   const titleId = useId();
   const { filters } = data;
