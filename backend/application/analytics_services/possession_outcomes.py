@@ -16,6 +16,7 @@ RATE_COLUMNS = {
 
 
 class OutcomeDataUnavailable(ValueError):
+    """The source rows or possession counts cannot support a team-level outcome breakdown."""
     pass
 
 
@@ -57,6 +58,7 @@ def _rate(values, weights, total):
 
 
 def build_possession_outcomes(rec: BaselineRecommender, season: str, team: str) -> dict:
+    """Weight each outcome rate by player possessions and track missing source coverage separately for each rate."""
     if not re.fullmatch(r"20\d{2}-\d{2}", season) or season[-2:] != str(int(season[:4]) + 1)[-2:]:
         raise ValueError("Use a season such as 2024-25.")
     source = rec.raw_df

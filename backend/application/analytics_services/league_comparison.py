@@ -11,6 +11,7 @@ RATES = {"fg_pct": ("FG_PCT", "FGA", 1), "efg_pct": ("EFG_PCT", "FGA", 1.5),
 
 
 class LeagueDataUnavailable(ValueError):
+    """The source contains invalid counts or duplicate play types for the requested comparison."""
     pass
 
 
@@ -40,6 +41,7 @@ def _sample(row, *, league=False):
 
 
 def build_league_comparison(rec: BaselineRecommender, season: str, team: str, side: str = "offense") -> dict:
+    """Compare each play-type rate with the league for the same side and season, in percentage points."""
     if not re.fullmatch(r"20\d{2}-\d{2}", season) or season[-2:] != str(int(season[:4]) + 1)[-2:]:
         raise ValueError("Use a season such as 2024-25.")
     if team not in set(rec.team_df["TEAM_ABBREVIATION"]):
