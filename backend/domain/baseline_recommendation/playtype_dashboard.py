@@ -10,12 +10,16 @@ from domain.baseline_recommendation.baseline_recommender import AGGREGATION_VERS
 
 
 class PlaytypeDashboardService:
+    """Build historical comparisons from team and league tables for the same data release."""
+
     def __init__(self, team_df: pd.DataFrame, league_df: pd.DataFrame, dataset_version: str):
+        """Keep the source version alongside the tables so every dashboard response identifies its data."""
         self.team_df = team_df
         self.league_df = league_df
         self.dataset_version = dataset_version
 
     def build(self, season: str, our_team: str, opp_team: str, min_poss: int = 20) -> dict[str, Any]:
+        """Compare our offensive usage and the opponent’s allowed PPP using the selected season’s league references."""
         if isinstance(min_poss, bool) or not isinstance(min_poss, int) or not 1 <= min_poss <= 10000:
             raise ValueError("Minimum possessions must be an integer between 1 and 10000.")
         season_rows = self.team_df.loc[self.team_df["SEASON"].eq(season)]

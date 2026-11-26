@@ -1,3 +1,5 @@
+"""Rank shot types and court zones from team and league points per field-goal attempt."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -113,6 +115,7 @@ def rank_shot_plan_baseline(
     w_off: float = 0.7,
     w_def: float = 0.3,
 ) -> Dict[str, List[Dict[str, object]]]:
+    """Rank shot types and zones separately by blending the offence and defence rates after shrinkage toward the league."""
     valid_seasons = sorted(agg_df["SEASON_STR"].dropna().unique().tolist())
     valid_teams = sorted(agg_df["TEAM_ABBR"].dropna().unique().tolist())
 
@@ -156,6 +159,7 @@ class ShotBaselineRecommender(IShotBaselineRecommender):
     """Loads shots_agg.parquet + shots_agg_league.parquet once, provides ranking."""
 
     def __init__(self, agg_path: Path = AGG_PARQUET, league_path: Path = LEAGUE_PARQUET):
+        """Read both shot tables and build filter choices from their recorded coverage."""
         agg_path = Path(agg_path)
         league_path = Path(league_path)
         if not agg_path.exists():
@@ -208,6 +212,7 @@ class ShotBaselineRecommender(IShotBaselineRecommender):
         k: int = 5,
         w_off: float = 0.7,
     ) -> Dict[str, List[Dict[str, object]]]:
+        """Use the remaining weight for opponent defence when combining the two teams’ shot rates."""
         w_def = float(1.0 - w_off)
         return rank_shot_plan_baseline(
             agg_df=self.agg_df,
