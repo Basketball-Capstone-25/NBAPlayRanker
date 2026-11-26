@@ -1,3 +1,5 @@
+"""Normalize provider seasons, shot descriptions and hoop-relative locations."""
+
 from __future__ import annotations
 
 from typing import Iterable, Optional
@@ -14,6 +16,7 @@ SEASON_OVERRIDES: dict[int, str] = {}
 SEASON_YEAR_IS_END: bool = True
 
 def season_int_to_str(season_value: Optional[object]) -> Optional[str]:
+    """Convert the provider’s season year to the displayed range, honoring configured overrides and existing labels."""
     if season_value is None:
         return None
     try:
@@ -77,6 +80,7 @@ def classify_zone(x: float, y: float, dist: Optional[float] = None, shot_value: 
 
 
 def zone_from_xy(x: float, y: float, dist: Optional[float] = None, shot_value: Optional[float] = None) -> str:
+    """Return just the zone label, including “unknown” when the location and stated shot value cannot be reconciled."""
     return classify_zone(x, y, dist, shot_value)[0]
 
 # Shot type normalization
@@ -95,6 +99,7 @@ def normalize_shot_type(
     type_abbreviation: Optional[str] = None,
     text: Optional[str] = None,
 ) -> str:
+    """Map the first available provider description to a shot type; distinguish missing text from an unrecognized move."""
     raw = _first_text([type_text, type_abbreviation, text])
     if not raw:
         return "Unknown"

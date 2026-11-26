@@ -1,3 +1,5 @@
+"""Turn play-by-play events into the shot table used by the court maps and shot models."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -192,6 +194,7 @@ def _map_team_id_to_abbr(team_id_series: pd.Series) -> pd.Series:
     return out
 
 def build_shots_clean(raw_df: pd.DataFrame) -> pd.DataFrame:
+    """Extract field-goal attempts and identify the shooting team, opponent and court zone for each usable event."""
     df = raw_df.copy()
     # Identify "shot attempt" rows
     shooting_col = _pick_col(
@@ -427,6 +430,7 @@ def build_shots_dataset(
     parquet_path: Path = SOURCE_PARQUET,
     output_path: Path = CLEAN_PARQUET,
 ) -> Path:
+    """Read the source play-by-play Parquet, write cleaned shot events and return the path for the next pipeline step."""
     parquet_path = Path(parquet_path)
     output_path = Path(output_path)
 
