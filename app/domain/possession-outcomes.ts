@@ -1,3 +1,5 @@
+// Outcome definitions and checks for the recorded coverage of each rate.
+
 export type OutcomeFilters = { season: string; team: string };
 export const OUTCOME_METRICS = [
   { key: "scoring", label: "Scoring", source: "SCORE_POSS_PCT", definition: "Share of possessions that produced points." },
@@ -17,6 +19,7 @@ export type PossessionOutcomes = {
   dataset_version: string; aggregation_version: string;
   rows: { play_type: string; possessions: number; rates: Record<OutcomeKey, OutcomeRate> }[];
 };
+/** Identify the offensive outcome rows by team and season. */
 export const outcomeKey = (filters: OutcomeFilters) => JSON.stringify([filters.season, filters.team]);
 const object = (value: unknown): value is Record<string, unknown> =>
   value !== null && typeof value === "object" && !Array.isArray(value);

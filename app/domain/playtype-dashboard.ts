@@ -1,3 +1,5 @@
+// Shared row types and validation for usage and opponent-defense charts.
+
 export type DashboardFilters = { season: string; our: string; opp: string; min_poss: number };
 
 export type UsageEfficiencyRow = {
@@ -19,10 +21,12 @@ export type PlaytypeDashboard = {
   warnings: string[];
 };
 
+/** Include the possession cutoff so results for different thresholds have distinct keys. */
 export function dashboardKey(filters: DashboardFilters) {
   return JSON.stringify([filters.season, filters.our, filters.opp, filters.min_poss]);
 }
 
+/** Translate source categories into chart labels and keep unfamiliar categories readable. */
 export const playtypeName = (name: string) => ({
   PRBallHandler: "Pick and roll handler", PRRollMan: "Pick and roll roller", Spotup: "Spot-up",
   Postup: "Post-up", OffScreen: "Off screen", OffRebound: "Offensive rebound", Misc: "Other",

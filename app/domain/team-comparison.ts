@@ -1,3 +1,5 @@
+// Season profiles for comparing two teams’ offensive play mix and scoring.
+
 export type TeamComparisonFilters = { season: string; team: string; opponent: string };
 export type TeamProfile = { possessions: number; points: number; usage_pct: number | null; ppp: number | null };
 export type TeamComparison = {
@@ -9,6 +11,7 @@ export type TeamComparison = {
     difference: { usage_pp: number | null; ppp: number | null } }[];
 };
 
+/** Preserve team order because swapping the teams reverses the difference. */
 export const teamComparisonKey = (filters: TeamComparisonFilters) =>
   JSON.stringify([filters.season, filters.team, filters.opponent]);
 const object = (value: unknown): value is Record<string, unknown> =>
