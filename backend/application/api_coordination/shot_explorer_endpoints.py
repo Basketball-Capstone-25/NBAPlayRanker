@@ -22,6 +22,7 @@ NO_STORE = {"Cache-Control": "private, no-store"}
 
 
 def create_shot_explorer_router(service: ShotExplorerService) -> APIRouter:
+    """Use the same shot service and filters for analyst previews and downloads."""
     router = APIRouter(tags=["data"], dependencies=[Depends(require_role("data"))])
 
     def _filters(season, team, opp, shot_type, zone, result, page=1, page_size=DEFAULT_PAGE_SIZE) -> ShotFilters:
@@ -54,6 +55,7 @@ def create_shot_explorer_router(service: ShotExplorerService) -> APIRouter:
         page: int = Query(1),
         page_size: int = Query(DEFAULT_PAGE_SIZE, description=f"1 to {MAX_PAGE_SIZE}"),
     ):
+        """Return one page of the shots matching the selected teams, season and shot filters."""
         filters = _filters(season, team, opp, shot_type, zone, result, page, page_size)
         try:
             return service.page(filters)
@@ -69,6 +71,7 @@ def create_shot_explorer_router(service: ShotExplorerService) -> APIRouter:
         zone: Optional[str] = Query(None, max_length=40),
         result: Optional[str] = Query(None, max_length=10),
     ):
+        """Download matching shot rows across pages using the service’s export limit."""
         return _export("csv", season=season, team=team, opp=opp, shot_type=shot_type, zone=zone, result=result)
 
     @router.get("/data/pbp-shots.json")
@@ -80,6 +83,7 @@ def create_shot_explorer_router(service: ShotExplorerService) -> APIRouter:
         zone: Optional[str] = Query(None, max_length=40),
         result: Optional[str] = Query(None, max_length=10),
     ):
+        """Download the filtered shot result with its metadata and rows in JSON."""
         return _export("json", season=season, team=team, opp=opp, shot_type=shot_type, zone=zone, result=result)
 
     return router
