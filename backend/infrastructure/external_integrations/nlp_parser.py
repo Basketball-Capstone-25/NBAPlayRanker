@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """
 Hybrid basketball NLP parser.
 
@@ -19,6 +17,8 @@ Design goals:
 3. Use real NLP outputs for normalization, phrase/entity extraction, and context hints.
 4. Keep everything deterministic, inspectable, and defendable.
 """
+
+from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
 import math
@@ -70,6 +70,7 @@ PARSER_VERSION = "3.0.0"
 
 @dataclass(frozen=True)
 class NLPParseResult:
+    """Keep the interpreted game state alongside its matching phrases, confidence and clarification requests."""
     raw_text: str
     context: Dict[str, Any]
     confidence: float
@@ -78,6 +79,7 @@ class NLPParseResult:
     warnings: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
+        """Include the extracted context and its explanation in the parser response."""
         return asdict(self)
 
 
@@ -222,6 +224,7 @@ _PERIOD_PATTERNS: List[Tuple[int, re.Pattern[str]]] = [
 
 
 def parse_period(text: str) -> Tuple[Optional[int], Optional[str]]:
+    """Recognize regulation and overtime periods and return the phrase that identified the period."""
     for period, pat in _PERIOD_PATTERNS:
         m = pat.search(text)
         if m:
@@ -258,6 +261,7 @@ _HALF_MINUTE_RE = re.compile(r"\b(?:half\s+a\s+minute|thirty\s+seconds)\b")
 
 
 def parse_time_remaining_seconds(text: str) -> Tuple[Optional[float], Optional[str]]:
+    """Convert game-clock wording to seconds and retain the matched phrase for review."""
     m = _TIME_MMSS_RE.search(text)
     if m:
         mm = int(m.group("mm"))
@@ -333,6 +337,7 @@ _SHOT_CLOCK_RE_4 = re.compile(
 
 
 def parse_shot_clock_seconds(text: str) -> Tuple[Optional[float], Optional[str]]:
+    """Read a shot-clock value separately from the time remaining in the period."""
     for pat in (_SHOT_CLOCK_RE_1, _SHOT_CLOCK_RE_2, _SHOT_CLOCK_RE_3, _SHOT_CLOCK_RE_4):
         m = pat.search(text)
         if m:
@@ -366,6 +371,7 @@ _UP_ONE_SCORE_RE = re.compile(r"\b(?:up|leading)\s+(?:one\s+)?score\b")
 
 
 def parse_score_margin(text: str) -> Tuple[Optional[float], Optional[str], Optional[str]]:
+    """Read the score from our team’s perspective and flag wording that leaves the margin uncertain."""
     m = _MARGIN_TIED_RE.search(text)
     if m:
         return 0.0, m.group(0), None
@@ -556,6 +562,7 @@ def _score_confidence(
 
 
 def parse_game_context(text: str, defaults: Optional[Dict[str, Any]] = None) -> NLPParseResult:
+    """Combine phrase matches, clock and score rules, and caller defaults into a game situation."""
     raw = text or ""
     defaults = defaults or {}
 
@@ -872,6 +879,7 @@ def parse_game_context(text: str, defaults: Optional[Dict[str, Any]] = None) -> 
 
 
 def context_to_context_ml_params(context: Dict[str, Any]) -> Dict[str, Any]:
+    """Translate parsed game context into the parameters understood by the matchup ranker."""
     period = context.get("period")
     margin = context.get("margin")
     time_remaining = context.get("time_remaining")
@@ -954,11 +962,13 @@ CONTEXT_FIELD_BOUNDS: Dict[str, Tuple[float, float]] = {
 
 @dataclass(frozen=True)
 class ContextGuardResult:
+    """Record the values sent to the ranker and which fields were defaulted or rejected."""
     params: Dict[str, Any]
     defaulted_fields: List[str] = field(default_factory=list)
     rejected_fields: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
+        """Expose accepted parameters and field-level fallback decisions together."""
         return asdict(self)
 
 

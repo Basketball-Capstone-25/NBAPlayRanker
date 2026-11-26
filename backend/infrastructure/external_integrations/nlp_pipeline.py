@@ -1,8 +1,4 @@
-from __future__ import annotations
-
 """
-backend/nlp_pipeline.py
-
 spaCy-first + NLTK-supported basketball NLP utilities.
 
 Goals:
@@ -17,6 +13,8 @@ Notes:
 - NLTK WordNet is optional. If the corpus is unavailable, synonym expansion
   gracefully falls back to the custom basketball synonym map.
 """
+
+from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
 import re
@@ -209,6 +207,7 @@ for canonical, variants in CANONICAL_SYNONYMS.items():
 
 @dataclass(frozen=True)
 class NLPTokenInfo:
+    """Keep each token’s original spelling, lemma and stem for inspecting a parsed prompt."""
     text: str
     lemma: str
     stem: str
@@ -218,6 +217,7 @@ class NLPTokenInfo:
 
 @dataclass(frozen=True)
 class NLPEntityInfo:
+    """Record which extractor recognized a basketball term and where it appears in the normalized text."""
     label: str
     text: str
     canonical: Optional[str]
@@ -228,6 +228,7 @@ class NLPEntityInfo:
 
 @dataclass(frozen=True)
 class NLPPipelineResult:
+    """Bundle the normalized prompt, detected phrases and context hints passed to the game parser."""
     raw_text: str
     normalized_text: str
     tokens: List[NLPTokenInfo] = field(default_factory=list)
@@ -237,6 +238,7 @@ class NLPPipelineResult:
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        """Convert the nested token and entity records into plain dictionaries for callers."""
         return asdict(self)
 
 
@@ -286,6 +288,7 @@ def _safe_wordnet_synonyms(term: str) -> List[str]:
 
 
 def canonicalize_term(term: str) -> str:
+    """Look up a basketball alias, keeping the lowercased input when it has no entry."""
     if not term:
         return ""
     lowered = term.strip().lower()
@@ -293,6 +296,7 @@ def canonicalize_term(term: str) -> str:
 
 
 def expand_synonyms(term: str) -> List[str]:
+    """Return the preferred term first, followed by distinct basketball and optional WordNet synonyms."""
     canonical = canonicalize_term(term)
     custom = list(CANONICAL_SYNONYMS.get(canonical, ()))
     wordnet_terms = _safe_wordnet_synonyms(term)
@@ -300,6 +304,7 @@ def expand_synonyms(term: str) -> List[str]:
 
 
 def normalize_basketball_text(text: str) -> str:
+    """Standardize punctuation and coaching shorthand before token and phrase matching."""
     normalized = _clean_space(
         (text or "")
         .replace("—", "-")
@@ -343,6 +348,7 @@ def _build_entity_patterns() -> List[Dict[str, Any]]:
 # ---------------------------------------------------------------------
 
 class BasketballNLPPipeline:
+    """Keep spaCy’s language pipeline and basketball phrase matcher together for reuse across prompts."""
     def __init__(self, model_name: str = DEFAULT_SPACY_MODEL) -> None:
         self.model_name = model_name
         self._nlp = self._build_nlp(model_name)
@@ -531,6 +537,7 @@ class BasketballNLPPipeline:
         return hints
 
     def parse(self, text: str) -> NLPPipelineResult:
+        """Keep the raw prompt alongside matches and context hints extracted from its normalized wording."""
         raw_text = text or ""
         normalized_text = normalize_basketball_text(raw_text)
         doc = self._nlp(normalized_text)
@@ -574,6 +581,7 @@ class BasketballNLPPipeline:
         )
 
     def health(self) -> Dict[str, Any]:
+        """Show which model actually loaded and whether WordNet is available in this process."""
         return {
             "status": "ok",
             "pipeline_version": PIPELINE_VERSION,
@@ -593,6 +601,7 @@ _PIPELINE_SINGLETON: Optional[BasketballNLPPipeline] = None
 
 
 def get_nlp_pipeline() -> BasketballNLPPipeline:
+    """Create the language pipeline on first use and reuse it for later prompts."""
     global _PIPELINE_SINGLETON
     if _PIPELINE_SINGLETON is None:
         _PIPELINE_SINGLETON = BasketballNLPPipeline()
@@ -600,10 +609,12 @@ def get_nlp_pipeline() -> BasketballNLPPipeline:
 
 
 def analyze_basketball_text(text: str) -> NLPPipelineResult:
+    """Analyze a single prompt using the shared basketball pipeline."""
     return get_nlp_pipeline().parse(text)
 
 
 def pipeline_health() -> Dict[str, Any]:
+    """Report the active language model, pipeline components and optional vocabulary support."""
     return get_nlp_pipeline().health()
 
 
