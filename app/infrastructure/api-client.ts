@@ -213,6 +213,7 @@ export type TeamPlaytypesPreviewResponse = {
 };
 
 export type BaselineRankResponse = {
+  court_map_play_types?: string[];
   dataset_versions?: Record<string, string>;
   dataset_version?: string;
   season: string;
@@ -504,6 +505,7 @@ export async function baselineRank(opts: {
 }): Promise<
   Array<{
     playType: string;
+    courtMapAvailable?: boolean;
     pppPred: number | null;
     pppOff: number | null;
     pppDef: number | null;
@@ -532,6 +534,7 @@ export async function baselineRank(opts: {
 
   const rows = rankings.map((r) => ({
     playType: r.PLAY_TYPE,
+    courtMapAvailable: data.court_map_play_types?.includes(r.PLAY_TYPE),
     pppPred: baselineNumber(r.PPP_PRED),
     pppOff: baselineNumber(r.PPP_OFF_SHRUNK),
     pppDef: baselineNumber(r.PPP_DEF_SHRUNK),

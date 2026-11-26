@@ -41,6 +41,12 @@ type BaselineInfo = {
 
 type BaselineRow = Awaited<ReturnType<typeof baselineRank>>[number];
 
+function courtMapNotice(row: BaselineRow | undefined): string | null {
+  if (!row || row.courtMapAvailable === true) return null;
+  if (row.courtMapAvailable === false) return `No court zone is mapped for ${row.playType}.`;
+  return `Court map availability has not been confirmed for ${row.playType}.`;
+}
+
 type VizResponse = {
   caption: string;
   image_base64: string;
@@ -334,7 +340,7 @@ export default function MatchupPage() {
       return;
     }
 
-    if (!resultsCurrent) return;
+    if (!resultsCurrent || !rows.some(row => row.playType === pt && row.courtMapAvailable === true)) return;
     const requestId = ++vizRequestId.current;
     const requestKey = `${currentKey}|${pt}`;
     try {
@@ -378,7 +384,10 @@ export default function MatchupPage() {
     if (bestRow?.playType) setVizPlayType(bestRow.playType);
   }, [rows, bestRow, vizPlayType]);
 
-  const vizReady = useMemo(() => Boolean(season && our && opp && vizPlayType), [season, our, opp, vizPlayType]);
+  const selectedMapRow = rows.find(row => row.playType === vizPlayType);
+  const mapNotice = courtMapNotice(selectedMapRow);
+  const bestMapNotice = courtMapNotice(bestRow ?? undefined);
+  const vizReady = resultsCurrent && selectedMapRow?.courtMapAvailable === true;
 
   return (
     <section className="pageRoot">
@@ -924,23 +933,27 @@ export default function MatchupPage() {
                   {bestRow.rationale}
                 </p>
 
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
-                  <button
-                    className="btn"
-                    type="button"
-                    onClick={() => {
-                      setVizPlayType(bestRow.playType);
-                      runViz(bestRow.playType);
-                    }}
-                    disabled={vizLoading}
-                  >
-                    <Icon name="map" /> {vizLoading ? "Generating…" : "Generate map"}
-                  </button>
+                {bestMapNotice ? (
+                  <p className="muted">{bestMapNotice}</p>
+                ) : (
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
+                    <button
+                      className="btn"
+                      type="button"
+                      onClick={() => {
+                        setVizPlayType(bestRow.playType);
+                        runViz(bestRow.playType);
+                      }}
+                      disabled={!resultsCurrent || vizLoading}
+                    >
+                      <Icon name="map" /> {vizLoading ? "Generating…" : "Generate map"}
+                    </button>
 
-                  <button className="btn" type="button" disabled={!resultsCurrent} onClick={() => authenticatedDownload(getPdfUrlForPlayType(bestRow.playType)).catch(e => setError(String(e)))}>
-                    <Icon name="pdf" /> Download court diagram
-                  </button>
-                </div>
+                    <button className="btn" type="button" disabled={!resultsCurrent} onClick={() => authenticatedDownload(getPdfUrlForPlayType(bestRow.playType)).catch(e => setError(String(e)))}>
+                      <Icon name="pdf" /> Download court diagram
+                    </button>
+                  </div>
+                )}
               </div>
             ) : null}
 
@@ -1010,7 +1023,7 @@ export default function MatchupPage() {
                     <button
                       className="btn"
                       type="button"
-                      disabled={!vizReady || !resultsCurrent}
+                      disabled={!vizReady}
                       onClick={() => authenticatedDownload(getPdfUrlForPlayType(vizPlayType)).catch(e => setError(String(e)))}
                     >
                       <Icon name="pdf" /> Download court diagram
@@ -1018,7 +1031,9 @@ export default function MatchupPage() {
                   </div>
 
                   {vizError ? <div className="error">{vizError}</div> : null}
-                  {currentViz?.caption ? (
+                  {mapNotice ? (
+                    <p className="muted">{mapNotice}</p>
+                  ) : currentViz?.caption ? (
                     <p className="muted" style={{ marginTop: 10 }}>
                       {currentViz.caption}
                     </p>
@@ -1030,7 +1045,7 @@ export default function MatchupPage() {
                 </div>
 
                 <div>
-                  {!currentViz ? (
+                  {mapNotice ? null : !currentViz ? (
                     <div
                       style={{
                         borderRadius: 14,
