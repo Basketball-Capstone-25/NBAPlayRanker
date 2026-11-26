@@ -1,3 +1,5 @@
+// Requests the analyst comparison of top-ranked plays with the reference mix.
+
 import { createClient } from "../../lib/supabase/client";
 import { API_BASE } from "./api-client";
 
@@ -29,6 +31,7 @@ export type TopKUpliftReport = {
 /** Thrown when the API has no uplift result for the chosen matchup (HTTP 404). */
 export class UpliftUnavailableError extends Error {}
 
+/** Include K and the offensive weight so the request reproduces the analyst’s selection. */
 export function topKUpliftUrl(filters: UpliftFilters): string {
   const query = new URLSearchParams({
     season: filters.season, our: filters.our, opp: filters.opp,
@@ -37,6 +40,7 @@ export function topKUpliftUrl(filters: UpliftFilters): string {
   return `${API_BASE}/metrics/topk-uplift?${query}`;
 }
 
+/** Distinguish a matchup with no uplift result from a request that failed. */
 export async function fetchTopKUplift(filters: UpliftFilters, signal?: AbortSignal): Promise<TopKUpliftReport> {
   const { data } = await createClient().auth.getSession();
   const token = data.session?.access_token;
