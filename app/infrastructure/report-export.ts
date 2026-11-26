@@ -17,7 +17,7 @@ export function resultKey(filters: Record<string, ExportScalar>): string {
   return JSON.stringify(filters);
 }
 
-const numberOrNull = (value: number): number | null => Number.isFinite(value) ? value : null;
+const numberOrNull = (value: number | null): number | null => Number.isFinite(value) ? value : null;
 
 function capturedVersions(value: unknown): Record<string, string> | "Unavailable" {
   if (!value || typeof value !== "object" || Array.isArray(value)) return "Unavailable";
@@ -30,7 +30,7 @@ function capturedVersions(value: unknown): Record<string, string> | "Unavailable
 /** Copy the ranked rows, matchup filters and available dataset versions into the Baseline export. */
 export function baselineReport(
   filters: ReportPayload["filters"],
-  rows: { playType: string; pppPred: number; pppOff: number; pppDef: number; pppGap: number; raw?: Record<string, unknown> }[],
+  rows: { playType: string; pppPred: number | null; pppOff: number | null; pppDef: number | null; pppGap: number | null; raw?: Record<string, unknown> }[],
 ): ReportPayload {
   return {
     report: "baseline_rankings", filters: { ...filters },

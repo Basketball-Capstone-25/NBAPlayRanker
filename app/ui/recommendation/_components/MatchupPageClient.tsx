@@ -12,6 +12,7 @@ import {
   fetchMetaOptions,
   fetchPlaytypeViz,
 } from "../../../services/recommendation";
+import { baselineNumber, formatBaselineNumber as fmt } from "../../../domain/baseline-metrics";
 import { normalizeWeights } from "../../../domain/weight-calculation";
 import { useAccountTeam } from "../../_shared/useAccountTeam";
 import ReportExport from "../../_shared/components/ReportExport";
@@ -38,37 +39,18 @@ type BaselineInfo = {
   whyShrinkage?: string;
 };
 
-type BaselineRow = {
-  playType: string;
-  pppPred: number;
-  pppOff: number;
-  pppDef: number;
-  pppGap: number;
-  rationale: string;
-  raw: Record<string, any>;
-};
+type BaselineRow = Awaited<ReturnType<typeof baselineRank>>[number];
 
 type VizResponse = {
   caption: string;
   image_base64: string;
 };
-function fmt(n: any, digits = 3) {
-  const x = Number(n);
-  if (!Number.isFinite(x)) return "—";
-  return x.toFixed(digits);
-}
-function fmtInt(n: any) {
-  const x = Number(n);
-  if (!Number.isFinite(x)) return "—";
-  return String(Math.round(x));
-}
 function clamp01(x: number) {
   return Math.max(0, Math.min(1, x));
 }
-function safePct(x: any) {
-  const v = Number(x);
-  if (!Number.isFinite(v)) return "—";
-  return `${(v * 100).toFixed(1)}%`;
+function safePct(value: unknown) {
+  const rate = baselineNumber(value);
+  return rate === null ? "Unavailable" : `${(rate * 100).toFixed(1)}%`;
 }
 
 // SCRUM-824: no matchup is pre-selected. A link may carry one (for example
@@ -383,9 +365,9 @@ export default function MatchupPage() {
     }
   }
 
-  const bestRow = useMemo(() => (rows.length ? rows[0] : null), [rows]);
+  const bestRow = rows[0]?.pppPred != null ? rows[0] : null;
   // SCRUM-496: the #1 play and any play tied with it on the displayed score.
-  const topPicks = useMemo(() => new Set(topPickIndexes(rows.map((r) => r.pppPred))), [rows]);
+  const topPicks = useMemo(() => new Set(bestRow ? topPickIndexes(rows.map((r) => r.pppPred)) : []), [bestRow, rows]);
   const topTied = topPicks.size > 1;
 
 
@@ -966,12 +948,12 @@ export default function MatchupPage() {
             <div className="barList" style={{ marginTop: 12 }}>
               {rows.map((r, idx) => {
                 // Stable bar scale (avoid “blowing up” on high PPP)
-                const width = clamp01(Number(r.pppPred) / 1.4) * 100;
+                const width = r.pppPred === null ? null : clamp01(r.pppPred / 1.4) * 100;
                 return (
                   <div key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "barRow topPickRow" : "barRow"}>
                     <div className="barLabel">
                       <div style={{ fontWeight: 900, fontSize: 12 }}>
-                        #{idx + 1} {r.playType}
+                        {r.pppPred === null ? "Unranked" : `#${idx + 1}`} {r.playType}
                         {topPicks.has(idx) ? <TopPickBadge tied={topTied} /> : null}
                       </div>
                       <div className="muted">
@@ -979,9 +961,11 @@ export default function MatchupPage() {
                       </div>
                     </div>
 
-                    <div className="meter" aria-label={`Predicted PPP bar for ${r.playType}`}>
-                      <div style={{ width: `${width}%` }} />
-                    </div>
+                    {width === null ? <span /> : (
+                      <div className="meter" aria-label={`Predicted PPP bar for ${r.playType}`}>
+                        <div style={{ width: `${width}%` }} />
+                      </div>
+                    )}
 
                     <div className="mono">{fmt(r.pppPred, 3)}</div>
                   </div>
@@ -1108,7 +1092,7 @@ export default function MatchupPage() {
                       const raw = r.raw ?? {};
                       return (
                         <tr key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "topPickRow" : undefined}>
-                          <td>{idx + 1}</td>
+                          <td>{r.pppPred === null ? "Unranked" : idx + 1}</td>
                           <td style={{ fontWeight: 900 }}>{r.playType}</td>
                           <td>{fmt(r.pppPred, 3)}</td>
                           <td>{fmt(r.pppOff, 3)}</td>
@@ -1117,7 +1101,7 @@ export default function MatchupPage() {
 
                           {showMath ? (
                             <>
-                              <td>{Number.isFinite(Number(raw.POSS_OFF)) ? fmtInt(raw.POSS_OFF) : "—"}</td>
+                              <td>{fmt(raw.POSS_OFF, 0)}</td>
                               <td>{safePct(raw.POSS_PCT_OFF)}</td>
                               <td>{fmt(raw.RELIABILITY_WEIGHT_OFF, 3)}</td>
                               <td>{fmt(raw.RELIABILITY_WEIGHT_DEF, 3)}</td>
