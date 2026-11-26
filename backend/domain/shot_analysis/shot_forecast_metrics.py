@@ -7,6 +7,7 @@ OUTCOME_COUNTS = ["ZERO_POINT_SHOTS", "TWO_POINT_SHOTS", "THREE_POINT_SHOTS"]
 
 
 def summarize_shot_errors(rows: pd.DataFrame, predictions) -> dict:
+    """Weight each team-game prediction by its actual counts of zero-, two- and three-point attempts to score individual shots."""
     required = ["FGA", "POINTS", *OUTCOME_COUNTS]
     if rows.empty or not set(required).issubset(rows.columns):
         raise ValueError("Shot errors need non-empty rows with attempt and outcome counts.")

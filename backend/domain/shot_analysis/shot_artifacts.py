@@ -16,11 +16,13 @@ def _source_hash(path: str, size: int, modified: int) -> str:
 
 
 def source_hash(path: Path = CLEAN_PARQUET) -> str:
+    """Identify the shot file by content, reusing the digest while its path, size and modification time match."""
     stat = path.stat()
     return _source_hash(str(path), stat.st_size, stat.st_mtime_ns)
 
 
 def read_shot_artifact(kind: str, n_splits: int, *, cache_dir: Path = CACHE_DIR, source: Path = CLEAN_PARQUET) -> dict:
+    """Load a prepared analysis or metrics result only when its format, shot data digest and fold count match."""
     if kind not in {"analysis", "metrics"}:
         raise ValueError("Unsupported shot result type.")
     filename = "pbp_phase2_shot_ml_analysis.json" if kind == "analysis" else "pbp_phase2_shot_model_cv.json"
