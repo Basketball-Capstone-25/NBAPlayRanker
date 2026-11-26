@@ -1,3 +1,5 @@
+// Loads offensive season profiles for two different teams.
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -10,6 +12,7 @@ import styles from "./matchup-dashboard.module.css";
 type State = { data: TeamComparison | null; loading: boolean; error: string };
 const initial = (): State => ({ data: null, loading: true, error: "" });
 
+/** Render the two-team comparison only when the request succeeds and offer a retry if it fails. */
 export function TeamComparisonResultState({ state, minimum, retry }: { state: State; minimum: number; retry(): void }) {
   if (state.loading) return <div className={styles.card} role="status">Loading team profiles…</div>;
   if (state.error) return <div className={styles.card} role="alert"><h2>Team profiles unavailable</h2>
@@ -36,6 +39,7 @@ function TeamComparisonLoader({ filters, minimum }: { filters: TeamComparisonFil
   return <TeamComparisonResultState state={state} minimum={minimum} retry={() => setAttempt(value => value + 1)} />;
 }
 
+/** Key the request by the ordered team pair and season so swapping teams also swaps the comparison direction. */
 export default function TeamComparisonPanel({ filters, minimum }: { filters: TeamComparisonFilters; minimum: number }) {
   if (!filters.season || !filters.team || !filters.opponent)
     return <div className={styles.card} role="status">Select two teams and a season.</div>;

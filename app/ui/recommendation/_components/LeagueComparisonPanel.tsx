@@ -1,3 +1,5 @@
+// Loads a team’s offensive or defensive rates and their league references.
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -10,6 +12,7 @@ import styles from "./matchup-dashboard.module.css";
 type State = { data: LeagueComparison | null; loading: boolean; error: string };
 const initial = (): State => ({ data: null, loading: true, error: "" });
 
+/** Keep the retry action with the failed request so the coach can repeat the same comparison. */
 export function LeagueResultState({ state, minimum, retry }: { state: State; minimum: number; retry(): void }) {
   if (state.loading) return <div className={styles.card} role="status">Loading league comparison…</div>;
   if (state.error) return <div className={styles.card} role="alert"><h2>League comparison unavailable</h2>
@@ -36,6 +39,7 @@ function LeagueLoader({ filters, minimum }: { filters: LeagueFilters; minimum: n
   return <LeagueResultState state={state} minimum={minimum} retry={() => setAttempt(value => value + 1)} />;
 }
 
+/** Start a fresh request when the team, season or side changes. The sample cutoff only affects how returned rows are shown. */
 export default function LeagueComparisonPanel({ filters, minimum }: { filters: LeagueFilters; minimum: number }) {
   if (!filters.season || !filters.team) return <div className={styles.card} role="status">Select a team and season.</div>;
   // A changed selection gets fresh state before rendering, even if an old reply arrives late.

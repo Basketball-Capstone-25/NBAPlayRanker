@@ -1,3 +1,5 @@
+// Team and league rates for the same season, side and play type.
+
 "use client";
 
 import React, { useId, useState } from "react";
@@ -46,6 +48,7 @@ function favorableDifference(metric: LeagueRate, side: "offense" | "defense", de
   return higherBetter ? delta : -delta;
 }
 
+/** Choose the headline from rows where both samples meet the selected rate’s cutoff. Keep smaller samples visible in the table. */
 export function LeagueComparisonTable({ data, minimum = 20, initialMetric = "fg_pct" }: {
   data: LeagueComparison; minimum?: number; initialMetric?: LeagueRate;
 }) {

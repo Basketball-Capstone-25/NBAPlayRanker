@@ -1,3 +1,5 @@
+// Side-by-side scoring rates and play mix for two teams.
+
 "use client";
 
 import React, { useId, useState } from "react";
@@ -30,6 +32,7 @@ function observation(data: TeamComparison, row: TeamComparison["rows"][number], 
     : `${higherTeam} scored ${magnitude(rounded)} more points per 100 of these possessions`;
 }
 
+/** Find the largest absolute gap among plays with enough possessions on both teams. Scoring is shown per 100 possessions and usage as a percentage. */
 export function TeamComparisonTable({ data, minimum = 20, initialMetric = "ppp" }: {
   data: TeamComparison; minimum?: number; initialMetric?: ProfileMetric;
 }) {
