@@ -1,8 +1,4 @@
-from __future__ import annotations
-
 """
-backend/nlp_explain.py
-
 Deterministic basketball explanation builder.
 
 Purpose:
@@ -12,6 +8,8 @@ Purpose:
 - mention extracted basketball context more clearly
 - stay metrics-backed, stable, and defendable
 """
+
+from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
 import math
@@ -48,6 +46,7 @@ EXPLAINER_VERSION = "3.0.0"
 
 @dataclass(frozen=True)
 class PlayExplanation:
+    """Keep one ranked play’s supporting metrics, contextual fit and cautions together."""
     play_name: str
     play_type: str
     rank: int
@@ -60,6 +59,7 @@ class PlayExplanation:
 
 @dataclass(frozen=True)
 class ExplanationResult:
+    """Group explanations for a ranked list with the context and questions that still need clarification."""
     context_summary: str
     overall_summary: str
     plays: List[PlayExplanation] = field(default_factory=list)
@@ -69,6 +69,7 @@ class ExplanationResult:
     explainer_version: str = EXPLAINER_VERSION
 
     def to_dict(self) -> Dict[str, Any]:
+        """Convert the explanation and its per-play records into the API response shape."""
         return asdict(self)
 
 
@@ -334,6 +335,7 @@ def _extract_metrics(play: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def summarize_context(context: Dict[str, Any]) -> str:
+    """Describe the score, clock and coaching priorities, using a prepared context brief when available."""
     if isinstance(context.get("context_brief"), str) and context["context_brief"].strip():
         return context["context_brief"].strip()
 
@@ -612,6 +614,7 @@ def _evidence_bullets(context: Dict[str, Any], play_name: str, metrics: Dict[str
 
 
 def explain_play(play: Dict[str, Any], context: Dict[str, Any], rank: int) -> PlayExplanation:
+    """Turn a ranked play’s supplied metrics and parsed coaching context into a reason and a caution."""
     name = _play_name(play)
     metrics = _extract_metrics(play)
     play_family = infer_play_family_from_name(name)
@@ -666,6 +669,7 @@ def explain_recommendations(
     parser_warnings: Optional[List[str]] = None,
     clarifying_questions: Optional[List[str]] = None,
 ) -> ExplanationResult:
+    """Explain the selected rankings and carry parser warnings and clarification questions into the response."""
     context_summary = summarize_context(context)
     overall_summary = context.get("objective_summary") or context_objective_sentence(context)
 
@@ -774,6 +778,7 @@ def explain_recommendations(
 
 
 def explain_shotplan(context: Dict[str, Any], shotplan: Dict[str, Any]) -> Dict[str, Any]:
+    """Summarize the best available shot type, zone and shooter using the supplied shot-plan evidence."""
     out: Dict[str, Any] = {}
     if not isinstance(shotplan, dict):
         return out
