@@ -172,3 +172,26 @@ def test_context_edge_uses_the_context_prediction(monkeypatch):
     assert table.iloc[0]["PPP_LEAGUE_REF"] == pytest.approx(0.95)
     row = context.apply_context_adjustments(table, margin=-3, period=4, time_remaining_period_sec=30).iloc[0]
     assert row["EDGE"] == pytest.approx(row["PPP_CONTEXT"] - 0.95)
+
+
+def test_context_ranking_is_ordered_by_edge(monkeypatch):
+    from domain.context_ml_recommendation import ml_context_recommender as context
+    def rows(play, off, deff):
+        common = {"SEASON": "2024-25", "PLAY_TYPE": play, "POSS": 100, "POSS_PCT": 0.1,
+                  "RELIABILITY_WEIGHT": 1.0, "EFG_PCT": 0.5, "TOV_POSS_PCT": 0.1}
+        return [{**common, "SIDE": "offense", "TEAM_ABBREVIATION": "TOR", "PPP": off},
+                {**common, "SIDE": "defense", "TEAM_ABBREVIATION": "BOS", "PPP": deff}]
+    team = pd.DataFrame(rows("PRRollMan", 1.15, 1.15) + rows("Isolation", 1.0, 1.0))
+    league = pd.DataFrame([{"SEASON": "2024-25", "PLAY_TYPE": play, "SIDE": side, "PPP": ppp}
+                           for play, ppp in [("PRRollMan", 1.15), ("Isolation", 0.9)]
+                           for side in ["offense", "defense"]])
+    predictions = pd.DataFrame([
+        {"SEASON": "2024-25", "TEAM_ABBREVIATION": "TOR", "PLAY_TYPE": "PRRollMan", "PPP_ML": 1.15},
+        {"SEASON": "2024-25", "TEAM_ABBREVIATION": "TOR", "PLAY_TYPE": "Isolation", "PPP_ML": 1.0},
+    ])
+    monkeypatch.setattr(context, "_rec", SimpleNamespace(team_df=team, league_df=league, raw_df=pd.DataFrame()))
+    monkeypatch.setattr(context, "_get_ml_pred_df", lambda: predictions)
+    ranked = context.rank_ml_with_context("2024-25", "TOR", "BOS", margin=0, period=2,
+                                          time_remaining_period_sec=360, k=2)
+    assert ranked["PLAY_TYPE"].tolist() == ["Isolation", "PRRollMan"]
+    assert ranked["EDGE"].is_monotonic_decreasing

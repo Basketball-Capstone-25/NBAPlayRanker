@@ -1325,6 +1325,7 @@ def apply_context_adjustments(
 
         return (
             f"{row['PLAY_TYPE']} [{row['PLAY_FAMILY']}]: "
+            f"Edge {row['PPP_CONTEXT'] - row['PPP_LEAGUE_REF']:+.3f} vs the league average of {row['PPP_LEAGUE_REF']:.3f}. "
             f"ML base {row['PPP_ML_BLEND']:.3f}, "
             f"legacy {row['LEGACY_CONTEXT_ADJ']:+.3f}, "
             f"NLP {row['NLP_CONTEXT_ADJ']:+.3f}, "
@@ -1357,7 +1358,7 @@ def rank_ml_with_context(
       1) Build matchup with ML blend + baseline
       2) Let advanced NLP context alter blend weights
       3) Apply legacy + NLP-aware context adjustments
-      4) Rank by PPP_CONTEXT
+      4) Rank by EDGE (PPP_CONTEXT minus the weighted league average)
 
     Safe fallback behavior for malformed / underspecified prompts:
       - margin -> 0.0
@@ -1387,7 +1388,8 @@ def rank_ml_with_context(
         context=sanitized_context,
     )
 
-    sort_cols = ["PPP_CONTEXT", "NLP_CONTEXT_ADJ", "PPP_ML_BLEND"]
+    # Rank by edge, as the baseline does; the context-adjusted PPP breaks ties.
+    sort_cols = ["EDGE", "PPP_CONTEXT", "NLP_CONTEXT_ADJ", "PPP_ML_BLEND"]
     sort_cols = [c for c in sort_cols if c in df.columns]
     df = df.sort_values(sort_cols, ascending=False).reset_index(drop=True)
     return df.head(max(1, int(k)))

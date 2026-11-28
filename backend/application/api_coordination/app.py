@@ -560,6 +560,8 @@ def rank_context_ml(
 
     out_cols = [
         "PLAY_TYPE",
+        "EDGE",
+        "PPP_LEAGUE_REF",
         "PPP_CONTEXT",
         "PPP_ML_BLEND",
         "PPP_BASELINE",
