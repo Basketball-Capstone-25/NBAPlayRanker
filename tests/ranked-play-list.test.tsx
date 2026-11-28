@@ -41,6 +41,15 @@ describe("Context ML ranked list (SCRUM-795)", () => {
     expect(html).not.toContain("top-pick-action");
   });
 
+  it("shows the edge over the league average when it is known", () => {
+    const html = renderToStaticMarkup(
+      <RankedPlayList plays={[{ ...plays[0], edge: 0.048, leagueRef: 1.131 }, { ...plays[1], edge: -0.012 }]} current topPicks={new Set([0])} />,
+    );
+    expect(html).toContain("edge +0.05 vs league 1.13");
+    expect(html).toContain("edge -0.01");
+    expect(html.match(/edge [+-]/g)).toHaveLength(2);
+  });
+
   it("renders nothing for empty results", () => {
     expect(renderToStaticMarkup(<RankedPlayList plays={[]} current topPicks={new Set()} />)).toBe("");
   });

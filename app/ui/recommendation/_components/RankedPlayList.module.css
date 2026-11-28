@@ -66,6 +66,14 @@
   color: rgba(15, 23, 42, 0.55);
 }
 
+.edge {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #0b6bcb;
+}
+
 @media (max-width: 720px) {
   .play {
     grid-template-columns: 44px 1fr;
