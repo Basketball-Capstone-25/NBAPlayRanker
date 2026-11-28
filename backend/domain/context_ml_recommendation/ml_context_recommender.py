@@ -42,6 +42,7 @@ import numpy as np
 import pandas as pd
 
 from domain.baseline_recommendation import BaselineRecommender
+from domain.baseline_recommendation.baseline_recommender import with_shrink_weight
 from infrastructure.data_access.dataset_metadata import read_versioned_csv
 
 try:
@@ -1018,6 +1019,9 @@ def build_ml_matchup_table(
     if league_off.empty or league_def.empty:
         raise ValueError(f"Missing league-average offense/defense data for season {season}")
 
+    # Same empirical-Bayes shrinkage as the baseline (SCRUM-980).
+    off = with_shrink_weight(off)
+    deff = with_shrink_weight(deff)
     deff_subset = deff[
         [
             "PLAY_TYPE",
@@ -1025,6 +1029,7 @@ def build_ml_matchup_table(
             "POSS",
             "POSS_PCT",
             "RELIABILITY_WEIGHT",
+            "SHRINK_WEIGHT",
             "EFG_PCT",
             "TOV_POSS_PCT",
         ]
@@ -1039,8 +1044,8 @@ def build_ml_matchup_table(
     merged = merged.merge(league_off, on="PLAY_TYPE", how="left")
     merged = merged.merge(league_def, on="PLAY_TYPE", how="left")
 
-    rel_off = merged["RELIABILITY_WEIGHT_OFF"].fillna(0.0)
-    rel_def = merged["RELIABILITY_WEIGHT_DEF"].fillna(0.0)
+    rel_off = merged["SHRINK_WEIGHT_OFF"].fillna(0.0)
+    rel_def = merged["SHRINK_WEIGHT_DEF"].fillna(0.0)
 
     merged["PPP_OFF_SHRUNK"] = rel_off * merged["PPP_OFF"] + (1 - rel_off) * merged["PPP_LEAGUE_OFF"]
     merged["PPP_DEF_SHRUNK"] = rel_def * merged["PPP_DEF"] + (1 - rel_def) * merged["PPP_LEAGUE_DEF"]
