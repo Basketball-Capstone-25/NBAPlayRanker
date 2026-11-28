@@ -120,7 +120,7 @@ def test_edge_is_prediction_minus_weighted_league_average():
     assert row["EDGE"] == pytest.approx(0.5 * 0.05 + 0.5 * 0.10)
 
 
-def test_rows_are_ordered_by_edge_not_raw_ppp():
+def _two_play_matchup():
     def rows(play, off, deff):
         common = {"SEASON": "2024-25", "PLAY_TYPE": play, "POSS": 100, "POSS_PCT": 0.1,
                   "RELIABILITY_WEIGHT": 1.0, **{column: 0.2 for column in WEIGHT_COLS}}
@@ -132,10 +132,28 @@ def test_rows_are_ordered_by_edge_not_raw_ppp():
         for play, ppp in [("PRRollMan", 1.15), ("Isolation", 0.9)]
         for side in ["offense", "defense"]
     ])
+    return teams, league
+
+
+def test_rows_are_ordered_by_predicted_ppp_by_default():
+    teams, league = _two_play_matchup()
     ranked = rank_playtypes_baseline(teams, league, "2024-25", "TOR", "BOS", k=2)
+    assert ranked["PLAY_TYPE"].tolist() == ["PRRollMan", "Isolation"]
+    assert ranked["PPP_PRED"].is_monotonic_decreasing
+
+
+def test_rows_can_be_ordered_by_edge():
+    teams, league = _two_play_matchup()
+    ranked = rank_playtypes_baseline(teams, league, "2024-25", "TOR", "BOS", k=2, rank_by="edge")
     assert ranked["PLAY_TYPE"].tolist() == ["Isolation", "PRRollMan"]
     assert ranked.iloc[0]["PPP_PRED"] < ranked.iloc[1]["PPP_PRED"]
     assert ranked["EDGE"].is_monotonic_decreasing
+
+
+def test_unknown_rank_by_is_rejected():
+    teams, league = _two_play_matchup()
+    with pytest.raises(ValueError):
+        rank_playtypes_baseline(teams, league, "2024-25", "TOR", "BOS", k=2, rank_by="poss")
 
 
 def test_context_blend_keeps_the_same_defense_direction(monkeypatch):

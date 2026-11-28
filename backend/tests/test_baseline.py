@@ -63,13 +63,20 @@ def test_top_pick_changes_with_the_opponent():
     rec = BaselineRecommender(str(DATA_PATH))
     opponents = ["BOS", "LAL", "DEN", "MIA", "GSW", "NYK"]
     tops = {
-        rec.rank(season="2024-25", our_team="TOR", opp_team=opp, k=3).iloc[0]["PLAY_TYPE"]
+        rec.rank(season="2024-25", our_team="TOR", opp_team=opp, k=3, rank_by="edge").iloc[0]["PLAY_TYPE"]
         for opp in opponents
     }
     assert len(tops) > 1
-    df = rec.rank(season="2024-25", our_team="TOR", opp_team="BOS", k=5)
+    df = rec.rank(season="2024-25", our_team="TOR", opp_team="BOS", k=5, rank_by="edge")
     assert df["EDGE"].is_monotonic_decreasing
     assert (df["EDGE"] - (df["PPP_PRED"] - df["PPP_LEAGUE_REF"])).abs().max() < 1e-9
+
+def test_default_order_is_predicted_ppp():
+    """SCRUM-978: the baseline lists play types by predicted PPP unless edge is chosen."""
+    rec = BaselineRecommender(str(DATA_PATH))
+    df = rec.rank(season="2024-25", our_team="TOR", opp_team="BOS", k=5)
+    assert df["PPP_PRED"].is_monotonic_decreasing
+
 
 def test_shot_baseline_rank_returns_dict():
     from domain.baseline_recommendation.shot_baseline_recommender import ShotBaselineRecommender

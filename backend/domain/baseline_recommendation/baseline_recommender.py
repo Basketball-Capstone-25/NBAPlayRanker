@@ -224,6 +224,17 @@ def with_shrink_weight(frame: pd.DataFrame) -> pd.DataFrame:
     return frame.assign(SHRINK_WEIGHT=frame["RELIABILITY_WEIGHT"], SHRINK_K=np.nan)
 
 
+RANK_BY_OPTIONS = ("ppp", "edge")
+
+
+def validate_rank_by(rank_by: str) -> str:
+    """Return a supported ranking order, or raise ValueError."""
+    value = str(rank_by or "ppp").strip().lower()
+    if value not in RANK_BY_OPTIONS:
+        raise ValueError(f"Unknown rank_by '{rank_by}'. Use one of {list(RANK_BY_OPTIONS)}.")
+    return value
+
+
 def rank_playtypes_baseline(
     team_df: pd.DataFrame,
     league_df: pd.DataFrame,
@@ -233,8 +244,14 @@ def rank_playtypes_baseline(
     k: int = 5,
     w_off: float = 0.5,
     w_def: float = 0.5,
+    rank_by: str = "ppp",
 ) -> pd.DataFrame:
-    """Rank play types for a matchup using an explainable baseline model."""
+    """Rank play types for a matchup using an explainable baseline model.
+
+    rank_by="ppp" (default) orders by predicted PPP; rank_by="edge" orders by
+    how far the prediction sits above the league average for that play type.
+    """
+    rank_by = validate_rank_by(rank_by)
     valid_seasons = set(team_df["SEASON"].unique())
     if season not in valid_seasons:
         raise ValueError(f"Unknown season '{season}'. Valid seasons: {sorted(valid_seasons)}")
@@ -326,9 +343,10 @@ def rank_playtypes_baseline(
 
     # A descriptive difference between historical profiles, not a matchup advantage.
     merged["PPP_GAP"] = merged["PPP_OFF_SHRUNK"] - merged["PPP_DEF_SHRUNK"]
-    # Rank by edge so the order reflects this matchup, not which play type
-    # scores best for every team. Predicted PPP breaks ties.
-    merged = merged.sort_values(["EDGE", "PPP_PRED", "POSS_OFF"], ascending=[False, False, False])
+    # Predicted PPP is the default order. Edge is an option that shows which
+    # play types beat the league average the most in this matchup.
+    sort_cols = ["PPP_PRED", "EDGE", "POSS_OFF"] if rank_by == "ppp" else ["EDGE", "PPP_PRED", "POSS_OFF"]
+    merged = merged.sort_values(sort_cols, ascending=[False, False, False])
 
     def build_rationale(row: pd.Series) -> str:
         gap = float(row["PPP_GAP"])
@@ -404,8 +422,8 @@ class BaselineRecommender(IBaselineRecommender):
         self.source_path = other.source_path
         self.raw_df, self.team_df, self.league_df = other.raw_df, other.team_df, other.league_df
 
-    def rank(self, season: str, our_team: str, opp_team: str, k: int = 5) -> pd.DataFrame:
+    def rank(self, season: str, our_team: str, opp_team: str, k: int = 5, rank_by: str = "ppp") -> pd.DataFrame:
         """Score this matchup against the loaded season tables and return up to k play types."""
         return rank_playtypes_baseline(
-            self.team_df, self.league_df, season, our_team, opp_team, k=k
+            self.team_df, self.league_df, season, our_team, opp_team, k=k, rank_by=rank_by
         )
