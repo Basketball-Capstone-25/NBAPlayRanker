@@ -98,6 +98,25 @@ def test_weaker_opponent_defense_does_not_lower_offensive_score():
     assert weaker.iloc[0]["PPP_PRED"] == pytest.approx(1.1)
 
 
+def test_edge_is_prediction_minus_weighted_league_average():
+    common = {
+        "SEASON": "2024-25", "PLAY_TYPE": "Isolation", "POSS": 100,
+        "POSS_PCT": 0.1, "RELIABILITY_WEIGHT": 1.0,
+        **{column: 0.2 for column in WEIGHT_COLS},
+    }
+    teams = pd.DataFrame([
+        {**common, "SIDE": "offense", "TEAM_ABBREVIATION": "TOR", "PPP": 1.15},
+        {**common, "SIDE": "defense", "TEAM_ABBREVIATION": "BOS", "PPP": 1.2},
+    ])
+    league = pd.DataFrame([
+        {"SEASON": "2024-25", "PLAY_TYPE": "Isolation", "SIDE": "offense", "PPP": 1.1},
+        {"SEASON": "2024-25", "PLAY_TYPE": "Isolation", "SIDE": "defense", "PPP": 1.1},
+    ])
+    row = rank_playtypes_baseline(teams, league, "2024-25", "TOR", "BOS", k=1).iloc[0]
+    assert row["PPP_LEAGUE_REF"] == pytest.approx(1.1)
+    assert row["EDGE"] == pytest.approx(0.7 * 0.05 + 0.3 * 0.10)
+
+
 def test_context_blend_keeps_the_same_defense_direction(monkeypatch):
     from domain.context_ml_recommendation import ml_context_recommender as context
     common = {"SEASON": "2024-25", "PLAY_TYPE": "Isolation", "POSS": 100,

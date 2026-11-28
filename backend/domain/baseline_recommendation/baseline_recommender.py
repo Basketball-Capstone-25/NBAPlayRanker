@@ -238,6 +238,14 @@ def rank_playtypes_baseline(
         + float(w_def) * merged["PPP_DEF_SHRUNK"]
     )
 
+    # League reference: what a typical team gets from this play type with the
+    # same offence/defence weights. Edge is how far this matchup sits above it.
+    merged["PPP_LEAGUE_REF"] = (
+        float(w_off) * merged["PPP_LEAGUE_OFF"]
+        + float(w_def) * merged["PPP_LEAGUE_DEF"]
+    )
+    merged["EDGE"] = merged["PPP_PRED"] - merged["PPP_LEAGUE_REF"]
+
     # A descriptive difference between historical profiles, not a matchup advantage.
     merged["PPP_GAP"] = merged["PPP_OFF_SHRUNK"] - merged["PPP_DEF_SHRUNK"]
     merged = merged.sort_values(["PPP_PRED", "POSS_OFF"], ascending=[False, False])
@@ -261,6 +269,8 @@ def rank_playtypes_baseline(
     cols = [
         "PLAY_TYPE",
         "PPP_PRED",
+        "EDGE",
+        "PPP_LEAGUE_REF",
         "PPP_OFF_SHRUNK",
         "PPP_DEF_SHRUNK",
         "PPP_GAP",
