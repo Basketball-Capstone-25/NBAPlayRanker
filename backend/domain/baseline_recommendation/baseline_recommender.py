@@ -213,6 +213,17 @@ def prepare_baseline_tables(raw_df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Data
     league_df = build_league_averages(team_df)
     return team_df, league_df
 
+def with_shrink_weight(frame: pd.DataFrame) -> pd.DataFrame:
+    """Return team rows that carry SHRINK_WEIGHT.
+
+    Tables built without add_shrinkage_weights (for example in small tests)
+    fall back to their RELIABILITY_WEIGHT and an unknown k.
+    """
+    if "SHRINK_WEIGHT" in frame.columns:
+        return frame
+    return frame.assign(SHRINK_WEIGHT=frame["RELIABILITY_WEIGHT"], SHRINK_K=np.nan)
+
+
 def rank_playtypes_baseline(
     team_df: pd.DataFrame,
     league_df: pd.DataFrame,
@@ -257,6 +268,9 @@ def rank_playtypes_baseline(
         "SEASON == @season and SIDE == 'defense'"
     )[["PLAY_TYPE", "PPP"]].rename(columns={"PPP": "PPP_LEAGUE_DEF"})
 
+    off = with_shrink_weight(off)
+    deff = with_shrink_weight(deff)
+
     # Keep only the defense columns we need (makes merge cleaner)
     deff_subset = deff[
         [
@@ -265,6 +279,8 @@ def rank_playtypes_baseline(
             "POSS",
             "POSS_PCT",
             "RELIABILITY_WEIGHT",
+            "SHRINK_WEIGHT",
+            "SHRINK_K",
             "FG_PCT",
             "EFG_PCT",
             "SCORE_POSS_PCT",
@@ -286,9 +302,9 @@ def rank_playtypes_baseline(
     merged = merged.merge(league_off, on="PLAY_TYPE", how="left")
     merged = merged.merge(league_def, on="PLAY_TYPE", how="left")
     #
-    # PPP_SHRUNK = REL * PPP_TEAM + (1-REL) * PPP_LEAGUE
-    rel_off = merged["RELIABILITY_WEIGHT_OFF"]
-    rel_def = merged["RELIABILITY_WEIGHT_DEF"]
+    # PPP_SHRUNK = W * PPP_TEAM + (1-W) * PPP_LEAGUE, with W = POSS / (POSS + k)
+    rel_off = merged["SHRINK_WEIGHT_OFF"]
+    rel_def = merged["SHRINK_WEIGHT_DEF"]
 
     merged["PPP_OFF_SHRUNK"] = rel_off * merged["PPP_OFF"] + (1 - rel_off) * merged["PPP_LEAGUE_OFF"]
     merged["PPP_DEF_SHRUNK"] = rel_def * merged["PPP_DEF"] + (1 - rel_def) * merged["PPP_LEAGUE_DEF"]
@@ -317,14 +333,14 @@ def rank_playtypes_baseline(
     def build_rationale(row: pd.Series) -> str:
         gap = float(row["PPP_GAP"])
         gap_str = f"+{gap:.3f}" if gap >= 0 else f"{gap:.3f}"
-        rel_off = float(row["RELIABILITY_WEIGHT_OFF"])
-        rel_def = float(row["RELIABILITY_WEIGHT_DEF"])
+        rel_off = float(row["SHRINK_WEIGHT_OFF"])
+        rel_def = float(row["SHRINK_WEIGHT_DEF"])
         edge = float(row["EDGE"])
         return (
             f"{row['PLAY_TYPE']}: Edge {edge:+.3f} vs the league average of {row['PPP_LEAGUE_REF']:.3f}. "
             f"Pred {row['PPP_PRED']:.3f} PPP. "
             f"Our(off) {row['PPP_OFF_SHRUNK']:.3f} vs Opp(allowed) {row['PPP_DEF_SHRUNK']:.3f} ({gap_str}). "
-            f"Reliability off={rel_off:.2f}, def={rel_def:.2f}. "
+            f"Shrink weight off={rel_off:.2f}, def={rel_def:.2f}. "
             "Regular-season historical estimate. "
             "Game context was not used: score margin, period and clock do not affect this baseline ranking."
         )
@@ -342,6 +358,10 @@ def rank_playtypes_baseline(
         "PPP_GAP",
         "PPP_LEAGUE_OFF",
         "PPP_LEAGUE_DEF",
+        "SHRINK_WEIGHT_OFF",
+        "SHRINK_WEIGHT_DEF",
+        "SHRINK_K_OFF",
+        "SHRINK_K_DEF",
         "RELIABILITY_WEIGHT_OFF",
         "RELIABILITY_WEIGHT_DEF",
         "POSS_OFF",

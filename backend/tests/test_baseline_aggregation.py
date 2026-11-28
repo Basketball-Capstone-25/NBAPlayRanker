@@ -230,3 +230,18 @@ def test_shrink_weight_grows_with_possessions():
     small = weighted[weighted.TEAM_ABBREVIATION == "T0"].iloc[0]
     assert big.SHRINK_WEIGHT > small.SHRINK_WEIGHT
     assert small.SHRINK_WEIGHT == pytest.approx(400 / (400 + small.SHRINK_K))
+
+
+def test_ranking_shrinks_with_the_estimated_weight():
+    common = {"SEASON": "2024-25", "PLAY_TYPE": "Isolation", "POSS": 100, "POSS_PCT": 0.1,
+              "RELIABILITY_WEIGHT": 1.0, **{column: 0.2 for column in WEIGHT_COLS}}
+    teams = pd.DataFrame([
+        {**common, "SIDE": "offense", "TEAM_ABBREVIATION": "TOR", "PPP": 1.2, "SHRINK_WEIGHT": 0.25, "SHRINK_K": 300.0},
+        {**common, "SIDE": "defense", "TEAM_ABBREVIATION": "BOS", "PPP": 1.0, "SHRINK_WEIGHT": 0.5, "SHRINK_K": 100.0},
+    ])
+    league = pd.DataFrame([{"SEASON": "2024-25", "PLAY_TYPE": "Isolation", "SIDE": side, "PPP": 0.9}
+                           for side in ["offense", "defense"]])
+    row = rank_playtypes_baseline(teams, league, "2024-25", "TOR", "BOS", k=1).iloc[0]
+    assert row["PPP_OFF_SHRUNK"] == pytest.approx(0.25 * 1.2 + 0.75 * 0.9)
+    assert row["PPP_DEF_SHRUNK"] == pytest.approx(0.5 * 1.0 + 0.5 * 0.9)
+    assert row["SHRINK_K_OFF"] == 300.0
