@@ -494,6 +494,9 @@ export function getTeamPlaytypesCsvUrl(opts: {
 
 // Baseline ranking (Dataset1)
 
+/** Order for ranked play types: predicted PPP (default) or edge over the league average. */
+export type RankBy = "ppp" | "edge";
+
 /** Rank play types for a matchup with the baseline formula (no game context). */
 export async function baselineRank(opts: {
   season: string;
@@ -502,6 +505,7 @@ export async function baselineRank(opts: {
   k?: number;
   wOff?: number;
   wDef?: number;
+  rankBy?: RankBy;
 }): Promise<
   Array<{
     playType: string;
@@ -517,7 +521,7 @@ export async function baselineRank(opts: {
   }>
 > {
   // ✅ FIX: destructure wDef so it exists (and give it a safe default)
-  const { season, our, opp, k = 5, wOff = 0.5, wDef = 0.5 } = opts;
+  const { season, our, opp, k = 5, wOff = 0.5, wDef = 0.5, rankBy = "ppp" } = opts;
 
   const params = new URLSearchParams({
     season,
@@ -526,6 +530,7 @@ export async function baselineRank(opts: {
     k: String(k),
     w_off: String(wOff),
     w_def: String(wDef),
+    rank_by: rankBy,
   });
 
   const data = await fetchJson<BaselineRankResponse>(
@@ -558,8 +563,9 @@ export function getBaselineCsvUrl(opts: {
   k?: number;
   wOff?: number;
   wDef?: number;
+  rankBy?: RankBy;
 }): string {
-  const { season, our, opp, k = 5, wOff = 0.5 } = opts;
+  const { season, our, opp, k = 5, wOff = 0.5, rankBy = "ppp" } = opts;
 
   const params = new URLSearchParams({
     season,
@@ -567,7 +573,8 @@ export function getBaselineCsvUrl(opts: {
     opp,
     k: String(k),
     w_off: String(wOff),
-    w_def: String(opts.wDef ?? 0.3),
+    w_def: String(opts.wDef ?? 0.5),
+    rank_by: rankBy,
   });
 
   return `${API_BASE}/rank-plays/baseline.csv?${params.toString()}`;
@@ -586,6 +593,7 @@ export async function contextRank(opts: {
   k?: number;
   wOff?: number;
   coaching?: CoachingConditions;
+  rankBy?: RankBy;
 }): Promise<
   Array<{
     playType: string;
@@ -621,6 +629,7 @@ export async function contextRank(opts: {
     time_remaining: String(timeRemaining),
     k: String(k),
     w_off: String(wOff),
+    rank_by: opts.rankBy ?? "ppp",
   });
 
   if (opts.coaching) params.set("coaching", JSON.stringify(opts.coaching));
