@@ -309,9 +309,9 @@ def pipeline_info() -> Dict[str, Any]:
             "Build league baselines per (SEASON, PLAY_TYPE, SIDE) for shrinkage anchors.",
         ],
         "modeling": [
-            "Baseline model: shrink team offense/defense toward league baselines; combine into PPP_PRED, then rank by EDGE (PPP_PRED minus the weighted league average).",
+            "Baseline model: shrink team offense/defense toward league baselines and combine them 50/50 into PPP_PRED; rows are ranked by PPP_PRED, or by EDGE (PPP_PRED minus the weighted league average) when chosen.",
             "ML model: a model selected offline estimates offense PPP from observed-season team play-type features.",
-            "AI use case: ML-based PPP blended with opponent defense, then adjusted using small, transparent context bonuses/penalties.",
+            "AI use case: ML-based PPP blended with opponent defense, then adjusted using small, transparent context bonuses/penalties. The coaching-condition weight shifts are judgment-based settings, not fitted values.",
         ],
         "etl_reference": "See backend/data/etl/build_synergy_dataset.R for the dataset build logic (if applicable in your repo).",
     }
