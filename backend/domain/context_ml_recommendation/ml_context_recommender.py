@@ -520,6 +520,10 @@ def _fallback_biases_from_context(context: Dict[str, Any]) -> Tuple[Optional[flo
     """
     Use parser-provided offense_bias/defense_bias when available.
     Otherwise infer a conservative fallback from the parsed need flags.
+
+    The fallback biases (0.75/0.25 when we must score, 0.20/0.80 for a stop,
+    0.42/0.58 to play safe) are judgment-based settings chosen by the team.
+    They were not fitted to data and should be read as coaching assumptions.
     """
     off = _safe_float(context.get("offense_bias"))
     deff = _safe_float(context.get("defense_bias"))
@@ -558,6 +562,10 @@ def _resolve_effective_weights(
     """
     Let advanced NLP context change how much the ranking trusts our offense
     versus opponent defense. This is a meaningful ranking change, not just text.
+
+    The 0.35/0.65 blend and the 0.10 to 0.90 clamp are judgment-based, like the
+    condition biases. Only the 50/50 base weight is backed by a data check
+    (docs/model/offense-defense-weight.json).
     """
     base_w_off = float(w_off)
     ctx = context or {}
