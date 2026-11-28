@@ -1,5 +1,8 @@
+// Bar widths for the model error comparison.
+
 type RmseRow = { model: string; RMSE_mean: number };
 
+/** Scales errors from zero to the largest valid RMSE. Zero stays at zero, while an invalid error has no bar. */
 export function rmseBarWidths(rows: readonly RmseRow[]) {
   const valid = (value: number) => Number.isFinite(value) && value >= 0;
   const maximum = Math.max(0, ...rows.map((row) => valid(row.RMSE_mean) ? row.RMSE_mean : 0));

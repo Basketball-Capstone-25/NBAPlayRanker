@@ -59,6 +59,7 @@ function fmtInt(n: any) {
   return String(Math.round(x));
 }
 
+/** Runs the shot rankings and court map for one matchup. The optional shot type and zone filters apply only to the map. */
 export default function ShotPlanPage() {
   // Meta is merged from:
   // - Dataset1 /meta/options (teamNames mapping: "TOR" -> "Toronto Raptors")

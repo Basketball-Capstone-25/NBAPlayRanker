@@ -26,6 +26,7 @@ def normalize_athlete_id(value: object) -> str | None:
 
 
 def shooter_name(text: object) -> str | None:
+    """Extract the name preceding “makes” or “misses”; leave unrecognized play descriptions unassigned."""
     match = _SHOOTER.match(str(text or ""))
     return match.group("name").strip() if match else None
 

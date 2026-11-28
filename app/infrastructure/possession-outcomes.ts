@@ -1,7 +1,10 @@
+// Retrieves outcome rates and source coverage for the selected offense.
+
 import { createClient } from "../../lib/supabase/client";
 import { API_BASE } from "./api-client";
 import { parsePossessionOutcomes, type OutcomeFilters, type PossessionOutcomes } from "../domain/possession-outcomes";
 
+/** Validate the returned team, season and rate coverage before handing the rows to the chart. */
 export async function fetchPossessionOutcomes(filters: OutcomeFilters, signal?: AbortSignal): Promise<PossessionOutcomes> {
   const snapshot = { season: filters.season, team: filters.team };
   signal?.throwIfAborted();

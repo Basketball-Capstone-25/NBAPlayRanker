@@ -1,3 +1,5 @@
+"""Play-by-play shot previews, downloads, rankings and court maps, including older client routes."""
+
 from __future__ import annotations
 
 from typing import Any, Dict, Optional
@@ -69,6 +71,7 @@ def pbp_shots_preview(
     limit: int = Query(50, ge=1, le=5000),
     our: Optional[str] = Query(None, description="Alias for team"),
 ) -> Dict[str, Any]:
+    """Preview matching attempts and accept the team and shot-type aliases used by older clients."""
     our_team = team or our or ""
     payload = get_shots_json(
         season=season,
@@ -90,6 +93,7 @@ def pbp_data_shots_csv(
     zone: Optional[str] = Query(None),
     limit: int = Query(5000, ge=1, le=200000),
 ) -> StreamingResponse:
+    """Download attempts using the preview filters and a separate export row limit."""
     return get_shots_csv_response(
         season=season,
         team=team,
@@ -112,6 +116,7 @@ def pbp_shots_csv(
     limit: int = Query(5000, ge=1, le=200000),
     our: Optional[str] = Query(None),
 ) -> StreamingResponse:
+    """Apply the older team and shot-type parameter names to the same CSV download."""
     our_team = team or our or ""
     return get_shots_csv_response(
         season=season,
@@ -131,6 +136,7 @@ def pbp_shotplan(
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.7, ge=0, le=1),
 ) -> Dict[str, Any]:
+    """Rank shot types and zones for a season using team offense and opponent defense."""
     payload = get_shotplan_json(season=season, our=our, opp=opp, k=int(k), w_off=float(w_off))
     return jsonable_encoder(payload)
 
@@ -144,6 +150,7 @@ def pbp_shotplan_rank(
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.7, ge=0, le=1),
 ) -> Dict[str, Any]:
+    """Serve the same weighted shot rankings at the alternate rank URL."""
     payload = get_shotplan_json(season=season, our=our, opp=opp, k=int(k), w_off=float(w_off))
     return jsonable_encoder(payload)
 
@@ -184,6 +191,7 @@ def pbp_viz_heatmap(
     zone: Optional[str] = Query(None),
     max_shots: int = Query(30000, ge=1000, le=250000, description="Downsample cap for plotting"),
 ) -> Dict[str, Any]:
+    """Plot matchup attempts for clients that supply the shooting team as team."""
     payload = render_pbp_heatmap_base64(
         season=season,
         our=team,

@@ -1,3 +1,5 @@
+// Exact season totals behind the trend chart.
+
 import React from "react";
 import type { SeasonTrend } from "../../../domain/season-trend";
 import { playtypeName } from "../../../domain/playtype-dashboard";
@@ -5,6 +7,7 @@ import styles from "./matchup-dashboard.module.css";
 
 const count = (value: number | null) => value === null ? "—" : value.toLocaleString("en-US");
 
+/** Keep recorded zeros visible and mark missing values with a dash so a missing season cannot read as zero usage. */
 export function SeasonTrendTable({ data, minimum }: { data: SeasonTrend; minimum: number }) {
   return <div className={styles.tableWrap} tabIndex={0} role="region" aria-label="Season trend table">
     <table>

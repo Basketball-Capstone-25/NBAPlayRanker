@@ -1,6 +1,9 @@
+// Coverage details for a completed shot map.
+
 import React from "react";
 import type { ShotHeatmapResponse } from "../../../services/shotAnalysis";
 
+/** Separates matching attempts from plotted attempts and explains omissions when location or sample limits apply. */
 export function ShotHeatmapCounts({ heatmap }: { heatmap: ShotHeatmapResponse }) {
   const shown = heatmap.n_shots_rendered ?? heatmap.n_shots;
   const count = (value: number | undefined) => typeof value === "number" && Number.isFinite(value) && value >= 0;

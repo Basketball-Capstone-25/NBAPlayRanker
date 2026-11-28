@@ -1,8 +1,4 @@
-"""Where each Synergy play type usually ends: shot-zone weights and labels.
-
-Shared by the court-map renderer and the Context ML ranking so both describe the
-same zones for a play type.
-"""
+"""Configured court diagrams and the zone labels shown by the Context ML ranker."""
 
 from __future__ import annotations
 
@@ -35,8 +31,14 @@ def _norm(value: str) -> str:
     return "".join(ch for ch in (value or "").lower() if ch.isalnum())
 
 
+def mapped_court_zones(play_type: str) -> Dict[str, float]:
+    """Return the diagram's configured zones for this source label, or none if unmapped."""
+    name = _norm(play_type)
+    return next((zones for key, zones in PLAYTYPE_ZONES.items() if _norm(key) == name), {})
+
+
 def zones_for_playtype(play_type: str) -> Dict[str, float]:
-    """Zone weights for a play type; Synergy spellings vary ("Spot Up", "Spotup")."""
+    """Keep the Context ML hint for decorated play names and its generic fallback."""
     pt = _norm(play_type)
     for key, zones in PLAYTYPE_ZONES.items():
         if _norm(key) in pt:

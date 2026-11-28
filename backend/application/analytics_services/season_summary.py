@@ -12,6 +12,7 @@ def build_season_summary(
     rec: BaselineRecommender, season: str, our: str, opp: str, k: int = 5,
     w_off: float = 0.7,
 ) -> dict:
+    """Compare historical team PPP with the modeled shortlist and express each selected play’s usage against the full season."""
     if not re.fullmatch(r"20\d{2}-\d{2}", season) or season[-2:] != str(int(season[:4]) + 1)[-2:]:
         raise ValueError("Use a season such as 2024-25.")
     teams = set(rec.team_df["TEAM_ABBREVIATION"])

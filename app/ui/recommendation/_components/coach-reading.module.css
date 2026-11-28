@@ -1,3 +1,4 @@
+/* Dashboard readouts and controls for comparing recorded play types and their possession mix. */
 .readout { padding: 20px; border: 1px solid #d4e5df; border-radius: 12px; background: #f3faf7; margin: 18px 0; }
 .readout h3 { margin: 0 0 10px; color: #153b31; font-size: 21px; }
 .readout p { margin: 8px 0; line-height: 1.6; color: #334155; }

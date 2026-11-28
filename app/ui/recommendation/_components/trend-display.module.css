@@ -1,3 +1,4 @@
+/* Season trend summary, axis controls and partial-season notices. */
 .summary { margin: 20px 0; padding: 18px 20px; border: 1px solid #ddd6fe; border-radius: 12px; background: #f8f7ff; color: #27324a; }
 .period { margin: 0 0 6px; color: #5b5274; font-size: 13px; }
 .headline { margin: 0 0 9px; font-size: 22px; line-height: 1.4; color: #241544; font-weight: 700; }

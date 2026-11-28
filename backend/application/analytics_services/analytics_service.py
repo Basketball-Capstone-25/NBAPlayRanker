@@ -21,7 +21,7 @@ def _build_recommender() -> BaselineRecommender:
 
 
 def get_cv_evaluation() -> Dict[str, Any]:
-    """Run cross-validation for all model families and return metrics dictionary."""
+    """Return the model summary and per-fold metrics computed from the current play-type tables."""
     rec = _build_recommender()
     return run_cv_evaluation(rec.team_df, rec.league_df)
 
@@ -34,10 +34,10 @@ def get_paired_t_test() -> Tuple[Optional[float], Optional[float]]:
 
 
 def get_ml_analysis(season: str) -> Dict[str, Any]:
-    """Compute ML statistical analysis for a given season."""
+    """Legacy season-only entry point; the current analysis function expects team and league tables."""
     return compute_ml_analysis(season)
 
 
 def get_shot_ml_analysis(season: str) -> Dict[str, Any]:
-    """Compute shot ML statistical analysis for a given season."""
+    """Legacy season-only entry point; the current shot analysis function takes keyword-only settings."""
     return compute_shot_ml_analysis(season)

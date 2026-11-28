@@ -75,6 +75,7 @@ def compute_shot_ml_analysis(
     max_rows: int = 200_000,
     force_refresh: bool = False,
 ) -> Dict[str, Any]:
+    """Summarize the sampled attempts, outcomes and features for Shot Statistical Analysis, reusing cached results where available."""
     global _CACHE
 
     if _CACHE and not force_refresh and _CACHE.n_splits == int(n_splits) and _CACHE.max_rows == int(max_rows):

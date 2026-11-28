@@ -1,3 +1,5 @@
+// Builds downloadable snapshots from the rows already displayed in the app.
+
 export type ExportFormat = "csv" | "json" | "pdf";
 export type ExportScalar = string | number | boolean | null;
 export type ReportPayload = {
@@ -10,11 +12,12 @@ export type ReportPayload = {
 
 export const REPORT_EXPORT_PATH = "/api/exports/report";
 
+/** Identify the filters that produced the displayed rows before enabling a download. */
 export function resultKey(filters: Record<string, ExportScalar>): string {
   return JSON.stringify(filters);
 }
 
-const numberOrNull = (value: number | undefined): number | null => typeof value === "number" && Number.isFinite(value) ? value : null;
+const numberOrNull = (value: number | null | undefined): number | null => typeof value === "number" && Number.isFinite(value) ? value : null;
 
 function capturedVersions(value: unknown): Record<string, string> | "Unavailable" {
   if (!value || typeof value !== "object" || Array.isArray(value)) return "Unavailable";
@@ -24,9 +27,10 @@ function capturedVersions(value: unknown): Record<string, string> | "Unavailable
   return Object.fromEntries(entries);
 }
 
+/** Copy the ranked rows, matchup filters and available dataset versions into the Baseline export. */
 export function baselineReport(
   filters: ReportPayload["filters"],
-  rows: { playType: string; pppPred: number; edge?: number; leagueRef?: number; pppOff: number; pppDef: number; pppGap: number; raw?: Record<string, unknown> }[],
+  rows: { playType: string; pppPred: number | null; edge?: number | null; leagueRef?: number | null; pppOff: number | null; pppDef: number | null; pppGap: number | null; raw?: Record<string, unknown> }[],
 ): ReportPayload {
   return {
     report: "baseline_rankings", filters: { ...filters },
@@ -42,6 +46,7 @@ export function baselineReport(
   };
 }
 
+/** Keep the baseline, model and situation-adjusted scores together so the exported ranking can be traced. */
 export function contextReport(
   filters: ReportPayload["filters"],
   rows: { playType: string; finalPPP_display: number; edge_display?: number; leagueRef?: number; mlPPP: number; baselinePPP: number;
@@ -62,6 +67,7 @@ export function contextReport(
   };
 }
 
+/** Export the displayed holdout metrics and split count along with their retrospective scope. */
 export function metricsReport(data: {
   dataset_versions?: Record<string, string>;
   n_splits: number;
@@ -98,6 +104,7 @@ export async function prepareReportExport(payload: ReportPayload, format: Export
   return body;
 }
 
+/** Submit the prepared body as a form so the browser handles the attachment download. */
 export function submitReportExport(body: string): void {
   const form = document.createElement("form");
   const field = document.createElement("input");

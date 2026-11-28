@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { getAccountTeam, setAccountTeam } from "../../../infrastructure/auth";
 import { fetchMetaOptions } from "../../../infrastructure/api-client";
 
+/** Loads the saved team alongside the available choices. Clearing it lets the user start matchups with a blank team again. */
 export default function AccountPageClient() {
   const [teams, setTeams] = useState<string[]>([]);
   const [team, setTeam] = useState("");

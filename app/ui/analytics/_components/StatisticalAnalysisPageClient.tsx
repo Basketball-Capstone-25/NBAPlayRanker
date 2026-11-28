@@ -386,6 +386,7 @@ function TabPill({
   );
 }
 
+/** Reuses analysis for the same fold count and possession cutoff so changing views does not require another backend run. */
 export default function StatisticalAnalysisPage() {
   const [tab, setTab] = useState<TabKey>("overview");
 

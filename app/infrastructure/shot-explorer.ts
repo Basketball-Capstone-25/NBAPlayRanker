@@ -50,6 +50,7 @@ export function canSearchShots(filters: ShotFilters): boolean {
   return Boolean(filters.season.trim() && filters.team.trim());
 }
 
+/** Page through shot rows with a fixed page size and the current filters. */
 export function shotExplorerUrl(filters: ShotFilters, page: number): string {
   const query = filterParams(filters);
   query.set("page", String(page));
@@ -57,14 +58,17 @@ export function shotExplorerUrl(filters: ShotFilters, page: number): string {
   return `${API_BASE}/data/pbp-shots?${query}`;
 }
 
+/** Reuse the shot filters without pagination so the download covers the filtered selection. */
 export function shotExportUrl(filters: ShotFilters, format: "csv" | "json"): string {
   return `${API_BASE}/data/pbp-shots.${format}?${filterParams(filters)}`;
 }
 
+/** Use “all” in the filename when the analyst includes every opponent. */
 export function shotExportFilename(filters: ShotFilters, format: "csv" | "json"): string {
   return `pbp_shots_${filters.season}_${filters.team}_${filters.opp || "all"}.${format}`;
 }
 
+/** Separate a role error from an unavailable dataset so the page can show the right recovery message. */
 export async function fetchShotPage(filters: ShotFilters, page: number, signal?: AbortSignal): Promise<ShotPage> {
   const { data } = await createClient().auth.getSession();
   const token = data.session?.access_token;

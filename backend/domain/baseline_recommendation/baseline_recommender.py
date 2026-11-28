@@ -1,4 +1,4 @@
-#baseline_recommender.py
+"""Prepare regular-season play-type tables and rank a team’s options against a defensive profile."""
 
 import pandas as pd
 from infrastructure.data_access.dataset_metadata import read_versioned_csv
@@ -300,9 +300,10 @@ def rank_playtypes_baseline(
     return merged.head(k)[cols].reset_index(drop=True)
 
 class BaselineRecommender(IBaselineRecommender):
-    """Simple wrapper used by the API:"""
+    """Serve matchup rankings from precomputed team and league tables."""
 
     def __init__(self, synergy_csv_path: str):
+        """Load the versioned Synergy CSV and prepare the team and league tables once."""
         synergy_csv_path = Path(synergy_csv_path)
         if not synergy_csv_path.exists():
             raise FileNotFoundError(synergy_csv_path)
@@ -322,6 +323,7 @@ class BaselineRecommender(IBaselineRecommender):
         self.raw_df, self.team_df, self.league_df = other.raw_df, other.team_df, other.league_df
 
     def rank(self, season: str, our_team: str, opp_team: str, k: int = 5) -> pd.DataFrame:
+        """Score this matchup against the loaded season tables and return up to k play types."""
         return rank_playtypes_baseline(
             self.team_df, self.league_df, season, our_team, opp_team, k=k
         )

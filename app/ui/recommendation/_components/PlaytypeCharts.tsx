@@ -1,8 +1,12 @@
+// SVG charts for team usage, scoring and opponent defensive rates.
+
 import React from "react";
 import { playtypeName, type UsageEfficiencyRow, type OpponentDefenseRow } from "../../../domain/playtype-dashboard";
 
+/** Include the sign on positive differences so chart labels use the same convention on both sides of zero. */
 export const signed = (value: number, digits = 3) => `${value > 0 ? "+" : ""}${value.toFixed(digits)}`;
 
+/** Center both axes on the league rate for each play. Horizontal distance is the usage gap in percentage points and vertical distance is the PPP gap. */
 export function UsageEfficiencyChart({ rows }: { rows: UsageEfficiencyRow[] }) {
   const xMax = Math.max(1, ...rows.map(r => Math.abs(r.usage_delta_pp))) * 1.2;
   const yMax = Math.max(0.05, ...rows.map(r => Math.abs(r.ppp_delta))) * 1.2;
@@ -37,6 +41,7 @@ export function UsageEfficiencyChart({ rows }: { rows: UsageEfficiencyRow[] }) {
   </svg>;
 }
 
+/** Draw allowed PPP above the league rate to the right of zero. A dashed outline marks a small sample. */
 export function OpponentDefenseChart({ rows }: { rows: OpponentDefenseRow[] }) {
   const extent = Math.max(0.03, ...rows.map(r => Math.abs(r.allowed_ppp_delta))) * 1.3;
   const center = 452, scale = 205 / extent, height = 70 + rows.length * 48;

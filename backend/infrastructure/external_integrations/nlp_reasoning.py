@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """
 Derived basketball reasoning utilities for the deterministic NLP layer.
 
@@ -11,6 +9,8 @@ This module is intentionally:
 It converts parsed coaching language into stable, basketball-specific helper
 signals that the parser, explainer, and Gameplan flow can all reuse.
 """
+
+from __future__ import annotations
 
 import math
 from typing import Any, Dict, Iterable, List, Optional, Sequence
@@ -194,6 +194,7 @@ def _dedupe_keep_order(values: Iterable[str]) -> List[str]:
 
 
 def infer_play_family_from_name(play_name: str) -> Optional[str]:
+    """Match a ranked play name against family aliases in their configured priority order."""
     name = _clean_text(play_name)
     if not name:
         return None
@@ -218,24 +219,28 @@ def infer_play_family_from_name(play_name: str) -> Optional[str]:
 
 
 def need_label(need: Optional[str]) -> Optional[str]:
+    """Translate a coaching need such as quick2 into a readable objective."""
     if not need:
         return None
     return NEED_LABELS.get(need, str(need).replace("_", " "))
 
 
 def defense_style_label(defense_style: Optional[str]) -> Optional[str]:
+    """Give the parsed coverage code its basketball name for the explanation."""
     if not defense_style:
         return None
     return DEFENSE_STYLE_LABELS.get(defense_style, str(defense_style).replace("_", " "))
 
 
 def pace_label(pace: Optional[str]) -> Optional[str]:
+    """Translate the desired tempo into the wording used in a gameplan."""
     if not pace:
         return None
     return PACE_LABELS.get(pace, str(pace).replace("_", " "))
 
 
 def special_situation_labels(context: Dict[str, Any]) -> List[str]:
+    """List distinct situations in prompt order, such as an after-timeout or inbounds play."""
     labels: List[str] = []
     for code in list(context.get("special_situations") or []):
         labels.append(_SPECIAL_LABELS.get(code, str(code).replace("_", " ")))
@@ -243,6 +248,7 @@ def special_situation_labels(context: Dict[str, Any]) -> List[str]:
 
 
 def family_fit_sentences(requested_families: List[str], play_name: str) -> List[str]:
+    """Explain whether the ranked play belongs to a family the coach requested."""
     out: List[str] = []
     play_family = infer_play_family_from_name(play_name)
     requested = _dedupe_keep_order([str(x) for x in requested_families or [] if x])
@@ -283,6 +289,7 @@ def _normalized_specials(context: Dict[str, Any]) -> List[str]:
 
 
 def derive_context_flags(context: Dict[str, Any]) -> Dict[str, Any]:
+    """Derive situation flags, intent tags and emphasis weights from the parsed score, clock and requests."""
     period = context.get("period")
     time_remaining = _to_float(context.get("time_remaining"))
     margin = _to_float(context.get("margin"))
@@ -406,6 +413,7 @@ def derive_context_flags(context: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def build_context_warning(context: Dict[str, Any]) -> List[str]:
+    """Flag conflicts between the requested tactic and the parsed game state for review."""
     warnings: List[str] = []
 
     period = context.get("period")
@@ -451,6 +459,7 @@ def build_context_warning(context: Dict[str, Any]) -> List[str]:
 
 
 def context_objective_sentence(context: Dict[str, Any]) -> str:
+    """State the main tactical priority implied by the coach’s need and the score."""
     need = context.get("need")
     margin = _to_float(context.get("margin"))
     time_remaining = _to_float(context.get("time_remaining"))
@@ -482,6 +491,7 @@ def context_objective_sentence(context: Dict[str, Any]) -> str:
 
 
 def describe_context_brief(context: Dict[str, Any]) -> str:
+    """Summarize the parsed situation in a short line for the gameplan and its explanations."""
     bits: List[str] = []
 
     period = context.get("period")

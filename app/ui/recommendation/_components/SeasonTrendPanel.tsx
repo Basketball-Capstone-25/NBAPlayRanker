@@ -1,3 +1,5 @@
+// Loads the history of one offensive play type for one team.
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -64,6 +66,7 @@ function TrendView({ data, minimum }: { data: SeasonTrend; minimum: number }) {
   </section>;
 }
 
+/** Offer a retry on failure. Keep a successful response with missing seasons available for inspection. */
 export function TrendResultState({ state, minimum, retry }: { state: State; minimum: number; retry(): void }) {
   if (state.loading) return <div className={styles.card} role="status">Loading season trend…</div>;
   if (state.error) return <div className={styles.card} role="alert"><h2>Season trend unavailable</h2>
@@ -90,6 +93,7 @@ function TrendLoader({ filters, minimum }: { filters: TrendFilters; minimum: num
   return <TrendResultState state={state} minimum={minimum} retry={() => setAttempt(value => value + 1)} />;
 }
 
+/** Reload when the team or play type changes. This view spans seasons and needs no opponent. */
 export default function SeasonTrendPanel({ filters, minimum = 20 }: { filters: TrendFilters; minimum?: number }) {
   if (!filters.team || !filters.play_type) return <div className={styles.card} role="status">Select a team and play type.</div>;
   return <TrendLoader key={trendKey(filters)} filters={filters} minimum={minimum} />;

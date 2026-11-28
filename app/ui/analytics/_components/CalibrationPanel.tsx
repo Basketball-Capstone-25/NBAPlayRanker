@@ -1,3 +1,5 @@
+// Later-season calibration results for play-type points per possession.
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -6,6 +8,7 @@ import { fetchCalibration, type CalibrationReport } from "../../../services/cali
 const format = (value: number | null) => value === null ? "—"
   : value.toFixed(value !== 0 && Math.abs(value) < 0.0001 ? 6 : 4);
 
+/** Plots mean predicted and observed PPP for each populated bin. Changing the fold count cancels the old request. */
 export default function CalibrationPanel({ nSplits }: { nSplits: number }) {
   const [report, setReport] = useState<CalibrationReport | null>(null);
   const [error, setError] = useState<string | null>(null);

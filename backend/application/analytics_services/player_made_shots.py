@@ -31,6 +31,7 @@ def _check(shots: pd.DataFrame) -> None:
 
 
 def parse_seasons(raw: str, available: Sequence[str]) -> List[str]:
+    """Deduplicate the comma-separated seasons and reject any missing from the available shot data."""
     seasons = sorted({s.strip() for s in raw.split(",") if s.strip()})
     if not seasons:
         raise InvalidPlayerShotsFilter("Choose at least one season.")

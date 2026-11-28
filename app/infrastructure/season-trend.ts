@@ -1,7 +1,10 @@
+// Loads a play type’s season history for the trend chart.
+
 import { createClient } from "../../lib/supabase/client";
 import { API_BASE } from "./api-client";
 import { parseSeasonTrend, type SeasonTrend, type TrendFilters } from "../domain/season-trend";
 
+/** Request the team series and check it against the selected play type before displaying it. */
 export async function fetchSeasonTrend(filters: TrendFilters, signal?: AbortSignal): Promise<SeasonTrend> {
   const snapshot = { ...filters };
   signal?.throwIfAborted();

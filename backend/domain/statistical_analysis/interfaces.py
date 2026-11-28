@@ -16,4 +16,6 @@ class IComputeMLAnalysis(Protocol):
         n_splits: int = 5,
         min_poss: int = 25,
         force_refresh: bool = False,
-    ) -> Dict[str, Any]: ...
+    ) -> Dict[str, Any]:
+        """Analyze team and league play-type data at the requested possession cutoff and fold count."""
+        ...

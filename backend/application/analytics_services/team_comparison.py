@@ -10,6 +10,7 @@ from domain.baseline_recommendation.baseline_recommender import AGGREGATION_VERS
 
 
 class TeamComparisonDataUnavailable(ValueError):
+    """The team totals or play-type rows cannot be used to compare offensive profiles."""
     pass
 
 
@@ -44,6 +45,7 @@ def _profile(rows):
 
 
 def build_team_comparison(rec: BaselineRecommender, season: str, team: str, opponent: str) -> dict:
+    """Compare each team’s own offensive usage and PPP; return a difference only when both teams have a usable value."""
     if not re.fullmatch(r"20\d{2}-\d{2}", season) or season[-2:] != str(int(season[:4]) + 1)[-2:]:
         raise ValueError("Use a season such as 2024-25.")
     if team == opponent:

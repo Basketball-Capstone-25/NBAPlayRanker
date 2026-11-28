@@ -1,3 +1,5 @@
+"""Draws the court zones associated with a play type for the coach’s play diagram."""
+
 from __future__ import annotations
 
 from io import BytesIO
@@ -12,7 +14,7 @@ from matplotlib.patches import Rectangle, Circle, Wedge
 
 from sportypy.surfaces.basketball import NBACourt
 
-from domain.baseline_recommendation.playtype_zones import PLAYTYPE_ZONES, zones_for_playtype
+from domain.baseline_recommendation.playtype_zones import PLAYTYPE_ZONES, mapped_court_zones, zones_for_playtype
 from infrastructure.visualization_and_export.viz_shot_heatmap import (
     _patch_sportypy_circle,
     png_bytes_to_base64,
@@ -22,9 +24,12 @@ from infrastructure.visualization_and_export.viz_shot_heatmap import (
 __all__ = ["PLAYTYPE_ZONES", "zones_for_playtype", "render_playtype_zone_png", "png_bytes_to_base64"]
 
 
-def render_playtype_zone_png(play_type: str, title: str) -> bytes:
+def render_playtype_zone_png(play_type: str, title: str) -> bytes | None:
+    """Render the configured zones or omit the image when the play has no mapping."""
+    zones = mapped_court_zones(play_type)
+    if not zones:
+        return None
     _patch_sportypy_circle(400)
-    zones = zones_for_playtype(play_type)
 
     court = NBACourt()
     fig, ax = plt.subplots(figsize=(7, 6))

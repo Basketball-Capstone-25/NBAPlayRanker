@@ -20,6 +20,7 @@ export function exportExtension(path: string): ".pdf" | ".json" | ".csv" {
   return ".csv";
 }
 
+/** Use the path as a fallback filename and enforce the extension associated with the export. */
 export function exportFilename(path: string, requested?: string | null): string {
   const fallback = path.split("/").pop() || "download";
   const extension = exportExtension(path);
@@ -30,6 +31,7 @@ export function exportFilename(path: string, requested?: string | null): string 
   return name.toLowerCase().endsWith(extension) ? name : `${name}${extension}`;
 }
 
+/** Route approved backend downloads through the same-origin export handler with their original filters. */
 export function localExportUrl(url: string, apiBase: string, filename?: string): string {
   const target = new URL(url, apiBase);
   const base = new URL(apiBase);

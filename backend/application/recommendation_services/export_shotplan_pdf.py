@@ -1,3 +1,5 @@
+"""Builds a shot plan PDF from the matchup rankings and filtered shot locations."""
+
 from __future__ import annotations
 
 import io
@@ -113,6 +115,7 @@ def build_shotplan_pdf(
     max_shots: int = 35000,
 ) -> Tuple[io.BytesIO, str]:
     # Rankings
+    """Return the ranked shot types, zones and filtered court image as a PDF buffer and filename."""
     rec = _get_shot_rec()
     w_def = float(1.0 - w_off)
     result = rec.rank(season=season, our_team=our, opp_team=opp, k=int(k), w_off=float(w_off))

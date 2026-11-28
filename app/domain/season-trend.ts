@@ -1,3 +1,5 @@
+// Season totals and response validation for a single team and play type.
+
 export type TrendFilters = { team: string; play_type: string };
 export type TrendRow = {
   season: string; possessions: number | null; points: number | null;
@@ -9,6 +11,7 @@ export type SeasonTrend = {
   dataset_version: string; aggregation_version: string; rows: TrendRow[];
 };
 
+/** Identify the series by team and play type because the response spans seasons. */
 export const trendKey = (filters: TrendFilters) => JSON.stringify([filters.team, filters.play_type]);
 const object = (value: unknown): value is Record<string, unknown> =>
   value !== null && typeof value === "object" && !Array.isArray(value);

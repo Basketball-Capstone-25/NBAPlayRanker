@@ -1,3 +1,5 @@
+// Season-by-season plot of scoring efficiency or play usage.
+
 import React from "react";
 import type { SeasonTrend } from "../../../domain/season-trend";
 import { playtypeName } from "../../../domain/playtype-dashboard";
@@ -6,6 +8,7 @@ import styles from "./trend-display.module.css";
 
 export type { TrendMetric } from "../../../domain/trend-display";
 
+/** Break the line at missing seasons and draw hollow points below the sample cutoff. Use the chosen axis range for both ticks and points. */
 export function SeasonTrendChart({ data, metric, minimum, scale = "focused" }: {
   data: SeasonTrend; metric: TrendMetric; minimum: number; scale?: TrendScale;
 }) {

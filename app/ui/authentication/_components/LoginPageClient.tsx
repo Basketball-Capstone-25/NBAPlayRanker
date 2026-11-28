@@ -1,3 +1,5 @@
+// Sign-in form for the coach and analyst workspaces.
+
 "use client";
 
 import Link from "next/link";
@@ -155,6 +157,7 @@ function LoginPageFallback() {
   );
 }
 
+/** Wraps the form in Suspense while Next.js resolves the return destination from the URL. */
 export default function LoginPageClient() {
   return (
     <Suspense fallback={<LoginPageFallback />}>

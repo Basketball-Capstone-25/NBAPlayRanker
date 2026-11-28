@@ -1,3 +1,5 @@
+"""Measure play-type distributions, correlations and model results across seasons."""
+
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Tuple
@@ -176,6 +178,7 @@ def compute_ml_analysis(
     min_poss: int = 25,
     force_refresh: bool = False,
 ) -> Dict[str, Any]:
+    """Analyze qualified offensive play-type rows and reuse results for matching source data, possession cutoff and fold count."""
     global _CACHE
     input_signature = _analysis_signature(team_df, league_df)
 

@@ -8,6 +8,7 @@ from domain.shot_analysis.shot_forecast_model import fit_pregame_model
 
 
 def evaluate_pregame_forecasts(rows: pd.DataFrame, coverage: dict) -> tuple[dict, pd.DataFrame]:
+    """Fit on earlier seasons and compare Ridge with training-mean and prior-league predictions on the latest season."""
     required = {"SEASON_STR", "GAME_DATE", "HISTORY_CUTOFF_DATE", *FEATURE_COLUMNS}
     if rows.empty or not required.issubset(rows.columns):
         raise ValueError("Forecast evaluation needs scored rows with prior-date history.")

@@ -24,13 +24,17 @@ def _inputs(rows: pd.DataFrame) -> np.ndarray:
 
 @dataclass
 class PregameModel:
+    """Keep the scaler and Ridge fit together so later games use the same preprocessing as training."""
+
     scaler: StandardScaler
     ridge: Ridge
 
     def predict(self, rows: pd.DataFrame) -> np.ndarray:
+        """Apply the fitted scaling and return expected points per attempt bounded between zero and three."""
         return np.clip(self.ridge.predict(self.scaler.transform(_inputs(rows))), 0, 3)
 
     def parameters(self) -> dict:
+        """Expose the feature order, scaling, coefficients and prediction bounds used in the evaluation report."""
         return {
             "alpha": RIDGE_ALPHA, "features": FEATURE_COLUMNS,
             "scaler_mean": self.scaler.mean_.tolist(), "scaler_scale": self.scaler.scale_.tolist(),

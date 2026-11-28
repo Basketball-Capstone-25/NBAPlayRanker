@@ -1,3 +1,5 @@
+"""Build team and league shot summaries used by the baseline shot plan."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -55,6 +57,7 @@ def _prep_offense_defense(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]
     return off, deff
 
 def build_shot_aggregates(clean_df: pd.DataFrame) -> pd.DataFrame:
+    """Count each team’s attempts, makes and points by shot type, zone and their combination for both sides of the ball."""
     off, deff = _prep_offense_defense(clean_df)
     all_df = pd.concat([off, deff], ignore_index=True)
 
@@ -80,6 +83,7 @@ def build_shot_aggregates(clean_df: pd.DataFrame) -> pd.DataFrame:
     return agg
 
 def build_league_baselines(agg_df: pd.DataFrame) -> pd.DataFrame:
+    """Pool team points and attempts within each season and category so high-volume teams contribute proportionally."""
     group_cols = ["ROLE", "LEVEL", "SEASON_STR"]
     keys = ["SHOT_TYPE", "ZONE"]
 
@@ -108,6 +112,7 @@ def build_and_save_aggregates(
     clean_path: Path = CLEAN_PARQUET,
     output_path: Path = AGG_PARQUET,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """Rebuild both Parquet summaries from the same cleaned shots and return the tables that were written."""
     clean_path = Path(clean_path)
     if not clean_path.exists():
         raise FileNotFoundError(f"shots_clean.parquet not found: {clean_path}")

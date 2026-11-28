@@ -10,6 +10,7 @@ from domain.shot_analysis.shot_etl import CLEAN_PARQUET, TEAM_ID_TO_ABBR
 
 
 def inspect_shot_rows(df: pd.DataFrame) -> dict:
+    """Check participant identities and two-team game coverage, and report unavailable margins and questionable locations."""
     required = {"SEASON_STR", "GAME_ID", "TEAM_ABBR", "OPP_ABBR"}
     missing = sorted(required - set(df.columns))
     if missing:
@@ -49,6 +50,7 @@ _LOADED: Optional[dict] = None
 
 
 def shot_data_quality(path: Path = CLEAN_PARQUET) -> dict:
+    """Read the participant check for the loaded shots; flag files that are absent or unreadable."""
     global _LOADED
     loaded_path = path == CLEAN_PARQUET
     if loaded_path and _LOADED is not None:
@@ -64,5 +66,6 @@ def shot_data_quality(path: Path = CLEAN_PARQUET) -> dict:
 
 
 def clear_shot_data_quality() -> None:
+    """Drop the loaded quality summary so an accepted dataset reload can be checked again."""
     global _LOADED
     _LOADED = None

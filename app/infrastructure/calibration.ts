@@ -1,3 +1,5 @@
+// Loads retrospective calibration bins and model errors for the analyst.
+
 import { createClient } from "../../lib/supabase/client";
 import { API_BASE } from "./api-client";
 
@@ -37,6 +39,7 @@ export type CalibrationReport = {
   warnings: string[];
 };
 
+/** Request ten calibration bins with the selected split count and preserve the API error when the evaluation fails. */
 export async function fetchCalibration(nSplits: number, signal?: AbortSignal): Promise<CalibrationReport> {
   const { data } = await createClient().auth.getSession();
   const token = data.session?.access_token;

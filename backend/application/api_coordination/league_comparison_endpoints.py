@@ -11,6 +11,7 @@ from domain.baseline_recommendation import BaselineRecommender
 
 
 def create_league_comparison_router(rec: BaselineRecommender, gate: DataQualityGate) -> APIRouter:
+    """Attach the league comparison to the coach role and the source-data check."""
     router = APIRouter(tags=["League comparison"])
 
     @router.get("/analytics/playtypes/league-comparison", dependencies=[
@@ -22,6 +23,7 @@ def create_league_comparison_router(rec: BaselineRecommender, gate: DataQualityG
         team: str = Query(..., min_length=2, max_length=3),
         side: Literal["offense", "defense"] = Query("offense"),
     ) -> dict:
+        """Compare a team’s play-type rates with league rates for the same season and side."""
         response.headers["Cache-Control"] = "private, no-store"
         try:
             return build_league_comparison(rec, season, team, side)

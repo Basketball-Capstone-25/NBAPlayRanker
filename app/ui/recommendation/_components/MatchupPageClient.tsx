@@ -1,4 +1,4 @@
-// Baseline matchup page UI.
+// Baseline matchup rankings, season evidence and downloads.
 
 "use client";
 
@@ -12,6 +12,7 @@ import {
   fetchMetaOptions,
   fetchPlaytypeViz,
 } from "../../../services/recommendation";
+import { baselineNumber, formatBaselineNumber as fmt } from "../../../domain/baseline-metrics";
 import { normalizeWeights } from "../../../domain/weight-calculation";
 import { useAccountTeam } from "../../_shared/useAccountTeam";
 import ReportExport from "../../_shared/components/ReportExport";
@@ -38,45 +39,30 @@ type BaselineInfo = {
   whyShrinkage?: string;
 };
 
-type BaselineRow = {
-  playType: string;
-  pppPred: number;
-  edge: number;
-  leagueRef: number;
-  pppOff: number;
-  pppDef: number;
-  pppGap: number;
-  rationale: string;
-  raw: Record<string, any>;
-};
+type BaselineRow = Awaited<ReturnType<typeof baselineRank>>[number];
+
+function courtMapNotice(row: BaselineRow | undefined): string | null {
+  if (!row || row.courtMapAvailable === true) return null;
+  if (row.courtMapAvailable === false) return `No court zone is mapped for ${row.playType}.`;
+  return `Court map availability has not been confirmed for ${row.playType}.`;
+}
 
 type VizResponse = {
   caption: string;
   image_base64: string;
 };
-function fmt(n: any, digits = 3) {
-  const x = Number(n);
-  if (!Number.isFinite(x)) return "—";
-  return x.toFixed(digits);
-}
-// Signed edge, e.g. +0.048 or -0.010.
-function fmtEdge(n: any, digits = 3) {
-  const x = Number(n);
-  if (!Number.isFinite(x)) return "—";
-  return `${x >= 0 ? "+" : ""}${x.toFixed(digits)}`;
-}
-function fmtInt(n: any) {
-  const x = Number(n);
-  if (!Number.isFinite(x)) return "—";
-  return String(Math.round(x));
+
+// Signed edge, e.g. +0.048 or -0.010; missing values stay distinct from zero.
+function fmtEdge(value: unknown, digits = 3) {
+  const x = baselineNumber(value);
+  return x === null ? "Unavailable" : `${x >= 0 ? "+" : ""}${x.toFixed(digits)}`;
 }
 function clamp01(x: number) {
   return Math.max(0, Math.min(1, x));
 }
-function safePct(x: any) {
-  const v = Number(x);
-  if (!Number.isFinite(v)) return "—";
-  return `${(v * 100).toFixed(1)}%`;
+function safePct(value: unknown) {
+  const rate = baselineNumber(value);
+  return rate === null ? "Unavailable" : `${(rate * 100).toFixed(1)}%`;
 }
 
 // SCRUM-824: no matchup is pre-selected. A link may carry one (for example
@@ -147,10 +133,12 @@ function Icon({ name }: { name: "play" | "download" | "map" | "pdf" | "info" }) 
   }
 }
 
+/** Show the empty message only after the selected matchup has finished loading. */
 export function BaselineEmptyState({ completed, hasRows, className }: { completed: boolean; hasRows: boolean; className?: string }) {
   return <p className={className} role="status">{completed ? "No play-type data is available for this matchup and season. Try another season or team." : hasRows ? "Inputs changed. Run Baseline again to update the rankings." : "Pick teams and a season, then click Run Baseline."}</p>;
 }
 
+/** Rank plays with the selected weights. The completed request key ties the season summary and export to the same matchup. */
 export default function MatchupPage() {
   // Meta drives dropdowns (seasons/teams)
   const [meta, setMeta] = useState<MetaOptions>({
@@ -358,7 +346,7 @@ export default function MatchupPage() {
       return;
     }
 
-    if (!resultsCurrent) return;
+    if (!resultsCurrent || !rows.some(row => row.playType === pt && row.courtMapAvailable === true)) return;
     const requestId = ++vizRequestId.current;
     const requestKey = `${currentKey}|${pt}`;
     try {
@@ -389,10 +377,10 @@ export default function MatchupPage() {
     }
   }
 
-  const bestRow = useMemo(() => (rows.length ? rows[0] : null), [rows]);
+  const bestRow = rows[0]?.pppPred != null ? rows[0] : null;
   // SCRUM-496: the #1 play and any play tied with it on the displayed score.
   // SCRUM-974: rows are ranked by edge, so ties are checked on edge too.
-  const topPicks = useMemo(() => new Set(topPickIndexes(rows.map((r) => r.edge))), [rows]);
+  const topPicks = useMemo(() => new Set(bestRow ? topPickIndexes(rows.map((r) => r.edge)) : []), [bestRow, rows]);
   const topTied = topPicks.size > 1;
 
 
@@ -403,7 +391,10 @@ export default function MatchupPage() {
     if (bestRow?.playType) setVizPlayType(bestRow.playType);
   }, [rows, bestRow, vizPlayType]);
 
-  const vizReady = useMemo(() => Boolean(season && our && opp && vizPlayType), [season, our, opp, vizPlayType]);
+  const selectedMapRow = rows.find(row => row.playType === vizPlayType);
+  const mapNotice = courtMapNotice(selectedMapRow);
+  const bestMapNotice = courtMapNotice(bestRow ?? undefined);
+  const vizReady = resultsCurrent && selectedMapRow?.courtMapAvailable === true;
 
   return (
     <section className="pageRoot">
@@ -953,23 +944,27 @@ export default function MatchupPage() {
                   {bestRow.rationale}
                 </p>
 
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
-                  <button
-                    className="btn"
-                    type="button"
-                    onClick={() => {
-                      setVizPlayType(bestRow.playType);
-                      runViz(bestRow.playType);
-                    }}
-                    disabled={vizLoading}
-                  >
-                    <Icon name="map" /> {vizLoading ? "Generating…" : "Generate map"}
-                  </button>
+                {bestMapNotice ? (
+                  <p className="muted">{bestMapNotice}</p>
+                ) : (
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
+                    <button
+                      className="btn"
+                      type="button"
+                      onClick={() => {
+                        setVizPlayType(bestRow.playType);
+                        runViz(bestRow.playType);
+                      }}
+                      disabled={!resultsCurrent || vizLoading}
+                    >
+                      <Icon name="map" /> {vizLoading ? "Generating…" : "Generate map"}
+                    </button>
 
-                  <button className="btn" type="button" disabled={!resultsCurrent} onClick={() => authenticatedDownload(getPdfUrlForPlayType(bestRow.playType)).catch(e => setError(String(e)))}>
-                    <Icon name="pdf" /> Download court diagram
-                  </button>
-                </div>
+                    <button className="btn" type="button" disabled={!resultsCurrent} onClick={() => authenticatedDownload(getPdfUrlForPlayType(bestRow.playType)).catch(e => setError(String(e)))}>
+                      <Icon name="pdf" /> Download court diagram
+                    </button>
+                  </div>
+                )}
               </div>
             ) : null}
 
@@ -977,12 +972,12 @@ export default function MatchupPage() {
             <div className="barList" style={{ marginTop: 12 }}>
               {rows.map((r, idx) => {
                 // Stable bar scale (avoid “blowing up” on high PPP)
-                const width = clamp01(Number(r.pppPred) / 1.4) * 100;
+                const width = r.pppPred === null ? null : clamp01(r.pppPred / 1.4) * 100;
                 return (
                   <div key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "barRow topPickRow" : "barRow"}>
                     <div className="barLabel">
                       <div style={{ fontWeight: 900, fontSize: 12 }}>
-                        #{idx + 1} {r.playType}
+                        {r.pppPred === null ? "Unranked" : `#${idx + 1}`} {r.playType}
                         {topPicks.has(idx) ? <TopPickBadge tied={topTied} /> : null}
                       </div>
                       <div className="muted">
@@ -990,9 +985,11 @@ export default function MatchupPage() {
                       </div>
                     </div>
 
-                    <div className="meter" aria-label={`Predicted PPP bar for ${r.playType}`}>
-                      <div style={{ width: `${width}%` }} />
-                    </div>
+                    {width === null ? <span /> : (
+                      <div className="meter" aria-label={`Predicted PPP bar for ${r.playType}`}>
+                        <div style={{ width: `${width}%` }} />
+                      </div>
+                    )}
 
                     <div className="mono">{fmt(r.pppPred, 3)}</div>
                   </div>
@@ -1037,7 +1034,7 @@ export default function MatchupPage() {
                     <button
                       className="btn"
                       type="button"
-                      disabled={!vizReady || !resultsCurrent}
+                      disabled={!vizReady}
                       onClick={() => authenticatedDownload(getPdfUrlForPlayType(vizPlayType)).catch(e => setError(String(e)))}
                     >
                       <Icon name="pdf" /> Download court diagram
@@ -1045,7 +1042,9 @@ export default function MatchupPage() {
                   </div>
 
                   {vizError ? <div className="error">{vizError}</div> : null}
-                  {currentViz?.caption ? (
+                  {mapNotice ? (
+                    <p className="muted">{mapNotice}</p>
+                  ) : currentViz?.caption ? (
                     <p className="muted" style={{ marginTop: 10 }}>
                       {currentViz.caption}
                     </p>
@@ -1057,7 +1056,7 @@ export default function MatchupPage() {
                 </div>
 
                 <div>
-                  {!currentViz ? (
+                  {mapNotice ? null : !currentViz ? (
                     <div
                       style={{
                         borderRadius: 14,
@@ -1121,7 +1120,7 @@ export default function MatchupPage() {
                       const raw = r.raw ?? {};
                       return (
                         <tr key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "topPickRow" : undefined}>
-                          <td>{idx + 1}</td>
+                          <td>{r.pppPred === null ? "Unranked" : idx + 1}</td>
                           <td style={{ fontWeight: 900 }}>{r.playType}</td>
                           <td>{fmtEdge(r.edge, 3)}</td>
                           <td>{fmt(r.leagueRef, 3)}</td>
@@ -1132,7 +1131,7 @@ export default function MatchupPage() {
 
                           {showMath ? (
                             <>
-                              <td>{Number.isFinite(Number(raw.POSS_OFF)) ? fmtInt(raw.POSS_OFF) : "—"}</td>
+                              <td>{fmt(raw.POSS_OFF, 0)}</td>
                               <td>{safePct(raw.POSS_PCT_OFF)}</td>
                               <td>{fmt(raw.RELIABILITY_WEIGHT_OFF, 3)}</td>
                               <td>{fmt(raw.RELIABILITY_WEIGHT_DEF, 3)}</td>

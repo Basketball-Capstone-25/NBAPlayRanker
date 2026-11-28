@@ -1,9 +1,12 @@
+// Account registration and workspace role requests.
+
 "use client";
 
 import Link from "next/link";
 import { useState } from "react";
 import { signUp, type UserRole } from "../../../infrastructure/auth";
 
+/** Sends the chosen role as a request and explains the email verification and administrator approval steps. */
 export default function SignupPageClient() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

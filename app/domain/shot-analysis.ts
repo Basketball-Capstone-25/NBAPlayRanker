@@ -1,3 +1,5 @@
+// Converts the statistical analysis response into the fields used by shot charts.
+
 export type ShotFeatureScore = { feature: string; score: number | null };
 export type ShotAnalysis = {
   dataset: {
@@ -20,6 +22,7 @@ const object = (x: unknown): Record<string, unknown> => x !== null && typeof x =
 const number = (x: unknown) => typeof x === "number" && Number.isFinite(x) ? x : null;
 const strings = (x: unknown): string[] => Array.isArray(x) ? x.filter((v): v is string => typeof v === "string") : [];
 
+/** Accept either a bare analysis or a wrapped payload and keep missing numeric results nullable. */
 export function normalizeShotAnalysis(response: unknown): ShotAnalysis {
   const outer = object(response);
   const raw = outer.payload ? object(outer.payload) : outer;

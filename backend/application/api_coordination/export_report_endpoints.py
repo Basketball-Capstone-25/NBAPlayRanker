@@ -65,16 +65,19 @@ def create_export_report_router(
     valid_teams: Iterable[str],
     source_path: Path,
 ) -> APIRouter:
+    """Register exports calculated from server data and exports of rows already displayed on screen."""
     # SCRUM-490: keep the app's lists (an analyst reload updates them in place).
     seasons = valid_seasons if isinstance(valid_seasons, (list, set, tuple, frozenset)) else list(valid_seasons)
     teams = valid_teams if isinstance(valid_teams, (list, set, tuple, frozenset)) else list(valid_teams)
 
     def version() -> str:
+        """Read the version attached to the in-memory rows used for the download."""
         # Rows come from the loaded tables, which may differ from a file replaced
         # on disk; label them with the version actually in memory.
         return rec.raw_df.attrs.get("dataset_version", "unavailable")
 
     def digest() -> Optional[str]:
+        """Extract a source hash only when the loaded version includes a SHA-256 digest."""
         current = version()
         return current.removeprefix("sha256:") if current.startswith("sha256:") else None
 
@@ -106,6 +109,7 @@ def create_export_report_router(
 
     def build_payload(report: str, season: str, our: Optional[str], opp: Optional[str],
                       side: Optional[str], k: int, w_off: float) -> ExportPayload:
+        """Prepare rows, filters and metadata for a supported server-calculated report."""
         if report == "baseline_rankings":
             _matchup(our, opp)
             df = _baseline(season, our, opp, k, w_off)
@@ -167,6 +171,7 @@ def create_export_report_router(
         w_off: float = Query(0.7, ge=0, le=1, allow_inf_nan=False),
         user: dict = Depends(require_auth),
     ) -> Response:
+        """Build a download from the selected server-side report after checking the caller’s role."""
         role = REPORT_ROLES.get(report)
         if role is None:
             raise HTTPException(status_code=400, detail=f"Unknown report '{report}'. Use one of: {', '.join(REPORT_ROLES)}.")
@@ -184,6 +189,7 @@ def create_export_report_router(
 
     @router.post("/export/report")
     async def export_displayed_report(request: Request, user: dict = Depends(require_auth)) -> Response:
+        """Validate the submitted table and the caller’s role before exporting the displayed rows."""
         if request.headers.get("content-type", "").split(";")[0].strip().lower() != "application/json":
             raise HTTPException(status_code=415, detail="Send the report as JSON.")
         chunks = bytearray()

@@ -68,7 +68,7 @@ from application.api_coordination.data_reload_endpoints import create_data_reloa
 from application.api_coordination.player_shots_endpoints import create_player_shots_router
 from application.data_reload_services.pbp_reload import PbpReloadService
 from application.data_reload_services.synergy_reload import SynergyReloadService
-from domain.baseline_recommendation.playtype_zones import best_shot_zone
+from domain.baseline_recommendation.playtype_zones import best_shot_zone, mapped_court_zones
 app = FastAPI(
     title="Basketball Strategy API",
     description=(
@@ -238,15 +238,18 @@ def _get_shots_clean_df() -> pd.DataFrame:
 
 @app.get("/health")
 def health() -> Dict[str, str]:
+    """Check that the API process is responding, even if its data is unavailable."""
     return {"status": "ok"}
 
 @app.get("/ready")
 def ready():
+    """Return 503 when the core play-type data or authentication configuration is unavailable."""
     report = readiness_report(os.environ, source_loaded=rec is not None, predictions_loaded=ML_PRED_DF is not None)
     return JSONResponse(report, status_code=200 if report["ready"] else 503)
 
 @app.middleware("http")
 async def dataset_state(request, call_next):
+    """Keep diagnostics reachable during a load failure and label responses that use the loaded play-type tables."""
     if rec is None and request.url.path not in {"/health", "/ready", "/openapi.json", "/docs", "/docs/oauth2-redirect", "/meta/datasets", "/meta/data-dictionary"}:
         return JSONResponse({"detail": "Play-type data is unavailable. Check /ready."}, status_code=503)
     response = await call_next(request)
@@ -466,6 +469,7 @@ def rank_baseline(
             "w_def": float(w_def),
             "aggregation_version": AGGREGATION_VERSION,
             "season_phase": SEASON_PHASE,
+            "court_map_play_types": [play for play in df["PLAY_TYPE"] if mapped_court_zones(play)],
             "rankings": _df_to_records(df),
         }
     )
@@ -609,6 +613,7 @@ def rank_context_ml(
 def baseline_vs_ml(
     n_splits: int = Query(5, ge=2, le=10, description="K-fold splits used for evaluation."),
 ) -> Dict[str, Any]:
+    """Compare errors across the same folds and report the paired random-forest and baseline RMSE test."""
     summary_df, fold_metrics = run_cv_evaluation(rec.team_df, rec.league_df, n_splits=int(n_splits))
 
     metrics: List[Dict[str, Any]] = []
@@ -640,6 +645,7 @@ def baseline_vs_ml(
 def shot_models_metrics(
     n_splits: int = Query(5, ge=2, le=10, description="GroupKFold splits by GAME_ID."),
 ) -> Dict[str, Any]:
+    """Read the saved shot-model comparison for the requested fold count."""
     from application.api_coordination.pbp_phase2_endpoints import saved_shot_result
     return saved_shot_result("metrics", n_splits)
 
@@ -649,6 +655,7 @@ def ml_statistical_analysis(
     min_poss: int = Query(25, ge=0, le=200),
     refresh: bool = Query(False),
 ) -> Dict[str, Any]:
+    """Analyze the loaded play-type data using the requested folds and possession cutoff."""
     payload = compute_ml_analysis(
         rec.team_df,
         rec.league_df,
@@ -663,6 +670,7 @@ def shot_statistical_analysis(
     n_splits: int = Query(5, ge=2, le=10),
     refresh: bool = Query(False),
 ) -> Dict[str, Any]:
+    """Read the offline shot analysis that matches the requested fold count."""
     from application.api_coordination.pbp_phase2_endpoints import saved_shot_result
     return saved_shot_result("analysis", n_splits, refresh)
 
@@ -676,6 +684,7 @@ def viz_playtype_zones(
     play_type: str = Query(...),
     w_off: float = Query(0.7, ge=0, le=1),
 ) -> Dict[str, Any]:
+    """Draw the selected play type on a court and caption it with the matchup’s baseline PPP estimates."""
     _require_season(season)
     _require_team(our, "our")
     _require_team(opp, "opponent")
@@ -721,6 +730,8 @@ def viz_playtype_zones(
 
     title = f"{our} vs {opp} • {season} • {play_type}"
     png = render_playtype_zone_png(play_type, title)
+    if png is None:
+        raise HTTPException(404, f"No court zone is mapped for {play_type}.")
 
     return {"caption": caption, "image_base64": png_bytes_to_base64(png)}
 
@@ -732,6 +743,7 @@ def rank_shotplan(
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.7, ge=0, le=1),
 ) -> Dict[str, Any]:
+    """Blend the team’s scoring and opponent’s allowed points per attempt to rank shot types and zones."""
     from application.api_coordination.shot_data_guard import require_valid_shot_data
     require_valid_shot_data()
     w_def = float(1.0 - w_off)
@@ -773,6 +785,7 @@ def viz_shot_heatmap(
     shot_type: Optional[str] = Query(None),
     zone: Optional[str] = Query(None),
 ) -> Dict[str, Any]:
+    """Plot where the selected team attempted shots against this opponent in the chosen season."""
     from application.api_coordination.shot_data_guard import require_valid_shot_data
     require_valid_shot_data()
     # Lazy import to avoid SportyPy import issues at startup
@@ -813,6 +826,7 @@ def export_shotplan_pdf(
     zone: Optional[str] = Query(None),
     max_shots: int = Query(35000, ge=1000, le=250000),
 ) -> StreamingResponse:
+    """Download the matchup’s ranked shots and court map. Shot-type and zone filters apply to the map."""
     from application.api_coordination.shot_data_guard import require_valid_shot_data
     require_valid_shot_data()
     try:

@@ -42,6 +42,7 @@ def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> AP
     source_path = Path(source_path)
 
     def provenance() -> dict:
+        """Identify the loaded source, aggregation rules and ranking used to produce the comparison."""
         # Read per request so an analyst reload (SCRUM-490) is labelled correctly.
         version = rec.raw_df.attrs.get("dataset_version", "unavailable")
         return {
@@ -63,6 +64,7 @@ def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> AP
         k: int = Query(5, ge=1, le=10),
         w_off: float = Query(0.7, ge=0, le=1, allow_inf_nan=False),
     ) -> dict:
+        """Use the same weighted baseline ranking for the on-screen comparison and both downloads."""
         if our == opp:
             raise HTTPException(status_code=400, detail="Our team and opponent must be different.")
         try:
@@ -86,6 +88,7 @@ def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> AP
         return payload
 
     def filename(payload: dict, extension: str) -> str:
+        """Include the matchup, season and list size in the attachment name."""
         return (
             f"topk_uplift_{payload['season']}_{payload['our_team']}"
             f"_vs_{payload['opp_team']}_top{payload['k']}.{extension}"
@@ -93,6 +96,7 @@ def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> AP
 
     @router.get("/metrics/topk-uplift.json")
     def topk_uplift_json(payload: dict = Depends(evidence)) -> JSONResponse:
+        """Download the complete comparison and its data provenance as JSON."""
         return JSONResponse(
             content=payload,
             headers={"Content-Disposition": f'attachment; filename="{filename(payload, "json")}"', "X-Dataset-Version": payload["data_provenance"]["dataset_version"]},
@@ -100,6 +104,7 @@ def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> AP
 
     @router.get("/metrics/topk-uplift.csv")
     def topk_uplift_csv(payload: dict = Depends(evidence)) -> StreamingResponse:
+        """Download the ranked rows with their summary and source information repeated on each row."""
         return StreamingResponse(
             iter([_csv_evidence(payload)]), media_type="text/csv",
             headers={"Content-Disposition": f'attachment; filename="{filename(payload, "csv")}"', "X-Dataset-Version": payload["data_provenance"]["dataset_version"]},

@@ -26,6 +26,7 @@ NO_STORE = {"Cache-Control": "private, no-store"}
 
 
 def create_clutch_report_router(load_shots: Callable[[], pd.DataFrame]) -> APIRouter:
+    """Use one set of season, clock and margin filters for the report and both downloads."""
     router = APIRouter(tags=["data"], dependencies=[Depends(require_role("data"))])
 
     def _report(season, team, opp, period_from, seconds_left, margin_min, margin_max) -> dict:
@@ -55,15 +56,18 @@ def create_clutch_report_router(load_shots: Callable[[], pd.DataFrame]) -> APIRo
 
     @router.get("/data/clutch-report")
     def get_clutch_report(response: Response, report: dict = Depends(_params)):
+        """Return the shooting results for the selected late-game situation."""
         response.headers.update(NO_STORE)
         return report
 
     @router.get("/data/clutch-report.csv")
     def get_clutch_report_csv(report: dict = Depends(_params)):
+        """Download the rows calculated for this clutch report as a spreadsheet-ready table."""
         return _download(report_csv(report), "text/csv; charset=utf-8", report_filename(report, "csv"))
 
     @router.get("/data/clutch-report.pdf")
     def get_clutch_report_pdf(report: dict = Depends(_params)):
+        """Print the same clutch report with the selected clock and margin limits."""
         from infrastructure.visualization_and_export.clutch_report_pdf import render_clutch_pdf
 
         return _download(render_clutch_pdf(report, situation_text(report)), "application/pdf", report_filename(report, "pdf"))

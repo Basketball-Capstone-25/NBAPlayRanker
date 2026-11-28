@@ -1,3 +1,5 @@
+// Court-zone shortcuts for the shot heatmap.
+
 export type HeatmapPreset = "ALL" | "RIM" | "CORNER_3" | "ABOVE_BREAK_3" | "MIDRANGE";
 
 const ZONE_ALIASES: Record<Exclude<HeatmapPreset, "ALL">, string[]> = {
@@ -7,6 +9,7 @@ const ZONE_ALIASES: Record<Exclude<HeatmapPreset, "ALL">, string[]> = {
   MIDRANGE: ["mid", "midrange"],
 };
 
+/** Resolves a shortcut to a zone offered by the dataset. A missing match returns null so the caller can keep the previous selection. */
 export function heatmapPresetFilters(preset: HeatmapPreset, zones: string[]) {
   if (preset === "ALL") return { shotType: "", zone: "" };
   const aliases = ZONE_ALIASES[preset];

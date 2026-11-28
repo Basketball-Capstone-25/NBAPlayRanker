@@ -15,6 +15,7 @@ import { createClient } from "../../lib/supabase/client";
 import { localExportUrl } from "./export-contract";
 import { parseDataQualityReport, type DataQualityReport } from "./data-quality";
 import { parseDatasetCatalog, type DatasetMetadata, type DictionaryColumn } from "./dataset-catalog";
+import { baselineNumber } from "../domain/baseline-metrics";
 import type { CoachingConditions } from "../domain/gameplan-context";
 
 /** Get Authorization headers for the current Supabase session. */
@@ -212,6 +213,7 @@ export type TeamPlaytypesPreviewResponse = {
 };
 
 export type BaselineRankResponse = {
+  court_map_play_types?: string[];
   dataset_versions?: Record<string, string>;
   dataset_version?: string;
   season: string;
@@ -503,12 +505,13 @@ export async function baselineRank(opts: {
 }): Promise<
   Array<{
     playType: string;
-    pppPred: number;
-    edge: number;
-    leagueRef: number;
-    pppOff: number;
-    pppDef: number;
-    pppGap: number;
+    courtMapAvailable?: boolean;
+    pppPred: number | null;
+    edge: number | null;
+    leagueRef: number | null;
+    pppOff: number | null;
+    pppDef: number | null;
+    pppGap: number | null;
     rationale: string;
     raw: Record<string, any>;
   }>
@@ -531,17 +534,20 @@ export async function baselineRank(opts: {
 
   const rankings = Array.isArray(data.rankings) ? data.rankings : [];
 
-  return rankings.map((r) => ({
+  const rows = rankings.map((r) => ({
     playType: r.PLAY_TYPE,
-    pppPred: Number(r.PPP_PRED),
-    edge: Number(r.EDGE),
-    leagueRef: Number(r.PPP_LEAGUE_REF),
-    pppOff: Number(r.PPP_OFF_SHRUNK),
-    pppDef: Number(r.PPP_DEF_SHRUNK),
-    pppGap: Number(r.PPP_GAP),
+    courtMapAvailable: data.court_map_play_types?.includes(r.PLAY_TYPE),
+    pppPred: baselineNumber(r.PPP_PRED),
+    edge: baselineNumber(r.EDGE),
+    leagueRef: baselineNumber(r.PPP_LEAGUE_REF),
+    pppOff: baselineNumber(r.PPP_OFF_SHRUNK),
+    pppDef: baselineNumber(r.PPP_DEF_SHRUNK),
+    pppGap: baselineNumber(r.PPP_GAP),
     rationale: r.RATIONALE || "",
     raw: { ...r, dataset_versions: data.dataset_versions },
   }));
+  // Keep the API's order for scored plays, then list any unranked plays.
+  return [...rows.filter(row => row.pppPred !== null), ...rows.filter(row => row.pppPred === null)];
 }
 
 /** Build the CSV export URL for a baseline ranking. */

@@ -1,3 +1,5 @@
+"""Serve the shot metrics and statistical analysis saved by the offline evaluation."""
+
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -10,6 +12,7 @@ router = APIRouter(tags=["pbp-phase2"])
 
 
 def saved_shot_result(kind: str, n_splits: int, refresh: bool = False) -> dict:
+    """Check the stored evaluation against the current shot data and fold count before serving it."""
     if refresh:
         raise HTTPException(400, "Shot evaluation runs offline. Reload the saved results after the next data build.")
     require_valid_shot_data()
@@ -28,6 +31,7 @@ def pbp_phase2_shot_ml_analysis(
     n_splits: int = Query(5, ge=2, le=10),
     refresh: bool = Query(False),
 ) -> dict:
+    """Read the saved shot analysis and include the version of the source data used."""
     return saved_shot_result("analysis", n_splits, refresh)
 
 
@@ -36,4 +40,5 @@ def pbp_phase2_shot_model_metrics(
     n_splits: int = Query(5, ge=2, le=10),
     refresh: bool = Query(False),
 ) -> dict:
+    """Return the saved comparison of proposed-shot models for the requested folds."""
     return saved_shot_result("metrics", n_splits, refresh)

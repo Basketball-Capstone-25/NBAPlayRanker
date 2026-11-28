@@ -20,14 +20,17 @@ function clutchParams(f: ClutchFilters): URLSearchParams {
   });
 }
 
+/** Keep the same period, clock and margin filters for the on-screen report and its export. */
 export function clutchReportUrl(f: ClutchFilters, format?: ClutchFormat): string {
   return `${API_BASE}/data/clutch-report${format ? `.${format}` : ""}?${clutchParams(f)}`;
 }
 
+/** Label the file with both teams and the selected season. */
 export function clutchFilename(f: ClutchFilters, format: ClutchFormat): string {
   return `clutch_${f.team.toUpperCase()}_vs_${f.opp.toUpperCase()}_${f.season}.${format}`;
 }
 
+/** Distinguish an access error from unavailable data when the clutch report loads. */
 export async function fetchClutchReport(f: ClutchFilters, signal?: AbortSignal): Promise<ClutchReport> {
   const { data } = await createClient().auth.getSession();
   const token = data.session?.access_token;

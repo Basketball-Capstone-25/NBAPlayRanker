@@ -1,3 +1,5 @@
+// Keeps a shot result and its submitted filters together for display and export.
+
 export type ShotRequestState<I, R> = {
   key: string | null;
   inputs: I | null;
@@ -6,10 +8,12 @@ export type ShotRequestState<I, R> = {
   error: string | null;
 };
 
+/** Represent the time before the user submits a shot request. */
 export function emptyShotResult<I, R>(): ShotRequestState<I, R> {
   return { key: null, inputs: null, result: null, loading: false, error: null };
 }
 
+/** Sort input names so the same selection matches regardless of property order. */
 export function shotInputKey(inputs: object): string {
   return JSON.stringify(Object.entries(inputs).sort(([a], [b]) => a.localeCompare(b)));
 }
@@ -31,8 +35,10 @@ export function selectShotResult<I extends object, R>(state: ShotRequestState<I,
 export class ShotResultRequest<I extends object, R> {
   private version = 0;
 
+  /** Invalidate the pending result so it can no longer update the screen. */
   cancel() { this.version += 1; }
 
+  /** Copy the filters and ignore successes or errors superseded by a later request. */
   async run(inputs: I, fetchResult: (inputs: I) => Promise<R>, publish: (state: ShotRequestState<I, R>) => void) {
     const version = ++this.version;
     const snapshot = { ...inputs };

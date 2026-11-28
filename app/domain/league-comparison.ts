@@ -1,3 +1,5 @@
+// Types and response checks for comparing a team with the league.
+
 export type LeagueFilters = { season: string; team: string; side: "offense" | "defense" };
 export type LeagueRate = "fg_pct" | "efg_pct" | "tov_pct" | "ft_pct";
 export type LeagueSample = Record<LeagueRate, number | null> & {
@@ -14,6 +16,7 @@ export type LeagueComparison = {
   }[];
 };
 
+/** Include the side in the key so an offensive result cannot be reused for defense. */
 export const leagueKey = (filters: LeagueFilters) => JSON.stringify([filters.season, filters.team, filters.side]);
 const rates: LeagueRate[] = ["fg_pct", "efg_pct", "tov_pct", "ft_pct"];
 const object = (value: unknown): value is Record<string, any> =>

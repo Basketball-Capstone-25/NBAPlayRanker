@@ -1,8 +1,4 @@
-from __future__ import annotations
-
 """
-backend/nlp_synonyms.py
-
 Basketball-aware synonym + normalization helpers for the NLP layer.
 
 Purpose:
@@ -17,6 +13,8 @@ This module is intentionally import-safe:
 - If NLTK WordNet is unavailable, custom basketball synonyms still work.
 - No network calls are made automatically.
 """
+
+from __future__ import annotations
 
 import re
 from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
@@ -232,6 +230,7 @@ def get_custom_synonyms(term: str) -> List[str]:
 
 
 def dedupe_keep_order(values: Iterable[str]) -> List[str]:
+    """Trim whitespace and keep distinct, nonempty terms in the order they first appear."""
     out: List[str] = []
     seen: Set[str] = set()
     for value in values:
@@ -394,6 +393,7 @@ def extract_term_features(text: str) -> Dict[str, List[str]]:
 # ---------------------------------------------------------------------
 
 def synonyms_health() -> Dict[str, object]:
+    """Report the installed vocabulary version and whether optional WordNet lookups are available."""
     return {
         "status": "ok",
         "synonyms_version": SYNONYMS_VERSION,

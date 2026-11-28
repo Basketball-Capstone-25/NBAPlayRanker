@@ -4,6 +4,7 @@ from urllib.parse import urlsplit
 
 
 def readiness_report(environ, *, source_loaded: bool, predictions_loaded: bool) -> dict:
+    """Check core data and auth settings and report saved predictions as a separate capability."""
     missing = []
     if not source_loaded:
         missing.append("synergy_playtypes_2019_2025_players.csv (missing or unreadable)")

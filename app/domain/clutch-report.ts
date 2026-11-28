@@ -58,6 +58,7 @@ export function clutchFilterProblem(f: ClutchFilters): string {
   return "";
 }
 
+/** Spell out the quarter range, time remaining and signed score margins used to filter the report. */
 export function describeClutch(f: ClutchFilters): string {
   const periods = f.periodFrom === 4 ? "4th quarter and overtime" : `period ${f.periodFrom} onward, including overtime`;
   const sign = (n: number) => (n > 0 ? `+${n}` : String(n));

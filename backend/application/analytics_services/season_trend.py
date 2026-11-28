@@ -8,6 +8,7 @@ from domain.baseline_recommendation.baseline_recommender import AGGREGATION_VERS
 
 
 class TrendDataUnavailable(ValueError):
+    """Season labels or recorded totals are inconsistent, so trend points cannot be trusted."""
     pass
 
 
@@ -22,6 +23,7 @@ def _count(value):
 
 
 def build_season_trend(rec: BaselineRecommender, team: str, play_type: str) -> dict:
+    """Calculate offensive PPP and usage per season, leaving a gap when the selected play type has no observations."""
     offense = rec.team_df.loc[rec.team_df.SIDE.eq("offense")]
     if team not in set(offense.TEAM_ABBREVIATION):
         raise ValueError("Select a known team.")

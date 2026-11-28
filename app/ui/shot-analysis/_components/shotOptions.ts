@@ -1,3 +1,5 @@
+// Dropdown options shared by the three shot search pages.
+
 import { fetchMetaOptions, fetchPbpMetaOptions } from "../../../services/shotAnalysis";
 
 export type ShotOptions = {
@@ -8,6 +10,7 @@ export type ShotOptions = {
   teamNames: Record<string, string>;
 };
 
+/** Gets valid seasons, teams, shot types and zones from play-by-play. The play-type source supplies optional team labels only. */
 export async function loadShotOptions(): Promise<ShotOptions> {
   const [shots, labels] = await Promise.all([
     fetchPbpMetaOptions({ strict: true }),

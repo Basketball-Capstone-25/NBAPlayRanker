@@ -1,3 +1,4 @@
+/* League and team comparisons share these metric bars and small-screen table layouts. */
 .card { min-width: 0; }
 .heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
 .heading h2 { margin: 4px 0 8px; letter-spacing: -.025em; }

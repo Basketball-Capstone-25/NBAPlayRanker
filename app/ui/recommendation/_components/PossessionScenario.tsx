@@ -1,3 +1,5 @@
+// What-if control for moving possessions between two play types.
+
 "use client";
 
 import React, { useState } from "react";
@@ -5,6 +7,7 @@ import { playtypeName, type UsageEfficiencyRow } from "../../../domain/playtype-
 import { possessionScenario } from "../../../domain/possession-scenario";
 import styles from "./coach-reading.module.css";
 
+/** Limit the move to the source play’s recorded share. The estimate holds both historical scoring rates fixed. */
 export default function PossessionScenario({ rows }: { rows: UsageEfficiencyRow[] }) {
   const supported = rows.filter(row => row.sample_ok && row.possessions > 0);
   const [fromKey, setFrom] = useState(""), [toKey, setTo] = useState("");

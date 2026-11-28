@@ -18,17 +18,23 @@ class IRenderShotHeatmapPng(Protocol):
         shot_type: Optional[str] = None,
         zone: Optional[str] = None,
         title: Optional[str] = None,
-    ) -> bytes: ...
+    ) -> bytes:
+        """Render the recorded shots that match the team, opponent and optional shot filters."""
+        ...
 
 class IRenderPlaytypeZonePng(Protocol):
-    """Render a play-type zone court diagram and return PNG bytes."""
+    """Supply court diagrams only for play types with an explicit zone mapping."""
 
-    def __call__(self, play_type: str, title: str) -> bytes: ...
+    def __call__(self, play_type: str, title: str) -> bytes | None:
+        """Return the labeled court as PNG bytes, or None when no zone is mapped."""
+        ...
 
 class IPngBytesToBase64(Protocol):
-    """Encode raw PNG bytes as a base-64 data-URI string."""
+    """Encode raw PNG bytes as base64 text."""
 
-    def __call__(self, png: bytes) -> str: ...
+    def __call__(self, png: bytes) -> str:
+        """Return base64 text suitable for the image field in a JSON response."""
+        ...
 
 class IBuildPlaytypeVizPdf(Protocol):
     """Build a full play-type visualization PDF report."""
@@ -45,4 +51,6 @@ class IBuildPlaytypeVizPdf(Protocol):
         w_def: float,
         k: int,
         team_names: Optional[Dict[str, str]] = None,
-    ) -> bytes: ...
+    ) -> bytes:
+        """Package the court image with the selected matchup, ranking weights and caption."""
+        ...
