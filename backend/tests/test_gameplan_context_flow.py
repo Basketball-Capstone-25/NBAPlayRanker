@@ -87,7 +87,7 @@ def test_baseline_rationale_discloses_missing_context_for_every_row():
     rows = result.json()["rankings"]
     assert len(rows) == 5
     assert all("score margin, period and clock do not affect this baseline ranking" in row["RATIONALE"] for row in rows)
-    assert all("Reliability" in row["RATIONALE"] for row in rows)
+    assert all("Shrink weight" in row["RATIONALE"] for row in rows)
 
 
 @pytest.mark.parametrize("source, family", [("Spotup", "spot_up"), ("OffScreen", "off_screen"), ("PRBallHandler", "ball_screen"), ("PRRollMan", "ball_screen")])
