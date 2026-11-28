@@ -3,7 +3,7 @@
 // UI Layer — Context ML ranked plays in one large, readable list (SCRUM-795).
 // Same look as the retired Quick-Call screen: big rank, a direct call on #1,
 // the play, its best shot zone, a one-line reason and expected PPP.
-// SCRUM-974: plays are ranked by edge over the league average, shown under the PPP.
+// SCRUM-978: under each PPP, the league average and the edge it adds up from.
 
 import React from "react";
 import TopPickCall from "../../_shared/components/TopPickCall";
@@ -21,12 +21,12 @@ export type RankedPlay = {
   reason: string;
 };
 
-/** One string, e.g. "edge +0.05 vs league 1.13", so it renders as a single text node. */
+/** One string, e.g. "league avg 1.13 +0.05 edge", so it renders as a single text node. */
 function edgeLabel(play: RankedPlay): string {
   const edge = Number(play.edge);
   const league = Number(play.leagueRef);
   const signed = `${edge >= 0 ? "+" : ""}${edge.toFixed(2)}`;
-  return Number.isFinite(league) ? `edge ${signed} vs league ${league.toFixed(2)}` : `edge ${signed}`;
+  return Number.isFinite(league) ? `league avg ${league.toFixed(2)} ${signed} edge` : `${signed} edge`;
 }
 
 /** Large ranked list: rank, call on #1, play name, best shot zone, reason and expected PPP. */

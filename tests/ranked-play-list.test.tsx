@@ -45,9 +45,9 @@ describe("Context ML ranked list (SCRUM-795)", () => {
     const html = renderToStaticMarkup(
       <RankedPlayList plays={[{ ...plays[0], edge: 0.048, leagueRef: 1.131 }, { ...plays[1], edge: -0.012 }]} current topPicks={new Set([0])} />,
     );
-    expect(html).toContain("edge +0.05 vs league 1.13");
-    expect(html).toContain("edge -0.01");
-    expect(html.match(/edge [+-]/g)).toHaveLength(2);
+    expect(html).toContain("league avg 1.13 +0.05 edge");
+    expect(html).toContain("-0.01 edge");
+    expect(html.match(/[+-]\d\.\d\d edge/g)).toHaveLength(2);
   });
 
   it("renders nothing for empty results", () => {
