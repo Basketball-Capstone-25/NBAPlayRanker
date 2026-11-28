@@ -27,6 +27,11 @@ function capturedVersions(value: unknown): Record<string, string> | "Unavailable
   return Object.fromEntries(entries);
 }
 
+/** Name the ranking order recorded in the filters; predicted PPP unless edge was chosen. */
+function rankedByText(filters: ReportPayload["filters"]): string {
+  return filters.rank_by === "edge" ? "edge over the league average" : "predicted PPP";
+}
+
 /** Copy the ranked rows, matchup filters and available dataset versions into the Baseline export. */
 export function baselineReport(
   filters: ReportPayload["filters"],
@@ -34,15 +39,16 @@ export function baselineReport(
 ): ReportPayload {
   return {
     report: "baseline_rankings", filters: { ...filters },
-    columns: ["Play type", "Edge", "League average PPP", "Predicted PPP", "Our PPP", "Opponent PPP", "PPP gap"],
+    columns: ["Play type", "Predicted PPP", "League average PPP", "Edge", "Our PPP", "Opponent PPP", "PPP gap"],
     rows: rows.map(row => ({
-      "Play type": row.playType, "Edge": numberOrNull(row.edge), "League average PPP": numberOrNull(row.leagueRef),
-      "Predicted PPP": numberOrNull(row.pppPred),
+      "Play type": row.playType, "Predicted PPP": numberOrNull(row.pppPred),
+      "League average PPP": numberOrNull(row.leagueRef), "Edge": numberOrNull(row.edge),
       "Our PPP": numberOrNull(row.pppOff), "Opponent PPP": numberOrNull(row.pppDef),
       "PPP gap": numberOrNull(row.pppGap),
     })),
     metadata: { title: "Matchup rankings", source: "displayed result snapshot",
-      dataset_versions: capturedVersions(rows[0]?.raw?.dataset_versions) },
+      dataset_versions: capturedVersions(rows[0]?.raw?.dataset_versions),
+      limitations: `Rows are ranked by ${rankedByText(filters)}. These are modeled rankings, not observed outcomes.` },
   };
 }
 
@@ -54,16 +60,16 @@ export function contextReport(
 ): ReportPayload {
   return {
     report: "context_rankings", filters: { ...filters },
-    columns: ["Play type", "Edge", "League average PPP", "Final PPP", "ML PPP", "Baseline PPP", "Change in PPP", "Overlay PPP"],
+    columns: ["Play type", "Final PPP", "League average PPP", "Edge", "ML PPP", "Baseline PPP", "Change in PPP", "Overlay PPP"],
     rows: rows.map(row => ({
-      "Play type": row.playType, "Edge": numberOrNull(row.edge_display), "League average PPP": numberOrNull(row.leagueRef),
-      "Final PPP": numberOrNull(row.finalPPP_display),
+      "Play type": row.playType, "Final PPP": numberOrNull(row.finalPPP_display),
+      "League average PPP": numberOrNull(row.leagueRef), "Edge": numberOrNull(row.edge_display),
       "ML PPP": numberOrNull(row.mlPPP), "Baseline PPP": numberOrNull(row.baselinePPP),
       "Change in PPP": numberOrNull(row.deltaPPP_display), "Overlay PPP": numberOrNull(row.overlay.overlayPPP),
     })),
     metadata: { title: "Context rankings", source: "displayed result snapshot",
       dataset_versions: capturedVersions(rows[0]?.raw?.dataset_versions),
-      limitations: "Final PPP and edge include the selected context overlay. Rows are ranked by edge. These are modeled rankings, not observed outcomes." },
+      limitations: "Final PPP and edge include the selected context overlay. Rows are ranked by " + rankedByText(filters) + ". These are modeled rankings, not observed outcomes." },
   };
 }
 

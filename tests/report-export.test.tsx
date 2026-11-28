@@ -24,6 +24,13 @@ describe("displayed report exports", () => {
     expect(filters.our).toBe("TOR");
   });
 
+  it("records which order the rows were ranked by", () => {
+    expect(String(baseline().metadata.limitations)).toContain("ranked by predicted PPP");
+    const byEdge = baselineReport({ ...filters, rank_by: "edge" }, []);
+    expect(byEdge.filters.rank_by).toBe("edge");
+    expect(String(byEdge.metadata.limitations)).toContain("ranked by edge");
+  });
+
   it("uses the displayed context overlay and ordering instead of unadjusted API values", () => {
     const report = contextReport({ ...filters, margin: -2, period: 4, time_remaining: 120, overlay: true, overlay_strength: 1.5 }, [
       { playType: "Cut", finalPPP_display: 1.25, edge_display: 0.1, leagueRef: 1.15, mlPPP: 1.2, baselinePPP: 1.1, deltaPPP_display: 0.15, overlay: { overlayPPP: 0.05 } },
