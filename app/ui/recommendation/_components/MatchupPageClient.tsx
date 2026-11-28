@@ -953,8 +953,9 @@ export default function MatchupPage() {
                     ) : null}
                   </div>
                   <div className="badge">
-                    Edge vs league average <span className="mono">{fmtEdge(bestRow.edge, 3)}</span>
-                    {" "}· Estimated points / possession <span className="mono">{fmt(bestRow.pppPred, 3)}</span>
+                    Estimated points / possession <span className="mono">{fmt(bestRow.pppPred, 3)}</span>
+                    {" "}= league avg <span className="mono">{fmt(bestRow.leagueRef, 3)}</span>
+                    {" "}<span className="mono">{fmtEdge(bestRow.edge, 3)}</span> edge
                   </div>
                 </div>
                 <p className="muted" style={{ marginTop: 8 }}>
@@ -998,7 +999,7 @@ export default function MatchupPage() {
                         {topPicks.has(idx) ? <TopPickBadge tied={topTied} /> : null}
                       </div>
                       <div className="muted">
-                        edge <span className="mono">{fmtEdge(r.edge, 3)}</span> · league avg <span className="mono">{fmt(r.leagueRef, 3)}</span>
+                        league avg <span className="mono">{fmt(r.leagueRef, 3)}</span> <span className="mono">{fmtEdge(r.edge, 3)}</span> edge
                       </div>
                     </div>
 
