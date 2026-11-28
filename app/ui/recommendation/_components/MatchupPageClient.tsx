@@ -11,6 +11,7 @@ import {
   fetchBaselineInfo,
   fetchMetaOptions,
   fetchPlaytypeViz,
+  type RankBy,
 } from "../../../services/recommendation";
 import { baselineNumber, formatBaselineNumber as fmt } from "../../../domain/baseline-metrics";
 import { normalizeWeights } from "../../../domain/weight-calculation";
@@ -158,6 +159,8 @@ export default function MatchupPage() {
   const [our, setOur] = useState("");
   const [opp, setOpp] = useState("");
   const [k, setK] = useState(5);
+  // SCRUM-978: predicted PPP is the default order; edge is an option.
+  const [rankBy, setRankBy] = useState<RankBy>("ppp");
 
   // Weights
   const [wOff, setWOff] = useState(0.5);
@@ -236,7 +239,7 @@ export default function MatchupPage() {
     return true;
   }, [metaReady, season, our, opp]);
 
-  const exportFilters = { season, our, opp, k, w_off: norm.wOff, w_def: norm.wDef };
+  const exportFilters = { season, our, opp, k, w_off: norm.wOff, w_def: norm.wDef, rank_by: rankBy };
   const currentKey = resultKey(exportFilters);
   const currentKeyRef = useRef(currentKey);
   currentKeyRef.current = currentKey;
@@ -319,6 +322,7 @@ export default function MatchupPage() {
         k,
         wOff: norm.wOff,
         wDef: norm.wDef,
+        rankBy,
       });
 
       if (requestId === baselineRequestId.current && requestKey === currentKeyRef.current) {
@@ -379,8 +383,11 @@ export default function MatchupPage() {
 
   const bestRow = rows[0]?.pppPred != null ? rows[0] : null;
   // SCRUM-496: the #1 play and any play tied with it on the displayed score.
-  // SCRUM-974: rows are ranked by edge, so ties are checked on edge too.
-  const topPicks = useMemo(() => new Set(bestRow ? topPickIndexes(rows.map((r) => r.edge)) : []), [bestRow, rows]);
+  // SCRUM-978: ties are checked on the value the rows are ranked by.
+  const topPicks = useMemo(
+    () => new Set(bestRow ? topPickIndexes(rows.map((r) => (rankBy === "edge" ? r.edge : r.pppPred))) : []),
+    [bestRow, rows, rankBy]
+  );
   const topTied = topPicks.size > 1;
 
 
@@ -796,6 +803,14 @@ export default function MatchupPage() {
           </label>
 
           <label>
+            Rank by
+            <select className="input" value={rankBy} onChange={(e) => setRankBy(e.target.value as RankBy)}>
+              <option value="ppp">Predicted PPP</option>
+              <option value="edge">Matchup edge (vs league average)</option>
+            </select>
+          </label>
+
+          <label>
             Our Team
             <select className="input" value={our} onChange={(e) => setOur(e.target.value)}>
               <option value="" disabled>Choose our team</option>
@@ -913,7 +928,9 @@ export default function MatchupPage() {
           <span className="badge">{resultsCurrent ? `${our} vs ${opp} • ${season} regular season` : "Run to see results"}</span>
         </div>
         <p className="muted" style={{ marginTop: 0 }}>
-          Ranked by edge: how much higher the predicted points per possession is than the league average for that play type.
+          {rankBy === "edge"
+            ? "Ranked by edge: how much higher the predicted points per possession is than the league average for that play type."
+            : "Ranked by predicted points per possession. The league average and edge beside each play show how much of it comes from this matchup."}
         </p>
 
         {!loading && !resultsCurrent ? (
@@ -931,7 +948,7 @@ export default function MatchupPage() {
                     <div><TopPickCall rows={rows} current={resultsCurrent} /></div>
                     {topTied ? (
                       <div className="muted" style={{ fontSize: 12 }} data-testid="top-pick-tie">
-                        <TopPickBadge tied /> Tied with {[...topPicks].slice(1).map((i) => rows[i].playType).join(", ")} on edge
+                        <TopPickBadge tied /> Tied with {[...topPicks].slice(1).map((i) => rows[i].playType).join(", ")} on {rankBy === "edge" ? "edge" : "predicted PPP"}
                       </div>
                     ) : null}
                   </div>

@@ -12,4 +12,5 @@ export {
   type MetaOptions,
   type BaselineRankResponse,
   type ContextRankResponse,
+  type RankBy,
 } from "../infrastructure/api-client";
