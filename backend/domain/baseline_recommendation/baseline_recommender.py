@@ -248,15 +248,19 @@ def rank_playtypes_baseline(
 
     # A descriptive difference between historical profiles, not a matchup advantage.
     merged["PPP_GAP"] = merged["PPP_OFF_SHRUNK"] - merged["PPP_DEF_SHRUNK"]
-    merged = merged.sort_values(["PPP_PRED", "POSS_OFF"], ascending=[False, False])
+    # Rank by edge so the order reflects this matchup, not which play type
+    # scores best for every team. Predicted PPP breaks ties.
+    merged = merged.sort_values(["EDGE", "PPP_PRED", "POSS_OFF"], ascending=[False, False, False])
 
     def build_rationale(row: pd.Series) -> str:
         gap = float(row["PPP_GAP"])
         gap_str = f"+{gap:.3f}" if gap >= 0 else f"{gap:.3f}"
         rel_off = float(row["RELIABILITY_WEIGHT_OFF"])
         rel_def = float(row["RELIABILITY_WEIGHT_DEF"])
+        edge = float(row["EDGE"])
         return (
-            f"{row['PLAY_TYPE']}: Pred {row['PPP_PRED']:.3f} PPP. "
+            f"{row['PLAY_TYPE']}: Edge {edge:+.3f} vs the league average of {row['PPP_LEAGUE_REF']:.3f}. "
+            f"Pred {row['PPP_PRED']:.3f} PPP. "
             f"Our(off) {row['PPP_OFF_SHRUNK']:.3f} vs Opp(allowed) {row['PPP_DEF_SHRUNK']:.3f} ({gap_str}). "
             f"Reliability off={rel_off:.2f}, def={rel_def:.2f}. "
             "Regular-season historical estimate. "
