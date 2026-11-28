@@ -10,7 +10,7 @@ import type { SummaryFilters } from "../../domain/season-summary";
 /** Summary filters for the current table choice, or null when the choice cannot be summarised. */
 export function analystSummaryFilters(season: string, team: string, side: string, opponent: string): SummaryFilters | null {
   return season && team && side === "offense" && opponent && team !== opponent
-    ? { season, our: team, opp: opponent, k: 5, w_off: 0.7 } : null;
+    ? { season, our: team, opp: opponent, k: 5, w_off: 0.5 } : null;
 }
 
 /** Opponent picker plus the shared season summary card. */

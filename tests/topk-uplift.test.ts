@@ -16,7 +16,7 @@ describe("Top-K uplift client", () => {
   it("builds the uplift URL with the matchup filters", () => {
     const url = new URL(topKUpliftUrl({ season: "2024-25", our: "TOR", opp: "BOS", k: 5 }), "https://api.test");
     expect(url.pathname).toMatch(/\/metrics\/topk-uplift$/);
-    expect(Object.fromEntries(url.searchParams)).toEqual({ season: "2024-25", our: "TOR", opp: "BOS", k: "5", w_off: "0.7" });
+    expect(Object.fromEntries(url.searchParams)).toEqual({ season: "2024-25", our: "TOR", opp: "BOS", k: "5", w_off: "0.5" });
   });
 
   it("sends the signed-in token and returns the report", async () => {

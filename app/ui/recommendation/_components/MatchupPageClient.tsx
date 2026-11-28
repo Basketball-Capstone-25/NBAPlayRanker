@@ -160,8 +160,8 @@ export default function MatchupPage() {
   const [k, setK] = useState(5);
 
   // Weights
-  const [wOff, setWOff] = useState(0.7);
-  const [wDef, setWDef] = useState(0.3);
+  const [wOff, setWOff] = useState(0.5);
+  const [wDef, setWDef] = useState(0.5);
 
   // Results
   const [rows, setRows] = useState<BaselineRow[]>([]);

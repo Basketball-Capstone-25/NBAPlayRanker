@@ -517,7 +517,7 @@ export async function baselineRank(opts: {
   }>
 > {
   // ✅ FIX: destructure wDef so it exists (and give it a safe default)
-  const { season, our, opp, k = 5, wOff = 0.7, wDef = 0.3 } = opts;
+  const { season, our, opp, k = 5, wOff = 0.5, wDef = 0.5 } = opts;
 
   const params = new URLSearchParams({
     season,
@@ -559,7 +559,7 @@ export function getBaselineCsvUrl(opts: {
   wOff?: number;
   wDef?: number;
 }): string {
-  const { season, our, opp, k = 5, wOff = 0.7 } = opts;
+  const { season, our, opp, k = 5, wOff = 0.5 } = opts;
 
   const params = new URLSearchParams({
     season,
@@ -609,7 +609,7 @@ export async function contextRank(opts: {
     period,
     timeRemaining,
     k = 5,
-    wOff = 0.7,
+    wOff = 0.5,
   } = opts;
 
   const params = new URLSearchParams({
@@ -718,7 +718,7 @@ export async function fetchShotPlanRank(opts: {
   k?: number;
   wOff?: number;
 }): Promise<ShotPlanRankResponse> {
-  const { season, our, opp, k = 5, wOff = 0.7 } = opts;
+  const { season, our, opp, k = 5, wOff = 0.5 } = opts;
 
   // Build multiple param variants (FastAPI ignores unknown params, so this is safe).
   const pA = new URLSearchParams({

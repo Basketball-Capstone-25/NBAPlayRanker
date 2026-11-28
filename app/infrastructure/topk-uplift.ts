@@ -35,7 +35,7 @@ export class UpliftUnavailableError extends Error {}
 export function topKUpliftUrl(filters: UpliftFilters): string {
   const query = new URLSearchParams({
     season: filters.season, our: filters.our, opp: filters.opp,
-    k: String(filters.k), w_off: String(filters.wOff ?? 0.7),
+    k: String(filters.k), w_off: String(filters.wOff ?? 0.5),
   });
   return `${API_BASE}/metrics/topk-uplift?${query}`;
 }

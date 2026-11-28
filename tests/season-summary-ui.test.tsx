@@ -55,7 +55,7 @@ describe("season summary display", () => {
 describe("analyst summary scope", () => {
   it("uses one offensive team and a separate opponent, with a fixed top five", () => {
     expect(analystSummaryFilters("2024-25", "TOR", "offense", "BOS"))
-      .toEqual({ season: "2024-25", our: "TOR", opp: "BOS", k: 5, w_off: 0.7 });
+      .toEqual({ season: "2024-25", our: "TOR", opp: "BOS", k: 5, w_off: 0.5 });
     const html = renderToStaticMarkup(<AnalystSeasonSummary season="2024-25" team="TOR" side="offense" teams={["TOR", "BOS"]} />);
     expect(html).toContain("Summary opponent");
     expect(html).toContain("Table search, play-type filters, possession minimum and row limit do not change it");
