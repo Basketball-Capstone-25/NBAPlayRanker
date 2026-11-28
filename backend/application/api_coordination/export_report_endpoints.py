@@ -6,7 +6,7 @@ from dataclasses import replace
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional
+from typing import Any, Dict, Iterable, List, Literal, Optional
 
 import numpy as np
 import pandas as pd
@@ -98,24 +98,24 @@ def create_export_report_router(
         if our == opp:
             raise HTTPException(status_code=400, detail="Our team and opponent must be different.")
 
-    def _baseline(season: str, our: str, opp: str, k: int, w_off: float) -> pd.DataFrame:
+    def _baseline(season: str, our: str, opp: str, k: int, w_off: float, rank_by: str = "ppp") -> pd.DataFrame:
         try:
             return rank_playtypes_baseline(
                 team_df=rec.team_df, league_df=rec.league_df, season=season,
-                our_team=our, opp_team=opp, k=k, w_off=w_off, w_def=1.0 - w_off,
+                our_team=our, opp_team=opp, k=k, w_off=w_off, w_def=1.0 - w_off, rank_by=rank_by,
             )
         except ValueError as exc:
             raise HTTPException(status_code=404, detail=str(exc)) from exc
 
     def build_payload(report: str, season: str, our: Optional[str], opp: Optional[str],
-                      side: Optional[str], k: int, w_off: float) -> ExportPayload:
+                      side: Optional[str], k: int, w_off: float, rank_by: str = "ppp") -> ExportPayload:
         """Prepare rows, filters and metadata for a supported server-calculated report."""
         if report == "baseline_rankings":
             _matchup(our, opp)
-            df = _baseline(season, our, opp, k, w_off)
+            df = _baseline(season, our, opp, k, w_off, rank_by)
             return ExportPayload(
                 report=report,
-                filters={"season": season, "our": our, "opp": opp, "k": k, "w_off": w_off},
+                filters={"season": season, "our": our, "opp": opp, "k": k, "w_off": w_off, "rank_by": rank_by},
                 columns=list(df.columns), rows=_records(df),
                 metadata={"title": f"Baseline Top-{k}: {our} vs {opp}, {season}"},
             )
@@ -169,6 +169,7 @@ def create_export_report_router(
         side: Optional[str] = Query(None),
         k: int = Query(5, ge=1, le=10),
         w_off: float = Query(0.5, ge=0, le=1, allow_inf_nan=False),
+        rank_by: Literal["ppp", "edge"] = Query("ppp"),
         user: dict = Depends(require_auth),
     ) -> Response:
         """Build a download from the selected server-side report after checking the caller’s role."""
@@ -177,7 +178,7 @@ def create_export_report_router(
             raise HTTPException(status_code=400, detail=f"Unknown report '{report}'. Use one of: {', '.join(REPORT_ROLES)}.")
         if not check_user_access(user.get("role"), role):
             raise HTTPException(status_code=403, detail=f"Role '{user.get('role')}' cannot export '{report}'.")
-        payload = build_payload(report, _season(season), our, opp, side, k, w_off)
+        payload = build_payload(report, _season(season), our, opp, side, k, w_off, rank_by)
         payload = replace(payload, filters={**payload.filters, "season_phase": SEASON_PHASE}, metadata={
             **payload.metadata, "dataset_versions": {"synergy": version()}, "aggregation_version": AGGREGATION_VERSION,
         })
