@@ -58,6 +58,19 @@ def test_different_teams_produce_different_rankings():
     df2 = rec.rank(season="2019-20", our_team="MIA", opp_team="BOS", k=5)
     assert not df1["PPP_PRED"].values.tolist() == df2["PPP_PRED"].values.tolist()
 
+def test_top_pick_changes_with_the_opponent():
+    """SCRUM-977: ranking by edge lets the opponent change the top pick."""
+    rec = BaselineRecommender(str(DATA_PATH))
+    opponents = ["BOS", "LAL", "DEN", "MIA", "GSW", "NYK"]
+    tops = {
+        rec.rank(season="2024-25", our_team="TOR", opp_team=opp, k=3).iloc[0]["PLAY_TYPE"]
+        for opp in opponents
+    }
+    assert len(tops) > 1
+    df = rec.rank(season="2024-25", our_team="TOR", opp_team="BOS", k=5)
+    assert df["EDGE"].is_monotonic_decreasing
+    assert (df["EDGE"] - (df["PPP_PRED"] - df["PPP_LEAGUE_REF"])).abs().max() < 1e-9
+
 def test_shot_baseline_rank_returns_dict():
     from domain.baseline_recommendation.shot_baseline_recommender import ShotBaselineRecommender
     agg = pathlib.Path(__file__).resolve().parent.parent / "data" / "pbp" / "shots_agg.parquet"
