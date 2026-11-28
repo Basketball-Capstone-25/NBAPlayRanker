@@ -304,7 +304,8 @@ def pipeline_info() -> Dict[str, Any]:
             "Compute PPP from points/possessions and FG% from makes/attempts; weight rounded eFG% by attempts and possession rates by possessions.",
             "Usage is the share of tracked play types for that side: eleven offensive categories and seven defensive categories in this source.",
             "The legacy GP export field sums player appearances; it is not team games played.",
-            "Compute RELIABILITY_WEIGHT from log1p(POSS) to reduce noise from small samples (used for shrinkage).",
+            "Compute RELIABILITY_WEIGHT from log1p(POSS); the ML model uses it as a feature.",
+            "Estimate shrinkage strength k per play type and side, then SHRINK_WEIGHT = POSS / (POSS + k).",
             "Build league baselines per (SEASON, PLAY_TYPE, SIDE) for shrinkage anchors.",
         ],
         "modeling": [
@@ -315,12 +316,25 @@ def pipeline_info() -> Dict[str, Any]:
         "etl_reference": "See backend/data/etl/build_synergy_dataset.R for the dataset build logic (if applicable in your repo).",
     }
 
+def _shrink_k_table() -> Dict[str, Dict[str, float]]:
+    """Estimated k for each play type and side, from the loaded tables."""
+    if rec is None or "SHRINK_K" not in rec.team_df.columns:
+        return {}
+    table = rec.team_df.groupby(["PLAY_TYPE", "SIDE"])["SHRINK_K"].first()
+    out: Dict[str, Dict[str, float]] = {}
+    for (play_type, side), k in table.items():
+        out.setdefault(str(play_type), {})[str(side)] = round(float(k), 1)
+    return out
+
+
 @app.get("/meta/baseline-formula", dependencies=[Depends(require_auth)])
 def baseline_formula() -> Dict[str, Any]:
     """Baseline formula explanation (so the committee can defend/understand it)."""
     return {
-        "inputs": ["PPP_OFF (team offense)", "PPP_DEF (opponent defense allowed)", "league baselines", "reliability weights"],
-        "shrinkage": "PPP_SHRUNK = REL * PPP_TEAM + (1-REL) * PPP_LEAGUE",
+        "inputs": ["PPP_OFF (team offense)", "PPP_DEF (opponent defense allowed)", "league baselines", "shrink weights"],
+        "shrinkage": "PPP_SHRUNK = W * PPP_TEAM + (1-W) * PPP_LEAGUE, W = POSS / (POSS + k)",
+        "shrinkage_k": "k = average per-possession variance / between-team variance for the play type and side, estimated from the loaded seasons. Per-possession variance is approximated as PPP^2 * (1 / SCORE_POSS_PCT - 1).",
+        "shrink_k_by_play_type": _shrink_k_table(),
         "prediction": "PPP_PRED = w_off * PPP_OFF_SHRUNK + w_def * PPP_DEF_SHRUNK",
         "formula": "PPP_PRED = w_off * PPP_OFF_SHRUNK + w_def * PPP_DEF_SHRUNK",
         "league_reference": "PPP_LEAGUE_REF = w_off * PPP_LEAGUE_OFF + w_def * PPP_LEAGUE_DEF",
