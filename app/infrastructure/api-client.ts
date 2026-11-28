@@ -504,6 +504,8 @@ export async function baselineRank(opts: {
   Array<{
     playType: string;
     pppPred: number;
+    edge: number;
+    leagueRef: number;
     pppOff: number;
     pppDef: number;
     pppGap: number;
@@ -532,6 +534,8 @@ export async function baselineRank(opts: {
   return rankings.map((r) => ({
     playType: r.PLAY_TYPE,
     pppPred: Number(r.PPP_PRED),
+    edge: Number(r.EDGE),
+    leagueRef: Number(r.PPP_LEAGUE_REF),
     pppOff: Number(r.PPP_OFF_SHRUNK),
     pppDef: Number(r.PPP_DEF_SHRUNK),
     pppGap: Number(r.PPP_GAP),
@@ -580,6 +584,8 @@ export async function contextRank(opts: {
   Array<{
     playType: string;
     finalPPP: number;
+    edge: number;
+    leagueRef: number;
     mlPPP: number;
     baselinePPP: number;
     deltaPPP: number;
@@ -622,6 +628,8 @@ export async function contextRank(opts: {
   return rows.map((r) => ({
     playType: r.PLAY_TYPE,
     finalPPP: Number(r.PPP_CONTEXT),
+    edge: Number(r.EDGE),
+    leagueRef: Number(r.PPP_LEAGUE_REF),
     mlPPP: Number(r.PPP_ML_BLEND),
     baselinePPP: Number(r.PPP_BASELINE),
     deltaPPP: Number(r.DELTA_VS_BASELINE),
