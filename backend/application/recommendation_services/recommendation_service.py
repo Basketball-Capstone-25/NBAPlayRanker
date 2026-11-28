@@ -18,6 +18,7 @@ def get_baseline_recommendations(
     k: int = 5,
     w_off: float = 0.5,
     w_def: float = 0.5,
+    rank_by: str = "ppp",
 ) -> pd.DataFrame:
     """Orchestrate a baseline play-type ranking."""
     return rank_playtypes_baseline(
@@ -29,6 +30,7 @@ def get_baseline_recommendations(
         k=k,
         w_off=w_off,
         w_def=w_def,
+        rank_by=rank_by,
     )
 
 
@@ -42,6 +44,7 @@ def get_context_ml_recommendations(
     k: int = 5,
     w_off: float = 0.5,
     w_def: float = 0.5,
+    rank_by: str = "ppp",
 ) -> pd.DataFrame:
     """Orchestrate a context-aware ML-based play-type ranking."""
     return rank_ml_with_context(
@@ -54,4 +57,5 @@ def get_context_ml_recommendations(
         k=k,
         w_off=w_off,
         w_def=w_def,
+        rank_by=rank_by,
     )

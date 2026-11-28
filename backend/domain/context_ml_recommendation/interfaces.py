@@ -21,6 +21,7 @@ class IRankMLWithContext(Protocol):
         k: int = 5,
         w_off: float = 0.5,
         w_def: float = 0.5,
+        rank_by: str = "ppp",
     ) -> pd.DataFrame: ...
 
 class IComputeContextFactors(Protocol):

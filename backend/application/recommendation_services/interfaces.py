@@ -19,6 +19,7 @@ class IGetBaselineRecommendations(Protocol):
         k: int = 5,
         w_off: float = 0.5,
         w_def: float = 0.5,
+        rank_by: str = "ppp",
     ) -> pd.DataFrame:
         """Rank the selected matchup with the supplied recommender and offense/defense weights."""
         ...
@@ -37,6 +38,7 @@ class IGetContextMLRecommendations(Protocol):
         k: int = 5,
         w_off: float = 0.5,
         w_def: float = 0.5,
+        rank_by: str = "ppp",
     ) -> pd.DataFrame:
         """Rank plays for a game situation using the margin, period and seconds left."""
         ...
