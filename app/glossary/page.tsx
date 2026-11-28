@@ -439,7 +439,7 @@ const TERMS: Array<{
   {
     term: "Edge",
     meaning:
-      "How much higher a play type's predicted points per possession is in this matchup than the league average for that play type: predicted PPP minus the league average. With the default weights this is 0.7 x (our offence PPP - league offence PPP) + 0.3 x (opponent PPP allowed - league PPP allowed). On the context page, the context adjustments are included.",
+      "How much higher a play type's predicted points per possession is in this matchup than the league average for that play type: predicted PPP minus the league average. With the default weights this is 0.5 x (our offence PPP - league offence PPP) + 0.5 x (opponent PPP allowed - league PPP allowed). On the context page, the context adjustments are included.",
     whyItMatters:
       "Both recommendation pages rank plays by edge, so the top pick is the play where this matchup is unusually good, not the play that scores best for every team. A positive edge means better than usual; a negative edge means worse than usual.",
     tags: ["Metrics", "Models", "Dataset1", "Core"],
@@ -462,11 +462,11 @@ const TERMS: Array<{
   {
     term: "Weights (w_off / w_def)",
     meaning:
-      "The user-tunable balance between our offense and the opponent’s defense-allowed when computing predicted PPP.",
+      "The user-tunable balance between our offense and the opponent’s defense-allowed when computing predicted PPP. Both the Baseline and Context ML start at 50/50. A check on 2020-21 to 2025-26 team games found offence explains about 53% of scoring (95% range 50% to 56%), so an even split is the simplest default the data supports.",
     whyItMatters:
       "Lets you emphasize what you trust more (your offense or their defense) while keeping the formula explainable.",
     tags: ["Models", "Dataset1"],
-    where: [{ label: "Matchup (Baseline)", href: "/matchup" }],
+    where: [{ label: "Matchup (Baseline)", href: "/matchup" }, { label: "AI Context", href: "/context" }],
     aliases: ["w_off", "w_def"],
   },
   {
