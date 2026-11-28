@@ -470,6 +470,16 @@ const TERMS: Array<{
     aliases: ["w_off", "w_def"],
   },
   {
+    term: "Coaching-condition weights",
+    meaning:
+      "When a coaching condition is set on the Context page, the offence/defence balance moves toward a fixed setting: 75/25 when we must score (need a three, quick two, two-for-one), 20/80 when we need a stop, and 42/58 to play safe. The final weight is 35% of the slider plus 65% of that setting, kept between 10% and 90%.",
+    whyItMatters:
+      "These settings are coaching judgment chosen by the team, not values fitted to data. Read the change they cause as an assumption to discuss, not a measured effect.",
+    tags: ["Models", "Context"],
+    where: [{ label: "AI Context", href: "/context" }],
+    aliases: ["offense_bias", "defense_bias", "EFFECTIVE_W_OFF"],
+  },
+  {
     term: "Auto-normalized weights",
     meaning:
       "A safety step that forces weights to sum to 1 (even if the user enters values that don’t).",
