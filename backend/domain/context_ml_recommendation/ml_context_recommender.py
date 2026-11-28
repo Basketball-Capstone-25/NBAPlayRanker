@@ -1281,6 +1281,9 @@ def apply_context_adjustments(
     out["PPP_CONTEXT"] = out["PPP_ML_BLEND"] + out["CONTEXT_ADJ"]
     out["DELTA_VS_BASELINE"] = out["PPP_CONTEXT"] - out["PPP_BASELINE"]
     # Edge: how far the context-adjusted prediction sits above a typical team.
+    # A table without a league reference keeps EDGE empty and the PPP order.
+    if "PPP_LEAGUE_REF" not in out.columns:
+        out["PPP_LEAGUE_REF"] = np.nan
     out["EDGE"] = out["PPP_CONTEXT"] - out["PPP_LEAGUE_REF"]
 
     ctx_label = _make_context_label(ctx, late_game_factor, trailing_factor, leading_factor)
@@ -1325,7 +1328,7 @@ def apply_context_adjustments(
 
         return (
             f"{row['PLAY_TYPE']} [{row['PLAY_FAMILY']}]: "
-            f"Edge {row['PPP_CONTEXT'] - row['PPP_LEAGUE_REF']:+.3f} vs the league average of {row['PPP_LEAGUE_REF']:.3f}. "
+            f"{_edge_text(row)}"
             f"ML base {row['PPP_ML_BLEND']:.3f}, "
             f"legacy {row['LEGACY_CONTEXT_ADJ']:+.3f}, "
             f"NLP {row['NLP_CONTEXT_ADJ']:+.3f}, "
@@ -1339,6 +1342,15 @@ def apply_context_adjustments(
 
     out["RATIONALE"] = out.apply(rationale, axis=1)
     return out
+
+
+def _edge_text(row: pd.Series) -> str:
+    """Rationale prefix for the edge, or nothing when the league reference is unknown."""
+    edge = _safe_float(row.get("EDGE"))
+    ref = _safe_float(row.get("PPP_LEAGUE_REF"))
+    if edge is None or ref is None:
+        return ""
+    return f"Edge {edge:+.3f} vs the league average of {ref:.3f}. "
 
 
 def rank_ml_with_context(

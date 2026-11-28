@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import io
+import math
 from typing import Dict, Iterable, Optional, Set
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -17,6 +18,14 @@ def _require_in(value: str, allowed: Set[str], label: str) -> None:
     if value not in allowed:
         raise HTTPException(status_code=400, detail=f"Unknown {label} '{value}'.")
 
+
+def _edge_caption(row) -> str:
+    """Caption text for the row's edge, or nothing when the row has no edge."""
+    try:
+        edge = float(row.get("EDGE"))
+    except (TypeError, ValueError):
+        return ""
+    return "" if math.isnan(edge) or math.isinf(edge) else f", edge {edge:+.3f} vs the league average"
 
 def create_pdf_router(
     rec: BaselineRecommender,
@@ -75,7 +84,7 @@ def create_pdf_router(
 
         r = row.iloc[0]
         caption = (
-            f"{play_type}: Pred {float(r['PPP_PRED']):.3f} PPP, edge {float(r['EDGE']):+.3f} vs the league average. "
+            f"{play_type}: Pred {float(r['PPP_PRED']):.3f} PPP{_edge_caption(r)}. "
             f"Our(off) {float(r['PPP_OFF_SHRUNK']):.3f} vs Opp(def) {float(r['PPP_DEF_SHRUNK']):.3f}."
         )
 

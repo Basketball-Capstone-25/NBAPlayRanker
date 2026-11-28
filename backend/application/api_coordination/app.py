@@ -23,6 +23,7 @@ if not logger.handlers:
     logging.basicConfig(level=logging.INFO)
 
 import numpy as np
+import math
 import pandas as pd
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.encoders import jsonable_encoder
@@ -235,6 +236,14 @@ def _get_shots_clean_df() -> pd.DataFrame:
         raise HTTPException(status_code=400, detail="Shot data is unavailable. Run the shot data pipeline.") from exc
 
 # Health
+
+def _edge_caption(row) -> str:
+    """Caption text for the row's edge, or nothing when the row has no edge."""
+    try:
+        edge = float(row.get("EDGE"))
+    except (TypeError, ValueError):
+        return ""
+    return "" if math.isnan(edge) or math.isinf(edge) else f", edge {edge:+.3f} vs the league average"
 
 @app.get("/health")
 def health() -> Dict[str, str]:
@@ -724,7 +733,7 @@ def viz_playtype_zones(
 
     r = row.iloc[0]
     caption = (
-        f"{play_type}: Pred {float(r['PPP_PRED']):.3f} PPP, edge {float(r['EDGE']):+.3f} vs the league average. "
+        f"{play_type}: Pred {float(r['PPP_PRED']):.3f} PPP{_edge_caption(r)}. "
         f"Our(off) {float(r['PPP_OFF_SHRUNK']):.3f} vs Opp(def) {float(r['PPP_DEF_SHRUNK']):.3f}."
     )
 
