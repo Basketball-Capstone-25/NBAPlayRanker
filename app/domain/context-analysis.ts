@@ -7,6 +7,10 @@
 export type ContextRow = {
   playType: string;
   finalPPP: number;
+  /** finalPPP minus the league average for the play type (SCRUM-974). */
+  edge?: number;
+  /** League average PPP with the same offence/defence weights (SCRUM-974). */
+  leagueRef?: number;
   mlPPP: number;
   baselinePPP: number;
   deltaPPP: number;

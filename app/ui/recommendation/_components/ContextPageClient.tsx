@@ -39,6 +39,8 @@ type MetaOptions = {
 type DisplayRow = ContextRow & {
   finalPPP_display: number;
   deltaPPP_display: number;
+  /** Displayed PPP minus the league average; the list is ranked by this. */
+  edge_display: number;
   overlay: OverlayBreakdown;
 };
 
@@ -159,7 +161,12 @@ export function ContextResults({ current, loading, hasRows, matchupLabel, childr
       <p className="muted" role="status">Generating ML + context ranking…</p>
     ) : !current ? (
       <p className="muted" role="status">Inputs changed. Run Context + ML again.</p>
-    ) : children}
+    ) : <>
+      <p className="muted" style={{ marginTop: 0 }}>
+        Ranked by edge: how much higher the expected points per possession is than the league average for that play type.
+      </p>
+      {children}
+    </>}
   </div>;
 }
 
@@ -409,11 +416,16 @@ function ContextInner() {
 
       const finalPPP_display = Number(r.finalPPP) + Number(overlay.overlayPPP);
       const deltaPPP_display = finalPPP_display - Number(r.baselinePPP);
+      // SCRUM-974: the overlay moves the PPP, so the edge moves with it.
+      const leagueRef = Number(r.leagueRef);
+      const edge_display = Number.isFinite(leagueRef) ? finalPPP_display - leagueRef : Number.NaN;
 
-      return { ...r, finalPPP_display, deltaPPP_display, overlay };
+      return { ...r, finalPPP_display, deltaPPP_display, edge_display, overlay };
     });
 
-    const sorted = [...mapped].sort((a, b) => b.finalPPP_display - a.finalPPP_display);
+    // Rank by edge; displayed PPP breaks ties and covers a missing league average.
+    const score = (row: DisplayRow) => (Number.isFinite(row.edge_display) ? row.edge_display : Number.NEGATIVE_INFINITY);
+    const sorted = [...mapped].sort((a, b) => score(b) - score(a) || b.finalPPP_display - a.finalPPP_display);
     return sorted.slice(0, Math.min(10, Math.max(1, k)));
   }, [rows, applyOverlay, meanMlPPP, period, timeRemaining, margin, overlayStrength, k]);
 
@@ -423,7 +435,7 @@ function ContextInner() {
   ) : null;
 
   // SCRUM-496: the #1 play and any play tied with it on the displayed score.
-  const topPicks = useMemo(() => new Set(topPickIndexes(displayRows.map((r) => r.finalPPP_display))), [displayRows]);
+  const topPicks = useMemo(() => new Set(topPickIndexes(displayRows.map((r) => r.edge_display))), [displayRows]);
   const topTied = topPicks.size > 1;
 
   // SCRUM-626: a spoken situation fills what was understood and clears the rest,
@@ -1113,6 +1125,8 @@ function ContextInner() {
               plays={displayRows.map((r) => ({
                 playType: r.playType,
                 ppp: Number(r.finalPPP_display),
+                edge: r.edge_display,
+                leagueRef: r.leagueRef,
                 shotZone: r.shotZone,
                 reason: contextReason(Number(r.deltaPPP_display), r.contextLabel),
               }))}
@@ -1122,7 +1136,7 @@ function ContextInner() {
             />
             {topTied ? (
               <p className="muted" style={{ fontSize: 12, marginTop: 8 }} data-testid="top-pick-tie">
-                #1 is tied with {[...topPicks].slice(1).map((i) => displayRows[i].playType).join(", ")} on PPP
+                #1 is tied with {[...topPicks].slice(1).map((i) => displayRows[i].playType).join(", ")} on edge
               </p>
             ) : null}
 
@@ -1134,6 +1148,8 @@ function ContextInner() {
                     <tr>
                       <th>#</th>
                       <th>Play Type</th>
+                      <th>Edge</th>
+                      <th>League avg</th>
                       <th>PPP_display</th>
                       <th>Backend Final</th>
                       <th>ML</th>
@@ -1158,6 +1174,8 @@ function ContextInner() {
                         <tr key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "topPickRow" : undefined}>
                           <td>{idx + 1}</td>
                           <td style={{ fontWeight: 900 }}>{r.playType}</td>
+                          <td>{fmt(r.edge_display, 3)}</td>
+                          <td>{fmt(r.leagueRef, 3)}</td>
                           <td>{fmt(r.finalPPP_display, 3)}</td>
                           <td>{fmt(r.finalPPP, 3)}</td>
                           <td>{fmt(r.mlPPP, 3)}</td>
@@ -1200,7 +1218,8 @@ function ContextInner() {
             <p className="muted" style={{ lineHeight: 1.6 }}>
               The backend returns <span className="mono">finalPPP</span> (context-aware result) plus{" "}
               <span className="mono">mlPPP</span> and <span className="mono">baselinePPP</span>. This page optionally adds a small,
-              transparent overlay (<span className="mono">overlayPPP</span>) based on margin/time to re-rank Top-K.
+              transparent overlay (<span className="mono">overlayPPP</span>) based on margin/time. Plays are ranked by{" "}
+              <span className="mono">edge</span>: the displayed PPP minus the league average for that play type.
             </p>
           </div>
 
