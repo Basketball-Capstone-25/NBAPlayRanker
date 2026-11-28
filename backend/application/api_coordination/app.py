@@ -9,7 +9,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from dotenv import load_dotenv
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 BACKEND_DIR = Path(__file__).resolve().parents[2]
 # Shell variables take precedence; a backend-specific file can override the
 # shared root file used by Next.js and documented in the quick start.
@@ -339,7 +339,7 @@ def baseline_formula() -> Dict[str, Any]:
         "formula": "PPP_PRED = w_off * PPP_OFF_SHRUNK + w_def * PPP_DEF_SHRUNK",
         "league_reference": "PPP_LEAGUE_REF = w_off * PPP_LEAGUE_OFF + w_def * PPP_LEAGUE_DEF",
         "edge": "EDGE = PPP_PRED - PPP_LEAGUE_REF",
-        "ranking": "Rows are sorted by EDGE, highest first; predicted PPP breaks ties.",
+        "ranking": "Rows are sorted by PPP_PRED, highest first, by default. With rank_by=edge they are sorted by EDGE instead; the other value breaks ties.",
         "aggregation_version": AGGREGATION_VERSION,
         "season_phase": SEASON_PHASE,
         "defaults": {"w_off": 0.5, "w_def": 0.5},
@@ -459,6 +459,7 @@ def rank_baseline(
     opp: str = Query(..., description="Opponent team abbreviation."),
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.5, ge=0, le=1),
+    rank_by: Literal["ppp", "edge"] = Query("ppp", description="Order by predicted PPP (default) or by edge over the league average."),
 ) -> Dict[str, Any]:
     """Baseline play-type ranking (transparent)."""
     _require_season(season)
@@ -479,6 +480,7 @@ def rank_baseline(
             k=k,
             w_off=float(w_off),
             w_def=w_def,
+            rank_by=rank_by,
         )
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
@@ -491,6 +493,7 @@ def rank_baseline(
             "k": k,
             "w_off": float(w_off),
             "w_def": float(w_def),
+            "rank_by": rank_by,
             "aggregation_version": AGGREGATION_VERSION,
             "season_phase": SEASON_PHASE,
             "court_map_play_types": [play for play in df["PLAY_TYPE"] if mapped_court_zones(play)],
@@ -505,6 +508,7 @@ def rank_baseline_csv(
     opp: str = Query(...),
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.5, ge=0, le=1),
+    rank_by: Literal["ppp", "edge"] = Query("ppp", description="Order by predicted PPP (default) or by edge over the league average."),
 ) -> StreamingResponse:
     """CSV download for baseline rankings."""
     w_def = float(1.0 - w_off)
@@ -518,6 +522,7 @@ def rank_baseline_csv(
             k=k,
             w_off=float(w_off),
             w_def=w_def,
+            rank_by=rank_by,
         )
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
@@ -550,6 +555,7 @@ def rank_context_ml(
     time_remaining: float = Query(..., ge=0, le=720),
     k: int = Query(5, ge=1, le=10),
     w_off: float = Query(0.5, ge=0, le=1),
+    rank_by: Literal["ppp", "edge"] = Query("ppp", description="Order by predicted PPP (default) or by edge over the league average."),
     coaching: Optional[str] = Query(None, max_length=2000, description="JSON object of supported coaching conditions."),
 ) -> Dict[str, Any]:
     """Rank play types using the numeric situation and supported coaching conditions."""
@@ -582,6 +588,7 @@ def rank_context_ml(
             w_off=float(w_off),
             w_def=w_def,
             context=conditions.model_dump(exclude_none=True),
+            rank_by=rank_by,
         )
     except (ValueError, FileNotFoundError) as e:
         raise HTTPException(status_code=400, detail=str(e))
@@ -627,6 +634,7 @@ def rank_context_ml(
             "season_phase": SEASON_PHASE,
             "w_off": float(w_off),
             "w_def": float(w_def),
+            "rank_by": rank_by,
             "rankings": rankings,
         }
     ), headers={"X-Dataset-Versions": json.dumps(versions), "X-Aggregation-Version": AGGREGATION_VERSION, "X-Season-Phase": SEASON_PHASE})

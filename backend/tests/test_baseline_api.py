@@ -53,3 +53,23 @@ def test_rank_baseline_api_rejects_invalid_k():
     )
 
     assert response.status_code == 422
+
+
+def test_rank_baseline_api_orders_by_ppp_or_edge():
+    """SCRUM-978: predicted PPP is the default order; rank_by=edge switches it."""
+    params = {"season": "2019-20", "our": "TOR", "opp": "BOS", "k": 5}
+    by_ppp = client.get("/rank-plays/baseline", params=params).json()
+    by_edge = client.get("/rank-plays/baseline", params={**params, "rank_by": "edge"}).json()
+    assert by_ppp["rank_by"] == "ppp" and by_edge["rank_by"] == "edge"
+    ppp = [row["PPP_PRED"] for row in by_ppp["rankings"]]
+    edge = [row["EDGE"] for row in by_edge["rankings"]]
+    assert ppp == sorted(ppp, reverse=True)
+    assert edge == sorted(edge, reverse=True)
+
+
+def test_rank_baseline_api_rejects_unknown_rank_by():
+    response = client.get(
+        "/rank-plays/baseline",
+        params={"season": "2019-20", "our": "TOR", "opp": "BOS", "k": 3, "rank_by": "poss"},
+    )
+    assert response.status_code == 422
