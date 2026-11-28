@@ -14,7 +14,7 @@ export function resultKey(filters: Record<string, ExportScalar>): string {
   return JSON.stringify(filters);
 }
 
-const numberOrNull = (value: number): number | null => Number.isFinite(value) ? value : null;
+const numberOrNull = (value: number | undefined): number | null => typeof value === "number" && Number.isFinite(value) ? value : null;
 
 function capturedVersions(value: unknown): Record<string, string> | "Unavailable" {
   if (!value || typeof value !== "object" || Array.isArray(value)) return "Unavailable";
@@ -26,13 +26,14 @@ function capturedVersions(value: unknown): Record<string, string> | "Unavailable
 
 export function baselineReport(
   filters: ReportPayload["filters"],
-  rows: { playType: string; pppPred: number; pppOff: number; pppDef: number; pppGap: number; raw?: Record<string, unknown> }[],
+  rows: { playType: string; pppPred: number; edge?: number; leagueRef?: number; pppOff: number; pppDef: number; pppGap: number; raw?: Record<string, unknown> }[],
 ): ReportPayload {
   return {
     report: "baseline_rankings", filters: { ...filters },
-    columns: ["Play type", "Predicted PPP", "Our PPP", "Opponent PPP", "PPP gap"],
+    columns: ["Play type", "Edge", "League average PPP", "Predicted PPP", "Our PPP", "Opponent PPP", "PPP gap"],
     rows: rows.map(row => ({
-      "Play type": row.playType, "Predicted PPP": numberOrNull(row.pppPred),
+      "Play type": row.playType, "Edge": numberOrNull(row.edge), "League average PPP": numberOrNull(row.leagueRef),
+      "Predicted PPP": numberOrNull(row.pppPred),
       "Our PPP": numberOrNull(row.pppOff), "Opponent PPP": numberOrNull(row.pppDef),
       "PPP gap": numberOrNull(row.pppGap),
     })),
@@ -43,20 +44,21 @@ export function baselineReport(
 
 export function contextReport(
   filters: ReportPayload["filters"],
-  rows: { playType: string; finalPPP_display: number; mlPPP: number; baselinePPP: number;
+  rows: { playType: string; finalPPP_display: number; edge_display?: number; leagueRef?: number; mlPPP: number; baselinePPP: number;
     deltaPPP_display: number; overlay: { overlayPPP: number }; raw?: Record<string, unknown> }[],
 ): ReportPayload {
   return {
     report: "context_rankings", filters: { ...filters },
-    columns: ["Play type", "Final PPP", "ML PPP", "Baseline PPP", "Change in PPP", "Overlay PPP"],
+    columns: ["Play type", "Edge", "League average PPP", "Final PPP", "ML PPP", "Baseline PPP", "Change in PPP", "Overlay PPP"],
     rows: rows.map(row => ({
-      "Play type": row.playType, "Final PPP": numberOrNull(row.finalPPP_display),
+      "Play type": row.playType, "Edge": numberOrNull(row.edge_display), "League average PPP": numberOrNull(row.leagueRef),
+      "Final PPP": numberOrNull(row.finalPPP_display),
       "ML PPP": numberOrNull(row.mlPPP), "Baseline PPP": numberOrNull(row.baselinePPP),
       "Change in PPP": numberOrNull(row.deltaPPP_display), "Overlay PPP": numberOrNull(row.overlay.overlayPPP),
     })),
     metadata: { title: "Context rankings", source: "displayed result snapshot",
       dataset_versions: capturedVersions(rows[0]?.raw?.dataset_versions),
-      limitations: "Final PPP includes the selected context overlay. These are modeled rankings, not observed outcomes." },
+      limitations: "Final PPP and edge include the selected context overlay. Rows are ranked by edge. These are modeled rankings, not observed outcomes." },
   };
 }
 

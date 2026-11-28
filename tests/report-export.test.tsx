@@ -6,8 +6,8 @@ import { ReportExportView } from "../app/ui/_shared/components/ReportExport";
 
 const filters = { season: "2024-25", our: "TOR", opp: "BOS", k: 3, w_off: 0.7, w_def: 0.3 };
 const baseline = () => baselineReport(filters, [
-  { playType: "Cut", pppPred: 1.2, pppOff: 1.3, pppDef: 1.1, pppGap: 0.2 },
-  { playType: "Spotup", pppPred: 1.1, pppOff: 1.2, pppDef: 1, pppGap: 0.2 },
+  { playType: "Cut", pppPred: 1.2, edge: 0.06, leagueRef: 1.14, pppOff: 1.3, pppDef: 1.1, pppGap: 0.2 },
+  { playType: "Spotup", pppPred: 1.1, edge: 0.04, leagueRef: 1.06, pppOff: 1.2, pppDef: 1, pppGap: 0.2 },
 ]);
 
 afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks(); });
@@ -18,6 +18,7 @@ describe("displayed report exports", () => {
     expect(report.filters).toEqual(filters);
     expect(report.rows.map(row => row["Play type"])).toEqual(["Cut", "Spotup"]);
     expect(report.rows[0]["Predicted PPP"]).toBe(1.2);
+    expect(report.rows[0]).toMatchObject({ "Edge": 0.06, "League average PPP": 1.14 });
     expect(Object.keys(report.rows[0])).toEqual(report.columns);
     report.filters.our = "LAL";
     expect(filters.our).toBe("TOR");
@@ -25,10 +26,10 @@ describe("displayed report exports", () => {
 
   it("uses the displayed context overlay and ordering instead of unadjusted API values", () => {
     const report = contextReport({ ...filters, margin: -2, period: 4, time_remaining: 120, overlay: true, overlay_strength: 1.5 }, [
-      { playType: "Cut", finalPPP_display: 1.25, mlPPP: 1.2, baselinePPP: 1.1, deltaPPP_display: 0.15, overlay: { overlayPPP: 0.05 } },
+      { playType: "Cut", finalPPP_display: 1.25, edge_display: 0.1, leagueRef: 1.15, mlPPP: 1.2, baselinePPP: 1.1, deltaPPP_display: 0.15, overlay: { overlayPPP: 0.05 } },
       { playType: "Spotup", finalPPP_display: 1.22, mlPPP: 1.21, baselinePPP: 1.15, deltaPPP_display: 0.07, overlay: { overlayPPP: 0.01 } },
     ]);
-    expect(report.rows[0]).toMatchObject({ "Play type": "Cut", "Final PPP": 1.25, "Overlay PPP": 0.05, "Change in PPP": 0.15 });
+    expect(report.rows[0]).toMatchObject({ "Play type": "Cut", "Edge": 0.1, "League average PPP": 1.15, "Final PPP": 1.25, "Overlay PPP": 0.05, "Change in PPP": 0.15 });
     expect(report.filters).toMatchObject({ margin: -2, period: 4, time_remaining: 120, overlay: true, overlay_strength: 1.5 });
     expect(report.rows.map(row => row["Play type"])).toEqual(["Cut", "Spotup"]);
   });
