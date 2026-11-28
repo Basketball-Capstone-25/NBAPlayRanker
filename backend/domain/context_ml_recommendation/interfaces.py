@@ -19,8 +19,8 @@ class IRankMLWithContext(Protocol):
         period: int,
         time_remaining_period_sec: float,
         k: int = 5,
-        w_off: float = 0.7,
-        w_def: float = 0.3,
+        w_off: float = 0.5,
+        w_def: float = 0.5,
     ) -> pd.DataFrame: ...
 
 class IComputeContextFactors(Protocol):
@@ -41,8 +41,8 @@ class IBuildMLMatchupTable(Protocol):
         season: str,
         our_team: str,
         opp_team: str,
-        w_off: float = 0.7,
-        w_def: float = 0.3,
+        w_off: float = 0.5,
+        w_def: float = 0.5,
     ) -> pd.DataFrame: ...
 
 class IApplyContextAdjustments(Protocol):

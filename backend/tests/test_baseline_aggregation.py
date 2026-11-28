@@ -117,7 +117,7 @@ def test_edge_is_prediction_minus_weighted_league_average():
     ])
     row = rank_playtypes_baseline(teams, league, "2024-25", "TOR", "BOS", k=1).iloc[0]
     assert row["PPP_LEAGUE_REF"] == pytest.approx(1.1)
-    assert row["EDGE"] == pytest.approx(0.7 * 0.05 + 0.3 * 0.10)
+    assert row["EDGE"] == pytest.approx(0.5 * 0.05 + 0.5 * 0.10)
 
 
 def test_rows_are_ordered_by_edge_not_raw_ppp():
@@ -155,7 +155,7 @@ def test_context_blend_keeps_the_same_defense_direction(monkeypatch):
     team.loc[team.SIDE.eq("defense"), "PPP"] = 1.1
     weak = context.build_ml_matchup_table("2024-25", "TOR", "BOS")
     for column in ["PPP_BASELINE", "PPP_ML_BLEND"]:
-        assert weak.iloc[0][column] - strong.iloc[0][column] == pytest.approx(0.06)
+        assert weak.iloc[0][column] - strong.iloc[0][column] == pytest.approx(0.10)
 
 
 def test_context_edge_uses_the_context_prediction(monkeypatch):

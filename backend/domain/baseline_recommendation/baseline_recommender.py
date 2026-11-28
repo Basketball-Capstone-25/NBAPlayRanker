@@ -231,8 +231,8 @@ def rank_playtypes_baseline(
     our_team: str,
     opp_team: str,
     k: int = 5,
-    w_off: float = 0.7,
-    w_def: float = 0.3,
+    w_off: float = 0.5,
+    w_def: float = 0.5,
 ) -> pd.DataFrame:
     """Rank play types for a matchup using an explainable baseline model."""
     valid_seasons = set(team_df["SEASON"].unique())

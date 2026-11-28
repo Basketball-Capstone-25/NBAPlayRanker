@@ -30,7 +30,7 @@ class IShotBaselineRecommender(ABC):
         our_team: str,
         opp_team: str,
         k: int = 5,
-        w_off: float = 0.7,
+        w_off: float = 0.5,
     ) -> Dict[str, Any]:
         """Return top-k ranked shot types/zones for a matchup."""
         ...

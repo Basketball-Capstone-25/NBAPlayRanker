@@ -968,8 +968,8 @@ def build_ml_matchup_table(
     season: str,
     our_team: str,
     opp_team: str,
-    w_off: float = 0.7,
-    w_def: float = 0.3,
+    w_off: float = 0.5,
+    w_def: float = 0.5,
     context: Optional[Dict[str, Any]] = None,
 ) -> pd.DataFrame:
     """
@@ -1366,8 +1366,8 @@ def rank_ml_with_context(
     period: Any,
     time_remaining_period_sec: Any,
     k: int = 5,
-    w_off: float = 0.7,
-    w_def: float = 0.3,
+    w_off: float = 0.5,
+    w_def: float = 0.5,
     context: Optional[Dict[str, Any]] = None,
 ) -> pd.DataFrame:
     """

@@ -16,8 +16,8 @@ def get_baseline_recommendations(
     our_team: str,
     opp_team: str,
     k: int = 5,
-    w_off: float = 0.7,
-    w_def: float = 0.3,
+    w_off: float = 0.5,
+    w_def: float = 0.5,
 ) -> pd.DataFrame:
     """Orchestrate a baseline play-type ranking."""
     return rank_playtypes_baseline(
@@ -40,8 +40,8 @@ def get_context_ml_recommendations(
     period: int,
     time_remaining_period_sec: float,
     k: int = 5,
-    w_off: float = 0.7,
-    w_def: float = 0.3,
+    w_off: float = 0.5,
+    w_def: float = 0.5,
 ) -> pd.DataFrame:
     """Orchestrate a context-aware ML-based play-type ranking."""
     return rank_ml_with_context(
