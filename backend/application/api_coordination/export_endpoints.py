@@ -75,7 +75,7 @@ def create_pdf_router(
 
         r = row.iloc[0]
         caption = (
-            f"{play_type}: Pred {float(r['PPP_PRED']):.3f} PPP. "
+            f"{play_type}: Pred {float(r['PPP_PRED']):.3f} PPP, edge {float(r['EDGE']):+.3f} vs the league average. "
             f"Our(off) {float(r['PPP_OFF_SHRUNK']):.3f} vs Opp(def) {float(r['PPP_DEF_SHRUNK']):.3f}."
         )
 
