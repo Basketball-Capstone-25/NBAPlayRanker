@@ -441,7 +441,7 @@ const TERMS: Array<{
     meaning:
       "How much higher a play type's predicted points per possession is in this matchup than the league average for that play type: predicted PPP minus the league average. With the default weights this is 0.5 x (our offence PPP - league offence PPP) + 0.5 x (opponent PPP allowed - league PPP allowed). On the context page, the context adjustments are included.",
     whyItMatters:
-      "Both recommendation pages rank plays by edge, so the top pick is the play where this matchup is unusually good, not the play that scores best for every team. A positive edge means better than usual; a negative edge means worse than usual.",
+      "Both recommendation pages rank plays by predicted PPP by default and show the edge beside it, so you can see how much of the PPP is this matchup and how much is the play type itself. Choose Rank by: Matchup edge to put the plays where this matchup is unusually good first. A positive edge means better than usual; a negative edge means worse than usual.",
     tags: ["Metrics", "Models", "Dataset1", "Core"],
     where: [
       { label: "Matchup (Baseline)", href: "/matchup" },
