@@ -195,7 +195,7 @@ def test_context_edge_uses_the_context_prediction(monkeypatch):
     assert row["EDGE"] == pytest.approx(row["PPP_CONTEXT"] - 0.95)
 
 
-def test_context_ranking_is_ordered_by_edge(monkeypatch):
+def _context_two_play(monkeypatch):
     from domain.context_ml_recommendation import ml_context_recommender as context
     def rows(play, off, deff):
         common = {"SEASON": "2024-25", "PLAY_TYPE": play, "POSS": 100, "POSS_PCT": 0.1,
@@ -212,8 +212,21 @@ def test_context_ranking_is_ordered_by_edge(monkeypatch):
     ])
     monkeypatch.setattr(context, "_rec", SimpleNamespace(team_df=team, league_df=league, raw_df=pd.DataFrame()))
     monkeypatch.setattr(context, "_get_ml_pred_df", lambda: predictions)
+    return context
+
+
+def test_context_ranking_is_ordered_by_context_ppp_by_default(monkeypatch):
+    context = _context_two_play(monkeypatch)
     ranked = context.rank_ml_with_context("2024-25", "TOR", "BOS", margin=0, period=2,
                                           time_remaining_period_sec=360, k=2)
+    assert ranked["PLAY_TYPE"].tolist() == ["PRRollMan", "Isolation"]
+    assert ranked["PPP_CONTEXT"].is_monotonic_decreasing
+
+
+def test_context_ranking_can_be_ordered_by_edge(monkeypatch):
+    context = _context_two_play(monkeypatch)
+    ranked = context.rank_ml_with_context("2024-25", "TOR", "BOS", margin=0, period=2,
+                                          time_remaining_period_sec=360, k=2, rank_by="edge")
     assert ranked["PLAY_TYPE"].tolist() == ["Isolation", "PRRollMan"]
     assert ranked["EDGE"].is_monotonic_decreasing
 

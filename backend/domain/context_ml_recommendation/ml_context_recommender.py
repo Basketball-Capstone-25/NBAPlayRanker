@@ -42,7 +42,7 @@ import numpy as np
 import pandas as pd
 
 from domain.baseline_recommendation import BaselineRecommender
-from domain.baseline_recommendation.baseline_recommender import with_shrink_weight
+from domain.baseline_recommendation.baseline_recommender import validate_rank_by, with_shrink_weight
 from infrastructure.data_access.dataset_metadata import read_versioned_csv
 
 try:
@@ -1377,19 +1377,21 @@ def rank_ml_with_context(
     w_off: float = 0.5,
     w_def: float = 0.5,
     context: Optional[Dict[str, Any]] = None,
+    rank_by: str = "ppp",
 ) -> pd.DataFrame:
     """
     Full AI use case ranking:
       1) Build matchup with ML blend + baseline
       2) Let advanced NLP context alter blend weights
       3) Apply legacy + NLP-aware context adjustments
-      4) Rank by EDGE (PPP_CONTEXT minus the weighted league average)
+      4) Rank by PPP_CONTEXT (default) or by EDGE when rank_by="edge"
 
     Safe fallback behavior for malformed / underspecified prompts:
       - margin -> 0.0
       - period -> 4
       - time_remaining -> 360.0
     """
+    rank_by = validate_rank_by(rank_by)
     sanitized_context = _normalize_context(
         margin=margin,
         period=period,
@@ -1413,8 +1415,11 @@ def rank_ml_with_context(
         context=sanitized_context,
     )
 
-    # Rank by edge, as the baseline does; the context-adjusted PPP breaks ties.
-    sort_cols = ["EDGE", "PPP_CONTEXT", "NLP_CONTEXT_ADJ", "PPP_ML_BLEND"]
+    # Context-adjusted PPP is the default order; edge is the option, as on the baseline.
+    if rank_by == "ppp":
+        sort_cols = ["PPP_CONTEXT", "EDGE", "NLP_CONTEXT_ADJ", "PPP_ML_BLEND"]
+    else:
+        sort_cols = ["EDGE", "PPP_CONTEXT", "NLP_CONTEXT_ADJ", "PPP_ML_BLEND"]
     sort_cols = [c for c in sort_cols if c in df.columns]
     df = df.sort_values(sort_cols, ascending=False).reset_index(drop=True)
     return df.head(max(1, int(k)))
