@@ -168,7 +168,7 @@ def create_export_report_router(
         opp: Optional[str] = Query(None),
         side: Optional[str] = Query(None),
         k: int = Query(5, ge=1, le=10),
-        w_off: float = Query(0.7, ge=0, le=1, allow_inf_nan=False),
+        w_off: float = Query(0.5, ge=0, le=1, allow_inf_nan=False),
         user: dict = Depends(require_auth),
     ) -> Response:
         """Build a download from the selected server-side report after checking the caller’s role."""

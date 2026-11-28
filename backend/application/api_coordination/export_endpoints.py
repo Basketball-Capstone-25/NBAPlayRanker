@@ -50,7 +50,7 @@ def create_pdf_router(
         opp: str = Query(..., description="Opponent team abbreviation."),
         play_type: str = Query(..., description="Play type (must exist in the Top-K result)."),
         k: int = Query(10, ge=1, le=10, description="Top-K used for the baseline ranking (1..10)."),
-        w_off: float = Query(0.7, ge=0, le=1),
+        w_off: float = Query(0.5, ge=0, le=1),
     ) -> StreamingResponse:
         """1-page PDF export with SportyPy court map + caption."""
         _require_in(season, valid_seasons_set, "season")

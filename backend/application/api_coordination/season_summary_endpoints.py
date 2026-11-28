@@ -24,7 +24,7 @@ def create_season_summary_router(rec: BaselineRecommender, gate: DataQualityGate
         our: str = Query(..., min_length=2, max_length=3),
         opp: str = Query(..., min_length=2, max_length=3),
         k: int = Query(5, ge=1, le=10),
-        w_off: float = Query(0.7, ge=0, le=1, allow_inf_nan=False),
+        w_off: float = Query(0.5, ge=0, le=1, allow_inf_nan=False),
         period: Literal["season"] = Query("season"),
     ) -> dict:
         """Compare the modeled Top-K points per possession with the team’s recorded season average."""

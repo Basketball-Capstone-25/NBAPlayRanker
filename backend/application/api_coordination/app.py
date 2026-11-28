@@ -342,7 +342,8 @@ def baseline_formula() -> Dict[str, Any]:
         "ranking": "Rows are sorted by EDGE, highest first; predicted PPP breaks ties.",
         "aggregation_version": AGGREGATION_VERSION,
         "season_phase": SEASON_PHASE,
-        "defaults": {"w_off": 0.7, "w_def": 0.3},
+        "defaults": {"w_off": 0.5, "w_def": 0.5},
+        "default_weight_evidence": "docs/model/offense-defense-weight.json: offence share 0.53 (95% 0.50 to 0.56) on 15,450 team-games.",
         "interpretation": "Combine historical regular-season offense PPP with opponent PPP allowed, with both stabilized toward league averages. This is a heuristic estimate, not a validated forecast. The offense-minus-defense difference is descriptive, not a matchup advantage. EDGE compares the prediction with what a typical team gets from the same play type, so the order reflects this matchup rather than which play type scores best for everyone.",
     }
 
@@ -457,7 +458,7 @@ def rank_baseline(
     our: str = Query(..., description="Our team abbreviation."),
     opp: str = Query(..., description="Opponent team abbreviation."),
     k: int = Query(5, ge=1, le=10),
-    w_off: float = Query(0.7, ge=0, le=1),
+    w_off: float = Query(0.5, ge=0, le=1),
 ) -> Dict[str, Any]:
     """Baseline play-type ranking (transparent)."""
     _require_season(season)
@@ -503,7 +504,7 @@ def rank_baseline_csv(
     our: str = Query(...),
     opp: str = Query(...),
     k: int = Query(5, ge=1, le=10),
-    w_off: float = Query(0.7, ge=0, le=1),
+    w_off: float = Query(0.5, ge=0, le=1),
 ) -> StreamingResponse:
     """CSV download for baseline rankings."""
     w_def = float(1.0 - w_off)
@@ -548,7 +549,7 @@ def rank_context_ml(
     period: int = Query(..., ge=1, le=5),
     time_remaining: float = Query(..., ge=0, le=720),
     k: int = Query(5, ge=1, le=10),
-    w_off: float = Query(0.7, ge=0, le=1),
+    w_off: float = Query(0.5, ge=0, le=1),
     coaching: Optional[str] = Query(None, max_length=2000, description="JSON object of supported coaching conditions."),
 ) -> Dict[str, Any]:
     """Rank play types using the numeric situation and supported coaching conditions."""
@@ -705,7 +706,7 @@ def viz_playtype_zones(
     our: str = Query(...),
     opp: str = Query(...),
     play_type: str = Query(...),
-    w_off: float = Query(0.7, ge=0, le=1),
+    w_off: float = Query(0.5, ge=0, le=1),
 ) -> Dict[str, Any]:
     """Draw the selected play type on a court and caption it with the matchup’s baseline PPP estimates."""
     _require_season(season)

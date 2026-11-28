@@ -62,7 +62,7 @@ def create_topk_uplift_router(rec: BaselineRecommender, source_path: Path) -> AP
         our: str = Query(..., description="Our team abbreviation."),
         opp: str = Query(..., description="Opponent team abbreviation."),
         k: int = Query(5, ge=1, le=10),
-        w_off: float = Query(0.7, ge=0, le=1, allow_inf_nan=False),
+        w_off: float = Query(0.5, ge=0, le=1, allow_inf_nan=False),
     ) -> dict:
         """Use the same weighted baseline ranking for the on-screen comparison and both downloads."""
         if our == opp:
