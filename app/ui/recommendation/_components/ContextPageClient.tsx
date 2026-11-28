@@ -5,7 +5,7 @@
 import Link from "next/link";
 import React, { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { contextRank, fetchMetaOptions } from "../../../services/recommendation";
+import { contextRank, fetchMetaOptions, type RankBy } from "../../../services/recommendation";
 import { LatestRequest } from "../../../infrastructure/latest-request";
 import ReportExport from "../../_shared/components/ReportExport";
 import RankedPlayList from "./RankedPlayList";
@@ -143,11 +143,12 @@ function Icon({
 }
 
 /** Shows results only while they match the inputs that produced them; otherwise a prompt to run. */
-export function ContextResults({ current, loading, hasRows, matchupLabel, children }: {
+export function ContextResults({ current, loading, hasRows, matchupLabel, rankBy = "ppp", children }: {
   current: boolean;
   loading: boolean;
   hasRows: boolean;
   matchupLabel: string;
+  rankBy?: RankBy;
   children: React.ReactNode;
 }) {
   return <div className="card resultsCard">
@@ -163,7 +164,9 @@ export function ContextResults({ current, loading, hasRows, matchupLabel, childr
       <p className="muted" role="status">Inputs changed. Run Context + ML again.</p>
     ) : <>
       <p className="muted" style={{ marginTop: 0 }}>
-        Ranked by edge: how much higher the expected points per possession is than the league average for that play type.
+        {rankBy === "edge"
+          ? "Ranked by edge: how much higher the expected points per possession is than the league average for that play type."
+          : "Ranked by expected points per possession in this situation. The league average and edge under each play show how much of it comes from this matchup."}
       </p>
       {children}
     </>}
@@ -189,6 +192,8 @@ function ContextInner() {
   const [our, setOur] = useState("");
   const [opp, setOpp] = useState("");
   const [k, setK] = useState(5);
+  // SCRUM-978: expected PPP is the default order; edge is an option.
+  const [rankBy, setRankBy] = useState<RankBy>("ppp");
 
   // Game situation: blank until the coach sets it (SCRUM-824).
   const [marginIn, setMarginIn] = useState<number | null>(null);
@@ -221,7 +226,7 @@ function ContextInner() {
   const [toast, setToast] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loadedKey, setLoadedKey] = useState("");
-  const requestFilters = { season, our, opp, k, margin: marginIn, period: periodIn, time_remaining: timeIn };
+  const requestFilters = { season, our, opp, k, margin: marginIn, period: periodIn, time_remaining: timeIn, rank_by: rankBy };
   const currentKey = resultKey(requestFilters);
   const requestsRef = useRef(new LatestRequest());
   const lastAttemptedKeyRef = useRef("");
@@ -350,7 +355,7 @@ function ContextInner() {
 
     lastAttemptedKeyRef.current = currentKey;
     await requestsRef.current.run(currentKey, () => contextRank({
-      season, our, opp, margin, period, timeRemaining, k,
+      season, our, opp, margin, period, timeRemaining, k, rankBy,
     }), {
       start: () => {
         setLoading(true);
@@ -423,11 +428,13 @@ function ContextInner() {
       return { ...r, finalPPP_display, deltaPPP_display, edge_display, overlay };
     });
 
-    // Rank by edge; displayed PPP breaks ties and covers a missing league average.
-    const score = (row: DisplayRow) => (Number.isFinite(row.edge_display) ? row.edge_display : Number.NEGATIVE_INFINITY);
-    const sorted = [...mapped].sort((a, b) => score(b) - score(a) || b.finalPPP_display - a.finalPPP_display);
+    // SCRUM-978: sort by the displayed PPP by default, or by edge when chosen.
+    const finite = (value: number) => (Number.isFinite(value) ? value : Number.NEGATIVE_INFINITY);
+    const sorted = rankBy === "edge"
+      ? [...mapped].sort((a, b) => finite(b.edge_display) - finite(a.edge_display) || b.finalPPP_display - a.finalPPP_display)
+      : [...mapped].sort((a, b) => finite(b.finalPPP_display) - finite(a.finalPPP_display) || finite(b.edge_display) - finite(a.edge_display));
     return sorted.slice(0, Math.min(10, Math.max(1, k)));
-  }, [rows, applyOverlay, meanMlPPP, period, timeRemaining, margin, overlayStrength, k]);
+  }, [rows, applyOverlay, meanMlPPP, period, timeRemaining, margin, overlayStrength, k, rankBy]);
 
   const resultsCurrent = loadedKey === currentKey && displayRows.length > 0 && !loading && !error;
   const exportPayload = resultsCurrent ? contextReport(
@@ -435,7 +442,10 @@ function ContextInner() {
   ) : null;
 
   // SCRUM-496: the #1 play and any play tied with it on the displayed score.
-  const topPicks = useMemo(() => new Set(topPickIndexes(displayRows.map((r) => r.edge_display))), [displayRows]);
+  const topPicks = useMemo(
+    () => new Set(topPickIndexes(displayRows.map((r) => (rankBy === "edge" ? r.edge_display : r.finalPPP_display)))),
+    [displayRows, rankBy]
+  );
   const topTied = topPicks.size > 1;
 
   // SCRUM-626: a spoken situation fills what was understood and clears the rest,
@@ -915,6 +925,14 @@ function ContextInner() {
           </label>
 
           <label>
+            Rank by
+            <select className="input" value={rankBy} onChange={(e) => setRankBy(e.target.value as RankBy)}>
+              <option value="ppp">Expected PPP</option>
+              <option value="edge">Matchup edge (vs league average)</option>
+            </select>
+          </label>
+
+          <label>
             Our team
             <select className="input" value={our} onChange={(e) => setOur(e.target.value)}>
               <option value="" disabled>Choose our team</option>
@@ -1119,7 +1137,7 @@ function ContextInner() {
       </div>
 
       {/* Results */}
-      <ContextResults current={loadedKey === currentKey && !loading && !error} loading={loading} hasRows={displayRows.length > 0} matchupLabel={`${our} vs ${opp} • ${season}`}>
+      <ContextResults current={loadedKey === currentKey && !loading && !error} loading={loading} hasRows={displayRows.length > 0} matchupLabel={`${our} vs ${opp} • ${season}`} rankBy={rankBy}>
             {/* SCRUM-795: one large list, same style the Quick-Call screen used. */}
             <RankedPlayList
               plays={displayRows.map((r) => ({
@@ -1136,7 +1154,7 @@ function ContextInner() {
             />
             {topTied ? (
               <p className="muted" style={{ fontSize: 12, marginTop: 8 }} data-testid="top-pick-tie">
-                #1 is tied with {[...topPicks].slice(1).map((i) => displayRows[i].playType).join(", ")} on edge
+                #1 is tied with {[...topPicks].slice(1).map((i) => displayRows[i].playType).join(", ")} on {rankBy === "edge" ? "edge" : "expected PPP"}
               </p>
             ) : null}
 
