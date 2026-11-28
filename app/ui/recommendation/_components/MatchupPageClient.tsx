@@ -41,6 +41,8 @@ type BaselineInfo = {
 type BaselineRow = {
   playType: string;
   pppPred: number;
+  edge: number;
+  leagueRef: number;
   pppOff: number;
   pppDef: number;
   pppGap: number;
@@ -56,6 +58,12 @@ function fmt(n: any, digits = 3) {
   const x = Number(n);
   if (!Number.isFinite(x)) return "—";
   return x.toFixed(digits);
+}
+// Signed edge, e.g. +0.048 or -0.010.
+function fmtEdge(n: any, digits = 3) {
+  const x = Number(n);
+  if (!Number.isFinite(x)) return "—";
+  return `${x >= 0 ? "+" : ""}${x.toFixed(digits)}`;
 }
 function fmtInt(n: any) {
   const x = Number(n);
@@ -383,7 +391,8 @@ export default function MatchupPage() {
 
   const bestRow = useMemo(() => (rows.length ? rows[0] : null), [rows]);
   // SCRUM-496: the #1 play and any play tied with it on the displayed score.
-  const topPicks = useMemo(() => new Set(topPickIndexes(rows.map((r) => r.pppPred))), [rows]);
+  // SCRUM-974: rows are ranked by edge, so ties are checked on edge too.
+  const topPicks = useMemo(() => new Set(topPickIndexes(rows.map((r) => r.edge))), [rows]);
   const topTied = topPicks.size > 1;
 
 
@@ -912,6 +921,9 @@ export default function MatchupPage() {
           <h2>Top recommendations</h2>
           <span className="badge">{resultsCurrent ? `${our} vs ${opp} • ${season} regular season` : "Run to see results"}</span>
         </div>
+        <p className="muted" style={{ marginTop: 0 }}>
+          Ranked by edge: how much higher the predicted points per possession is than the league average for that play type.
+        </p>
 
         {!loading && !resultsCurrent ? (
           <BaselineEmptyState className="emptyState" completed={summaryReady} hasRows={rows.length > 0} />
@@ -928,12 +940,13 @@ export default function MatchupPage() {
                     <div><TopPickCall rows={rows} current={resultsCurrent} /></div>
                     {topTied ? (
                       <div className="muted" style={{ fontSize: 12 }} data-testid="top-pick-tie">
-                        <TopPickBadge tied /> Tied with {[...topPicks].slice(1).map((i) => rows[i].playType).join(", ")} on PPP
+                        <TopPickBadge tied /> Tied with {[...topPicks].slice(1).map((i) => rows[i].playType).join(", ")} on edge
                       </div>
                     ) : null}
                   </div>
                   <div className="badge">
-                    Estimated points / possession <span className="mono">{fmt(bestRow.pppPred, 3)}</span>
+                    Edge vs league average <span className="mono">{fmtEdge(bestRow.edge, 3)}</span>
+                    {" "}· Estimated points / possession <span className="mono">{fmt(bestRow.pppPred, 3)}</span>
                   </div>
                 </div>
                 <p className="muted" style={{ marginTop: 8 }}>
@@ -973,7 +986,7 @@ export default function MatchupPage() {
                         {topPicks.has(idx) ? <TopPickBadge tied={topTied} /> : null}
                       </div>
                       <div className="muted">
-                        gap <span className="mono">{fmt(r.pppGap, 3)}</span>
+                        edge <span className="mono">{fmtEdge(r.edge, 3)}</span> · league avg <span className="mono">{fmt(r.leagueRef, 3)}</span>
                       </div>
                     </div>
 
@@ -1084,6 +1097,8 @@ export default function MatchupPage() {
                     <tr>
                       <th>#</th>
                       <th>Play Type</th>
+                      <th>Edge</th>
+                      <th>League avg</th>
                       <th>Pred PPP</th>
                       <th>Our PPP (shrunk)</th>
                       <th>Opp Allowed (shrunk)</th>
@@ -1108,6 +1123,8 @@ export default function MatchupPage() {
                         <tr key={`${r.playType}-${idx}`} className={topPicks.has(idx) ? "topPickRow" : undefined}>
                           <td>{idx + 1}</td>
                           <td style={{ fontWeight: 900 }}>{r.playType}</td>
+                          <td>{fmtEdge(r.edge, 3)}</td>
+                          <td>{fmt(r.leagueRef, 3)}</td>
                           <td>{fmt(r.pppPred, 3)}</td>
                           <td>{fmt(r.pppOff, 3)}</td>
                           <td>{fmt(r.pppDef, 3)}</td>
