@@ -371,18 +371,31 @@ const TERMS: Array<{
   {
     term: "Shrinkage",
     meaning:
-      "A statistical technique that pulls extreme values toward the league average when there’s limited data (low possessions).",
+      "Pulls a team's play-type value toward the league average in proportion to how noisy it is: shrunk value = W × team value + (1 − W) × league average, with W = possessions / (possessions + k).",
     whyItMatters:
-      "Makes the baseline model more defensible by reducing overconfidence in tiny samples.",
+      "Team play-type numbers bounce around by chance. Shrinking them keeps a small or noisy sample from deciding the ranking. Baseline and Context ML both use it.",
     tags: ["Stats", "Dataset1"],
     where: [{ label: "Matchup (Baseline)", href: "/matchup" }],
   },
   {
+    term: "Shrink weight (k)",
+    meaning:
+      "The share of a team's own value kept after shrinkage: possessions / (possessions + k). k is the number of possessions at which a team value gets half weight. It is estimated for each play type and side from the loaded seasons: the variance of points on one possession divided by how much teams really differ.",
+    whyItMatters:
+      "k comes from the data instead of a chosen formula. A play type where teams barely differ gets a large k, so its team values are pulled strongly toward the league average.",
+    tags: ["Stats", "Dataset1"],
+    where: [
+      { label: "Matchup (Baseline)", href: "/matchup" },
+      { label: "AI Context", href: "/context" },
+    ],
+    aliases: ["SHRINK_WEIGHT", "SHRINK_K", "Empirical Bayes"],
+  },
+  {
     term: "Reliability Weight",
     meaning:
-      "A 0–1 weight computed from possessions that controls how much we trust a team’s play-type stats vs the league average.",
+      "A 0–1 weight from the log of possessions. The machine learning model uses it as an input feature; shrinkage now uses the shrink weight instead.",
     whyItMatters:
-      "High possessions → high reliability → less shrinkage; low possessions → more shrinkage.",
+      "It tells the model how large each team's sample is.",
     tags: ["Stats", "Dataset1"],
     where: [
       { label: "Matchup (Baseline)", href: "/matchup" },

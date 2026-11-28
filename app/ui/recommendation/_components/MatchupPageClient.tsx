@@ -1106,8 +1106,8 @@ export default function MatchupPage() {
                         <>
                           <th>Poss (our)</th>
                           <th>Poss% (our)</th>
-                          <th>Rel (our)</th>
-                          <th>Rel (opp)</th>
+                          <th>Shrink wt (our)</th>
+                          <th>Shrink wt (opp)</th>
                           <th>League PPP (off)</th>
                           <th>League PPP (def)</th>
                         </>
@@ -1133,8 +1133,8 @@ export default function MatchupPage() {
                             <>
                               <td>{fmt(raw.POSS_OFF, 0)}</td>
                               <td>{safePct(raw.POSS_PCT_OFF)}</td>
-                              <td>{fmt(raw.RELIABILITY_WEIGHT_OFF, 3)}</td>
-                              <td>{fmt(raw.RELIABILITY_WEIGHT_DEF, 3)}</td>
+                              <td>{fmt(raw.SHRINK_WEIGHT_OFF ?? raw.RELIABILITY_WEIGHT_OFF, 3)}</td>
+                              <td>{fmt(raw.SHRINK_WEIGHT_DEF ?? raw.RELIABILITY_WEIGHT_DEF, 3)}</td>
                               <td>{fmt(raw.PPP_LEAGUE_OFF, 3)}</td>
                               <td>{fmt(raw.PPP_LEAGUE_DEF, 3)}</td>
                             </>
