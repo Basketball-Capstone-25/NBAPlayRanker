@@ -405,10 +405,36 @@ const TERMS: Array<{
     meaning:
       "The baseline model’s output estimate for a play type in the selected matchup (a weighted blend).",
     whyItMatters:
-      "This is the sortable value used to rank Top-K play types on the baseline page.",
+      "Shown next to the edge so a coach can see how many points a play is expected to score. The ranking order comes from the edge.",
     tags: ["Models", "Metrics", "Dataset1"],
     where: [{ label: "Matchup (Baseline)", href: "/matchup" }],
     aliases: ["pppPred", "PPP_PRED"],
+  },
+  {
+    term: "League average (PPP)",
+    meaning:
+      "For one play type in one season: the total points scored with that play type divided by the total possessions, across every NBA team. It is calculated for offence and for defence (points allowed). The rankings blend the two with the same weights as the prediction: w_off x league offence PPP + w_def x league PPP allowed.",
+    whyItMatters:
+      "It is the reference for what a typical team gets from a play type. Without it, the play type that is efficient for everyone would always rank first.",
+    tags: ["Metrics", "Dataset1", "Core"],
+    where: [
+      { label: "Matchup (Baseline)", href: "/matchup" },
+      { label: "AI Context", href: "/context" },
+    ],
+    aliases: ["PPP_LEAGUE_REF", "leagueRef", "PPP_LEAGUE_OFF", "PPP_LEAGUE_DEF"],
+  },
+  {
+    term: "Edge",
+    meaning:
+      "How much higher a play type's predicted points per possession is in this matchup than the league average for that play type: predicted PPP minus the league average. With the default weights this is 0.7 x (our offence PPP - league offence PPP) + 0.3 x (opponent PPP allowed - league PPP allowed). On the context page, the context adjustments are included.",
+    whyItMatters:
+      "Both recommendation pages rank plays by edge, so the top pick is the play where this matchup is unusually good, not the play that scores best for every team. A positive edge means better than usual; a negative edge means worse than usual.",
+    tags: ["Metrics", "Models", "Dataset1", "Core"],
+    where: [
+      { label: "Matchup (Baseline)", href: "/matchup" },
+      { label: "AI Context", href: "/context" },
+    ],
+    aliases: ["EDGE", "edge_display", "Matchup edge"],
   },
   {
     term: "Gap (PPP Gap)",
@@ -478,7 +504,7 @@ const TERMS: Array<{
     meaning:
       "A ranking score after score, clock and coaching adjustments are applied to the model and baseline estimates. It is not a calibrated forecast of points per possession.",
     whyItMatters:
-      "This is what ultimately determines the context ranking order on the AI page.",
+      "The context page subtracts the league average from this score to get the edge, which sets the ranking order.",
     tags: ["AI", "Context", "Metrics", "Dataset1"],
     where: [{ label: "AI Context", href: "/context" }],
     aliases: ["finalPPP"],

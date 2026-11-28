@@ -60,6 +60,8 @@ DEFINITIONS = {
     "EPA_LEAGUE": ("League points divided by league shot attempts.", "points per attempt"),
     "LEAGUE_REL_WEIGHT": ("Sample-size reliability weight for a league shot group.", "weight, 0–1"),
     "PPP_PRED": ("Estimated points per possession from the saved model.", "points per possession"),
+    "PPP_LEAGUE_REF": ("League average for the play type and season: total points divided by total possessions across every team, blended as w_off x league offence PPP + w_def x league PPP allowed.", "points per possession"),
+    "EDGE": ("Predicted points per possession minus the league average for the same play type. Recommendations are ranked by this value; positive means better than a typical team.", "points per possession"),
     "PPP_ML": ("Saved model estimate of offensive points per possession.", "points per possession"),
     "SOURCE_DATASET_VERSION": ("Content hash of the play-type source used to build these predictions. It must match the currently loaded source.", "SHA-256 identifier"),
     "AGGREGATION_VERSION": ("Version of the team aggregation rules used to build the saved predictions.", "version label"),
