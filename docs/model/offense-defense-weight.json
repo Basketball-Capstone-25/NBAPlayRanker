@@ -1,0 +1,32 @@
+{
+  "team_games": 15450,
+  "seasons": [
+    "2020-21",
+    "2021-22",
+    "2022-23",
+    "2023-24",
+    "2024-25",
+    "2025-26"
+  ],
+  "min_shots_per_team_game": 40,
+  "coef_offense": 0.8396697448190371,
+  "coef_defense": 0.7561596685857596,
+  "offense_share": 0.5261651012106312,
+  "offense_share_95": [
+    0.5000195627668274,
+    0.5568999952879118
+  ],
+  "weighted_rmse_by_offense_share": {
+    "0.5": 0.12791125303047773,
+    "0.6": 0.12783800307828852,
+    "0.7": 0.1279137599591624,
+    "0.8": 0.12813825938947368,
+    "1.0": 0.12902986597759447
+  },
+  "method": "Weighted least squares of team-game points per shot minus the league value on the team's season offence and the opponent's season defence, both relative to league and leaving the game out. Bootstrap over team-games.",
+  "scope": "All field-goal attempts, not play-type possessions. Evidence by analogy for the play-type blend.",
+  "source": "backend\\data\\pbp\\shots_clean.parquet",
+  "source_sha256": "71942556c1e1ddeeb1c9c87847cb4cd4720274a399c8043503e16ed8e815bf08",
+  "generated_at": "2026-11-28T03:51:08+00:00",
+  "baseline_default_w_off": 0.5
+}
