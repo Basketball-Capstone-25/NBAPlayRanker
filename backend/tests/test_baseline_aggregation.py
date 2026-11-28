@@ -5,7 +5,10 @@ import pytest
 from types import SimpleNamespace
 
 from domain.baseline_recommendation.baseline_recommender import (
+    SHRINK_K_MAX,
     WEIGHT_COLS,
+    add_shrinkage_weights,
+    estimate_shrinkage_k,
     build_league_averages,
     build_team_playtype_tables,
     rank_playtypes_baseline,
@@ -195,3 +198,35 @@ def test_context_ranking_is_ordered_by_edge(monkeypatch):
                                           time_remaining_period_sec=360, k=2)
     assert ranked["PLAY_TYPE"].tolist() == ["Isolation", "PRRollMan"]
     assert ranked["EDGE"].is_monotonic_decreasing
+
+
+def _shrink_rows(ppps, poss=400, seasons=("2023-24", "2024-25")):
+    return pd.DataFrame([
+        {"SEASON": season, "TEAM_ABBREVIATION": f"T{i}", "PLAY_TYPE": "Isolation", "SIDE": "offense",
+         "PPP": ppp, "POSS": poss, "SCORE_POSS_PCT": 0.45}
+        for season in seasons for i, ppp in enumerate(ppps)
+    ])
+
+
+def test_shrinkage_k_is_noise_over_between_team_spread():
+    ppps = [0.85 + 0.02 * i for i in range(12)]
+    rows = _shrink_rows(ppps)
+    k = estimate_shrinkage_k(rows).iloc[0]["SHRINK_K"]
+    sigma2 = (rows.PPP ** 2 * (1 / 0.45 - 1)).mean()
+    spread = pd.Series(ppps).var(ddof=0) - (pd.Series(ppps) ** 2 * (1 / 0.45 - 1) / 400).mean()
+    assert k == pytest.approx(sigma2 / spread, rel=1e-6)
+
+
+def test_no_between_team_spread_gives_the_largest_k():
+    k = estimate_shrinkage_k(_shrink_rows([1.0] * 12)).iloc[0]["SHRINK_K"]
+    assert k == SHRINK_K_MAX
+
+
+def test_shrink_weight_grows_with_possessions():
+    rows = pd.concat([_shrink_rows([0.85 + 0.02 * i for i in range(12)]),
+                      _shrink_rows([1.0], poss=2000).assign(TEAM_ABBREVIATION="BIG")])
+    weighted = add_shrinkage_weights(rows)
+    big = weighted[weighted.TEAM_ABBREVIATION == "BIG"].iloc[0]
+    small = weighted[weighted.TEAM_ABBREVIATION == "T0"].iloc[0]
+    assert big.SHRINK_WEIGHT > small.SHRINK_WEIGHT
+    assert small.SHRINK_WEIGHT == pytest.approx(400 / (400 + small.SHRINK_K))

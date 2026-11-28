@@ -127,6 +127,67 @@ def add_team_reliability_weights(team_df: pd.DataFrame) -> pd.DataFrame:
     result["RELIABILITY_WEIGHT"] = np.log1p(result["POSS"]) / max_log if max_log > 0 else 0.0
     return result
 
+# Shrinkage strength k is estimated from the data (SCRUM-980). Bounds keep a
+# play type with very few teams or almost no between-team spread usable.
+SHRINK_K_MIN = 50.0
+SHRINK_K_MAX = 5000.0
+MIN_TEAMS_PER_SEASON = 10
+
+
+def _possession_variance(team_df: pd.DataFrame) -> pd.Series:
+    """Approximate the variance of points on one possession.
+
+    Season totals have no possession-level points, so assume every scoring
+    possession is worth PPP / SCORE_POSS_PCT points. Then E[points^2] is
+    PPP^2 / SCORE_POSS_PCT and the variance is PPP^2 * (1 / SCORE_POSS_PCT - 1).
+    """
+    score_rate = pd.to_numeric(team_df["SCORE_POSS_PCT"], errors="coerce").clip(lower=1e-6)
+    ppp = pd.to_numeric(team_df["PPP"], errors="coerce")
+    return ppp ** 2 * (1.0 / score_rate - 1.0)
+
+
+def estimate_shrinkage_k(team_df: pd.DataFrame) -> pd.DataFrame:
+    """Estimate k for possessions / (possessions + k), per play type and side.
+
+    k = average per-possession variance / between-team variance. The
+    between-team variance is the possession-weighted spread of team PPP in a
+    season minus the spread expected from sampling noise alone, averaged over
+    seasons. This is the method-of-moments empirical Bayes estimate.
+    """
+    frame = team_df.assign(_VAR=_possession_variance(team_df))
+    frame = frame[(frame["POSS"] > 0) & frame["_VAR"].notna() & frame["PPP"].notna()]
+    rows = []
+    for (play_type, side), group in frame.groupby(["PLAY_TYPE", "SIDE"]):
+        spreads = []
+        for _, season in group.groupby("SEASON"):
+            if len(season) < MIN_TEAMS_PER_SEASON:
+                continue
+            weights = season["POSS"]
+            mean = np.average(season["PPP"], weights=weights)
+            observed = np.average((season["PPP"] - mean) ** 2, weights=weights)
+            noise = np.average(season["_VAR"] / season["POSS"], weights=weights)
+            spreads.append(observed - noise)
+        sigma2 = float(np.average(group["_VAR"], weights=group["POSS"]))
+        tau2 = float(np.mean(spreads)) if spreads else 0.0
+        k = SHRINK_K_MAX if tau2 <= 0 else float(np.clip(sigma2 / tau2, SHRINK_K_MIN, SHRINK_K_MAX))
+        rows.append({"PLAY_TYPE": play_type, "SIDE": side, "SHRINK_K": k})
+    return pd.DataFrame(rows, columns=["PLAY_TYPE", "SIDE", "SHRINK_K"])
+
+
+def add_shrinkage_weights(team_df: pd.DataFrame) -> pd.DataFrame:
+    """Add SHRINK_K and SHRINK_WEIGHT = POSS / (POSS + SHRINK_K) to each team row.
+
+    RELIABILITY_WEIGHT is kept as it is: the saved ML model uses it as a feature.
+    """
+    k = estimate_shrinkage_k(team_df)
+    result = team_df.drop(columns=["SHRINK_K", "SHRINK_WEIGHT"], errors="ignore").merge(
+        k, on=["PLAY_TYPE", "SIDE"], how="left"
+    )
+    result["SHRINK_K"] = result["SHRINK_K"].fillna(SHRINK_K_MAX)
+    result["SHRINK_WEIGHT"] = result["POSS"] / (result["POSS"] + result["SHRINK_K"])
+    result.attrs.update(team_df.attrs)
+    return result
+
 def build_league_averages(team_df: pd.DataFrame) -> pd.DataFrame:
     """Build league-average stats per (SEASON, PLAY_TYPE, SIDE)."""
     group_cols = ["SEASON", "PLAY_TYPE", "SIDE"]
@@ -148,6 +209,7 @@ def prepare_baseline_tables(raw_df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Data
     """Full baseline ETL pipeline:"""
     team_df = build_team_playtype_tables(raw_df)
     team_df = add_team_reliability_weights(team_df)
+    team_df = add_shrinkage_weights(team_df)
     league_df = build_league_averages(team_df)
     return team_df, league_df
 
