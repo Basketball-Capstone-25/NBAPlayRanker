@@ -105,7 +105,7 @@ required: substituting rounded PPP * POSS would silently change the estimand.
         "filters": {"season": season, "our": our_team, "opp": opp_team, "k": k,
                     "w_off": w_off, "w_def": 1.0 - w_off, "side": "offense"},
         "units": "points per possession",
-        "ranking_model": "existing possession-shrunk baseline matchup recommender",
+        "ranking_model": "possession-shrunk baseline matchup recommender, ranked by edge over the league average",
         "estimand": "historical modeled recommendation comparison",
         "evaluation_scope": "in-sample descriptive diagnostic; not held-out evaluation",
         "team_season": {

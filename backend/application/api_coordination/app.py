@@ -296,7 +296,7 @@ def pipeline_info() -> Dict[str, Any]:
             "Build league baselines per (SEASON, PLAY_TYPE, SIDE) for shrinkage anchors.",
         ],
         "modeling": [
-            "Baseline model: shrink team offense/defense toward league baselines; combine into PPP_PRED.",
+            "Baseline model: shrink team offense/defense toward league baselines; combine into PPP_PRED, then rank by EDGE (PPP_PRED minus the weighted league average).",
             "ML model: a model selected offline estimates offense PPP from observed-season team play-type features.",
             "AI use case: ML-based PPP blended with opponent defense, then adjusted using small, transparent context bonuses/penalties.",
         ],
@@ -311,10 +311,13 @@ def baseline_formula() -> Dict[str, Any]:
         "shrinkage": "PPP_SHRUNK = REL * PPP_TEAM + (1-REL) * PPP_LEAGUE",
         "prediction": "PPP_PRED = w_off * PPP_OFF_SHRUNK + w_def * PPP_DEF_SHRUNK",
         "formula": "PPP_PRED = w_off * PPP_OFF_SHRUNK + w_def * PPP_DEF_SHRUNK",
+        "league_reference": "PPP_LEAGUE_REF = w_off * PPP_LEAGUE_OFF + w_def * PPP_LEAGUE_DEF",
+        "edge": "EDGE = PPP_PRED - PPP_LEAGUE_REF",
+        "ranking": "Rows are sorted by EDGE, highest first; predicted PPP breaks ties.",
         "aggregation_version": AGGREGATION_VERSION,
         "season_phase": SEASON_PHASE,
         "defaults": {"w_off": 0.7, "w_def": 0.3},
-        "interpretation": "Combine historical regular-season offense PPP with opponent PPP allowed, with both stabilized toward league averages. This is a heuristic estimate, not a validated forecast. The offense-minus-defense difference is descriptive, not a matchup advantage.",
+        "interpretation": "Combine historical regular-season offense PPP with opponent PPP allowed, with both stabilized toward league averages. This is a heuristic estimate, not a validated forecast. The offense-minus-defense difference is descriptive, not a matchup advantage. EDGE compares the prediction with what a typical team gets from the same play type, so the order reflects this matchup rather than which play type scores best for everyone.",
     }
 
 @app.get("/data/team-playtypes", dependencies=[Depends(require_role("data"))])
