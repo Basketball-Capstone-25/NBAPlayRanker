@@ -1063,6 +1063,11 @@ def build_ml_matchup_table(
         float(eff_w_off) * merged["PPP_ML"]
         + float(eff_w_def) * merged["PPP_DEF_SHRUNK"]
     )
+    # Same league reference as the baseline, using the context-adjusted weights.
+    merged["PPP_LEAGUE_REF"] = (
+        float(eff_w_off) * merged["PPP_LEAGUE_OFF"]
+        + float(eff_w_def) * merged["PPP_LEAGUE_DEF"]
+    )
 
     merged["PLAY_FAMILY"] = merged["PLAY_TYPE"].apply(_play_family)
     merged.attrs["dataset_versions"] = {
@@ -1275,6 +1280,8 @@ def apply_context_adjustments(
     out["CONTEXT_ADJ"] = out["LEGACY_CONTEXT_ADJ"] + out["NLP_CONTEXT_ADJ"]
     out["PPP_CONTEXT"] = out["PPP_ML_BLEND"] + out["CONTEXT_ADJ"]
     out["DELTA_VS_BASELINE"] = out["PPP_CONTEXT"] - out["PPP_BASELINE"]
+    # Edge: how far the context-adjusted prediction sits above a typical team.
+    out["EDGE"] = out["PPP_CONTEXT"] - out["PPP_LEAGUE_REF"]
 
     ctx_label = _make_context_label(ctx, late_game_factor, trailing_factor, leading_factor)
     out["CONTEXT_LABEL"] = ctx_label

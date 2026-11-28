@@ -153,3 +153,22 @@ def test_context_blend_keeps_the_same_defense_direction(monkeypatch):
     weak = context.build_ml_matchup_table("2024-25", "TOR", "BOS")
     for column in ["PPP_BASELINE", "PPP_ML_BLEND"]:
         assert weak.iloc[0][column] - strong.iloc[0][column] == pytest.approx(0.06)
+
+
+def test_context_edge_uses_the_context_prediction(monkeypatch):
+    from domain.context_ml_recommendation import ml_context_recommender as context
+    common = {"SEASON": "2024-25", "PLAY_TYPE": "Isolation", "POSS": 100,
+              "POSS_PCT": 0.1, "RELIABILITY_WEIGHT": 1.0, "EFG_PCT": 0.5, "TOV_POSS_PCT": 0.1}
+    team = pd.DataFrame([
+        {**common, "SIDE": "offense", "TEAM_ABBREVIATION": "TOR", "PPP": 1.1},
+        {**common, "SIDE": "defense", "TEAM_ABBREVIATION": "BOS", "PPP": 1.0},
+    ])
+    league = pd.DataFrame([{"SEASON": "2024-25", "PLAY_TYPE": "Isolation", "SIDE": side, "PPP": 0.95}
+                           for side in ["offense", "defense"]])
+    predictions = pd.DataFrame([{"SEASON": "2024-25", "TEAM_ABBREVIATION": "TOR", "PLAY_TYPE": "Isolation", "PPP_ML": 1.05}])
+    monkeypatch.setattr(context, "_rec", SimpleNamespace(team_df=team, league_df=league, raw_df=pd.DataFrame()))
+    monkeypatch.setattr(context, "_get_ml_pred_df", lambda: predictions)
+    table = context.build_ml_matchup_table("2024-25", "TOR", "BOS")
+    assert table.iloc[0]["PPP_LEAGUE_REF"] == pytest.approx(0.95)
+    row = context.apply_context_adjustments(table, margin=-3, period=4, time_remaining_period_sec=30).iloc[0]
+    assert row["EDGE"] == pytest.approx(row["PPP_CONTEXT"] - 0.95)
